@@ -1,6 +1,13 @@
 #ifndef MINI_MOTORWAYS_ENV_H
 #define MINI_MOTORWAYS_ENV_H
 
+// added by Mohammad
+#include <algorithm>
+#include <cmath>
+#include <string>
+// stop
+
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
