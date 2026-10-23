@@ -1,0 +1,9 @@
+Validation - 24 October 2026
+PASS: .NET build, zero warnings/errors.
+PASS: 17 shared simulation suites, including explicit legacy fixtures and production version-isolation/rejection/map checks.
+PASS: JSON protocol verifies default original target, custom 2/5/10/8 prices, 30-second grace, weekly original materials, seeded three-map variation, and refusal to certify exact parity.
+PASS: Unity checks and Windows standalone build.
+PASS: rendered original/custom launch views; no runtime exceptions in capture logs.
+PASS: five Custom seeds reached 300 simulated seconds with debug reference roads, without failure or rejection. These are smoke tests, not learned-agent evaluations.
+UNFINISHED: exact-original parity. See Docs/VERSIONS.md for the outstanding implementation and validation work.
+Unmodified installed App.dll SHA256: 76C9D9069D61160A5C20AFA62D33C0272173AB46682DB28214374E56B557C638.

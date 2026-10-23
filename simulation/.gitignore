@@ -1,0 +1,15 @@
+/Library/
+/Temp/
+/Obj/
+/Logs/
+/UserSettings/
+/Builds/
+/.vs/
+*.csproj
+!Headless/TrafficHost.csproj
+/Headless/bin/
+/Headless/obj/
+*.sln
+*.slnx
+*.user
+*.log

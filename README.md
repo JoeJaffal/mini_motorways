@@ -1,320 +1,105 @@
-# Mini Motorways RL
+# Mini Motorways Simulation Lab
 
-A high-performance **reinforcement learning environment** for traffic management and urban planning, inspired by the game Mini Motorways. Built with **C++ and OpenGL** for real-time visualization and fast training.
+A visual traffic-construction environment for comparing an original-game reconstruction with a custom version. One Unity app contains two isolated rule sets and a shared C# simulation core that also runs without graphics.
 
-![Mini Motorways RL Demo](https://img.shields.io/badge/Platform-macOS%20%7C%20Linux%20%7C%20Windows-blue)
-![C++17](https://img.shields.io/badge/C%2B%2B-17-blue.svg)
-![OpenGL](https://img.shields.io/badge/OpenGL-3.3%2B-green.svg)
-![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+**The original-game replica is unfinished.** OriginalReference is the default development target, not a certified exact replica or a ready-to-use exact-original training baseline. The custom version is runnable; no learning algorithm or final reward formula has been implemented.
 
-## What is Mini Motorways RL?
+## What's in this repository
 
-Mini Motorways RL is a **reinforcement learning playground** where AI agents learn to build efficient road networks to manage traffic flow between houses and businesses. The environment provides:
+| Location | Purpose |
+| --- | --- |
+| [simulation/](simulation/) | Current Unity app and shared simulation core |
+| [simulation/Headless/](simulation/Headless/) | .NET 8 action/observation interface for future training |
+| [BUILD_DECISIONS.md](BUILD_DECISIONS.md) | Build and implementation decisions, explanations, and trade-offs |
+| [Design decision log](simulation/Docs/DESIGN_DECISIONS.md) | Full chronological record of the user's answers; later entries supersede earlier ones |
+| [Version specification](simulation/Docs/VERSIONS.md) | Current behavior of each version, limitations, and parity backlog |
+| Root C++ files | Earlier playground, retained separately from the new Unity implementation |
+| [Legacy guide](docs/LEGACY_PLAYGROUND.md) | Historical C++ documentation; not the current simulator specification |
 
-- **Real-time OpenGL visualization** with smooth animations
-- **A* pathfinding** for realistic traffic simulation
-- **Multiple RL agents** (Random baseline, Q-Learning, extensible to Deep RL)
-- **Performance analytics** and detailed metrics
-- **Cross-platform support** (macOS, Linux, Windows)
+## The two versions
 
-Perfect for **research**, **education**, and **experimenting** with traffic optimization algorithms!
+| | Original target | Your version |
+| --- | --- | --- |
+| Selected rules | OriginalReference (default) | Custom |
+| Purpose | Reproduce the installed original game | Explore the team's traffic-planning changes |
+| Construction | Limited city-configured materials | Unlimited items, with cumulative spending |
+| Weekly materials | Partially implemented original-style choices | None |
+| Point prices | No custom construction prices | Road 2; light 5 additional; bridge water tile 10; roundabout 8 |
+| New-shop grace | No custom grace period | 30 seconds |
+| Feasibility modification | Custom rejection/capping disabled | Reject clear supply shortages; do not lower demand to rescue a scenario |
+| Driving rules | Original-game replication target | Same original-game target |
+| Motorways | Required for parity; still missing | Deliberately excluded |
 
-## Quick Start
+The two versions share unresolved traffic/spawning approximations. Changing versions resets the episode so inventory, spending and custom rules do not carry over.
 
-### Prerequisites
+## Confirmed decisions and what they mean
 
-**macOS (Homebrew):**
-```bash
-brew install cmake glfw glew glm
+These summarize the user's decisions, including the update of **24 October 2026**. They distinguish approved behavior from the implementation's remaining limitations.
+
+| Decision | Description and explanation |
+| --- | --- |
+| **Keep the city alive first** | The custom agent's primary goal is keeping the city running. Less waiting and lower construction cost are secondary. No weights or priority between those two secondary goals have been chosen. |
+| **Unlimited construction, spending tracked** | Real planning uses a budget rather than a fixed inventory of items. Unlimited items plus a spending counter prepares for a future budget constraint; there is no active budget limit now. |
+| **Count all construction ever placed** | Every successful placement adds permanently to spending. Demolition does not erase money already spent; rebuilding costs again. An extra demolition fee is only a future option. |
+| **Current prices: 2 / 5 / 10 / 8** | Road tile 2, traffic light 5 additional, bridge water tile 10, roundabout 8. A road plus a light costs 7. These are provisional comparison weights, not calibrated real-world prices. Road 2 supersedes the earlier price of 1. |
+| **No motorways in Custom** | The user considered their abstraction unrealistic and wanted simpler scope. They remain a possible later feature; the original target still needs them. |
+| **Two reusable cars per house** | Retain the original-style simple city foundation: each car travels to a destination and returns to its own house before another trip. Variable fleets are deferred. |
+| **Keep matching colors** | Cars serve matching destinations, preserving an actual goal that may be far away instead of always serving the nearest shop. Designing a color-network penalty is outside the current task. |
+| **The agent builds; cars drive themselves** | Infrastructure is the agent's responsibility, as for the original player. Dispatch, route selection, signals and driving are automatic. |
+| **Original intersection and roundabout rules** | Both versions target the original behavior. A Lebanese-law alternative is not selected for this task. More realistic signal behavior is also deferred. |
+| **One shop size for now** | Custom keeps one destination size. Larger shops/upgrades are outside its current scope; they remain required work for original-game parity. |
+| **Reject impossible scenarios** | The user chose rejection instead of reducing demand to make a bad scenario easier. The current optimistic supply screen can reject clear shortages but is not a complete proof of feasibility and may miss impossible scenarios. |
+| **Keep 30 seconds for new shops** | Custom retains a 30-second grace period before failure/capacity screening. This is a chosen working setting, not an original-game timing claim. |
+| **Retire roads before removing them** | Stop assigning new trips to a deleted road, let committed traffic clear, then remove it. Custom spending is never refunded. Precise original release timing remains under verification. |
+| **Both run-variation options** | Run varied events on one selected map, or vary both maps and events. Seeds make a particular setup repeatable. |
+| **Original maps, fixed working area** | Current profiles are Los Angeles, Beijing and Tokyo, using 50 x 30 crops of recovered terrain/schedule data. They are not full original maps or original expansion behavior. |
+| **Failure-only game endings** | Overcrowding ends a normal episode. Evaluation tools may stop at a chosen duration, which is truncation rather than game failure. Rejected custom scenarios are reported separately and should be discarded. |
+| **Separate score from spending** | Trips, time, waiting and spending remain separate metrics. Selecting RL/evolution and constructing a numerical reward/fitness are outside this task. |
+
+Budgets, demolition charges, one-way roads, variable fleets, larger Custom shops, map expansion, Custom motorways and redesigned signals remain postponed. No additional rationale is inferred where the user supplied only a choice.
+
+## Run the viewer
+
+1. Install Unity **6000.6.0f1** and open the `simulation/` folder in Unity Hub.
+2. Open `Assets/Scenes/TrafficLab.unity` and press Play.
+3. Select **Original target** or **Your version**, choose a map and run-variation option, and draw roads from house driveways to matching shops.
+
+**Controls:** drag to draw, right-drag to remove, mouse wheel to zoom, middle-drag to pan, Space to pause. Inspect selects a car/building; lane routes show the actual paths. New run changes the seed; Reset city repeats the current settings and seed.
+
+The reference lab and reference-road builder are debugging helpers, not trained agents or optimal-network guarantees. In original mode the helper can exhaust materials.
+
+Built binaries are not committed. Build a Windows executable using **Traffic Lab > Prepare scene and run checks**, then the batch entry point described in [Build Decisions](BUILD_DECISIONS.md#build-and-check).
+
+## Run without graphics
+
+Install the .NET 8 SDK. From the repository root:
+
+```powershell
+dotnet run --project simulation/Headless -- --self-test
+dotnet run --project simulation/Headless
 ```
 
-**Ubuntu/Debian:**
-```bash
-sudo apt update
-sudo apt install build-essential cmake libglfw3-dev libglew-dev libglm-dev
+The host reads one JSON request per line and returns one JSON response:
+
+```json
+{"command":"reset","version":"Custom","scenario":"LosAngeles","variation":"SameMap","seed":42}
+{"command":"draw","x":18,"y":12,"toX":22,"toY":12}
+{"command":"step","ticks":200}
+{"command":"observe"}
+{"command":"reset","version":"Custom","scenario":"LosAngeles","variation":"DifferentMaps","seed":43}
+{"command":"reset","version":"OriginalReference","scenario":"Tokyo","seed":42}
+{"command":"upgrade","choice":0}
+{"command":"quit"}
 ```
 
-**Windows (vcpkg):**
-```bash
-vcpkg install glfw3:x64-windows glew:x64-windows glm:x64-windows
-```
+Commands also include build, connect and reference (debug). A single build does not connect adjacent tiles; draw or connect does. A stroke may partially succeed, so inspect the returned links/state.
 
-### Build and Run
+Observations identify the version, actual map, costs, grace, inventory, pending upgrades, vehicles, signals, objectives and fidelity status. `terminated` means game failure; `truncated` signals scenario rejection for normal actions. Bounded evaluation reports its own duration truncation. `exactReplicaValidated` is false, and `requireExact:true` refuses a reset rather than certifying unfinished original parity.
 
-```bash
-# Clone and build
-git clone https://github.com/yourusername/mini-motorways-rl.git
-cd mini-motorways-rl
-mkdir build && cd build
+## Evidence, tests and remaining work
 
-# Configure and compile
-cmake ..
-make -j4
+Mechanics and configured values were inspected read-only from the user's installed original game. Numeric terrain/configuration observations inform the new implementation; original assemblies, raw decompiled source, art and private research files are not part of this repository. See the [fidelity notes](simulation/Docs/FIDELITY.md) and [version specification](simulation/Docs/VERSIONS.md) for the distinction between recovered behavior and approximations.
 
-# Run interactive demo
-./mini_motorways_rl demo
+The recorded checks include **17 simulation suites**, version/protocol checks, a Windows build, and five Custom seeds running for 300 simulated seconds with debug-built roads. These are internal consistency checks and smoke tests, not proof of original-game parity or trained-agent performance. Reports are in [simulation/Reports/](simulation/Reports/).
 
-# Train an agent
-./mini_motorways_rl train 100
-```
-
-## 🎯 Features
-
-### Core Environment
-- **Grid-based simulation** (20x20 tiles)
-- **Multiple infrastructure types**: Roads, motorways, bridges, roundabouts, traffic lights
-- **Dynamic car spawning** with color-coded destinations
-- **Resource management** system
-- **Real-time pathfinding** with A* algorithm
-
-### AI Agents
-- **Random Agent**: Baseline for comparison
-- **Q-Learning Agent**: Tabular reinforcement learning with state discretization
-- **Extensible interface**: Easy to add new algorithms (DQN, PPO, A3C, etc.)
-
-### Visualization
-- **High-performance OpenGL rendering**
-- **Smooth car animations** with interpolation
-- **Real-time UI** showing resources and score
-- **Color-coded buildings** and infrastructure
-- **60+ FPS performance** on modern hardware
-
-## Performance
-
-| Platform | Training Speed | Rendering Speed |
-|----------|---------------|-----------------|
-| **MacBook Pro M3** | ~50,000 steps/sec | ~100 FPS |
-| **Intel i7 + RTX 3070** | ~40,000 steps/sec | ~120 FPS |
-| **Ubuntu Server (headless)** | ~80,000 steps/sec | N/A |
-
-*Training without rendering is significantly faster for batch learning*
-
-##  Usage
-
-### Interactive Demo
-```bash
-./mini_motorways_rl demo
-```
-Watch a random agent place infrastructure while cars navigate the growing road network.
-
-### Training Agents
-```bash
-# Train Q-Learning agent for 1000 episodes
-./mini_motorways_rl train qlearning 1000 false
-
-# Train with visualization (slower but educational)
-./mini_motorways_rl train qlearning 500 true
-
-# Train random baseline
-./mini_motorways_rl train random 1000 false
-```
-
-### Testing Trained Models
-```bash
-# Test saved model with 5 episodes
-./mini_motorways_rl test qlearning final_model.txt 5
-
-# Test specific checkpoint
-./mini_motorways_rl test qlearning model_episode_500.txt 3
-```
-
-## 🏗Architecture
-
-### Project Structure
-```
-mini_motorways_rl/
-├── mini_motorways_env.h      # Main environment interface
-├── mini_motorways_env.cpp    # Environment implementation
-├── renderer.cpp              # OpenGL rendering system
-├── main.cpp                  # Application entry point & agents
-├── CMakeLists.txt           # Build configuration
-└── README.md                # This file
-```
-
-### Key Components
-
-#### **MiniMotorwaysEnvironment**
-- Core RL environment following OpenAI Gym interface
-- Manages game state, car spawning, and resource allocation
-- Provides observation vectors for ML algorithms
-
-#### **Renderer**
-- High-performance OpenGL 3.3+ rendering
-- Shader-based graphics with vertex/fragment shaders
-- Smooth interpolated animations for cars
-
-#### **PathFinder**
-- A* pathfinding algorithm for car navigation
-- Handles different road types and traffic rules
-- Optimized for real-time performance
-
-#### **RL Agents**
-- **RandomAgent**: Uniform random policy for baseline
-- **QLearningAgent**: Tabular Q-Learning with discretized state space
-- **RLAgent**: Abstract interface for adding new algorithms
-
-## State and Action Spaces
-
-### Observation Space (810 dimensions)
-```cpp
-// Grid representation (400 values): Infrastructure layout
-// Car density (400 values): Traffic distribution  
-// Resources (6 values): Available infrastructure pieces
-// Game stats (4 values): Score, cars, congestion, time
-```
-
-### Action Space
-```cpp
-std::vector<int> action = {
-    action_type,  // 0=road, 1=motorway, 2=bridge, 3=roundabout, 
-                  // 4=traffic_light, 5=remove, 6=nothing
-    x_coordinate, // 0-19
-    y_coordinate  // 0-19
-};
-```
-
-### Reward Function
-- **+1.0** per completed car trip
-- **-0.1** per car stuck in traffic
-- **+0.1 to +0.4** for strategic infrastructure placement
-- **-0.1** for invalid actions
-
-## 🔬 Research Applications
-
-This environment is designed for:
-
-- **RL Algorithm Research**: Fast, reproducible environment for testing new algorithms
-- **Urban Planning**: Study traffic flow optimization strategies
-- **Multi-Agent Systems**: Extend to competitive/cooperative scenarios  
-- **Transfer Learning**: Train in simulation, apply to real traffic data
-- **Curriculum Learning**: Progressive difficulty through procedural generation
-
-## Extending the System
-
-### Adding New RL Algorithms
-
-```cpp
-class MyCustomAgent : public RLAgent {
-public:
-    std::vector<int> get_action(const std::vector<float>& observation) override {
-        // Your algorithm implementation
-        return chosen_action;
-    }
-    
-    void update(const std::vector<float>& observation, 
-               const std::vector<int>& action, float reward,
-               const std::vector<float>& next_observation, bool done) override {
-        // Learning update logic
-    }
-};
-```
-
-### Integration with Deep Learning Libraries
-
-**PyTorch C++:**
-```cpp
-#include <torch/torch.h>
-
-torch::Tensor obs_tensor = torch::from_blob(
-    observation.data(), {1, 810}, torch::kFloat32);
-torch::Tensor action_probs = model->forward(obs_tensor);
-```
-
-**TensorFlow C++:**
-```cpp
-#include <tensorflow/cc/client/client_session.h>
-
-// Convert observation to TensorFlow tensor and run inference
-```
-
-### Custom Reward Functions
-
-```cpp
-float custom_reward = env.calculate_shaped_reward(action);
-// Implement domain-specific reward shaping
-```
-
-## Training Results
-
-Example learning curves with different agents:
-
-| Agent | Episodes | Avg Score | Training Time |
-|-------|----------|-----------|---------------|
-| Random | 1000 | 2.3 ± 1.1 | 2 minutes |
-| Q-Learning | 1000 | 15.7 ± 3.2 | 8 minutes |
-| Deep RL* | 1000 | 28.4 ± 2.8 | 25 minutes |
-
-*Deep RL integration coming soon
-
-## 🛠️ Development
-
-### Building from Source
-
-```bash
-# Debug build
-mkdir build-debug && cd build-debug
-cmake -DCMAKE_BUILD_TYPE=Debug ..
-make -j4
-
-# Release build (faster)
-mkdir build-release && cd build-release  
-cmake -DCMAKE_BUILD_TYPE=Release ..
-make -j4
-```
-
-### Running Tests
-```bash
-# Verify OpenGL setup
-./test_opengl
-
-# Benchmark performance
-./mini_motorways_rl benchmark
-```
-
-### Code Style
-- **Modern C++17** features preferred
-- **RAII** for resource management
-- **Smart pointers** over raw pointers
-- **const correctness** enforced
-- **Clear naming** conventions
-
-## Troubleshooting
-
-### Common Build Issues
-
-**OpenGL not found (Linux):**
-```bash
-sudo apt-get install mesa-common-dev libgl1-mesa-dev
-```
-
-**GLFW/GLEW not found (macOS):**
-```bash
-brew reinstall glfw glew
-export PKG_CONFIG_PATH="/opt/homebrew/lib/pkgconfig:$PKG_CONFIG_PATH"
-```
-
-**Compilation errors (Windows):**
-```bash
-# Ensure vcpkg integration is set up
-vcpkg integrate install
-cmake -DCMAKE_TOOLCHAIN_FILE=[vcpkg-root]/scripts/buildsystems/vcpkg.cmake ..
-```
-
-### Runtime Issues
-
-**Window doesn't appear:**
-- Verify OpenGL 3.3+ support: `glxinfo | grep "OpenGL version"`
-- Update graphics drivers
-
-**Poor performance:**
-- Disable VSync: Set environment variable `vblank_mode=0`
-- Check GPU usage with `nvidia-smi` or Activity Monitor
-
-**Segmentation faults:**
-- Build in Debug mode for better error messages
-- Use `valgrind` (Linux) or `lldb` (macOS) for debugging
-
-
-**Built with for the RL and C++ communities**
-
-*Star ⭐ this repo if you found it helpful!*
+Original parity still requires motorways, destination upgrades, full maps/expansion, exact parking/lane/spawn/edit/upgrade behavior and controlled comparisons against the running original. These are implementation tasks; the user's current design answers are recorded.
