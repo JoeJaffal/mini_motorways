@@ -19,10 +19,11 @@ This is the current snapshot. [VERSIONS.md](VERSIONS.md) specifies the rule sets
 | Headless | The same simulation files exposed through JSON requests and detached observations |
 | Driveway connections | Building a road at a visible driveway end automatically attaches the parcel; ordinary adjacent roads still require a drawn link |
 | House driveway editing | Draw outward from a house with the Road tool to choose a cardinal or diagonal exit; invalid terrain and occupied parcels are rejected |
+| Roundabout conversion | Placement accepts moving traffic; committed lane paths can clear while subsequent routes use the circle |
 
 ## Evidence
 
-- **33 shared suites** pass in .NET and Unity, including driveway-end dispatch and house-exit editing. Both Windows apps were rebuilt with these corrections; dragging a house driveway to a different side was verified in the Original player. Ten map/version protocol runs and player startup checks also passed before these corrections.
+- **34 shared suites** pass in .NET and Unity, including driveway-end dispatch, house-exit editing and roundabout conversion during active trips in both versions. Both Windows apps were rebuilt with these corrections; dragging a house driveway to a different side was verified in the Original player. Ten map/version protocol runs and player startup checks also passed before these corrections.
 - The RNG component matches **180 installed-assembly values** across five seeds. Full random call order and seeded-run equivalence are unverified.
 - All **53 ordered London rail cells**, loop flag and origin index match the installed topology component. This does not validate train movement timing.
 - Live London observation and selected LA/London footage informed visual and parking corrections. These are exploratory structural comparisons, not synchronized motion measurements.

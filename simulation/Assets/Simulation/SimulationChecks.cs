@@ -71,6 +71,23 @@ namespace MotorwaysSim
                 Check(w.FindRoute(ring[1],ring[0]).Count==4,"reverse direction circulates around ring");
                 Check(w.Tile(new Cell(15,14))==Infrastructure.Roundabout,"ring uses neighboring tiles");
             });
+            Test("roundabout conversion accepts committed moving traffic",()=>{
+                foreach(var version in new[]{GameVersion.OriginalReference,GameVersion.Custom})
+                {
+                    var rules=Rules.ForVersion(version);rules.EnableCityGrowth=false;rules.RejectInfeasibleScenarios=false;
+                    var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);
+                    var home=w.SpawnBuilding(new Cell(5,10),0,true);
+                    var shop=w.SpawnBuilding(new Cell(18,8),0,false);
+                    w.DrawRoad(home.Access,shop.Access);shop.DemandCountdown=1e9;shop.NextDemand=1e9;shop.Demand=1;
+                    var center=new Cell(11,10);w.Inventory[4]=1;
+                    for(int i=0;i<1000&&!w.Cars.Any(c=>c.Moving);i++)w.Step();
+                    Check(w.Cars.Any(c=>c.Moving&&c.Lanes.Any(l=>l.Tile==center)),"trip committed through conversion site");
+                    Check(w.Build(BuildTool.Roundabout,center),"place during active trip: "+version+" "+w.LastAction);
+                    Check(w.FindRoute(home.Access,shop.Access).All(c=>c!=center),"new routes avoid roundabout center");
+                    w.Step(6000);
+                    Check(w.TripsCompleted>=1&&w.Cars.All(c=>c.Stage==TripStage.Home),"committed traffic delivers and returns: "+version+" "+Summary(w));
+                }
+            });
             Test("reusable trips and functional parking",()=>{
                 var w=Pair();w.Step(24000);
                 Check(w.TripsCompleted>4,"cars return and are reused: "+Summary(w));

@@ -186,8 +186,8 @@ namespace MotorwaysSim
                 if(!InBounds(c)||Water[c.X,c.Y]||Blocked[c.X,c.Y]||BuildingAt(c)!=null||
                     RoundaboutAt(c)!=null||IsMotorwayEndpoint(c,true)||PendingRemoval[c.X,c.Y]||Tile(c)==Infrastructure.TrafficLight)
                     return Reject("Roundabout needs its center and four neighboring land tiles clear of buildings and upgrades");
-            if(Cars.Any(v=>v.Stage!=TripStage.Home&&v.Lanes.Any(l=>ring.Contains(l.Tile)||l.Tile==center)))
-                return Reject("Cars must finish their committed trips before this conversion");
+            // Existing vehicles retain their committed lane geometry through the conversion.
+            // Updated graph links route subsequent journeys around the new circle.
             var connected=new List<Cell>();
             for(int d=0;d<8;d++)if((Connections[center.X,center.Y]&(1<<d))!=0)connected.Add(center+Directions[d]);
             foreach(var n in connected)Unlink(center,n);

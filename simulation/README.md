@@ -20,6 +20,7 @@ The selectable cities are Los Angeles, Beijing, Tokyo, Dar es Salaam and London.
 | --- | --- |
 | Draw a connected road stroke | Select Road, then left-drag from a house driveway or destination entrance |
 | Change a house driveway | Select Road and drag from the house toward its new exit; cardinal and diagonal exits are supported |
+| Place a roundabout | Select Roundabout and click a clear footprint; traffic can keep moving during conversion |
 | Build across water | Road strokes place bridge tiles, subject to the selected version's rules |
 | Remove construction | Right-drag; committed traffic must clear before removal |
 | Inspect | Select Inspect, then click a vehicle, building or tile |
@@ -63,7 +64,7 @@ python scripts/verify_five_maps.py
 dotnet run --project simulation/Headless
 ```
 
-The first command builds the Debug host that the Python check uses. There are currently 33 shared suites. Unity builds invoke those same checks. See [Headless/README.md](Headless/README.md) for requests and observations.
+The first command builds the Debug host that the Python check uses. There are currently 34 shared suites. Unity builds invoke those same checks. See [Headless/README.md](Headless/README.md) for requests and observations.
 
 Player startup checks use `--smoke-test --map London -batchmode -nographics`; replace London with another supported enum name. A successful run logs `TRAFFIC_APP_SMOKE_PASSED=<version>/<map>/20` and exits. These checks run 20 simulated seconds with debug roads; they do not inspect rendered pixels or prove exact original behavior.
 
