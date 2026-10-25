@@ -10,6 +10,7 @@ Reports establish their stated scope only. Passing reconstruction checks is not 
 | [traffic-and-scale-investigation.md](traffic-and-scale-investigation.md) | Local geometry/junction research, controlled before/after runs, proportions and remaining limits |
 | [five-map-protocol-checks.json](five-map-protocol-checks.json) | Ten map/version Debug-host runs, status and protocol checks |
 | [repository-verification.json](repository-verification.json) | Checks rerun for repository organization and publication |
+| [training-readiness.md](training-readiness.md) / [training-readiness.json](training-readiness.json) | OriginalReference: 60 bounded episodes/replays without training; interface gaps and required observation filtering |
 
 Reproduce the shared checks with `dotnet run --project simulation/Headless -- --self-test` from the repository root. Then run `python scripts/verify_five_maps.py`. Unity's build entry point also runs the shared suites; it writes `simulation-checks.txt`.
 

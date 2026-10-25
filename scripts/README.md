@@ -13,6 +13,15 @@ python scripts/verify_five_maps.py
 
 Exercises both rule sets on all five maps and checks exposed fidelity status, London rail/stations, Custom motorway rejection, weekly choices and refusal of unsupported exact-mode resets. Writes `simulation/Reports/five-map-protocol-checks.json`.
 
+## Training readiness audit (no model training)
+
+```sh
+dotnet build simulation/Headless
+python scripts/check_training_readiness.py
+```
+
+Runs 60 bounded OriginalReference episodes/replays across the five maps using wait-only and privileged debug-road diagnostics. Writes `simulation/Reports/training-readiness.json`. [The readiness report](../simulation/Reports/training-readiness.md) distinguishes simulator checks from the missing learner adapter, reward and observation filtering. No ML dependencies are needed.
+
 ## Regenerate city profiles
 
 ```sh
