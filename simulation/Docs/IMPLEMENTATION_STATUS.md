@@ -1,4 +1,4 @@
-# Current implementation status — 25 October 2026
+# Current implementation status — 26 October 2026
 
 This is the current snapshot. [VERSIONS.md](VERSIONS.md) specifies the rule sets; [Reports/README.md](../Reports/README.md) indexes the supporting evidence. Earlier reports and the decision history describe their dated milestones and may use smaller test counts.
 
@@ -20,10 +20,11 @@ This is the current snapshot. [VERSIONS.md](VERSIONS.md) specifies the rule sets
 | Driveway connections | Building a road at a visible driveway end automatically attaches the parcel; ordinary adjacent roads still require a drawn link |
 | House driveway editing | Draw outward from a house with the Road tool to choose a cardinal or diagonal exit; invalid terrain and occupied parcels are rejected |
 | Roundabout conversion | Placement accepts moving traffic; committed lane paths can clear while subsequent routes use the circle |
+| Geometry and crossing clearance | Circular roundabout paths/rendering share the researched radius; road width and lane offset follow atlas constants; exit-section crossing reservations release without holding the previous lane |
 
 ## Evidence
 
-- **34 shared suites** pass in .NET and Unity, including driveway-end dispatch, house-exit editing and roundabout conversion during active trips in both versions. Both Windows apps were rebuilt with these corrections; dragging a house driveway to a different side was verified in the Original player. Ten map/version protocol runs and player startup checks also passed before these corrections.
+- **37 shared suites** pass in .NET and Unity, including circular geometry, six-car roundabout conversion and a crowded crossing regression. Both Windows apps were rebuilt; proportions were inspected in the Custom player using their shared renderer. Ten map/version protocol runs pass. [Investigation](../Reports/traffic-and-scale-investigation.md) documents local reference research and controlled before/after results.
 - The RNG component matches **180 installed-assembly values** across five seeds. Full random call order and seeded-run equivalence are unverified.
 - All **53 ordered London rail cells**, loop flag and origin index match the installed topology component. This does not validate train movement timing.
 - Live London observation and selected LA/London footage informed visual and parking corrections. These are exploratory structural comparisons, not synchronized motion measurements.

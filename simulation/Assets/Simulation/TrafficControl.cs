@@ -124,11 +124,10 @@ namespace MotorwaysSim
             foreach(var other in snapshot)
             {
                 if(other.Car.Id==car.Id)continue;
-                // Traversing traffic has priority; retain its crossing until its tail clears the exit.
-                if(Conflicts(lane,other.Lane))
+                // Release the crossing once a traversing car reaches its exit section.
+                // Retaining its entire previous lane also locks adjacent junctions together.
+                if(other.Distance<=other.Lane.Length-Rules.CarLength&&Conflicts(lane,other.Lane))
                 {why=lane.IsRoundabout?"Yield to circulating traffic":"Crossing vehicle";return false;}
-                if(other.Index>0&&other.Distance<Rules.CarLength&&Conflicts(lane,other.Car.Lanes[other.Index-1]))
-                {why="Junction clearing";return false;}
             }
             // Original comparator prioritizes circulating vehicles, distance, then registration time.
             if(TryApproach(car,lane.Tile,out _,out double ownDistance))

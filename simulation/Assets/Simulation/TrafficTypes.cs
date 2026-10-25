@@ -60,7 +60,7 @@ namespace MotorwaysSim
         // Original world units have tile width 2; all distances below are converted to tiles.
         public double CarSpeed=.5,MaxAcceleration=.27,ControlledAcceleration=.4,RoundaboutAcceleration=.45;
         public double MaxDeceleration=6,FollowingGap=.05,CarLength=.325,DesiredTimeGap=1;
-        public double LaneOffset=.125,SharpTurnMultiplier=1.0/3,RightAngleMultiplier=2.0/3;
+        public double LaneOffset=.1,SharpTurnMultiplier=1.0/3,RightAngleMultiplier=2.0/3;
         public double IntersectionMultiplier=.5,RoundaboutMultiplier=1.2,LookaheadDistance=2.5;
         public double ServiceSeconds=3,HomeCooldown=0;
         public double SignalGreenSeconds=3,SignalOvertimeSeconds=1,SignalAmberSeconds=.7;

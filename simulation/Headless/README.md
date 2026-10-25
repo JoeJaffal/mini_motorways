@@ -4,6 +4,8 @@ See [the simulation guide](../README.md#headless) and [version behavior](../Docs
 
 Run `dotnet run --project simulation/Headless -- --self-test` from the repository root. Both versions compile the same C# core as the Unity viewer. OriginalReference is unfinished and is not an exact-original training baseline.
 
+Run `dotnet run --project simulation/Headless -- --evaluate-crossings` for the four seeded diagnostic networks described in [the traffic and scale investigation](../Reports/traffic-and-scale-investigation.md). It replenishes road stock and extends the failure timer deliberately; its trip counts are not normal-play benchmarks.
+
 ## Original motorways and five maps
 
 Reset scenarios: LosAngeles, Beijing, Tokyo, DarEsSalaam, London.

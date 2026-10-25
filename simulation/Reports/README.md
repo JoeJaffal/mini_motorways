@@ -6,7 +6,8 @@ Reports establish their stated scope only. Passing reconstruction checks is not 
 
 | Report | Scope |
 | --- | --- |
-| [simulation-checks.txt](simulation-checks.txt) | Latest shared suite run; currently 31 suites |
+| [simulation-checks.txt](simulation-checks.txt) | Latest shared suite run; currently 37 suites |
+| [traffic-and-scale-investigation.md](traffic-and-scale-investigation.md) | Local geometry/junction research, controlled before/after runs, proportions and remaining limits |
 | [five-map-protocol-checks.json](five-map-protocol-checks.json) | Ten map/version Debug-host runs, status and protocol checks |
 | [repository-verification.json](repository-verification.json) | Checks rerun for repository organization and publication |
 

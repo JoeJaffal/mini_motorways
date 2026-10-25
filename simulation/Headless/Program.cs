@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using MotorwaysSim;
@@ -34,6 +35,19 @@ static class Program
     public static void Main(string[] args)
     {
         if(Array.IndexOf(args,"--self-test")>=0){Console.WriteLine(SimulationChecks.Run());return;}
+        if(Array.IndexOf(args,"--evaluate-crossings")>=0)
+        {
+            for(int seed=40;seed<44;seed++)
+            {
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.OvercrowdingSeconds=100000;
+                var city=new TrafficWorld(seed,false,rules);
+                for(int tick=0;tick<8000;tick++){if(tick%200==0){city.Inventory[0]=1000;city.BuildReferenceNetwork();}city.Step();}
+                Console.WriteLine(JsonSerializer.Serialize(new {seed,city.Time,city.TripsCompleted,
+                    waitsOver20Seconds=city.Cars.Count(c=>c.Waiting>20),city.ActiveCars,
+                    fixture="400 seconds; debug roads every 10 seconds; road stock replenished; failure timer extended"},Json));
+            }
+            return;
+        }
         if(Array.IndexOf(args,"--evaluate-city")>=0)
         {
             for(int seed=0;seed<5;seed++)

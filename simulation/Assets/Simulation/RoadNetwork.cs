@@ -113,10 +113,7 @@ namespace MotorwaysSim
                 }
                 else if(round!=null&&at!=round.Center)
                 {
-                    var cp=new Point(round.Center);double radius=.94;
-                    // Circular centerline across four occupied ring tiles, with smooth access connectors.
-                    Point mid=cp+(center-cp).Unit*radius;
-                    samples=Cubic(start,Point.Lerp(start,mid,.8),Point.Lerp(end,mid,.8),end,20);
+                    samples=RoundaboutSamples(round,at,prev,next,start,end,incoming,outgoing);
                 }
                 else
                 {
@@ -132,6 +129,26 @@ namespace MotorwaysSim
                 lanes.Add(lane);
             }
             return lanes;
+        }
+        // Original atlas uses normalized diagonal boundary points, relative to a centre two world units away.
+        // Convert that radius to our tile units; rendering uses the same centreline.
+        public static readonly double RoundaboutLaneRadius=Math.Sqrt(5-2*Math.Sqrt(2))/2;
+        Point[] RoundaboutSamples(RoundaboutState round,Cell at,Cell prev,Cell next,Point start,Point end,Point incoming,Point outgoing)
+        {
+            var origin=new Point(round.Center);var radial=(new Point(at)-origin).Unit;
+            var middle=origin+radial*RoundaboutLaneRadius;var tangent=new Point(radial.Y,-radial.X);
+            var points=new List<Point>();
+            void Arc(Point a,Point b)
+            {
+                double angle=Math.Atan2(a.Y-origin.Y,a.X-origin.X),finish=Math.Atan2(b.Y-origin.Y,b.X-origin.X);
+                while(finish>angle+1e-8)finish-=Math.PI*2;
+                for(int i=0;i<=10;i++){double t=angle+(finish-angle)*i/10;points.Add(origin+new Point(Math.Cos(t),Math.Sin(t))*RoundaboutLaneRadius);}
+            }
+            if(round.Ring.Contains(prev))Arc(origin+(new Point(prev)-origin+radial).Unit*RoundaboutLaneRadius,middle);
+            else points.AddRange(Cubic(start,start+incoming*.2,middle-tangent*.2,middle,10));
+            if(round.Ring.Contains(next))Arc(middle,origin+(new Point(next)-origin+radial).Unit*RoundaboutLaneRadius);
+            else points.AddRange(Cubic(middle,middle+tangent*.2,end-outgoing*.2,end,10));
+            return points.ToArray();
         }
         static Lane CreateLane(Point[] points,Cell tile,Cell previous,Cell next,int incoming,int outgoing)
         {

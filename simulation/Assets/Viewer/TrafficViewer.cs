@@ -122,7 +122,7 @@ namespace MotorwaysSim
             for(int layer=0;layer<2;layer++)for(int y=0;y<30;y++)for(int x=0;x<50;x++)
             {
                 var c=new Cell(x,y);if(World.Tile(c)==Infrastructure.None&&!World.IsMotorwayEndpoint(c)||World.RoundaboutAt(c)!=null)continue;
-                var color=layer==0?new Color(.84f,.82f,.69f):road;float width=tile*(layer==0?.5f:.39f);
+                var color=layer==0?new Color(.84f,.82f,.69f):road;float width=tile*(layer==0?.6f:.4f);
                 if(World.PendingRemoval[x,y]&&layer==1)color=new Color(.82f,.84f,.81f);
                 Disc(At(c),width/2,color);
                 int mask=World.Connections[x,y];
@@ -130,9 +130,10 @@ namespace MotorwaysSim
             }
             foreach(var r in World.Roundabouts)
             {
-                var center=At(r.Center);Disc(center,tile*1.2f,new Color(.84f,.82f,.69f));Disc(center,tile*1.13f,road);Disc(center,tile*.77f,new Color(.82f,.85f,.53f));
+                var center=At(r.Center);float radius=(float)TrafficWorld.RoundaboutLaneRadius;
+                Disc(center,tile*(radius+.3f),new Color(.84f,.82f,.69f));Disc(center,tile*(radius+.2f),road);Disc(center,tile*(radius-.2f),new Color(.82f,.85f,.53f));
                 foreach(var c in r.Ring)for(int d=0;d<8;d++)if((World.Connections[c.X,c.Y]&(1<<d))!=0)
-                {var n=c+TrafficWorld.Directions[d];if(!r.Ring.Contains(n)&&n!=r.Center)Line(At(c),At(n),tile*.39f,road);}
+                {var n=c+TrafficWorld.Directions[d];if(!r.Ring.Contains(n)&&n!=r.Center)Line(At(c),At(n),tile*.4f,road);}
             }
             for(int y=0;y<30;y++)for(int x=0;x<50;x++)
             {
@@ -186,10 +187,10 @@ namespace MotorwaysSim
         void Building(Building b)
         {
             var p=At(b.Cell);var color=ColorFor(b.Color);
-            if(b.DestinationSlot==0)foreach(var entry in World.Accesses(b))Line(At(entry),At(entry+TrafficWorld.Directions[World.AccessDirection(b,entry)]),tile*.31f,road);
+            if(b.DestinationSlot==0)foreach(var entry in World.Accesses(b))Line(At(entry),At(entry+TrafficWorld.Directions[World.AccessDirection(b,entry)]),tile*.4f,road);
             if(b.IsHouse)
             {
-                float s=tile*.52f;Box(new Rect(p.x-s/2+3,p.y-s/2+4,s,s),new Color(.81f,.79f,.66f),true);Box(new Rect(p.x-s/2-2,p.y-s/2-2,s+4,s+4),road,true);Box(new Rect(p.x-s/2,p.y-s/2,s,s),color*.78f,true);Box(new Rect(p.x-s/2+1,p.y-s/2+1,s-3,s-4),color,true);
+                float s=tile*.7f;Box(new Rect(p.x-s/2+3,p.y-s/2+4,s,s),new Color(.81f,.79f,.66f),true);Box(new Rect(p.x-s/2-2,p.y-s/2-2,s+4,s+4),road,true);Box(new Rect(p.x-s/2,p.y-s/2,s,s),color*.78f,true);Box(new Rect(p.x-s/2+1,p.y-s/2+1,s-3,s-4),color,true);
                 int home=World.Cars.Count(c=>c.HomeId==b.Id&&c.Stage==TripStage.Home);for(int i=0;i<home;i++)Box(new Rect(p.x-s/2+i*tile*.25f,p.y+s/2+3,tile*.2f,tile*.12f),color,true);
             }
             else

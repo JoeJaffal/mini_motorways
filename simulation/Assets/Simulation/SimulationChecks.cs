@@ -88,6 +88,35 @@ namespace MotorwaysSim
                     Check(w.TripsCompleted>=1&&w.Cars.All(c=>c.Stage==TripStage.Home),"committed traffic delivers and returns: "+version+" "+Summary(w));
                 }
             });
+            Test("roundabout circulating lanes share a circular centreline",()=>{
+                var w=Lab();w.Build(BuildTool.Roundabout,new Cell(15,15));var ring=w.Roundabouts[0].Ring;
+                var lanes=w.MakeLanes(ring.Concat(new[]{ring[0],ring[1]}).ToList());
+                for(int i=1;i<5;i++)
+                {
+                    foreach(var p in lanes[i].Samples)Check(Math.Abs(Point.Distance(p,new Point(new Cell(15,15)))-TrafficWorld.RoundaboutLaneRadius)<1e-8,"circle radius");
+                    if(i<4)Check(Point.Distance(lanes[i].Samples.Last(),lanes[i+1].Samples[0])<1e-8,"continuous quadrant joins");
+                }
+            });
+            Test("roundabout conversion clears a platoon from multiple approaches",()=>{
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.OvercrowdingSeconds=100000;
+                var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);
+                var center=new Cell(15,15);
+                foreach(var cell in new[]{new Cell(10,15),new Cell(20,15),new Cell(15,10)})
+                {var home=w.SpawnBuilding(cell,0,true);w.DrawRoad(home.Access,center);}
+                var shop=w.SpawnBuilding(new Cell(14,20),0,false,0,2);
+                w.DrawRoad(center,new Cell(15,19));w.DrawRoad(new Cell(15,19),new Cell(14,19));w.DrawRoad(new Cell(14,19),shop.Access);
+                shop.Demand=6;shop.DemandCountdown=1e9;shop.NextDemand=1e9;w.Step(100);w.Inventory[4]=1;
+                Check(w.ActiveCars==6&&w.Build(BuildTool.Roundabout,center),"six active trips during conversion");
+                w.Step(20000);
+                Check(w.TripsCompleted==6&&w.ActiveCars==0,"platoon delivers and returns without locking: "+Summary(w));
+            });
+            Test("adjacent city junctions release crossing reservations",()=>{
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.OvercrowdingSeconds=100000;
+                var w=new TrafficWorld(42,false,rules);
+                for(int i=0;i<8000;i++){if(i%200==0){w.Inventory[0]=1000;w.BuildReferenceNetwork();}w.Step();}
+                Check(w.TripsCompleted>=60,"seeded connected city continues serving trips: "+w.TripsCompleted);
+                Check(!w.Cars.Any(c=>c.Waiting>20&&(c.Obstacle=="Crossing vehicle"||c.Obstacle=="Approaching vehicle priority")),"no persistent crossing reservation cycle: "+Summary(w));
+            });
             Test("reusable trips and functional parking",()=>{
                 var w=Pair();w.Step(24000);
                 Check(w.TripsCompleted>4,"cars return and are reused: "+Summary(w));
