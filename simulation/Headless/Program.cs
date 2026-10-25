@@ -82,6 +82,7 @@ static class Program
                     case "editMotorway":accepted=world.EditMotorway(request.Id,new Cell(request.X,request.Y),new Cell(request.ToX,request.ToY));break;
                     case "removeMotorway":accepted=world.RemoveMotorway(request.Id);break;
                     case "connect":accepted=world.Connect(new Cell(request.X,request.Y),new Cell(request.ToX,request.ToY));break;
+                    case "driveway":accepted=world.SetHouseDriveway(request.Id,TrafficWorld.Direction(new Cell(request.X,request.Y),new Cell(request.ToX,request.ToY)));break;
                     case "draw":accepted=world.DrawRoad(new Cell(request.X,request.Y),new Cell(request.ToX,request.ToY));break;
                     case "reference":accepted=world.BuildReferenceNetwork();break;
                     case "step":

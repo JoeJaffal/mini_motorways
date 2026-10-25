@@ -166,7 +166,12 @@ namespace MotorwaysSim
             }
             else return Reject("Unknown tool");
             ConsumeOriginal(tool,cell);
-            Tiles[cell.X,cell.Y]=target;Changed();Record(tool,cell,cost,$"Built {target}: +{cost}");return true;
+            Tiles[cell.X,cell.Y]=target;
+            // Driveways are already visible before the player builds their adjoining road.
+            // Attach only their designated ends; ordinary neighboring roads still need an explicit link.
+            foreach(var building in Buildings)foreach(var access in Accesses(building))
+                if(access+Directions[AccessDirection(building,access)]==cell)Connect(access,cell);
+            Changed();Record(tool,cell,cost,$"Built {target}: +{cost}");return true;
         }
         bool Reject(string reason){LastAction=reason;return false;}
         void Changed(){NetworkVersion++;routeCache.Clear();conflictCache.Clear();foreach(var s in Signals.Values)UpdateSignalPairs(s);}
@@ -233,6 +238,8 @@ namespace MotorwaysSim
         {
             if(!InBounds(from)||!InBounds(to))return Reject("Outside map");
             var cells=RasterLine(from,to);bool any=false;Cell? previous=null;
+            var house=BuildingAt(from);
+            if(house!=null&&house.IsHouse&&cells.Count>1&&!SetHouseDriveway(house.Id,Direction(from,cells[1])))return false;
             foreach(var c in cells)
             {
                 if(!CanTraverse(c))
@@ -244,6 +251,18 @@ namespace MotorwaysSim
                 previous=c;
             }
             return any;
+        }
+        public bool SetHouseDriveway(int id,int direction)
+        {
+            if(id<0||id>=Buildings.Count||!Buildings[id].IsHouse||direction<0||direction>=Directions.Length)return Reject("Choose a house and driveway direction");
+            var house=Buildings[id];var outside=house.Cell+Directions[direction];
+            if(!InBounds(outside)||!IsPlayable(outside)||Blocked[outside.X,outside.Y]||Water[outside.X,outside.Y]||
+                BuildingAt(outside)!=null||PendingRemoval[outside.X,outside.Y]||Roundabouts.Any(r=>r.Center==outside))return Reject("Driveway needs a clear neighboring tile");
+            if(direction==house.DrivewayDirection)return true;
+            Unlink(house.Cell,house.Cell+Directions[house.DrivewayDirection]);house.DrivewayDirection=direction;
+            // Active trips retain their lane snapshots and committed return route.
+            if(CanTraverse(outside))Connect(house.Cell,outside);
+            Changed();LastAction="House driveway moved";return true;
         }
         public static List<Cell> RasterLine(Cell from,Cell to)
         {

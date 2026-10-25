@@ -38,6 +38,32 @@ namespace MotorwaysSim
                 w.Build(BuildTool.Road,new Cell(5,4));Check(!w.Connect(h.Access,new Cell(5,4)),"house single driveway");
                 Check(w.SpawnBuilding(new Cell(6,5),1,true)==null,"future parcels cannot seal existing driveways");
             });
+            Test("roads reaching visible driveways dispatch cars",()=>{
+                foreach(var version in new[]{GameVersion.OriginalReference,GameVersion.Custom})
+                {
+                    var rules=Rules.ForVersion(version);rules.EnableCityGrowth=false;
+                    var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);
+                    var home=w.SpawnBuilding(new Cell(5,5),0,true);
+                    var shop=w.SpawnBuilding(new Cell(15,4),0,false);
+                    // Start and finish outside the parcels, at the visible driveway ends.
+                    w.DrawRoad(new Cell(6,5),new Cell(14,5));w.DrawRoad(new Cell(14,5),new Cell(14,6));
+                    Check(w.FindRoute(home.Access,shop.Access).Count>1,"driveway ends attach to new roads: "+version);
+                    Check(w.FindRoute(shop.Access,home.Access).Count>1,"driveways attach in both directions");
+                    Check(w.FindRoute(home.Access,new Cell(5,4)).Count==0,"unrelated parcel sides stay disconnected");
+                    shop.Demand=1;w.Step(4000);
+                    Check(w.TripsCompleted>0,"connected driveway dispatches and delivers: "+version+" "+Summary(w));
+                }
+            });
+            Test("house driveway can be redirected by drawing",()=>{
+                var w=Lab();var home=w.SpawnBuilding(new Cell(5,5),0,true);
+                w.Build(BuildTool.Road,new Cell(6,5));
+                Check(w.DrawRoad(home.Cell,new Cell(5,7)),"draw from house toward new exit");
+                Check(home.DrivewayDirection==2&&w.FindRoute(home.Cell,new Cell(5,7)).Count==3,"new exit works");
+                Check(w.FindRoute(home.Cell,new Cell(6,5)).Count==0,"old driveway detached");
+                w.Water[4,5]=true;Check(!w.SetHouseDriveway(home.Id,4)&&home.DrivewayDirection==2,"water rejected without changing exit");
+                w.SpawnBuilding(new Cell(4,4),1,true);Check(!w.SetHouseDriveway(home.Id,5),"occupied neighbor rejected");
+                Check(w.SetHouseDriveway(home.Id,1)&&home.DrivewayDirection==1,"diagonal exit supported");
+            });
             Test("roundabout circulation is directed",()=>{
                 var w=Lab();w.Build(BuildTool.Roundabout,new Cell(15,15));
                 var ring=w.Roundabouts[0].Ring;

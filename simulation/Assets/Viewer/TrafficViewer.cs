@@ -307,7 +307,7 @@ namespace MotorwaysSim
                 if(editingMotorway<0)World.AddMotorway(motorwayStart.Value,c);else World.EditMotorway(editingMotorway,motorwayStart.Value,c);
                 motorwayStart=null;editingMotorway=-1;
             }
-            else if(active==BuildTool.Road||active==BuildTool.Bridge){if(drag.HasValue)World.DrawRoad(drag.Value,c);else if(World.BuildingAt(c)==null)World.Build(active,c);}
+            else if(active==BuildTool.Road||active==BuildTool.Bridge){if(drag.HasValue)World.DrawRoad(drag.Value,c);else if(World.BuildingAt(c)==null)World.Build(active,c);else if(World.BuildingAt(c).IsHouse)status="Drag from this house toward its new driveway.";}
             else if(e.type==EventType.MouseDown||active==BuildTool.Remove)World.Build(active,c);
             drag=c;status=World.LastAction;e.Use();
         }

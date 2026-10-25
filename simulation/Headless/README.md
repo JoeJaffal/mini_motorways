@@ -25,6 +25,7 @@ The host reads one JSON object per input line and emits one response per request
 | `reset` | `version`, `scenario`, `seed`, `variation` (`SameMap` or `DifferentMaps`) |
 | `build` | `tool` (`Road`, `Bridge`, `Roundabout`, `TrafficLight`, `Remove`), `x`, `y` |
 | `connect` / `draw` | `x`, `y`, `toX`, `toY` |
+| `driveway` | House `id`; direction vector from `x`, `y` toward `toX`, `toY` |
 | `motorway` / `editMotorway` | Endpoints as above; `id` for edits |
 | `removeMotorway` | `id` |
 | `upgrade` | `choice` index from the current offers |
