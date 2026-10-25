@@ -1,0 +1,26 @@
+25 October 2026 - Original shared lots and London rail
+
+Implemented:
+- Two-color shared lots, nine shared bays, two entrances, four orientations.
+- Destination schedule preferences create/join double and station lots.
+- Per-trip entrance continuity, shared parking occupancy/conflicts and detached snapshots.
+- London train motion, station stopping, batch demand and crossing closures/release.
+- Station platforms and demand zones from installed numeric data.
+- Viewer tracks, trains, platforms, shared buildings and crossing indicators.
+- Custom retains its existing lot rules and has no trains.
+
+Validation:
+- 29 shared simulation suites pass in .NET and Unity.
+- Ten five-map/version headless protocol smoke runs pass.
+- Original Windows app smoke runs pass on all five maps; Custom London smoke passes.
+- Both Windows apps built successfully.
+- Installed rail topology component matches 53 ordered London cells, loop and origin index 14.
+- Shared trips complete in all four orientations. Cars wait at closed crossing and resume after release.
+
+Limits:
+- No rendered visual acceptance check was completed in this environment.
+- Train/parking splines and floating-point timing remain provisional.
+- Exact station/house placement, scheduler/random draw ordering and full traffic behavior remain unverified.
+- No compatible original full-game live recorder/importer has been implemented.
+- Component oracle matches and internal checks do not certify full-game equivalence.
+- exactReplicaValidated remains false. Original installation was read-only.

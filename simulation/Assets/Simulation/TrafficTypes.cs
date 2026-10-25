@@ -36,9 +36,9 @@ namespace MotorwaysSim
     }
 
     public enum Infrastructure {None,Road,Bridge,Roundabout,TrafficLight}
-    public enum BuildTool {Road,Bridge,Roundabout,TrafficLight,Remove}
+    public enum BuildTool {Road,Bridge,Roundabout,TrafficLight,Remove,Motorway}
     public enum TripStage {Home,Outbound,EnteringParking,Parking,LeavingParking,Returning,AligningHome}
-    public enum ScenarioKind {LosAngeles,ReferenceLab,EmptyLab,Beijing,Tokyo}
+    public enum ScenarioKind {LosAngeles,ReferenceLab,EmptyLab,Beijing,Tokyo,DarEsSalaam,London}
     public enum GameVersion {OriginalReference,Custom}
     public enum MapVariation {SameMap,DifferentMaps}
 
@@ -56,6 +56,7 @@ namespace MotorwaysSim
                 ConstructionGraceSeconds=version==GameVersion.Custom?30:0,UnlimitedConstruction=version==GameVersion.Custom};
         }
         public double TickSeconds=.05;
+        public double MotorwaySpeed=1.5; // Installed cap: 3 world units/s; tile width is 2.
         // Original world units have tile width 2; all distances below are converted to tiles.
         public double CarSpeed=.5,MaxAcceleration=.27,ControlledAcceleration=.4,RoundaboutAcceleration=.45;
         public double MaxDeceleration=6,FollowingGap=.05,CarLength=.325,DesiredTimeGap=1;
@@ -81,12 +82,15 @@ namespace MotorwaysSim
     {
         public int Id,Color;
         public Cell Cell,Entrance;
-        public bool IsHouse;
-        public int Width=1,Height=1,DrivewayDirection;
+        public bool IsHouse,SharedLot,IsStation;
+        public int CarparkId=-1,DestinationSlot;
+        public Cell[] Entrances=new Cell[0],Platform=new Cell[0];public int[] EntranceDirections=new int[0];
+        public int Width=1,Height=1,DrivewayDirection,Layout;
+        public bool Upgraded;public double UpgradeAt=double.PositiveInfinity,PlannedDemandMultiplier=1;
         public int Demand,Reserved;
         public double NextDemand,OvercrowdedFor,OvercrowdingSpeed,SpawnTime,SpawnGraceUntil,Served;
         public double OriginalDemandInterval,FeasibleDemandInterval,LastFeasibilityCheck;
-        public double DemandPhase;
+        public double DemandPhase,DemandCountdown;
         public double MaximumPotentialArrivalRate,SupplyBoundCheckedAt=-100;
         public int SupplyBoundBuildingCount=-1;
         public bool FeasibilityVerified;
@@ -103,7 +107,8 @@ namespace MotorwaysSim
         public Point[] Samples;
         public double[] Distances;
         public double Length,SpeedLimit;
-        public bool IsJunction,IsRoundabout,IsParking;
+        public bool IsJunction,IsRoundabout,IsParking,IsMotorway,ReleasesParking,DeliversDriveThrough;
+        public int MotorwayId=-1;
         public string Key;
         public Point Position(double distance)
         {
@@ -120,7 +125,7 @@ namespace MotorwaysSim
     {
         public int Id,HomeId,ShopId=-1,Color,ParkingSlot=-1;
         public TripStage Stage;
-        public Cell At,Next;
+        public Cell At,Next,DestinationAccess;
         public double Progress,Dwell,Waiting,TotalWaiting,Speed,Acceleration,DistanceAlongLane,ArrivedHome;
         public double JourneyStarted,LastMoved,SegmentEntered;
         public List<Cell> Route=new List<Cell>(),ReturnRoute=new List<Cell>();
@@ -128,11 +133,11 @@ namespace MotorwaysSim
         public int RouteIndex,RouteVersion;
         public bool HasDelivered,WaitingAtSignal,WaitingAtIntersection,DrivingThrough;
         public string Obstacle="";
-        public Point ParkedPosition;
+        public Point ParkedPosition,ParkedHeading=new Point(0,-1);
         public bool Moving=>Lanes.Count>0&&RouteIndex<Lanes.Count;
         public Lane CurrentLane=>Moving?Lanes[RouteIndex]:null;
         public Point Position=>Stage==TripStage.Parking?ParkedPosition:CurrentLane?.Position(DistanceAlongLane)??new Point(At);
-        public Point Heading=>Stage==TripStage.Parking?new Point(0,-1):CurrentLane?.Tangent(DistanceAlongLane)??new Point(1,0);
+        public Point Heading=>Stage==TripStage.Parking?ParkedHeading:CurrentLane?.Tangent(DistanceAlongLane)??new Point(1,0);
     }
 
     public sealed class SignalState
@@ -151,6 +156,11 @@ namespace MotorwaysSim
         public bool PendingRemoval;
     }
 
+    public sealed class MotorwayState
+    {public int Id,Number;public Cell Start,End;public bool PendingRemoval,RefundOnRemoval=true;public Cell Other(Cell c)=>c==Start?End:Start;}
+    public sealed class MotorwaySnapshot
+    {public int Id,Number;public Cell Start,End;public bool PendingRemoval;}
+
     public sealed class ConstructionEvent
     {public double Time;public Cell Cell;public BuildTool Tool;public int Cost;public string Description;}
 
@@ -167,8 +177,13 @@ namespace MotorwaysSim
         public int[] Infrastructure,Terrain,BuildingColors,BuildingKinds,Demand,Reservations,Connections,PendingRemovals;
         public VehicleState[] Vehicles;
         public BuildingState[] Buildings;
+        public ScheduledSpawnSnapshot[] ScheduledSpawns;
+        public string RandomAlgorithm;public long RandomDraws;
         public SignalSnapshot[] Signals;
         public RoundaboutSnapshot[] Roundabouts;
+        public MotorwaySnapshot[] Motorways;
+        public TrainSnapshot[] Trains;public RailSnapshot[] RailLines;public Cell[] ClosedRailCrossings;
+        public double PlayableXMin,PlayableYMin,PlayableXMax,PlayableYMax;
     }
     public sealed class VehicleState
     {
@@ -178,7 +193,9 @@ namespace MotorwaysSim
     }
     public sealed class BuildingState
     {
-        public int Id,Color,Width,Height,Demand,Reserved,DrivewayDirection;public Cell Cell,Entrance;public bool IsHouse,FeasibilityVerified;
+        public int Id,Color,Width,Height,Demand,Reserved,DrivewayDirection,Layout,DemandCapacity;public Cell Cell,Entrance;public bool IsHouse,FeasibilityVerified,Upgraded,SharedLot,IsStation;
+        public int CarparkId,DestinationSlot;public Cell[] Entrances,Platform;public int[] EntranceDirections;
+        public double? UpgradeAt;public double PlannedDemandMultiplier;
         public double OvercrowdedFor,OriginalDemandInterval;public double? FeasibleDemandInterval;public int[] Parking;
     }
     public sealed class SignalSnapshot

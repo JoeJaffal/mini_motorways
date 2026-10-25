@@ -16,6 +16,8 @@ namespace MotorwaysSim
             if(currentBuilding!=null&&at!=start&&at!=goal)yield break;
             var round=RoundaboutAt(at);
             int ringIndex=round==null?-1:Array.IndexOf(round.Ring,at);
+            foreach(var m in Motorways.Where(m=>(retired||!m.PendingRemoval)&&(m.Start==at||m.End==at)))
+            {var end=m.Other(at);if(CanTraverse(end,retired)&&(retired||!PendingRemoval[at.X,at.Y]))yield return end;}
             for(int d=0;d<8;d++)
             {
                 if((Connections[at.X,at.Y]&(1<<d))==0)continue;
@@ -51,7 +53,8 @@ namespace MotorwaysSim
                 {
                     int direction=Direction(state.cell,next);var target=(cell:next,dir:direction);
                     if(closed.Contains(target))continue;
-                    double speed=LaneSpeed(state.cell,state.dir,direction);
+                    var motorway=MotorwayBetween(state.cell,next);
+                    double speed=motorway==null?LaneSpeed(state.cell,state.dir,direction):Rules.MotorwaySpeed;
                     if(RoundaboutAt(state.cell)!=null)speed/=Rules.RoundaboutMultiplier;
                     double cost=Distance(state.cell,next)/Math.Max(.01,speed);
                     if(state.dir<8&&((direction-state.dir+8)%8)==4)cost+=500;
@@ -69,7 +72,7 @@ namespace MotorwaysSim
             if(route.Count<2)return double.PositiveInfinity;double total=0;
             for(int i=0;i<route.Count-1;i++)
             {int incoming=i==0?8:Direction(route[i-1],route[i]);int outgoing=Direction(route[i],route[i+1]);
-                double speed=LaneSpeed(route[i],incoming,outgoing);if(RoundaboutAt(route[i])!=null)speed/=Rules.RoundaboutMultiplier;
+                double speed=MotorwayBetween(route[i],route[i+1])==null?LaneSpeed(route[i],incoming,outgoing):Rules.MotorwaySpeed;if(RoundaboutAt(route[i])!=null)speed/=Rules.RoundaboutMultiplier;
                 total+=Math.Max(1,Math.Floor(10*Distance(route[i],route[i+1])/speed));}
             return total;
         }
@@ -95,12 +98,20 @@ namespace MotorwaysSim
                 Cell at=route[i],prev=i==0?at:route[i-1],next=i==route.Count-1?at:route[i+1];
                 Point center=new Point(at),a=new Point(prev),b=new Point(next);
                 Point incoming=(center-a).Unit,outgoing=(b-center).Unit;
-                Point start=i==0?center:(a+center)/2+incoming.Right*Rules.LaneOffset;
+                bool fromMotorway=i>0&&MotorwayBetween(prev,at)!=null;
+                var motorway=i<route.Count-1?MotorwayBetween(at,next):null;
+                Point start=i==0?center:fromMotorway?center+incoming.Right*Rules.LaneOffset:(a+center)/2+incoming.Right*Rules.LaneOffset;
                 Point end=i==route.Count-1?center:(b+center)/2+outgoing.Right*Rules.LaneOffset;
                 int inDir=i==0?8:Direction(prev,at),outDir=i==route.Count-1?inDir:Direction(at,next);
                 var round=RoundaboutAt(at);
                 Point[] samples;
-                if(round!=null&&at!=round.Center)
+                if(motorway!=null)
+                {
+                    Point finish=b+outgoing.Right*Rules.LaneOffset;
+                    double handle=Math.Min(2,Point.Distance(start,finish)*.3);
+                    samples=Cubic(start,start+incoming*handle,finish-outgoing*handle,finish,Math.Max(24,(int)(Distance(at,next)*8)));
+                }
+                else if(round!=null&&at!=round.Center)
                 {
                     var cp=new Point(round.Center);double radius=.94;
                     // Circular centerline across four occupied ring tiles, with smooth access connectors.
@@ -115,7 +126,10 @@ namespace MotorwaysSim
                 var lane=CreateLane(samples,at,prev,next,inDir,outDir);
                 lane.SpeedLimit=LaneSpeed(at,inDir,outDir<8?outDir:0);
                 lane.IsJunction=Degree(at)>=3||Tile(at)==Infrastructure.TrafficLight;
-                lane.IsRoundabout=round!=null;lanes.Add(lane);
+                lane.IsRoundabout=round!=null;
+                if(motorway!=null){lane.IsMotorway=true;lane.MotorwayId=motorway.Id;lane.IsJunction=false;lane.SpeedLimit=Rules.MotorwaySpeed;lane.Key=$"motorway:{motorway.Id}:{at.X}:{at.Y}";}
+                else if(fromMotorway)lane.IsJunction=true;
+                lanes.Add(lane);
             }
             return lanes;
         }
@@ -143,20 +157,20 @@ namespace MotorwaysSim
 
         void RefreshJourney(Vehicle car)
         {
-            if(!car.Moving||car.RouteVersion==NetworkVersion||car.DistanceAlongLane>1e-8||car.CurrentLane.IsJunction||car.CurrentLane.IsRoundabout||
+            if(!car.Moving||car.RouteVersion==NetworkVersion||car.DistanceAlongLane>1e-8||car.CurrentLane.IsJunction||car.CurrentLane.IsRoundabout||car.CurrentLane.IsMotorway||
                 (car.Stage!=TripStage.Outbound&&car.Stage!=TripStage.Returning))return;
             var old=car.CurrentLane;
-            Cell goal=Buildings[car.Stage==TripStage.Outbound?car.ShopId:car.HomeId].Access;
+            Cell goal=car.Stage==TripStage.Outbound?car.DestinationAccess:Buildings[car.HomeId].Access;
             var route=FindRoute(old.Tile,goal,true);car.RouteVersion=NetworkVersion;
             if(route.Count<2)return;
             var lanes=MakeLanes(route);var first=lanes[0];
             var tangent=old.Tangent(0);
             var replacement=CreateLane(Cubic(old.Samples[0],old.Samples[0]+tangent*.25,
                 first.Samples.Last()-first.Tangent(first.Length)*.25,first.Samples.Last(),12),old.Tile,old.Previous,first.Next,old.Incoming,first.Outgoing);
-            replacement.SpeedLimit=first.SpeedLimit;replacement.IsJunction=first.IsJunction;lanes[0]=replacement;
+            replacement.SpeedLimit=first.SpeedLimit;replacement.IsJunction=first.IsJunction;replacement.IsMotorway=first.IsMotorway;replacement.MotorwayId=first.MotorwayId;lanes[0]=replacement;
             car.Route=route;car.Lanes=lanes;car.RouteIndex=0;car.DistanceAlongLane=0;
             if(car.Stage==TripStage.Outbound)
-            {var back=FindRoute(Buildings[car.ShopId].Access,Buildings[car.HomeId].Access,true);if(back.Count>1)car.ReturnRoute=back;}
+            {var back=FindRoute(car.DestinationAccess,Buildings[car.HomeId].Access,true);if(back.Count>1)car.ReturnRoute=back;}
         }
 
         public List<Cell> PotentialRoute(Cell start,Cell goal)
@@ -199,7 +213,7 @@ namespace MotorwaysSim
             bool complete=true;
             foreach(var shop in Buildings.Where(b=>!b.IsHouse))
                 foreach(var house in Buildings.Where(b=>b.IsHouse&&b.Color==shop.Color))
-                {ConnectWitness(house.Access,shop.Access);if(FindRoute(house.Access,shop.Access).Count<2)complete=false;}
+                {var path=BestPotentialRoute(house.Access,shop);if(path.Count>1)ConnectWitness(house.Access,path[path.Count-1]);if(BestRouteTo(house.Access,shop).Count<2)complete=false;}
             LastAction=complete?"Reference roads built / all costs recorded":"Some reference routes could not be built";return complete;
         }
 

@@ -31,7 +31,7 @@ private:
     
 public:
     RandomAgent() : rng(std::chrono::steady_clock::now().time_since_epoch().count()),
-                   action_type_dist(0, 6), position_dist(0, 19) {}
+                   action_type_dist(0, 5), position_dist(0, 19) {}
     
     std::vector<int> get_action(const std::vector<float>& observation) override {
         return {action_type_dist(rng), position_dist(rng), position_dist(rng)};
@@ -84,7 +84,7 @@ int main(int argc, char* argv[]) {
             std::this_thread::sleep_for(std::chrono::milliseconds(200));
         }
         
-        std::cout << "Demo finished. Final score: " << env.get_score() << std::endl;
+        std::cout << "Demo finished. Final score: " << env.get_score() << " | Construction spent: " << env.get_construction_cost() << " points" << std::endl;
         
     } else if (mode == "train") {
         int episodes = (argc > 2) ? std::stoi(argv[2]) : 100;
@@ -119,7 +119,7 @@ int main(int argc, char* argv[]) {
             scores.push_back(env.get_score());
             
             if (episode % 10 == 0) {
-                std::cout << "Episode " << episode << " - Score: " << env.get_score() << std::endl;
+                std::cout << "Episode " << episode << " - Score: " << env.get_score() << " | Construction spent: " << env.get_construction_cost() << " points" << std::endl;
             }
         }
         

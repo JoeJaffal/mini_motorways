@@ -1,0 +1,12 @@
+Original five-map reconstruction update - 24 October 2026
+PASS: 22 simulation suites in headless and Unity builds.
+PASS: both Windows apps built successfully.
+PASS: 10 protocol smoke runs (all five cities in both versions).
+PASS: Original built-app startup smoke runs for LosAngeles, Beijing, Tokyo, DarEsSalaam and London, each advancing 20 simulation seconds.
+PASS: --custom does not switch Original to Custom during these runs.
+PASS: separate Custom built-app startup smoke run, advancing 20 simulation seconds.
+PASS: no exceptions in final startup smoke logs.
+Implemented: five numeric map profiles/material packages, Tokyo sixth color, Original playable expansion/zoom, city-specific demand ramps, per-color demand phase/countdown, two-way motorway graph/lane routing, stock-safe retirement and replacement, headless motorway commands.
+LIMIT: startup checks ran without rendering; visual layout has not been verified.
+LIMIT: no controlled original-game traces certify equivalence. ExactReplicaValidated remains false.
+Remaining: exact motorway geometry/merge/edit/release rules; destination upgrades and full layouts; London trains/stations/crossings; original spawn/support-house scheduler; random streams/fixed-point arithmetic; upgrade weighting; bridge/tunnel/resource details; original traffic/parking/failure timing; presentation fidelity.

@@ -5,6 +5,7 @@ using MotorwaysSim;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEditor.Build.Reporting;
+using UnityEditor.Build;
 using UnityEngine;
 
 public static class ProjectSetup
@@ -19,16 +20,21 @@ public static class ProjectSetup
         PlayerSettings.runInBackground=true;
         PlayerSettings.resizableWindow=true;
         PlayerSettings.fullScreenMode=FullScreenMode.Windowed;
+        CreateScene(GameVersion.Custom,"Assets/Scenes/TrafficLabCustom.unity");
+        CreateScene(GameVersion.OriginalReference,"Assets/Scenes/TrafficLab.unity");
+        RunChecks();
+        AssetDatabase.SaveAssets();
+    }
+
+    static void CreateScene(GameVersion version,string path)
+    {
         var scene=EditorSceneManager.NewScene(NewSceneSetup.EmptyScene,NewSceneMode.Single);
         var camera=new GameObject("Camera").AddComponent<Camera>();
         camera.orthographic=true;camera.backgroundColor=new Color(.985f,.958f,.85f);
         camera.clearFlags=CameraClearFlags.SolidColor;
-        new GameObject("Traffic simulation and viewer").AddComponent<TrafficViewer>();
+        new GameObject("Traffic simulation and viewer").AddComponent<TrafficViewer>().AppVersion=version;
         Directory.CreateDirectory("Assets/Scenes");
-        EditorSceneManager.SaveScene(scene,"Assets/Scenes/TrafficLab.unity");
-        EditorBuildSettings.scenes=new[]{new EditorBuildSettingsScene("Assets/Scenes/TrafficLab.unity",true)};
-        RunChecks();
-        AssetDatabase.SaveAssets();
+        EditorSceneManager.SaveScene(scene,path);
     }
 
     static void Require(bool pass,string message)
@@ -42,17 +48,45 @@ public static class ProjectSetup
         Debug.Log("TRAFFIC_SIM_CHECKS_PASSED");
     }
 
+    [MenuItem("Traffic Lab/Build both Windows apps")]
     public static void BuildWindows()
     {
         PrepareAndCheck();
-        Directory.CreateDirectory("Builds/Windows");
-        var result=BuildPipeline.BuildPlayer(new BuildPlayerOptions {
-            scenes=new[]{"Assets/Scenes/TrafficLab.unity"},
-            locationPathName="Builds/Windows/TrafficLab.exe",target=BuildTarget.StandaloneWindows64,
-            options=BuildOptions.None
-        });
-        if(result.summary.result!=BuildResult.Succeeded)throw new Exception("Windows build failed");
-        Debug.Log("TRAFFIC_SIM_BUILD_PASSED");
+        BuildApp(GameVersion.OriginalReference);
+        BuildApp(GameVersion.Custom);
+        Debug.Log("TRAFFIC_SIM_BUILD_PASSED: two separate apps");
+    }
+
+    [MenuItem("Traffic Lab/Build Original Windows app")]
+    public static void BuildOriginalWindows(){PrepareAndCheck();BuildApp(GameVersion.OriginalReference);}
+
+    [MenuItem("Traffic Lab/Build Custom Windows app")]
+    public static void BuildCustomWindows(){PrepareAndCheck();BuildApp(GameVersion.Custom);}
+
+    static void BuildApp(GameVersion version)
+    {
+        bool custom=version==GameVersion.Custom;
+        string name=custom?"TrafficLabCustom":"TrafficLabOriginal";
+        string scene=custom?"Assets/Scenes/TrafficLabCustom.unity":"Assets/Scenes/TrafficLab.unity";
+        string product=PlayerSettings.productName;
+        string identifier=PlayerSettings.GetApplicationIdentifier(NamedBuildTarget.Standalone);
+        try
+        {
+            PlayerSettings.productName=custom?"Traffic Lab Custom":"Traffic Lab Original";
+            PlayerSettings.SetApplicationIdentifier(NamedBuildTarget.Standalone,custom?"com.trafficlab.custom":"com.trafficlab.original");
+            Directory.CreateDirectory("Builds/Windows/"+name);
+            var result=BuildPipeline.BuildPlayer(new BuildPlayerOptions {
+                scenes=new[]{scene},
+                locationPathName="Builds/Windows/"+name+"/"+name+".exe",target=BuildTarget.StandaloneWindows64,
+                options=BuildOptions.None
+            });
+            if(result.summary.result!=BuildResult.Succeeded)throw new Exception(name+" Windows build failed");
+        }
+        finally
+        {
+            PlayerSettings.productName=product;
+            PlayerSettings.SetApplicationIdentifier(NamedBuildTarget.Standalone,identifier);
+        }
     }
 
     // Useful before connecting an RL policy: evaluate deterministic episodes without rendering.

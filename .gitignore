@@ -15,3 +15,25 @@
 # OS files
 .DS_Store
 Thumbs.db
+
+# Local experiments, rendered output and runtime caches
+/tmp/
+/output/
+**/__pycache__/
+*.py[cod]
+**/bin/
+**/obj/
+.venv/
+venv/
+*.log
+preview.bmp
+
+# Private reference material must stay outside source control
+/PrivateExtracts/
+/AssetInspection/
+/ReferenceRuns/
+/MotorwaysResearch/
+gameJournal_*.dat
+*.exe
+*.dll
+*.pdb

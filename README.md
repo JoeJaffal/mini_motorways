@@ -1,105 +1,100 @@
 # Mini Motorways Simulation Lab
 
-A visual traffic-construction environment for comparing an original-game reconstruction with a custom version. One Unity app contains two isolated rule sets and a shared C# simulation core that also runs without graphics.
+Two separate traffic-construction apps share one C# simulation core:
 
-**The original-game replica is unfinished.** OriginalReference is the default development target, not a certified exact replica or a ready-to-use exact-original training baseline. The custom version is runnable; no learning algorithm or final reward formula has been implemented.
+- **Traffic Lab Original** reconstructs standard play on Los Angeles, Beijing, Tokyo, Dar es Salaam and London.
+- **Traffic Lab Custom** uses the agreed unlimited-construction rules for future planning experiments.
 
-## What's in this repository
+Original is functional but **not a validated exact replica**. No learning algorithm or final reward formula is implemented in the active simulator. See [current status](simulation/Docs/IMPLEMENTATION_STATUS.md) for implemented features, evidence and remaining differences.
 
-| Location | Purpose |
+## Start here
+
+| Task | Guide |
 | --- | --- |
-| [simulation/](simulation/) | Current Unity app and shared simulation core |
-| [simulation/Headless/](simulation/Headless/) | .NET 8 action/observation interface for future training |
-| [BUILD_DECISIONS.md](BUILD_DECISIONS.md) | Build and implementation decisions, explanations, and trade-offs |
-| [Design decision log](simulation/Docs/DESIGN_DECISIONS.md) | Full chronological record of the user's answers; later entries supersede earlier ones |
-| [Version specification](simulation/Docs/VERSIONS.md) | Current behavior of each version, limitations, and parity backlog |
-| Root C++ files | Earlier playground, retained separately from the new Unity implementation |
-| [Legacy guide](docs/LEGACY_PLAYGROUND.md) | Historical C++ documentation; not the current simulator specification |
+| Run or build the two apps | [Simulation guide](simulation/README.md) |
+| Understand Original versus Custom | [Version specification](simulation/Docs/VERSIONS.md) |
+| Run the JSON interface | [Headless host](simulation/Headless/README.md) |
+| Review checks and reference evidence | [Validation reports](simulation/Reports/README.md) |
+| Work on the code | [Contributing](CONTRIBUTING.md) |
+| Find design decisions and archived documents | [Documentation index](docs/README.md) |
 
-## The two versions
+## Run the apps
 
-| | Original target | Your version |
+Open `simulation/` with **Unity 6000.6.0f1**. Open `Assets/Scenes/TrafficLab.unity` for Original or `Assets/Scenes/TrafficLabCustom.unity` for Custom, then press Play.
+
+**Traffic Lab > Build both Windows apps** prepares the scenes, runs the shared checks and creates:
+
+```text
+simulation/Builds/Windows/TrafficLabOriginal/TrafficLabOriginal.exe
+simulation/Builds/Windows/TrafficLabCustom/TrafficLabCustom.exe
+```
+
+Player builds are generated locally and are not committed. Each executable has a fixed rule set; neither has a version switch. The original game is not required to run these apps or the headless host.
+
+Select Road to draw from a house driveway to a matching destination. Right-drag removes construction; the mouse wheel zooms, middle-drag pans and Space pauses. Inspect selects a car or building. Original's Motorway tool uses two endpoint clicks; selecting an existing endpoint allows editing. New run changes the seed; Reset city repeats the selected map/settings and seed. Debug reference roads are a construction helper, not an optimal or learned policy.
+
+## Original and Custom
+
+| Mechanic | OriginalReference | Custom |
 | --- | --- | --- |
-| Selected rules | OriginalReference (default) | Custom |
-| Purpose | Reproduce the installed original game | Explore the team's traffic-planning changes |
-| Construction | Limited city-configured materials | Unlimited items, with cumulative spending |
-| Weekly materials | Partially implemented original-style choices | None |
-| Point prices | No custom construction prices | Road 2; light 5 additional; bridge water tile 10; roundabout 8 |
+| Maps | Five selected cities; recovered expansion bounds | Same five profiles; fixed working area |
+| Construction | Finite city-configured materials | Unlimited items; cumulative spending |
+| Prices | Material stock rather than custom point prices | Road 2; light 5 additional; bridge water tile 10; roundabout 8 |
+| Demolition | Deferred clearing and material reuse | Deferred clearing; no spending refund |
+| Motorways | Two-way links, inventory, retirement and endpoint editing | Excluded |
+| Destinations | Upgrades, three-bay single lots, nine-bay shared/station lots | One size with six bays |
+| London trains | Functional movement, station demand and crossing closures | No train simulation |
+| Parking | Internal circulation, diagonal bays and full-lot drive-through | Existing simpler parking paths |
 | New-shop grace | No custom grace period | 30 seconds |
-| Feasibility modification | Custom rejection/capping disabled | Reject clear supply shortages; do not lower demand to rescue a scenario |
-| Driving rules | Original-game replication target | Same original-game target |
-| Motorways | Required for parity; still missing | Deliberately excluded |
+| Feasibility screen | Custom rejection disabled | Reject estimated clear shortages; never lower demand to rescue a run |
 
-The two versions share unresolved traffic/spawning approximations. Changing versions resets the episode so inventory, spending and custom rules do not carry over.
+Both use automatic color-matching cars and target original-style driving rules. Custom prioritizes keeping the city alive; waiting and spending are secondary, with no invented reward weights. Its feasibility screen is approximate, not proof that a network can satisfy every demand.
 
-## Confirmed decisions and what they mean
+## Run and verify without graphics
 
-These summarize the user's decisions, including the update of **24 October 2026**. They distinguish approved behavior from the implementation's remaining limitations.
+Install the **.NET 8 SDK** and **Python 3**, then run from the repository root:
 
-| Decision | Description and explanation |
-| --- | --- |
-| **Keep the city alive first** | The custom agent's primary goal is keeping the city running. Less waiting and lower construction cost are secondary. No weights or priority between those two secondary goals have been chosen. |
-| **Unlimited construction, spending tracked** | Real planning uses a budget rather than a fixed inventory of items. Unlimited items plus a spending counter prepares for a future budget constraint; there is no active budget limit now. |
-| **Count all construction ever placed** | Every successful placement adds permanently to spending. Demolition does not erase money already spent; rebuilding costs again. An extra demolition fee is only a future option. |
-| **Current prices: 2 / 5 / 10 / 8** | Road tile 2, traffic light 5 additional, bridge water tile 10, roundabout 8. A road plus a light costs 7. These are provisional comparison weights, not calibrated real-world prices. Road 2 supersedes the earlier price of 1. |
-| **No motorways in Custom** | The user considered their abstraction unrealistic and wanted simpler scope. They remain a possible later feature; the original target still needs them. |
-| **Two reusable cars per house** | Retain the original-style simple city foundation: each car travels to a destination and returns to its own house before another trip. Variable fleets are deferred. |
-| **Keep matching colors** | Cars serve matching destinations, preserving an actual goal that may be far away instead of always serving the nearest shop. Designing a color-network penalty is outside the current task. |
-| **The agent builds; cars drive themselves** | Infrastructure is the agent's responsibility, as for the original player. Dispatch, route selection, signals and driving are automatic. |
-| **Original intersection and roundabout rules** | Both versions target the original behavior. A Lebanese-law alternative is not selected for this task. More realistic signal behavior is also deferred. |
-| **One shop size for now** | Custom keeps one destination size. Larger shops/upgrades are outside its current scope; they remain required work for original-game parity. |
-| **Reject impossible scenarios** | The user chose rejection instead of reducing demand to make a bad scenario easier. The current optimistic supply screen can reject clear shortages but is not a complete proof of feasibility and may miss impossible scenarios. |
-| **Keep 30 seconds for new shops** | Custom retains a 30-second grace period before failure/capacity screening. This is a chosen working setting, not an original-game timing claim. |
-| **Retire roads before removing them** | Stop assigning new trips to a deleted road, let committed traffic clear, then remove it. Custom spending is never refunded. Precise original release timing remains under verification. |
-| **Both run-variation options** | Run varied events on one selected map, or vary both maps and events. Seeds make a particular setup repeatable. |
-| **Original maps, fixed working area** | Current profiles are Los Angeles, Beijing and Tokyo, using 50 x 30 crops of recovered terrain/schedule data. They are not full original maps or original expansion behavior. |
-| **Failure-only game endings** | Overcrowding ends a normal episode. Evaluation tools may stop at a chosen duration, which is truncation rather than game failure. Rejected custom scenarios are reported separately and should be discarded. |
-| **Separate score from spending** | Trips, time, waiting and spending remain separate metrics. Selecting RL/evolution and constructing a numerical reward/fitness are outside this task. |
-
-Budgets, demolition charges, one-way roads, variable fleets, larger Custom shops, map expansion, Custom motorways and redesigned signals remain postponed. No additional rationale is inferred where the user supplied only a choice.
-
-## Run the viewer
-
-1. Install Unity **6000.6.0f1** and open the `simulation/` folder in Unity Hub.
-2. Open `Assets/Scenes/TrafficLab.unity` and press Play.
-3. Select **Original target** or **Your version**, choose a map and run-variation option, and draw roads from house driveways to matching shops.
-
-**Controls:** drag to draw, right-drag to remove, mouse wheel to zoom, middle-drag to pan, Space to pause. Inspect selects a car/building; lane routes show the actual paths. New run changes the seed; Reset city repeats the current settings and seed.
-
-The reference lab and reference-road builder are debugging helpers, not trained agents or optimal-network guarantees. In original mode the helper can exhaust materials.
-
-Built binaries are not committed. Build a Windows executable using **Traffic Lab > Prepare scene and run checks**, then the batch entry point described in [Build Decisions](BUILD_DECISIONS.md#build-and-check).
-
-## Run without graphics
-
-Install the .NET 8 SDK. From the repository root:
-
-```powershell
+```sh
 dotnet run --project simulation/Headless -- --self-test
+python scripts/verify_five_maps.py
 dotnet run --project simulation/Headless
 ```
 
-The host reads one JSON request per line and returns one JSON response:
+The self-test currently runs **31 shared suites**. The Python check exercises both rule sets on all five maps. The host accepts one JSON request per line:
 
 ```json
-{"command":"reset","version":"Custom","scenario":"LosAngeles","variation":"SameMap","seed":42}
-{"command":"draw","x":18,"y":12,"toX":22,"toY":12}
+{"command":"reset","version":"OriginalReference","scenario":"London","seed":42}
+{"command":"reference"}
 {"command":"step","ticks":200}
 {"command":"observe"}
-{"command":"reset","version":"Custom","scenario":"LosAngeles","variation":"DifferentMaps","seed":43}
-{"command":"reset","version":"OriginalReference","scenario":"Tokyo","seed":42}
-{"command":"upgrade","choice":0}
 {"command":"quit"}
 ```
 
-Commands also include build, connect and reference (debug). A single build does not connect adjacent tiles; draw or connect does. A stroke may partially succeed, so inspect the returned links/state.
+`reference` builds debug roads and can exhaust Original materials. A stroke can partially succeed, so inspect the returned state. Game failure, rejected scenarios and bounded evaluation limits are distinct outcomes. `exactReplicaValidated` remains false; `requireExact:true` refuses an unsupported exactness claim.
 
-Observations identify the version, actual map, costs, grace, inventory, pending upgrades, vehicles, signals, objectives and fidelity status. `terminated` means game failure; `truncated` signals scenario rejection for normal actions. Bounded evaluation reports its own duration truncation. `exactReplicaValidated` is false, and `requireExact:true` refuses a reset rather than certifying unfinished original parity.
+## Repository layout
 
-## Evidence, tests and remaining work
+```text
+simulation/          Active Unity apps, shared core and .NET host
+  Assets/Simulation/ Simulation rules and shared checks
+  Assets/Viewer/     Rendering and input
+  Assets/Editor/     Scene preparation and Windows builds
+  Headless/          JSON action/observation host
+  Docs/              Current specifications and user decision history
+  Reports/           Scoped validation evidence and historical reports
+legacy/cpp/          Separate older C++/OpenGL playground and economy checks
+scripts/             Maintained verification and reference-data tools
+docs/                Documentation index and archived comparison PDF
+BUILD_DECISIONS.md   Architecture and implementation decisions
+CONTRIBUTING.md      Development and verification workflow
+```
 
-Mechanics and configured values were inspected read-only from the user's installed original game. Numeric terrain/configuration observations inform the new implementation; original assemblies, raw decompiled source, art and private research files are not part of this repository. See the [fidelity notes](simulation/Docs/FIDELITY.md) and [version specification](simulation/Docs/VERSIONS.md) for the distinction between recovered behavior and approximations.
+Root CMake and `build.sh` remain entry points for the [legacy C++ playground](legacy/cpp/README.md). It has different rules and is not the active Original or Custom simulator.
 
-The recorded checks include **17 simulation suites**, version/protocol checks, a Windows build, and five Custom seeds running for 300 simulated seconds with debug-built roads. These are internal consistency checks and smoke tests, not proof of original-game parity or trained-agent performance. Reports are in [simulation/Reports/](simulation/Reports/).
+## Evidence and remaining work
 
-Original parity still requires motorways, destination upgrades, full maps/expansion, exact parking/lane/spawn/edit/upgrade behavior and controlled comparisons against the running original. These are implementation tasks; the user's current design answers are recorded.
+The Original RNG matches 180 values invoked from the installed game; London's 53 ordered rail cells, loop and origin also match the installed topology component. Live observation and selected LA/London video samples informed visual and parking fixes. These are scoped component/structural comparisons, not proof of complete game equivalence.
+
+Exact spawning, random-call order, fixed-point timing, traffic/motorway behavior, material accounting and full original-run comparisons remain incomplete. The current parking entrance/concurrency approximations are accepted for now. [Fidelity notes](simulation/Docs/FIDELITY.md) explain the practical limits.
+
+Only independent implementation and numeric reference observations are versioned. Original game code, art, bundles, raw journals, private research, build caches and player binaries stay outside Git. [Reference tools](scripts/README.md) document optional reproduction against a user-owned installation.

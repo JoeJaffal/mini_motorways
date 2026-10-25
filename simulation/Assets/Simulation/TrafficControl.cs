@@ -95,6 +95,7 @@ namespace MotorwaysSim
         readonly Dictionary<string,bool> conflictCache=new Dictionary<string,bool>();
         bool Conflicts(Lane a,Lane b)
         {
+            if(a.IsMotorway||b.IsMotorway)return false;
             if(a.Key==b.Key)return false;
             if(a.Tile!=b.Tile)return false;
             string key=string.CompareOrdinal(a.Key,b.Key)<0?a.Key+"/"+b.Key:b.Key+"/"+a.Key;
@@ -113,9 +114,10 @@ namespace MotorwaysSim
         bool MayEnter(Vehicle car,Lane lane,List<MotionSnapshot> snapshot,out string why)
         {
             why="";
+            if(!lane.IsMotorway&&IsRailCrossingClosed(lane.Tile)){why="Train crossing";return false;}
             var parcel=AccessBuildingAt(lane.Tile);
             if(parcel!=null&&!parcel.IsHouse&&car.Stage==TripStage.Outbound&&
-                Cars.Any(v=>v.Id!=car.Id&&v.ShopId==parcel.Id&&(v.Stage==TripStage.EnteringParking||v.Stage==TripStage.LeavingParking)))
+                Cars.Any(v=>v.Id!=car.Id&&SameCarpark(v.ShopId,parcel.Id)&&(v.Stage==TripStage.EnteringParking||v.Stage==TripStage.LeavingParking)))
             {why="Carpark access occupied";return false;}
             if(!lane.IsJunction&&!lane.IsRoundabout)return true;
             if(!SignalAllows(lane.Tile,lane.Incoming)){why="Traffic light";return false;}
@@ -152,12 +154,14 @@ namespace MotorwaysSim
                 {
                     car.Dwell-=Rules.TickSeconds;
                     var shop=Buildings[car.ShopId];
-                    bool full=shop.Parking.All(p=>p>=0)&&shop.Reserved>0;
-                    bool longest=Cars.Where(v=>v.ShopId==shop.Id&&v.Stage==TripStage.Parking).OrderBy(v=>v.Dwell).FirstOrDefault()==car;
-                    bool accessBusy=Cars.Any(v=>v.Id!=car.Id&&v.ShopId==shop.Id&&
+                    bool full=shop.Parking.All(p=>p>=0)&&Buildings.Any(b=>!b.IsHouse&&b.CarparkId==shop.CarparkId&&
+                        (Rules.Version==GameVersion.OriginalReference?b.Demand>0:b.Reserved>0));
+                    bool longest=Cars.Where(v=>SameCarpark(v.ShopId,shop.Id)&&v.Stage==TripStage.Parking).OrderBy(v=>v.Dwell).FirstOrDefault()==car;
+                    bool accessBusy=Cars.Any(v=>v.Id!=car.Id&&SameCarpark(v.ShopId,shop.Id)&&
                         (v.Stage==TripStage.EnteringParking||v.Stage==TripStage.LeavingParking||
-                        v.Stage==TripStage.Outbound&&v.CurrentLane!=null&&v.CurrentLane.Tile==shop.Access));
-                    if((car.Dwell<=0||full&&longest)&&!accessBusy)StartLeavingParking(car);
+                        v.Stage==TripStage.Outbound&&v.CurrentLane!=null&&HasAccess(shop,v.CurrentLane.Tile)));
+                    bool finished=Rules.Version==GameVersion.OriginalReference?car.Dwell<0:car.Dwell<=0;
+                    if((finished||full&&longest)&&!accessBusy)StartLeavingParking(car);
                 }
                 else if(car.Stage==TripStage.Returning&&!car.Moving)FinishHome(car);
             }
@@ -253,7 +257,9 @@ namespace MotorwaysSim
             {
                 double remaining=car.CurrentLane.Length-car.DistanceAlongLane;
                 if(distance<remaining-1e-8){car.DistanceAlongLane+=distance;break;}
-                distance-=remaining;car.RouteIndex++;car.DistanceAlongLane=0;car.SegmentEntered=Time;
+                distance-=remaining;if(car.CurrentLane.ReleasesParking)ReleaseParkingSlot(car);
+                if(car.CurrentLane.DeliversDriveThrough&&car.DrivingThrough)Deliver(car);
+                car.RouteIndex++;car.DistanceAlongLane=0;car.SegmentEntered=Time;
                 if(car.RouteIndex>=car.Lanes.Count){FinishJourney(car);break;}
                 RefreshJourney(car);
             }
@@ -268,35 +274,50 @@ namespace MotorwaysSim
             {
                 case TripStage.Outbound:StartParking(car);break;
                 case TripStage.EnteringParking:
-                    Deliver(car);car.Stage=TripStage.Parking;car.ParkedPosition=ParkingPoint(Buildings[car.ShopId],car.ParkingSlot);car.Dwell=Rules.ServiceSeconds;break;
+                    Deliver(car);
+                    if(car.DrivingThrough){car.Stage=TripStage.Returning;SetJourney(car,car.ReturnRoute);break;}
+                    car.Stage=TripStage.Parking;car.ParkedPosition=ParkingPoint(Buildings[car.ShopId],car.ParkingSlot);
+                    car.ParkedHeading=Rules.Version==GameVersion.OriginalReference?ParkingHeading(Buildings[car.ShopId],car.DestinationAccess):new Point(0,-1);
+                    car.Dwell=Rules.ServiceSeconds;break;
                 case TripStage.LeavingParking:
                     ReleaseParkingSlot(car);car.Stage=TripStage.Returning;SetJourney(car,car.ReturnRoute);break;
                 case TripStage.Returning:FinishHome(car);break;
             }
         }
-        public Point ParkingPoint(Building shop,int slot)=>new Point(shop.Cell.X+.18+(slot+.5)*1.64/Rules.ParkingSpaces,shop.Cell.Y+2.25);
+        public Point ParkingPoint(Building shop,int slot)
+        {
+            if(Rules.Version==GameVersion.OriginalReference)return ParkingBay(shop,slot).Center;
+            return new Point(shop.Cell.X+.18+(slot+.5)*1.64/shop.Parking.Length,shop.Cell.Y+2.25);
+        }
+        Point ParkingVector(Building shop,double along,double across)=>LayoutPoint(shop,along,across)-LayoutPoint(shop,0,0);
 
         void StartParking(Vehicle car)
         {
-            var shop=Buildings[car.ShopId];car.At=shop.Access;car.Next=shop.Access;
+            var shop=Buildings[car.ShopId];car.At=car.DestinationAccess;car.Next=car.DestinationAccess;
             var available=Enumerable.Range(0,shop.Parking.Length).Where(i=>shop.Parking[i]<0).ToList();
             if(available.Count==0)
             {
-                // Original permits a drive-through arrival when all bays are occupied.
-                car.DrivingThrough=true;Deliver(car);car.Stage=TripStage.Returning;SetJourney(car,car.ReturnRoute);return;
+                car.DrivingThrough=true;
+                if(Rules.Version==GameVersion.OriginalReference)
+                {car.Stage=TripStage.EnteringParking;car.Lanes=ParkingDriveThrough(shop,car.DestinationAccess);car.RouteIndex=0;car.DistanceAlongLane=0;return;}
+                Deliver(car);car.Stage=TripStage.Returning;SetJourney(car,car.ReturnRoute);return;
             }
             int slot=available.Count==1?available[0]:available[random.Next(available.Count)];
             car.ParkingSlot=slot;shop.Parking[slot]=car.Id;car.Stage=TripStage.EnteringParking;
-            Point a=new Point(shop.Access),b=ParkingPoint(shop,slot);
-            var lane=CreateLane(Cubic(a,a+new Point(.25,.15),b+new Point(0,.35),b,16),shop.Access,shop.Access,shop.Access,0,0);
-            lane.IsParking=true;lane.SpeedLimit=Rules.CarSpeed*.6;lane.Key=$"parking-in:{shop.Id}:{slot}";
+            if(Rules.Version==GameVersion.OriginalReference)
+            {car.Lanes=ParkingRoute(shop,car.DestinationAccess,slot);car.RouteIndex=0;car.DistanceAlongLane=0;return;}
+            Point a=new Point(car.DestinationAccess),b=ParkingPoint(shop,slot);
+            var lane=CreateLane(Cubic(a,a+ParkingVector(shop,.25,.15),b+ParkingVector(shop,0,.35),b,16),car.DestinationAccess,car.DestinationAccess,car.DestinationAccess,0,0);
+            lane.IsParking=true;lane.SpeedLimit=Rules.CarSpeed*.6;lane.Key=$"parking-in:{shop.CarparkId}:{slot}";
             car.Lanes=new List<Lane>{lane};car.RouteIndex=0;car.DistanceAlongLane=0;
         }
         void StartLeavingParking(Vehicle car)
         {
-            var shop=Buildings[car.ShopId];Point a=ParkingPoint(shop,car.ParkingSlot),b=new Point(shop.Access);
-            var lane=CreateLane(Cubic(a,a+new Point(0,.4),b+new Point(.4,.35),b,16),shop.Access,shop.Access,shop.Access,0,0);
-            lane.IsParking=true;lane.SpeedLimit=Rules.CarSpeed*.6;lane.Key=$"parking-out:{shop.Id}:{car.ParkingSlot}";
+            if(Rules.Version==GameVersion.OriginalReference)
+            {car.Lanes=ParkingRoute(Buildings[car.ShopId],car.DestinationAccess,car.ParkingSlot,true);car.Stage=TripStage.LeavingParking;car.RouteIndex=0;car.DistanceAlongLane=0;car.Speed=0;return;}
+            var shop=Buildings[car.ShopId];Point a=ParkingPoint(shop,car.ParkingSlot),b=new Point(car.DestinationAccess);
+            var lane=CreateLane(Cubic(a,a+ParkingVector(shop,0,.4),b+ParkingVector(shop,.4,.35),b,16),car.DestinationAccess,car.DestinationAccess,car.DestinationAccess,0,0);
+            lane.IsParking=true;lane.SpeedLimit=Rules.CarSpeed*.6;lane.Key=$"parking-out:{shop.CarparkId}:{car.ParkingSlot}";
             car.Stage=TripStage.LeavingParking;car.Lanes=new List<Lane>{lane};car.RouteIndex=0;car.DistanceAlongLane=0;car.Speed=0;
         }
         void ReleaseParkingSlot(Vehicle car)

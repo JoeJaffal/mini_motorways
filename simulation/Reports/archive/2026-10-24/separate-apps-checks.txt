@@ -1,0 +1,9 @@
+Separate-app validation - 24 October 2026
+PASS: 17 shared simulation suites (Unity batch build).
+PASS: both Windows builds completed successfully.
+PASS: Original scene serializes appVersion 0; Custom scene serializes appVersion 1.
+PASS: Original executable logs TRAFFIC_APP_VERSION=OriginalReference even with --custom.
+PASS: Custom executable logs TRAFFIC_APP_VERSION=Custom without a version flag.
+PASS: both smoke runs completed without logged exceptions.
+LIMIT: hidden-window screenshot captures were black; visual appearance was not verified by this smoke test.
+Original-game parity remains incomplete.

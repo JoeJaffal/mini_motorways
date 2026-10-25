@@ -1,60 +1,58 @@
-# Simulation versions - 24 October 2026
+# Original and Custom specification — 25 October 2026
 
-One executable and one shared traffic core, with two independently created rule sets. The default is OriginalReference. Selecting another version resets the episode; it does not mutate the rules of an ongoing run.
+Two separate executables use one shared simulation core. Original's scene fixes `OriginalReference`; Custom's scene fixes `Custom`. Neither viewer offers a version selector or honors a version-switching flag. The headless development host explicitly supports both.
 
-**OriginalReference is under construction. It is not an exact replica and must not be reported as an exact-original training baseline.** A reset with requireExact=true explicitly refuses to claim parity.
+Original is a reconstruction under validation, not a certified exact replica. See [current implementation status](IMPLEMENTATION_STATUS.md), [fidelity evidence](FIDELITY.md) and [scoped reports](../Reports/README.md).
 
-| Rule | OriginalReference (default) | Custom |
-|---|---|---|
-| Goal | Match the installed original | Keep the city running first; lower waiting and lower cost are secondary |
-| Construction | Limited material stock | Unlimited items; permanent cumulative spending |
-| Prices | No custom point prices | Road 2; light 5 additional; bridge water tile 10; roundabout 8 |
-| Motorways | Required for parity; not implemented yet | Excluded |
-| Weekly materials | City-configured package choices, partial port | No grants or inventory limit |
-| Demolition | Retire, let committed traffic clear, return released materials | Same clearing approach; never refund past spending |
-| New-shop grace | No custom 30-second grace | 30 seconds |
-| Demand governor | Off | Off: infeasible scenarios are rejected, not given easier demand |
-| Intersections / roundabouts | Original target | Original target |
-| Run options | Same map with varied events, or different maps with varied events | Both options |
-| Available city data | Los Angeles, Beijing, Tokyo; each currently a 50 x 30 crop | Same |
-| Learning method / color penalty | Outside this task | Outside this task; no algorithm or penalty implemented |
+## Rule sets
 
-Custom demand is left at original-style rates. After each shop's 30-second grace, the optimistic supply-bound screen checks supply. A failing screen rejects the run: scenarioRejected=true, terminated=false, truncated=true, with a reason. The run stops and must be reset. Discard a rejected run rather than treating it as an agent failure. There is no automatic retry loop or silent demand reduction.
+| Rule | OriginalReference | Custom |
+| --- | --- | --- |
+| Objective | Reproduce installed standard play | Survival first; less waiting and spending secondary |
+| Cities | LA, Beijing, Tokyo, Dar es Salaam, London | Same five city profiles |
+| Working area | 50 x 30 data canvas with recovered playable expansion bounds | Fixed working area |
+| Construction | Finite city-configured stock | Unlimited items with cumulative spending |
+| Point prices | Custom prices disabled | Road 2, light 5 additional, bridge water tile 10, roundabout 8 |
+| Weekly materials | City-configured packages; weighting/history partial | No grants or material limit |
+| Demolition | Retire, clear committed traffic, release materials | Same clearing approach; never refund spending |
+| Motorways | Functional links, two-way lanes, stock, retirement and editing | Excluded |
+| New-destination grace | No custom 30-second grace | 30 seconds |
+| Feasibility rejection | Custom rejection disabled | Optimistic supply screen; demand is not lowered to rescue a scenario |
+| Destinations | Upgrades, three-bay singles, shared nine-bay lots and stations | One size and six bays |
+| London trains | Functional motion, station demand and crossing signals | No train simulation |
+| Parking | Internal circulation, diagonal bays, drive-through and early bay release | Simpler existing paths |
+| Driving | Original-style automatic behavior, still approximate | Same shared original-style driving target |
+| Run variation | Same city or varied cities, seeded events | Both options |
+| Learning/reward | No learner or scalar reward implemented | No learner, chosen reward weights or color-separation penalty |
 
-The screen uses a generous speed/distance bound and allows potential future houses in growing cities; it avoids rejecting a city merely because houses have not spawned yet. It is not a complete proof of joint network schedulability and may miss impossible scenarios. The original-style gradual household placement remains approximate; rejection does not trigger extra corrective house spawns.
+Each house has two reusable cars. Matching colors determine destinations; cars return home before another dispatch. Trip score, waiting, survival time and spending remain separate metrics. No budget, demolition fee, variable fleet or redesigned legal driving mode has been added.
 
-The two secondary objectives are not assigned invented weights or an order relative to each other. Raw time, waiting, spending and trips remain available. RL/evolution and color-network penalties are out of scope, per the user's latest answers. Existing raw connectivity diagnostics are not a reward.
+## Materials and motorways
 
-## Original-game evidence applied this update
+Original reads starting stocks and weekly package metadata from the five numeric city profiles. Custom has no resource inventory limits. A motorway uses one motorway slot, with no road tiles for its span; surface connections are separate construction.
 
-Read-only inspection of installed App.dll added UpgradeType, UpgradeDatabase, UpgradeDatabaseModel and UpgradeAwardingProcess to the existing research. CityDefinition startingPackages and weeklyChoicePackages were read from the installed losangeles, beijing and tokyo bundles. Numeric terrain, spawn zones, oscillation data and schedules were exported independently into CityCatalog.cs; original code/art was not bundled.
+Editing a motorway preserves committed old paths while transferring the occupied slot to the replacement. Retirement stops new assignments and releases stock after clearing. Exact ramp/endpoint geometry, merge priority, release timing, bridge accounting and package weighting/history remain unverified.
 
-MaterialInventory.cs now applies city starting stocks, road exhaustion/reuse, bridge-span reservations, light/ring inventory, and weekly package selection. Weekly package amounts, initial weights, starting/last week and package caps come from city data. Original weight adjustments, deterministic random sequence, edit accounting and bridge geometry are not completely ported. These are partial reference implementations, not proof of original parity.
+## Destinations, parking and rail
 
-## Exact-original parity work still required
+Circle schedule events select eligible existing destinations with age weighting. Upgrades wait until at least ten seconds after activation, double base demand and raise capacity from six to nine. Single lots retain three bays and four entrance layouts.
 
-1. Motorways: construction, routing, lanes, speeds, editing and inventory.
-2. Destination upgrades, complete shop/carpark layouts and orientation rules.
-3. Full city bounds and camera/map expansion rather than fixed crops.
-4. Exact spawn scheduler, placement, support-house logic, and all city-specific progression modifiers.
-5. Original upgrade weighting/history and original random/fixed-point behavior.
-6. Exact bridge approach/span validation and edit resource accounting, including roundabout conversions.
-7. Exact lane templates, conflict/commit rules, rerouting and queue behavior.
-8. Controlled side-by-side original-game traces and regression comparisons. Current self-tests establish internal consistency only.
+Shared lots support two colors, nine shared occupancy slots, two entrances and four orientations. Original parking uses separate circulation and bay branches, diagonal midpoint stops/headings, drive-through paths when full and bay release after leaving the parking segment. The user accepted the current center-based entrance connections and conservative access serialization for now. Exact concurrent behavior and exit selection remain differences.
 
-This list is implementation work and requires no further design answers from the user. Until it is resolved, train on the installed original through a suitable future adapter, or explicitly label experiments as reconstruction experiments. No adapter to train against the installed game has been implemented.
+London uses recovered rail topology, train origin, station-demand zones and tuning. Stations use four rail cells along one edge, do not accumulate ordinary timer demand, and receive bounded batches from train visits. Trains accelerate, brake, wait at stations and close/release crossings. Motion/placement/timing and fixed-point spline behavior are not certified against original traces. Tunnels are not implemented.
 
-## Current controls and protocol
+## Variation, rejection and endings
 
-Viewer: Original target / Your version; map selection; same-map/different-map runs; New run changes the seed. Original target is the default. --custom launches directly into the user's version.
+New run changes the seed; Reset city repeats settings and seed. `SameMap` preserves the selected city; `DifferentMaps` selects among the five supported maps. Determinism within a reconstruction version does not imply identical event histories between versions or with the original.
 
-Headless example:
+After the 30-second grace, Custom's optimistic screen may reject clear supply shortages, allowing future households in growing cities. Rejection stops the run with `scenarioRejected=true`, `terminated=false`, `truncated=true` and a reason. Discard rejected scenarios. There is no automatic retry loop or demand reduction. The screen does not prove full network feasibility.
 
-```json
-{"command":"reset","version":"Custom","scenario":"LosAngeles","variation":"SameMap","seed":42}
-{"command":"reset","version":"Custom","scenario":"LosAngeles","variation":"DifferentMaps","seed":43}
-{"command":"reset","version":"OriginalReference","scenario":"Tokyo","seed":42}
-{"command":"upgrade","choice":0}
-```
+Normal game failure is destination overcrowding. Bounded evaluation has a separate duration limit; that is truncation, not a game rule.
 
-Version, actual selected map, seed-repeatable variation, current costs, grace, inventory, pending upgrade choices, rejection status, objective and fidelity status are exposed in observations. exactReplicaValidated is false. requireExact=true rejects resets until parity is actually established.
+## Protocol and evidence
+
+See [the headless guide](../Headless/README.md) for commands. Observations include version, chosen map, inventory, costs, destinations, vehicles, motorways, rail, crossings and pending upgrades. `exactReplicaValidated` stays false. Requests with `requireExact:true` fail until parity is established.
+
+The RNG matches 180 installed-component values; London rail ordering, loop and origin match the installed topology component. Read-only live observation, selected footage and a sanitized journal-envelope report supply additional structural evidence. No original driving trace was successfully measured through the UI tool, and the journal's full simulation graph is still undecoded. Component matches and 31 internal suites do not certify full-game equivalence.
+
+The remaining work is summarized in [implementation status](IMPLEMENTATION_STATUS.md). The chronological [design decision log](DESIGN_DECISIONS.md) preserves actual user choices; this current specification supersedes earlier provisional descriptions.

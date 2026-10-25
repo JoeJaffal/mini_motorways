@@ -757,3 +757,24 @@ For inherently impossible scenarios, the user's choice is rejection rather than 
 ## 036 - Custom prices updated
 
 Road tile = 2; traffic light = 5 additional; roundabout = 8; bridge water tile = 10. This supersedes the road price of 1 in entry 002 for the custom version. Prices do not apply to the original-reference inventory system. The user did not supply a new pricing rationale.
+
+
+## 037 - Separate Original and Custom apps (24 October 2026)
+
+The user chose two different apps: one for the original copy and one for Custom. This supersedes entry 032's single-app packaging. Build two separately named executables with fixed rules and no viewer version selector. Share the simulation source rather than duplicate traffic logic. OriginalReference remains unfinished; this packaging choice does not establish original-game parity.
+
+## 038 - Five-map Original replication scope
+
+The user selected Los Angeles, Beijing, Tokyo, Dar es Salaam and London, then authorized work toward an exact Original replica. Standard-play behavior on those five maps is the active target; adding motorways is required for Original. Custom remains a separately launched ruleset. This is authorization to implement and compare; it is not evidence that exact parity has been achieved.
+
+## 039 - Continue implementation of remaining replication systems (25 October 2026)
+
+The user authorized implementation of the remaining systems and reference comparison work. The installed game remains read-only. Original destination scheduling, upgrades and single-lot layouts are implemented from observed numeric values and independently expressed rules; Custom keeps its existing one-size baseline. The generator is checked against values invoked directly from the installed assembly. These changes do not certify exact-game parity or finish London train/station gameplay.
+
+## 040 - Continue with shared car parks and London trains
+
+The user's repeated request to proceed authorizes the remaining implementation work. Original now has functional shared two-color lots, multiple entrances, train movement, station demand and crossing closures. London rail ordering is checked against the installed component. Placement, parking/rail splines and full-run comparisons remain provisional. Custom retains its existing lot and demand behavior. The original installation stays read-only; component probes do not constitute a full-game recorder.
+
+## 041 - Accept current parking approximations for now
+
+After the entrance-center and conservative concurrency differences were explained, the user accepted keeping the current parking behavior for now while work proceeds on other differences. This does not certify exact parking or cancel the overall Original replication target. The repo cleanup request also authorizes documenting and committing the completed work, organizing maintained source, and pushing it to the user repository.

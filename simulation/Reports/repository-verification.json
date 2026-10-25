@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-25",
+  "scope": "Verification before committing repository organization and accumulated implementation work",
+  "checks": [
+    {
+      "name": "Shared .NET simulation suites",
+      "result": "PASS",
+      "count": 31
+    },
+    {
+      "name": "Five-map/version protocol runs",
+      "result": "PASS",
+      "count": 10
+    },
+    {
+      "name": "Legacy C++ CMake Release build after relocation",
+      "result": "PASS"
+    },
+    {
+      "name": "Legacy CTest construction_economy",
+      "result": "PASS",
+      "count": 1
+    },
+    {
+      "name": "Maintained Python syntax and JSON report parsing",
+      "result": "PASS"
+    },
+    {
+      "name": "Repository source selection, Markdown links and Unity metadata",
+      "result": "PASS"
+    },
+    {
+      "name": "Staged diff whitespace",
+      "result": "PASS"
+    },
+    {
+      "name": "Common credential-pattern scan of staged text",
+      "result": "PASS",
+      "limit": "Heuristic scan, not a security audit"
+    },
+    {
+      "name": "Legacy Bash wrapper syntax",
+      "result": "PASS"
+    }
+  ],
+  "priorEvidence": "Both Unity Windows apps built successfully and passed five Original plus one Custom startup smoke check on the same simulation sources before this organization pass. No gameplay source behavior was changed by the organization pass.",
+  "exactReplicaValidated": false
+}

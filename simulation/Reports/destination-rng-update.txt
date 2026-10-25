@@ -1,0 +1,12 @@
+Destination and reference RNG validation - 25 October 2026
+PASS: 26 shared simulation suites in headless and Unity.
+PASS: both Windows apps rebuilt successfully.
+PASS: 180 random-generator oracle values obtained by invoking the user's installed App.dll, reproduced by scripts/ReferenceProbe.
+PASS: five-map protocol checks in both versions (10 runs).
+PASS: built Original startup checks for LosAngeles, Beijing, Tokyo, DarEsSalaam and London, each stepping 20 simulated seconds.
+PASS: built Custom startup check, stepping 20 simulated seconds.
+PASS: no exceptions in final startup logs.
+Destination checks: scheduled circle event upgrades in place; minimum ten-second activation age; doubled demand; capacity 6 -> 9; no bay/footprint expansion on upgrade; all four single-lot entrances complete trips; Original lots have three bays; Custom one-size/six-bay baseline retained.
+Schedule metadata now retains grouping, ordering, chunk variability, demand multipliers, preferences and circle masks. Near/far placement, fixed overrides, shared/double lots and station preferences remain incomplete.
+Reference recording investigation: no exported original-game journal in inspected local save directories. Journal headers/snapshots use factory serialization and a compatibility hash; recorder/importer not implemented.
+Limits: oracle match is component-level only; random call order, seed initialization, fixed-point arithmetic and full original-game traces remain unverified. Train/station gameplay and exact parking geometry are unfinished. Startup tests did not validate rendering. exactReplicaValidated remains false.

@@ -6,18 +6,22 @@ namespace MotorwaysSim
 {
     public sealed partial class TrafficWorld
     {
-        public Building SpawnBuilding(Cell cell,int color,bool house,int drivewayDirection=0)
+        public Building SpawnBuilding(Cell cell,int color,bool house,int drivewayDirection=0,int layout=0)
         {
-            if(color<0||color>=5)return null;
-            int width=house?1:2,height=house?1:3;
+            if(color<0||color>=Map.BaseDemand.Length)return null;
+            if(layout<0||layout>3)return null;
+            int width=house?1:layout>=2?3:2,height=house?1:layout>=2?2:3;
+            Cell entrance=house?cell:layout==0?new Cell(cell.X,cell.Y+2):layout==1?new Cell(cell.X+1,cell.Y+2):layout==2?cell:new Cell(cell.X,cell.Y+1);
+            int accessDirection=house?drivewayDirection:new[]{4,0,6,2}[layout];
             for(int y=cell.Y;y<cell.Y+height;y++)for(int x=cell.X;x<cell.X+width;x++)
-            {var c=new Cell(x,y);if(!InBounds(c)||Water[x,y]||Blocked[x,y]||Unzoneable[x,y]||BuildingAt(c)!=null||Tile(c)!=Infrastructure.None||
-                Buildings.Any(existing=>existing.Access+Directions[existing.DrivewayDirection]==c))return null;}
-            var b=new Building{Id=Buildings.Count,Cell=cell,Entrance=house?cell:new Cell(cell.X,cell.Y+2),Color=color,IsHouse=house,
-                Width=width,Height=height,DrivewayDirection=house?drivewayDirection:4,SpawnTime=Time,
+            {var c=new Cell(x,y);if(!InBounds(c)||!IsPlayable(c)||Water[x,y]||Blocked[x,y]||Unzoneable[x,y]||BuildingAt(c)!=null||Tile(c)!=Infrastructure.None||IsMotorwayEndpoint(c,true)||
+                Buildings.Any(existing=>Accesses(existing).Any(e=>e+Directions[AccessDirection(existing,e)]==c)))return null;}
+            var b=new Building{Id=Buildings.Count,Cell=cell,Entrance=entrance,Layout=house?0:layout,Color=color,IsHouse=house,
+                Width=width,Height=height,DrivewayDirection=accessDirection,SpawnTime=Time,
                 NextDemand=Time+Rules.FirstDemandDelay,SpawnGraceUntil=Time+Rules.ConstructionGraceSeconds,
-                DemandPhase=random.NextDouble()*Map.PeriodDays[color],Parking=house?null:Enumerable.Repeat(-1,Rules.ParkingSpaces).ToArray()};
-            var outside=b.Access+Directions[b.DrivewayDirection];if(!InBounds(outside)||Blocked[outside.X,outside.Y]||Water[outside.X,outside.Y]||BuildingAt(outside)!=null||Roundabouts.Any(r=>r.Center==outside))return null;
+                DemandCountdown=Rules.FirstDemandDelay,DemandPhase=Rules.Version==GameVersion.Custom?random.NextDouble()*Map.PeriodDays[color]:0,Parking=house?null:Enumerable.Repeat(-1,Rules.Version==GameVersion.OriginalReference?3:Rules.ParkingSpaces).ToArray()};
+            var outside=b.Access+Directions[b.DrivewayDirection];if(!InBounds(outside)||!IsPlayable(outside)||Blocked[outside.X,outside.Y]||Water[outside.X,outside.Y]||BuildingAt(outside)!=null||Roundabouts.Any(r=>r.Center==outside))return null;
+            if(!house){b.CarparkId=b.Id;b.Entrances=new[]{b.Entrance};b.EntranceDirections=new[]{b.DrivewayDirection};}
             Buildings.Add(b);
             if(house)for(int i=0;i<2;i++)Cars.Add(new Vehicle{Id=Cars.Count,HomeId=b.Id,Color=color,Stage=TripStage.Home,At=cell,Next=cell,ArrivedHome=Time});
             if(CanTraverse(outside))Link(b.Access,outside);
@@ -33,12 +37,14 @@ namespace MotorwaysSim
             foreach(var candidate in candidates.Take(250))
             {
                 // Keep an initial neighborhood compact; expansion of the map itself is deferred.
-                if(Time<40&&(candidate.X<10||candidate.X>32||candidate.Y<4||candidate.Y>21))continue;
-                var shop=SpawnBuilding(candidate,color,false);if(shop==null)continue;
-                bool supply=Buildings.Any(b=>b.IsHouse&&b.Color==color&&PotentialRoute(b.Access,shop.Access).Count>1);
+                if(Rules.Version==GameVersion.Custom&&Time<40&&(candidate.X<10||candidate.X>32||candidate.Y<4||candidate.Y>21))continue;
+                Building shop=null;int firstLayout=Rules.Version==GameVersion.OriginalReference?random.Next(4):0;
+                for(int l=0;l<(Rules.Version==GameVersion.OriginalReference?4:1)&&shop==null;l++)shop=SpawnBuilding(candidate,color,false,0,(firstLayout+l)%4);
+                if(shop==null)continue;
+                bool supply=Buildings.Any(b=>b.IsHouse&&b.Color==color&&BestPotentialRoute(b.Access,shop).Count>1);
                 if(!supply)supply=TrySpawnHouse(shop);
                 if(!supply)
-                {Buildings.Remove(shop);Changed();continue;}
+                {DiscardDestination(shop);continue;}
                 RefreshFeasibility(shop);
                 if(autoConnectReference)BuildReferenceNetwork();
                 LastAction=$"New {ColorName(color)} destination / feasible supporting supply available";
@@ -60,7 +66,7 @@ namespace MotorwaysSim
                 // A cardinal driveway keeps placement and parcel access unambiguous.
                 direction=((direction+1)/2*2)%8;
                 var house=SpawnBuilding(candidate,shop.Color,true,direction);if(house==null)continue;
-                if(PotentialRoute(house.Access,shop.Access).Count>1)
+                if(BestPotentialRoute(house.Access,shop).Count>1)
                 {if(autoConnectReference)ConnectWitness(house.Access,shop.Access);return true;}
                 Cars.RemoveAll(v=>v.HomeId==house.Id);Buildings.Remove(house);Changed();
             }
@@ -69,12 +75,13 @@ namespace MotorwaysSim
 
         static void Swap<T>(IList<T> values,int a,int b){T temp=values[a];values[a]=values[b];values[b]=temp;}
         void Shuffle<T>(IList<T> values){for(int i=values.Count-1;i>0;i--)Swap(values,i,random.Next(i+1));}
-        public static string ColorName(int color)=>new[]{"red","blue","green","yellow","purple"}[Math.Max(0,Math.Min(4,color))];
+        public static string ColorName(int color)=>new[]{"red","blue","green","yellow","purple","orange"}[Math.Max(0,Math.Min(5,color))];
 
         void UpdateCity()
         {
             if(!Rules.EnableCityGrowth||!CityCatalog.Maps.Contains(Scenario))return;
-            if(nextScheduledShop<spawnSchedule.Count&&Time>=spawnSchedule[nextScheduledShop].time)
+            if(Rules.Version==GameVersion.OriginalReference)ProcessOriginalPlan();
+            else if(nextScheduledShop<spawnSchedule.Count&&Time>=spawnSchedule[nextScheduledShop].time)
             {
                 int color=spawnSchedule[nextScheduledShop].color;
                 if(Buildings.Count(b=>!b.IsHouse)<Rules.MaxShops&&TrySpawnShop(color))nextScheduledShop++;
@@ -100,7 +107,7 @@ namespace MotorwaysSim
                 var routes=new List<(Building shop,List<Cell> path,double distance)>();
                 foreach(var other in Buildings.Where(s=>!s.IsHouse&&s.Color==shop.Color))
                 {
-                    var path=PotentialRoute(house.Access,other.Access);if(path.Count<2)continue;
+                    var path=BestPotentialRoute(house.Access,other);if(path.Count<2)continue;
                     double distance=0;for(int i=1;i<path.Count;i++)distance+=Distance(path[i-1],path[i]);
                     routes.Add((other,path,distance));
                 }
@@ -150,12 +157,19 @@ namespace MotorwaysSim
         public double OriginalDemandInterval(Building shop)
         {
             int color=shop.Color;
-            double days=Time/20+shop.DemandPhase,period=Map.PeriodDays[color];
+            double phase=shop.DemandPhase;
+            if(Rules.Version==GameVersion.OriginalReference)
+            {
+                if(!demandGroupPhases.TryGetValue(color,out phase)){phase=random.NextDouble()*Map.PeriodDays[color];demandGroupPhases[color]=phase;}
+            }
+            double days=Time/Rules.SecondsPerDay+phase,period=Map.PeriodDays[color];
             double wave=Math.Pow(Math.Abs(Math.Sin((days%period)*Math.PI/period)),2+Map.Eccentricity[color]);
             double oscillation=Map.BaseDemand[color]+wave*(Map.BurstDemand[color]-Map.BaseDemand[color]);
-            double ramp=1+Math.Max(0,Day-35)*.013;
-            return Rules.SecondsPerDay/(Rules.AverageCarsPerDay*Rules.DemandMultiplier*Math.Max(.01,oscillation)*ramp);
+            double ramp=DemandRamp;
+            return Rules.SecondsPerDay/(Rules.AverageCarsPerDay*(Rules.Version==GameVersion.OriginalReference?3435973888/4294967296.0*(shop.Upgraded?2:1)*shop.PlannedDemandMultiplier:Rules.DemandMultiplier)*Math.Max(.01,oscillation)*ramp);
         }
+
+        double DemandRamp=>Rules.Version==GameVersion.OriginalReference?1+Math.Max(0,Day-(int)Map.SpawnRamp[0])*Map.SpawnRamp[1]:1+Math.Max(0,Day-35)*.013;
 
         void UpdateDemand()
         {
@@ -165,9 +179,20 @@ namespace MotorwaysSim
                 shop.OriginalDemandInterval=OriginalDemandInterval(shop);
                 double interval=Rules.EnforceFeasibility?Math.Max(shop.OriginalDemandInterval,shop.FeasibleDemandInterval):shop.OriginalDemandInterval;
                 if(!double.IsInfinity(interval)&&double.IsInfinity(shop.NextDemand))shop.NextDemand=Time+Rules.FirstDemandDelay;
-                if(Time>=shop.NextDemand)
+                if(shop.IsStation)shop.NextDemand=double.PositiveInfinity;
+                else if(Rules.Version==GameVersion.OriginalReference)
                 {
-                    if(!double.IsInfinity(interval)&&shop.Demand<Rules.DemandCapacity+Rules.MaximumOverflowPins)shop.Demand++;
+                    shop.DemandCountdown-=Rules.TickSeconds*DemandRamp;
+                    if(shop.DemandCountdown<=0)
+                    {
+                        if(shop.Demand<DestinationCapacity(shop)+DestinationOverflow(shop))shop.Demand++;
+                        shop.DemandCountdown=interval*DemandRamp;
+                    }
+                    shop.NextDemand=Time+shop.DemandCountdown/DemandRamp;
+                }
+                else if(Time>=shop.NextDemand)
+                {
+                    if(!double.IsInfinity(interval)&&shop.Demand<DestinationCapacity(shop)+DestinationOverflow(shop))shop.Demand++;
                     shop.NextDemand=Time+interval;
                 }
                 if(Time<shop.SpawnGraceUntil)continue;
@@ -176,7 +201,7 @@ namespace MotorwaysSim
                     ScenarioRejected=true;RejectionReason=$"Capacity screen rejected {Map.Name}: shop {shop.Id} fails an optimistic supply bound at original demand. No demand was reduced.";
                     LastAction=RejectionReason;return;
                 }
-                if(shop.Demand>Rules.DemandCapacity)
+                if(shop.Demand>DestinationCapacity(shop))
                 {shop.OvercrowdingSpeed=Math.Min(1,shop.OvercrowdingSpeed+Rules.OvercrowdingAcceleration*Rules.TickSeconds);shop.OvercrowdedFor+=shop.OvercrowdingSpeed*Rules.TickSeconds;}
                 else
                 {shop.OvercrowdingSpeed=0;shop.OvercrowdedFor=Math.Max(0,Math.Min(shop.OvercrowdedFor,Rules.OvercrowdingSeconds-Rules.OvercrowdingGraceSeconds)-Rules.OvercrowdingReturnSpeed*Rules.TickSeconds);}
@@ -199,14 +224,14 @@ namespace MotorwaysSim
                     {
                         var vehicle=Cars.FirstOrDefault(v=>v.HomeId==house.Id&&v.Stage==TripStage.Home&&Time-v.ArrivedHome>=Rules.HomeCooldown);
                         if(vehicle==null)continue;
-                        var path=FindRoute(house.Access,shop.Access);if(path.Count<2)continue;
+                        var path=BestRouteTo(house.Access,shop);if(path.Count<2)continue;
                         double cost=RouteCost(path);
                         if(cost<bestCost){chosen=vehicle;best=path;bestCost=cost;}
                     }
                     if(chosen==null)break;
-                    var home=Buildings[chosen.HomeId];var back=FindRoute(shop.Access,home.Access);
+                    var home=Buildings[chosen.HomeId];var back=FindRoute(best[best.Count-1],home.Access);
                     if(back.Count<2)break;
-                    chosen.ShopId=shop.Id;chosen.Stage=TripStage.Outbound;chosen.ReturnRoute=back;chosen.HasDelivered=false;
+                    chosen.DestinationAccess=best[best.Count-1];chosen.ShopId=shop.Id;chosen.Stage=TripStage.Outbound;chosen.ReturnRoute=back;chosen.HasDelivered=false;chosen.DrivingThrough=false;
                     chosen.JourneyStarted=Time;chosen.LastMoved=Time;chosen.ParkingSlot=-1;shop.Reserved++;
                     SetJourney(chosen,best);
                 }

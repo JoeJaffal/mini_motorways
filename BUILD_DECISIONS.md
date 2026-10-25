@@ -2,13 +2,13 @@
 
 This file explains how the current simulation is built and why. It is separate from the [user's game-design decision log](simulation/Docs/DESIGN_DECISIONS.md). Architecture choices below are implementation decisions; they are not additional design answers attributed to the user.
 
-## 1. One app, two isolated rule sets
+## 1. Two apps, shared traffic core
 
-**Choice:** share the traffic engine and select OriginalReference or Custom through `Rules.ForVersion`.
+**Choice:** build two independent Windows apps from separate scenes. Each scene fixes its rule set through `Rules.ForVersion`; the viewer has no mode switch. The apps have separate product names and application identifiers.
 
-**Reason:** fixes to common traffic behavior should benefit both versions without maintaining two diverging copies. Recreate/reset the world on a version switch so custom prices, grace, rejection and unlimited materials cannot leak into the original target. OriginalReference is the default development target; its name does not certify parity.
+**Reason:** fixes to common traffic behavior should benefit both versions without maintaining two diverging copies. The user chose two separate apps. Each app creates only its own gameplay rule set; shared engine fixes still benefit both. OriginalReference is the default development target; its name does not certify parity.
 
-**Limits:** the original target is unfinished. Motorways, destination upgrades, exact resource accounting, complete maps/expansion and trace validation remain on the parity backlog.
+**Limits:** the original target is unfinished. Exact motorway/parking/rail geometry and rules, resource accounting, expansion validation and trace comparisons remain on the parity backlog. Destination upgrades, shared lots and London trains/stations are functional provisional implementations.
 
 ## 2. Unity viewer, independent C# core
 
@@ -16,7 +16,7 @@ This file explains how the current simulation is built and why. It is separate f
 
 **Reason:** people need to see cars, queues and construction, while training experiments need to advance the same rules without rendering. The .NET 8 host compiles the same core source files, not a second implementation.
 
-**Limits:** the viewer uses independent drawings and GUI controls, not original game art or UI. The earlier root C++ playground is retained as a separate historical implementation.
+**Limits:** the viewer uses independent drawings and GUI controls, not original game art or UI. The earlier C++ playground is isolated in `legacy/cpp/`; root CMake remains a compatible entry point.
 
 ## 3. Fixed ticks and seeded runs
 
@@ -24,7 +24,7 @@ This file explains how the current simulation is built and why. It is separate f
 
 **Reason:** tests and experiments should be repeatable. Both fixed-map/varied-event and varied-map/varied-event options are available.
 
-**Limits:** our doubles and seeded random generator differ from the original fixed-point arithmetic and random sequence. Equal seeds are not a claim of equal original-game traces or identical cross-version event histories.
+**Limits:** the simulation uses doubles rather than the original fixed-point arithmetic. The Original RNG component now matches the installed numeric stream, but seed initialization and draw ordering remain unverified. Equal seeds are not a claim of equal original-game traces or identical cross-version event histories.
 
 ## 4. Explicit links, lanes and persistent cars
 
@@ -46,11 +46,11 @@ This file explains how the current simulation is built and why. It is separate f
 
 ## 6. City profiles are data, not duplicated engines
 
-**Choice:** use `CityCatalog.cs` for Los Angeles, Beijing and Tokyo terrain, spawn zones, demand curves and schedules. Keep the working grid at 50 x 30.
+**Choice:** use `CityCatalog.cs` for Los Angeles, Beijing, Tokyo, Dar es Salaam and London terrain, spawn zones, demand curves and schedules. Keep the working grid at 50 x 30.
 
 **Reason:** the same code should run different city layouts and support controlled variations.
 
-**Limits:** these are crops. Exact original city boundaries, expansion, orientation and scheduling are not fully reproduced. The older `OriginalMapProfile.cs` remains as the earlier LA numeric profile; current city selection uses CityCatalog.
+**Limits:** recovered playable bounds and expansion curves are applied within the data canvas, but exact sampling, orientation and scheduling remain unverified. The older `OriginalMapProfile.cs` remains as the earlier LA numeric profile; current city selection uses CityCatalog.
 
 ## 7. Separate original inventory from custom spending
 
@@ -113,10 +113,22 @@ To build the Windows app, use Unity's installed editor executable with these arg
 -logFile "C:/path/to/build.log"
 ```
 
-The output is `simulation/Builds/Windows/TrafficLab.exe`. Launch it normally for the original target or with `--custom` for the Custom version. That output folder is ignored by Git.
+The outputs are `simulation/Builds/Windows/TrafficLabOriginal/TrafficLabOriginal.exe` and `simulation/Builds/Windows/TrafficLabCustom/TrafficLabCustom.exe`. Each starts directly in its own rules. BuildWindows builds both; BuildOriginalWindows and BuildCustomWindows build individually. Output folders are ignored by Git. The headless development host retains explicit version selection for experiments.
 
 ## Validation and interpretation
 
-The current record includes 17 shared suites, protocol tests, a Unity Windows build, viewer capture checks and five bounded Custom city runs using a debug road builder. Earlier integration fixtures intentionally use historical parameters; they are fixtures, not selectable production modes. New checks cover the active custom prices, version isolation, rejection, original material limits/reuse and seeded map variation.
+The current record includes 31 shared suites, protocol tests, Unity Windows builds, viewer checks and five bounded Custom city runs using a debug road builder. Earlier integration fixtures intentionally use historical parameters; they are fixtures, not selectable production modes. New checks cover active custom prices, version isolation, rejection, Original material limits/reuse, seeded map variation, shared lots, trains and parking circulation.
 
 These checks establish internal consistency. They do not prove original parity, optimal networks, universal scenario feasibility, or agent performance. The complete remaining work is in [VERSIONS.md](simulation/Docs/VERSIONS.md).
+
+## 13. Five-map numeric reference data and Original motorways
+
+Original now reads five independently exported numeric profiles, with hashes recorded in `simulation/Docs/REFERENCE_DATA.json`. The fixed 50 x 30 array is a storage canvas containing the selected cities' final playable bounds; recovered zoom curves and starting-offset options determine the current Original play area and viewer framing. Custom retains its fixed area. Starting-offset variance and floating-point curve evaluation are not a claim of original random/fixed-point parity.
+
+Motorways are separate elevated graph edges, not surface tiles or diagonal road bitmasks. They receive independently sampled continuous lane geometry, a recovered 1.5 tiles/s cap, finite stock, retired-state routing and replacement identifiers. Their span consumes no concrete in standard play. On editing, the replacement owns the one motorway slot and old geometry cannot refund it twice. The model preserves old committed round trips before release; exact original ramp geometry, merge priority and release rules still require comparison.
+
+## 14. Original schedules, destinations and component oracle
+
+Original retains full schedule chunk metadata separately from the historical Custom schedule. Circle grouping produces an in-place destination upgrade instead of another shop. Eligibility uses the exported circle masks; weighted age selection and a minimum activation age schedule the change. Capacity changes from six to nine and the demand multiplier doubles, without expanding the lot. Single Original lots have three bays and four supported entrance layouts. Custom remains on its one-size/six-bay baseline. Shared lots and internal parking circulation are implemented; exact entrance boundaries, concurrent traffic and motion timing remain approximate.
+
+The Original RNG is independently expressed and checked against a read-only installed-assembly oracle. Raw numeric results are committed; game binaries and decompiled classes are not. Matching the generator does not establish matching random call order or full simulation behavior.

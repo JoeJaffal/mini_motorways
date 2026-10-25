@@ -14,6 +14,7 @@ sealed class Request
     public int X { get; set; }
     public int Y { get; set; }
     public int Choice {get;set;}
+    public int Id {get;set;}
     public int ToX { get; set; }
     public int ToY { get; set; }
     public string Scenario { get; set; }
@@ -77,6 +78,9 @@ static class Program
                         world.Reset(request.Seed,scenario,Enum.Parse<MapVariation>(request.Variation,true));
                         trips=0;spending=0;break;
                     case "upgrade":accepted=world.ChooseUpgrade(request.Choice);break;
+                    case "motorway":accepted=world.AddMotorway(new Cell(request.X,request.Y),new Cell(request.ToX,request.ToY));break;
+                    case "editMotorway":accepted=world.EditMotorway(request.Id,new Cell(request.X,request.Y),new Cell(request.ToX,request.ToY));break;
+                    case "removeMotorway":accepted=world.RemoveMotorway(request.Id);break;
                     case "connect":accepted=world.Connect(new Cell(request.X,request.Y),new Cell(request.ToX,request.ToY));break;
                     case "draw":accepted=world.DrawRoad(new Cell(request.X,request.Y),new Cell(request.ToX,request.ToY));break;
                     case "reference":accepted=world.BuildReferenceNetwork();break;
@@ -88,7 +92,7 @@ static class Program
                             throw new Exception("Unknown construction tool");
                         accepted=world.Build(tool,new Cell(request.X,request.Y));break;
                     case "observe":break;
-                    default:throw new Exception("Commands: reset, build, connect, draw, upgrade, reference (debug), step, observe, quit");
+                    default:throw new Exception("Commands: reset, build, connect, draw, motorway, editMotorway, removeMotorway, upgrade, reference (debug), step, observe, quit");
                 }
                 Console.WriteLine(JsonSerializer.Serialize(new {accepted,message=world.LastAction,
                     tripsDelta=world.TripsCompleted-trips,spendingDelta=world.ConstructionSpent-spending,

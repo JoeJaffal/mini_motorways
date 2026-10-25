@@ -36,10 +36,9 @@ enum class TileType : int {
     HOUSE = 1,
     BUSINESS = 2,
     ROAD = 3,
-    MOTORWAY = 4,
-    BRIDGE = 5,
-    ROUNDABOUT = 6,
-    TRAFFIC_LIGHT = 7
+    BRIDGE = 4,
+    ROUNDABOUT = 5,
+    TRAFFIC_LIGHT = 6
 };
 
 enum class CarColor : int {
@@ -111,7 +110,7 @@ private:
     std::vector<std::vector<TileType>> grid;
     std::vector<std::shared_ptr<Car>> cars;
     std::vector<Building> buildings;
-    std::unordered_map<std::string, int> resources;
+    int construction_cost = 0;
     
     // Game metrics
     int score;
@@ -165,7 +164,7 @@ public:
     const std::vector<std::vector<TileType>>& get_grid() const { return grid; }
     const std::vector<Building>& get_buildings() const { return buildings; }
     const std::vector<std::shared_ptr<Car>>& get_cars() const { return cars; }
-    const std::unordered_map<std::string, int>& get_resources() const { return resources; }
+    int get_construction_cost() const { return construction_cost; }
 };
 
 class Renderer {
@@ -188,7 +187,7 @@ public:
     void render_grid(const std::vector<std::vector<TileType>>& grid);
     void render_buildings(const std::vector<Building>& buildings);
     void render_cars(const std::vector<std::shared_ptr<Car>>& cars);
-    void render_ui(int score, int step, const std::unordered_map<std::string, int>& resources);
+    void render_ui(int score, int step, int construction_cost);
     
 private:
     GLuint load_shader(const std::string& vertex_src, const std::string& fragment_src);

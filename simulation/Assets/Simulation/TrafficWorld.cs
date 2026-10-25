@@ -14,12 +14,14 @@ namespace MotorwaysSim
         public string RejectionReason {get;private set;}="";
         public int RoadTilesAvailable=>Rules.UnlimitedConstruction?-1:Inventory[0];
         public readonly Infrastructure[,] Tiles=new Infrastructure[Width,Height];
-        public readonly bool[,] Water=new bool[Width,Height],Blocked=new bool[Width,Height],Unzoneable=new bool[Width,Height];
+        public readonly bool[,] Water=new bool[Width,Height],Rails=new bool[Width,Height],Blocked=new bool[Width,Height],Unzoneable=new bool[Width,Height];
         public readonly bool[,] PendingRemoval=new bool[Width,Height];
         public readonly int[,] Connections=new int[Width,Height];
         public readonly List<Building> Buildings=new List<Building>();
         public readonly List<Vehicle> Cars=new List<Vehicle>();
         public readonly List<ConstructionEvent> Events=new List<ConstructionEvent>();
+        public readonly List<MotorwayState> Motorways=new List<MotorwayState>();
+        int nextMotorwayId;
         public readonly List<RoundaboutState> Roundabouts=new List<RoundaboutState>();
         public readonly Dictionary<Cell,SignalState> Signals=new Dictionary<Cell,SignalState>();
         public ScenarioKind Scenario {get;private set;}
@@ -37,7 +39,8 @@ namespace MotorwaysSim
         public int DemandTotal=>Buildings.Where(b=>!b.IsHouse).Sum(b=>b.Demand);
         public int ActiveCars=>Cars.Count(c=>c.Stage!=TripStage.Home);
         public int NetworkVersion {get;private set;}
-        Random random;
+        SimulationRandom random;
+        readonly Dictionary<int,double> demandGroupPhases=new Dictionary<int,double>();
         bool autoConnectReference;
         readonly List<(double time,int color)> spawnSchedule=new List<(double,int)>();
         int nextScheduledShop;
@@ -47,11 +50,11 @@ namespace MotorwaysSim
         public bool InBounds(Cell c)=>c.X>=0&&c.Y>=0&&c.X<Width&&c.Y<Height;
         public Infrastructure Tile(Cell c)=>InBounds(c)?Tiles[c.X,c.Y]:Infrastructure.None;
         public Building BuildingAt(Cell c)=>Buildings.Find(b=>b.Contains(c));
-        public Building AccessBuildingAt(Cell c)=>Buildings.Find(b=>b.Access==c);
+        public Building AccessBuildingAt(Cell c)=>Buildings.Find(b=>HasAccess(b,c));
         public RoundaboutState RoundaboutAt(Cell c)=>Roundabouts.Find(r=>r.Center==c||r.Ring.Contains(c));
         public bool IsRoad(Cell c)=>InBounds(c)&&Tile(c)!=Infrastructure.None&&!PendingRemoval[c.X,c.Y];
         public bool CanTraverse(Cell c,bool retired=false)=>InBounds(c)&&(!Blocked[c.X,c.Y])&&
-            (AccessBuildingAt(c)!=null||(Tile(c)!=Infrastructure.None&&(retired||!PendingRemoval[c.X,c.Y])))&&
+            (AccessBuildingAt(c)!=null||IsMotorwayEndpoint(c,retired)||(Tile(c)!=Infrastructure.None&&(retired||!PendingRemoval[c.X,c.Y])))&&
             !Roundabouts.Any(r=>r.Center==c);
         public static int Direction(Cell a,Cell b)
         {
@@ -69,10 +72,11 @@ namespace MotorwaysSim
             Map=CityCatalog.Get(scenario);ScenarioRejected=false;RejectionReason="";ResetInventory();
             if(Rules.TickSeconds<=0||Rules.CarsPerHouse!=2)throw new ArgumentException("Positive tick duration and two cars per house are required");
             if(!Rules.UseOriginalIntersectionRules)throw new NotSupportedException("The Lebanese legal alternative remains undecided and is not implemented");
-            Seed=seed;Scenario=scenario;random=new Random(seed);Time=0;TickCount=0;ConstructionSpent=0;TripsCompleted=0;Failed=false;
-            Buildings.Clear();Cars.Clear();Events.Clear();Roundabouts.Clear();Signals.Clear();spawnSchedule.Clear();nextScheduledShop=0;
+            Seed=seed;Scenario=scenario;random=new SimulationRandom(seed,Rules.Version);Time=0;TickCount=0;ConstructionSpent=0;TripsCompleted=0;Failed=false;
+            Buildings.Clear();Cars.Clear();Events.Clear();Roundabouts.Clear();Signals.Clear();Motorways.Clear();nextMotorwayId=0;demandGroupPhases.Clear();spawnSchedule.Clear();nextScheduledShop=0;
             Array.Clear(Tiles,0,Tiles.Length);Array.Clear(Water,0,Water.Length);Array.Clear(Blocked,0,Blocked.Length);
-            Array.Clear(Unzoneable,0,Unzoneable.Length);Array.Clear(PendingRemoval,0,PendingRemoval.Length);Array.Clear(Connections,0,Connections.Length);
+            Array.Clear(Rails,0,Rails.Length);Array.Clear(Unzoneable,0,Unzoneable.Length);Array.Clear(PendingRemoval,0,PendingRemoval.Length);Array.Clear(Connections,0,Connections.Length);
+            RailLines.Clear();Trains.Clear();railClosedUntil.Clear();originalPlan.Clear();doubleLotProbability=.3;InitializePlayableArea();
             NetworkVersion++;routeCache.Clear();conflictCache.Clear();
             autoConnectReference=scenario==ScenarioKind.ReferenceLab;
             if(CityCatalog.Maps.Contains(scenario))
@@ -80,12 +84,15 @@ namespace MotorwaysSim
                 for(int y=0;y<Height;y++)for(int x=0;x<Width;x++)
                 {
                     char t=Map.Terrain[y][x];
-                    Water[x,y]=t=='~';Blocked[x,y]=t=='#';Unzoneable[x,y]=t==':'||t=='#'||t=='~';
+                    Water[x,y]=t=='~';Rails[x,y]=Map.RailLines.Any(line=>line.Cells.Contains(new Cell(x,y)));Blocked[x,y]=t=='#'||t=='^';Unzoneable[x,y]=t==':'||t=='#'||t=='~'||t=='^'||t=='=';
                 }
-                foreach(var item in Map.ShopSchedule)
-                    spawnSchedule.Add((item[0]*20+random.NextDouble()*item[1]*20,(int)item[2]));
-                spawnSchedule.Sort((a,b)=>a.time.CompareTo(b.time));
-                TrySpawnShop(0);if(spawnSchedule.Count>0)nextScheduledShop=1;
+                InitializeRailways();
+                if(Rules.Version==GameVersion.OriginalReference){InitializeOriginalPlan();ProcessOriginalPlan();}
+                else
+                {
+                    foreach(var item in Map.ShopSchedule)spawnSchedule.Add((item[0]*20+random.NextDouble()*item[1]*20,(int)item[2]));
+                    spawnSchedule.Sort((a,b)=>a.time.CompareTo(b.time));TrySpawnShop(0);if(spawnSchedule.Count>0)nextScheduledShop=1;
+                }
                 NextSpawn=Rules.HouseSpawnInterval;
                 LastAction=Map.Name+" / "+Rules.Version+" / original reference fidelity still under verification";
             }
@@ -111,11 +118,16 @@ namespace MotorwaysSim
         {
             if(!InBounds(cell))return Reject("Outside map");
             if(Failed||ScenarioRejected)return Reject("Episode ended or scenario rejected; reset to build");
+            if(!IsPlayable(cell))return Reject("Outside the currently expanded city");
+            if(tool==BuildTool.Motorway)return Reject("Choose two motorway endpoints");
             if(BuildingAt(cell)!=null)return Reject("Building parcel; use its driveway");
             if(Blocked[cell.X,cell.Y])return Reject("Unbuildable terrain");
             var old=Tile(cell);
             if(tool==BuildTool.Remove)
             {
+                bool removedMotorway=false;
+                foreach(var m in Motorways.Where(m=>m.Start==cell||m.End==cell).ToArray())removedMotorway|=RemoveMotorway(m.Id);
+                if(old==Infrastructure.None&&removedMotorway)return true;
                 var ring=RoundaboutAt(cell);
                 if(ring!=null)
                 {
@@ -133,6 +145,7 @@ namespace MotorwaysSim
             if(PendingRemoval[cell.X,cell.Y])return Reject("Committed trips are still using this road");
             if(!CanAffordOriginal(tool,cell))return false;
             if(tool==BuildTool.Roundabout){bool success=AddRoundabout(cell);if(success)ConsumeOriginal(tool,cell);return success;}
+            if(IsMotorwayEndpoint(cell,true)&&tool==BuildTool.TrafficLight)return Reject("Traffic lights cannot replace motorway endpoints");
             if(RoundaboutAt(cell)!=null)return Reject("Use one of the roundabout's external connections");
             Infrastructure target;int cost;
             if(tool==BuildTool.TrafficLight)
@@ -166,7 +179,7 @@ namespace MotorwaysSim
             Cell[] ring=offsets.Select(d=>center+d).ToArray();
             foreach(var c in ring.Concat(new[]{center}))
                 if(!InBounds(c)||Water[c.X,c.Y]||Blocked[c.X,c.Y]||BuildingAt(c)!=null||
-                    RoundaboutAt(c)!=null||PendingRemoval[c.X,c.Y]||Tile(c)==Infrastructure.TrafficLight)
+                    RoundaboutAt(c)!=null||IsMotorwayEndpoint(c,true)||PendingRemoval[c.X,c.Y]||Tile(c)==Infrastructure.TrafficLight)
                     return Reject("Roundabout needs its center and four neighboring land tiles clear of buildings and upgrades");
             if(Cars.Any(v=>v.Stage!=TripStage.Home&&v.Lanes.Any(l=>ring.Contains(l.Tile)||l.Tile==center)))
                 return Reject("Cars must finish their committed trips before this conversion");
@@ -190,6 +203,7 @@ namespace MotorwaysSim
         {
             if(!InBounds(from)||!InBounds(to)||from==to||Math.Abs(from.X-to.X)>1||Math.Abs(from.Y-to.Y)>1)return Reject("Connect neighboring tile centers");
             if(!CanTraverse(from)||!CanTraverse(to))return Reject("Build both ends of this connection first");
+            if(!CanConnectAcrossRail(from,to))return false;
             if(!ValidParcelLink(from,to))return Reject("Buildings connect only through their driveway");
             int d=Direction(from,to);
             if((Connections[from.X,from.Y]&(1<<d))!=0)return true;
@@ -206,7 +220,7 @@ namespace MotorwaysSim
             foreach(var pair in new[]{(a,b),(b,a)})
             {
                 var building=BuildingAt(pair.Item1);
-                if(building!=null&&(building.Access!=pair.Item1||pair.Item2!=building.Access+Directions[building.DrivewayDirection]))return false;
+                if(building!=null&&(!HasAccess(building,pair.Item1)||pair.Item2!=pair.Item1+Directions[AccessDirection(building,pair.Item1)]))return false;
             }
             return true;
         }
@@ -247,12 +261,13 @@ namespace MotorwaysSim
             for(int i=0;i<ticks&&!Failed&&!ScenarioRejected;i++)
             {
                 TickCount++;Time=TickCount*Rules.TickSeconds;
-                UpdateOriginalInventory();UpdateCity();UpdateDemand();DispatchDemand();UpdateSignals();UpdateVehicles();FinishRemovals();
+                UpdateOriginalInventory();UpdateCity();UpdateDestinationUpgrades();UpdateTrains();UpdateDemand();DispatchDemand();UpdateSignals();UpdateVehicles();FinishRemovals();
             }
         }
 
         void FinishRemovals()
         {
+            FinishMotorwayRemovals();
             var committed=new HashSet<Cell>();
             foreach(var v in Cars.Where(c=>c.Stage!=TripStage.Home))
             {
@@ -284,16 +299,22 @@ namespace MotorwaysSim
                 RoadCost=Rules.RoadCost,LightCost=Rules.LightCost,BridgeCost=Rules.BridgeCost,RoundaboutCost=Rules.RoundaboutCost,ConstructionGraceSeconds=Rules.ConstructionGraceSeconds,
                 FidelityStatus="Unverified reconstruction; not eligible as a certified exact-original baseline",
                 Objective=Rules.Version==GameVersion.Custom?"Keep city running first; less waiting and lower spending secondary. No scalar weights selected.":"Original trip score; fidelity incomplete",
-                ProvisionalDefaults="Shared lane/parking/spawning approximations remain. OriginalReference is NOT an exact replica: inventory upgrades, motorways, destination upgrades and full maps/expansion remain incomplete.",
+                ProvisionalDefaults="Shared lane/parking/spawning approximations remain. OriginalReference is NOT an exact replica: motorway geometry/edits, inventory weighting, destination upgrades, trains, spawning and exact traffic parity remain incomplete.",
                 Infrastructure=new int[count],Terrain=new int[count],BuildingColors=Enumerable.Repeat(-1,count).ToArray(),
                 BuildingKinds=new int[count],Demand=new int[count],Reservations=new int[count],Connections=new int[count],PendingRemovals=new int[count],
                 Vehicles=Cars.Select(v=>new VehicleState{Id=v.Id,HomeId=v.HomeId,ShopId=v.ShopId,Color=v.Color,Stage=v.Stage,ParkingSlot=v.ParkingSlot,
                     At=v.At,Next=v.Next,X=v.Position.X,Y=v.Position.Y,HeadingX=v.Heading.X,HeadingY=v.Heading.Y,Speed=v.Speed,Acceleration=v.Acceleration,
                     Waiting=v.Waiting,Progress=v.Progress,Obstacle=v.Obstacle,Route=v.Route.ToArray(),ReturnRoute=v.ReturnRoute.ToArray()}).ToArray(),
-                Buildings=Buildings.Select(b=>new BuildingState{Id=b.Id,Color=b.Color,Cell=b.Cell,Entrance=b.Entrance,Width=b.Width,Height=b.Height,
+                RandomAlgorithm=random.Algorithm,RandomDraws=random.Draws,
+                ScheduledSpawns=originalPlan.Select(p=>new ScheduledSpawnSnapshot{Time=p.Time,Color=p.Color,Grouping=p.Grouping,Preference=p.Preference,DemandMultiplier=p.DemandMultiplier,Attempts=p.Attempts}).ToArray(),
+                Buildings=Buildings.Select(b=>new BuildingState{CarparkId=b.CarparkId,DestinationSlot=b.DestinationSlot,SharedLot=b.SharedLot,IsStation=b.IsStation,Entrances=(Cell[])b.Entrances.Clone(),Platform=(Cell[])b.Platform.Clone(),EntranceDirections=(int[])b.EntranceDirections.Clone(),Layout=b.Layout,Upgraded=b.Upgraded,DemandCapacity=DestinationCapacity(b),UpgradeAt=double.IsPositiveInfinity(b.UpgradeAt)?(double?)null:b.UpgradeAt,PlannedDemandMultiplier=b.PlannedDemandMultiplier,Id=b.Id,Color=b.Color,Cell=b.Cell,Entrance=b.Entrance,Width=b.Width,Height=b.Height,
                     IsHouse=b.IsHouse,Demand=b.Demand,Reserved=b.Reserved,DrivewayDirection=b.DrivewayDirection,OvercrowdedFor=b.OvercrowdedFor,FeasibilityVerified=b.FeasibilityVerified,
                     FeasibleDemandInterval=double.IsInfinity(b.FeasibleDemandInterval)?(double?)null:b.FeasibleDemandInterval,OriginalDemandInterval=b.OriginalDemandInterval,Parking=b.Parking==null?new int[0]:(int[])b.Parking.Clone()}).ToArray(),
                 Signals=Signals.Values.Select(s=>new SignalSnapshot{Cell=s.Cell,ActivePair=s.ActivePair,Amber=s.Amber,Elapsed=s.Elapsed,Pairs=s.Pairs.ToArray()}).ToArray(),
+                PlayableXMin=PlayableBounds[0],PlayableYMin=PlayableBounds[1],PlayableXMax=PlayableBounds[2],PlayableYMax=PlayableBounds[3],
+                Trains=Trains.Select(t=>{var p=TrainPoint(t);return new TrainSnapshot{Id=t.Id,LineId=t.LineId,Direction=t.Direction,Stops=t.Stops,X=p.X,Y=p.Y,Speed=t.Speed,Wait=t.Wait,Distance=t.Distance};}).ToArray(),
+                RailLines=RailLines.Select(l=>new RailSnapshot{Id=l.Id,Loop=l.Loop,Cells=(Cell[])l.Cells.Clone()}).ToArray(),ClosedRailCrossings=railClosedUntil.Where(p=>p.Value>=Time).Select(p=>p.Key).ToArray(),
+                Motorways=Motorways.Select(m=>new MotorwaySnapshot{Id=m.Id,Number=m.Number,Start=m.Start,End=m.End,PendingRemoval=m.PendingRemoval}).ToArray(),
                 Roundabouts=Roundabouts.Select(r=>new RoundaboutSnapshot{Center=r.Center,Ring=(Cell[])r.Ring.Clone(),PendingRemoval=r.PendingRemoval}).ToArray(),
                 DisconnectedColorComponents=DisconnectedColorComponents(),MeanWaiting=Cars.Count==0?0:Cars.Average(c=>c.TotalWaiting)};
             for(int y=0;y<Height;y++)for(int x=0;x<Width;x++)

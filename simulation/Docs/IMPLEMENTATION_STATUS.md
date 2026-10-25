@@ -1,14 +1,42 @@
-# Current implementation status - 24 October 2026
+# Current implementation status — 25 October 2026
 
-The authoritative current status is [VERSIONS.md](VERSIONS.md). It supersedes the 22 October single-version snapshot.
+This is the current snapshot. [VERSIONS.md](VERSIONS.md) specifies the rule sets; [Reports/README.md](../Reports/README.md) indexes the supporting evidence. Earlier reports and the decision history describe their dated milestones and may use smaller test counts.
 
-- Two isolated selectable rule sets: OriginalReference (default, unfinished) and Custom.
-- Custom: roads 2, lights 5 additional, bridge water tiles 10, roundabouts 8; unlimited items, permanent spending, no motorways.
-- Custom: 30-second grace; supply-screen rejection, no demand cap to rescue a scenario. Staying alive first; waiting/cost secondary; learning method and color penalty out of scope.
-- Both run options: fixed map with varied events or varied maps/events; Los Angeles, Beijing and Tokyo cropped profiles.
-- Original target: limited material stock, road reuse, bridge reservations and city-configured weekly material choices. No custom price, grace or feasibility rejection.
-- Shared recovered car/road/parking/signal structures retain the approximations listed in VERSIONS.md. Original motorways, destination upgrades, complete map/expansion, exact spawning/resource accounting and live original parity tests remain unfinished.
+## Implemented
 
-Exact-original replication is the objective, not a completed result. The original target must not be described or evaluated as exact. All observations report exactReplicaValidated=false; requireExact reset requests are refused.
+| Area | Current behavior |
+| --- | --- |
+| Packaging | Separate Original and Custom apps, fixed rules per scene, one shared Unity-independent core |
+| Cities | Los Angeles, Beijing, Tokyo, Dar es Salaam and London; Tokyo retains all six color groups |
+| Original progression | Recovered playable bounds, expansion curves, starting offsets, demand ramps and schedule metadata |
+| Original materials | City starting stocks, partial weekly package choices, retirement and material reuse |
+| Motorways | Two-way links, vehicle paths, finite stock, retirement and endpoint editing retaining committed paths |
+| Destinations | Scheduled circle upgrades, age eligibility, doubled demand, capacity 6 to 9, three-bay single lots |
+| Shared lots | Two colors sharing nine bays and two entrances in four orientations |
+| London rail | Train movement/stops, four-cell station platforms, batch demand and crossing closures/release |
+| Original parking | Connected circulation/branch lanes, diagonal bay midpoint stops/headings, drive-through paths and release before lot exit |
+| Custom | Fixed working area, unlimited construction, permanent spending, prices 2/5 additional/10/8, 30-second grace and approximate rejection; no motorways or trains |
+| Headless | The same simulation files exposed through JSON requests and detached observations |
 
-Private research still references installed Steam build 25381668, App.dll SHA-256 76C9D9069D61160A5C20AFA62D33C0272173AB46682DB28214374E56B557C638. Installed files were only read. The original process and asset provenance remain in the local MotorwaysResearch directory.
+## Evidence
+
+- **31 shared suites** pass in .NET and Unity; ten map/version protocol runs and player startup checks have passed.
+- The RNG component matches **180 installed-assembly values** across five seeds. Full random call order and seeded-run equivalence are unverified.
+- All **53 ordered London rail cells**, loop flag and origin index match the installed topology component. This does not validate train movement timing.
+- Live London observation and selected LA/London footage informed visual and parking corrections. These are exploratory structural comparisons, not synchronized motion measurements.
+- An original London Classic journal is preserved privately. Its supported envelope is decoded; the full simulation object graph is not.
+
+## Accepted for now
+
+The user accepted the current parking entrance and concurrency approximations while work proceeds on other differences. Surface paths connect to entrance centers, access is conservatively serialized, and a trip retains its selected entrance for its return. These remain documented timing/capacity differences; they do not require another user decision.
+
+## Remaining replication work
+
+- Exact spawn placement, support-house logic, random draw ordering, seed initialization and fixed-point/process timing.
+- Full motorway/traffic geometry, merge/conflict/rerouting rules and queue behavior.
+- Weekly weighting/history, bridge/edit accounting and tunnels.
+- Exact station placement, train stopping/motion, batch demand and crossing timing.
+- Full original-journal graph import and controlled successive-state comparisons.
+- Broader presentation/input differences. Independent viewer drawings are not original game artwork or UI.
+
+`exactReplicaValidated` remains false, and `requireExact:true` refuses a reset. Internal tests show reconstruction consistency, not original-game equivalence. Numeric source hashes are in [REFERENCE_DATA.json](REFERENCE_DATA.json).

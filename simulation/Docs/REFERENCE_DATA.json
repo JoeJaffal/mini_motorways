@@ -1,0 +1,18 @@
+{
+  "source": "User-owned installed game; numeric data only",
+  "assemblySha256": "76c9d9069d61160a5c20afa62d33c0272173ab46682db28214374e56b557c638",
+  "bundles": {
+    "losangeles": "94565aa0a045ef6d53b8f5469345a46c0a01156e4d6322847be2575609c789e0",
+    "beijing": "ce961e95a0d554563d9b80e88f5cf91a5f8476f844ee01900eb4dc51919c8e81",
+    "tokyo": "405469ca35ceb39457e8917b1b01c9e0f857aec43b52b73dc4ac95e1c42cd1f8",
+    "daressalaam": "1febfd7edf6fd0e603e8afbd027245288a49c3544f0012addb939ec125152e3d",
+    "london": "298c5dd1f68d39e4c4b8d8c85503f991a1f126b2945254b6489b25c02c489c06"
+  },
+  "canvas": {
+    "width": 50,
+    "height": 30,
+    "worldXMin": -25,
+    "worldYMax": 14
+  },
+  "notes": "Canvas contains the final playable area for these five profiles; use zoom bounds. Train geometry, station placement and full spawn behavior remain unverified. Rail topology, train origins, station zones and tuning values are exported numerically. Plan chunks retain grouping, ordering, variability and demand multipliers."
+}

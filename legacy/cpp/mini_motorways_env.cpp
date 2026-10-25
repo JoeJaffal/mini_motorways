@@ -8,13 +8,7 @@ MiniMotorwaysEnvironment::MiniMotorwaysEnvironment()
       position_dist_x(0, GRID_WIDTH - 1), position_dist_y(0, GRID_HEIGHT - 1),
       spawn_dist(0.0f, 1.0f) {
     
-    // Initialize resources
-    resources["roads"] = 20;
-    resources["motorways"] = 3;
-    resources["bridges"] = 2;
-    resources["roundabouts"] = 1;
-    resources["traffic_lights"] = 2;
-    resources["upgrades"] = 1;
+    construction_cost = 0;
     
     renderer = std::make_unique<Renderer>();
     pathfinder = std::make_unique<PathFinder>();
@@ -32,13 +26,14 @@ bool MiniMotorwaysEnvironment::initialize() {
     }
     
     // Set OpenGL version (3.3 Core)
+    glfwWindowHint(GLFW_SAMPLES, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // Required on Mac
     
     // Create window
-    window = glfwCreateWindow(1000, 600, "Mini Motorways RL", nullptr, nullptr);
+    window = glfwCreateWindow(1200, 800, "Mini Motorways RL", nullptr, nullptr);
     if (!window) {
         std::cerr << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
@@ -60,7 +55,8 @@ bool MiniMotorwaysEnvironment::initialize() {
     }
     
     // Set viewport
-    glViewport(0, 0, 1000, 600);
+    glViewport(0, 0, 1200, 800);
+    glEnable(GL_MULTISAMPLE);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
@@ -78,13 +74,7 @@ std::vector<float> MiniMotorwaysEnvironment::reset() {
     game_over = false;
     congestion_penalty = 0;
     
-    // Reset resources
-    resources["roads"] = 20;
-    resources["motorways"] = 3;
-    resources["bridges"] = 2;
-    resources["roundabouts"] = 1;
-    resources["traffic_lights"] = 2;
-    resources["upgrades"] = 1;
+    construction_cost = 0;
     
     // Spawn initial buildings
     spawn_initial_buildings();
@@ -100,7 +90,7 @@ std::vector<float> MiniMotorwaysEnvironment::step(const std::vector<int>& action
     current_step++;
     
     // Execute action
-    if (action[0] < 6) {  // Infrastructure action
+    if (action[0] >= 0 && action[0] < 5) {  // Infrastructure action
         execute_action(action[0], action[1], action[2]);
     }
     
@@ -117,70 +107,32 @@ std::vector<float> MiniMotorwaysEnvironment::step(const std::vector<int>& action
 }
 
 bool MiniMotorwaysEnvironment::execute_action(int action_type, int x, int y) {
-    if (!is_valid_position(Position(x, y))) {
-        return false;
-    }
-    
+    if (!is_valid_position(Position(x, y))) return false;
+    TileType tile;
+    int cost;
     switch (action_type) {
-        case 0: // Place road
-            if (resources["roads"] > 0 && grid[y][x] == TileType::EMPTY) {
-                grid[y][x] = TileType::ROAD;
-                resources["roads"]--;
-                return true;
-            }
-            break;
-            
-        case 1: // Place motorway
-            if (resources["motorways"] > 0 && grid[y][x] == TileType::EMPTY) {
-                grid[y][x] = TileType::MOTORWAY;
-                resources["motorways"]--;
-                return true;
-            }
-            break;
-            
-        case 2: // Place bridge
-            if (resources["bridges"] > 0 && grid[y][x] == TileType::EMPTY) {
-                grid[y][x] = TileType::BRIDGE;
-                resources["bridges"]--;
-                return true;
-            }
-            break;
-            
-        case 3: // Place roundabout
-            if (resources["roundabouts"] > 0 && grid[y][x] == TileType::EMPTY) {
-                grid[y][x] = TileType::ROUNDABOUT;
-                resources["roundabouts"]--;
-                return true;
-            }
-            break;
-            
-        case 4: // Place traffic light
-            if (resources["traffic_lights"] > 0 && grid[y][x] == TileType::ROAD) {
-                grid[y][x] = TileType::TRAFFIC_LIGHT;
-                resources["traffic_lights"]--;
-                return true;
-            }
-            break;
-            
-        case 5: // Remove infrastructure
-            if (grid[y][x] == TileType::ROAD || grid[y][x] == TileType::MOTORWAY) {
-                TileType removed = grid[y][x];
-                grid[y][x] = TileType::EMPTY;
-                
-                // Return resource
-                if (removed == TileType::ROAD) {
-                    resources["roads"]++;
-                } else if (removed == TileType::MOTORWAY) {
-                    resources["motorways"]++;
-                }
-                return true;
-            }
-            break;
+        case 0: tile = TileType::ROAD; cost = 1; break;
+        case 1: tile = TileType::BRIDGE; cost = 10; break;
+        case 2: tile = TileType::ROUNDABOUT; cost = 8; break;
+        case 3: tile = TileType::TRAFFIC_LIGHT; cost = 5; break;
+        case 4:
+            if (grid[y][x] != TileType::ROAD && grid[y][x] != TileType::BRIDGE &&
+                grid[y][x] != TileType::ROUNDABOUT && grid[y][x] != TileType::TRAFFIC_LIGHT)
+                return false;
+            grid[y][x] = TileType::EMPTY;
+            // Spending is cumulative; demolition does not refund previous costs.
+            for (auto& car : cars) car->path.clear();
+            return true;
+        default: return false;
     }
-    
-    return false;
+    // A light costs 5 additional points and requires an existing road.
+    const TileType required = action_type == 3 ? TileType::ROAD : TileType::EMPTY;
+    if (grid[y][x] != required) return false;
+    grid[y][x] = tile;
+    construction_cost += cost;
+    for (auto& car : cars) car->path.clear();
+    return true;
 }
-
 void MiniMotorwaysEnvironment::simulate_traffic() {
     std::vector<std::shared_ptr<Car>> completed_cars;
     
@@ -291,7 +243,7 @@ bool MiniMotorwaysEnvironment::can_move_to(const Position& pos) const {
     if (!is_valid_position(pos)) return false;
     
     TileType tile = grid[pos.y][pos.x];
-    return tile == TileType::ROAD || tile == TileType::MOTORWAY || 
+    return tile == TileType::ROAD ||
            tile == TileType::BRIDGE || tile == TileType::ROUNDABOUT ||
            tile == TileType::TRAFFIC_LIGHT || tile == TileType::HOUSE || 
            tile == TileType::BUSINESS;
@@ -306,13 +258,6 @@ bool MiniMotorwaysEnvironment::check_game_over() {
     
     if (stuck_cars > 10) return true;
     
-    // Check if out of resources with too many cars
-    int total_resources = 0;
-    for (const auto& [key, value] : resources) {
-        total_resources += value;
-    }
-    
-    if (total_resources == 0 && cars.size() > 15) return true;
     if (current_step >= MAX_STEPS) return true;
     
     return false;
@@ -324,7 +269,7 @@ std::vector<float> MiniMotorwaysEnvironment::get_observation() const {
     // Flatten grid (20x20 = 400 values)
     for (int y = 0; y < GRID_HEIGHT; y++) {
         for (int x = 0; x < GRID_WIDTH; x++) {
-            observation.push_back(static_cast<float>(static_cast<int>(grid[y][x])) / 7.0f);
+            observation.push_back(static_cast<float>(static_cast<int>(grid[y][x])) / 6.0f);
         }
     }
     
@@ -343,14 +288,9 @@ std::vector<float> MiniMotorwaysEnvironment::get_observation() const {
         }
     }
     
-    // Resources (6 values)
-    observation.push_back(resources.at("roads") / 20.0f);
-    observation.push_back(resources.at("motorways") / 3.0f);
-    observation.push_back(resources.at("bridges") / 2.0f);
-    observation.push_back(resources.at("roundabouts") / 1.0f);
-    observation.push_back(resources.at("traffic_lights") / 2.0f);
-    observation.push_back(resources.at("upgrades") / 1.0f);
-    
+    // Spending (1 value, scaled but not capped).
+    observation.push_back(construction_cost / 100.0f);
+
     // Game stats (4 values)
     observation.push_back(score / 100.0f);  // Normalize score
     observation.push_back(cars.size() / 50.0f);  // Normalize car count
@@ -363,11 +303,17 @@ std::vector<float> MiniMotorwaysEnvironment::get_observation() const {
 void MiniMotorwaysEnvironment::render() {
     if (!window) return;
     
+    int framebuffer_width, framebuffer_height;
+    glfwGetFramebufferSize(window, &framebuffer_width, &framebuffer_height);
+    glViewport(0, 0, framebuffer_width, framebuffer_height);
     glClear(GL_COLOR_BUFFER_BIT);
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     
     renderer->render_frame(*this);
     
+    const std::string title = "Mini Motorways | Score: " + std::to_string(score) +
+        " | Construction spent: " + std::to_string(construction_cost) + " points";
+    glfwSetWindowTitle(window, title.c_str());
     glfwSwapBuffers(window);
     glfwPollEvents();
 }
@@ -434,7 +380,7 @@ std::vector<Position> PathFinder::find_path(const Position& start, const Positio
             
             // Check if tile is passable
             TileType tile = grid[neighbor.y][neighbor.x];
-            bool passable = (tile == TileType::ROAD || tile == TileType::MOTORWAY || 
+            bool passable = (tile == TileType::ROAD ||
                            tile == TileType::BRIDGE || tile == TileType::ROUNDABOUT ||
                            tile == TileType::TRAFFIC_LIGHT || tile == TileType::HOUSE || 
                            tile == TileType::BUSINESS);

@@ -1,6 +1,6 @@
 > Historical C++ playground documentation, preserved when the Unity simulation was added.
 > Descriptions, prices, rewards and performance figures here are not the current Unity specification or newly verified measurements.
-> Use the [current README](../README.md) for active decisions.
+> Source code now lives in [legacy/cpp/](../legacy/cpp/). Use its README for verified build commands and the [current README](../README.md) for active simulation decisions.
 
 # Mini Motorways RL
 
