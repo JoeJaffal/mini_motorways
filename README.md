@@ -74,7 +74,7 @@ The self-test currently runs **37 shared suites**. The Python check exercises bo
 
 ## Training handoff: OriginalReference
 
-This repository supplies the playground. The model developer supplies the training wrapper, policy and optimizer. No model has been trained here, and there is currently no `train` command. The [readiness audit](simulation/Reports/training-readiness.md) passed 60 bounded episodes/replays across all five maps; it does not certify equivalence to the commercial game.
+Branch `main` supplies the playground. Branch `mohammad` adds a separate experimental CPU training project: see [training setup and commands](training/README.md). Its learner uses normal OriginalReference gameplay actions; the simulator core is unchanged. The handoff below describes the playground/learner boundary. The [readiness audit](simulation/Reports/training-readiness.md) passed 60 bounded episodes/replays across all five maps; it does not certify equivalence to the commercial game.
 
 ### 1. Install and verify the playground
 
