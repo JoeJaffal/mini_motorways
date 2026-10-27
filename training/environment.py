@@ -379,5 +379,3 @@ class TrafficEnv(gym.Env):
 
     def close(self):
         self.host.close()
-
-
