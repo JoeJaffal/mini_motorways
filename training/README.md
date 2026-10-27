@@ -8,6 +8,11 @@ The objective is 1,000 completed trips on Los Angeles in OriginalReference.
 This is a research target, not a claimed result or a verified simulator capacity.
 Transfer to the commercial game is untested.
 
+**Start here:** [repeated-seed training, live output and best-game playback](QUICKSTART.md).
+Defaults now use 100 consecutive games per seed, then advance to the next seed.
+All ordinary tools and the trip-only reward remain unchanged. The first-run
+report describes the earlier random-seed experiment, not this new default.
+
 ## Install and check
 
 Use Python 3.12 and the .NET 8 SDK. From the repository root in PowerShell:
@@ -40,7 +45,7 @@ Each run has a new directory under `output/training/`, containing configuration,
 exact training source snapshots, initial/latest/final checkpoints, per-episode
 metrics, optimization CSV, progress status and a final evaluation summary.
 Evaluation reloads the final checkpoint. Interrupted learning saves the current
-model and then evaluates it. Crashes/timeouts raise integration errors rather
+model and skips final evaluation. Crashes/timeouts raise integration errors rather
 than being scored as game failures.
 
 To continue an explicitly chosen checkpoint in a new run directory:

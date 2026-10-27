@@ -34,6 +34,21 @@ static class Program
 
     public static void Main(string[] args)
     {
+        int replayArg=Array.IndexOf(args,"--verify-replay");
+        if(replayArg>=0)
+        {
+            try
+            {
+                if(replayArg+1>=args.Length)throw new ArgumentException("Missing replay file");
+                var recording=JsonSerializer.Deserialize<AiReplayRecording>(System.IO.File.ReadAllText(args[replayArg+1]),Json);
+                var replay=new AiReplaySession(recording);
+                while(!replay.Complete)replay.AdvanceTick();
+                Console.WriteLine(JsonSerializer.Serialize(new {result="PASS",recording.seed,score=replay.World.TripsCompleted,
+                    seconds=replay.World.Time,commands=replay.CompletedCommands},Json));
+            }
+            catch(Exception error){Console.Error.WriteLine(error.Message);Environment.ExitCode=1;}
+            return;
+        }
         if(Array.IndexOf(args,"--self-test")>=0){Console.WriteLine(SimulationChecks.Run());return;}
         if(Array.IndexOf(args,"--evaluate-crossings")>=0)
         {

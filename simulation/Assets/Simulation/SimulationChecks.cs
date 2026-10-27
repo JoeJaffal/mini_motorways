@@ -11,6 +11,37 @@ namespace MotorwaysSim
         {
             int count=0;
             void Test(string name,Action body){body();count++;}
+            Test("AI command replay reproduces normal-play transitions",()=>{
+                var world=new TrafficWorld(42,false,Rules.ForVersion(GameVersion.OriginalReference));
+                world.Reset(42,ScenarioKind.LosAngeles);
+                Cell built=new Cell(-1,-1);
+                for(int y=0;y<TrafficWorld.Height&&built.X<0;y++)for(int x=0;x<TrafficWorld.Width;x++)
+                    if(world.Build(BuildTool.Road,new Cell(x,y))){built=new Cell(x,y);break;}
+                Check(built.X>=0,"normal stock can build a road");world.Step(20);
+                var first=new AiReplayAction{command="build",tool="Road",x=built.X,y=built.Y,ticks=20,accepted=true,afterTrips=world.TripsCompleted,afterTime=world.Time};
+                world.Step(20);
+                var wait=new AiReplayAction{command="wait",ticks=20,accepted=true,afterTrips=world.TripsCompleted,afterTime=world.Time};
+                Check(!world.DrawRoad(new Cell(-1,-1),new Cell(0,0)),"invalid stroke rejected");world.Step(20);
+                var invalid=new AiReplayAction{command="draw",x=-1,y=-1,toX=0,toY=0,ticks=20,accepted=false,afterTrips=world.TripsCompleted,afterTime=world.Time};
+                var recording=new AiReplayRecording{schemaVersion=1,version="OriginalReference",scenario="LosAngeles",variation="SameMap",seed=42,
+                    score=world.TripsCompleted,duration=world.Time,actions=new[]{first,wait,invalid}};
+                var session=new AiReplaySession(recording);while(!session.Complete)session.AdvanceTick();
+                Check(session.World.Inventory.SequenceEqual(world.Inventory)&&session.World.Observe().Connections.SequenceEqual(world.Observe().Connections),"replay materials and connections match");
+                Check(session.CompletedCommands==3,"commands completed including wait and rejection");
+                session.AdvanceTick();Check(session.CompletedCommands==3,"completed replay does not advance");
+                first.afterTrips++;bool rejected=false;
+                try{session=new AiReplaySession(recording);while(!session.Complete)session.AdvanceTick();}catch(InvalidOperationException){rejected=true;}
+                Check(rejected,"tampered outcome detected");
+            });
+            Test("AI replay refuses helpers and wrong versions",()=>{
+                var recording=new AiReplayRecording{schemaVersion=1,version="OriginalReference",scenario="LosAngeles",variation="SameMap",seed=42,
+                    actions=new[]{new AiReplayAction{command="reference",ticks=20,accepted=true}}};
+                bool rejected=false;
+                try{new AiReplaySession(recording).AdvanceTick();}catch(ArgumentException){rejected=true;}
+                Check(rejected,"privileged command refused");recording.version="Custom";rejected=false;
+                try{new AiReplaySession(recording);}catch(ArgumentException){rejected=true;}
+                Check(rejected,"version boundary enforced");
+            });
             Test("terrain, fixed size, original clock",()=>{
                 var w=new TrafficWorld(42,false,LegacyFixtureRules());Check(TrafficWorld.Width==50&&TrafficWorld.Height==30,"50 x 30");
                 Check(w.Water.Cast<bool>().Count(x=>x)>100,"LA water mask");Check(w.Buildings.Count>=2,"feasible initial shop and household");

@@ -82,12 +82,17 @@ class TrafficEnv(gym.Env):
     metadata = {'render_modes': []}
 
     def __init__(self, dotnet='dotnet', city='LosAngeles', seconds=3600,
-                 seeds=range(1000, 1100)):
+                 seeds=range(1000, 1100), episodes_per_seed=100,
+                 seed_schedule='blocks', record_replays=False):
         super().__init__()
         if city not in MAPS or seconds < 1 or not tuple(seeds):
             raise ValueError('Unknown city, empty seeds or nonpositive duration')
         self.host = Host(dotnet)
         self.city, self.seconds, self.seeds = city, seconds, tuple(seeds)
+        if episodes_per_seed < 1 or seed_schedule not in ('blocks', 'random'):
+            raise ValueError('Invalid seed schedule')
+        self.episodes_per_seed, self.seed_schedule = episodes_per_seed, seed_schedule
+        self.record_replays, self.episodes_started = record_replays, 0
         self.action_space = gym.spaces.Discrete(CELLS + len(TOOLS))
         self.observation_space = gym.spaces.Dict({
             'grid': gym.spaces.Box(0, 1, (CHANNELS, 30, 50), np.float32),
@@ -97,15 +102,27 @@ class TrafficEnv(gym.Env):
 
     def reset(self, *, seed=None, options=None):
         super().reset(seed=seed)
+        if seed is not None:
+            self.episodes_started = 0
         self.scenario_seed = (options or {}).get('scenario_seed')
         if self.scenario_seed is None:
-            self.scenario_seed = int(self.np_random.choice(self.seeds))
+            if self.seed_schedule == 'blocks':
+                self.scenario_seed = self.seeds[(self.episodes_started // self.episodes_per_seed) % len(self.seeds)]
+            else:
+                self.scenario_seed = int(self.np_random.choice(self.seeds))
+            self.seed_attempt = self.episodes_started % self.episodes_per_seed + 1
+            self.seed_cycle = self.episodes_started // (self.episodes_per_seed * len(self.seeds)) + 1
+            self.episodes_started += 1
+        else:
+            self.seed_attempt, self.seed_cycle = 1, 1
         result = self.host.call(command='reset', version='OriginalReference',
                                 scenario=self.city, seed=self.scenario_seed)
         self.raw = result['observation']
         if result['terminated'] or self.raw['version'] != 'OriginalReference' or self.raw['unlimitedConstruction']:
             raise RuntimeError('Unexpected reset or rules')
         self.done, self.rejected, self.commands = False, 0, 0
+        self.episode_actions, self.action_counts = [], {}
+        self.wait_sum, self.wait_samples, self.max_wait = 0.0, 0, 0.0
         self.phase, self.tool, self.first, self.old = 0, 0, None, None
         self._refresh()
         return self.encode(), self.info()
@@ -317,7 +334,19 @@ class TrafficEnv(gym.Env):
     def info(self):
         return dict(trips=self.raw['tripsCompleted'], seconds=self.raw['time'],
                     rejected_actions=self.rejected, commands=self.commands,
-                    scenario_seed=self.scenario_seed, city=self.city)
+                    scenario_seed=self.scenario_seed, city=self.city,
+                    seed_attempt=self.seed_attempt, seed_cycle=self.seed_cycle,
+                    mean_car_wait=self.wait_sum / max(1, self.wait_samples),
+                    max_car_wait=self.max_wait, action_counts=dict(self.action_counts))
+
+    def export_replay(self):
+        if not self.record_replays or not self.episode_actions:
+            return None
+        return dict(schemaVersion=1, version='OriginalReference', scenario=self.city,
+                    seed=self.scenario_seed, variation='SameMap', score=self.raw['tripsCompleted'],
+                    duration=self.raw['time'], terminated=bool(self.raw['failed']),
+                    truncated=not bool(self.raw['failed']), partial=not self.done,
+                    actions=self.episode_actions)
 
     def _advance(self, request=None):
         accepted = True
@@ -329,6 +358,17 @@ class TrafficEnv(gym.Env):
         result = self.host.call(command='step', ticks=20)
         self.raw = result['observation']
         self.commands += 1
+        family = 'wait' if request is None else request.get('tool', request['command'])
+        self.action_counts[family] = self.action_counts.get(family, 0) + 1
+        waits = [v['waiting'] for v in self.raw['vehicles']]
+        self.wait_sum += sum(waits)
+        self.wait_samples += len(waits)
+        self.max_wait = max([self.max_wait] + waits)
+        if self.record_replays:
+            event = dict(request or {'command': 'wait'})
+            event.update(ticks=20, accepted=accepted, afterTrips=self.raw['tripsCompleted'],
+                         afterTime=self.raw['time'])
+            self.episode_actions.append(event)
         terminated = bool(result['terminated'])
         truncated = not terminated and self.raw['time'] >= self.seconds-1e-6
         self.done = terminated or truncated
@@ -336,6 +376,8 @@ class TrafficEnv(gym.Env):
         self._refresh()
         info = self.info()
         info.update(command_completed=True, accepted=accepted, request=request)
+        if self.done and self.record_replays:
+            info['episode_replay'] = self.export_replay()
         return self.encode(), float(self.raw['tripsCompleted']-before), terminated, truncated, info
 
     def step(self, action):

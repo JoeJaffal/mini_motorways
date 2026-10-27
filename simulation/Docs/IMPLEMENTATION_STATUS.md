@@ -1,4 +1,4 @@
-# Current implementation status — 26 October 2026
+# Current implementation status — 28 October 2026
 
 This is the current snapshot. [VERSIONS.md](VERSIONS.md) specifies the rule sets; [Reports/README.md](../Reports/README.md) indexes the supporting evidence. Earlier reports and the decision history describe their dated milestones and may use smaller test counts.
 
@@ -17,6 +17,7 @@ This is the current snapshot. [VERSIONS.md](VERSIONS.md) specifies the rule sets
 | Original parking | Connected circulation/branch lanes, diagonal bay midpoint stops/headings, drive-through paths and release before lot exit |
 | Custom | Fixed working area, unlimited construction, permanent spending, prices 2/5 additional/10/8, 30-second grace and approximate rejection; no motorways or trains |
 | Headless | The same simulation files exposed through JSON requests and detached observations |
+| AI replay (`mohammad` branch) | Exact ordinary-command recordings, per-command outcome validation, read-only Original player playback and final-map inspection; no gameplay rule changes |
 | Driveway connections | Building a road at a visible driveway end automatically attaches the parcel; ordinary adjacent roads still require a drawn link |
 | House driveway editing | Draw outward from a house with the Road tool to choose a cardinal or diagonal exit; invalid terrain and occupied parcels are rejected |
 | Roundabout conversion | Placement accepts moving traffic; committed lane paths can clear while subsequent routes use the circle |
@@ -24,7 +25,7 @@ This is the current snapshot. [VERSIONS.md](VERSIONS.md) specifies the rule sets
 
 ## Evidence
 
-- **37 shared suites** pass in .NET and Unity, including circular geometry, six-car roundabout conversion and a crowded crossing regression. Both Windows apps were rebuilt; proportions were inspected in the Custom player using their shared renderer. Ten map/version protocol runs pass. [Investigation](../Reports/traffic-and-scale-investigation.md) documents local reference research and controlled before/after results.
+- **39 shared suites** pass in .NET and Unity, including two AI replay checks added on `mohammad`. The Original player was rebuilt for replay support; earlier Original/Custom builds and geometry checks are documented in the [investigation](../Reports/traffic-and-scale-investigation.md). These checks show internal consistency, not original-game parity.
 - The RNG component matches **180 installed-assembly values** across five seeds. Full random call order and seeded-run equivalence are unverified.
 - All **53 ordered London rail cells**, loop flag and origin index match the installed topology component. This does not validate train movement timing.
 - Live London observation and selected LA/London footage informed visual and parking corrections. These are exploratory structural comparisons, not synchronized motion measurements.

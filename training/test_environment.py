@@ -4,14 +4,17 @@ from collections import deque
 import copy
 import hashlib
 import json
+from pathlib import Path
+import subprocess
 import sys
+import tempfile
 import unittest
 from unittest.mock import patch
 
 import numpy as np
 from gymnasium.utils.env_checker import check_env
 
-from environment import TrafficEnv, CELLS, MAPS, DIRS
+from environment import TrafficEnv, CELLS, MAPS, DIRS, ROOT
 
 DOTNET = 'dotnet'
 
@@ -121,6 +124,7 @@ class EnvironmentChecks(unittest.TestCase):
 
     def test_normal_roads_and_positive_reward(self):
         env = self.env
+        env.record_replays = True
         # Scripted diagnostic route, never used by the training policy.
         free = {tuple((int(k%50), int(k//50))) for k in np.flatnonzero(env.land)}
         best = None
@@ -162,6 +166,14 @@ class EnvironmentChecks(unittest.TestCase):
             total += result[1]
         self.assertGreater(total, 0)
         self.assertEqual(total, env.raw['tripsCompleted'])
+        # Verify a productive recording, not only zero-trip waits/invalid moves.
+        with tempfile.TemporaryDirectory(dir=ROOT/'tmp') as directory:
+            replay = Path(directory)/'positive-game.json'
+            replay.write_text(json.dumps(env.export_replay()))
+            result = subprocess.run([DOTNET,str(ROOT/'simulation/Headless/bin/Debug/net8.0/TrafficHost.dll'),
+                                     '--verify-replay',str(replay)],capture_output=True,text=True,timeout=30)
+            self.assertEqual(result.returncode,0,result.stderr)
+            self.assertEqual(json.loads(result.stdout)['score'],total)
 
     def test_all_maps_replay(self):
         for city in MAPS:
