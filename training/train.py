@@ -11,6 +11,7 @@ import torch
 from torch import nn
 from sb3_contrib import MaskablePPO
 from progress import BudgetCallback
+from parallel import make_vector
 from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.torch_layers import BaseFeaturesExtractor
 from stable_baselines3.common.logger import configure
@@ -62,6 +63,7 @@ def main():
     parser.add_argument('--steps', type=int, default=10_000_000)
     parser.add_argument('--episode-seconds', type=int, default=3600)
     parser.add_argument('--threads', type=int, default=2)
+    parser.add_argument('--workers', type=int, choices=[1,2,4], default=1)
     parser.add_argument('--seed', type=int, default=42)
     parser.add_argument('--output', type=Path)
     parser.add_argument('--resume', type=Path)
@@ -96,22 +98,22 @@ def main():
                   created_utc=datetime.now(timezone.utc).isoformat(), arguments={k: str(v) if isinstance(v, Path) else v for k,v in vars(args).items()},
                   packages={name: importlib.metadata.version(name) for name in
                             ['torch', 'numpy', 'gymnasium', 'stable-baselines3', 'sb3-contrib']},
-                  hyperparameters=dict(n_steps=256, batch_size=64, n_epochs=4, gamma=.999,
+                  workers=args.workers, aggregate_rollout_size=256,
+                  hyperparameters=dict(n_steps=256//args.workers, batch_size=64, n_epochs=4, gamma=.999,
                                        learning_rate=.0003, ent_coef=.01, net_arch=[64]))
     (output/'config.json').write_text(json.dumps(config, indent=2)+'\n')
     # Preserve exact source even before a commit, alongside the revision metadata.
-    for name in ['environment.py', 'train.py', 'progress.py']:
+    for name in ['environment.py', 'train.py', 'progress.py','parallel.py']:
         (output/name).write_text((Path(__file__).parent/name).read_text())
-    env = Monitor(TrafficEnv(dotnet=args.dotnet, seconds=args.episode_seconds,
+    env = make_vector(args.workers, output=output, dotnet=args.dotnet, seconds=args.episode_seconds,
                             seeds=training_seeds, episodes_per_seed=args.episodes_per_seed,
-                            seed_schedule=args.seed_schedule, record_replays=True), str(output/'monitor.csv'),
-                  info_keywords=('trips', 'seconds', 'rejected_actions'))
+                            seed_schedule=args.seed_schedule, record_replays=True)
     try:
         if args.resume:
             previous_config = json.loads((args.resume.parent/'config.json').read_text())
             if previous_config['schema'] != SCHEMA or previous_config['arguments']['episode_seconds'] != args.episode_seconds:
                 raise RuntimeError('Resume schema or episode duration mismatch')
-            model = MaskablePPO.load(args.resume, env=env, device='cpu')
+            model = MaskablePPO.load(args.resume, env=env, device='cpu',n_steps=256//args.workers)
         else:
             model = MaskablePPO('MultiInputPolicy', env, device='cpu', seed=args.seed, verbose=0,
                                 policy_kwargs=dict(features_extractor_class=GridEncoder, net_arch=[64], normalize_images=False),
@@ -120,6 +122,7 @@ def main():
         model.save(output/'initial')
         initial_parameters = torch.cat([p.detach().flatten().cpu() for p in model.policy.parameters()]).clone()
         print(f'RUN DIRECTORY | {output}',flush=True)
+        print(f'WORKERS | {args.workers} simultaneous games | shared model | 256 aggregate selections per rollout',flush=True)
         print(f'SCHEDULE | {args.episodes_per_seed} consecutive games per seed | '
               f'{training_seeds.start} through {training_seeds.stop-1} | {args.seed_schedule}',flush=True)
         print('EVALUATION | checking starting policy on reserved seeds before learner timer starts',flush=True)
@@ -134,6 +137,7 @@ def main():
         except KeyboardInterrupt:
             interrupted = True
             print('STOP REQUESTED | saving current policy; skipping final evaluation',flush=True)
+            if hasattr(env,'wait_pending'):env.wait_pending()
             callback.on_training_end()
         elapsed = time.perf_counter()-started
         model.save(output/'final')
@@ -154,7 +158,7 @@ def main():
                        policy_steps_per_second=model.num_timesteps/elapsed,
                        commands_per_second=callback.commands/elapsed,
                        best_training_score=callback.best, before=before, after=after, deterministic_after=greedy,
-                       seed_schedule=args.seed_schedule, episodes_per_seed=args.episodes_per_seed,
+                       workers=args.workers,seed_schedule=args.seed_schedule, episodes_per_seed=args.episodes_per_seed,
                        best_replay=str(output/'best-game.json') if (output/'best-game.json').exists() else None,
                        evaluation_skipped=interrupted, target_score=1000,
                        target_met=any(r['trips'] >= 1000 for r in after+greedy))

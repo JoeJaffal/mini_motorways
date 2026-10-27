@@ -40,6 +40,9 @@ its simulator interaction and optimization; setup and evaluation are separate.
 The timer is checked at policy decisions, so an in-progress simulator request
 (30-second timeout), optimizer update or checkpoint write can slightly overrun it.
 Defaults use two PyTorch CPU threads and one persistent headless host process.
+`--workers 2` or `--workers 4` runs parallel hosts with one shared model; the
+PowerShell helper exposes the same option as `-Workers`. See the quickstart for
+the measured comparison and a single-seed resume command.
 
 Each run has a new directory under `output/training/`, containing configuration,
 exact training source snapshots, initial/latest/final checkpoints, per-episode

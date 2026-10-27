@@ -40,6 +40,7 @@ class BudgetCallback(BaseCallback):
         self.recent = defaultdict(lambda: deque(maxlen=20))
         self.best_rank, self.seed_best_rank = (-1, -1, 0), {}
         self.current_seed = None
+        self.worker_seeds, self.worker_status = {}, {}
 
     def _on_training_start(self):
         self.started = self.last_print = self.last_save = time.perf_counter()
@@ -54,6 +55,7 @@ class BudgetCallback(BaseCallback):
         seed = result['scenario_seed']
         recording = dict(recording, source='training', simulatorCommit=self.metadata.get('simulator_commit', ''),
                          policySchema=self.metadata.get('schema', ''), policySteps=self.num_timesteps,
+                         worker=info.get('worker',0),
                          episode=self.episodes+int(bool(recording.get('partial'))),
                          ranking='highest trips, then longest survival, then fewest rejected actions')
         if rank > self.seed_best_rank.get(seed, (-1, -1, 0)):
@@ -84,19 +86,24 @@ class BudgetCallback(BaseCallback):
                       seed_best_score=max(stats, default=0), current_score=info.get('trips',0),
                       current_game_seconds=info.get('seconds',0), mean_car_wait=info.get('mean_car_wait',0),
                       max_car_wait=info.get('max_car_wait',0), finished=finished)
+        status['workers']=list(self.worker_status.values())
         atomic_json(self.output/'status.json', status)
         return status
 
     def _on_step(self):
         now = time.perf_counter()
         current = {}
-        for info, done in zip(self.locals['infos'], self.locals['dones']):
+        for worker,(info, done) in enumerate(zip(self.locals['infos'], self.locals['dones'])):
+            info=dict(info,worker=worker)
             current = info
             seed = info['scenario_seed']
-            if self.current_seed != seed:
-                print(f'SEED {seed} | block attempt {info["seed_attempt"]}/{self.episodes_per_seed} | '
+            self.worker_status[worker]=dict(worker=worker,seed=seed,attempt=info['seed_attempt'],
+                                           score=info['trips'],game_seconds=info['seconds'])
+            if self.worker_seeds.get(worker) != seed:
+                print(f'WORKER {worker} | SEED {seed} | block attempt {info["seed_attempt"]}/{self.episodes_per_seed} | '
                       f'cycle {info["seed_cycle"]} | model weights continue', flush=True)
-                self.current_seed = seed
+                self.worker_seeds[worker]=seed
+            self.current_seed = seed
             self.commands += int(info.get('command_completed', False))
             if done:
                 self.episodes += 1
@@ -105,6 +112,7 @@ class BudgetCallback(BaseCallback):
                 keys = ['trips','seconds','rejected_actions','commands','scenario_seed',
                         'seed_attempt','seed_cycle','mean_car_wait','max_car_wait','action_counts']
                 result = {k: info[k] for k in keys}
+                result['worker']=worker
                 result['terminated'] = not info.get('TimeLimit.truncated', False)
                 result['truncated'] = bool(info.get('TimeLimit.truncated', False))
                 result['policy_steps'] = self.num_timesteps
@@ -117,7 +125,7 @@ class BudgetCallback(BaseCallback):
                 self._save_game(info,result)
                 stats, recent = self.per_seed[seed], self.recent[seed]
                 waits = info['action_counts'].get('wait',0)
-                print(f'GAME {self.episodes} | seed {seed} try {info["seed_attempt"]}/{self.episodes_per_seed} | '
+                print(f'GAME {self.episodes} | worker {worker} | seed {seed} try {info["seed_attempt"]}/{self.episodes_per_seed} | '
                       f'score {info["trips"]} | seed mean {sum(stats)/len(stats):.2f} '
                       f'recent20 {sum(recent)/len(recent):.2f} best {max(stats)} | '
                       f'survival {info["seconds"]:.1f}s | car wait mean/max '
@@ -130,7 +138,7 @@ class BudgetCallback(BaseCallback):
                   f'{status["commands_per_second"]:.1f} commands/s | '
                   f'seed {status["current_seed"]} try {status["seed_attempt"]}/{self.episodes_per_seed} | '
                   f'current score {status["current_score"]} at {status["current_game_seconds"]:.1f}s | '
-                  f'best {self.best}', flush=True)
+                  f'best {self.best} | {len(self.worker_status)} workers', flush=True)
             self.last_print = now
         if now-self.last_save >= 120:
             self.model.save(self.output/'latest')
@@ -142,13 +150,20 @@ class BudgetCallback(BaseCallback):
         # Avoid reporting a stale countdown after a time/step limit or Ctrl+C.
         vector = self.model.get_env()
         if vector is not None and getattr(vector,'envs',None):
-            env = vector.envs[0].unwrapped
-            recording = env.export_replay()
-            if recording is not None and recording.get('partial'):
-                partial = env.info()
-                partial['episode_replay'] = recording
-                self.best = max(self.best,partial['trips'])
-                self._save_game(partial,partial)
+            for worker,wrapped in enumerate(vector.envs):
+                env = wrapped.unwrapped
+                recording = env.export_replay()
+                if recording is not None and recording.get('partial'):
+                    partial = dict(env.info(),worker=worker)
+                    partial['episode_replay'] = recording
+                    self.best = max(self.best,partial['trips'])
+                    self._save_game(partial,partial)
+            # A Ctrl+C can arrive while a vector step finishes and autoresets.
+            # Retain terminal recordings from those in-flight games as well.
+            for worker,info in enumerate(getattr(vector,'buf_infos',[])):
+                if info.get('episode_replay'):
+                    self.best=max(self.best,info['trips'])
+                    self._save_game(dict(info,worker=worker),info)
         info = (self.locals.get('infos') or [{}])[0]
         self._status(info,time.perf_counter(),finished=True)
         per_seed = {str(seed): dict(games=len(scores),mean_score=sum(scores)/len(scores),

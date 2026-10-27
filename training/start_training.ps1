@@ -4,6 +4,7 @@ param(
     [int]$StartSeed = 1000,
     [int]$SeedCount = 100,
     [int]$Steps = 10000000,
+    [ValidateSet(1,2,4)][int]$Workers = 1,
     [string]$RunName = '',
     [string]$Resume = ''
 )
@@ -20,7 +21,7 @@ if ($LASTEXITCODE -ne 0) { throw 'Headless build failed; training was not starte
 $trainingArguments = @('training/train.py', '--dotnet', $trainingDotnet,
     '--episodes-per-seed', $EpisodesPerSeed, '--minutes', $Minutes,
     '--train-seed-start', $StartSeed, '--train-seed-count', $SeedCount,
-    '--steps', $Steps, '--output', (Join-Path 'output/training' $RunName))
+    '--steps', $Steps, '--workers', $Workers, '--output', (Join-Path 'output/training' $RunName))
 if ($Resume) { $trainingArguments += @('--resume', $Resume) }
 & $trainingPython @trainingArguments
 if ($LASTEXITCODE -ne 0) { throw 'Training exited with an error. Inspect the output above and saved checkpoints.' }

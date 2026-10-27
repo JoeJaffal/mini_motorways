@@ -126,3 +126,68 @@ zero-trip demonstration** from the existing final checkpoint is available:
 
 These run scripted fixtures, test doubles or existing-checkpoint inference; they
 do not call the learner or update model weights.
+
+## Run several games in parallel
+
+Add `-Workers 2` or `-Workers 4` to the PowerShell helper. The default remains one
+worker for compatibility. Workers are separate simulator processes collecting
+experience for **one shared model**, whose neural-network calls are batched.
+They sample different actions even when they all play seed 1000.
+
+To switch the active three-hour run, press Ctrl+C once and wait for `final.zip`
+to finish saving. Then continue its weights with four games on seed 1000:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\training\start_training.ps1 -Minutes 180 -StartSeed 1000 -SeedCount 1 -Workers 4 -RunName seed-1000-parallel-01 -Resume output/training/seed-1000-three-hours/final.zip
+```
+
+Use the actual stopped run's directory if it differs. Use a new `-RunName` for
+each launch. This starts a new training session; do not leave the old session
+running if you want all CPU capacity available to the parallel session.
+
+The console labels completed games by `worker 0`, `worker 1`, etc. Commands/s
+and selections/s count **all workers combined**. Per-seed means combine their
+finished games. Each worker has its own attempt counter and, with multiple
+training seeds, advances its seed blocks independently. With `-SeedCount 1`
+all workers remain on seed 1000 for the full time budget.
+
+Best-game selection compares every worker, including partial games when stopped.
+The same `watch_best.py --run ...` command opens the global best; the replay JSON
+also records its worker ID. Monitor logs are now `worker-00.monitor.csv`,
+`worker-01.monitor.csv`, etc. `status.json` includes every worker's latest status.
+
+The aggregate PPO rollout is held at 256 selections: 256 per worker with one
+worker, 128 with two and 64 with four. Batch size and learning rate stay the same.
+Shorter individual fragments can affect learning with delayed rewards; faster
+throughput is not a guarantee of faster score improvement. Reward, observations,
+allowed tools, game timing and simulator rules are unchanged.
+
+### Measured short benchmark
+
+Six isolated 12-second learner trials used worker counts 1, 2, 4, 4, 2, 1, after
+one warm-up rollout each. All started from the same immutable old checkpoint;
+they did not overwrite the active run or its files. The user's existing training
+session was still running, so these are **under-load comparisons**, not clean
+hardware maximums. Two PyTorch threads were used in all trials.
+
+| Concurrent games | Mean selections/s | Mean completed commands/s |
+| --- | --- | --- |
+| 1 | 106.5 | 60.3 |
+| 2 | 123.4 | 70.3 |
+| 4 | 125.4 | 74.9 |
+
+Four workers yielded about 24% more completed commands/s than one here. Two
+yielded about 17%. These trials are too short to compare learned playing skill
+or stable completed-games/s, especially with partially finished games at stop.
+Raw results are local at `output/benchmarks/parallel-first/results.json`.
+
+To repeat an isolated speed benchmark yourself:
+
+```powershell
+.venv/Scripts/python.exe training/benchmark_parallel.py --dotnet ./tmp/dotnet/dotnet.exe --seconds 15
+```
+
+Unlike the scripted validation tests, this benchmark **does perform short learner
+updates** on disposable clones, in separate benchmark directories. It does not
+resume or replace your production run. Prefer stopping other training first for
+cleaner speed measurements.
