@@ -14,6 +14,35 @@ DOTNET='dotnet'
 
 
 class FeatureChecks(unittest.TestCase):
+    def test_spatial_residual_preserves_policy_then_trains_and_reloads(self):
+        import tempfile
+        from pathlib import Path
+        torch.set_num_threads(2)
+        env=make_vector(1,dotnet=DOTNET,observation_mode='connectivity',reward_mode='connectivity',seconds=3)
+        legacy=TrafficEnv(dotnet=DOTNET)
+        try:
+            path=ROOT/'output/training/multi-seed-shaped-01/final.zip'
+            source=MaskablePPO.load(path,device='cpu')
+            model=warm_start(path,env,dict(n_steps=16,batch_size=8,n_epochs=1,gamma=.999,learning_rate=.0003,ent_coef=.01),42,True,'spatial-residual')
+            a,_=legacy.reset(seed=42,options={'scenario_seed':1000})
+            b,_=env.envs[0].unwrapped.reset(seed=42,options={'scenario_seed':1000})
+            with torch.no_grad():
+                pa=source.policy.get_distribution(source.policy.obs_to_tensor(a)[0],action_masks=legacy.action_masks()).distribution.probs
+                pb=model.policy.get_distribution(model.policy.obs_to_tensor(b)[0],action_masks=env.envs[0].unwrapped.action_masks()).distribution.probs
+            np.testing.assert_allclose(pa.numpy(),pb.numpy(),atol=1e-7,rtol=1e-6)
+            head=model.policy.features_extractor.spatial_head[-1]
+            before=head.weight.detach().clone()
+            model.learn(total_timesteps=32)
+            self.assertFalse(torch.equal(before,head.weight))
+            obs=env.reset();mask=env.env_method('action_masks')[0]
+            with tempfile.TemporaryDirectory(dir=ROOT/'tmp') as directory:
+                model.save(Path(directory)/'spatial')
+                restored=MaskablePPO.load(Path(directory)/'spatial',device='cpu')
+                x,_=model.predict(obs,deterministic=True,action_masks=mask)
+                y,_=restored.predict(obs,deterministic=True,action_masks=mask)
+                np.testing.assert_array_equal(x,y)
+        finally:legacy.close();env.close()
+
     def test_inputs_match_current_connectivity_and_hide_future(self):
         env=TrafficEnv(dotnet=DOTNET,observation_mode='connectivity',reward_mode='connectivity')
         try:

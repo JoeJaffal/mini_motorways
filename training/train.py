@@ -82,6 +82,7 @@ def main():
     parser.add_argument('--adapt-inputs',action='store_true')
     parser.add_argument('--reset-optimizer',action='store_true')
     parser.add_argument('--validation-minutes',type=float,default=0)
+    parser.add_argument('--architecture',choices=['legacy','spatial-residual'],default='legacy')
     args = parser.parse_args()
     if args.validation_minutes<0:parser.error('Validation interval must be nonnegative')
     if args.minutes <= 0 or args.steps < 1 or args.threads < 1 or not 1 <= args.eval_episodes <= 20:
@@ -118,7 +119,7 @@ def main():
                                        learning_rate=.0003, ent_coef=.01, net_arch=[64]))
     (output/'config.json').write_text(json.dumps(config, indent=2)+'\n')
     # Preserve exact source even before a commit, alongside the revision metadata.
-    for name in ['environment.py', 'train.py', 'progress.py','parallel.py','shutdown.py','rewards.py','migration.py']:
+    for name in ['environment.py', 'train.py', 'progress.py','parallel.py','shutdown.py','rewards.py','migration.py','spatial_policy.py']:
         (output/name).write_text((Path(__file__).parent/name).read_text())
     env = make_vector(args.workers, output=output, dotnet=args.dotnet, seconds=args.episode_seconds,
                             seeds=training_seeds, episodes_per_seed=args.episodes_per_seed,
@@ -130,14 +131,21 @@ def main():
             compatible=previous_config['schema']==schema or (args.adapt_inputs and previous_config['schema']==SCHEMA and schema==CONNECTIVITY_SCHEMA)
             if not compatible or previous_config['arguments']['episode_seconds'] != args.episode_seconds:
                 raise RuntimeError('Resume schema or episode duration mismatch')
+            prior_architecture=previous_config['arguments'].get('architecture','legacy')
+            if prior_architecture!=args.architecture and not (args.adapt_inputs or args.reset_optimizer):
+                raise RuntimeError('Architecture change requires explicit warm start')
             if args.adapt_inputs or args.reset_optimizer:
                 from migration import warm_start
-                model=warm_start(args.resume,env,config['hyperparameters'],args.seed,args.adapt_inputs)
+                model=warm_start(args.resume,env,config['hyperparameters'],args.seed,args.adapt_inputs,args.architecture)
             else:model = MaskablePPO.load(args.resume, env=env, device='cpu',n_steps=256//args.workers)
             if args.reward_mode=='connectivity' and model.gamma!=GAMMA:
                 raise RuntimeError('Checkpoint discount must match connectivity-shaping gamma')
         else:
-            model = MaskablePPO('MultiInputPolicy', env, device='cpu', seed=args.seed, verbose=0,
+            policy='MultiInputPolicy'
+            if args.architecture=='spatial-residual':
+                from spatial_policy import SpatialResidualPolicy
+                policy=SpatialResidualPolicy
+            model = MaskablePPO(policy, env, device='cpu', seed=args.seed, verbose=0,
                                 policy_kwargs=dict(features_extractor_class=GridEncoder, net_arch=[64], normalize_images=False),
                                 **{k:v for k,v in config['hyperparameters'].items() if k != 'net_arch'})
         model.set_logger(configure(str(output), ['csv']))

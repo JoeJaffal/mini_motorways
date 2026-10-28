@@ -51,3 +51,23 @@ Commands and results will be appended after the pilots; source snapshots/configs
 are retained per run. `--observation-mode connectivity --adapt-inputs` explicitly
 opts into migration; `--reset-optimizer` supports the legacy-input control.
 Existing PowerShell commands/old checkpoints remain legacy-input compatible.
+
+## Prepared spatial residual hypothesis
+
+Early pilot logs show about 89% of draws make no network change. An additional
+opt-in `spatial-residual` architecture is prepared, to be assessed separately
+after the initial input-only comparison. It adds a shared per-tile convolutional
+residual to the legacy coordinate logits, retaining the old global tool/critic
+branches. It sees only the supplied grid/globals, normalized coordinates,
+relative selected-point coordinates, selected parcel kind and same-color relation
+to the selected parcel. Those are deterministic transformations of current
+inputs, not routed suggestions or demonstrations. Its final residual layer is
+zero initialized, so copying the old weights preserves the starting policy.
+
+This tests shared spatial scoring instead of unrelated global coordinate logits.
+It is a different architecture, not evidence that two extra channels alone help.
+Tests verified identical initial masked probabilities, actual gradient updates
+to the residual head during a disposable 32-selection smoke learner, and exact
+deterministic predictions after saving/reloading that disposable model. The
+smoke update was explicitly authorized within the three-hour experiment and
+does not modify any production checkpoint. Further learning results are pending.
