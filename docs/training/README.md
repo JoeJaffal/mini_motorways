@@ -6,16 +6,18 @@ players and scratch captures remain local and are not backed up by this archive.
 
 | Record | Purpose |
 | --- | --- |
+| [Latest investigation PDF](model-investigation-2026-10-28.pdf) | Ten-page report: ten experiments, 356-trip planner-aided record, independent tests and limited learning evidence |
+| [Investigation evidence](investigation-2026-10-28/README.md) | 312 archived source/metric/log/replay files, frozen selection, report figures/text and integrity manifests |
 | [Experiment history](../../training/EXPERIMENT_HISTORY.md) | Chronological decisions, engineering choices, reasons, changes, failures, analysis, results and unresolved hypotheses |
 | [Three-hour investigation](../../training/EXPERIMENT_2026_10_28.md) | Authorized controlled pilots, optional priors/masks, credit-window comparison and distinct heuristic baseline |
 | [Earlier simulator decisions](../../simulation/Docs/DESIGN_DECISIONS.md) | Original/Custom design history before training |
 | [Current training status](../../training/CURRENT_STATUS.md) | Latest implemented behavior and results |
-| [Connectivity reward update](../../training/REWARD_SHAPING.md) | New shaping design, anti-loop accounting, tests and unmeasured learning effect |
+| [Connectivity reward update](../../training/REWARD_SHAPING.md) | Shaping design, anti-loop accounting, tests; later results are in the investigation |
 | [Connection reward audit](connectivity-reward-audit-2026-10-28.json) | Scripted baseline/shaped comparison; unchanged 73-trip game and early feedback |
 | [Multi-seed live check](live-check-multi-seed-shaped-01-2026-10-28.json) | Read-only first-556-game snapshot; active optimizer, no demonstrated score improvement |
 | [Stopped-run assessment](stopped-run-assessment-2026-10-28.json) | Final multi-seed summary and frozen initial/final comparison on five held-out seeds |
-| [Current model report](current-model-report-2026-10-28.pdf) | Updated 12-page explanation, four-hour results, graphs, changes and limitations |
-| [Current report text](CURRENT_REPORT_TEXT.md) | Full searchable text from the updated PDF |
+| [Earlier model report](current-model-report-2026-10-28.pdf) | Preserved 12-page pre-investigation snapshot of the four-hour experiment |
+| [Earlier report text](CURRENT_REPORT_TEXT.md) | Full searchable text from that historical PDF |
 | [Exact model contract](../../training/README.md) | Actions, input channels, reward, timing and evaluation |
 | [Commands and controls](../../training/QUICKSTART.md) | Start, stop, resume, parallel workers and replay |
 | [Original model report](first-model-report.pdf) | Unchanged 16-page PDF, including every graphic |
@@ -32,7 +34,8 @@ The PDF is historical: its statements about zero held-out scores and no longer
 run having started describe the first experiment, not the later four-hour run.
 Newer findings are recorded separately without rewriting the original report.
 The 12-page report also predates the connectivity-reward update. The shaping
-specification describes that newer code; no shaped training result exists yet.
+specification describes that newer code. Later shaped and planner-aided results
+are preserved in the latest investigation, without rewriting those older PDFs.
 
 | Page | Content preserved | Figure or evidence |
 | --- | --- | --- |

@@ -1,0 +1,2515 @@
+{
+  "created_utc": "2026-10-28T12:59:53.973470+00:00",
+  "runs": [
+    "pilot-control-20261028",
+    "pilot-features-20261028",
+    "pilot-spatial-20261028",
+    "pilot-productive-20261028",
+    "informed-spatial-20261028",
+    "informed-credit-20261028",
+    "goal-hybrid-20261028",
+    "goal-scaled-20261028",
+    "goal-choice-20261028",
+    "goal-rate-20261028"
+  ],
+  "files": [
+    {
+      "path": "experiments/actor-update-diagnostic.json",
+      "bytes": 1294,
+      "sha256": "03ed378f2c1b02bdd8d6ee32c3f7bd931839683dff328cf17e75c1d8fbf3d97d",
+      "source": "output\\experiments\\three-hour-20261028\\actor-update-diagnostic.json",
+      "source_sha256": "03ed378f2c1b02bdd8d6ee32c3f7bd931839683dff328cf17e75c1d8fbf3d97d",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/archive-compaction-check.json",
+      "bytes": 148,
+      "sha256": "6d9adcab60b774939389ba0e64390eeb24331c664e1bd30d92b10e30927ada3e",
+      "source": "output\\experiments\\three-hour-20261028\\archive-compaction-check.json",
+      "source_sha256": "6d9adcab60b774939389ba0e64390eeb24331c664e1bd30d92b10e30927ada3e",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/control.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "output\\experiments\\three-hour-20261028\\control.err",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/control.log",
+      "bytes": 55743,
+      "sha256": "f0eab1f40af41bd470b0170a0e776311bb2f985278a5d24cbfb5455f99e02088",
+      "source": "output\\experiments\\three-hour-20261028\\control.log",
+      "source_sha256": "f0eab1f40af41bd470b0170a0e776311bb2f985278a5d24cbfb5455f99e02088",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/core-checks.txt",
+      "bytes": 145,
+      "sha256": "4e175746fb23c89066b8e329d52d219864297a23e81b238f12a63a94e3801f34",
+      "source": "output\\experiments\\three-hour-20261028\\core-checks.txt",
+      "source_sha256": "4e175746fb23c89066b8e329d52d219864297a23e81b238f12a63a94e3801f34",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/credit.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "output\\experiments\\three-hour-20261028\\credit.err",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/credit.log",
+      "bytes": 45501,
+      "sha256": "414b97510d152e1d6d96dfdde9cda05d683f8001ab7c299e8f0ddbdac8697ef4",
+      "source": "output\\experiments\\three-hour-20261028\\credit.log",
+      "source_sha256": "414b97510d152e1d6d96dfdde9cda05d683f8001ab7c299e8f0ddbdac8697ef4",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/features.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "output\\experiments\\three-hour-20261028\\features.err",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/features.log",
+      "bytes": 55302,
+      "sha256": "8a7bae07d36855cd023cc3f7e9e06f61156a41e1b209220daa2bb0481b45cedf",
+      "source": "output\\experiments\\three-hour-20261028\\features.log",
+      "source_sha256": "8a7bae07d36855cd023cc3f7e9e06f61156a41e1b209220daa2bb0481b45cedf",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-best-capture.log",
+      "bytes": 1767,
+      "sha256": "c5bb36cd74d69b6cba7ff8db997a9f95da925bdfb7bdb60418bce6c3f3cbaf38",
+      "source": "output\\experiments\\three-hour-20261028\\final-best-capture.log",
+      "source_sha256": "c5bb36cd74d69b6cba7ff8db997a9f95da925bdfb7bdb60418bce6c3f3cbaf38",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-best-headless.txt",
+      "bytes": 86,
+      "sha256": "0a35b6605c264182824ba219c556aa7c7e3bd7ecffaf412282d12962d536bf3a",
+      "source": "output\\experiments\\three-hour-20261028\\final-best-headless.txt",
+      "source_sha256": "0a35b6605c264182824ba219c556aa7c7e3bd7ecffaf412282d12962d536bf3a",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-best-native.log",
+      "bytes": 1862,
+      "sha256": "536d69ec06a1225de7f042b76be9e71171f206851d594c9ef866835f7d01b159",
+      "source": "output\\experiments\\three-hour-20261028\\final-best-native.log",
+      "source_sha256": "536d69ec06a1225de7f042b76be9e71171f206851d594c9ef866835f7d01b159",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-best-replay.json",
+      "bytes": 145939,
+      "sha256": "cf1f83716cb5907787263c7c8bfe1d351b76680dfab0e2722f4e2a50cbb9a030",
+      "source": "output\\experiments\\three-hour-20261028\\final-best-replay.json",
+      "source_sha256": "cf1f83716cb5907787263c7c8bfe1d351b76680dfab0e2722f4e2a50cbb9a030",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/complete.json",
+      "bytes": 1718,
+      "sha256": "21b1eac5eb7d40ab8e66689134a4c7eac8397f1fd4b4dab2a8ec8356d579db01",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\complete.json",
+      "source_sha256": "21b1eac5eb7d40ab8e66689134a4c7eac8397f1fd4b4dab2a8ec8356d579db01",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/goal-initial-replay.json",
+      "bytes": 126108,
+      "sha256": "468dd33476fc63ad880797988045d310b45997baacf83a648997324410166d7b",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\goal-initial-replay.json",
+      "source_sha256": "468dd33476fc63ad880797988045d310b45997baacf83a648997324410166d7b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/goal-initial-sampled-replay.json",
+      "bytes": 119012,
+      "sha256": "3b5a3dfa2a04aebe106afe3c3e93fbdbf63d94898d40b3ab75e5b3b6ff50e8fb",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\goal-initial-sampled-replay.json",
+      "source_sha256": "3b5a3dfa2a04aebe106afe3c3e93fbdbf63d94898d40b3ab75e5b3b6ff50e8fb",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/goal-initial-sampled.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\goal-initial-sampled.err",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/goal-initial-sampled.json",
+      "bytes": 13607,
+      "sha256": "90c1cef145f1a3acc65175969fce869803edd3ec7712cf69092685cc65884886",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\goal-initial-sampled.json",
+      "source_sha256": "90c1cef145f1a3acc65175969fce869803edd3ec7712cf69092685cc65884886",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/goal-initial-sampled.log",
+      "bytes": 655,
+      "sha256": "03126272aa0dd1e058345ed44dd23bf1857a49be2c89ab5fc4653118e9af7b7a",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\goal-initial-sampled.log",
+      "source_sha256": "03126272aa0dd1e058345ed44dd23bf1857a49be2c89ab5fc4653118e9af7b7a",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/goal-initial.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\goal-initial.err",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/goal-initial.json",
+      "bytes": 13664,
+      "sha256": "1120a04bcaf9d67e06b5583df1f989fa27dc504f0546a49850b0beba191f2578",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\goal-initial.json",
+      "source_sha256": "1120a04bcaf9d67e06b5583df1f989fa27dc504f0546a49850b0beba191f2578",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/goal-initial.log",
+      "bytes": 642,
+      "sha256": "67f3dc70ff3c10bc33af4275773a3aacda07494556f863f6cd9f737a4df91602",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\goal-initial.log",
+      "source_sha256": "67f3dc70ff3c10bc33af4275773a3aacda07494556f863f6cd9f737a4df91602",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/goal-trained-replay.json",
+      "bytes": 126116,
+      "sha256": "f2ee9796e7c592a3e4f501d369fd07f61e5b4a38255f70d6a2bcf083fa412585",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\goal-trained-replay.json",
+      "source_sha256": "f2ee9796e7c592a3e4f501d369fd07f61e5b4a38255f70d6a2bcf083fa412585",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/goal-trained-sampled-replay.json",
+      "bytes": 119020,
+      "sha256": "edbe8bfe5424feecc3a4adc8993a5f49f1f5b259006aac7d4d85055078023772",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\goal-trained-sampled-replay.json",
+      "source_sha256": "edbe8bfe5424feecc3a4adc8993a5f49f1f5b259006aac7d4d85055078023772",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/goal-trained-sampled.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\goal-trained-sampled.err",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/goal-trained-sampled.json",
+      "bytes": 13615,
+      "sha256": "ab48a348dfa3db6eb14361390f8d795fc86092f0dbe5b4d23e8d6e1dcfdea961",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\goal-trained-sampled.json",
+      "source_sha256": "ab48a348dfa3db6eb14361390f8d795fc86092f0dbe5b4d23e8d6e1dcfdea961",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/goal-trained-sampled.log",
+      "bytes": 655,
+      "sha256": "aa823969d6f4daf48d775cb19724311c22a7665b9d4abe143c1d135915a68d73",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\goal-trained-sampled.log",
+      "source_sha256": "aa823969d6f4daf48d775cb19724311c22a7665b9d4abe143c1d135915a68d73",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/goal-trained.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\goal-trained.err",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/goal-trained.json",
+      "bytes": 13689,
+      "sha256": "04725d1ee0ec703e33d7a9f8ac0e6a234f4f458ee9bac79974c34e0ac5254605",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\goal-trained.json",
+      "source_sha256": "04725d1ee0ec703e33d7a9f8ac0e6a234f4f458ee9bac79974c34e0ac5254605",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/goal-trained.log",
+      "bytes": 643,
+      "sha256": "3367906b70dceb54cfc06f31b22009b9bf16064eeb9780a49b23086b193f0d57",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\goal-trained.log",
+      "source_sha256": "3367906b70dceb54cfc06f31b22009b9bf16064eeb9780a49b23086b193f0d57",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/informed-initial-replay.json",
+      "bytes": 76176,
+      "sha256": "29be2946e3a52728171adab134d9d70969e439f8937ec41a42e19c6932ae26e7",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\informed-initial-replay.json",
+      "source_sha256": "29be2946e3a52728171adab134d9d70969e439f8937ec41a42e19c6932ae26e7",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/informed-initial.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\informed-initial.err",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/informed-initial.json",
+      "bytes": 11227,
+      "sha256": "53fb1535668f8901e36a849b61cb9c611b47fc3e1b186b59beb63a27e7443b8c",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\informed-initial.json",
+      "source_sha256": "53fb1535668f8901e36a849b61cb9c611b47fc3e1b186b59beb63a27e7443b8c",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/informed-initial.log",
+      "bytes": 611,
+      "sha256": "79e670b5c08bc57f0866a8cd0c546102e6102706d51be22493727342dd6e8ccf",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\informed-initial.log",
+      "source_sha256": "79e670b5c08bc57f0866a8cd0c546102e6102706d51be22493727342dd6e8ccf",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/old-baseline-replay.json",
+      "bytes": 38126,
+      "sha256": "ec524426f6def0706c7ebc793ad7839a8b613dd8ca37f14941d91a1ab346f4c4",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\old-baseline-replay.json",
+      "source_sha256": "ec524426f6def0706c7ebc793ad7839a8b613dd8ca37f14941d91a1ab346f4c4",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/old-baseline.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\old-baseline.err",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/old-baseline.json",
+      "bytes": 11307,
+      "sha256": "2dfb989dea1470f631100df339b82235fe11ada9624b2b1548f349b88d56314e",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\old-baseline.json",
+      "source_sha256": "2dfb989dea1470f631100df339b82235fe11ada9624b2b1548f349b88d56314e",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/old-baseline.log",
+      "bytes": 629,
+      "sha256": "8a6b949250b02245ad77ac1b908f1e4445a306926be10d062661ec858b90de79",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\old-baseline.log",
+      "source_sha256": "8a6b949250b02245ad77ac1b908f1e4445a306926be10d062661ec858b90de79",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/primitive-selected-replay.json",
+      "bytes": 76556,
+      "sha256": "36bb989700f1b81e6de19eaad05fec9c34a98be187cc208c9c03cd9bf2a5662b",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\primitive-selected-replay.json",
+      "source_sha256": "36bb989700f1b81e6de19eaad05fec9c34a98be187cc208c9c03cd9bf2a5662b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/primitive-selected.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\primitive-selected.err",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/primitive-selected.json",
+      "bytes": 11471,
+      "sha256": "c02195dcf0041da3cfe29c12892ab650d0fac5f7396325e8e35bdbb094eda9bc",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\primitive-selected.json",
+      "source_sha256": "c02195dcf0041da3cfe29c12892ab650d0fac5f7396325e8e35bdbb094eda9bc",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/final-tests/primitive-selected.log",
+      "bytes": 616,
+      "sha256": "33195c82c84ab58307ecda110776863b6e7468cd4fa8fc7d23fd053f063ef748",
+      "source": "output\\experiments\\three-hour-20261028\\final-tests\\primitive-selected.log",
+      "source_sha256": "33195c82c84ab58307ecda110776863b6e7468cd4fa8fc7d23fd053f063ef748",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/forced-choice-diagnostic.json",
+      "bytes": 1287,
+      "sha256": "7562aea4fa76bed12bbb570718b9a9fa2130acd69e3a00d04b8ddef6f6ae03a4",
+      "source": "output\\experiments\\three-hour-20261028\\forced-choice-diagnostic.json",
+      "source_sha256": "7562aea4fa76bed12bbb570718b9a9fa2130acd69e3a00d04b8ddef6f6ae03a4",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/frozen-productive-best.json",
+      "bytes": 30724,
+      "sha256": "abb95649a2d2c6d82f9ccddf46e236fca21cf7690f3a6d37cce7d0098ea51e17",
+      "source": "output\\experiments\\three-hour-20261028\\frozen-productive-best.json",
+      "source_sha256": "abb95649a2d2c6d82f9ccddf46e236fca21cf7690f3a6d37cce7d0098ea51e17",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/frozen-productive-dev.json",
+      "bytes": 5614,
+      "sha256": "4086370fd1a6f552be4c1f8c0dde81e00d70eaa495c95de12d5a425bcd47b097",
+      "source": "output\\experiments\\three-hour-20261028\\frozen-productive-dev.json",
+      "source_sha256": "0d31c3c355d785afcab36f7f9028fb42e68b96a7cdf6b6673e2daceccc415101",
+      "transformation": "Removed duplicated episode_replay keys from metric rows; exact dedicated replay files retained"
+    },
+    {
+      "path": "experiments/goal-best-snapshot.json",
+      "bytes": 135447,
+      "sha256": "86a518c0e4e633cc32be4b39511795be1bd914a6f574553b53c6cc7e0856d87a",
+      "source": "output\\experiments\\three-hour-20261028\\goal-best-snapshot.json",
+      "source_sha256": "86a518c0e4e633cc32be4b39511795be1bd914a6f574553b53c6cc7e0856d87a",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/goal-capture.log",
+      "bytes": 1767,
+      "sha256": "4a757c4bd81d655a6b6e35a6fe620d6c59d67a3a8778c773976a47f751ce0287",
+      "source": "output\\experiments\\three-hour-20261028\\goal-capture.log",
+      "source_sha256": "4a757c4bd81d655a6b6e35a6fe620d6c59d67a3a8778c773976a47f751ce0287",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/goal-choice.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "output\\experiments\\three-hour-20261028\\goal-choice.err",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/goal-choice.log",
+      "bytes": 48340,
+      "sha256": "75ae6f1a44d7c51d1948c6aff1ba7a0660061349368a5fdd29db2788b7ac72fd",
+      "source": "output\\experiments\\three-hour-20261028\\goal-choice.log",
+      "source_sha256": "579f13fff7b2d87047b564bcbab7a70fbc75eca8964f97ea62db6b025c82ddce",
+      "transformation": "Removed duplicated episode_replay keys from metric rows; exact dedicated replay files retained"
+    },
+    {
+      "path": "experiments/goal-draw-diagnostic.json",
+      "bytes": 417,
+      "sha256": "590d8bb4da9a2bf71bedd5db71e8d81c8d149862c7adc6bab6b40a3b6b7d9510",
+      "source": "output\\experiments\\three-hour-20261028\\goal-draw-diagnostic.json",
+      "source_sha256": "590d8bb4da9a2bf71bedd5db71e8d81c8d149862c7adc6bab6b40a3b6b7d9510",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/goal-native.log",
+      "bytes": 1861,
+      "sha256": "6790a6b5c051bde4f4536f6e0a2624ac36445e996dd167a9dd33090e39698e52",
+      "source": "output\\experiments\\three-hour-20261028\\goal-native.log",
+      "source_sha256": "6790a6b5c051bde4f4536f6e0a2624ac36445e996dd167a9dd33090e39698e52",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/goal-rate.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "output\\experiments\\three-hour-20261028\\goal-rate.err",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/goal-rate.log",
+      "bytes": 55291,
+      "sha256": "e985d7e090286f39dea7d45ebe6ac302d9f459a6892fc407fdccc42f6110877c",
+      "source": "output\\experiments\\three-hour-20261028\\goal-rate.log",
+      "source_sha256": "96d4078bbe2c027904e65fae979f832e8d40e09eb28d99610f82ca4c17171df4",
+      "transformation": "Removed duplicated episode_replay keys from metric rows; exact dedicated replay files retained"
+    },
+    {
+      "path": "experiments/goal-scaled.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "output\\experiments\\three-hour-20261028\\goal-scaled.err",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/goal-scaled.log",
+      "bytes": 46185,
+      "sha256": "7639c91b5ceb0f92e5dbf8bad568de627a517dc13ef1036e73b395c8e37a11b9",
+      "source": "output\\experiments\\three-hour-20261028\\goal-scaled.log",
+      "source_sha256": "f84b8e65c889b0e311d2f822a532b9e925d26b6b4aca9e5a73bb8b10f9f5d650",
+      "transformation": "Removed duplicated episode_replay keys from metric rows; exact dedicated replay files retained"
+    },
+    {
+      "path": "experiments/goal.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "output\\experiments\\three-hour-20261028\\goal.err",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/goal.log",
+      "bytes": 37489,
+      "sha256": "2492354af2f8f5f9f0902edae6c2548e79859a253a97d53b13ec70ebe3c623a8",
+      "source": "output\\experiments\\three-hour-20261028\\goal.log",
+      "source_sha256": "94676936e1ce7fdc46edc06e94bfbb227bea4e9c7b037eb9a5a47416e4c87e03",
+      "transformation": "Removed duplicated episode_replay keys from metric rows; exact dedicated replay files retained"
+    },
+    {
+      "path": "experiments/guard.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "output\\experiments\\three-hour-20261028\\guard.err",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/guard.log",
+      "bytes": 45,
+      "sha256": "1617a5f8ece69eabac16a114f4790cc240c5b7be50b1bd6256005fd0de1d11f6",
+      "source": "output\\experiments\\three-hour-20261028\\guard.log",
+      "source_sha256": "1617a5f8ece69eabac16a114f4790cc240c5b7be50b1bd6256005fd0de1d11f6",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/informed-best-so-far.json",
+      "bytes": 81131,
+      "sha256": "4bf120b2f876f29d4831dbba8095665197d47a0e2086076d2f3368d8a019aaad",
+      "source": "output\\experiments\\three-hour-20261028\\informed-best-so-far.json",
+      "source_sha256": "4bf120b2f876f29d4831dbba8095665197d47a0e2086076d2f3368d8a019aaad",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/informed-initial-best.json",
+      "bytes": 49747,
+      "sha256": "b3f10abac711a2afa3657ab77cb157e0621d2208240b3a6fe53f9e56ed81e813",
+      "source": "output\\experiments\\three-hour-20261028\\informed-initial-best.json",
+      "source_sha256": "b3f10abac711a2afa3657ab77cb157e0621d2208240b3a6fe53f9e56ed81e813",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/informed-initial-dev.json",
+      "bytes": 5632,
+      "sha256": "754b2dfb6a9c4787a1af3f9fe6b8785e45c72708bf6e2ff588319dae66b16af4",
+      "source": "output\\experiments\\three-hour-20261028\\informed-initial-dev.json",
+      "source_sha256": "a22cebe2ab89780f9766133de408d55e4d29a18dd88e7d2cee1d23f6a860d577",
+      "transformation": "Removed duplicated episode_replay keys from metric rows; exact dedicated replay files retained"
+    },
+    {
+      "path": "experiments/informed.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "output\\experiments\\three-hour-20261028\\informed.err",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/informed.log",
+      "bytes": 43895,
+      "sha256": "7a72f21e15de4c8a09a2e1e027128584c0c829e9a21bd7955d4c51a55c0e6aa1",
+      "source": "output\\experiments\\three-hour-20261028\\informed.log",
+      "source_sha256": "7a72f21e15de4c8a09a2e1e027128584c0c829e9a21bd7955d4c51a55c0e6aa1",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/initial-weight-equivalence.json",
+      "bytes": 1088,
+      "sha256": "777bc1cf3ac7ce39556404d0fc431b4075276fc1158fb6a29ff389da84199ee7",
+      "source": "output\\experiments\\three-hour-20261028\\initial-weight-equivalence.json",
+      "source_sha256": "777bc1cf3ac7ce39556404d0fc431b4075276fc1158fb6a29ff389da84199ee7",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/native-check.log",
+      "bytes": 1862,
+      "sha256": "c363c0c6bd62e200be55737353993e36095859b85de070030d03dfd0bf491cdb",
+      "source": "output\\experiments\\three-hour-20261028\\native-check.log",
+      "source_sha256": "c363c0c6bd62e200be55737353993e36095859b85de070030d03dfd0bf491cdb",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/planner-diagnostic/results.json",
+      "bytes": 2647,
+      "sha256": "14ee43b5e042d1ea25d768e41ef112e83e6b01113be104851512a857d6398a77",
+      "source": "output\\experiments\\three-hour-20261028\\planner-diagnostic\\results.json",
+      "source_sha256": "14ee43b5e042d1ea25d768e41ef112e83e6b01113be104851512a857d6398a77",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/planner-diagnostic/seed-2000.json",
+      "bytes": 118385,
+      "sha256": "af81de9b883ea30c11e9de219143405eb72b4b00b611d989e22af26f2da7006d",
+      "source": "output\\experiments\\three-hour-20261028\\planner-diagnostic\\seed-2000.json",
+      "source_sha256": "af81de9b883ea30c11e9de219143405eb72b4b00b611d989e22af26f2da7006d",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/planner-diagnostic/seed-2001.json",
+      "bytes": 70766,
+      "sha256": "52d1c196bf4fe0bb0b7d97cacea01c4629d85b9afa8d0b674a5f48b462918414",
+      "source": "output\\experiments\\three-hour-20261028\\planner-diagnostic\\seed-2001.json",
+      "source_sha256": "52d1c196bf4fe0bb0b7d97cacea01c4629d85b9afa8d0b674a5f48b462918414",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/planner-diagnostic/seed-2002.json",
+      "bytes": 85386,
+      "sha256": "185fb367acfbaad2286675718e7781c58dd4a7ee1f6026968b44328a524e8259",
+      "source": "output\\experiments\\three-hour-20261028\\planner-diagnostic\\seed-2002.json",
+      "source_sha256": "185fb367acfbaad2286675718e7781c58dd4a7ee1f6026968b44328a524e8259",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/primitive-best.json",
+      "bytes": 93140,
+      "sha256": "0d47fbb002e401eab4305789d9ab9fc4a75d64479bcdff9ed08ec6f1096e2799",
+      "source": "output\\experiments\\three-hour-20261028\\primitive-best.json",
+      "source_sha256": "0d47fbb002e401eab4305789d9ab9fc4a75d64479bcdff9ed08ec6f1096e2799",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/primitive-native.log",
+      "bytes": 1861,
+      "sha256": "124549eb4b23c6fe0bd14593687c07045b1801bf3edbd98d653259d72b38dcdb",
+      "source": "output\\experiments\\three-hour-20261028\\primitive-native.log",
+      "source_sha256": "124549eb4b23c6fe0bd14593687c07045b1801bf3edbd98d653259d72b38dcdb",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/productive.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "output\\experiments\\three-hour-20261028\\productive.err",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/productive.log",
+      "bytes": 55929,
+      "sha256": "841e60a56093b3e06a385ac094289e5a11f82150fc00178b25dc3be357a34d32",
+      "source": "output\\experiments\\three-hour-20261028\\productive.log",
+      "source_sha256": "841e60a56093b3e06a385ac094289e5a11f82150fc00178b25dc3be357a34d32",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/resume-smoke.json",
+      "bytes": 381,
+      "sha256": "20c9a993e7d2c0c594684ca9b9cd9ec8fa4bbd272172b86d3ae2051acd88e459",
+      "source": "output\\experiments\\three-hour-20261028\\resume-smoke.json",
+      "source_sha256": "20c9a993e7d2c0c594684ca9b9cd9ec8fa4bbd272172b86d3ae2051acd88e459",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/rng-check-a-replay.json",
+      "bytes": 27665,
+      "sha256": "c5bf8885e129e3b1b42f8a442807035677f20bc158c6e8c788818a28ebd61934",
+      "source": "output\\experiments\\three-hour-20261028\\rng-check-a-replay.json",
+      "source_sha256": "c5bf8885e129e3b1b42f8a442807035677f20bc158c6e8c788818a28ebd61934",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/rng-check-a.json",
+      "bytes": 1807,
+      "sha256": "c86fae0b98930319ab2c14ba54910d219c3027e90acf1e28dff5d491a2c31baa",
+      "source": "output\\experiments\\three-hour-20261028\\rng-check-a.json",
+      "source_sha256": "c86fae0b98930319ab2c14ba54910d219c3027e90acf1e28dff5d491a2c31baa",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/rng-check-b-replay.json",
+      "bytes": 27665,
+      "sha256": "c5bf8885e129e3b1b42f8a442807035677f20bc158c6e8c788818a28ebd61934",
+      "source": "output\\experiments\\three-hour-20261028\\rng-check-b-replay.json",
+      "source_sha256": "c5bf8885e129e3b1b42f8a442807035677f20bc158c6e8c788818a28ebd61934",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/rng-check-b.json",
+      "bytes": 1807,
+      "sha256": "c86fae0b98930319ab2c14ba54910d219c3027e90acf1e28dff5d491a2c31baa",
+      "source": "output\\experiments\\three-hour-20261028\\rng-check-b.json",
+      "source_sha256": "c86fae0b98930319ab2c14ba54910d219c3027e90acf1e28dff5d491a2c31baa",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/rng-reproducibility.json",
+      "bytes": 189,
+      "sha256": "f1edf7d66ed5cec2c62791df0a6424c1329a1e038a14e3c536645b3bd345c60f",
+      "source": "output\\experiments\\three-hour-20261028\\rng-reproducibility.json",
+      "source_sha256": "f1edf7d66ed5cec2c62791df0a6424c1329a1e038a14e3c536645b3bd345c60f",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/runtime-provenance.json",
+      "bytes": 1502,
+      "sha256": "04eea6e71e22ea0eab6da4e8cd28d675168d9d88540e6a9a4bc17a864b83c294",
+      "source": "output\\experiments\\three-hour-20261028\\runtime-provenance.json",
+      "source_sha256": "04eea6e71e22ea0eab6da4e8cd28d675168d9d88540e6a9a4bc17a864b83c294",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/selection.json",
+      "bytes": 3508,
+      "sha256": "87222294ebf8e8d95082ecebb762d7829892c5a25daa23c3227c6f553736bd94",
+      "source": "output\\experiments\\three-hour-20261028\\selection.json",
+      "source_sha256": "87222294ebf8e8d95082ecebb762d7829892c5a25daa23c3227c6f553736bd94",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/spatial.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source": "output\\experiments\\three-hour-20261028\\spatial.err",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/spatial.log",
+      "bytes": 59826,
+      "sha256": "21237a671383fb2bd0e7ec1cb8d04ee8910a8a2f6396d12e8906a980c755fd1b",
+      "source": "output\\experiments\\three-hour-20261028\\spatial.log",
+      "source_sha256": "21237a671383fb2bd0e7ec1cb8d04ee8910a8a2f6396d12e8906a980c755fd1b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "experiments/unity-build-success.log",
+      "bytes": 228534,
+      "sha256": "b27bc6a153a8bd1db25b68438b4bea00a24cd81a2dcc166a023e25035155f0f6",
+      "source": "output\\experiments\\three-hour-20261028\\unity-build-success.log",
+      "source_sha256": "dcf237025dbe67e210f93d294c65753b2223b97939040bf35412ad2a0beaa45e",
+      "transformation": "Redacted Unity runtime device/session/licensing identifiers"
+    },
+    {
+      "path": "experiments/unity-build.log",
+      "bytes": 1969,
+      "sha256": "a5ebd7183f4fa503d5b5fa8367723724ed292fa0bf359a2f2f7a064556179ba7",
+      "source": "output\\experiments\\three-hour-20261028\\unity-build.log",
+      "source_sha256": "8298d3fb60205fa044b4b6fb09400415c5397e0d6c09532928d73bfa795e6ec3",
+      "transformation": "Redacted Unity runtime device/session/licensing identifiers"
+    },
+    {
+      "path": "runs/goal-choice-20261028/before.json",
+      "bytes": 6300,
+      "sha256": "b197a13fdc37f1d320fd6d51cecab54566a05dd2912fd64fdb7d361f541063f4",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\before.json",
+      "source_sha256": "a681bf6e7478831e42c05c5be3f9de843818abfce205cb4a952f0c8f72a97f5b",
+      "transformation": "Removed duplicated episode_replay keys from metric rows; exact dedicated replay files retained"
+    },
+    {
+      "path": "runs/goal-choice-20261028/best-game.json",
+      "bytes": 134316,
+      "sha256": "86a65ca214bb84421376b9734f77158d703d8ea236335112e32408c5dd8a466d",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\best-game.json",
+      "source_sha256": "86a65ca214bb84421376b9734f77158d703d8ea236335112e32408c5dd8a466d",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/config.json",
+      "bytes": 1648,
+      "sha256": "2185c409f55694749d1bd1d07237bb3a0b91bd9db31b831e28a9c170c4f75604",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\config.json",
+      "source_sha256": "2185c409f55694749d1bd1d07237bb3a0b91bd9db31b831e28a9c170c4f75604",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/environment.py",
+      "bytes": 25913,
+      "sha256": "fa21dd2c96eb88fb303e0b406c73475d2b941345c2f043ed201b4e6182c47caa",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\environment.py",
+      "source_sha256": "fa21dd2c96eb88fb303e0b406c73475d2b941345c2f043ed201b4e6182c47caa",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/episodes.jsonl",
+      "bytes": 64761,
+      "sha256": "a7baced7f0a32f814a3065f61f6778feedc5d9d64fdff3fd63f3b3052afc9068",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\episodes.jsonl",
+      "source_sha256": "a7baced7f0a32f814a3065f61f6778feedc5d9d64fdff3fd63f3b3052afc9068",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/final-evaluation/seed-2000.json",
+      "bytes": 101352,
+      "sha256": "ccf0fa51bebe2a9ff6fb89c969450b90b3f2831c518413f9375380ca5231df02",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\final-evaluation\\seed-2000.json",
+      "source_sha256": "ccf0fa51bebe2a9ff6fb89c969450b90b3f2831c518413f9375380ca5231df02",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/final-evaluation/seed-2001.json",
+      "bytes": 70819,
+      "sha256": "71ded576fb0b3629080dae3e7e956b44df889ff99ab84254893014980e37b2a1",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\final-evaluation\\seed-2001.json",
+      "source_sha256": "71ded576fb0b3629080dae3e7e956b44df889ff99ab84254893014980e37b2a1",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/final-evaluation/seed-2002.json",
+      "bytes": 86983,
+      "sha256": "5d17b28a9854add91aac2441e4685f7527bb6e7a5cec82e76dc17cef59bff6eb",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\final-evaluation\\seed-2002.json",
+      "source_sha256": "5d17b28a9854add91aac2441e4685f7527bb6e7a5cec82e76dc17cef59bff6eb",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/final-evaluation/seed-2003.json",
+      "bytes": 84582,
+      "sha256": "3d5ffc6651876aea95b3e013934e67313cc1e1ad279902fe783f9ce9031b8558",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\final-evaluation\\seed-2003.json",
+      "source_sha256": "3d5ffc6651876aea95b3e013934e67313cc1e1ad279902fe783f9ce9031b8558",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/final-evaluation/seed-2004.json",
+      "bytes": 136391,
+      "sha256": "143915f3b13335c0c79747a404f93ac49ea119e42f0c5e73511ec17b3198b377",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\final-evaluation\\seed-2004.json",
+      "source_sha256": "143915f3b13335c0c79747a404f93ac49ea119e42f0c5e73511ec17b3198b377",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/goal_agent.py",
+      "bytes": 11655,
+      "sha256": "6addc52bb048cef4c59ff2440d9d029a7008ba3ef9b1baa5013d23dcb354aaa1",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\goal_agent.py",
+      "source_sha256": "6addc52bb048cef4c59ff2440d9d029a7008ba3ef9b1baa5013d23dcb354aaa1",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/initial-evaluation/seed-2000.json",
+      "bytes": 101352,
+      "sha256": "8f940b7de37b9fba3cabef8f1d30dc8b017f5e838e6bc948166f6c18b015d256",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\initial-evaluation\\seed-2000.json",
+      "source_sha256": "8f940b7de37b9fba3cabef8f1d30dc8b017f5e838e6bc948166f6c18b015d256",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/initial-evaluation/seed-2001.json",
+      "bytes": 70819,
+      "sha256": "cf676bfb26de71c9b07915971ff15db8f21e3412acf33d8cae1e5e1737c0c2fe",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\initial-evaluation\\seed-2001.json",
+      "source_sha256": "cf676bfb26de71c9b07915971ff15db8f21e3412acf33d8cae1e5e1737c0c2fe",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/initial-evaluation/seed-2002.json",
+      "bytes": 86983,
+      "sha256": "594987c7d70d190f1864e0829acca05833b6a634ec5e4ea1a0a75e7be2faa517",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\initial-evaluation\\seed-2002.json",
+      "source_sha256": "594987c7d70d190f1864e0829acca05833b6a634ec5e4ea1a0a75e7be2faa517",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/initial-evaluation/seed-2003.json",
+      "bytes": 84378,
+      "sha256": "c20d673d603a75bc88a89a78ca1edfd620ee73a66166fca693a7d542f3402573",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\initial-evaluation\\seed-2003.json",
+      "source_sha256": "c20d673d603a75bc88a89a78ca1edfd620ee73a66166fca693a7d542f3402573",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/initial-evaluation/seed-2004.json",
+      "bytes": 136391,
+      "sha256": "9878864de7a915fb77cd9340ebc2880550b0803ac10d1e89f9b8828684bbaa80",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\initial-evaluation\\seed-2004.json",
+      "source_sha256": "9878864de7a915fb77cd9340ebc2880550b0803ac10d1e89f9b8828684bbaa80",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/parallel.py",
+      "bytes": 3582,
+      "sha256": "2a401398af3193e849285d6798681fea4f49f60436d1c5b74a38e65f07fb86cf",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\parallel.py",
+      "source_sha256": "2a401398af3193e849285d6798681fea4f49f60436d1c5b74a38e65f07fb86cf",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/planner_diagnostic.py",
+      "bytes": 5889,
+      "sha256": "4988c7d14ebdea93c70725ac7c64400834c64a24e73ab1e1de2306182d70fed3",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\planner_diagnostic.py",
+      "source_sha256": "4988c7d14ebdea93c70725ac7c64400834c64a24e73ab1e1de2306182d70fed3",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/progress.csv",
+      "bytes": 1958,
+      "sha256": "fd72cbfd46e8b09a0bf4baadf493d2dacdfd4188fad9208e8419b2467bdb366f",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\progress.csv",
+      "source_sha256": "fd72cbfd46e8b09a0bf4baadf493d2dacdfd4188fad9208e8419b2467bdb366f",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/progress.py",
+      "bytes": 13034,
+      "sha256": "7fcfaebd19812886c63a1ee2c4c6517c4bdc0734d336f55ec4ec228727457454",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\progress.py",
+      "source_sha256": "7fcfaebd19812886c63a1ee2c4c6517c4bdc0734d336f55ec4ec228727457454",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/rewards.py",
+      "bytes": 1227,
+      "sha256": "0f380576e816ef246a1f01307267315e6345492c84b8de6948dfff4fcda4da62",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\rewards.py",
+      "source_sha256": "0f380576e816ef246a1f01307267315e6345492c84b8de6948dfff4fcda4da62",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/seed-summary.json",
+      "bytes": 5658,
+      "sha256": "6458d3b00b0f208180ae0ebb594494963f5d9b670e50e7eb06b7d945a502a2e6",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\seed-summary.json",
+      "source_sha256": "6458d3b00b0f208180ae0ebb594494963f5d9b670e50e7eb06b7d945a502a2e6",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/shutdown.py",
+      "bytes": 1017,
+      "sha256": "83d3f5905bc98cca2889001aa30d3e17e1c68fd9796ddc4ff5eb82a1b5b53126",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\shutdown.py",
+      "source_sha256": "83d3f5905bc98cca2889001aa30d3e17e1c68fd9796ddc4ff5eb82a1b5b53126",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/status.json",
+      "bytes": 1261,
+      "sha256": "5b71936334cbbb8ec69b71aeae4eeb5ed3044aad6e5d966a0e122f61011ff8d5",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\status.json",
+      "source_sha256": "5b71936334cbbb8ec69b71aeae4eeb5ed3044aad6e5d966a0e122f61011ff8d5",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/summary.json",
+      "bytes": 13909,
+      "sha256": "d6df42f43ace26992eaa9ef4c2b2dd0d35580bafe3184f1fae52f1bf631cf4d4",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\summary.json",
+      "source_sha256": "33ad439e433354d2e84fd9eed79af7a73e112f8cf598921ef449ca25b5d74962",
+      "transformation": "Removed duplicated episode_replay keys from metric rows; exact dedicated replay files retained"
+    },
+    {
+      "path": "runs/goal-choice-20261028/train_goal.py",
+      "bytes": 7497,
+      "sha256": "d734085c665d3f92a56ec173d05d058d8349f7a177ce5e473fdb7ecf21cb1d49",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\train_goal.py",
+      "source_sha256": "d734085c665d3f92a56ec173d05d058d8349f7a177ce5e473fdb7ecf21cb1d49",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/validation.jsonl",
+      "bytes": 16079,
+      "sha256": "a0b1c576d4745a67f05b0d877ccc6047515a09762e3c5f5c2e7a127f4fa568eb",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\validation.jsonl",
+      "source_sha256": "3a8fad52282e045e29ff91a081defce019cd8be50fa27b514eade28f1b1ec4bc",
+      "transformation": "Removed duplicated episode_replay keys from metric rows; exact dedicated replay files retained"
+    },
+    {
+      "path": "runs/goal-choice-20261028/worker-00.monitor.csv",
+      "bytes": 1493,
+      "sha256": "f3e573ae1fa5f6c3ad767c64613874c631fc86487129a70c633d538e250b4335",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\worker-00.monitor.csv",
+      "source_sha256": "f3e573ae1fa5f6c3ad767c64613874c631fc86487129a70c633d538e250b4335",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-choice-20261028/worker-01.monitor.csv",
+      "bytes": 1431,
+      "sha256": "e39800ce6ede6759f8ab8529a8d48cd526d50642395190b3a6c383bf750552ef",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-choice-20261028\\worker-01.monitor.csv",
+      "source_sha256": "e39800ce6ede6759f8ab8529a8d48cd526d50642395190b3a6c383bf750552ef",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/before.json",
+      "bytes": 5525,
+      "sha256": "ec06c6bead68efd3a4253c5372a01b6613282bb481b7b7a7fd6587283185e67a",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\before.json",
+      "source_sha256": "1594ea27cf4a4d9f07b9556853b49d044c4b1c80e9f4eb1d4c176f89078a9b17",
+      "transformation": "Removed duplicated episode_replay keys from metric rows; exact dedicated replay files retained"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/best-game.json",
+      "bytes": 135481,
+      "sha256": "10f9df7dd26c23013eda90394804679366c16bd34233638f941ed8e29ecd683b",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\best-game.json",
+      "source_sha256": "10f9df7dd26c23013eda90394804679366c16bd34233638f941ed8e29ecd683b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/config.json",
+      "bytes": 1468,
+      "sha256": "4159c4d682538c3c79505ee640423234d239f966d11efe8a61050174d18ca26d",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\config.json",
+      "source_sha256": "4159c4d682538c3c79505ee640423234d239f966d11efe8a61050174d18ca26d",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/environment.py",
+      "bytes": 25913,
+      "sha256": "fa21dd2c96eb88fb303e0b406c73475d2b941345c2f043ed201b4e6182c47caa",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\environment.py",
+      "source_sha256": "fa21dd2c96eb88fb303e0b406c73475d2b941345c2f043ed201b4e6182c47caa",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/episodes.jsonl",
+      "bytes": 60671,
+      "sha256": "5daff33fdb9fcc1a9423fc8507a3a3d6252a8e5b65276577fa24c782241ffd5e",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\episodes.jsonl",
+      "source_sha256": "5daff33fdb9fcc1a9423fc8507a3a3d6252a8e5b65276577fa24c782241ffd5e",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/final-evaluation/seed-2000.json",
+      "bytes": 101325,
+      "sha256": "1533f7d4c1c0d0f24237196b746d010830d63ae44bb794318b7eaa23345b9def",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\final-evaluation\\seed-2000.json",
+      "source_sha256": "1533f7d4c1c0d0f24237196b746d010830d63ae44bb794318b7eaa23345b9def",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/final-evaluation/seed-2001.json",
+      "bytes": 70792,
+      "sha256": "edc281a69f4f5dceb5b2065a861e7a7378926a85a761830a84f5b671f8cb41bb",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\final-evaluation\\seed-2001.json",
+      "source_sha256": "edc281a69f4f5dceb5b2065a861e7a7378926a85a761830a84f5b671f8cb41bb",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/final-evaluation/seed-2002.json",
+      "bytes": 86956,
+      "sha256": "2f67128f9bb044396404efd95e70e1d413fd25b1af93349d247ee8f7f35070cb",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\final-evaluation\\seed-2002.json",
+      "source_sha256": "2f67128f9bb044396404efd95e70e1d413fd25b1af93349d247ee8f7f35070cb",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/final-evaluation/seed-2003.json",
+      "bytes": 84283,
+      "sha256": "f9132ce6dc352c6e7965b0a062a4b696debcabcb627c9583362bf92f84d8118b",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\final-evaluation\\seed-2003.json",
+      "source_sha256": "f9132ce6dc352c6e7965b0a062a4b696debcabcb627c9583362bf92f84d8118b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/final-evaluation/seed-2004.json",
+      "bytes": 136364,
+      "sha256": "9e1cd1e45a3888c867274156cc4e8ed53818c5f43657c9a11d06d40445688bb3",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\final-evaluation\\seed-2004.json",
+      "source_sha256": "9e1cd1e45a3888c867274156cc4e8ed53818c5f43657c9a11d06d40445688bb3",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/goal_agent.py",
+      "bytes": 10670,
+      "sha256": "26863ce078e1f3bb7ceed2e4bdd717ca5e47e5c276b2dcce736b58de892acad3",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\goal_agent.py",
+      "source_sha256": "26863ce078e1f3bb7ceed2e4bdd717ca5e47e5c276b2dcce736b58de892acad3",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/initial-evaluation/seed-2000.json",
+      "bytes": 101325,
+      "sha256": "21404f9102a32d3ef1e7ba6f097fe35928a1ed2e56e421a623cadd2558041153",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\initial-evaluation\\seed-2000.json",
+      "source_sha256": "21404f9102a32d3ef1e7ba6f097fe35928a1ed2e56e421a623cadd2558041153",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/initial-evaluation/seed-2001.json",
+      "bytes": 70792,
+      "sha256": "ea8c4007c3e1af2716360f818000fc06a5e091cb2ee16ee19888ac3c28e230d4",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\initial-evaluation\\seed-2001.json",
+      "source_sha256": "ea8c4007c3e1af2716360f818000fc06a5e091cb2ee16ee19888ac3c28e230d4",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/initial-evaluation/seed-2002.json",
+      "bytes": 86956,
+      "sha256": "3515642276bb233542842a775672b93a301a5877ba1cbde4b3bf166972874d0a",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\initial-evaluation\\seed-2002.json",
+      "source_sha256": "3515642276bb233542842a775672b93a301a5877ba1cbde4b3bf166972874d0a",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/initial-evaluation/seed-2003.json",
+      "bytes": 84351,
+      "sha256": "b7654f89d328b04686b5081dcd356a101b97fb1f6476f41ef89945a6c326024d",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\initial-evaluation\\seed-2003.json",
+      "source_sha256": "b7654f89d328b04686b5081dcd356a101b97fb1f6476f41ef89945a6c326024d",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/initial-evaluation/seed-2004.json",
+      "bytes": 136364,
+      "sha256": "2e0972bdd5b1c53a1ac00cb5523036b90e71d47042e793083669e740f615f26e",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\initial-evaluation\\seed-2004.json",
+      "source_sha256": "2e0972bdd5b1c53a1ac00cb5523036b90e71d47042e793083669e740f615f26e",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/parallel.py",
+      "bytes": 3582,
+      "sha256": "2a401398af3193e849285d6798681fea4f49f60436d1c5b74a38e65f07fb86cf",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\parallel.py",
+      "source_sha256": "2a401398af3193e849285d6798681fea4f49f60436d1c5b74a38e65f07fb86cf",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/planner_diagnostic.py",
+      "bytes": 5889,
+      "sha256": "4988c7d14ebdea93c70725ac7c64400834c64a24e73ab1e1de2306182d70fed3",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\planner_diagnostic.py",
+      "source_sha256": "4988c7d14ebdea93c70725ac7c64400834c64a24e73ab1e1de2306182d70fed3",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/progress.csv",
+      "bytes": 6632,
+      "sha256": "90754cd50a0fae7119b12f65a20adba34e699aec31a9ab05e87f315349d81053",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\progress.csv",
+      "source_sha256": "90754cd50a0fae7119b12f65a20adba34e699aec31a9ab05e87f315349d81053",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/progress.py",
+      "bytes": 12977,
+      "sha256": "b90edfd986878603cea5d93b3e3f62840ee07abdf059a82dc724bfa494cdfde9",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\progress.py",
+      "source_sha256": "b90edfd986878603cea5d93b3e3f62840ee07abdf059a82dc724bfa494cdfde9",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/rewards.py",
+      "bytes": 1227,
+      "sha256": "0f380576e816ef246a1f01307267315e6345492c84b8de6948dfff4fcda4da62",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\rewards.py",
+      "source_sha256": "0f380576e816ef246a1f01307267315e6345492c84b8de6948dfff4fcda4da62",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/seed-summary.json",
+      "bytes": 5657,
+      "sha256": "1eb0a3c32d069196f95be93f6b1cfdeeac41eef33a99b45a5d95f72325d849a8",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\seed-summary.json",
+      "source_sha256": "1eb0a3c32d069196f95be93f6b1cfdeeac41eef33a99b45a5d95f72325d849a8",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/shutdown.py",
+      "bytes": 1017,
+      "sha256": "83d3f5905bc98cca2889001aa30d3e17e1c68fd9796ddc4ff5eb82a1b5b53126",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\shutdown.py",
+      "source_sha256": "83d3f5905bc98cca2889001aa30d3e17e1c68fd9796ddc4ff5eb82a1b5b53126",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/status.json",
+      "bytes": 1246,
+      "sha256": "9c5562d7e290fae49ce51c0615de9f50187afb1a1b5511cae995744c23915ddd",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\status.json",
+      "source_sha256": "9c5562d7e290fae49ce51c0615de9f50187afb1a1b5511cae995744c23915ddd",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/summary.json",
+      "bytes": 12278,
+      "sha256": "a400505f2ea81231744e586777f3ce2dadf39ba1f44be9c7d14ff01fc1ad575b",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\summary.json",
+      "source_sha256": "7476a40c1a74266d7c0d598f111184e104779f3358a308641349b08b572717f1",
+      "transformation": "Removed duplicated episode_replay keys from metric rows; exact dedicated replay files retained"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/train_goal.py",
+      "bytes": 6756,
+      "sha256": "dd98bb2a5ca7b147dbed9ed053914fb6fac23b3bf163e1052e3beeba0791b573",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\train_goal.py",
+      "source_sha256": "dd98bb2a5ca7b147dbed9ed053914fb6fac23b3bf163e1052e3beeba0791b573",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/validation.jsonl",
+      "bytes": 14056,
+      "sha256": "fd705c26ffc101c250f502fe659c5190d21b7e2d1f7d6d44c8676e942a46209d",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\validation.jsonl",
+      "source_sha256": "621e70552558c033fde91993e4781c3e3bc508d81004a0c5cce471013f62d2cd",
+      "transformation": "Removed duplicated episode_replay keys from metric rows; exact dedicated replay files retained"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/worker-00.monitor.csv",
+      "bytes": 1530,
+      "sha256": "64de52a98f63859aea37abba83360d479c89c1203be7c8a30cddc12381a81ae5",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\worker-00.monitor.csv",
+      "source_sha256": "64de52a98f63859aea37abba83360d479c89c1203be7c8a30cddc12381a81ae5",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-hybrid-20261028/worker-01.monitor.csv",
+      "bytes": 1517,
+      "sha256": "0d295002cc47fde1143c241cffc973dc7b8e1d716c8cc7da263adaaad62ce542",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-hybrid-20261028\\worker-01.monitor.csv",
+      "source_sha256": "0d295002cc47fde1143c241cffc973dc7b8e1d716c8cc7da263adaaad62ce542",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/before.json",
+      "bytes": 6300,
+      "sha256": "b197a13fdc37f1d320fd6d51cecab54566a05dd2912fd64fdb7d361f541063f4",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\before.json",
+      "source_sha256": "a681bf6e7478831e42c05c5be3f9de843818abfce205cb4a952f0c8f72a97f5b",
+      "transformation": "Removed duplicated episode_replay keys from metric rows; exact dedicated replay files retained"
+    },
+    {
+      "path": "runs/goal-rate-20261028/best-game.json",
+      "bytes": 145939,
+      "sha256": "cf1f83716cb5907787263c7c8bfe1d351b76680dfab0e2722f4e2a50cbb9a030",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\best-game.json",
+      "source_sha256": "cf1f83716cb5907787263c7c8bfe1d351b76680dfab0e2722f4e2a50cbb9a030",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/config.json",
+      "bytes": 1674,
+      "sha256": "7dedcb85819e38ffdc627fac08f7719c80fe526e259345f918fe08aa99a15df8",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\config.json",
+      "source_sha256": "7dedcb85819e38ffdc627fac08f7719c80fe526e259345f918fe08aa99a15df8",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/environment.py",
+      "bytes": 25913,
+      "sha256": "fa21dd2c96eb88fb303e0b406c73475d2b941345c2f043ed201b4e6182c47caa",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\environment.py",
+      "source_sha256": "fa21dd2c96eb88fb303e0b406c73475d2b941345c2f043ed201b4e6182c47caa",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/episodes.jsonl",
+      "bytes": 84214,
+      "sha256": "0f9dc0bc56f2bd41e80f8a1b24a2f07f10f06e2907a1a0d7da8d571869a08771",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\episodes.jsonl",
+      "source_sha256": "0f9dc0bc56f2bd41e80f8a1b24a2f07f10f06e2907a1a0d7da8d571869a08771",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/final-evaluation/seed-2000.json",
+      "bytes": 88432,
+      "sha256": "8219b42bc726435e910a51b94932db49b96a7ae423e9a8945eb803fa3d4f3d3b",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\final-evaluation\\seed-2000.json",
+      "source_sha256": "8219b42bc726435e910a51b94932db49b96a7ae423e9a8945eb803fa3d4f3d3b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/final-evaluation/seed-2001.json",
+      "bytes": 70819,
+      "sha256": "71ded576fb0b3629080dae3e7e956b44df889ff99ab84254893014980e37b2a1",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\final-evaluation\\seed-2001.json",
+      "source_sha256": "71ded576fb0b3629080dae3e7e956b44df889ff99ab84254893014980e37b2a1",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/final-evaluation/seed-2002.json",
+      "bytes": 81203,
+      "sha256": "8f8bd5c9041fb04f9b1916d5cdfbc3bac3ace7958c4dc3d498c731e00f143fcd",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\final-evaluation\\seed-2002.json",
+      "source_sha256": "8f8bd5c9041fb04f9b1916d5cdfbc3bac3ace7958c4dc3d498c731e00f143fcd",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/final-evaluation/seed-2003.json",
+      "bytes": 84650,
+      "sha256": "11f57fc1a17237ccae694223e81862d040ba939a93eec9123d8d1c91b76c5f68",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\final-evaluation\\seed-2003.json",
+      "source_sha256": "11f57fc1a17237ccae694223e81862d040ba939a93eec9123d8d1c91b76c5f68",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/final-evaluation/seed-2004.json",
+      "bytes": 112234,
+      "sha256": "0a3525f47e8f49df1c21d2a33a9e4a0231f9185ecbf606fc8ce7ef6feadafd7d",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\final-evaluation\\seed-2004.json",
+      "source_sha256": "0a3525f47e8f49df1c21d2a33a9e4a0231f9185ecbf606fc8ce7ef6feadafd7d",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/goal_agent.py",
+      "bytes": 11655,
+      "sha256": "6addc52bb048cef4c59ff2440d9d029a7008ba3ef9b1baa5013d23dcb354aaa1",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\goal_agent.py",
+      "source_sha256": "6addc52bb048cef4c59ff2440d9d029a7008ba3ef9b1baa5013d23dcb354aaa1",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/initial-evaluation/seed-2000.json",
+      "bytes": 101352,
+      "sha256": "8f940b7de37b9fba3cabef8f1d30dc8b017f5e838e6bc948166f6c18b015d256",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\initial-evaluation\\seed-2000.json",
+      "source_sha256": "8f940b7de37b9fba3cabef8f1d30dc8b017f5e838e6bc948166f6c18b015d256",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/initial-evaluation/seed-2001.json",
+      "bytes": 70819,
+      "sha256": "cf676bfb26de71c9b07915971ff15db8f21e3412acf33d8cae1e5e1737c0c2fe",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\initial-evaluation\\seed-2001.json",
+      "source_sha256": "cf676bfb26de71c9b07915971ff15db8f21e3412acf33d8cae1e5e1737c0c2fe",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/initial-evaluation/seed-2002.json",
+      "bytes": 86983,
+      "sha256": "594987c7d70d190f1864e0829acca05833b6a634ec5e4ea1a0a75e7be2faa517",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\initial-evaluation\\seed-2002.json",
+      "source_sha256": "594987c7d70d190f1864e0829acca05833b6a634ec5e4ea1a0a75e7be2faa517",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/initial-evaluation/seed-2003.json",
+      "bytes": 84378,
+      "sha256": "c20d673d603a75bc88a89a78ca1edfd620ee73a66166fca693a7d542f3402573",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\initial-evaluation\\seed-2003.json",
+      "source_sha256": "c20d673d603a75bc88a89a78ca1edfd620ee73a66166fca693a7d542f3402573",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/initial-evaluation/seed-2004.json",
+      "bytes": 136391,
+      "sha256": "9878864de7a915fb77cd9340ebc2880550b0803ac10d1e89f9b8828684bbaa80",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\initial-evaluation\\seed-2004.json",
+      "source_sha256": "9878864de7a915fb77cd9340ebc2880550b0803ac10d1e89f9b8828684bbaa80",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/parallel.py",
+      "bytes": 3582,
+      "sha256": "2a401398af3193e849285d6798681fea4f49f60436d1c5b74a38e65f07fb86cf",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\parallel.py",
+      "source_sha256": "2a401398af3193e849285d6798681fea4f49f60436d1c5b74a38e65f07fb86cf",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/planner_diagnostic.py",
+      "bytes": 5889,
+      "sha256": "4988c7d14ebdea93c70725ac7c64400834c64a24e73ab1e1de2306182d70fed3",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\planner_diagnostic.py",
+      "source_sha256": "4988c7d14ebdea93c70725ac7c64400834c64a24e73ab1e1de2306182d70fed3",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/progress.csv",
+      "bytes": 2488,
+      "sha256": "658c3026b4273e931c7d8277ad7f6c79f801caedaf251056cb9f0d06301ae9fe",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\progress.csv",
+      "source_sha256": "658c3026b4273e931c7d8277ad7f6c79f801caedaf251056cb9f0d06301ae9fe",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/progress.py",
+      "bytes": 13034,
+      "sha256": "7fcfaebd19812886c63a1ee2c4c6517c4bdc0734d336f55ec4ec228727457454",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\progress.py",
+      "source_sha256": "7fcfaebd19812886c63a1ee2c4c6517c4bdc0734d336f55ec4ec228727457454",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/rewards.py",
+      "bytes": 1227,
+      "sha256": "0f380576e816ef246a1f01307267315e6345492c84b8de6948dfff4fcda4da62",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\rewards.py",
+      "source_sha256": "0f380576e816ef246a1f01307267315e6345492c84b8de6948dfff4fcda4da62",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/seed-summary.json",
+      "bytes": 6921,
+      "sha256": "70a82d0f845d7d7d7db466ceca80de5409c4c1c6d4f764a18ecd895806363cd1",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\seed-summary.json",
+      "source_sha256": "70a82d0f845d7d7d7db466ceca80de5409c4c1c6d4f764a18ecd895806363cd1",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/shutdown.py",
+      "bytes": 1017,
+      "sha256": "83d3f5905bc98cca2889001aa30d3e17e1c68fd9796ddc4ff5eb82a1b5b53126",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\shutdown.py",
+      "source_sha256": "83d3f5905bc98cca2889001aa30d3e17e1c68fd9796ddc4ff5eb82a1b5b53126",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/status.json",
+      "bytes": 1246,
+      "sha256": "c9299b8b9177dd4680aba71e5f251a5088d4f4909b190b45503dbb0a7ec97e12",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\status.json",
+      "source_sha256": "c9299b8b9177dd4680aba71e5f251a5088d4f4909b190b45503dbb0a7ec97e12",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/summary.json",
+      "bytes": 13915,
+      "sha256": "7fd5ba5723d682aee12f1bd14afea0d2bea426e76de51495c9b94051da0ae15a",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\summary.json",
+      "source_sha256": "af7b817bc8e206605c16c5d84bd2e634fbdde2a6bf2d7a8bc0f0a27a353f059d",
+      "transformation": "Removed duplicated episode_replay keys from metric rows; exact dedicated replay files retained"
+    },
+    {
+      "path": "runs/goal-rate-20261028/train_goal.py",
+      "bytes": 7918,
+      "sha256": "5926c661113b11fc661d7d33bbb5cd1b2f80853e14baf16e71aef6471f4664eb",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\train_goal.py",
+      "source_sha256": "5926c661113b11fc661d7d33bbb5cd1b2f80853e14baf16e71aef6471f4664eb",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/validation.jsonl",
+      "bytes": 16117,
+      "sha256": "efc8442c4bc331e1145ada1a3d987bba5162badae62770ccc53411b60545da6a",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\validation.jsonl",
+      "source_sha256": "36642d3ef6c43f1dce0fa5837060077472ee5d38eb6834e28a1ade44c1d53a3b",
+      "transformation": "Removed duplicated episode_replay keys from metric rows; exact dedicated replay files retained"
+    },
+    {
+      "path": "runs/goal-rate-20261028/worker-00.monitor.csv",
+      "bytes": 1869,
+      "sha256": "18bb8f42801d3b89fb260d11da44bcb8483fb8f1e9feda28e94ae121f8a4287e",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\worker-00.monitor.csv",
+      "source_sha256": "18bb8f42801d3b89fb260d11da44bcb8483fb8f1e9feda28e94ae121f8a4287e",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-rate-20261028/worker-01.monitor.csv",
+      "bytes": 1935,
+      "sha256": "b88250430de758be8a389d0ad482e262d1b9ee4efcbd8fe9f2bc28a875b65956",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-rate-20261028\\worker-01.monitor.csv",
+      "source_sha256": "b88250430de758be8a389d0ad482e262d1b9ee4efcbd8fe9f2bc28a875b65956",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/before.json",
+      "bytes": 5937,
+      "sha256": "bfa89f312ef39e0c3c2e42ed1eb24b3c891bcc918ca40609629d6ec005e59c94",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\before.json",
+      "source_sha256": "49464f9637facc3bdefa99a2d9628402d7a0c2626947fcaa66820cba76557d53",
+      "transformation": "Removed duplicated episode_replay keys from metric rows; exact dedicated replay files retained"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/best-game.json",
+      "bytes": 135447,
+      "sha256": "5c1ec1f94454a619cbaa2c0a775f968bce4e6c1af653ad28e9597ab186434682",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\best-game.json",
+      "source_sha256": "5c1ec1f94454a619cbaa2c0a775f968bce4e6c1af653ad28e9597ab186434682",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/config.json",
+      "bytes": 1569,
+      "sha256": "e141b585f08d9c198c19fa1a80a5c818484645bfe1818a4de1d54b5614c7d328",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\config.json",
+      "source_sha256": "e141b585f08d9c198c19fa1a80a5c818484645bfe1818a4de1d54b5614c7d328",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/environment.py",
+      "bytes": 25913,
+      "sha256": "fa21dd2c96eb88fb303e0b406c73475d2b941345c2f043ed201b4e6182c47caa",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\environment.py",
+      "source_sha256": "fa21dd2c96eb88fb303e0b406c73475d2b941345c2f043ed201b4e6182c47caa",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/episodes.jsonl",
+      "bytes": 53148,
+      "sha256": "ab408bef5f2cf578b07d56cca5a3896a9225466cddd16b35b208b0f37b24b617",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\episodes.jsonl",
+      "source_sha256": "ab408bef5f2cf578b07d56cca5a3896a9225466cddd16b35b208b0f37b24b617",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/final-evaluation/seed-2000.json",
+      "bytes": 101325,
+      "sha256": "4d7a74f81349ac00036626074843c982579b2cb8ceb1bf14ccb8557b0d58e2e0",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\final-evaluation\\seed-2000.json",
+      "source_sha256": "4d7a74f81349ac00036626074843c982579b2cb8ceb1bf14ccb8557b0d58e2e0",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/final-evaluation/seed-2001.json",
+      "bytes": 71532,
+      "sha256": "c7a4b916760f44de6000e46a87a519951aed10bf43083299cd50a838d690f845",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\final-evaluation\\seed-2001.json",
+      "source_sha256": "c7a4b916760f44de6000e46a87a519951aed10bf43083299cd50a838d690f845",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/final-evaluation/seed-2002.json",
+      "bytes": 86956,
+      "sha256": "09a01fe5c2edaf8589f0b4d22e82d6a41c8cc3e7a87540cf36190b7f23710a78",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\final-evaluation\\seed-2002.json",
+      "source_sha256": "09a01fe5c2edaf8589f0b4d22e82d6a41c8cc3e7a87540cf36190b7f23710a78",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/final-evaluation/seed-2003.json",
+      "bytes": 84283,
+      "sha256": "31783ff754f63acbc4c440a10167b8d1cc84248c51c72037b7b9bb569ad29345",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\final-evaluation\\seed-2003.json",
+      "source_sha256": "31783ff754f63acbc4c440a10167b8d1cc84248c51c72037b7b9bb569ad29345",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/final-evaluation/seed-2004.json",
+      "bytes": 136364,
+      "sha256": "5f1bb90dd2428a45f9785e3fabce6f7de3417ba424d963248b8cbbfbc191f641",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\final-evaluation\\seed-2004.json",
+      "source_sha256": "5f1bb90dd2428a45f9785e3fabce6f7de3417ba424d963248b8cbbfbc191f641",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/goal_agent.py",
+      "bytes": 10992,
+      "sha256": "0197617264f440ff81f14428fa53834f77820c5eb84931bba9453647e39ba03b",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\goal_agent.py",
+      "source_sha256": "0197617264f440ff81f14428fa53834f77820c5eb84931bba9453647e39ba03b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/initial-evaluation/seed-2000.json",
+      "bytes": 101325,
+      "sha256": "21404f9102a32d3ef1e7ba6f097fe35928a1ed2e56e421a623cadd2558041153",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\initial-evaluation\\seed-2000.json",
+      "source_sha256": "21404f9102a32d3ef1e7ba6f097fe35928a1ed2e56e421a623cadd2558041153",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/initial-evaluation/seed-2001.json",
+      "bytes": 70792,
+      "sha256": "ea8c4007c3e1af2716360f818000fc06a5e091cb2ee16ee19888ac3c28e230d4",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\initial-evaluation\\seed-2001.json",
+      "source_sha256": "ea8c4007c3e1af2716360f818000fc06a5e091cb2ee16ee19888ac3c28e230d4",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/initial-evaluation/seed-2002.json",
+      "bytes": 86956,
+      "sha256": "3515642276bb233542842a775672b93a301a5877ba1cbde4b3bf166972874d0a",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\initial-evaluation\\seed-2002.json",
+      "source_sha256": "3515642276bb233542842a775672b93a301a5877ba1cbde4b3bf166972874d0a",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/initial-evaluation/seed-2003.json",
+      "bytes": 84351,
+      "sha256": "b7654f89d328b04686b5081dcd356a101b97fb1f6476f41ef89945a6c326024d",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\initial-evaluation\\seed-2003.json",
+      "source_sha256": "b7654f89d328b04686b5081dcd356a101b97fb1f6476f41ef89945a6c326024d",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/initial-evaluation/seed-2004.json",
+      "bytes": 136364,
+      "sha256": "2e0972bdd5b1c53a1ac00cb5523036b90e71d47042e793083669e740f615f26e",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\initial-evaluation\\seed-2004.json",
+      "source_sha256": "2e0972bdd5b1c53a1ac00cb5523036b90e71d47042e793083669e740f615f26e",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/parallel.py",
+      "bytes": 3582,
+      "sha256": "2a401398af3193e849285d6798681fea4f49f60436d1c5b74a38e65f07fb86cf",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\parallel.py",
+      "source_sha256": "2a401398af3193e849285d6798681fea4f49f60436d1c5b74a38e65f07fb86cf",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/planner_diagnostic.py",
+      "bytes": 5889,
+      "sha256": "4988c7d14ebdea93c70725ac7c64400834c64a24e73ab1e1de2306182d70fed3",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\planner_diagnostic.py",
+      "source_sha256": "4988c7d14ebdea93c70725ac7c64400834c64a24e73ab1e1de2306182d70fed3",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/progress.csv",
+      "bytes": 6239,
+      "sha256": "f68e0dd262e7de5ec4c6166cc5e788214110c0e6640adf1249e63286224a574b",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\progress.csv",
+      "source_sha256": "f68e0dd262e7de5ec4c6166cc5e788214110c0e6640adf1249e63286224a574b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/progress.py",
+      "bytes": 12977,
+      "sha256": "b90edfd986878603cea5d93b3e3f62840ee07abdf059a82dc724bfa494cdfde9",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\progress.py",
+      "source_sha256": "b90edfd986878603cea5d93b3e3f62840ee07abdf059a82dc724bfa494cdfde9",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/rewards.py",
+      "bytes": 1227,
+      "sha256": "0f380576e816ef246a1f01307267315e6345492c84b8de6948dfff4fcda4da62",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\rewards.py",
+      "source_sha256": "0f380576e816ef246a1f01307267315e6345492c84b8de6948dfff4fcda4da62",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/seed-summary.json",
+      "bytes": 5210,
+      "sha256": "2da4c7ba7d3d92e09db54bbd8a5c367a5dc5c5e6ceb3e610c22a3bad07396a41",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\seed-summary.json",
+      "source_sha256": "2da4c7ba7d3d92e09db54bbd8a5c367a5dc5c5e6ceb3e610c22a3bad07396a41",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/shutdown.py",
+      "bytes": 1017,
+      "sha256": "83d3f5905bc98cca2889001aa30d3e17e1c68fd9796ddc4ff5eb82a1b5b53126",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\shutdown.py",
+      "source_sha256": "83d3f5905bc98cca2889001aa30d3e17e1c68fd9796ddc4ff5eb82a1b5b53126",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/status.json",
+      "bytes": 1255,
+      "sha256": "091fd8a02fa51840d4cf2bd9c9fe161875f4ad837af5f9acd6579fcaca767a9b",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\status.json",
+      "source_sha256": "091fd8a02fa51840d4cf2bd9c9fe161875f4ad837af5f9acd6579fcaca767a9b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/summary.json",
+      "bytes": 13164,
+      "sha256": "b2ec838fdb98fc3de0b1f62079394a0cb855e8eb79c02a03e53d1b57699a7d05",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\summary.json",
+      "source_sha256": "845d950748026752d58d9cb8e60b43cb3869632c80da8f35608f210c34f20807",
+      "transformation": "Removed duplicated episode_replay keys from metric rows; exact dedicated replay files retained"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/train_goal.py",
+      "bytes": 7099,
+      "sha256": "1ec7ecdd4b7dfc6cd0df11bf523d78c31ebcb7d5be92417b7a23dab3c2f2592c",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\train_goal.py",
+      "source_sha256": "1ec7ecdd4b7dfc6cd0df11bf523d78c31ebcb7d5be92417b7a23dab3c2f2592c",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/validation.jsonl",
+      "bytes": 15136,
+      "sha256": "ff5eee56fee30e85bfa62c0dee15d05995cbf0a24a1b4b1f8e88d789bb7a3c3a",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\validation.jsonl",
+      "source_sha256": "471a17dfc52cf5d959b2d6c9a086790dbb9561287d0b180b8fb2062dce7e14b5",
+      "transformation": "Removed duplicated episode_replay keys from metric rows; exact dedicated replay files retained"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/worker-00.monitor.csv",
+      "bytes": 1362,
+      "sha256": "f87aca8d849d3a66f1eaba0dd3418b299c057c2b5fd453889ab6916ec42da10f",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\worker-00.monitor.csv",
+      "source_sha256": "f87aca8d849d3a66f1eaba0dd3418b299c057c2b5fd453889ab6916ec42da10f",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/goal-scaled-20261028/worker-01.monitor.csv",
+      "bytes": 1373,
+      "sha256": "3d88531a486de23cf7cbecc23e952fe4d028fdca33558f759dfbaae49d69119f",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\goal-scaled-20261028\\worker-01.monitor.csv",
+      "source_sha256": "3d88531a486de23cf7cbecc23e952fe4d028fdca33558f759dfbaae49d69119f",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-credit-20261028/best-game.json",
+      "bytes": 93140,
+      "sha256": "0d47fbb002e401eab4305789d9ab9fc4a75d64479bcdff9ed08ec6f1096e2799",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-credit-20261028\\best-game.json",
+      "source_sha256": "0d47fbb002e401eab4305789d9ab9fc4a75d64479bcdff9ed08ec6f1096e2799",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-credit-20261028/config.json",
+      "bytes": 2585,
+      "sha256": "d6c1561fbdc3e2c86e83bae01eebd1f535d24db82cb35d4efd69d016f60615f8",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-credit-20261028\\config.json",
+      "source_sha256": "d6c1561fbdc3e2c86e83bae01eebd1f535d24db82cb35d4efd69d016f60615f8",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-credit-20261028/environment.py",
+      "bytes": 25913,
+      "sha256": "fa21dd2c96eb88fb303e0b406c73475d2b941345c2f043ed201b4e6182c47caa",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-credit-20261028\\environment.py",
+      "source_sha256": "fa21dd2c96eb88fb303e0b406c73475d2b941345c2f043ed201b4e6182c47caa",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-credit-20261028/episodes.jsonl",
+      "bytes": 63580,
+      "sha256": "237efd52141caa568f7bfb6fc7209ce12ed1f0abd856df9a34a1adefb988f01d",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-credit-20261028\\episodes.jsonl",
+      "source_sha256": "237efd52141caa568f7bfb6fc7209ce12ed1f0abd856df9a34a1adefb988f01d",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-credit-20261028/migration.py",
+      "bytes": 2040,
+      "sha256": "53a83d4cab897b9ce3122c6ae44714cccf0624fafc6b580e994041fe4b2c1c78",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-credit-20261028\\migration.py",
+      "source_sha256": "53a83d4cab897b9ce3122c6ae44714cccf0624fafc6b580e994041fe4b2c1c78",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-credit-20261028/parallel.py",
+      "bytes": 3582,
+      "sha256": "2a401398af3193e849285d6798681fea4f49f60436d1c5b74a38e65f07fb86cf",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-credit-20261028\\parallel.py",
+      "source_sha256": "2a401398af3193e849285d6798681fea4f49f60436d1c5b74a38e65f07fb86cf",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-credit-20261028/progress.csv",
+      "bytes": 12289,
+      "sha256": "d341de01f9cf1b288e7bff267cc5dfd6d1a2521d09e0100396daddc5c330af3b",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-credit-20261028\\progress.csv",
+      "source_sha256": "d341de01f9cf1b288e7bff267cc5dfd6d1a2521d09e0100396daddc5c330af3b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-credit-20261028/progress.py",
+      "bytes": 12833,
+      "sha256": "a24e8ffd3990d870216327b82642f1b19ae6364769c018e419e4306cfe4a3558",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-credit-20261028\\progress.py",
+      "source_sha256": "a24e8ffd3990d870216327b82642f1b19ae6364769c018e419e4306cfe4a3558",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-credit-20261028/rewards.py",
+      "bytes": 1227,
+      "sha256": "0f380576e816ef246a1f01307267315e6345492c84b8de6948dfff4fcda4da62",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-credit-20261028\\rewards.py",
+      "source_sha256": "0f380576e816ef246a1f01307267315e6345492c84b8de6948dfff4fcda4da62",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-credit-20261028/seed-summary.json",
+      "bytes": 5912,
+      "sha256": "4396826c42e530a71a2423a7c2d1c13babafb4cc17a872edced1d3c2c7639a1a",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-credit-20261028\\seed-summary.json",
+      "source_sha256": "4396826c42e530a71a2423a7c2d1c13babafb4cc17a872edced1d3c2c7639a1a",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-credit-20261028/shutdown.py",
+      "bytes": 1017,
+      "sha256": "83d3f5905bc98cca2889001aa30d3e17e1c68fd9796ddc4ff5eb82a1b5b53126",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-credit-20261028\\shutdown.py",
+      "source_sha256": "83d3f5905bc98cca2889001aa30d3e17e1c68fd9796ddc4ff5eb82a1b5b53126",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-credit-20261028/spatial_policy.py",
+      "bytes": 7757,
+      "sha256": "9d7b06ce4aa69fc7a7f7cdeaf2306dd2b030a2eecdaa31992edad47957d473ba",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-credit-20261028\\spatial_policy.py",
+      "source_sha256": "9d7b06ce4aa69fc7a7f7cdeaf2306dd2b030a2eecdaa31992edad47957d473ba",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-credit-20261028/status.json",
+      "bytes": 1650,
+      "sha256": "2274d591ecddd919941af29e6ead1711ad3f8b6a88f414909ff3d0253de3481c",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-credit-20261028\\status.json",
+      "source_sha256": "2274d591ecddd919941af29e6ead1711ad3f8b6a88f414909ff3d0253de3481c",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-credit-20261028/summary.json",
+      "bytes": 17995,
+      "sha256": "0d402ca5775affff0078108f91772a84a20a4be20a69516708f492350ecbf9bb",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-credit-20261028\\summary.json",
+      "source_sha256": "0d402ca5775affff0078108f91772a84a20a4be20a69516708f492350ecbf9bb",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-credit-20261028/train.py",
+      "bytes": 15548,
+      "sha256": "8e0393f7a51a926b60b4e416977b0ea0f9f6fefb21af40761bf575cbf850c9d9",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-credit-20261028\\train.py",
+      "source_sha256": "8e0393f7a51a926b60b4e416977b0ea0f9f6fefb21af40761bf575cbf850c9d9",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-credit-20261028/validation.jsonl",
+      "bytes": 12466,
+      "sha256": "5dac6c2346342c4f0360fee0db708e5e7e32deaa094b8ce1b9e6d4259a077dbc",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-credit-20261028\\validation.jsonl",
+      "source_sha256": "5dac6c2346342c4f0360fee0db708e5e7e32deaa094b8ce1b9e6d4259a077dbc",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-credit-20261028/worker-00.monitor.csv",
+      "bytes": 860,
+      "sha256": "50fe9fe5364962f7c3f3adc5285cfb87d9268bba3dcdc02802da67c8251ba951",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-credit-20261028\\worker-00.monitor.csv",
+      "source_sha256": "50fe9fe5364962f7c3f3adc5285cfb87d9268bba3dcdc02802da67c8251ba951",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-credit-20261028/worker-01.monitor.csv",
+      "bytes": 840,
+      "sha256": "2e89e6b15db0a517a4497a6a65ffbda02909b5752887329f1ad455dd4508b49e",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-credit-20261028\\worker-01.monitor.csv",
+      "source_sha256": "2e89e6b15db0a517a4497a6a65ffbda02909b5752887329f1ad455dd4508b49e",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-credit-20261028/worker-02.monitor.csv",
+      "bytes": 963,
+      "sha256": "029ab4861155e65699830189ff1817ccfbba7e8885623491c78e8d9a7d3a4d72",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-credit-20261028\\worker-02.monitor.csv",
+      "source_sha256": "029ab4861155e65699830189ff1817ccfbba7e8885623491c78e8d9a7d3a4d72",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-credit-20261028/worker-03.monitor.csv",
+      "bytes": 844,
+      "sha256": "d3a0925bf8aafd7eefb4cce59b428a5b90ac5d6d7c9a4da0fd771bfa698fd5ab",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-credit-20261028\\worker-03.monitor.csv",
+      "source_sha256": "d3a0925bf8aafd7eefb4cce59b428a5b90ac5d6d7c9a4da0fd771bfa698fd5ab",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-spatial-20261028/best-game.json",
+      "bytes": 81131,
+      "sha256": "4bf120b2f876f29d4831dbba8095665197d47a0e2086076d2f3368d8a019aaad",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-spatial-20261028\\best-game.json",
+      "source_sha256": "4bf120b2f876f29d4831dbba8095665197d47a0e2086076d2f3368d8a019aaad",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-spatial-20261028/config.json",
+      "bytes": 2560,
+      "sha256": "9594f45eedca131500ce616ae38b6e3557f9387af055a753c043ab5cc2ec7adc",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-spatial-20261028\\config.json",
+      "source_sha256": "9594f45eedca131500ce616ae38b6e3557f9387af055a753c043ab5cc2ec7adc",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-spatial-20261028/environment.py",
+      "bytes": 25913,
+      "sha256": "fa21dd2c96eb88fb303e0b406c73475d2b941345c2f043ed201b4e6182c47caa",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-spatial-20261028\\environment.py",
+      "source_sha256": "fa21dd2c96eb88fb303e0b406c73475d2b941345c2f043ed201b4e6182c47caa",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-spatial-20261028/episodes.jsonl",
+      "bytes": 57128,
+      "sha256": "7125fa8b7c3061c9f9aeb6f8045061e3ebb8e5d3990a8651c2d8a2c5234360c0",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-spatial-20261028\\episodes.jsonl",
+      "source_sha256": "7125fa8b7c3061c9f9aeb6f8045061e3ebb8e5d3990a8651c2d8a2c5234360c0",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-spatial-20261028/migration.py",
+      "bytes": 2040,
+      "sha256": "53a83d4cab897b9ce3122c6ae44714cccf0624fafc6b580e994041fe4b2c1c78",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-spatial-20261028\\migration.py",
+      "source_sha256": "53a83d4cab897b9ce3122c6ae44714cccf0624fafc6b580e994041fe4b2c1c78",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-spatial-20261028/parallel.py",
+      "bytes": 3582,
+      "sha256": "2a401398af3193e849285d6798681fea4f49f60436d1c5b74a38e65f07fb86cf",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-spatial-20261028\\parallel.py",
+      "source_sha256": "2a401398af3193e849285d6798681fea4f49f60436d1c5b74a38e65f07fb86cf",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-spatial-20261028/progress.csv",
+      "bytes": 47983,
+      "sha256": "be43ac6a478b0159a6a0fbb04aeea75b6be5271855b62269ce8f56229e61d019",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-spatial-20261028\\progress.csv",
+      "source_sha256": "be43ac6a478b0159a6a0fbb04aeea75b6be5271855b62269ce8f56229e61d019",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-spatial-20261028/progress.py",
+      "bytes": 12833,
+      "sha256": "a24e8ffd3990d870216327b82642f1b19ae6364769c018e419e4306cfe4a3558",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-spatial-20261028\\progress.py",
+      "source_sha256": "a24e8ffd3990d870216327b82642f1b19ae6364769c018e419e4306cfe4a3558",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-spatial-20261028/rewards.py",
+      "bytes": 1227,
+      "sha256": "0f380576e816ef246a1f01307267315e6345492c84b8de6948dfff4fcda4da62",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-spatial-20261028\\rewards.py",
+      "source_sha256": "0f380576e816ef246a1f01307267315e6345492c84b8de6948dfff4fcda4da62",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-spatial-20261028/seed-summary.json",
+      "bytes": 5368,
+      "sha256": "eca866e576208c446f0aba85aa1a2411ea5aaab73e6fb8e122c726a512014ed2",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-spatial-20261028\\seed-summary.json",
+      "source_sha256": "eca866e576208c446f0aba85aa1a2411ea5aaab73e6fb8e122c726a512014ed2",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-spatial-20261028/shutdown.py",
+      "bytes": 1017,
+      "sha256": "83d3f5905bc98cca2889001aa30d3e17e1c68fd9796ddc4ff5eb82a1b5b53126",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-spatial-20261028\\shutdown.py",
+      "source_sha256": "83d3f5905bc98cca2889001aa30d3e17e1c68fd9796ddc4ff5eb82a1b5b53126",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-spatial-20261028/spatial_policy.py",
+      "bytes": 7757,
+      "sha256": "9d7b06ce4aa69fc7a7f7cdeaf2306dd2b030a2eecdaa31992edad47957d473ba",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-spatial-20261028\\spatial_policy.py",
+      "source_sha256": "9d7b06ce4aa69fc7a7f7cdeaf2306dd2b030a2eecdaa31992edad47957d473ba",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-spatial-20261028/status.json",
+      "bytes": 1649,
+      "sha256": "fa6057b37b29ca28a5c77ef63fe5e109da713e30a4b33dbc805a406dd7e15f11",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-spatial-20261028\\status.json",
+      "source_sha256": "fa6057b37b29ca28a5c77ef63fe5e109da713e30a4b33dbc805a406dd7e15f11",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-spatial-20261028/summary.json",
+      "bytes": 18104,
+      "sha256": "b60e5dcb19d68e0c377b8ef374991769349773b144398cb790f19e6226a8d8d6",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-spatial-20261028\\summary.json",
+      "source_sha256": "b60e5dcb19d68e0c377b8ef374991769349773b144398cb790f19e6226a8d8d6",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-spatial-20261028/train.py",
+      "bytes": 15181,
+      "sha256": "bbdd8061afcacf735ab5f5bb2d81578bf01f27efdf6a1aa13d639d85c148c644",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-spatial-20261028\\train.py",
+      "source_sha256": "bbdd8061afcacf735ab5f5bb2d81578bf01f27efdf6a1aa13d639d85c148c644",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-spatial-20261028/validation.jsonl",
+      "bytes": 12664,
+      "sha256": "23383de2add6fe7219c6d2f9f79f3fee65d826ced7ee1423003a8a23670f191b",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-spatial-20261028\\validation.jsonl",
+      "source_sha256": "23383de2add6fe7219c6d2f9f79f3fee65d826ced7ee1423003a8a23670f191b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-spatial-20261028/worker-00.monitor.csv",
+      "bytes": 768,
+      "sha256": "150332e88032e46f9404b1618abf859dcbe4f8fa80c293125d4e44d2dbdae891",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-spatial-20261028\\worker-00.monitor.csv",
+      "source_sha256": "150332e88032e46f9404b1618abf859dcbe4f8fa80c293125d4e44d2dbdae891",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-spatial-20261028/worker-01.monitor.csv",
+      "bytes": 727,
+      "sha256": "e4e23c6317e5ec83c1f5792fd67367549b7cd0a135012c313d1c0e9df508d17f",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-spatial-20261028\\worker-01.monitor.csv",
+      "source_sha256": "e4e23c6317e5ec83c1f5792fd67367549b7cd0a135012c313d1c0e9df508d17f",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-spatial-20261028/worker-02.monitor.csv",
+      "bytes": 706,
+      "sha256": "f4ac3706bdc68745110dc369f50ce4f5f08efd1813aeae0ec8d2124469c99f34",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-spatial-20261028\\worker-02.monitor.csv",
+      "source_sha256": "f4ac3706bdc68745110dc369f50ce4f5f08efd1813aeae0ec8d2124469c99f34",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/informed-spatial-20261028/worker-03.monitor.csv",
+      "bytes": 874,
+      "sha256": "ff6b883710962910f8f7dc36662eb77d172546a20dfeb9788f778d57bd747ae1",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\informed-spatial-20261028\\worker-03.monitor.csv",
+      "source_sha256": "ff6b883710962910f8f7dc36662eb77d172546a20dfeb9788f778d57bd747ae1",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-control-20261028/best-game.json",
+      "bytes": 65199,
+      "sha256": "4e34f0be982e0607b9ced0d742f0b2cc3f1c1e40b089d8ed841548b1c63f07e7",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-control-20261028\\best-game.json",
+      "source_sha256": "4e34f0be982e0607b9ced0d742f0b2cc3f1c1e40b089d8ed841548b1c63f07e7",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-control-20261028/config.json",
+      "bytes": 2209,
+      "sha256": "32c9d03eab7738adbaaa01845a4979b5b01f532355e626f895efd057c64793fb",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-control-20261028\\config.json",
+      "source_sha256": "32c9d03eab7738adbaaa01845a4979b5b01f532355e626f895efd057c64793fb",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-control-20261028/environment.py",
+      "bytes": 24378,
+      "sha256": "15d31fc95e7b674774b44898b2b447134dfac9694e63840f1397ae68729c97ec",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-control-20261028\\environment.py",
+      "source_sha256": "15d31fc95e7b674774b44898b2b447134dfac9694e63840f1397ae68729c97ec",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-control-20261028/episodes.jsonl",
+      "bytes": 93760,
+      "sha256": "f0283021e0983c5b91371f8c3da5d280a0fb89fd3e1c2748b2cad2ea290555c3",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-control-20261028\\episodes.jsonl",
+      "source_sha256": "f0283021e0983c5b91371f8c3da5d280a0fb89fd3e1c2748b2cad2ea290555c3",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-control-20261028/migration.py",
+      "bytes": 1333,
+      "sha256": "ca4e1de5da534c72898e0954c8e404b663b55770962b9a479be31b42316e7789",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-control-20261028\\migration.py",
+      "source_sha256": "ca4e1de5da534c72898e0954c8e404b663b55770962b9a479be31b42316e7789",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-control-20261028/parallel.py",
+      "bytes": 3582,
+      "sha256": "2a401398af3193e849285d6798681fea4f49f60436d1c5b74a38e65f07fb86cf",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-control-20261028\\parallel.py",
+      "source_sha256": "2a401398af3193e849285d6798681fea4f49f60436d1c5b74a38e65f07fb86cf",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-control-20261028/progress.csv",
+      "bytes": 48720,
+      "sha256": "4fe551e2abfd4f9c8adb267c4547dd56382b794a3a6319393f3c6cf06e420228",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-control-20261028\\progress.csv",
+      "source_sha256": "4fe551e2abfd4f9c8adb267c4547dd56382b794a3a6319393f3c6cf06e420228",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-control-20261028/progress.py",
+      "bytes": 12548,
+      "sha256": "368f2c54c68b9eaa16cc9cb01d2257eab6970c39e0322c83a6426f9ef0ba827a",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-control-20261028\\progress.py",
+      "source_sha256": "368f2c54c68b9eaa16cc9cb01d2257eab6970c39e0322c83a6426f9ef0ba827a",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-control-20261028/rewards.py",
+      "bytes": 1227,
+      "sha256": "0f380576e816ef246a1f01307267315e6345492c84b8de6948dfff4fcda4da62",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-control-20261028\\rewards.py",
+      "source_sha256": "0f380576e816ef246a1f01307267315e6345492c84b8de6948dfff4fcda4da62",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-control-20261028/seed-summary.json",
+      "bytes": 8527,
+      "sha256": "5e843b0fb8f4465d37f089fa6b93c8a130c96855e131ad8d173f1bb0f1e44b48",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-control-20261028\\seed-summary.json",
+      "source_sha256": "5e843b0fb8f4465d37f089fa6b93c8a130c96855e131ad8d173f1bb0f1e44b48",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-control-20261028/shutdown.py",
+      "bytes": 1017,
+      "sha256": "83d3f5905bc98cca2889001aa30d3e17e1c68fd9796ddc4ff5eb82a1b5b53126",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-control-20261028\\shutdown.py",
+      "source_sha256": "83d3f5905bc98cca2889001aa30d3e17e1c68fd9796ddc4ff5eb82a1b5b53126",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-control-20261028/status.json",
+      "bytes": 1189,
+      "sha256": "1ebadd70eecb96c64bc3c6f55433c15a96942fb8b1085451c239fa5b901ac3ba",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-control-20261028\\status.json",
+      "source_sha256": "1ebadd70eecb96c64bc3c6f55433c15a96942fb8b1085451c239fa5b901ac3ba",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-control-20261028/summary.json",
+      "bytes": 16958,
+      "sha256": "ebb5a2f8632f56e1e1a0a7562e74f4c1e1e58a2b983142541b8383982d5980c7",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-control-20261028\\summary.json",
+      "source_sha256": "ebb5a2f8632f56e1e1a0a7562e74f4c1e1e58a2b983142541b8383982d5980c7",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-control-20261028/train.py",
+      "bytes": 13627,
+      "sha256": "d9b32e59897e770ec23bf5cc7013bb3d8ec9e17b64172b3f4fc7bfdcf44c80a7",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-control-20261028\\train.py",
+      "source_sha256": "d9b32e59897e770ec23bf5cc7013bb3d8ec9e17b64172b3f4fc7bfdcf44c80a7",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-control-20261028/validation.jsonl",
+      "bytes": 7939,
+      "sha256": "e3e7fe982da878255e77c51b36a9120783443cf7c8d4646fe5056a6454f0b829",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-control-20261028\\validation.jsonl",
+      "source_sha256": "e3e7fe982da878255e77c51b36a9120783443cf7c8d4646fe5056a6454f0b829",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-control-20261028/worker-00.monitor.csv",
+      "bytes": 2524,
+      "sha256": "d7a1b934af87267ebcbb4217b886931fdf4fbe004277d0066b5f4a7619b01b0f",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-control-20261028\\worker-00.monitor.csv",
+      "source_sha256": "d7a1b934af87267ebcbb4217b886931fdf4fbe004277d0066b5f4a7619b01b0f",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-control-20261028/worker-01.monitor.csv",
+      "bytes": 2369,
+      "sha256": "117ef11331083d69eea4016cb482df2e77097214d9094207978bc1247498b34c",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-control-20261028\\worker-01.monitor.csv",
+      "source_sha256": "117ef11331083d69eea4016cb482df2e77097214d9094207978bc1247498b34c",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-features-20261028/best-game.json",
+      "bytes": 69741,
+      "sha256": "5859ef8572d0c157936dff996dd9f6dab871460d01a30b75d403553ab97c47ed",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-features-20261028\\best-game.json",
+      "source_sha256": "5859ef8572d0c157936dff996dd9f6dab871460d01a30b75d403553ab97c47ed",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-features-20261028/config.json",
+      "bytes": 2229,
+      "sha256": "a015c7fa3fd26beec56d83dc8d0e245b27e10d50da9d1383edf0440a6b35988d",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-features-20261028\\config.json",
+      "source_sha256": "a015c7fa3fd26beec56d83dc8d0e245b27e10d50da9d1383edf0440a6b35988d",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-features-20261028/environment.py",
+      "bytes": 24378,
+      "sha256": "15d31fc95e7b674774b44898b2b447134dfac9694e63840f1397ae68729c97ec",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-features-20261028\\environment.py",
+      "source_sha256": "15d31fc95e7b674774b44898b2b447134dfac9694e63840f1397ae68729c97ec",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-features-20261028/episodes.jsonl",
+      "bytes": 93060,
+      "sha256": "262ecbab97206563afa0d38e820a797aece4546db5a71c13ec5aa3757c3f8e80",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-features-20261028\\episodes.jsonl",
+      "source_sha256": "262ecbab97206563afa0d38e820a797aece4546db5a71c13ec5aa3757c3f8e80",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-features-20261028/migration.py",
+      "bytes": 1333,
+      "sha256": "ca4e1de5da534c72898e0954c8e404b663b55770962b9a479be31b42316e7789",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-features-20261028\\migration.py",
+      "source_sha256": "ca4e1de5da534c72898e0954c8e404b663b55770962b9a479be31b42316e7789",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-features-20261028/parallel.py",
+      "bytes": 3582,
+      "sha256": "2a401398af3193e849285d6798681fea4f49f60436d1c5b74a38e65f07fb86cf",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-features-20261028\\parallel.py",
+      "source_sha256": "2a401398af3193e849285d6798681fea4f49f60436d1c5b74a38e65f07fb86cf",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-features-20261028/progress.csv",
+      "bytes": 48476,
+      "sha256": "aee26bb28236456b17f4db2c09e818cad03cc7fb91c3608dc5a6adc7fc3463df",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-features-20261028\\progress.csv",
+      "source_sha256": "aee26bb28236456b17f4db2c09e818cad03cc7fb91c3608dc5a6adc7fc3463df",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-features-20261028/progress.py",
+      "bytes": 12548,
+      "sha256": "368f2c54c68b9eaa16cc9cb01d2257eab6970c39e0322c83a6426f9ef0ba827a",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-features-20261028\\progress.py",
+      "source_sha256": "368f2c54c68b9eaa16cc9cb01d2257eab6970c39e0322c83a6426f9ef0ba827a",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-features-20261028/rewards.py",
+      "bytes": 1227,
+      "sha256": "0f380576e816ef246a1f01307267315e6345492c84b8de6948dfff4fcda4da62",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-features-20261028\\rewards.py",
+      "source_sha256": "0f380576e816ef246a1f01307267315e6345492c84b8de6948dfff4fcda4da62",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-features-20261028/seed-summary.json",
+      "bytes": 8279,
+      "sha256": "c3a0b5b9bcbdc8f309d7d3aaffcbb731ce730648c74fb8203cec62e43830581c",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-features-20261028\\seed-summary.json",
+      "source_sha256": "c3a0b5b9bcbdc8f309d7d3aaffcbb731ce730648c74fb8203cec62e43830581c",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-features-20261028/shutdown.py",
+      "bytes": 1017,
+      "sha256": "83d3f5905bc98cca2889001aa30d3e17e1c68fd9796ddc4ff5eb82a1b5b53126",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-features-20261028\\shutdown.py",
+      "source_sha256": "83d3f5905bc98cca2889001aa30d3e17e1c68fd9796ddc4ff5eb82a1b5b53126",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-features-20261028/status.json",
+      "bytes": 1168,
+      "sha256": "e78feb0a0282b23b0e93d57b2c8fe785f065c34e590d6b5968968f41e4d58ab4",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-features-20261028\\status.json",
+      "source_sha256": "e78feb0a0282b23b0e93d57b2c8fe785f065c34e590d6b5968968f41e4d58ab4",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-features-20261028/summary.json",
+      "bytes": 17390,
+      "sha256": "be8c7627226d2f9d6efa3360627e3805a544ecc6bb31b2c63f841f1284a910c4",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-features-20261028\\summary.json",
+      "source_sha256": "be8c7627226d2f9d6efa3360627e3805a544ecc6bb31b2c63f841f1284a910c4",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-features-20261028/train.py",
+      "bytes": 13627,
+      "sha256": "d9b32e59897e770ec23bf5cc7013bb3d8ec9e17b64172b3f4fc7bfdcf44c80a7",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-features-20261028\\train.py",
+      "source_sha256": "d9b32e59897e770ec23bf5cc7013bb3d8ec9e17b64172b3f4fc7bfdcf44c80a7",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-features-20261028/validation.jsonl",
+      "bytes": 8147,
+      "sha256": "b76d2241e7cc289d849f2ed3759c1a919fe47ea7d92dc28ff915e4429cee7e2b",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-features-20261028\\validation.jsonl",
+      "source_sha256": "b76d2241e7cc289d849f2ed3759c1a919fe47ea7d92dc28ff915e4429cee7e2b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-features-20261028/worker-00.monitor.csv",
+      "bytes": 2410,
+      "sha256": "662602f881bc45426d92591f6f90f1fbeb24a737a3a91fdb1f28e65e66f6a618",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-features-20261028\\worker-00.monitor.csv",
+      "source_sha256": "662602f881bc45426d92591f6f90f1fbeb24a737a3a91fdb1f28e65e66f6a618",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-features-20261028/worker-01.monitor.csv",
+      "bytes": 2368,
+      "sha256": "8eb8bc14cc182c939275333439e5e984350261078be6bfcd82683d7291d8379f",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-features-20261028\\worker-01.monitor.csv",
+      "source_sha256": "8eb8bc14cc182c939275333439e5e984350261078be6bfcd82683d7291d8379f",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-productive-20261028/best-game.json",
+      "bytes": 77628,
+      "sha256": "74b3ccb795badff5a6bbd704c6ffd379a2c0950f3e2688d1ea4f14160fdb0eeb",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-productive-20261028\\best-game.json",
+      "source_sha256": "74b3ccb795badff5a6bbd704c6ffd379a2c0950f3e2688d1ea4f14160fdb0eeb",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-productive-20261028/config.json",
+      "bytes": 2392,
+      "sha256": "d80530567141390be78876ddbc20065265a326f4860d1ded6106dae5ccff2abb",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-productive-20261028\\config.json",
+      "source_sha256": "d80530567141390be78876ddbc20065265a326f4860d1ded6106dae5ccff2abb",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-productive-20261028/environment.py",
+      "bytes": 25913,
+      "sha256": "fa21dd2c96eb88fb303e0b406c73475d2b941345c2f043ed201b4e6182c47caa",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-productive-20261028\\environment.py",
+      "source_sha256": "fa21dd2c96eb88fb303e0b406c73475d2b941345c2f043ed201b4e6182c47caa",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-productive-20261028/episodes.jsonl",
+      "bytes": 93236,
+      "sha256": "ef6e64a9314c614b16a4eb333b1570cfae506d7371098af57f9a823d49bb885f",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-productive-20261028\\episodes.jsonl",
+      "source_sha256": "ef6e64a9314c614b16a4eb333b1570cfae506d7371098af57f9a823d49bb885f",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-productive-20261028/migration.py",
+      "bytes": 1943,
+      "sha256": "c0863da3b2866bfb27b03b223550034a165da285f611a9690a0a3c52f66df721",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-productive-20261028\\migration.py",
+      "source_sha256": "c0863da3b2866bfb27b03b223550034a165da285f611a9690a0a3c52f66df721",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-productive-20261028/parallel.py",
+      "bytes": 3582,
+      "sha256": "2a401398af3193e849285d6798681fea4f49f60436d1c5b74a38e65f07fb86cf",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-productive-20261028\\parallel.py",
+      "source_sha256": "2a401398af3193e849285d6798681fea4f49f60436d1c5b74a38e65f07fb86cf",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-productive-20261028/progress.csv",
+      "bytes": 48746,
+      "sha256": "7c6a94f87d353c38d88c71c1445abe29df49d622d72958fac5d770f287774453",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-productive-20261028\\progress.csv",
+      "source_sha256": "7c6a94f87d353c38d88c71c1445abe29df49d622d72958fac5d770f287774453",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-productive-20261028/progress.py",
+      "bytes": 12560,
+      "sha256": "0cb145dedd2001ade98cbb1dbe46752f276bf2e4a0bd07c39a381eb3d3a08616",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-productive-20261028\\progress.py",
+      "source_sha256": "0cb145dedd2001ade98cbb1dbe46752f276bf2e4a0bd07c39a381eb3d3a08616",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-productive-20261028/rewards.py",
+      "bytes": 1227,
+      "sha256": "0f380576e816ef246a1f01307267315e6345492c84b8de6948dfff4fcda4da62",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-productive-20261028\\rewards.py",
+      "source_sha256": "0f380576e816ef246a1f01307267315e6345492c84b8de6948dfff4fcda4da62",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-productive-20261028/seed-summary.json",
+      "bytes": 8060,
+      "sha256": "84f630f9862382bf2e47201305abfc6f5b0adc0345dde5e278485e2b42015f71",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-productive-20261028\\seed-summary.json",
+      "source_sha256": "84f630f9862382bf2e47201305abfc6f5b0adc0345dde5e278485e2b42015f71",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-productive-20261028/shutdown.py",
+      "bytes": 1017,
+      "sha256": "83d3f5905bc98cca2889001aa30d3e17e1c68fd9796ddc4ff5eb82a1b5b53126",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-productive-20261028\\shutdown.py",
+      "source_sha256": "83d3f5905bc98cca2889001aa30d3e17e1c68fd9796ddc4ff5eb82a1b5b53126",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-productive-20261028/spatial_policy.py",
+      "bytes": 3893,
+      "sha256": "47eef3e9b6423ae06764acbf8ee4b0a42170a5157de34b6902e861cbb36a433e",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-productive-20261028\\spatial_policy.py",
+      "source_sha256": "47eef3e9b6423ae06764acbf8ee4b0a42170a5157de34b6902e861cbb36a433e",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-productive-20261028/status.json",
+      "bytes": 1170,
+      "sha256": "da70284f0525d8364c6b804a8c82db04115f89baf6243f508c0132d8f837e178",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-productive-20261028\\status.json",
+      "source_sha256": "da70284f0525d8364c6b804a8c82db04115f89baf6243f508c0132d8f837e178",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-productive-20261028/summary.json",
+      "bytes": 17033,
+      "sha256": "6bc7f6ce640a0bc55ee99d9d47b0c5b6afe72ff48839e7268357ae4f185233b6",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-productive-20261028\\summary.json",
+      "source_sha256": "6bc7f6ce640a0bc55ee99d9d47b0c5b6afe72ff48839e7268357ae4f185233b6",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-productive-20261028/train.py",
+      "bytes": 14652,
+      "sha256": "67d7ede4ba04a9cccef115669878e3eddc8fcc209941573ea71938049d691c87",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-productive-20261028\\train.py",
+      "source_sha256": "67d7ede4ba04a9cccef115669878e3eddc8fcc209941573ea71938049d691c87",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-productive-20261028/validation.jsonl",
+      "bytes": 8073,
+      "sha256": "346c95297b12350a2a2c1e6f1f0e7d095b258e8e783d51f373b28c9866a84824",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-productive-20261028\\validation.jsonl",
+      "source_sha256": "346c95297b12350a2a2c1e6f1f0e7d095b258e8e783d51f373b28c9866a84824",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-productive-20261028/worker-00.monitor.csv",
+      "bytes": 2446,
+      "sha256": "c66c593024b5a6104ddd9e45f0ead0a691f3333d6fd03793852e7d98ec2b858f",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-productive-20261028\\worker-00.monitor.csv",
+      "source_sha256": "c66c593024b5a6104ddd9e45f0ead0a691f3333d6fd03793852e7d98ec2b858f",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-productive-20261028/worker-01.monitor.csv",
+      "bytes": 2250,
+      "sha256": "f7e0f06c2f8a47dcd692f73dbe71c352622e14c245375a7309bad2c58836fef8",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-productive-20261028\\worker-01.monitor.csv",
+      "source_sha256": "f7e0f06c2f8a47dcd692f73dbe71c352622e14c245375a7309bad2c58836fef8",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-spatial-20261028/best-game.json",
+      "bytes": 69995,
+      "sha256": "55aae6b39530e6a8f508562c7d52df266bcbff406224b92ebb5ac49369bd422b",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-spatial-20261028\\best-game.json",
+      "source_sha256": "55aae6b39530e6a8f508562c7d52df266bcbff406224b92ebb5ac49369bd422b",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-spatial-20261028/config.json",
+      "bytes": 2268,
+      "sha256": "e1591e55c50a0d3543101492e5b8103127c5f83b2fce814fd5b0f0917ed8f6f1",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-spatial-20261028\\config.json",
+      "source_sha256": "e1591e55c50a0d3543101492e5b8103127c5f83b2fce814fd5b0f0917ed8f6f1",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-spatial-20261028/environment.py",
+      "bytes": 24378,
+      "sha256": "15d31fc95e7b674774b44898b2b447134dfac9694e63840f1397ae68729c97ec",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-spatial-20261028\\environment.py",
+      "source_sha256": "15d31fc95e7b674774b44898b2b447134dfac9694e63840f1397ae68729c97ec",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-spatial-20261028/episodes.jsonl",
+      "bytes": 90498,
+      "sha256": "827c11284315d4f2719b6475e62f4da164956e37733526dd198cb17857750141",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-spatial-20261028\\episodes.jsonl",
+      "source_sha256": "827c11284315d4f2719b6475e62f4da164956e37733526dd198cb17857750141",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-spatial-20261028/migration.py",
+      "bytes": 1943,
+      "sha256": "c0863da3b2866bfb27b03b223550034a165da285f611a9690a0a3c52f66df721",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-spatial-20261028\\migration.py",
+      "source_sha256": "c0863da3b2866bfb27b03b223550034a165da285f611a9690a0a3c52f66df721",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-spatial-20261028/parallel.py",
+      "bytes": 3582,
+      "sha256": "2a401398af3193e849285d6798681fea4f49f60436d1c5b74a38e65f07fb86cf",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-spatial-20261028\\parallel.py",
+      "source_sha256": "2a401398af3193e849285d6798681fea4f49f60436d1c5b74a38e65f07fb86cf",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-spatial-20261028/progress.csv",
+      "bytes": 46942,
+      "sha256": "4b5cfea754c02223054846488af4a4e708bc9a4cec370b5ae33883d5c1e6be87",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-spatial-20261028\\progress.csv",
+      "source_sha256": "4b5cfea754c02223054846488af4a4e708bc9a4cec370b5ae33883d5c1e6be87",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-spatial-20261028/progress.py",
+      "bytes": 12548,
+      "sha256": "368f2c54c68b9eaa16cc9cb01d2257eab6970c39e0322c83a6426f9ef0ba827a",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-spatial-20261028\\progress.py",
+      "source_sha256": "368f2c54c68b9eaa16cc9cb01d2257eab6970c39e0322c83a6426f9ef0ba827a",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-spatial-20261028/rewards.py",
+      "bytes": 1227,
+      "sha256": "0f380576e816ef246a1f01307267315e6345492c84b8de6948dfff4fcda4da62",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-spatial-20261028\\rewards.py",
+      "source_sha256": "0f380576e816ef246a1f01307267315e6345492c84b8de6948dfff4fcda4da62",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-spatial-20261028/seed-summary.json",
+      "bytes": 8172,
+      "sha256": "82b1625636ea0aa6e4dc0d4abd20bd41190bbb02487258a34f94a2dd7a675045",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-spatial-20261028\\seed-summary.json",
+      "source_sha256": "82b1625636ea0aa6e4dc0d4abd20bd41190bbb02487258a34f94a2dd7a675045",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-spatial-20261028/shutdown.py",
+      "bytes": 1017,
+      "sha256": "83d3f5905bc98cca2889001aa30d3e17e1c68fd9796ddc4ff5eb82a1b5b53126",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-spatial-20261028\\shutdown.py",
+      "source_sha256": "83d3f5905bc98cca2889001aa30d3e17e1c68fd9796ddc4ff5eb82a1b5b53126",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-spatial-20261028/spatial_policy.py",
+      "bytes": 3893,
+      "sha256": "47eef3e9b6423ae06764acbf8ee4b0a42170a5157de34b6902e861cbb36a433e",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-spatial-20261028\\spatial_policy.py",
+      "source_sha256": "47eef3e9b6423ae06764acbf8ee4b0a42170a5157de34b6902e861cbb36a433e",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-spatial-20261028/status.json",
+      "bytes": 1233,
+      "sha256": "f5ecd5ac555d6313531b4851c90c811f62027f4d2821d82d0393082595622498",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-spatial-20261028\\status.json",
+      "source_sha256": "f5ecd5ac555d6313531b4851c90c811f62027f4d2821d82d0393082595622498",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-spatial-20261028/summary.json",
+      "bytes": 17062,
+      "sha256": "a8a73c982ca1845e1d4cdee3e617418dea855d7b8bdf1fd66dcde90bb1c18554",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-spatial-20261028\\summary.json",
+      "source_sha256": "a8a73c982ca1845e1d4cdee3e617418dea855d7b8bdf1fd66dcde90bb1c18554",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-spatial-20261028/train.py",
+      "bytes": 14242,
+      "sha256": "d929c52417cf700519acbac765f796dcb62108fb1e88dbca6064565a8716d0a0",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-spatial-20261028\\train.py",
+      "source_sha256": "d929c52417cf700519acbac765f796dcb62108fb1e88dbca6064565a8716d0a0",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-spatial-20261028/validation.jsonl",
+      "bytes": 20222,
+      "sha256": "e1137bd707fa940282fb22f0f0a59d575ef56c2c6a2b3c500a4dbbc389aab30c",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-spatial-20261028\\validation.jsonl",
+      "source_sha256": "e1137bd707fa940282fb22f0f0a59d575ef56c2c6a2b3c500a4dbbc389aab30c",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-spatial-20261028/worker-00.monitor.csv",
+      "bytes": 2388,
+      "sha256": "c1ed2e15f66a40983b7b5bc2e8131aadd517aaa1b1219e21c510cdc021b47d13",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-spatial-20261028\\worker-00.monitor.csv",
+      "source_sha256": "c1ed2e15f66a40983b7b5bc2e8131aadd517aaa1b1219e21c510cdc021b47d13",
+      "transformation": "byte-for-byte copy"
+    },
+    {
+      "path": "runs/pilot-spatial-20261028/worker-01.monitor.csv",
+      "bytes": 2266,
+      "sha256": "9b206ff0b489274341b803e255295a20aaa06b1c6d5a124be42387f976ad6214",
+      "source": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-spatial-20261028\\worker-01.monitor.csv",
+      "source_sha256": "9b206ff0b489274341b803e255295a20aaa06b1c6d5a124be42387f976ad6214",
+      "transformation": "byte-for-byte copy"
+    }
+  ],
+  "weights": "Local-only output/training/<run>/*.zip; intentionally excluded",
+  "purpose": "Completed three-hour investigation, including negative results and exact ordinary-command replays"
+}

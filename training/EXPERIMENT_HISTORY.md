@@ -473,3 +473,30 @@ explains restrictions, input features, reward, resume inheritance and commands.
 Final test seeds remain untouched until checkpoint selection is frozen. Training
 best scores are not checkpoint-selection scores and engineered assistance is not
 attributed to learning. The final record will report the independent tests.
+
+## T20 - Final independent assessment and report
+
+The authorized study completed ten bounded training arms, preserving original
+checkpoints and `main`. Primitive all-tools best was 126; the separate restricted
+planner-aided variant recorded 356 (seed 1075, 971.65 seconds/972 commands), verified
+exactly in headless and native runtimes. The higher-rate final model's development
+mean fell to 128.0 despite that record. Goal development selection retained the
+frozen initial policy on a tie; the first arm's early validation checkpoint was
+the trained comparison. Selection/hash record preceded all final tests.
+
+On ten fresh deterministic seeds, old primitive mean was 0.6, informed primitive
+initial 23.4, trained primitive 20.7, goal initial 119.1, trained goal 125.7.
+The last gain came from one map improving 56 to 122; nine tied. Secondary sampled
+inference averaged 130.4 for both goal policies, with identical per-map scores.
+No final-test result was used for retuning or reselection. Parameter updates are
+verified, but robust learning, a shaping benefit and the 1,000-trip target are not
+established. Engineered priors/router account for most improved starting play.
+
+The [latest report](../docs/training/model-investigation-2026-10-28.pdf) preserves
+the graphs, findings and limitations. [Evidence and integrity instructions](../docs/training/investigation-2026-10-28/README.md)
+cover 312 source/metric/log/replay files plus report assets and hashes. Exact
+replays remain byte-identical; duplicated command histories are removed only from
+metric rows, with source hashes/transformations recorded. Unity device/licensing
+identifiers are redacted from published logs; originals remain local. Code,
+commands, current status and report are on `mohammad`. Weights/binaries remain
+local. Historical PDFs stay historical. All learning/evaluation is stopped.

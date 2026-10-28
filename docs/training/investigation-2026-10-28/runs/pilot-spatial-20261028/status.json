@@ -1,0 +1,48 @@
+{
+  "wall_seconds": 1081.5,
+  "policy_steps": 63490,
+  "completed_commands": 21452,
+  "episodes": 123,
+  "best_training_score": 39,
+  "policy_steps_per_second": 58.7,
+  "commands_per_second": 19.8,
+  "estimated_seconds_remaining": 0,
+  "current_seed": 1041,
+  "seed_attempt": 1,
+  "seed_cycle": 1,
+  "seed_games": 1,
+  "seed_mean_score": 0.0,
+  "seed_best_score": 0,
+  "current_score": 2,
+  "current_game_seconds": 113,
+  "mean_car_wait": 0.0012013729977116707,
+  "max_car_wait": 1.0000000000000002,
+  "finished": true,
+  "workers": [
+    {
+      "worker": 0,
+      "seed": 1041,
+      "attempt": 1,
+      "score": 2,
+      "game_seconds": 113,
+      "connected_houses": 1,
+      "shaping_reward_total": 0.18074999999999994
+    },
+    {
+      "worker": 1,
+      "seed": 1034,
+      "attempt": 1,
+      "score": 0,
+      "game_seconds": 116,
+      "connected_houses": 0,
+      "shaping_reward_total": 0.0
+    }
+  ],
+  "reward_mode": "connectivity",
+  "reward_schema": "trip-plus-connectivity-potential-v1",
+  "connected_houses": 1,
+  "connection_potential": 0.25,
+  "trip_reward_total": 2.0,
+  "shaping_reward_total": 0.18074999999999994,
+  "training_reward_total": 2.180750000000017
+}

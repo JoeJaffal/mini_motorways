@@ -1,0 +1,11 @@
+EVAL | 3000 | score 9 | 201.4s | draw noops 0/50
+EVAL | 3001 | score 6 | 201.0s | draw noops 0/43
+EVAL | 3002 | score 27 | 305.4s | draw noops 0/74
+EVAL | 3003 | score 0 | 141.3s | draw noops 0/17
+EVAL | 3004 | score 81 | 469.8s | draw noops 85/160
+EVAL | 3005 | score 93 | 517.5s | draw noops 0/90
+EVAL | 3006 | score 0 | 150.1s | draw noops 0/23
+EVAL | 3007 | score 0 | 141.9s | draw noops 0/16
+EVAL | 3008 | score 12 | 247.6s | draw noops 2/32
+EVAL | 3009 | score 6 | 184.4s | draw noops 0/51
+RESULT | mean 23.40, best 93 | output\experiments\three-hour-20261028\final-tests\informed-initial.json

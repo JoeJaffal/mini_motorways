@@ -3,6 +3,7 @@ import argparse
 from datetime import datetime,timezone
 import hashlib
 import json
+import re
 from pathlib import Path
 import shutil
 
@@ -17,7 +18,7 @@ def prune_replay_duplicates(value):
 
 def copy_evidence(source,target,provenance):
     target.parent.mkdir(parents=True,exist_ok=True)
-    raw=source.read_bytes();changed=False;rewritten=None
+    raw=source.read_bytes();changed=False;rewritten=None;transformations=[]
     if b'"episode_replay"' in raw:
         text=raw.decode('utf-8-sig')
         if source.suffix=='.json':
@@ -32,18 +33,41 @@ def copy_evidence(source,target,provenance):
                     except json.JSONDecodeError:pass
                 lines.append(line)
             rewritten='\n'.join(lines)+'\n'
+    if changed:transformations.append('Removed duplicated episode_replay keys; dedicated exact replay files retained')
+    if source.suffix=='.log' and source.name.startswith('unity-'):
+        text=rewritten if rewritten is not None else raw.decode('utf-8-sig')
+        private=re.compile(r'licens|(?:session|correlation|machine)\s*id\s*:|UnityPers|access.?token|cbmMachineId',re.I)
+        sanitized='\n'.join('[Unity runtime identity/licensing line redacted]' if private.search(line) else line for line in text.splitlines())+'\n'
+        if any(private.search(line) for line in text.splitlines()):
+            rewritten=sanitized;changed=True;transformations.append('Redacted Unity runtime device/session/licensing identifiers')
     if changed:target.write_text(rewritten,encoding='utf-8')
     else:shutil.copyfile(source,target)
     provenance[str(target)]=dict(source=str(source),source_sha256=hashlib.sha256(raw).hexdigest(),
-                               transformation='Removed duplicated episode_replay keys from metric rows; exact dedicated replay files retained' if changed else 'byte-for-byte copy')
+                               transformation='; '.join(transformations) if transformations else 'byte-for-byte copy')
 
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--destination',type=Path,required=True)
-    p.add_argument('--run',action='append',required=True)
-    p.add_argument('--experiments',type=Path,required=True)
+    p.add_argument('--run',action='append')
+    p.add_argument('--experiments',type=Path)
+    p.add_argument('--verify',action='store_true',help='Read-only verification of evidence and report manifests')
     a=p.parse_args()
+    if a.verify:
+        manifests=[(a.destination/'manifest.json',a.destination)]
+        report=a.destination/'report-manifest.json'
+        if report.exists():manifests.append((report,a.destination.parent))
+        count=0
+        for path,base in manifests:
+            data=json.loads(path.read_text());entries=data['files'] if isinstance(data,dict) else data
+            for entry in entries:
+                f=base/entry['path']
+                if not f.is_file() or hashlib.sha256(f.read_bytes()).hexdigest()!=entry['sha256']:
+                    raise SystemExit(f'Archive mismatch: {f}')
+                count+=1
+        print(f'PASS: {count} evidence/report manifest entries verified; no training or writes')
+        return
+    if not a.run or a.experiments is None:p.error('Archiving requires --run and --experiments')
     if a.destination.exists():p.error('Choose a fresh archive directory')
     for run in a.run:
         if not (ROOT/'output/training'/run/'summary.json').exists():p.error(f'Incomplete run: {run}')

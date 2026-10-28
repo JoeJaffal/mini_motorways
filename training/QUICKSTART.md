@@ -1,5 +1,18 @@
 # Repeated-seed training and watching the best game
 
+The authorized investigation has finished. The [latest status](CURRENT_STATUS.md)
+and [new report](../docs/training/model-investigation-2026-10-28.pdf) show a
+356-trip planner-aided recording, but only a narrow one-map learning gain.
+No training is currently running. Watch that exact best recording with:
+
+```powershell
+cd C:\Users\moham\mini_motorways
+.\.venv\Scripts\python.exe .\training\watch_best.py --run output/training/goal-rate-20261028
+```
+
+Add `--play` for playback from the beginning. This run's final policy regressed
+on development maps; its best recording is not a recommendation to resume it.
+
 For the separate restricted planner-aided agent, use the commands in
 [GOAL_AGENT.md](GOAL_AGENT.md). The PowerShell helper below trains the original
 primitive all-tools policy; these are different models and checkpoint types.
@@ -16,7 +29,8 @@ optimizer continuation. Existing legacy-input commands keep their old schema.
 Changes live on `mohammad`. The current training default is
 [trip reward plus bounded connectivity shaping](REWARD_SHAPING.md). Use
 `-RewardMode trips` for the historical baseline. All tools, normal materials and
-failure rules are unchanged. No training was started for the shaping update.
+failure rules are unchanged. That initial code-only update was followed by
+separately authorized training and the documented investigation above.
 
 ## Start training
 

@@ -5,7 +5,7 @@ Two separate traffic-construction apps share one C# simulation core:
 - **Traffic Lab Original** reconstructs standard play on Los Angeles, Beijing, Tokyo, Dar es Salaam and London.
 - **Traffic Lab Custom** uses the agreed unlimited-construction rules for future planning experiments.
 
-Original is functional but **not a validated exact replica**. A separate experimental MaskablePPO learner on `mohammad` uses completed trips as its reward; see [training status](training/CURRENT_STATUS.md). See [simulator status](simulation/Docs/IMPLEMENTATION_STATUS.md) for implemented features, evidence and remaining differences.
+Original is functional but **not a validated exact replica**. Experimental MaskablePPO work on `mohammad` uses trip reward with bounded connectivity shaping and separately tests planner-aided actions; see [training status](training/CURRENT_STATUS.md). The [latest report and graphs](docs/training/model-investigation-2026-10-28.pdf) document the 356-trip planner-aided record and limited learning evidence. See [simulator status](simulation/Docs/IMPLEMENTATION_STATUS.md) for implemented features, evidence and remaining differences.
 
 ## Start here
 
@@ -17,6 +17,7 @@ Original is functional but **not a validated exact replica**. A separate experim
 | Review checks and reference evidence | [Validation reports](simulation/Reports/README.md) |
 | Work on the code | [Contributing](CONTRIBUTING.md) |
 | Find design decisions and archived documents | [Documentation index](docs/README.md) |
+| Read AI experiments, results and graphs | [Latest model report](docs/training/model-investigation-2026-10-28.pdf) and [evidence index](docs/training/README.md) |
 
 ## Run the apps
 

@@ -19,9 +19,11 @@ For the latest results, limitations and fix history, see the
 The [chronological history](EXPERIMENT_HISTORY.md) preserves decisions, updates
 and analysis; the [evidence index](../docs/training/README.md) includes the full
 original PDF, all its graphs and archived run measurements.
-The [three-hour experiment](EXPERIMENT_2026_10_28.md) adds opt-in connectivity
+The completed [three-hour experiment](EXPERIMENT_2026_10_28.md) adds opt-in connectivity
 inputs, spatial/informed policies, productive-stroke masks and longer-credit
-comparisons. Defaults remain legacy inputs/architecture and the previously
+comparisons plus a separate goal-agent trainer. Its 356-trip record and limited
+fresh-map learning evidence are in the [latest PDF](../docs/training/model-investigation-2026-10-28.pdf).
+Defaults remain legacy inputs/architecture and the previously
 authorized connectivity reward; experiments are not silently substituted.
 Defaults now use 100 consecutive games per seed, then advance to the next seed.
 All ordinary tools remain available. The training default now adds

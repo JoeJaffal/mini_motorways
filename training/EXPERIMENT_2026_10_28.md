@@ -303,3 +303,72 @@ The macro policy cannot independently remove those internal strokes. Skipping
 proven unchanged segments is a proposed future executor optimization, not an
 implemented fix or a measured gain. It is recorded rather than silently changing
 the route executor and invalidating completed development comparisons.
+
+## Draw-metric interpretation clarification
+
+The historical Python draw_noop_commands metric compares infrastructure and
+connection arrays immediately before time advances. It does not independently
+compare driveway directions or pending-removal cancellation. Therefore primitive
+"no-op" counts mean no measured road-array change, not proof of no effect on any
+state. The C# productive-mask query separately accounts for potential driveway
+changes; a true query result is conservative and may still yield unchanged road
+arrays. Early 89% figures are interpreted with this limitation, not retroactively
+recomputed. No behavior or metric code is changed during final testing. The goal
+router avoids parcels and never demolishes, so its repeated existing-path strokes
+remain a concrete executor inefficiency; all five initial goal diagnostic games
+had zero rejected commands. Final score comparisons use actual trips, independent
+of this diagnostic definition.
+
+## Completed results and independent final tests
+
+All ten main arms completed within the authorized window. Goal arms (25 minutes,
+two workers each) finished as follows: unscaled 9,450 macro decisions/72 games,
+best 304/final development mean 162.6; scaled .01: 8,508/63, best 300/162.6;
+choice-only .01: 2,586/70, best 296/162.6; choice-only rate .001: 3,556/91,
+best 356/final development mean 128.0. Actor/critic parameters changed, but the
+higher-rate final model regressed on development maps. The 356-trip recording is
+a completed normal-failure game on seed 1075, 971.65 seconds, 972 commands; both
+headless and native replay verification passed exactly, and its native map was
+captured. A best recording is not the recommended final checkpoint.
+
+Selection was frozen at 12:50:43 UTC, before test seeds 3000-3009 were opened.
+Primitive: informed-credit validation-best (development mean 13.0). Goal trained
+comparison: first arm's validation-best at 3,360 decisions (mean 162.6). Operational
+selection retained the frozen goal initial policy on the predeclared exact tie.
+All four trained goal candidates tied development mean 162.6 at their best;
+final tests did not change selection.
+
+Deterministic ten-map final means/bests: earlier primitive 0.6/4; informed
+primitive initial 23.4/93; selected trained primitive 20.7/92; goal initial
+119.1/270; selected trained goal 125.7/270. The goal mean gain is entirely seed
+3006 (56 to 122); nine maps tied. Secondary sampled inference averaged 130.4 for
+both goal policies with identical per-map scores. These are limited, mixed
+learning findings, not robust convergence or a demonstrated shaping benefit.
+Most improvement over the old agent comes from engineered priors/action routing.
+All frozen evaluations checked unchanged weights. No further optimizer update,
+checkpoint selection or hyperparameter change followed final testing.
+
+The new report, searchable text, figures, exact recordings, source snapshots and
+small measurement/log files are archived under docs/training/investigation-2026-10-28.
+The evidence manifest records 312 files with original and archived SHA-256 and
+explicit compaction/redaction transformations. Dedicated replay bytes are unchanged;
+raw local logs and every checkpoint remain intact. Published Unity logs remove
+runtime identity/licensing lines. Runtime package versions and binary/source-tree
+hashes are recorded. The new PDF supplements historical reports; it does not
+rewrite them. Its graph/data/source/PDF hashes have a separate report manifest.
+
+The target of 1,000 trips is unmet. Future executor improvements (unchanged-stroke
+skipping, alternative routes/capacity awareness) and replicated optimization runs
+need a new validation/test partition. No recurring training is scheduled.
+
+## Final artifact QA
+
+The report has ten pages. All were rendered and visually inspected; after final
+cover/grammar edits, pages 1 and 7 were reviewed again and the other eight render
+hashes were unchanged. The tracked and delivered PDFs are byte-identical. All
+324 combined evidence/report manifest entries verified, and all 56 historical
+archive entries remained unchanged. Sampled score pairs were checked individually
+and tied on every final map. Source-control/Markdown/Unity-metadata checks pass.
+The validation record preserves final PDF/render hashes and check coverage.
+No learner or frozen-evaluation process remains active. Publishing is confined
+to origin/mohammad; main remains the playground.

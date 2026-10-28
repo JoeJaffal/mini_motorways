@@ -104,7 +104,7 @@ for offset,key,label,color in [(-.19,'goal-initial-sampled','Frozen initial',TEA
 ax.set(xticks=list(range(10)),xticklabels=[str(i) for i in range(3000,3010)],xlabel='Fresh scenario seed',ylabel='Actual trips',title='Secondary sampled-policy comparison')
 ax.tick_params(axis='x',rotation=35);ax.legend(frameon=False);savefig('sampled-tests.png')
 
-page('Three hours of investigation','Mini Motorways / Traffic Lab | 28 October 2026 | Branch mohammad')
+page('Model training investigation','Authorized three-hour window | 28 October 2026 | Branch mohammad')
 p(assessment['headline'],'Heading')
 p(assessment['conclusion'])
 table(['Measurement','Outcome'],[
@@ -113,7 +113,7 @@ table(['Measurement','Outcome'],[
     ['Planner-aided frozen start, development mean',f"{mean(runs[goal_names[0]]['before']):.1f} trips (5 maps)"],
     ['Selected planner-aided checkpoint, development mean',f"{selection['goal']['mean_trips']:.1f} trips (5 maps)"],
     ['Target', '1,000 actual completed trips; '+assessment['target_status']],
-    ['Rules','OriginalReference; normal finite materials; no future spawns']],[225,W-225])
+    ['Rules','OriginalReference; normal finite materials; future schedules hidden']],[225,W-225])
 heading('What counts as learning?')
 p('A better hand-written prior or a pathfinder can improve scores before any training. Learning means the updated policy improves on its own frozen starting policy on separate maps. This report shows those baselines explicitly. A single impressive replay or increasing shaped reward is insufficient.')
 note('The original all-tools agent remains available. The new goal agent is a separate restricted, planner-aided experiment. OriginalReference is a reconstruction, not a validated exact copy of the commercial game. Checkpoints and binaries stay local; small evidence and report sources are archived in Git.')
@@ -122,7 +122,7 @@ page('1 / What was wrong?','The main difficulty was coordinating useful road con
 figure('primitive-pilots.png')
 table(['Pilot','Selections','Best training','Final deterministic mean'],[
     [label,f"{runs[name]['policy_steps']:,}",runs[name]['best_training_score'],f"{mean(runs[name]['deterministic_after']):.1f}"] for label,name in pilots],[181,82,95,129])
-p('The input-only pilot preserved starting action probabilities and compared against the same old weights with a fresh optimizer. Adding explicit missing connections did not establish an improvement. Early logs showed about 89% of draw commands changed nothing, so endpoint coordination was investigated next.')
+p('The input-only pilot preserved starting action probabilities and compared against the same old weights with a fresh optimizer. Adding explicit missing connections did not establish an improvement. Early logs showed about 89% of draws made no measured change to road-tile/connection arrays, motivating endpoint diagnostics. Driveway-only changes or pending-removal cancellation are outside that metric; it is not a complete no-effect test.')
 note('Five development seeds, one run per configuration. Spatial residual stopped at its 18-minute cap (63,490 selections); others reached 65,536. Sampled and deterministic policies differ. These are engineering pilots, not replicated significance tests or speed benchmarks. Shared CPU load and validation overhead affect timings.')
 
 page('2 / Better inputs and masks','These changes help the policy understand the current map without changing the game rules.')
@@ -131,7 +131,7 @@ table(['Change','What it does / why'],[
     ['Explicit checkpoint adaptation','Copies old weights and zero-fills the new input weights; tests verify initial action probabilities match. A fresh optimizer is explicit.'],
     ['Spatial residual option','Shared per-cell scoring supplements global coordinate logits; zero initialization preserves the original starting policy.'],
     ['Productive draw mask','Removes endpoints only when a read-only simulator query proves a stroke cannot change the road network. Possible changes may still be rejected by normal rules.'],
-    ['Immediate draw diagnostics','Counts no-op strokes, actual topology changes and distinct endpoint pairs before advancing game time.'],
+    ['Immediate draw diagnostics','Counts unchanged road-tile/connection arrays and distinct endpoint pairs before advancing time. Other state changes are outside this measurement.'],
     ['Development checkpoints','Periodically freezes inference on seeds 2000-2004; logs actual trips and saves validation-best separately from the best training replay.']],[145,W-145])
 heading('Reward remains tied to actual delivery')
 p('The primitive agent uses completed-trip delta plus discounted potential shaping: reward = new trips + gamma * next potential - previous potential. Potential is 0.25 times the number of usefully connected houses, capped at eight. True game failure resets potential to zero; external time limits retain it for bootstrapping. Breaking and rebuilding a connection cannot repeatedly collect net discounted credit.')
@@ -223,6 +223,7 @@ tracked=BASE/'model-investigation-2026-10-28.pdf';shutil.copyfile(OUT,tracked)
 text='\n\n'.join(p.extract_text() for p in PdfReader(OUT).pages)
 (DATA/'report-text.txt').write_text(text,encoding='utf-8')
 artifacts=[tracked,Path(__file__),DATA/'assessment.json',DATA/'report-text.txt']+sorted(FIG.glob('*.png'))
+artifacts.extend([DATA/'manifest.json',DATA/'README.md'])
 if capture.exists():artifacts.append(capture)
 (DATA/'report-manifest.json').write_text(json.dumps([dict(path=f.relative_to(BASE).as_posix(),sha256=hashlib.sha256(f.read_bytes()).hexdigest()) for f in artifacts],indent=2)+'\n')
 print(OUT);print(f'{len(PdfReader(OUT).pages)} pages')

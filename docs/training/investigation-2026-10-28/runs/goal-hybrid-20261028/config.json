@@ -1,0 +1,52 @@
+{
+  "schema": "visible-route-goal-policy-v1",
+  "planner_aided": true,
+  "replay_source": "hybrid-training",
+  "action_semantics": "choose current house/destination connection; visible router executes ordinary strokes",
+  "restricted_tools": [
+    "road strokes including bridges",
+    "wait up to five seconds",
+    "upgrade choices"
+  ],
+  "excluded_tools": [
+    "motorways",
+    "roundabouts",
+    "traffic lights",
+    "demolition",
+    "manual driveway edits"
+  ],
+  "reward_schema": "goal-trip-potential-gamma099-v1",
+  "reward": "trip delta + gamma099 potential difference per macro decision",
+  "simulator_commit": "aac9ba8c5ec9c6c53b1023afba96113e690df87a",
+  "dirty": true,
+  "created_utc": "2026-10-28T11:57:30.682877+00:00",
+  "arguments": {
+    "output": "output\\training\\goal-hybrid-20261028",
+    "minutes": 25.0,
+    "steps": 1000000,
+    "workers": 2,
+    "dotnet": "C:\\Users\\moham\\mini_motorways\\tmp\\dotnet\\dotnet.exe",
+    "host_dll": "C:\\Users\\moham\\mini_motorways\\tmp\\headless-productivity\\TrafficHost.dll",
+    "resume": null,
+    "stop_file": null,
+    "validation_minutes": 6.0,
+    "eval_count": 5
+  },
+  "training_seeds": [
+    1000,
+    1099
+  ],
+  "validation_seeds": [
+    2000,
+    2001,
+    2002,
+    2003,
+    2004
+  ],
+  "gamma": 0.99,
+  "gae_lambda": 0.99,
+  "learning_rate": 0.0001,
+  "ent_coef": 0.005,
+  "aggregate_rollout": 256,
+  "trainable_parameters": 10334
+}
