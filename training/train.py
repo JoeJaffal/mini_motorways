@@ -18,16 +18,17 @@ from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.torch_layers import BaseFeaturesExtractor
 from stable_baselines3.common.logger import configure
 
-from environment import TrafficEnv, ROOT, SCHEMA, TOOLS, CHANNELS, GLOBALS
+from environment import TrafficEnv, ROOT, SCHEMA, CONNECTIVITY_SCHEMA, TOOLS, CHANNELS, GLOBALS
 
 
 class GridEncoder(BaseFeaturesExtractor):
     def __init__(self, observation_space):
         super().__init__(observation_space, features_dim=128)
-        self.grid = nn.Sequential(nn.Conv2d(CHANNELS, 16, 3, stride=2, padding=1), nn.ReLU(),
+        channels=observation_space['grid'].shape[0]
+        self.grid = nn.Sequential(nn.Conv2d(channels, 16, 3, stride=2, padding=1), nn.ReLU(),
                                   nn.Conv2d(16, 24, 3, stride=2, padding=1), nn.ReLU(), nn.Flatten())
         with torch.no_grad():
-            size = self.grid(torch.zeros(1, CHANNELS, 30, 50)).shape[1]
+            size = self.grid(torch.zeros(1, channels, 30, 50)).shape[1]
         self.combine = nn.Sequential(nn.Linear(size+GLOBALS, 128), nn.ReLU())
 
     def forward(self, observations):
@@ -35,7 +36,8 @@ class GridEncoder(BaseFeaturesExtractor):
 
 
 def evaluate(model, dotnet, seconds, seeds, deterministic=False):
-    env = TrafficEnv(dotnet=dotnet, seconds=seconds, seeds=seeds)
+    observation_mode='connectivity' if model.observation_space['grid'].shape[0]==52 else 'legacy'
+    env = TrafficEnv(dotnet=dotnet, seconds=seconds, seeds=seeds,observation_mode=observation_mode)
     runs = []
     try:
         for seed in seeds:
@@ -76,7 +78,12 @@ def main():
     parser.add_argument('--seed-schedule', choices=['blocks','random'], default='blocks')
     parser.add_argument('--print-seconds', type=float, default=5)
     parser.add_argument('--reward-mode',choices=['trips','connectivity'],default='connectivity')
+    parser.add_argument('--observation-mode',choices=['legacy','connectivity'],default='legacy')
+    parser.add_argument('--adapt-inputs',action='store_true')
+    parser.add_argument('--reset-optimizer',action='store_true')
+    parser.add_argument('--validation-minutes',type=float,default=0)
     args = parser.parse_args()
+    if args.validation_minutes<0:parser.error('Validation interval must be nonnegative')
     if args.minutes <= 0 or args.steps < 1 or args.threads < 1 or not 1 <= args.eval_episodes <= 20:
         parser.error('Positive budgets required; evaluation episodes must be 1..20')
     if args.episodes_per_seed < 1 or args.train_seed_count < 1 or args.print_seconds <= 0:
@@ -90,7 +97,8 @@ def main():
     output = output.resolve()
     if output.exists():parser.error(f'Run folder already exists: {output}. Choose a NEW --output / -RunName; use --resume to continue weights.')
     output.mkdir(parents=True, exist_ok=False)
-    config = dict(schema=SCHEMA, simulator_commit=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
+    schema=CONNECTIVITY_SCHEMA if args.observation_mode=='connectivity' else SCHEMA
+    config = dict(schema=schema, simulator_commit=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
                   branch=subprocess.check_output(['git', 'branch', '--show-current'], cwd=ROOT, text=True).strip(),
                   dirty=bool(subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT, text=True).strip()),
                   version='OriginalReference', city='LosAngeles', device='cpu', algorithm='MaskablePPO',
@@ -110,18 +118,22 @@ def main():
                                        learning_rate=.0003, ent_coef=.01, net_arch=[64]))
     (output/'config.json').write_text(json.dumps(config, indent=2)+'\n')
     # Preserve exact source even before a commit, alongside the revision metadata.
-    for name in ['environment.py', 'train.py', 'progress.py','parallel.py','shutdown.py','rewards.py']:
+    for name in ['environment.py', 'train.py', 'progress.py','parallel.py','shutdown.py','rewards.py','migration.py']:
         (output/name).write_text((Path(__file__).parent/name).read_text())
     env = make_vector(args.workers, output=output, dotnet=args.dotnet, seconds=args.episode_seconds,
                             seeds=training_seeds, episodes_per_seed=args.episodes_per_seed,
                             seed_schedule=args.seed_schedule, record_replays=True,
-                            reward_mode=args.reward_mode,reward_gamma=GAMMA)
+                            reward_mode=args.reward_mode,reward_gamma=GAMMA,observation_mode=args.observation_mode)
     try:
         if args.resume:
             previous_config = json.loads((args.resume.parent/'config.json').read_text())
-            if previous_config['schema'] != SCHEMA or previous_config['arguments']['episode_seconds'] != args.episode_seconds:
+            compatible=previous_config['schema']==schema or (args.adapt_inputs and previous_config['schema']==SCHEMA and schema==CONNECTIVITY_SCHEMA)
+            if not compatible or previous_config['arguments']['episode_seconds'] != args.episode_seconds:
                 raise RuntimeError('Resume schema or episode duration mismatch')
-            model = MaskablePPO.load(args.resume, env=env, device='cpu',n_steps=256//args.workers)
+            if args.adapt_inputs or args.reset_optimizer:
+                from migration import warm_start
+                model=warm_start(args.resume,env,config['hyperparameters'],args.seed,args.adapt_inputs)
+            else:model = MaskablePPO.load(args.resume, env=env, device='cpu',n_steps=256//args.workers)
             if args.reward_mode=='connectivity' and model.gamma!=GAMMA:
                 raise RuntimeError('Checkpoint discount must match connectivity-shaping gamma')
         else:
@@ -139,8 +151,15 @@ def main():
         print('EVALUATION | checking starting policy on reserved seeds before learner timer starts',flush=True)
         torch.manual_seed(args.seed+1)
         before = evaluate(model, args.dotnet, args.episode_seconds, range(2000, 2000+args.eval_episodes))
+        def validation_fn(policy):
+            training=policy.policy.training
+            try:
+                with torch.random.fork_rng(devices=[]):
+                    torch.manual_seed(43)
+                    return evaluate(policy,args.dotnet,args.episode_seconds,range(2000,2000+args.eval_episodes),deterministic=True)
+            finally:policy.policy.set_training_mode(training)
         callback = BudgetCallback(output, args.minutes, args.steps, args.episodes_per_seed,
-                                  args.print_seconds, config)
+                                  args.print_seconds, config,validation_fn,args.validation_minutes)
         started = time.perf_counter()
         interrupted = False
         try:

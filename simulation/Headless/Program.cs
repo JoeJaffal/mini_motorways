@@ -132,6 +132,8 @@ static class Program
                     terminated=world.Failed,truncated=world.ScenarioRejected,
                     usefulConnectedHouses=includeConnectivity&&(request.Command=="reset"||request.Command=="step"||request.Command=="observe")
                         ?(int?)world.UsefulConnectedHouseCount():null,
+                    usefulConnectivity=includeConnectivity&&(request.Command=="reset"||request.Command=="step"||request.Command=="observe")
+                        ?world.UsefulConnectivityState():null,
                     observation=world.Observe()},Json));
             }
             catch(Exception exception)

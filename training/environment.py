@@ -20,6 +20,7 @@ TOOLS = ['wait', 'draw', 'Road', 'Bridge', 'TrafficLight', 'Roundabout',
          'Remove', 'driveway', 'motorway', 'editMotorway', 'removeMotorway',
          'upgrade0', 'upgrade1']
 SCHEMA = 'full-tools-staged-grid-v1'
+CONNECTIVITY_SCHEMA='full-tools-staged-grid-connectivity-v2'
 
 
 class Host:
@@ -90,8 +91,13 @@ class TrafficEnv(gym.Env):
 
     def __init__(self, dotnet='dotnet', city='LosAngeles', seconds=3600,
                  seeds=range(1000, 1100), episodes_per_seed=100,
-                 seed_schedule='blocks', record_replays=False,reward_mode='trips',reward_gamma=GAMMA):
+                 seed_schedule='blocks', record_replays=False,reward_mode='trips',reward_gamma=GAMMA,
+                 observation_mode='legacy'):
         super().__init__()
+        if observation_mode not in ['legacy','connectivity']:raise ValueError('Unknown observation mode')
+        self.observation_mode=observation_mode
+        self.channels=CHANNELS+2*(observation_mode=='connectivity')
+        self.schema=CONNECTIVITY_SCHEMA if observation_mode=='connectivity' else SCHEMA
         if reward_mode not in REWARD_SCHEMAS:raise ValueError('Unknown reward mode')
         self.reward_mode=reward_mode
         self.connection_potential=ConnectionPotential(gamma=reward_gamma)
@@ -105,7 +111,7 @@ class TrafficEnv(gym.Env):
         self.record_replays, self.episodes_started = record_replays, 0
         self.action_space = gym.spaces.Discrete(CELLS + len(TOOLS))
         self.observation_space = gym.spaces.Dict({
-            'grid': gym.spaces.Box(0, 1, (CHANNELS, 30, 50), np.float32),
+            'grid': gym.spaces.Box(0, 1, (self.channels, 30, 50), np.float32),
             'global': gym.spaces.Box(0, 1, (GLOBALS,), np.float32),
         })
         self.done = True
@@ -127,7 +133,7 @@ class TrafficEnv(gym.Env):
             self.seed_attempt, self.seed_cycle = 1, 1
         result = self.host.call(command='reset', version='OriginalReference',
                                 scenario=self.city, seed=self.scenario_seed,
-                                includeConnectivity=self.reward_mode=='connectivity')
+                                includeConnectivity=self.reward_mode=='connectivity' or self.observation_mode=='connectivity')
         self.raw = result['observation']
         if result['terminated'] or self.raw['version'] != 'OriginalReference' or self.raw['unlimitedConstruction']:
             raise RuntimeError('Unexpected reset or rules')
@@ -136,6 +142,8 @@ class TrafficEnv(gym.Env):
         self.wait_sum, self.wait_samples, self.max_wait = 0.0, 0, 0.0
         self.phase, self.tool, self.first, self.old = 0, 0, None, None
         self.connected_houses=result.get('usefulConnectedHouses')
+        self.connectivity=result.get('usefulConnectivity')
+        self.draw_noops,self.draw_changes,self.draw_distinct_pairs=0,0,set()
         self.shaping_total,self.trip_reward_total,self.training_reward_total=0.0,0.0,0.0
         self.connection_potential.reset(self.connected_houses if self.reward_mode=='connectivity' else 0)
         self._refresh()
@@ -289,7 +297,7 @@ class TrafficEnv(gym.Env):
 
     def encode(self):
         o, a = self.raw, self.arrays
-        grid = np.zeros((CHANNELS, CELLS), np.float32)
+        grid = np.zeros((self.channels, CELLS), np.float32)
         grid[0] = self.visible
         for i in range(3):
             grid[1+i] = a['terrain'] == i
@@ -328,6 +336,12 @@ class TrafficEnv(gym.Env):
         for channel, p in [(48, self.first), (49, self.old)]:
             if p is not None:
                 grid[channel, self.index(p)] = 1
+        if self.observation_mode=='connectivity':
+            connected=set(self.connectivity['connectedHouseIds']);supplied=set(self.connectivity['suppliedDestinationIds'])
+            for p,b in self.parcels.items():
+                if self.is_visible(p):
+                    if b['isHouse']:grid[50,self.index(p)]=int(b['id'] not in connected)
+                    else:grid[51,self.index(p)]=int(b['id'] not in supplied)
         grid[:, ~self.visible] = 0
         global_state = np.zeros(GLOBALS, np.float32)
         global_state[:6] = np.asarray(o['inventory']) / np.array([100, 10, 10, 10, 10, 10])
@@ -339,7 +353,7 @@ class TrafficEnv(gym.Env):
             global_state[15+i*8:17+i*8] = [offer['amount']/100, offer['roads']/100]
         global_state[25+self.phase] = 1
         global_state[29+self.tool] = 1
-        obs = {'grid': np.clip(grid.reshape(CHANNELS, 30, 50), 0, 1),
+        obs = {'grid': np.clip(grid.reshape(self.channels, 30, 50), 0, 1),
                'global': np.clip(global_state, 0, 1)}
         if not all(np.isfinite(x).all() for x in obs.values()):
             raise RuntimeError('Nonfinite policy observation')
@@ -355,7 +369,9 @@ class TrafficEnv(gym.Env):
                     reward_mode=self.reward_mode,reward_schema=REWARD_SCHEMAS[self.reward_mode],
                     connected_houses=self.connected_houses,connection_potential=self.connection_potential.previous,
                     trip_reward_total=self.trip_reward_total,shaping_reward_total=self.shaping_total,
-                    training_reward_total=self.training_reward_total)
+                    training_reward_total=self.training_reward_total,observation_mode=self.observation_mode,
+                    draw_noop_commands=self.draw_noops,draw_change_commands=self.draw_changes,
+                    draw_distinct_pairs=len(self.draw_distinct_pairs))
 
     def _reward(self,trips,terminated=False):
         shaping=self.connection_potential.step(self.connected_houses,terminated) if self.reward_mode=='connectivity' else 0.0
@@ -377,6 +393,11 @@ class TrafficEnv(gym.Env):
         accepted = True
         if request is not None:
             result = self.host.call(**request)
+            if request.get('command')=='draw':
+                after=result['observation']
+                changed=(after['connections']!=self.raw['connections'] or after['infrastructure']!=self.raw['infrastructure'])
+                self.draw_changes+=int(changed);self.draw_noops+=int(not changed)
+                self.draw_distinct_pairs.add(tuple(request[k] for k in ['x','y','toX','toY']))
             accepted = bool(result['accepted'])
             self.rejected += int(not accepted)
         before = self.raw['tripsCompleted']
@@ -384,6 +405,7 @@ class TrafficEnv(gym.Env):
         self.raw = result['observation']
         self.connected_houses=result.get('usefulConnectedHouses')
         self.commands += 1
+        self.connectivity=result.get('usefulConnectivity')
         family = 'wait' if request is None else request.get('tool', request['command'])
         self.action_counts[family] = self.action_counts.get(family, 0) + 1
         waits = [v['waiting'] for v in self.raw['vehicles']]

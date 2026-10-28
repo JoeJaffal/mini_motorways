@@ -431,3 +431,18 @@ current checkpoint as a baseline. A new input schema needs an explicit
 checkpoint adaptation strategy and a controlled short comparison; do not
 silently load incompatible inputs or change several learning factors at once.
 Another unchanged long run is not recommended from this evidence.
+
+## T18 - Authorized three-hour autonomous improvement experiment
+
+The user explicitly authorized improvements and training while away for three
+hours. Implemented an opt-in 52-channel schema with unconnected-house and
+unsupplied-destination indicators, retaining the 50-channel default and all
+ordinary tools/rules. Explicit migration zero-fills the extra input weights and
+preserves initial action probabilities, with a fresh optimizer. A matched
+legacy-input/fresh-optimizer control is required. Added immediate network-change,
+draw-no-op and endpoint-diversity counts. Periodic deterministic development
+evaluation preserves Torch RNG and logs actual trips, with a validation-best
+checkpoint. No final-test seed is used to choose a candidate.
+
+See the [predeclared protocol and evolving results](EXPERIMENT_2026_10_28.md).
+The additional inputs are an engineering hypothesis, not an established fix.

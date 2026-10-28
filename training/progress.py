@@ -29,7 +29,7 @@ def clock(seconds):
 
 class BudgetCallback(BaseCallback):
     def __init__(self, output, minutes, step_budget, episodes_per_seed=100,
-                 print_seconds=5, metadata=None):
+                 print_seconds=5, metadata=None,validation_fn=None,validation_minutes=0):
         super().__init__()
         self.output, self.seconds, self.step_budget = Path(output), minutes*60, step_budget
         self.episodes_per_seed, self.print_seconds = episodes_per_seed, print_seconds
@@ -41,9 +41,12 @@ class BudgetCallback(BaseCallback):
         self.best_rank, self.seed_best_rank = (-1, -1, 0), {}
         self.current_seed = None
         self.worker_seeds, self.worker_status = {}, {}
+        self.validation_fn,self.validation_interval=validation_fn,validation_minutes*60
+        self.last_validation=None;self.best_validation=float('-inf')
 
     def _on_training_start(self):
         self.started = self.last_print = self.last_save = time.perf_counter()
+        self.last_validation=self.started
         print(f'TRAINING | learner budget {clock(self.seconds)} or {self.step_budget:,} selections | '
               f'progress every {self.print_seconds:g}s | Ctrl+C saves and stops', flush=True)
 
@@ -119,7 +122,8 @@ class BudgetCallback(BaseCallback):
                         'seed_attempt','seed_cycle','mean_car_wait','max_car_wait','action_counts']
                 result = {k: info[k] for k in keys}
                 for key in ['reward_mode','reward_schema','connected_houses','connection_potential',
-                            'trip_reward_total','shaping_reward_total','training_reward_total']:
+                            'trip_reward_total','shaping_reward_total','training_reward_total',
+                            'observation_mode','draw_noop_commands','draw_change_commands','draw_distinct_pairs']:
                     if key in info:result[key]=info[key]
                 result['worker']=worker
                 result['terminated'] = not info.get('TimeLimit.truncated', False)
@@ -155,6 +159,17 @@ class BudgetCallback(BaseCallback):
             self.model.save(self.output/'latest')
             print('CHECKPOINT | latest.zip saved',flush=True)
             self.last_save = now
+        if self.validation_fn is not None and self.validation_interval>0 and now-self.last_validation>=self.validation_interval:
+            results=self.validation_fn(self.model)
+            mean=sum(r['trips'] for r in results)/len(results)
+            record=dict(policy_steps=self.num_timesteps,wall_seconds=time.perf_counter()-self.started,
+                        mean_trips=mean,scores=[r['trips'] for r in results],seeds=[r['scenario_seed'] for r in results],results=results)
+            with (self.output/'validation.jsonl').open('a',encoding='utf-8') as f:f.write(json.dumps(record)+'\n')
+            if mean>self.best_validation:
+                from shutdown import save_checkpoint
+                save_checkpoint(self.model,self.output/'validation-best.zip');self.best_validation=mean
+            print(f'VALIDATION | mean {mean:.2f} | scores {record["scores"]} | real trips, no updates',flush=True)
+            self.last_validation=now=time.perf_counter()
         return now-self.started < self.seconds
 
     def _on_training_end(self):
