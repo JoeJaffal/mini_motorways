@@ -210,6 +210,6 @@ from pypdf import PdfReader
 text=['# Current model report: searchable text\n\nExtracted from the dated 12-page PDF; use the PDF for graphs and layout.\n']
 for i,part in enumerate(PdfReader(OUT).pages,1):
     text.append(f'\n## PDF page {i}\n\n'+part.extract_text()+'\n')
-(BASE/'CURRENT_REPORT_TEXT.md').write_text('\n'.join(text),encoding='utf-8')
+(BASE/'CURRENT_REPORT_TEXT.md').write_text('\n'.join(text).rstrip()+'\n',encoding='utf-8')
 for name in ['held-out.png','parallel-speed.png']:shutil.copy2(WORK/name,BASE/('current-'+name))
 print(OUT)

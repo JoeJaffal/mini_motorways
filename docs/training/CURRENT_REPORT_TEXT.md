@@ -415,4 +415,3 @@ Readable sources: training/README.md (contract), CURRENT_STATUS.md (latest resul
 (decisions/analysis), QUICKSTART.md (commands), docs/training/README.md (evidence). Rebuild source:
 docs/training/build_current_report.py. Algorithm explanations follow the implemented SB3-Contrib MaskablePPO setup and the
 original report's PPO references; no algorithm comparison was performed.
-
