@@ -166,3 +166,28 @@ visible-state path planning. All three command recordings verified exactly in
 the headless runtime. This is evidence that better construction is possible,
 not a learned score or an optimal ceiling. The informed 110-trip training replay
 also verified in the native player (532 commands, 531.35 seconds).
+
+## Separate planner-aided goal policy
+
+A new opt-in experiment chooses among current visible house/destination pairs;
+a deterministic visible-state pathfinder executes each chosen connection using
+ordinary road strokes and finite inventory. It can also wait up to five seconds
+or select offered upgrades. Motorways, roundabouts, lights, demolition and manual
+driveway edits are excluded from this restricted experiment. The original
+all-tools policy and checkpoints remain available unchanged.
+
+Candidate features contain current positions, colors, route costs, supply,
+demand and congestion; global features include current inventory, clock and
+current network statistics. A hand-designed initial scoring prior prefers
+unsupplied destinations and inexpensive connections. Its frozen initial policy
+is evaluated separately; any superiority over the primitive agent cannot by
+itself be credited to learning. The learned policy shares weights across
+candidate rows, with a separate critic. PPO uses gamma/lambda 0.99 per macro
+decision and bounded connection-potential shaping. Macro decisions span variable
+numbers of ordinary one-second commands; this is a distinct learning problem,
+not a clean architecture-only ablation. Development seeds remain 2000-2004;
+3000-3009 remain reserved for the final comparison.
+
+Two checks passed: actual finite-stock connection/trip/replay equivalence, and
+parameter updates plus exact save/reload predictions. Viewer labels distinguish
+planner-aided replays and heuristic diagnostics from the primitive AI.

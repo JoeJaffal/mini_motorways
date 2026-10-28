@@ -17,7 +17,7 @@ def warm_start(checkpoint,env,hyperparameters,seed,adapt_inputs=False,architectu
     state=source.policy.state_dict();expected=target.policy.state_dict()
     for key,value in expected.items():
         source_key=key
-        if spatial:
+        if spatial and key not in state:
             source_key=key.replace('.global_encoder.','.').replace('mlp_extractor.global_mlp.','mlp_extractor.').replace('action_net.base.','action_net.')
         if source_key not in state:
             if spatial and any(t in key for t in ['.spatial.','.global_context.','.spatial_head.','.prior_strength']):continue

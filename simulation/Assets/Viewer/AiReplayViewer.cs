@@ -85,7 +85,11 @@ namespace MotorwaysSim
             Say(x,y,width,"Seed "+seed+" / recorded score "+aiReplay.Recording.score,small);y+=28;
             Say(x,y,width,World.TripsCompleted+" trips / "+World.Time.ToString("0.0")+"s",title);y+=37;
             Say(x,y,width,"Commands "+aiReplay.CompletedCommands+" / "+aiReplay.Recording.actions.Length,small);y+=28;
-            Say(x,y,width,aiReplay.Recording.source=="training"?"Source: training best / normal materials":"Source: checkpoint demonstration / normal materials",small);y+=34;
+            string replaySource=aiReplay.Recording.source??"";
+            string sourceLabel=replaySource.StartsWith("hybrid")?"Source: planner-aided AI / normal materials":
+                replaySource.StartsWith("heuristic")?"Source: heuristic diagnostic / not learned":
+                replaySource=="training"?"Source: training best / normal materials":"Source: checkpoint demonstration / normal materials";
+            Say(x,y,width,sourceLabel,small);y+=34;
             if(GUI.Button(new Rect(x,y,80,30),aiReplay.Complete?"Replay":paused?"Play":"Pause",button))ToggleReplayPlayback();
             if(GUI.Button(new Rect(x+87,y,80,30),"Step",button)){paused=true;ReplayTick();}
             if(GUI.Button(new Rect(x+174,y,80,30),speed+"x",button))speed=speed==1?4:speed==4?16:1;y+=39;

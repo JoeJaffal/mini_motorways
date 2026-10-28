@@ -28,9 +28,13 @@ def main():
     torch.set_num_threads(2);torch.set_num_interop_threads(1);torch.manual_seed(a.rng_seed)
     model=MaskablePPO.load(a.checkpoint,device='cpu')
     initial=[v.detach().clone() for v in model.policy.parameters()]
-    mode='connectivity' if model.observation_space['grid'].shape[0]==52 else 'legacy'
+    goal_policy='candidates' in model.observation_space.spaces
+    mode='goal-candidates' if goal_policy else ('connectivity' if model.observation_space['grid'].shape[0]==52 else 'legacy')
     draw_mask=a.draw_mask or getattr(model,'draw_mask','all')
-    env=TrafficEnv(dotnet=a.dotnet,seconds=a.cap,observation_mode=mode,record_replays=bool(a.best_replay),draw_mask=draw_mask,host_dll=a.host_dll)
+    if goal_policy:
+        from goal_agent import GoalEnv
+        env=GoalEnv(dotnet=a.dotnet,seconds=a.cap,host_dll=a.host_dll)
+    else:env=TrafficEnv(dotnet=a.dotnet,seconds=a.cap,observation_mode=mode,record_replays=bool(a.best_replay),draw_mask=draw_mask,host_dll=a.host_dll)
     results=[];best=None;rank=(-1,-1,0)
     try:
         for seed in range(a.seed_start,a.seed_start+a.seed_count):

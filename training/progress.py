@@ -57,7 +57,7 @@ class BudgetCallback(BaseCallback):
             return
         rank = (result['trips'], result['seconds'], -result['rejected_actions'])
         seed = result['scenario_seed']
-        recording = dict(recording, source='training', simulatorCommit=self.metadata.get('simulator_commit', ''),
+        recording = dict(recording, source=self.metadata.get('replay_source','training'), simulatorCommit=self.metadata.get('simulator_commit', ''),
                          policySchema=self.metadata.get('schema', ''), policySteps=self.num_timesteps,
                          worker=info.get('worker',0),
                          rewardSchema=info.get('reward_schema',self.metadata.get('reward_schema','trip-delta-v1')),
@@ -116,7 +116,7 @@ class BudgetCallback(BaseCallback):
                       f'cycle {info["seed_cycle"]} | model weights continue', flush=True)
                 self.worker_seeds[worker]=seed
             self.current_seed = seed
-            self.commands += int(info.get('command_completed', False))
+            self.commands += info.get('commands_delta',int(info.get('command_completed', False)))
             if done:
                 self.episodes += 1
                 self.best = max(self.best, info['trips'])
@@ -126,7 +126,8 @@ class BudgetCallback(BaseCallback):
                 result = {k: info[k] for k in keys}
                 for key in ['reward_mode','reward_schema','connected_houses','connection_potential',
                             'trip_reward_total','shaping_reward_total','training_reward_total',
-                            'observation_mode','draw_mask','draw_noop_commands','draw_change_commands','draw_distinct_pairs']:
+                            'observation_mode','draw_mask','draw_noop_commands','draw_change_commands','draw_distinct_pairs',
+                            'planner_aided','macro_decisions','available_goals']:
                     if key in info:result[key]=info[key]
                 result['worker']=worker
                 result['terminated'] = not info.get('TimeLimit.truncated', False)

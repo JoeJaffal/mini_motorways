@@ -43,6 +43,9 @@ class FeatureChecks(unittest.TestCase):
                 a,_=model.predict(obs,deterministic=True,action_masks=e.action_masks())
                 b,_=restored.predict(obs,deterministic=True,action_masks=e.action_masks())
                 np.testing.assert_array_equal(a,b)
+                fresh=warm_start(Path(directory)/'informed.zip',env,dict(n_steps=16,batch_size=8),42,False,'informed-spatial')
+                c,_=fresh.predict(obs,deterministic=True,action_masks=e.action_masks())
+                np.testing.assert_array_equal(a,c);self.assertEqual(len(fresh.policy.optimizer.state),0)
         finally:env.close()
 
     def test_spatial_residual_preserves_policy_then_trains_and_reloads(self):
