@@ -21,6 +21,7 @@ sealed class Request
     public string Scenario { get; set; }
     public string Version { get; set; }
     public bool RequireExact {get;set;}
+    public bool IncludeConnectivity {get;set;}
     public string Variation { get; set; } = "SameMap";
 }
 
@@ -88,6 +89,7 @@ static class Program
                 ticksPerSecond=ticks/timer.Elapsed.TotalSeconds},Json));return;
         }
         var world=new TrafficWorld(42,false);
+        bool includeConnectivity=false;
         string line;
         while((line=Console.ReadLine())!=null)
         {
@@ -105,6 +107,7 @@ static class Program
                         if(request.RequireExact)throw new Exception("Exact-original parity is not yet validated. OriginalReference remains under development.");
                         world=new TrafficWorld(request.Seed,false,Rules.ForVersion(version));
                         world.Reset(request.Seed,scenario,Enum.Parse<MapVariation>(request.Variation,true));
+                        includeConnectivity=request.IncludeConnectivity;
                         trips=0;spending=0;break;
                     case "upgrade":accepted=world.ChooseUpgrade(request.Choice);break;
                     case "motorway":accepted=world.AddMotorway(new Cell(request.X,request.Y),new Cell(request.ToX,request.ToY));break;
@@ -126,7 +129,10 @@ static class Program
                 }
                 Console.WriteLine(JsonSerializer.Serialize(new {accepted,message=world.LastAction,
                     tripsDelta=world.TripsCompleted-trips,spendingDelta=world.ConstructionSpent-spending,
-                    terminated=world.Failed,truncated=world.ScenarioRejected,observation=world.Observe()},Json));
+                    terminated=world.Failed,truncated=world.ScenarioRejected,
+                    usefulConnectedHouses=includeConnectivity&&(request.Command=="reset"||request.Command=="step"||request.Command=="observe")
+                        ?(int?)world.UsefulConnectedHouseCount():null,
+                    observation=world.Observe()},Json));
             }
             catch(Exception exception)
             {Console.WriteLine(JsonSerializer.Serialize(new {error=exception.Message},Json));}

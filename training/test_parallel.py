@@ -21,6 +21,26 @@ DOTNET='dotnet'
 
 
 class ParallelChecks(unittest.TestCase):
+    def test_four_shaped_workers_autoreset_and_legacy_checkpoint_inputs(self):
+        torch.set_num_threads(2)
+        env=make_vector(4,dotnet=DOTNET,seeds=[1000],seconds=1,reward_mode='connectivity')
+        try:
+            model=MaskablePPO.load(ROOT/'output/training/seed-1000-parallel-02/final.zip',env=env,
+                                   device='cpu',n_steps=64)
+            obs=env.reset();masks=np.asarray(env.env_method('action_masks'))
+            actions,_=model.predict(obs,action_masks=masks)
+            self.assertTrue(all(masks[i,a] for i,a in enumerate(actions)))
+            self.assertEqual(len({e.unwrapped.host.process.pid for e in env.envs}),4)
+            _,rewards,dones,infos=env.step(np.full(4,CELLS))
+            self.assertTrue(dones.all())
+            self.assertTrue((rewards==0).all())
+            for i,info in enumerate(infos):
+                self.assertEqual(info['reward_mode'],'connectivity')
+                self.assertEqual(info['connected_houses'],0)
+                self.assertTrue(info['TimeLimit.truncated'])
+                self.assertEqual(env.envs[i].unwrapped.training_reward_total,0)
+        finally:env.close()
+
     def test_independent_hosts_masks_and_terminal_replays(self):
         env=make_vector(2,dotnet=DOTNET,seeds=[1000],seconds=2,record_replays=True)
         try:

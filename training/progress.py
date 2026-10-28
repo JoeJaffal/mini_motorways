@@ -56,6 +56,7 @@ class BudgetCallback(BaseCallback):
         recording = dict(recording, source='training', simulatorCommit=self.metadata.get('simulator_commit', ''),
                          policySchema=self.metadata.get('schema', ''), policySteps=self.num_timesteps,
                          worker=info.get('worker',0),
+                         rewardSchema=info.get('reward_schema',self.metadata.get('reward_schema','trip-delta-v1')),
                          episode=self.episodes+int(bool(recording.get('partial'))),
                          ranking='highest trips, then longest survival, then fewest rejected actions')
         if rank > self.seed_best_rank.get(seed, (-1, -1, 0)):
@@ -87,6 +88,9 @@ class BudgetCallback(BaseCallback):
                       current_game_seconds=info.get('seconds',0), mean_car_wait=info.get('mean_car_wait',0),
                       max_car_wait=info.get('max_car_wait',0), finished=finished)
         status['workers']=list(self.worker_status.values())
+        for key in ['reward_mode','reward_schema','connected_houses','connection_potential',
+                    'trip_reward_total','shaping_reward_total','training_reward_total']:
+            status[key]=info.get(key)
         atomic_json(self.output/'status.json', status)
         return status
 
@@ -98,7 +102,9 @@ class BudgetCallback(BaseCallback):
             current = info
             seed = info['scenario_seed']
             self.worker_status[worker]=dict(worker=worker,seed=seed,attempt=info['seed_attempt'],
-                                           score=info['trips'],game_seconds=info['seconds'])
+                                           score=info['trips'],game_seconds=info['seconds'],
+                                           connected_houses=info.get('connected_houses'),
+                                           shaping_reward_total=info.get('shaping_reward_total'))
             if self.worker_seeds.get(worker) != seed:
                 print(f'WORKER {worker} | SEED {seed} | block attempt {info["seed_attempt"]}/{self.episodes_per_seed} | '
                       f'cycle {info["seed_cycle"]} | model weights continue', flush=True)
@@ -112,6 +118,9 @@ class BudgetCallback(BaseCallback):
                 keys = ['trips','seconds','rejected_actions','commands','scenario_seed',
                         'seed_attempt','seed_cycle','mean_car_wait','max_car_wait','action_counts']
                 result = {k: info[k] for k in keys}
+                for key in ['reward_mode','reward_schema','connected_houses','connection_potential',
+                            'trip_reward_total','shaping_reward_total','training_reward_total']:
+                    if key in info:result[key]=info[key]
                 result['worker']=worker
                 result['terminated'] = not info.get('TimeLimit.truncated', False)
                 result['truncated'] = bool(info.get('TimeLimit.truncated', False))
@@ -130,7 +139,8 @@ class BudgetCallback(BaseCallback):
                       f'recent20 {sum(recent)/len(recent):.2f} best {max(stats)} | '
                       f'survival {info["seconds"]:.1f}s | car wait mean/max '
                       f'{info["mean_car_wait"]:.2f}/{info["max_car_wait"]:.2f}s | '
-                      f'wait actions {waits}/{info["commands"]} | rejected {info["rejected_actions"]}', flush=True)
+                      f'wait actions {waits}/{info["commands"]} | rejected {info["rejected_actions"]} | '
+                      f'connected {info.get("connected_houses")} | shaping {info.get("shaping_reward_total",0):+.3f}', flush=True)
         if now-self.last_print >= self.print_seconds:
             status = self._status(current,now)
             print(f'PROGRESS | elapsed {clock(status["wall_seconds"])} | ETA ~{clock(status["estimated_seconds_remaining"])} | '
@@ -138,7 +148,8 @@ class BudgetCallback(BaseCallback):
                   f'{status["commands_per_second"]:.1f} commands/s | '
                   f'seed {status["current_seed"]} try {status["seed_attempt"]}/{self.episodes_per_seed} | '
                   f'current score {status["current_score"]} at {status["current_game_seconds"]:.1f}s | '
-                  f'best {self.best} | {len(self.worker_status)} workers', flush=True)
+                  f'best {self.best} | {len(self.worker_status)} workers | '
+                  f'connected {current.get("connected_houses")} | shaping {current.get("shaping_reward_total",0):+.3f}', flush=True)
             self.last_print = now
         if now-self.last_save >= 120:
             self.model.save(self.output/'latest')

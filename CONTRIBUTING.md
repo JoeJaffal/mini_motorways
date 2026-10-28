@@ -22,7 +22,7 @@ python scripts/check_repository.py
 git diff --check
 ```
 
-The first command builds the Debug host needed by the second. Currently 40 shared suites cover traffic, materials, version isolation, motorways, shared lots, trains, parking and replay integration. They test reconstruction behavior, not complete original-game equivalence.
+The first command builds the Debug host needed by the second. Currently 41 shared suites cover traffic, materials, version isolation, motorways, shared lots, trains, parking, replay integration and connectivity diagnostics. They test reconstruction behavior, not complete original-game equivalence.
 
 For Unity changes, use Unity 6000.6.0f1 and **Traffic Lab > Build both Windows apps**. This prepares both scenes, runs the shared suites and builds both Windows players. For changes under `legacy/cpp/` or root CMake, also run the legacy CMake build and CTest commands in its README.
 

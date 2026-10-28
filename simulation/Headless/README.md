@@ -1,5 +1,13 @@
 # Headless simulation
 
+Training may opt into a read-only diagnostic by sending
+`"includeConnectivity":true` on reset. Reset/step/observe responses then include
+top-level `usefulConnectedHouses`: houses with a current legal same-color
+destination route and return route, counted once each. It uses ordinary routing,
+excludes retiring links, and does not build or step anything. Other responses
+and disabled sessions return null. This diagnostic is not added to the policy's
+observation channels. See the [shaping contract](../../training/REWARD_SHAPING.md).
+
 See [the simulation guide](../README.md#headless) and [version behavior](../Docs/VERSIONS.md).
 
 Run `dotnet run --project simulation/Headless -- --self-test` from the repository root. Both versions compile the same C# core as the Unity viewer. OriginalReference is unfinished and is not an exact-original training baseline.

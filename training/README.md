@@ -15,7 +15,9 @@ The [chronological history](EXPERIMENT_HISTORY.md) preserves decisions, updates
 and analysis; the [evidence index](../docs/training/README.md) includes the full
 original PDF, all its graphs and archived run measurements.
 Defaults now use 100 consecutive games per seed, then advance to the next seed.
-All ordinary tools and the trip-only reward remain unchanged. The first-run
+All ordinary tools remain available. The training default now adds
+[discounted connectivity shaping](REWARD_SHAPING.md); use `--reward-mode trips`
+for the historical trip-only baseline. The first-run
 report describes the earlier random-seed experiment, not this new default.
 
 ## Install and check
@@ -72,8 +74,10 @@ of the old simulator/RNG/rollout state.
   This uses the [SB3-Contrib action masking API](https://sb3-contrib.readthedocs.io/en/master/modules/ppo_mask.html).
 - Training seeds: 1000–1099; held-out evaluation seeds: 2000–2002 by default.
   Reset explicitly uses LosAngeles, OriginalReference and normal finite materials.
-- Reward: change in total completed trips across the entire gameplay command and
-  subsequent time step. No survival bonus, construction penalty or reward shaping.
+- Reward: completed-trip delta plus bounded discounted connectivity shaping by
+  default (`--reward-mode connectivity`). `--reward-mode trips` preserves the
+  trip-only baseline. See the [exact rule and anti-cycle tests](REWARD_SHAPING.md).
+  Best-game scores and evaluation remain actual trips.
 - Episodes: normal game failure terminates; an external 3,600 simulated second
   safety cap truncates. A 1,000-trip score is not an artificial stopping condition.
   Rejected scenarios and protocol errors abort instead of entering the learner.
@@ -83,7 +87,8 @@ of the old simulator/RNG/rollout state.
   immediately. Builds/removals select one cell; road strokes, driveway changes and
   motorways select two; motorway editing selects an existing endpoint plus two
   replacement endpoints. At most four policy decisions complete a command.
-  Intermediate selections have zero reward/time and cannot loop. A dead-end
+  Intermediate selections have zero simulation time and zero trip reward, but
+  receive the potential discount correction in connectivity mode. They cannot loop. A dead-end
   selection completes a wait. The 1,513-way discrete action vocabulary uses
   1,500 cell IDs and 13 tool/upgrade IDs, with a phase-dependent mask.
 - All ordinary tools are available when their resources/targets are available:
@@ -136,6 +141,10 @@ meaningful training there.
 deterministic held-out evaluation, including failures versus external caps. It
 also records actual policy-weight changes, elapsed time, policy decisions/second
 and completed commands/second. Evaluation uses the same masks as training.
+
+Connectivity runs log shaped training returns separately from actual trips.
+Monitor CSV `r` is training reward; its `trips` column is game score. The current
+PDF is a pre-shaping snapshot; no shaped learning result has been measured yet.
 
 A short sparse-reward run may score zero: generating roads that complete a trip
 is a difficult exploration problem when all coordinates and tools are learned

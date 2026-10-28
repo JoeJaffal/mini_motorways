@@ -13,6 +13,7 @@ from sb3_contrib import MaskablePPO
 from progress import BudgetCallback
 from parallel import make_vector
 from shutdown import save_checkpoint,stop_and_save
+from rewards import GAMMA,WEIGHT,HOUSE_CAP,REWARD_SCHEMAS
 from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.torch_layers import BaseFeaturesExtractor
 from stable_baselines3.common.logger import configure
@@ -74,6 +75,7 @@ def main():
     parser.add_argument('--train-seed-count', type=int, default=100)
     parser.add_argument('--seed-schedule', choices=['blocks','random'], default='blocks')
     parser.add_argument('--print-seconds', type=float, default=5)
+    parser.add_argument('--reward-mode',choices=['trips','connectivity'],default='connectivity')
     args = parser.parse_args()
     if args.minutes <= 0 or args.steps < 1 or args.threads < 1 or not 1 <= args.eval_episodes <= 20:
         parser.error('Positive budgets required; evaluation episodes must be 1..20')
@@ -92,7 +94,10 @@ def main():
                   branch=subprocess.check_output(['git', 'branch', '--show-current'], cwd=ROOT, text=True).strip(),
                   dirty=bool(subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT, text=True).strip()),
                   version='OriginalReference', city='LosAngeles', device='cpu', algorithm='MaskablePPO',
-                  reward='tripsCompleted_after - tripsCompleted_before; no shaping',
+                  reward=('trip delta' if args.reward_mode=='trips' else 'trip delta + gamma*Phi(next)-Phi(current), per selection'),
+                  reward_schema=REWARD_SCHEMAS[args.reward_mode],
+                  reward_parameters=dict(gamma=GAMMA,connection_weight=WEIGHT,house_cap=HOUSE_CAP,
+                                         terminal_potential=0,external_time_limit='bootstrap live potential') if args.reward_mode=='connectivity' else {},
                   tools=TOOLS, tick_interval=20, maximum_selection_decisions=4,
                   training_seeds=[training_seeds.start, training_seeds.stop-1],
                   seed_schedule=args.seed_schedule, episodes_per_seed=args.episodes_per_seed,
@@ -101,21 +106,24 @@ def main():
                   packages={name: importlib.metadata.version(name) for name in
                             ['torch', 'numpy', 'gymnasium', 'stable-baselines3', 'sb3-contrib']},
                   workers=args.workers, aggregate_rollout_size=256,
-                  hyperparameters=dict(n_steps=256//args.workers, batch_size=64, n_epochs=4, gamma=.999,
+                  hyperparameters=dict(n_steps=256//args.workers, batch_size=64, n_epochs=4, gamma=GAMMA,
                                        learning_rate=.0003, ent_coef=.01, net_arch=[64]))
     (output/'config.json').write_text(json.dumps(config, indent=2)+'\n')
     # Preserve exact source even before a commit, alongside the revision metadata.
-    for name in ['environment.py', 'train.py', 'progress.py','parallel.py','shutdown.py']:
+    for name in ['environment.py', 'train.py', 'progress.py','parallel.py','shutdown.py','rewards.py']:
         (output/name).write_text((Path(__file__).parent/name).read_text())
     env = make_vector(args.workers, output=output, dotnet=args.dotnet, seconds=args.episode_seconds,
                             seeds=training_seeds, episodes_per_seed=args.episodes_per_seed,
-                            seed_schedule=args.seed_schedule, record_replays=True)
+                            seed_schedule=args.seed_schedule, record_replays=True,
+                            reward_mode=args.reward_mode,reward_gamma=GAMMA)
     try:
         if args.resume:
             previous_config = json.loads((args.resume.parent/'config.json').read_text())
             if previous_config['schema'] != SCHEMA or previous_config['arguments']['episode_seconds'] != args.episode_seconds:
                 raise RuntimeError('Resume schema or episode duration mismatch')
             model = MaskablePPO.load(args.resume, env=env, device='cpu',n_steps=256//args.workers)
+            if args.reward_mode=='connectivity' and model.gamma!=GAMMA:
+                raise RuntimeError('Checkpoint discount must match connectivity-shaping gamma')
         else:
             model = MaskablePPO('MultiInputPolicy', env, device='cpu', seed=args.seed, verbose=0,
                                 policy_kwargs=dict(features_extractor_class=GridEncoder, net_arch=[64], normalize_images=False),
@@ -124,6 +132,7 @@ def main():
         model.save(output/'initial')
         initial_parameters = torch.cat([p.detach().flatten().cpu() for p in model.policy.parameters()]).clone()
         print(f'RUN DIRECTORY | {output}',flush=True)
+        print(f'REWARD | {REWARD_SCHEMAS[args.reward_mode]} | score/best/evaluation remain actual trips',flush=True)
         print(f'WORKERS | {args.workers} simultaneous games | shared model | 256 aggregate selections per rollout',flush=True)
         print(f'SCHEDULE | {args.episodes_per_seed} consecutive games per seed | '
               f'{training_seeds.start} through {training_seeds.stop-1} | {args.seed_schedule}',flush=True)
@@ -159,7 +168,8 @@ def main():
                        policy_steps_per_second=model.num_timesteps/elapsed,
                        commands_per_second=callback.commands/elapsed,
                        best_training_score=callback.best, before=before, after=after, deterministic_after=greedy,
-                       workers=args.workers,seed_schedule=args.seed_schedule, episodes_per_seed=args.episodes_per_seed,
+                       workers=args.workers,reward_mode=args.reward_mode,reward_schema=REWARD_SCHEMAS[args.reward_mode],
+                       seed_schedule=args.seed_schedule, episodes_per_seed=args.episodes_per_seed,
                        best_replay=str(output/'best-game.json') if (output/'best-game.json').exists() else None,
                        evaluation_skipped=interrupted, target_score=1000,
                        target_met=any(r['trips'] >= 1000 for r in after+greedy))

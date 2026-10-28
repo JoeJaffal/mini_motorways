@@ -10,6 +10,7 @@ import threading
 
 import gymnasium as gym
 import numpy as np
+from rewards import ConnectionPotential,REWARD_SCHEMAS,GAMMA
 
 ROOT = Path(__file__).resolve().parents[1]
 MAPS = ['LosAngeles', 'Beijing', 'Tokyo', 'DarEsSalaam', 'London']
@@ -80,7 +81,8 @@ class TrafficEnv(gym.Env):
     """Choose tool, then up to three cells; completed commands advance 20 ticks.
 
     No routing helpers or diagnostic commands. Intermediate selections have no
-    reward/time effect and form an acyclic sequence of at most four decisions.
+    simulation-time effect and form an acyclic sequence of at most four decisions.
+    Connectivity mode applies discounted potential shaping on every selection.
     Conservative masks remove obvious invalid choices; the host remains the
     authority and rejected commands still advance time.
     """
@@ -88,8 +90,11 @@ class TrafficEnv(gym.Env):
 
     def __init__(self, dotnet='dotnet', city='LosAngeles', seconds=3600,
                  seeds=range(1000, 1100), episodes_per_seed=100,
-                 seed_schedule='blocks', record_replays=False):
+                 seed_schedule='blocks', record_replays=False,reward_mode='trips',reward_gamma=GAMMA):
         super().__init__()
+        if reward_mode not in REWARD_SCHEMAS:raise ValueError('Unknown reward mode')
+        self.reward_mode=reward_mode
+        self.connection_potential=ConnectionPotential(gamma=reward_gamma)
         if city not in MAPS or seconds < 1 or not tuple(seeds):
             raise ValueError('Unknown city, empty seeds or nonpositive duration')
         self.host = Host(dotnet)
@@ -121,7 +126,8 @@ class TrafficEnv(gym.Env):
         else:
             self.seed_attempt, self.seed_cycle = 1, 1
         result = self.host.call(command='reset', version='OriginalReference',
-                                scenario=self.city, seed=self.scenario_seed)
+                                scenario=self.city, seed=self.scenario_seed,
+                                includeConnectivity=self.reward_mode=='connectivity')
         self.raw = result['observation']
         if result['terminated'] or self.raw['version'] != 'OriginalReference' or self.raw['unlimitedConstruction']:
             raise RuntimeError('Unexpected reset or rules')
@@ -129,6 +135,9 @@ class TrafficEnv(gym.Env):
         self.episode_actions, self.action_counts = [], {}
         self.wait_sum, self.wait_samples, self.max_wait = 0.0, 0, 0.0
         self.phase, self.tool, self.first, self.old = 0, 0, None, None
+        self.connected_houses=result.get('usefulConnectedHouses')
+        self.shaping_total,self.trip_reward_total,self.training_reward_total=0.0,0.0,0.0
+        self.connection_potential.reset(self.connected_houses if self.reward_mode=='connectivity' else 0)
         self._refresh()
         return self.encode(), self.info()
 
@@ -342,7 +351,18 @@ class TrafficEnv(gym.Env):
                     scenario_seed=self.scenario_seed, city=self.city,
                     seed_attempt=self.seed_attempt, seed_cycle=self.seed_cycle,
                     mean_car_wait=self.wait_sum / max(1, self.wait_samples),
-                    max_car_wait=self.max_wait, action_counts=dict(self.action_counts))
+                    max_car_wait=self.max_wait, action_counts=dict(self.action_counts),
+                    reward_mode=self.reward_mode,reward_schema=REWARD_SCHEMAS[self.reward_mode],
+                    connected_houses=self.connected_houses,connection_potential=self.connection_potential.previous,
+                    trip_reward_total=self.trip_reward_total,shaping_reward_total=self.shaping_total,
+                    training_reward_total=self.training_reward_total)
+
+    def _reward(self,trips,terminated=False):
+        shaping=self.connection_potential.step(self.connected_houses,terminated) if self.reward_mode=='connectivity' else 0.0
+        self.trip_reward_total+=trips;self.shaping_total+=shaping
+        self.training_reward_total+=trips+shaping
+        self.last_trip_reward,self.last_shaping_reward=trips,shaping
+        return float(trips+shaping)
 
     def export_replay(self):
         if not self.record_replays or not self.episode_actions:
@@ -362,6 +382,7 @@ class TrafficEnv(gym.Env):
         before = self.raw['tripsCompleted']
         result = self.host.call(command='step', ticks=20)
         self.raw = result['observation']
+        self.connected_houses=result.get('usefulConnectedHouses')
         self.commands += 1
         family = 'wait' if request is None else request.get('tool', request['command'])
         self.action_counts[family] = self.action_counts.get(family, 0) + 1
@@ -379,11 +400,13 @@ class TrafficEnv(gym.Env):
         self.done = terminated or truncated
         self.phase, self.tool, self.first, self.old = 0, 0, None, None
         self._refresh()
+        reward=self._reward(self.raw['tripsCompleted']-before,terminated)
         info = self.info()
-        info.update(command_completed=True, accepted=accepted, request=request)
+        info.update(command_completed=True, accepted=accepted, request=request,
+                    trip_reward=self.last_trip_reward,shaping_reward=self.last_shaping_reward)
         if self.done and self.record_replays:
             info['episode_replay'] = self.export_replay()
-        return self.encode(), float(self.raw['tripsCompleted']-before), terminated, truncated, info
+        return self.encode(), reward, terminated, truncated, info
 
     def step(self, action):
         if self.done:
@@ -420,9 +443,11 @@ class TrafficEnv(gym.Env):
                 elif self.tool == 9:
                     request['id'] = self.active_motorways[self.old]['id']
                 return self._advance(request)
+        reward=self._reward(0)
         info = self.info()
         info['command_completed'] = False
-        return self.encode(), 0.0, False, False, info
+        info.update(trip_reward=self.last_trip_reward,shaping_reward=self.last_shaping_reward)
+        return self.encode(), reward, False, False, info
 
     def close(self):
         self.host.close()

@@ -1,8 +1,9 @@
 # Repeated-seed training and watching the best game
 
-Changes live on `mohammad`. No training was started while implementing them.
-The objective, trip-only reward, all tools, normal material limits and failure
-rules are unchanged.
+Changes live on `mohammad`. The current training default is
+[trip reward plus bounded connectivity shaping](REWARD_SHAPING.md). Use
+`-RewardMode trips` for the historical baseline. All tools, normal materials and
+failure rules are unchanged. No training was started for the shaping update.
 
 ## Start training
 
@@ -175,6 +176,9 @@ worker, 128 with two and 64 with four. Batch size and learning rate stay the sam
 Shorter individual fragments can affect learning with delayed rewards; faster
 throughput is not a guarantee of faster score improvement. Reward, observations,
 allowed tools, game timing and simulator rules are unchanged.
+
+That benchmark used the trip-only baseline. Current shaping is a separately
+versioned experiment; its training returns must not be read as trip scores.
 
 ### Measured short benchmark
 

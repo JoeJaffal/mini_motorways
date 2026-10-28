@@ -801,3 +801,15 @@ small measurement sources in version control. Distinguish user choices from
 engineering choices, evidence from hypotheses, and unknowns from measured facts.
 The [training evidence index](../../docs/training/README.md), experiment history,
 AGENTS.md and contributor guide implement this continuing requirement.
+
+## 044 - Authorize useful-connection reward shaping (28 October 2026)
+
+The user explicitly approved adding a carefully designed reward for establishing
+useful connections. New training defaults to bounded discounted potential-based
+connectivity shaping plus completed trips; the earlier trip-only mode remains
+selectable. The chosen coefficient/cap and anti-loop accounting are engineering
+choices, not new user-specified numeric weights. Actual trips still determine
+best games and held-out scores. Rules, input channels and tools are unchanged.
+No shaped learning run was started. See the
+[design, audit and limitations](../../training/REWARD_SHAPING.md) and history T15
+for rationale/evidence; faster learning remains unmeasured.

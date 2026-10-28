@@ -42,6 +42,25 @@ namespace MotorwaysSim
                 try{new AiReplaySession(recording);}catch(ArgumentException){rejected=true;}
                 Check(rejected,"version boundary enforced");
             });
+            Test("useful connectivity counts matching round trips once without gameplay mutation",()=>{
+                var w=Pair();var home=w.Buildings.First(b=>b.IsHouse);var shop=w.Buildings.First(b=>!b.IsHouse);
+                var before=w.Observe();int version=w.NetworkVersion;
+                Check(w.UsefulConnectedHouseCount()==1&&w.UsefulConnectedHouseCount()==1,"one productive house, cached query");
+                Check(w.Observe().Connections.SequenceEqual(before.Connections)&&w.Inventory.SequenceEqual(before.Inventory)&&
+                    w.NetworkVersion==version&&w.Time==before.Time&&w.TripsCompleted==0,"diagnostic does not build, score or step");
+                w.SpawnBuilding(new Cell(5,9),1,true);w.DrawRoad(new Cell(5,9),new Cell(10,9));w.DrawRoad(new Cell(10,9),new Cell(10,5));
+                Check(w.UsefulConnectedHouseCount()==1,"wrong-color connection adds no house credit");
+                w.SetHouseDriveway(home.Id,6);Check(w.UsefulConnectedHouseCount()==0,"detached driveway invalidates cached count");
+                w.SetHouseDriveway(home.Id,0);Check(w.UsefulConnectedHouseCount()==1,"reconnected driveway restores count");
+                w.Build(BuildTool.Remove,new Cell(10,5));
+                Check(w.UsefulConnectedHouseCount()==0,"pending/deleted connection not credited");
+                w.Reset(42,ScenarioKind.EmptyLab);Check(w.UsefulConnectedHouseCount()==0,"reset invalidates query cache");
+                w=Pair();home=w.Buildings.First(b=>b.IsHouse);shop=w.Buildings.First(b=>!b.IsHouse);
+                // Diagnostic directed fixture: outbound link exists but return does not.
+                w.Connections[6,5]&=~(1<<4);w.Build(BuildTool.Road,new Cell(25,20));
+                Check(w.BestRouteTo(home.Access,shop).Count>1&&w.FindRoute(shop.Access,home.Access).Count==0,"one-way fixture");
+                Check(w.UsefulConnectedHouseCount()==0,"outbound-only connection earns no credit");
+            });
             Test("terrain, fixed size, original clock",()=>{
                 var w=new TrafficWorld(42,false,LegacyFixtureRules());Check(TrafficWorld.Width==50&&TrafficWorld.Height==30,"50 x 30");
                 Check(w.Water.Cast<bool>().Count(x=>x)>100,"LA water mask");Check(w.Buildings.Count>=2,"feasible initial shop and household");

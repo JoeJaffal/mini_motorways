@@ -1,5 +1,11 @@
 # Training status — 28 October 2026
 
+**Latest code update:** the user authorized a connectivity reward experiment.
+Training now defaults to trip delta plus discounted potential shaping; the
+four-hour results below and both PDFs describe the earlier trip-only policy.
+No learning has run with the new reward. See the
+[design, audit and launch command](REWARD_SHAPING.md).
+
 This is the current experiment summary on branch `mohammad`. `main` remains the
 playground. The target is 1,000 completed trips on the first city, Los Angeles,
 using OriginalReference, structured simulator data and trial-and-error learning.
@@ -16,10 +22,12 @@ heads. It is feed-forward, with no persistent recurrent memory or observation
 history. Four workers collect experience for the same policy, not four separate
 models. The aggregate rollout is 256 selections, followed by PPO updates.
 
-The reward is only the increase in completed trips. There is no explicit reward
-for connectivity or survival, and no road-building cost or demolition penalty
-in the reward. Materials and game failure rules still apply normally. Removing
-roads after a delivery is a policy choice, not a required delivery mechanic.
+Historical runs used only completed-trip delta. New training defaults to that
+reward plus a bounded connectivity potential difference; breaking connections
+reverses their credit. `-RewardMode trips` selects the baseline. There is no
+separate survival or construction-cost reward. Materials/failure rules remain
+normal. Removing roads after delivery is a policy choice, not a delivery
+mechanic. The reward change has not been tested for learning performance.
 
 All ordinary construction tools are exposed through staged tool/cell selections.
 Masks filter locally unavailable choices; the host checks final legality.
@@ -82,7 +90,8 @@ held-out evaluations show poor transfer; they are too small a sample to
 estimate general performance precisely. Another unchanged four-hour run is
 not the recommended next experiment. Investigate recurring failure cases and
 the observation/action/reward bottlenecks before committing more training time.
-No new reward shaping, connectivity features or memory model has been added.
+That run had no shaping, explicit connectivity input or memory model. Shaping
+has since been implemented as a new experiment; inputs/memory are unchanged.
 
 The best exact command replay scored 73 in 461.4 simulated seconds. Replay it:
 
@@ -162,3 +171,5 @@ An [updated 12-page current-model PDF](../docs/training/current-model-report-202
 now includes the four-hour results, new held-out/throughput charts, model
 explanation, recent fixes and limitations. Its builder and full searchable text
 are also preserved in the evidence index. No new training accompanied this report.
+It predates the connectivity-reward code change; the shaping specification is
+the current source for the reward definition, not that historical PDF.

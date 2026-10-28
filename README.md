@@ -60,7 +60,7 @@ python scripts/verify_five_maps.py
 dotnet run --project simulation/Headless
 ```
 
-The self-test currently runs **40 shared suites**. The Python check exercises both rule sets on all five maps. The host accepts one JSON request per line:
+The self-test currently runs **41 shared suites**. The Python check exercises both rule sets on all five maps. The host accepts one JSON request per line:
 
 ```json
 {"command":"reset","version":"OriginalReference","scenario":"London","seed":42}
@@ -74,7 +74,7 @@ The self-test currently runs **40 shared suites**. The Python check exercises bo
 
 ## Training handoff: OriginalReference
 
-Branch `main` supplies the playground. Branch `mohammad` adds a separate experimental CPU training project: see [training setup and commands](training/README.md). Its learner uses normal OriginalReference gameplay actions; the simulator core is unchanged. The handoff below describes the playground/learner boundary. The [readiness audit](simulation/Reports/training-readiness.md) passed 60 bounded episodes/replays across all five maps; it does not certify equivalence to the commercial game.
+Branch `main` supplies the playground. Branch `mohammad` adds a separate experimental CPU training project: see [training setup and commands](training/README.md). Its learner uses normal OriginalReference gameplay actions and an optional read-only connectivity diagnostic; gameplay rules are unchanged. The handoff below describes the playground/learner boundary. The [readiness audit](simulation/Reports/training-readiness.md) passed 60 bounded episodes/replays across all five maps; it does not certify equivalence to the commercial game.
 
 ### 1. Install and verify the playground
 
@@ -139,6 +139,10 @@ reward = tripsCompleted_after - tripsCompleted_before
 ```
 
 Compute this over the entire gameplay-command-plus-step transition, not just a single response's `tripsDelta`. Keep survival time and final trip score as separate evaluation metrics. No extra failure, color, waiting or construction penalties are agreed or implemented; document any subsequently chosen shaping.
+
+The user subsequently approved [bounded connectivity shaping](training/REWARD_SHAPING.md).
+It adds a discounted potential difference on every policy selection; trip-only
+remains selectable, and actual trips still define reported game scores.
 
 End the episode on host `terminated` (game failure). Treat host `truncated` as a rejected scenario and flag/discard it rather than scoring it as failure. For the initial trial, impose a **300-second simulated-time cap** in the wrapper and report this as external truncation if the game has not already failed. The raw host does not enforce that cap. Stop sending gameplay actions after an episode ends; reset before the next episode.
 

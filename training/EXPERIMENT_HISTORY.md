@@ -334,3 +334,44 @@ copy integrity were checked. The source builder, figures, full searchable text
 and dated PDF are tracked with the evidence index. The earlier 16-page report
 remains unchanged. This delivery adds reporting, not a model change or improved
 performance claim.
+
+## T15 - Authorize and implement connection reward shaping
+
+**User decision:** explicitly approved adding a carefully designed reward for
+useful connections. This supersedes trip-only as the training CLI/helper
+default; trip-only remains selectable. It does not authorize another long run.
+No new policy input, planner, demonstration, stock change or memory was added.
+
+**Engineering choice:** potential is 0.25 times houses with current same-color
+outbound and return routes, capped at eight houses/two potential units. Each
+selection receives gamma*next_potential - current_potential, including zero-time
+intermediate selections; gamma 0.999 matches PPO. Failure has zero terminal
+potential, while external caps bootstrap live potential. These settings are
+initial engineering choices, not optimized learning hyperparameters. The form
+follows Ng/Harada/Russell's original paper (linked in the specification), and
+prevents positive discounted reconnect loops. It does not guarantee faster
+learning for our partially observed approximate PPO.
+
+**Implementation:** cached read-only diagnostic through actual dispatch routing,
+optional headless output, versioned reward metadata/source snapshots, baseline
+flag, separate trip/shaping totals and live console/status diagnostics. Best
+games/evaluation still use actual trips. Monitor CSV `r` now means shaped return
+in connectivity mode; `trips` remains game score. Old inputs remain compatible
+with checkpoints, but the critic/optimizer must adapt to changed returns.
+
+**Evidence:** 41 core suites and six reward tests pass, along with the existing
+environment/workflow/parallel/shutdown checks. A fixed 462-command recording
+produced identical observations/outcomes in baseline and shaped hosts: 73 trips
+at 461.35 seconds. First positive shaping was +0.24975 at second 23, before any
+trip. Peak connected count 12 was capped at two potential units. Discounted
+shaping summed to about zero after failure. Undiscounted shaping totaled
+-0.70775, yielding 72.29225 training reward versus 73 trips. This scripted
+audit omits historical intermediate actor selections, which are tested
+separately. No policy calls or optimizer updates were used. See the
+[exact rule and limitations](REWARD_SHAPING.md) and
+[archived audit](../docs/training/connectivity-reward-audit-2026-10-28.json).
+
+**Next:** explicitly launched short trials, compared with matched trip-only
+baselines using actual trips, held-out scores and throughput. Faster learning
+remains unmeasured. The dated 12-page PDF predates this update and stays a
+historical snapshot; current guides identify the new specification.
