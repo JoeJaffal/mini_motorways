@@ -375,3 +375,27 @@ separately. No policy calls or optimizer updates were used. See the
 baselines using actual trips, held-out scores and throughput. Faster learning
 remains unmeasured. The dated 12-page PDF predates this update and stays a
 historical snapshot; current guides identify the new specification.
+
+## T16 - Read-only check of the active multi-seed shaped run
+
+The user asked whether the running model was learning. Inspected processes,
+status, episode logs and optimizer CSV without stopping/changing training or
+starting another evaluation. `multi-seed-shaped-01` was running four hosts with
+connectivity shaping, one episode per seed, seeds 1000-1099, a user-launched
+60-minute budget and the old `parallel-02/final.zip` warm start.
+
+At the first-556-game snapshot, all 100 training seeds had been encountered.
+First/last 100 mean scores were 5.04/4.16; overall mean 3.656, best 60. The latest
+100 games used 17,057 draw commands, overwhelmingly more than other tools.
+Optimizer update counters advanced from 45,677 to 50,029. The pipeline is active,
+but these logs do not establish useful improvement. For 43 seeds appearing in
+both cycles, seed-weighted means were 4.535/3.337; incomplete second-cycle worker
+coverage and stochastic trajectories prevent treating this as a controlled
+regression estimate. Final held-out results were not yet available.
+
+The lower score distribution versus seed 1000 exposes poor transfer; it is not
+alone evidence that multi-seed practice or shaping caused deterioration. Tool/
+endpoint coordination is a hypothesis for investigation, not a diagnosed bug.
+Recorded an [immutable interim snapshot](../docs/training/live-check-multi-seed-shaped-01-2026-10-28.json).
+No code, hyperparameters, running process or checkpoint was changed. This is
+an interim observation, not a completed run report or promise of convergence.

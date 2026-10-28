@@ -3,7 +3,11 @@
 **Latest code update:** the user authorized a connectivity reward experiment.
 Training now defaults to trip delta plus discounted potential shaping; the
 four-hour results below and both PDFs describe the earlier trip-only policy.
-No learning has run with the new reward. See the
+The user has since launched shaped training: a single-seed run stopped after
+1,706.6 seconds/526 games (best 61), and a 60-minute multi-seed run is active.
+Its first-556-game [live check](../docs/training/live-check-multi-seed-shaped-01-2026-10-28.json)
+shows active updates but no convincing improvement (first/last 100 means
+5.04/4.16); final held-out evaluation is pending. See the
 [design, audit and launch command](REWARD_SHAPING.md).
 
 This is the current experiment summary on branch `mohammad`. `main` remains the
@@ -27,7 +31,7 @@ reward plus a bounded connectivity potential difference; breaking connections
 reverses their credit. `-RewardMode trips` selects the baseline. There is no
 separate survival or construction-cost reward. Materials/failure rules remain
 normal. Removing roads after delivery is a policy choice, not a delivery
-mechanic. The reward change has not been tested for learning performance.
+mechanic. The shaped runs have not yet demonstrated better held-out performance.
 
 All ordinary construction tools are exposed through staged tool/cell selections.
 Masks filter locally unavailable choices; the host checks final legality.

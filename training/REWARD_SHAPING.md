@@ -2,8 +2,10 @@
 
 The user authorized adding a carefully designed reward for useful connections.
 The training CLI/PowerShell helper now default to `connectivity`; `trips` retains
-the old reward for comparisons. No learning run has been performed with this
-new reward. The recorded 73-trip result still belongs to the trip-only policy.
+the old reward for comparisons. At implementation, no shaped learning had run.
+The user has since launched shaped trials; see the [current status](CURRENT_STATUS.md)
+and live-check evidence. Faster learning has not been demonstrated. The recorded
+73-trip result still belongs to the earlier trip-only policy.
 
 ## What counts as useful
 
@@ -142,10 +144,10 @@ Reproduce without training (choose a fresh output path):
 ## Run when ready
 
 Suggested first trial: 15 learner minutes on seed 1000, four workers, warm-start
-the last trip-only checkpoint. This command has not been run:
+the last trip-only checkpoint. Use a fresh run name; shaped-01 has now been used:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\training\start_training.ps1 -Minutes 15 -StartSeed 1000 -SeedCount 1 -Workers 4 -RewardMode connectivity -RunName seed-1000-shaped-01 -Resume output/training/seed-1000-parallel-02/final.zip
+powershell -NoProfile -ExecutionPolicy Bypass -File .\training\start_training.ps1 -Minutes 15 -StartSeed 1000 -SeedCount 1 -Workers 4 -RewardMode connectivity -RunName seed-1000-shaped-02 -Resume output/training/seed-1000-parallel-02/final.zip
 ```
 
 For a matched baseline choose another fresh run name and `-RewardMode trips`.
