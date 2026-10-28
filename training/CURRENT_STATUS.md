@@ -157,3 +157,8 @@ searchable text, graph images and underlying measurements are now preserved in
 the [tracked evidence archive](../docs/training/README.md). It has not been
 rewritten with newer results. Use this report for current behavior and the
 [chronological history](EXPERIMENT_HISTORY.md) for decisions, updates and analysis.
+
+An [updated 12-page current-model PDF](../docs/training/current-model-report-2026-10-28.pdf)
+now includes the four-hour results, new held-out/throughput charts, model
+explanation, recent fixes and limitations. Its builder and full searchable text
+are also preserved in the evidence index. No new training accompanied this report.

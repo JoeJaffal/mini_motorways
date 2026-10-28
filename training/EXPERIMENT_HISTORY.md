@@ -319,3 +319,18 @@ existed only locally and had no upstream tracking branch. Published it with
 new remote branch and tracking configuration. `main` was not pushed or merged.
 This publishes committed code, documentation and archived evidence, not ignored
 local checkpoints or generated player builds. No pull request was created.
+
+## T14 - Deliver an updated current-model PDF
+
+The user requested the current PDF. Created a separate dated 12-page report
+rather than replacing the historical first-model report. It explains the current
+inputs/missing information, architecture, staged actions, MaskablePPO/reward,
+parallel configuration, four-hour learning curve, held-out performance,
+historical baseline, throughput benchmark, fixes, decisions and unresolved
+hypotheses. New held-out and benchmark charts use archived measurements only.
+No model was run, evaluated or trained to create the report. All 12 pages were
+rendered and visually checked for layout; page count/text extraction and archived
+copy integrity were checked. The source builder, figures, full searchable text
+and dated PDF are tracked with the evidence index. The earlier 16-page report
+remains unchanged. This delivery adds reporting, not a model change or improved
+performance claim.

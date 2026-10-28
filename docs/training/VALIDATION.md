@@ -32,3 +32,14 @@ The crashed run has no final summary; checkpoints themselves and the original
 user video remain local. Historical findings with only narrative/scratch evidence
 are labeled as such in the chronological history. The unchanged PDF is a
 historical first-run report, not an updated four-hour results report.
+
+## Updated current report
+
+A separate 12-page current-model report was produced after the original archive.
+Its pages were rendered with Poppler and all inspected in three four-page
+contact sheets. Tables, chart labels, paragraphs and footers have no observed
+clipping/overlap. Page count and text extraction were checked, and its headline
+metrics match the archived summary. New charts use the archived held-out scores
+and six benchmark trials. Source, PDF, searchable text and new figures were
+added to the supplementary hash manifest. The tracked PDF and delivered output
+copy match byte-for-byte. No simulator/policy execution or training was needed.

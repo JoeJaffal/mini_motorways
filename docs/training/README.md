@@ -9,6 +9,8 @@ players and scratch captures remain local and are not backed up by this archive.
 | [Experiment history](../../training/EXPERIMENT_HISTORY.md) | Chronological decisions, engineering choices, reasons, changes, failures, analysis, results and unresolved hypotheses |
 | [Earlier simulator decisions](../../simulation/Docs/DESIGN_DECISIONS.md) | Original/Custom design history before training |
 | [Current training status](../../training/CURRENT_STATUS.md) | Latest implemented behavior and results |
+| [Current model report](current-model-report-2026-10-28.pdf) | Updated 12-page explanation, four-hour results, graphs, changes and limitations |
+| [Current report text](CURRENT_REPORT_TEXT.md) | Full searchable text from the updated PDF |
 | [Exact model contract](../../training/README.md) | Actions, input channels, reward, timing and evaluation |
 | [Commands and controls](../../training/QUICKSTART.md) | Start, stop, resume, parallel workers and replay |
 | [Original model report](first-model-report.pdf) | Unchanged 16-page PDF, including every graphic |
@@ -91,6 +93,13 @@ replay contains inference snapshots, not the native best-game replay schema.
 Neither script trains or loads a policy. Rebuilt PDFs may differ in binary
 metadata and require fresh visual review before distribution; the original
 archived PDF is byte-for-byte preserved.
+
+[build_current_report.py](build_current_report.py) rebuilds the current 12-page
+report from the archived run/benchmark data and existing learning-curve figures.
+It writes `output/pdf/mini_motorways_current_model_report.pdf` and the tracked
+dated PDF, plus the current held-out and speed figures. It needs the same PDF
+and plotting libraries/Windows fonts as the historical builder. Current report
+figures and text are included in the supplementary hash manifest.
 
 ## Continuing record
 
