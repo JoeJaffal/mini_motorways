@@ -1,0 +1,109 @@
+{
+  "training_wall_seconds": 171.45853080006782,
+  "policy_steps": 31216,
+  "completed_commands": 14663,
+  "episodes": 100,
+  "parameter_update_confirmed": true,
+  "interrupted": true,
+  "policy_steps_per_second": 182.06151571659012,
+  "commands_per_second": 85.5192210710008,
+  "best_training_score": 4,
+  "before": [
+    {
+      "trips": 0,
+      "seconds": 140.1,
+      "rejected_actions": 2,
+      "commands": 141,
+      "scenario_seed": 2000,
+      "city": "LosAngeles",
+      "seed_attempt": 1,
+      "seed_cycle": 1,
+      "mean_car_wait": 0.0,
+      "max_car_wait": 0.0,
+      "action_counts": {
+        "draw": 32,
+        "wait": 29,
+        "driveway": 28,
+        "Remove": 36,
+        "Road": 12,
+        "Bridge": 4
+      },
+      "command_completed": true,
+      "accepted": true,
+      "request": {
+        "command": "draw",
+        "x": 16,
+        "y": 13,
+        "toX": 13,
+        "toY": 10
+      },
+      "terminated": true,
+      "truncated": false,
+      "deterministic": false
+    },
+    {
+      "trips": 0,
+      "seconds": 139.55,
+      "rejected_actions": 7,
+      "commands": 140,
+      "scenario_seed": 2001,
+      "city": "LosAngeles",
+      "seed_attempt": 1,
+      "seed_cycle": 1,
+      "mean_car_wait": 0.0,
+      "max_car_wait": 0.0,
+      "action_counts": {
+        "Road": 16,
+        "Bridge": 4,
+        "draw": 31,
+        "driveway": 34,
+        "wait": 27,
+        "Remove": 28
+      },
+      "command_completed": true,
+      "accepted": true,
+      "request": null,
+      "terminated": true,
+      "truncated": false,
+      "deterministic": false
+    },
+    {
+      "trips": 0,
+      "seconds": 140.75,
+      "rejected_actions": 5,
+      "commands": 141,
+      "scenario_seed": 2002,
+      "city": "LosAngeles",
+      "seed_attempt": 1,
+      "seed_cycle": 1,
+      "mean_car_wait": 0.0,
+      "max_car_wait": 0.0,
+      "action_counts": {
+        "driveway": 34,
+        "Road": 21,
+        "Remove": 30,
+        "draw": 23,
+        "wait": 28,
+        "Bridge": 4,
+        "upgrade": 1
+      },
+      "command_completed": true,
+      "accepted": true,
+      "request": {
+        "command": "upgrade",
+        "choice": 1
+      },
+      "terminated": true,
+      "truncated": false,
+      "deterministic": false
+    }
+  ],
+  "after": [],
+  "deterministic_after": [],
+  "seed_schedule": "blocks",
+  "episodes_per_seed": 100,
+  "best_replay": "C:\\Users\\moham\\mini_motorways\\output\\training\\seed-test-01\\best-game.json",
+  "evaluation_skipped": true,
+  "target_score": 1000,
+  "target_met": false
+}

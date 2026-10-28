@@ -1,0 +1,1382 @@
+{
+  "schemaVersion": 1,
+  "version": "OriginalReference",
+  "scenario": "LosAngeles",
+  "seed": 1000,
+  "variation": "SameMap",
+  "score": 4,
+  "duration": 145.45000000000002,
+  "terminated": true,
+  "truncated": false,
+  "partial": false,
+  "actions": [
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 1
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 2
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 3
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 4
+    },
+    {
+      "command": "build",
+      "tool": "Road",
+      "x": 15,
+      "y": 7,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 5
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 6
+    },
+    {
+      "command": "build",
+      "tool": "Remove",
+      "x": 15,
+      "y": 7,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 7
+    },
+    {
+      "command": "draw",
+      "x": 19,
+      "y": 9,
+      "toX": 10,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 8
+    },
+    {
+      "command": "draw",
+      "x": 19,
+      "y": 8,
+      "toX": 19,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 9
+    },
+    {
+      "command": "draw",
+      "x": 13,
+      "y": 12,
+      "toX": 17,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 10
+    },
+    {
+      "command": "driveway",
+      "x": 20,
+      "y": 13,
+      "toX": 20,
+      "toY": 12,
+      "id": 1,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 11
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 12
+    },
+    {
+      "command": "driveway",
+      "x": 20,
+      "y": 13,
+      "toX": 19,
+      "toY": 13,
+      "id": 1,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 13
+    },
+    {
+      "command": "build",
+      "tool": "Road",
+      "x": 21,
+      "y": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 14
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 15
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 16
+    },
+    {
+      "command": "draw",
+      "x": 19,
+      "y": 11,
+      "toX": 12,
+      "toY": 7,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 17
+    },
+    {
+      "command": "build",
+      "tool": "Remove",
+      "x": 19,
+      "y": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 18
+    },
+    {
+      "command": "draw",
+      "x": 16,
+      "y": 9,
+      "toX": 11,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 19
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 20
+    },
+    {
+      "command": "draw",
+      "x": 10,
+      "y": 9,
+      "toX": 12,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": false,
+      "afterTrips": 0,
+      "afterTime": 21
+    },
+    {
+      "command": "draw",
+      "x": 14,
+      "y": 8,
+      "toX": 17,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 22
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 23
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 24
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 13,
+      "toX": 21,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 25
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 26
+    },
+    {
+      "command": "draw",
+      "x": 11,
+      "y": 9,
+      "toX": 12,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": false,
+      "afterTrips": 0,
+      "afterTime": 27
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 28
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 29
+    },
+    {
+      "command": "draw",
+      "x": 17,
+      "y": 13,
+      "toX": 19,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": false,
+      "afterTrips": 0,
+      "afterTime": 30
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 31
+    },
+    {
+      "command": "draw",
+      "x": 14,
+      "y": 13,
+      "toX": 12,
+      "toY": 7,
+      "ticks": 20,
+      "accepted": false,
+      "afterTrips": 0,
+      "afterTime": 32
+    },
+    {
+      "command": "driveway",
+      "x": 20,
+      "y": 13,
+      "toX": 21,
+      "toY": 12,
+      "id": 1,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 33
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 34
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 35
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 36
+    },
+    {
+      "command": "draw",
+      "x": 14,
+      "y": 8,
+      "toX": 10,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 37
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 38
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 13,
+      "toX": 12,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 39
+    },
+    {
+      "command": "draw",
+      "x": 19,
+      "y": 10,
+      "toX": 10,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 40
+    },
+    {
+      "command": "build",
+      "tool": "Remove",
+      "x": 11,
+      "y": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 41
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 11,
+      "toX": 11,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 42
+    },
+    {
+      "command": "driveway",
+      "x": 20,
+      "y": 13,
+      "toX": 21,
+      "toY": 12,
+      "id": 1,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 43
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 44
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 45
+    },
+    {
+      "command": "draw",
+      "x": 18,
+      "y": 10,
+      "toX": 13,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 46
+    },
+    {
+      "command": "draw",
+      "x": 14,
+      "y": 13,
+      "toX": 18,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 47
+    },
+    {
+      "command": "driveway",
+      "x": 20,
+      "y": 12,
+      "toX": 19,
+      "toY": 11,
+      "id": 2,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 48
+    },
+    {
+      "command": "build",
+      "tool": "Remove",
+      "x": 16,
+      "y": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 49
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 50
+    },
+    {
+      "command": "build",
+      "tool": "Road",
+      "x": 20,
+      "y": 7,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 51
+    },
+    {
+      "command": "draw",
+      "x": 19,
+      "y": 10,
+      "toX": 21,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": false,
+      "afterTrips": 0,
+      "afterTime": 52
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 53
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 54
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 55
+    },
+    {
+      "command": "draw",
+      "x": 12,
+      "y": 12,
+      "toX": 14,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 56
+    },
+    {
+      "command": "driveway",
+      "x": 17,
+      "y": 8,
+      "toX": 18,
+      "toY": 7,
+      "id": 3,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 57
+    },
+    {
+      "command": "driveway",
+      "x": 20,
+      "y": 13,
+      "toX": 21,
+      "toY": 12,
+      "id": 1,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 58
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 59
+    },
+    {
+      "command": "driveway",
+      "x": 20,
+      "y": 13,
+      "toX": 19,
+      "toY": 13,
+      "id": 1,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 60
+    },
+    {
+      "command": "draw",
+      "x": 14,
+      "y": 8,
+      "toX": 19,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 61
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 62
+    },
+    {
+      "command": "build",
+      "tool": "Remove",
+      "x": 12,
+      "y": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 63
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 64
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 65
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 66
+    },
+    {
+      "command": "draw",
+      "x": 9,
+      "y": 13,
+      "toX": 13,
+      "toY": 7,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 67
+    },
+    {
+      "command": "driveway",
+      "x": 9,
+      "y": 10,
+      "toX": 9,
+      "toY": 9,
+      "id": 4,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 68
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 69
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 12,
+      "toX": 17,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 70
+    },
+    {
+      "command": "build",
+      "tool": "Remove",
+      "x": 19,
+      "y": 11,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 71
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 72
+    },
+    {
+      "command": "draw",
+      "x": 19,
+      "y": 7,
+      "toX": 15,
+      "toY": 7,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 73
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 74
+    },
+    {
+      "command": "draw",
+      "x": 18,
+      "y": 9,
+      "toX": 10,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 75
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 76
+    },
+    {
+      "command": "driveway",
+      "x": 20,
+      "y": 13,
+      "toX": 21,
+      "toY": 12,
+      "id": 1,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 77
+    },
+    {
+      "command": "draw",
+      "x": 13,
+      "y": 12,
+      "toX": 9,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": false,
+      "afterTrips": 0,
+      "afterTime": 78
+    },
+    {
+      "command": "draw",
+      "x": 9,
+      "y": 13,
+      "toX": 17,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 79
+    },
+    {
+      "command": "build",
+      "tool": "Remove",
+      "x": 9,
+      "y": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 80
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 81
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 82
+    },
+    {
+      "command": "build",
+      "tool": "Road",
+      "x": 21,
+      "y": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 83
+    },
+    {
+      "command": "driveway",
+      "x": 17,
+      "y": 8,
+      "toX": 18,
+      "toY": 7,
+      "id": 3,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 84
+    },
+    {
+      "command": "draw",
+      "x": 16,
+      "y": 9,
+      "toX": 17,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": false,
+      "afterTrips": 0,
+      "afterTime": 85
+    },
+    {
+      "command": "build",
+      "tool": "Remove",
+      "x": 18,
+      "y": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 86
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 87
+    },
+    {
+      "command": "draw",
+      "x": 17,
+      "y": 12,
+      "toX": 19,
+      "toY": 11,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 88
+    },
+    {
+      "command": "driveway",
+      "x": 17,
+      "y": 8,
+      "toX": 18,
+      "toY": 8,
+      "id": 3,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 89
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 90
+    },
+    {
+      "command": "driveway",
+      "x": 16,
+      "y": 9,
+      "toX": 15,
+      "toY": 8,
+      "id": 7,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 91
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 92
+    },
+    {
+      "command": "draw",
+      "x": 19,
+      "y": 9,
+      "toX": 14,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 93
+    },
+    {
+      "command": "driveway",
+      "x": 16,
+      "y": 10,
+      "toX": 15,
+      "toY": 10,
+      "id": 6,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 94
+    },
+    {
+      "command": "draw",
+      "x": 16,
+      "y": 10,
+      "toX": 19,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 95
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 12,
+      "toX": 13,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 96
+    },
+    {
+      "command": "draw",
+      "x": 10,
+      "y": 10,
+      "toX": 12,
+      "toY": 7,
+      "ticks": 20,
+      "accepted": false,
+      "afterTrips": 1,
+      "afterTime": 97
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 98
+    },
+    {
+      "command": "draw",
+      "x": 14,
+      "y": 8,
+      "toX": 11,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 99
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 100
+    },
+    {
+      "command": "draw",
+      "x": 15,
+      "y": 9,
+      "toX": 12,
+      "toY": 7,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 101
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 102
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 103
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 104
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 105
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 106
+    },
+    {
+      "command": "draw",
+      "x": 19,
+      "y": 9,
+      "toX": 15,
+      "toY": 7,
+      "ticks": 20,
+      "accepted": false,
+      "afterTrips": 1,
+      "afterTime": 107
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 108
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 109
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 110
+    },
+    {
+      "command": "build",
+      "tool": "Remove",
+      "x": 15,
+      "y": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 111
+    },
+    {
+      "command": "driveway",
+      "x": 15,
+      "y": 7,
+      "toX": 14,
+      "toY": 8,
+      "id": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 112
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 113
+    },
+    {
+      "command": "draw",
+      "x": 19,
+      "y": 10,
+      "toX": 19,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 114
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 7,
+      "toX": 21,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": false,
+      "afterTrips": 2,
+      "afterTime": 115
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 116
+    },
+    {
+      "command": "draw",
+      "x": 10,
+      "y": 10,
+      "toX": 17,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 117
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 118
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 119
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 120
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 121
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 122
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 3,
+      "afterTime": 123
+    },
+    {
+      "command": "draw",
+      "x": 14,
+      "y": 8,
+      "toX": 13,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 3,
+      "afterTime": 124
+    },
+    {
+      "command": "draw",
+      "x": 17,
+      "y": 10,
+      "toX": 12,
+      "toY": 7,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 3,
+      "afterTime": 125
+    },
+    {
+      "command": "driveway",
+      "x": 20,
+      "y": 13,
+      "toX": 21,
+      "toY": 12,
+      "id": 1,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 3,
+      "afterTime": 126
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 3,
+      "afterTime": 127
+    },
+    {
+      "command": "draw",
+      "x": 19,
+      "y": 10,
+      "toX": 19,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 3,
+      "afterTime": 128
+    },
+    {
+      "command": "draw",
+      "x": 15,
+      "y": 7,
+      "toX": 19,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": false,
+      "afterTrips": 3,
+      "afterTime": 129
+    },
+    {
+      "command": "draw",
+      "x": 13,
+      "y": 9,
+      "toX": 16,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 3,
+      "afterTime": 130
+    },
+    {
+      "command": "draw",
+      "x": 12,
+      "y": 9,
+      "toX": 21,
+      "toY": 11,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 3,
+      "afterTime": 131
+    },
+    {
+      "command": "driveway",
+      "x": 20,
+      "y": 13,
+      "toX": 19,
+      "toY": 13,
+      "id": 1,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 3,
+      "afterTime": 132
+    },
+    {
+      "command": "draw",
+      "x": 10,
+      "y": 9,
+      "toX": 20,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 3,
+      "afterTime": 133
+    },
+    {
+      "command": "driveway",
+      "x": 11,
+      "y": 8,
+      "toX": 12,
+      "toY": 7,
+      "id": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 3,
+      "afterTime": 134
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 3,
+      "afterTime": 135
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 3,
+      "afterTime": 136
+    },
+    {
+      "command": "draw",
+      "x": 14,
+      "y": 8,
+      "toX": 20,
+      "toY": 7,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 3,
+      "afterTime": 137
+    },
+    {
+      "command": "build",
+      "tool": "Remove",
+      "x": 21,
+      "y": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 138
+    },
+    {
+      "command": "driveway",
+      "x": 16,
+      "y": 9,
+      "toX": 15,
+      "toY": 9,
+      "id": 7,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 139
+    },
+    {
+      "command": "build",
+      "tool": "Remove",
+      "x": 19,
+      "y": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 140
+    },
+    {
+      "command": "draw",
+      "x": 19,
+      "y": 10,
+      "toX": 19,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 141
+    },
+    {
+      "command": "draw",
+      "x": 13,
+      "y": 9,
+      "toX": 14,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 142
+    },
+    {
+      "command": "upgrade",
+      "choice": 1,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 143
+    },
+    {
+      "command": "draw",
+      "x": 14,
+      "y": 8,
+      "toX": 18,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 144
+    },
+    {
+      "command": "build",
+      "tool": "Remove",
+      "x": 17,
+      "y": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 145
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 145.45000000000002
+    }
+  ],
+  "source": "training",
+  "simulatorCommit": "53b425137de898e5d1d1acf13eed2acff9a7dddd",
+  "policySchema": "full-tools-staged-grid-v1",
+  "policySteps": 5159,
+  "episode": 17,
+  "ranking": "highest trips, then longest survival, then fewest rejected actions"
+}

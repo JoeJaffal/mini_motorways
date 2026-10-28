@@ -1,0 +1,51 @@
+{
+  "wall_seconds": 2198.5,
+  "policy_steps": 430268,
+  "completed_commands": 187532,
+  "episodes": 779,
+  "best_training_score": 73,
+  "policy_steps_per_second": 195.7,
+  "commands_per_second": 85.3,
+  "estimated_seconds_remaining": 26601.5,
+  "current_seed": 1000,
+  "seed_attempt": 93,
+  "seed_cycle": 2,
+  "seed_games": 779,
+  "seed_mean_score": 15.978177150192554,
+  "seed_best_score": 73,
+  "current_score": 32,
+  "current_game_seconds": 340,
+  "mean_car_wait": 0.07396944364370137,
+  "max_car_wait": 13.550000000000058,
+  "finished": false,
+  "workers": [
+    {
+      "worker": 0,
+      "seed": 1000,
+      "attempt": 94,
+      "score": 32,
+      "game_seconds": 308
+    },
+    {
+      "worker": 1,
+      "seed": 1000,
+      "attempt": 99,
+      "score": 17,
+      "game_seconds": 219
+    },
+    {
+      "worker": 2,
+      "seed": 1000,
+      "attempt": 97,
+      "score": 19,
+      "game_seconds": 258
+    },
+    {
+      "worker": 3,
+      "seed": 1000,
+      "attempt": 93,
+      "score": 32,
+      "game_seconds": 340
+    }
+  ]
+}

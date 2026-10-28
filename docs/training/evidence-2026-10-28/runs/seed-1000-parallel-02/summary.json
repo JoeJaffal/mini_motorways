@@ -1,0 +1,286 @@
+{
+  "training_wall_seconds": 14400.655368799926,
+  "policy_steps": 2271492,
+  "completed_commands": 1650223,
+  "episodes": 4549,
+  "parameter_update_confirmed": true,
+  "interrupted": false,
+  "policy_steps_per_second": 157.735321193878,
+  "commands_per_second": 114.59360409216715,
+  "best_training_score": 73,
+  "before": [
+    {
+      "trips": 0,
+      "seconds": 140.1,
+      "rejected_actions": 1,
+      "commands": 141,
+      "scenario_seed": 2000,
+      "city": "LosAngeles",
+      "seed_attempt": 1,
+      "seed_cycle": 1,
+      "mean_car_wait": 0.0,
+      "max_car_wait": 0.0,
+      "action_counts": {
+        "draw": 36,
+        "driveway": 54,
+        "wait": 44,
+        "Road": 7
+      },
+      "command_completed": true,
+      "accepted": true,
+      "request": {
+        "command": "draw",
+        "x": 18,
+        "y": 10,
+        "toX": 12,
+        "toY": 9
+      },
+      "terminated": true,
+      "truncated": false,
+      "deterministic": false
+    },
+    {
+      "trips": 2,
+      "seconds": 174.95000000000002,
+      "rejected_actions": 1,
+      "commands": 175,
+      "scenario_seed": 2001,
+      "city": "LosAngeles",
+      "seed_attempt": 1,
+      "seed_cycle": 1,
+      "mean_car_wait": 0.0025862068965517245,
+      "max_car_wait": 2.000000000000001,
+      "action_counts": {
+        "draw": 36,
+        "Road": 3,
+        "Bridge": 4,
+        "driveway": 71,
+        "wait": 60,
+        "upgrade": 1
+      },
+      "command_completed": true,
+      "accepted": true,
+      "request": {
+        "command": "driveway",
+        "x": 21,
+        "y": 9,
+        "toX": 22,
+        "toY": 9,
+        "id": 1
+      },
+      "terminated": true,
+      "truncated": false,
+      "deterministic": false
+    },
+    {
+      "trips": 0,
+      "seconds": 140.75,
+      "rejected_actions": 7,
+      "commands": 141,
+      "scenario_seed": 2002,
+      "city": "LosAngeles",
+      "seed_attempt": 1,
+      "seed_cycle": 1,
+      "mean_car_wait": 0.0,
+      "max_car_wait": 0.0,
+      "action_counts": {
+        "draw": 48,
+        "driveway": 68,
+        "Road": 2,
+        "wait": 23
+      },
+      "command_completed": true,
+      "accepted": true,
+      "request": {
+        "command": "driveway",
+        "x": 22,
+        "y": 9,
+        "toX": 21,
+        "toY": 9,
+        "id": 9
+      },
+      "terminated": true,
+      "truncated": false,
+      "deterministic": false
+    }
+  ],
+  "after": [
+    {
+      "trips": 3,
+      "seconds": 140.1,
+      "rejected_actions": 1,
+      "commands": 141,
+      "scenario_seed": 2000,
+      "city": "LosAngeles",
+      "seed_attempt": 1,
+      "seed_cycle": 1,
+      "mean_car_wait": 0.0025152439024390253,
+      "max_car_wait": 1.5500000000000007,
+      "action_counts": {
+        "draw": 135,
+        "driveway": 6
+      },
+      "command_completed": true,
+      "accepted": true,
+      "request": {
+        "command": "draw",
+        "x": 12,
+        "y": 9,
+        "toX": 10,
+        "toY": 10
+      },
+      "terminated": true,
+      "truncated": false,
+      "deterministic": false
+    },
+    {
+      "trips": 0,
+      "seconds": 139.55,
+      "rejected_actions": 0,
+      "commands": 140,
+      "scenario_seed": 2001,
+      "city": "LosAngeles",
+      "seed_attempt": 1,
+      "seed_cycle": 1,
+      "mean_car_wait": 0.0,
+      "max_car_wait": 0.0,
+      "action_counts": {
+        "draw": 103,
+        "driveway": 30,
+        "wait": 7
+      },
+      "command_completed": true,
+      "accepted": true,
+      "request": {
+        "command": "draw",
+        "x": 12,
+        "y": 9,
+        "toX": 10,
+        "toY": 10
+      },
+      "terminated": true,
+      "truncated": false,
+      "deterministic": false
+    },
+    {
+      "trips": 0,
+      "seconds": 140.75,
+      "rejected_actions": 8,
+      "commands": 141,
+      "scenario_seed": 2002,
+      "city": "LosAngeles",
+      "seed_attempt": 1,
+      "seed_cycle": 1,
+      "mean_car_wait": 0.0,
+      "max_car_wait": 0.0,
+      "action_counts": {
+        "draw": 114,
+        "driveway": 18,
+        "Road": 1,
+        "wait": 8
+      },
+      "command_completed": true,
+      "accepted": true,
+      "request": {
+        "command": "draw",
+        "x": 10,
+        "y": 10,
+        "toX": 16,
+        "toY": 11
+      },
+      "terminated": true,
+      "truncated": false,
+      "deterministic": false
+    }
+  ],
+  "deterministic_after": [
+    {
+      "trips": 0,
+      "seconds": 140.1,
+      "rejected_actions": 48,
+      "commands": 141,
+      "scenario_seed": 2000,
+      "city": "LosAngeles",
+      "seed_attempt": 1,
+      "seed_cycle": 1,
+      "mean_car_wait": 0.0,
+      "max_car_wait": 0.0,
+      "action_counts": {
+        "draw": 141
+      },
+      "command_completed": true,
+      "accepted": true,
+      "request": {
+        "command": "draw",
+        "x": 10,
+        "y": 10,
+        "toX": 22,
+        "toY": 12
+      },
+      "terminated": true,
+      "truncated": false,
+      "deterministic": true
+    },
+    {
+      "trips": 2,
+      "seconds": 139.55,
+      "rejected_actions": 2,
+      "commands": 140,
+      "scenario_seed": 2001,
+      "city": "LosAngeles",
+      "seed_attempt": 1,
+      "seed_cycle": 1,
+      "mean_car_wait": 0.0,
+      "max_car_wait": 0.0,
+      "action_counts": {
+        "draw": 140
+      },
+      "command_completed": true,
+      "accepted": true,
+      "request": {
+        "command": "draw",
+        "x": 10,
+        "y": 10,
+        "toX": 12,
+        "toY": 9
+      },
+      "terminated": true,
+      "truncated": false,
+      "deterministic": true
+    },
+    {
+      "trips": 0,
+      "seconds": 140.75,
+      "rejected_actions": 0,
+      "commands": 141,
+      "scenario_seed": 2002,
+      "city": "LosAngeles",
+      "seed_attempt": 1,
+      "seed_cycle": 1,
+      "mean_car_wait": 0.0,
+      "max_car_wait": 0.0,
+      "action_counts": {
+        "draw": 141
+      },
+      "command_completed": true,
+      "accepted": true,
+      "request": {
+        "command": "draw",
+        "x": 10,
+        "y": 10,
+        "toX": 22,
+        "toY": 12
+      },
+      "terminated": true,
+      "truncated": false,
+      "deterministic": true
+    }
+  ],
+  "workers": 4,
+  "seed_schedule": "blocks",
+  "episodes_per_seed": 100,
+  "best_replay": "C:\\Users\\moham\\mini_motorways\\output\\training\\seed-1000-parallel-02\\best-game.json",
+  "evaluation_skipped": false,
+  "target_score": 1000,
+  "target_met": false
+}

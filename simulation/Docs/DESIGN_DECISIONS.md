@@ -778,3 +778,26 @@ The user's repeated request to proceed authorizes the remaining implementation w
 ## 041 - Accept current parking approximations for now
 
 After the entrance-center and conservative concurrency differences were explained, the user accepted keeping the current parking behavior for now while work proceeds on other differences. This does not certify exact parking or cancel the overall Original replication target. The repo cleanup request also authorizes documenting and committing the completed work, organizing maintained source, and pushing it to the user repository.
+
+## 042 - OriginalReference learning experiment on mohammad (28 October 2026)
+
+The user selected structured simulator data, all ordinary tools and trial-and-error
+learning, initially one city and a provisional 1,000-trip goal. Training work must
+live on `mohammad`; `main` remains the playground. The later user requests include
+repeated practice on one seed, best-game native playback, live diagnostics and
+parallel workers. A four-worker, four-hour run was explicitly authorized and
+completed. These decisions do not replace Custom's earlier objectives or certify
+OriginalReference fidelity. Full chronology, implementation choices, failures,
+analysis and measured outcomes are in
+[the training history](../../training/EXPERIMENT_HISTORY.md).
+
+## 043 - Preserve every update, decision and analysis
+
+The user requires all material updates, decisions, reasoning and performance
+findings to be documented, including information originally presented in the
+model PDF. Keep historical decisions/results and record superseding changes;
+do not maintain only a current-state summary. Preserve reports, graphs and
+small measurement sources in version control. Distinguish user choices from
+engineering choices, evidence from hypotheses, and unknowns from measured facts.
+The [training evidence index](../../docs/training/README.md), experiment history,
+AGENTS.md and contributor guide implement this continuing requirement.

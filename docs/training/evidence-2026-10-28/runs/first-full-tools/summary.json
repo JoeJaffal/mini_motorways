@@ -1,0 +1,165 @@
+{
+  "training_wall_seconds": 431.08971970004495,
+  "policy_steps": 65536,
+  "completed_commands": 35610,
+  "episodes": 242,
+  "parameter_update_confirmed": true,
+  "interrupted": false,
+  "policy_steps_per_second": 152.02403816449248,
+  "commands_per_second": 82.60461424312709,
+  "best_training_score": 7,
+  "before": [
+    {
+      "trips": 0,
+      "seconds": 140.1,
+      "rejected_actions": 2,
+      "commands": 141,
+      "scenario_seed": 2000,
+      "city": "LosAngeles",
+      "command_completed": true,
+      "accepted": true,
+      "request": {
+        "command": "draw",
+        "x": 16,
+        "y": 13,
+        "toX": 13,
+        "toY": 10
+      },
+      "terminated": true,
+      "truncated": false,
+      "deterministic": false
+    },
+    {
+      "trips": 0,
+      "seconds": 139.55,
+      "rejected_actions": 7,
+      "commands": 140,
+      "scenario_seed": 2001,
+      "city": "LosAngeles",
+      "command_completed": true,
+      "accepted": true,
+      "request": null,
+      "terminated": true,
+      "truncated": false,
+      "deterministic": false
+    },
+    {
+      "trips": 0,
+      "seconds": 140.75,
+      "rejected_actions": 5,
+      "commands": 141,
+      "scenario_seed": 2002,
+      "city": "LosAngeles",
+      "command_completed": true,
+      "accepted": true,
+      "request": {
+        "command": "upgrade",
+        "choice": 1
+      },
+      "terminated": true,
+      "truncated": false,
+      "deterministic": false
+    }
+  ],
+  "after": [
+    {
+      "trips": 0,
+      "seconds": 140.1,
+      "rejected_actions": 1,
+      "commands": 141,
+      "scenario_seed": 2000,
+      "city": "LosAngeles",
+      "command_completed": true,
+      "accepted": true,
+      "request": {
+        "command": "upgrade",
+        "choice": 1
+      },
+      "terminated": true,
+      "truncated": false,
+      "deterministic": false
+    },
+    {
+      "trips": 0,
+      "seconds": 139.55,
+      "rejected_actions": 0,
+      "commands": 140,
+      "scenario_seed": 2001,
+      "city": "LosAngeles",
+      "command_completed": true,
+      "accepted": true,
+      "request": {
+        "command": "build",
+        "tool": "Road",
+        "x": 21,
+        "y": 10
+      },
+      "terminated": true,
+      "truncated": false,
+      "deterministic": false
+    },
+    {
+      "trips": 0,
+      "seconds": 140.75,
+      "rejected_actions": 0,
+      "commands": 141,
+      "scenario_seed": 2002,
+      "city": "LosAngeles",
+      "command_completed": true,
+      "accepted": true,
+      "request": {
+        "command": "upgrade",
+        "choice": 1
+      },
+      "terminated": true,
+      "truncated": false,
+      "deterministic": false
+    }
+  ],
+  "deterministic_after": [
+    {
+      "trips": 0,
+      "seconds": 140.1,
+      "rejected_actions": 0,
+      "commands": 141,
+      "scenario_seed": 2000,
+      "city": "LosAngeles",
+      "command_completed": true,
+      "accepted": true,
+      "request": null,
+      "terminated": true,
+      "truncated": false,
+      "deterministic": true
+    },
+    {
+      "trips": 0,
+      "seconds": 139.55,
+      "rejected_actions": 0,
+      "commands": 140,
+      "scenario_seed": 2001,
+      "city": "LosAngeles",
+      "command_completed": true,
+      "accepted": true,
+      "request": null,
+      "terminated": true,
+      "truncated": false,
+      "deterministic": true
+    },
+    {
+      "trips": 0,
+      "seconds": 140.75,
+      "rejected_actions": 0,
+      "commands": 141,
+      "scenario_seed": 2002,
+      "city": "LosAngeles",
+      "command_completed": true,
+      "accepted": true,
+      "request": null,
+      "terminated": true,
+      "truncated": false,
+      "deterministic": true
+    }
+  ],
+  "target_score": 1000,
+  "target_met": false
+}

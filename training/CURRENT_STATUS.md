@@ -152,6 +152,8 @@ different 73-trip/461.4-second best recording.
   `summary.json`, and best replay files. These large/generated artifacts are
   local and ignored by Git; committing documentation does not back them up.
 
-The earlier model PDF is a historical explanation. It has not been regenerated
-for the four-hour results or these latest fixes; use this report and the linked
-guides for current behavior.
+The earlier model PDF is a historical explanation. Its unchanged 16 pages,
+searchable text, graph images and underlying measurements are now preserved in
+the [tracked evidence archive](../docs/training/README.md). It has not been
+rewritten with newer results. Use this report for current behavior and the
+[chronological history](EXPERIMENT_HISTORY.md) for decisions, updates and analysis.

@@ -1,0 +1,79 @@
+{
+  "training_wall_seconds": 4.298653699923307,
+  "policy_steps": 512,
+  "completed_commands": 224,
+  "episodes": 1,
+  "parameter_update_confirmed": true,
+  "interrupted": false,
+  "policy_steps_per_second": 119.10705903318863,
+  "commands_per_second": 52.109338327020026,
+  "best_training_score": 0,
+  "before": [
+    {
+      "trips": 0,
+      "seconds": 140.1,
+      "rejected_actions": 2,
+      "commands": 141,
+      "scenario_seed": 2000,
+      "city": "LosAngeles",
+      "command_completed": true,
+      "accepted": true,
+      "request": {
+        "command": "draw",
+        "x": 16,
+        "y": 13,
+        "toX": 13,
+        "toY": 10
+      },
+      "terminated": true,
+      "truncated": false,
+      "deterministic": false
+    }
+  ],
+  "after": [
+    {
+      "trips": 0,
+      "seconds": 140.1,
+      "rejected_actions": 2,
+      "commands": 141,
+      "scenario_seed": 2000,
+      "city": "LosAngeles",
+      "command_completed": true,
+      "accepted": true,
+      "request": {
+        "command": "build",
+        "tool": "Remove",
+        "x": 22,
+        "y": 12
+      },
+      "terminated": true,
+      "truncated": false,
+      "deterministic": false
+    }
+  ],
+  "deterministic_after": [
+    {
+      "trips": 0,
+      "seconds": 140.1,
+      "rejected_actions": 0,
+      "commands": 141,
+      "scenario_seed": 2000,
+      "city": "LosAngeles",
+      "command_completed": true,
+      "accepted": true,
+      "request": {
+        "command": "driveway",
+        "x": 19,
+        "y": 12,
+        "toX": 18,
+        "toY": 13,
+        "id": 6
+      },
+      "terminated": true,
+      "truncated": false,
+      "deterministic": true
+    }
+  ],
+  "target_score": 1000,
+  "target_met": false
+}

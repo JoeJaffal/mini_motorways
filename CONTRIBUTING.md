@@ -22,13 +22,22 @@ python scripts/check_repository.py
 git diff --check
 ```
 
-The first command builds the Debug host needed by the second. Currently 31 shared suites cover traffic, materials, version isolation, motorways, shared lots, trains and parking. They test reconstruction behavior, not complete original-game equivalence.
+The first command builds the Debug host needed by the second. Currently 40 shared suites cover traffic, materials, version isolation, motorways, shared lots, trains, parking and replay integration. They test reconstruction behavior, not complete original-game equivalence.
 
 For Unity changes, use Unity 6000.6.0f1 and **Traffic Lab > Build both Windows apps**. This prepares both scenes, runs the shared suites and builds both Windows players. For changes under `legacy/cpp/` or root CMake, also run the legacy CMake build and CTest commands in its README.
 
 When changing reference tools, check their CLI help and syntax; run the relevant component comparison when the installed original game is available. It is optional for ordinary headless builds.
 
 ## Documentation
+
+The user requires every material update, decision, analysis and performance
+finding to be documented, including PDF content and graphs. Add a chronological
+entry to [the training history](training/EXPERIMENT_HISTORY.md) for training
+work, with the request, decision, rationale, implementation, checks, measured
+outcome, limitations and superseded choices. Distinguish observed facts from
+hypotheses. Follow [the evidence procedure](docs/training/README.md) to preserve
+reports and measurement sources in Git; ignored run folders alone are not
+durable documentation. Update this record during the work, not only at handoff.
 
 - Update [implementation status](simulation/Docs/IMPLEMENTATION_STATUS.md) for current behavior and limits.
 - Update [version behavior](simulation/Docs/VERSIONS.md) for rule-set changes.
