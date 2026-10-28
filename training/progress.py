@@ -127,7 +127,7 @@ class BudgetCallback(BaseCallback):
                 for key in ['reward_mode','reward_schema','connected_houses','connection_potential',
                             'trip_reward_total','shaping_reward_total','training_reward_total',
                             'observation_mode','draw_mask','draw_noop_commands','draw_change_commands','draw_distinct_pairs',
-                            'planner_aided','macro_decisions','available_goals']:
+                            'planner_aided','macro_decisions','available_goals','reward_scale','skip_forced_wait','forced_wait_commands']:
                     if key in info:result[key]=info[key]
                 result['worker']=worker
                 result['terminated'] = not info.get('TimeLimit.truncated', False)

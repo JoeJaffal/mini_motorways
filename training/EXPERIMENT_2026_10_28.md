@@ -223,3 +223,23 @@ Generated scenes/settings were restored. Exact native replay checks passed for
 126 trips / 592.6 seconds / 593 commands (primitive) and 300 / 890.4 / 891
 (planner-aided). The latter map capture visually shows the proper planner-aided
 source label and verified final outcome. No gameplay rule was relaxed.
+
+## Choice-only timing pilot
+
+Frozen seed 2000 used 145 macro decisions, of which 109 had only waiting legal.
+An opt-in `--skip-forced-wait` mode now folds those forced states into the
+preceding decision. Every ordinary one-second command is still executed and
+recorded; after each command it checks for a newly available route, upgrade or
+termination. It never skips a state where the policy could choose another action.
+The saved checkpoint records this timing mode; frozen evaluation restores it.
+Legacy goal checkpoints retain the original five-second wait semantics.
+
+A real-host test at a 180-second external cap produced identical exact ordinary
+command histories and trip scores with/without collapsing forced waits, while
+reducing neural decision count. This verifies the tested frozen behavior, not
+all future policies. Potential shaping and PPO discount now operate between
+choice points, so reward schema is explicitly `goal-trip-potential-gamma099-choice-v1`.
+This is an action-duration/credit-assignment change, not merely a CPU optimization.
+The new arm starts from the same initial checkpoint, uses reward scale .01 and
+otherwise the same PPO configuration as the scaled arm. Its 25-minute ceiling
+fits the original authorization; independent arms temporarily share six hosts.

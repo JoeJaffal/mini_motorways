@@ -25,10 +25,11 @@ GOAL_SCHEMA='visible-route-goal-policy-v1'
 class GoalEnv(gym.Env):
     metadata={'render_modes':[]}
     schema=GOAL_SCHEMA
-    def __init__(self,reward_scale=1.,**kwargs):
+    def __init__(self,reward_scale=1.,skip_forced_wait=False,**kwargs):
         super().__init__()
         if not np.isfinite(reward_scale) or reward_scale<=0:raise ValueError('Positive finite reward scale required')
         self.reward_scale=float(reward_scale)
+        self.skip_forced_wait=bool(skip_forced_wait)
         self.base=TrafficEnv(observation_mode='connectivity',reward_mode='trips',record_replays=True,**kwargs)
         self.action_space=gym.spaces.Discrete(GOALS+3)
         self.observation_space=gym.spaces.Dict({'candidates':gym.spaces.Box(-1,1,(GOALS,25),np.float32),
@@ -37,7 +38,7 @@ class GoalEnv(gym.Env):
 
     def reset(self,*,seed=None,options=None):
         super().reset(seed=seed);self.base.reset(seed=seed,options=options)
-        self.potential.reset(self.base.connected_houses);self.shaping_total=0.;self.reward_total=0.;self.decisions=0
+        self.potential.reset(self.base.connected_houses);self.shaping_total=0.;self.reward_total=0.;self.decisions=0;self.forced_wait_commands=0
         self.cache_key=None;self._refresh()
         return self.encode(),self.info()
 
@@ -115,25 +116,31 @@ class GoalEnv(gym.Env):
             for a,b in strokes(self.plans[action-3]):
                 e._advance(dict(command='draw',x=a[0],y=a[1],toX=b[0],toY=b[1]))
                 if e.done:break
+        self._refresh()
+        # Only collapse states with no alternative action. Inspect after every
+        # normal one-second command so no newly available choice is skipped.
+        while self.skip_forced_wait and not e.done and not self.plans and not e.raw['upgradeChoices']:
+            e._advance();self.forced_wait_commands+=1;self._refresh()
         terminated=bool(e.raw['failed']);truncated=e.done and not terminated
         shaping=self.potential.step(e.connected_houses,terminated)
         trips=e.raw['tripsCompleted']-before;self.shaping_total+=shaping;self.reward_total+=trips+shaping;self.decisions+=1
-        self._refresh();info=self.info()
+        info=self.info()
         info.update(command_completed=True,commands_delta=e.commands-commands,trip_reward=trips,shaping_reward=shaping)
         if e.done:info['episode_replay']=self.export_replay()
         return self.encode(),float((trips+shaping)*self.reward_scale),terminated,truncated,info
 
     def info(self):
-        return dict(self.base.info(),reward_mode='goal-connectivity',reward_schema='goal-trip-potential-gamma099-v1',
+        return dict(self.base.info(),reward_mode='goal-connectivity',reward_schema='goal-trip-potential-gamma099-choice-v1' if self.skip_forced_wait else 'goal-trip-potential-gamma099-v1',
                     observation_mode='goal-candidates',planner_aided=True,
                     shaping_reward_total=self.shaping_total,training_reward_total=self.reward_total*self.reward_scale,
                     unscaled_training_reward_total=self.reward_total,reward_scale=self.reward_scale,
+                    skip_forced_wait=self.skip_forced_wait,forced_wait_commands=self.forced_wait_commands,
                     trip_reward_total=self.base.raw['tripsCompleted'],connection_potential=self.potential.previous,
                     macro_decisions=self.decisions,available_goals=len(getattr(self,'plans',[])))
 
     def export_replay(self):
         replay=self.base.export_replay()
-        if replay:replay.update(source='hybrid-training',policySchema=GOAL_SCHEMA,plannerAided=True)
+        if replay:replay.update(source='hybrid-training',policySchema=GOAL_SCHEMA,plannerAided=True,skipForcedWait=self.skip_forced_wait)
         return replay
 
     def close(self):self.base.close()

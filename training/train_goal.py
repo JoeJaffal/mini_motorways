@@ -16,7 +16,7 @@ from shutdown import save_checkpoint,stop_and_save
 
 
 def evaluate(model,dotnet,host_dll,seeds,cap=3600,record_dir=None,deterministic=True):
-    env=GoalEnv(dotnet=dotnet,host_dll=host_dll,seconds=cap)
+    env=GoalEnv(dotnet=dotnet,host_dll=host_dll,seconds=cap,skip_forced_wait=getattr(model,'skip_forced_wait',False))
     results=[]
     try:
         for seed in seeds:
@@ -43,6 +43,7 @@ def main():
     p.add_argument('--dotnet',default=str(ROOT/'tmp/dotnet/dotnet.exe'));p.add_argument('--host-dll',type=Path)
     p.add_argument('--resume',type=Path);p.add_argument('--stop-file',type=Path)
     p.add_argument('--reward-scale',type=float,default=1.)
+    p.add_argument('--skip-forced-wait',action='store_true')
     p.add_argument('--validation-minutes',type=float,default=6);p.add_argument('--eval-count',type=int,default=5)
     a=p.parse_args()
     if a.output.exists():p.error('Fresh run name required')
@@ -57,10 +58,12 @@ def main():
                 dirty=bool(subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip()),
                 created_utc=datetime.now(timezone.utc).isoformat(),arguments={k:str(v) if isinstance(v,Path) else v for k,v in vars(a).items()},
                 training_seeds=[1000,1099],validation_seeds=list(range(2000,2000+a.eval_count)),gamma=.99,gae_lambda=.99,
-                learning_rate=.0001,ent_coef=.005,aggregate_rollout=256,reward_scale=a.reward_scale)
+                learning_rate=.0001,ent_coef=.005,aggregate_rollout=256,reward_scale=a.reward_scale,
+                decision_timing='choice-only-v1' if a.skip_forced_wait else 'five-second-wait-v1')
+    if a.skip_forced_wait:config['reward_schema']='goal-trip-potential-gamma099-choice-v1'
     for name in ['goal_agent.py','planner_diagnostic.py','train_goal.py','environment.py','rewards.py','parallel.py','progress.py','shutdown.py']:
         (a.output/name).write_text((ROOT/'training'/name).read_text())
-    env=vector(a.workers,a.output,dotnet=a.dotnet,host_dll=a.host_dll,seeds=range(1000,1100),episodes_per_seed=1,seed_schedule='random',reward_scale=a.reward_scale)
+    env=vector(a.workers,a.output,dotnet=a.dotnet,host_dll=a.host_dll,seeds=range(1000,1100),episodes_per_seed=1,seed_schedule='random',reward_scale=a.reward_scale,skip_forced_wait=a.skip_forced_wait)
     try:
         if a.resume:
             model=MaskablePPO.load(a.resume,env=env,device='cpu',n_steps=256//a.workers)
@@ -68,6 +71,7 @@ def main():
         else:
             model=MaskablePPO(GoalPolicy,env,device='cpu',seed=42,n_steps=256//a.workers,batch_size=64,n_epochs=4,
                               gamma=.99,gae_lambda=.99,learning_rate=.0001,ent_coef=.005,verbose=0)
+        model.skip_forced_wait=a.skip_forced_wait
         config['trainable_parameters']=sum(x.numel() for x in model.policy.parameters())
         (a.output/'config.json').write_text(json.dumps(config,indent=2)+'\n')
         model.set_logger(configure(str(a.output),['csv']));save_checkpoint(model,a.output/'initial.zip')

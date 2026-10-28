@@ -17,6 +17,24 @@ DOTNET='dotnet';DLL=None
 
 
 class GoalChecks(unittest.TestCase):
+    def test_collapsing_forced_wait_preserves_frozen_ordinary_game(self):
+        torch.set_num_threads(2)
+        envs=[GoalEnv(dotnet=DOTNET,host_dll=DLL,seconds=180,skip_forced_wait=s) for s in [False,True]]
+        try:
+            model=MaskablePPO(GoalPolicy,envs[0],device='cpu',seed=42,n_steps=8,batch_size=8)
+            for env in envs:
+                obs,_=env.reset(seed=42,options={'scenario_seed':2000})
+                while True:
+                    a,_=model.predict(obs,deterministic=True,action_masks=env.action_masks())
+                    obs,_,t,c,_=env.step(a)
+                    if t or c:break
+            self.assertEqual(envs[0].export_replay()['actions'],envs[1].export_replay()['actions'])
+            self.assertEqual(envs[0].base.raw['tripsCompleted'],envs[1].base.raw['tripsCompleted'])
+            self.assertGreater(envs[1].forced_wait_commands,0)
+            self.assertLess(envs[1].decisions,envs[0].decisions)
+        finally:
+            for env in envs:env.close()
+
     def test_reward_scaling_keeps_game_and_score_identical(self):
         envs=[GoalEnv(dotnet=DOTNET,host_dll=DLL,seconds=100,reward_scale=s) for s in [1.,.01]]
         try:
