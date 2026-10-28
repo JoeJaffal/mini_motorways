@@ -45,7 +45,7 @@ def main():
     recommendation=("Preserve both the frozen initial baseline and the development-selected checkpoint. "
         "Use the separate goal trainer for further planner-aided experiments and keep the original all-tools trainer as a baseline. "
         "Do not assume that more hours on the same seed, more parameters or a higher training best will solve transfer. "
-        "A next investigation should test capacity-aware route alternatives and meaningful decision credit, using new validation/test partitions and multiple training seeds. "
+        "A next investigation should remove proven unchanged strokes from the router, test capacity-aware route alternatives and meaningful decision credit, using new validation/test partitions and multiple training seeds. "
         "No further run is automatically scheduled.")
     result=dict(created_utc=datetime.now(timezone.utc).isoformat(),authorization_start_utc='2026-10-28T10:40:22Z',
                 authorization_deadline_utc='2026-10-28T13:40:22Z',headline=headline,conclusion=conclusion,

@@ -292,3 +292,14 @@ transformation, and retains dedicated exact replay files byte-for-byte. A check
 preserved every remaining metric and reduced a 1,274,560-byte summary to 12,278
 bytes. Raw original local files are preserved. This is evidence compaction, not
 score editing.
+
+## Remaining executor limitation
+
+A final diagnostic on the five frozen initial goal development games found
+438 no-op draws out of 668 total draws (65.6%), with ordinary command time still
+advancing. The router draws complete paths, including already-existing segments;
+this is a different issue from the primitive policy's random endpoint selection.
+The macro policy cannot independently remove those internal strokes. Skipping
+proven unchanged segments is a proposed future executor optimization, not an
+implemented fix or a measured gain. It is recorded rather than silently changing
+the route executor and invalidating completed development comparisons.
