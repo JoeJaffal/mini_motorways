@@ -1,5 +1,21 @@
 # Repeated-seed training and watching the best game
 
+For the new optional traffic-map/bypass agent, start a **fresh** 30-minute trial:
+
+```powershell
+cd C:\Users\moham\mini_motorways
+.\.venv\Scripts\python.exe .\training\train_goal.py --output output/training/congestion-v2-01 --minutes 30 --workers 4 --congestion-aware --reward-scale .01
+```
+
+This is a different input schema from older checkpoints. Its frozen comparison
+was mixed, not a proven improvement; see [inputs, limits and controls](GOAL_AGENT.md).
+Evaluation adds time beyond the learner budget. Ctrl+C saves and stops. Change
+the output name if it already exists. To watch after an episode finishes:
+
+```powershell
+.\.venv\Scripts\python.exe .\training\watch_best.py --run output/training/congestion-v2-01 --play
+```
+
 The authorized investigation has finished. The [latest status](CURRENT_STATUS.md)
 and [new report](../docs/training/model-investigation-2026-10-28.pdf) show a
 356-trip planner-aided recording, but only a narrow one-map learning gain.

@@ -4,6 +4,22 @@ The authorized investigation is complete. All training and frozen evaluation
 have stopped; no recurring run is scheduled. Work is on `mohammad`; `main` remains
 the playground. Existing checkpoints and historical PDFs are preserved.
 
+Post-investigation correction: planner-aided candidate traffic and waiting now
+refresh at every decision rather than only when route geometry is rebuilt.
+Five goal-agent checks pass, including a new fixed-topology traffic regression.
+No new performance evaluation or training was started; the scores below and PDF
+describe the historical implementation. See history T21 for scope and limits.
+
+The optional congestion v2 model is now ready for a controlled fresh-model trial:
+live traffic grid, junction/route load summaries and physical bypass proposals.
+Eight goal checks pass, including actual bypass replay and v2 actor/CNN updates
+and save/reload. Four-worker startup and frozen evaluator checks passed. A tiny
+startup smoke stopped before an optimizer update; it is not performance evidence.
+The three-map frozen comparison is mixed (120.3 -> 123.3 mean, two maps worse),
+so no reliable gameplay gain is claimed. No long training was started. See
+[training command and limits](GOAL_AGENT.md) and history T22. Existing reports
+and the 356-trip recording remain historical v1 results.
+
 **Best recordings:** 126 trips for the primitive all-tools policy; **356 trips**
 for the new planner-aided goal agent (seed 1075, 971.65 simulated seconds,
 972 ordinary commands, normal failure). Both checked exactly in the native game;

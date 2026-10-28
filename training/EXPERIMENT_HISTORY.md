@@ -500,3 +500,69 @@ metric rows, with source hashes/transformations recorded. Unity device/licensing
 identifiers are redacted from published logs; originals remain local. Code,
 commands, current status and report are on `mohammad`. Weights/binaries remain
 local. Historical PDFs stay historical. All learning/evaluation is stopped.
+
+## T21 - Live candidate traffic correction (28 October 2026)
+
+User requested more accurate traffic observations after inspecting the 356-trip
+replay. Code inspection found candidate mean vehicle occupancy and maximum wait
+were computed only when topology/inventory/bounds invalidated the path cache;
+demand/overcrowding were already refreshed on cache hits. This could hide traffic
+changes on unchanged roads. `GoalEnv._refresh` now updates all four dynamic values
+on cache hits while retaining cached route geometry. Initial route construction
+already reads current vehicles. No reward, simulator rule, router cost, action
+space or input tensor shape changed. Existing weights load with the same layout,
+but live inputs can change their actions; prior benchmark scores are historical.
+
+Traffic remains a current visible-cell vehicle count averaged along a candidate
+route, plus maximum vehicle waiting on that route; it is not lane-level flow or
+travel-time prediction, and does not expose a full per-road map to this policy.
+No performance improvement or learning benefit is claimed. A regression injects
+two waiting vehicles, then removes them with topology/inventory unchanged,
+checking occupancy, waiting, demand, overcrowding and unchanged cached geometry.
+All five goal-agent tests passed (14.622 seconds), including replay, observation
+contract, reward scaling, forced-wait equivalence and short parameter-update/save
+checks. These bounded unit checks are not a new training experiment. Initial test
+invocation failed because dotnet is not on PATH; rerun passed using the existing
+`tmp/dotnet/dotnet.exe`. No long training or held-out performance evaluation ran.
+Current status/input documentation updated; existing PDFs and evidence untouched.
+
+## T22 - Optional congestion inputs and connected-route bypasses
+
+User authorized implementing congestion information, alternatives for existing
+connections, frozen comparisons and a training-ready command. Engineering change:
+opt-in `--congestion-aware`, schema `visible-route-congestion-policy-v2`, 18,205
+parameters. A live 4x30x50 visible traffic/wait/road/junction map and seven extra
+candidate summaries expose current load. A CNN supplies tool/critic context;
+route summaries feed candidate logits. A bounded current-state router may add
+physical bypasses for already connected pairs; it needs observed waiting >=3s,
+affordability and >=20% lower summed snapshot load than a conservative reference
+route. Up to 64 bypass proposals occupy remaining slots after original goals.
+Search refreshes every 15 simulated seconds or network/resource/bounds change;
+dynamic observations refresh every decision. Ordinary road/bridge commands enforce
+normal materials. Reward and simulator unchanged; no demolition, motorways or
+forced vehicle rerouting. Vehicle routing uses simulator travel costs, so snapshot
+load reduction does not guarantee vehicles use the bypass or traffic improves.
+
+Old v1 weights remain usable only with v1 inputs. Resume explicitly rejects a
+schema switch; saved v2 inputs are inferred by trainer and frozen evaluator.
+The v1 live-input correction from T21 remains included. Fresh-model command,
+controls, tensor semantics, assumptions and limits are in GOAL_AGENT/QUICKSTART;
+current status and evidence index updated. Historical PDFs unchanged.
+
+Measured frozen initial-policy development comparison, seeds 2000/2001/2002,
+1200-second caps: v1 live 161/85/115; v2 without bypasses 161/85/115; v2 with
+bypasses 79/209/82. Means 120.33/120.33/123.33; two maps worsened, one improved.
+V2 selected 5/3/6 bypasses. Parameter hashes unchanged; v2 ablation weights match.
+No reliable gain, learning benefit, or 1000-trip success claimed. No tuning or
+checkpoint selection followed these results, and prior final-test maps untouched.
+
+Eight goal checks pass (14.862s), including old behavior contracts, synthetic
+fixed-network live traffic, v2 actor/CNN updates/save/reload and a finite-stock
+bypass verified by exact replay. First new-grid fixture lacked vehicle `speed`;
+fixed fixture and reran all eight. Four-worker startup (36 aggregate decisions,
+159 commands, 2.136 learner seconds) saved normally; expected no PPO update before
+full rollout. New-schema frozen evaluator smoke passed, weights unchanged.
+These bounded checks do not start the proposed 30-minute training experiment.
+Small measurements and protocol are archived in
+[congestion v2 evidence](../docs/training/congestion-v2-2026-10-28/README.md).
+Weights/replay runtime artifacts stay local, no long run active.

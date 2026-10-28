@@ -9,14 +9,15 @@ from datetime import datetime,timezone
 import torch
 from sb3_contrib import MaskablePPO
 from stable_baselines3.common.logger import configure
-from goal_agent import GoalEnv,GoalPolicy,GOAL_SCHEMA,vector
+from goal_agent import GoalEnv,GoalPolicy,GOAL_SCHEMA,CONGESTION_SCHEMA,vector
 from environment import ROOT
 from progress import BudgetCallback
 from shutdown import save_checkpoint,stop_and_save
 
 
 def evaluate(model,dotnet,host_dll,seeds,cap=3600,record_dir=None,deterministic=True):
-    env=GoalEnv(dotnet=dotnet,host_dll=host_dll,seconds=cap,skip_forced_wait=getattr(model,'skip_forced_wait',False))
+    env=GoalEnv(dotnet=dotnet,host_dll=host_dll,seconds=cap,skip_forced_wait=getattr(model,'skip_forced_wait',False),
+                congestion_aware='traffic' in model.observation_space.spaces)
     results=[]
     try:
         for seed in seeds:
@@ -47,6 +48,8 @@ def main():
     p.add_argument('--resume',type=Path);p.add_argument('--stop-file',type=Path)
     p.add_argument('--reward-scale',type=float,help='Defaults to 1 for fresh models; inherited on resume')
     p.add_argument('--skip-forced-wait',action=argparse.BooleanOptionalAction,default=None)
+    p.add_argument('--congestion-aware',action=argparse.BooleanOptionalAction,default=None,
+                   help='v2 live traffic grid and bypass candidates; fresh model required when switching schemas')
     p.add_argument('--learning-rate',type=float,help='Explicit override; resume otherwise preserves checkpoint rate')
     p.add_argument('--validation-minutes',type=float,default=6);p.add_argument('--eval-count',type=int,default=5)
     a=p.parse_args()
@@ -57,16 +60,22 @@ def main():
     if a.resume:
         preview=MaskablePPO.load(a.resume,device='cpu')
         if not isinstance(preview.policy,GoalPolicy):p.error('Resume requires a goal-policy checkpoint')
+        previous_congestion='traffic' in preview.observation_space.spaces
+        if a.congestion_aware is not None and a.congestion_aware!=previous_congestion:
+            p.error('Cannot switch congestion observation schema on resume; start a fresh model')
+        a.congestion_aware=previous_congestion
         previous=a.resume.parent/'config.json'
         metadata=json.loads(previous.read_text()) if previous.exists() else {}
         if a.reward_scale is None:a.reward_scale=getattr(preview,'goal_reward_scale',metadata.get('reward_scale',1.))
         if a.skip_forced_wait is None:a.skip_forced_wait=getattr(preview,'skip_forced_wait',False)
         del preview
     if a.reward_scale is None:a.reward_scale=1.
+    if a.congestion_aware is None:a.congestion_aware=False
     if a.skip_forced_wait is None:a.skip_forced_wait=False
     if a.reward_scale<=0:p.error('Positive reward scale required')
     a.output.mkdir(parents=True)
-    config=dict(schema=GOAL_SCHEMA,planner_aided=True,replay_source='hybrid-training',action_semantics='choose current house/destination connection; visible router executes ordinary strokes',
+    config=dict(schema=CONGESTION_SCHEMA if a.congestion_aware else GOAL_SCHEMA,congestion_aware=a.congestion_aware,
+                planner_aided=True,replay_source='hybrid-training',action_semantics='choose current house/destination connection or optional congestion bypass; visible router executes ordinary strokes',
                 restricted_tools=['road strokes including bridges','wait up to five seconds','upgrade choices'],
                 excluded_tools=['motorways','roundabouts','traffic lights','demolition','manual driveway edits'],
                 reward_schema='goal-trip-potential-gamma099-v1',reward='trip delta + gamma099 potential difference per macro decision',
@@ -79,7 +88,7 @@ def main():
     if a.skip_forced_wait:config['reward_schema']='goal-trip-potential-gamma099-choice-v1'
     for name in ['goal_agent.py','planner_diagnostic.py','train_goal.py','environment.py','rewards.py','parallel.py','progress.py','shutdown.py']:
         (a.output/name).write_text((ROOT/'training'/name).read_text())
-    env=vector(a.workers,a.output,dotnet=a.dotnet,host_dll=a.host_dll,seeds=range(1000,1100),episodes_per_seed=1,seed_schedule='random',reward_scale=a.reward_scale,skip_forced_wait=a.skip_forced_wait)
+    env=vector(a.workers,a.output,dotnet=a.dotnet,host_dll=a.host_dll,seeds=range(1000,1100),episodes_per_seed=1,seed_schedule='random',reward_scale=a.reward_scale,skip_forced_wait=a.skip_forced_wait,congestion_aware=a.congestion_aware)
     try:
         if a.resume:
             overrides=dict(n_steps=256//a.workers)
@@ -90,6 +99,7 @@ def main():
             model=MaskablePPO(GoalPolicy,env,device='cpu',seed=42,n_steps=256//a.workers,batch_size=64,n_epochs=4,
                               gamma=.99,gae_lambda=.99,learning_rate=a.learning_rate or .0001,ent_coef=.005,verbose=0)
         model.skip_forced_wait=a.skip_forced_wait
+        model.congestion_aware=a.congestion_aware
         model.goal_reward_scale=a.reward_scale
         config['learning_rate']=model.learning_rate
         config['trainable_parameters']=sum(x.numel() for x in model.policy.parameters())

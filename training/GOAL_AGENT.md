@@ -19,6 +19,64 @@ no stock grants, future spawns, debug construction or teacher trajectories.
 
 ## Inputs and architecture
 
+### Optional congestion model v2
+
+Use `--congestion-aware` for a fresh `visible-route-congestion-policy-v2` model.
+It adds a live 4 x 30 x 50 visible map: vehicle count / 10, maximum vehicle wait
+/ 60, road presence, and connection degree / 8. Values are clipped to [0,1];
+hidden cells are zero. This is a snapshot, not measured vehicles/second, lane
+capacity or predicted travel time. Counts include visible simulator vehicles.
+
+Candidate rows have 32 values: the original 25 plus bypass flag, reference-route
+mean vehicle count / 10 and maximum wait / 60, proposed-route fraction of cells
+with waiting >= 3 seconds, maximum vehicle count / 10, maximum junction wait / 60,
+and junction fraction. Junctions have at least three connections. All live values
+refresh every decision. A small convolutional encoder reads the map and supplies
+32 context values to tool logits and the critic. Candidate scoring sees the
+route summaries. Total parameters: **18,205**. The reward is unchanged.
+
+An optional engineering heuristic searches for bypasses on already connected
+matching-color pairs. It uses a conservative existing-road reference path, needs
+at least 3 seconds of observed waiting, and adds per-cell routing cost
+`0.3 * min(vehicle_count, 10) + min(wait, 60) / 15`. Proposals must add physical
+road tiles, fit current road inventory, and reduce summed reference-path load
+by at least 20%. This is a proposal heuristic, not a guarantee of reduced traffic.
+Search refreshes on network/resource/bounds changes and every 15 simulated seconds;
+the full traffic map and candidate summaries refresh every decision. Up to 64
+bypasses fill remaining candidate slots after new connections; overflow of the
+original connection proposals still raises an error. Construction uses ordinary
+commands and simulator resource enforcement, with no demolition or stock grants.
+
+Cars still choose routes using the simulator's travel costs; building a bypass
+does not force cars to use it. Reference paths can differ from actual vehicle
+journeys. The conservative path check may miss a usable bypass. No existing
+road is removed, so this does not yet support full network redesign.
+
+Old goal checkpoints remain v1. Changing the flag while resuming is rejected;
+start a fresh v2 model. Saved v2 models automatically restore the new inputs on
+resume and evaluation. A three-map frozen comparison was mixed: old live v1
+and v2 without bypasses both scored 161/85/115 (mean 120.3); v2 with bypasses
+scored 79/209/82 (mean 123.3). Two maps worsened. This is an engineering comparison,
+not evidence of learning or a reliable improvement. See
+[comparison evidence](../docs/training/congestion-v2-2026-10-28/README.md).
+
+Recommended first trial (four workers, 30 learner minutes, new output name):
+
+```powershell
+cd C:\Users\moham\mini_motorways
+.\.venv\Scripts\python.exe .\training\train_goal.py --output output/training/congestion-v2-01 --minutes 30 --workers 4 --congestion-aware --reward-scale .01
+```
+
+Initial/final evaluation adds time. Compare `before.json`, `after.json` and
+`validation.jsonl` on the same development maps, rather than interpreting training
+best as learning. Ctrl+C saves. For a later continuation use a fresh output name
+and `--resume output/training/congestion-v2-01/final.zip`; the schema is inherited.
+Use `validation-best.zip` when deliberately selecting the best validation policy;
+this differs from a continuation of the final optimizer. Do not use old
+investigation final test seeds for tuning this development change.
+
+### Original v1 inputs
+
 Schema `visible-route-goal-policy-v1` supports up to 512 candidate rows, each with
 25 values. Overflow raises an error instead of silently truncating.
 
@@ -37,8 +95,15 @@ unsupplied-destination fraction, candidates / 512, houses / 100, destinations / 
 active cars / 200, demand / 100, max overcrowding / 50, mean/max waiting / 60 and
 occupied infrastructure cells / 1500. Indices 37-41 are zero. Week phase derives
 from current clock modulo the 140-second simulated week. Values are clipped.
-Cached route traffic refreshes on topology/resource/bounds changes; candidate
-demand/overcrowding refresh every observation. Structured diagnostics are not
+Route geometry is cached on topology/resource/bounds changes; traffic, waiting,
+demand and overcrowding refresh at every decision, including cache hits. Traffic
+is a snapshot count of vehicles in visible integer map cells, averaged across
+the proposed route; waiting is the maximum vehicle waiting value along it.
+These are not lane-level flow, utilization, queue length or travel-time forecasts.
+The 25-value input layout and checkpoint tensor shapes remain compatible, but
+inference behavior can change because formerly stale summaries are now live.
+Historical investigation scores used the earlier cached measurements; no new
+performance benefit has been measured. Structured diagnostics are not
 claimed equivalent to pixels visible to a human. Future state is excluded.
 
 A shared 25->32->32 network and trainable linear prior score candidate rows.

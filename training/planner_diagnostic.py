@@ -10,7 +10,7 @@ from pathlib import Path
 from environment import TrafficEnv,ROOT,DIRS,cell
 
 
-def path_to(env,start,goal):
+def path_to(env,start,goal,cell_penalty=None):
     def allowed(p):
         if not env.is_visible(p):return False
         k=env.index(p)
@@ -35,6 +35,7 @@ def path_to(env,start,goal):
                 x,y=(p[0],q[1]),(q[0],p[1]);cross=DIRS.index((dx,-dy))
                 if env.arrays['connections'][env.index(x)]&(1<<cross):continue
             new=old+.04+(1 if env.arrays['infrastructure'][j]==0 else 0)
+            if cell_penalty is not None:new+=float(cell_penalty[j])
             if new<cost.get(q,float('inf')):
                 cost[q]=new;parent[q]=p;heapq.heappush(queue,(new,q))
     return None
