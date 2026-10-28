@@ -57,7 +57,7 @@ def main():
                 best_trips=max(x['trips'] for x in results),results=results)
     a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(report,indent=2)+'\n')
     if a.best_replay and best:
-        best.update(source='evaluation',policySchema=env.schema,checkpoint=str(a.checkpoint),evaluationMode=a.mode)
+        best.update(source='hybrid-evaluation' if goal_policy else 'evaluation',policySchema=env.schema,checkpoint=str(a.checkpoint),evaluationMode=a.mode)
         a.best_replay.parent.mkdir(parents=True,exist_ok=True);a.best_replay.write_text(json.dumps(best,indent=2)+'\n')
     print(f"RESULT | mean {report['mean_trips']:.2f}, best {report['best_trips']} | {a.output}",flush=True)
 

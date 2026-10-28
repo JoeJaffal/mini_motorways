@@ -191,3 +191,17 @@ not a clean architecture-only ablation. Development seeds remain 2000-2004;
 Two checks passed: actual finite-stock connection/trip/replay equivalence, and
 parameter updates plus exact save/reload predictions. Viewer labels distinguish
 planner-aided replays and heuristic diagnostics from the primitive AI.
+
+## Goal-agent numerical-scale comparison
+
+At 44 PPO updates, the first goal run logged value loss about 3,226, explained
+variance about 0.00037, and approximate KL about 1.2e-7. This motivates a separate
+numerical-scale pilot, not a diagnosis proven by these metrics. The second arm
+starts from the exact same frozen initial goal checkpoint, uses the same two
+workers, learning rate, entropy, architecture, rollout, seeds and 25-minute cap,
+but multiplies learning rewards by 0.01. Actual trip scores, observations,
+actions and simulator rules are unchanged. Initial/final evaluation reports
+unscaled trips. A paired real-host test checks identical observations/score and
+scaled rewards through positive delivery. Scaling can change the value/policy
+loss balance and entropy's effective optimization behavior; no learning benefit
+is assumed. Shared CPU load means wall-limited arms may collect unequal samples.

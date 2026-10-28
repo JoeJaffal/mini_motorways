@@ -17,6 +17,24 @@ DOTNET='dotnet';DLL=None
 
 
 class GoalChecks(unittest.TestCase):
+    def test_reward_scaling_keeps_game_and_score_identical(self):
+        envs=[GoalEnv(dotnet=DOTNET,host_dll=DLL,seconds=100,reward_scale=s) for s in [1.,.01]]
+        try:
+            for e in envs:e.reset(seed=42,options={'scenario_seed':2000})
+            action=int(np.flatnonzero(envs[0].action_masks()[3:])[0])+3
+            positive=False
+            for step in range(20):
+                a=action if step==0 else 0
+                x,y=[e.step(a) for e in envs]
+                self.assertAlmostEqual(x[1]*.01,y[1],places=9)
+                self.assertEqual(x[4]['trips'],y[4]['trips'])
+                for key in x[0]:np.testing.assert_array_equal(x[0][key],y[0][key])
+                positive|=x[4]['trips']>0
+                if x[2] or x[3]:break
+            self.assertTrue(positive)
+        finally:
+            for e in envs:e.close()
+
     def test_contract_and_actual_finite_connection_replay(self):
         env=GoalEnv(dotnet=DOTNET,host_dll=DLL,seconds=200)
         try:

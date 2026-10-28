@@ -42,9 +42,11 @@ def main():
     p.add_argument('--steps',type=int,default=1000000);p.add_argument('--workers',type=int,choices=[1,2,4],default=2)
     p.add_argument('--dotnet',default=str(ROOT/'tmp/dotnet/dotnet.exe'));p.add_argument('--host-dll',type=Path)
     p.add_argument('--resume',type=Path);p.add_argument('--stop-file',type=Path)
+    p.add_argument('--reward-scale',type=float,default=1.)
     p.add_argument('--validation-minutes',type=float,default=6);p.add_argument('--eval-count',type=int,default=5)
     a=p.parse_args()
     if a.output.exists():p.error('Fresh run name required')
+    if a.minutes<=0 or a.steps<1 or a.eval_count<1:p.error('Positive budgets and evaluation count required')
     a.output.mkdir(parents=True)
     torch.set_num_threads(2);torch.set_num_interop_threads(1)
     config=dict(schema=GOAL_SCHEMA,planner_aided=True,replay_source='hybrid-training',action_semantics='choose current house/destination connection; visible router executes ordinary strokes',
@@ -55,13 +57,14 @@ def main():
                 dirty=bool(subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip()),
                 created_utc=datetime.now(timezone.utc).isoformat(),arguments={k:str(v) if isinstance(v,Path) else v for k,v in vars(a).items()},
                 training_seeds=[1000,1099],validation_seeds=list(range(2000,2000+a.eval_count)),gamma=.99,gae_lambda=.99,
-                learning_rate=.0001,ent_coef=.005,aggregate_rollout=256)
+                learning_rate=.0001,ent_coef=.005,aggregate_rollout=256,reward_scale=a.reward_scale)
     for name in ['goal_agent.py','planner_diagnostic.py','train_goal.py','environment.py','rewards.py','parallel.py','progress.py','shutdown.py']:
         (a.output/name).write_text((ROOT/'training'/name).read_text())
-    env=vector(a.workers,a.output,dotnet=a.dotnet,host_dll=a.host_dll,seeds=range(1000,1100),episodes_per_seed=1,seed_schedule='random')
+    env=vector(a.workers,a.output,dotnet=a.dotnet,host_dll=a.host_dll,seeds=range(1000,1100),episodes_per_seed=1,seed_schedule='random',reward_scale=a.reward_scale)
     try:
         if a.resume:
             model=MaskablePPO.load(a.resume,env=env,device='cpu',n_steps=256//a.workers)
+            if not isinstance(model.policy,GoalPolicy):raise ValueError('Resume requires a goal-policy checkpoint')
         else:
             model=MaskablePPO(GoalPolicy,env,device='cpu',seed=42,n_steps=256//a.workers,batch_size=64,n_epochs=4,
                               gamma=.99,gae_lambda=.99,learning_rate=.0001,ent_coef=.005,verbose=0)
@@ -78,7 +81,7 @@ def main():
             try:
                 with torch.random.fork_rng(devices=[]):return evaluate(policy,a.dotnet,a.host_dll,range(2000,2000+a.eval_count))
             finally:policy.policy.set_training_mode(training)
-        callback=BudgetCallback(a.output,a.minutes,a.steps,1,60,config,validation,a.validation_minutes,a.stop_file)
+        callback=BudgetCallback(a.output,a.minutes,a.steps,1,15,config,validation,a.validation_minutes,a.stop_file)
         interrupted=False;start=time.perf_counter()
         try:model.learn(total_timesteps=a.steps,callback=callback,reset_num_timesteps=True)
         except KeyboardInterrupt:
