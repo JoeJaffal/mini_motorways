@@ -5,7 +5,7 @@ Two separate traffic-construction apps share one C# simulation core:
 - **Traffic Lab Original** reconstructs standard play on Los Angeles, Beijing, Tokyo, Dar es Salaam and London.
 - **Traffic Lab Custom** uses the agreed unlimited-construction rules for future planning experiments.
 
-Original is functional but **not a validated exact replica**. No learning algorithm or final reward formula is implemented in the active simulator. See [current status](simulation/Docs/IMPLEMENTATION_STATUS.md) for implemented features, evidence and remaining differences.
+Original is functional but **not a validated exact replica**. A separate experimental MaskablePPO learner on `mohammad` uses completed trips as its reward; see [training status](training/CURRENT_STATUS.md). See [simulator status](simulation/Docs/IMPLEMENTATION_STATUS.md) for implemented features, evidence and remaining differences.
 
 ## Start here
 

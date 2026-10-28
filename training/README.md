@@ -9,6 +9,8 @@ This is a research target, not a claimed result or a verified simulator capacity
 Transfer to the commercial game is untested.
 
 **Start here:** [repeated-seed training, live output and best-game playback](QUICKSTART.md).
+For the latest results, limitations and fix history, see the
+[current experiment status](CURRENT_STATUS.md).
 Defaults now use 100 consecutive games per seed, then advance to the next seed.
 All ordinary tools and the trip-only reward remain unchanged. The first-run
 report describes the earlier random-seed experiment, not this new default.
