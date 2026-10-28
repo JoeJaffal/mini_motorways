@@ -25,7 +25,10 @@ def evaluate(model,dotnet,host_dll,seeds,cap=3600,record_dir=None,deterministic=
                 action,_=model.predict(obs,deterministic=deterministic,action_masks=env.action_masks())
                 obs,_,term,trunc,info=env.step(action)
                 if term or trunc:
-                    results.append(dict(info,scenario_seed=seed,terminated=term,truncated=trunc,deterministic=deterministic))
+                    # Exact commands are saved separately below, not duplicated
+                    # into every metric row and the console RESULT line.
+                    metrics={k:v for k,v in info.items() if k!='episode_replay'}
+                    results.append(dict(metrics,scenario_seed=seed,terminated=term,truncated=trunc,deterministic=deterministic))
                     print(f"GOAL EVAL | {seed} | {info['trips']} trips | {info['seconds']:.1f}s | planner-aided",flush=True)
                     if record_dir:
                         record_dir.mkdir(parents=True,exist_ok=True)
@@ -42,16 +45,27 @@ def main():
     p.add_argument('--steps',type=int,default=1000000);p.add_argument('--workers',type=int,choices=[1,2,4],default=2)
     p.add_argument('--dotnet',default=str(ROOT/'tmp/dotnet/dotnet.exe'));p.add_argument('--host-dll',type=Path)
     p.add_argument('--resume',type=Path);p.add_argument('--stop-file',type=Path)
-    p.add_argument('--reward-scale',type=float,default=1.)
-    p.add_argument('--skip-forced-wait',action='store_true')
+    p.add_argument('--reward-scale',type=float,help='Defaults to 1 for fresh models; inherited on resume')
+    p.add_argument('--skip-forced-wait',action=argparse.BooleanOptionalAction,default=None)
     p.add_argument('--learning-rate',type=float,help='Explicit override; resume otherwise preserves checkpoint rate')
     p.add_argument('--validation-minutes',type=float,default=6);p.add_argument('--eval-count',type=int,default=5)
     a=p.parse_args()
     if a.output.exists():p.error('Fresh run name required')
     if a.minutes<=0 or a.steps<1 or a.eval_count<1:p.error('Positive budgets and evaluation count required')
     if a.learning_rate is not None and a.learning_rate<=0:p.error('Positive learning rate required')
-    a.output.mkdir(parents=True)
     torch.set_num_threads(2);torch.set_num_interop_threads(1)
+    if a.resume:
+        preview=MaskablePPO.load(a.resume,device='cpu')
+        if not isinstance(preview.policy,GoalPolicy):p.error('Resume requires a goal-policy checkpoint')
+        previous=a.resume.parent/'config.json'
+        metadata=json.loads(previous.read_text()) if previous.exists() else {}
+        if a.reward_scale is None:a.reward_scale=getattr(preview,'goal_reward_scale',metadata.get('reward_scale',1.))
+        if a.skip_forced_wait is None:a.skip_forced_wait=getattr(preview,'skip_forced_wait',False)
+        del preview
+    if a.reward_scale is None:a.reward_scale=1.
+    if a.skip_forced_wait is None:a.skip_forced_wait=False
+    if a.reward_scale<=0:p.error('Positive reward scale required')
+    a.output.mkdir(parents=True)
     config=dict(schema=GOAL_SCHEMA,planner_aided=True,replay_source='hybrid-training',action_semantics='choose current house/destination connection; visible router executes ordinary strokes',
                 restricted_tools=['road strokes including bridges','wait up to five seconds','upgrade choices'],
                 excluded_tools=['motorways','roundabouts','traffic lights','demolition','manual driveway edits'],
@@ -76,6 +90,7 @@ def main():
             model=MaskablePPO(GoalPolicy,env,device='cpu',seed=42,n_steps=256//a.workers,batch_size=64,n_epochs=4,
                               gamma=.99,gae_lambda=.99,learning_rate=a.learning_rate or .0001,ent_coef=.005,verbose=0)
         model.skip_forced_wait=a.skip_forced_wait
+        model.goal_reward_scale=a.reward_scale
         config['learning_rate']=model.learning_rate
         config['trainable_parameters']=sum(x.numel() for x in model.policy.parameters())
         (a.output/'config.json').write_text(json.dumps(config,indent=2)+'\n')

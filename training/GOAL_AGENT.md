@@ -76,6 +76,11 @@ cd C:\Users\moham\mini_motorways
 
 This creates a fresh informed goal policy. Add `--resume` with a **goal-policy**
 checkpoint to continue weights/optimizer; primitive checkpoints are incompatible.
+Resume inherits its learning rate, reward scale and decision timing unless you
+explicitly override them. Old goal checkpoints without a scale attribute read
+their neighboring config; keep it alongside the checkpoint. New checkpoints save
+the scale. `--learning-rate .001` explicitly changes rate;
+`--no-skip-forced-wait` explicitly restores five-second-wait timing.
 Use a fresh output folder. Initial/final evaluation adds time outside the learner
 budget; periodic validation consumes learner time. Output shows elapsed/remaining
 time, seed scores, waiting, connections, best replay and validation. Macro
@@ -89,8 +94,8 @@ it advances ordinary one-second commands while waiting is the only legal action,
 checking for new connections/upgrades/end after every command. This reduces
 value-free neural calls but also changes the effective discount/credit horizon:
 schema `goal-trip-potential-gamma099-choice-v1`. The checkpoint stores the timing
-mode and evaluation restores it. Omit this flag to preserve historical five-second
-wait behavior, including when resuming a checkpoint from that mode. A paired
+mode and evaluation restores it. Fresh models default to five-second waits;
+resumed models inherit their saved mode. A paired
 frozen-policy check verified identical ordinary command histories at a 180-second
 cap; the broader experiment still needs measured validation.
 

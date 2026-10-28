@@ -45,6 +45,8 @@ def main():
     record=dict(created_utc=datetime.now(timezone.utc).isoformat(),protocol='Development seeds 2000-2004 only; first listed candidate wins exact ties. Include frozen initial for operational selection. No later updates or selection use final seeds 3000-3009.',
                 primitive=primitive,goal_initial=initial,goal_trained=best_trained,goal=operational,goal_candidates=arms,
                 test_seeds=list(range(3000,3010)),final_test_cap=3600,
+                primary_test='Deterministic inference on five frozen policies; ten paired scenario seeds',
+                secondary_test='One sampled trajectory per scenario for matched goal initial/trained policies, Torch seed 43 + scenario offset. Not used for selection or tuning.',
                 note='Frozen goal initial uses the same decision timing as the selected trained candidate. Primitive candidate development mean 13.0 exceeds frozen informed mean 12.6 by only 0.4; this difference is not robust evidence.')
     a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(record,indent=2)+'\n')
     print(json.dumps(record,indent=2))

@@ -9,6 +9,35 @@ import shutil
 ROOT=Path(__file__).resolve().parents[1]
 
 
+def prune_replay_duplicates(value):
+    if isinstance(value,dict):return {k:prune_replay_duplicates(v) for k,v in value.items() if k!='episode_replay'}
+    if isinstance(value,list):return [prune_replay_duplicates(v) for v in value]
+    return value
+
+
+def copy_evidence(source,target,provenance):
+    target.parent.mkdir(parents=True,exist_ok=True)
+    raw=source.read_bytes();changed=False;rewritten=None
+    if b'"episode_replay"' in raw:
+        text=raw.decode('utf-8-sig')
+        if source.suffix=='.json':
+            rewritten=json.dumps(prune_replay_duplicates(json.loads(text)),indent=2)+'\n';changed=True
+        elif source.suffix=='.jsonl':
+            rewritten=''.join(json.dumps(prune_replay_duplicates(json.loads(l)))+'\n' for l in text.splitlines());changed=True
+        elif source.suffix=='.log':
+            lines=[]
+            for line in text.splitlines():
+                if line.startswith('RESULT '):
+                    try:line='RESULT '+json.dumps(prune_replay_duplicates(json.loads(line[7:])));changed=True
+                    except json.JSONDecodeError:pass
+                lines.append(line)
+            rewritten='\n'.join(lines)+'\n'
+    if changed:target.write_text(rewritten,encoding='utf-8')
+    else:shutil.copyfile(source,target)
+    provenance[str(target)]=dict(source=str(source),source_sha256=hashlib.sha256(raw).hexdigest(),
+                               transformation='Removed duplicated episode_replay keys from metric rows; exact dedicated replay files retained' if changed else 'byte-for-byte copy')
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--destination',type=Path,required=True)
@@ -19,6 +48,7 @@ def main():
     for run in a.run:
         if not (ROOT/'output/training'/run/'summary.json').exists():p.error(f'Incomplete run: {run}')
     a.destination.mkdir(parents=True)
+    provenance={}
     for run in a.run:
         source=ROOT/'output/training'/run
         for f in source.rglob('*'):
@@ -26,13 +56,13 @@ def main():
             # Per-seed duplicates are redundant; keep the overall exact best game.
             if 'seeds' in f.relative_to(source).parts:continue
             target=a.destination/'runs'/run/f.relative_to(source)
-            target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(f,target)
+            copy_evidence(f,target,provenance)
     for f in a.experiments.rglob('*'):
         if not f.is_file() or f.suffix not in {'.json','.jsonl','.log','.err','.txt'}:continue
         target=a.destination/'experiments'/f.relative_to(a.experiments)
-        target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(f,target)
+        copy_evidence(f,target,provenance)
     files=[dict(path=f.relative_to(a.destination).as_posix(),bytes=f.stat().st_size,
-                sha256=hashlib.sha256(f.read_bytes()).hexdigest()) for f in sorted(a.destination.rglob('*')) if f.is_file()]
+                sha256=hashlib.sha256(f.read_bytes()).hexdigest(),**provenance[str(f)]) for f in sorted(a.destination.rglob('*')) if f.is_file()]
     manifest=dict(created_utc=datetime.now(timezone.utc).isoformat(),runs=a.run,files=files,
                   weights='Local-only output/training/<run>/*.zip; intentionally excluded',
                   purpose='Completed three-hour investigation, including negative results and exact ordinary-command replays')

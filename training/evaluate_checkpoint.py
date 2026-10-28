@@ -25,7 +25,7 @@ def main():
     a=p.parse_args()
     if a.output.exists() or (a.best_replay and a.best_replay.exists()):p.error('Choose fresh output paths')
     if a.seed_count<1:p.error('Positive seed count required')
-    torch.set_num_threads(2);torch.set_num_interop_threads(1);torch.manual_seed(a.rng_seed)
+    torch.set_num_threads(2);torch.set_num_interop_threads(1)
     model=MaskablePPO.load(a.checkpoint,device='cpu')
     initial=[v.detach().clone() for v in model.policy.parameters()]
     goal_policy='candidates' in model.observation_space.spaces
@@ -38,12 +38,15 @@ def main():
     results=[];best=None;rank=(-1,-1,0)
     try:
         for seed in range(a.seed_start,a.seed_start+a.seed_count):
+            # Loading SB3 restores its seed; apply the requested sampling seed
+            # afterwards and reset per scenario for paired reproducibility.
+            torch.manual_seed(a.rng_seed+seed-a.seed_start)
             obs,_=env.reset(seed=seed,options={'scenario_seed':seed})
             while True:
                 action,_=model.predict(obs,deterministic=a.mode=='deterministic',action_masks=env.action_masks())
                 obs,_,terminated,truncated,info=env.step(action)
                 if terminated or truncated:
-                    result=dict(info,terminated=terminated,truncated=truncated)
+                    result=dict({k:v for k,v in info.items() if k!='episode_replay'},terminated=terminated,truncated=truncated)
                     results.append(result)
                     current=(info['trips'],info['seconds'],-info['rejected_actions'])
                     if current>rank:best=env.export_replay();rank=current
@@ -52,7 +55,7 @@ def main():
     finally:env.close()
     if not all(torch.equal(x,y) for x,y in zip(initial,model.policy.parameters())):raise RuntimeError('Evaluation mutated policy')
     report=dict(checkpoint=str(a.checkpoint),checkpoint_sha256=hashlib.sha256(a.checkpoint.read_bytes()).hexdigest(),
-                mode=a.mode,rng_seed=a.rng_seed,cap=a.cap,observation_mode=mode,draw_mask=draw_mask,weights_unchanged=True,
+                mode=a.mode,rng_seed=a.rng_seed,rng_protocol='per scenario: rng_seed + scenario offset from seed_start',cap=a.cap,observation_mode=mode,draw_mask=draw_mask,weights_unchanged=True,
                 mean_trips=statistics.mean(x['trips'] for x in results),median_trips=statistics.median(x['trips'] for x in results),
                 best_trips=max(x['trips'] for x in results),results=results)
     a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(report,indent=2)+'\n')

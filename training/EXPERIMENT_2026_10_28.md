@@ -261,3 +261,34 @@ The final goal comparison will use a frozen initial checkpoint with the same
 decision timing as the selected trained candidate. Development ties prefer the
 first listed candidate; operational selection includes the frozen initial policy.
 Best training scores and selected development checkpoints remain separate.
+
+## Final-test sampling and usability checks
+
+Before opening final-test seeds, predeclared a secondary sampled-policy comparison:
+one inference trajectory on each of seeds 3000-3009 for the selected trained goal
+policy and its timing-matched frozen initial. Each game resets Torch RNG to
+43 plus its scenario offset. The primary comparison remains deterministic and
+checkpoint selection remains development-only. Neither test triggers retuning.
+
+Fixed the generic evaluator to apply its requested RNG after SB3 loading (which
+otherwise restores the model's seed), resetting per scenario. Earlier generic
+reports in this session were deterministic, so their action histories are not
+affected. Repeating sampled development seed 2000 at a 180-second cap gave
+identical metrics and exact command histories; both scored 14. This is a
+reproducibility check, not another training or final-test result.
+
+Goal resume now inherits rate, numerical reward scale and decision timing unless
+explicitly overridden. A four-worker resume smoke check inherited .01 scale and
+choice-only timing, stopped after 1.63 seconds/eight decisions, changed no weights,
+and reproduced 161 before/after on development seed 2000. It is excluded from
+performance-arm summaries. Direct actor-only parameter checks passed; all four
+main goal initial checkpoints have identical policy weights and empty optimizer
+states, despite different timing/rate metadata.
+
+Goal evaluation no longer duplicates whole command recordings inside metric rows
+or the console RESULT line. The archive removes only duplicated episode_replay
+keys from older JSON/JSONL/RESULT rows, records the original source SHA-256 and
+transformation, and retains dedicated exact replay files byte-for-byte. A check
+preserved every remaining metric and reduced a 1,274,560-byte summary to 12,278
+bytes. Raw original local files are preserved. This is evidence compaction, not
+score editing.

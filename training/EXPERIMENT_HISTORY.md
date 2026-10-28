@@ -446,3 +446,30 @@ checkpoint. No final-test seed is used to choose a candidate.
 
 See the [predeclared protocol and evolving results](EXPERIMENT_2026_10_28.md).
 The additional inputs are an engineering hypothesis, not an established fix.
+
+## T19 - Separate planner-aided goal-policy experiments
+
+Within the same three-hour authorization, primitive pilots failed to establish
+strong transfer. Current-state route planning was tested separately as a
+heuristic diagnostic: 216/85/116 trips on development seeds 2000-2002, ordinary
+finite materials, exact replays. These were not learned scores or demonstrations
+fed to PPO. This motivated an opt-in restricted goal agent with shared candidate
+scoring (10,334 parameters): choose a visible matching-color connection, wait or
+upgrade; a router executes ordinary strokes. It excludes demolition, motorways,
+lights, roundabouts and manual driveway edits. Original all-tools training remains.
+
+Its engineered initial prior averaged 162.6 trips on development seeds 2000-2004
+before training. Four bounded pilots compare original numerical scale, scale .01,
+choice-only timing that collapses forced waits, and higher learning rate .001.
+All four initial policy weights/empty optimizers match exactly. The timing pilot
+was motivated by 109/145 forced-only calls on a frozen game; paired command
+histories matched with/without collapsing at a 180-second cap. Discount/credit
+semantics differ and are versioned. No improvement is assumed. Initial completed
+arms retain identical greedy development scores despite actor/critic updates.
+
+The [protocol](EXPERIMENT_2026_10_28.md) records settings, reasons, intermediate
+results, checks, command corrections and final-test rules. [Goal guide](GOAL_AGENT.md)
+explains restrictions, input features, reward, resume inheritance and commands.
+Final test seeds remain untouched until checkpoint selection is frozen. Training
+best scores are not checkpoint-selection scores and engineered assistance is not
+attributed to learning. The final record will report the independent tests.

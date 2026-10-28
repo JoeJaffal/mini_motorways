@@ -77,7 +77,7 @@ savefig('primitive-validation.png')
 
 goal_names=assessment['goal_runs'];fig,axes=plt.subplots(1,2,figsize=(8.2,3.5),layout='constrained')
 for i,name in enumerate(goal_names):
-    s=runs[name];v=lines(name);color=[TEAL,GOLD,'#6D598A'][i%3]
+    s=runs[name];v=lines(name);color=[TEAL,GOLD,'#6D598A','#4377A1'][i%4]
     axes[0].plot([0]+[r['wall_seconds']/60 for r in v]+[s['training_wall_seconds']/60],
                  [mean(s['before'])]+[r['mean_trips'] for r in v]+[mean(s['after'])],'o-',color=color,label=assessment['goal_run_labels'][name])
     path=DATA/'runs'/name/'episodes.jsonl';episodes=[json.loads(l) for l in path.read_text().splitlines()]
@@ -93,10 +93,16 @@ fig,ax=plt.subplots(figsize=(8.2,3.8),layout='constrained')
 test_order=assessment['test_order'];palette=[GREY,'#6594B0',GOLD,TEAL,'#6D598A']
 for j,key in enumerate(test_order):
     r=tests[key];scores=[x['trips'] for x in r['results']]
-    ax.plot(range(3000,3010),scores,'o-',label=assessment['test_labels'][key],color=palette[j%len(palette)],linewidth=1.5)
+    ax.plot(range(3000,3010),scores,marker=['o','s','^','D','x'][j%5],label=assessment['test_labels'][key],color=palette[j%len(palette)],linewidth=1.5)
 ax.set(xlabel='Final test seed (never used for updates or selection)',ylabel='Actual trips',title='Ten fresh maps: paired frozen-policy comparison')
 ax.set_xticks(range(3000,3010));ax.tick_params(axis='x',rotation=35);ax.legend(frameon=False,fontsize=7)
 savefig('final-tests.png')
+
+fig,ax=plt.subplots(figsize=(8.2,3.8),layout='constrained')
+for offset,key,label,color in [(-.19,'goal-initial-sampled','Frozen initial',TEAL),(.19,'goal-trained-sampled','Selected trained',GOLD)]:
+    ax.bar([i+offset for i in range(10)],[r['trips'] for r in tests[key]['results']],width=.36,label=label,color=color)
+ax.set(xticks=list(range(10)),xticklabels=[str(i) for i in range(3000,3010)],xlabel='Fresh scenario seed',ylabel='Actual trips',title='Secondary sampled-policy comparison')
+ax.tick_params(axis='x',rotation=35);ax.legend(frameon=False);savefig('sampled-tests.png')
 
 page('Three hours of investigation','Mini Motorways / Traffic Lab | 28 October 2026 | Branch mohammad')
 p(assessment['headline'],'Heading')
@@ -153,7 +159,7 @@ heading('What it sees')
 p('Each candidate has 25 values: home/destination coordinates and displacement, color, new-road and route costs, demand, missing home/shop supply, existing-road fraction, traffic/waiting, overcrowding, new water tiles and validity. Forty-two globals summarize materials, offers, current clock/week, trips, supply and congestion. Up to 512 candidates are supported; overflow raises an error instead of silently dropping entries.')
 heading('What it cannot do in this experiment')
 p('It builds road/bridge strokes, waits and chooses upgrades. Motorways, roundabouts, traffic lights, demolition and manual driveway edits are excluded. This is deliberately a different action abstraction; it does not establish that the original full-tools model learned those skills.')
-note('10,334 trainable parameters. Hand-designed initial candidate scores prefer low cost, demand and missing supply. PPO learning rate 0.0001, entropy 0.005, gamma/lambda 0.99 per macro decision, rollout 256, four epochs. Variable-duration macro actions change the discounting problem. The router is assistance, not learned route construction or an optimal planner.')
+note('10,334 trainable parameters. Hand-designed initial candidate scores prefer low cost, demand and missing supply. PPO learning rate 0.0001 (final rate pilot: 0.001), entropy 0.005, gamma/lambda 0.99 per macro decision, rollout 256, four epochs. Variable-duration macro actions change the discounting problem. The router is assistance, not learned route construction or an optimal planner.')
 
 page('5 / Did the connection agent learn?','Training results and frozen validation answer different questions.')
 figure('goal-learning.png')
@@ -171,7 +177,17 @@ table(['Frozen policy','Mean','Median','Best'],[
 p(assessment['test_interpretation'])
 note('Ten paired scenario seeds, deterministic inference, 3,600 simulated-second external cap, normal failure rules. Frozen model parameters were checked before/after inference and remained unchanged. Training and test city are both Los Angeles; seed separation does not establish transfer to other cities. One training replicate and ten test maps are not evidence of robust generalization or guaranteed future improvement.')
 
-page('7 / The best recording','A replay is an exact action history, not proof that the final checkpoint will reproduce that score.')
+page('7 / Sampled-policy check','Small probability changes can matter even when the most likely action stays the same.')
+figure('sampled-tests.png')
+table(['Sampled frozen policy','Mean','Median','Best'],[
+    [label,f"{tests[key]['mean_trips']:.1f}",f"{tests[key]['median_trips']:.1f}",tests[key]['best_trips']]
+    for label,key in [('Initial goal','goal-initial-sampled'),('Trained goal','goal-trained-sampled')]],[250,79,79,79])
+p(assessment['sampled_interpretation'])
+heading('Greedy and sampled play answer different questions')
+p('Deterministic evaluation always chooses the currently most likely legal action. Sampled evaluation draws an action from the policy probabilities, as training does. Neither a single sampled win nor an unchanged greedy score proves the whole learning process is successful or broken. Both should be compared against the same starting policy and separate maps.')
+note('Each policy gets one sampled game on each of ten scenario seeds, with a 3,600-second cap. The requested RNG seed is applied after loading the checkpoint; reproducibility was checked by repeating a sampled development game and comparing exact ordinary-command recordings. These are inference-only tests: weights remain unchanged.')
+
+page('8 / The best recording','A replay is an exact action history, not proof that the final checkpoint will reproduce that score.')
 capture=DATA/'best-map.png'
 if capture.exists():
     from PIL import Image as PILImage
@@ -180,11 +196,12 @@ if capture.exists():
 replay=assessment['best_replay']
 table(['Recorded game','Value'],[['Source',replay['source']],['Seed / actual trips',f"{replay['seed']} / {replay['score']}"],
     ['Simulated duration / ordinary commands',f"{replay['duration']:.2f}s / {len(replay['actions'])}"],
+    ['Recording end','Partial at training stop' if replay.get('partial') else 'Normal failure' if replay.get('terminated') else 'External episode cap'],
     ['Verification',assessment['replay_verification']]],[220,W-220])
 p('Best-game ranking uses actual trips, then survival time, then fewer rejected actions. An episode can span PPO updates and uses sampled actions during training. The exact command recording preserves that game; the checkpoint saved at its end is only a policy snapshot.')
 note('Planner-aided and heuristic replays are labeled separately in the native viewer. No material grants, debug construction or future schedule are used. Native/headless agreement validates replay determinism for the tested recordings, not perfect fidelity to the commercial game.')
 
-page('8 / What to do next','Use the measured checkpoint and preserve the comparison, rather than blindly extending an unchanged run.')
+page('9 / What to do next','Use the measured checkpoint and preserve the comparison, rather than blindly extending an unchanged run.')
 p(assessment['recommendation'])
 heading('Run and view')
 p('Open PowerShell in C:\\Users\\moham\\mini_motorways. The documented commands in training/QUICKSTART.md use the separate goal trainer for planner-aided experiments and the existing start_training.ps1 for the primitive policy. Every new run needs a fresh output folder. Ctrl+C saves and stops; a stop-file also supports graceful completion.')
@@ -206,5 +223,6 @@ tracked=BASE/'model-investigation-2026-10-28.pdf';shutil.copyfile(OUT,tracked)
 text='\n\n'.join(p.extract_text() for p in PdfReader(OUT).pages)
 (DATA/'report-text.txt').write_text(text,encoding='utf-8')
 artifacts=[tracked,Path(__file__),DATA/'assessment.json',DATA/'report-text.txt']+sorted(FIG.glob('*.png'))
+if capture.exists():artifacts.append(capture)
 (DATA/'report-manifest.json').write_text(json.dumps([dict(path=f.relative_to(BASE).as_posix(),sha256=hashlib.sha256(f.read_bytes()).hexdigest()) for f in artifacts],indent=2)+'\n')
 print(OUT);print(f'{len(PdfReader(OUT).pages)} pages')
