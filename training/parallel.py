@@ -51,12 +51,18 @@ class ParallelHostVecEnv(DummyVecEnv):
         if self.pending is not None:
             # Keep pending references if Ctrl+C interrupts the wait, so shutdown
             # can finish host requests before reading partial recordings.
-            results=[future.result() for future in self.pending]
+            results=[];errors=[]
+            for future in self.pending:
+                try:results.append(future.result())
+                except Exception as error:results.append(None);errors.append(error)
             self.pending=None
-            for i,(obs,reward,done,info,reset_info) in enumerate(results):
+            for i,result in enumerate(results):
+                if result is None:continue
+                obs,reward,done,info,reset_info=result
                 self.buf_rews[i]=reward;self.buf_dones[i]=done;self.buf_infos[i]=info
                 if reset_info is not None:self.reset_infos[i]=reset_info
                 self._save_obs(i,obs)
+            if errors:raise RuntimeError(f'{len(errors)} parallel worker(s) failed: {errors[0]}') from errors[0]
 
     def step_wait(self):
         self.wait_pending()
@@ -65,8 +71,11 @@ class ParallelHostVecEnv(DummyVecEnv):
     def close(self):
         if self.closed:return
         self.executor.shutdown(wait=True,cancel_futures=False)
-        super().close()
-        self.closed=True
+        try:
+            for env in self.envs:
+                try:env.close()
+                except (OSError,ValueError):pass
+        finally:self.closed=True
 
 
 def make_vector(workers,output=None,**kwargs):

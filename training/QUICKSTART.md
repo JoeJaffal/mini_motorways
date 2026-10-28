@@ -90,6 +90,8 @@ The replay opens paused. **Play / Space** starts it; speed cycles 1x/4x/16x;
 recording. **Show final map / reload best** rereads the same path, including a
 new best saved while training continues. Inspection, overlays, zoom and pan work;
 manual construction is disabled. Training and replay run in separate processes.
+Pale gray pavement marks detached connections still needed by committed trips.
+It clears when those trips finish; it does not reopen those connections to new cars.
 
 Each run saves:
 
@@ -144,6 +146,18 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\training\start_training.ps
 Use the actual stopped run's directory if it differs. Use a new `-RunName` for
 each launch. This starts a new training session; do not leave the old session
 running if you want all CPU capacity available to the parallel session.
+
+On Ctrl+C, wait for `CHECKPOINT SAVED` and then the PowerShell prompt. The model
+is saved before worker cleanup, so a failed simulator cannot block that save.
+If an older run crashed before creating `final.zip`, resume its `latest.zip`
+instead. That periodic checkpoint can be up to about two minutes behind the
+crash. The best replay remains available independently.
+
+For recovery from `seed-1000-parallel-01`, use a fresh output directory:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\training\start_training.ps1 -Minutes 180 -StartSeed 1000 -SeedCount 1 -Workers 4 -RunName seed-1000-parallel-02 -Resume output/training/seed-1000-parallel-01/latest.zip
+```
 
 The console labels completed games by `worker 0`, `worker 1`, etc. Commands/s
 and selections/s count **all workers combined**. Per-seed means combine their

@@ -12,6 +12,7 @@ from torch import nn
 from sb3_contrib import MaskablePPO
 from progress import BudgetCallback
 from parallel import make_vector
+from shutdown import save_checkpoint,stop_and_save
 from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.torch_layers import BaseFeaturesExtractor
 from stable_baselines3.common.logger import configure
@@ -85,6 +86,7 @@ def main():
     torch.set_num_interop_threads(1)
     output = args.output or ROOT/'output/training'/datetime.now().strftime('%Y%m%d-%H%M%S')
     output = output.resolve()
+    if output.exists():parser.error(f'Run folder already exists: {output}. Choose a NEW --output / -RunName; use --resume to continue weights.')
     output.mkdir(parents=True, exist_ok=False)
     config = dict(schema=SCHEMA, simulator_commit=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
                   branch=subprocess.check_output(['git', 'branch', '--show-current'], cwd=ROOT, text=True).strip(),
@@ -103,7 +105,7 @@ def main():
                                        learning_rate=.0003, ent_coef=.01, net_arch=[64]))
     (output/'config.json').write_text(json.dumps(config, indent=2)+'\n')
     # Preserve exact source even before a commit, alongside the revision metadata.
-    for name in ['environment.py', 'train.py', 'progress.py','parallel.py']:
+    for name in ['environment.py', 'train.py', 'progress.py','parallel.py','shutdown.py']:
         (output/name).write_text((Path(__file__).parent/name).read_text())
     env = make_vector(args.workers, output=output, dotnet=args.dotnet, seconds=args.episode_seconds,
                             seeds=training_seeds, episodes_per_seed=args.episodes_per_seed,
@@ -137,10 +139,9 @@ def main():
         except KeyboardInterrupt:
             interrupted = True
             print('STOP REQUESTED | saving current policy; skipping final evaluation',flush=True)
-            if hasattr(env,'wait_pending'):env.wait_pending()
-            callback.on_training_end()
+            stop_and_save(model,env,callback,output)
         elapsed = time.perf_counter()-started
-        model.save(output/'final')
+        if not interrupted:save_checkpoint(model,output/'final.zip')
         final_parameters = torch.cat([p.detach().flatten().cpu() for p in model.policy.parameters()])
         changed = bool(not torch.equal(initial_parameters, final_parameters))
         # Reload for evaluation: exercises checkpoint serialization, not only RAM state.

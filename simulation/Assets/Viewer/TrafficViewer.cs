@@ -137,6 +137,12 @@ namespace MotorwaysSim
                 foreach(var c in r.Ring)for(int d=0;d<8;d++)if((World.Connections[c.X,c.Y]&(1<<d))!=0)
                 {var n=c+TrafficWorld.Directions[d];if(!r.Ring.Contains(n)&&n!=r.Center)Line(At(c),At(n),tile*.4f,road);}
             }
+            // Committed trips can still use a detached driveway. Keep its
+            // retiring pavement visible without making it routable again.
+            var retiring=World.RetiringRoadLinks();
+            for(int layer=0;layer<2;layer++)foreach(var link in retiring)
+                Line(At(link.From),At(link.To),tile*(layer==0?.6f:.4f),
+                    layer==0?new Color(.84f,.82f,.69f):new Color(.82f,.84f,.81f));
             for(int y=0;y<30;y++)for(int x=0;x<50;x++)
             {
                 var c=new Cell(x,y);var p=At(c);

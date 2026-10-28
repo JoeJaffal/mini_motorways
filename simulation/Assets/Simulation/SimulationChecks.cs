@@ -95,6 +95,25 @@ namespace MotorwaysSim
                 w.SpawnBuilding(new Cell(4,4),1,true);Check(!w.SetHouseDriveway(home.Id,5),"occupied neighbor rejected");
                 Check(w.SetHouseDriveway(home.Id,1)&&home.DrivewayDirection==1,"diagonal exit supported");
             });
+            Test("retiring driveway pavement is display only and clears after committed trips",()=>{
+                var w=Lab();var home=w.SpawnBuilding(new Cell(5,5),0,true);var exit=new Cell(6,5);
+                w.Build(BuildTool.Road,exit);
+                var car=w.Cars.First(c=>c.HomeId==home.Id);
+                car.Stage=TripStage.Outbound;car.Lanes=w.MakeLanes(new[]{home.Cell,exit});
+                car.ReturnRoute=new List<Cell>{exit,home.Cell};
+                Check(w.RetiringRoadLinks().Count==0,"live links need no retiring pavement");
+                Check(w.SetHouseDriveway(home.Id,2),"redirect while trip committed");
+                var before=w.Observe();int spent=w.ConstructionSpent,version=w.NetworkVersion;
+                var links=w.RetiringRoadLinks();
+                Check(links.Count==1&&((links[0].From==home.Cell&&links[0].To==exit)||
+                    (links[0].To==home.Cell&&links[0].From==exit)),"old committed driveway retained once");
+                Check(w.FindRoute(home.Cell,exit).Count==0,"display does not reopen old driveway");
+                Check(w.Observe().Connections.SequenceEqual(before.Connections)&&
+                    w.Inventory.SequenceEqual(before.Inventory)&&w.ConstructionSpent==spent&&w.NetworkVersion==version,
+                    "display query does not mutate network or materials");
+                car.Stage=TripStage.Home;
+                Check(w.RetiringRoadLinks().Count==0,"pavement disappears when committed trip finishes");
+            });
             Test("roundabout circulation is directed",()=>{
                 var w=Lab();w.Build(BuildTool.Roundabout,new Cell(15,15));
                 var ring=w.Roundabouts[0].Ring;

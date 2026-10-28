@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 import queue
 import subprocess
@@ -24,7 +25,8 @@ class Host:
     def __init__(self, dotnet):
         dll = ROOT / 'simulation/Headless/bin/Debug/net8.0/TrafficHost.dll'
         self.process = subprocess.Popen([dotnet, str(dll)], stdin=subprocess.PIPE,
-                                        stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+                                        stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+                                        creationflags=subprocess.CREATE_NEW_PROCESS_GROUP if os.name=='nt' else 0)
         self.messages = queue.Queue()
         self.errors = []
         def read():
@@ -64,7 +66,10 @@ class Host:
                 self.process.kill()
                 self.process.wait()
         for stream in (self.process.stdin, self.process.stdout, self.process.stderr):
-            stream.close()
+            try:
+                stream.close()
+            except (OSError,ValueError):
+                pass  # Windows may invalidate a pipe when a host has exited.
 
 
 def cell(value):
