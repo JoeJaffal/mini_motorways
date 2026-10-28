@@ -372,3 +372,14 @@ and tied on every final map. Source-control/Markdown/Unity-metadata checks pass.
 The validation record preserves final PDF/render hashes and check coverage.
 No learner or frozen-evaluation process remains active. Publishing is confined
 to origin/mohammad; main remains the playground.
+
+## Publication follow-up
+
+The first staged whitespace check flagged machine-generated archived log spacing
+and blank EOF lines. The logs intentionally retain source bytes, so a scoped
+.gitattributes rule now exempts only experiment traces from source-style whitespace
+lint; hashes still validate them. A follow-up also removes Unity player-connection
+network/debug identifiers from the published logs, keeping original source hashes
+and local originals. Score metrics, exact replay bytes and the PDF/render content
+are unchanged. Manifests were refreshed and reverified. Normal source files retain
+whitespace checking. No model, evaluation choice or training behavior changed.

@@ -687,11 +687,11 @@
     },
     {
       "path": "experiments/unity-build-success.log",
-      "bytes": 228534,
-      "sha256": "b27bc6a153a8bd1db25b68438b4bea00a24cd81a2dcc166a023e25035155f0f6",
+      "bytes": 228136,
+      "sha256": "8757d824ff29a96128077145cfc8b5028ec0c638eb25cbc1459b73a10471c430",
       "source": "output\\experiments\\three-hour-20261028\\unity-build-success.log",
       "source_sha256": "dcf237025dbe67e210f93d294c65753b2223b97939040bf35412ad2a0beaa45e",
-      "transformation": "Redacted Unity runtime device/session/licensing identifiers"
+      "transformation": "Redacted Unity runtime device/session/licensing/network debug identifiers"
     },
     {
       "path": "experiments/unity-build.log",
@@ -699,7 +699,7 @@
       "sha256": "a5ebd7183f4fa503d5b5fa8367723724ed292fa0bf359a2f2f7a064556179ba7",
       "source": "output\\experiments\\three-hour-20261028\\unity-build.log",
       "source_sha256": "8298d3fb60205fa044b4b6fb09400415c5397e0d6c09532928d73bfa795e6ec3",
-      "transformation": "Redacted Unity runtime device/session/licensing identifiers"
+      "transformation": "Redacted Unity runtime device/session/licensing/network debug identifiers"
     },
     {
       "path": "runs/goal-choice-20261028/before.json",

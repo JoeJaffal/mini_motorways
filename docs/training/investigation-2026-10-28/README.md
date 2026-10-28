@@ -45,9 +45,11 @@ derived assets created after the main evidence snapshot. Historical PDFs and
 older archives are unchanged. The repository explicitly tracks these selected
 evidence logs; ordinary runtime logs remain ignored.
 
-Published Unity build logs redact device/session/licensing identifier lines.
+Published Unity build logs redact device/session/licensing/network-debug identifier lines.
 Their original source hashes remain recorded and raw local logs remain untouched.
 This does not alter build outcomes, scores, metrics or replay commands.
+Machine-generated experiment traces preserve raw whitespace and are exempt from
+source-style whitespace lint; SHA-256 checks still enforce their exact integrity.
 
 Read-only verification from the repository root:
 
