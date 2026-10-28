@@ -4,10 +4,13 @@
 Training now defaults to trip delta plus discounted potential shaping; the
 four-hour results below and both PDFs describe the earlier trip-only policy.
 The user has since launched shaped training: a single-seed run stopped after
-1,706.6 seconds/526 games (best 61), and a 60-minute multi-seed run is active.
-Its first-556-game [live check](../docs/training/live-check-multi-seed-shaped-01-2026-10-28.json)
-shows active updates but no convincing improvement (first/last 100 means
-5.04/4.16); final held-out evaluation is pending. See the
+1,706.6 seconds/526 games (best 61), and a multi-seed run stopped after
+1,721.5 seconds/687 games (best 60). Its last-100 mean was 2.58 versus initial
+5.04, with different seed mixes. A separate frozen deterministic evaluation on
+five unseen seeds improved from 0/2/0/0/0 to 0/2/4/4/0 (means 0.4 to 2.0).
+That is limited evidence of some progress, not strong performance or proof of
+shaping's benefit. [Full stopped-run assessment](../docs/training/stopped-run-assessment-2026-10-28.json).
+No training is currently running at this assessment. See the
 [design, audit and launch command](REWARD_SHAPING.md).
 
 This is the current experiment summary on branch `mohammad`. `main` remains the
@@ -31,7 +34,8 @@ reward plus a bounded connectivity potential difference; breaking connections
 reverses their credit. `-RewardMode trips` selects the baseline. There is no
 separate survival or construction-cost reward. Materials/failure rules remain
 normal. Removing roads after delivery is a policy choice, not a delivery
-mechanic. The shaped runs have not yet demonstrated better held-out performance.
+mechanic. A small held-out improvement has been measured, but its cause and
+robustness are unestablished. No explicit connectivity input has yet been added.
 
 All ordinary construction tools are exposed through staged tool/cell selections.
 Masks filter locally unavailable choices; the host checks final legality.

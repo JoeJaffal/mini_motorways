@@ -399,3 +399,35 @@ endpoint coordination is a hypothesis for investigation, not a diagnosed bug.
 Recorded an [immutable interim snapshot](../docs/training/live-check-multi-seed-shaped-01-2026-10-28.json).
 No code, hyperparameters, running process or checkpoint was changed. This is
 an interim observation, not a completed run report or promise of convergence.
+
+## T17 - Stopped multi-seed run and frozen-policy assessment
+
+The user stopped training and asked what to do next. Confirmed no active learner
+and a valid final checkpoint file. Final summary reports interruption after
+1,721.5 seconds, 344,244 selections, 117,097 commands and 687 completed games,
+best 60 trips. Last-100 mean was 2.58 versus first-100 5.04; these windows have
+different seed mixes, so this alone is not a controlled policy comparison.
+The final 100 games used 16,239 draw commands, still overwhelmingly dominant.
+
+Performed a new read-only frozen-policy evaluation of this run's initial.zip
+and final.zip on identical held-out seeds 2000-2004. Both used deterministic
+masked actions, a 3,600-second cap, ordinary gameplay and trip-only evaluation.
+Initial scores were 0/2/0/0/0 (mean 0.4); final scores 0/2/4/4/0 (mean 2.0).
+All ten games ended in normal failure, not truncation. Parameters were compared
+before/after inference and remained unchanged. This is limited evidence of
+some unseen-seed improvement, not proof of robust generalization, useful high
+scoring or an isolated benefit from shaping. There is only one training run
+and five test seeds. Ctrl+C skipped the learner's normal final evaluation;
+this separate assessment supplies the explicitly identified later measurement.
+
+Saved [full outcomes, config and provenance](../docs/training/stopped-run-assessment-2026-10-28.json).
+No optimizer updates, rule changes or new training were performed.
+
+**Recommendation, not an approved/implemented change:** expose explicit
+connectivity indicators for houses lacking same-color round trips and
+destinations without connected supply; add endpoint diagnostics to understand
+unproductive road strokes. Keep all ordinary tools/rules and preserve the
+current checkpoint as a baseline. A new input schema needs an explicit
+checkpoint adaptation strategy and a controlled short comparison; do not
+silently load incompatible inputs or change several learning factors at once.
+Another unchanged long run is not recommended from this evidence.
