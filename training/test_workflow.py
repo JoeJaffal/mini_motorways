@@ -19,6 +19,29 @@ DOTNET='dotnet'
 
 
 class WorkflowChecks(unittest.TestCase):
+    def test_validation_cannot_replace_better_starting_policy(self):
+        class FakeModel:
+            num_timesteps=1
+            def get_env(self):return None
+            def save(self,path):Path(path).with_suffix('.zip').write_text('NEW MODEL')
+        with tempfile.TemporaryDirectory(dir=ROOT/'tmp') as directory,redirect_stdout(io.StringIO()) as printed:
+            folder=Path(directory);target=folder/'validation-best.zip';target.write_text('STARTING MODEL')
+            score=[2]
+            callback=BudgetCallback(folder,10,100,print_seconds=1000,
+                metadata={'initial_validation_mean':3},
+                validation_fn=lambda model:[dict(trips=score[0],scenario_seed=2000)],validation_minutes=.000001)
+            callback.best_validation=3
+            callback.init_callback(FakeModel());callback.on_training_start({}, {})
+            info=dict(scenario_seed=1000,seed_attempt=1,seed_cycle=1,trips=0,seconds=1,commands=1,
+                      command_completed=True,action_counts={},mean_car_wait=0,max_car_wait=0)
+            callback.update_locals({'infos':[info],'dones':[False]})
+            callback.last_validation-=1;callback.on_step()
+            self.assertEqual(target.read_text(),'STARTING MODEL')
+            score[0]=4;callback.last_validation-=1;callback.on_step()
+            self.assertEqual(target.read_text(),'NEW MODEL')
+            self.assertEqual(json.loads((folder/'validation-best.json').read_text())['mean_trips'],4)
+            self.assertIn('vs starting -1.00',printed.getvalue())
+
     def test_seed_blocks_and_explicit_eval(self):
         env=TrafficEnv(dotnet=DOTNET,seeds=[1000,1001],episodes_per_seed=2)
         try:

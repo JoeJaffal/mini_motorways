@@ -1,5 +1,18 @@
 # Repeated-seed training and watching the best game
 
+**New traffic-light experiment, eight hours/four workers:**
+
+```powershell
+cd C:\Users\moham\mini_motorways
+powershell -NoProfile -ExecutionPolicy Bypass -File .\training\start_signals.ps1 -Hours 8 -RunName signals-night-01
+```
+
+This starts a fresh v3 model; old v1/v2 weights are preserved and cannot be resumed
+into its changed action/input schema. Evaluation adds time. Ctrl+C saves; best
+validation selection includes the starting policy. See [signals guide](SIGNALS.md)
+for replay, continuation, limits and the mixed short-pilot results. The full
+overnight run has not been started by preparing this command.
+
 For the new optional traffic-map/bypass agent, start a **fresh** 30-minute trial:
 
 ```powershell

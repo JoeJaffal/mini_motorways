@@ -32,9 +32,8 @@ def main():
     mode='goal-candidates' if goal_policy else ('connectivity' if model.observation_space['grid'].shape[0]==52 else 'legacy')
     draw_mask=a.draw_mask or getattr(model,'draw_mask','all')
     if goal_policy:
-        from goal_agent import GoalEnv
-        env=GoalEnv(dotnet=a.dotnet,seconds=a.cap,host_dll=a.host_dll,skip_forced_wait=getattr(model,'skip_forced_wait',False),
-                    congestion_aware='traffic' in model.observation_space.spaces)
+        from train_goal import model_environment
+        env=model_environment(model,dotnet=a.dotnet,seconds=a.cap,host_dll=a.host_dll,skip_forced_wait=getattr(model,'skip_forced_wait',False))
     else:env=TrafficEnv(dotnet=a.dotnet,seconds=a.cap,observation_mode=mode,record_replays=bool(a.best_replay),draw_mask=draw_mask,host_dll=a.host_dll)
     results=[];best=None;rank=(-1,-1,0)
     try:

@@ -1,5 +1,11 @@
 # Congestion v2 development check - 28 October 2026
 
+Later user-run results are preserved in [two user-run summaries](two-user-runs.json):
+two fresh 30-minute runs, both training best 432 on seed 1099, initial development
+mean 167.0, final means 142.4/142.2, best periodic validation 167.4. Neither resumed
+the other. These results do not establish reliable learning; final policies
+regressed. Exact recordings/checkpoints remain local in the named run folders.
+
 This follows the user's request to prepare congestion-aware learning. It does
 not supersede or modify the completed investigation PDF or its final tests.
 See [exact inputs, algorithm, restrictions and commands](../../../training/GOAL_AGENT.md).

@@ -1,4 +1,25 @@
-# Training status - completed 28 October 2026
+# Training status - 29 October 2026
+
+Traffic-light **v3 is ready for a fresh overnight experiment**, not yet run.
+It adds normal-stock legal junction proposals, existing-light observations and
+traffic/global context for route choices. Starting-prior temperature 2 permits
+more varied sampling; it is not a proven performance improvement. Two controlled
+512-decision pilots both regressed slightly (122.67 -> 122.33 mean on three dev
+maps), so both retained the starting model as validation best. Baseline/tie
+protection now prevents a worse first validation from being selected. The full
+overnight run is stopped/not launched. See [command and contract](SIGNALS.md),
+[archived audit/pilots](../docs/training/signals-2026-10-29/README.md) and history T25.
+
+Earlier v2 and investigation results below remain historical; old weights and
+PDFs were not overwritten.
+
+Latest user-started v2 trials: `congestion-v2-01` and `-02` each finished a
+30-minute fresh run (neither resumed). Both recorded **432 trips** on seed 1099.
+Development mean started at 167.0 and ended at 142.4/142.2 respectively; best
+periodic validation was 167.4 for both. This is no reliable learning gain and
+final policies regressed. Both are stopped. See history T24 and the
+[two-run assessment](../docs/training/congestion-v2-2026-10-28/two-user-runs.json).
+The older investigation results below remain historical.
 
 The authorized investigation is complete. All training and frozen evaluation
 have stopped; no recurring run is scheduled. Work is on `mohammad`; `main` remains

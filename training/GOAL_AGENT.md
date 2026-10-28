@@ -1,5 +1,9 @@
 # Experimental planner-aided connection policy
 
+The newer **traffic-light v3** option and overnight command are documented in
+[SIGNALS.md](SIGNALS.md). The v1/v2 contracts below remain available and preserve
+their old checkpoint shapes.
+
 This is a separate model/action abstraction, not a replacement for the primitive
 all-tools MaskablePPO agent. The [investigation protocol](EXPERIMENT_2026_10_28.md)
 distinguishes engineered assistance from improvement attributable to learning.
@@ -12,7 +16,7 @@ ordinary straight road strokes; the simulator enforces normal finite resources,
 construction, traffic and failure. Each macro decision can span several one-second
 commands. Waiting executes up to five, stopping early on growth, upgrades or end.
 
-Motorways, roundabouts, lights, demolition and manual driveway edits are excluded.
+In v1/v2, motorways, roundabouts, lights, demolition and manual driveway edits are excluded.
 Bridges can arise from ordinary water-crossing strokes. The router is not optimal;
 approximate route costs do not prove every proposal will be accepted. There are
 no stock grants, future spawns, debug construction or teacher trajectories.

@@ -127,7 +127,8 @@ class BudgetCallback(BaseCallback):
                 for key in ['reward_mode','reward_schema','connected_houses','connection_potential',
                             'trip_reward_total','shaping_reward_total','training_reward_total',
                             'observation_mode','draw_mask','draw_noop_commands','draw_change_commands','draw_distinct_pairs',
-                            'planner_aided','macro_decisions','available_goals','reward_scale','skip_forced_wait','forced_wait_commands']:
+                            'planner_aided','macro_decisions','available_goals','reward_scale','skip_forced_wait','forced_wait_commands',
+                            'traffic_lights_enabled','signal_candidates','signals_placed','congestion_aware','bypass_candidates']:
                     if key in info:result[key]=info[key]
                 result['worker']=worker
                 result['terminated'] = not info.get('TimeLimit.truncated', False)
@@ -148,7 +149,8 @@ class BudgetCallback(BaseCallback):
                       f'survival {info["seconds"]:.1f}s | car wait mean/max '
                       f'{info["mean_car_wait"]:.2f}/{info["max_car_wait"]:.2f}s | '
                       f'wait actions {waits}/{info["commands"]} | rejected {info["rejected_actions"]} | '
-                      f'connected {info.get("connected_houses")} | shaping {info.get("shaping_reward_total",0):+.3f}', flush=True)
+                      f'connected {info.get("connected_houses")} | shaping {info.get("shaping_reward_total",0):+.3f}'
+                      +(f' | lights placed {info["signals_placed"]}' if 'signals_placed' in info else ''), flush=True)
         if now-self.last_print >= self.print_seconds:
             status = self._status(current,now)
             print(f'PROGRESS | elapsed {clock(status["wall_seconds"])} | ETA ~{clock(status["estimated_seconds_remaining"])} | '
@@ -158,6 +160,12 @@ class BudgetCallback(BaseCallback):
                   f'current score {status["current_score"]} at {status["current_game_seconds"]:.1f}s | '
                   f'best {self.best} | {len(self.worker_status)} workers | '
                   f'connected {current.get("connected_houses")} | shaping {current.get("shaping_reward_total",0):+.3f}', flush=True)
+            logger=getattr(self.model,'logger',None)
+            metrics=getattr(logger,'name_to_value',{})
+            if 'train/approx_kl' in metrics:
+                print(f'LEARNING | updates {metrics.get("train/n_updates",0)} | '
+                      f'entropy {-metrics.get("train/entropy_loss",0):.4f} | KL {metrics["train/approx_kl"]:.6f} | '
+                      f'best validation {self.best_validation:.2f}',flush=True)
             self.last_print = now
         if now-self.last_save >= 120:
             self.model.save(self.output/'latest')
@@ -172,7 +180,12 @@ class BudgetCallback(BaseCallback):
             if mean>self.best_validation:
                 from shutdown import save_checkpoint
                 save_checkpoint(self.model,self.output/'validation-best.zip');self.best_validation=mean
-            print(f'VALIDATION | mean {mean:.2f} | scores {record["scores"]} | real trips, no updates',flush=True)
+                atomic_json(self.output/'validation-best.json',dict(mean_trips=mean,policy_steps=self.num_timesteps,
+                            baseline=False,scores=record['scores'],checkpoint='validation-best.zip'))
+            baseline=self.metadata.get('initial_validation_mean')
+            delta=f' | vs starting {mean-baseline:+.2f}' if baseline is not None else ''
+            print(f'VALIDATION | mean {mean:.2f} | scores {record["scores"]} | best {self.best_validation:.2f}'
+                  f'{delta} | real trips, no updates',flush=True)
             self.last_validation=now=time.perf_counter()
         return now-self.started < self.seconds
 

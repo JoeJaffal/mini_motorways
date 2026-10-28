@@ -1,5 +1,9 @@
 # Local reinforcement learning experiment
 
+For the new traffic-light v3 model, [overnight training guide](SIGNALS.md) contains
+the tested launcher, exact inputs/actions and current evidence. Motorways remain
+excluded. Short pilots do not yet demonstrate improved learning.
+
 The separate [planner-aided connection policy](GOAL_AGENT.md) is an opt-in
 experiment with different observations and restricted macro actions. Its scores
 must be compared against its own frozen informed initial policy. The primitive

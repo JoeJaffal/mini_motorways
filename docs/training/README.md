@@ -6,6 +6,7 @@ players and scratch captures remain local and are not backed up by this archive.
 
 | Record | Purpose |
 | --- | --- |
+| [Traffic-light v3 audit and pilots](signals-2026-10-29/README.md) | Old-policy decision audit, paired prior-temperature pilots, stock/replay/update checks and overnight preparation; no proven score gain |
 | [Congestion v2 comparison](congestion-v2-2026-10-28/README.md) | Live-map/bypass inputs, frozen three-map ablation, mixed results and startup checks; no long training |
 | [Latest investigation PDF](model-investigation-2026-10-28.pdf) | Ten-page report: ten experiments, 356-trip planner-aided record, independent tests and limited learning evidence |
 | [Investigation evidence](investigation-2026-10-28/README.md) | 312 archived source/metric/log/replay files, frozen selection, report figures/text and integrity manifests |

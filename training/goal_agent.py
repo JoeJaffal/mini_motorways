@@ -137,7 +137,7 @@ class GoalEnv(gym.Env):
                     max((wait[k] for k in junctions),default=0)/60,len(junctions)/max(1,len(indices))],0,1)
 
     def encode(self):
-        e=self.base;global_state=e.encode()['global'].copy();houses=sum(b['isHouse'] for b in e.buildings)
+        e=self.base;global_state=np.clip(e.encode_global(),0,1);houses=sum(b['isHouse'] for b in e.buildings)
         shops=[b for b in e.buildings if not b['isHouse']];cars=e.raw['vehicles']
         global_state[25:]=0
         global_state[25:37]=[(e.raw['time']%140)/140,e.connected_houses/max(1,houses),
@@ -171,7 +171,7 @@ class GoalEnv(gym.Env):
         e=self.base
         if e.done:raise RuntimeError('Reset required')
         action=int(action);before=e.raw['tripsCompleted'];commands=e.commands
-        if not 0<=action<GOALS+3 or not self.action_masks()[action]:
+        if not 0<=action<self.action_space.n or not self.action_masks()[action]:
             e.rejected+=1;e._advance()
         elif action==0:
             # Up to five ordinary one-second waits, checking game end and growth.
@@ -180,14 +180,15 @@ class GoalEnv(gym.Env):
                 e._advance()
                 if e.done or e.network_version!=version or e.raw['upgradeChoices']:break
         elif action<3:e._advance(dict(command='upgrade',choice=action-1))
-        else:
+        elif action<GOALS+3:
             for a,b in strokes(self.plans[action-3]):
                 e._advance(dict(command='draw',x=a[0],y=a[1],toX=b[0],toY=b[1]))
                 if e.done:break
+        else:self._execute_extra(action)
         self._refresh()
         # Only collapse states with no alternative action. Inspect after every
         # normal one-second command so no newly available choice is skipped.
-        while self.skip_forced_wait and not e.done and not self.plans and not e.raw['upgradeChoices']:
+        while self.skip_forced_wait and not e.done and not self.action_masks()[1:].any():
             e._advance();self.forced_wait_commands+=1;self._refresh()
         terminated=bool(e.raw['failed']);truncated=e.done and not terminated
         shaping=self.potential.step(e.connected_houses,terminated)
@@ -196,6 +197,9 @@ class GoalEnv(gym.Env):
         info.update(command_completed=True,commands_delta=e.commands-commands,trip_reward=trips,shaping_reward=shaping)
         if e.done:info['episode_replay']=self.export_replay()
         return self.encode(),float((trips+shaping)*self.reward_scale),terminated,truncated,info
+
+    def _execute_extra(self,action):
+        raise RuntimeError('No extra actions in this goal schema')
 
     def info(self):
         return dict(self.base.info(),reward_mode='goal-connectivity',reward_schema='goal-trip-potential-gamma099-choice-v1' if self.skip_forced_wait else 'goal-trip-potential-gamma099-v1',
@@ -226,8 +230,11 @@ def vector(workers,output,**kwargs):
 
 
 class GoalFeatures(BaseFeaturesExtractor):
-    def __init__(self,space):
-        super().__init__(space,features_dim=GOALS+3+64)
+    def __init__(self,space,prior_temperature=1.):
+        if not np.isfinite(prior_temperature) or prior_temperature<=0:raise ValueError('Positive prior temperature required')
+        self.signal_count=space['signals'].shape[0] if 'signals' in space.spaces else 0
+        super().__init__(space,features_dim=GOALS+3+self.signal_count+64)
+        self.prior_temperature=float(prior_temperature)
         width=space['candidates'].shape[1];self.has_traffic='traffic' in space.spaces
         self.row=nn.Sequential(nn.Linear(width,32),nn.ReLU(),nn.Linear(32,32),nn.ReLU())
         self.residual=nn.Linear(32,1);nn.init.zeros_(self.residual.weight);nn.init.zeros_(self.residual.bias)
@@ -236,12 +243,20 @@ class GoalFeatures(BaseFeaturesExtractor):
             self.prior.weight.zero_();self.prior.weight[0,14]=-30;self.prior.weight[0,15]=-1
             self.prior.weight[0,16]=2;self.prior.weight[0,17]=2;self.prior.weight[0,18]=12
         if self.has_traffic:
-            self.traffic_encoder=nn.Sequential(nn.Conv2d(4,8,3,stride=2,padding=1),nn.ReLU(),
+            self.traffic_encoder=nn.Sequential(nn.Conv2d(space['traffic'].shape[0],8,3,stride=2,padding=1),nn.ReLU(),
                 nn.Conv2d(8,16,3,stride=2,padding=1),nn.ReLU(),nn.AdaptiveAvgPool2d((2,3)),nn.Flatten(),nn.Linear(96,32),nn.Tanh())
         self.tools=nn.Sequential(nn.Linear(74 if self.has_traffic else 42,32),nn.Tanh(),nn.Linear(32,3))
         nn.init.zeros_(self.tools[-1].weight)
         with torch.no_grad():self.tools[-1].bias.zero_()
         self.context=nn.Sequential(nn.Linear(138 if self.has_traffic else 106,64),nn.Tanh())
+        if self.signal_count:
+            self.signal_row=nn.Sequential(nn.Linear(12,32),nn.ReLU(),nn.Linear(32,1))
+            nn.init.zeros_(self.signal_row[-1].weight);nn.init.zeros_(self.signal_row[-1].bias)
+            self.signal_prior=nn.Linear(12,1)
+            with torch.no_grad():
+                self.signal_prior.weight.zero_();self.signal_prior.bias.fill_(-1)
+                self.signal_prior.weight[0,4]=2;self.signal_prior.weight[0,6]=2
+            self.route_context=nn.Linear(74,32,bias=False);nn.init.zeros_(self.route_context.weight)
 
     def forward(self,obs):
         candidates=obs['candidates'];valid=candidates[:,:,24:25];rows=self.row(candidates)
@@ -252,15 +267,23 @@ class GoalFeatures(BaseFeaturesExtractor):
         values=self.context(torch.cat([mean,maximum,global_features],dim=1))
         tools=self.tools(global_features)
         offers=torch.stack([torch.zeros_like(tools[:,0]),obs['global'][:,9:15].sum(1)*20,obs['global'][:,17:23].sum(1)*20],dim=1)
-        logits=torch.cat([tools+offers,(self.residual(rows)+self.prior(candidates)).squeeze(-1)],dim=1)
+        route_logits=self.residual(rows).squeeze(-1)+self.prior(candidates).squeeze(-1)/self.prior_temperature
+        if self.signal_count:
+            route_logits+=(rows*torch.tanh(self.route_context(global_features))[:,None,:]).sum(-1)/(32**.5)
+        logits=torch.cat([tools+offers/self.prior_temperature,route_logits],dim=1)
+        if self.signal_count:
+            signals=obs['signals'];signal_logits=(self.signal_row(signals)+self.signal_prior(signals)/self.prior_temperature).squeeze(-1)
+            logits=torch.cat([logits,signal_logits],dim=1)
         return torch.cat([logits,values],dim=1)
 
 
 class GoalHeads(nn.Module):
     latent_dim_pi=GOALS+3;latent_dim_vf=64
+    def __init__(self,actions=GOALS+3):
+        super().__init__();self.latent_dim_pi=actions
     def forward(self,x):return self.forward_actor(x),self.forward_critic(x)
-    def forward_actor(self,x):return x[:,:GOALS+3]
-    def forward_critic(self,x):return x[:,GOALS+3:]
+    def forward_actor(self,x):return x[:,:self.latent_dim_pi]
+    def forward_critic(self,x):return x[:,self.latent_dim_pi:]
 
 
 class GoalPolicy(MaskableActorCriticPolicy):
@@ -268,6 +291,6 @@ class GoalPolicy(MaskableActorCriticPolicy):
         kwargs['features_extractor_class']=GoalFeatures;kwargs['normalize_images']=False
         super().__init__(*args,**kwargs)
     def _build(self,lr_schedule):
-        self.mlp_extractor=GoalHeads();self.action_net=nn.Identity();self.value_net=nn.Linear(64,1)
+        self.mlp_extractor=GoalHeads(self.action_space.n);self.action_net=nn.Identity();self.value_net=nn.Linear(64,1)
         nn.init.zeros_(self.value_net.weight);nn.init.zeros_(self.value_net.bias)
         self.optimizer=self.optimizer_class(self.parameters(),lr=lr_schedule(1),**self.optimizer_kwargs)

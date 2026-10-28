@@ -363,6 +363,16 @@ class TrafficEnv(gym.Env):
                     if b['isHouse']:grid[50,self.index(p)]=int(b['id'] not in connected)
                     else:grid[51,self.index(p)]=int(b['id'] not in supplied)
         grid[:, ~self.visible] = 0
+        global_state = self.encode_global()
+        obs = {'grid': np.clip(grid.reshape(self.channels, 30, 50), 0, 1),
+               'global': np.clip(global_state, 0, 1)}
+        if not all(np.isfinite(x).all() for x in obs.values()):
+            raise RuntimeError('Nonfinite policy observation')
+        return obs
+
+    def encode_global(self):
+        """Same global values without allocating an unused 52-channel grid."""
+        o=self.raw
         global_state = np.zeros(GLOBALS, np.float32)
         global_state[:6] = np.asarray(o['inventory']) / np.array([100, 10, 10, 10, 10, 10])
         global_state[6:9] = [o['time']/self.seconds, o['week']/100, o['tripsCompleted']/1000]
@@ -373,11 +383,7 @@ class TrafficEnv(gym.Env):
             global_state[15+i*8:17+i*8] = [offer['amount']/100, offer['roads']/100]
         global_state[25+self.phase] = 1
         global_state[29+self.tool] = 1
-        obs = {'grid': np.clip(grid.reshape(self.channels, 30, 50), 0, 1),
-               'global': np.clip(global_state, 0, 1)}
-        if not all(np.isfinite(x).all() for x in obs.values()):
-            raise RuntimeError('Nonfinite policy observation')
-        return obs
+        return global_state
 
     def info(self):
         return dict(trips=self.raw['tripsCompleted'], seconds=self.raw['time'],

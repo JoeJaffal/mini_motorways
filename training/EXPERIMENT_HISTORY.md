@@ -566,3 +566,131 @@ These bounded checks do not start the proposed 30-minute training experiment.
 Small measurements and protocol are archived in
 [congestion v2 evidence](../docs/training/congestion-v2-2026-10-28/README.md).
 Weights/replay runtime artifacts stay local, no long run active.
+
+## T23 - User-started v2 run: live speed check
+
+User started `congestion-v2-01` with four workers, 30 minutes, reward scale .01,
+then asked why it is slower. Read-only snapshot at 326.7 learner wall seconds:
+2564 macro decisions (7.8/s), 11833 ordinary commands (36.2/s), 14 completed
+episodes (~0.043 games/s), best recorded training score 397. Four C# hosts were
+active. `before.json` existed, so this snapshot was training rather than initial
+evaluation; progress CSV showed 32 PPO updates at 2304 decisions. This establishes
+execution and updates, not generalization or learning benefit. Metrics are live,
+not a completed-run comparison, and differ from primitive selection rates.
+
+Implementation explains extra work: v2 constructs live traffic grids, runs a CNN
+and searches connected pairs for bypasses on cache invalidation/every 15 simulated
+seconds. Python-heavy routing/encoding shares one interpreter's GIL across worker
+threads, while C# hosts run concurrently; a slow worker also delays the vector
+batch. These are identified overhead mechanisms, not measured profiler shares.
+Longer-lived games also reduce games/second without necessarily reducing command
+throughput. No artificial 0.8-games/s cap is set. No running code, checkpoint or
+process was changed or stopped during this inspection. Profile/cache routing
+and consider process-based Python workers before promising a speedup.
+
+## T24 - Two completed user-started congestion runs
+
+User asked to assess two sessions (called seconds in chat; saved budgets and
+elapsed times establish 30 minutes each). Read-only local summaries show:
+`congestion-v2-01`: 1802.73 learner seconds, 9448 decisions, 43217 commands,
+58 episodes; `congestion-v2-02`: 1814.58 seconds, 10652 decisions, 48595 commands,
+68 episodes. Both finished normally, parameter updates confirmed. Both configs
+have `resume:null`: these are fresh starts, not cumulative continuation.
+
+Both recorded 432 trips on seed 1099, duration 1048.1 seconds, completed rather
+than partial. This exceeds the historical 356 recording but is a training-map
+best, not generalization evidence. Initial deterministic development scores
+were 79/209/82/132/333, mean 167.0, for both. Final scores were 79/86/82/132/333
+(142.4) and 79/85/82/132/333 (142.2). Best periodic validation mean was 167.4
+for both, scores 79/209/82/134/333: a two-trip change on one development map.
+Thus longer training and updated parameters did not establish reliable improved
+play; the final checkpoints regressed on one map. Do not present the 432 best as
+proof of learning or recommend extending final weights on that basis.
+
+No further training or evaluation was launched for this assessment. Compact
+source summaries, configured arguments, validation scores and best replay SHA256
+are preserved in `docs/training/congestion-v2-2026-10-28/two-user-runs.json`.
+Weights and exact best recordings remain local in their run folders.
+
+## T25 - Traffic lights first, learning audit and overnight preparation (29 October)
+
+User authorized the audit/controlled comparison/checkpoint-selection steps and
+asked for traffic lights before motorways, with an overnight command to run
+personally. Engineering work remains on `mohammad`; the overnight run was not
+launched. Two small 512-decision pilots and bounded startup/update checks were
+run to make the implementation reviewable and verify readiness.
+
+Read-only old v2 audit, same states from initial deterministic seed-2000 policy:
+42 choice states, 60 forced states, one changed argmax after training, mean KL
+0.00004154. Initial max choice probability .488 and entropy 1.246 nats mean this
+does not establish that all states lack exploration. It demonstrates small
+probability/decision changes on one trajectory, not a unique cause of poor
+learning or the seed-2001 regression. Actor updates are not confused with scores.
+
+Implemented opt-in `--traffic-lights`, schema `visible-route-signals-policy-v3`:
+547 actions/21107 parameters, up to 32 legal visible ordinary-road junction
+proposals (degree >=3, normal light stock, no forbidden endpoints/removals),
+12 current-state features per proposal, five traffic-map planes including actual
+lights. Proposals refresh each decision, ranked by nearby waiting/vehicle count.
+Placement is ordinary `build TrafficLight`; no stock grants or timing control.
+Motorways/roundabouts/demolition/manual driveways stay excluded. A shared light
+head and zero-start map/global-to-route interaction are learnable. Inspection
+showed v2 CNN context fed tool logits/critic but not route logits directly.
+
+Reward remains actual trip delta plus gamma .99 bounded connection potential;
+launcher numerical scale .01, lambda .99, learning rate .0001/rollout256/batch64/
+four epochs/entropy .005 unchanged. Potential saturates at eight houses and
+discounting remains per variable-duration macro decision. No placement bonus is
+introduced. Adequate delayed credit assignment remains an open question.
+Default v3 prior temperature 2 halves linear prior and upgrade bias contributions
+while residual/context contributions stay unscaled; this is an exploration
+hypothesis, not an established score improvement. Older inputs/policies remain
+available with default temperature 1. Incompatible direct resume is rejected;
+v3 resume restores its schema, timing, scale and temperature.
+
+Two fixed-512-decision pilots, two workers, same seed and verified identical
+initial tensors, only temperature 1 vs 2 differs. Initial deterministic dev
+scores (2000-2002, cap1200) 79/207/82, mean122.667, final 79/208/80, mean122.333,
+for both. All six initial/final games per arm failed before the cap. Both update
+the route, CNN and light parameters and use normal lights; neither shows improved
+score. Training bests236/222 are not generalization evidence. Their wall windows
+overlap; 85.52/72.29 learner seconds do not establish a speed difference.
+No parameter retuning followed these pilot results. A paired frozen initial-v3
+audit on 58 identical choice states increases entropy1.849->1.978 and reduces
+max probability .369->.300, with zero changed argmax. This validates more varied
+probabilities, not learning. Original v2 dev79/209/82 also means initial traffic
+lights alone did not establish better play.
+
+Best validation now starts with the untrained/resumed starting model and keeps
+ties; periodic/final policies replace it only on a strict higher development
+mean. Both pilots correctly kept initial weights. Selection score/baseline flag
+is in `validation-best.json`. Checkpoint selection protection has a regression
+test. Console adds placement counts, PPO entropy/KL/updates and validation delta
+from baseline. Ctrl+C during initial/final evaluation now also saves current
+weights; existing learning-phase shutdown/save path retained. Removed redundant
+full-grid construction when only globals are needed, with equivalent values
+tested; no measured speedup claimed.
+
+Thirty checks pass: goal8, signals3, workflow5, environment7, rewards6, shutdown1.
+Normal weekly stock, legal placement/stock decrement, no road stock decrement,
+existing-light plane and exact command replay verified. Signal-head gradients,
+route-context/CNN updates, save/reload, four-worker startup and schema-inheriting
+resume tested. Tiny startup/resume intentionally stop before a PPO update; not
+learning evidence. Generic frozen evaluator detects v3 and preserves weights.
+Headless build passes, PS launcher parses. Initial test failures: guessed light
+code3 corrected to actual4 before pilots; fake save double-extension corrected;
+reward command lacked local dotnet path, rerun passed. Placement counts hardened
+to accepted commands after pilot snapshots; pilots had no rejects, so no outcome
+change. Later edits add metadata and interrupt/reporting safeguards.
+
+`start_signals.ps1` prepares a manual eight-hour/four-worker fresh v3 run with
+30-minute development validation, two-minute checkpoints and a 10M decision
+ceiling. Initial/final evaluation adds wall time, periodic validation counts in
+the learner window. User may change hours. No recurring automation was created.
+Exact command, resume/replay instructions, input meanings and limitations are in
+[SIGNALS.md](SIGNALS.md); status/quickstart/index updated. Historical PDFs and
+weights untouched. [Evidence archive](../docs/training/signals-2026-10-29/README.md)
+preserves audits, paired tensor/parameter assessment, pilot sources/logs/scores,
+startup/resume/evaluator measurements and 34 source-copy SHA256s. Weights and
+native binaries remain local. The overnight run remains an experiment and is not
+claimed to fix learning, reach1000 or use the excluded tools.
