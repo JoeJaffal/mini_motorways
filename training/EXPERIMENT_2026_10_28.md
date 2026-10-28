@@ -383,3 +383,9 @@ network/debug identifiers from the published logs, keeping original source hashe
 and local originals. Score metrics, exact replay bytes and the PDF/render content
 are unchanged. Manifests were refreshed and reverified. Normal source files retain
 whitespace checking. No model, evaluation choice or training behavior changed.
+
+The expanded log scan additionally caught a Unity debugger bind-address line;
+that line is now redacted too. The first expanded scan stopped at its assertion,
+so the scan and validation-note update were rerun successfully before final
+completion. This correction affects only published runtime trace privacy, not
+scores, policy weights, replay commands or rendered report content.

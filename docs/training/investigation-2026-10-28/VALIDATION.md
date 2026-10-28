@@ -61,9 +61,9 @@ report manifests separately identify the underlying evidence and delivered PDF.
 Dedicated replay files are byte-identical to their raw local sources. Older
 metric/RESULT rows omit only duplicated episode_replay payloads; each archive
 entry retains source/archived hashes and a transformation description. Unity
-runtime identity/licensing lines were redacted from two published build logs;
+runtime identity/licensing/network debug lines were redacted from two published build logs;
 raw originals remain local. A scan found no remaining session/correlation/machine
-identifier or editor-license argument lines in the archived runtime logs.
+identifier, editor-license argument, player-connection, debugger-agent or IPv4 address lines in the archived runtime logs.
 
 The archive intentionally excludes weights, generated binaries, private research,
 runtime caches and per-seed duplicate best replays. Source-control hygiene and

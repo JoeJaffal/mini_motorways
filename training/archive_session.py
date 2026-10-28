@@ -36,7 +36,7 @@ def copy_evidence(source,target,provenance):
     if changed:transformations.append('Removed duplicated episode_replay keys; dedicated exact replay files retained')
     if source.suffix=='.log' and source.name.startswith('unity-'):
         text=rewritten if rewritten is not None else raw.decode('utf-8-sig')
-        private=re.compile(r'licens|(?:session|correlation|machine)\s*id\s*:|UnityPers|access.?token|cbmMachineId|player connection',re.I)
+        private=re.compile(r'licens|(?:session|correlation|machine)\s*id\s*:|UnityPers|access.?token|cbmMachineId|player connection|debugger-agent',re.I)
         sanitized='\n'.join('[Unity runtime identity/licensing line redacted]' if private.search(line) else line for line in text.splitlines())+'\n'
         if any(private.search(line) for line in text.splitlines()):
             rewritten=sanitized;changed=True;transformations.append('Redacted Unity runtime device/session/licensing/network debug identifiers')
