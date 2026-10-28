@@ -87,8 +87,11 @@ def main():
     parser.add_argument('--architecture',choices=['legacy','spatial-residual','informed-spatial'],default='legacy')
     parser.add_argument('--draw-mask',choices=['all','productive'],default='all')
     parser.add_argument('--stop-file',type=Path)
+    parser.add_argument('--rollout-size',type=int,choices=[256,512,1024],default=256)
+    parser.add_argument('--gae-lambda',type=float,default=.95)
     args = parser.parse_args()
     if args.validation_minutes<0:parser.error('Validation interval must be nonnegative')
+    if not 0<args.gae_lambda<=1:parser.error('GAE lambda must be in (0,1]')
     if args.minutes <= 0 or args.steps < 1 or args.threads < 1 or not 1 <= args.eval_episodes <= 20:
         parser.error('Positive budgets required; evaluation episodes must be 1..20')
     if args.episodes_per_seed < 1 or args.train_seed_count < 1 or args.print_seconds <= 0:
@@ -118,8 +121,8 @@ def main():
                   created_utc=datetime.now(timezone.utc).isoformat(), arguments={k: str(v) if isinstance(v, Path) else v for k,v in vars(args).items()},
                   packages={name: importlib.metadata.version(name) for name in
                             ['torch', 'numpy', 'gymnasium', 'stable-baselines3', 'sb3-contrib']},
-                  workers=args.workers, aggregate_rollout_size=256,
-                  hyperparameters=dict(n_steps=256//args.workers, batch_size=64, n_epochs=4, gamma=GAMMA,
+                  workers=args.workers, aggregate_rollout_size=args.rollout_size,
+                  hyperparameters=dict(n_steps=args.rollout_size//args.workers, batch_size=64, n_epochs=4, gamma=GAMMA,gae_lambda=args.gae_lambda,
                                        learning_rate=.0003, ent_coef=.01, net_arch=[64]))
     (output/'config.json').write_text(json.dumps(config, indent=2)+'\n')
     # Preserve exact source even before a commit, alongside the revision metadata.
@@ -141,7 +144,7 @@ def main():
             if args.adapt_inputs or args.reset_optimizer:
                 from migration import warm_start
                 model=warm_start(args.resume,env,config['hyperparameters'],args.seed,args.adapt_inputs,args.architecture)
-            else:model = MaskablePPO.load(args.resume, env=env, device='cpu',n_steps=256//args.workers)
+            else:model = MaskablePPO.load(args.resume, env=env, device='cpu',n_steps=args.rollout_size//args.workers,gae_lambda=args.gae_lambda)
             if args.reward_mode=='connectivity' and model.gamma!=GAMMA:
                 raise RuntimeError('Checkpoint discount must match connectivity-shaping gamma')
         else:
@@ -161,7 +164,7 @@ def main():
         initial_parameters = torch.cat([p.detach().flatten().cpu() for p in model.policy.parameters()]).clone()
         print(f'RUN DIRECTORY | {output}',flush=True)
         print(f'REWARD | {REWARD_SCHEMAS[args.reward_mode]} | score/best/evaluation remain actual trips',flush=True)
-        print(f'WORKERS | {args.workers} simultaneous games | shared model | 256 aggregate selections per rollout',flush=True)
+        print(f'WORKERS | {args.workers} simultaneous games | shared model | {args.rollout_size} aggregate selections per rollout | lambda {args.gae_lambda}',flush=True)
         print(f'SCHEDULE | {args.episodes_per_seed} consecutive games per seed | '
               f'{training_seeds.start} through {training_seeds.stop-1} | {args.seed_schedule}',flush=True)
         print('EVALUATION | checking starting policy on reserved seeds before learner timer starts',flush=True)

@@ -139,3 +139,30 @@ The continuing run uses a fresh directory, four workers, mixed seeds, periodic
 development evaluation and a stop-file mechanism for graceful early completion.
 The best developmental candidate can be the frozen initial informed policy if
 optimization does not improve it. No test seed 3000-3009 has yet been inspected.
+
+## Credit-window comparison
+
+The frozen informed policy scored 0/0/8/33/22 (mean 12.6) in deterministic
+development evaluation; its separate initial sampled evaluation also averaged
+12.6, with different per-seed scores. The first eight-minute validation averaged
+10.0, so improvement from learning is not established.
+
+Testing a joint longer-credit configuration from the exact same informed initial
+checkpoint: aggregate rollout 1,024 (256 per worker), GAE lambda 0.99, gamma
+still 0.999, all other rules/reward/priors fixed. The earlier control uses rollout
+256 and lambda 0.95. These are two interacting credit-window changes, not a
+single-factor ablation. A graceful stop-file guard targets roughly 65,536
+selections for the already-running control; its logged stopping count may
+overshoot by one rollout/poll interval. The new arm has an explicit 65,536
+selection ceiling. Both use four workers, temporarily eight simulator processes
+total; timings under shared load are not hardware speed benchmarks. The longer
+arm is capped at 35 minutes and must fit inside the original three-hour window.
+
+An independent visible-state greedy routing diagnostic (not a model, no optimizer
+or demonstrations fed into training) scored 216/85/116 on development seeds
+2000-2002 with a 1,200 simulated-second cap; all failed before that cap.
+It used ordinary finite resources, upgrades and road strokes, with current
+visible-state path planning. All three command recordings verified exactly in
+the headless runtime. This is evidence that better construction is possible,
+not a learned score or an optimal ceiling. The informed 110-trip training replay
+also verified in the native player (532 commands, 531.35 seconds).
