@@ -81,15 +81,19 @@ class GoalChecks(unittest.TestCase):
     def test_goal_policy_updates_and_reload(self):
         torch.set_num_threads(2)
         with tempfile.TemporaryDirectory(dir=ROOT/'tmp') as directory:
-            env=vector(1,directory,dotnet=DOTNET,host_dll=DLL,seconds=30,seeds=[1000])
+            env=vector(1,directory,dotnet=DOTNET,host_dll=DLL,seconds=30,seeds=[1000],skip_forced_wait=True)
             try:
                 model=MaskablePPO(GoalPolicy,env,device='cpu',seed=42,n_steps=8,batch_size=8,n_epochs=1,gamma=.99,gae_lambda=.99)
+                model.skip_forced_wait=True
                 before=torch.cat([x.detach().flatten() for x in model.policy.parameters()]).clone()
+                actor_before=model.policy.features_extractor.prior.weight.detach().clone()
                 model.learn(total_timesteps=16)
                 after=torch.cat([x.detach().flatten() for x in model.policy.parameters()])
                 self.assertFalse(torch.equal(before,after))
+                self.assertFalse(torch.equal(actor_before,model.policy.features_extractor.prior.weight))
                 model.save(Path(directory)/'model')
                 restored=MaskablePPO.load(Path(directory)/'model',device='cpu')
+                self.assertTrue(restored.skip_forced_wait)
                 obs=env.reset();mask=np.asarray(env.env_method('action_masks'))
                 a,_=model.predict(obs,deterministic=True,action_masks=mask)
                 b,_=restored.predict(obs,deterministic=True,action_masks=mask)

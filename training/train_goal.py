@@ -44,10 +44,12 @@ def main():
     p.add_argument('--resume',type=Path);p.add_argument('--stop-file',type=Path)
     p.add_argument('--reward-scale',type=float,default=1.)
     p.add_argument('--skip-forced-wait',action='store_true')
+    p.add_argument('--learning-rate',type=float,help='Explicit override; resume otherwise preserves checkpoint rate')
     p.add_argument('--validation-minutes',type=float,default=6);p.add_argument('--eval-count',type=int,default=5)
     a=p.parse_args()
     if a.output.exists():p.error('Fresh run name required')
     if a.minutes<=0 or a.steps<1 or a.eval_count<1:p.error('Positive budgets and evaluation count required')
+    if a.learning_rate is not None and a.learning_rate<=0:p.error('Positive learning rate required')
     a.output.mkdir(parents=True)
     torch.set_num_threads(2);torch.set_num_interop_threads(1)
     config=dict(schema=GOAL_SCHEMA,planner_aided=True,replay_source='hybrid-training',action_semantics='choose current house/destination connection; visible router executes ordinary strokes',
@@ -66,12 +68,15 @@ def main():
     env=vector(a.workers,a.output,dotnet=a.dotnet,host_dll=a.host_dll,seeds=range(1000,1100),episodes_per_seed=1,seed_schedule='random',reward_scale=a.reward_scale,skip_forced_wait=a.skip_forced_wait)
     try:
         if a.resume:
-            model=MaskablePPO.load(a.resume,env=env,device='cpu',n_steps=256//a.workers)
+            overrides=dict(n_steps=256//a.workers)
+            if a.learning_rate is not None:overrides['learning_rate']=a.learning_rate
+            model=MaskablePPO.load(a.resume,env=env,device='cpu',**overrides)
             if not isinstance(model.policy,GoalPolicy):raise ValueError('Resume requires a goal-policy checkpoint')
         else:
             model=MaskablePPO(GoalPolicy,env,device='cpu',seed=42,n_steps=256//a.workers,batch_size=64,n_epochs=4,
-                              gamma=.99,gae_lambda=.99,learning_rate=.0001,ent_coef=.005,verbose=0)
+                              gamma=.99,gae_lambda=.99,learning_rate=a.learning_rate or .0001,ent_coef=.005,verbose=0)
         model.skip_forced_wait=a.skip_forced_wait
+        config['learning_rate']=model.learning_rate
         config['trainable_parameters']=sum(x.numel() for x in model.policy.parameters())
         (a.output/'config.json').write_text(json.dumps(config,indent=2)+'\n')
         model.set_logger(configure(str(a.output),['csv']));save_checkpoint(model,a.output/'initial.zip')

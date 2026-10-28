@@ -243,3 +243,21 @@ This is an action-duration/credit-assignment change, not merely a CPU optimizati
 The new arm starts from the same initial checkpoint, uses reward scale .01 and
 otherwise the same PPO configuration as the scaled arm. Its 25-minute ceiling
 fits the original authorization; independent arms temporarily share six hosts.
+
+## Final learning-rate pilot (development-only)
+
+Actual checkpoint comparisons confirm nonzero changes to goal actor prior,
+residual and tool-head weights as well as the critic. Thus unchanged deterministic
+development scores are not explained by a critic-only optimizer bug. Changes to
+actor logits have remained small relative to the informed prior. This motivates
+one final higher-rate pilot, not a proven diagnosis: choice-only timing, reward
+scale .01 and learning rate .001 instead of .0001, from the identical initial
+weights/empty optimizer state. Other PPO settings remain fixed. It has a
+25-minute cap. This will be the last tuning arm before final tests. No final-test
+result will be used for another update, checkpoint selection or hyperparameter
+change during this investigation.
+
+The final goal comparison will use a frozen initial checkpoint with the same
+decision timing as the selected trained candidate. Development ties prefer the
+first listed candidate; operational selection includes the frozen initial policy.
+Best training scores and selected development checkpoints remain separate.

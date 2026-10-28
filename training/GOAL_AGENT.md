@@ -84,6 +84,16 @@ decisions, primitive selections and completed commands are different quantities.
 Ctrl+C saves and stops; `--stop-file PATH` supports graceful stopping. No recurring
 run is created. Final evaluation can be skipped after interruption.
 
+`--skip-forced-wait` is another explicit experiment. After a chosen macro finishes,
+it advances ordinary one-second commands while waiting is the only legal action,
+checking for new connections/upgrades/end after every command. This reduces
+value-free neural calls but also changes the effective discount/credit horizon:
+schema `goal-trip-potential-gamma099-choice-v1`. The checkpoint stores the timing
+mode and evaluation restores it. Omit this flag to preserve historical five-second
+wait behavior, including when resuming a checkpoint from that mode. A paired
+frozen-policy check verified identical ordinary command histories at a 180-second
+cap; the broader experiment still needs measured validation.
+
 ```powershell
 .\.venv\Scripts\python.exe .\training\watch_best.py --run output/training/my-goal-experiment-01
 ```

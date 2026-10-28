@@ -76,18 +76,16 @@ ax.set(xlabel='Policy selections',ylabel='Mean actual trips',title='Development 
 savefig('primitive-validation.png')
 
 goal_names=assessment['goal_runs'];fig,axes=plt.subplots(1,2,figsize=(8.2,3.5),layout='constrained')
-offset=0
 for i,name in enumerate(goal_names):
     s=runs[name];v=lines(name);color=[TEAL,GOLD,'#6D598A'][i%3]
-    axes[0].plot([offset]+[offset+r['policy_steps'] for r in v]+[offset+s['policy_steps']],
-                 [mean(s['before'])]+[r['mean_trips'] for r in v]+[mean(s['after'])],'o-',color=color,label=f'Run {i+1}')
+    axes[0].plot([0]+[r['wall_seconds']/60 for r in v]+[s['training_wall_seconds']/60],
+                 [mean(s['before'])]+[r['mean_trips'] for r in v]+[mean(s['after'])],'o-',color=color,label=assessment['goal_run_labels'][name])
     path=DATA/'runs'/name/'episodes.jsonl';episodes=[json.loads(l) for l in path.read_text().splitlines()]
     scores=[r['trips'] for r in episodes]
     rolling=[statistics.mean(scores[max(0,j-19):j+1]) for j in range(len(scores))]
-    axes[1].plot(range(sum(runs[n]['episodes'] for n in goal_names[:i])+1,sum(runs[n]['episodes'] for n in goal_names[:i])+len(rolling)+1),rolling,color=color)
-    offset+=s['policy_steps']
+    axes[1].plot(range(1,len(rolling)+1),rolling,color=color)
 axes[0].axhline(mean(runs[goal_names[0]]['before']),color=GREY,linestyle='--',label='Frozen initial')
-axes[0].set(xlabel='Cumulative macro decisions',ylabel='Development mean trips',title='Frozen validation (5 seeds)');axes[0].legend(frameon=False,fontsize=7)
+axes[0].set(xlabel='Learner wall minutes (includes validation)',ylabel='Development mean trips',title='Frozen validation (5 seeds)');axes[0].legend(frameon=False,fontsize=7)
 axes[1].set(xlabel='Completed training games',ylabel='Rolling mean trips (up to 20)',title='Mixed training layouts')
 savefig('goal-learning.png')
 
@@ -160,11 +158,11 @@ note('10,334 trainable parameters. Hand-designed initial candidate scores prefer
 page('5 / Did the connection agent learn?','Training results and frozen validation answer different questions.')
 figure('goal-learning.png')
 table(['Run','Wall minutes','Macro decisions','Games','Best training','Final dev mean'],[
-    [str(i+1),f"{runs[n]['training_wall_seconds']/60:.1f}",f"{runs[n]['policy_steps']:,}",runs[n]['episodes'],runs[n]['best_training_score'],f"{mean(runs[n]['after']):.1f}"] for i,n in enumerate(goal_names)],[36,72,92,53,100,134])
+    [assessment['goal_run_labels'][n],f"{runs[n]['training_wall_seconds']/60:.1f}",f"{runs[n]['policy_steps']:,}",runs[n]['episodes'],runs[n]['best_training_score'],f"{mean(runs[n]['after']):.1f}"] for i,n in enumerate(goal_names)],[92,55,92,43,100,105])
 p(assessment['goal_interpretation'])
 heading('Why games per second changed')
 p('There is no deliberate 0.8-games/second limit. Each game lasts a different number of simulated seconds and requires a different amount of routing, serialization and policy work. Better games can take longer to finish. Workers collect experience for one shared policy; they are not separate independently learning models. Path planning adds CPU work, while macro decisions reduce the number of neural choices per game.')
-note('Periodic validation time is included in learner wall budgets. Initial/final evaluation is additional. Training seeds are sampled from 1000-1099; changing seed mixes can change rolling training means. Frozen validation and final tests are therefore more informative than training means alone.')
+note('These arms start from the same initial checkpoint; they are not consecutive training stages. Scaled rewards multiply numerical learning rewards by 0.01, never actual scores. Choice-only timing folds forced waits into the preceding decision and uses a separately versioned macro reward. Its decision counts are not comparable to five-second-wait counts. Periodic validation consumes learner time; initial/final evaluation is additional. Shared CPU load and changing seed mixes limit comparisons of wall speed and training means.')
 
 page('6 / Fresh-map final test','Candidate selection was recorded before examining seeds 3000-3009. No subsequent optimization uses these results.')
 figure('final-tests.png')
@@ -196,7 +194,7 @@ p('The archive contains run configs, source snapshots, summaries, progress/episo
 p('Relevant checks covered simulator invariants, structured observation boundaries, input migration, actual gradient changes, checkpoint reloads, parallel workers, reward cancellation, no-op masks, shutdown and cross-runtime ordinary-command replays. The rebuilt native player passed the simulator check suite. Full test outcomes and any command corrections are recorded in the experiment log.')
 heading('Open limits')
 p('The experiments are small and adaptive. Development maps influenced engineering decisions, so they are not final tests. The planner is limited, uses approximate route costs and can still encounter ordinary rejection rules. The goal agent has fewer tools than the original policy. Long-term throughput, city transfer, replicated learning gains and the 1,000-trip target remain separate questions.')
-note('Rebuild: docs/training/build_investigation_report.py using bundled Python with Matplotlib, ReportLab, Pillow and pypdf. The builder reads only archived files and never trains or runs a game. Historical PDFs are preserved. Primary shaping reference: Ng, Harada & Russell (1999), Policy Invariance Under Reward Transformations, people.eecs.berkeley.edu/~russell/papers/icml99-shaping.pdf.')
+note('Rebuild: docs/training/build_investigation_report.py using bundled Python with Matplotlib, ReportLab, Pillow and pypdf. The builder reads only archived files and never trains or runs a game. Historical PDFs are preserved. Primary shaping reference: Ng, Harada & Russell (1999), Policy Invariance Under Reward Transformations, ai.stanford.edu/~ang/papers/shaping-icml99.pdf.')
 
 def footer(canvas,doc):
     canvas.setStrokeColor(colors.HexColor('#CFDDE2'));canvas.line(54,44,541,44)
