@@ -310,3 +310,12 @@ is no complete machine-verifiable transcript of every past interaction,
 unsaved exploratory command or lost pre-crash state. Unmeasured comparisons
 and missing summaries stay unknown. Future records must preserve the concrete
 decision, rationale, evidence, limits and superseding change as work happens.
+
+## T13 - Publish the training branch to GitHub
+
+The user could not find the branch on GitHub. Inspection confirmed `mohammad`
+existed only locally and had no upstream tracking branch. Published it with
+`git push -u origin mohammad` to `JoeJaffal/mini_motorways`; Git confirmed the
+new remote branch and tracking configuration. `main` was not pushed or merged.
+This publishes committed code, documentation and archived evidence, not ignored
+local checkpoints or generated player builds. No pull request was created.
