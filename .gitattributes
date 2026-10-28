@@ -5,4 +5,4 @@
 *.jpeg binary
 *.bmp binary
 # Archived evidence uses byte-level SHA-256 manifests; preserve exact bytes.
-docs/training/** -text
+docs/training/** -text whitespace=cr-at-eol
