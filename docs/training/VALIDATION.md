@@ -11,6 +11,9 @@ it did not train, evaluate or modify a model policy.
   benchmark. SHA-256 verification passed for all 56 copies.
 - The supplementary manifest verifies 16 report, figure, replay and source
   assets. All hashes passed. It includes before/after retiring-pavement captures.
+- Git text normalization is disabled inside this archive so manifest hashes
+  remain valid across operating systems. Staged Git blob bytes were checked
+  against both manifests, not just the working copies.
 - The new performance plot was rebuilt from archived worker monitor CSV and
   visually inspected. It contains 4,549 completed games. Hourly means reproduced
   as 31.9701, 45.9161, 52.6413 and 52.6361. It is a single-seed, resumed-run plot.
