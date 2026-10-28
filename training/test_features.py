@@ -14,6 +14,37 @@ DOTNET='dotnet'
 
 
 class FeatureChecks(unittest.TestCase):
+    def test_informed_prior_prefers_visible_driveway_goals_and_reloads(self):
+        import tempfile
+        from pathlib import Path
+        torch.set_num_threads(2)
+        env=make_vector(1,dotnet=DOTNET,observation_mode='connectivity')
+        try:
+            model=warm_start(ROOT/'output/training/multi-seed-shaped-01/final.zip',env,dict(n_steps=16,batch_size=8,n_epochs=1,gamma=.999),42,True,'informed-spatial')
+            e=env.envs[0].unwrapped;obs,_=e.reset(seed=42,options={'scenario_seed':1000})
+            e.step(CELLS+1)
+            obs=e.encode()
+            with torch.no_grad():probs=model.policy.get_distribution(model.policy.obs_to_tensor(obs)[0],action_masks=e.action_masks()).distribution.probs[0]
+            best=int(probs.argmax())
+            from environment import DIRS,cell
+            source_points=[(p[0]+DIRS[b['drivewayDirection']][0],p[1]+DIRS[b['drivewayDirection']][1]) for p,b in e.houses.items()]
+            self.assertIn((best%50,best//50),source_points)
+            e.step(best);obs=e.encode()
+            with torch.no_grad():probs=model.policy.get_distribution(model.policy.obs_to_tensor(obs)[0],action_masks=e.action_masks()).distribution.probs[0]
+            targets=[]
+            for b in e.buildings:
+                if not b['isHouse']:
+                    for entry,d in zip(b['entrances'],b['entranceDirections']):
+                        p=cell(entry);targets.append((p[0]+DIRS[d][0],p[1]+DIRS[d][1]))
+            best=int(probs.argmax());self.assertIn((best%50,best//50),targets)
+            with tempfile.TemporaryDirectory(dir=ROOT/'tmp') as directory:
+                model.save(Path(directory)/'informed')
+                restored=MaskablePPO.load(Path(directory)/'informed',device='cpu')
+                a,_=model.predict(obs,deterministic=True,action_masks=e.action_masks())
+                b,_=restored.predict(obs,deterministic=True,action_masks=e.action_masks())
+                np.testing.assert_array_equal(a,b)
+        finally:env.close()
+
     def test_spatial_residual_preserves_policy_then_trains_and_reloads(self):
         import tempfile
         from pathlib import Path

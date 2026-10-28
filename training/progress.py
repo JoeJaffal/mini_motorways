@@ -29,7 +29,7 @@ def clock(seconds):
 
 class BudgetCallback(BaseCallback):
     def __init__(self, output, minutes, step_budget, episodes_per_seed=100,
-                 print_seconds=5, metadata=None,validation_fn=None,validation_minutes=0):
+                 print_seconds=5, metadata=None,validation_fn=None,validation_minutes=0,stop_file=None):
         super().__init__()
         self.output, self.seconds, self.step_budget = Path(output), minutes*60, step_budget
         self.episodes_per_seed, self.print_seconds = episodes_per_seed, print_seconds
@@ -43,6 +43,7 @@ class BudgetCallback(BaseCallback):
         self.worker_seeds, self.worker_status = {}, {}
         self.validation_fn,self.validation_interval=validation_fn,validation_minutes*60
         self.last_validation=None;self.best_validation=float('-inf')
+        self.stop_file=Path(stop_file) if stop_file else None;self.stop_reason=None
 
     def _on_training_start(self):
         self.started = self.last_print = self.last_save = time.perf_counter()
@@ -99,6 +100,8 @@ class BudgetCallback(BaseCallback):
 
     def _on_step(self):
         now = time.perf_counter()
+        if self.stop_file and self.stop_file.exists():
+            self.stop_reason='stop_file';print('STOP FILE | finishing and saving normally',flush=True);return False
         current = {}
         for worker,(info, done) in enumerate(zip(self.locals['infos'], self.locals['dones'])):
             info=dict(info,worker=worker)

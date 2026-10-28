@@ -106,3 +106,36 @@ the original unmasked 0/2/4/4/0, mean 2.0. All sampled draw commands in that
 five-seed masked evaluation had physical changes. This is a mask-only inference
 effect, not learning. The cache improvement and any subsequent learning must
 be evaluated separately. No final test seeds have been inspected.
+
+## Further pilot outcomes and informed initialization
+
+The spatial-residual pilot hit its 18-minute time ceiling at 63,490 selections
+(rather than 65,536), with best training score 39. Sampled development scores
+were 37/0/0/0/0, deterministic scores all zero. It did not provide convincing
+generalization. The productive-mask/input pilot completed 65,536 selections in
+582.9 seconds; sampled scores 12/4/0/12/0, deterministic 0/0/0/6/0. These are
+weak and inconsistent, not evidence that another unchanged run will solve it.
+
+Prepared a distinct `informed-spatial` initialization to address unproductive
+exploration. It uses the same current 52-channel observation and normal commands,
+but intentionally changes the starting action distribution: suppress the old
+independent coordinate logits; favor current driveway outside points for houses
+lacking a route or matching an unsupplied destination; favor same-color current
+destination driveway outside points at the second selection; prefer shorter
+direct endpoint distances, waiting when no such source remains, and choosing
+an offered upgrade. A shared learned spatial residual can adjust cell scores.
+There is no path computation, routed proposal, stock grant, future data or
+demonstration dataset. The goal prior strength starts at 6 and is trainable;
+wait/upgrade logit biases are explicitly 8/10. All ordinary tools remain exposed.
+
+This is a hand-designed action prior, not a zero-behavior-change migration or
+learning achievement. Its frozen initial checkpoint must be evaluated alongside
+trained checkpoints; improvement over the old agent alone would not demonstrate
+learning. Tests verify that it initially favors visible source/target driveway
+points and that saved/reloaded predictions agree. The earlier zero-residual
+architecture and legacy default retain their original starting behavior.
+
+The continuing run uses a fresh directory, four workers, mixed seeds, periodic
+development evaluation and a stop-file mechanism for graceful early completion.
+The best developmental candidate can be the frozen initial informed policy if
+optimization does not improve it. No test seed 3000-3009 has yet been inspected.

@@ -7,7 +7,7 @@ param(
     [ValidateSet(1,2,4)][int]$Workers = 1,
     [ValidateSet('trips','connectivity')][string]$RewardMode = 'connectivity',
     [ValidateSet('legacy','connectivity')][string]$ObservationMode = 'legacy',
-    [ValidateSet('legacy','spatial-residual')][string]$Architecture = 'legacy',
+    [ValidateSet('legacy','spatial-residual','informed-spatial')][string]$Architecture = 'legacy',
     [ValidateSet('all','productive')][string]$DrawMask = 'all',
     [double]$ValidationMinutes = 0,
     [switch]$AdaptInputs,

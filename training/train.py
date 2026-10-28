@@ -84,8 +84,9 @@ def main():
     parser.add_argument('--adapt-inputs',action='store_true')
     parser.add_argument('--reset-optimizer',action='store_true')
     parser.add_argument('--validation-minutes',type=float,default=0)
-    parser.add_argument('--architecture',choices=['legacy','spatial-residual'],default='legacy')
+    parser.add_argument('--architecture',choices=['legacy','spatial-residual','informed-spatial'],default='legacy')
     parser.add_argument('--draw-mask',choices=['all','productive'],default='all')
+    parser.add_argument('--stop-file',type=Path)
     args = parser.parse_args()
     if args.validation_minutes<0:parser.error('Validation interval must be nonnegative')
     if args.minutes <= 0 or args.steps < 1 or args.threads < 1 or not 1 <= args.eval_episodes <= 20:
@@ -145,13 +146,16 @@ def main():
                 raise RuntimeError('Checkpoint discount must match connectivity-shaping gamma')
         else:
             policy='MultiInputPolicy'
-            if args.architecture=='spatial-residual':
-                from spatial_policy import SpatialResidualPolicy
-                policy=SpatialResidualPolicy
+            if args.architecture in ['spatial-residual','informed-spatial']:
+                from spatial_policy import SpatialResidualPolicy,InformedSpatialPolicy
+                policy=InformedSpatialPolicy if args.architecture=='informed-spatial' else SpatialResidualPolicy
             model = MaskablePPO(policy, env, device='cpu', seed=args.seed, verbose=0,
                                 policy_kwargs=dict(features_extractor_class=GridEncoder, net_arch=[64], normalize_images=False),
                                 **{k:v for k,v in config['hyperparameters'].items() if k != 'net_arch'})
         model.draw_mask=args.draw_mask
+        config['trainable_parameters']=sum(p.numel() for p in model.policy.parameters())
+        config['architecture']=args.architecture
+        (output/'config.json').write_text(json.dumps(config,indent=2)+'\n')
         model.set_logger(configure(str(output), ['csv']))
         model.save(output/'initial')
         initial_parameters = torch.cat([p.detach().flatten().cpu() for p in model.policy.parameters()]).clone()
@@ -171,7 +175,7 @@ def main():
                     return evaluate(policy,args.dotnet,args.episode_seconds,range(2000,2000+args.eval_episodes),deterministic=True,host_dll=args.host_dll)
             finally:policy.policy.set_training_mode(training)
         callback = BudgetCallback(output, args.minutes, args.steps, args.episodes_per_seed,
-                                  args.print_seconds, config,validation_fn,args.validation_minutes)
+                                  args.print_seconds, config,validation_fn,args.validation_minutes,args.stop_file)
         started = time.perf_counter()
         interrupted = False
         try:
@@ -194,6 +198,7 @@ def main():
             torch.manual_seed(args.seed+1)
             greedy = evaluate(restored, args.dotnet, args.episode_seconds, range(2000, 2000+args.eval_episodes), deterministic=True,host_dll=args.host_dll)
         summary = dict(training_wall_seconds=elapsed, policy_steps=model.num_timesteps,
+                       stop_reason='interrupt' if interrupted else callback.stop_reason or 'time_or_step_budget',
                        completed_commands=callback.commands, episodes=callback.episodes,
                        parameter_update_confirmed=changed, interrupted=interrupted,
                        policy_steps_per_second=model.num_timesteps/elapsed,

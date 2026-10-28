@@ -7,19 +7,20 @@ def warm_start(checkpoint,env,hyperparameters,seed,adapt_inputs=False,architectu
     from train import GridEncoder
     source=MaskablePPO.load(checkpoint,device='cpu')
     policy='MultiInputPolicy'
-    if architecture=='spatial-residual':
-        from spatial_policy import SpatialResidualPolicy
-        policy=SpatialResidualPolicy
+    spatial=architecture in ['spatial-residual','informed-spatial']
+    if spatial:
+        from spatial_policy import SpatialResidualPolicy,InformedSpatialPolicy
+        policy=InformedSpatialPolicy if architecture=='informed-spatial' else SpatialResidualPolicy
     target=MaskablePPO(policy,env,device='cpu',seed=seed,verbose=0,
                       policy_kwargs=dict(features_extractor_class=GridEncoder,net_arch=[64],normalize_images=False),
                       **{k:v for k,v in hyperparameters.items() if k!='net_arch'})
     state=source.policy.state_dict();expected=target.policy.state_dict()
     for key,value in expected.items():
         source_key=key
-        if architecture=='spatial-residual':
+        if spatial:
             source_key=key.replace('.global_encoder.','.').replace('mlp_extractor.global_mlp.','mlp_extractor.').replace('action_net.base.','action_net.')
         if source_key not in state:
-            if architecture=='spatial-residual' and any(t in key for t in ['.spatial.','.global_context.','.spatial_head.']):continue
+            if spatial and any(t in key for t in ['.spatial.','.global_context.','.spatial_head.','.prior_strength']):continue
             raise ValueError(f'Unrecognized checkpoint parameter: {key}')
         old=state[source_key]
         if value.shape!=old.shape:
