@@ -1,5 +1,13 @@
 # Headless simulation
 
+`{"command":"drawchoices","x":6,"y":5}` returns a lightweight read-only
+`possibleChanges` array of 1,500 booleans. False proves the ordinary stroke
+cannot physically change roads, connections or a driveway; true is only
+conservative possibility, not a suggested/valid route. It never steps the world
+or changes LastAction. Ordinary responses now include topology `networkVersion`
+to invalidate agent-side caches, along with current resources and bounds.
+This endpoint supports an optional agent mask; game construction rules are unchanged.
+
 Training may opt into a read-only diagnostic by sending
 `"includeConnectivity":true` on reset. Reset/step/observe responses then include
 top-level `usefulConnectedHouses`: houses with a current legal same-color

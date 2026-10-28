@@ -60,7 +60,7 @@ python scripts/verify_five_maps.py
 dotnet run --project simulation/Headless
 ```
 
-The self-test currently runs **41 shared suites**. The Python check exercises both rule sets on all five maps. The host accepts one JSON request per line:
+The self-test currently runs **42 shared suites**. The Python check exercises both rule sets on all five maps. The host accepts one JSON request per line:
 
 ```json
 {"command":"reset","version":"OriginalReference","scenario":"London","seed":42}

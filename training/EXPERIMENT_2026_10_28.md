@@ -205,3 +205,21 @@ unscaled trips. A paired real-host test checks identical observations/score and
 scaled rewards through positive delivery. Scaling can change the value/policy
 loss balance and entropy's effective optimization behavior; no learning benefit
 is assumed. Shared CPU load means wall-limited arms may collect unequal samples.
+
+## Verification record so far
+
+The 42 shared simulator suites and ten five-map protocol checks passed. Python
+checks passed: environment 7, rewards 6, workflow/replay 4, parallel 4,
+shutdown 1, optional input/spatial migration 4, productive masks 1, and goal
+adapter/update/reload/scaling 3. The first shutdown invocation incorrectly used
+an unsupported --dotnet option; rerunning its correct standalone CLI passed.
+A documentation patch with a mismatched context was rejected before applying;
+the corrected patch succeeded. These command mistakes did not change training.
+
+The rebuilt OriginalReference native player completed the simulator suites and
+build successfully. A duplicate build invocation exited while the first project
+build was active; the successful first build log is preserved separately.
+Generated scenes/settings were restored. Exact native replay checks passed for
+126 trips / 592.6 seconds / 593 commands (primitive) and 300 / 890.4 / 891
+(planner-aided). The latter map capture visually shows the proper planner-aided
+source label and verified final outcome. No gameplay rule was relaxed.

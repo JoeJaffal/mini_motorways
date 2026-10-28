@@ -1,5 +1,18 @@
 # Repeated-seed training and watching the best game
 
+For the separate restricted planner-aided agent, use the commands in
+[GOAL_AGENT.md](GOAL_AGENT.md). The PowerShell helper below trains the original
+primitive all-tools policy; these are different models and checkpoint types.
+
+For the opt-in connectivity/spatial experiments and their results, see the
+[three-hour investigation](EXPERIMENT_2026_10_28.md). Experimental flags are
+`-ObservationMode connectivity`, `-Architecture spatial-residual` or
+`informed-spatial`, `-DrawMask productive`, `-ValidationMinutes 8`,
+`-RolloutSize 1024` and `-GaeLambda .99`. Use the exact matching architecture
+and observation mode when resuming one of those checkpoints. `-AdaptInputs`
+or `-ResetOptimizer` is an explicit new warm-start experiment, not an exact
+optimizer continuation. Existing legacy-input commands keep their old schema.
+
 Changes live on `mohammad`. The current training default is
 [trip reward plus bounded connectivity shaping](REWARD_SHAPING.md). Use
 `-RewardMode trips` for the historical baseline. All tools, normal materials and

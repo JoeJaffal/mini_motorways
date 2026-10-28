@@ -7,6 +7,7 @@ players and scratch captures remain local and are not backed up by this archive.
 | Record | Purpose |
 | --- | --- |
 | [Experiment history](../../training/EXPERIMENT_HISTORY.md) | Chronological decisions, engineering choices, reasons, changes, failures, analysis, results and unresolved hypotheses |
+| [Three-hour investigation](../../training/EXPERIMENT_2026_10_28.md) | Authorized controlled pilots, optional priors/masks, credit-window comparison and distinct heuristic baseline |
 | [Earlier simulator decisions](../../simulation/Docs/DESIGN_DECISIONS.md) | Original/Custom design history before training |
 | [Current training status](../../training/CURRENT_STATUS.md) | Latest implemented behavior and results |
 | [Connectivity reward update](../../training/REWARD_SHAPING.md) | New shaping design, anti-loop accounting, tests and unmeasured learning effect |

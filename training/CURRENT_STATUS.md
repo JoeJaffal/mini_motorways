@@ -1,5 +1,13 @@
 # Training status — 28 October 2026
 
+**New authorized investigation:** the user has authorized three hours of
+autonomous changes/training. Opt-in connectivity inputs, spatial scoring,
+informed initialization and no-op masks are being compared. The informed
+training run has recorded 110 trips, but its frozen starting prior also improves
+behavior; do not interpret the new record as learning alone. See the
+[live protocol/results](EXPERIMENT_2026_10_28.md). Existing checkpoints remain
+intact. These experimental models differ from the earlier report below.
+
 **Latest code update:** the user authorized a connectivity reward experiment.
 Training now defaults to trip delta plus discounted potential shaping; the
 four-hour results below and both PDFs describe the earlier trip-only policy.

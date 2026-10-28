@@ -1,5 +1,10 @@
 # Local reinforcement learning experiment
 
+The separate [planner-aided connection policy](GOAL_AGENT.md) is an opt-in
+experiment with different observations and restricted macro actions. Its scores
+must be compared against its own frozen informed initial policy. The primitive
+all-tools trainer described below remains available.
+
 This training project lives on branch `mohammad`. Branch `main` remains the
 playground. Nothing in the simulator's rules, material stocks, spawning, failure
 conditions or diagnostic helpers is changed by training.
@@ -14,6 +19,10 @@ For the latest results, limitations and fix history, see the
 The [chronological history](EXPERIMENT_HISTORY.md) preserves decisions, updates
 and analysis; the [evidence index](../docs/training/README.md) includes the full
 original PDF, all its graphs and archived run measurements.
+The [three-hour experiment](EXPERIMENT_2026_10_28.md) adds opt-in connectivity
+inputs, spatial/informed policies, productive-stroke masks and longer-credit
+comparisons. Defaults remain legacy inputs/architecture and the previously
+authorized connectivity reward; experiments are not silently substituted.
 Defaults now use 100 consecutive games per seed, then advance to the next seed.
 All ordinary tools remain available. The training default now adds
 [discounted connectivity shaping](REWARD_SHAPING.md); use `--reward-mode trips`
@@ -101,6 +110,13 @@ of the old simulator/RNG/rollout state.
 ## Observation allowlist
 
 The policy receives a `50 x 30` grid with 50 channels and 42 global values.
+With `--observation-mode connectivity`, it receives 52 channels: 50 marks houses
+without a matching round trip, and 51 marks destination footprints without
+connected supply. The schema is separately versioned. `--adapt-inputs` explicitly
+copies old weights, zero-fills new channels and resets the optimizer. A matched
+control uses `--reset-optimizer` without new channels. Spatial-residual mode
+preserves initial probabilities when migrated; informed-spatial deliberately
+adds a documented endpoint/wait/upgrade prior and suppresses legacy cell logits.
 All grid channels are zero outside the currently playable bounds. No building or
 vehicle list is truncated: visible entries are rasterized or aggregated by cell.
 
@@ -144,7 +160,9 @@ and completed commands/second. Evaluation uses the same masks as training.
 
 Connectivity runs log shaped training returns separately from actual trips.
 Monitor CSV `r` is training reward; its `trips` column is game score. The current
-PDF is a pre-shaping snapshot; no shaped learning result has been measured yet.
+PDF is a pre-shaping snapshot. Later shaped results and negative pilots are
+documented in [current status](CURRENT_STATUS.md) and the
+[three-hour investigation](EXPERIMENT_2026_10_28.md).
 
 A short sparse-reward run may score zero: generating roads that complete a trip
 is a difficult exploration problem when all coordinates and tools are learned
