@@ -8,6 +8,7 @@ param(
     [ValidateSet('trips','connectivity')][string]$RewardMode = 'connectivity',
     [ValidateSet('legacy','connectivity')][string]$ObservationMode = 'legacy',
     [ValidateSet('legacy','spatial-residual')][string]$Architecture = 'legacy',
+    [ValidateSet('all','productive')][string]$DrawMask = 'all',
     [double]$ValidationMinutes = 0,
     [switch]$AdaptInputs,
     [switch]$ResetOptimizer,
@@ -28,7 +29,7 @@ $trainingArguments = @('training/train.py', '--dotnet', $trainingDotnet,
     '--episodes-per-seed', $EpisodesPerSeed, '--minutes', $Minutes,
     '--train-seed-start', $StartSeed, '--train-seed-count', $SeedCount,
     '--steps', $Steps, '--workers', $Workers, '--reward-mode', $RewardMode,
-    '--observation-mode', $ObservationMode, '--architecture', $Architecture,
+    '--observation-mode', $ObservationMode, '--architecture', $Architecture, '--draw-mask', $DrawMask,
     '--validation-minutes', $ValidationMinutes, '--output', (Join-Path 'output/training' $RunName))
 if ($AdaptInputs) { $trainingArguments += '--adapt-inputs' }
 if ($ResetOptimizer) { $trainingArguments += '--reset-optimizer' }

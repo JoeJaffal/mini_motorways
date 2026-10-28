@@ -35,9 +35,10 @@ class GridEncoder(BaseFeaturesExtractor):
         return self.combine(torch.cat([self.grid(observations['grid']), observations['global']], dim=1))
 
 
-def evaluate(model, dotnet, seconds, seeds, deterministic=False):
+def evaluate(model, dotnet, seconds, seeds, deterministic=False,host_dll=None):
     observation_mode='connectivity' if model.observation_space['grid'].shape[0]==52 else 'legacy'
-    env = TrafficEnv(dotnet=dotnet, seconds=seconds, seeds=seeds,observation_mode=observation_mode)
+    env = TrafficEnv(dotnet=dotnet, seconds=seconds, seeds=seeds,observation_mode=observation_mode,
+                     draw_mask=getattr(model,'draw_mask','all'),host_dll=host_dll)
     runs = []
     try:
         for seed in seeds:
@@ -63,6 +64,7 @@ def evaluate(model, dotnet, seconds, seeds, deterministic=False):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--dotnet', default='dotnet')
+    parser.add_argument('--host-dll',type=Path)
     parser.add_argument('--minutes', type=float, default=30)
     parser.add_argument('--steps', type=int, default=10_000_000)
     parser.add_argument('--episode-seconds', type=int, default=3600)
@@ -83,6 +85,7 @@ def main():
     parser.add_argument('--reset-optimizer',action='store_true')
     parser.add_argument('--validation-minutes',type=float,default=0)
     parser.add_argument('--architecture',choices=['legacy','spatial-residual'],default='legacy')
+    parser.add_argument('--draw-mask',choices=['all','productive'],default='all')
     args = parser.parse_args()
     if args.validation_minutes<0:parser.error('Validation interval must be nonnegative')
     if args.minutes <= 0 or args.steps < 1 or args.threads < 1 or not 1 <= args.eval_episodes <= 20:
@@ -124,7 +127,7 @@ def main():
     env = make_vector(args.workers, output=output, dotnet=args.dotnet, seconds=args.episode_seconds,
                             seeds=training_seeds, episodes_per_seed=args.episodes_per_seed,
                             seed_schedule=args.seed_schedule, record_replays=True,
-                            reward_mode=args.reward_mode,reward_gamma=GAMMA,observation_mode=args.observation_mode)
+                            reward_mode=args.reward_mode,reward_gamma=GAMMA,observation_mode=args.observation_mode,draw_mask=args.draw_mask,host_dll=args.host_dll)
     try:
         if args.resume:
             previous_config = json.loads((args.resume.parent/'config.json').read_text())
@@ -148,6 +151,7 @@ def main():
             model = MaskablePPO(policy, env, device='cpu', seed=args.seed, verbose=0,
                                 policy_kwargs=dict(features_extractor_class=GridEncoder, net_arch=[64], normalize_images=False),
                                 **{k:v for k,v in config['hyperparameters'].items() if k != 'net_arch'})
+        model.draw_mask=args.draw_mask
         model.set_logger(configure(str(output), ['csv']))
         model.save(output/'initial')
         initial_parameters = torch.cat([p.detach().flatten().cpu() for p in model.policy.parameters()]).clone()
@@ -158,13 +162,13 @@ def main():
               f'{training_seeds.start} through {training_seeds.stop-1} | {args.seed_schedule}',flush=True)
         print('EVALUATION | checking starting policy on reserved seeds before learner timer starts',flush=True)
         torch.manual_seed(args.seed+1)
-        before = evaluate(model, args.dotnet, args.episode_seconds, range(2000, 2000+args.eval_episodes))
+        before = evaluate(model, args.dotnet, args.episode_seconds, range(2000, 2000+args.eval_episodes),host_dll=args.host_dll)
         def validation_fn(policy):
             training=policy.policy.training
             try:
                 with torch.random.fork_rng(devices=[]):
                     torch.manual_seed(43)
-                    return evaluate(policy,args.dotnet,args.episode_seconds,range(2000,2000+args.eval_episodes),deterministic=True)
+                    return evaluate(policy,args.dotnet,args.episode_seconds,range(2000,2000+args.eval_episodes),deterministic=True,host_dll=args.host_dll)
             finally:policy.policy.set_training_mode(training)
         callback = BudgetCallback(output, args.minutes, args.steps, args.episodes_per_seed,
                                   args.print_seconds, config,validation_fn,args.validation_minutes)
@@ -186,9 +190,9 @@ def main():
         if not interrupted:
             print('EVALUATION | final checkpoint on reserved seeds; learner has stopped',flush=True)
             torch.manual_seed(args.seed+1)
-            after = evaluate(restored, args.dotnet, args.episode_seconds, range(2000, 2000+args.eval_episodes))
+            after = evaluate(restored, args.dotnet, args.episode_seconds, range(2000, 2000+args.eval_episodes),host_dll=args.host_dll)
             torch.manual_seed(args.seed+1)
-            greedy = evaluate(restored, args.dotnet, args.episode_seconds, range(2000, 2000+args.eval_episodes), deterministic=True)
+            greedy = evaluate(restored, args.dotnet, args.episode_seconds, range(2000, 2000+args.eval_episodes), deterministic=True,host_dll=args.host_dll)
         summary = dict(training_wall_seconds=elapsed, policy_steps=model.num_timesteps,
                        completed_commands=callback.commands, episodes=callback.episodes,
                        parameter_update_confirmed=changed, interrupted=interrupted,

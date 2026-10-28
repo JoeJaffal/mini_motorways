@@ -71,3 +71,38 @@ to the residual head during a disposable 32-selection smoke learner, and exact
 deterministic predictions after saving/reloading that disposable model. The
 smoke update was explicitly authorized within the three-hour experiment and
 does not modify any production checkpoint. Further learning results are pending.
+
+## Pilot input-only results
+
+Both two-worker pilots completed exactly 65,536 selections, starting from the
+same stopped multi-seed policy with fresh optimizers, random seeds 1000-1099
+and the same shaping. Control took 452.4 learner seconds, 129 games, best 34;
+52-channel input pilot took 460.7 seconds, 126 games, best 33. Development
+sampled scores were control 2/14/1/0/0 versus input pilot 9/0/4/10/0;
+deterministic scores were control 0/0/0/0/0 versus input pilot 0/0/2/5/0.
+This favors the inputs relative to this control, but the starting deterministic
+mean was 2.0, higher than either final mean (0.0/1.4). Do not claim an absolute
+generalization improvement. Periodic results and exact source are saved per run.
+
+## Productive-stroke mask hypothesis
+
+Diagnostics found roughly 89% of early pilot draw commands had no physical
+network effect. Prepared an optional `productive` draw mask: a read-only core
+probe excludes a target only when it proves the complete normal stroke cannot
+change roads, connections or a driveway direction. True means "may change",
+not "useful", reachable or even guaranteed legal. It never supplies routes.
+Wait remains available; every ordinary tool remains exposed. Provably empty
+start choices are cached/excluded until topology, inventory or playable bounds
+change. The probe is conservative around potentially buildable tiles and rail
+restrictions. Original construction rules are untouched; this changes the
+agent's action interface and is reported as a separate intervention.
+
+The query has a lightweight headless response and no simulation ticks. It is
+tested against actual stroke effects and for read-only behavior. A versioned
+host build under `tmp/headless-productivity` avoids replacing the DLL used by
+the already-running spatial pilot. Frozen-policy deterministic development
+scores with the initial version of the mask were 2/0/6/6/0, mean 2.8, versus
+the original unmasked 0/2/4/4/0, mean 2.0. All sampled draw commands in that
+five-seed masked evaluation had physical changes. This is a mask-only inference
+effect, not learning. The cache improvement and any subsequent learning must
+be evaluated separately. No final test seeds have been inspected.

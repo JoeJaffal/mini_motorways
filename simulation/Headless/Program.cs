@@ -98,6 +98,11 @@ static class Program
                 var request=JsonSerializer.Deserialize<Request>(line,Json)??throw new Exception("Missing request");
                 if(request.Command=="quit")break;
                 int trips=world.TripsCompleted,spending=world.ConstructionSpent;bool accepted=true;
+                if(request.Command=="drawchoices")
+                {
+                    Console.WriteLine(JsonSerializer.Serialize(new {accepted=true,terminated=world.Failed,truncated=world.ScenarioRejected,
+                        possibleChanges=world.DrawChangeChoices(new Cell(request.X,request.Y))},Json));continue;
+                }
                 switch(request.Command)
                 {
                     case "reset":
@@ -128,6 +133,7 @@ static class Program
                     default:throw new Exception("Commands: reset, build, connect, draw, motorway, editMotorway, removeMotorway, upgrade, reference (debug), step, observe, quit");
                 }
                 Console.WriteLine(JsonSerializer.Serialize(new {accepted,message=world.LastAction,
+                    networkVersion=world.NetworkVersion,
                     tripsDelta=world.TripsCompleted-trips,spendingDelta=world.ConstructionSpent-spending,
                     terminated=world.Failed,truncated=world.ScenarioRejected,
                     usefulConnectedHouses=includeConnectivity&&(request.Command=="reset"||request.Command=="step"||request.Command=="observe")

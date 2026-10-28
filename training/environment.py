@@ -24,8 +24,8 @@ CONNECTIVITY_SCHEMA='full-tools-staged-grid-connectivity-v2'
 
 
 class Host:
-    def __init__(self, dotnet):
-        dll = ROOT / 'simulation/Headless/bin/Debug/net8.0/TrafficHost.dll'
+    def __init__(self, dotnet,dll=None):
+        dll = dll or ROOT / 'simulation/Headless/bin/Debug/net8.0/TrafficHost.dll'
         self.process = subprocess.Popen([dotnet, str(dll)], stdin=subprocess.PIPE,
                                         stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
                                         creationflags=subprocess.CREATE_NEW_PROCESS_GROUP if os.name=='nt' else 0)
@@ -92,10 +92,12 @@ class TrafficEnv(gym.Env):
     def __init__(self, dotnet='dotnet', city='LosAngeles', seconds=3600,
                  seeds=range(1000, 1100), episodes_per_seed=100,
                  seed_schedule='blocks', record_replays=False,reward_mode='trips',reward_gamma=GAMMA,
-                 observation_mode='legacy'):
+                 observation_mode='legacy',draw_mask='all',host_dll=None):
         super().__init__()
         if observation_mode not in ['legacy','connectivity']:raise ValueError('Unknown observation mode')
         self.observation_mode=observation_mode
+        if draw_mask not in ['all','productive']:raise ValueError('Unknown draw mask')
+        self.draw_mask=draw_mask
         self.channels=CHANNELS+2*(observation_mode=='connectivity')
         self.schema=CONNECTIVITY_SCHEMA if observation_mode=='connectivity' else SCHEMA
         if reward_mode not in REWARD_SCHEMAS:raise ValueError('Unknown reward mode')
@@ -103,7 +105,7 @@ class TrafficEnv(gym.Env):
         self.connection_potential=ConnectionPotential(gamma=reward_gamma)
         if city not in MAPS or seconds < 1 or not tuple(seeds):
             raise ValueError('Unknown city, empty seeds or nonpositive duration')
-        self.host = Host(dotnet)
+        self.host = Host(dotnet,host_dll)
         self.city, self.seconds, self.seeds = city, seconds, tuple(seeds)
         if episodes_per_seed < 1 or seed_schedule not in ('blocks', 'random'):
             raise ValueError('Invalid seed schedule')
@@ -135,12 +137,14 @@ class TrafficEnv(gym.Env):
                                 scenario=self.city, seed=self.scenario_seed,
                                 includeConnectivity=self.reward_mode=='connectivity' or self.observation_mode=='connectivity')
         self.raw = result['observation']
+        self.network_version=result.get('networkVersion')
         if result['terminated'] or self.raw['version'] != 'OriginalReference' or self.raw['unlimitedConstruction']:
             raise RuntimeError('Unexpected reset or rules')
         self.done, self.rejected, self.commands = False, 0, 0
         self.episode_actions, self.action_counts = [], {}
         self.wait_sum, self.wait_samples, self.max_wait = 0.0, 0, 0.0
         self.phase, self.tool, self.first, self.old = 0, 0, None, None
+        self._draw_cache_stamp=None
         self.connected_houses=result.get('usefulConnectedHouses')
         self.connectivity=result.get('usefulConnectivity')
         self.draw_noops,self.draw_changes,self.draw_distinct_pairs=0,0,set()
@@ -150,6 +154,10 @@ class TrafficEnv(gym.Env):
         return self.encode(), self.info()
 
     def _refresh(self):
+        bounds=tuple(self.raw[k] for k in ['playableXMin','playableXMax','playableYMin','playableYMax'])
+        stamp=(self.network_version if self.network_version is not None else self.raw['time'],tuple(self.raw['inventory']),bounds)
+        if getattr(self,'_draw_cache_stamp',None)!=stamp:
+            self._draw_choices_cache={};self._draw_cache_stamp=stamp
         o = self.raw
         if o['width'] != 50 or o['height'] != 30:
             raise RuntimeError('Grid schema changed')
@@ -262,6 +270,7 @@ class TrafficEnv(gym.Env):
             mask[CELLS] = True
             for tool in range(1, 11):
                 available = bool(self._legal[tool].any())
+                if tool==1 and self.draw_mask=='productive':available=bool(self._productive_starts().any())
                 if tool == 8:
                     available &= self.raw['inventory'][2] > 0 and self._legal[tool].sum() >= 2
                 mask[CELLS+tool] = available
@@ -270,7 +279,7 @@ class TrafficEnv(gym.Env):
             for i in range(len(self.raw['upgradeChoices'])):
                 mask[CELLS+11+i] = True
         elif self.phase == 1:
-            mask[:CELLS] = self._legal[self.tool]
+            mask[:CELLS] = self._productive_starts() if self.tool==1 and self.draw_mask=='productive' else self._legal[self.tool]
         elif self.tool == 7:
             for dx, dy in DIRS:
                 p = self.first[0]+dx, self.first[1]+dy
@@ -290,10 +299,21 @@ class TrafficEnv(gym.Env):
         else:
             mask[:CELLS] = self._legal[1]
             mask[self.index(self.first)] = False
+            if self.tool==1 and self.draw_mask=='productive':
+                if self.first not in self._draw_choices_cache:
+                    result=self.host.call(command='drawchoices',x=self.first[0],y=self.first[1])
+                    self._draw_choices_cache[self.first]=np.asarray(result['possibleChanges'],dtype=bool)
+                mask[:CELLS] &= self._draw_choices_cache[self.first]
         # No viable continuation completes a wait, rather than freezing time.
         if not mask.any():
             mask[CELLS] = True
         return mask
+
+    def _productive_starts(self):
+        starts=self._legal[1].copy()
+        for p,choices in self._draw_choices_cache.items():
+            if not choices.any():starts[self.index(p)]=False
+        return starts
 
     def encode(self):
         o, a = self.raw, self.arrays
@@ -369,7 +389,7 @@ class TrafficEnv(gym.Env):
                     reward_mode=self.reward_mode,reward_schema=REWARD_SCHEMAS[self.reward_mode],
                     connected_houses=self.connected_houses,connection_potential=self.connection_potential.previous,
                     trip_reward_total=self.trip_reward_total,shaping_reward_total=self.shaping_total,
-                    training_reward_total=self.training_reward_total,observation_mode=self.observation_mode,
+                    training_reward_total=self.training_reward_total,observation_mode=self.observation_mode,draw_mask=self.draw_mask,
                     draw_noop_commands=self.draw_noops,draw_change_commands=self.draw_changes,
                     draw_distinct_pairs=len(self.draw_distinct_pairs))
 
@@ -404,6 +424,7 @@ class TrafficEnv(gym.Env):
         result = self.host.call(command='step', ticks=20)
         self.raw = result['observation']
         self.connected_houses=result.get('usefulConnectedHouses')
+        self.network_version=result.get('networkVersion')
         self.commands += 1
         self.connectivity=result.get('usefulConnectivity')
         family = 'wait' if request is None else request.get('tool', request['command'])

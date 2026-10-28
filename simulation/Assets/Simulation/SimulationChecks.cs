@@ -61,6 +61,27 @@ namespace MotorwaysSim
                 Check(w.BestRouteTo(home.Access,shop).Count>1&&w.FindRoute(shop.Access,home.Access).Count==0,"one-way fixture");
                 Check(w.UsefulConnectedHouseCount()==0,"outbound-only connection earns no credit");
             });
+            Test("draw-change diagnostic rejects only physically unchanged strokes",()=>{
+                var w=Pair();var from=new Cell(6,5);var to=new Cell(14,5);
+                int version=w.NetworkVersion;var before=w.Observe();
+                Check(!w.DrawMayChange(from,to),"existing connected stroke is a no-op");
+                Check(w.DrawMayChange(from,new Cell(10,8)),"new road extension remains available");
+                Check(w.DrawMayChange(new Cell(5,5),new Cell(5,8)),"house driveway rotation remains available");
+                var choices=w.DrawChangeChoices(from);
+                Check(choices.Length==TrafficWorld.Width*TrafficWorld.Height&&!choices[to.Y*TrafficWorld.Width+to.X],"batched diagnostic");
+                Check(w.NetworkVersion==version&&w.Observe().Connections.SequenceEqual(before.Connections),"query is read-only");
+                int checkedNoops=0;
+                foreach(var start in new[]{new Cell(5,5),from,new Cell(10,5),new Cell(14,6),new Cell(15,6)})
+                    for(int y=3;y<10;y++)for(int x=4;x<18;x++)
+                    {
+                        var end=new Cell(x,y);if(w.DrawMayChange(start,end))continue;
+                        var snapshot=w.Observe();int direction=w.Buildings[0].DrivewayDirection;
+                        w.DrawRoad(start,end);checkedNoops++;
+                        Check(w.Observe().Connections.SequenceEqual(snapshot.Connections)&&w.Observe().Infrastructure.SequenceEqual(snapshot.Infrastructure)&&
+                            w.Inventory.SequenceEqual(snapshot.Inventory)&&w.Buildings[0].DrivewayDirection==direction,"no false no-op classification");
+                    }
+                Check(checkedNoops>10,"multiple no-op geometries checked");
+            });
             Test("terrain, fixed size, original clock",()=>{
                 var w=new TrafficWorld(42,false,LegacyFixtureRules());Check(TrafficWorld.Width==50&&TrafficWorld.Height==30,"50 x 30");
                 Check(w.Water.Cast<bool>().Count(x=>x)>100,"LA water mask");Check(w.Buildings.Count>=2,"feasible initial shop and household");
