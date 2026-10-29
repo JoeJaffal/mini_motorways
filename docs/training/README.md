@@ -6,6 +6,7 @@ players and scratch captures remain local and are not backed up by this archive.
 
 | Record | Purpose |
 | --- | --- |
+| [Light availability results](light-availability-2026-10-29/README.md) | ON190.9 vs OFF209.9 on ten paired maps; aggregate decline dominated by seed5009, not universal harm |
 | [Traffic-light ON/OFF command](../../training/TRAFFIC_LIGHT_TEST.md) | Prepared paired frozen-policy availability test; full run pending; short smoke measurements in light-test-preparation-2026-10-29 |
 | [Fresh-map evaluation](signals-fresh-2026-10-29/README.md) | Frozen ten-map comparison: deterministic161.3->207.4, sampled182.0->188.9; 40 games, unchanged weights, limits and replays |
 | [Partial overnight result](signals-overnight-2026-10-29/README.md) | Early stop at4h18m, saved best494, development mean167.4->204.2; cause unknown and fresh-map test pending |

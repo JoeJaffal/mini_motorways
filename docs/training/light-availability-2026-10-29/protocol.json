@@ -1,0 +1,31 @@
+{
+  "created_utc": "2026-10-29T15:42:49.766717+00:00",
+  "checkpoint": "C:\\Users\\moham\\mini_motorways\\output\\training\\signals-night-01\\validation-best.zip",
+  "sha256": "f10899a74f7cd9fbf28eec542db828cdcaa00cf7c94fa6903f62ab3b172d0bf0",
+  "seeds": [
+    5000,
+    5001,
+    5002,
+    5003,
+    5004,
+    5005,
+    5006,
+    5007,
+    5008,
+    5009
+  ],
+  "mode": "deterministic",
+  "cap": 3600,
+  "intervention": "Mask only light placement actions; keep proposed light observations, simulator rules and weights unchanged",
+  "no_training": true,
+  "limitations": "Tests light availability for this policy, including changed future routes/upgrades; not an optimal no-light agent or isolated junction throughput test",
+  "source_sha256": {
+    "compare_traffic_lights.py": "e496090706963be7b3a962b1afb56ddd1fa36ef305913cbaafa7cdb34049105a",
+    "evaluate_checkpoint.py": "e550a4f81e014bfe276059752ccf1c91e91e555777062a8ebf03a054d6ea6f21",
+    "signal_agent.py": "ee55ad351fce2d477a2aedc3d4ef68551cff14276f8ea016edbcc9c126bdd50f",
+    "goal_agent.py": "db834de5407ba2ca14641a17b50176e7f6a8f40cddfecb5272decc7e10acf0b3",
+    "train_goal.py": "b03c0ed06a8f2bf5a498bb4f8d7b043953394d8186f2dc03e11a2b57fbb1c174",
+    "environment.py": "01da7fb3dc7b066e0238aed7ec5b0f6d31da8438d53c26d3fafe3b5d88700611",
+    "planner_diagnostic.py": "405c47dd2706f4b2da32ba43e0dbe5ce4f7d6a22a2688efa395bf7658290d756"
+  }
+}

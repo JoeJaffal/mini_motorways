@@ -1,5 +1,11 @@
 # Traffic-light availability comparison
 
+The first full user-run comparison is complete: lights ON190.9 vs OFF209.9 mean
+trips, dominated by one seed losing196 with lights; the other nine net+6. See
+[evidence and limits](../docs/training/light-availability-2026-10-29/README.md).
+The instructions below reproduce the experiment design with a fresh output path;
+the now-exposed seeds must not be called an unseen test after tuning on results.
+
 Paste into PowerShell; no training is needed:
 
 ```powershell

@@ -813,3 +813,26 @@ new full-test seeds. The full test remains for the user to launch; no training
 was started. Exact command and interpretation are in TRAFFIC_LIGHT_TEST.md.
 Existing frozen fresh-map archive remains immutable; default normal evaluation
 behavior is unchanged. The new switch is explicitly opt-in.
+
+## T31 - User-completed traffic-light availability test
+
+User supplied the completed lights-test-01 output; local reports confirm twenty
+natural-ending deterministic games on paired seeds5000-5009. Checkpoint SHA256
+matches the same preselected overnight candidate from the fresh-map test. No
+weights changed, OFF placed zero lights, ON placed14 total. Mean trips ON190.9
+vs OFF209.9 (-19.0, -9.05% relative to OFF). ON better on2 maps, tied5, worse3.
+Crucially seed5009 is279 ON versus475 OFF (-196); the other nine total+6 for ON.
+Thus the mean disadvantage is dominated by one severe failure, not a consistent
+every-map light penalty. Descriptive mean waiting is .69014 ON/.68990 OFF,
+essentially unchanged and confounded by episode length/load.
+
+This policy has not established reliably beneficial light placement. It does
+not imply lights are always harmful or identify the physical cause of seed5009:
+masking placement can also change later road/upgrade decisions. The next useful
+diagnostic is comparing the existing ON/OFF seed5009 trajectories/placements,
+not blind additional training or changing simulator physics from this result.
+No new training, inference, checkpoint reselection or runtime changes were made
+for this inspection. Raw protocol/reports/traces/best recordings and source-copy
+SHA256s are preserved in
+[light availability evidence](../docs/training/light-availability-2026-10-29/README.md).
+These exposed test seeds should not be treated as unseen for later tuning.

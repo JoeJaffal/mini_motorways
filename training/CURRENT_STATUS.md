@@ -1,5 +1,12 @@
 # Training status - 29 October 2026
 
+Traffic-light ON/OFF test is now complete: ON190.9 vs OFF209.9 mean trips, with
+2 wins/5 ties/3 losses. The -19 mean is dominated by seed5009 (-196 trips);
+the other nine net+6 for ON. This is inconsistent placement benefit for the
+frozen policy, not proof that lights universally harm simulator traffic. See
+[paired evidence](../docs/training/light-availability-2026-10-29/README.md), T31.
+No new training was started. The preparation note below is historical.
+
 Next diagnostic prepared: [traffic-light ON/OFF comparison](TRAFFIC_LIGHT_TEST.md),
 same frozen trained policy on ten paired seeds. Full comparison not started;
 only a short startup smoke and mask/observation checks have passed. This is an
