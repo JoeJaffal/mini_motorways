@@ -6,6 +6,7 @@ players and scratch captures remain local and are not backed up by this archive.
 
 | Record | Purpose |
 | --- | --- |
+| [Completed v4 trial summary](signal-context-run-2026-10-29/summary.json) | One hour: validation204.2->228.0, mostly one map; fresh-map test prepared for user, not run yet |
 | [Queue-cause v4 contract and command](../../training/SIGNAL_CONTEXT.md) | Added current queue/destination inputs, weight-preserving warm start, short checks; no long performance test yet |
 | [Seed5009 light failure diagnosis](light-failure-5009-2026-10-29/README.md) | First divergence, fixed-command first/second-light counterfactuals, parking-queue observation gap, replays and limits |
 | [Light availability results](light-availability-2026-10-29/README.md) | ON190.9 vs OFF209.9 on ten paired maps; aggregate decline dominated by seed5009, not universal harm |

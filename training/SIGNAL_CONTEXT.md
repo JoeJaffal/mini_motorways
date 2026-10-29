@@ -1,5 +1,23 @@
 # Signal context v4: preserve learned weights, add queue causes
 
+The first user trial finished: development average204.2 ->228.0, mostly from one
+map. Before extending training, run the frozen fresh-map comparison:
+
+```powershell
+cd C:\Users\moham\mini_motorways
+.\.venv\Scripts\python.exe .\training\evaluate_fresh_signals.py --run output/training/signals-context-01 --seed-start 6000 --output output/experiments/signals-context-fresh-01
+```
+
+This compares the warm-start initial and development-selected best models on
+ten new maps in deterministic/sampled modes (40 games), with no updates. Source
+and checkpoint hashes/seeds are recorded before inference. Tell the assistant
+when complete; do not tune or reselect models using these results and call them
+fresh again. The assistant has not started this evaluation. Use a new output
+name if the folder exists. This tests transfer of this run's learning, not the
+causal benefit of new inputs over equal-budget additional v3 training.
+
+The preparation/training instructions below are historical and remain supported.
+
 User requested implementing the diagnosis while conserving assistant credits:
 only short correctness checks were run. The user will launch and wait for the
 longer experiment. No full evaluation or long training was started here.

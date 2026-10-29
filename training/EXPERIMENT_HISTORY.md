@@ -914,6 +914,33 @@ No performance gain claimed. [Command/contract](SIGNAL_CONTEXT.md) gives a manua
 Prior exposed test seeds remain excluded from training/development; new final
 evaluation must use a new partition. Historic reports/checkpoints untouched.
 
+## T34 - User-completed one-hour v4 trial; next test prepared
+
+User asked what to do next. Local files show signals-context-01 completed normally
+in 3600.48 learner seconds: 25,876 decisions, 117,662 commands, 167 episodes,
+confirmed weight updates, no active trainer. Warm-start initial validation was
+204.2 (125/291/154/122/329), matching the prior selected model's score. Final
+and best validation are 228.0 (235/259/155/122/369), up 23.8 / 11.66%.
+Three maps improve, one worsens, one ties. Seed2000 contributes110 of the119
+paired total gain; the remaining four net+9. Intermediate means164.2/185.6/185.0
+were below baseline, so final validation selection correctly retained baseline
+until the strict final improvement. Best completed training recording426 on1066
+is not a new all-time record or generalization evidence.
+
+Next step is a frozen comparison of this run's warm-start initial policy against
+its development-selected best on new seeds6000-6009, deterministic and sampled,
+forty games. Added --run/--seed-start/--count to the existing tested fresh-map
+driver; defaults preserve the old invocation. CLI help/parameter exposure checked,
+no evaluation or additional training started. Per user's credit-conservation
+request, the user will execute/wait and report completion. These development
+gains do not establish benefit of the added inputs versus equal-budget further
+v3 training; that causal comparison remains open.
+
+Raw config, summary, periodic/final selection, final status and PPO metrics are
+archived in docs/training/signal-context-run-2026-10-29 with source-byte hashes.
+Runtime checkpoint/replay binaries remain local. The new held-out test has not
+yet exposed its maps. Existing historical archives are unchanged.
+
 ## Branch playground comparison — 29 October 2026
 
 Read-only source comparison requested by the user: local `main` f02fe0e versus

@@ -1,5 +1,11 @@
 # Training status - 29 October 2026
 
+V4 one-hour user trial completed normally: 167 games, validation204.2 ->228.0
+(+11.7%), with most gain on one of five maps. Best selected checkpoint is local
+output/training/signals-context-01/validation-best.zip. No trainer active.
+Next: user-run frozen comparison on new seeds6000-6009; no additional training
+or full evaluation launched by the assistant. See SIGNAL_CONTEXT.md and T34.
+
 V4 signal context is prepared: queue causes and current destination pressure,
 with a v3->v4 weight-preserving warm start and fresh optimizer. Four short checks
 and a tiny no-update CLI wiring smoke passed; no learning benefit is established.
