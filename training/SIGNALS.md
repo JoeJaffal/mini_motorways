@@ -1,5 +1,9 @@
 # Traffic-light agent and overnight training
 
+To test whether this policy benefits from light placement, use the
+[frozen ON/OFF comparison command](TRAFFIC_LIGHT_TEST.md). It runs evaluation,
+not further training. The full comparison has not been run during preparation.
+
 The optional v3 agent adds **traffic lights**, as requested, before motorways.
 It keeps ordinary roads/bridges, connection and bypass proposals, upgrades and
 waiting. Motorways, roundabouts, demolition and manual driveway editing remain
@@ -70,6 +74,14 @@ maximum waiting in the cell/eight visible neighbors, then nearby vehicle count,
 then map index. The model can always wait; lights are not compulsory. A placement
 executes the ordinary `build TrafficLight` command and consumes normal inventory.
 It does not create materials or remove roads. Only accepted placements are counted.
+
+The simulator gives lights a real trade-off: ordinary degree>=3 junctions use
+a .5 speed multiplier; light tiles are exempt from that penalty. Red/amber
+approaches must stop, and the phase controller chooses approaches using cars
+and waiting. Removing the speed penalty is not a guarantee of doubled throughput
+or improved trip totals. Net benefit of this agent's placements has not been
+isolated by a controlled lights-disabled test. These are code-inspection facts,
+not a new throughput measurement; simulator rules remain unchanged.
 
 The v2 route rows (512 x 32) and 42 globals remain. Traffic becomes 5 x 30 x 50:
 vehicle count / 10, max wait / 60, road presence, degree / 8, **existing light**.

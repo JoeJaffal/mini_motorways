@@ -1,5 +1,10 @@
 # Training status - 29 October 2026
 
+Next diagnostic prepared: [traffic-light ON/OFF comparison](TRAFFIC_LIGHT_TEST.md),
+same frozen trained policy on ten paired seeds. Full comparison not started;
+only a short startup smoke and mask/observation checks have passed. This is an
+evaluation command, not authorization to start more training.
+
 **Fresh-map test complete:** the preselected trained model improved deterministic
 mean 161.3 -> 207.4 (+28.6%) on unseen LosAngeles seeds4000-4009, winning9/10.
 Secondary sampled mean182.0 -> 188.9 (+3.8%); five wins/two ties/three losses,

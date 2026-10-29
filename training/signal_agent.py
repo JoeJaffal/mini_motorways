@@ -14,8 +14,9 @@ SIGNAL_SCHEMA='visible-route-signals-policy-v3'
 
 
 class SignalEnv(GoalEnv):
-    def __init__(self,enable_signals=True,**kwargs):
+    def __init__(self,enable_signals=True,disable_light_actions=False,**kwargs):
         self.enable_signals=bool(enable_signals)
+        self.disable_light_actions=bool(disable_light_actions)
         self.signals_placed_count=0
         self.signal_cells=[];self.signal_features=np.zeros((SIGNALS,12),np.float32)
         kwargs['congestion_aware']=True
@@ -63,7 +64,7 @@ class SignalEnv(GoalEnv):
     def action_masks(self):
         mask=np.zeros(self.action_space.n,bool)
         mask[:SIGNAL_START]=super().action_masks()
-        mask[SIGNAL_START:SIGNAL_START+len(self.signal_cells)]=True
+        if not self.disable_light_actions:mask[SIGNAL_START:SIGNAL_START+len(self.signal_cells)]=True
         return mask
 
     def _execute_extra(self,action):

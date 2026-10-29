@@ -22,11 +22,13 @@ def main():
     p.add_argument('--host-dll',type=Path)
     p.add_argument('--draw-mask',choices=['all','productive'])
     p.add_argument('--best-replay',type=Path)
+    p.add_argument('--disable-traffic-lights',action='store_true',help='Frozen v3 ablation: mask light actions, retain candidate observations')
     a=p.parse_args()
     if a.output.exists() or (a.best_replay and a.best_replay.exists()):p.error('Choose fresh output paths')
     if a.seed_count<1:p.error('Positive seed count required')
     torch.set_num_threads(2);torch.set_num_interop_threads(1)
     model=MaskablePPO.load(a.checkpoint,device='cpu')
+    if a.disable_traffic_lights and 'signals' not in model.observation_space.spaces:p.error('Light ablation requires a v3 signal checkpoint')
     initial=[v.detach().clone() for v in model.policy.parameters()]
     goal_policy='candidates' in model.observation_space.spaces
     mode='goal-candidates' if goal_policy else ('connectivity' if model.observation_space['grid'].shape[0]==52 else 'legacy')
@@ -34,6 +36,7 @@ def main():
     if goal_policy:
         from train_goal import model_environment
         env=model_environment(model,dotnet=a.dotnet,seconds=a.cap,host_dll=a.host_dll,skip_forced_wait=getattr(model,'skip_forced_wait',False))
+        if a.disable_traffic_lights:env.disable_light_actions=True
     else:env=TrafficEnv(dotnet=a.dotnet,seconds=a.cap,observation_mode=mode,record_replays=bool(a.best_replay),draw_mask=draw_mask,host_dll=a.host_dll)
     results=[];best=None;rank=(-1,-1,0)
     try:
@@ -56,6 +59,7 @@ def main():
     if not all(torch.equal(x,y) for x,y in zip(initial,model.policy.parameters())):raise RuntimeError('Evaluation mutated policy')
     report=dict(checkpoint=str(a.checkpoint),checkpoint_sha256=hashlib.sha256(a.checkpoint.read_bytes()).hexdigest(),
                 mode=a.mode,rng_seed=a.rng_seed,rng_protocol='per scenario: rng_seed + scenario offset from seed_start',cap=a.cap,observation_mode=mode,draw_mask=draw_mask,weights_unchanged=True,
+                traffic_light_actions_disabled=a.disable_traffic_lights,
                 mean_trips=statistics.mean(x['trips'] for x in results),median_trips=statistics.median(x['trips'] for x in results),
                 best_trips=max(x['trips'] for x in results),results=results)
     a.output.parent.mkdir(parents=True,exist_ok=True);a.output.write_text(json.dumps(report,indent=2)+'\n')

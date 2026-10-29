@@ -76,6 +76,12 @@ class SignalChecks(unittest.TestCase):
                 e._advance(dict(command='draw',x=p[0],y=p[1]-1,toX=p[0],toY=p[1]+1))
             env.enable_signals=True;env._refresh()
             self.assertTrue(env.signal_cells)
+            observation_before=env.encode();mask_before=env.action_masks()
+            env.disable_light_actions=True
+            self.assertFalse(env.action_masks()[SIGNAL_START:].any())
+            np.testing.assert_array_equal(mask_before[:SIGNAL_START],env.action_masks()[:SIGNAL_START])
+            for key in observation_before:np.testing.assert_array_equal(observation_before[key],env.encode()[key])
+            env.disable_light_actions=False
             # Verify the light head can learn when a real legal action is present.
             tensor=model.policy.obs_to_tensor(env.encode())[0]
             before=model.policy.features_extractor.signal_row[-1].weight.detach().clone()

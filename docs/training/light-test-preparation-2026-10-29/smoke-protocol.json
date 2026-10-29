@@ -1,0 +1,13 @@
+{
+  "created_utc": "2026-10-29T15:11:13.989369+00:00",
+  "checkpoint": "C:\\Users\\moham\\mini_motorways\\output\\training\\signals-night-01\\validation-best.zip",
+  "sha256": "f10899a74f7cd9fbf28eec542db828cdcaa00cf7c94fa6903f62ab3b172d0bf0",
+  "seeds": [
+    2000
+  ],
+  "mode": "deterministic",
+  "cap": 30,
+  "intervention": "Mask only light placement actions; keep proposed light observations, simulator rules and weights unchanged",
+  "no_training": true,
+  "limitations": "Tests light availability for this policy, including changed future routes/upgrades; not an optimal no-light agent or isolated junction throughput test"
+}

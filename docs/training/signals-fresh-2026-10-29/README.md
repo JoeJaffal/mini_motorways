@@ -39,6 +39,21 @@ are now exposed test data and should not be treated as fresh again for tuning.
 
 ## Selection and verification
 
+Traffic-light usage from the existing test metrics:
+
+| Mode / policy | Lights placed | Games with a placement |
+| --- | ---: | ---: |
+| Deterministic initial | 12 | 4 / 10 |
+| Deterministic trained | 24 | 8 / 10 |
+| Sampled initial | 22 | 9 / 10 |
+| Sampled trained | 20 | 8 / 10 |
+
+Placement behavior changed, but the starting policy already had engineered
+proposals and an initial light prior. Counts do not establish that placements
+became better or caused the score gain; survival, network design and acquired
+stock also differ. A controlled light-availability comparison has not been run.
+This audit reused archived metrics without additional inference or training.
+
 Selected model is the overnight `validation-best.zip`, chosen at 77,220 training
 decisions using development mean 204.2 **before** this test. Initial baseline is
 the same run's `initial.zip`; the current last policy and the maximum-training

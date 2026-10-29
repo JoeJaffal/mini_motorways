@@ -765,3 +765,51 @@ all per-seed metrics, traces, recordings and inference sources are archived in
 byte hashes. The protocol copied before execution remains unchanged. The exposed
 4000-4009 partition should not be reused as a fresh tuning test. No new training
 was started, and the stopped overnight process was not restarted.
+
+## T28 - Traffic-light usage audit of existing fresh-test metrics
+
+User asked whether it learned to use lights. Read-only aggregation of the T27
+results: deterministic initial placed12 lights across4/10 games; selected placed24
+across8/10. Sampled initial placed22 across9/10; selected placed20 across8/10.
+Training changed placement behavior, but the starting policy already included
+engineered junction proposals and a light prior. It did not discover placement
+from scratch. More placements are not inherently better and counts confound
+survival, road design and acquired stock. The fresh-score improvement cannot be
+attributed specifically to lights without a controlled enable/disable comparison.
+No new inference/training, policy update or checkpoint selection was performed;
+these counts derive entirely from the already archived per-game metrics.
+
+## T29 - Simulator traffic-light mechanics inspection
+
+User asked whether lights actually improve traffic in this game. Code inspection:
+RoadNetwork.LaneSpeed applies IntersectionMultiplier=.5 at degree>=3 ordinary
+junctions but exempts traffic-light tiles. This removes that junction speed-limit
+penalty; it does not establish doubled throughput or double total journey speed.
+TrafficControl.SignalAllows/MayEnter block red/amber approaches. UpdateSignals
+uses green/overtime/amber phases and BestSignalPair considers approaching cars
+and waiting. Therefore lights have actual effects, with a speed-versus-stopping
+trade-off; a placement can hurt rather than help. No controlled throughput or
+AI-policy light-disable comparison was run for this question, so no net benefit
+of the trained model's placements is claimed. Simulator rules/code unchanged.
+
+## T30 - Manual traffic-light comparison command prepared
+
+User requested instructions for the next test. Added frozen evaluator
+`--disable-traffic-lights` and a SignalEnv action-mask-only switch. Signal proposal
+observations remain intact at identical states, as do non-light masks; no physical
+simulator rules are changed. A three-test signal suite passes, including that
+mask/observation invariant at a normal-stock state and existing placement/replay
+checks. Added `compare_traffic_lights.py`: same overnight validation-best policy,
+default new seeds5000-5009, deterministic ON/OFF, twenty games, two concurrent
+evaluation jobs, pre-inference protocol/hash record, unchanged weight checks and
+zero-placement assertion in the OFF condition. Comparison includes trips, paired
+wins/ties/losses and descriptive wait averages. Different survival/load confounds
+waiting; routes/upgrades/stock can evolve differently. This tests tool availability
+for this frozen policy, not an optimized no-light policy or isolated throughput.
+
+Only startup smoke was executed: development seed2000, cap30 simulated seconds,
+one trip each condition. It is not performance evidence and does not expose the
+new full-test seeds. The full test remains for the user to launch; no training
+was started. Exact command and interpretation are in TRAFFIC_LIGHT_TEST.md.
+Existing frozen fresh-map archive remains immutable; default normal evaluation
+behavior is unchanged. The new switch is explicitly opt-in.
