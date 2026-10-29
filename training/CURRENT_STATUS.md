@@ -1,5 +1,11 @@
 # Training status - 29 October 2026
 
+V4 signal context is prepared: queue causes and current destination pressure,
+with a v3->v4 weight-preserving warm start and fresh optimizer. Four short checks
+and a tiny no-update CLI wiring smoke passed; no learning benefit is established.
+Per user preference, no long job was started/waited on. Use the
+[manual one-hour command](SIGNAL_CONTEXT.md), then report completion for analysis.
+
 Seed5009 diagnosis complete: the lights interact. With the ON construction
 schedule fixed, both lights score279, first-only374, second-only277, neither276.
 The full OFF policy's different command schedule scores475. The second light

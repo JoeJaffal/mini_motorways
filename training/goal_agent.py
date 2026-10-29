@@ -250,9 +250,10 @@ class GoalFeatures(BaseFeaturesExtractor):
         with torch.no_grad():self.tools[-1].bias.zero_()
         self.context=nn.Sequential(nn.Linear(138 if self.has_traffic else 106,64),nn.Tanh())
         if self.signal_count:
-            self.signal_row=nn.Sequential(nn.Linear(12,32),nn.ReLU(),nn.Linear(32,1))
+            signal_width=space['signals'].shape[1]
+            self.signal_row=nn.Sequential(nn.Linear(signal_width,32),nn.ReLU(),nn.Linear(32,1))
             nn.init.zeros_(self.signal_row[-1].weight);nn.init.zeros_(self.signal_row[-1].bias)
-            self.signal_prior=nn.Linear(12,1)
+            self.signal_prior=nn.Linear(signal_width,1)
             with torch.no_grad():
                 self.signal_prior.weight.zero_();self.signal_prior.bias.fill_(-1)
                 self.signal_prior.weight[0,4]=2;self.signal_prior.weight[0,6]=2

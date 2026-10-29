@@ -1,0 +1,66 @@
+{
+  "schema": "visible-route-signal-context-v4",
+  "congestion_aware": true,
+  "traffic_lights": true,
+  "signal_context": true,
+  "prior_temperature": 2.0,
+  "planner_aided": true,
+  "replay_source": "hybrid-training",
+  "action_semantics": "choose current house/destination connection or optional congestion bypass; visible router executes ordinary strokes; place traffic lights at legal junctions",
+  "restricted_tools": [
+    "road strokes including bridges",
+    "wait up to five seconds",
+    "upgrade choices",
+    "traffic lights at legal junctions"
+  ],
+  "excluded_tools": [
+    "motorways",
+    "roundabouts",
+    "demolition",
+    "manual driveway edits"
+  ],
+  "reward_schema": "goal-trip-potential-gamma099-v1",
+  "reward": "trip delta + gamma099 potential difference per macro decision",
+  "simulator_commit": "24156c9d82cb712796c60f3b4c425b94f7307868",
+  "dirty": true,
+  "created_utc": "2026-10-29T16:23:00.993375+00:00",
+  "arguments": {
+    "output": "output\\training\\signal-context-cli-check-20261029",
+    "minutes": 0.001,
+    "steps": 4,
+    "workers": 1,
+    "dotnet": "C:\\Users\\moham\\mini_motorways\\tmp\\dotnet\\dotnet.exe",
+    "host_dll": null,
+    "resume": null,
+    "stop_file": null,
+    "warm_start": "output\\training\\signals-night-01\\validation-best.zip",
+    "signal_context": true,
+    "reward_scale": 0.01,
+    "skip_forced_wait": false,
+    "congestion_aware": true,
+    "traffic_lights": true,
+    "prior_temperature": 2.0,
+    "eval_seconds": 1,
+    "learning_rate": 0.0001,
+    "validation_minutes": 0.0,
+    "eval_count": 1
+  },
+  "training_seeds": [
+    1000,
+    1099
+  ],
+  "validation_seeds": [
+    2000
+  ],
+  "gamma": 0.99,
+  "gae_lambda": 0.99,
+  "learning_rate": 0.0001,
+  "ent_coef": 0.005,
+  "aggregate_rollout": 256,
+  "reward_scale": 0.01,
+  "decision_timing": "five-second-wait-v1",
+  "warm_start_source_sha256": "f10899a74f7cd9fbf28eec542db828cdcaa00cf7c94fa6903f62ab3b172d0bf0",
+  "optimizer_reset": true,
+  "trainable_parameters": 21503,
+  "initial_validation_mean": 0.0
+}

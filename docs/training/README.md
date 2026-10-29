@@ -6,6 +6,7 @@ players and scratch captures remain local and are not backed up by this archive.
 
 | Record | Purpose |
 | --- | --- |
+| [Queue-cause v4 contract and command](../../training/SIGNAL_CONTEXT.md) | Added current queue/destination inputs, weight-preserving warm start, short checks; no long performance test yet |
 | [Seed5009 light failure diagnosis](light-failure-5009-2026-10-29/README.md) | First divergence, fixed-command first/second-light counterfactuals, parking-queue observation gap, replays and limits |
 | [Light availability results](light-availability-2026-10-29/README.md) | ON190.9 vs OFF209.9 on ten paired maps; aggregate decline dominated by seed5009, not universal harm |
 | [Traffic-light ON/OFF command](../../training/TRAFFIC_LIGHT_TEST.md) | Prepared paired frozen-policy availability test; full run pending; short smoke measurements in light-test-preparation-2026-10-29 |

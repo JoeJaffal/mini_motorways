@@ -879,6 +879,41 @@ Optional chart imports failed due missing Matplotlib in both Python environments
 the dependency-free report preserves data without installing training packages.
 No chart or new generalization result is claimed. Historical archives unchanged.
 
+## T33 - Queue-cause v4 inputs, preserving weights; user runs long experiments
+
+User authorized implementing the diagnosis and explicitly requested conserving
+assistant credits: do not run long shell jobs and wait; provide commands for
+the user to run and report completion. Honored: only brief correctness/wiring
+checks ran; no full policy evaluation or training experiment was launched.
+
+Opt-in --signal-context introduces v4,32x24 light rows/547 actions/21503 parameters.
+Original12 fields are unchanged. Added stopped-car fractions and maximum waits
+for parking vs crossing/priority causes, signal/queue causes, related outbound
+destination pressure/unreserved demand, global destination pressure, shop-access
+adjacency and nearby existing lights. Features use visible current state only;
+they are not direction-specific flow forecasts or hidden future outcomes. No
+parking ban, hand reward, seed-specific rule, candidate ordering or simulator
+change. Their learning benefit remains untested.
+
+Explicit --warm-start transfers the v3 validation-best weights into v4, copying
+all existing parameters and zero-extending only two light-input matrices.
+Optimizer resets; provided checkpoint's scale/rate/prior/timing inherit. Direct
+cross-schema resume is rejected; matching v4 resumes and frozen evaluation infer
+the schema from signal width. Common weights are retained rather than restarting
+the learned policy. V3 behavior/shapes remain supported.
+
+New short test passes: synthetic observation-only queue/pressure values, unchanged
+first12 fields, transferred action probabilities match within1e-6, new columns
+zero, optimizer empty, gradients reach new input columns, save/reload detects v4.
+Synthetic observation stock is not sent as construction commands or training data.
+Three existing signal checks also pass, covering actual normal stock/replay and
+masking invariants. Tiny CLI wiring smoke:0.255 learner seconds/3 decisions,
+weights unchanged, no PPO update; source SHA/optimizer-reset config saved.
+No performance gain claimed. [Command/contract](SIGNAL_CONTEXT.md) gives a manual
+60-minute/four-worker trial with15-minute validation; user will notify when done.
+Prior exposed test seeds remain excluded from training/development; new final
+evaluation must use a new partition. Historic reports/checkpoints untouched.
+
 ## Branch playground comparison — 29 October 2026
 
 Read-only source comparison requested by the user: local `main` f02fe0e versus

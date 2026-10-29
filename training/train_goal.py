@@ -18,7 +18,7 @@ from shutdown import save_checkpoint,stop_and_save
 def model_environment(model,**kwargs):
     if 'signals' in model.observation_space.spaces:
         from signal_agent import SignalEnv
-        return SignalEnv(**kwargs)
+        return SignalEnv(signal_context=model.observation_space['signals'].shape[1]==24,**kwargs)
     return GoalEnv(congestion_aware='traffic' in model.observation_space.spaces,**kwargs)
 
 
@@ -52,6 +52,8 @@ def main():
     p.add_argument('--steps',type=int,default=1000000);p.add_argument('--workers',type=int,choices=[1,2,4],default=2)
     p.add_argument('--dotnet',default=str(ROOT/'tmp/dotnet/dotnet.exe'));p.add_argument('--host-dll',type=Path)
     p.add_argument('--resume',type=Path);p.add_argument('--stop-file',type=Path)
+    p.add_argument('--warm-start',type=Path,help='Explicit v3-to-v4 transfer with fresh optimizer; preserves existing learned weights')
+    p.add_argument('--signal-context',action=argparse.BooleanOptionalAction,default=None)
     p.add_argument('--reward-scale',type=float,help='Defaults to 1 for fresh models; inherited on resume')
     p.add_argument('--skip-forced-wait',action=argparse.BooleanOptionalAction,default=None)
     p.add_argument('--congestion-aware',action=argparse.BooleanOptionalAction,default=None,
@@ -64,14 +66,23 @@ def main():
     p.add_argument('--validation-minutes',type=float,default=6);p.add_argument('--eval-count',type=int,default=5)
     a=p.parse_args()
     if a.output.exists():p.error('Fresh run name required')
+    if a.resume and a.warm_start:p.error('Choose resume OR warm-start')
+    if a.warm_start:
+        if a.signal_context is False:p.error('Warm start targets signal-context v4')
+        a.signal_context=True
     if a.minutes<=0 or a.steps<1 or not 1<=a.eval_count<=5 or a.eval_seconds<1:p.error('Positive budgets and 1-5 development evaluation maps required')
     if a.prior_temperature is not None and (not torch.isfinite(torch.tensor(a.prior_temperature)) or a.prior_temperature<=0):p.error('Positive finite prior temperature required')
     if a.learning_rate is not None and a.learning_rate<=0:p.error('Positive learning rate required')
     torch.set_num_threads(2);torch.set_num_interop_threads(1)
-    if a.resume:
-        preview=MaskablePPO.load(a.resume,device='cpu')
+    if a.resume or a.warm_start:
+        preview_path=a.resume or a.warm_start
+        preview=MaskablePPO.load(preview_path,device='cpu')
         if not isinstance(preview.policy,GoalPolicy):p.error('Resume requires a goal-policy checkpoint')
         previous_signals='signals' in preview.observation_space.spaces
+        previous_context=previous_signals and preview.observation_space['signals'].shape[1]==24
+        if a.warm_start and (not previous_signals or previous_context):p.error('Warm-start requires a v3 signal checkpoint')
+        if a.resume and a.signal_context is not None and a.signal_context!=previous_context:p.error('Use --warm-start to change v3 to v4 inputs')
+        if a.resume:a.signal_context=previous_context
         if a.traffic_lights is not None and a.traffic_lights!=previous_signals:p.error('Cannot switch traffic-light schema on resume; start a fresh model')
         a.traffic_lights=previous_signals
         previous_temperature=getattr(preview.policy.features_extractor,'prior_temperature',1.)
@@ -81,12 +92,16 @@ def main():
         if a.congestion_aware is not None and a.congestion_aware!=previous_congestion:
             p.error('Cannot switch congestion observation schema on resume; start a fresh model')
         a.congestion_aware=previous_congestion
-        previous=a.resume.parent/'config.json'
+        previous=preview_path.parent/'config.json'
         metadata=json.loads(previous.read_text()) if previous.exists() else {}
         if a.reward_scale is None:a.reward_scale=getattr(preview,'goal_reward_scale',metadata.get('reward_scale',1.))
         if a.skip_forced_wait is None:a.skip_forced_wait=getattr(preview,'skip_forced_wait',False)
-        del preview
+        if a.warm_start and a.learning_rate is None:a.learning_rate=float(preview.learning_rate)
+        if a.resume:del preview
     if a.reward_scale is None:a.reward_scale=1.
+    if a.signal_context:
+        if a.traffic_lights is False:p.error('Signal context requires traffic lights')
+        a.traffic_lights=True
     if a.traffic_lights:
         if a.congestion_aware is False:p.error('Traffic lights require congestion inputs')
         a.congestion_aware=True
@@ -95,9 +110,9 @@ def main():
     if a.skip_forced_wait is None:a.skip_forced_wait=False
     if a.reward_scale<=0:p.error('Positive reward scale required')
     a.output.mkdir(parents=True)
-    from signal_agent import SIGNAL_SCHEMA,signal_vector
-    schema=SIGNAL_SCHEMA if a.traffic_lights else (CONGESTION_SCHEMA if a.congestion_aware else GOAL_SCHEMA)
-    config=dict(schema=schema,congestion_aware=a.congestion_aware,traffic_lights=bool(a.traffic_lights),prior_temperature=a.prior_temperature,
+    from signal_agent import SIGNAL_SCHEMA,CONTEXT_SCHEMA,signal_vector,transfer_signal_context
+    schema=CONTEXT_SCHEMA if a.signal_context else (SIGNAL_SCHEMA if a.traffic_lights else (CONGESTION_SCHEMA if a.congestion_aware else GOAL_SCHEMA))
+    config=dict(schema=schema,congestion_aware=a.congestion_aware,traffic_lights=bool(a.traffic_lights),signal_context=bool(a.signal_context),prior_temperature=a.prior_temperature,
                 planner_aided=True,replay_source='hybrid-training',action_semantics='choose current house/destination connection or optional congestion bypass; visible router executes ordinary strokes'+('; place traffic lights at legal junctions' if a.traffic_lights else ''),
                 restricted_tools=['road strokes including bridges','wait up to five seconds','upgrade choices']+(['traffic lights at legal junctions'] if a.traffic_lights else []),
                 excluded_tools=['motorways','roundabouts','demolition','manual driveway edits']+([] if a.traffic_lights else ['traffic lights']),
@@ -112,7 +127,8 @@ def main():
     for name in ['goal_agent.py','signal_agent.py','planner_diagnostic.py','train_goal.py','environment.py','rewards.py','parallel.py','progress.py','shutdown.py']:
         (a.output/name).write_text((ROOT/'training'/name).read_text())
     factory=signal_vector if a.traffic_lights else vector
-    env=factory(a.workers,a.output,dotnet=a.dotnet,host_dll=a.host_dll,seeds=range(1000,1100),episodes_per_seed=1,seed_schedule='random',reward_scale=a.reward_scale,skip_forced_wait=a.skip_forced_wait,congestion_aware=a.congestion_aware)
+    extra=dict(signal_context=bool(a.signal_context)) if a.traffic_lights else {}
+    env=factory(a.workers,a.output,dotnet=a.dotnet,host_dll=a.host_dll,seeds=range(1000,1100),episodes_per_seed=1,seed_schedule='random',reward_scale=a.reward_scale,skip_forced_wait=a.skip_forced_wait,congestion_aware=a.congestion_aware,**extra)
     try:
         if a.resume:
             overrides=dict(n_steps=256//a.workers)
@@ -123,6 +139,11 @@ def main():
             model=MaskablePPO(GoalPolicy,env,device='cpu',seed=42,n_steps=256//a.workers,batch_size=64,n_epochs=4,
                               gamma=.99,gae_lambda=.99,learning_rate=a.learning_rate or .0001,ent_coef=.005,verbose=0,
                               policy_kwargs=dict(features_extractor_kwargs=dict(prior_temperature=a.prior_temperature)))
+            if a.warm_start:
+                transfer_signal_context(model,preview)
+                config['warm_start_source_sha256']=hashlib.sha256(a.warm_start.read_bytes()).hexdigest()
+                config['optimizer_reset']=True
+                del preview
         model.skip_forced_wait=a.skip_forced_wait
         model.congestion_aware=a.congestion_aware
         model.traffic_lights=bool(a.traffic_lights)

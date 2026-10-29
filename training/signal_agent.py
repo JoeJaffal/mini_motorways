@@ -11,20 +11,22 @@ from environment import DIRS
 SIGNALS=32
 SIGNAL_START=GOALS+3
 SIGNAL_SCHEMA='visible-route-signals-policy-v3'
+CONTEXT_SCHEMA='visible-route-signal-context-v4'
 
 
 class SignalEnv(GoalEnv):
-    def __init__(self,enable_signals=True,disable_light_actions=False,**kwargs):
+    def __init__(self,enable_signals=True,disable_light_actions=False,signal_context=False,**kwargs):
+        self.signal_context=bool(signal_context)
         self.enable_signals=bool(enable_signals)
         self.disable_light_actions=bool(disable_light_actions)
         self.signals_placed_count=0
-        self.signal_cells=[];self.signal_features=np.zeros((SIGNALS,12),np.float32)
+        self.signal_cells=[];self.signal_features=np.zeros((SIGNALS,24 if self.signal_context else 12),np.float32)
         kwargs['congestion_aware']=True
         super().__init__(**kwargs)
-        self.schema=SIGNAL_SCHEMA
+        self.schema=CONTEXT_SCHEMA if self.signal_context else SIGNAL_SCHEMA
         self.action_space=gym.spaces.Discrete(SIGNAL_START+SIGNALS)
         spaces=dict(self.observation_space.spaces)
-        spaces['signals']=gym.spaces.Box(0,1,(SIGNALS,12),np.float32)
+        spaces['signals']=gym.spaces.Box(0,1,self.signal_features.shape,np.float32)
         spaces['traffic']=gym.spaces.Box(0,1,(5,30,50),np.float32)
         self.observation_space=gym.spaces.Dict(spaces)
 
@@ -42,6 +44,7 @@ class SignalEnv(GoalEnv):
             if e.is_visible(p):
                 k=e.index(p);counts[k]+=1;wait[k]=max(wait[k],v['waiting'])
         candidates=[]
+        shops={b['id']:b for b in e.buildings if not b['isHouse']}
         for k in np.flatnonzero(e._legal[4]):
             degree=int(e.arrays['connections'][k]).bit_count()
             if degree<3:continue
@@ -50,6 +53,26 @@ class SignalEnv(GoalEnv):
             values=[p[0]/50,p[1]/30,degree/8,counts[k]/10,wait[k]/60,
                     counts[near].sum()/20,wait[near].max()/60,np.mean(wait[near]>=3),
                     e.raw['inventory'][3]/10,e.raw['inventory'][0]/100,(e.raw['time']%140)/140,1]
+            if self.signal_context:
+                nearby=[v for v in e.raw['vehicles'] if e.is_visible((int(v['x']),int(v['y']))) and e.index((int(v['x']),int(v['y']))) in near]
+                stopped=[v for v in nearby if v['waiting']>=3]
+                parking=[v for v in stopped if v['obstacle']=='Carpark access occupied']
+                crossing=[v for v in stopped if v['obstacle'] in ['Crossing vehicle','Approaching vehicle priority']]
+                related={v['shopId'] for v in nearby if v['stage'] in ['Outbound','EnteringParking'] and v['shopId'] in shops}
+                pressure=[shops[i] for i in related]
+                entrance_road=any((b['entrances'][j]['x']+DIRS[d][0],b['entrances'][j]['y']+DIRS[d][1])==p
+                    for b in shops.values() for j,d in enumerate(b['entranceDirections']))
+                denom=max(1,len(stopped))
+                values += [len(parking)/denom,len(crossing)/denom,
+                    sum(v['obstacle']=='Traffic light' for v in stopped)/denom,
+                    sum(v['obstacle']=='Queue ahead' for v in stopped)/denom,
+                    max((v['waiting'] for v in parking),default=0)/60,
+                    max((v['waiting'] for v in crossing),default=0)/60,
+                    max((b['overcrowdedFor'] for b in pressure),default=0)/50,
+                    max((max(0,b['demand']-b['reserved'])/max(1,b['demandCapacity']) for b in pressure),default=0),
+                    max((b['overcrowdedFor'] for b in shops.values()),default=0)/50,
+                    sum(b['overcrowdedFor']>0 for b in pressure)/max(1,len(pressure)),
+                    float(entrance_road),sum(e.arrays['infrastructure'][i]==4 for i in near)/len(near)]
             candidates.append(((-wait[near].max(),-counts[near].sum(),int(k)),p,values))
         for i,(_,p,values) in enumerate(sorted(candidates)[:SIGNALS]):
             self.signal_cells.append(p);self.signal_features[i]=np.clip(values,0,1)
@@ -75,7 +98,23 @@ class SignalEnv(GoalEnv):
     def info(self):
         return dict(super().info(),traffic_lights_enabled=self.enable_signals,
                     signal_candidates=len(self.signal_cells),signals_placed=self.signals_placed_count,
-                    observation_schema=SIGNAL_SCHEMA)
+                    observation_schema=self.schema,signal_context=self.signal_context)
+
+
+def transfer_signal_context(target,source):
+    """V3->v4 warm start: preserve weights, zero added inputs, fresh optimizer."""
+    import torch
+    if source.observation_space['signals'].shape[1]!=12 or target.observation_space['signals'].shape[1]!=24:
+        raise ValueError('Expected v3 source and v4 target')
+    if target.policy.optimizer.state:raise ValueError('Warm start requires a fresh optimizer')
+    old=dict(source.policy.named_parameters())
+    with torch.no_grad():
+        for name,value in target.policy.named_parameters():
+            original=old[name]
+            if value.shape==original.shape:value.copy_(original)
+            elif name in ['features_extractor.signal_row.0.weight','features_extractor.signal_prior.weight']:
+                value.zero_();value[:,:original.shape[1]].copy_(original)
+            else:raise ValueError(f'Unsupported parameter shape: {name}')
 
 
 def worker(index,output,kwargs):

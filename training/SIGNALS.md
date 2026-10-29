@@ -1,5 +1,10 @@
 # Traffic-light agent and overnight training
 
+The newer optional [queue-cause v4 inputs](SIGNAL_CONTEXT.md) retain the learned
+v3 weights through explicit warm start. Its manual trial command is ready;
+long tests are left for the user to run. V3 instructions below remain historical
+and supported; no new performance gain is claimed for v4 yet.
+
 To test whether this policy benefits from light placement, use the
 [frozen ON/OFF comparison command](TRAFFIC_LIGHT_TEST.md). It runs evaluation,
 not further training. The full comparison has not been run during preparation.
