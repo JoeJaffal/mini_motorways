@@ -11,6 +11,37 @@ namespace MotorwaysSim
         {
             int count=0;
             void Test(string name,Action body){body();count++;}
+            Test("AI command replay reproduces normal-play transitions",()=>{
+                var world=new TrafficWorld(42,false,Rules.ForVersion(GameVersion.OriginalReference));
+                world.Reset(42,ScenarioKind.LosAngeles);
+                Cell built=new Cell(-1,-1);
+                for(int y=0;y<TrafficWorld.Height&&built.X<0;y++)for(int x=0;x<TrafficWorld.Width;x++)
+                    if(world.Build(BuildTool.Road,new Cell(x,y))){built=new Cell(x,y);break;}
+                Check(built.X>=0,"normal stock can build a road");world.Step(20);
+                var first=new AiReplayAction{command="build",tool="Road",x=built.X,y=built.Y,ticks=20,accepted=true,afterTrips=world.TripsCompleted,afterTime=world.Time};
+                world.Step(20);
+                var wait=new AiReplayAction{command="wait",ticks=20,accepted=true,afterTrips=world.TripsCompleted,afterTime=world.Time};
+                Check(!world.DrawRoad(new Cell(-1,-1),new Cell(0,0)),"invalid stroke rejected");world.Step(20);
+                var invalid=new AiReplayAction{command="draw",x=-1,y=-1,toX=0,toY=0,ticks=20,accepted=false,afterTrips=world.TripsCompleted,afterTime=world.Time};
+                var recording=new AiReplayRecording{schemaVersion=1,version="OriginalReference",scenario="LosAngeles",variation="SameMap",seed=42,
+                    score=world.TripsCompleted,duration=world.Time,actions=new[]{first,wait,invalid}};
+                var session=new AiReplaySession(recording);while(!session.Complete)session.AdvanceTick();
+                Check(session.World.Inventory.SequenceEqual(world.Inventory)&&session.World.Observe().Connections.SequenceEqual(world.Observe().Connections),"replay materials and connections match");
+                Check(session.CompletedCommands==3,"commands completed including wait and rejection");
+                session.AdvanceTick();Check(session.CompletedCommands==3,"completed replay does not advance");
+                first.afterTrips++;bool rejected=false;
+                try{session=new AiReplaySession(recording);while(!session.Complete)session.AdvanceTick();}catch(InvalidOperationException){rejected=true;}
+                Check(rejected,"tampered outcome detected");
+            });
+            Test("AI replay refuses helpers and wrong versions",()=>{
+                var recording=new AiReplayRecording{schemaVersion=1,version="OriginalReference",scenario="LosAngeles",variation="SameMap",seed=42,
+                    actions=new[]{new AiReplayAction{command="reference",ticks=20,accepted=true}}};
+                bool rejected=false;
+                try{new AiReplaySession(recording).AdvanceTick();}catch(ArgumentException){rejected=true;}
+                Check(rejected,"privileged command refused");recording.version="Custom";rejected=false;
+                try{new AiReplaySession(recording);}catch(ArgumentException){rejected=true;}
+                Check(rejected,"version boundary enforced");
+            });
             Test("terrain, fixed size, original clock",()=>{
                 var w=new TrafficWorld(42,false,LegacyFixtureRules());Check(TrafficWorld.Width==50&&TrafficWorld.Height==30,"50 x 30");
                 Check(w.Water.Cast<bool>().Count(x=>x)>100,"LA water mask");Check(w.Buildings.Count>=2,"feasible initial shop and household");
@@ -63,6 +94,25 @@ namespace MotorwaysSim
                 w.Water[4,5]=true;Check(!w.SetHouseDriveway(home.Id,4)&&home.DrivewayDirection==2,"water rejected without changing exit");
                 w.SpawnBuilding(new Cell(4,4),1,true);Check(!w.SetHouseDriveway(home.Id,5),"occupied neighbor rejected");
                 Check(w.SetHouseDriveway(home.Id,1)&&home.DrivewayDirection==1,"diagonal exit supported");
+            });
+            Test("retiring driveway pavement is display only and clears after committed trips",()=>{
+                var w=Lab();var home=w.SpawnBuilding(new Cell(5,5),0,true);var exit=new Cell(6,5);
+                w.Build(BuildTool.Road,exit);
+                var car=w.Cars.First(c=>c.HomeId==home.Id);
+                car.Stage=TripStage.Outbound;car.Lanes=w.MakeLanes(new[]{home.Cell,exit});
+                car.ReturnRoute=new List<Cell>{exit,home.Cell};
+                Check(w.RetiringRoadLinks().Count==0,"live links need no retiring pavement");
+                Check(w.SetHouseDriveway(home.Id,2),"redirect while trip committed");
+                var before=w.Observe();int spent=w.ConstructionSpent,version=w.NetworkVersion;
+                var links=w.RetiringRoadLinks();
+                Check(links.Count==1&&((links[0].From==home.Cell&&links[0].To==exit)||
+                    (links[0].To==home.Cell&&links[0].From==exit)),"old committed driveway retained once");
+                Check(w.FindRoute(home.Cell,exit).Count==0,"display does not reopen old driveway");
+                Check(w.Observe().Connections.SequenceEqual(before.Connections)&&
+                    w.Inventory.SequenceEqual(before.Inventory)&&w.ConstructionSpent==spent&&w.NetworkVersion==version,
+                    "display query does not mutate network or materials");
+                car.Stage=TripStage.Home;
+                Check(w.RetiringRoadLinks().Count==0,"pavement disappears when committed trip finishes");
             });
             Test("roundabout circulation is directed",()=>{
                 var w=Lab();w.Build(BuildTool.Roundabout,new Cell(15,15));

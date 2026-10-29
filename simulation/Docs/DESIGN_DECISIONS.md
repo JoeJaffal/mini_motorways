@@ -778,3 +778,26 @@ The user's repeated request to proceed authorizes the remaining implementation w
 ## 041 - Accept current parking approximations for now
 
 After the entrance-center and conservative concurrency differences were explained, the user accepted keeping the current parking behavior for now while work proceeds on other differences. This does not certify exact parking or cancel the overall Original replication target. The repo cleanup request also authorizes documenting and committing the completed work, organizing maintained source, and pushing it to the user repository.
+
+
+## 042 - Selective playground updates from mohammad (29 October 2026)
+
+User decision: copy only AI replay playback and retiring-road display fixes to
+main, without merging training work. Engineering choice: port the replay core,
+viewer, retiring-link display helper and three focused shared check suites from
+mohammad f632008 onto main f02fe0e. Replay uses normal materials/actions and
+blocks manual editing while active. Retiring pavement is display only. Existing
+traffic physics and gameplay rules are unchanged. Training diagnostics, headless
+training extensions, rewards, checkpoints and reports are excluded. Earlier
+training chronology remains on mohammad in training/EXPERIMENT_HISTORY.md.
+Validation results are recorded below; this is not evidence of game fidelity.
+
+Validation: .NET 8 shared self-test passed all 40 suites (including replay
+reproduction/tamper detection, helper/version rejection and retiring pavement
+lifecycle/non-mutation). Five-map protocol verification passed 10 runs across
+OriginalReference and Custom. `git diff --check` passed. Unity editor compilation
+was also requested; its result is recorded below. No long training was run.
+Unity 6000.6.0f1 batch import/compilation completed successfully, exit code 0,
+with no C# compiler errors. No player build or interactive visual inspection was
+performed in this port. The local-only editor log is
+C:/Users/moham/mini_motorways/tmp/playground-main-unity.log.

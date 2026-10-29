@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace MotorwaysSim
 {
-    public sealed class TrafficViewer : MonoBehaviour
+    public sealed partial class TrafficViewer : MonoBehaviour
     {
         public TrafficWorld World {get;private set;}
         bool paused,grid,routes,inspect=true;
@@ -45,6 +45,7 @@ namespace MotorwaysSim
                 Debug.Log("TRAFFIC_APP_SMOKE_PASSED="+version+"/"+World.Scenario+"/"+World.Time);Application.Quit();return;
             }
             circle=Shape(true);rounded=Shape(false);
+            if(TryReplayLaunch(launchArgs))return;
             var args=Environment.GetCommandLineArgs();
             if(Array.IndexOf(args,"--lab")>=0)World.Reset(42,true);
             int capture=Array.IndexOf(args,"--capture");
@@ -64,6 +65,7 @@ namespace MotorwaysSim
         }
         void Update()
         {
+            if(aiReplay!=null){UpdateReplay();return;}
             if(paused||World.Failed||World.ScenarioRejected)return;accumulator+=Math.Min(Time.unscaledDeltaTime,.25f)*speed;
             int ticks=0;while(accumulator>=World.Rules.TickSeconds&&ticks++<200){World.Step();accumulator-=(float)World.Rules.TickSeconds;}
         }
@@ -135,6 +137,12 @@ namespace MotorwaysSim
                 foreach(var c in r.Ring)for(int d=0;d<8;d++)if((World.Connections[c.X,c.Y]&(1<<d))!=0)
                 {var n=c+TrafficWorld.Directions[d];if(!r.Ring.Contains(n)&&n!=r.Center)Line(At(c),At(n),tile*.4f,road);}
             }
+            // Committed trips can still use a detached driveway. Keep its
+            // retiring pavement visible without making it routable again.
+            var retiring=World.RetiringRoadLinks();
+            for(int layer=0;layer<2;layer++)foreach(var link in retiring)
+                Line(At(link.From),At(link.To),tile*(layer==0?.6f:.4f),
+                    layer==0?new Color(.84f,.82f,.69f):new Color(.82f,.84f,.81f));
             for(int y=0;y<30;y++)for(int x=0;x<50;x++)
             {
                 var c=new Cell(x,y);var p=At(c);
@@ -244,6 +252,7 @@ namespace MotorwaysSim
             scroll=GUI.BeginScrollView(new Rect(x,0,width+12,Screen.height),scroll,new Rect(0,0,width-8,1750));x=0;width-=12;y=15;
             Say(x,y,width,version==GameVersion.Custom?"TRAFFIC LAB CUSTOM":"TRAFFIC LAB ORIGINAL",title);y+=38;
             Say(x,y,width,version==GameVersion.Custom?"YOUR RULES / unlimited construction":"ORIGINAL TARGET / fidelity incomplete",small);y+=29;
+            if(aiReplay!=null){ReplayPanel(x,y,width);GUI.EndScrollView();return;}
             if(GUI.Button(new Rect(x,y,width,28),"Map: "+chosenMap,button)){chosenMap=CityCatalog.Maps[(Array.IndexOf(CityCatalog.Maps,chosenMap)+1)%CityCatalog.Maps.Length];Reset(false);}y+=34;
             if(GUI.Button(new Rect(x,y,width,28),variation==MapVariation.SameMap?"Runs: same map, varied events":"Runs: different maps + varied events",button)){variation=variation==MapVariation.SameMap?MapVariation.DifferentMaps:MapVariation.SameMap;Reset(false);}y+=34;
             if(GUI.Button(new Rect(x,y,width,28),"New run / seed "+seed,button)){seed++;Reset(false);}y+=36;
@@ -283,7 +292,7 @@ namespace MotorwaysSim
         void Reset(bool connected){World.Reset(seed,connected?ScenarioKind.ReferenceLab:chosenMap,connected?MapVariation.SameMap:variation);accumulator=0;motorwayStart=null;selected=null;selectedCar=-1;pan=Vector2.zero;zoom=1;status=World.LastAction;}
         void InputMap()
         {
-            var e=Event.current;if(e.type==EventType.KeyDown&&e.keyCode==KeyCode.Space){paused=!paused;e.Use();}
+            var e=Event.current;if(e.type==EventType.KeyDown&&e.keyCode==KeyCode.Space){if(aiReplay!=null)ToggleReplayPlayback();else paused=!paused;e.Use();}
             if(e.type==EventType.KeyDown&&e.keyCode==KeyCode.Escape){motorwayStart=null;editingMotorway=-1;e.Use();return;}
             if(e.type==EventType.MouseUp){drag=null;return;}if(!viewport.Contains(e.mousePosition))return;
             if(e.type==EventType.ScrollWheel){zoom=Mathf.Clamp(zoom-e.delta.y*.12f,1,4);e.Use();return;}
@@ -295,6 +304,7 @@ namespace MotorwaysSim
                 selected=c;selectedCar=-1;var point=new Point(p.x/tile,p.y/tile);
                 var car=World.Cars.Where(v=>v.Stage!=TripStage.Home).OrderBy(v=>Point.Distance(v.Position,point)).FirstOrDefault();if(car!=null&&Point.Distance(car.Position,point)<.45)selectedCar=car.Id;e.Use();return;
             }
+            if(aiReplay!=null)return; // Inspection/pan/zoom only: never edit a replay.
             var active=e.button==1?BuildTool.Remove:tool;
             if(active==BuildTool.Motorway)
             {
