@@ -1,0 +1,39 @@
+{
+  "checkpoint": "output\\training\\signals-context-01\\validation-best.zip",
+  "sha256": "1e1b56e1d2b0a69dd85b7b01ba96b3ccc8672a2c6a6d0f0d722d5ba1ce6187a2",
+  "development_selection": {
+    "mean_trips": 228.0,
+    "policy_steps": 25876,
+    "baseline": false,
+    "scores": [
+      235,
+      259,
+      155,
+      122,
+      369
+    ],
+    "checkpoint": "validation-best.zip"
+  },
+  "seeds": [
+    7000,
+    7001,
+    7002,
+    7003,
+    7004,
+    7005,
+    7006,
+    7007,
+    7008,
+    7009
+  ],
+  "mode": "deterministic",
+  "conditions": [
+    "placement enabled",
+    "placement disabled"
+  ],
+  "games": 20,
+  "no_training": true,
+  "execution": "Prepared only; user executes and reports completion",
+  "output": "output/experiments/lights-context-test-01",
+  "purpose": "Policy availability test for selected v4 model, not a throughput proof or a new checkpoint selection"
+}

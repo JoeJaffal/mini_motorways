@@ -1,5 +1,16 @@
 # Traffic-light availability comparison
 
+For the **new v4 model**, use this prepared test on new seeds7000-7009:
+
+```powershell
+cd C:\Users\moham\mini_motorways
+.\.venv\Scripts\python.exe .\training\compare_traffic_lights.py --checkpoint output/training/signals-context-01/validation-best.zip --seed-start 7000 --output output/experiments/lights-context-test-01
+```
+
+Twenty frozen deterministic games, no training. The full test has not been
+launched by the assistant; tell it when the final COMPARISON appears and the
+PowerShell prompt returns. The earlier v3 comparison below is historical.
+
 The first full user-run comparison is complete: lights ON190.9 vs OFF209.9 mean
 trips, dominated by one seed losing196 with lights; the other nine net+6. See
 [evidence and limits](../docs/training/light-availability-2026-10-29/README.md).

@@ -1,5 +1,9 @@
 # Training status - 30 October 2026
 
+Next prepared diagnostic: v4 light placement ON/OFF on seeds7000-7009, same
+selected228.0-development model, twenty frozen games. User execution pending;
+no assistant-run simulation/training. Exact command in TRAFFIC_LIGHT_TEST.md.
+
 V4 fresh-map test complete: deterministic175.9->194.0 (+10.3%), two maps better,
 five tied, three worse. Sampled168.7->169.0, nine ties/one+3 gain. Thus additional
 learning has an inconsistent point-average benefit, not established broad

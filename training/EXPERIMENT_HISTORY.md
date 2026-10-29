@@ -967,6 +967,19 @@ protocol/reports/traces/best recordings and source-byte hashes are archived in
 [v4 fresh evidence](../docs/training/signal-context-fresh-2026-10-30/README.md).
 Weights remain local and prior archives unchanged. No next long run authorized.
 
+## T36 - User-run v4 light-availability comparison prepared (30 October)
+
+User authorized preparing the next test. Existing comparison CLI already supports
+an explicit v4 checkpoint and custom seeds; no runtime code change was needed.
+Selected signals-context-01/validation-best.zip using existing development228.0
+selection. Recorded its current SHA256 and reserved new paired seeds7000-7009,
+twenty deterministic ON/OFF games, unchanged policy, no optimization. Plan is
+docs/training/signal-context-light-test-plan-2026-10-30.json. CLI help and file
+existence checked; no simulation or training launched. Per explicit user credit
+preference, user will run/wait and notify after final comparison/shell prompt.
+Updated TRAFFIC_LIGHT_TEST.md with exact explicit-checkpoint command. This tests
+availability for this policy; no universal traffic-light benefit is implied.
+
 ## Branch playground comparison — 29 October 2026
 
 Read-only source comparison requested by the user: local `main` f02fe0e versus
