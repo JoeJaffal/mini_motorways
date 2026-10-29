@@ -132,7 +132,19 @@ lights were placed, but no score improvement was established. A paired frozen
 58-choice-state check increased mean entropy 1.849 -> 1.978, with no changed
 argmax. This measures more varied probabilities, not learned skill.
 
+Subsequent user overnight result: the run stopped early at about4h18m/8h, cause
+unknown. Best development mean improved167.4->204.2; latest was185.4. The best
+training recording was494. These are development results, not a fresh-seed test.
+See [overnight assessment](../docs/training/signals-overnight-2026-10-29/README.md).
+
+The subsequent frozen fresh-map check used ten unseen LosAngeles seeds4000-4009.
+Deterministic mean rose161.3->207.4 (nine wins/one loss); sampled mean182.0->188.9
+(five wins/two ties/three losses, aggregate gain mainly one map). This supports
+deterministic transfer, with limited evidence for sampled improvement. No weights
+or checkpoint selection were changed. See
+[full fresh-map result](../docs/training/signals-fresh-2026-10-29/README.md).
+
 The new actions/observations, normal stock/replay, update/save/reload, four-worker
 startup/resume and baseline checkpoint protection were checked. A full overnight
-experiment has not been run. See [archived measurements](../docs/training/signals-2026-10-29/README.md)
+experiment has not completed. See [preparation measurements](../docs/training/signals-2026-10-29/README.md)
 and [history](EXPERIMENT_HISTORY.md). Existing PDFs remain historical snapshots.

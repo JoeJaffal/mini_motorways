@@ -1,5 +1,25 @@
 # Training status - 29 October 2026
 
+**Fresh-map test complete:** the preselected trained model improved deterministic
+mean 161.3 -> 207.4 (+28.6%) on unseen LosAngeles seeds4000-4009, winning9/10.
+Secondary sampled mean182.0 -> 188.9 (+3.8%); five wins/two ties/three losses,
+with nearly all aggregate gain on one map. This supports deterministic transfer
+but remains a ten-map/one-model test with weak sampled evidence. All40 games
+were inference only; frozen selection/weights preserved, no retuning. See
+[paired results and evidence](../docs/training/signals-fresh-2026-10-29/README.md)
+and T27. No training is active; selected local weights remain
+`output/training/signals-night-01/validation-best.zip`.
+
+**Latest: user overnight run stopped early, cause unknown.** `signals-night-01`
+has no active trainer, final checkpoint or summary; last unfinished status is
+4h18m/8h,832 games. Saved best validation mean improved167.4->204.2 (+22%),
+latest validation185.4, best completed training recording494 trips on seed1099.
+The trained validation-best checkpoint beat its starting policy; the later
+fresh-seed result is recorded above. Existing checkpoints are retained locally.
+See [raw evidence](../docs/training/signals-overnight-2026-10-29/README.md) and T26.
+
+The following preparation record predates the user-started overnight run.
+
 Traffic-light **v3 is ready for a fresh overnight experiment**, not yet run.
 It adds normal-stock legal junction proposals, existing-light observations and
 traffic/global context for route choices. Starting-prior temperature 2 permits

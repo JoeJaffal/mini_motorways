@@ -6,6 +6,8 @@ players and scratch captures remain local and are not backed up by this archive.
 
 | Record | Purpose |
 | --- | --- |
+| [Fresh-map evaluation](signals-fresh-2026-10-29/README.md) | Frozen ten-map comparison: deterministic161.3->207.4, sampled182.0->188.9; 40 games, unchanged weights, limits and replays |
+| [Partial overnight result](signals-overnight-2026-10-29/README.md) | Early stop at4h18m, saved best494, development mean167.4->204.2; cause unknown and fresh-map test pending |
 | [Traffic-light v3 audit and pilots](signals-2026-10-29/README.md) | Old-policy decision audit, paired prior-temperature pilots, stock/replay/update checks and overnight preparation; no proven score gain |
 | [Congestion v2 comparison](congestion-v2-2026-10-28/README.md) | Live-map/bypass inputs, frozen three-map ablation, mixed results and startup checks; no long training |
 | [Latest investigation PDF](model-investigation-2026-10-28.pdf) | Ten-page report: ten experiments, 356-trip planner-aided record, independent tests and limited learning evidence |

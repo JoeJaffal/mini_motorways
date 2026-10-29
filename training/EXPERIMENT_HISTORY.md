@@ -694,3 +694,74 @@ preserves audits, paired tensor/parameter assessment, pilot sources/logs/scores,
 startup/resume/evaluator measurements and 34 source-copy SHA256s. Weights and
 native binaries remain local. The overnight run remains an experiment and is not
 claimed to fix learning, reach1000 or use the excluded tools.
+
+## T26 - Partial overnight results (29 October 2026)
+
+User requested the result of `signals-night-01`. Read-only inspection found no
+Python trainer or dotnet host running. Saved status is unfinished at 15471.3
+learner seconds (4h17m51s) of configured 480 minutes, 125924 macro decisions,
+569758 commands and 832 completed games. Neither final.zip nor summary.json
+exists. Thus the run stopped before its planned end; cause is unknown from these
+files. Do not infer sleep, reboot, crash or user interruption without evidence.
+Existing latest/validation-best/best-policy/initial checkpoints remain local.
+
+Initial deterministic development scores2000-2004 were79/207/82/132/337,
+mean167.4. Best periodic mean204.2 (+21.98%), at77220 decisions, scores
+125/291/154/122/329. Three maps improved and two worsened versus initial. Latest
+validation mean185.4, scores237/85/135/134/336, below the best but above initial.
+Validation-best metadata has baseline:false, so a trained policy beat its own
+starting policy on this development set. This is stronger development learning
+evidence than the earlier flat short runs, not a fresh-seed generalization test;
+repeated development selection can overfit and results fluctuate.
+
+Best completed training recording:494 trips, seed1099,1124.7 simulated seconds,
+partial:false and terminated:true. It is distinct from a deterministic evaluation
+of the selected validation-best policy. Do not credit all score changes solely
+to traffic lights or confuse the training maximum with validation averages.
+No new training, evaluation or process changes were performed during assessment.
+Raw metrics, complete best replay, checkpoint hashes (no weights) and source-copy
+integrity records are preserved in
+[overnight evidence](../docs/training/signals-overnight-2026-10-29/README.md).
+
+## T27 - Predeclared fresh-map comparison (29 October 2026)
+
+User authorized fresh-map evaluation. Before launching inference, froze hashes
+of `signals-night-01/initial.zip` and the development-selected
+`validation-best.zip` (mean204.2 at77220 decisions); latest and best-training
+policies are not eligible for fresh-test reselection. Reserved seeds4000-4009
+have no matches in recorded prior training/test evidence. Training was1000-1099,
+development2000-2004 and earlier investigation tests3000-3009.
+
+Protocol: same ten LosAngeles/OriginalReference scenarios for both checkpoints,
+3600s cap, primary deterministic play, secondary sampled play with one trajectory
+per seed and common RNG43+scenario offset. Forty games, at most two evaluation
+jobs concurrently; no optimization, tuning or checkpoint reselection based on
+these outcomes. Evaluator checks parameter tensors unchanged; driver verifies
+checkpoint/host hashes and paired map IDs. Protocol, checkpoint/runtime/source
+hashes were saved before spawning jobs and copied to
+`docs/training/signals-fresh-2026-10-29/protocol.json`. Limited ten-map/one-run
+evidence cannot establish universal performance. Results pending at this entry;
+completion/limits will be appended without changing the frozen protocol.
+
+T27 completion: all 40 predeclared inference games finished naturally before
+3600s. Deterministic primary means 161.3 initial -> 207.4 selected (+46.1,
++28.58%), with 9/10 maps better and one worse. Secondary sampled means 182.0 ->
+188.9 (+6.9,+3.79%), with five better/two tied/three worse. Seed4006 adds70 to
+the sampled paired total69, so the secondary gain is almost entirely one map;
+do not imply robust sampled improvement. Primary paired differences are
+8/30/18/74/208/162/23/-143/61/20. This is evidence of deterministic improvement
+on unseen LosAngeles seeds, beyond repeated development maps, not universal
+generalization, a unique traffic-light effect, or proof that no memorization
+occurred. Only ten maps and one trained model; one sampled path per seed.
+
+All evaluator parameter tensors and checkpoint file hashes remained unchanged.
+No optimization, source retuning or policy reselection occurred. The same
+development-selected validation-best checkpoint remains the evaluated candidate;
+latest and maximum-training policy were not searched on fresh maps. Four saved
+best recordings passed headless exact-command replay verification. Those are
+reconstruction checks, not additional policy-test trajectories. Protocol/results,
+all per-seed metrics, traces, recordings and inference sources are archived in
+[fresh-map evidence](../docs/training/signals-fresh-2026-10-29/README.md), with
+byte hashes. The protocol copied before execution remains unchanged. The exposed
+4000-4009 partition should not be reused as a fresh tuning test. No new training
+was started, and the stopped overnight process was not restarted.
