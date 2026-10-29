@@ -1,5 +1,12 @@
 # Signal context v4: preserve learned weights, add queue causes
 
+User-run fresh test is complete: deterministic175.9->194.0 (2 better/5 tied/
+3 worse); sampled168.7->169.0 (9 ties). Point-average improvement is inconsistent,
+and neither feature causality nor reliable better light placement is established.
+See [evidence](../docs/training/signal-context-fresh-2026-10-30/README.md).
+The commands below describe the completed experiment; these test seeds are now
+exposed and cannot be called fresh again after tuning on their results.
+
 The first user trial finished: development average204.2 ->228.0, mostly from one
 map. Before extending training, run the frozen fresh-map comparison:
 

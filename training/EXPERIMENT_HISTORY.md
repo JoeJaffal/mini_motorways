@@ -941,6 +941,32 @@ archived in docs/training/signal-context-run-2026-10-29 with source-byte hashes.
 Runtime checkpoint/replay binaries remain local. The new held-out test has not
 yet exposed its maps. Existing historical archives are unchanged.
 
+T34 follow-up: user reported "done", but inspection found no assessment.json;
+only initial-deterministic.json was complete and the evaluation driver/children
+were still active. No error text was present. Requested waiting for the final
+ASSESSMENT and returned shell prompt before analysis. Per credit preference,
+the assistant did not poll/wait, launch another job or draw partial conclusions.
+
+## T35 - User-completed v4 fresh-map evaluation (30 October 2026)
+
+User reported completion; assessment is now present. Forty frozen inference
+games on predeclared seeds6000-6009 all ended naturally. Deterministic mean
+175.9 warm-start initial ->194.0 selected (+18.1,+10.29%), two wins/five ties/
+three losses. Gains+132 on6003 and+72 on6004 dominate; the other eight net-23.
+Sampled mean168.7->169.0 (+.3,+.18%), one win/nine ties/no losses; only6005
+changes,+3. This is an improved point mean with inconsistent transfer, not broad
+reliable improvement or proven light-placement/feature benefit. Further v3
+training with the same budget was not controlled, so feature causality remains
+open. Light placements24->28 deterministic,24->24 sampled; counts are not skill.
+
+Checked protocol digest, declared map partition,40 terminal/nontruncated rows,
+unchanged tensors and report checkpoint hashes. No new evaluation, training,
+replay execution, source tuning or checkpoint reselection was performed. Per
+user preference, read completed results only, without waiting/polling. Raw
+protocol/reports/traces/best recordings and source-byte hashes are archived in
+[v4 fresh evidence](../docs/training/signal-context-fresh-2026-10-30/README.md).
+Weights remain local and prior archives unchanged. No next long run authorized.
+
 ## Branch playground comparison — 29 October 2026
 
 Read-only source comparison requested by the user: local `main` f02fe0e versus

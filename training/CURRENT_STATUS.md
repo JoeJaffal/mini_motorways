@@ -1,4 +1,11 @@
-# Training status - 29 October 2026
+# Training status - 30 October 2026
+
+V4 fresh-map test complete: deterministic175.9->194.0 (+10.3%), two maps better,
+five tied, three worse. Sampled168.7->169.0, nine ties/one+3 gain. Thus additional
+learning has an inconsistent point-average benefit, not established broad
+improvement or a proven light-placement fix. Forty frozen games, seeds6000-6009;
+no further jobs started. See
+[full scores and limits](../docs/training/signal-context-fresh-2026-10-30/README.md), T35.
 
 V4 one-hour user trial completed normally: 167 games, validation204.2 ->228.0
 (+11.7%), with most gain on one of five maps. Best selected checkpoint is local
