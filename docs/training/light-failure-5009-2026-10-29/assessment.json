@@ -1,0 +1,143 @@
+{
+  "first_difference_index": 675,
+  "first_difference_time": 675,
+  "first_on_command": {
+    "command": "build",
+    "tool": "TrafficLight",
+    "x": 15,
+    "y": 15
+  },
+  "first_off_command": {
+    "command": "draw",
+    "x": 16,
+    "y": 7,
+    "toX": 17,
+    "toY": 6
+  },
+  "full_policy_scores": {
+    "on": 279,
+    "off": 475
+  },
+  "fixed_ON_command_counterfactuals": [
+    {
+      "omitted": [
+        675
+      ],
+      "final_score": 277,
+      "final_seconds": 824.5500000000001,
+      "rejected": 0,
+      "original_command_horizon_score": 277,
+      "original_command_horizon_seconds": 824.5500000000001,
+      "failed_destination": {
+        "id": 28,
+        "color": 2,
+        "cell": {
+          "x": 21,
+          "y": 8
+        },
+        "demand": 7,
+        "reserved": 6,
+        "capacity": 6,
+        "overcrowded": 50.044,
+        "parked": 2
+      }
+    },
+    {
+      "omitted": [
+        697
+      ],
+      "final_score": 374,
+      "final_seconds": 964.95,
+      "rejected": 0,
+      "original_command_horizon_score": 277,
+      "original_command_horizon_seconds": 825,
+      "failed_destination": {
+        "id": 54,
+        "color": 4,
+        "cell": {
+          "x": 37,
+          "y": 18
+        },
+        "demand": 10,
+        "reserved": 0,
+        "capacity": 6,
+        "overcrowded": 50.025,
+        "parked": 0
+      }
+    },
+    {
+      "omitted": [
+        675,
+        697
+      ],
+      "final_score": 276,
+      "final_seconds": 824.6,
+      "rejected": 0,
+      "original_command_horizon_score": 276,
+      "original_command_horizon_seconds": 824.6,
+      "failed_destination": {
+        "id": 28,
+        "color": 2,
+        "cell": {
+          "x": 21,
+          "y": 8
+        },
+        "demand": 7,
+        "reserved": 7,
+        "capacity": 6,
+        "overcrowded": 50.044,
+        "parked": 2
+      }
+    }
+  ],
+  "lights": [
+    {
+      "command_index": 675,
+      "time": 675,
+      "request": {
+        "command": "build",
+        "tool": "TrafficLight",
+        "x": 15,
+        "y": 15
+      }
+    },
+    {
+      "command_index": 697,
+      "time": 697,
+      "request": {
+        "command": "build",
+        "tool": "TrafficLight",
+        "x": 24,
+        "y": 14
+      }
+    }
+  ],
+  "on_failed_destination": {
+    "id": 28,
+    "color": 2,
+    "cell": {
+      "x": 21,
+      "y": 8
+    },
+    "demand": 7,
+    "reserved": 6,
+    "capacity": 6,
+    "overcrowded": 50.043,
+    "parked": 2
+  },
+  "second_light_nearby_waiting_cars": [
+    {
+      "id": 41,
+      "homeId": 25,
+      "shopId": 27,
+      "color": 1,
+      "stage": "Outbound",
+      "x": 24.582972977727398,
+      "y": 14.154980611822857,
+      "waiting": 8.04999999999998,
+      "speed": 0,
+      "obstacle": "Carpark access occupied"
+    }
+  ],
+  "limits": "Single exposed diagnostic. Fixed ON commands, omitted builds replaced by equal-duration waits; after recorded horizon only waits. Not a new trained policy or clean per-junction throughput experiment."
+}

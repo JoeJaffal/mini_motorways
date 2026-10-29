@@ -836,3 +836,60 @@ for this inspection. Raw protocol/reports/traces/best recordings and source-copy
 SHA256s are preserved in
 [light availability evidence](../docs/training/light-availability-2026-10-29/README.md).
 These exposed test seeds should not be treated as unseen for later tuning.
+
+## T32 - Seed5009 divergence and fixed-command diagnosis
+
+User authorized investigating the failure. New diagnostic scripts reconstruct
+the frozen ON/OFF trajectories, record every ordinary command/state, and replay
+ON commands with each/both light builds replaced by equal-time waits. Policy
+tensors stay unchanged; checkpoint hash matches T31. Scores reproduce279 ON
+(824.9s) and475 OFF(1097s); regenerated OFF commands exactly match the original
+saved recording. The first675 commands agree. At675s/196trips, ON places a light
+at(15,15) while OFF draws(16,7)->(17,6). ON's second light is(24,14) at697s.
+No claim is made that the first differing OFF stroke actually adds road.
+
+Holding the ON road/upgrade schedule fixed: both279; first-only374/964.95s;
+second-only277/824.55s; neither276/824.6s. No rejected commands/grants. After the
+original825-command horizon the counterfactual only waits, rather than using
+the policy to adapt. First-only has277 at825s vs original279 at824.9s, then
+survives longer; final374 is not immediate throughput or predicted live-policy
+performance. Later failure is unserved purple destination54. Thus the second
+light hurts in the first-light configuration, but the first can help when the
+second is absent. Removing both does not reproduce the full OFF policy's475:
+construction/timing feedback is also material. Do not attribute the whole196
+gap to isolated traffic-light physics or infer that all lights should be banned.
+
+Original ON fails at green destination28,(21,8): demand7/capacity6, timer50.043s.
+At800s both policies have263 trips and timer33.443; at820s both have275 trips
+but ON timer45.143 versus OFF3.889. Per-destination survival pressure can differ
+despite nearly identical global throughput. The exact microscopic traffic chain
+was not fully isolated. Just before the second placement, nearby car41 waits
+8.05s for "Carpark access occupied" at blue destination27's entrance road.
+Current light features do not encode obstacle cause; this is a concrete input
+gap and plausible decision weakness, not a proven account of model reasoning.
+Queue-cause and approach/destination pressure are future feature hypotheses;
+none was implemented or trained, and no seed-specific placement rule was added.
+
+Five saved replays pass headless exact verification. No simulator, reward,
+production policy or selected checkpoint changed. Full local traces/decisions
+remain in output; compact timelines, diagnoses, five recordings, relevant
+snapshots, source scripts and hashes are in
+[diagnosis evidence](../docs/training/light-failure-5009-2026-10-29/README.md).
+Optional chart imports failed due missing Matplotlib in both Python environments;
+the dependency-free report preserves data without installing training packages.
+No chart or new generalization result is claimed. Historical archives unchanged.
+
+## Branch playground comparison — 29 October 2026
+
+Read-only source comparison requested by the user: local `main` f02fe0e versus
+`mohammad` f632008, using `git diff main mohammad` (branch tips, not merge base).
+Finding: normal interactive Unity gameplay rules/core existing files are unchanged.
+The viewer on mohammad adds AI replay launch/playback with an inspection-only
+replay UI, and displays retiring pavement for committed car routes after links
+are detached. Added simulation helpers provide read-only draw-change/useful-
+connectivity diagnostics and replay validation; headless/training support also
+ differs. Legacy C++ playground files have no differences. This is source
+inspection, not a new runtime or built-executable comparison; local ignored builds
+may reflect another revision. No training or gameplay changes were made for this
+analysis. The pre-existing untracked training/diagnose_light_failure.py was left
+untouched.

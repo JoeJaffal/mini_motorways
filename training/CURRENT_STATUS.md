@@ -1,5 +1,13 @@
 # Training status - 29 October 2026
 
+Seed5009 diagnosis complete: the lights interact. With the ON construction
+schedule fixed, both lights score279, first-only374, second-only277, neither276.
+The full OFF policy's different command schedule scores475. The second light
+was placed by a parking-access queue; current light inputs lack queue-cause
+information. This is a diagnostic/input-gap finding, not a trained fix or a
+reason to ban all lights. No model/rules/reward changed. See
+[evidence and limits](../docs/training/light-failure-5009-2026-10-29/README.md), T32.
+
 Traffic-light ON/OFF test is now complete: ON190.9 vs OFF209.9 mean trips, with
 2 wins/5 ties/3 losses. The -19 mean is dominated by seed5009 (-196 trips);
 the other nine net+6 for ON. This is inconsistent placement benefit for the

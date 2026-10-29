@@ -1,0 +1,7 @@
+{
+  "seed": 5009,
+  "checkpoint_sha256": "f10899a74f7cd9fbf28eec542db828cdcaa00cf7c94fa6903f62ab3b172d0bf0",
+  "no_training": true,
+  "diagnostic": "Repeat ON/OFF to capture every ordinary command; replay ON commands with each/all light builds replaced by equal-time waits. Counterfactual commands are fixed, not optimized.",
+  "limits": "Single exposed failure case; command-fixed counterfactuals separate physical light effects from planner feedback, not generalization evidence."
+}
