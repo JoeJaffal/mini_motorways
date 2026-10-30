@@ -1,5 +1,12 @@
 # Training status - 30 October 2026
 
+V4 light-availability test complete: ON177.5 vs OFF159.1 (+11.6%), three wins/
+six ties/one loss on seeds7000-7009. Light actions help this policy's mean on
+this set but can still hurt individual maps. Next recommendation is a user-run
+two-hour continuation of the same checkpoint/settings, not another architecture
+change. No job started. See T37 and
+[paired evidence](../docs/training/signal-context-light-results-2026-10-30/README.md).
+
 Next prepared diagnostic: v4 light placement ON/OFF on seeds7000-7009, same
 selected228.0-development model, twenty frozen games. User execution pending;
 no assistant-run simulation/training. Exact command in TRAFFIC_LIGHT_TEST.md.

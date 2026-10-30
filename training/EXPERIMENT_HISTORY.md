@@ -980,6 +980,25 @@ preference, user will run/wait and notify after final comparison/shell prompt.
 Updated TRAFFIC_LIGHT_TEST.md with exact explicit-checkpoint command. This tests
 availability for this policy; no universal traffic-light benefit is implied.
 
+## T37 - Completed v4 light test; bounded continuation recommended
+
+User requested next step. Completed lights-context-test-01 matches the planned
+v4 checkpoint hash and seeds7000-7009. Twenty deterministic games end naturally;
+all tensors unchanged. ON mean177.5 versus OFF159.1 (+18.4,+11.56%), three wins/
+six ties/one loss. Paired differences134/0/0/15/0/0/0/155/-120/0;7008 remains a
+large adverse case. ON placed22 lights, OFF0. Descriptive waits1.0564/1.5240s
+cannot cleanly isolate flow because lifetime/load differ. Availability helps
+this frozen policy on average here, not universally. Comparing to v3's earlier
+negative availability mean does not prove a v4 feature effect: seeds differ.
+
+No further inference, replay execution, training or checkpoint reselection ran.
+Raw evidence/source hashes are in
+[v4 light results](../docs/training/signal-context-light-results-2026-10-30/README.md).
+Recommendation: retain existing light-enabled policy and run a bounded two-hour
+continuation of validation-best with identical architecture/reward/settings,
+preserving best validation selection. User executes/waits per credit preference;
+no new job has been started. More tools/feature expansion not implemented.
+
 ## Branch playground comparison — 29 October 2026
 
 Read-only source comparison requested by the user: local `main` f02fe0e versus

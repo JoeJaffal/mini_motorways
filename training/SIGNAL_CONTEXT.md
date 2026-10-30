@@ -1,5 +1,19 @@
 # Signal context v4: preserve learned weights, add queue causes
 
+Latest light-availability test: ON177.5 vs OFF159.1 mean, with3 better/6 tied/
+1 worse maps. Keep the existing light-enabled candidate for the next bounded
+training continuation (not a new model reset):
+
+```powershell
+cd C:\Users\moham\mini_motorways
+.\.venv\Scripts\python.exe .\training\train_goal.py --output output/training/signals-context-02 --resume output/training/signals-context-01/validation-best.zip --minutes 120 --workers 4 --validation-minutes 30
+```
+
+Resume retains weights and optimizer; the new output protects previous files.
+Initial/final evaluations add time; Ctrl+C saves. The assistant has not launched
+this run. Report completion for local result analysis. This test's positive
+average does not establish universal benefit or isolate the new feature effect.
+
 User-run fresh test is complete: deterministic175.9->194.0 (2 better/5 tied/
 3 worse); sampled168.7->169.0 (9 ties). Point-average improvement is inconsistent,
 and neither feature causality nor reliable better light placement is established.
