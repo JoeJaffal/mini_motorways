@@ -5,7 +5,7 @@ def test_parse_seeds():
     assert parse_seeds(["1000", "2000-2002", "1000"]) == [1000, 2000, 2001, 2002]
 
 @pytest.mark.host
-def test_evaluate_writes_summary(tmp_path, monkeypatch):
+def test_evaluate_writes_summary(host_dll, verifier, tmp_path, monkeypatch):
     monkeypatch.setattr("evolved_rules.evaluate.RUNS_DIR", tmp_path)
     s = evaluate("hand", [2000, 2001], workers=2, run="t", verify=True)
     assert [g["scenario_seed"] for g in s["games"]] == [2000, 2001]
@@ -162,6 +162,37 @@ def test_bad_inputs_are_refused_before_the_folder_is_claimed(fake_runs):
         with pytest.raises(ValueError):
             evaluate(**kwargs)
     assert calls == [] and list(tmp_path.iterdir()) == []
+
+
+@pytest.mark.parametrize("cap", [0, 0.0, -1.0, -3600, float("nan"), float("inf"), float("-inf"), None, "60"])
+def test_bad_caps_are_value_errors_before_the_folder_is_claimed(fake_runs, cap):
+    tmp_path, calls = fake_runs
+    with pytest.raises(ValueError, match="cap"):
+        evaluate("hand", [1], workers=1, run="x", verify=False, cap_s=cap)
+    assert calls == [] and list(tmp_path.iterdir()) == []
+
+
+@pytest.mark.parametrize("cap", ["0", "-1", "-0.5", "nan", "NaN", "inf", "-inf"])
+def test_cli_bad_cap_is_a_usage_error(fake_runs, capsys, cap):
+    tmp_path, calls = fake_runs
+    with pytest.raises(SystemExit) as e:
+        main(["--policy", "hand", "--seeds", "1", "--run", "x", f"--cap={cap}"])
+    assert e.value.code == 2 and "cap" in capsys.readouterr().err
+    assert calls == [] and list(tmp_path.iterdir()) == []
+
+
+def test_small_positive_caps_are_accepted(fake_runs):
+    tmp_path, calls = fake_runs
+    assert evaluate("hand", [1], workers=1, run="tiny", verify=False, cap_s=0.5)["config"]["cap_s"] == 0.5
+    assert main(["--policy", "hand", "--seeds", "2", "--run", "one", "--cap", "1"]) == 0
+    assert sorted(c[2] for c in calls if c != "build") == [0.5, 1.0]
+
+
+def test_cli_accepts_the_separated_policy(fake_runs):
+    tmp_path, calls = fake_runs
+    assert main(["--policy", "separated", "--seeds", "2000", "--run", "sep"]) == 0
+    assert [c for c in calls if c != "build"] == [("separated", 2000, 3600.0, False)]
+    assert json.loads((tmp_path / "sep" / "summary.json").read_text())["config"]["policy"] == "separated"
 
 
 def test_reference_runs_unrecorded_and_never_verified(fake_runs, monkeypatch):
@@ -509,6 +540,8 @@ def test_run_seed_rejection_is_false_and_replay_written(in_process, monkeypatch)
     assert calls["play"] == [(host, 2005, HandRule, 77.0, True)]
     assert list(g) == SUMMARY_KEYS + ["privileged", "verified"]
     assert ev._HOST is host and not host.closed  # a rejection is a verdict, not a fault: the host is kept
+    # the verifier's output is kept next to the replay, so a failed verification can be diagnosed
+    assert (tmp_path / "replays" / "2005.verify.txt").read_text(encoding="utf-8") == "diverged"
 
 
 def test_run_seed_pass_is_true_and_nothing_plays_do_nothing(in_process, monkeypatch):
@@ -516,6 +549,7 @@ def test_run_seed_pass_is_true_and_nothing_plays_do_nothing(in_process, monkeypa
     monkeypatch.setattr(ev, "verify_recording", lambda path, timeout=None: (True, "PASS"))
     g = ev._run_seed("nothing", 2006, 60.0, str(tmp_path), True)
     assert g["verified"] is True and g["privileged"] is False
+    assert sorted(p.name for p in (tmp_path / "replays").iterdir()) == ["2006.json"]  # no .verify.txt on a pass
     assert calls["play"][0][2] is DoNothing and calls["play"][0][3:] == (60.0, True)
 
 
@@ -560,6 +594,7 @@ def test_run_seed_no_verify_is_none(in_process, monkeypatch):
     monkeypatch.setattr(ev, "verify_recording", never)
     g = ev._run_seed("hand", 2008, 60.0, str(tmp_path), False)
     assert g["verified"] is None and (tmp_path / "replays" / "2008.json").exists()
+    assert not (tmp_path / "replays" / "2008.verify.txt").exists()
 
 
 def test_run_seed_reference_dispatch(in_process, monkeypatch):
@@ -653,6 +688,31 @@ def test_reference_cadence_offer_and_counters():
     assert list(r) == SUMMARY_KEYS + ["privileged", "verified"]
 
 
+class _RejectingFakeHost(FakeHost):
+    """From t = reject_at, every reply says truncated (scenario rejected) and time stops advancing."""
+
+    def __init__(self, reject_at, on_command=False):
+        super().__init__(end=10_000)
+        self.reject_at, self.on_command = reject_at, on_command
+
+    def call(self, **req):
+        assert len(self.log) < 1000, "run_reference kept going after a truncated reply"
+        if self.t >= self.reject_at and (req["command"] == "step" or self.on_command):
+            self.log.append((self.t, dict(req)))
+            return {"accepted": True, "observation": self._obs(), "terminated": False, "truncated": True,
+                    "message": "infeasible"}
+        return super().call(**req)
+
+
+@pytest.mark.parametrize("on_command", [False, True])
+def test_reference_raises_when_the_scenario_is_rejected_mid_game(on_command):
+    from evolved_rules.host import ScenarioRejected
+    h = _RejectingFakeHost(reject_at=10, on_command=on_command)
+    with pytest.raises(ScenarioRejected, match="truncated reply to 'reference'" if on_command else "'step'"):
+        run_reference(h, 2000, cap_s=3600.0)
+    assert h.t == 10
+
+
 def test_reference_truncated_at_cap():
     h = FakeHost(end=10_000)
     r = run_reference(h, 2001, cap_s=15.0)
@@ -677,7 +737,7 @@ def test_run_reference_is_privileged(host):
 
 
 @pytest.mark.host
-def test_evaluate_reference_writes_no_replay(tmp_path, monkeypatch):
+def test_evaluate_reference_writes_no_replay(host_dll, tmp_path, monkeypatch):
     monkeypatch.setattr(ev, "RUNS_DIR", tmp_path)
     s = evaluate("reference", [2000], workers=1, run="r", verify=True, cap_s=60.0)
     g = s["games"][0]
@@ -688,7 +748,7 @@ def test_evaluate_reference_writes_no_replay(tmp_path, monkeypatch):
 
 
 @pytest.mark.host
-def test_results_do_not_depend_on_worker_count(tmp_path, monkeypatch):
+def test_results_do_not_depend_on_worker_count(host_dll, tmp_path, monkeypatch):
     monkeypatch.setattr(ev, "RUNS_DIR", tmp_path)
     one = evaluate("hand", [2000, 2001], workers=1, run="w1", verify=False, cap_s=300.0)
     two = evaluate("hand", [2000, 2001], workers=2, run="w2", verify=False, cap_s=300.0)
@@ -700,7 +760,7 @@ def test_results_do_not_depend_on_worker_count(tmp_path, monkeypatch):
 
 
 @pytest.mark.host
-def test_cli_end_to_end(tmp_path, monkeypatch, capsys):
+def test_cli_end_to_end(host_dll, verifier, tmp_path, monkeypatch, capsys):
     monkeypatch.setattr(ev, "RUNS_DIR", tmp_path)
     assert main(["--policy", "hand", "--seeds", "2000", "--workers", "2", "--run", "cli", "--verify",
                  "--cap", "60"]) == 0

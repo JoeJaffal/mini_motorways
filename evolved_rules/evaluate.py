@@ -1,10 +1,11 @@
 """Evaluation: play many games in parallel, verify their replays and write the result tables.
 
-    PY -m evolved_rules.evaluate --policy {hand,nothing,reference} --seeds 1000 2000-2019 --workers 10 \
+    PY -m evolved_rules.evaluate --policy {hand,nothing,separated,reference} --seeds 1000 2000-2019 --workers 10 \
         --run NAME [--verify] [--cap 3600]
 
-A run writes output/evolved_rules/runs/<run>/: replays/<seed>.json (recorded policies only), games.jsonl (one
-game summary per line, in input seed order) and summary.json (config, games, aggregate). summary.json is
+A run writes output/evolved_rules/runs/<run>/: replays/<seed>.json (recorded policies only; a replay that fails
+verification also gets replays/<seed>.verify.txt, the verifier's output), games.jsonl (one game summary per
+line, in input seed order) and summary.json (config, games, aggregate). summary.json is
 written last, so a run folder without it is not a result; a failed run leaves error.txt (the traceback)
 instead. Each worker process keeps one long-lived Host and plays one seed per job; a (policy, seed) game is
 deterministic, so the results do not depend on the worker count.
@@ -19,6 +20,7 @@ import argparse
 import atexit
 import importlib.metadata
 import json
+import math
 import multiprocessing
 import os
 import re
@@ -32,13 +34,13 @@ from pathlib import Path
 
 from .agent import play_game
 from .host import ROOT, Host, default_host_dll
-from .rules import DoNothing, HandRule
-from .session import DEFAULT_SCENARIO, TICKS
+from .rules import DoNothing, HandRule, SeparatedPreference
+from .session import DEFAULT_SCENARIO, TICKS, raise_if_rejected
 from .state import parse_observation
 from .verify import build_verifier, verify_recording
 
 RUNS_DIR = ROOT / "output" / "evolved_rules" / "runs"  # /output/ is git-ignored
-POLICIES = {"hand": HandRule, "nothing": DoNothing}
+POLICIES = {"hand": HandRule, "nothing": DoNothing, "separated": SeparatedPreference}
 REFERENCE = "reference"  # the privileged baseline: the host's own network builder, never recorded
 POLICY_NAMES = (*POLICIES, REFERENCE)
 REFERENCE_EVERY_S = 10.0
@@ -109,8 +111,14 @@ def run_reference(host: Host, seed: int, cap_s: float = DEFAULT_CAP_S) -> dict:
             last_reference = state.time
         else:
             request = None
-        accepted = True if request is None else bool(host.call(**request)["accepted"])
+        if request is None:
+            accepted = True
+        else:  # a truncated reply (scenario rejected mid-game) raises: time would stop and this loop never end
+            reply = host.call(**request)
+            raise_if_rejected(reply, request["command"], seed, DEFAULT_SCENARIO)
+            accepted = bool(reply["accepted"])
         step = host.call(command="step", ticks=TICKS)
+        raise_if_rejected(step, "step", seed, DEFAULT_SCENARIO)
         state = parse_observation(step["observation"])
         terminated = bool(step["terminated"])
         commands += 1
@@ -225,7 +233,12 @@ def _play_seed(policy_name: str, seed: int, cap_s: float, run_dir: str, verify: 
     path = Path(run_dir) / "replays" / f"{seed}.json"
     path.write_text(json.dumps(result.recording), encoding="utf-8")
     # A verifier fault (RuntimeError) propagates and fails the run; only a rejection is a False verdict.
-    summary["verified"] = verify_recording(path)[0] if verify else None
+    verified = None
+    if verify:
+        verified, output = verify_recording(path)
+        if not verified:  # keep the verifier's reason (e.g. the command that diverged) next to the replay
+            path.with_name(f"{seed}.verify.txt").write_text(output, encoding="utf-8")
+    summary["verified"] = verified
     return summary
 
 
@@ -331,13 +344,28 @@ def _check_run_name(run: str) -> None:
                          f"not a Windows device name), got {run!r}")
 
 
+def _check_cap(cap_s) -> None:
+    """ValueError unless cap_s is a finite number of seconds greater than 0.
+
+    A cap of 0 or less would end every game at reset with no action (a replay the verifier rejects), and NaN
+    would never be reached and is not valid JSON in summary.json.
+    """
+    try:
+        ok = math.isfinite(cap_s) and cap_s > 0
+    except TypeError:
+        ok = False
+    if not ok:
+        raise ValueError(f"cap must be a finite number of simulated seconds greater than 0, got {cap_s!r}")
+
+
 def evaluate(policy_name: str, seeds: list[int], workers: int, run: str, verify: bool,
              cap_s: float = DEFAULT_CAP_S) -> dict:
     """Play every seed (one job per seed on a pool of `workers` processes) and write the run folder.
 
     Raises RunExistsError (a FileExistsError), before any game, if output/evolved_rules/runs/<run> exists. If any game, worker
     or verification fails, error.txt (the traceback) is written to the run folder, no summary.json is
-    written, and the error is re-raised. Returns the summary (also written to summary.json).
+    written, and the error is re-raised. Returns the summary (also written to summary.json). Bad inputs (policy,
+    seeds, run name, a cap that is not finite and > 0) raise ValueError before the folder is claimed.
     """
     if policy_name not in POLICY_NAMES:
         raise ValueError(f"unknown policy {policy_name!r}; expected one of {', '.join(POLICY_NAMES)}")
@@ -347,6 +375,7 @@ def evaluate(policy_name: str, seeds: list[int], workers: int, run: str, verify:
     if len(set(seeds)) != len(seeds):
         raise ValueError(f"duplicate seeds: {seeds}")
     _check_run_name(run)
+    _check_cap(cap_s)
     workers = max(1, min(int(workers), len(seeds)))
     recorded = policy_name != REFERENCE
     verify = bool(verify)
@@ -417,6 +446,7 @@ def main(argv: list[str] | None = None) -> int:
     try:
         seeds = parse_seeds(args.seeds)
         _check_run_name(args.run)
+        _check_cap(args.cap)
     except ValueError as e:
         parser.error(str(e))
     try:

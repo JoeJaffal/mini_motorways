@@ -1,4 +1,4 @@
-"""Decision rules: the Policy interface, the hand-written rule and the do-nothing baseline (PLAN.md section 4)."""
+"""Decision rules: the Policy interface, the hand-written rule, its separated-route variant and the do-nothing baseline (PLAN.md section 4)."""
 from __future__ import annotations
 
 from typing import Protocol
@@ -36,6 +36,19 @@ class HandRule:
 
     def remove(self, f: dict[str, float]) -> float:
         return -1.0
+
+
+class SeparatedPreference(HandRule):
+    """The hand rule, but always build a separated candidate when there is one (hold, upgrade, remove unchanged).
+
+    priority = -tiles_needed + 1000 * is_separated. This is the policy of the Phase 1 run phase1-separated
+    (PLAN.md section 7), which registered it at runtime from a scratch driver.
+    """
+
+    name = "separated"
+
+    def priority(self, f: dict[str, float]) -> float:
+        return -f["tiles_needed"] + 1000.0 * f["is_separated"]
 
 
 class DoNothing:

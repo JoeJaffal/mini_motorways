@@ -1,3 +1,5 @@
+import json
+
 import pytest
 
 from evolved_rules.state import parse_observation, DIRS
@@ -77,13 +79,40 @@ class _Guarded(dict):
         self._check(k)
         return super().setdefault(k, default)
 
+    # Whole-dict reads: iterating, listing keys, items or values, or copying a dict that holds an excluded field.
+    # Overriding __iter__ also sends dict(g) and {**g} through keys() (CPython copies a dict subclass with an
+    # overridden __iter__ via keys() and __getitem__, not its internal fast path).
+    def _no_excluded(self):
+        assert not EXCLUDED & set(dict.keys(self)), \
+            "parse_observation copied or iterated a dict holding excluded fields"
+
+    def __iter__(self):
+        self._no_excluded()
+        return super().__iter__()
+
+    def keys(self):
+        self._no_excluded()
+        return super().keys()
+
     def items(self):
-        assert not EXCLUDED & self.keys(), "parse_observation iterated a dict holding excluded fields"
+        self._no_excluded()
         return super().items()
 
     def values(self):
-        assert not EXCLUDED & self.keys(), "parse_observation iterated a dict holding excluded fields"
+        self._no_excluded()
         return super().values()
+
+    def copy(self):
+        self._no_excluded()
+        return super().copy()
+
+    def __or__(self, other):
+        self._no_excluded()
+        return super().__or__(other)
+
+    def __ror__(self, other):
+        self._no_excluded()
+        return super().__ror__(other)
 
 
 def _rebuild(o, wrap):
@@ -113,6 +142,30 @@ def test_parse_ignores_excluded_fields():
 
     stripped = _rebuild(o, lambda d: {k: v for k, v in d.items() if k not in EXCLUDED})
     parse_observation(stripped)  # and it does not need them to be present
+
+
+_WHOLE_DICT_READS = {
+    "dict(g)": lambda g: dict(g),
+    "{**g}": lambda g: {**g},
+    "g.copy()": lambda g: g.copy(),
+    "g | {}": lambda g: g | {},
+    "{} | g": lambda g: {} | g,
+    "for k in g": lambda g: [k for k in g],
+    "list(g)": lambda g: list(g),
+    "g.keys()": lambda g: g.keys(),
+    "g.items()": lambda g: list(g.items()),
+    "g.values()": lambda g: list(g.values()),
+    "json.dumps(g)": lambda g: json.dumps(g),
+}
+
+
+@pytest.mark.parametrize("read", list(_WHOLE_DICT_READS))
+def test_guard_catches_whole_dict_reads(read):
+    # A parser that copied a dict holding an excluded field and read it from the copy must not pass.
+    with pytest.raises(AssertionError, match="excluded"):
+        _WHOLE_DICT_READS[read](_Guarded({"id": 1, "upgradeAt": 5.0}))
+    _WHOLE_DICT_READS[read](_Guarded({"id": 1, "color": 0}))  # a dict without excluded fields is fine
+
 
 def test_out_of_grid_cells_are_not_roads():
     s = parse_observation(make_obs(roads={(49, 5): 0}))

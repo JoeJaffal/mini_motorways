@@ -370,3 +370,95 @@ def test_execute_route_stops_when_the_session_reaches_its_cap_mid_route(host):
     assert len(cand.strokes) > 3
     execute_route(g, cand)  # must stop quietly, not raise RuntimeError on the next stroke
     assert g.commands == 3 and g.done
+
+
+# ---------------------------------------------------------------------------------------------------------
+# Final-review fixes: a mid-game truncated reply raises; only the five city scenarios are accepted
+# ---------------------------------------------------------------------------------------------------------
+from evolved_rules.host import CITY_SCENARIOS, ScenarioRejected
+from evolved_rules.agent import play_game
+from evolved_rules.rules import DoNothing
+from evolved_rules.tests.helpers import make_obs
+
+
+class _RejectingHost:
+    """Fake host: 1 s per 20-tick step. From step `reject_at` on, every reply says truncated and time stops,
+    as TrafficWorld.Step does once ScenarioRejected is set. A command reply can be made truncated too."""
+
+    MAX_CALLS = 1000  # a game loop that ignores truncated would spin here forever; fail the test instead
+
+    def __init__(self, reject_at=None, reject_command=False):
+        self.t, self.reject_at, self.reject_command, self.calls = 0, reject_at, reject_command, []
+
+    def _rejected(self):
+        return self.reject_at is not None and self.t >= self.reject_at
+
+    def reset(self, seed, scenario="LosAngeles"):
+        return {"observation": make_obs(time=0.0), "terminated": False, "truncated": False}
+
+    def call(self, **req):
+        self.calls.append(req)
+        assert len(self.calls) < self.MAX_CALLS, "the game loop kept going after a truncated reply"
+        if req["command"] == "step":
+            if not self._rejected():
+                self.t += 1
+            return {"observation": make_obs(time=float(self.t)), "terminated": False,
+                    "truncated": self._rejected(), "message": "infeasible"}
+        return {"accepted": True, "terminated": False, "truncated": self.reject_command,
+                "observation": make_obs(time=float(self.t)), "message": "infeasible"}
+
+
+def test_truncated_step_mid_game_raises_scenario_rejected():
+    g = GameSession(_RejectingHost(reject_at=3), 2000, record=True)
+    g.reset()
+    g.wait(); g.wait()
+    with pytest.raises(ScenarioRejected, match="truncated reply to 'step'"):
+        g.wait()
+    assert g.commands == 2 and len(g.recorder.actions) == 2  # the rejected step is neither counted nor logged
+
+
+def test_truncated_command_reply_raises_before_the_step():
+    host = _RejectingHost(reject_command=True)
+    g = GameSession(host, 2000)
+    g.reset()
+    with pytest.raises(ScenarioRejected, match="truncated reply to 'upgrade'"):
+        g.command({"command": "upgrade", "choice": 0})
+    assert host.calls == [{"command": "upgrade", "choice": 0}] and g.commands == 0
+
+
+def test_play_game_raises_instead_of_looping_when_the_scenario_is_rejected():
+    host = _RejectingHost(reject_at=5)
+    with pytest.raises(ScenarioRejected):
+        play_game(host, 2000, DoNothing(), cap_s=3600.0)
+    assert len(host.calls) == 5
+
+
+def test_untruncated_replies_play_to_the_cap():
+    host = _RejectingHost()
+    r = play_game(host, 2000, DoNothing(), cap_s=10.0)
+    assert r.seconds == 10.0 and r.truncated and r.commands == 10
+
+
+def test_city_scenarios_match_the_csharp_city_catalog():
+    src = (ROOT / "simulation" / "Assets" / "Simulation" / "CityCatalog.cs").read_text(encoding="utf-8")
+    maps = re.search(r"Maps\s*=\s*\{(.*?)\}", src).group(1)
+    assert tuple(re.findall(r"ScenarioKind\.(\w+)", maps)) == CITY_SCENARIOS
+
+
+@pytest.mark.parametrize("scenario", CITY_SCENARIOS)
+def test_city_scenarios_are_accepted(scenario):
+    assert GameSession(None, 1, scenario=scenario).scenario == scenario
+    assert Recorder(1, scenario).scenario == scenario
+
+
+@pytest.mark.parametrize("scenario", ["ReferenceLab", "EmptyLab", "losangeles", "LOSANGELES", "Los Angeles",
+                                      " LosAngeles", "0", "", "Atlantis", None, 0])
+def test_other_scenarios_are_value_errors(scenario):
+    with pytest.raises(ValueError, match="scenario"):
+        GameSession(None, 1, scenario=scenario)
+    with pytest.raises(ValueError, match="scenario"):
+        Recorder(1, scenario)
+
+
+def test_default_scenario_is_los_angeles():
+    assert GameSession(None, 1).scenario == "LosAngeles" and Recorder(1).scenario == "LosAngeles"

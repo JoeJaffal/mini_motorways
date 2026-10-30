@@ -11,7 +11,7 @@ import json
 import subprocess
 from pathlib import Path
 
-from .host import ROOT, Host
+from .host import ROOT, Host, ScenarioRejected, check_scenario
 from .state import CityState, parse_observation
 
 TICKS = 20  # AiReplaySession rejects any action whose ticks != 20
@@ -28,6 +28,17 @@ def _simulator_commit() -> str:
     except (OSError, subprocess.SubprocessError):
         return ""
     return out.stdout.strip() if out.returncode == 0 else ""
+
+
+def raise_if_rejected(reply: dict, what: str, seed: int, scenario: str) -> None:
+    """ScenarioRejected if a host reply after reset says truncated: the simulator rejected the scenario mid-game.
+
+    The game must not be scored, and the loop must not go on: a rejected world no longer advances time, so a
+    game loop waiting for the cap would wait forever.
+    """
+    if reply.get("truncated"):
+        raise ScenarioRejected(f"simulator rejected scenario {scenario!r} seed {seed} during the game "
+                               f"(truncated reply to {what!r}): {reply.get('message')}")
 
 
 def _replayable(request) -> bool:
@@ -47,7 +58,7 @@ class Recorder:
 
     def __init__(self, seed: int, scenario: str = DEFAULT_SCENARIO):
         self.seed = seed
-        self.scenario = scenario
+        self.scenario = check_scenario(scenario)
         self.actions: list[dict] = []
 
     def log(self, request: dict | None, accepted: bool, obs: dict) -> None:
@@ -103,7 +114,7 @@ class GameSession:
         self.host = host
         self.seed = seed
         self.cap_s = cap_s
-        self.scenario = scenario
+        self.scenario = check_scenario(scenario)  # ValueError unless one of the five city maps, exact case
         self._record = record
         self.state: CityState | None = None
         self.raw: dict | None = None
@@ -150,8 +161,14 @@ class GameSession:
             raise RuntimeError("call reset() before sending commands")
         if self.done:
             raise RuntimeError("the game is over (terminated or at the time cap)")
-        accepted = True if request is None else bool(self.host.call(**request)["accepted"])
+        if request is None:
+            accepted = True
+        else:
+            reply = self.host.call(**request)
+            raise_if_rejected(reply, request.get("command"), self.seed, self.scenario)
+            accepted = bool(reply["accepted"])
         step = self.host.call(command="step", ticks=TICKS)
+        raise_if_rejected(step, "step", self.seed, self.scenario)
         self.raw = step["observation"]
         self.state = parse_observation(self.raw)
         self.terminated = bool(step["terminated"])

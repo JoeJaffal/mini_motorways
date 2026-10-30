@@ -9,6 +9,23 @@ def test_hand_rule_values():
     assert r.priority({"tiles_needed": 6}) == -6 and r.hold({"road_stock": 25}) == -21
     assert r.upgrade({"offer_roads": 30}) > r.upgrade({"offer_roads": 20}) and r.remove({}) < 0
 
+def test_separated_preference_name_and_priority():
+    from evolved_rules.rules import SeparatedPreference
+    from evolved_rules import evaluate as ev
+    p = SeparatedPreference()
+    assert p.name == "separated" and HandRule.name == "hand"
+    assert p.priority({"tiles_needed": 6, "is_separated": 0.0}) == -6
+    assert p.priority({"tiles_needed": 6, "is_separated": 1.0}) == 994
+    # a separated route outranks any non-separated one; among separated routes the cheaper one wins
+    assert p.priority({"tiles_needed": 40, "is_separated": 1.0}) > p.priority({"tiles_needed": 0, "is_separated": 0.0})
+    assert p.priority({"tiles_needed": 3, "is_separated": 1.0}) > p.priority({"tiles_needed": 4, "is_separated": 1.0})
+    # everything else is the hand rule's
+    h = HandRule()
+    for g in ({"road_stock": 25}, {"road_stock": 0}):
+        assert p.hold(g) == h.hold(g)
+    assert p.upgrade({"offer_roads": 30}) == h.upgrade({"offer_roads": 30}) and p.remove({}) == h.remove({})
+    assert ev.POLICIES["separated"] is SeparatedPreference and "separated" in ev.POLICY_NAMES
+
 def test_event_tracker():
     t = EventTracker()
     s0 = parse_observation(make_obs(buildings=[house(1, 0, 20, 13, 4)], time=5.0))
@@ -24,7 +41,7 @@ def test_do_nothing_loses_around_140s(host):
     assert r.trips == 0 and r.terminated and 135 <= r.seconds <= 160
 
 @pytest.mark.host
-def test_hand_rule_scores_and_replays(host, tmp_path):
+def test_hand_rule_scores_and_replays(host, verifier, tmp_path):
     from evolved_rules.verify import verify_recording
     r = play_game(host, 1000, HandRule(), cap_s=300.0)
     assert r.trips > 0 and all(a["ticks"] == 20 for a in r.recording["actions"])
@@ -37,7 +54,7 @@ def test_hand_rule_scores_and_replays(host, tmp_path):
     assert r.rejected_actions == sum(1 for a in acts if not a["accepted"])
 
 @pytest.mark.host
-def test_same_game_in_two_processes():
+def test_same_game_in_two_processes(host_dll):
     code = ("from evolved_rules.host import Host;from evolved_rules.agent import play_game;"
             "from evolved_rules.rules import HandRule;import json;"
             "h=Host();r=play_game(h,1000,HandRule(),cap_s=200.0);h.close();"

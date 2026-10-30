@@ -12,6 +12,18 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 STDERR_LINES = 20
 
+# The five city maps, spelled exactly as CityCatalog.Maps names them (simulation/Assets/Simulation/CityCatalog.cs).
+# The host would also take lab scenarios (ReferenceLab, EmptyLab), any letter case and numbers, but the agent may
+# not play labs, and AiReplaySession only replays these exact names.
+CITY_SCENARIOS = ("LosAngeles", "Beijing", "Tokyo", "DarEsSalaam", "London")
+
+
+def check_scenario(scenario) -> str:
+    """Return scenario if it is one of CITY_SCENARIOS (exact match); ValueError otherwise."""
+    if not isinstance(scenario, str) or scenario not in CITY_SCENARIOS:
+        raise ValueError(f"scenario must be one of {', '.join(CITY_SCENARIOS)} (exact case), got {scenario!r}")
+    return scenario
+
 
 class HostError(RuntimeError):
     """The host failed, timed out, exited, or replied with an error."""
@@ -95,6 +107,7 @@ class Host:
         return reply
 
     def reset(self, seed: int, scenario: str = "LosAngeles") -> dict:
+        check_scenario(scenario)  # ValueError before anything is sent
         reply = self.call(command="reset", version="OriginalReference", scenario=scenario, seed=seed)
         if reply.get("truncated"):
             raise ScenarioRejected(f"simulator rejected scenario {scenario!r} seed {seed}: {reply.get('message')}")

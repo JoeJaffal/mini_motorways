@@ -10,6 +10,7 @@ from pathlib import Path
 import pytest
 
 from evolved_rules import verify
+from evolved_rules.tests import conftest
 from evolved_rules.candidates import route_candidates, unserved_targets
 from evolved_rules.executor import execute_route
 from evolved_rules.host import ROOT
@@ -30,13 +31,13 @@ def mohammad_best_game(tmp_path: Path) -> Path:
 # --- end to end, against the real C# verifier (builds it on the first run, about 10-60 s) ---
 
 @pytest.mark.host
-def test_mohammad_best_game_passes(tmp_path):
+def test_mohammad_best_game_passes(verifier, mohammad_ref, tmp_path):
     ok, out = verify_recording(mohammad_best_game(tmp_path))
     assert ok, out
 
 
 @pytest.mark.host
-def test_our_short_game_passes(host, tmp_path):
+def test_our_short_game_passes(host, verifier, tmp_path):
     g = GameSession(host, 1000); s = g.reset()
     h, shops = unserved_targets(s)[0]
     execute_route(g, route_candidates(s, h, shops)[0])
@@ -48,7 +49,7 @@ def test_our_short_game_passes(host, tmp_path):
 
 
 @pytest.mark.host
-def test_tampered_game_fails(host, tmp_path):
+def test_tampered_game_fails(host, verifier, tmp_path):
     g = GameSession(host, 1000); g.reset(); g.wait(); g.wait()
     rec = g.recorder.recording(g.raw, "test"); rec["actions"][-1]["afterTime"] += 5
     p = tmp_path / "bad.json"; p.write_text(json.dumps(rec))
@@ -58,7 +59,7 @@ def test_tampered_game_fails(host, tmp_path):
 
 
 @pytest.mark.host
-def test_zero_action_recording_is_rejected(host, tmp_path):
+def test_zero_action_recording_is_rejected(host, verifier, tmp_path):
     # AiReplaySession refuses an empty replay ("Unsupported or empty AI replay"); verify_recording just reports it.
     g = GameSession(host, 1000); g.reset()
     p = tmp_path / "empty.json"; g.recorder.save(p, g.raw, "test")
@@ -68,14 +69,14 @@ def test_zero_action_recording_is_rejected(host, tmp_path):
 
 
 @pytest.mark.host
-def test_unparseable_recording_is_rejected_not_a_fault(tmp_path):
+def test_unparseable_recording_is_rejected_not_a_fault(verifier, tmp_path):
     p = tmp_path / "garbage.json"; p.write_text("not json")
     ok, out = verify_recording(p)
     assert ok is False and "JSON" in out
 
 
 @pytest.mark.host
-def test_second_build_does_not_rebuild(monkeypatch):
+def test_second_build_does_not_rebuild(verifier, monkeypatch):
     dll = build_verifier()
     assert dll.is_file()
     assert (verify.VERIFIER_DIR / "commit.txt").read_text().strip() == verify.VERIFIER_COMMIT
@@ -90,7 +91,7 @@ def test_second_build_does_not_rebuild(monkeypatch):
 
 
 @pytest.mark.host
-def test_verify_recording_reuses_the_existing_build(tmp_path, monkeypatch):
+def test_verify_recording_reuses_the_existing_build(verifier, mohammad_ref, tmp_path, monkeypatch):
     build_verifier()
 
     def boom(*args, **kwargs):
@@ -111,7 +112,7 @@ def test_missing_recording_returns_false(tmp_path):
 
 
 @pytest.mark.host
-def test_relative_path_from_another_cwd(host, tmp_path, monkeypatch):
+def test_relative_path_from_another_cwd(host, verifier, tmp_path, monkeypatch):
     g = GameSession(host, 1000); g.reset(); g.wait(); g.wait()
     g.recorder.save(tmp_path / "ours.json", g.raw, "test")
     elsewhere = tmp_path / "elsewhere"; elsewhere.mkdir()
@@ -131,13 +132,22 @@ def test_real_dotnet_failing_to_load_the_dll_is_a_fault_not_a_verdict(tmp_path, 
 
 
 @pytest.mark.host
-def test_forced_rebuild_swaps_in_a_working_verifier(host, tmp_path):
-    # Runs last of the real tests and alone: a forced rebuild must not overlap a running verification.
+def test_forced_rebuild_swaps_in_a_working_verifier(host, tmp_path, monkeypatch):
+    # A private VERIFIER_DIR: the shared output/evolved_rules/verifier is never renamed, so a verified
+    # evaluation running at the same time is not disturbed. A forced rebuild always needs git and e6119eb.
+    if not conftest._git_resolves(f"{verify.VERIFIER_COMMIT}^{{commit}}"):
+        pytest.skip(f"git cannot read commit {verify.VERIFIER_COMMIT}")
+    shared = verify.VERIFIER_DIR
+    private = tmp_path / "verifiers" / "verifier"
+    monkeypatch.setattr(verify, "VERIFIER_DIR", private)
+    if (shared / verify.COMMIT_STAMP).is_file() and (shared / verify.DLL_RELATIVE).is_file():
+        shutil.copytree(shared, private)  # start from a finished build (read only from the shared folder)
     before = build_verifier()
+    assert before == private / verify.DLL_RELATIVE
     after = build_verifier(force=True)
     assert after == before and after.is_file()
-    assert (verify.VERIFIER_DIR / "commit.txt").read_text().strip() == verify.VERIFIER_COMMIT
-    assert [p.name for p in verify.VERIFIER_DIR.parent.iterdir() if ".tmp-" in p.name or ".old-" in p.name] == []
+    assert (private / "commit.txt").read_text().strip() == verify.VERIFIER_COMMIT
+    assert [p.name for p in private.parent.iterdir()] == ["verifier"]  # no .tmp- or .old- folder left
     g = GameSession(host, 1000); g.reset(); g.wait(); g.wait()
     p = tmp_path / "ours.json"; g.recorder.save(p, g.raw, "test")
     ok, out = verify_recording(p)  # the moved build still runs
