@@ -1,0 +1,15 @@
+{
+  "seed": 2000,
+  "cap": 2,
+  "checkpoints": {
+    "protected": "C:\\Users\\moham\\mini_motorways\\output\\training\\signals-context-02\\validation-best.zip",
+    "final": "C:\\Users\\moham\\mini_motorways\\output\\training\\signals-context-02\\final.zip"
+  },
+  "checkpoint_sha256": {
+    "protected": "24eedc014eac8d0de43a1539c55434f4c0e368ceb67ea63ee630a1b3d39bb6e8",
+    "final": "367fce0ed32810c7dfdf3e4a6aa0cf2724b8671d50505a02f3b1babcd217abea"
+  },
+  "no_training": true,
+  "source_sha256": "698247507e1b01071206e71aac681ad01d60cdacddf095d81ff29f0d4c79c673",
+  "protocol": "Two deterministic trajectories; both policies scored on every visited state with identical masks. Development diagnosis, not unseen-map evidence."
+}
