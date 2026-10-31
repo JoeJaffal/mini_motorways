@@ -1,3 +1,7 @@
+# Current preparation - 31 October 2026
+
+User chose4h training instead of more tests. Opt-in supported-upgrades integrated, checkpoint/eval/resume flag preserved; short checks only, no job launched. Resume protected checkpoint with240min/4workers; source checkpoint preserved and best guard retained. [Exact command/limits](../docs/training/supported-upgrade-training-2026-10-31/README.md), T45. Fresh8000-8009 test pending, not required before user-authorized experiment.
+
 # Latest result - 31 October 2026
 
 Supported-upgrade filter186.4->228.8 on5 development maps (4 wins/1 tie). Engineered improvement, concentrated on2000, not learning/generalization evidence. Prepared identical frozen comparison on8000-8009 (20 games); user runs, no job launched. Protected checkpoint/default training unchanged. [Evidence/command](../docs/training/upgrade-support-results-2026-10-31/README.md), T44.

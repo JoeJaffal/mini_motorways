@@ -16,9 +16,11 @@ from shutdown import save_checkpoint,stop_and_save
 
 
 def model_environment(model,**kwargs):
+    supported=kwargs.pop('supported_upgrades',getattr(model,'supported_upgrades',False))
     if 'signals' in model.observation_space.spaces:
         from signal_agent import SignalEnv
-        return SignalEnv(signal_context=model.observation_space['signals'].shape[1]==24,**kwargs)
+        return SignalEnv(signal_context=model.observation_space['signals'].shape[1]==24,supported_upgrades=supported,**kwargs)
+    if supported:raise ValueError('Supported-upgrade rule requires the signal agent')
     return GoalEnv(congestion_aware='traffic' in model.observation_space.spaces,**kwargs)
 
 
@@ -54,6 +56,8 @@ def main():
     p.add_argument('--resume',type=Path);p.add_argument('--stop-file',type=Path)
     p.add_argument('--warm-start',type=Path,help='Explicit v3-to-v4 transfer with fresh optimizer; preserves existing learned weights')
     p.add_argument('--signal-context',action=argparse.BooleanOptionalAction,default=None)
+    p.add_argument('--supported-upgrades',action=argparse.BooleanOptionalAction,default=None,
+                   help='Optional package filter for restricted roads/bridges/lights agent; inherited on resume')
     p.add_argument('--reward-scale',type=float,help='Defaults to 1 for fresh models; inherited on resume')
     p.add_argument('--skip-forced-wait',action=argparse.BooleanOptionalAction,default=None)
     p.add_argument('--congestion-aware',action=argparse.BooleanOptionalAction,default=None,
@@ -96,6 +100,7 @@ def main():
         metadata=json.loads(previous.read_text()) if previous.exists() else {}
         if a.reward_scale is None:a.reward_scale=getattr(preview,'goal_reward_scale',metadata.get('reward_scale',1.))
         if a.skip_forced_wait is None:a.skip_forced_wait=getattr(preview,'skip_forced_wait',False)
+        if a.supported_upgrades is None:a.supported_upgrades=getattr(preview,'supported_upgrades',False)
         if a.warm_start and a.learning_rate is None:a.learning_rate=float(preview.learning_rate)
         if a.resume:del preview
     if a.reward_scale is None:a.reward_scale=1.
@@ -108,6 +113,8 @@ def main():
     if a.prior_temperature is None:a.prior_temperature=2. if a.traffic_lights else 1.
     if a.congestion_aware is None:a.congestion_aware=False
     if a.skip_forced_wait is None:a.skip_forced_wait=False
+    if a.supported_upgrades is None:a.supported_upgrades=False
+    if a.supported_upgrades and not a.traffic_lights:p.error('Supported upgrades require traffic-light agent')
     if a.reward_scale<=0:p.error('Positive reward scale required')
     a.output.mkdir(parents=True)
     from signal_agent import SIGNAL_SCHEMA,CONTEXT_SCHEMA,signal_vector,transfer_signal_context
@@ -124,10 +131,11 @@ def main():
                 learning_rate=.0001,ent_coef=.005,aggregate_rollout=256,reward_scale=a.reward_scale,
                 decision_timing='choice-only-v1' if a.skip_forced_wait else 'five-second-wait-v1')
     if a.skip_forced_wait:config['reward_schema']='goal-trip-potential-gamma099-choice-v1'
-    for name in ['goal_agent.py','signal_agent.py','planner_diagnostic.py','train_goal.py','environment.py','rewards.py','parallel.py','progress.py','shutdown.py']:
+    config['supported_upgrades']=a.supported_upgrades
+    for name in ['goal_agent.py','signal_agent.py','upgrade_rules.py','planner_diagnostic.py','train_goal.py','environment.py','rewards.py','parallel.py','progress.py','shutdown.py']:
         (a.output/name).write_text((ROOT/'training'/name).read_text())
     factory=signal_vector if a.traffic_lights else vector
-    extra=dict(signal_context=bool(a.signal_context)) if a.traffic_lights else {}
+    extra=dict(signal_context=bool(a.signal_context),supported_upgrades=a.supported_upgrades) if a.traffic_lights else {}
     env=factory(a.workers,a.output,dotnet=a.dotnet,host_dll=a.host_dll,seeds=range(1000,1100),episodes_per_seed=1,seed_schedule='random',reward_scale=a.reward_scale,skip_forced_wait=a.skip_forced_wait,congestion_aware=a.congestion_aware,**extra)
     try:
         if a.resume:
@@ -147,6 +155,7 @@ def main():
         model.skip_forced_wait=a.skip_forced_wait
         model.congestion_aware=a.congestion_aware
         model.traffic_lights=bool(a.traffic_lights)
+        model.supported_upgrades=a.supported_upgrades
         model.goal_reward_scale=a.reward_scale
         config['learning_rate']=model.learning_rate
         config['trainable_parameters']=sum(x.numel() for x in model.policy.parameters())

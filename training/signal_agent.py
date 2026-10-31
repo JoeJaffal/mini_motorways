@@ -7,6 +7,7 @@ from stable_baselines3.common.vec_env import DummyVecEnv
 from parallel import ParallelHostVecEnv
 from goal_agent import GoalEnv,GOALS
 from environment import DIRS
+from upgrade_rules import supported_mask
 
 SIGNALS=32
 SIGNAL_START=GOALS+3
@@ -15,7 +16,8 @@ CONTEXT_SCHEMA='visible-route-signal-context-v4'
 
 
 class SignalEnv(GoalEnv):
-    def __init__(self,enable_signals=True,disable_light_actions=False,signal_context=False,**kwargs):
+    def __init__(self,enable_signals=True,disable_light_actions=False,signal_context=False,supported_upgrades=False,**kwargs):
+        self.supported_upgrades=bool(supported_upgrades)
         self.signal_context=bool(signal_context)
         self.enable_signals=bool(enable_signals)
         self.disable_light_actions=bool(disable_light_actions)
@@ -88,6 +90,7 @@ class SignalEnv(GoalEnv):
         mask=np.zeros(self.action_space.n,bool)
         mask[:SIGNAL_START]=super().action_masks()
         if not self.disable_light_actions:mask[SIGNAL_START:SIGNAL_START+len(self.signal_cells)]=True
+        if self.supported_upgrades:mask=supported_mask(mask,self.base.raw['upgradeChoices'])
         return mask
 
     def _execute_extra(self,action):
@@ -98,7 +101,8 @@ class SignalEnv(GoalEnv):
     def info(self):
         return dict(super().info(),traffic_lights_enabled=self.enable_signals,
                     signal_candidates=len(self.signal_cells),signals_placed=self.signals_placed_count,
-                    observation_schema=self.schema,signal_context=self.signal_context)
+                    observation_schema=self.schema,signal_context=self.signal_context,
+                    supported_upgrades=self.supported_upgrades)
 
 
 def transfer_signal_context(target,source):

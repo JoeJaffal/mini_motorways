@@ -11,22 +11,7 @@ from environment import ROOT
 from train_goal import model_environment
 
 
-def supported_mask(mask, offers):
-    """Filter unsupported extras only with a supported, no-fewer-roads alternative.
-
-    This is a heuristic, not true dominance: inventory and future offer weights
-    can change. Never alter non-upgrade actions or filter both upgrade offers.
-    """
-    result = mask.copy()
-    supported = {0, 1, 3}  # roads, bridges, lights in this restricted signal agent
-    for i, offer in enumerate(offers[:2]):
-        if offer['type'] in supported or not mask[i+1]:
-            continue
-        if any(j != i and mask[j+1] and other['type'] in supported
-               and other['amount'] > 0 and other['roads'] >= offer['roads']
-               for j, other in enumerate(offers[:2])):
-            result[i+1] = False
-    return result
+from upgrade_rules import supported_mask
 
 
 def main():
@@ -59,7 +44,7 @@ def main():
     for filtered in [False, True]:
         label = 'supported-filter' if filtered else 'baseline'
         env = model_environment(model, seconds=cap, dotnet=str(ROOT/'tmp/dotnet/dotnet.exe'),
-                                skip_forced_wait=getattr(model,'skip_forced_wait',False))
+                                skip_forced_wait=getattr(model,'skip_forced_wait',False),supported_upgrades=False)
         games = []; events = []; best = None; best_score = -1
         try:
             for seed in seeds:
