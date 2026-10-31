@@ -1,3 +1,7 @@
+# Latest result - 31 October 2026
+
+Single first-upgrade intervention recovered final policy83->266 trips on2000, two lights placed autonomously, unchanged weights. This is a total causal effect on one exposed development map, not generalization or isolated light physics. Keep protected checkpoint; investigate upgrade representation/utility before long training. No new job launched. [Evidence](../docs/training/first-upgrade-results-2026-10-31/README.md), T42.
+
 # Latest preparation - 31 October 2026
 
 First-upgrade intervention CLI ready: frozen final baseline versus override only at140s on2000, then normal policy. Short wiring smoke passed; does not reach intervention. User runs full test; no training or full evaluation started. [Command/protocol](../docs/training/first-upgrade-test-preparation-2026-10-31/README.md), T41.
