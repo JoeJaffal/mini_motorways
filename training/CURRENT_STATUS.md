@@ -1,3 +1,7 @@
+# Latest preparation - 31 October 2026
+
+Optional supported-upgrade rule comparison ready for user: frozen final policy,5 exposed development maps x2 conditions. Offer information already visible; filter only unsupported-extra packages with a supported alternative/no fewer roads. Training defaults unchanged. Synthetic checks and short smoke passed; full evaluation pending. [Command/protocol](../docs/training/upgrade-support-test-preparation-2026-10-31/README.md), T43.
+
 # Latest result - 31 October 2026
 
 Single first-upgrade intervention recovered final policy83->266 trips on2000, two lights placed autonomously, unchanged weights. This is a total causal effect on one exposed development map, not generalization or isolated light physics. Keep protected checkpoint; investigate upgrade representation/utility before long training. No new job launched. [Evidence](../docs/training/first-upgrade-results-2026-10-31/README.md), T42.
