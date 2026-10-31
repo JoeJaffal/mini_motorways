@@ -13,6 +13,7 @@ players and scratch captures remain local and are not backed up by this archive.
 | Record | Purpose |
 
 | --- | --- |
+| [Seed2000 regression diagnosis](regression-2000-2026-10-31/README.md) | 235 vs83 reproduced; upgrade first divergence, later route/wait differences, causal test proposed |
 | [Regression diagnostic preparation](regression-diagnostic-preparation-2026-10-31/README.md) | User-run frozen seed2000 comparison, decision alternatives and traffic traces; smoke only |
 
 | [Two-hour continuation](signal-context-continuation-2026-10-30/README.md) | Development228.0->186.4; starting checkpoint protected; pause and diagnose |

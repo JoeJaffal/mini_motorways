@@ -1,3 +1,7 @@
+# Latest diagnosis - 31 October 2026
+
+Seed2000 reproduced235 vs83. First divergence is upgrade at140s: protected gets2 lights, final another package. Final builds no lights and dies with crossing queues; later route/wait differences also exist. Causality unproven. Next recommendation: force only first upgrade in frozen final policy, then normal decisions. No job launched. [Evidence](../docs/training/regression-2000-2026-10-31/README.md), T40.
+
 # Training status - 31 October 2026
 
 Prepared user-run seed2000 frozen protected-versus-final diagnostic after continuation regression. Short two-second wiring check passed; full comparison pending, no training started. See T39 and [command/limits](../docs/training/regression-diagnostic-preparation-2026-10-31/README.md).
