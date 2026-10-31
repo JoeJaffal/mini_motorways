@@ -13,6 +13,7 @@ players and scratch captures remain local and are not backed up by this archive.
 | Record | Purpose |
 
 | --- | --- |
+| [Supported-upgrade development result](upgrade-support-results-2026-10-31/README.md) | 186.4->228.8,4 wins/1 tie; predeclared fresh8000-8009 comparison pending |
 | [Supported-package test preparation](upgrade-support-test-preparation-2026-10-31/README.md) | Optional frozen rule comparison on5 development maps, no training/default changes |
 | [First-upgrade causal result](first-upgrade-results-2026-10-31/README.md) | Frozen final83->266 after one upgrade override; later two lights autonomous, single-map limits |
 | [First-upgrade test preparation](first-upgrade-test-preparation-2026-10-31/README.md) | Frozen final baseline vs one upgrade override, then normal decisions; user execution pending |

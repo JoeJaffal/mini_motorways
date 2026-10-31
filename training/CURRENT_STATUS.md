@@ -1,3 +1,7 @@
+# Latest result - 31 October 2026
+
+Supported-upgrade filter186.4->228.8 on5 development maps (4 wins/1 tie). Engineered improvement, concentrated on2000, not learning/generalization evidence. Prepared identical frozen comparison on8000-8009 (20 games); user runs, no job launched. Protected checkpoint/default training unchanged. [Evidence/command](../docs/training/upgrade-support-results-2026-10-31/README.md), T44.
+
 # Latest preparation - 31 October 2026
 
 Optional supported-upgrade rule comparison ready for user: frozen final policy,5 exposed development maps x2 conditions. Offer information already visible; filter only unsupported-extra packages with a supported alternative/no fewer roads. Training defaults unchanged. Synthetic checks and short smoke passed; full evaluation pending. [Command/protocol](../docs/training/upgrade-support-test-preparation-2026-10-31/README.md), T43.

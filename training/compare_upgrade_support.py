@@ -33,13 +33,17 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--run', type=Path, default=ROOT/'output/training/signals-context-02')
+    p.add_argument('--seed-start', type=int, default=2000)
+    p.add_argument('--count', type=int, default=5)
     p.add_argument('--smoke', action='store_true', help='Two-second wiring check on one map, not performance')
     a = p.parse_args()
     if a.output.exists():
         p.error('Choose a fresh output folder')
+    if a.count < 1:
+        p.error('Positive map count required')
     checkpoint = a.run/'final.zip'
     checksum = digest(checkpoint)
-    seeds = [2000] if a.smoke else list(range(2000,2005))
+    seeds = [a.seed_start] if a.smoke else list(range(a.seed_start,a.seed_start+a.count))
     cap = 2 if a.smoke else 3600
     torch.set_num_threads(2)
     model = MaskablePPO.load(checkpoint, device='cpu')
@@ -78,7 +82,7 @@ def main():
                 games.append(dict(seed=seed, trips=info['trips'], seconds=info['seconds'],
                     signals_placed=info.get('signals_placed'), changed_decisions=interventions,
                     terminated=term, truncated=trunc))
-                if not filtered and not a.smoke:
+                if not filtered and not a.smoke and 2000 <= seed <= 2004:
                     expected = json.loads((a.run/'summary.json').read_text(encoding='utf-8'))['after'][seed-2000]
                     if (expected['scenario_seed'] != seed or expected['trips'] != info['trips']
                             or abs(expected['seconds']-info['seconds']) > 1e-6):
