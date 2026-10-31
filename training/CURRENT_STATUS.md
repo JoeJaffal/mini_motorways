@@ -1,3 +1,7 @@
+# Latest preparation - 31 October 2026
+
+First-upgrade intervention CLI ready: frozen final baseline versus override only at140s on2000, then normal policy. Short wiring smoke passed; does not reach intervention. User runs full test; no training or full evaluation started. [Command/protocol](../docs/training/first-upgrade-test-preparation-2026-10-31/README.md), T41.
+
 # Latest diagnosis - 31 October 2026
 
 Seed2000 reproduced235 vs83. First divergence is upgrade at140s: protected gets2 lights, final another package. Final builds no lights and dies with crossing queues; later route/wait differences also exist. Causality unproven. Next recommendation: force only first upgrade in frozen final policy, then normal decisions. No job launched. [Evidence](../docs/training/regression-2000-2026-10-31/README.md), T40.
