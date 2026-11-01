@@ -32,7 +32,7 @@ import traceback
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
-from .agent import play_game
+from .agent import play_game, trips_per_tile
 from .host import ROOT, Host, default_host_dll
 from .rules import DoNothing, HandRule, SeparatedPreference
 from .session import DEFAULT_SCENARIO, TICKS, raise_if_rejected
@@ -93,6 +93,8 @@ def run_reference(host: Host, seed: int, cap_s: float = DEFAULT_CAP_S) -> dict:
     REFERENCE_EVERY_S simulated seconds (first at the start), {"command": "reference"}; otherwise a wait.
     Every command is followed by step 20 and a wait is a bare step 20, as in GameSession, whose counters
     (commands, rejections, action_counts, car-wait stats over all vehicles after each step) are mirrored here.
+    tiles_built is the road-stock drop over each reference command and its step (accepted or not: a rejected
+    reference may still have built roads); trips_per_tile as play_game.
     Returns the keys of GameResult.summary() plus "privileged": True and "verified": None.
     """
     reply = host.reset(seed, DEFAULT_SCENARIO)
@@ -101,6 +103,7 @@ def run_reference(host: Host, seed: int, cap_s: float = DEFAULT_CAP_S) -> dict:
     commands = rejected = 0
     action_counts: dict[str, int] = {}
     wait_sum, wait_n, max_wait = 0.0, 0, 0.0
+    tiles_built = 0
     last_reference: float | None = None
 
     while not terminated and state.time < cap_s:
@@ -119,8 +122,11 @@ def run_reference(host: Host, seed: int, cap_s: float = DEFAULT_CAP_S) -> dict:
             accepted = bool(reply["accepted"])
         step = host.call(command="step", ticks=TICKS)
         raise_if_rejected(step, "step", seed, DEFAULT_SCENARIO)
-        state = parse_observation(step["observation"])
+        before, state = state, parse_observation(step["observation"])
         terminated = bool(step["terminated"])
+        if request is not None and request["command"] == "reference":
+            tiles_built += max(0, (before.inventory[0] if before.inventory else 0)
+                               - (state.inventory[0] if state.inventory else 0))
         commands += 1
         if not accepted:
             rejected += 1
@@ -152,6 +158,8 @@ def run_reference(host: Host, seed: int, cap_s: float = DEFAULT_CAP_S) -> dict:
         "deterministic": True,
         "failed_shop": failed_shop,
         "road_tiles_at_failure": road_tiles_at_failure,
+        "tiles_built": tiles_built,
+        "trips_per_tile": trips_per_tile(state.trips, tiles_built),
         "privileged": True,
         "verified": None,
     }

@@ -11,6 +11,7 @@ import json
 import subprocess
 from pathlib import Path
 
+from .features import GameMemory
 from .host import ROOT, Host, ScenarioRejected, check_scenario
 from .state import CityState, parse_observation
 
@@ -106,8 +107,18 @@ class Recorder:
         Path(path).write_text(json.dumps(self.recording(final_obs, source)), encoding="utf-8")
 
 
+def _road_stock(state: CityState) -> int:
+    return state.inventory[0] if state.inventory else 0
+
+
 class GameSession:
-    """One game on a host: reset, then command() / wait(), each followed by a 20-tick step."""
+    """One game on a host: reset, then command() / wait(), each followed by a 20-tick step.
+
+    Besides the counters, a session owns the game's GameMemory (features.py): a fresh one on every reset, fed
+    every observation and the count of accepted offers, so no feature state can leak from one game into the
+    next. tiles_built counts road tiles spent by draw commands: the road-stock drop over each draw and its step
+    (the agent never removes roads, so no refund lands in that step; offers are separate commands).
+    """
 
     def __init__(self, host: Host, seed: int, cap_s: float = 3600.0, record: bool = True, *,
                  scenario: str = DEFAULT_SCENARIO):
@@ -127,7 +138,9 @@ class GameSession:
         self.wait_sum = 0.0
         self.wait_n = 0
         self.max_wait = 0.0
+        self.tiles_built = 0
         self.terminated = False
+        self.memory = GameMemory()
         self.recorder: Recorder | None = Recorder(self.seed, self.scenario) if self._record else None
 
     @property
@@ -141,6 +154,7 @@ class GameSession:
         self.raw = reply["observation"]
         self.state = parse_observation(self.raw)
         self.terminated = bool(reply["terminated"])
+        self.memory.observe(self.state)
         return self.state
 
     def command(self, request: dict) -> tuple[bool, CityState]:
@@ -169,8 +183,14 @@ class GameSession:
             accepted = bool(reply["accepted"])
         step = self.host.call(command="step", ticks=TICKS)
         raise_if_rejected(step, "step", self.seed, self.scenario)
+        before = self.state
         self.raw = step["observation"]
         self.state = parse_observation(self.raw)
+        self.memory.observe(self.state)
+        if request is not None and request["command"] == "draw":
+            self.tiles_built += max(0, _road_stock(before) - _road_stock(self.state))
+        elif request is not None and request["command"] == "upgrade" and accepted:
+            self.memory.offers_taken += 1
         self.terminated = bool(step["terminated"])
         self.commands += 1
         if not accepted:

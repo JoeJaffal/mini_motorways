@@ -71,7 +71,7 @@ from types import SimpleNamespace
 from evolved_rules import agent
 from evolved_rules.agent import GameResult, decide, FALLBACK_S, OVERCROWD_EVENT_S, MAX_ROUTES_PER_DECISION
 from evolved_rules.candidates import RouteCandidate
-from evolved_rules.features import candidate_features, global_features, offer_features
+from evolved_rules.features import candidate_features, global_features, offer_features, route_features
 from evolved_rules.session import GameSession
 from evolved_rules.state import Offer
 
@@ -144,6 +144,8 @@ def _cand(house_id, tiles, tag=0):
 class _FakeSession:
     """Just what decide() reads; targets, candidates and execution are monkeypatched into agent."""
 
+    memory = None  # the patched feature functions below ignore the per-game memory
+
     def __init__(self, targets, cands, offers=(), road_stock=25):
         self.targets = list(targets)  # [(house, shops)]
         self.cands = cands  # house id -> [RouteCandidate]
@@ -189,7 +191,10 @@ def _patch(monkeypatch, sess, outcome=None):
 
     monkeypatch.setattr(agent, "unserved_targets", lambda state: list(sess.targets))
     monkeypatch.setattr(agent, "route_candidates", lambda state, h, shops: list(sess.cands.get(h.id, [])))
-    monkeypatch.setattr(agent, "global_features", lambda state: {"road_stock": float(sess.road_stock)})
+    monkeypatch.setattr(agent, "global_features", lambda state, memory=None: {"road_stock": float(sess.road_stock)})
+    # The fake states are SimpleNamespaces: score candidates and offers on their state-free Phase 1 features.
+    monkeypatch.setattr(agent, "candidate_features", lambda state, cand, memory=None: route_features(cand))
+    monkeypatch.setattr(agent, "offer_features", lambda offer, state=None: offer_features(offer))
     monkeypatch.setattr(agent, "execute_route", execute)
     monkeypatch.setattr(agent, "take_offer", offer)
 
@@ -359,9 +364,13 @@ def test_candidate_features_exact(kind, onehot):
     path = ((0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2))  # 6 cells, 5 steps
     c = RouteCandidate(kind=kind, house_id=1, shop_ids=(5,), path=path, tiles_needed=3, bridges_needed=2,
                        turns=7, new_junctions=4, shared_cells=6, strokes=())
-    assert candidate_features(None, c) == {
+    phase1 = {
         "tiles_needed": 3.0, "bridges_needed": 2.0, "path_len": 5.0, "turns": 7.0, "new_junctions": 4.0,
         "shared_cells": 6.0, "is_attach": onehot[0], "is_direct": onehot[1], "is_separated": onehot[2]}
+    assert route_features(c) == phase1
+    # Phase 2 only appends keys: the Phase 1 ones come first, in order, with the same values.
+    f = candidate_features(parse_observation(make_obs()), c)
+    assert dict(list(f.items())[:len(phase1)]) == phase1 and list(f)[:len(phase1)] == list(phase1)
 
 
 def test_global_features_exact():
@@ -374,14 +383,17 @@ def test_global_features_exact():
         inventory=(17, 3, 0, 0, 0, 0), time=42.5))
     by_id = {b.id: b for b in s.buildings}
     assert s.house_connected(by_id[1]) and not s.house_connected(by_id[2]) and not s.house_connected(by_id[4])
-    assert global_features(s) == {"road_stock": 17.0, "bridge_stock": 3.0, "time": 42.5, "unserved_houses": 2.0}
+    g = global_features(s)
+    phase1 = {"road_stock": 17.0, "bridge_stock": 3.0, "time": 42.5, "unserved_houses": 2.0}
+    assert dict(list(g.items())[:4]) == phase1 and list(g)[:4] == list(phase1)  # Phase 2 only appends keys
 
 
 def test_offer_features_exact():
     # type 3, amount 2: amount differs from the type and from 1, so neither a constant 1 nor offer.type passes
-    assert offer_features(Offer(0, 3, 2, 20)) == {
-        "offer_roads": 20.0, "amount": 2.0,
-        "type_0": 0.0, "type_1": 0.0, "type_2": 0.0, "type_3": 1.0, "type_4": 0.0, "type_5": 0.0}
+    phase1 = {"offer_roads": 20.0, "amount": 2.0,
+              "type_0": 0.0, "type_1": 0.0, "type_2": 0.0, "type_3": 1.0, "type_4": 0.0, "type_5": 0.0}
+    f = offer_features(Offer(0, 3, 2, 20))
+    assert dict(list(f.items())[:8]) == phase1 and list(f)[:8] == list(phase1)  # Phase 2 only appends keys
     for t in range(6):
         f = offer_features(Offer(1, t, 2, 10))
         assert [f[f"type_{i}"] for i in range(6)] == [1.0 if i == t else 0.0 for i in range(6)]
@@ -435,7 +447,7 @@ def _patch_stock(monkeypatch, sess, offer_roads=0):
     offer_roads, and each command replaces session.state, so a hold read from an old state is stale."""
     _patch(monkeypatch, sess)
     _restate(sess, road_stock=sess.road_stock)
-    monkeypatch.setattr(agent, "global_features", lambda state: {"road_stock": float(state.road_stock)})
+    monkeypatch.setattr(agent, "global_features", lambda state, memory=None: {"road_stock": float(state.road_stock)})
 
     def execute(session, cand):
         session.log.append(("route", cand.house_id, cand.path[0][1]))

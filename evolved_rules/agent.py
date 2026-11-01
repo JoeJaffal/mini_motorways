@@ -63,14 +63,18 @@ def decide(session: GameSession, policy: Policy) -> None:
     """One decision: take a pending offer, then build routes while the best priority clears the hold threshold.
 
     Returns as soon as the game is over. A house whose route fails is not tried again in this decision (the
-    executor never retries; the next decision re-plans). Phase 1 never removes roads.
+    executor never retries; the next decision re-plans). Phase 1 never removes roads. Features read the
+    session's per-game memory (demand rates, offers taken, cached road-network analysis).
     """
     if session.done:
         return
+    memory = session.memory
     offers = session.state.offers
     if offers:
         # Highest score, then the lower index. A non-finite score ranks lowest; an offer is always taken.
-        best = max(offers, key=lambda o: (_finite_or(policy.upgrade(offer_features(o)), -math.inf), -o.index))
+        state = session.state
+        best = max(offers, key=lambda o: (_finite_or(policy.upgrade(offer_features(o, state)), -math.inf),
+                                          -o.index))
         take_offer(session, best.index)
 
     excluded: set[int] = set()  # house ids whose route failed in this call
@@ -83,14 +87,14 @@ def decide(session: GameSession, policy: Policy) -> None:
             if house.id in excluded:
                 continue
             for cand in route_candidates(state, house, shops):
-                p = float(policy.priority(candidate_features(state, cand)))
+                p = float(policy.priority(candidate_features(state, cand, memory)))
                 if not math.isfinite(p):
                     continue  # PLAN section 4: a non-finite score is never chosen
                 if best is None or p > best[0]:
                     best = (p, cand, shops)
         if best is None:
             return
-        hold = float(policy.hold(global_features(state)))
+        hold = float(policy.hold(global_features(state, memory)))
         # PLAN section 4 (line 159) covers candidate scores; a broken (non-finite) threshold never causes an action.
         if not math.isfinite(hold) or best[0] < hold:
             return
@@ -120,6 +124,9 @@ class GameResult:
     failed_shop: int | None
     road_tiles_at_failure: int | None
     recording: dict | None
+    # Phase 2 game metrics (defaults keep positional construction of the Phase 1 fields working).
+    tiles_built: int = 0  # road tiles spent by draws (GameSession.tiles_built)
+    trips_per_tile: float = 0.0  # trips / tiles_built; 0.0 when no tile was built
 
     def summary(self) -> dict:
         """Every field except the recording (JSON-ready)."""
@@ -128,8 +135,16 @@ class GameResult:
         return d
 
 
+def trips_per_tile(trips: int, tiles_built: int) -> float:
+    """Trips per road tile spent; 0.0 when no tile was spent (JSON has no infinity)."""
+    return trips / tiles_built if tiles_built > 0 else 0.0
+
+
 def play_game(host: Host, seed: int, policy: Policy, cap_s: float = 3600.0, record: bool = True) -> GameResult:
-    """Reset, then decide when the event tracker says so and wait otherwise, until terminated or at cap_s."""
+    """Reset, then decide when the event tracker says so and wait otherwise, until terminated or at cap_s.
+
+    The session's GameMemory (and so its DemandTracker) is created fresh by reset(): one per game.
+    """
     session = GameSession(host, seed, cap_s=cap_s, record=record)
     session.reset()
     tracker = EventTracker()
@@ -166,4 +181,6 @@ def play_game(host: Host, seed: int, policy: Policy, cap_s: float = 3600.0, reco
         road_tiles_at_failure=road_tiles_at_failure,
         recording=(session.recorder.recording(session.raw, "evolved-rules:" + policy.name)
                    if session.recorder is not None else None),
+        tiles_built=session.tiles_built,
+        trips_per_tile=trips_per_tile(state.trips, session.tiles_built),
     )
