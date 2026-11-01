@@ -1,13 +1,18 @@
 """Evaluation: play many games in parallel, verify their replays and write the result tables.
 
-    PY -m evolved_rules.evaluate --policy {hand,nothing,separated,reference} --seeds 1000 2000-2019 --workers 10 \
-        --run NAME [--verify] [--cap 3600]
+    PY -m evolved_rules.evaluate --policy {hand,nothing,separated,reference,tree:FILE} --seeds 1000 2000-2019 \
+        --workers 10 --run NAME [--verify] [--cap 3600]
+
+tree:FILE evaluates an individual text (gp.individual_text, e.g. an evolve run's best.txt) as gp.TreePolicy
+with coverage targets, exactly as the evolution engine plays it. The text is checked before the run folder is
+claimed, copied to the run folder as policy.txt (the workers read that copy, so the run does not depend on
+FILE afterwards) and kept in summary.json's config as policy_text.
 
 A run writes output/evolved_rules/runs/<run>/: replays/<seed>.json (recorded policies only; a replay that fails
 verification also gets replays/<seed>.verify.txt, the verifier's output), games.jsonl (one game summary per
-line, in input seed order) and summary.json (config, games, aggregate). summary.json is
-written last, so a run folder without it is not a result; a failed run leaves error.txt (the traceback)
-instead. Each worker process keeps one long-lived Host and plays one seed per job; a (policy, seed) game is
+line, in input seed order), policy.txt (tree policies only) and summary.json (config, games, aggregate).
+summary.json is written last, so a run folder without it is not a result; a failed run leaves error.txt (the
+traceback) instead. Each worker process keeps one long-lived Host and plays one seed per job; a (policy, seed) game is
 deterministic, so the results do not depend on the worker count.
 
 Process robustness: a worker exits when its parent process is gone (its host then sees EOF on stdin and
@@ -33,6 +38,7 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
 from .agent import play_game, trips_per_tile
+from .gp import TreePolicy, individual_from_text, individual_text
 from .host import ROOT, Host, default_host_dll
 from .rules import DoNothing, HandRule, SeparatedPreference
 from .session import DEFAULT_SCENARIO, TICKS, raise_if_rejected
@@ -43,6 +49,8 @@ RUNS_DIR = ROOT / "output" / "evolved_rules" / "runs"  # /output/ is git-ignored
 POLICIES = {"hand": HandRule, "nothing": DoNothing, "separated": SeparatedPreference}
 REFERENCE = "reference"  # the privileged baseline: the host's own network builder, never recorded
 POLICY_NAMES = (*POLICIES, REFERENCE)
+TREE_PREFIX = "tree:"  # --policy tree:<file>: an individual text file played as gp.TreePolicy
+POLICY_FILE = "policy.txt"  # a tree policy's text, in the run folder
 REFERENCE_EVERY_S = 10.0
 PACKAGES = ("numpy", "scipy", "deap", "cma")
 DEFAULT_CAP_S = 3600.0
@@ -51,6 +59,45 @@ EXISTING_RUN_EXIT_CODE = 2
 
 class RunExistsError(FileExistsError):
     """The run folder already exists (raised by the folder claim, before any game)."""
+
+
+def is_tree_policy(policy_name) -> bool:
+    return isinstance(policy_name, str) and policy_name.startswith(TREE_PREFIX)
+
+
+def read_tree_policy(policy_name: str) -> str:
+    """tree:<file> -> the file's individual text, canonical (gp.individual_text).
+
+    ValueError for an empty file name, an unreadable file or a text that is not an individual.
+    """
+    file = policy_name[len(TREE_PREFIX):]
+    if not file:
+        raise ValueError(f"{TREE_PREFIX}<file> needs a file name, got {policy_name!r}")
+    try:
+        text = Path(file).read_text(encoding="utf-8")
+    except (OSError, UnicodeDecodeError) as e:
+        raise ValueError(f"cannot read the tree policy file {file!r}: {e}") from None
+    try:
+        return individual_text(individual_from_text(text))
+    except ValueError as e:
+        raise ValueError(f"{file!r} is not an individual text: {e}") from None
+
+
+def check_policy(policy_name) -> str | None:
+    """ValueError unless policy_name is a named policy or a readable tree:<file>; returns the tree text or None."""
+    if is_tree_policy(policy_name):
+        return read_tree_policy(policy_name)
+    if policy_name not in POLICY_NAMES:
+        raise ValueError(f"unknown policy {policy_name!r}; expected one of {', '.join(POLICY_NAMES)} "
+                         f"or {TREE_PREFIX}<file>")
+    return None
+
+
+def make_policy(policy_name: str):
+    """A fresh policy object for a named policy or tree:<file> (reference has none: see run_reference)."""
+    if is_tree_policy(policy_name):
+        return TreePolicy(read_tree_policy(policy_name))
+    return POLICIES[policy_name]()
 
 
 def parse_seeds(spec: list[str]) -> list[int]:
@@ -235,7 +282,7 @@ def _play_seed(policy_name: str, seed: int, cap_s: float, run_dir: str, verify: 
     host = _worker_host()
     if policy_name == REFERENCE:
         return run_reference(host, seed, cap_s)
-    result = play_game(host, seed, POLICIES[policy_name](), cap_s=cap_s, record=True)
+    result = play_game(host, seed, make_policy(policy_name), cap_s=cap_s, record=True)
     summary = result.summary()
     summary["privileged"] = False
     path = Path(run_dir) / "replays" / f"{seed}.json"
@@ -293,7 +340,8 @@ def _package_version(name: str) -> str | None:
         return None
 
 
-def _config(policy_name: str, seeds: list[int], cap_s: float, workers: int, verify: bool) -> dict:
+def _config(policy_name: str, seeds: list[int], cap_s: float, workers: int, verify: bool,
+            policy_text: str | None = None) -> dict:
     commit = _git("rev-parse", "HEAD")
     status = _git("status", "--porcelain")
     return {
@@ -303,6 +351,7 @@ def _config(policy_name: str, seeds: list[int], cap_s: float, workers: int, veri
         "python": sys.version,
         "PYTHONHASHSEED": os.environ.get("PYTHONHASHSEED"),  # the workers' value: evaluate() sets it first
         "policy": policy_name,
+        "policy_text": policy_text,  # the individual text of a tree:<file> policy, else None
         "seeds": list(seeds),
         "cap_s": cap_s,
         "host_dll": str(default_host_dll()),
@@ -373,10 +422,10 @@ def evaluate(policy_name: str, seeds: list[int], workers: int, run: str, verify:
     Raises RunExistsError (a FileExistsError), before any game, if output/evolved_rules/runs/<run> exists. If any game, worker
     or verification fails, error.txt (the traceback) is written to the run folder, no summary.json is
     written, and the error is re-raised. Returns the summary (also written to summary.json). Bad inputs (policy,
-    seeds, run name, a cap that is not finite and > 0) raise ValueError before the folder is claimed.
+    seeds, run name, a cap that is not finite and > 0) raise ValueError before the folder is claimed; that
+    includes a tree:<file> whose file cannot be read or is not an individual text.
     """
-    if policy_name not in POLICY_NAMES:
-        raise ValueError(f"unknown policy {policy_name!r}; expected one of {', '.join(POLICY_NAMES)}")
+    policy_text = check_policy(policy_name)
     seeds = list(seeds)
     if not seeds:
         raise ValueError("no seeds to evaluate")
@@ -397,16 +446,20 @@ def evaluate(policy_name: str, seeds: list[int], workers: int, run: str, verify:
     try:
         if recorded:
             (run_dir / "replays").mkdir()
+        worker_policy = policy_name
+        if policy_text is not None:  # the workers read the run folder's copy, never the caller's file
+            (run_dir / POLICY_FILE).write_text(policy_text + "\n", encoding="utf-8")
+            worker_policy = TREE_PREFIX + str(run_dir / POLICY_FILE)
         if verify and recorded:
             build_verifier()  # once, before the pool: no first-build race between workers
         os.environ["PYTHONHASHSEED"] = "0"  # inherited by the spawned workers
-        config = _config(policy_name, seeds, cap_s, workers, verify)
+        config = _config(policy_name, seeds, cap_s, workers, verify, policy_text)
 
         by_seed: dict[int, dict] = {}
         abort = _new_abort_flag()
         pool = _make_pool(workers, abort)
         try:
-            futures = {pool.submit(_run_seed, policy_name, seed, cap_s, str(run_dir), verify and recorded): seed
+            futures = {pool.submit(_run_seed, worker_policy, seed, cap_s, str(run_dir), verify and recorded): seed
                        for seed in seeds}
             for future in as_completed(futures):
                 by_seed[futures[future]] = future.result()
@@ -444,7 +497,8 @@ def _format_aggregate(summary: dict) -> str:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="python -m evolved_rules.evaluate", description=__doc__.splitlines()[0])
-    parser.add_argument("--policy", required=True, choices=POLICY_NAMES)
+    parser.add_argument("--policy", required=True,
+                        help=f"one of {', '.join(POLICY_NAMES)}, or {TREE_PREFIX}FILE (an individual text file)")
     parser.add_argument("--seeds", required=True, nargs="+", help='seeds and inclusive ranges, e.g. 1000 2000-2019')
     parser.add_argument("--workers", type=int, default=1)
     parser.add_argument("--run", required=True, help="run folder name under output/evolved_rules/runs")
@@ -452,6 +506,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--cap", type=float, default=DEFAULT_CAP_S, help="episode cap in simulated seconds")
     args = parser.parse_args(argv)
     try:
+        check_policy(args.policy)
         seeds = parse_seeds(args.seeds)
         _check_run_name(args.run)
         _check_cap(args.cap)

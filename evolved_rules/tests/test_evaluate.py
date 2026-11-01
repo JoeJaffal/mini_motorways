@@ -909,3 +909,75 @@ def test_worker_exits_when_its_parent_is_hard_killed(tmp_path):
             parent.wait()
         if worker is not None and not _wait_gone(worker, 0):
             subprocess.run(["taskkill", "/F", "/PID", str(worker)], capture_output=True)
+
+
+# ---------------------------------------------------------------------------------------------------------
+# Phase 2 Task 4: --policy tree:<file>
+# ---------------------------------------------------------------------------------------------------------
+from evolved_rules.gp import HAND_TEXT, TreePolicy
+
+
+def _tree_file(tmp_path, text=HAND_TEXT, name="best.txt"):
+    f = tmp_path / "src" / name
+    f.parent.mkdir(exist_ok=True)
+    f.write_text(text, encoding="utf-8")
+    return f
+
+
+def test_tree_policy_runs_from_a_copy_in_the_run_folder(fake_runs):
+    tmp_path, calls = fake_runs
+    f = _tree_file(tmp_path, "\n" + HAND_TEXT.replace("\n", "\n\n") + "\n\n")  # canonicalised on the way in
+    spec = f"tree:{f}"
+    assert main(["--policy", spec, "--seeds", "2000-2001", "--run", "t", "--workers", "2", "--verify"]) == 0
+    run = tmp_path / "t"
+    assert (run / "policy.txt").read_text(encoding="utf-8") == HAND_TEXT + "\n"
+    jobs = [c for c in calls if c != "build"]
+    assert sorted(c[1] for c in jobs) == [2000, 2001]
+    assert {c[0] for c in jobs} == {f"tree:{run / 'policy.txt'}"}  # never the caller's file
+    cfg = json.loads((run / "summary.json").read_text())["config"]
+    assert cfg["policy"] == spec and cfg["policy_text"] == HAND_TEXT
+    assert "build" in calls  # tree policies are recorded and verified like the named ones
+
+
+def test_named_policies_have_no_policy_text(fake_runs):
+    tmp_path, _ = fake_runs
+    assert evaluate("hand", [1], workers=1, run="h", verify=False)["config"]["policy_text"] is None
+    assert not (tmp_path / "h" / "policy.txt").exists()
+
+
+@pytest.mark.parametrize("content", [None, "", "priority: neg(tiles_needed)", "priority: x\nhold: 1.0\nupgrade: 1.0"])
+def test_bad_tree_policies_are_refused_before_the_folder_is_claimed(fake_runs, capsys, content):
+    tmp_path, calls = fake_runs
+    spec = "tree:" if content is None else f"tree:{_tree_file(tmp_path, content)}"
+    with pytest.raises(ValueError):
+        evaluate(spec, [1], workers=1, run="x", verify=False)
+    with pytest.raises(SystemExit) as e:
+        main(["--policy", spec, "--seeds", "1", "--run", "x"])
+    assert e.value.code == 2 and "policy" in capsys.readouterr().err.lower()
+    assert calls == [] and sorted(p.name for p in tmp_path.iterdir()) == (["src"] if content is not None else [])
+
+
+def test_missing_tree_file_and_unknown_policy_are_usage_errors(fake_runs, capsys):
+    tmp_path, calls = fake_runs
+    for spec in [f"tree:{tmp_path / 'nope.txt'}", "greedy", "Tree:x"]:
+        with pytest.raises(SystemExit) as e:
+            main(["--policy", spec, "--seeds", "1", "--run", "x"])
+        assert e.value.code == 2
+    assert calls == [] and list(tmp_path.iterdir()) == []
+
+
+def test_make_policy_builds_a_coverage_tree_policy(tmp_path):
+    p = ev.make_policy(f"tree:{_tree_file(tmp_path)}")
+    assert isinstance(p, TreePolicy) and p.coverage is True and p.text == HAND_TEXT
+    assert isinstance(ev.make_policy("hand"), HandRule)
+
+
+@pytest.mark.host
+def test_cli_tree_policy_end_to_end(host_dll, verifier, tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(ev, "RUNS_DIR", tmp_path / "runs")
+    f = _tree_file(tmp_path)
+    assert main(["--policy", f"tree:{f}", "--seeds", "2000", "--run", "tree", "--verify", "--cap", "60"]) == 0
+    s = json.loads((tmp_path / "runs" / "tree" / "summary.json").read_text())
+    assert s["aggregate"]["verified_pass"] == 1 and s["games"][0]["trips"] >= 0
+    rec = json.loads((tmp_path / "runs" / "tree" / "replays" / "2000.json").read_text())
+    assert rec["source"] == "evolved-rules:tree"

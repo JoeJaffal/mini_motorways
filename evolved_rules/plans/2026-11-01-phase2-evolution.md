@@ -85,6 +85,7 @@
 - `engine.record(text, seed, path, verify)` plays one recorded game and saves/verifies it (for final evaluation).
 - `evaluate.py` gains `--policy tree:<file>` reading an individual text file, so any evolved individual can be evaluated and verified with the existing CLI.
 - Tests: cache hit avoids replay, key separation by cap/version, duplicate dedup, timeout path with a fake slow job (in-process pool substitute), identical results across two engines.
+- *As built (deviation):* one single-process spawn `ProcessPoolExecutor` per worker slot instead of one shared pool, still with `evaluate.py`'s `_init_worker` / `_worker_host` / `_close_host`. A shared pool cannot kill one timed-out worker (with its host tree) or pin a crash on one game, and one game in flight per slot means nothing is queued, so the abort flag has nothing to skip and is not passed (`initargs=(None,)`).
 
 ### Task 5: Evolution loop with convergence stop
 
