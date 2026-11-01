@@ -19,7 +19,7 @@ One generation (decisions P2-1..P2-4 of plans/2026-11-01-phase2-evolution.md):
    crossover of consecutive pairs with probability 0.5, then mutation of each offspring with probability
    0.3 (gp.mate / gp.mutate keep every tree within the depth limit of 6).
 
-Stop rule (P2-1, class Convergence). A generation counts as an improvement when its validated mean is at
+Stop rule (P2-1, class Convergence; tune_cmaes.py uses the same class, stop_reason and run_loop). A generation counts as an improvement when its validated mean is at
 least `anchor + max(min_gain_trips, min_gain_frac * anchor)` and strictly above the anchor, where the anchor
 is the validated mean at the last counted improvement (generation 0 sets it). The strict part only matters when
 both minimum gains are 0: re-validating the anchor's own (cached) text must not reset the count. Measuring gains from the anchor, not from the
@@ -401,15 +401,20 @@ def start(cfg: Config, run_dir: Path) -> dict:
     return state
 
 
-def load(run_dir: Path, overrides: dict | None = None) -> tuple[Config, dict]:
+def load(run_dir: Path, overrides: dict | None = None, config_cls=Config) -> tuple[Config, dict]:
     """Config and checkpoint state of an existing run, with records after the checkpoint dropped.
 
     overrides may change only RESUMABLE_FIELDS (ValueError otherwise); a change is logged in config.json.
+    config_cls reads the saved parameters (tune_cmaes.CmaConfig for a CMA-ES run: same files, same rules).
     """
     run_dir = Path(run_dir)
     if not (run_dir / CHECKPOINT).exists():
         raise FileNotFoundError(f"no checkpoint in {run_dir}: nothing to resume")
     config = json.loads((run_dir / CONFIG).read_text(encoding="utf-8"))
+    if config_cls is Config and config.get("method") is not None:
+        # Refuse before touching the folder: a GP resume of another method's run would log a resume in its
+        # config.json, then fail on the foreign checkpoint and mark that run failed.
+        raise ValueError(f"{run_dir} holds a {config['method']} run, not a GP run")
     params = dict(config["params"])
     changed = {}
     for name, value in (overrides or {}).items():
@@ -422,7 +427,7 @@ def load(run_dir: Path, overrides: dict | None = None) -> tuple[Config, dict]:
                              f"({params.get(name)!r}); only {', '.join(RESUMABLE_FIELDS)} may change on resume")
         changed[name] = value
     params.update(changed)
-    cfg = Config.from_json(params)
+    cfg = config_cls.from_json(params)
     cfg.check()
     state = read_checkpoint(run_dir)
     for name in (GENERATIONS, VALIDATION):
@@ -520,9 +525,17 @@ def format_record(rec: dict, cfg: Config) -> str:
             f"{cfg.patience} | {rec['wall_s']:.0f} s, {rec['games_played']} games, {rec['cache_hits']} hits")
 
 
-def run_loop(cfg: Config, state: dict, engine, run_dir: Path, clock=time.monotonic, log=print) -> dict:
-    """Generations until the stop rule or the budget; returns the final status dict (also status.json)."""
+def run_loop(cfg: Config, state: dict, engine, run_dir: Path, clock=time.monotonic, log=print,
+             step=None, fmt=None) -> dict:
+    """Generations until the stop rule or the budget; returns the final status dict (also status.json).
+
+    step(cfg, state, engine, run_dir, clock=...) plays one generation and fmt(record, cfg) prints its line
+    (default: this module's generation and format_record; tune_cmaes passes its own, sharing everything else:
+    the stop rule, the budget, checkpoints and the status file).
+    """
     run_dir = Path(run_dir)
+    step = generation if step is None else step
+    fmt = format_record if fmt is None else fmt
     try:
         while True:
             conv = Convergence.from_state(state["convergence"])
@@ -532,9 +545,9 @@ def run_loop(cfg: Config, state: dict, engine, run_dir: Path, clock=time.monoton
                 log(f"stopped: {stop[0]} ({stop[1]})")
                 return json.loads((run_dir / STATUS).read_text(encoding="utf-8"))
             _write_status(run_dir, "running", f"generation {state['generation']}", state)
-            state = generation(cfg, state, engine, run_dir, clock=clock)
+            state = step(cfg, state, engine, run_dir, clock=clock)
             write_checkpoint(run_dir, state)
-            log(format_record(read_jsonl(run_dir / GENERATIONS)[-1], cfg))
+            log(fmt(read_jsonl(run_dir / GENERATIONS)[-1], cfg))
     except KeyboardInterrupt:
         _write_status(run_dir, "interrupted", "KeyboardInterrupt (resume with --resume)", state)
         raise
