@@ -234,7 +234,7 @@ With `final.zip`, load the model with `MaskablePPO.load(final.zip, device='cpu')
 | Phase | Work | Exit check |
 |-------|------|------------|
 | 1. Skeleton (week 1) | Host client, parser, A* matching the simulator's draw rules (section 3.3), executor, replay logging, hand-written rule (attach route, keep a reserve of 4 tiles, take the offer with the most roads at once, never remove), tests (link rules, bridge cost and refunds, driveway safety, replay round trip, same result in two processes) | Replays verify with the headless verifier (section 6). Prototype numbers re-measured (done 2026-10-29: 150.45 mean on 2000–2019). The hand rule averages at least about 140 trips on 2000–2019, i.e. within about 10% of the prototype; report median and worst seed too (SD about 72). A mean below 80 means the skeleton is broken. Re-measure throughput with the real agent in game-seconds per wall-second, and estimate the per-seed correlation between hand rule and prototype. |
-| 2. Evolution loop (week 2) | DEAP trees, terminals, racing with common seeds, seed rotation, validation archive, result cache, checkpoints. CMA-ES control (`tune_cmaes.py`): one linear weight vector per decision over the full terminal set, about 25–40 weights bounded [−5, 5], popsize about 16, minimising −fitness. | A short run improves validation fitness over generation 0 |
+| 2. Evolution loop (week 2) | DEAP trees, terminals, racing with common seeds, seed rotation, validation archive, result cache, checkpoints. CMA-ES control (`tune_cmaes.py`): one linear weight vector per decision over the full terminal set, about 25–40 weights bounded [−5, 5], popsize about 16, minimising −fitness. | A short run improves validation fitness over generation 0 (done 2026-11-02: smoke run 169.4 → 199.4). Then the full run until convergence (see Phase 2 status) |
 | 3. Full runs (week 3) | One overnight GP run on LA (about 10 h, wall-clock stop). CMA-ES gets the same number of games (about 70–140 generations at popsize 16 × 8 seeds) on a separate night or machine, not alongside GP; run 3+ CMA-ES runs with different RNG seeds, and GP runs 2–3 on later nights if time allows (needed for any method-level claim). Evaluate on the test seeds; run the other four cities | Results table filled in for LA |
 | 4. Comparison and write-up (week 4) | PPO comparison, statistics, the evolved formulas explained, limitations | Report draft |
 
@@ -261,6 +261,25 @@ Trips and survival on 2000–2019 (n = 20); seed 1000 is reported on its own:
 - **Throughput (hand rule, 21 games, 10 workers):** with verification, 144.7 s wall: 522 games per hour, 89 simulated seconds per wall second. Without verification (`phase1-hand-timing`), 68.3 s wall: 1,108 games per hour, 189 simulated seconds per wall second (about 19 per worker). The separated run with verification took 105.3 s for 24% more simulated time (718 games per hour, 151 simulated seconds per wall second). So verifying every replay added between about 25% and 110% to the wall time in these runs, and its cost is uncertain. The gap between the two verified runs is not explained, so treat these numbers as rough. A 21-game run on 10 workers is dominated by its slowest games. Load: a browser and an editor were open; CPU use was 6–27% before the runs, and during the timing run about 70–83% while all workers were busy, falling as workers finished. Wall times were measured outside the CLI (bash `time`), which includes Python start-up.
 
 Two decisions are open after Phase 1, for the team: whether the hand rule stays the main bar and part of the success criterion (section 6), and whether Phase 2 seeds its population with the separated preference (section 5).
+
+### Phase 2 status (2026-11-02)
+
+**Goal changed (user, 2026-11-01):** the Phase 1 rules are floors, not targets. Evolution runs until it **converges** on validation, not until it passes a threshold. Plan and decisions P2-1 to P2-10: `plans/2026-11-01-phase2-evolution.md`. In short:
+
+- **Validation:** LA 1500–1549 (50 seeds). Each generation, the best new individual by racing mean is validated.
+- **Stop rule:** converged when, after at least 30 generations, the last 20 generations brought no validated gain of at least max(3 trips, 2%). The gain is measured from the score at the last counted improvement, so slow, steady gains still add up and count. The backstop, 72 h or 400 generations, is reported as `budget`, never as converged.
+- **Racing:** population 64. Every individual plays 4 seeds and the top 16 play 8 more. Seeds are drawn from LA 1–999 each generation, with elitism 3 and size used as the tie-break.
+- **Representation:** individuals are 3 trees (Priority, Hold, Upgrade). Remove is dropped for now, because materials are never the limit.
+- **New inputs and options:**
+  - more features: shop demand and unassigned pins, demand rate estimated from `demand` changes, colour car-supply margin, route cost in seconds, offer timing;
+  - coverage targets: connecting a house to a further same-colour shop it does not reach.
+- **Efficiency:** every game also records `tiles_built` and `trips_per_tile`.
+
+**Built:** commits `f879c1e` (features), `edb5726` (coverage), `6c323dd` (GP trees), `6f19c86` (cached engine and `--policy tree:<file>`), `04a0264` (evolve loop) and `2f8be14` (CMA-ES control). 571 tests pass. Phase 1 policies still play byte-identical games (7 fingerprint games at 87256e6).
+
+**Smoke run** (`evolve/smoke`, population 16, 10 validation seeds 1500–1509): the validated incumbent went 169.4 → 189.7 → 199.4 in generations 0–2. The run then stopped at its 4-generation budget. Resume continued at generation 4 and then stopped as converged under the smoke settings (patience 2). About 3–5 min per generation at population 16 (about 3,500–4,500 games per hour). The best smoke individual is the separated preference with coverage (priority −shops + 15.6 × is_separated; hold and upgrade as in the hand rule).
+
+**Full run:** `evolve/gp-1` started 2026-11-02 00:29 at `2f8be14` (clean tree) with the default settings above. CMA-ES (`cmaes/cma-1`) follows after GP converges, not in parallel.
 
 **First 3 days, which test the core idea:**
 
