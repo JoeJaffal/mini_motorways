@@ -472,3 +472,96 @@ def test_unserved_targets_skip_does_not_fall_back_to_farther_house():
     s = parse_observation(make_obs(buildings=b, roads=roads))
     assert all(s.house_connected(h) for h in s.houses())
     assert [(h.id, tuple(x.id for x in sh)) for h, sh in unserved_targets(s)] == [(1, (2,))]
+
+
+# --- coverage_targets (Phase 2, task 2) ----------------------------------------------------------------
+from evolved_rules.candidates import COVERAGE_TARGET_CAP, coverage_targets, house_reaches
+
+
+def _ids(targets):
+    return [(h.id, tuple(x.id for x in sh)) for h, sh in targets]
+
+
+def _two_networks():
+    """Two colour-0 networks: house 1 -> shop 0 and house 7 -> shop 3. Both shops are served and both houses
+    connected, so Phase 1 sees nothing to do. House 9 (colour 0) is unconnected; house 11 (colour 2) has no shop."""
+    roads = _line([(20, 13), (19, 13), (18, 13), (17, 13), (16, 13)])
+    roads.update(_line([(30, 20), (31, 20), (32, 20), (33, 20), (34, 20)]))
+    b = [house(1, 0, 20, 13, W_), house(7, 0, 30, 20, E), house(9, 0, 40, 5, S), house(11, 2, 5, 5, S),
+         shop(0, 0, 16, 13, 1, 1, [(16, 13, E)]), shop(3, 0, 34, 20, 1, 1, [(34, 20, W_)])]
+    return parse_observation(make_obs(buildings=b, roads=roads))
+
+
+def test_coverage_targets_add_unreached_same_colour_shops_after_phase1_entries():
+    s = _two_networks()
+    assert _ids(unserved_targets(s)) == [(9, (0, 3))]
+    # Phase 1 entries first, then per shop (id order) each same-colour house that does not reach it.
+    assert _ids(coverage_targets(s)) == [(9, (0, 3)), (7, (0,)), (1, (3,))]
+
+
+def test_coverage_targets_skip_listed_pairs_and_order_houses_by_id():
+    # Houses 1 and 5 reach shop 0; shops 2 and 4 are unserved. Phase 1 lists (1, (2,)) only (shop 4's nearest
+    # house is already listed). Coverage adds (5, 2), then (1, 4) and (5, 4); (1, 2) is not listed twice.
+    roads = _line([(20, 13), (19, 13), (18, 13), (17, 13), (16, 13)])
+    for c, v in _line([(16, 13), (16, 14), (16, 15), (16, 16)]).items():
+        roads[c] = roads.get(c, 0) | v
+    b = [house(5, 0, 16, 16, N), house(1, 0, 20, 13, W_), shop(4, 0, 25, 5, 1, 1, [(25, 5, S)]),
+         shop(0, 0, 16, 13, 1, 1, [(16, 13, E)]), shop(2, 0, 25, 20, 1, 1, [(25, 20, N)])]
+    s = parse_observation(make_obs(buildings=b, roads=roads))
+    assert _ids(unserved_targets(s)) == [(1, (2,))]
+    assert _ids(coverage_targets(s)) == [(1, (2,)), (5, (2,)), (1, (4,)), (5, (4,))]
+
+
+def test_coverage_targets_without_roads_equal_phase1():
+    # Nothing is connected: every house already lists all its shops, so coverage adds nothing.
+    b = [house(1, 0, 20, 13, W_), house(2, 0, 25, 13, W_), shop(0, 0, 14, 11, 2, 3, [(15, 13, E)]),
+         shop(3, 0, 30, 20, 1, 1, [(30, 20, N)])]
+    s = parse_observation(make_obs(buildings=b))
+    assert _ids(coverage_targets(s)) == _ids(unserved_targets(s)) == [(1, (0, 3)), (2, (0, 3))]
+
+
+def test_coverage_targets_cap_keeps_order():
+    # 30 connected colour-0 houses on one road, all reaching shop 0 only; shop 1 (colour 0) is served by
+    # none. Phase 1 lists shop 1's nearest house; coverage adds the other houses in id order, capped at 24.
+    assert COVERAGE_TARGET_CAP == 24
+    xs = list(range(10, 40))
+    roads = _line([(x, 14) for x in xs] + [(40, 14)])
+    b = [shop(0, 0, 40, 14, 1, 1, [(40, 14, W_)]), shop(1, 0, 5, 25, 1, 1, [(5, 25, N)])]
+    for i, x in enumerate(xs):
+        roads[(x, 13)] = roads.get((x, 13), 0) | (1 << 2)
+        roads[(x, 14)] |= 1 << 6
+        b.append(house(100 + i, 0, x, 13, S))
+    s = parse_observation(make_obs(buildings=b, roads=roads, inventory=(0, 0, 0, 0, 0, 0)))
+    assert all(s.house_connected(h) for h in s.houses())
+    phase1 = _ids(unserved_targets(s))
+    assert phase1 == [(100, (1,))]  # (10,13) is nearest to (5,25)
+    t = _ids(coverage_targets(s))
+    assert len(t) == 24 and t[0] == phase1[0]
+    assert t[1:] == [(100 + i, (1,)) for i in range(1, 24)]
+
+
+def test_coverage_targets_cap_truncates_phase1_entries_too():
+    # 30 unconnected houses: Phase 1 lists all 30; the coverage list is its first 24.
+    b = [shop(0, 0, 40, 14, 1, 1, [(40, 14, W_)])] + [house(100 + i, 0, 10 + i, 5, S) for i in range(30)]
+    s = parse_observation(make_obs(buildings=b))
+    assert len(unserved_targets(s)) == 30
+    assert _ids(coverage_targets(s)) == _ids(unserved_targets(s))[:24]
+
+
+def test_house_reaches():
+    s = _two_networks()
+    h = {b.id: b for b in s.buildings}
+    assert house_reaches(s, 1, (h[0],)) and not house_reaches(s, 1, (h[3],))
+    assert house_reaches(s, 7, (h[0], h[3])) and not house_reaches(s, 9, (h[0], h[3]))
+    assert not house_reaches(s, 1, ())
+
+
+def test_coverage_route_to_unreached_shop_reaches_it_once_built():
+    # A coverage target's candidates end on shop 3's network, so drawing one makes house 1 reach shop 3.
+    s = _two_networks()
+    h = {b.id: b for b in s.buildings}
+    target = next(t for t in coverage_targets(s) if t[0].id == 1)
+    cands = route_candidates(s, target[0], target[1])
+    assert cands and all(c.shop_ids == (3,) for c in cands)
+    end = cands[0].path[-1]
+    assert end in s.component(h[3].access[0]) or end in h[3].outside

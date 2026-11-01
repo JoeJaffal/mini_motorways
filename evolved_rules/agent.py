@@ -8,7 +8,7 @@ from __future__ import annotations
 import math
 from dataclasses import asdict, dataclass
 
-from .candidates import route_candidates, unserved_targets
+from .candidates import coverage_targets, house_reaches, route_candidates, unserved_targets
 from .executor import execute_route, take_offer
 from .features import candidate_features, global_features, offer_features
 from .host import Host
@@ -65,6 +65,11 @@ def decide(session: GameSession, policy: Policy) -> None:
     Returns as soon as the game is over. A house whose route fails is not tried again in this decision (the
     executor never retries; the next decision re-plans). Phase 1 never removes roads. Features read the
     session's per-game memory (demand rates, offers taken, cached road-network analysis).
+
+    A policy with a true `coverage` attribute (Phase 2, decision P2-6) plans over coverage_targets instead, and
+    exclusion is per (house, shop) pair: a route for (house, shops) succeeds when the house now reaches one of
+    those shops; otherwise each of those pairs is excluded, and a later target drops its excluded shops (it is
+    skipped when none is left). Policies without the attribute run the Phase 1 code path unchanged.
     """
     if session.done:
         return
@@ -77,14 +82,20 @@ def decide(session: GameSession, policy: Policy) -> None:
                                           -o.index))
         take_offer(session, best.index)
 
-    excluded: set[int] = set()  # house ids whose route failed in this call
+    coverage = bool(getattr(policy, "coverage", False))
+    excluded: set[int] = set()  # Phase 1: house ids whose route failed in this call
+    excluded_pairs: set[tuple[int, int]] = set()  # coverage: (house id, shop id) pairs whose route failed
     for _ in range(MAX_ROUTES_PER_DECISION):
         if session.done:
             return
         state = session.state
         best = None  # (priority, candidate, target shops); strict > keeps the earliest target, then candidate
-        for house, shops in unserved_targets(state):
-            if house.id in excluded:
+        for house, shops in (coverage_targets(state) if coverage else unserved_targets(state)):
+            if coverage:
+                shops = tuple(s for s in shops if (house.id, s.id) not in excluded_pairs)
+                if not shops:
+                    continue
+            elif house.id in excluded:
                 continue
             for cand in route_candidates(state, house, shops):
                 p = float(policy.priority(candidate_features(state, cand, memory)))
@@ -100,6 +111,12 @@ def decide(session: GameSession, policy: Policy) -> None:
             return
         _, cand, shops = best
         ok = execute_route(session, cand)
+        if coverage:
+            # ok (reaches any shop of the colour) is ignored on purpose: coverage success means reaching one
+            # of the target shops, which house_reaches checks.
+            if not house_reaches(session.state, cand.house_id, shops):
+                excluded_pairs.update((cand.house_id, s.id) for s in shops)
+            continue
         # execute_route reports whether the house reaches a shop of its colour. For a target from an unserved
         # shop the house may have been connected already, so also require that one of the target shops is
         # served now; otherwise the same target would be re-planned (and redrawn) up to the route limit.

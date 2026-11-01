@@ -150,6 +150,7 @@ class _FakeSession:
         self.targets = list(targets)  # [(house, shops)]
         self.cands = cands  # house id -> [RouteCandidate]
         self.served = set()
+        self.reached = set()  # (house id, shop id) pairs a house reaches (coverage tests)
         self.road_stock = road_stock
         self.done = False
         self.log = []
@@ -163,7 +164,8 @@ class _FakeSession:
             {"offers": self.state.offers, "road_stock": self.state.road_stock}
         fields.update(changes)
         frozen = frozenset(self.served)
-        self.state = SimpleNamespace(**fields, shop_served=lambda s: s.id in frozen)
+        self.state = SimpleNamespace(**fields, shop_served=lambda s: s.id in frozen,
+                                     reached=frozenset(self.reached))
 
 
 def _b(id):
@@ -567,3 +569,145 @@ def test_play_game_do_nothing_never_decides(monkeypatch):
     monkeypatch.setattr(S, "wait", lambda self: setattr(self, "terminated", True))
     r = play_game(None, 1, DoNothing(), record=False)
     assert r.terminated
+
+
+# --- decide() for coverage policies (Phase 2, task 2) -------------------------------------------------------
+
+class _Cover(HandRule):
+    """The hand rule with coverage targets."""
+
+    name = "cover"
+    coverage = True
+
+
+def _patch_cover(monkeypatch, sess, outcome=None, keep=False):
+    """Coverage fakes: targets come from coverage_targets; a candidate's tag is its first target shop id;
+    outcome: (house id, shop id) -> (execute_route result, shop ids the house reaches afterwards). Default:
+    success, the house reaches the tagged shop. Targets with a reached pair are dropped (as coverage_targets
+    does) unless keep. house_reaches reads the installed snapshot, as the real one reads session.state."""
+    _patch(monkeypatch, sess)
+    outcome = outcome or {}
+    sess.asked = []
+
+    def cands(state, h, shops):
+        sess.asked.append((h.id, tuple(s.id for s in shops)))
+        return [_cand(h.id, 1, tag=shops[0].id)]
+
+    def execute(session, cand):
+        hid, sid = cand.house_id, cand.path[0][1]
+        session.log.append(("route", hid, sid))
+        ok, reached = outcome.get((hid, sid), (True, (sid,)))
+        session.reached.update((hid, r) for r in reached)
+        if not keep:
+            session.targets = [(h, sh) for h, sh in session.targets
+                               if not any((h.id, s.id) in session.reached for s in sh)]
+        session.install()
+        return ok
+
+    monkeypatch.setattr(agent, "unserved_targets", lambda state: pytest.fail("a coverage policy used Phase 1 targets"))
+    monkeypatch.setattr(agent, "coverage_targets", lambda state: list(sess.targets))
+    monkeypatch.setattr(agent, "route_candidates", cands)
+    monkeypatch.setattr(agent, "execute_route", execute)
+    monkeypatch.setattr(agent, "house_reaches",
+                        lambda state, hid, shops: any((hid, s.id) in state.reached for s in shops))
+
+
+def test_decide_phase1_policy_never_uses_coverage_targets(monkeypatch):
+    sess = _FakeSession([(_b(1), (_b(100),))], {1: [_cand(1, 1)]})
+    _patch(monkeypatch, sess)
+    monkeypatch.setattr(agent, "coverage_targets", lambda state: pytest.fail("Phase 1 policy used coverage"))
+    monkeypatch.setattr(agent, "house_reaches", lambda *a: pytest.fail("Phase 1 policy used the coverage rule"))
+    decide(sess, HandRule())
+    assert sess.log == [("route", 1, 0)]
+
+
+def test_decide_coverage_routes_one_house_to_two_shops(monkeypatch):
+    # The same (served) house is a target for two shops it does not reach: both routes are built.
+    h = _b(1)
+    sess = _FakeSession([(h, (_b(100),)), (h, (_b(101),))], {})
+    _patch_cover(monkeypatch, sess)
+    decide(sess, _Cover())
+    assert sess.log == [("route", 1, 100), ("route", 1, 101)]
+
+
+def test_decide_coverage_failure_excludes_the_pair_not_the_house(monkeypatch):
+    # (1, 100) fails: under Phase 1 rules house 1 would be dropped; here only that pair is, so (1, 101) is
+    # still built, and (1, 100), still listed, is not redrawn in this decision.
+    h = _b(1)
+    sess = _FakeSession([(h, (_b(100),)), (h, (_b(101),))], {})
+    _patch_cover(monkeypatch, sess, {(1, 100): (False, ())})
+    decide(sess, _Cover())
+    assert sess.log == [("route", 1, 100), ("route", 1, 101)]
+
+
+def test_decide_coverage_success_means_the_house_reaches_a_target_shop(monkeypatch):
+    # execute_route reports the house connected (to some shop), but it does not reach shop 100: a failure,
+    # so the still-listed target is not redrawn.
+    sess = _FakeSession([(_b(1), (_b(100),))], {})
+    _patch_cover(monkeypatch, sess, {(1, 100): (True, ())}, keep=True)
+    decide(sess, _Cover())
+    assert sess.log == [("route", 1, 100)]
+
+
+def test_decide_coverage_success_even_if_execute_route_reports_failure(monkeypatch):
+    # The house reaches shop 100 (the success rule) although execute_route says False: not excluded. The fake
+    # keeps listing the target (the real coverage_targets would drop it), so it is drawn up to the route limit.
+    sess = _FakeSession([(_b(1), (_b(100),))], {})
+    _patch_cover(monkeypatch, sess, {(1, 100): (False, (100,))}, keep=True)
+    decide(sess, _Cover())
+    assert sess.log == [("route", 1, 100)] * MAX_ROUTES_PER_DECISION
+
+
+def test_decide_coverage_excluded_pairs_filter_a_target_shop_list(monkeypatch):
+    # (1, 100) fails; the still-listed target (1, (100, 101)) is then planned towards shop 101 alone.
+    h = _b(1)
+    sess = _FakeSession([(h, (_b(100),)), (h, (_b(100), _b(101)))], {})
+    _patch_cover(monkeypatch, sess, {(1, 100): (False, ())})
+    decide(sess, _Cover())
+    assert sess.asked == [(1, (100,)), (1, (100, 101)), (1, (101,))]
+    assert sess.log == [("route", 1, 100), ("route", 1, 101)]
+
+
+def test_decide_coverage_skips_target_whose_pairs_are_all_excluded(monkeypatch):
+    h = _b(1)
+    sess = _FakeSession([(h, (_b(100),))], {})
+    _patch_cover(monkeypatch, sess, {(1, 100): (False, ())})
+    decide(sess, _Cover())
+    assert sess.log == [("route", 1, 100)] and sess.asked == [(1, (100,))]
+
+
+@pytest.mark.host
+def test_coverage_policy_game_is_a_valid_repeatable_replay(host, verifier, tmp_path, monkeypatch):
+    """A real coverage game (hand rule + coverage) builds coverage routes, verifies as a replay and repeats
+    exactly on the same host."""
+    from evolved_rules.verify import verify_recording
+    from evolved_rules import candidates
+    calls = {"extra": 0, "reached": 0}
+    extra_keys: set = set()
+    real_targets, real_reaches = agent.coverage_targets, agent.house_reaches
+
+    def counting(state):
+        out = real_targets(state)
+        # Only entries past the Phase 1 prefix are coverage extras; unserved_targets entries do not count.
+        extras = out[len(candidates.unserved_targets(state)):]
+        extra_keys.clear()
+        extra_keys.update((h.id, tuple(s.id for s in sh)) for h, sh in extras)
+        calls["extra"] += len(extras)
+        return out
+
+    def reaching(state, house_id, shops):
+        ok = real_reaches(state, house_id, shops)
+        if ok and (house_id, tuple(s.id for s in shops)) in extra_keys:
+            calls["reached"] += 1  # a route for a coverage-only pair was built and now reaches its shop
+        return ok
+    monkeypatch.setattr(agent, "coverage_targets", counting)
+    monkeypatch.setattr(agent, "house_reaches", reaching)
+    a = play_game(host, 1000, _Cover(), cap_s=300.0)
+    assert calls["extra"] > 0  # coverage-only pairs were offered to the policy
+    assert calls["reached"] > 0  # and at least one was routed successfully
+    monkeypatch.setattr(agent, "coverage_targets", real_targets)
+    monkeypatch.setattr(agent, "house_reaches", real_reaches)
+    b = play_game(host, 1000, _Cover(), cap_s=300.0)
+    assert a.recording["actions"] == b.recording["actions"] and a.trips == b.trips > 0
+    p = tmp_path / "g.json"; p.write_text(json.dumps(a.recording))
+    assert verify_recording(p)[0]

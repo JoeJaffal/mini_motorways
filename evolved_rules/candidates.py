@@ -329,3 +329,64 @@ def route_candidates(
         ))
     out.sort(key=lambda c: (c.tiles_needed, len(c.path), KIND_ORDER[c.kind]))
     return out[:MAX_CANDIDATES]
+
+
+# --- Coverage targets (Phase 2, decision P2-6) ---------------------------------------------------------------
+
+COVERAGE_TARGET_CAP = 24  # targets per coverage_targets call; each costs up to three A* searches
+
+
+def _house_components(state: CityState) -> dict[int, frozenset[Cell]]:
+    """House id -> its road component. Houses in one component share it: links are undirected (the simulator
+    links both ends, TrafficWorld.Link), so component(b) == component(a) for every b in component(a)."""
+    by_cell: dict[Cell, frozenset[Cell]] = {}
+    out: dict[int, frozenset[Cell]] = {}
+    for h in state.houses():
+        comp = by_cell.get(h.cell)
+        if comp is None:
+            comp = state.component(h.cell)
+            for c in comp:
+                by_cell.setdefault(c, comp)
+        out[h.id] = comp
+    return out
+
+
+def house_reaches(state: CityState, house_id: int, shops: tuple[Building, ...]) -> bool:
+    """True if the house reaches the access cells of at least one of `shops` over roads (False for no shops or
+    an unknown house). This is the coverage success rule: a route for (house, shops) worked when it holds."""
+    house = next((b for b in state.buildings if b.id == house_id), None)
+    if house is None:
+        return False
+    comp = state.component(house.cell)
+    return any(a in comp for s in shops for a in s.access)
+
+
+def coverage_targets(state: CityState) -> list[tuple[Building, tuple[Building, ...]]]:
+    """Phase 1 targets, then every (house, same-colour shop) pair where the house does not reach that shop.
+
+    The Phase 1 entries (unserved_targets) come first, in their order. Then, for each shop in id order, each
+    same-colour house in id order (state.buildings is id-sorted) that does not reach the shop's access cells
+    becomes the target (house, (shop,)), unless that pair is already covered by an earlier entry. This lets a
+    policy add car supply to a starving shop from a house that already serves another shop. The list is cut
+    to its first COVERAGE_TARGET_CAP entries (silently: the next decision re-plans from the new state).
+    Used only by policies with `coverage = True`; Phase 1 policies keep unserved_targets.
+    """
+    out = unserved_targets(state)
+    if len(out) >= COVERAGE_TARGET_CAP:
+        return out[:COVERAGE_TARGET_CAP]
+    listed = {(h.id, s.id) for h, shops in out for s in shops}
+    houses = state.houses()
+    comps: dict[int, frozenset[Cell]] | None = None
+    for s in state.shops():
+        for h in houses:
+            if h.color != s.color or (h.id, s.id) in listed:
+                continue
+            if comps is None:
+                comps = _house_components(state)
+            if any(a in comps[h.id] for a in s.access):
+                continue
+            listed.add((h.id, s.id))
+            out.append((h, (s,)))
+            if len(out) == COVERAGE_TARGET_CAP:
+                return out
+    return out
