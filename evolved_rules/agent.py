@@ -70,16 +70,22 @@ def decide(session: GameSession, policy: Policy) -> None:
     exclusion is per (house, shop) pair: a route for (house, shops) succeeds when the house now reaches one of
     those shops; otherwise each of those pairs is excluded, and a later target drops its excluded shops (it is
     skipped when none is left). Policies without the attribute run the Phase 1 code path unchanged.
+
+    A policy with a true `wants_globals` attribute (gp.TreePolicy: its priority and upgrade trees read global
+    terminals) gets every candidate and offer dict merged with the global features of the same state (the
+    keys never overlap), and its hold sees that same global dict. Phase 1 policies get the Phase 1 dicts.
     """
     if session.done:
         return
     memory = session.memory
+    merge = bool(getattr(policy, "wants_globals", False))
     offers = session.state.offers
     if offers:
         # Highest score, then the lower index. A non-finite score ranks lowest; an offer is always taken.
         state = session.state
-        best = max(offers, key=lambda o: (_finite_or(policy.upgrade(offer_features(o, state)), -math.inf),
-                                          -o.index))
+        g = global_features(state, memory) if merge else {}
+        best = max(offers, key=lambda o: (_finite_or(policy.upgrade({**offer_features(o, state), **g}),
+                                                     -math.inf), -o.index))
         take_offer(session, best.index)
 
     coverage = bool(getattr(policy, "coverage", False))
@@ -89,6 +95,7 @@ def decide(session: GameSession, policy: Policy) -> None:
         if session.done:
             return
         state = session.state
+        g = global_features(state, memory) if merge else {}
         best = None  # (priority, candidate, target shops); strict > keeps the earliest target, then candidate
         for house, shops in (coverage_targets(state) if coverage else unserved_targets(state)):
             if coverage:
@@ -98,14 +105,14 @@ def decide(session: GameSession, policy: Policy) -> None:
             elif house.id in excluded:
                 continue
             for cand in route_candidates(state, house, shops):
-                p = float(policy.priority(candidate_features(state, cand, memory)))
+                p = float(policy.priority({**candidate_features(state, cand, memory), **g}))
                 if not math.isfinite(p):
                     continue  # PLAN section 4: a non-finite score is never chosen
                 if best is None or p > best[0]:
                     best = (p, cand, shops)
         if best is None:
             return
-        hold = float(policy.hold(global_features(state, memory)))
+        hold = float(policy.hold(g if merge else global_features(state, memory)))
         # PLAN section 4 (line 159) covers candidate scores; a broken (non-finite) threshold never causes an action.
         if not math.isfinite(hold) or best[0] < hold:
             return
