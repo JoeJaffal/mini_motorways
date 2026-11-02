@@ -8,7 +8,7 @@ Why a control. The GP run searches tree shapes and constants at once; this run k
 sum of the same scaled terminals) and searches only the weights. If GP beats it, the tree structure is earning
 its keep; if not, the terminals alone carry the gain.
 
-The policy (a vector of DIM = 67 weights, each bounded to [-5, 5]):
+The policy (a vector of DIM = 63 weights, each bounded to [-5, 5]; 67 before gp.DROPPED_TERMS):
 
     priority = sum_i w_i * t_i   over the candidate + global terminals (gp.PRIORITY_TERMS)
     hold     = b + sum_j v_j * g_j over the global terminals (gp.HOLD_TERMS), b a bias
@@ -203,6 +203,7 @@ class CmaConfig:
     patience: int = 20
     min_gain_frac: float = 0.02
     min_gain_trips: float = 3.0
+    sig_alpha: float = 0.005  # the stop rule's paired test (evolve.Convergence), as in evolve.Config
     max_hours: float = 72.0
     max_gens: int = 400
     validation: tuple[int, ...] = tuple(range(1500, 1550))
@@ -230,6 +231,8 @@ class CmaConfig:
         need(self.min_gens >= 1 and self.patience >= 1 and self.max_gens >= 1,
              "min_gens, patience and max_gens must be at least 1")
         need(self.min_gain_frac >= 0 and self.min_gain_trips >= 0, "minimum gains must be >= 0")
+        need(isinstance(self.sig_alpha, (int, float)) and 0.0 <= self.sig_alpha < 0.5,
+             f"sig_alpha must be in [0, 0.5), got {self.sig_alpha!r}")
         need(self.max_hours > 0, f"max_hours must be > 0, got {self.max_hours}")
         need(1 <= self.train_lo <= self.train_hi, "need 1 <= train_lo <= train_hi")
         need(self.n_train <= self.train_hi - self.train_lo + 1, "more training seeds than the range")
@@ -275,7 +278,7 @@ def start(cfg: CmaConfig, run_dir: Path) -> dict:
     evo._write_json(run_dir / evo.CONFIG, config)
     random.seed(cfg.seed)
     es = cma.CMAEvolutionStrategy(list(X0[cfg.x0]), cfg.sigma0, cma_options(cfg))  # seeds numpy's global RNG
-    conv = Convergence(cfg.min_gens, cfg.patience, cfg.min_gain_frac, cfg.min_gain_trips)
+    conv = Convergence(cfg.min_gens, cfg.patience, cfg.min_gain_frac, cfg.min_gain_trips, sig_alpha=cfg.sig_alpha)
     state = {"format": evo.CHECKPOINT_FORMAT, "method": METHOD, "generation": 0,
              "es": pickle.dumps(es, protocol=pickle.HIGHEST_PROTOCOL), "np_rng": np.random.get_state(),
              "rng": random.getstate(), "convergence": conv.state(), "validated": {}, "elapsed_s": 0.0,
@@ -330,10 +333,11 @@ def generation(cfg: CmaConfig, state: dict, engine, run_dir: Path, clock=time.mo
     if new:
         record = evo._validate(cfg, engine, gen, best, SIZE)
         evo._append_jsonl(run_dir / evo.VALIDATION, record)
-        validated[best] = {"mean": record["mean"], "mean_seconds": record["mean_seconds"], "gen": gen}
+        validated[best] = {"mean": record["mean"], "mean_seconds": record["mean_seconds"], "gen": gen,
+                           "trips": record["trips"]}
     v = validated[best]
     conv = Convergence.from_state(state["convergence"])
-    improved = conv.observe(gen, best, v["mean"], v["mean_seconds"], SIZE)
+    improved = conv.observe(gen, best, v["mean"], v["mean_seconds"], SIZE, trips=v.get("trips"))
 
     wall = clock() - t0
     played, hits = engine.games_played - played0, engine.cache_hits - hits0

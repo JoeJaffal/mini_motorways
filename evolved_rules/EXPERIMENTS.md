@@ -39,12 +39,30 @@ The hand rule scores 152.1 on 2000–2019 (the bar was 140). All 21/21 replays v
 - **Selection is mostly luck.** One rule's trips vary by SD ≈ 91 from seed to seed, so a 4-seed mean is only good to about ±45 and a 12-seed mean to about ±26. Among the top 16, the rank correlation between the 4-seed and 8-seed scores was between −0.67 and 0.34.
 - **The top of the population collapsed.** In generations 2–3, all of the top 16 played identical games.
 - **Some inputs are dead.** `pending_refunds` is always 0 because nothing is ever removed. The best rule's Upgrade tree reads it, so it always takes offer 0.
+- **Why games end** (`autopsy.py`, best rule on 1500–1549; it reproduces the run's 222.0 exactly):
+  - Causes: car shortage 34, slow arrival 11, gridlock 4 (at least 80% of the colour's driving cars nearly stopped), unreachable cars 1.
+  - At failure, the failing colour had about 10 houses, all reaching the shop, and about 20 cars. Of those cars, 20 were busy and 0.5 at home.
+  - Half of the colour's driving cars, and 41% of all driving cars, were nearly stopped. Parked cars are excluded from these shares.
+  - About 44 road tiles were still unused.
+  - So the limit is congestion, not tiles or connectivity. The planner has no move that spends tiles to relieve traffic: no bypasses or parallel roads, and it never places traffic lights or roundabouts.
 
 **Verdict:** the run has not converged in any useful sense. The search needs fixing before it runs further.
 
-**Next:** gp-2, with:
-- racing on 8 seeds, with the top 16 playing 32 in total;
-- 3 individuals validated per generation;
-- behavioural de-duplication;
-- dead inputs removed;
-- a failure autopsy of the best games.
+**Next:** gp-2, which fixes the search (below). After that, add moves that relieve congestion.
+
+## 2026-11-02: gp-2, fixed search
+
+**Changes from gp-1:**
+- **Racing:** every individual plays 8 seeds, and the top 16 play 24 more (32 in total).
+- **Validation:** the racing top 3 are validated each generation.
+- **Behavioural de-duplication:** individuals with identical games count once. Each duplicate frees a slot, and up to 8 per generation go to fresh random immigrants. There are no exact copies.
+- **Stop rule:** a gain must also pass a one-sided paired t-test against the anchor on the 50 validation seeds, at α = 0.005. Without this, luck would reset the counter in most generations.
+- **Inputs:** `pending_refunds` and `type_5` are dropped. Older texts that read them still load, with each read as the constant 0.0, its only value.
+
+**Notes from the review:**
+- **The stop rule is strict.** For two unrelated rules, the paired SD is about 100, so a gain needs about 38 trips to count. For close relatives (SD about 19) it needs about 7. Gains measured from the anchor still accumulate.
+- **The final model is the best of many noisy validation means.** Report it on held-out seeds: 2000–2019 for development, 7000–7099 for the final test.
+
+**Smoke test** (`gp2-smoke`: population 12, 4+4 seeds, 10 validation seeds): it ran on real games. Generation 0 had 9 behaviours among 12 texts and 3 immigrants. In generation 1, candidates at +10.6 and +11.2 trips were correctly not counted (t 0.73 and 0.61, critical value 3.25).
+
+**Results:** pending.

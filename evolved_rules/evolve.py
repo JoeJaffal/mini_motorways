@@ -2,31 +2,45 @@
 
     PY -m evolved_rules.evolve --run NAME [--resume] [--workers 10] [--pop 64] [--seed 1] [--min-gens 30]
         [--patience 20] [--min-gain-frac 0.02] [--min-gain-trips 3] [--max-hours 72] [--max-gens 400]
-        [--validation 1500-1549] [--cap 3600]
+        [--validation 1500-1549] [--cap 3600] [--first-seeds 8] [--more-seeds 24] [--racing-top 16]
+        [--validate-top 3] [--immigrants 8] [--sig-alpha 0.005] [--no-dedup]
 
-One generation (decisions P2-1..P2-4 of plans/2026-11-01-phase2-evolution.md):
+One generation (decisions P2-1..P2-4 of plans/2026-11-01-phase2-evolution.md, as changed for gp-2 in
+EXPERIMENTS.md; the gp-1 values are in brackets, and --first-seeds 4 --more-seeds 8 --validate-top 1
+--sig-alpha 0 --no-dedup runs gp-1's loop exactly, though its random trees differ: gp.DROPPED_TERMS changed
+the terminal set):
 
-1. Draw 4 + 8 training seeds (S4, S8) from LA 1-999 with the run's RNG.
-2. Every distinct tree text in the population plays S4. Its fitness is (mean trips, mean seconds) on S4,
-   compared lexicographically; ties go to the smaller individual (parsimony), then to the earlier text.
-   Fitnesses are never carried over: every generation scores everyone, elites included, on its new seeds.
-3. The top 16 distinct texts by S4 also play S8. Their racing score is the mean over all 12 games.
-4. The best by racing score is validated on the fixed validation seeds (LA 1500-1549) unless that text was
-   validated before (validation is cached by text). The incumbent is the best validated individual so far,
-   by (validation mean trips, mean seconds, -size); it is the run's final model (best.txt).
-5. Next population: the 3 best distinct texts by racing score unchanged (elitism), then pop - 3 offspring:
-   tournament (size 4, with replacement) on the S4 fitness with parsimony, then DEAP's varAnd scheme:
-   crossover of consecutive pairs with probability 0.5, then mutation of each offspring with probability
-   0.3 (gp.mate / gp.mutate keep every tree within the depth limit of 6).
+1. Draw n_s4 + n_s8 = 8 + 24 [4 + 8] training seeds from LA 1-999 with the run's RNG. (The names S4/S8 and
+   the records' "s4"/"s8" keys date from gp-1: they mean the first-round and the extra second-round seeds.)
+2. Every distinct tree text in the population plays the first-round seeds. Its fitness is (mean trips, mean
+   seconds) there, compared lexicographically; ties go to the smaller individual (parsimony), then to the
+   earlier text. Fitnesses are never carried over: every generation scores everyone, elites included.
+3. Behavioural de-duplication [off]: texts whose first-round games are identical (trips, seconds, commands on
+   every seed) count once (the best-ranked, i.e. the smallest, represents them) in steps 4-6.
+4. The top 16 representatives by first-round fitness also play the extra seeds. Their racing score is the
+   mean over all 32 [12] games.
+5. The best 3 [1] by racing score are validated on the fixed validation seeds (LA 1500-1549), in one batch,
+   unless a text was validated before (validation is cached by text). The incumbent is the best validated
+   individual so far, by (validation mean trips, mean seconds, -size); it is the run's final model (best.txt).
+   Because it is the maximum of many noisy validation means, report its score on held-out seeds.
+6. Next population: the 3 best representatives by racing score unchanged (elitism), then offspring:
+   tournament (size 4, with replacement) over the representatives on first-round fitness with parsimony,
+   then DEAP's varAnd scheme: crossover of consecutive pairs with probability 0.5, then mutation of each
+   offspring with probability 0.3 (gp.mate / gp.mutate keep every tree within the depth limit of 6). With
+   de-duplication an offspring that repeats a text is mutated again, and each behavioural duplicate found
+   buys one fresh random immigrant in the last slots (at most `immigrants`, and at least one offspring).
 
-Stop rule (P2-1, class Convergence; tune_cmaes.py uses the same class, stop_reason and run_loop). A generation counts as an improvement when its validated mean is at
-least `anchor + max(min_gain_trips, min_gain_frac * anchor)` and strictly above the anchor, where the anchor
-is the validated mean at the last counted improvement (generation 0 sets it). The strict part only matters when
-both minimum gains are 0: re-validating the anchor's own (cached) text must not reset the count. Measuring gains from the anchor, not from the
-moving incumbent, means a slow creep of small gains still adds up to an improvement once it is big enough,
-while noise-sized wiggles never reset the count. The run has converged when at least min_gens generations are
-done and the last `patience` generations brought no improvement. The backstop (max_gens generations or
-max_hours of wall clock, summed over resumes) stops the run as `budget`, never as converged.
+Stop rule (P2-1, class Convergence; tune_cmaes.py uses the same class, stop_reason and run_loop). A validated
+individual counts as an improvement when its mean is at least `anchor + max(min_gain_trips, min_gain_frac *
+anchor)` and strictly above the anchor, where the anchor is the validated mean at the last counted improvement
+(generation 0 sets it); with sig_alpha > 0 [0] it must also beat the anchor individual seed by seed (one-sided
+paired t on the validation seeds, level sig_alpha), because a 50-seed mean is itself uncertain by about +-13
+trips. The strict part only matters when both minimum gains are 0: re-validating the anchor's own (cached)
+text must not reset the count. Measuring gains from the anchor, not from the moving incumbent, means a slow
+creep of small gains still adds up to an improvement once it is big enough, while noise-sized wiggles never
+reset the count. The run has converged when at least min_gens generations are done and the last `patience`
+generations brought no improvement. The backstop (max_gens generations or max_hours of wall clock, summed
+over resumes) stops the run as `budget`, never as converged.
 
 Run folder output/evolved_rules/evolve/<run>/:
     config.json        every parameter, git commit and dirty flag, package versions, CODE_VERSION; resumes
@@ -57,6 +71,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 import os
 import pickle
 import random
@@ -74,7 +89,9 @@ from .host import ROOT, default_host_dll
 from .power import keep_awake
 
 EVOLVE_DIR = ROOT / "output" / "evolved_rules" / "evolve"  # /output/ is git-ignored
-CHECKPOINT_FORMAT = 1
+# 2 (gp-2): per-seed validation trips in the state, the stop rule's significance test, the terminal set without
+# gp.DROPPED_TERMS. A format-1 run (gp-1) can only be resumed with the code it was made with (commit 49c8197).
+CHECKPOINT_FORMAT = 2
 EXISTING_RUN_EXIT_CODE = 2
 RESUMABLE_FIELDS = ("workers", "max_hours", "max_gens")  # may change on --resume: they never change a generation
 
@@ -103,8 +120,10 @@ class Config:
     validation: tuple[int, ...] = tuple(range(1500, 1550))
     workers: int = 10
     cap_s: float = ev.DEFAULT_CAP_S
-    n_s4: int = 4  # seeds every individual plays
-    n_s8: int = 8  # extra seeds the racing top plays
+    # The field names n_s4 / n_s8 (and the records' "s4"/"s8" keys) date from gp-1, which used 4 + 8 seeds; they
+    # mean "first-round seeds" and "extra seeds of the racing top". gp-2 defaults (EXPERIMENTS.md): 8 + 24.
+    n_s4: int = 8  # seeds every individual plays (first round)
+    n_s8: int = 24  # extra seeds the racing top plays (second round)
     racing_top: int = 16
     elites: int = 3
     tournament: int = 4
@@ -112,6 +131,10 @@ class Config:
     mutpb: float = 0.3
     train_lo: int = 1  # training seeds are drawn from train_lo..train_hi (inclusive)
     train_hi: int = 999
+    validate_top: int = 3  # how many of the racing top are validated per generation (gp-1: 1)
+    dedup: bool = True  # behavioural de-duplication and unique texts in the next population (gp-1: off)
+    immigrants: int = 8  # at most this many fresh random individuals per generation, one per duplicate found
+    sig_alpha: float = 0.005  # stop rule's one-sided paired-test level (0: mean gain only, the gp-1 rule)
 
     def check(self) -> None:
         """ValueError for a parameter the loop cannot run with."""
@@ -120,10 +143,16 @@ class Config:
                 raise ValueError(what)
 
         ints = ("pop", "seed", "min_gens", "patience", "max_gens", "workers", "n_s4", "n_s8", "racing_top",
-                "elites", "tournament", "train_lo", "train_hi")
+                "elites", "tournament", "train_lo", "train_hi", "validate_top", "immigrants")
         for name in ints:
             v = getattr(self, name)
             need(isinstance(v, int) and not isinstance(v, bool), f"{name} must be an int, got {v!r}")
+        need(isinstance(self.dedup, bool), f"dedup must be a bool, got {self.dedup!r}")
+        need(1 <= self.validate_top <= self.racing_top,
+             f"validate_top must be in 1..racing_top ({self.racing_top}), got {self.validate_top}")
+        need(self.immigrants >= 0, f"immigrants must be >= 0, got {self.immigrants}")  # breed caps it per generation
+        need(isinstance(self.sig_alpha, (int, float)) and 0.0 <= self.sig_alpha < 0.5,
+             f"sig_alpha must be in [0, 0.5), got {self.sig_alpha!r}")
         need(self.pop >= 2, f"pop must be at least 2, got {self.pop}")
         need(1 <= self.elites < self.pop, f"elites must be in 1..pop-1, got {self.elites}")
         need(self.racing_top >= 1, f"racing_top must be at least 1, got {self.racing_top}")
@@ -165,22 +194,54 @@ def _validation_key(mean: float, mean_seconds: float, size: int) -> tuple:
     return (mean, mean_seconds, -size)
 
 
+def paired_t(trips: list, anchor_trips: list) -> float:
+    """One-sample t statistic of the per-seed differences trips - anchor_trips (same validation seeds).
+
+    +inf / -inf / 0 when every difference is equal (no spread) and positive / negative / zero.
+    """
+    d = [float(a) - float(b) for a, b in zip(trips, anchor_trips)]
+    mean = statistics.fmean(d)
+    sd = statistics.stdev(d) if len(d) > 1 else 0.0
+    if sd == 0.0:
+        return math.inf if mean > 0 else (-math.inf if mean < 0 else 0.0)
+    return mean / (sd / math.sqrt(len(d)))
+
+
+def critical_t(alpha: float, n: int) -> float:
+    """One-sided critical t for n paired differences (Student t, n - 1 degrees of freedom); 0 when alpha is 0."""
+    if alpha <= 0:
+        return 0.0
+    if n < 2:
+        return math.inf  # one seed cannot show a significant gain
+    from scipy.stats import t as student_t
+    return float(student_t.ppf(1.0 - alpha, n - 1))
+
+
 @dataclass
 class Convergence:
     """The stop rule of decision P2-1 and the validation incumbent (see the module docstring).
 
-    observe() is called once per generation, with that generation's validated individual (a text seen
-    before passes its cached scores: it can never count twice, since a counted improvement moves the anchor
-    up to its mean and the next one must be strictly above it).
+    observe() / observe_many() are called once per generation with that generation's validated individuals (a
+    text seen before passes its cached scores: it can never count twice, since a counted improvement moves the
+    anchor up to its mean and the next one must be strictly above it).
+
+    sig_alpha > 0 (gp-2 onwards) adds a significance test. A candidate counts only if it also beats the anchor
+    individual seed by seed: the one-sided paired t of (candidate - anchor) trips on the validation seeds must
+    reach the critical t for sig_alpha. Why: a 50-seed validation mean is itself noisy (per-seed SD about 90
+    trips, so about +-13), far more than a 2% margin (about 4 trips), so without the test luck alone would count
+    as an improvement in most generations and the run would never converge (gp-1 finding, EXPERIMENTS.md). With
+    sig_alpha = 0 the rule is exactly the gp-1 rule (mean gain only).
     """
 
     min_gens: int
     patience: int
     min_gain_frac: float
     min_gain_trips: float
+    sig_alpha: float = 0.0  # one-sided significance level of the paired test (0: no test, the gp-1 rule)
     generations: int = 0  # generations observed
     since: int = 0  # generations since the last counted improvement
     anchor: float | None = None  # incumbent's validation mean at the last counted improvement
+    anchor_trips: list | None = None  # the anchor individual's per-seed validation trips (for the paired test)
     incumbent: dict | None = None  # {"text", "hash", "mean", "mean_seconds", "size", "gen"}
 
     def required_gain(self) -> float:
@@ -189,21 +250,58 @@ class Convergence:
             return float(self.min_gain_trips)
         return max(float(self.min_gain_trips), self.min_gain_frac * self.anchor)
 
-    def observe(self, gen: int, text: str, mean: float, mean_seconds: float, size: int) -> bool:
-        """Record one generation's validated individual; True when it counts as an improvement."""
-        key = _validation_key(mean, mean_seconds, size)
-        inc = self.incumbent
-        if inc is None or key > _validation_key(inc["mean"], inc["mean_seconds"], inc["size"]):
-            self.incumbent = {"text": text, "hash": text_hash(text), "mean": mean, "mean_seconds": mean_seconds,
-                              "size": size, "gen": gen}
-        improved = self.anchor is None or (mean >= self.anchor + self.required_gain() and mean > self.anchor)
-        if improved:
-            self.anchor = mean
+    def test(self, mean: float, trips: list | None = None) -> dict:
+        """How a validated individual compares with the anchor: {"gain", "t", "t_crit", "counts"}.
+
+        Before any anchor everything counts. With sig_alpha > 0 the paired test needs per-seed trips on the
+        anchor's seeds; when they are missing (a caller with means only) only the mean gain decides.
+        """
+        if self.anchor is None:
+            return {"gain": None, "t": None, "t_crit": None, "counts": True}
+        gain = mean - self.anchor  # for the record only: the decision below uses gp-1's exact expression
+        enough = mean >= self.anchor + self.required_gain() and mean > self.anchor  # same rounding as gp-1
+        t = t_crit = None
+        if self.sig_alpha > 0 and trips is not None and self.anchor_trips is not None \
+                and len(trips) == len(self.anchor_trips):
+            t = paired_t(trips, self.anchor_trips)
+            t_crit = critical_t(self.sig_alpha, len(trips))
+            # an infinite critical t (a single seed) can never be reached, not even by an infinite t
+            enough = enough and math.isfinite(t_crit) and t >= t_crit
+        return {"gain": gain, "t": t, "t_crit": t_crit, "counts": enough}
+
+    def observe_many(self, gen: int, cands: list[dict]) -> bool:
+        """Record one generation's validated individuals; True when one of them counts as an improvement.
+
+        cands: dicts with text, mean, mean_seconds, size and (for the paired test) trips. Every candidate can
+        become the incumbent (best by mean, seconds, -size). Of those that count, the best by the same key
+        becomes the new anchor. Each candidate's comparison is stored under "test" in its dict.
+        """
+        if not cands:
+            raise ValueError("observe_many needs at least one validated individual")
+        for c in cands:
+            c["test"] = self.test(c["mean"], c.get("trips"))
+        for c in cands:
+            key = _validation_key(c["mean"], c["mean_seconds"], c["size"])
+            inc = self.incumbent
+            if inc is None or key > _validation_key(inc["mean"], inc["mean_seconds"], inc["size"]):
+                self.incumbent = {"text": c["text"], "hash": text_hash(c["text"]), "mean": c["mean"],
+                                  "mean_seconds": c["mean_seconds"], "size": c["size"], "gen": gen}
+        counting = [c for c in cands if c["test"]["counts"]]
+        if counting:
+            best = max(counting, key=lambda c: _validation_key(c["mean"], c["mean_seconds"], c["size"]))
+            self.anchor = best["mean"]
+            self.anchor_trips = list(best["trips"]) if best.get("trips") is not None else None
             self.since = 0
         else:
             self.since += 1
         self.generations += 1
-        return improved
+        return bool(counting)
+
+    def observe(self, gen: int, text: str, mean: float, mean_seconds: float, size: int,
+                trips: list | None = None) -> bool:
+        """Record one generation's single validated individual; True when it counts as an improvement."""
+        return self.observe_many(gen, [{"text": text, "mean": mean, "mean_seconds": mean_seconds, "size": size,
+                                        "trips": trips}])
 
     def converged(self) -> bool:
         return self.generations >= self.min_gens and self.since >= self.patience
@@ -219,8 +317,9 @@ class Convergence:
 def stop_reason(cfg: Config, conv: Convergence, generations_done: int, elapsed_s: float) -> tuple[str, str] | None:
     """(status, reason) when the run must stop now, else None. Convergence wins over the budget."""
     if conv.converged():
+        test = f" passing the paired test at alpha {conv.sig_alpha:g}" if conv.sig_alpha > 0 else ""
         return "converged", (f"no validation gain of at least {conv.required_gain():.2f} trips over "
-                             f"{conv.anchor:.2f} in the last {conv.since} generations "
+                             f"{conv.anchor:.2f}{test} in the last {conv.since} generations "
                              f"(after {conv.generations} generations)")
     if generations_done >= cfg.max_gens:
         return "budget", f"budget: {generations_done} generations (max_gens {cfg.max_gens})"
@@ -248,9 +347,21 @@ def tournament(population: list[str], fitness: dict, sizes: dict, k: int) -> str
     return max(aspirants, key=lambda t: (fitness[t], -sizes[t]))  # max keeps the first maximal element
 
 
-def breed(population: list[str], fitness: dict, sizes: dict, elites: list[str], cfg: Config) -> list[str]:
-    """Next population: elites unchanged, then pop - len(elites) varied tournament winners (canonical texts)."""
-    picks = [tournament(population, fitness, sizes, cfg.tournament) for _ in range(cfg.pop - len(elites))]
+UNIQUE_TRIES = 10  # extra mutations tried to make an offspring's text differ from every text already kept
+
+
+def breed(population: list[str], fitness: dict, sizes: dict, elites: list[str], cfg: Config,
+          immigrants: int = 0) -> list[str]:
+    """Next population (canonical texts): elites unchanged, varied tournament winners, then fresh immigrants.
+
+    immigrants (capped at pop - len(elites) - 1, so at least one offspring remains) fresh random individuals take
+    the last slots. With cfg.dedup an offspring whose text is already in the next population is mutated again
+    (up to UNIQUE_TRIES times) so the population holds no exact copies. With dedup off and no immigrants this
+    is exactly the gp-1 scheme, draw for draw.
+    """
+    immigrants = max(0, min(immigrants, cfg.pop - len(elites) - 1))
+    picks = [tournament(population, fitness, sizes, cfg.tournament)
+             for _ in range(cfg.pop - len(elites) - immigrants)]
     offspring = [gp.individual_from_text(t) for t in picks]  # fresh trees: mate and mutate work in place
     for i in range(1, len(offspring), 2):
         if random.random() < cfg.cxpb:
@@ -258,7 +369,38 @@ def breed(population: list[str], fitness: dict, sizes: dict, elites: list[str], 
     for ind in offspring:
         if random.random() < cfg.mutpb:
             gp.mutate(ind)
-    return list(elites) + [gp.individual_text(ind) for ind in offspring]
+    out = list(elites)
+    seen = set(out)
+    for ind in offspring:
+        text = gp.individual_text(ind)
+        if cfg.dedup:
+            for _ in range(UNIQUE_TRIES):
+                if text not in seen:
+                    break
+                gp.mutate(ind)
+                text = gp.individual_text(ind)
+        out.append(text)
+        seen.add(text)
+    for _ in range(immigrants):
+        text = gp.individual_text(gp.random_individual())
+        for _ in range(UNIQUE_TRIES):
+            if text not in seen:
+                break
+            text = gp.individual_text(gp.random_individual())
+        out.append(text)
+        seen.add(text)
+    return out
+
+
+def behaviours(texts: list[str], games: dict, fitness: dict, sizes: dict) -> list[str]:
+    """One representative per behaviour: texts whose games on the round's seeds are identical (same trips,
+    seconds and commands on every seed) play the same way there and count once. The representative is the
+    first by rank (best fitness, then smallest, then first appearance); the result keeps that rank order."""
+    reps: dict[tuple, str] = {}
+    for t in rank(texts, fitness, sizes):
+        sig = tuple((g["trips"], g["seconds"], g.get("commands")) for g in games[t])
+        reps.setdefault(sig, t)
+    return list(reps.values())
 
 
 def initial_population(cfg: Config) -> list[str]:
@@ -335,7 +477,8 @@ def read_checkpoint(run_dir: Path) -> dict:
     with open(run_dir / CHECKPOINT, "rb") as f:
         state = pickle.load(f)  # our own file, written by write_checkpoint
     if state.get("format") != CHECKPOINT_FORMAT:
-        raise ValueError(f"checkpoint format {state.get('format')!r}, expected {CHECKPOINT_FORMAT}")
+        hint = " (a gp-1 run: resume it with the code of commit 49c8197)" if state.get("format") == 1 else ""
+        raise ValueError(f"checkpoint format {state.get('format')!r}, expected {CHECKPOINT_FORMAT}{hint}")
     return state
 
 
@@ -391,7 +534,7 @@ def start(cfg: Config, run_dir: Path) -> dict:
     _write_json(run_dir / CONFIG, _run_config(cfg))
     random.seed(cfg.seed)
     population = initial_population(cfg)
-    conv = Convergence(cfg.min_gens, cfg.patience, cfg.min_gain_frac, cfg.min_gain_trips)
+    conv = Convergence(cfg.min_gens, cfg.patience, cfg.min_gain_frac, cfg.min_gain_trips, sig_alpha=cfg.sig_alpha)
     state = {"format": CHECKPOINT_FORMAT, "generation": 0, "population": population, "rng": random.getstate(),
              "convergence": conv.state(), "validated": {}, "elapsed_s": 0.0, "games_played": 0,
              "cache_hits": 0}
@@ -441,9 +584,24 @@ def load(run_dir: Path, overrides: dict | None = None, config_cls=Config) -> tup
     return cfg, state
 
 
+def _num(x):
+    """A finite float, or None (JSON has no infinity; a paired t is infinite when every difference is equal)."""
+    return None if x is None or not math.isfinite(x) else x
+
+
 def _validate(cfg: Config, engine, gen: int, text: str, size: int) -> dict:
     """Play text on the validation seeds; returns its validation.jsonl record."""
-    games = engine.play([(text, s) for s in cfg.validation])
+    return _validate_many(cfg, engine, gen, [text], {text: size})[0]
+
+
+def _validate_many(cfg: Config, engine, gen: int, texts: list[str], sizes: dict) -> list[dict]:
+    """Play every text on the validation seeds in one batch (all workers busy); their validation records."""
+    n = len(cfg.validation)
+    games = engine.play([(t, s) for t in texts for s in cfg.validation])
+    return [_validation_record(cfg, gen, t, sizes[t], games[i * n:(i + 1) * n]) for i, t in enumerate(texts)]
+
+
+def _validation_record(cfg: Config, gen: int, text: str, size: int, games: list[dict]) -> dict:
     trips = [g["trips"] for g in games]
     seconds = [g["seconds"] for g in games]
     tiles = [g.get("tiles_built", 0) for g in games]
@@ -471,7 +629,11 @@ def generation(cfg: Config, state: dict, engine, run_dir: Path, clock=time.monot
     by4 = {t: games4[i * cfg.n_s4:(i + 1) * cfg.n_s4] for i, t in enumerate(distinct)}
     fitness = {t: _means(by4[t]) for t in distinct}
 
-    top = rank(distinct, fitness, sizes)[:cfg.racing_top]
+    # Behavioural de-duplication: texts that played identical games on the first-round seeds count once, for
+    # the racing top, the elites and the tournament alike; each duplicate found buys one immigrant (capped).
+    reps = behaviours(distinct, by4, fitness, sizes) if cfg.dedup else distinct
+    duplicates = len(distinct) - len(reps)
+    top = rank(reps, fitness, sizes)[:cfg.racing_top]
     games8 = engine.play([(t, s) for t in top for s in s8]) if s8 else []
     racing_games = {t: by4[t] + games8[i * cfg.n_s8:(i + 1) * cfg.n_s8] for i, t in enumerate(top)}
     racing = {t: _means(racing_games[t]) for t in top}
@@ -480,29 +642,41 @@ def generation(cfg: Config, state: dict, engine, run_dir: Path, clock=time.monot
     best = ranked[0]
 
     validated = dict(state["validated"])
-    new = best not in validated
-    if new:
-        record = _validate(cfg, engine, gen, best, sizes[best])
+    chosen = ranked[:cfg.validate_top]
+    fresh = [t for t in chosen if t not in validated]
+    for record in (_validate_many(cfg, engine, gen, fresh, sizes) if fresh else []):
         _append_jsonl(run_dir / VALIDATION, record)
-        validated[best] = {"mean": record["mean"], "mean_seconds": record["mean_seconds"], "gen": gen}
-    v = validated[best]
+        validated[record["text"]] = {"mean": record["mean"], "mean_seconds": record["mean_seconds"], "gen": gen,
+                                     "trips": record["trips"]}
+    cands = [{"text": t, "mean": validated[t]["mean"], "mean_seconds": validated[t]["mean_seconds"],
+              "size": sizes[t], "trips": validated[t].get("trips"), "new": t in fresh} for t in chosen]
     conv = Convergence.from_state(state["convergence"])
-    improved = conv.observe(gen, best, v["mean"], v["mean_seconds"], sizes[best])
+    improved = conv.observe_many(gen, cands)
+    top_val = max(cands, key=lambda c: _validation_key(c["mean"], c["mean_seconds"], c["size"]))
 
-    next_population = breed(population, fitness, sizes, elites, cfg)
+    pool = reps if cfg.dedup else population  # gp-1: every copy in the population had its own tournament ticket
+    n_immigrants = max(0, min(cfg.immigrants, duplicates, cfg.pop - len(elites) - 1)) if cfg.dedup else 0
+    next_population = breed(pool, fitness, sizes, elites, cfg, immigrants=n_immigrants)
     wall = clock() - t0
     played, hits = engine.games_played - played0, engine.cache_hits - hits0
     best_games = racing_games[best]
     tiles = sum(g.get("tiles_built", 0) for g in best_games)
     inc = conv.incumbent
     rec = {
-        "gen": gen, "seeds": {"s4": s4, "s8": s8}, "distinct": len(distinct),
+        "gen": gen, "seeds": {"s4": s4, "s8": s8}, "distinct": len(distinct), "behaviours": len(reps),
+        "immigrants": n_immigrants,
         "s4": _stats([fitness[t][0] for t in population]),
         "best": {"hash": text_hash(best), "size": sizes[best], "racing_mean": racing[best][0],
                  "racing_seconds": racing[best][1], "s4_mean": fitness[best][0],
                  "trips_per_tile": (sum(g["trips"] for g in best_games) / tiles) if tiles > 0 else 0.0},
         "elites": [text_hash(t) for t in elites],
-        "validated": {"hash": text_hash(best), "new": new, "mean": v["mean"], "mean_seconds": v["mean_seconds"]},
+        # the best validated of this generation (by mean, seconds, -size); validated_all lists each with its test
+        "validated": {"hash": text_hash(top_val["text"]), "new": top_val["new"], "mean": top_val["mean"],
+                      "mean_seconds": top_val["mean_seconds"]},
+        "validated_all": [{"hash": text_hash(c["text"]), "new": c["new"], "mean": c["mean"],
+                           "racing_mean": racing[c["text"]][0], "gain": c["test"]["gain"],
+                           "t": _num(c["test"]["t"]), "t_crit": _num(c["test"]["t_crit"]),
+                           "counts": c["test"]["counts"]} for c in cands],
         "improved": improved,
         "incumbent": {"hash": inc["hash"], "mean": inc["mean"], "mean_seconds": inc["mean_seconds"],
                       "size": inc["size"], "gen": inc["gen"]},
@@ -519,7 +693,8 @@ def generation(cfg: Config, state: dict, engine, run_dir: Path, clock=time.monot
 def format_record(rec: dict, cfg: Config) -> str:
     """The one line printed per generation."""
     v, inc = rec["validated"], rec["incumbent"]
-    return (f"gen {rec['gen']:3d} | S4 best {rec['s4']['best']:6.1f} mean {rec['s4']['mean']:6.1f} | "
+    beh = f" ({rec['behaviours']} behaviours, {rec['immigrants']} immigrants)" if "behaviours" in rec else ""
+    return (f"gen {rec['gen']:3d} | round-1 best {rec['s4']['best']:6.1f} mean {rec['s4']['mean']:6.1f}{beh} | "
             f"racing best {rec['best']['racing_mean']:6.1f} size {rec['best']['size']:3d} | "
             f"val {v['mean']:6.1f}{' new' if v['new'] else ' old'}{' +' if rec['improved'] else ''} | "
             f"incumbent {inc['mean']:6.1f} (gen {inc['gen']}) | since {rec['gens_since_improvement']}/"
@@ -620,6 +795,18 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--max-gens", type=int, help=f"generation budget (default {d.max_gens})")
     parser.add_argument("--validation", help="validation seeds, e.g. 1500-1549 (default 1500-1549)")
     parser.add_argument("--cap", type=float, dest="cap_s", help=f"episode cap in simulated seconds (default {d.cap_s:g})")
+    parser.add_argument("--first-seeds", type=int, dest="n_s4", help=f"seeds every individual plays (default {d.n_s4})")
+    parser.add_argument("--more-seeds", type=int, dest="n_s8",
+                        help=f"extra seeds the racing top plays (default {d.n_s8})")
+    parser.add_argument("--racing-top", type=int, help=f"individuals that play the extra seeds (default {d.racing_top})")
+    parser.add_argument("--validate-top", type=int, help=f"individuals validated per generation (default {d.validate_top})")
+    parser.add_argument("--immigrants", type=int,
+                        help=f"most fresh random individuals per generation, with de-duplication only "
+                             f"(default {d.immigrants})")
+    parser.add_argument("--sig-alpha", type=float,
+                        help=f"stop rule's paired-test level, 0 = mean gain only (default {d.sig_alpha:g})")
+    parser.add_argument("--no-dedup", action="store_const", const=False, dest="dedup",
+                        help="turn off behavioural de-duplication (the gp-1 scheme)")
     args = parser.parse_args(argv)
     given = {k: v for k, v in vars(args).items() if k not in ("run", "resume") and v is not None}
     try:

@@ -28,20 +28,32 @@ from deap import base, creator, gp
 from .features import N_ITEM_TYPES
 
 # --- terminals -----------------------------------------------------------------------------------------------
-# The order is the order of the feature dicts (test_gp checks it); it fixes the compiled argument order.
+# The order is the order of the feature dicts minus DROPPED_TERMS (test_gp checks it); it fixes the compiled
+# argument order.
 
-CANDIDATE_TERMS = (
+# Feature keys that never vary in real games, so a tree that reads them wastes its structure. Measured with
+# autopsy.py over the 50 validation games of gp-1's best rule (2026-11-02): pending_refunds was 0 at every one
+# of the decisions (no policy removes roads, decision P2-5) and no offer ever had type 5 (the unused item slot).
+# features.py still computes them; only the trees leave them out.
+DROPPED_TERMS = frozenset({"pending_refunds", "type_5"})
+
+
+def _keep(*names: str) -> tuple[str, ...]:
+    return tuple(n for n in names if n not in DROPPED_TERMS)
+
+
+CANDIDATE_TERMS = _keep(
     "tiles_needed", "bridges_needed", "path_len", "turns", "new_junctions", "shared_cells",
     "is_attach", "is_direct", "is_separated",
     "path_cost_s", "house_served", "shop_demand", "shop_unassigned", "shop_capacity", "shop_overcrowded",
     "shop_rate", "shop_houses", "colour_margin",
 )
-GLOBAL_TERMS = (
+GLOBAL_TERMS = _keep(
     "road_stock", "bridge_stock", "time", "unserved_houses",
     "pending_refunds", "next_offer_s", "disconnected_components", "unserved_shops", "edge_distance",
     "worst_overcrowded", "worst_margin", "shops", "houses",
 )
-OFFER_TERMS = ("offer_roads", "amount", *(f"type_{t}" for t in range(N_ITEM_TYPES)), "stock_of_type")
+OFFER_TERMS = _keep("offer_roads", "amount", *(f"type_{t}" for t in range(N_ITEM_TYPES)), "stock_of_type")
 
 PRIORITY_TERMS = CANDIDATE_TERMS + GLOBAL_TERMS
 HOLD_TERMS = GLOBAL_TERMS
@@ -52,7 +64,7 @@ SHORT_S = 1024  # route costs, overcrowding timers, time to the next offer
 GAME_S = 4096  # game time (the cap is 3600 s)
 FLAG = 1
 
-SCALE: dict[str, int] = {
+_ALL_SCALES: dict[str, int] = {
     # candidate
     "tiles_needed": TILES, "bridges_needed": COUNT, "path_len": TILES, "turns": COUNT, "new_junctions": COUNT,
     "shared_cells": TILES, "is_attach": FLAG, "is_direct": FLAG, "is_separated": FLAG,
@@ -68,6 +80,7 @@ SCALE: dict[str, int] = {
     "offer_roads": TILES, "amount": COUNT, **{f"type_{t}": FLAG for t in range(N_ITEM_TYPES)},
     "stock_of_type": COUNT,
 }
+SCALE: dict[str, int] = {k: v for k, v in _ALL_SCALES.items() if k not in DROPPED_TERMS}
 
 # --- functions -----------------------------------------------------------------------------------------------
 # Plain floats in, a float out (or inf/nan, never an exception: float * and / overflow to inf).
@@ -204,6 +217,15 @@ def _check_tokens(expr: str, index: int) -> None:
             raise ValueError(f"bad {TREE_NAMES[index]} tree {expr!r}: {tok!r} is not a finite number")
 
 
+def _zero_dropped(expr: str) -> str:
+    """A dropped input (DROPPED_TERMS) written in a tree becomes the constant 0.0, the value it always has.
+
+    So texts from before the drop (gp-1, whose best rule reads pending_refunds) still load and play exactly as
+    they did; their canonical text then shows 0.0 in that place.
+    """
+    return re.sub(r"[^\s(),]+", lambda m: "0.0" if m.group(0) in DROPPED_TERMS else m.group(0), expr)
+
+
 def _parse_tree(expr: str, index: int) -> gp.PrimitiveTree:
     """One tree from its expression; constants become this set's ephemerals (so mutEphemeral can tune them).
 
@@ -213,6 +235,7 @@ def _parse_tree(expr: str, index: int) -> gp.PrimitiveTree:
     """
     pset = PSETS[index]
     name = TREE_NAMES[index]
+    expr = _zero_dropped(expr)
     _check_tokens(expr, index)
     try:
         tree = gp.PrimitiveTree.from_string(expr, pset)
@@ -412,7 +435,8 @@ def mutate(ind):
 
 
 __all__ = [
-    "CANDIDATE_TERMS", "GLOBAL_TERMS", "OFFER_TERMS", "PRIORITY_TERMS", "HOLD_TERMS", "UPGRADE_TERMS", "SCALE",
+    "DROPPED_TERMS", "CANDIDATE_TERMS", "GLOBAL_TERMS", "OFFER_TERMS", "PRIORITY_TERMS", "HOLD_TERMS",
+    "UPGRADE_TERMS", "SCALE",
     "FUNCTION_NAMES", "CONST_CHOICES", "ephemeral_constant", "PRIORITY_SET", "HOLD_SET", "UPGRADE_SET",
     "PSETS", "TREE_NAMES", "MAX_DEPTH", "HAND_TEXT", "SEPARATED_TEXT", "individual_text",
     "individual_from_text", "random_individual", "size", "TreePolicy", "mate", "mutate", "limit_depth",

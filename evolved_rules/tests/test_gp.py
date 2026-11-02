@@ -42,9 +42,16 @@ def test_terminal_lists_match_the_feature_dicts_in_order():
     cand = candidate_features(state, _cand())
     glob = global_features(state)
     offer = offer_features(state.offers[0], state)
-    assert gp.CANDIDATE_TERMS == tuple(cand)
-    assert gp.GLOBAL_TERMS == tuple(glob)
-    assert gp.OFFER_TERMS == tuple(offer)
+    def kept(d):
+        return tuple(k for k in d if k not in gp.DROPPED_TERMS)
+
+    assert gp.CANDIDATE_TERMS == kept(cand)
+    assert gp.GLOBAL_TERMS == kept(glob)
+    assert gp.OFFER_TERMS == kept(offer)
+    # the dropped inputs are still computed by features.py: they are left out of the trees only
+    assert gp.DROPPED_TERMS == {"pending_refunds", "type_5"}
+    assert gp.DROPPED_TERMS <= set(glob) | set(offer)
+    assert not gp.DROPPED_TERMS & (set(gp.PRIORITY_TERMS) | set(gp.HOLD_TERMS) | set(gp.UPGRADE_TERMS))
     assert gp.PRIORITY_TERMS == gp.CANDIDATE_TERMS + gp.GLOBAL_TERMS
     assert gp.HOLD_TERMS == gp.GLOBAL_TERMS
     assert gp.UPGRADE_TERMS == gp.OFFER_TERMS + gp.GLOBAL_TERMS
@@ -58,7 +65,7 @@ def test_every_terminal_has_a_power_of_two_divisor():
     for k, d in gp.SCALE.items():
         m, e = math.frexp(d)
         assert m == 0.5 and d >= 1, (k, d)  # exact power of two
-    flags = {"is_attach", "is_direct", "is_separated", "house_served"} | {f"type_{t}" for t in range(6)}
+    flags = {"is_attach", "is_direct", "is_separated", "house_served"} | {f"type_{t}" for t in range(5)}
     assert all(gp.SCALE[k] == 1 for k in flags)
     assert gp.SCALE["tiles_needed"] == 64 and gp.SCALE["road_stock"] == 64 and gp.SCALE["time"] == 4096
 

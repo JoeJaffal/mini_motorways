@@ -27,7 +27,7 @@ from evolved_rules.tune_cmaes import CmaConfig
 # --- weight vector <-> text ------------------------------------------------------------------------------------
 
 def test_layout_covers_every_terminal_of_every_tree_in_order():
-    assert tc.DIM == len(gp.PRIORITY_TERMS) + 1 + len(gp.HOLD_TERMS) + len(gp.UPGRADE_TERMS) == 67
+    assert tc.DIM == len(gp.PRIORITY_TERMS) + 1 + len(gp.HOLD_TERMS) + len(gp.UPGRADE_TERMS) == 63
     assert [t for i, t in tc.LAYOUT if i == 0] == list(gp.PRIORITY_TERMS)
     assert [t for i, t in tc.LAYOUT if i == 1] == [tc.BIAS, *gp.HOLD_TERMS]
     assert [t for i, t in tc.LAYOUT if i == 2] == list(gp.UPGRADE_TERMS)
@@ -121,7 +121,8 @@ def test_linear_phase1_vectors_play_the_phase1_games(host, name, seed, trips, co
 def test_config_checks():
     CmaConfig().check()
     assert CmaConfig().validation == evo.Config().validation
-    for name in ("min_gens", "patience", "min_gain_frac", "min_gain_trips", "max_hours", "max_gens", "cap_s"):
+    for name in ("min_gens", "patience", "min_gain_frac", "min_gain_trips", "sig_alpha", "max_hours", "max_gens",
+                 "cap_s"):
         assert getattr(CmaConfig(), name) == getattr(evo.Config(), name)  # the same stop rule defaults
     for bad in [dict(popsize=1), dict(seed=0), dict(sigma0=0.0), dict(sigma0=6.0), dict(x0="best"),
                 dict(n_train=0), dict(patience=0), dict(max_hours=0), dict(validation=(5,)),
@@ -169,7 +170,8 @@ def fake(monkeypatch):
     return log
 
 
-SMALL = dict(popsize=6, n_train=2, validation=(1500, 1501, 1502), workers=2, seed=7)
+# sig_alpha=0: these tests pin the mean-gain stop rule; the paired test is covered in test_evolve.py
+SMALL = dict(popsize=6, n_train=2, validation=(1500, 1501, 1502), workers=2, seed=7, sig_alpha=0.0)
 
 
 def small(**kw) -> CmaConfig:
@@ -321,7 +323,7 @@ def test_resume_can_extend_the_budget_but_not_change_the_run(fake, tmp_path):
 
 def test_a_gp_run_folder_is_not_resumed_as_cma(fake, tmp_path):
     evo.evolve(evo.Config(pop=4, n_s4=1, n_s8=1, racing_top=2, elites=1, validation=(1500,), max_gens=1,
-                          workers=2), tmp_path / "gp",
+                          workers=2, validate_top=1), tmp_path / "gp",
                engine=Engine(workers=2, cache_path=tmp_path / "gp" / evo.CACHE), log=lambda s: None)
     with pytest.raises(ValueError, match="not a cma-es run"):
         run(tmp_path, "gp", resume=True)

@@ -43,7 +43,10 @@ def fake(monkeypatch):
     return log
 
 
-SMALL = dict(pop=8, n_s4=2, n_s8=2, racing_top=4, elites=2, validation=(1500, 1501, 1502), workers=2, seed=7)
+# The gp-1 scheme (one validation per generation, no de-duplication, mean-gain stop rule): the tests below that
+# use it pin that scheme exactly. GP2 turns on the gp-2 changes (EXPERIMENTS.md), tested further down.
+GP1 = dict(validate_top=1, dedup=False, immigrants=0, sig_alpha=0.0)
+SMALL = dict(pop=8, n_s4=2, n_s8=2, racing_top=4, elites=2, validation=(1500, 1501, 1502), workers=2, seed=7, **GP1)
 
 
 def small(**kw) -> Config:
@@ -264,7 +267,7 @@ def _independent_rank(texts, games_of, sizes):
 
 def test_racing_plays_the_s4_top_and_ranks_elites_and_best_by_all_12_games(fake, tmp_path):
     """S4 and S8 rank the individuals differently, so each selection step must use the right score."""
-    cfg = small(pop=12, racing_top=5, elites=3, n_s4=4, n_s8=8, min_gens=50, max_gens=1, seed=11)
+    cfg = small(pop=12, racing_top=5, elites=3, n_s4=4, n_s8=8, min_gens=50, max_gens=1, seed=14)
     run(tmp_path, "probe", cfg)
     seeds = read_jsonl(tmp_path / "probe" / evo.GENERATIONS)[0]["seeds"]  # gen 0's draw does not depend on fitness
     s4, s8 = set(seeds["s4"]), set(seeds["s8"])
@@ -592,7 +595,7 @@ def test_cli_maps_only_resume_errors_to_exit_2(fake, tmp_path, monkeypatch, caps
 @pytest.mark.host
 def test_real_tiny_run(host_dll, tmp_path):
     cfg = Config(pop=3, n_s4=1, n_s8=1, racing_top=2, elites=1, validation=(1500,), max_gens=1, min_gens=5,
-                 cap_s=150.0, workers=2, seed=3)
+                 cap_s=150.0, workers=2, seed=3, validate_top=2)
     status = evo.evolve(cfg, tmp_path / "real", log=lambda s: None)
     assert status["status"] == "budget"
     gen = read_jsonl(tmp_path / "real" / evo.GENERATIONS)[0]
