@@ -65,7 +65,7 @@ The hand rule scores 152.1 on 2000–2019 (the bar was 140). All 21/21 replays v
 
 **Smoke test** (`gp2-smoke`: population 12, 4+4 seeds, 10 validation seeds): it ran on real games. Generation 0 had 9 behaviours among 12 texts and 3 immigrants. In generation 1, candidates at +10.6 and +11.2 trips were correctly not counted (t 0.73 and 0.61, critical value 3.25).
 
-**Results so far:** the full run `gp-2` (b8e82a0) started 2026-11-02 12:46 and is still running. Generations 0–10 are below, recorded at 20:43.
+**Results so far:** the full run `gp-2` (b8e82a0) started 2026-11-02 12:46 and is still running. Generations 0–12 are below, recorded at 23:02.
 
 | Gen | Validated (top 3) | Best so far | Best paired t (needs 2.68) | No-gain count | Round-1 avg | Behaviours / 64 | Time |
 |---|---|---|---|---|---|---|---|
@@ -80,6 +80,8 @@ The hand rule scores 152.1 on 2000–2019 (the bar was 140). All 21/21 replays v
 | 8 | 236.7 (cached), 207.3, 211.1 | 236.7 | 2.44 | 8 | 172.2 | 54 | 95 min (about 74 of it asleep) |
 | 9 | 236.7 (cached), 192.9, 193.0 | 236.7 | 2.44 | 9 | 178.1 | 49 | 46 min |
 | 10 | 204.6, 195.6, 218.5 | 236.7 | 1.30 | 10 | 176.6 | 51 | 49 min |
+| 11 | 221.0, **242.8**, 233.4 | **242.8** | **2.79** (counted) | 0 | 168.5 | 50 | 52 min |
+| 12 | 230.9, 233.5, 204.6 (cached) | 242.8 | −0.62 | 1 | 179.6 | 53 | 53 min |
 
 **Observations:**
 - **The best validated score rose steadily.** It went from 196.8 to 236.7 in 7 generations, above gp-1's 222 and 49 above the separated preference.
@@ -87,4 +89,5 @@ The hand rule scores 152.1 on 2000–2019 (the bar was 140). All 21/21 replays v
 - **The population keeps improving.** The round-1 average rose from 101 to about 180–200.
 - **Plateau forming (generations 8–10).** The generation-7 record holder (236.7) topped the racing in generations 8 and 9, and no new candidate came close to it. The round-1 average has stayed at about 172–200 since generation 4. This fits the gp-1 autopsy: with the current moves, congestion caps the score.
 - **Generations are slower now, about 45–50 min.** Better rules survive longer, and long games cost more to simulate.
+- **The plateau was not convergence.** Generation 11 found 242.8 trips: +46.1 over the anchor, paired t 2.79 against the 2.68 needed. This is the run's first counted improvement. The anchor moved to 242.8 and the no-gain count went back to 0, so at least 20 more generations are needed before the run can converge. The best rule built 3.17 trips per road tile, the most efficient so far.
 - **The sleep fix works.** The lid was closed twice (15:23–16:43 and 17:18–18:32). Both times the run logged `suspend detected` and kept going: no game was killed and nothing crashed.
