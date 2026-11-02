@@ -369,3 +369,20 @@ def test_real_tiny_run(host_dll, tmp_path):
     val = read_jsonl(tmp_path / "real" / evo.VALIDATION)[0]
     assert val["seeds"] == [1500] and val["seconds"][0] <= 150.0 + 1e-6
     tc.text_to_weights((tmp_path / "real" / evo.BEST).read_text())
+
+
+def test_the_run_keeps_the_machine_awake_and_releases_it(fake, tmp_path, monkeypatch):
+    from evolved_rules import power
+    calls = []
+    monkeypatch.setattr(power, "_api", lambda: (lambda flags: calls.append(flags) or 1))
+    seen = []
+    real_step = tc.generation
+
+    def step(*a, **kw):
+        seen.append(list(calls))
+        return real_step(*a, **kw)
+
+    monkeypatch.setattr(tc, "generation", step)
+    run(tmp_path, "a", small(max_gens=2))
+    assert seen == [[power.KEEP_AWAKE]] * 2
+    assert calls == [power.KEEP_AWAKE, power.ES_CONTINUOUS]

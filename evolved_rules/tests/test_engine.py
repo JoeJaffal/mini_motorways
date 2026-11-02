@@ -500,3 +500,127 @@ def test_record_detects_a_cached_result_that_disagrees(fake, tmp_path, monkeypat
     # an uncached game is recorded and then cached
     s = e.record(HAND_TEXT, 2, tmp_path / "r" / "2.json", verify=False)
     assert s["verified"] is None and e.cached(HAND_TEXT, 2)["trips"] == 999
+
+
+# --- sleep safety (a suspended machine must not make games look hung) -----------------------------------------
+
+def test_suspend_excess_is_the_gap_beyond_the_expected_wait_past_a_margin():
+    assert en.suspend_excess(gap=5.2, expected=5.0, margin=30.0) == 0.0  # an ordinary poll
+    assert en.suspend_excess(gap=34.9, expected=5.0, margin=30.0) == 0.0  # a busy parent, within the margin
+    assert en.suspend_excess(gap=2005.0, expected=5.0, margin=30.0) == pytest.approx(2000.0)
+    assert en.suspend_excess(gap=40.0, expected=0.0, margin=30.0) == pytest.approx(40.0)
+    assert en.suspend_excess(gap=-1.0, expected=5.0, margin=30.0) == 0.0
+
+
+def test_the_poll_interval_and_margin_defaults():
+    assert en.POLL_S == 5.0 and en.SUSPEND_MARGIN_S == 30.0
+
+
+class JumpClock:
+    """time.monotonic plus an offset; jump(s) is a suspend of s seconds (monotonic includes it on Windows)."""
+
+    def __init__(self):
+        self.offset = 0.0
+
+    def __call__(self):
+        return time.monotonic() + self.offset
+
+    def jump(self, s):
+        self.offset += s
+
+
+def _jumping_wait(clock, jumps):
+    """A wait() that, on its n-th call, first advances the clock by jumps[n] (a suspend while blocked)."""
+    real_wait = en.wait
+    timeouts = []
+
+    def wait(fs, timeout=None, return_when=en.FIRST_COMPLETED):
+        timeouts.append(timeout)
+        clock.jump(jumps.get(len(timeouts), 0.0))
+        return real_wait(fs, timeout=timeout, return_when=return_when)
+
+    return wait, timeouts
+
+
+def test_a_suspend_extends_the_deadlines_instead_of_timing_games_out(fake, monkeypatch, capsys):
+    release = threading.Event()
+    attempts = []
+
+    def job(text, seed, cap_s):
+        attempts.append(seed)
+        release.wait(30)
+        return _summary(text, seed, cap_s)
+
+    clock = JumpClock()
+    wait, timeouts = _jumping_wait(clock, {1: 2000.0})  # the machine sleeps 2000 s during the first wait
+
+    def wait_then_release(fs, timeout=None, return_when=en.FIRST_COMPLETED):
+        out = wait(fs, timeout=timeout, return_when=return_when)
+        if len(timeouts) == 2:
+            release.set()  # the games finish soon after the wake, well inside timeout_s of awake time
+        return out
+
+    monkeypatch.setattr(en, "_play_job", job)
+    monkeypatch.setattr(en, "wait", wait_then_release)
+    monkeypatch.setattr(en, "POLL_S", 0.2)
+    e = Engine(2, 60.0, None, timeout_s=60, clock=clock)
+    try:
+        res = e.play([(HAND_TEXT, 1), (HAND_TEXT, 2)])
+    finally:
+        release.set()
+    assert res == [_summary(HAND_TEXT, s, 60.0) for s in (1, 2)]
+    assert sorted(attempts) == [1, 2] and e.retries == 0 and fake["workers"] == 2
+    err = capsys.readouterr().err
+    assert err.count("suspend detected") == 1 and "deadlines extended" in err
+    assert all(t is not None and t <= 0.2 for t in timeouts)  # never blocks past the poll interval
+
+
+def test_a_real_hang_still_times_out_after_a_suspend(fake, monkeypatch, capsys):
+    release = threading.Event()
+    attempts = []
+
+    def job(text, seed, cap_s):
+        attempts.append(seed)
+        if attempts.count(seed) == 1:
+            release.wait(30)  # hangs for good
+        return _summary(text, seed, cap_s)
+
+    clock = JumpClock()
+    wait, timeouts = _jumping_wait(clock, {1: 5000.0})
+    monkeypatch.setattr(en, "_play_job", job)
+    monkeypatch.setattr(en, "wait", wait)
+    monkeypatch.setattr(en, "POLL_S", 0.1)
+    e = Engine(1, 60.0, None, timeout_s=1.0, clock=clock)
+    t0 = time.monotonic()
+    try:
+        res = e.play([(HAND_TEXT, 4)])
+    finally:
+        release.set()
+    awake = time.monotonic() - t0
+    assert res == [_summary(HAND_TEXT, 4, 60.0)] and attempts == [4, 4] and e.retries == 1
+    assert 1.0 <= awake < 10  # timed out after timeout_s of awake time, not at once on waking
+    assert "suspend detected" in capsys.readouterr().err
+    assert max(timeouts) <= 0.1
+
+
+def test_the_wait_never_blocks_past_the_poll_interval(fake, monkeypatch):
+    release = threading.Event()
+    monkeypatch.setattr(en, "_play_job", lambda text, seed, cap_s: (release.wait(30), _summary(text, seed, cap_s))[1])
+    real_wait = en.wait
+    timeouts = []
+
+    def wait(fs, timeout=None, return_when=en.FIRST_COMPLETED):
+        timeouts.append(timeout)
+        if len(timeouts) == 3:
+            release.set()
+        return real_wait(fs, timeout=timeout, return_when=return_when)
+
+    monkeypatch.setattr(en, "wait", wait)
+    monkeypatch.setattr(en, "POLL_S", 0.05)
+    e = Engine(1, 60.0, None)  # the default 900 s deadline: the wait is capped by the poll interval
+    try:
+        e.play([(HAND_TEXT, 1)])
+    finally:
+        release.set()
+    assert len(timeouts) >= 3 and all(t is not None and 0 <= t <= 0.05 for t in timeouts)
+    assert e.retries == 0

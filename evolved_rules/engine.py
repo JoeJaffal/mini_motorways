@@ -21,6 +21,14 @@ that slot is replaced. A shared pool can do neither: it cannot kill one worker, 
 pending future. Nothing is ever queued ahead of a worker, so evaluate.py's abort flag has nothing to skip
 and is not used.
 
+Sleep. Deadlines count awake time only. On Windows time.monotonic() includes time the machine spent suspended
+(S3 or Modern Standby), so on waking every deadline would have passed and every running game would be killed
+as hung. The parent therefore never blocks longer than POLL_S (5 s); each pass measures the time since the
+previous one, and a gap more than SUSPEND_MARGIN_S (30 s) beyond the wait it asked for is taken as a
+suspend: every running deadline moves back by the excess (one "suspend detected" line on stderr). A real hang
+still times out after timeout_s of awake time. A parent busy for over 30 s in one pass (killing a worker) is
+counted the same way, which only lengthens the running deadlines by that time. Results are unaffected.
+
 Faults. A game that raises (the worker then closes its host, so the retry starts on a fresh one), times out
 or crashes its worker is retried once; a second failure of the same game raises EngineError. Any error or
 interrupt first caches every game that has already finished (including one that finished in the same instant
@@ -46,13 +54,15 @@ from pathlib import Path
 from . import evaluate as ev
 from .agent import play_game
 from .gp import TreePolicy, individual_from_text, individual_text
+from .power import SUSPEND_MARGIN_S, suspend_excess  # noqa: F401  (SUSPEND_MARGIN_S re-exported)
 from .verify import build_verifier, verify_recording
 
 # Bump whenever agent behaviour changes (agent, candidates, executor, features, gp, session, state, the
 # simulator): it is part of every cache key, so results from older code are never reused.
 CODE_VERSION = "phase2-v1"
-DEFAULT_TIMEOUT_S = 900.0  # wall-clock seconds per game
+DEFAULT_TIMEOUT_S = 900.0  # seconds of awake wall clock per game (a suspend does not count)
 KILL_TIMEOUT_S = 30.0
+POLL_S = 5.0  # the parent's longest single wait, so a suspend is seen within one poll of waking
 MP_CONTEXT = ev.MP_CONTEXT  # spawn, as evaluate.py
 
 
@@ -160,13 +170,14 @@ class Engine:
     """
 
     def __init__(self, workers: int = 10, cap_s: float = ev.DEFAULT_CAP_S, cache_path: str | Path | None = None,
-                 *, timeout_s: float = DEFAULT_TIMEOUT_S) -> None:
+                 *, timeout_s: float = DEFAULT_TIMEOUT_S, clock=None) -> None:
         ev._check_cap(cap_s)
         if not (isinstance(timeout_s, (int, float)) and math.isfinite(timeout_s) and timeout_s > 0):
             raise ValueError(f"timeout_s must be a finite number of seconds > 0, got {timeout_s!r}")
         self.workers = max(1, int(workers))
         self.cap_s = float(cap_s)
         self.timeout_s = float(timeout_s)
+        self._clock = time.monotonic if clock is None else clock  # injectable for the suspend tests
         self.cache_path = Path(cache_path) if cache_path is not None else None
         self.games_played = self.cache_hits = self.retries = 0
         self._slots: list = []
@@ -295,8 +306,9 @@ class Engine:
         second failure raises EngineError. Any exception leaving this method first hands every game that has
         already finished successfully to on_result (fail() can raise while finished games are still waiting
         in `running`: later in the same done set, or done since wait() returned), then kills the workers still
-        playing.
+        playing. Deadlines are suspend-aware (see the module docstring).
         """
+        clock = self._clock
         pending = deque(range(len(tasks)))
         failures: dict[int, list[str]] = {}
         running: dict = {}  # future -> (slot, task index, deadline)
@@ -314,6 +326,7 @@ class Engine:
             self.retries += 1
             pending.appendleft(i)
 
+        last, waited = clock(), 0.0  # the previous pass's end and the wait it asked for
         try:
             while pending or running:
                 while pending and free:
@@ -324,10 +337,10 @@ class Engine:
                     except BrokenExecutor:  # the idle worker died: replace it (no game was lost)
                         self._drop(slot)
                         future = self._slot(slot).submit(fn, *args)
-                    running[future] = (slot, i, time.monotonic() + timeout)
+                    running[future] = (slot, i, clock() + timeout)
                 nearest = min(deadline for _, _, deadline in running.values())
-                done, _ = wait(list(running), timeout=max(0.0, nearest - time.monotonic()),
-                               return_when=FIRST_COMPLETED)
+                waited = min(POLL_S, max(0.0, nearest - clock()))
+                done, _ = wait(list(running), timeout=waited, return_when=FIRST_COMPLETED)
                 for future in sorted(done, key=lambda f: running[f][1]):  # task order: deterministic retries
                     slot, i, _ = running.pop(future)
                     try:
@@ -339,7 +352,13 @@ class Engine:
                     else:
                         free.append(slot)
                         on_result(i, value)
-                now = time.monotonic()
+                now = clock()
+                excess = suspend_excess(now - last, waited)
+                last = now
+                if excess and running:
+                    for future, (slot, i, deadline) in list(running.items()):
+                        running[future] = (slot, i, deadline + excess)
+                    print(f"suspend detected: {excess:.0f} s; deadlines extended", file=sys.stderr, flush=True)
                 for future, (slot, i, deadline) in sorted(running.items(), key=lambda kv: kv[1][1]):
                     if deadline <= now and not future.done():
                         del running[future]
@@ -371,4 +390,5 @@ class Engine:
         self.close()
 
 
-__all__ = ["CODE_VERSION", "DEFAULT_TIMEOUT_S", "Engine", "EngineError", "cache_key", "canonical_text"]
+__all__ = ["CODE_VERSION", "DEFAULT_TIMEOUT_S", "POLL_S", "SUSPEND_MARGIN_S", "Engine", "EngineError", "cache_key",
+           "canonical_text", "suspend_excess"]

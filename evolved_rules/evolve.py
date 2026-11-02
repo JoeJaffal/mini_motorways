@@ -71,6 +71,7 @@ from . import evaluate as ev
 from . import gp
 from .engine import CODE_VERSION, Engine
 from .host import ROOT, default_host_dll
+from .power import keep_awake
 
 EVOLVE_DIR = ROOT / "output" / "evolved_rules" / "evolve"  # /output/ is git-ignored
 CHECKPOINT_FORMAT = 1
@@ -531,30 +532,32 @@ def run_loop(cfg: Config, state: dict, engine, run_dir: Path, clock=time.monoton
 
     step(cfg, state, engine, run_dir, clock=...) plays one generation and fmt(record, cfg) prints its line
     (default: this module's generation and format_record; tune_cmaes passes its own, sharing everything else:
-    the stop rule, the budget, checkpoints and the status file).
+    the stop rule, the budget, checkpoints and the status file). The machine is kept awake throughout
+    (power.keep_awake; restored on any exit), which covers both CLIs.
     """
     run_dir = Path(run_dir)
     step = generation if step is None else step
     fmt = format_record if fmt is None else fmt
-    try:
-        while True:
-            conv = Convergence.from_state(state["convergence"])
-            stop = stop_reason(cfg, conv, state["generation"], state["elapsed_s"])
-            if stop is not None:
-                _write_status(run_dir, *stop, state)
-                log(f"stopped: {stop[0]} ({stop[1]})")
-                return json.loads((run_dir / STATUS).read_text(encoding="utf-8"))
-            _write_status(run_dir, "running", f"generation {state['generation']}", state)
-            state = step(cfg, state, engine, run_dir, clock=clock)
-            write_checkpoint(run_dir, state)
-            log(fmt(read_jsonl(run_dir / GENERATIONS)[-1], cfg))
-    except KeyboardInterrupt:
-        _write_status(run_dir, "interrupted", "KeyboardInterrupt (resume with --resume)", state)
-        raise
-    except Exception as e:
-        _write_status(run_dir, "failed", f"{type(e).__name__}: {e}", state)
-        (run_dir / "error.txt").write_text(traceback.format_exc(), encoding="utf-8")
-        raise
+    with keep_awake():
+        try:
+            while True:
+                conv = Convergence.from_state(state["convergence"])
+                stop = stop_reason(cfg, conv, state["generation"], state["elapsed_s"])
+                if stop is not None:
+                    _write_status(run_dir, *stop, state)
+                    log(f"stopped: {stop[0]} ({stop[1]})")
+                    return json.loads((run_dir / STATUS).read_text(encoding="utf-8"))
+                _write_status(run_dir, "running", f"generation {state['generation']}", state)
+                state = step(cfg, state, engine, run_dir, clock=clock)
+                write_checkpoint(run_dir, state)
+                log(fmt(read_jsonl(run_dir / GENERATIONS)[-1], cfg))
+        except KeyboardInterrupt:
+            _write_status(run_dir, "interrupted", "KeyboardInterrupt (resume with --resume)", state)
+            raise
+        except Exception as e:
+            _write_status(run_dir, "failed", f"{type(e).__name__}: {e}", state)
+            (run_dir / "error.txt").write_text(traceback.format_exc(), encoding="utf-8")
+            raise
 
 
 def _make_engine(cfg: Config, run_dir: Path) -> Engine:

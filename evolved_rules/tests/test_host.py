@@ -57,6 +57,61 @@ def test_call_times_out_and_raises():
         h.close()
 
 
+def _jumping_clock(jump: float, at_call: int = 2):
+    """time.monotonic() plus `jump` seconds from its `at_call`-th call on: a machine that slept mid-wait."""
+    import time
+    calls = [0]
+
+    def clock():
+        calls[0] += 1
+        return time.monotonic() + (jump if calls[0] >= at_call else 0.0)
+    return clock
+
+
+def _slow_reply_script(delay: float) -> str:
+    return ("import sys, time\n"
+            "sys.stdin.readline()\n"
+            f"time.sleep({delay})\n"
+            "print('{\"ok\": true}', flush=True)\n"
+            "sys.stdin.readline()\n")
+
+
+def test_a_suspend_during_a_reply_wait_does_not_time_out():
+    # The clock jumps 100 s at the first poll (the machine slept). Without the suspend rule that alone passes the
+    # 3 s deadline; with it the deadline moves back and the reply, 2 s of awake time later, is taken.
+    h = _fake(_slow_reply_script(2.0), timeout=3.0)
+    h._clock = _jumping_clock(100.0)
+    try:
+        assert h.call(command="observe") == {"ok": True}
+    finally:
+        h.close()
+
+
+def test_a_jump_inside_the_margin_still_counts_toward_the_timeout():
+    # 5 s is within REPLY_SUSPEND_MARGIN_S (10 s): a slow pass, not a suspend, so the 3 s timeout fires.
+    h = _fake(_slow_reply_script(30.0), timeout=3.0)
+    h._clock = _jumping_clock(5.0)
+    try:
+        with pytest.raises(HostError, match="no reply"):
+            h.call(command="observe")
+    finally:
+        h.close()
+
+
+def test_a_silent_host_still_times_out_after_a_suspend():
+    # After the suspend is forgiven, a host that never answers still fails after timeout s of awake time.
+    import time
+    h = _fake("import time; time.sleep(60)", timeout=1.5)
+    h._clock = _jumping_clock(100.0)
+    t0 = time.monotonic()
+    try:
+        with pytest.raises(HostError, match="no reply"):
+            h.call(command="observe")
+    finally:
+        h.close()
+    assert 1.4 <= time.monotonic() - t0 < 5.0
+
+
 def test_host_exiting_mid_call_raises_then_every_call_raises():
     h = _fake("import sys; sys.stdin.readline()")  # reads the request, exits without replying (EOF)
     try:

@@ -7,10 +7,15 @@ import os
 import queue
 import subprocess
 import threading
+import time
 from pathlib import Path
+
+from .power import suspend_excess
 
 ROOT = Path(__file__).resolve().parents[1]
 STDERR_LINES = 20
+REPLY_POLL_S = 1.0  # longest single wait for a reply, so a suspend is seen within a second of waking
+REPLY_SUSPEND_MARGIN_S = 10.0  # a reply wait this much longer than it asked for is a suspend, not a slow host
 
 # The five city maps, spelled exactly as CityCatalog.Maps names them (simulation/Assets/Simulation/CityCatalog.cs).
 # The host would also take lab scenarios (ReferenceLab, EmptyLab), any letter case and numbers, but the agent may
@@ -47,6 +52,7 @@ class Host:
 
     def _start(self, argv: list[str], timeout: float) -> None:
         self._timeout = timeout
+        self._clock = time.monotonic  # replaced in tests to simulate a suspend
         self._dead = False
         self._stderr_tail: collections.deque[str] = collections.deque(maxlen=STDERR_LINES)
         self._replies: queue.Queue[str | None] = queue.Queue()
@@ -82,6 +88,27 @@ class Host:
         stderr = self._stderr_text()
         return HostError(what + (f"\nhost stderr (last lines):\n{stderr}" if stderr else ""))
 
+    def _wait_reply(self) -> str | None:
+        """The next reply line, waiting at most self._timeout seconds of awake time (queue.Empty after that).
+
+        It waits in steps of at most REPLY_POLL_S. A step that took more than REPLY_SUSPEND_MARGIN_S longer than
+        it asked for means the machine was suspended (time.monotonic() counts sleep on Windows), so the deadline
+        moves back by the excess: waking from sleep never looks like a hung host.
+        """
+        clock = self._clock
+        last = clock()
+        deadline = last + self._timeout
+        while True:
+            waited = min(REPLY_POLL_S, max(0.0, deadline - last))
+            try:
+                return self._replies.get(timeout=waited)
+            except queue.Empty:
+                now = clock()
+                deadline += suspend_excess(now - last, waited, REPLY_SUSPEND_MARGIN_S)
+                last = now
+                if now >= deadline:
+                    raise
+
     def call(self, **request) -> dict:
         if self._dead or self._proc.poll() is not None:
             raise self._fail("host is not running")
@@ -91,7 +118,7 @@ class Host:
         except (BrokenPipeError, OSError, ValueError) as e:
             raise self._fail(f"could not send {request.get('command')!r} to the host: {e}") from e
         try:
-            line = self._replies.get(timeout=self._timeout)
+            line = self._wait_reply()
         except queue.Empty:
             raise self._fail(f"no reply to {request.get('command')!r} within {self._timeout}s") from None
         if line is None:

@@ -600,3 +600,25 @@ def test_real_tiny_run(host_dll, tmp_path):
     assert val["seeds"] == [1500] and val["seconds"][0] <= 150.0 + 1e-6
     assert gen["games_played"] >= 3
     gp.individual_from_text((tmp_path / "real" / evo.BEST).read_text())
+
+
+def test_the_run_keeps_the_machine_awake_and_releases_it(fake, tmp_path, monkeypatch):
+    from evolved_rules import power
+    calls = []
+    monkeypatch.setattr(power, "_api", lambda: (lambda flags: calls.append(flags) or 1))
+    seen = []
+    real_step = evo.generation
+
+    def step(*a, **kw):
+        seen.append(list(calls))
+        return real_step(*a, **kw)
+
+    monkeypatch.setattr(evo, "generation", step)
+    run(tmp_path, "a", small(max_gens=2))
+    assert seen == [[power.KEEP_AWAKE]] * 2  # held through every generation
+    assert calls == [power.KEEP_AWAKE, power.ES_CONTINUOUS]
+    fake["game"] = lambda text, seed, cap_s: (_ for _ in ()).throw(RuntimeError("host fell over"))
+    calls.clear()
+    with pytest.raises(en.EngineError):
+        run(tmp_path, "b", small(max_gens=1))
+    assert calls == [power.KEEP_AWAKE, power.ES_CONTINUOUS]  # released on a failure too
