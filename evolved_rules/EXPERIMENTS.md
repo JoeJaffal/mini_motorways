@@ -65,7 +65,7 @@ The hand rule scores 152.1 on 2000–2019 (the bar was 140). All 21/21 replays v
 
 **Smoke test** (`gp2-smoke`: population 12, 4+4 seeds, 10 validation seeds): it ran on real games. Generation 0 had 9 behaviours among 12 texts and 3 immigrants. In generation 1, candidates at +10.6 and +11.2 trips were correctly not counted (t 0.73 and 0.61, critical value 3.25).
 
-**Results so far:** the full run `gp-2` (b8e82a0) started 2026-11-02 12:46 and is still running. Generations 0–7 are below, recorded at 18:47.
+**Results so far:** the full run `gp-2` (b8e82a0) started 2026-11-02 12:46 and is still running. Generations 0–10 are below, recorded at 20:43.
 
 | Gen | Validated (top 3) | Best so far | Best paired t (needs 2.68) | No-gain count | Round-1 avg | Behaviours / 64 | Time |
 |---|---|---|---|---|---|---|---|
@@ -77,9 +77,14 @@ The hand rule scores 152.1 on 2000–2019 (the bar was 140). All 21/21 replays v
 | 5 | 206.4, 224.3, 226.5 | 226.5 | 1.80 | 5 | 184.6 | 46 | 20 min |
 | 6 | 202.8, 224.3, 203.1 | 226.5 | 1.68 | 6 | 201.6 | 51 | 19 min |
 | 7 | 225.6, 236.7, 211.9 | **236.7** | 2.44 | 7 | 176.0 | 50 | 115 min (about 80 of it asleep) |
+| 8 | 236.7 (cached), 207.3, 211.1 | 236.7 | 2.44 | 8 | 172.2 | 54 | 95 min (about 74 of it asleep) |
+| 9 | 236.7 (cached), 192.9, 193.0 | 236.7 | 2.44 | 9 | 178.1 | 49 | 46 min |
+| 10 | 204.6, 195.6, 218.5 | 236.7 | 1.30 | 10 | 176.6 | 51 | 49 min |
 
 **Observations:**
 - **The best validated score rose steadily.** It went from 196.8 to 236.7 in 7 generations, above gp-1's 222 and 49 above the separated preference.
 - **No gain has passed the paired test yet.** The anchor is still generation 0's 196.8. The closest was generation 7's +40 trips, at t 2.44 against the 2.68 needed.
 - **The population keeps improving.** The round-1 average rose from 101 to about 180–200.
+- **Plateau forming (generations 8–10).** The generation-7 record holder (236.7) topped the racing in generations 8 and 9, and no new candidate came close to it. The round-1 average has stayed at about 172–200 since generation 4. This fits the gp-1 autopsy: with the current moves, congestion caps the score.
+- **Generations are slower now, about 45–50 min.** Better rules survive longer, and long games cost more to simulate.
 - **The sleep fix works.** The lid was closed twice (15:23–16:43 and 17:18–18:32). Both times the run logged `suspend detected` and kept going: no game was killed and nothing crashed.
