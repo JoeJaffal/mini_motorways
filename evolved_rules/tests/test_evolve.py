@@ -267,7 +267,7 @@ def _independent_rank(texts, games_of, sizes):
 
 def test_racing_plays_the_s4_top_and_ranks_elites_and_best_by_all_12_games(fake, tmp_path):
     """S4 and S8 rank the individuals differently, so each selection step must use the right score."""
-    cfg = small(pop=12, racing_top=5, elites=3, n_s4=4, n_s8=8, min_gens=50, max_gens=1, seed=14)
+    cfg = small(pop=12, racing_top=5, elites=3, n_s4=4, n_s8=8, min_gens=50, max_gens=1, seed=20)
     run(tmp_path, "probe", cfg)
     seeds = read_jsonl(tmp_path / "probe" / evo.GENERATIONS)[0]["seeds"]  # gen 0's draw does not depend on fitness
     s4, s8 = set(seeds["s4"]), set(seeds["s8"])

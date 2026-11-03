@@ -49,7 +49,7 @@ def test_terminal_lists_match_the_feature_dicts_in_order():
     assert gp.GLOBAL_TERMS == kept(glob)
     assert gp.OFFER_TERMS == kept(offer)
     # the dropped inputs are still computed by features.py: they are left out of the trees only
-    assert gp.DROPPED_TERMS == {"pending_refunds", "type_5"}
+    assert gp.DROPPED_TERMS == {"type_5"}  # pending_refunds is back for gp-3 (removals make it vary)
     assert gp.DROPPED_TERMS <= set(glob) | set(offer)
     assert not gp.DROPPED_TERMS & (set(gp.PRIORITY_TERMS) | set(gp.HOLD_TERMS) | set(gp.UPGRADE_TERMS))
     assert gp.PRIORITY_TERMS == gp.CANDIDATE_TERMS + gp.GLOBAL_TERMS
@@ -60,12 +60,13 @@ def test_terminal_lists_match_the_feature_dicts_in_order():
 
 
 def test_every_terminal_has_a_power_of_two_divisor():
-    terms = set(gp.CANDIDATE_TERMS) | set(gp.GLOBAL_TERMS) | set(gp.OFFER_TERMS)
+    terms = set(gp.CANDIDATE_TERMS) | set(gp.GLOBAL_TERMS) | set(gp.OFFER_TERMS) | set(gp.REMOVAL_TERMS)
     assert set(gp.SCALE) == terms
     for k, d in gp.SCALE.items():
         m, e = math.frexp(d)
         assert m == 0.5 and d >= 1, (k, d)  # exact power of two
-    flags = {"is_attach", "is_direct", "is_separated", "house_served"} | {f"type_{t}" for t in range(5)}
+    flags = {"is_attach", "is_direct", "is_separated", "house_served", "is_clean", "ends_near_shop",
+             "rm_links_doorstep"} | {f"type_{t}" for t in range(5)}
     assert all(gp.SCALE[k] == 1 for k in flags)
     assert gp.SCALE["tiles_needed"] == 64 and gp.SCALE["road_stock"] == 64 and gp.SCALE["time"] == 4096
 

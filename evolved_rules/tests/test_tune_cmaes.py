@@ -1,6 +1,8 @@
 """CMA-ES control (Phase 2 Task 6): weight vector <-> text, the shared stop rule, the loop, resume, a real game."""
 from __future__ import annotations
 
+import math
+
 import hashlib
 import json
 import random
@@ -27,7 +29,7 @@ from evolved_rules.tune_cmaes import CmaConfig
 # --- weight vector <-> text ------------------------------------------------------------------------------------
 
 def test_layout_covers_every_terminal_of_every_tree_in_order():
-    assert tc.DIM == len(gp.PRIORITY_TERMS) + 1 + len(gp.HOLD_TERMS) + len(gp.UPGRADE_TERMS) == 63
+    assert tc.DIM == len(gp.PRIORITY_TERMS) + 1 + len(gp.HOLD_TERMS) + len(gp.UPGRADE_TERMS) == 81
     assert [t for i, t in tc.LAYOUT if i == 0] == list(gp.PRIORITY_TERMS)
     assert [t for i, t in tc.LAYOUT if i == 1] == [tc.BIAS, *gp.HOLD_TERMS]
     assert [t for i, t in tc.LAYOUT if i == 2] == list(gp.UPGRADE_TERMS)
@@ -48,7 +50,9 @@ def test_weight_vector_text_round_trip():
 def test_linear_texts_are_valid_shallow_individuals_of_constant_size():
     for w in (tc.HAND_WEIGHTS, [4.99] * tc.DIM):
         ind = gp.individual_from_text(tc.weights_to_text(w))
-        assert max(t.height for t in ind) <= gp.MAX_DEPTH  # balanced sums: depth 6, not 31
+        # balanced sums: about log2(terms) + 2 levels, not one level per term. The GP depth limit (MAX_DEPTH)
+        # applies only to variation (mate/mutate), which a CMA-ES text never goes through.
+        assert max(t.height for t in ind) <= math.ceil(math.log2(len(gp.PRIORITY_TERMS))) + 2
         assert gp.size(ind) == tc.SIZE
 
 
@@ -68,7 +72,8 @@ def test_text_to_weights_rejects_texts_weights_to_text_would_not_write():
         good.replace("mul(-1.0, tiles_needed)", "mul(-1.00001, tiles_needed)", 1),  # off the 4-decimal grid
         good.replace("mul(-1.0, tiles_needed)", "mul(-7.0, tiles_needed)", 1),  # out of bounds
         good.replace("mul(0.0, bridges_needed)", "mul(0.0, path_len)", 1),  # a terminal twice, one missing
-        good.replace("hold: add(add(add(add(0.0625,", "hold: add(add(add(add(road_stock,", 1),  # no bias
+        # no bias: the hold sum's first leaf is the bias constant, whatever the depth of the balanced sum
+        good.replace("(0.0625, mul(-1.0, road_stock))", "(road_stock, mul(-1.0, road_stock))", 1),
     ]
     assert bad[4] != good
     for text in bad:

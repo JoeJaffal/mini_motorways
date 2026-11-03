@@ -1,10 +1,12 @@
 """Failure autopsy and input statistics: why a rule set's games end, and which inputs ever vary (PLAN.md 8.2).
 
-    PY -m evolved_rules.autopsy --policy tree:<file>|hand|separated --seeds 1500-1549 --workers 10 --out NAME
+    PY -m evolved_rules.autopsy --policy SPEC --seeds 1500-1549 --workers 10 --out NAME
+    SPEC: hand | separated | clean | cleanrm | seprm | tree:<file> | tree+clean:<file>
 
 Each game is played exactly as agent.play_game plays it (same loop, same policy), with the policy wrapped so
 that every feature dict it is shown is tallied. At the end the final observation is read, including fields the
-agent may not use (vehicle homeId/shopId/stage/speed): this is a diagnostic, never an input.
+agent never reads (vehicle homeId and the cars' obstacle reasons): this is a diagnostic, never an input. (Since
+gp-3 the agent itself reads vehicle stage, shopId, position and speed: features._Analysis.traffic.)
 
 Why the game was lost, for the shop whose overcrowding timer ran out (the failing shop, colour c):
     not_connected     no house reaches the shop
@@ -25,6 +27,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import statistics
 import sys
 from collections import Counter
@@ -35,7 +38,7 @@ from . import evaluate as ev
 from .agent import EventTracker, decide
 from .gp import TreePolicy
 from .host import ROOT, Host
-from .rules import HandRule, SeparatedPreference
+from .rules import CleanHand, CleanRemoveHand, HandRule, SeparatedPreference, SeparatedRemoveHand
 from .session import GameSession
 
 AUTOPSY_DIR = ROOT / "output" / "evolved_rules" / "autopsy"
@@ -72,6 +75,8 @@ class _Watched:
         self.name = inner.name
         # Every attribute agent.decide / play_game reads from a policy, so the wrapped policy plays identically.
         self.coverage = getattr(inner, "coverage", False)
+        self.clean_routes = getattr(inner, "clean_routes", False)
+        self.removes = getattr(inner, "removes", False)
         self.wants_globals = getattr(inner, "wants_globals", False)
         self.acts = getattr(inner, "acts", True)
 
@@ -88,17 +93,27 @@ class _Watched:
         return self.inner.upgrade(f)
 
     def remove(self, f):
+        self.tally.add({k: v for k, v in f.items() if k.startswith("rm_")})  # the globals are tallied by hold
         return self.inner.remove(f)
 
 
 def make_policy(spec: str):
+    """hand, separated, clean (CleanHand), tree:<file>, or tree+clean:<file> (the same trees offered clean routes)."""
     if spec == "hand":
         return HandRule()
     if spec == "separated":
         return SeparatedPreference()
+    if spec == "seprm":
+        return SeparatedRemoveHand()
+    if spec == "cleanrm":
+        return CleanRemoveHand()
+    if spec == "clean":
+        return CleanHand()
     if spec.startswith("tree:"):
         return TreePolicy(Path(spec[5:]).read_text(encoding="utf-8"))
-    raise ValueError(f"unknown policy {spec!r} (hand, separated or tree:<file>)")
+    if spec.startswith("tree+clean:"):
+        return TreePolicy(Path(spec[11:]).read_text(encoding="utf-8"), clean_routes=True)
+    raise ValueError(f"unknown policy {spec!r} (hand, separated, clean, tree:<file> or tree+clean:<file>)")
 
 
 def classify(state, raw: dict, cap_s: float) -> dict:
@@ -133,8 +148,33 @@ def classify(state, raw: dict, cap_s: float) -> dict:
         cause = "gridlock"
     else:
         cause = "car_shortage"
+
+    # Where traffic is held. A stuck car's `obstacle` says what stops it; "Queue ahead" only means another car is
+    # in front, so the cars stuck for any other reason are the heads of the queues and their reasons are the
+    # causes ("Carpark access occupied" = waiting for a shop's single car-park gate, "Crossing vehicle" /
+    # "Approaching vehicle priority" = a junction, and so on). Distances are to the failing shop's nearest
+    # entrance, in tiles (Chebyshev).
+    stuck_color = [v for v in driving if float(v["speed"]) < STUCK_SPEED]
+    stuck_all = [v for v in all_driving if float(v["speed"]) < STUCK_SPEED]
+
+    def head_reasons(vs):
+        out: dict[str, int] = {}
+        for v in vs:
+            reason = v.get("obstacle") or "none"
+            if reason != "Queue ahead":
+                out[reason] = out.get(reason, 0) + 1
+        return dict(sorted(out.items()))
+
+    def dist(v):  # by the car's cell (a position is a float; a cell centre is x + 0.5), as features.traffic
+        cx, cy = math.floor(float(v["x"])), math.floor(float(v["y"]))
+        return min(max(abs(cx - ax), abs(cy - ay)) for ax, ay in f.access)
+
     return {
-        "cause": cause, "shop": f.id, "color": f.color, "demand": f.demand, "reserved": f.reserved,
+        "cause": cause, "shop": f.id,
+        "stuck_color": len(stuck_color), "stuck_color_near_shop": sum(1 for v in stuck_color if dist(v) <= 3),
+        "stuck_color_to_shop": sum(1 for v in stuck_color if int(v["shopId"]) == f.id),
+        "queued_color": sum(1 for v in stuck_color if v.get("obstacle") == "Queue ahead"),
+        "heads_color": head_reasons(stuck_color), "heads_all": head_reasons(stuck_all), "color": f.color, "demand": f.demand, "reserved": f.reserved,
         "capacity": f.capacity, "upgraded": f.upgraded, "shops_of_color": sum(1 for s in shops if s.color == f.color),
         "houses_of_color": len(houses), "houses_reaching": len(reach_ids), "cars_of_color": len(cars),
         "cars_home": len(home), "cars_home_reaching": len(home_reach), "cars_busy": len(busy),
@@ -168,6 +208,7 @@ def play(spec: str, seed: int, cap_s: float = ev.DEFAULT_CAP_S) -> dict:
     state = session.state
     row = {"seed": seed, "trips": state.trips, "seconds": state.time, "road_stock": state.inventory[0],
            "shops": len(state.shops()), "houses": len(state.houses()), "tiles_built": session.tiles_built,
+           "removals": session.action_counts.get("Remove", 0),
            **classify(state, session.raw, cap_s)}
     return {"row": row, "tally": tally.stats}
 

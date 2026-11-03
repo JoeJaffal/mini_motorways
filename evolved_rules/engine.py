@@ -59,7 +59,7 @@ from .verify import build_verifier, verify_recording
 
 # Bump whenever agent behaviour changes (agent, candidates, executor, features, gp, session, state, the
 # simulator): it is part of every cache key, so results from older code are never reused.
-CODE_VERSION = "phase2-v1"
+CODE_VERSION = "phase3-v2"  # gp-3: clean routes, removals and traffic inputs (3-tree texts play as before)
 DEFAULT_TIMEOUT_S = 900.0  # seconds of awake wall clock per game (a suspend does not count)
 KILL_TIMEOUT_S = 30.0
 POLL_S = 5.0  # the parent's longest single wait, so a suspend is seen within one poll of waking

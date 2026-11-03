@@ -66,6 +66,16 @@ def execute_route(session: GameSession, cand: RouteCandidate) -> bool:
     return session.state.house_connected(house)
 
 
+def remove_tile(session: GameSession, cell: Cell) -> bool:
+    """Remove one road tile (build with tool "Remove", one command + 20 ticks). Returns whether it was accepted.
+
+    The tile is released and refunded at once if no car is committed to it; otherwise it is closed to new
+    routes and released when those cars are home (PLAN.md section 3.4).
+    """
+    accepted, _ = session.command({"command": "build", "tool": "Remove", "x": cell[0], "y": cell[1]})
+    return accepted
+
+
 def take_offer(session: GameSession, choice: int) -> bool:
     """Choose upgrade offer `choice` (one command + 20 ticks). Returns whether the host accepted it."""
     accepted, _ = session.command({"command": "upgrade", "choice": choice})

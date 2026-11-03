@@ -11,8 +11,16 @@ from dataclasses import dataclass
 
 from .state import DIRS, Building, Cell, CityState, _in_grid
 
-KIND_ORDER = {"attach": 0, "direct": 1, "separated": 2}
-MAX_CANDIDATES = 3
+KIND_ORDER = {"attach": 0, "direct": 1, "separated": 2, "clean": 3}
+MAX_CANDIDATES = 3  # of the Phase 1 kinds; a clean route (gp-3, opt-in) is offered on top of these
+
+# gp-3 "clean" routes (EXPERIMENTS.md): the separated cost model plus heavy charges for junction links, above all
+# within NEAR_SHOP_RADIUS of a shop's doorstep, and never ending inside DOORSTEP_RADIUS of a doorstep unless that
+# doorstep has at most one link (so ending there makes no junction).
+NEAR_SHOP_RADIUS = 3
+DOORSTEP_RADIUS = 1
+CLEAN_JUNCTION_PENALTY = 2.0  # any junction link (cf. JUNCTION_PENALTY 0.5 for new junctions only)
+CLEAN_NEAR_SHOP_PENALTY = 6.0  # extra for a junction link near a doorstep
 
 DIAG_BASE = 1.414
 ROAD_FACTOR = 0.15  # existing (or planned) road costs this fraction of the base step
@@ -50,6 +58,8 @@ class RouteCandidate:
     new_junctions: int
     shared_cells: int
     strokes: tuple[Stroke, ...]
+    near_shop_junctions: int = 0  # path cells near a doorstep that gain a link and end with >= 3 (gp-3 input)
+    ends_near_shop: bool = False  # the route ends within DOORSTEP_RADIUS of a shop's doorstep (gp-3 input)
 
 
 def _direction(a: Cell, b: Cell) -> int:
@@ -103,6 +113,50 @@ def _becomes_junction(state: CityState, c: Cell, neighbours: tuple[Cell, ...]) -
     for nb in neighbours:
         mask |= 1 << _direction(c, nb)
     return _popcount(mask) >= 3
+
+
+def _junction_link(state: CityState, c: Cell, neighbours: tuple[Cell, ...]) -> bool:
+    """True if existing road cell c gains a link from its path neighbours and ends with >= 3 links.
+
+    Wider than _becomes_junction: adding a road to a cell that already is a junction counts too. That is how
+    shop doorsteps pile up 3-4 links (gp-2 autopsy, EXPERIMENTS.md), and every link there slows the cars of
+    the shop.
+    """
+    if not _is_road(state, c):
+        return False
+    mask = int(state.conn[c[1], c[0]])
+    new = mask
+    for nb in neighbours:
+        new |= 1 << _direction(c, nb)
+    return new != mask and _popcount(new) >= 3
+
+
+def link_degree(state: CityState, c: Cell) -> int:
+    """Live links of cell c: links to in-grid neighbours that are not pending removal (0 outside the grid or for
+    a pending cell). A tile waiting for its committed cars keeps its link bits (TrafficWorld.cs:55-57) but no new
+    route uses it, so counting it would make a doorstep that is already being thinned look as crowded as before."""
+    if not _in_grid(c) or int(state.pending[c[1], c[0]]) == 1:
+        return 0
+    x, y = c
+    mask = int(state.conn[y, x])
+    return sum(1 for d, (dx, dy) in enumerate(DIRS)
+               if (mask >> d) & 1 and _in_grid((x + dx, y + dy)) and int(state.pending[y + dy, x + dx]) != 1)
+
+
+def doorsteps(state: CityState) -> tuple[Cell, ...]:
+    """The outside cell of every shop entrance (the cell every car of that shop passes), in shop-id order."""
+    return tuple(o for s in state.shops() for o in s.outside if _in_grid(o))
+
+
+def near_cells(centres: tuple[Cell, ...], radius: int) -> frozenset[Cell]:
+    """Grid cells within Chebyshev `radius` of any centre."""
+    out = set()
+    for cx, cy in centres:
+        for y in range(cy - radius, cy + radius + 1):
+            for x in range(cx - radius, cx + radius + 1):
+                if _in_grid((x, y)):
+                    out.add((x, y))
+    return frozenset(out)
 
 
 def _water(state: CityState, c: Cell) -> bool:
@@ -164,8 +218,14 @@ def _astar(
     planned_links: frozenset[Link],
     served: dict[Cell, frozenset[int]],
     separated: bool,
+    clean: bool = False,
+    near_shop: frozenset[Cell] = frozenset(),
 ) -> tuple[tuple[Cell, ...], int] | None:
-    """Cheapest path from the house cell to any target. Returns (path, spans_used) or None."""
+    """Cheapest path from the house cell to any target. Returns (path, spans_used) or None.
+
+    clean (gp-3): junction links (_junction_link) cost CLEAN_JUNCTION_PENALTY, plus CLEAN_NEAR_SHOP_PENALTY in
+    `near_shop`, instead of the plain new-junction term. With clean False the costs are exactly Phase 1's.
+    """
     if not targets:
         return None
     max_spans = state.inventory[1] if len(state.inventory) > 1 else 0
@@ -244,10 +304,16 @@ def _astar(
             # (the path ends there) is charged on its incoming edge. Each path cell is thus charged at most
             # once, exactly as new_junctions counts it, but a cheaper junction-free predecessor of u that
             # was not u's best-g parent is never considered.
-            if prev is not None and _becomes_junction(state, u, (prev, n)):
-                cost += JUNCTION_PENALTY
-            if n in targets and _becomes_junction(state, n, (u,)):
-                cost += JUNCTION_PENALTY
+            if clean:
+                if prev is not None and _junction_link(state, u, (prev, n)):
+                    cost += CLEAN_JUNCTION_PENALTY + (CLEAN_NEAR_SHOP_PENALTY if u in near_shop else 0.0)
+                if n in targets and _junction_link(state, n, (u,)):
+                    cost += CLEAN_JUNCTION_PENALTY + (CLEAN_NEAR_SHOP_PENALTY if n in near_shop else 0.0)
+            else:
+                if prev is not None and _becomes_junction(state, u, (prev, n)):
+                    cost += JUNCTION_PENALTY
+                if n in targets and _becomes_junction(state, n, (u,)):
+                    cost += JUNCTION_PENALTY
             if separated and _foreign(served, n, house.color):
                 cost += FOREIGN_PENALTY
             ng = g + cost
@@ -265,6 +331,13 @@ def _new_junctions(state: CityState, path: tuple[Cell, ...]) -> int:
     )
 
 
+def _near_shop_junctions(state: CityState, path: tuple[Cell, ...], near_shop: frozenset[Cell]) -> int:
+    return sum(
+        1 for i, c in enumerate(path)
+        if c in near_shop and _junction_link(state, c, tuple(path[j] for j in (i - 1, i + 1) if 0 <= j < len(path)))
+    )
+
+
 def route_candidates(
     state: CityState,
     house: Building,
@@ -272,11 +345,17 @@ def route_candidates(
     planned: frozenset[Cell] = frozenset(),
     *,
     planned_links: frozenset[Link] = frozenset(),
+    clean: bool = False,
 ) -> list[RouteCandidate]:
-    """Up to 3 routes from `house` to `shops`.
+    """Up to 3 routes from `house` to `shops`, plus with `clean` (gp-3) one clean route if it is new.
 
     `planned` holds cells of routes already chosen in this decision (treated as road); `planned_links`
     holds their steps (see path_links), so that no diagonal crosses a planned diagonal.
+
+    A clean route uses the separated cost model with _astar's clean junction charges, and its targets leave
+    out every cell within DOORSTEP_RADIUS of any shop's doorstep, except a target shop's own doorstep that
+    has at most one link (ending there makes no junction). It is appended after the (sorted, capped) Phase 1
+    candidates when its path differs from theirs, so with clean False the result is exactly Phase 1's.
     """
     shops = tuple(shops)
     served = _served_colours(state)
@@ -295,27 +374,16 @@ def route_candidates(
                 if _is_road(state, c):
                     reaches.setdefault(c, set()).add(s.id)
     attach_targets = frozenset(reaches)
+    steps = doorsteps(state)
+    near_shop = near_cells(steps, NEAR_SHOP_RADIUS)
 
-    out: list[RouteCandidate] = []
-    seen: set[tuple[Cell, ...]] = set()
-    for kind in ("attach", "direct", "separated"):  # KIND_ORDER: dedup keeps the lowest kind
-        found = _astar(
-            state, house, direct_targets if kind == "direct" else attach_targets, planned, planned_links, served,
-            separated=kind == "separated",
-        )
-        if found is None:
-            if kind == "attach":
-                break  # same edges, and the other target sets are subsets: nothing else is reachable
-            continue
+    def make(kind: str, found) -> RouteCandidate | None:
         path, spans = found
-        if path in seen:
-            continue
-        seen.add(path)
         tiles = sum(1 for c in path[1:] if not _is_road(state, c) and c not in planned)
         if tiles > road_stock:
-            continue
+            return None
         strokes = split_strokes(path)
-        out.append(RouteCandidate(
+        return RouteCandidate(
             kind=kind,
             house_id=house.id,
             shop_ids=tuple(sorted(reaches.get(path[-1], ()))),
@@ -326,9 +394,44 @@ def route_candidates(
             new_junctions=_new_junctions(state, path),
             shared_cells=sum(1 for c in path if _foreign(served, c, house.color)),
             strokes=strokes,
-        ))
+            near_shop_junctions=_near_shop_junctions(state, path, near_shop),
+            ends_near_shop=any(max(abs(path[-1][0] - d[0]), abs(path[-1][1] - d[1])) <= DOORSTEP_RADIUS
+                               for d in steps),
+        )
+
+    out: list[RouteCandidate] = []
+    seen: set[tuple[Cell, ...]] = set()
+    reachable = False
+    for kind in ("attach", "direct", "separated"):  # KIND_ORDER: dedup keeps the lowest kind
+        found = _astar(
+            state, house, direct_targets if kind == "direct" else attach_targets, planned, planned_links, served,
+            separated=kind == "separated",
+        )
+        if found is None:
+            if kind == "attach":
+                break  # same edges, and the other target sets are subsets: nothing else is reachable
+            continue
+        reachable = True
+        if found[0] in seen:
+            continue
+        seen.add(found[0])
+        cand = make(kind, found)
+        if cand is not None:
+            out.append(cand)
     out.sort(key=lambda c: (c.tiles_needed, len(c.path), KIND_ORDER[c.kind]))
-    return out[:MAX_CANDIDATES]
+    out = out[:MAX_CANDIDATES]
+    if clean and reachable:
+        zone = near_cells(steps, DOORSTEP_RADIUS)
+        own_steps = {o for s in shops for o in s.outside}
+        targets = frozenset(c for c in attach_targets
+                            if c not in zone or (c in own_steps and link_degree(state, c) <= 1))
+        found = _astar(state, house, targets, planned, planned_links, served, separated=True, clean=True,
+                       near_shop=near_shop)
+        if found is not None and found[0] not in seen:
+            cand = make("clean", found)
+            if cand is not None:
+                out.append(cand)
+    return out
 
 
 # --- Coverage targets (Phase 2, decision P2-6) ---------------------------------------------------------------
@@ -389,4 +492,105 @@ def coverage_targets(state: CityState) -> list[tuple[Building, tuple[Building, .
             out.append((h, (s,)))
             if len(out) == COVERAGE_TARGET_CAP:
                 return out
+    return out
+
+
+# --- Removal candidates (gp-3) -------------------------------------------------------------------------------
+
+@dataclass(frozen=True)
+class RemovalCandidate:
+    """A road tile whose removal would thin out the junctions at a shop's doorstep (gp-3).
+
+    cell is the tile; shop_id the shop with the nearest doorstep (ties: lowest id); dist its Chebyshev distance
+    to that doorstep; degree the tile's links; links_doorstep whether the tile is linked to a doorstep that has
+    >= 3 links (removing it takes one away); doorstep_degree the links of that nearest doorstep.
+    """
+
+    cell: Cell
+    shop_id: int
+    dist: int
+    degree: int
+    links_doorstep: bool
+    doorstep_degree: int
+
+
+def _labels_without(state: CityState, starts: list[Cell], blocked: Cell) -> dict[Cell, int]:
+    """Component label of every cell reached from `starts` over links, never entering `blocked` or a cell
+    pending removal (like CityState.component). Starts are visited in the given order."""
+    label: dict[Cell, int] = {}
+    lab = -1
+    for start in starts:
+        if start in label or start == blocked:
+            continue
+        lab += 1
+        label[start] = lab
+        stack = [start]
+        while stack:
+            x, y = stack.pop()
+            mask = int(state.conn[y, x])
+            for d, (dx, dy) in enumerate(DIRS):
+                if not (mask >> d) & 1:
+                    continue
+                n = (x + dx, y + dy)
+                if n == blocked or n in label or not _in_grid(n) or int(state.pending[n[1], n[0]]) == 1:
+                    continue
+                label[n] = lab
+                stack.append(n)
+    return label
+
+
+def _pairs_to_keep(state: CityState) -> list[tuple[Building, Building]]:
+    """Every (house, same-colour shop) pair whose house reaches that shop now."""
+    now = _house_components(state)
+    return [(h, s) for h in state.houses() for s in state.shops()
+            if s.color == h.color and any(a in now[h.id] for a in s.access)]
+
+
+def keeps_connections(state: CityState, cell: Cell, need: list | None = None) -> bool:
+    """True if removing road tile `cell` leaves every house reaching every same-colour shop it reaches now.
+
+    need: _pairs_to_keep(state), passed in when many cells of one state are checked."""
+    need = _pairs_to_keep(state) if need is None else need
+    if not need:
+        return True
+    label = _labels_without(state, [h.cell for h in state.houses()], cell)
+    return all(
+        h.cell in label and any(label.get(a) == label[h.cell] for a in s.access)
+        for h, s in need
+    )
+
+
+def removal_candidates(state: CityState) -> list[RemovalCandidate]:
+    """Plain road tiles near a shop doorstep that feed a junction there, and whose removal keeps every
+    connection (keeps_connections). In (y, x) order.
+
+    A tile qualifies if it lies within NEAR_SHOP_RADIUS of a doorstep, is not itself a doorstep, carries a plain
+    road (infra 1: not a bridge, roundabout or traffic light) and is not pending removal, and either is a
+    junction (>= 3 links) or is linked to a doorstep with >= 3 links.
+    """
+    shops = state.shops()
+    steps = [(o, s) for s in shops for o in s.outside if _in_grid(o)]
+    if not steps:
+        return []
+    step_cells = {o for o, _ in steps}
+    need = None  # the pairs to keep, computed once, on the first cell that gets that far
+    out: list[RemovalCandidate] = []
+    for c in sorted(near_cells(tuple(step_cells), NEAR_SHOP_RADIUS), key=lambda c: (c[1], c[0])):
+        x, y = c
+        if c in step_cells or int(state.infra[y, x]) != 1 or int(state.pending[y, x]) == 1 \
+                or int(state.kinds[y, x]) != 0:
+            continue
+        degree = link_degree(state, c)
+        mask = int(state.conn[y, x])
+        feeds = any(((mask >> d) & 1) and (x + dx, y + dy) in step_cells
+                    and link_degree(state, (x + dx, y + dy)) >= 3 for d, (dx, dy) in enumerate(DIRS))
+        if degree < 3 and not feeds:
+            continue
+        o, s = min(steps, key=lambda p: (max(abs(p[0][0] - x), abs(p[0][1] - y)), p[1].id))
+        if need is None:
+            need = _pairs_to_keep(state)
+        if not keeps_connections(state, c, need):
+            continue
+        out.append(RemovalCandidate(cell=c, shop_id=s.id, dist=max(abs(o[0] - x), abs(o[1] - y)), degree=degree,
+                                    links_doorstep=feeds, doorstep_degree=link_degree(state, o)))
     return out

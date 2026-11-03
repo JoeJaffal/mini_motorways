@@ -8,9 +8,9 @@ from __future__ import annotations
 import math
 from dataclasses import asdict, dataclass
 
-from .candidates import coverage_targets, house_reaches, route_candidates, unserved_targets
-from .executor import execute_route, take_offer
-from .features import candidate_features, global_features, offer_features
+from .candidates import coverage_targets, house_reaches, removal_candidates, route_candidates, unserved_targets
+from .executor import execute_route, remove_tile, take_offer
+from .features import candidate_features, global_features, offer_features, removal_features
 from .host import Host
 from .rules import Policy
 from .session import GameSession
@@ -19,6 +19,7 @@ from .state import CityState
 FALLBACK_S = 10.0
 OVERCROWD_EVENT_S = 20.0
 MAX_ROUTES_PER_DECISION = 20
+MAX_REMOVALS_PER_DECISION = 1  # gp-3
 
 
 class EventTracker:
@@ -88,7 +89,37 @@ def decide(session: GameSession, policy: Policy) -> None:
                                                      -math.inf), -o.index))
         take_offer(session, best.index)
 
+    _build_routes(session, policy, memory, merge)
+    if getattr(policy, "removes", False):
+        _remove_one(session, policy, memory, merge)
+
+
+def _remove_one(session: GameSession, policy: Policy, memory, merge: bool) -> None:
+    """gp-3 (policies with `removes`): remove the best removal candidate if its score is above 0.
+
+    At most MAX_REMOVALS_PER_DECISION tiles per decision (each removal changes the network, so the next one is
+    re-planned at the next decision). Ties keep the earliest candidate in removal_candidates' (y, x) order; a
+    non-finite score never removes anything.
+    """
+    for _ in range(MAX_REMOVALS_PER_DECISION):
+        if session.done:
+            return
+        state = session.state
+        g = global_features(state, memory) if merge else {}
+        best = None
+        for rc in removal_candidates(state):
+            score = float(policy.remove({**removal_features(state, rc, memory), **g}))
+            if math.isfinite(score) and score > 0 and (best is None or score > best[0]):
+                best = (score, rc)
+        if best is None:
+            return
+        remove_tile(session, best[1].cell)
+
+
+def _build_routes(session: GameSession, policy: Policy, memory, merge: bool) -> None:
+    """The route part of decide(): build routes while the best priority clears the hold threshold."""
     coverage = bool(getattr(policy, "coverage", False))
+    clean = bool(getattr(policy, "clean_routes", False))  # gp-3: also offer a clean (junction-averse) route
     excluded: set[int] = set()  # Phase 1: house ids whose route failed in this call
     excluded_pairs: set[tuple[int, int]] = set()  # coverage: (house id, shop id) pairs whose route failed
     for _ in range(MAX_ROUTES_PER_DECISION):
@@ -104,7 +135,8 @@ def decide(session: GameSession, policy: Policy) -> None:
                     continue
             elif house.id in excluded:
                 continue
-            for cand in route_candidates(state, house, shops):
+            cands = route_candidates(state, house, shops, clean=True) if clean else route_candidates(state, house, shops)
+            for cand in cands:
                 p = float(policy.priority({**candidate_features(state, cand, memory), **g}))
                 if not math.isfinite(p):
                     continue  # PLAN section 4: a non-finite score is never chosen

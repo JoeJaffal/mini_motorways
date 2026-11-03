@@ -65,7 +65,7 @@ The hand rule scores 152.1 on 2000–2019 (the bar was 140). All 21/21 replays v
 
 **Smoke test** (`gp2-smoke`: population 12, 4+4 seeds, 10 validation seeds): it ran on real games. Generation 0 had 9 behaviours among 12 texts and 3 immigrants. In generation 1, candidates at +10.6 and +11.2 trips were correctly not counted (t 0.73 and 0.61, critical value 3.25).
 
-**Results so far:** the full run `gp-2` (b8e82a0) started 2026-11-02 12:46 and is still running. Generations 0–12 are below, recorded at 23:02.
+**Results:** the full run `gp-2` (b8e82a0) started 2026-11-02 12:46 and was **paused on 2026-11-03 at 08:50 after 16 generations (0–15), not converged**. The user paused it to run gp-3. Its checkpoint is at generation 16 (format 2); resume it with `--resume` using the code of commit b8e82a0.
 
 | Gen | Validated (top 3) | Best so far | Best paired t (needs 2.68) | No-gain count | Round-1 avg | Behaviours / 64 | Time |
 |---|---|---|---|---|---|---|---|
@@ -82,6 +82,43 @@ The hand rule scores 152.1 on 2000–2019 (the bar was 140). All 21/21 replays v
 | 10 | 204.6, 195.6, 218.5 | 236.7 | 1.30 | 10 | 176.6 | 51 | 49 min |
 | 11 | 221.0, **242.8**, 233.4 | **242.8** | **2.79** (counted) | 0 | 168.5 | 50 | 52 min |
 | 12 | 230.9, 233.5, 204.6 (cached) | 242.8 | −0.62 | 1 | 179.6 | 53 | 53 min |
+| 13 | 239.5, 221.5, 213.4 | 242.8 | −0.24 | 2 | 185.8 | 50 | 70 min |
+| 14 | 228.0, **245.1**, 214.7 | **245.1** | 0.18 | 3 | 169.5 | 54 | 58 min |
+| 15 | 235.4, 206.9, 225.9 | 245.1 | −0.59 | 4 | 174.8 | 51 | 495 min (about 7 h asleep, unplugged) |
+
+**At the pause:**
+- The final model is 245.1 trips on validation (generation 14, 62 nodes). It is the best of 43 noisy validation means, so its true level is probably a little lower; held-out seeds will tell.
+- The anchor is 242.8 (generation 11), and the no-gain count was 4 of 20.
+- That is +57.6 over the separated preference and +92.0 over the hand rule on 1500–1549.
+- It has not been tested on held-out seeds yet (2000–2019 dev, 7000–7099 test).
+
+## 2026-11-03: gp-3 hand tests, traffic moves (road only)
+
+Plan: `plans/2026-11-03-gp3-traffic.md`. There are no traffic lights, roundabouts or motorways (user decision).
+
+**Diagnosis** (gp-2's best rule, 20 lost games on 1500–1519, `autopsy.py`):
+- About 70% of stuck cars wait at junctions and about 27% at a shop's single car-park gate.
+- About 6 of the failing colour's 11 stuck cars are within 3 tiles of the failing shop.
+- About 40% of road cells are junctions, and the failing shop's doorstep has 3.5 links on average.
+
+**New moves:**
+- **Clean routes** avoid junction links near doorsteps.
+- **Removal** of a tile that feeds a crowded doorstep, offered only when every connection is kept.
+- **Traffic inputs.**
+
+Each move is opt-in, and older rules play exactly as before.
+
+**Hand rules on 1500–1519 (n = 20):**
+
+| Rule | Trips | Notes |
+|---|---|---|
+| gp-2 best | 213.4 | identical to gp-2's own record of these games |
+| gp-2 best + clean routes offered | 210.0 | its priority tree does not know `is_clean` |
+| separated + coverage (old moves) | 167.7 | 42 tiles left at the end |
+| CleanHand (always a clean route first) | 139.4 | Doorstep links fell from 3.5 to 2.2, junctions near the failing shop roughly halved, and stuck cars near shops fell from 4.3 to 1.1. But it used about 20 tiles more and ran out of tiles in 3 games. Better on 6 of 20 seeds, sometimes by a lot (e.g. 249 vs 166, 161 vs 92). |
+| separated + coverage + removal (`seprm`) | 161.9 | About 0.6 removals per game. Equal on 12 seeds, better on 3, worse on 5. |
+
+**Verdict:** neither move helps as a fixed rule. Clean routes help on some maps and hurt on others, and which maps those are is exactly what evolution can learn from the traffic inputs. Next: gp-3, an evolution run with 4-tree individuals, seeded with gp-2's best rule.
 
 **Observations:**
 - **The best validated score rose steadily.** It went from 196.8 to 236.7 in 7 generations, above gp-1's 222 and 49 above the separated preference.

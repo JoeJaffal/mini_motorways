@@ -91,8 +91,13 @@ from .power import keep_awake
 EVOLVE_DIR = ROOT / "output" / "evolved_rules" / "evolve"  # /output/ is git-ignored
 # 2 (gp-2): per-seed validation trips in the state, the stop rule's significance test, the terminal set without
 # gp.DROPPED_TERMS. A format-1 run (gp-1) can only be resumed with the code it was made with (commit 49c8197).
-CHECKPOINT_FORMAT = 2
+# 3 (gp-3 code): the terminal sets grew (traffic inputs) and individuals may have 4 trees, so a format-2 run (gp-2)
+# would draw different random trees here; resume it with the code of commit b8e82a0.
+CHECKPOINT_FORMAT = 3
 EXISTING_RUN_EXIT_CODE = 2
+# Config fields whose command-line flag is not simply --field-name (for error messages)
+FLAG_NAMES = {"n_s4": "--first-seeds", "n_s8": "--more-seeds", "dedup": "--no-dedup", "seed_texts": "--seed-text",
+              "remove_tree": "--remove-tree", "cap_s": "--cap"}
 RESUMABLE_FIELDS = ("workers", "max_hours", "max_gens")  # may change on --resume: they never change a generation
 
 # Files of a run folder.
@@ -135,6 +140,9 @@ class Config:
     dedup: bool = True  # behavioural de-duplication and unique texts in the next population (gp-1: off)
     immigrants: int = 8  # at most this many fresh random individuals per generation, one per duplicate found
     sig_alpha: float = 0.005  # stop rule's one-sided paired-test level (0: mean gain only, the gp-1 rule)
+    # gp-3 (plans/2026-11-03-gp3-traffic.md): 4-tree individuals (a remove tree; clean routes and removals on)
+    remove_tree: bool = False
+    seed_texts: tuple[str, ...] = ()  # extra individuals for generation 0 (3-tree texts get remove = -1)
 
     def check(self) -> None:
         """ValueError for a parameter the loop cannot run with."""
@@ -148,6 +156,15 @@ class Config:
             v = getattr(self, name)
             need(isinstance(v, int) and not isinstance(v, bool), f"{name} must be an int, got {v!r}")
         need(isinstance(self.dedup, bool), f"dedup must be a bool, got {self.dedup!r}")
+        need(isinstance(self.remove_tree, bool), f"remove_tree must be a bool, got {self.remove_tree!r}")
+        need(isinstance(self.seed_texts, tuple) and all(isinstance(s, str) for s in self.seed_texts),
+             "seed_texts must be a tuple of individual texts")
+        for s in self.seed_texts:
+            try:
+                ind = gp.individual_from_text(s)
+            except ValueError as e:
+                raise ValueError(f"bad seed text: {e}") from None
+            need(len(ind) == 3 or self.remove_tree, "a 4-tree seed text needs remove_tree")
         need(1 <= self.validate_top <= self.racing_top,
              f"validate_top must be in 1..racing_top ({self.racing_top}), got {self.validate_top}")
         need(self.immigrants >= 0, f"immigrants must be >= 0, got {self.immigrants}")  # breed caps it per generation
@@ -178,6 +195,7 @@ class Config:
     def to_json(self) -> dict:
         d = asdict(self)
         d["validation"] = list(self.validation)
+        d["seed_texts"] = list(self.seed_texts)
         return d
 
     @classmethod
@@ -185,7 +203,12 @@ class Config:
         known = {f.name for f in fields(cls)}
         kw = {k: v for k, v in d.items() if k in known}
         kw["validation"] = tuple(kw.get("validation", ()))
+        kw["seed_texts"] = tuple(kw.get("seed_texts", ()))
         return cls(**kw)
+
+    @property
+    def trees(self) -> int:
+        return 4 if self.remove_tree else 3
 
 
 # --- the stop rule (shared with tune_cmaes.py) ---------------------------------------------------------------
@@ -382,11 +405,11 @@ def breed(population: list[str], fitness: dict, sizes: dict, elites: list[str], 
         out.append(text)
         seen.add(text)
     for _ in range(immigrants):
-        text = gp.individual_text(gp.random_individual())
+        text = gp.individual_text(gp.random_individual(trees=cfg.trees))
         for _ in range(UNIQUE_TRIES):
             if text not in seen:
                 break
-            text = gp.individual_text(gp.random_individual())
+            text = gp.individual_text(gp.random_individual(trees=cfg.trees))
         out.append(text)
         seen.add(text)
     return out
@@ -404,11 +427,20 @@ def behaviours(texts: list[str], games: dict, fitness: dict, sizes: dict) -> lis
 
 
 def initial_population(cfg: Config) -> list[str]:
-    """The hand rule, the separated preference, then random individuals (P2-9), from the global `random`."""
-    texts = [gp.individual_text(gp.individual_from_text(gp.HAND_TEXT)),
-             gp.individual_text(gp.individual_from_text(gp.SEPARATED_TEXT))][:cfg.pop]
+    """The hand rule, the separated preference, then random individuals (P2-9), from the global `random`.
+
+    With remove_tree (gp-3): those two and the clean rule (gp.CLEAN_TEXT), then cfg.seed_texts, all as 4-tree
+    texts (a 3-tree text gets remove = -1, never), then 4-tree random individuals. Repeated texts are kept once.
+    """
+    if not cfg.remove_tree:
+        texts = [gp.individual_text(gp.individual_from_text(gp.HAND_TEXT)),
+                 gp.individual_text(gp.individual_from_text(gp.SEPARATED_TEXT))]
+        texts += [gp.individual_text(gp.individual_from_text(s)) for s in cfg.seed_texts]
+    else:
+        texts = [gp.with_remove(s) for s in (gp.HAND_TEXT, gp.SEPARATED_TEXT, gp.CLEAN_TEXT, *cfg.seed_texts)]
+    texts = list(dict.fromkeys(texts))[:cfg.pop]
     while len(texts) < cfg.pop:
-        texts.append(gp.individual_text(gp.random_individual()))
+        texts.append(gp.individual_text(gp.random_individual(trees=cfg.trees)))
     return texts
 
 
@@ -477,7 +509,8 @@ def read_checkpoint(run_dir: Path) -> dict:
     with open(run_dir / CHECKPOINT, "rb") as f:
         state = pickle.load(f)  # our own file, written by write_checkpoint
     if state.get("format") != CHECKPOINT_FORMAT:
-        hint = " (a gp-1 run: resume it with the code of commit 49c8197)" if state.get("format") == 1 else ""
+        hint = {1: " (a gp-1 run: resume it with the code of commit 49c8197)",
+                2: " (a gp-2 run: resume it with the code of commit b8e82a0)"}.get(state.get("format"), "")
         raise ValueError(f"checkpoint format {state.get('format')!r}, expected {CHECKPOINT_FORMAT}{hint}")
     return state
 
@@ -567,7 +600,8 @@ def load(run_dir: Path, overrides: dict | None = None, config_cls=Config) -> tup
         if value is None or params.get(name) == value:
             continue
         if name not in RESUMABLE_FIELDS:
-            raise ValueError(f"--{name.replace('_', '-')} {value!r} differs from the saved run "
+            flag = FLAG_NAMES.get(name, "--" + name.replace("_", "-"))
+            raise ValueError(f"{flag} {value!r} differs from the saved run "
                              f"({params.get(name)!r}); only {', '.join(RESUMABLE_FIELDS)} may change on resume")
         changed[name] = value
     params.update(changed)
@@ -807,10 +841,16 @@ def main(argv: list[str] | None = None) -> int:
                         help=f"stop rule's paired-test level, 0 = mean gain only (default {d.sig_alpha:g})")
     parser.add_argument("--no-dedup", action="store_const", const=False, dest="dedup",
                         help="turn off behavioural de-duplication (the gp-1 scheme)")
+    parser.add_argument("--remove-tree", action="store_const", const=True, dest="remove_tree",
+                        help="gp-3: 4-tree individuals with a remove tree (clean routes and removals on)")
+    parser.add_argument("--seed-text", action="append", dest="seed_files", metavar="FILE",
+                        help="an individual text file added to generation 0 (repeatable)")
     args = parser.parse_args(argv)
-    given = {k: v for k, v in vars(args).items() if k not in ("run", "resume") and v is not None}
+    given = {k: v for k, v in vars(args).items() if k not in ("run", "resume", "seed_files") and v is not None}
     try:
         ev._check_run_name(args.run)
+        if args.seed_files:
+            given["seed_texts"] = tuple(Path(f).read_text(encoding="utf-8").strip() for f in args.seed_files)
         if "validation" in given:
             given["validation"] = parse_validation(given["validation"])
         cfg = None if args.resume else Config(**given)

@@ -40,13 +40,14 @@ from pathlib import Path
 from .agent import play_game, trips_per_tile
 from .gp import TreePolicy, individual_from_text, individual_text
 from .host import ROOT, Host, default_host_dll
-from .rules import DoNothing, HandRule, SeparatedPreference
+from .rules import CleanHand, CleanRemoveHand, DoNothing, HandRule, SeparatedPreference, SeparatedRemoveHand
 from .session import DEFAULT_SCENARIO, TICKS, raise_if_rejected
 from .state import parse_observation
 from .verify import build_verifier, verify_recording
 
 RUNS_DIR = ROOT / "output" / "evolved_rules" / "runs"  # /output/ is git-ignored
-POLICIES = {"hand": HandRule, "nothing": DoNothing, "separated": SeparatedPreference}
+POLICIES = {"hand": HandRule, "nothing": DoNothing, "separated": SeparatedPreference, "clean": CleanHand,
+            "cleanrm": CleanRemoveHand, "seprm": SeparatedRemoveHand}
 REFERENCE = "reference"  # the privileged baseline: the host's own network builder, never recorded
 POLICY_NAMES = (*POLICIES, REFERENCE)
 TREE_PREFIX = "tree:"  # --policy tree:<file>: an individual text file played as gp.TreePolicy

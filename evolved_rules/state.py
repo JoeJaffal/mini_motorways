@@ -47,6 +47,20 @@ class Building:
 
 
 @dataclass(frozen=True)
+class Car:
+    """One vehicle's current state (gp-3 traffic inputs). Read: colour, stage, home and shop ids, position and
+    speed. These are current-state fields; the planned `route` / `returnRoute` stay excluded (PLAN decision 7)."""
+
+    color: int
+    stage: str
+    home_id: int
+    shop_id: int
+    x: float
+    y: float
+    speed: float
+
+
+@dataclass(frozen=True)
 class Offer:
     index: int
     type: int
@@ -75,6 +89,7 @@ class CityState:
     buildings: tuple[Building, ...]
     vehicles_busy: dict[int, int]
     vehicles_waiting: tuple[float, ...]
+    cars: tuple[Car, ...] = ()  # in observation order
 
     def playable(self, c: Cell) -> bool:
         x0, y0, x1, y1 = self.bounds
@@ -177,11 +192,15 @@ def parse_observation(obs: dict) -> CityState:
     buildings = tuple(sorted((_building(b) for b in obs["buildings"]), key=lambda b: b.id))
     busy: dict[int, int] = {}
     waiting: list[float] = []
+    cars: list[Car] = []
     for v in obs["vehicles"]:
         color = _check_color(int(v["color"]))
         if v["stage"] != "Home":
             busy[color] = busy.get(color, 0) + 1
         waiting.append(float(v["waiting"]))
+        cars.append(Car(color=color, stage=str(v["stage"]), home_id=int(v.get("homeId", -1)),
+                        shop_id=int(v.get("shopId", -1)), x=float(v.get("x", 0.0)), y=float(v.get("y", 0.0)),
+                        speed=float(v.get("speed", 0.0))))
     return CityState(
         time=float(obs["time"]),
         trips=int(obs["tripsCompleted"]),
@@ -199,4 +218,5 @@ def parse_observation(obs: dict) -> CityState:
         buildings=buildings,
         vehicles_busy=busy,
         vehicles_waiting=tuple(waiting),
+        cars=tuple(cars),
     )

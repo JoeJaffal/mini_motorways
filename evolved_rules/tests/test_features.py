@@ -26,9 +26,14 @@ from evolved_rules.tests.helpers import house, make_obs, shop
 E, SE, S, SW, W_, NW, N, NE = range(8)
 
 CANDIDATE_V2 = ["path_cost_s", "house_served", "shop_demand", "shop_unassigned", "shop_capacity",
-                "shop_overcrowded", "shop_rate", "shop_houses", "colour_margin"]
+                "shop_overcrowded", "shop_rate", "shop_houses", "colour_margin",
+                # gp-3 traffic inputs
+                "is_clean", "near_shop_junctions", "ends_near_shop", "shop_doorstep_degree", "shop_heading",
+                "shop_stuck"]
 GLOBAL_V2 = ["pending_refunds", "next_offer_s", "disconnected_components", "unserved_shops", "edge_distance",
-             "worst_overcrowded", "worst_margin", "shops", "houses"]
+             "worst_overcrowded", "worst_margin", "shops", "houses",
+             # gp-3 traffic inputs
+             "worst_doorstep_degree", "most_stuck_near_shop", "stuck_cars"]
 
 
 def _links(*cells):

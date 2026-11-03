@@ -11,12 +11,15 @@ between games. Everything is deterministic: buildings are visited in id order, h
 from __future__ import annotations
 
 import heapq
+import math
 from collections import deque
 
 import numpy as np
 
-from .candidates import RouteCandidate
+from .candidates import NEAR_SHOP_RADIUS, RemovalCandidate, RouteCandidate, link_degree
 from .state import DIRS, Building, Cell, CityState, Offer, _in_grid
+
+STUCK_SPEED = 0.05  # tiles/s: a driving car slower than this is stuck (as autopsy.py)
 
 N_ITEM_TYPES = 6  # inventory: roads, bridges, motorways, traffic lights, roundabouts, unused
 
@@ -243,6 +246,41 @@ class _Analysis:
         self._served: dict[int, bool] | None = None
         self._shop_houses: dict[int, int] | None = None
         self._margins: dict[int, float] | None = None
+        self._traffic: dict[int, tuple[int, int, int, int]] | None = None
+
+    def traffic(self) -> dict[int, tuple[int, int, int, int]]:
+        """Shop id -> (doorstep degree, junctions near the doorstep, cars heading there, cars stuck nearby).
+
+        gp-3 inputs (EXPERIMENTS.md, gp-2 autopsy): about 70% of the stuck cars in lost games wait at junctions,
+        mostly within 3 tiles of the failing shop, whose doorstep carries 3-4 links. The doorstep is the cell
+        outside an entrance (the highest degree if a shop has two); "near" is Chebyshev NEAR_SHOP_RADIUS of a
+        doorstep; a junction is a road cell with >= 3 links; a car heads to a shop while Outbound or
+        EnteringParking with that shopId; a car is stuck when it drives (not Home or Parking) slower than
+        STUCK_SPEED. Uses vehicle stage/shopId/position/speed: current-state fields (PLAN decision 7, extra).
+        """
+        if self._traffic is None:
+            st = self.state
+            road = (st.infra != 0) & (st.pending != 1)
+            # live links only (candidates.link_degree): a tile pending removal no longer counts
+            junctions = [(int(x), int(y)) for y, x in np.argwhere(road) if link_degree(st, (int(x), int(y))) >= 3]
+            # a car's position is a float (a cell centre is x + 0.5): it is near by the cell it is in
+            stuck_cells = [(math.floor(c.x), math.floor(c.y)) for c in st.cars
+                           if c.stage not in ("Home", "Parking") and c.speed < STUCK_SPEED]
+            out: dict[int, tuple[int, int, int, int]] = {}
+            for s in self.shops:
+                steps = [o for o in s.outside if _in_grid(o)]
+
+                def near(c: Cell) -> bool:
+                    return any(max(abs(c[0] - ox), abs(c[1] - oy)) <= NEAR_SHOP_RADIUS for ox, oy in steps)
+
+                out[s.id] = (
+                    max((link_degree(st, o) for o in steps), default=0),
+                    sum(1 for j in junctions if near(j)),
+                    sum(1 for c in st.cars if c.shop_id == s.id and c.stage in ("Outbound", "EnteringParking")),
+                    sum(1 for c in stuck_cells if near(c)),
+                )
+            self._traffic = out
+        return self._traffic
 
     def house_served(self, h: Building) -> bool:
         if self._served is None:
@@ -358,6 +396,14 @@ def candidate_features(state: CityState, cand: RouteCandidate, memory: GameMemor
                   "shop_houses"):
             f[k] = 0.0
     f["colour_margin"] = float(a.margins().get(house.color, 0.0)) if house is not None else 0.0
+    # gp-3 (traffic): the route's own junction links near doorsteps, and the target shop's traffic
+    f["is_clean"] = 1.0 if cand.kind == "clean" else 0.0
+    f["near_shop_junctions"] = float(cand.near_shop_junctions)
+    f["ends_near_shop"] = 1.0 if cand.ends_near_shop else 0.0
+    door, _, heading, stuck = a.traffic().get(best[1], (0, 0, 0, 0)) if best is not None else (0, 0, 0, 0)
+    f["shop_doorstep_degree"] = float(door)
+    f["shop_heading"] = float(heading)
+    f["shop_stuck"] = float(stuck)
     return f
 
 
@@ -415,7 +461,30 @@ def global_features(state: CityState, memory: GameMemory | None = None) -> dict[
     g["worst_margin"] = min(margins.values(), default=0.0)
     g["shops"] = float(len(a.shops))
     g["houses"] = float(len(a.houses))
+    # gp-3 (traffic): the worst doorstep and the worst jam near a shop, and every stuck car
+    traffic = a.traffic()
+    g["worst_doorstep_degree"] = float(max((t[0] for t in traffic.values()), default=0))
+    g["most_stuck_near_shop"] = float(max((t[3] for t in traffic.values()), default=0))
+    g["stuck_cars"] = float(sum(1 for c in state.cars if c.stage not in ("Home", "Parking")
+                                and c.speed < STUCK_SPEED))
     return g
+
+
+def removal_features(state: CityState, rc: RemovalCandidate, memory: GameMemory | None = None) -> dict[str, float]:
+    """Features of one removal candidate (gp-3 remove tree): the tile, its nearest doorstep and that shop."""
+    a = _analysis_of(state, memory)
+    _, near_junctions, heading, stuck = a.traffic().get(rc.shop_id, (0, 0, 0, 0))
+    shop = a.by_id.get(rc.shop_id)
+    return {
+        "rm_degree": float(rc.degree),
+        "rm_dist": float(rc.dist),
+        "rm_links_doorstep": 1.0 if rc.links_doorstep else 0.0,
+        "rm_doorstep_degree": float(rc.doorstep_degree),
+        "rm_shop_junctions": float(near_junctions),
+        "rm_shop_heading": float(heading),
+        "rm_shop_stuck": float(stuck),
+        "rm_shop_unassigned": float(shop.demand - shop.reserved) if shop is not None else 0.0,
+    }
 
 
 def offer_features(offer: Offer, state: CityState | None = None) -> dict[str, float]:
