@@ -138,26 +138,26 @@ Each move is opt-in, and older rules play exactly as before.
 
 **Setup:** as gp-2, plus 4-tree individuals (remove tree, clean routes, removals, traffic inputs).
 
-**Seeds:** the hand rule, the separated rule, the clean rule, gp-2's best (245.1), and from attempt 2 a never-clean copy of gp-2's best.
+**Seeds:** the hand rule, the separated rule, the clean rule, gp-2's best (245.1), and from gp-3.2 a never-clean copy of gp-2's best.
 
-**Attempt 1 (stopped after generation 0):**
+**gp-3.1 (attempt 1, stopped after generation 0):**
 
 | | Best validated (50 maps) | Average, all 64 rule sets (8 training maps) |
 |---|---|---|
 | Generation 0 | 228.1 (the gp-2 seed) | 83.1 |
 
 - With clean routes offered, gp-2's best scored 228.1 against its own 245.1 on the same 50 maps. It was better on 16, worse on 24 and equal on 10. Its trees do not know `is_clean`, so they sometimes pick a clean route by chance.
-- That handicaps gp-3 from the start, so attempt 1 was stopped and kept as `evolve/gp-3-attempt1`.
+- That handicaps gp-3 from the start, so gp-3.1 was stopped and kept as `evolve/gp-3.1`.
 
-**Attempt 2** (`evolve/gp-3`, started 2026-11-03 10:21):
+**gp-3.2** (attempt 2, started 2026-11-03 10:21; its folder is `evolve/gp-3` while it runs and becomes `evolve/gp-3.2` when it stops):
 - **The added seed** is a never-clean copy of gp-2's best. Its priority tree is the same function written without the root `neg` and the double `neg`s (both exact in IEEE arithmetic), minus 1000 × is_clean. All trees stay within depth 6.
 - **It plays gp-2's games exactly.** On seeds 1500, 1503, 1511, 1525, 1531 and 1540 it matched every recorded (trips, seconds), including a 606-trip game.
-- So gp-3 starts from gp-2's real level, and any gain over it comes from the traffic moves.
+- So gp-3.2 starts from gp-2's real level, and any gain over it comes from the traffic moves.
 
 **Expectations (2026-11-03, before results):**
 - gp-2's gains slowed from about +6 per generation (generations 0–7) to about +1 (generations 7–14), and its average stayed at about 170–185 from generation 4 on. More gp-2 generations would add only a few trips.
-- gp-3 can do more only if evolution learns when to take a clean route. In the hand tests clean routes won on about 1 map in 3, sometimes by 60–80 trips, and lost on the rest.
-- Guess: gp-3 ends between gp-2's level and 20–40 trips above it, with the first gains around generations 5–15 if they come.
+- gp-3.2 can do more only if evolution learns when to take a clean route. In the hand tests clean routes won on about 1 map in 3, sometimes by 60–80 trips, and lost on the rest.
+- Guess: gp-3.2 ends between gp-2's level and 20–40 trips above it, with the first gains around generations 5–15 if they come.
 
 **What to watch:**
 - a counted improvement, meaning a paired t above the critical value against the anchor;
@@ -168,4 +168,5 @@ If nothing counts by about generation 15, the moves themselves are not enough. T
 
 | Gen | Best validated, top 3 (50 maps) | Best so far | Best paired t | No-gain count | Average, all 64 rule sets (8 training maps) | Behaviours / 64 | Time |
 |---|---|---|---|---|---|---|---|
-| 0 | running | | | | | | |
+| 0 | 228.1, 245.1, 191.5 | 245.1 | – | 0 | 91.8 | 48 | 51 min |
+| 1 | 230.9, 228.1, 245.1 | 245.1 | −1.28 | 1 | 180.1 | 46 | 14 min (resumed after a battery stop; 655 games cached) |
