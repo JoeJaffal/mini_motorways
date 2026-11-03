@@ -170,3 +170,5 @@ If nothing counts by about generation 15, the moves themselves are not enough. T
 |---|---|---|---|---|---|---|---|
 | 0 | 228.1, 245.1, 191.5 | 245.1 | – | 0 | 91.8 | 48 | 51 min |
 | 1 | 230.9, 228.1, 245.1 | 245.1 | −1.28 | 1 | 180.1 | 46 | 14 min (resumed after a battery stop; 655 games cached) |
+| 2 | 244.2, 244.8, 245.0 | 245.1 | −0.01 | 2 | 201.7 | 52 | 74 min |
+| 3 | 228.1, 244.2, 243.3 | 245.1 | −0.25 | 3 | 181.7 | 46 | 53 min |
