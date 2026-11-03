@@ -2,6 +2,10 @@
 
 Newest entry at the bottom. Each entry covers what was tried, the results and the verdict. Scores are mean trips on Los Angeles (OriginalReference), with a 3600 s cap.
 
+**Best and average.** Every evolution table gives both:
+- **Best:** a rule set's average trips over the 50 validation maps (1500–1549). This is the score of the top validated rule sets.
+- **Average:** the average trips of every rule set in that generation, on that generation's round-1 training maps. The maps change every generation, so this number swings with how hard they are.
+
 ## Baselines
 
 | Rule | Validation 1500–1549 (n = 50) | Dev 2000–2019 (n = 20) |
@@ -22,7 +26,7 @@ The hand rule scores 152.1 on 2000–2019 (the bar was 140). All 21/21 replays v
 - One individual is validated on 1500–1549 per generation.
 - Stop rule: 20 generations without a gain of at least 2%.
 
-| Gen | Validated | Best so far | No-gain count | Training avg (4 seeds) |
+| Gen | Best validated (50 maps) | Best so far | No-gain count | Average, all 64 rule sets (4 training maps) |
 |---|---|---|---|---|
 | 0 | 222.0 (new) | 222.0 | 0 | 93.9 |
 | 1 | 222.0 (same) | 222.0 | 1 | 190.3 |
@@ -67,7 +71,7 @@ The hand rule scores 152.1 on 2000–2019 (the bar was 140). All 21/21 replays v
 
 **Results:** the full run `gp-2` (b8e82a0) started 2026-11-02 12:46 and was **paused on 2026-11-03 at 08:50 after 16 generations (0–15), not converged**. The user paused it to run gp-3. Its checkpoint is at generation 16 (format 2); resume it with `--resume` using the code of commit b8e82a0.
 
-| Gen | Validated (top 3) | Best so far | Best paired t (needs 2.68) | No-gain count | Round-1 avg | Behaviours / 64 | Time |
+| Gen | Best validated, top 3 (50 maps) | Best so far | Best paired t (needs 2.68) | No-gain count | Average, all 64 rule sets (8 training maps) | Behaviours / 64 | Time |
 |---|---|---|---|---|---|---|---|
 | 0 | 174.9, 191.4, 196.8 | 196.8 | – | 0 | 101.3 | 46 | 14 min |
 | 1 | 206.6, 206.5, 197.7 | 206.6 | 0.93 | 1 | 170.7 | 44 | 23 min |
@@ -128,3 +132,26 @@ Each move is opt-in, and older rules play exactly as before.
 - **Generations are slower now, about 45–50 min.** Better rules survive longer, and long games cost more to simulate.
 - **The plateau was not convergence.** Generation 11 found 242.8 trips: +46.1 over the anchor, paired t 2.79 against the 2.68 needed. This is the run's first counted improvement. The anchor moved to 242.8 and the no-gain count went back to 0, so at least 20 more generations are needed before the run can converge. The best rule built 3.17 trips per road tile, the most efficient so far.
 - **The sleep fix works.** The lid was closed twice (15:23–16:43 and 17:18–18:32). Both times the run logged `suspend detected` and kept going: no game was killed and nothing crashed.
+
+
+## 2026-11-03: gp-3, traffic moves under evolution (d80fc8d)
+
+**Setup:** as gp-2, plus 4-tree individuals (remove tree, clean routes, removals, traffic inputs).
+
+**Seeds:** the hand rule, the separated rule, the clean rule, gp-2's best (245.1), and from attempt 2 a never-clean copy of gp-2's best.
+
+**Attempt 1 (stopped after generation 0):**
+
+| | Best validated (50 maps) | Average, all 64 rule sets (8 training maps) |
+|---|---|---|
+| Generation 0 | 228.1 (the gp-2 seed) | 83.1 |
+
+- With clean routes offered, gp-2's best scored 228.1 against its own 245.1 on the same 50 maps. It was better on 16, worse on 24 and equal on 10. Its trees do not know `is_clean`, so they sometimes pick a clean route by chance.
+- That handicaps gp-3 from the start, so attempt 1 was stopped and kept as `evolve/gp-3-attempt1`.
+
+**Attempt 2** (`evolve/gp-3`, started 2026-11-03 10:53):
+- **The added seed** is a never-clean copy of gp-2's best. Its priority tree is the same function written without the root `neg` and the double `neg`s (both exact in IEEE arithmetic), minus 1000 × is_clean. All trees stay within depth 6.
+- **It plays gp-2's games exactly.** On seeds 1500, 1503, 1511, 1525, 1531 and 1540 it matched every recorded (trips, seconds), including a 606-trip game.
+- So gp-3 starts from gp-2's real level, and any gain over it comes from the traffic moves.
+
+**Results:** pending.
