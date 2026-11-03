@@ -154,4 +154,18 @@ Each move is opt-in, and older rules play exactly as before.
 - **It plays gp-2's games exactly.** On seeds 1500, 1503, 1511, 1525, 1531 and 1540 it matched every recorded (trips, seconds), including a 606-trip game.
 - So gp-3 starts from gp-2's real level, and any gain over it comes from the traffic moves.
 
-**Results:** pending.
+**Expectations (2026-11-03, before results):**
+- gp-2's gains slowed from about +6 per generation (generations 0–7) to about +1 (generations 7–14), and its average stayed at about 170–185 from generation 4 on. More gp-2 generations would add only a few trips.
+- gp-3 can do more only if evolution learns when to take a clean route. In the hand tests clean routes won on about 1 map in 3, sometimes by 60–80 trips, and lost on the rest.
+- Guess: gp-3 ends between gp-2's level and 20–40 trips above it, with the first gains around generations 5–15 if they come.
+
+**What to watch:**
+- a counted improvement, meaning a paired t above the critical value against the anchor;
+- the average of all 64 rule sets rising above gp-2's 170–185;
+- the best trees reading `is_clean`, the traffic inputs, or a remove tree that is not constant.
+
+If nothing counts by about generation 15, the moves themselves are not enough. The next change would then be something other than more generations: more seeds per evaluation (less noise), or new move types.
+
+| Gen | Best validated, top 3 (50 maps) | Best so far | Best paired t | No-gain count | Average, all 64 rule sets (8 training maps) | Behaviours / 64 | Time |
+|---|---|---|---|---|---|---|---|
+| 0 | running | | | | | | |
