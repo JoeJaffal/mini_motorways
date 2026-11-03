@@ -149,7 +149,7 @@ Each move is opt-in, and older rules play exactly as before.
 - With clean routes offered, gp-2's best scored 228.1 against its own 245.1 on the same 50 maps. It was better on 16, worse on 24 and equal on 10. Its trees do not know `is_clean`, so they sometimes pick a clean route by chance.
 - That handicaps gp-3 from the start, so gp-3.1 was stopped and kept as `evolve/gp-3.1`.
 
-**gp-3.2** (attempt 2, started 2026-11-03 10:21; its folder is `evolve/gp-3` while it runs and becomes `evolve/gp-3.2` when it stops):
+**gp-3.2** (attempt 2, folder `evolve/gp-3.2`, started 2026-11-03 10:21):
 - **The added seed** is a never-clean copy of gp-2's best. Its priority tree is the same function written without the root `neg` and the double `neg`s (both exact in IEEE arithmetic), minus 1000 × is_clean. All trees stay within depth 6.
 - **It plays gp-2's games exactly.** On seeds 1500, 1503, 1511, 1525, 1531 and 1540 it matched every recorded (trips, seconds), including a 606-trip game.
 - So gp-3.2 starts from gp-2's real level, and any gain over it comes from the traffic moves.
@@ -172,3 +172,32 @@ If nothing counts by about generation 15, the moves themselves are not enough. T
 | 1 | 230.9, 228.1, 245.1 | 245.1 | −1.28 | 1 | 180.1 | 46 | 14 min (resumed after a battery stop; 655 games cached) |
 | 2 | 244.2, 244.8, 245.0 | 245.1 | −0.01 | 2 | 201.7 | 52 | 74 min |
 | 3 | 228.1, 244.2, 243.3 | 245.1 | −0.25 | 3 | 181.7 | 46 | 53 min |
+| 4 | 231.1, 226.2, 227.1 | 245.1 | −1.25 | 4 | 180.1 | 47 | 62 min |
+| 5 | 229.2, 228.7, 237.7 | 245.1 | −0.45 | 5 | 206.5 | 45 | 10 min (resumed after the pause; most games cached) |
+| 6 | 227.4, 220.2, 229.2 | 245.1 | −1.03 | 6 | 172.8 | 44 | 57 min |
+| 7 | 221.1, 220.2, 218.6 | 245.1 | −1.49 | 7 | 197.7 | 44 | 64 min |
+
+**Paused** on 2026-11-03 at 16:10, during generation 5, while the user was offline, and resumed at 20:14. The run folder and logs were renamed from `gp-3` to `gp-3.2` at that pause; the run does not record its folder name.
+
+**Stopped** on 2026-11-03 at 22:31, during generation 8 (no-gain count 7/20), and replaced by gp-3.3. The checkpoint is at generation 8; `--run gp-3.2 --resume` continues it with the gp-3.3 code (the hall of fame is off for it, so it plays exactly as before).
+
+**Why it was stopped: the search drifted.**
+- Validated scores fell from about 244 (generation 2) to about 220 (generation 7). The best stayed 245.1 only because the run keeps its validated best.
+- gp-2's rule left the elites after generation 1. In generation 2 it scored 289 on that generation's 8 first-round maps, missed the racing top 16, and so never played the other 24 maps. It was not in the elites again.
+- Its replacements take clean routes freely and swing from map to map. The best of 16 on 32 maps scored 250–303 there but validated 218–237. Picking the top of noisy scores rewarded luck, not skill.
+- Expected outcome if left running: stop as converged around generation 21 at 245.1, adding nothing over gp-2.
+
+## 2026-11-03: gp-3.3, a hall of fame against selection noise
+
+**Changes** (plans/2026-11-03-gp33-hall-of-fame.md, `--hof 8 --reference gp2-best-noclean.txt`):
+- **Scores relative to a reference.** gp-2's rule (its never-clean copy) plays every generation's 32 training maps. A rule's score on a map is its trips minus the reference's trips there, so scores from different generations can be pooled.
+- **Hall of fame (8 rules).** Members are re-tested on every generation's 32 maps and keep all their per-map differences. They are ranked by mean difference minus one standard error, so a rule that swings needs a bigger lead.
+- **Fair entry and exit.**
+  - A newcomer from the racing top is scored on the 24 maps it was not picked on.
+  - Rules that play identical games count once, the member first.
+  - A rule that leaves the hall keeps its record for if it comes back.
+- **Probation.** Elites and validation take members that have already been re-tested at least once. The validation maps still never feed selection.
+- **Seeds.** gp-2's rule and gp-3.2's five best validated variants (245.0, 244.8, 244.2, 243.3, 237.7). Choosing them by validation is a mild use of the validation maps; final scores come from held-out maps.
+- Everything else as gp-3.2: 4-tree rules, 64 rule sets, 8 + 24 training maps, the same stop rule on 1500–1549.
+
+**What to watch:** whether gp-2's rule stays in the hall and among the elites; whether validated scores stop drifting down; a counted improvement over 245.1.
