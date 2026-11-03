@@ -3,7 +3,8 @@
     PY -m evolved_rules.evolve --run NAME [--resume] [--workers 10] [--pop 64] [--seed 1] [--min-gens 30]
         [--patience 20] [--min-gain-frac 0.02] [--min-gain-trips 3] [--max-hours 72] [--max-gens 400]
         [--validation 1500-1549] [--cap 3600] [--first-seeds 8] [--more-seeds 24] [--racing-top 16]
-        [--validate-top 3] [--immigrants 8] [--sig-alpha 0.005] [--no-dedup]
+        [--validate-top 3] [--immigrants 8] [--sig-alpha 0.005] [--no-dedup] [--remove-tree] [--seed-text FILE]
+        [--hof 8 --reference FILE [--hof-se 1]]
 
 One generation (decisions P2-1..P2-4 of plans/2026-11-01-phase2-evolution.md, as changed for gp-2 in
 EXPERIMENTS.md; the gp-1 values are in brackets, and --first-seeds 4 --more-seeds 8 --validate-top 1
@@ -29,6 +30,22 @@ the terminal set):
    offspring with probability 0.3 (gp.mate / gp.mutate keep every tree within the depth limit of 6). With
    de-duplication an offspring that repeats a text is mutated again, and each behavioural duplicate found
    buys one fresh random immigrant in the last slots (at most `immigrants`, and at least one offspring).
+
+Hall of fame (gp-3.3, hof > 0; plans/2026-11-03-gp33-hall-of-fame.md). gp-3.2 lost its best rule to one bad 8-seed
+first round and drifted to rules that are lucky on 32 seeds. With hof > 0, steps 5 and 6 change:
+- A fixed reference rule (reference_text) plays all n_s4 + n_s8 training seeds of every generation. A rule's
+  score on a seed is its trips minus the reference's there, which removes seed difficulty, so scores from
+  different generations can be pooled.
+- The hall's members play every generation's training seeds too and keep all their per-seed differences.
+  Candidates are the members, the racing top and the reference; the hall ranks them by a lower confidence bound,
+  mean difference - hof_se * its standard error, then mean, then -size. A newcomer's first differences leave out
+  the first-round seeds it was picked on. Candidates with identical games this generation count once (a member
+  first, then the reference), and the best `hof` form the next hall. Texts that leave the hall keep their record
+  in an archive, so a text that comes back does not start afresh.
+- Probation: the elites are the hall's re-tested members first (members since an earlier generation), then the
+  rest of the hall, then the racing top; the validated individuals are its top `validate_top` re-tested members.
+  Breeding is unchanged. Generation 0's hall is the reference and the seed texts (they count as re-tested).
+hof = 0 is the loop above exactly (checkpoint format 3); hof > 0 writes format 4.
 
 Stop rule (P2-1, class Convergence; tune_cmaes.py uses the same class, stop_reason and run_loop). A validated
 individual counts as an improvement when its mean is at least `anchor + max(min_gain_trips, min_gain_frac *
@@ -94,10 +111,13 @@ EVOLVE_DIR = ROOT / "output" / "evolved_rules" / "evolve"  # /output/ is git-ign
 # 3 (gp-3 code): the terminal sets grew (traffic inputs) and individuals may have 4 trees, so a format-2 run (gp-2)
 # would draw different random trees here; resume it with the code of commit b8e82a0.
 CHECKPOINT_FORMAT = 3
+# 4 (gp-3.3): a run with a hall of fame (hof > 0) also checkpoints the hall; older code must refuse it, since it
+# would resume the run without one.
+HOF_CHECKPOINT_FORMAT = 4
 EXISTING_RUN_EXIT_CODE = 2
 # Config fields whose command-line flag is not simply --field-name (for error messages)
 FLAG_NAMES = {"n_s4": "--first-seeds", "n_s8": "--more-seeds", "dedup": "--no-dedup", "seed_texts": "--seed-text",
-              "remove_tree": "--remove-tree", "cap_s": "--cap"}
+              "remove_tree": "--remove-tree", "cap_s": "--cap", "reference_text": "--reference"}
 RESUMABLE_FIELDS = ("workers", "max_hours", "max_gens")  # may change on --resume: they never change a generation
 
 # Files of a run folder.
@@ -143,6 +163,10 @@ class Config:
     # gp-3 (plans/2026-11-03-gp3-traffic.md): 4-tree individuals (a remove tree; clean routes and removals on)
     remove_tree: bool = False
     seed_texts: tuple[str, ...] = ()  # extra individuals for generation 0 (3-tree texts get remove = -1)
+    # gp-3.3 (plans/2026-11-03-gp33-hall-of-fame.md): a hall of fame re-tested every generation (0: off)
+    hof: int = 0
+    reference_text: str = ""  # the rule whose per-seed trips are subtracted (needed with hof)
+    hof_se: float = 1.0  # the hall ranks by mean difference - hof_se * standard error
 
     def check(self) -> None:
         """ValueError for a parameter the loop cannot run with."""
@@ -151,7 +175,7 @@ class Config:
                 raise ValueError(what)
 
         ints = ("pop", "seed", "min_gens", "patience", "max_gens", "workers", "n_s4", "n_s8", "racing_top",
-                "elites", "tournament", "train_lo", "train_hi", "validate_top", "immigrants")
+                "elites", "tournament", "train_lo", "train_hi", "validate_top", "immigrants", "hof")
         for name in ints:
             v = getattr(self, name)
             need(isinstance(v, int) and not isinstance(v, bool), f"{name} must be an int, got {v!r}")
@@ -165,6 +189,25 @@ class Config:
             except ValueError as e:
                 raise ValueError(f"bad seed text: {e}") from None
             need(len(ind) == 3 or self.remove_tree, "a 4-tree seed text needs remove_tree")
+        need(self.hof >= 0, f"hof must be >= 0, got {self.hof}")
+        need(isinstance(self.reference_text, str), "reference_text must be an individual text")
+        need(isinstance(self.hof_se, (int, float)) and not isinstance(self.hof_se, bool)
+             and math.isfinite(self.hof_se) and self.hof_se >= 0, f"hof_se must be a finite number >= 0, got "
+             f"{self.hof_se!r}")
+        if self.hof:
+            need(bool(self.reference_text.strip()), "hof needs a reference_text (--reference)")
+            try:
+                ref = gp.individual_from_text(self.reference_text)
+            except ValueError as e:
+                raise ValueError(f"bad reference text: {e}") from None
+            need(len(ref) == 3 or self.remove_tree, "a 4-tree reference text needs remove_tree")
+            need(self.hof >= self.elites and self.hof >= self.validate_top,
+                 f"hof ({self.hof}) must be at least elites ({self.elites}) and validate_top ({self.validate_top}): "
+                 f"both come from the hall")
+            need(self.n_s8 >= 2, f"hof needs at least 2 extra seeds (--more-seeds), got {self.n_s8}: a newcomer is "
+                 f"scored on those only, and a lower bound needs two")
+        else:
+            need(not self.reference_text, "reference_text is only used with hof > 0")
         need(1 <= self.validate_top <= self.racing_top,
              f"validate_top must be in 1..racing_top ({self.racing_top}), got {self.validate_top}")
         need(self.immigrants >= 0, f"immigrants must be >= 0, got {self.immigrants}")  # breed caps it per generation
@@ -444,6 +487,88 @@ def initial_population(cfg: Config) -> list[str]:
     return texts
 
 
+def canonical(cfg: Config, text: str) -> str:
+    """text as the population writes it (initial_population's form: with remove_tree, always 4 trees)."""
+    return gp.with_remove(text) if cfg.remove_tree else gp.individual_text(gp.individual_from_text(text))
+
+
+def initial_hof(cfg: Config) -> list[dict]:
+    """Generation 0's hall of fame: the reference, then the seed texts, each with no differences yet."""
+    texts = dict.fromkeys(canonical(cfg, t) for t in (cfg.reference_text, *cfg.seed_texts))
+    return [{"text": t, "diffs": {}, "gen": 0} for t in texts]
+
+
+def hof_score(diffs: dict, se_weight: float) -> tuple[float, float]:
+    """(mean, lower bound) of a rule's per-seed differences from the reference: mean - se_weight * standard
+    error. With fewer than 2 seeds the error is unknown and the bound is -inf."""
+    d = list(diffs.values())
+    mean = float(statistics.fmean(d))
+    if len(d) < 2:
+        return mean, -math.inf
+    return mean, mean - se_weight * statistics.stdev(d) / math.sqrt(len(d))
+
+
+HOF_ROUND = 9  # bounds and means are compared rounded, so float noise cannot break an exact tie
+
+
+def update_hof(cfg: Config, hof: list[dict], ranked: list[str], games: dict, ref: str, seeds: list,
+               sizes: dict, gen: int, skip_new: int = 0,
+               archive: dict | None = None) -> tuple[list[dict], list[dict], dict]:
+    """The next hall of fame, its records and the updated archive (plans/2026-11-03-gp33-hall-of-fame.md).
+
+    hof: the current members ({"text", "diffs": {seed: trips - reference trips}, "gen": generation joined}).
+    ranked: the racing top, best first. games: every candidate's games on `seeds` (in that order), the
+    reference's included. archive: the records of texts that left the hall or never got in ({text: {"diffs",
+    "gen"}}), so a text that comes back keeps its record instead of starting afresh.
+
+    Candidates whose games this generation are identical count once, chosen before any ranking: a member (the
+    longest record first) over the reference over the racing top (in its order), so a copy that is lucky on a
+    short record cannot replace a member's long one. Each candidate adds this generation's differences to its
+    record; a text that was not a member skips the first `skip_new` seeds (the racing top was picked on the
+    first-round seeds, so its games there flatter it). They are ranked by (lower bound, mean, -size), rounded to
+    HOF_ROUND places; the sort is stable, so full ties keep candidate order. The best cfg.hof form the hall.
+    Each record says whether the text was already a member ("tested": it has been re-tested since it joined).
+    """
+    archive = dict(archive or {})
+    ref_trips = [g["trips"] for g in games[ref]]
+    old = {m["text"]: m for m in hof}
+    members = sorted(old, key=lambda t: -len(old[t]["diffs"]))  # stable: equal records keep hall order
+    def record(t: str) -> tuple[dict, int]:
+        prev = old.get(t) or archive.get(t)
+        diffs = dict(prev["diffs"]) if prev else {}
+        first = 0 if t in old else skip_new
+        for s, g, r in zip(seeds[first:], games[t][first:], ref_trips[first:]):
+            diffs[s] = float(g["trips"] - r)  # a seed drawn again plays the same game: same difference
+        return diffs, (prev["gen"] if prev else gen)
+
+    chosen, seen = [], set()
+    for t in dict.fromkeys([*members, ref, *ranked]):
+        sig = tuple((g["trips"], g["seconds"], g.get("commands")) for g in games[t])
+        if sig not in seen:
+            seen.add(sig)
+            chosen.append(t)
+        elif t in old or t in archive:  # a copy with a record of its own keeps it, in the archive
+            diffs, joined = record(t)
+            archive[t] = {"diffs": diffs, "gen": joined}
+    cands = []
+    for t in chosen:
+        diffs, joined = record(t)
+        mean, lcb = hof_score(diffs, cfg.hof_se)
+        cands.append({"text": t, "diffs": diffs, "gen": joined, "mean": mean, "lcb": lcb, "size": sizes[t],
+                      "tested": t in old})
+    cands.sort(key=lambda c: (round(c["lcb"], HOF_ROUND), round(c["mean"], HOF_ROUND), -c["size"]), reverse=True)
+    kept, dropped = cands[:cfg.hof], cands[cfg.hof:]
+    for c in kept:
+        archive.pop(c["text"], None)
+    for c in dropped:
+        archive[c["text"]] = {"diffs": c["diffs"], "gen": c["gen"]}
+    hall = [{"text": c["text"], "diffs": c["diffs"], "gen": c["gen"]} for c in kept]
+    rows = [{"hash": text_hash(c["text"]), "size": c["size"], "gen": c["gen"], "tested": c["tested"],
+             "seeds": len(c["diffs"]), "mean_diff": c["mean"], "lcb": _num(c["lcb"]),
+             "trips": float(statistics.fmean(g["trips"] for g in games[c["text"]]))} for c in kept]
+    return hall, rows, archive
+
+
 def _means(games: list[dict]) -> tuple[float, float]:
     return (float(statistics.fmean(g["trips"] for g in games)), float(statistics.fmean(g["seconds"] for g in games)))
 
@@ -508,10 +633,11 @@ def write_checkpoint(run_dir: Path, state: dict) -> None:
 def read_checkpoint(run_dir: Path) -> dict:
     with open(run_dir / CHECKPOINT, "rb") as f:
         state = pickle.load(f)  # our own file, written by write_checkpoint
-    if state.get("format") != CHECKPOINT_FORMAT:
+    if state.get("format") not in (CHECKPOINT_FORMAT, HOF_CHECKPOINT_FORMAT):
         hint = {1: " (a gp-1 run: resume it with the code of commit 49c8197)",
                 2: " (a gp-2 run: resume it with the code of commit b8e82a0)"}.get(state.get("format"), "")
-        raise ValueError(f"checkpoint format {state.get('format')!r}, expected {CHECKPOINT_FORMAT}{hint}")
+        raise ValueError(f"checkpoint format {state.get('format')!r}, expected {CHECKPOINT_FORMAT} or "
+                         f"{HOF_CHECKPOINT_FORMAT}{hint}")
     return state
 
 
@@ -571,6 +697,9 @@ def start(cfg: Config, run_dir: Path) -> dict:
     state = {"format": CHECKPOINT_FORMAT, "generation": 0, "population": population, "rng": random.getstate(),
              "convergence": conv.state(), "validated": {}, "elapsed_s": 0.0, "games_played": 0,
              "cache_hits": 0}
+    if cfg.hof:
+        state["format"] = HOF_CHECKPOINT_FORMAT
+        state["hof"], state["hof_archive"] = initial_hof(cfg), {}
     for name in (GENERATIONS, VALIDATION):
         (run_dir / name).write_bytes(b"")
     write_checkpoint(run_dir, state)
@@ -593,11 +722,12 @@ def load(run_dir: Path, overrides: dict | None = None, config_cls=Config) -> tup
         # config.json, then fail on the foreign checkpoint and mark that run failed.
         raise ValueError(f"{run_dir} holds a {config['method']} run, not a GP run")
     params = dict(config["params"])
+    defaults = config_cls().to_json()  # a run made before a field existed ran with its default
     changed = {}
     for name, value in (overrides or {}).items():
         if isinstance(value, tuple):
             value = list(value)  # config.json holds lists
-        if value is None or params.get(name) == value:
+        if value is None or params.get(name, defaults.get(name)) == value:
             continue
         if name not in RESUMABLE_FIELDS:
             flag = FLAG_NAMES.get(name, "--" + name.replace("_", "-"))
@@ -608,6 +738,9 @@ def load(run_dir: Path, overrides: dict | None = None, config_cls=Config) -> tup
     cfg = config_cls.from_json(params)
     cfg.check()
     state = read_checkpoint(run_dir)
+    if (state["format"] == HOF_CHECKPOINT_FORMAT) != bool(getattr(cfg, "hof", 0)):
+        raise ValueError(f"checkpoint format {state['format']} does not match hof = {getattr(cfg, 'hof', 0)} "
+                         f"in {run_dir / CONFIG}")
     for name in (GENERATIONS, VALIDATION):
         _trim_jsonl(run_dir / name, state["generation"])
     (run_dir / "error.txt").unlink(missing_ok=True)  # a failure being resumed is no longer the run's state
@@ -668,15 +801,39 @@ def generation(cfg: Config, state: dict, engine, run_dir: Path, clock=time.monot
     reps = behaviours(distinct, by4, fitness, sizes) if cfg.dedup else distinct
     duplicates = len(distinct) - len(reps)
     top = rank(reps, fitness, sizes)[:cfg.racing_top]
-    games8 = engine.play([(t, s) for t in top for s in s8]) if s8 else []
+    # With a hall of fame, its members and the reference not in the racing top play every training seed, in the
+    # same batch as the racing top's extra seeds (games already played come from the cache).
+    ref = canonical(cfg, cfg.reference_text) if cfg.hof else None
+    extra = [t for t in dict.fromkeys([*(m["text"] for m in state["hof"]), ref]) if t not in top] if cfg.hof else []
+    for t in extra:
+        sizes.setdefault(t, gp.size(gp.individual_from_text(t)))
+    pairs8 = [(t, s) for t in top for s in s8]
+    pairs_x = [(t, s) for t in extra for s in seeds]
+    played8 = engine.play(pairs8 + pairs_x) if pairs8 or pairs_x else []
+    games8 = played8[:len(pairs8)]
     racing_games = {t: by4[t] + games8[i * cfg.n_s8:(i + 1) * cfg.n_s8] for i, t in enumerate(top)}
     racing = {t: _means(racing_games[t]) for t in top}
     ranked = rank(top, racing, sizes)
-    elites = ranked[:cfg.elites]
     best = ranked[0]
+    if cfg.hof:
+        n = len(seeds)
+        hof_games = {**racing_games, **{t: played8[len(pairs8) + i * n:len(pairs8) + (i + 1) * n]
+                                        for i, t in enumerate(extra)}}
+        hall, hof_rows, archive = update_hof(cfg, state["hof"], ranked, hof_games, ref, seeds, sizes, gen,
+                                             skip_new=cfg.n_s4, archive=state["hof_archive"])
+        racing_all = {t: _means(g) for t, g in hof_games.items()}
+        # Probation: a text that just joined the hall is ranked by the luckiest of the racing top's records, so
+        # elites and validation take re-tested members first (H-5). Elites then fill up from the rest of the hall
+        # and the racing top; validation falls back to the hall's top only when no member has been re-tested.
+        tested = [m["text"] for m, r in zip(hall, hof_rows) if r["tested"]]
+        elites = list(dict.fromkeys([*tested, *(m["text"] for m in hall), *ranked]))[:cfg.elites]
+        chosen = tested[:cfg.validate_top] or [m["text"] for m in hall[:cfg.validate_top]]
+    else:
+        racing_all = racing
+        elites = ranked[:cfg.elites]
+        chosen = ranked[:cfg.validate_top]
 
     validated = dict(state["validated"])
-    chosen = ranked[:cfg.validate_top]
     fresh = [t for t in chosen if t not in validated]
     for record in (_validate_many(cfg, engine, gen, fresh, sizes) if fresh else []):
         _append_jsonl(run_dir / VALIDATION, record)
@@ -708,7 +865,7 @@ def generation(cfg: Config, state: dict, engine, run_dir: Path, clock=time.monot
         "validated": {"hash": text_hash(top_val["text"]), "new": top_val["new"], "mean": top_val["mean"],
                       "mean_seconds": top_val["mean_seconds"]},
         "validated_all": [{"hash": text_hash(c["text"]), "new": c["new"], "mean": c["mean"],
-                           "racing_mean": racing[c["text"]][0], "gain": c["test"]["gain"],
+                           "racing_mean": racing_all[c["text"]][0], "gain": c["test"]["gain"],
                            "t": _num(c["test"]["t"]), "t_crit": _num(c["test"]["t_crit"]),
                            "counts": c["test"]["counts"]} for c in cands],
         "improved": improved,
@@ -717,18 +874,29 @@ def generation(cfg: Config, state: dict, engine, run_dir: Path, clock=time.monot
         "anchor": conv.anchor, "required_gain": conv.required_gain(), "gens_since_improvement": conv.since,
         "wall_s": wall, "games_played": played, "cache_hits": hits,
     }
+    if cfg.hof:
+        rec["reference_trips"] = racing_all[ref][0]  # the reference's mean on this generation's training seeds
+        rec["hof"] = hof_rows  # the next hall, best first: its top elites are the elites above
     _append_jsonl(run_dir / GENERATIONS, rec)
     _atomic_write(run_dir / BEST, (inc["text"] + "\n").encode("utf-8"))
-    return {**state, "generation": gen + 1, "population": next_population, "rng": random.getstate(),
-            "convergence": conv.state(), "validated": validated, "elapsed_s": state["elapsed_s"] + wall,
-            "games_played": state["games_played"] + played, "cache_hits": state["cache_hits"] + hits}
+    nxt = {**state, "generation": gen + 1, "population": next_population, "rng": random.getstate(),
+           "convergence": conv.state(), "validated": validated, "elapsed_s": state["elapsed_s"] + wall,
+           "games_played": state["games_played"] + played, "cache_hits": state["cache_hits"] + hits}
+    if cfg.hof:
+        nxt["hof"], nxt["hof_archive"] = hall, archive
+    return nxt
 
 
 def format_record(rec: dict, cfg: Config) -> str:
     """The one line printed per generation."""
     v, inc = rec["validated"], rec["incumbent"]
     beh = f" ({rec['behaviours']} behaviours, {rec['immigrants']} immigrants)" if "behaviours" in rec else ""
-    return (f"gen {rec['gen']:3d} | round-1 best {rec['s4']['best']:6.1f} mean {rec['s4']['mean']:6.1f}{beh} | "
+    hall = ""
+    if rec.get("hof"):
+        h = rec["hof"][0]
+        lcb = "-inf" if h["lcb"] is None else f"{h['lcb']:+.1f}"
+        hall = f" | hall top {h['hash'][:8]} {h['mean_diff']:+.1f} (bound {lcb}, {h['seeds']} seeds)"
+    return (f"gen {rec['gen']:3d} | round-1 best {rec['s4']['best']:6.1f} mean {rec['s4']['mean']:6.1f}{beh}{hall} | "
             f"racing best {rec['best']['racing_mean']:6.1f} size {rec['best']['size']:3d} | "
             f"val {v['mean']:6.1f}{' new' if v['new'] else ' old'}{' +' if rec['improved'] else ''} | "
             f"incumbent {inc['mean']:6.1f} (gen {inc['gen']}) | since {rec['gens_since_improvement']}/"
@@ -845,12 +1013,20 @@ def main(argv: list[str] | None = None) -> int:
                         help="gp-3: 4-tree individuals with a remove tree (clean routes and removals on)")
     parser.add_argument("--seed-text", action="append", dest="seed_files", metavar="FILE",
                         help="an individual text file added to generation 0 (repeatable)")
+    parser.add_argument("--hof", type=int, help=f"gp-3.3: hall of fame size, 0 = off (default {d.hof})")
+    parser.add_argument("--reference", dest="reference_file", metavar="FILE",
+                        help="the hall of fame's reference rule (an individual text file; needed with --hof)")
+    parser.add_argument("--hof-se", type=float,
+                        help=f"the hall ranks by mean difference - this * standard error (default {d.hof_se:g})")
     args = parser.parse_args(argv)
-    given = {k: v for k, v in vars(args).items() if k not in ("run", "resume", "seed_files") and v is not None}
+    given = {k: v for k, v in vars(args).items()
+             if k not in ("run", "resume", "seed_files", "reference_file") and v is not None}
     try:
         ev._check_run_name(args.run)
         if args.seed_files:
             given["seed_texts"] = tuple(Path(f).read_text(encoding="utf-8").strip() for f in args.seed_files)
+        if args.reference_file:
+            given["reference_text"] = Path(args.reference_file).read_text(encoding="utf-8").strip()
         if "validation" in given:
             given["validation"] = parse_validation(given["validation"])
         cfg = None if args.resume else Config(**given)
@@ -883,4 +1059,5 @@ if __name__ == "__main__":
 
 __all__ = ["Config", "Convergence", "stop_reason", "rank", "tournament", "breed", "initial_population",
            "text_hash", "start", "load", "open_run", "play_run", "generation", "run_loop", "evolve", "main",
-           "EVOLVE_DIR", "RunExistsError", "read_jsonl", "read_checkpoint"]
+           "EVOLVE_DIR", "RunExistsError", "read_jsonl", "read_checkpoint", "canonical", "initial_hof", "hof_score",
+           "update_hof"]
