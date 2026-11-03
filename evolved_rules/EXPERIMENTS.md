@@ -149,7 +149,7 @@ Each move is opt-in, and older rules play exactly as before.
 - With clean routes offered, gp-2's best scored 228.1 against its own 245.1 on the same 50 maps. It was better on 16, worse on 24 and equal on 10. Its trees do not know `is_clean`, so they sometimes pick a clean route by chance.
 - That handicaps gp-3 from the start, so attempt 1 was stopped and kept as `evolve/gp-3-attempt1`.
 
-**Attempt 2** (`evolve/gp-3`, started 2026-11-03 10:53):
+**Attempt 2** (`evolve/gp-3`, started 2026-11-03 10:21):
 - **The added seed** is a never-clean copy of gp-2's best. Its priority tree is the same function written without the root `neg` and the double `neg`s (both exact in IEEE arithmetic), minus 1000 × is_clean. All trees stay within depth 6.
 - **It plays gp-2's games exactly.** On seeds 1500, 1503, 1511, 1525, 1531 and 1540 it matched every recorded (trips, seconds), including a 606-trip game.
 - So gp-3 starts from gp-2's real level, and any gain over it comes from the traffic moves.
