@@ -201,3 +201,40 @@ If nothing counts by about generation 15, the moves themselves are not enough. T
 - Everything else as gp-3.2: 4-tree rules, 64 rule sets, 8 + 24 training maps, the same stop rule on 1500–1549.
 
 **What to watch:** whether gp-2's rule stays in the hall and among the elites; whether validated scores stop drifting down; a counted improvement over 245.1.
+
+**Results** (`evolve/gp-3.3`, started 2026-11-03 23:07). "Hall top" is the hall's best rule: its mean lead over gp-2's rule on the training maps it has played, and the lower bound the hall ranks by.
+
+| Gen | Best validated, top 3 (50 maps) | Best so far | No-gain count | Average, all 64 rule sets (8 training maps) | Hall top: lead / bound (maps) | gp-2's rule: hall place, elite | Time |
+|---|---|---|---|---|---|---|---|
+| 0 | 237.7, 244.8, 245.1 | 245.1 | 0 | 88.2 | +51.0 / +29.1 (32), the 237.7 seed | 4th, yes | 47 min |
+| 1 | 245.1, 244.8, 237.7 (all re-used) | 245.1 | 1 | 188.2 | gp-2's rule itself, 0 / 0 (63); the 237.7 seed fell to +14.7 / −2.0 (63) | 1st, yes | 65 min |
+| 2 | 245.1, 244.2, 244.8 | 245.1 | 2 | 165.8 | gp-2's rule itself, 0 / 0 (92); best newcomers +10 / −8 (24–48, on probation) | 1st, yes | 55 min |
+| 3 | 231.2, 245.1 (only 2 re-tested members) | 245.1 | 3 | 178.6 | newcomer +29.5 / +14.3 (24), on probation; 7 rules above gp-2's rule. The one re-tested climber, +21.0 / +7.8 (54), validated 231.2 | 8th, yes | 40 min |
+| 4 | 245.1, 231.2, 232.1 | 245.1 | 4 | 176.5 | gp-2's rule itself, 0 / 0 (146). The generation-3 challengers fell to +0 to +8 when re-tested; the top four left the hall | 1st, yes | 45 min |
+| 5 | 231.6, 231.2, 245.1 | 245.1 | 5 | 195.3 | newcomer +29.5 / +9.3 (24), on probation. Two re-tested members are now ahead of gp-2's rule: +13.3 / +1.6 (103 maps, 25 nodes) and +7.9 / +1.9 (79); both validated about 231 | 5th, yes | 48 min |
+| 6 | 235.4, 240.5, 243.0 | 245.1 | 6 | 165.2 | small rules (24–35 nodes) fill the hall. Re-tested ones lead by +30 / +14 to +17 (56 maps); the 25-node one by +15.4 / +5.9 (132) | out, no | 48 min (slower: a check shared the CPU) |
+| 7 | 240.5, 235.4, 228.3 | 245.1 | 7 | 200.9 | small rules hold: +30.2 / +18.1 (85 maps); 7 of 8 re-tested, all leading by +16 to +30 | out, no | 42 min |
+| 8 | 240.5, 235.4, 236.1 | 245.1 | 8 | 217.8 | +25.4 / +14.6 (113 maps); all 8 lead by +13 to +25 (84–186 maps) | out, no | 44 min |
+| 9 | 240.5, 235.4, 236.1 (all re-used) | 245.1 | 9 | 174.1 | newcomer +43.0 / +18.8 (24), on probation; re-tested leaders +21 / +11 (140 maps) | out, no | 35 min |
+| 10 | 230.2, 240.5, 238.0 | 245.1 | 10 | 196.3 | generation 9's newcomer held: +38.1 / +24.4 (56 maps), yet 230.2 on 1500–1549; +25 / +16 (169–171 maps) behind it | out, no | 43 min |
+| 11 | 230.2, 240.5, 238.0 (all re-used) | 245.1 | 11 | 185.7 | +39.5 / +28.3 (88 maps); +24 / +16 (196–200 maps) behind it | out, no | 36 min |
+
+**Check on 100 never-used maps (3000–3099, after generation 5).** Every challenger that led gp-2's rule on training maps scored about 13 trips below it on 1500–1549. So gp-2's rule and the three leading hall members played 100 maps that no run had used:
+
+| Rule | 1500–1549 (validation) | 3000–3099 (fresh) | vs gp-2's rule on fresh maps | Training lead in the hall |
+|---|---|---|---|---|
+| gp-2's rule (62 nodes) | 245.1 | 240.2 | – | – |
+| `f9390485` (25 nodes) | 231.2 | **254.6** | **+14.4** (t 1.39; better on 52, worse on 42) | +15.4 (132 maps) |
+| `48ee52f2` (70 nodes) | 231.2 | 251.7 | +11.5 (t 1.12) | +7.8 (80) |
+| `12c41676` (61 nodes) | 231.6 | 238.7 | −1.6 (t −0.43) | +7.9 (79) |
+
+- **The fresh maps agree with the training maps, not with validation.** The 25-node rule is about +14 to +15 ahead of gp-2's rule on both (232 maps together), but 14 behind on 1500–1549.
+- **gp-2's rule is flattered by 1500–1549.** It was chosen as the best of about 43 rule sets on exactly those 50 maps, and it scores 5 trips lower on fresh ones. The stop rule measures every gp-3 challenger against that inflated 245.1.
+- **The evidence for +14 is moderate,** not certain: about t 2 when training and fresh maps are pooled. With per-map swings of about ±100 trips, 50 maps can only confirm gains of about 38 trips for rules this different.
+
+**Paused** on 2026-11-04 at 08:30, during generation 12 (no-gain count 11/20), at the user's request. The checkpoint is at generation 12; `--run gp-3.3 --resume` continues it.
+
+**Where it stands at the pause:**
+- **The best rule found is not gp-2's.** The hall's leader (`1737ea1b`, 28 nodes) leads gp-2's rule by **+39.5 trips over 88 training maps** (lower bound +28.3), and two others by about +24 over about 200 maps each. On 1500–1549 they score 230–240, the bias shown by the check above.
+- **The stop rule cannot see this progress.** It still anchors to gp-2's 245.1 on 1500–1549, so left alone the run would stop as converged at generation 20 with gp-2's rule as its final model.
+- **Proposed next step (not yet approved):** resume with the validation switched to 200 never-used maps (4000–4199) at sig_alpha 0.01. The `--revalidate` option is committed on branch `revalidate-prep` (97859ba), not merged.
