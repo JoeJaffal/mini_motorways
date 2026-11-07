@@ -339,3 +339,41 @@ Queue heads of the failing colour's stuck cars (the cars not just queued behind 
 **Verdict:** On LA 3100–3199 (100 maps, 900/900 replays verified, no placement rejected) traffic lights moved the mean by +3.9 [−14.0, +20.9] on the separated rule and +4.0 [−13.0, +21.4] on the GP rule's package version; both intervals include 0. Roundabouts moved it by −1.9 [−21.1, +17.3] and −28.2 [−48.3, −8.4] (worse on 54 maps, better on 36, Wilcoxon p 0.009). Both tools moved it by −7.8 [−29.3, +12.8] and −12.8 [−33.0, +7.1]. The package rule alone moved the GP rule by −0.3 [−10.0, +8.3]. Each placing-versus-base difference bundles three changes: the placements, the package choice, and the extra decisions from the placement trigger (a placing rule with stock also decides every 5 s while any car has waited 3 s). This test does not separate them. Means: `separated` 209.5, `light` 213.4, `round` 207.7, `lightround` 201.7; `gp` 250.3, `gppkg` 250.0, `gplight` 254.0, `gpround` 221.8, `gplightround` 237.2. Both-tool rules place about 5 tools per game and raise the mean car wait to 1.8–2.1 s from 0.6–0.7 s. All 40 autopsied both-tool games were lost (none reached the cap): car shortage 17, slow arrival 10, gridlock 10, unreachable cars 2, not connected 1. A 100-map test resolves about ±17–21 trips here, and each rule played each map once. The step-2 decision is the user's.
 
 Files (git-ignored, under `output/evolved_rules/`): runs `runs/h4-*`, autopsies `autopsy/an-h4-*`, comparison script and tables `analysis/h4_compare.py`, `h4_compare.json`, `h4_compare.md`, run log `analysis/h4_runs.log`.
+
+## 2026-11-07: gp-4 evolution (step 2), setup and generation 0
+
+Plan: `plans/2026-11-07-gp4-step2-plan.md`. Code at `7152eb5` (branch `gp4`), `CODE_VERSION` `gp4-v2`, config recorded clean.
+
+**Setup:** The gp-3.3 loop with a fifth tree, `place`, over the 15 `pl_*` placement inputs plus the global inputs. A 5-tree text places both tools when its place tree is not a constant ≤ 0, and it can learn to use one tool through `pl_is_light` / `pl_is_roundabout`.
+- **Loop:** 64 rule sets, racing on 8 + 24 maps, a hall of fame of 8, probation, and the paired-t stop rule (gain ≥ max(3 trips, 2%), alpha 0.005, min 30 generations, patience 20).
+- **Reference:** `final/gp3_final.txt`, with place −1.0.
+- **Seeds:** gp-2's rule (`seeds/gp4/gp2.txt`, its never-clean copy) and the step-1 hand rules written as trees: `light`, `lightround`, `gplight` and `gplightround`. With the hand, separated and clean rules, generation 0 has 8 fixed texts and 56 random ones.
+- **Code changes since step 1:** only driving cars count as near a spot, and only driving cars' waits fire the placement trigger, because the host never resets a parked car's wait.
+- **Run settings:** 8 workers (the user's choice) and `--max-hours 120`. That is raised from 72, because convergence needs at least 50 generations.
+- **Checks before launch:** a 2-generation smoke run (`gp4-smoke`) placed tools in 18 of 56 games, and a run resumed after generation 1 gave identical records (`gp4-smoke-r`).
+
+Command:
+```
+PYTHONHASHSEED=0 .venv/Scripts/python.exe -m evolved_rules.evolve --run gp-4 --workers 8 --max-hours 120 \
+  --remove-tree --place-tree --hof 8 --reference evolved_rules/final/gp3_final.txt \
+  --seed-text evolved_rules/seeds/gp4/gp2.txt --seed-text evolved_rules/seeds/gp4/light.txt \
+  --seed-text evolved_rules/seeds/gp4/lightround.txt --seed-text evolved_rules/seeds/gp4/gplight.txt \
+  --seed-text evolved_rules/seeds/gp4/gplightround.txt
+```
+
+**Generation 0** (1,102 games, 27.8 min):
+
+| | Best on validation (1500–1549) | Average, all 64 rule sets (8 round-1 maps) |
+|---|---|---|
+| Generation 0 | 259.7 (`gplight` seed, `9c5940ad`) | 98.9 (median 119.8; the 56 random rule sets pull it down) |
+
+Validated this generation (lights / roundabouts sent per game):
+
+| Rule | Validation mean | Lights | Roundabouts |
+|---|---|---|---|
+| `gplight` seed | 259.7 | 4.76 | 0 |
+| `gplightround` seed | 243.2 | 3.84 | 1.78 |
+| Reference (gp3_final, place −1) | 238.0 | 0 | 0 |
+
+- On the 32 training maps the reference averaged 240.1.
+- The +21.7 of `gplight` over the reference is the best of three validated means, so it is biased upwards. On 3100–3199 the same rule was +4.0 [−13.0, +21.4] over its package-only version. The stop rule's paired test, and the final test on fresh maps, decide whether this holds.
