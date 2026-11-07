@@ -90,13 +90,25 @@ def split_strokes(path: tuple[Cell, ...]) -> tuple[Stroke, ...]:
     return tuple(strokes)
 
 
-def _is_road(state: CityState, c: Cell) -> bool:
-    """Any existing road tile (infra != 0: road, bridge, roundabout, traffic light), not pending removal.
+def _is_centre(state: CityState, c: Cell) -> bool:
+    """c is the centre cell of a roundabout (gp-4). A scan of the few roundabouts: no per-call set to build."""
+    return any(r.centre == c for r in state.roundabouts)
 
-    Read infra directly: CityState.road_cell covers only infra 1/2. Roundabout cells (3) are never
-    enterable, so on a path this means road, bridge or traffic light.
+
+def _is_ring(state: CityState, c: Cell) -> bool:
+    """c is one of the four ring cells of a roundabout (gp-4); only asked about infra 3 cells, see _enterable."""
+    return any(c in r.ring for r in state.roundabouts)
+
+
+def _is_road(state: CityState, c: Cell) -> bool:
+    """Any existing road tile (infra != 0: road, bridge, roundabout ring, traffic light), not pending removal.
+
+    Read infra directly: CityState.road_cell covers only infra 1/2. A roundabout's centre (infra 3 too) is
+    never road: nothing drives through it. Its ring cells are, so a route may use them (in driving order,
+    see _astar).
     """
-    return _in_grid(c) and int(state.infra[c[1], c[0]]) != 0 and int(state.pending[c[1], c[0]]) != 1
+    return (_in_grid(c) and int(state.infra[c[1], c[0]]) != 0 and int(state.pending[c[1], c[0]]) != 1
+            and not (state.roundabouts and _is_centre(state, c)))  # hot path: one tuple test without roundabouts
 
 
 def _popcount(mask: int) -> int:
@@ -171,7 +183,9 @@ def _enterable(state: CityState, c: Cell) -> bool:
         int(state.terrain[y, x]) != 2
         and int(state.kinds[y, x]) == 0
         and int(state.pending[y, x]) == 0
-        and int(state.infra[y, x]) != 3
+        # infra 3 is a roundabout: its ring cells are enterable (in driving order, see _astar), its centre and any
+        # infra 3 cell that belongs to no known roundabout never. Other cells never reach the ring scan.
+        and (int(state.infra[y, x]) != 3 or _is_ring(state, c))
     )
 
 
@@ -246,6 +260,7 @@ def _astar(
         # An existing bridge tile, or a planned water cell (it will be a bridge before this route is drawn).
         return _in_grid(c) and (int(state.infra[c[1], c[0]]) == 2 or (c in planned and _water(state, c)))
 
+    ring_next = state.ring_next()  # once per call; empty without roundabouts
     start = house.cell
     linked = int(state.conn[start[1], start[0]]) != 0
     start_key = (start[0], start[1], 0)
@@ -277,6 +292,8 @@ def _astar(
                 continue  # a linked house keeps its driveway
             if not _enterable(state, n):
                 continue
+            if u in ring_next and n in ring_next and ring_next[u] != n:
+                continue  # cars circulate N -> W -> S -> E: between two ring cells only the next one in order
             n_water = _water(state, n)
             if u == start and n_water:
                 continue  # SetHouseDriveway rejects a driveway onto water
