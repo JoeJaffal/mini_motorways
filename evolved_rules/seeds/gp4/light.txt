@@ -1,0 +1,5 @@
+priority: add(neg(tiles_needed), mul(15.625, is_separated))
+hold: sub(0.0625, road_stock)
+upgrade: add(mul(15.625, type_3), offer_roads)
+remove: -1.0
+place: if_gt(pl_is_light, 0.5, pl_stopped_near, -1.0)

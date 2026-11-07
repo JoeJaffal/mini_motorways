@@ -186,3 +186,122 @@ def test_mutation_keeps_terminal_sets():
         _check_terminals(a)
         _check_terminals(b)
         assert len(a) == len(b) == 5
+
+
+# --- task 3: the seed texts (the step-1 hand rules written as trees) -------------------------------------------
+
+SEED_DIR = Path(__file__).resolve().parent.parent / "seeds" / "gp4"
+GP2_NOCLEAN_PATH = Path(__file__).resolve().parents[2] / "output" / "evolved_rules" / "gp2-best-noclean.txt"
+# seed name -> (lights, roundabouts) of the hand rule it is written from
+SEEDS = {"light": (True, False), "lightround": (True, True), "gplight": (True, False), "gplightround": (True, True)}
+GP_SEEDS = ("gplight", "gplightround")
+
+
+def _seed(name: str) -> str:
+    return (SEED_DIR / f"{name}.txt").read_text(encoding="utf-8")
+
+
+def _first(scores: list[float]) -> int:
+    """The index of the largest score, ties going to the first (max keeps the first of equal keys)."""
+    return max(range(len(scores)), key=scores.__getitem__)
+
+
+def _sign(x: float) -> int:
+    return (x > 0) - (x < 0)
+
+
+def test_seed_files_are_canonical_five_tree_texts():
+    for name in ("gp2", *SEEDS):
+        text = _seed(name).strip()
+        assert len(text.splitlines()) == 5, name
+        assert gp.individual_text(gp.individual_from_text(text)) == text, name
+        assert TreePolicy(text).text == text and TreePolicy(text).trees == 5, name
+    # gp2 never places; the others have a place tree (so both flags are on: the flags do not tell lights from
+    # roundabouts, the place tree does, by scoring the other kind -1)
+    gp2 = TreePolicy(_seed("gp2"))
+    assert (gp2.places_lights, gp2.places_roundabouts) == (False, False) and gp2.place(_place_dict()) == -1.0
+    for name in SEEDS:
+        p = TreePolicy(_seed(name))
+        assert (p.places_lights, p.places_roundabouts) == (True, True), name
+    # light / lightround have SEPARATED_TEXT's priority and hold, gplight / gplightround gp3_final's
+    separated = gp.individual_text(gp.individual_from_text(SEPARATED_TEXT)).splitlines()
+    gp3_final = GP3_FINAL_CANON.splitlines()
+    for name in SEEDS:
+        lines = _seed(name).strip().splitlines()
+        want = gp3_final if name in GP_SEEDS else separated
+        assert lines[:2] == want[:2], name
+        assert lines[3] == "remove: -1.0", name
+
+
+@pytest.mark.skipif(not GP2_NOCLEAN_PATH.exists(), reason="output/evolved_rules/gp2-best-noclean.txt is not here")
+def test_gp2_seed_is_gp2s_rule_with_a_never_place_tree():
+    assert _seed("gp2").strip() == gp.with_place(GP2_NOCLEAN_PATH.read_text(encoding="utf-8"))
+
+
+def _place_features(rng: random.Random) -> dict[str, float]:
+    light = rng.randint(0, 1)
+    return _place_dict(pl_is_light=float(light), pl_is_roundabout=float(1 - light),
+                       pl_joins_separated=float(rng.randint(0, 1)), pl_stopped_near=float(rng.randint(0, 6)))
+
+
+@pytest.mark.parametrize("name, lights, roundabouts", [(n, *flags) for n, flags in SEEDS.items()])
+def test_seed_place_trees_match_hand_place(name, lights, roundabouts):
+    from evolved_rules.rules import hand_place
+    p = TreePolicy(_seed(name))
+    rng = random.Random(7)
+    dicts = [_place_features(rng) for _ in range(200)]
+    tree = [p.place(f) for f in dicts]
+    hand = [hand_place(f, lights, roundabouts) for f in dicts]
+    assert [_sign(x) for x in tree] == [_sign(x) for x in hand]
+    assert any(x > 0 for x in hand) and any(x < 0 for x in hand) and any(x == 0 for x in hand)
+    for i in range(0, 200, 8):
+        assert _first(tree[i:i + 8]) == _first(hand[i:i + 8]), i
+
+
+@pytest.mark.parametrize("name, lights, roundabouts", [(n, *flags) for n, flags in SEEDS.items()])
+def test_seed_upgrade_trees_match_package_upgrade(name, lights, roundabouts):
+    from evolved_rules.features import offer_features
+    from evolved_rules.rules import package_upgrade
+    from evolved_rules.state import Offer
+    p = TreePolicy(_seed(name))
+    rng = random.Random(11)
+    dicts = []
+    for _ in range(200):
+        f = dict.fromkeys(gp.GLOBAL_TERMS, 0.0)
+        f.update(offer_features(Offer(0, rng.randint(0, 5), rng.randint(1, 3), rng.randint(0, 40))))
+        dicts.append(f)
+    tree = [p.upgrade(f) for f in dicts]
+    hand = [package_upgrade(f, lights, roundabouts) for f in dicts]
+    assert [64 * x for x in tree] == hand        # 1000/64 and offer_roads/64 are exact
+    assert {f["type_3"] for f in dicts} == {0.0, 1.0} and {f["type_4"] for f in dicts} == {0.0, 1.0}
+    for i in range(0, 200, 8):
+        assert _first(tree[i:i + 8]) == _first(hand[i:i + 8]), i
+
+
+# --- task 3: the games (host) --------------------------------------------------------------------------------
+
+def _same_game(a, b) -> None:
+    assert (a.trips, a.seconds, a.commands, a.action_counts) == (b.trips, b.seconds, b.commands, b.action_counts)
+
+
+@pytest.mark.host
+def test_place_minus_one_plays_like_four_trees(host):
+    from evolved_rules.agent import play_game
+    text = GP3_FINAL_PATH.read_text(encoding="utf-8")
+    four = play_game(host, 3100, TreePolicy(text), record=False)
+    five = play_game(host, 3100, TreePolicy(gp.with_place(text)), record=False)
+    assert four.trips > 0
+    _same_game(four, five)
+
+
+@pytest.mark.host
+def test_gplightround_tree_plays_like_gphand(host):
+    from evolved_rules.agent import play_game
+    from evolved_rules.rules import GPHand
+    text = GP3_FINAL_PATH.read_text(encoding="utf-8")
+    tree = play_game(host, 3100, TreePolicy(_seed("gplightround")), record=True)
+    hand = play_game(host, 3100, GPHand(text, True, True, "gplightround"), record=True)
+    placed = [a for a in tree.recording["actions"]
+              if a["command"] == "build" and a["tool"] in ("TrafficLight", "Roundabout") and a["accepted"]]
+    assert placed  # the games place something, so this is not the identity of two games that never place
+    _same_game(tree, hand)
