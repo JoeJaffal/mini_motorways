@@ -40,13 +40,14 @@ def _stock(state: CityState, item: int) -> int:
 class EventTracker:
     """Decides when to decide (PLAN.md section 3.2). Its memory is updated on every call.
 
-    With `places` (gp-4: the policy places lights or roundabouts) it also decides when a light or a roundabout is
-    in stock, some car has waited PLACE_WAIT_S, and PLACE_EVERY_S have passed since the last decision. Without it
-    the trigger is exactly the Phase 1 one.
+    `kinds` (gp-4) is (places lights, places roundabouts), as agent.places(policy) gives it. For each kind the
+    policy places, the tracker also decides when that kind is in stock, some car has waited PLACE_WAIT_S, and
+    PLACE_EVERY_S have passed since the last decision; stock of a kind the policy does not place is no event.
+    With (False, False), the default, the trigger is exactly the Phase 1 one.
     """
 
-    def __init__(self, places: bool = False) -> None:
-        self._places = bool(places)
+    def __init__(self, kinds: tuple[bool, bool] = (False, False)) -> None:
+        self._lights, self._roundabouts = bool(kinds[0]), bool(kinds[1])
         self._last_decision: float | None = None  # time of the last call that returned True
         self._ids: frozenset[int] = frozenset()
         self._overcrowded: dict[int, bool] = {}  # shop id -> overcrowded_for >= OVERCROWD_EVENT_S
@@ -68,7 +69,7 @@ class EventTracker:
             or any(i in self._upgraded and self._upgraded[i] != now for i, now in upgraded.items())
             or (self._road_stock is not None and road_stock > self._road_stock)
             or state.time - self._last_decision >= FALLBACK_S
-            or (self._places and self._placement_due(state))
+            or ((self._lights or self._roundabouts) and self._placement_due(state))
         )
 
         self._ids, self._overcrowded, self._upgraded, self._road_stock = ids, overcrowded, upgraded, road_stock
@@ -77,9 +78,9 @@ class EventTracker:
         return decide
 
     def _placement_due(self, state: CityState) -> bool:
-        """A light or a roundabout in stock, PLACE_EVERY_S since the last decision, and a car that has waited
+        """Stock of a kind the policy places, PLACE_EVERY_S since the last decision, and a car that has waited
         PLACE_WAIT_S. Only reached after the first decision (the first call always decides)."""
-        return ((_stock(state, 3) > 0 or _stock(state, 4) > 0)
+        return (((self._lights and _stock(state, 3) > 0) or (self._roundabouts and _stock(state, 4) > 0))
                 and state.time - self._last_decision >= PLACE_EVERY_S
                 and any(car.waiting >= PLACE_WAIT_S for car in state.cars))
 
@@ -264,7 +265,7 @@ def play_game(host: Host, seed: int, policy: Policy, cap_s: float = 3600.0, reco
     """
     session = GameSession(host, seed, cap_s=cap_s, record=record)
     session.reset()
-    tracker = EventTracker(places=any(places(policy)))
+    tracker = EventTracker(kinds=places(policy))
     acts = getattr(policy, "acts", True)
     # Always advances: a decision that sends nothing leaves the state unchanged, and the tracker never fires
     # twice on an unchanged state (offers would fire again, but a decision with offers always sends a command).

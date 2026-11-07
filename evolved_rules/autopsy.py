@@ -205,7 +205,7 @@ def play(spec: str, seed: int, cap_s: float = ev.DEFAULT_CAP_S) -> dict:
     policy = _Watched(make_policy(spec), tally)
     session = GameSession(_HOST, seed, cap_s=cap_s, record=False)
     session.reset()
-    tracker = EventTracker(places=any(places(policy)))
+    tracker = EventTracker(kinds=places(policy))
     while not session.done:
         if policy.acts and tracker.should_decide(session.state):
             decide(session, policy)

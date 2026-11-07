@@ -545,32 +545,51 @@ def test_the_tracker_is_unchanged_without_places():
     lights, round_ = (25, 1, 0, 2, 0, 0), (25, 1, 0, 0, 1, 0)
     states = [_tick(0.0, lights), _tick(1.0, lights, 4.0), _tick(6.0, lights, 4.0),
               _tick(10.0, (25, 1, 0, 0, 0, 0), 4.0), _tick(16.0, round_, 9.0), _tick(21.0, lights, 9.0)]
-    old_t, new_t, flagged_off = EventTracker(), EventTracker(), EventTracker(places=False)
+    old_t, new_t, flagged_off = EventTracker(), EventTracker(), EventTracker(kinds=(False, False))
     old = [_old_should_decide(old_t, s) for s in states]
     assert old == [True, False, False, True, False, True]  # the sequence has long waits and stock but no event
     assert [new_t.should_decide(s) for s in states] == old
     assert [flagged_off.should_decide(s) for s in states] == old
 
 
-@pytest.mark.parametrize("time, inventory, wait, expected", [
-    (4.9, (25, 1, 0, 1, 0, 0), 4.0, False),  # not 5 s since the last decision
-    (5.0, (25, 1, 0, 1, 0, 0), 4.0, True),
-    (5.0, (25, 1, 0, 1, 0, 0), 2.9, False),  # nobody has waited 3 s
-    (5.0, (25, 1, 0, 1, 0, 0), 3.0, True),
-    (5.0, (25, 1, 0, 0, 0, 0), 4.0, False),  # nothing to place
-    (5.0, (25, 1, 0, 0, 1, 0), 4.0, True),  # a roundabout in stock is enough
-    (5.0, (25, 1, 0, 1, 0, 0), None, False),  # no car at all
-    (5.0, (25,), 4.0, False),  # a short inventory has no stock
+LIGHTS, ROUNDABOUTS, BOTH = (True, False), (False, True), (True, True)
+
+
+@pytest.mark.parametrize("kinds, time, inventory, wait, expected", [
+    (LIGHTS, 4.9, (25, 1, 0, 1, 0, 0), 4.0, False),  # not 5 s since the last decision
+    (LIGHTS, 5.0, (25, 1, 0, 1, 0, 0), 4.0, True),
+    (LIGHTS, 5.0, (25, 1, 0, 1, 0, 0), 2.9, False),  # nobody has waited 3 s
+    (LIGHTS, 5.0, (25, 1, 0, 1, 0, 0), 3.0, True),
+    (LIGHTS, 5.0, (25, 1, 0, 0, 0, 0), 4.0, False),  # nothing to place
+    (ROUNDABOUTS, 5.0, (25, 1, 0, 0, 1, 0), 4.0, True),  # a roundabout in stock is enough for a roundabout placer
+    (LIGHTS, 5.0, (25, 1, 0, 0, 1, 0), 4.0, False),  # ...but not for a lights-only policy
+    (ROUNDABOUTS, 5.0, (25, 1, 0, 1, 0, 0), 4.0, False),  # ...and a light is no use to a roundabouts-only one
+    (BOTH, 5.0, (25, 1, 0, 1, 0, 0), 4.0, True),
+    (BOTH, 5.0, (25, 1, 0, 0, 1, 0), 4.0, True),
+    (BOTH, 5.0, (25, 1, 0, 0, 0, 0), 4.0, False),
+    (LIGHTS, 5.0, (25, 1, 0, 1, 0, 0), None, False),  # no car at all
+    (LIGHTS, 5.0, (25,), 4.0, False),  # a short inventory has no stock
 ])
-def test_with_places_a_waiting_car_and_stock_trigger_a_decision(time, inventory, wait, expected):
-    for places_on, want in ((True, expected), (False, False)):  # without places, 5 s is no event at all
-        t = EventTracker(places=places_on)
+def test_with_places_a_waiting_car_and_stock_trigger_a_decision(kinds, time, inventory, wait, expected):
+    for tracker_kinds, want in ((kinds, expected), ((False, False), False)):  # no kinds: 5 s is no event at all
+        t = EventTracker(kinds=tracker_kinds)
         assert t.should_decide(_tick(0.0, inventory)) is True  # the first call always decides
         assert t.should_decide(_tick(time, inventory, wait)) is want
 
 
+@pytest.mark.parametrize("kinds, stock", [(LIGHTS, (25, 1, 0, 0, 2, 0)), (ROUNDABOUTS, (25, 1, 0, 2, 0, 0))])
+def test_stock_of_a_kind_the_policy_does_not_place_changes_nothing(kinds, stock):
+    # long waits and stock all game, but of the wrong kind: the tracker keeps the Phase 1 timing, fallback included
+    states = [_tick(0.0, stock), _tick(1.0, stock, 4.0), _tick(6.0, stock, 4.0), _tick(9.0, stock, 9.0),
+              _tick(10.0, stock, 9.0), _tick(16.0, stock, 9.0), _tick(21.0, stock, 9.0)]
+    old_t, t = EventTracker(), EventTracker(kinds=kinds)
+    old = [_old_should_decide(old_t, s) for s in states]
+    assert old == [True, False, False, False, True, False, True]
+    assert [t.should_decide(s) for s in states] == old
+
+
 def test_the_placement_trigger_counts_from_the_last_decision():
-    t = EventTracker(places=True)
+    t = EventTracker(kinds=LIGHTS)
     lights = (25, 1, 0, 1, 0, 0)
     assert [t.should_decide(_tick(s, lights, 4.0)) for s in (0.0, 4.0, 5.0, 9.0, 10.0, 14.9)] == [
         True, False, True, False, True, False]
@@ -578,11 +597,12 @@ def test_the_placement_trigger_counts_from_the_last_decision():
 
 @pytest.mark.parametrize("module", [agent, autopsy], ids=["play_game", "autopsy"])
 @pytest.mark.parametrize("policy, expected", [
-    (_Places(), True), (_Places(lights=False, roundabouts=True), True), (_Places(lights=False), False),
-    (HandRule(), False), (TreePolicy(GP2_BEST), False),
+    (_Places(), (True, False)), (_Places(lights=False, roundabouts=True), (False, True)),
+    (_Places(roundabouts=True), (True, True)), (_Places(lights=False), (False, False)),
+    (HandRule(), (False, False)), (TreePolicy(GP2_BEST), (False, False)),
 ])
 def test_both_game_loops_build_the_tracker_from_the_policy(monkeypatch, module, policy, expected):
-    """play_game and the autopsy's copy of its loop must give the tracker the same `places` (here: a probe that
+    """play_game and the autopsy's copy of its loop must give the tracker the same `kinds` (here: a probe that
     records it and stops the game)."""
     seen = []
 
@@ -601,7 +621,7 @@ def test_both_game_loops_build_the_tracker_from_the_policy(monkeypatch, module, 
         else:
             monkeypatch.setattr(autopsy, "make_policy", lambda spec: policy)
             autopsy.play("x", 1)
-    assert seen == [{"places": expected}]
+    assert seen == [{"kinds": expected}]
 
 
 def test_the_watched_policy_passes_the_placement_switches_and_scores():
