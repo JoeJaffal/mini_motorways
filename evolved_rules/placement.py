@@ -24,7 +24,7 @@ from dataclasses import dataclass
 import numpy as np
 
 from .candidates import DOORSTEP_RADIUS, _served_colours, doorsteps, link_degree, near_cells
-from .features import STUCK_SPEED
+from .features import is_driving, is_stuck
 from .state import DIRS, Car, Cell, CityState, H, W, _in_grid
 
 LIGHT = "TrafficLight"
@@ -73,15 +73,16 @@ def ring_new_links(state: CityState, centre: Cell) -> list[tuple[Cell, Cell]]:
     return out
 
 
-def is_stopped(car: Car) -> bool:
-    """A driving car (not Home, not Parking) slower than STUCK_SPEED."""
-    return car.stage not in ("Home", "Parking") and car.speed < STUCK_SPEED
+is_stopped = is_stuck  # the step-1 name: a driving car slower than STUCK_SPEED
 
 
 def cars_near(state: CityState, footprint: tuple[Cell, ...]) -> tuple[Car, ...]:
-    """Cars, in observation order, whose cell (floor of x, y) is within PLACE_RADIUS of any footprint cell."""
+    """Driving cars (not parked at Home or Parking), in observation order, whose cell (floor of x, y) is within
+    PLACE_RADIUS of any footprint cell."""
     out = []
     for car in state.cars:
+        if not is_driving(car):
+            continue
         cx, cy = math.floor(car.x), math.floor(car.y)
         if any(max(abs(cx - fx), abs(cy - fy)) <= PLACE_RADIUS for fx, fy in footprint):
             out.append(car)

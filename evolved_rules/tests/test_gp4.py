@@ -13,7 +13,8 @@ from evolved_rules import evaluate as ev
 from evolved_rules.agent import EventTracker, decide, places, play_game
 from evolved_rules.candidates import link_degree, removal_candidates, route_candidates, unserved_targets
 from evolved_rules.features import (
-    GameMemory, candidate_features, global_features, offer_features, placement_features, removal_features,
+    GameMemory, candidate_features, global_features, is_driving, is_stuck, offer_features, placement_features,
+    removal_features,
 )
 from evolved_rules.gp import TreePolicy
 from evolved_rules.placement import (
@@ -239,6 +240,16 @@ def test_a_stub_that_serves_no_colour_is_not_a_network_to_join():
 
 # --- order and cap ----------------------------------------------------------------------------------------------
 
+def test_driving_and_stuck_are_one_predicate_for_features_and_placement():
+    assert is_stopped is is_stuck                                              # the step-1 name is an alias
+    stages = ("Outbound", "EnteringParking", "Returning", "Home", "Parking")
+    assert [is_driving(Car(0, st, 1, 5, 1.0, 1.0, 0.0)) for st in stages] == [True, True, True, False, False]
+    assert is_stuck(Car(0, "EnteringParking", 1, 5, 1.0, 1.0, 0.0))
+    assert not is_stuck(Car(0, "Home", 1, 5, 1.0, 1.0, 0.0))
+    assert not is_stuck(Car(0, "Parking", 1, 5, 1.0, 1.0, 0.0))
+    assert not is_stuck(Car(0, "Outbound", 1, 5, 1.0, 1.0, 0.05))              # strictly below STUCK_SPEED
+
+
 def test_stopped_and_cars_near_use_the_stage_the_speed_and_the_cell():
     assert is_stopped(Car(0, "Outbound", 1, 5, 29.5, 11.5, 0.0))
     assert is_stopped(Car(0, "Returning", 1, 5, 1.0, 1.0, 0.049))
@@ -247,14 +258,27 @@ def test_stopped_and_cars_near_use_the_stage_the_speed_and_the_cell():
     assert not is_stopped(Car(0, "Home", 1, 5, 0.5, 0.5, 0.0))
     cars = (Car(0, "Outbound", 1, 5, 31.99, 13.0, 0.0),   # cell (31, 13): 2 from (29, 11), inside
             Car(0, "Outbound", 1, 5, 32.0, 11.0, 0.0),    # cell (32, 11): 3 away, outside
-            Car(0, "Home", 1, 5, 27.0, 9.2, 1.0),         # cell (27, 9): 2 away, inside, not stopped
+            Car(0, "Home", 1, 5, 27.0, 9.2, 1.0),         # cell (27, 9): 2 away, inside, but parked: not near
             Car(0, "Outbound", 1, 5, 28.99, 10.99, 0.0))  # cell (28, 10): inside
     s = replace(parse_observation(make_obs()), cars=cars)
     assert PLACE_RADIUS == 2
-    assert cars_near(s, ((29, 11),)) == (cars[0], cars[2], cars[3])                 # observation order
+    assert cars_near(s, ((29, 11),)) == (cars[0], cars[3])                          # observation order, driving only
     # a car near two footprint cells is listed once, whatever the footprint order
-    assert cars_near(s, ((29, 11), (29, 14))) == cars_near(s, ((29, 14), (29, 11))) == (cars[0], cars[2], cars[3])
+    assert cars_near(s, ((29, 11), (29, 14))) == cars_near(s, ((29, 14), (29, 11))) == (cars[0], cars[3])
     assert cars_near(parse_observation(make_obs()), ((29, 11),)) == ()
+
+
+def test_cars_near_skips_parked_cars():
+    cars = [_waiting(_car("Outbound", 29.5, 11.5, 0.0), 6.0),     # driving, near
+            _waiting(_car("Home", 28.5, 12.5, 0.0), 30.0),        # parked at home, near
+            _waiting(_car("Parking", 30.5, 13.5, 0.0), 20.0)]     # parked at a shop, near
+    s = _stocked(vehicles=cars)
+    pc = _at(s, LIGHT, (29, 11))
+    assert len(s.cars) == 3
+    assert len(cars_near(s, pc.footprint)) == 1
+    f = placement_features(s, pc)
+    assert f["pl_cars_near"] == 1.0
+    assert (f["pl_max_wait_near"], f["pl_mean_wait_near"]) == (6.0, 6.0)   # a parked car's wait is not counted
 
 
 def test_spots_are_ordered_by_stopped_cars_then_position():
@@ -349,12 +373,12 @@ def test_a_roundabout_spot_reports_the_candidate_and_its_footprint():
 def test_waits_cover_exactly_the_cars_near_the_footprint():
     cars = [_waiting(_car("Outbound", 29.5, 11.5, 0.0), 6.0),     # stopped, near
             _waiting(_car("Outbound", 27.5, 12.5, 0.5), 2.0),     # moving, near (cell (27, 12))
-            _waiting(_car("Parking", 30.5, 13.5, 0.0), 1.0),      # parked: a car near, never stopped
+            _waiting(_car("Parking", 30.5, 13.5, 0.0), 1.0),      # parked: not a car near
             _waiting(_car("Outbound", 33.5, 11.5, 0.0), 40.0)]    # cell (33, 11): 4 away, not near
     s = _stocked(vehicles=cars)
     f = placement_features(s, _at(s, LIGHT, (29, 11)))
-    assert (f["pl_cars_near"], f["pl_stopped_near"]) == (3, 1)
-    assert (f["pl_max_wait_near"], f["pl_mean_wait_near"]) == (6.0, 3.0)
+    assert (f["pl_cars_near"], f["pl_stopped_near"]) == (2, 1)
+    assert (f["pl_max_wait_near"], f["pl_mean_wait_near"]) == (6.0, 4.0)
     quiet = placement_features(s, PlacementCandidate(LIGHT, (5, 5), ((5, 5),), 3, 0, False, 0))
     assert (quiet["pl_cars_near"], quiet["pl_stopped_near"], quiet["pl_max_wait_near"],
             quiet["pl_mean_wait_near"]) == (0, 0, 0, 0)

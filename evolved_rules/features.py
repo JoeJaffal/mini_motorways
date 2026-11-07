@@ -20,12 +20,23 @@ import numpy as np
 from .candidates import (
     DOORSTEP_RADIUS, NEAR_SHOP_RADIUS, RemovalCandidate, RouteCandidate, doorsteps, link_degree, near_cells,
 )
-from .state import DIRS, Building, Cell, CityState, Offer, _in_grid
+from .state import DIRS, Building, Car, Cell, CityState, Offer, _in_grid
 
 if TYPE_CHECKING:  # placement.py imports this module (STUCK_SPEED), so it is imported lazily at run time
     from .placement import PlacementCandidate
 
 STUCK_SPEED = 0.05  # tiles/s: a driving car slower than this is stuck (as autopsy.py)
+
+
+def is_driving(car: Car) -> bool:
+    """A car on the road: not parked at home (stage Home) and not parked at a shop (stage Parking)."""
+    return car.stage not in ("Home", "Parking")
+
+
+def is_stuck(car: Car) -> bool:
+    """A driving car slower than STUCK_SPEED. The one stuck-car test: gp-3 traffic inputs, stuck_cars, placement."""
+    return is_driving(car) and car.speed < STUCK_SPEED
+
 NO_SHOP_DIST = 64.0  # pl_dist_worst_shop when the state has no shop: farther than any cell of the 50 x 30 grid
 
 N_ITEM_TYPES = 6  # inventory: roads, bridges, motorways, traffic lights, roundabouts, unused
@@ -271,8 +282,7 @@ class _Analysis:
             # live links only (candidates.link_degree): a tile pending removal no longer counts
             junctions = [(int(x), int(y)) for y, x in np.argwhere(road) if link_degree(st, (int(x), int(y))) >= 3]
             # a car's position is a float (a cell centre is x + 0.5): it is near by the cell it is in
-            stuck_cells = [(math.floor(c.x), math.floor(c.y)) for c in st.cars
-                           if c.stage not in ("Home", "Parking") and c.speed < STUCK_SPEED]
+            stuck_cells = [(math.floor(c.x), math.floor(c.y)) for c in st.cars if is_stuck(c)]
             out: dict[int, tuple[int, int, int, int]] = {}
             for s in self.shops:
                 steps = [o for o in s.outside if _in_grid(o)]
@@ -472,8 +482,7 @@ def global_features(state: CityState, memory: GameMemory | None = None) -> dict[
     traffic = a.traffic()
     g["worst_doorstep_degree"] = float(max((t[0] for t in traffic.values()), default=0))
     g["most_stuck_near_shop"] = float(max((t[3] for t in traffic.values()), default=0))
-    g["stuck_cars"] = float(sum(1 for c in state.cars if c.stage not in ("Home", "Parking")
-                                and c.speed < STUCK_SPEED))
+    g["stuck_cars"] = float(sum(1 for c in state.cars if is_stuck(c)))
     return g
 
 
