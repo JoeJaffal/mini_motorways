@@ -1,0 +1,61 @@
+{
+ "runs": {
+  "gp": {
+   "run_dir": "C:\\Projects\\490 - Project\\mini_motorways\\output\\evolved_rules\\runs\\h2h-gp",
+   "n": 100,
+   "mean": 245.35,
+   "median": 258.0,
+   "verified": "100/100"
+  },
+  "ppo_det": {
+   "run_dir": "C:\\Projects\\490 - Project\\mini_motorways\\output\\evolved_rules\\runs\\h2h-ppo-deterministic",
+   "n": 100,
+   "mean": 193.44,
+   "median": 165.5,
+   "verified": "None/None"
+  },
+  "ppo_sampled": {
+   "run_dir": "C:\\Projects\\490 - Project\\mini_motorways\\output\\evolved_rules\\runs\\h2h-ppo-sampled",
+   "n": 100,
+   "mean": 200.7,
+   "median": 191.5,
+   "verified": "None/None"
+  }
+ },
+ "comparisons": {
+  "gp - ppo_det": {
+   "n": 100,
+   "mean_diff": 51.91,
+   "sd_diff": 107.5460995822421,
+   "boot_ci": [
+    31.67522762373472,
+    73.33
+   ],
+   "t_ci": [
+    30.57052061319143,
+    73.24947938680856
+   ],
+   "wilcoxon_p": 4.009045785529777e-06,
+   "better": 66,
+   "worse": 34,
+   "ties": 0
+  },
+  "gp - ppo_sampled": {
+   "n": 100,
+   "mean_diff": 44.65,
+   "sd_diff": 101.96556905508483,
+   "boot_ci": [
+    24.93446287381127,
+    64.12
+   ],
+   "t_ci": [
+    24.417818940274525,
+    64.88218105972547
+   ],
+   "wilcoxon_p": 2.4632537242375723e-05,
+   "better": 70,
+   "worse": 29,
+   "ties": 1
+  }
+ }
+}

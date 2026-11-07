@@ -47,3 +47,18 @@ Four locked policies, 100 maps each, every replay recorded and verified (400/400
 | separated − hand | +45.5 | [+24.0, +67.3] | [+23.6, +67.5] | 8.9e-05 | 69 / 30 |
 
 **Verdict.** GP beats both hand-written rules with intervals that exclude 0. It does not beat CMA-ES: the two are statistically tied. The PLAN.md success criterion (beat the hand rule and CMA-ES) is met for the hand rule only. Each method was run once (no run-to-run variance), so this compares these two rules, not the methods.
+
+## Head-to-head with PPO, LA 9000–9099 (run once, 2026-11-07)
+
+Maps agreed as fresh for both sides. GP final (replays verified, 100/100) against Mohammad's checkpoint `validation-best.zip` (MaskablePPO, about 100k steps), played with his own evaluator (`training/evaluate_checkpoint.py`, branch `mohammad` at a652042) in both modes. His sampling seed per map follows his protocol (43 + seed offset), split into 5 blocks of 20 seeds. Both sides use a 3600 s cap. His branch's simulator adds only read-only probes; the same three rules on three maps played identical games on both builds (9/9). His evaluator does not verify replays. `h2h_ppo_9000-9099.json` has the full record.
+
+| Agent | Mean | Median |
+|---|---|---|
+| GP final | 245.3 | 258.0 |
+| PPO, sampled | 200.7 | 191.5 |
+| PPO, deterministic | 193.4 | 165.5 |
+
+| Comparison | Mean diff | 95% bootstrap CI | paired-t CI | Wilcoxon p | better / worse |
+|---|---|---|---|---|---|
+| GP − PPO deterministic | +51.9 | [+31.7, +73.3] | [+30.6, +73.2] | 4.0e-06 | 66 / 34 |
+| GP − PPO sampled | +44.6 | [+24.9, +64.1] | [+24.4, +64.9] | 2.5e-05 | 70 / 29 |
