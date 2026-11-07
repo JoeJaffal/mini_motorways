@@ -305,3 +305,232 @@ def test_gplightround_tree_plays_like_gphand(host):
               if a["command"] == "build" and a["tool"] in ("TrafficLight", "Roundabout") and a["accepted"]]
     assert placed  # the games place something, so this is not the identity of two games that never place
     _same_game(tree, hand)
+
+
+# --- task 4: place_tree in the evolution loop ----------------------------------------------------------------
+
+import json  # noqa: E402
+import pickle  # noqa: E402
+
+from evolved_rules import evolve as evo  # noqa: E402
+from evolved_rules.evolve import Config, read_checkpoint, read_jsonl  # noqa: E402
+from evolved_rules.tests.test_evolve import SMALL, fake, run  # noqa: E402,F401 (fake is a fixture)
+
+REFERENCE = gp.SEPARATED_TEXT
+
+
+def _place_cfg(**kw) -> Config:
+    return Config(**{**SMALL, "remove_tree": True, "place_tree": True, **kw})
+
+
+def test_place_tree_population():
+    cfg = Config(remove_tree=True, place_tree=True, pop=12, seed_texts=(_seed("gp2"), _seed("light")))
+    cfg.check()
+    random.seed(cfg.seed)
+    pop = evo.initial_population(cfg)
+    assert len(pop) == 12 and all(len(t.splitlines()) == 5 for t in pop)
+    assert pop[:3] == [gp.with_place(t) for t in (gp.HAND_TEXT, gp.SEPARATED_TEXT, gp.CLEAN_TEXT)]
+    assert pop[3:5] == [gp.with_place(_seed("gp2")), gp.with_place(_seed("light"))]
+    assert len(set(pop)) == 12 and cfg.trees == 5
+    for t in pop:  # every text is canonical and has the five trees in order
+        assert gp.individual_text(gp.individual_from_text(t)) == t
+        assert [ln.split(":")[0] for ln in t.splitlines()] == list(gp.ALL_TREE_NAMES)
+    # the same seed text twice, or a seed equal to a hand rule, is kept once
+    dup = Config(remove_tree=True, place_tree=True, pop=6, seed_texts=(_seed("light"), _seed("light"), gp.HAND_TEXT))
+    random.seed(dup.seed)
+    three = [gp.with_place(t) for t in (gp.HAND_TEXT, gp.SEPARATED_TEXT, gp.CLEAN_TEXT)]
+    assert evo.initial_population(dup)[:4] == three + [_seed("light").strip()]
+
+
+def test_place_tree_needs_remove_tree():
+    with pytest.raises(ValueError, match="place_tree needs remove_tree"):
+        Config(place_tree=True).check()
+    with pytest.raises(ValueError, match="place_tree must be a bool"):
+        Config(remove_tree=True, place_tree=1).check()
+    _place_cfg().check()
+
+
+def test_five_tree_seed_needs_place_tree():
+    with pytest.raises(ValueError, match="5-tree seed text needs place_tree"):
+        Config(remove_tree=True, place_tree=False, seed_texts=(_seed("light"),)).check()
+    with pytest.raises(ValueError, match="5-tree seed text needs place_tree"):
+        Config(seed_texts=(_seed("light"),)).check()  # not even remove_tree
+    with pytest.raises(ValueError, match="5-tree reference text needs place_tree"):
+        Config(remove_tree=True, hof=3, reference_text=_seed("light")).check()
+    # a 4-tree text still needs only remove_tree, and with place_tree 3-, 4- and 5-tree texts all pass
+    Config(remove_tree=True, seed_texts=(GP3_FINAL_CANON,)).check()
+    with pytest.raises(ValueError, match="4-tree seed text needs remove_tree"):
+        Config(seed_texts=(GP3_FINAL_CANON,)).check()
+    _place_cfg(seed_texts=(HAND_TEXT, GP3_FINAL_CANON, _seed("light")), hof=3, reference_text=_seed("gp2")).check()
+
+
+def test_canonical_reference_is_five_trees():
+    gp3_final = GP3_FINAL_PATH.read_text(encoding="utf-8")
+    cfg = _place_cfg()
+    assert evo.canonical(cfg, gp3_final).endswith("place: -1.0")
+    assert evo.canonical(cfg, gp3_final) == _five("-1.0") and len(evo.canonical(cfg, HAND_TEXT).splitlines()) == 5
+    assert evo.canonical(cfg, _seed("light")) == _seed("light").strip()  # a 5-tree text stays as it is
+    # without place_tree nothing changes: gp-3's 4-tree form and gp-2's 3-tree form
+    assert evo.canonical(Config(remove_tree=True), gp3_final) == GP3_FINAL_CANON
+    assert evo.canonical(Config(), HAND_TEXT) == HAND_CANON
+    # the hall of fame starts from the canonical reference and seeds
+    hall = evo.initial_hof(_place_cfg(hof=3, reference_text=gp3_final, seed_texts=(_seed("light"),)))
+    assert [m["text"] for m in hall] == [_five("-1.0"), _seed("light").strip()]
+
+
+def test_place_checkpoint_format(fake, tmp_path):  # noqa: F811
+    assert evo.PLACE_CHECKPOINT_FORMAT == 5
+    run(tmp_path, "place", _place_cfg(min_gens=50, max_gens=1))
+    ckpt = read_checkpoint(tmp_path / "place")
+    assert ckpt["format"] == 5 and "hof" not in ckpt
+    assert all(len(t.splitlines()) == 5 for t in ckpt["population"])
+    # a hall keeps format 5 (the format says "place tree"; the hall is still in the state)
+    run(tmp_path, "placehall", _place_cfg(min_gens=50, max_gens=1, hof=3, reference_text=REFERENCE))
+    ckpt = read_checkpoint(tmp_path / "placehall")
+    assert ckpt["format"] == 5 and ckpt["hof"] and all(len(m["text"].splitlines()) == 5 for m in ckpt["hof"])
+    # the older formats are unchanged
+    run(tmp_path, "three", Config(**{**SMALL, "min_gens": 50, "max_gens": 1}))
+    run(tmp_path, "four", Config(**{**SMALL, "min_gens": 50, "max_gens": 1, "remove_tree": True}))
+    run(tmp_path, "hall", Config(**{**SMALL, "min_gens": 50, "max_gens": 1, "hof": 3, "reference_text": REFERENCE}))
+    assert [read_checkpoint(tmp_path / n)["format"] for n in ("three", "four", "hall")] == [3, 3, 4]
+    # a place-tree run resumes (with or without its hall) and keeps its 5 trees
+    for name in ("place", "placehall"):
+        cfg, state = evo.load(tmp_path / name, overrides={"max_gens": 2})
+        assert cfg.place_tree and state["format"] == 5
+        run(tmp_path, name, resume=True, overrides={"max_gens": 2})
+        ckpt = read_checkpoint(tmp_path / name)
+        assert ckpt["generation"] == 2 and all(len(t.splitlines()) == 5 for t in ckpt["population"])
+
+
+def test_checkpoint_formats_3_4_and_5_are_read_and_others_refused(tmp_path):
+    for fmt in (3, 4, 5):
+        (tmp_path / evo.CHECKPOINT).write_bytes(pickle.dumps({"format": fmt}))
+        assert read_checkpoint(tmp_path)["format"] == fmt
+    (tmp_path / evo.CHECKPOINT).write_bytes(pickle.dumps({"format": 6}))
+    with pytest.raises(ValueError, match="checkpoint format 6, expected 3, 4 or 5"):
+        read_checkpoint(tmp_path)
+
+
+def test_a_place_checkpoint_that_does_not_match_the_config_is_refused(fake, tmp_path):  # noqa: F811
+    run(tmp_path, "a", _place_cfg(min_gens=50, max_gens=1))
+    path = tmp_path / "a" / evo.CONFIG
+    config = json.loads(path.read_text(encoding="utf-8"))
+    config["params"]["place_tree"] = False  # as if the flag were dropped: the 5-tree state must not resume as 4
+    path.write_text(json.dumps(config), encoding="utf-8")
+    with pytest.raises(ValueError, match="does not match"):
+        evo.load(tmp_path / "a")
+
+
+def test_place_tree_cannot_change_on_resume(fake, tmp_path):  # noqa: F811
+    run(tmp_path, "a", _place_cfg(min_gens=50, max_gens=1))
+    with pytest.raises(ValueError, match="--place-tree"):
+        evo.load(tmp_path / "a", overrides={"place_tree": False})
+
+
+def test_a_run_made_before_place_tree_existed_resumes_without_it(fake, tmp_path):  # noqa: F811
+    run(tmp_path, "a", Config(**{**SMALL, "min_gens": 50, "max_gens": 1, "remove_tree": True}))
+    path = tmp_path / "a" / evo.CONFIG
+    config = json.loads(path.read_text(encoding="utf-8"))
+    config["params"].pop("place_tree", None)
+    path.write_text(json.dumps(config), encoding="utf-8")
+    cfg, state = evo.load(tmp_path / "a", overrides={"place_tree": False, "max_gens": 2})
+    assert cfg.place_tree is False and cfg.trees == 4 and state["format"] == 3
+
+
+def test_a_place_run_keeps_5_tree_individuals_including_immigrants(fake, tmp_path):  # noqa: F811
+    cfg = _place_cfg(pop=10, dedup=True, immigrants=3, validate_top=2, max_gens=2, min_gens=5,
+                     seed_texts=(_seed("light"),))
+    fake["game"] = lambda text, seed, cap_s: {"trips": 50 + len(text) % 3, "seconds": 300.0, "commands": 5,
+                                              "tiles_built": 4}  # 3 behaviours: duplicates and immigrants
+    run(tmp_path, "p", cfg)
+    gens = read_jsonl(tmp_path / "p" / evo.GENERATIONS)
+    assert len(gens) == 2 and all(r["immigrants"] > 0 for r in gens)
+    pop = read_checkpoint(tmp_path / "p")["population"]
+    assert all(len(gp.individual_from_text(t)) == 5 for t in pop)
+    assert all(len(t.splitlines()) == 5 for t, _ in fake["plays"])
+    best = (tmp_path / "p" / evo.BEST).read_text(encoding="utf-8").strip()
+    assert len(best.splitlines()) == 5
+
+
+def test_cli_place_tree_flag(fake, tmp_path, monkeypatch):  # noqa: F811
+    from evolved_rules.engine import Engine
+    assert evo.FLAG_NAMES["place_tree"] == "--place-tree"
+    monkeypatch.setattr(evo, "EVOLVE_DIR", tmp_path)
+    monkeypatch.setattr(evo, "_make_engine", lambda cfg, run_dir: Engine(workers=2, cache_path=run_dir / evo.CACHE))
+    seed_file = tmp_path / "light.txt"
+    seed_file.write_text(_seed("light"), encoding="utf-8")
+    common = ["--pop", "8", "--first-seeds", "2", "--more-seeds", "2", "--racing-top", "4", "--validate-top", "2",
+              "--validation", "1500-1502", "--max-gens", "1", "--workers", "2"]
+    assert evo.main(["--run", "c5", *common, "--remove-tree", "--place-tree", "--seed-text", str(seed_file)]) == 0
+    params = json.loads((tmp_path / "c5" / evo.CONFIG).read_text())["params"]
+    assert params["place_tree"] is True and params["remove_tree"] is True
+    assert read_checkpoint(tmp_path / "c5")["format"] == 5
+    # --place-tree without --remove-tree is refused up front; so is a 5-tree seed without --place-tree
+    with pytest.raises(SystemExit):
+        evo.main(["--run", "c5b", *common, "--place-tree"])
+    with pytest.raises(SystemExit):
+        evo.main(["--run", "c5c", *common, "--remove-tree", "--seed-text", str(seed_file)])
+    # a resume carries the flag from the saved run
+    assert evo.main(["--run", "c5", "--resume", "--max-gens", "2"]) == 0
+    assert read_checkpoint(tmp_path / "c5")["generation"] == 2
+
+
+def _game_with(trips: int, **counts: int) -> dict:
+    return {"trips": trips, "seconds": 300.0, "commands": 9, "tiles_built": 4, "action_counts": dict(counts)}
+
+
+def test_validation_record_counts_placements():
+    cfg = Config(validation=(1500, 1501))
+    games = [_game_with(100, draw=7, TrafficLight=3), _game_with(120, draw=5, Roundabout=1)]
+    rec = evo._validation_record(cfg, 4, "text", 12, games)
+    assert rec["lights"] == [3, 0] and rec["roundabouts"] == [0, 1]
+    assert rec["trips"] == [100, 120] and rec["mean"] == 110.0  # the older fields are as before
+    # a result with no action_counts (an old cache line, a fake game) counts 0
+    bare = evo._validation_record(cfg, 4, "text", 12, [{"trips": 1, "seconds": 2.0}, {"trips": 3, "seconds": 4.0}])
+    assert bare["lights"] == [0, 0] and bare["roundabouts"] == [0, 0]
+
+
+def test_the_engine_keeps_action_counts_in_what_it_caches(tmp_path, monkeypatch):
+    # the engine stores the whole game summary, action_counts included, so placements survive the cache
+    from concurrent.futures import ThreadPoolExecutor
+    from evolved_rules import engine as en
+    monkeypatch.setattr(en, "_make_worker", lambda: ThreadPoolExecutor(max_workers=1))
+    monkeypatch.setattr(en, "_play_job", lambda text, seed, cap_s: _game_with(10, TrafficLight=2, Roundabout=1))
+    path = tmp_path / "cache.jsonl"
+    eng = en.Engine(workers=1, cache_path=path)
+    first = eng.play([(HAND_TEXT, 1)])[0]
+    eng.close()
+    assert first["action_counts"] == {"TrafficLight": 2, "Roundabout": 1}
+    eng = en.Engine(workers=1, cache_path=path)
+    try:
+        assert eng.cached(HAND_TEXT, 1)["action_counts"] == {"TrafficLight": 2, "Roundabout": 1}
+    finally:
+        eng.close()
+
+
+def test_place_run_reports_the_incumbents_lights_and_roundabouts(fake, tmp_path):  # noqa: F811
+    cfg = _place_cfg(min_gens=50, max_gens=2)
+    fake["game"] = lambda text, seed, cap_s: {
+        "trips": 100 + len(text) % 7, "seconds": 300.0, "commands": 5, "tiles_built": 4,
+        "action_counts": {"TrafficLight": seed % 3, "Roundabout": 1 if seed % 2 else 0}}
+    run(tmp_path, "r", cfg)
+    vals = read_jsonl(tmp_path / "r" / evo.VALIDATION)
+    assert vals and all(len(v["lights"]) == len(v["roundabouts"]) == 3 for v in vals)
+    assert vals[0]["lights"] == [s % 3 for s in cfg.validation]
+    assert vals[0]["roundabouts"] == [s % 2 for s in cfg.validation]
+    gens = read_jsonl(tmp_path / "r" / evo.GENERATIONS)
+    inc = gens[-1]["incumbent"]
+    mine = next(v for v in vals if v["hash"] == inc["hash"])
+    assert inc["lights"] == pytest.approx(sum(mine["lights"]) / 3)
+    assert inc["roundabouts"] == pytest.approx(sum(mine["roundabouts"]) / 3)
+    line = evo.format_record(gens[-1], cfg)
+    assert f"{inc['lights']:.1f} lights" in line and f"{inc['roundabouts']:.1f} roundabouts" in line
+
+
+def test_old_configs_print_and_record_as_before(fake, tmp_path):  # noqa: F811
+    cfg = Config(**{**SMALL, "min_gens": 50, "max_gens": 2})
+    run(tmp_path, "old", cfg)
+    gens = read_jsonl(tmp_path / "old" / evo.GENERATIONS)
+    assert "lights" not in gens[-1]["incumbent"] and "roundabouts" not in gens[-1]["incumbent"]
+    line = evo.format_record(gens[-1], cfg)
+    assert "lights" not in line and "roundabouts" not in line

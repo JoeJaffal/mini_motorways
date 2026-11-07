@@ -3,8 +3,8 @@
     PY -m evolved_rules.evolve --run NAME [--resume] [--workers 10] [--pop 64] [--seed 1] [--min-gens 30]
         [--patience 20] [--min-gain-frac 0.02] [--min-gain-trips 3] [--max-hours 72] [--max-gens 400]
         [--validation 1500-1549] [--cap 3600] [--first-seeds 8] [--more-seeds 24] [--racing-top 16]
-        [--validate-top 3] [--immigrants 8] [--sig-alpha 0.005] [--no-dedup] [--remove-tree] [--seed-text FILE]
-        [--hof 8 --reference FILE [--hof-se 1]]
+        [--validate-top 3] [--immigrants 8] [--sig-alpha 0.005] [--no-dedup] [--remove-tree [--place-tree]]
+        [--seed-text FILE] [--hof 8 --reference FILE [--hof-se 1]]
 
 One generation (decisions P2-1..P2-4 of plans/2026-11-01-phase2-evolution.md, as changed for gp-2 in
 EXPERIMENTS.md; the gp-1 values are in brackets, and --first-seeds 4 --more-seeds 8 --validate-top 1
@@ -46,6 +46,16 @@ first round and drifted to rules that are lucky on 32 seeds. With hof > 0, steps
   rest of the hall, then the racing top; the validated individuals are its top `validate_top` re-tested members.
   Breeding is unchanged. Generation 0's hall is the reference and the seed texts (they count as re-tested).
 hof = 0 is the loop above exactly (checkpoint format 3); hof > 0 writes format 4.
+
+gp-4 (place_tree, needs remove_tree; plans/2026-11-07-gp4-step2-plan.md). Every individual has 5 trees: the 4
+of gp-3 and a place tree that scores where to put a traffic light or a roundabout (gp.with_place; a tree that is
+a constant <= 0, like `place: -1.0`, never places). The hand, separated and clean rules, the seed texts and the
+reference all get a never-placing place tree, and random individuals and immigrants have 5 random trees. The
+loop itself is unchanged: racing, hall of fame, probation and the stop rule work on the 5-tree texts as on
+the others. Each validation record also lists the lights and roundabouts the game built (the counts of the
+"TrafficLight" and "Roundabout" build commands in the game's action_counts), and a generation's record and
+printed line give the incumbent's mean per validation game. Checkpoint format 5 is written by every
+place_tree run, with or without a hall (the hall is still in the state when hof > 0).
 
 Stop rule (P2-1, class Convergence; tune_cmaes.py uses the same class, stop_reason and run_loop). A validated
 individual counts as an improvement when its mean is at least `anchor + max(min_gain_trips, min_gain_frac *
@@ -114,10 +124,14 @@ CHECKPOINT_FORMAT = 3
 # 4 (gp-3.3): a run with a hall of fame (hof > 0) also checkpoints the hall; older code must refuse it, since it
 # would resume the run without one.
 HOF_CHECKPOINT_FORMAT = 4
+# 5 (gp-4): a run with place_tree (5-tree individuals), with or without a hall; older code must refuse it, since it
+# would resume the run with 3 or 4 trees, or fail on the texts.
+PLACE_CHECKPOINT_FORMAT = 5
 EXISTING_RUN_EXIT_CODE = 2
 # Config fields whose command-line flag is not simply --field-name (for error messages)
 FLAG_NAMES = {"n_s4": "--first-seeds", "n_s8": "--more-seeds", "dedup": "--no-dedup", "seed_texts": "--seed-text",
-              "remove_tree": "--remove-tree", "cap_s": "--cap", "reference_text": "--reference"}
+              "remove_tree": "--remove-tree", "place_tree": "--place-tree", "cap_s": "--cap",
+              "reference_text": "--reference"}
 RESUMABLE_FIELDS = ("workers", "max_hours", "max_gens")  # may change on --resume: they never change a generation
 
 # Files of a run folder.
@@ -167,6 +181,8 @@ class Config:
     hof: int = 0
     reference_text: str = ""  # the rule whose per-seed trips are subtracted (needed with hof)
     hof_se: float = 1.0  # the hall ranks by mean difference - hof_se * standard error
+    # gp-4 (plans/2026-11-07-gp4-step2-plan.md): 5-tree individuals (a place tree; needs remove_tree)
+    place_tree: bool = False
 
     def check(self) -> None:
         """ValueError for a parameter the loop cannot run with."""
@@ -181,6 +197,14 @@ class Config:
             need(isinstance(v, int) and not isinstance(v, bool), f"{name} must be an int, got {v!r}")
         need(isinstance(self.dedup, bool), f"dedup must be a bool, got {self.dedup!r}")
         need(isinstance(self.remove_tree, bool), f"remove_tree must be a bool, got {self.remove_tree!r}")
+        need(isinstance(self.place_tree, bool), f"place_tree must be a bool, got {self.place_tree!r}")
+        need(self.remove_tree or not self.place_tree,
+             "place_tree needs remove_tree (an individual with a place tree has the remove tree too)")
+
+        def trees_ok(n: int, what: str) -> None:
+            need(n < 5 or self.place_tree, f"a 5-tree {what} needs place_tree")
+            need(n < 4 or self.remove_tree, f"a 4-tree {what} needs remove_tree")
+
         need(isinstance(self.seed_texts, tuple) and all(isinstance(s, str) for s in self.seed_texts),
              "seed_texts must be a tuple of individual texts")
         for s in self.seed_texts:
@@ -188,7 +212,7 @@ class Config:
                 ind = gp.individual_from_text(s)
             except ValueError as e:
                 raise ValueError(f"bad seed text: {e}") from None
-            need(len(ind) == 3 or self.remove_tree, "a 4-tree seed text needs remove_tree")
+            trees_ok(len(ind), "seed text")
         need(self.hof >= 0, f"hof must be >= 0, got {self.hof}")
         need(isinstance(self.reference_text, str), "reference_text must be an individual text")
         need(isinstance(self.hof_se, (int, float)) and not isinstance(self.hof_se, bool)
@@ -200,7 +224,7 @@ class Config:
                 ref = gp.individual_from_text(self.reference_text)
             except ValueError as e:
                 raise ValueError(f"bad reference text: {e}") from None
-            need(len(ref) == 3 or self.remove_tree, "a 4-tree reference text needs remove_tree")
+            trees_ok(len(ref), "reference text")
             need(self.hof >= self.elites and self.hof >= self.validate_top,
                  f"hof ({self.hof}) must be at least elites ({self.elites}) and validate_top ({self.validate_top}): "
                  f"both come from the hall")
@@ -251,7 +275,7 @@ class Config:
 
     @property
     def trees(self) -> int:
-        return 4 if self.remove_tree else 3
+        return 5 if self.place_tree else 4 if self.remove_tree else 3
 
 
 # --- the stop rule (shared with tune_cmaes.py) ---------------------------------------------------------------
@@ -474,8 +498,13 @@ def initial_population(cfg: Config) -> list[str]:
 
     With remove_tree (gp-3): those two and the clean rule (gp.CLEAN_TEXT), then cfg.seed_texts, all as 4-tree
     texts (a 3-tree text gets remove = -1, never), then 4-tree random individuals. Repeated texts are kept once.
+
+    With place_tree (gp-4): the same three rules and the seeds, all as 5-tree texts (gp.with_place: a 3- or 4-tree
+    text gets place = -1, never), then 5-tree random individuals.
     """
-    if not cfg.remove_tree:
+    if cfg.place_tree:
+        texts = [gp.with_place(s) for s in (gp.HAND_TEXT, gp.SEPARATED_TEXT, gp.CLEAN_TEXT, *cfg.seed_texts)]
+    elif not cfg.remove_tree:
         texts = [gp.individual_text(gp.individual_from_text(gp.HAND_TEXT)),
                  gp.individual_text(gp.individual_from_text(gp.SEPARATED_TEXT))]
         texts += [gp.individual_text(gp.individual_from_text(s)) for s in cfg.seed_texts]
@@ -488,7 +517,10 @@ def initial_population(cfg: Config) -> list[str]:
 
 
 def canonical(cfg: Config, text: str) -> str:
-    """text as the population writes it (initial_population's form: with remove_tree, always 4 trees)."""
+    """text as the population writes it (initial_population's form: with remove_tree, always 4 trees; with
+    place_tree, always 5)."""
+    if cfg.place_tree:
+        return gp.with_place(text)
     return gp.with_remove(text) if cfg.remove_tree else gp.individual_text(gp.individual_from_text(text))
 
 
@@ -630,14 +662,21 @@ def write_checkpoint(run_dir: Path, state: dict) -> None:
     _atomic_write(run_dir / CHECKPOINT, pickle.dumps(state, protocol=pickle.HIGHEST_PROTOCOL))
 
 
+def checkpoint_format(cfg) -> int:
+    """The format a run with this config writes: 5 with place_tree (hall or not), else 4 with a hall, else 3."""
+    if getattr(cfg, "place_tree", False):
+        return PLACE_CHECKPOINT_FORMAT
+    return HOF_CHECKPOINT_FORMAT if getattr(cfg, "hof", 0) else CHECKPOINT_FORMAT
+
+
 def read_checkpoint(run_dir: Path) -> dict:
     with open(run_dir / CHECKPOINT, "rb") as f:
         state = pickle.load(f)  # our own file, written by write_checkpoint
-    if state.get("format") not in (CHECKPOINT_FORMAT, HOF_CHECKPOINT_FORMAT):
+    if state.get("format") not in (CHECKPOINT_FORMAT, HOF_CHECKPOINT_FORMAT, PLACE_CHECKPOINT_FORMAT):
         hint = {1: " (a gp-1 run: resume it with the code of commit 49c8197)",
                 2: " (a gp-2 run: resume it with the code of commit b8e82a0)"}.get(state.get("format"), "")
-        raise ValueError(f"checkpoint format {state.get('format')!r}, expected {CHECKPOINT_FORMAT} or "
-                         f"{HOF_CHECKPOINT_FORMAT}{hint}")
+        raise ValueError(f"checkpoint format {state.get('format')!r}, expected {CHECKPOINT_FORMAT}, "
+                         f"{HOF_CHECKPOINT_FORMAT} or {PLACE_CHECKPOINT_FORMAT}{hint}")
     return state
 
 
@@ -694,11 +733,10 @@ def start(cfg: Config, run_dir: Path) -> dict:
     random.seed(cfg.seed)
     population = initial_population(cfg)
     conv = Convergence(cfg.min_gens, cfg.patience, cfg.min_gain_frac, cfg.min_gain_trips, sig_alpha=cfg.sig_alpha)
-    state = {"format": CHECKPOINT_FORMAT, "generation": 0, "population": population, "rng": random.getstate(),
-             "convergence": conv.state(), "validated": {}, "elapsed_s": 0.0, "games_played": 0,
-             "cache_hits": 0}
+    state = {"format": checkpoint_format(cfg), "generation": 0, "population": population,
+             "rng": random.getstate(), "convergence": conv.state(), "validated": {}, "elapsed_s": 0.0,
+             "games_played": 0, "cache_hits": 0}
     if cfg.hof:
-        state["format"] = HOF_CHECKPOINT_FORMAT
         state["hof"], state["hof_archive"] = initial_hof(cfg), {}
     for name in (GENERATIONS, VALIDATION):
         (run_dir / name).write_bytes(b"")
@@ -738,9 +776,9 @@ def load(run_dir: Path, overrides: dict | None = None, config_cls=Config) -> tup
     cfg = config_cls.from_json(params)
     cfg.check()
     state = read_checkpoint(run_dir)
-    if (state["format"] == HOF_CHECKPOINT_FORMAT) != bool(getattr(cfg, "hof", 0)):
-        raise ValueError(f"checkpoint format {state['format']} does not match hof = {getattr(cfg, 'hof', 0)} "
-                         f"in {run_dir / CONFIG}")
+    if state["format"] != checkpoint_format(cfg):
+        raise ValueError(f"checkpoint format {state['format']} does not match hof = {getattr(cfg, 'hof', 0)}, "
+                         f"place_tree = {getattr(cfg, 'place_tree', False)} in {run_dir / CONFIG}")
     for name in (GENERATIONS, VALIDATION):
         _trim_jsonl(run_dir / name, state["generation"])
     (run_dir / "error.txt").unlink(missing_ok=True)  # a failure being resumed is no longer the run's state
@@ -768,6 +806,11 @@ def _validate_many(cfg: Config, engine, gen: int, texts: list[str], sizes: dict)
     return [_validation_record(cfg, gen, t, sizes[t], games[i * n:(i + 1) * n]) for i, t in enumerate(texts)]
 
 
+def _built(games: list[dict], tool: str) -> list[int]:
+    """Per game, how many `tool` build commands it sent (action_counts[tool]; 0 when the result has none)."""
+    return [int((g.get("action_counts") or {}).get(tool, 0)) for g in games]
+
+
 def _validation_record(cfg: Config, gen: int, text: str, size: int, games: list[dict]) -> dict:
     trips = [g["trips"] for g in games]
     seconds = [g["seconds"] for g in games]
@@ -775,6 +818,7 @@ def _validation_record(cfg: Config, gen: int, text: str, size: int, games: list[
     return {
         "gen": gen, "hash": text_hash(text), "text": text, "size": size, "seeds": list(cfg.validation),
         "trips": trips, "seconds": seconds, "tiles_built": tiles, "commands": [g.get("commands") for g in games],
+        "lights": _built(games, "TrafficLight"), "roundabouts": _built(games, "Roundabout"),
         "mean": float(statistics.fmean(trips)), "mean_seconds": float(statistics.fmean(seconds)),
         "trips_per_tile": (sum(trips) / sum(tiles)) if sum(tiles) > 0 else 0.0,
     }
@@ -839,6 +883,9 @@ def generation(cfg: Config, state: dict, engine, run_dir: Path, clock=time.monot
         _append_jsonl(run_dir / VALIDATION, record)
         validated[record["text"]] = {"mean": record["mean"], "mean_seconds": record["mean_seconds"], "gen": gen,
                                      "trips": record["trips"]}
+        if cfg.place_tree:  # the incumbent's placements, for the generation record and the printed line
+            validated[record["text"]].update(lights=float(statistics.fmean(record["lights"])),
+                                             roundabouts=float(statistics.fmean(record["roundabouts"])))
     cands = [{"text": t, "mean": validated[t]["mean"], "mean_seconds": validated[t]["mean_seconds"],
               "size": sizes[t], "trips": validated[t].get("trips"), "new": t in fresh} for t in chosen]
     conv = Convergence.from_state(state["convergence"])
@@ -874,6 +921,9 @@ def generation(cfg: Config, state: dict, engine, run_dir: Path, clock=time.monot
         "anchor": conv.anchor, "required_gain": conv.required_gain(), "gens_since_improvement": conv.since,
         "wall_s": wall, "games_played": played, "cache_hits": hits,
     }
+    if cfg.place_tree:  # the incumbent's mean lights and roundabouts per validation game
+        rec["incumbent"].update(lights=validated[inc["text"]]["lights"],
+                                roundabouts=validated[inc["text"]]["roundabouts"])
     if cfg.hof:
         rec["reference_trips"] = racing_all[ref][0]  # the reference's mean on this generation's training seeds
         rec["hof"] = hof_rows  # the next hall, best first: its top elites are the elites above
@@ -896,10 +946,13 @@ def format_record(rec: dict, cfg: Config) -> str:
         h = rec["hof"][0]
         lcb = "-inf" if h["lcb"] is None else f"{h['lcb']:+.1f}"
         hall = f" | hall top {h['hash'][:8]} {h['mean_diff']:+.1f} (bound {lcb}, {h['seeds']} seeds)"
+    placed = ""
+    if "lights" in inc:  # a place_tree run: what the incumbent builds per validation game
+        placed = f"; {inc['lights']:.1f} lights, {inc['roundabouts']:.1f} roundabouts per game"
     return (f"gen {rec['gen']:3d} | round-1 best {rec['s4']['best']:6.1f} mean {rec['s4']['mean']:6.1f}{beh}{hall} | "
             f"racing best {rec['best']['racing_mean']:6.1f} size {rec['best']['size']:3d} | "
             f"val {v['mean']:6.1f}{' new' if v['new'] else ' old'}{' +' if rec['improved'] else ''} | "
-            f"incumbent {inc['mean']:6.1f} (gen {inc['gen']}) | since {rec['gens_since_improvement']}/"
+            f"incumbent {inc['mean']:6.1f} (gen {inc['gen']}{placed}) | since {rec['gens_since_improvement']}/"
             f"{cfg.patience} | {rec['wall_s']:.0f} s, {rec['games_played']} games, {rec['cache_hits']} hits")
 
 
@@ -1011,6 +1064,8 @@ def main(argv: list[str] | None = None) -> int:
                         help="turn off behavioural de-duplication (the gp-1 scheme)")
     parser.add_argument("--remove-tree", action="store_const", const=True, dest="remove_tree",
                         help="gp-3: 4-tree individuals with a remove tree (clean routes and removals on)")
+    parser.add_argument("--place-tree", action="store_const", const=True, dest="place_tree",
+                        help="gp-4: 5-tree individuals with a place tree (needs --remove-tree)")
     parser.add_argument("--seed-text", action="append", dest="seed_files", metavar="FILE",
                         help="an individual text file added to generation 0 (repeatable)")
     parser.add_argument("--hof", type=int, help=f"gp-3.3: hall of fame size, 0 = off (default {d.hof})")
