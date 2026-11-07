@@ -238,3 +238,15 @@ If nothing counts by about generation 15, the moves themselves are not enough. T
 - **The best rule found is not gp-2's.** The hall's leader (`1737ea1b`, 28 nodes) leads gp-2's rule by **+39.5 trips over 88 training maps** (lower bound +28.3), and two others by about +24 over about 200 maps each. On 1500–1549 they score 230–240, the bias shown by the check above.
 - **The stop rule cannot see this progress.** It still anchors to gp-2's 245.1 on 1500–1549, so left alone the run would stop as converged at generation 20 with gp-2's rule as its final model.
 - **Proposed next step (not yet approved):** resume with the validation switched to 200 never-used maps (4000–4199) at sig_alpha 0.01. The `--revalidate` option is committed on branch `revalidate-prep` (97859ba), not merged.
+
+**Outcome of the pause:** gp-3.3 was not resumed, and the `--revalidate` option was not used. Instead the final rule was picked once on 200 unused maps (entry below).
+
+## 2026-11-06 to 2026-11-07: final rules, test set and PPO head-to-head
+
+Summary in `final/RECAP.md`; every table is in `final/README.md`.
+
+- **Final GP rule** `209634e8` (24 nodes, from gp-3.3's hall), chosen on 4000–4199: 257.2, against 238.5 for gp-2's rule. **Final CMA-ES weights** `fa7648c7` (run `cma-1`, converged after 30 generations, best 231.8 on validation, average of its 16 candidates 238.5 in generation 29), chosen the same way: 249.2.
+- **Test, 7000–7099, run once, 400/400 replays verified:** GP 245.9, CMA-ES 250.6, separated 216.3, hand 170.8. GP − hand +75.1 (+54.8, +95.5); GP − separated +29.6 (+9.9, +49.5); GP − CMA-ES −4.7 (−22.9, +13.1), a tie. The success criterion is met for the hand rule only.
+- **PPO head-to-head, 9000–9099:** GP 245.3, PPO sampled 200.7, PPO deterministic 193.4. GP − PPO deterministic +51.9 (+31.7, +73.3); GP − PPO sampled +44.6 (+24.9, +64.1).
+- **Autopsy, 3000–3019:** mean 255.8. Car shortage 13, slow arrival 5, unreachable cars 2; 22.8 tiles left; a third of the failing colour's cars stuck; the remove tree never fires.
+- **Not done:** run-to-run variance and other cities. Each method was run once.
