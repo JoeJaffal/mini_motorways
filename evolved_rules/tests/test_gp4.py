@@ -83,6 +83,9 @@ def test_light_spots_are_live_junctions_only():
     cells = [c.cell for c in placement_candidates(s, lights=True, roundabouts=False)]
     assert (29, 11) in cells and all(link_degree(s, c) >= 3 for c in cells)
     assert sorted(cells) == [(28, 11), (29, 11)]
+    # a light converts its own road tile and the build refunds the road, so it costs the network nothing
+    assert all(c.tool == LIGHT and c.tiles_lost == 0 and c.new_links == 0 and not c.joins_separated
+               for c in placement_candidates(s, lights=True, roundabouts=False))
     assert placement_candidates(s, lights=False, roundabouts=False) == []
 
 
@@ -154,10 +157,10 @@ EXPECTED_LINKS = [
 ]
 
 
-def _two_colour_state(second_colour=1):
+def _two_colour_state(second_colour=1, stub=None):
     red = shop(6, 0, 18, 10, 2, 2, [(19, 11, E)])          # entrance (19, 11) facing east, outside (20, 11)
     other = _shop(7, second_colour, 28, 12)                # entrance (28, 13) facing west, outside (27, 13)
-    roads = _merge(_links(*_row(19, 24, 11)), _links(*_row(25, 28, 13)))
+    roads = _merge(_links(*_row(19, 24, 11)), _links(*_row(25, 28, 13)), *([_links(*stub)] if stub else []))
     return parse_observation(make_obs(buildings=[red, other], roads=roads))
 
 
@@ -196,6 +199,24 @@ def test_one_network_serving_two_colours_is_not_a_separated_join_either():
     cands = placement_candidates(s, False, True)
     assert any(c.cell == (28, 12) for c in cands)
     assert not any(c.joins_separated for c in cands)
+
+
+def test_a_stub_that_serves_no_colour_is_not_a_network_to_join():
+    # the one-network layout above plus a stub (25, 12)-(26, 12) with no shop access: centre (28, 12) links to it
+    # through its west ring cell (27, 12), so it touches two networks, but only one of them serves any colour
+    blue = shop(7, 1, 28, 7, 2, 2, [(28, 8, S)])
+    roads = _merge(ROADS, _links((28, 10), (28, 9), (28, 8)), _links((26, 12), (25, 12)))
+    s = parse_observation(make_obs(buildings=[_shop(5, 0, 30, 10), house(1, 0, 19, 11, E), blue], roads=roads))
+    assert ((27, 12), (26, 12)) in ring_new_links(s, (28, 12))
+    cand = next(c for c in placement_candidates(s, False, True) if c.cell == (28, 12))
+    assert not cand.joins_separated
+    # beside two networks that do serve a colour each, a stub changes nothing: red + blue still joins
+    stubbed = _two_colour_state(stub=[(27, 11), (27, 10)])
+    assert ((26, 12), (27, 11)) in ring_new_links(stubbed, (25, 12))
+    assert next(c for c in placement_candidates(stubbed, False, True) if c.cell == (25, 12)).joins_separated
+    # two networks of one colour plus a stub: still no join
+    one = _two_colour_state(second_colour=0, stub=[(27, 11), (27, 10)])
+    assert not next(c for c in placement_candidates(one, False, True) if c.cell == (25, 12)).joins_separated
 
 
 # --- order and cap ----------------------------------------------------------------------------------------------

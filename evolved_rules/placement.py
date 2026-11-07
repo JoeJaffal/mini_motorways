@@ -41,8 +41,8 @@ class PlacementCandidate:
     footprint: tuple[Cell, ...]  # the cell, or the centre followed by the ring in N, W, S, E order
     degree: int  # the highest link_degree over the footprint
     new_links: int  # links the build adds (ring_new_links); 0 for a light
-    joins_separated: bool  # the build merges networks that together serve two or more colours
-    tiles_lost: int  # footprint cells that are road or bridge tiles now
+    joins_separated: bool  # the build merges two or more colour-serving networks that serve two or more colours
+    tiles_lost: int  # road or bridge tiles in a roundabout footprint; 0 for a light (it keeps its tile, refunded)
 
 
 def ring_of(centre: Cell) -> tuple[Cell, Cell, Cell, Cell]:
@@ -145,13 +145,15 @@ class _Networks:
         return i
 
     def join_separated(self, cells: list[Cell]) -> bool:
-        """The cells lie in two or more networks that serve two or more colours between them."""
-        ids = {self._network(c) for c in cells}
-        return len(ids) >= 2 and len(frozenset().union(*(self._colours[i] for i in ids))) >= 2
+        """The cells lie in two or more networks that each serve at least one colour and serve two or more colours
+        between them. A network that serves no colour (a stub with no shop access) does not count as a network."""
+        serving = [self._colours[i] for i in {self._network(c) for c in cells} if self._colours[i]]
+        return len(serving) >= 2 and len(frozenset().union(*serving)) >= 2
 
 
 def _light(state: CityState, cell: Cell) -> PlacementCandidate:
-    return PlacementCandidate(LIGHT, cell, (cell,), link_degree(state, cell), 0, False, 1)
+    # a light converts its own road tile and the build refunds that road, so nothing is lost
+    return PlacementCandidate(LIGHT, cell, (cell,), link_degree(state, cell), 0, False, 0)
 
 
 def _roundabout(state: CityState, centre: Cell, networks: _Networks) -> PlacementCandidate:
