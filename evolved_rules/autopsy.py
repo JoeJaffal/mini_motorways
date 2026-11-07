@@ -1,7 +1,8 @@
 """Failure autopsy and input statistics: why a rule set's games end, and which inputs ever vary (PLAN.md 8.2).
 
     PY -m evolved_rules.autopsy --policy SPEC --seeds 1500-1549 --workers 10 --out NAME
-    SPEC: hand | separated | clean | cleanrm | seprm | tree:<file> | tree+clean:<file>
+    SPEC: hand | separated | clean | cleanrm | seprm | light | round | lightround | tree:<file> | tree+clean:<file> |
+          gppkg:<file> | gplight:<file> | gpround:<file> | gplightround:<file>
 
 Each game is played exactly as agent.play_game plays it (same loop, same policy), with the policy wrapped so
 that every feature dict it is shown is tallied. At the end the final observation is read, including fields the
@@ -19,6 +20,9 @@ Why the game was lost, for the shop whose overcrowding timer ran out (the failin
                       this shop
     dispatch_gap      pins without a car while an idle car that can reach the shop is at home (timing)
     cap               the game reached the time cap (not lost)
+
+Since gp-4 each row also has lights_end (cells with infrastructure 4, the traffic lights) and roundabouts_end
+(len(state.roundabouts)) from the final state, and the summary shows their means.
 
 Output, in output/evolved_rules/autopsy/<out>/: games.jsonl (one row per game), terminals.json (per input:
 count, non-zero share, distinct values, min, max, mean) and summary.txt (also printed).
@@ -38,7 +42,9 @@ from . import evaluate as ev
 from .agent import EventTracker, decide, places
 from .gp import TreePolicy
 from .host import ROOT, Host
-from .rules import CleanHand, CleanRemoveHand, HandRule, SeparatedPreference, SeparatedRemoveHand
+from .rules import (
+    CleanHand, CleanRemoveHand, HandRule, LightHand, LightRoundHand, RoundHand, SeparatedPreference, SeparatedRemoveHand,
+)
 from .session import GameSession
 
 AUTOPSY_DIR = ROOT / "output" / "evolved_rules" / "autopsy"
@@ -104,7 +110,8 @@ class _Watched:
 
 
 def make_policy(spec: str):
-    """hand, separated, clean (CleanHand), tree:<file>, or tree+clean:<file> (the same trees offered clean routes)."""
+    """hand, separated, clean (CleanHand), light / round / lightround (gp-4), tree:<file>, tree+clean:<file> (the same
+    trees offered clean routes) or gppkg: / gplight: / gpround: / gplightround:<file> (gp-4; evaluate.make_policy)."""
     if spec == "hand":
         return HandRule()
     if spec == "separated":
@@ -115,11 +122,21 @@ def make_policy(spec: str):
         return CleanRemoveHand()
     if spec == "clean":
         return CleanHand()
+    if spec == "light":
+        return LightHand()
+    if spec == "round":
+        return RoundHand()
+    if spec == "lightround":
+        return LightRoundHand()
     if spec.startswith("tree:"):
         return TreePolicy(Path(spec[5:]).read_text(encoding="utf-8"))
     if spec.startswith("tree+clean:"):
         return TreePolicy(Path(spec[11:]).read_text(encoding="utf-8"), clean_routes=True)
-    raise ValueError(f"unknown policy {spec!r} (hand, separated, clean, tree:<file> or tree+clean:<file>)")
+    if ev.text_policy_prefix(spec) is not None:  # gp*:<file>, built exactly as evaluate builds it
+        return ev.make_policy(spec)
+    raise ValueError(f"unknown policy {spec!r} (hand, separated, clean, cleanrm, seprm, light, round, lightround, "
+                     f"tree:<file>, tree+clean:<file>, gppkg:<file>, gplight:<file>, gpround:<file> or "
+                     f"gplightround:<file>)")
 
 
 def classify(state, raw: dict, cap_s: float) -> dict:
@@ -192,6 +209,14 @@ def classify(state, raw: dict, cap_s: float) -> dict:
     }
 
 
+LIGHT_INFRA = 4  # the infrastructure code of a traffic light cell (state.infra)
+
+
+def placed_at_end(state) -> dict:
+    """gp-4: traffic lights (infrastructure-4 cells) and roundabouts on the map in the final state."""
+    return {"lights_end": int((state.infra == LIGHT_INFRA).sum()), "roundabouts_end": len(state.roundabouts)}
+
+
 def _init() -> None:
     import atexit
     global _HOST
@@ -214,7 +239,7 @@ def play(spec: str, seed: int, cap_s: float = ev.DEFAULT_CAP_S) -> dict:
     state = session.state
     row = {"seed": seed, "trips": state.trips, "seconds": state.time, "road_stock": state.inventory[0],
            "shops": len(state.shops()), "houses": len(state.houses()), "tiles_built": session.tiles_built,
-           "removals": session.action_counts.get("Remove", 0),
+           "removals": session.action_counts.get("Remove", 0), **placed_at_end(state),
            **classify(state, session.raw, cap_s)}
     return {"row": row, "tally": tally.stats}
 
@@ -236,6 +261,8 @@ def summarise(rows: list[dict], terms: dict) -> str:
              f"seconds mean {statistics.fmean(r['seconds'] for r in rows):.1f}"]
     causes = Counter(r["cause"] for r in rows)
     lines.append("causes: " + ", ".join(f"{c} {n}" for c, n in causes.most_common()))
+    lines.append(f"placed at the end (mean): lights {statistics.fmean(r['lights_end'] for r in rows):.2f}, "
+                 f"roundabouts {statistics.fmean(r['roundabouts_end'] for r in rows):.2f}")
     lost = [r for r in rows if r["cause"] != "cap"]
     if lost:
         def avg(k):

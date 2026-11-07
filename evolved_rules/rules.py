@@ -1,4 +1,5 @@
-"""Decision rules: the Policy interface, the hand-written rule, its separated-route variant and the do-nothing baseline (PLAN.md section 4)."""
+"""Decision rules: the Policy interface, the hand-written rule, its separated-route variant, the gp-4 rules that place
+traffic lights and roundabouts and the do-nothing baseline (PLAN.md section 4)."""
 from __future__ import annotations
 
 from typing import Protocol
@@ -109,6 +110,99 @@ class SeparatedRemoveHand(CleanRemoveHand):
 
     def priority(self, f: dict[str, float]) -> float:
         return SeparatedPreference.priority(self, f)
+
+
+def package_upgrade(f: dict[str, float], lights: bool, roundabouts: bool) -> float:
+    """gp-4 upgrade rule: take an offer of an enabled package (type 3 = traffic lights, type 4 = roundabout) before
+    anything else, and otherwise the offer with the most roads (the hand rule's upgrade)."""
+    return 1000.0 * ((lights and f["type_3"] == 1) or (roundabouts and f["type_4"] == 1)) + f["offer_roads"]
+
+
+def hand_place(f: dict[str, float], lights: bool, roundabouts: bool) -> float:
+    """gp-4 placement rule: the number of cars stopped near the spot, for a tool that is enabled.
+
+    A roundabout that would join separated networks scores -1, and so does a tool that is not enabled. The agent
+    places only above 0, so a spot is used once 1 or more cars are stopped at it.
+    """
+    if lights and f["pl_is_light"] == 1:
+        return f["pl_stopped_near"]
+    if roundabouts and f["pl_is_roundabout"] == 1 and f["pl_joins_separated"] != 1:
+        return f["pl_stopped_near"]
+    return -1.0
+
+
+class _PackageHand(SeparatedPreference):
+    """The separated preference that also takes the enabled packages and places them (hold, remove unchanged).
+
+    The subclasses switch the two tools on; this base has both off, so it never places (the agent then never looks
+    at placement for it).
+    """
+
+    name = "package"
+    places_lights = False
+    places_roundabouts = False
+
+    def upgrade(self, f: dict[str, float]) -> float:
+        return package_upgrade(f, self.places_lights, self.places_roundabouts)
+
+    def place(self, f: dict[str, float]) -> float:
+        return hand_place(f, self.places_lights, self.places_roundabouts)
+
+
+class LightHand(_PackageHand):
+    """gp-4 hand rule: the separated preference plus traffic lights where cars are stopped."""
+
+    name = "light"
+    places_lights = True
+
+
+class RoundHand(_PackageHand):
+    """gp-4 hand rule: the separated preference plus roundabouts where cars are stopped (never one that merges)."""
+
+    name = "round"
+    places_roundabouts = True
+
+
+class LightRoundHand(_PackageHand):
+    """gp-4 hand rule: the separated preference plus both tools."""
+
+    name = "lightround"
+    places_lights = True
+    places_roundabouts = True
+
+
+class GPHand:
+    """An evolved text (gp.TreePolicy) for routes, hold and remove, with the hand rules' package upgrade and placement.
+
+    GPHand(text, lights, roundabouts, name): priority, hold, remove and the coverage / clean_routes / removes /
+    wants_globals switches are the tree policy's; upgrade is package_upgrade and place is hand_place with the two
+    flags, which are also places_lights and places_roundabouts. With neither flag it only swaps the text's upgrade
+    tree for the roads rule and never places.
+    """
+
+    def __init__(self, text: str, lights: bool, roundabouts: bool, name: str) -> None:
+        from .gp import TreePolicy  # lazy: gp loads deap, which the other policies here do not need
+
+        self.tree = TreePolicy(text)
+        self.name = name
+        self.places_lights, self.places_roundabouts = bool(lights), bool(roundabouts)
+        self.coverage, self.clean_routes = self.tree.coverage, self.tree.clean_routes
+        self.removes, self.wants_globals = self.tree.removes, self.tree.wants_globals
+
+    def priority(self, f: dict[str, float]) -> float:
+        return self.tree.priority(f)
+
+    def hold(self, g: dict[str, float]) -> float:
+        return self.tree.hold(g)
+
+    def upgrade(self, f: dict[str, float]) -> float:
+        return package_upgrade(f, self.places_lights, self.places_roundabouts)
+
+    def remove(self, f: dict[str, float]) -> float:
+        return self.tree.remove(f)
+
+    def place(self, f: dict[str, float]) -> float:
+        return hand_place(f, self.places_lights, self.places_roundabouts)
 
 
 class DoNothing:

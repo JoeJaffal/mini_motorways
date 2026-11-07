@@ -1,6 +1,7 @@
 """Evaluation: play many games in parallel, verify their replays and write the result tables.
 
-    PY -m evolved_rules.evaluate --policy {hand,nothing,separated,reference,tree:FILE} --seeds 1000 2000-2019 \
+    PY -m evolved_rules.evaluate --policy {hand,nothing,separated,light,round,lightround,reference,tree:FILE,
+        gppkg:FILE,gplight:FILE,gpround:FILE,gplightround:FILE} --seeds 1000 2000-2019 \
         --workers 10 --run NAME [--verify] [--cap 3600]
 
 tree:FILE evaluates an individual text (gp.individual_text, e.g. an evolve run's best.txt) as gp.TreePolicy
@@ -8,9 +9,15 @@ with coverage targets, exactly as the evolution engine plays it. The text is che
 claimed, copied to the run folder as policy.txt (the workers read that copy, so the run does not depend on
 FILE afterwards) and kept in summary.json's config as policy_text.
 
+gp-4: light, round and lightround are the hand rules that place traffic lights and roundabouts (rules.LightHand,
+RoundHand, LightRoundHand). gppkg:FILE, gplight:FILE, gpround:FILE and gplightround:FILE play an individual text
+as rules.GPHand: the text's routes, hold and remove with the hand rules' package upgrade and placement (gppkg
+places nothing: it isolates the package upgrade rule). They are handled exactly like tree:FILE: checked first,
+copied to policy.txt, kept in the config as policy_text.
+
 A run writes output/evolved_rules/runs/<run>/: replays/<seed>.json (recorded policies only; a replay that fails
 verification also gets replays/<seed>.verify.txt, the verifier's output), games.jsonl (one game summary per
-line, in input seed order), policy.txt (tree policies only) and summary.json (config, games, aggregate).
+line, in input seed order), policy.txt (tree: and gp*: policies only) and summary.json (config, games, aggregate).
 summary.json is written last, so a run folder without it is not a result; a failed run leaves error.txt (the
 traceback) instead. Each worker process keeps one long-lived Host and plays one seed per job; a (policy, seed) game is
 deterministic, so the results do not depend on the worker count.
@@ -40,17 +47,24 @@ from pathlib import Path
 from .agent import play_game, trips_per_tile
 from .gp import TreePolicy, individual_from_text, individual_text
 from .host import ROOT, Host, default_host_dll
-from .rules import CleanHand, CleanRemoveHand, DoNothing, HandRule, SeparatedPreference, SeparatedRemoveHand
+from .rules import (
+    CleanHand, CleanRemoveHand, DoNothing, GPHand, HandRule, LightHand, LightRoundHand, RoundHand, SeparatedPreference,
+    SeparatedRemoveHand,
+)
 from .session import DEFAULT_SCENARIO, TICKS, raise_if_rejected
 from .state import parse_observation
 from .verify import build_verifier, verify_recording
 
 RUNS_DIR = ROOT / "output" / "evolved_rules" / "runs"  # /output/ is git-ignored
 POLICIES = {"hand": HandRule, "nothing": DoNothing, "separated": SeparatedPreference, "clean": CleanHand,
-            "cleanrm": CleanRemoveHand, "seprm": SeparatedRemoveHand}
+            "cleanrm": CleanRemoveHand, "seprm": SeparatedRemoveHand, "light": LightHand, "round": RoundHand,
+            "lightround": LightRoundHand}
 REFERENCE = "reference"  # the privileged baseline: the host's own network builder, never recorded
 POLICY_NAMES = (*POLICIES, REFERENCE)
 TREE_PREFIX = "tree:"  # --policy tree:<file>: an individual text file played as gp.TreePolicy
+# --policy gp*:<file> (gp-4): an individual text file played as rules.GPHand; the value is (lights, roundabouts)
+GP_PREFIXES = {"gppkg:": (False, False), "gplight:": (True, False), "gpround:": (False, True),
+               "gplightround:": (True, True)}
 POLICY_FILE = "policy.txt"  # a tree policy's text, in the run folder
 REFERENCE_EVERY_S = 10.0
 PACKAGES = ("numpy", "scipy", "deap", "cma")
@@ -66,14 +80,26 @@ def is_tree_policy(policy_name) -> bool:
     return isinstance(policy_name, str) and policy_name.startswith(TREE_PREFIX)
 
 
+def text_policy_prefix(policy_name) -> str | None:
+    """The prefix (tree: or one of GP_PREFIXES) of a spec that names an individual text file, else None."""
+    if isinstance(policy_name, str):
+        for prefix in (TREE_PREFIX, *GP_PREFIXES):
+            if policy_name.startswith(prefix):
+                return prefix
+    return None
+
+
 def read_tree_policy(policy_name: str) -> str:
-    """tree:<file> -> the file's individual text, canonical (gp.individual_text).
+    """tree:<file> or gp*:<file> -> the file's individual text, canonical (gp.individual_text).
 
     ValueError for an empty file name, an unreadable file or a text that is not an individual.
     """
-    file = policy_name[len(TREE_PREFIX):]
+    prefix = text_policy_prefix(policy_name)
+    if prefix is None:
+        raise ValueError(f"not a {TREE_PREFIX}<file> or gp*:<file> policy: {policy_name!r}")
+    file = policy_name[len(prefix):]
     if not file:
-        raise ValueError(f"{TREE_PREFIX}<file> needs a file name, got {policy_name!r}")
+        raise ValueError(f"{prefix}<file> needs a file name, got {policy_name!r}")
     try:
         text = Path(file).read_text(encoding="utf-8")
     except (OSError, UnicodeDecodeError) as e:
@@ -85,19 +111,29 @@ def read_tree_policy(policy_name: str) -> str:
 
 
 def check_policy(policy_name) -> str | None:
-    """ValueError unless policy_name is a named policy or a readable tree:<file>; returns the tree text or None."""
-    if is_tree_policy(policy_name):
+    """ValueError unless policy_name is a named policy or a readable tree:<file> or gp*:<file>.
+
+    Returns the file's canonical individual text for those two, else None.
+    """
+    if text_policy_prefix(policy_name) is not None:
         return read_tree_policy(policy_name)
     if policy_name not in POLICY_NAMES:
-        raise ValueError(f"unknown policy {policy_name!r}; expected one of {', '.join(POLICY_NAMES)} "
-                         f"or {TREE_PREFIX}<file>")
+        raise ValueError(f"unknown policy {policy_name!r}; expected one of {', '.join(POLICY_NAMES)}, "
+                         f"{TREE_PREFIX}<file> or {'<file>, '.join(GP_PREFIXES)}<file>")
     return None
 
 
 def make_policy(policy_name: str):
-    """A fresh policy object for a named policy or tree:<file> (reference has none: see run_reference)."""
+    """A fresh policy object for a named policy, tree:<file> or gp*:<file> (reference has none: see run_reference).
+
+    A gp*:<file> is a rules.GPHand named after its prefix ("gplight"): the text with the flags of GP_PREFIXES.
+    """
     if is_tree_policy(policy_name):
         return TreePolicy(read_tree_policy(policy_name))
+    prefix = text_policy_prefix(policy_name)
+    if prefix is not None:
+        lights, roundabouts = GP_PREFIXES[prefix]
+        return GPHand(read_tree_policy(policy_name), lights, roundabouts, prefix[:-1])
     return POLICIES[policy_name]()
 
 
@@ -352,7 +388,7 @@ def _config(policy_name: str, seeds: list[int], cap_s: float, workers: int, veri
         "python": sys.version,
         "PYTHONHASHSEED": os.environ.get("PYTHONHASHSEED"),  # the workers' value: evaluate() sets it first
         "policy": policy_name,
-        "policy_text": policy_text,  # the individual text of a tree:<file> policy, else None
+        "policy_text": policy_text,  # the individual text of a tree:<file> or gp*:<file> policy, else None
         "seeds": list(seeds),
         "cap_s": cap_s,
         "host_dll": str(default_host_dll()),
@@ -424,7 +460,7 @@ def evaluate(policy_name: str, seeds: list[int], workers: int, run: str, verify:
     or verification fails, error.txt (the traceback) is written to the run folder, no summary.json is
     written, and the error is re-raised. Returns the summary (also written to summary.json). Bad inputs (policy,
     seeds, run name, a cap that is not finite and > 0) raise ValueError before the folder is claimed; that
-    includes a tree:<file> whose file cannot be read or is not an individual text.
+    includes a tree:<file> or gp*:<file> whose file cannot be read or is not an individual text.
     """
     policy_text = check_policy(policy_name)
     seeds = list(seeds)
@@ -450,7 +486,7 @@ def evaluate(policy_name: str, seeds: list[int], workers: int, run: str, verify:
         worker_policy = policy_name
         if policy_text is not None:  # the workers read the run folder's copy, never the caller's file
             (run_dir / POLICY_FILE).write_text(policy_text + "\n", encoding="utf-8")
-            worker_policy = TREE_PREFIX + str(run_dir / POLICY_FILE)
+            worker_policy = text_policy_prefix(policy_name) + str(run_dir / POLICY_FILE)  # the same kind of spec
         if verify and recorded:
             build_verifier()  # once, before the pool: no first-build race between workers
         os.environ["PYTHONHASHSEED"] = "0"  # inherited by the spawned workers
@@ -499,7 +535,8 @@ def _format_aggregate(summary: dict) -> str:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="python -m evolved_rules.evaluate", description=__doc__.splitlines()[0])
     parser.add_argument("--policy", required=True,
-                        help=f"one of {', '.join(POLICY_NAMES)}, or {TREE_PREFIX}FILE (an individual text file)")
+                        help=f"one of {', '.join(POLICY_NAMES)}, or {TREE_PREFIX}FILE or "
+                             f"{'FILE, '.join(GP_PREFIXES)}FILE (an individual text file)")
     parser.add_argument("--seeds", required=True, nargs="+", help='seeds and inclusive ranges, e.g. 1000 2000-2019')
     parser.add_argument("--workers", type=int, default=1)
     parser.add_argument("--run", required=True, help="run folder name under output/evolved_rules/runs")

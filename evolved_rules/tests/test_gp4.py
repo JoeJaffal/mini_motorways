@@ -1,5 +1,7 @@
 """gp-4 step 1: the new build commands are allowed, roundabouts and car waiting times are parsed (task 1), routes
-use roundabout rings (task 2), placement candidates for lights and roundabouts (task 3), and their features (task 4)."""
+use roundabout rings (task 2), placement candidates for lights and roundabouts (task 3), their features (task 4),
+the placement step (task 5) and the hand rules with their policy names (task 6)."""
+import json
 from dataclasses import replace
 from pathlib import Path
 from types import SimpleNamespace
@@ -7,18 +9,25 @@ from types import SimpleNamespace
 import pytest
 
 from evolved_rules import agent, autopsy, candidates
+from evolved_rules import evaluate as ev
 from evolved_rules.agent import EventTracker, decide, places, play_game
-from evolved_rules.candidates import link_degree, route_candidates, unserved_targets
-from evolved_rules.features import GameMemory, placement_features
+from evolved_rules.candidates import link_degree, removal_candidates, route_candidates, unserved_targets
+from evolved_rules.features import (
+    GameMemory, candidate_features, global_features, offer_features, placement_features, removal_features,
+)
 from evolved_rules.gp import TreePolicy
 from evolved_rules.placement import (
     LIGHT, PLACE_CAP, PLACE_RADIUS, ROUNDABOUT, PlacementCandidate, cars_near, is_stopped, placement_candidates,
     ring_new_links, ring_of,
 )
-from evolved_rules.rules import CleanHand, CleanRemoveHand, HandRule, SeparatedPreference
+from evolved_rules.rules import (
+    CleanHand, CleanRemoveHand, GPHand, HandRule, LightHand, LightRoundHand, RoundHand, SeparatedPreference,
+    hand_place, package_upgrade,
+)
 from evolved_rules.session import _replayable
-from evolved_rules.state import Car, Roundabout, parse_observation
+from evolved_rules.state import Car, Offer, Roundabout, parse_observation
 from evolved_rules.tests.helpers import house, make_obs, shop
+from evolved_rules.tests.test_evaluate import fake_runs  # noqa: F401  (a fixture)
 from evolved_rules.tests.test_features import _links, _merge, _row, _shop
 from evolved_rules.tests.test_gp3 import GP2_BEST, ROADS, _car, _Session, _state
 
@@ -645,3 +654,230 @@ FINAL_GAMES = [
 def test_final_rules_still_play_their_test_games(host, name, seed, trips, seconds):
     r = play_game(host, seed, TreePolicy(_final_text(name)), record=False)
     assert (r.trips, round(r.seconds, 2)) == (trips, seconds)
+
+
+# --- task 6: the hand rules and their policy names ------------------------------------------------------------
+
+GP3_FINAL = _final_text("gp3_final")
+NEW_NAMED = [("light", LightHand, (True, False)), ("round", RoundHand, (False, True)),
+             ("lightround", LightRoundHand, (True, True))]
+GP_SPECS = [("gppkg", (False, False)), ("gplight", (True, False)), ("gpround", (False, True)),
+            ("gplightround", (True, True))]
+
+
+def _upgrade_choices(policy, offers):
+    """The offers `decide` takes from a state that has them (the lights, roundabouts and roads of STOCK in hand)."""
+    sent = _decided(policy, replace(_state(), offers=tuple(offers), inventory=STOCK))
+    return [r["choice"] for r in sent if r["command"] == "upgrade"]
+
+
+def test_package_rule_prefers_the_enabled_package():
+    offers = [Offer(0, 3, 2, 20), Offer(1, 4, 1, 20), Offer(2, 0, 30, 0)]  # lights x2 + 20 roads, roundabout + 20, 30 roads
+    assert [offer_features(o)["offer_roads"] for o in offers] == [20, 20, 30]
+    assert _upgrade_choices(LightHand(), offers) == [0]
+    assert _upgrade_choices(RoundHand(), offers) == [1]
+    assert _upgrade_choices(LightRoundHand(), offers) == [0]       # both packages score the same: the lower index
+    assert _upgrade_choices(GPHand(GP3_FINAL, False, False, "gppkg"), offers) == [2]
+    assert _upgrade_choices(GPHand(GP3_FINAL, True, False, "gplight"), offers) == [0]
+    assert _upgrade_choices(GPHand(GP3_FINAL, False, True, "gpround"), offers) == [1]
+    assert _upgrade_choices(HandRule(), offers) == _upgrade_choices(SeparatedPreference(), offers) == [2]
+    # apart from the package only the roads count: the bigger package wins among the enabled ones
+    bigger = [Offer(0, 3, 2, 20), Offer(1, 3, 1, 30), Offer(2, 0, 90, 0)]
+    assert _upgrade_choices(LightHand(), bigger) == [1] and _upgrade_choices(RoundHand(), bigger) == [2]
+
+
+def test_package_upgrade_scores():
+    light = {"type_3": 1.0, "type_4": 0.0, "offer_roads": 20.0}
+    round_ = {"type_3": 0.0, "type_4": 1.0, "offer_roads": 20.0}
+    roads = {"type_3": 0.0, "type_4": 0.0, "offer_roads": 30.0}
+    assert [package_upgrade(f, True, False) for f in (light, round_, roads)] == [1020.0, 20.0, 30.0]
+    assert [package_upgrade(f, False, True) for f in (light, round_, roads)] == [20.0, 1020.0, 30.0]
+    assert [package_upgrade(f, True, True) for f in (light, round_, roads)] == [1020.0, 1020.0, 30.0]
+    assert [package_upgrade(f, False, False) for f in (light, round_, roads)] == [20.0, 20.0, 30.0]
+
+
+def test_hand_place_skips_merging_roundabouts():
+    light = {"pl_is_light": 1.0, "pl_is_roundabout": 0.0, "pl_stopped_near": 2.0, "pl_joins_separated": 0.0}
+    round_ = {"pl_is_light": 0.0, "pl_is_roundabout": 1.0, "pl_stopped_near": 3.0, "pl_joins_separated": 0.0}
+    merging = {**round_, "pl_joins_separated": 1.0}
+    # an enabled tool scores the number of stopped cars; a tool that is not enabled scores -1
+    assert [hand_place(f, True, True) for f in (light, round_)] == [2.0, 3.0]
+    assert [hand_place(f, True, False) for f in (light, round_)] == [2.0, -1.0]
+    assert [hand_place(f, False, True) for f in (light, round_)] == [-1.0, 3.0]
+    assert [hand_place(f, False, False) for f in (light, round_)] == [-1.0, -1.0]
+    # a roundabout that would join separated networks is never placed; the same flag does not matter for a light
+    assert [hand_place(merging, a, b) for a, b in ((True, True), (False, True), (True, False))] == [-1.0] * 3
+    assert hand_place({**light, "pl_joins_separated": 1.0}, True, False) == 2.0
+    # nobody stopped: 0 is not above 0, so nothing is placed
+    assert hand_place({**light, "pl_stopped_near": 0.0}, True, True) == 0.0
+
+
+def test_the_hand_rules_place_where_cars_are_stopped_and_only_what_they_place():
+    stopped = [_car("Outbound", 31.5, 12.5, 0.0)]
+    lights, roundabouts, both = (25, 1, 0, 1, 0, 0), (25, 1, 0, 0, 1, 0), (25, 1, 0, 1, 1, 0)
+    assert _decided(LightHand(), _with_stock(stopped, lights)) == [_light(29, 11)]
+    assert _decided(LightHand(), _with_stock([_car("Outbound", 31.5, 12.5, 0.5)], lights)) == []   # a moving car
+    assert _decided(LightHand(), _with_stock(inventory=lights)) == []                               # no car
+    assert _decided(LightHand(), _with_stock(stopped, roundabouts)) == []                           # not its stock
+    assert _decided(RoundHand(), _with_stock(stopped, lights)) == []
+    sent = _decided(RoundHand(), _with_stock(stopped, roundabouts))
+    assert [(r["command"], r["tool"]) for r in sent] == [("build", "Roundabout")]
+    sent = _decided(LightRoundHand(), _with_stock(stopped, both))
+    assert len(sent) == 1 and sent[0]["tool"] in ("TrafficLight", "Roundabout")
+    # the package-only GPHand never places, whatever is in stock
+    pkg = GPHand(GP3_FINAL, False, False, "gppkg")
+    assert _decided(pkg, _with_stock(stopped, both)) == []
+
+
+def test_hand_rule_classes_and_flags():
+    for name, cls, flags in NEW_NAMED:
+        p = cls()
+        assert isinstance(p, SeparatedPreference) and p.name == name and places(p) == flags
+        assert not hasattr(p, "coverage") and not hasattr(p, "removes") and not hasattr(p, "wants_globals")
+        h = SeparatedPreference()          # everything else is the separated preference's
+        f = {"tiles_needed": 6.0, "is_separated": 1.0}
+        assert p.priority(f) == h.priority(f) and p.hold({"road_stock": 3.0}) == h.hold({"road_stock": 3.0})
+        assert p.remove({}) == -1.0
+
+
+def test_gphand_keeps_the_tree_priority_and_hold():
+    s = _roundabout_state()                       # an unserved house: there are route candidates
+    cands = route_candidates(s, *unserved_targets(s)[0])
+    assert cands
+    memory = GameMemory()
+    g = global_features(s, memory)
+    tree = TreePolicy(GP3_FINAL)
+    for flags in ((False, False), (True, False), (False, True), (True, True)):
+        hand = GPHand(GP3_FINAL, *flags, "gpx")
+        assert hand.name == "gpx" and places(hand) == flags
+        for cand in cands:
+            f = {**candidate_features(s, cand, memory), **g}
+            assert hand.priority(f) == tree.priority(f) and tree.priority(f) != float("-inf")
+        assert hand.hold(g) == tree.hold(g)
+        assert (hand.coverage, hand.clean_routes, hand.removes, hand.wants_globals) == (
+            tree.coverage, tree.clean_routes, tree.removes, tree.wants_globals) == (True, True, False, True)
+    # a remove tree that can fire is the tree policy's (two cars are stuck at the doorstep)
+    jam = _state(vehicles=[_car("Outbound", 28.5, 11.0, 0.0), _car("Outbound", 29.0, 12.4, 0.0)])
+    removing = GP3_FINAL.replace("remove: -1.0", "remove: rm_shop_stuck")
+    hand, tree = GPHand(removing, True, True, "x"), TreePolicy(removing)
+    scores = []
+    for rc in removal_candidates(jam):
+        f = {**removal_features(jam, rc, memory), **global_features(jam, memory)}
+        assert hand.remove(f) == tree.remove(f)
+        scores.append(hand.remove(f))
+    assert hand.removes is True and max(scores) > 0
+    # a 3-tree text keeps its Phase 1 routes and never removes
+    old = GPHand(GP2_BEST, True, True, "x")
+    assert (old.removes, old.clean_routes) == (False, False)
+
+
+def test_the_hand_rules_are_registered_by_name():
+    for name, cls, _ in NEW_NAMED:
+        assert ev.POLICIES[name] is cls and name in ev.POLICY_NAMES
+
+
+def _spec_file(tmp_path, text=GP3_FINAL, name="p.txt"):
+    f = tmp_path / "src" / name
+    f.parent.mkdir(exist_ok=True)
+    f.write_text(text, encoding="utf-8")
+    return f
+
+
+@pytest.mark.parametrize("make", [ev.make_policy, autopsy.make_policy], ids=["evaluate", "autopsy"])
+def test_specs_resolve(tmp_path, make):
+    for name, cls, flags in NEW_NAMED:
+        p = make(name)
+        assert type(p) is cls and p.name == name and places(p) == flags
+    f = _spec_file(tmp_path)
+    tree = TreePolicy(GP3_FINAL)
+    for name, flags in GP_SPECS:
+        p = make(f"{name}:{f}")
+        assert type(p) is GPHand and p.name == name and places(p) == flags
+        assert p.tree.text == tree.text
+        assert (p.coverage, p.clean_routes, p.removes, p.wants_globals) == (True, True, False, True)
+    # the old specs are what they were
+    assert [type(make(n)) for n in ("hand", "separated", "clean", "cleanrm")] == [
+        HandRule, SeparatedPreference, CleanHand, CleanRemoveHand]
+    assert isinstance(make(f"tree:{f}"), TreePolicy) and places(make(f"tree:{f}")) == (False, False)
+
+
+@pytest.mark.parametrize("check", [ev.check_policy, autopsy.make_policy], ids=["evaluate", "autopsy"])
+def test_bad_gp_specs_are_refused(tmp_path, check):
+    bad_text = _spec_file(tmp_path, "priority: neg(tiles_needed)", "bad.txt")
+    for spec in ["gplight:", "gppkg:", f"gpround:{tmp_path / 'nope.txt'}", f"gplightround:{bad_text}", "gplight",
+                 "gp:x", "GPLIGHT:x", "gplightx:x"]:
+        with pytest.raises(ValueError):          # evaluate: before any run folder is claimed; autopsy: fail fast
+            check(spec)
+
+
+@pytest.mark.parametrize("prefix, flags", GP_SPECS)
+def test_gp_specs_run_from_a_copy_in_the_run_folder(fake_runs, prefix, flags):  # noqa: F811
+    tmp_path, calls = fake_runs
+    f = _spec_file(tmp_path, "\n" + GP3_FINAL.replace("\n", "\n\n") + "\n\n")   # canonicalised on the way in
+    spec = f"{prefix}:{f}"
+    assert ev.main(["--policy", spec, "--seeds", "3100-3101", "--run", "g", "--workers", "2", "--verify"]) == 0
+    run = tmp_path / "g"
+    canonical = ev.read_tree_policy(spec)
+    assert (run / "policy.txt").read_text(encoding="utf-8") == canonical + "\n"
+    jobs = [c for c in calls if c != "build"]
+    assert sorted(c[1] for c in jobs) == [3100, 3101]
+    assert {c[0] for c in jobs} == {f"{prefix}:{run / 'policy.txt'}"}      # never the caller's file
+    cfg = json.loads((run / "summary.json").read_text())["config"]
+    assert cfg["policy"] == spec and cfg["policy_text"] == canonical and cfg["workers"] == 2
+    assert "build" in calls and all(c[3] for c in jobs)                   # recorded and verified like the others
+    worker_policy = ev.make_policy(f"{prefix}:{run / 'policy.txt'}")      # what a worker builds from its job
+    assert (worker_policy.name, places(worker_policy)) == (prefix, flags)
+
+
+@pytest.mark.parametrize("spec", ["gplight:", "gppkg"])
+def test_a_bad_gp_spec_claims_no_run_folder(fake_runs, capsys, spec):  # noqa: F811
+    tmp_path, calls = fake_runs
+    with pytest.raises(ValueError):
+        ev.evaluate(spec, [3100], workers=1, run="x", verify=False)
+    with pytest.raises(SystemExit) as e:
+        ev.main(["--policy", spec, "--seeds", "3100", "--run", "x"])
+    assert e.value.code == 2 and "policy" in capsys.readouterr().err.lower()
+    assert calls == [] and list(tmp_path.iterdir()) == []
+
+
+def test_the_autopsy_counts_lights_and_roundabouts_at_the_end():
+    ring = [(25, 10), (24, 11), (25, 12), (26, 11)]
+    s = parse_observation(make_obs(infra={(5, 5): 4, (6, 6): 4, (7, 7): 2, (8, 8): 1}, roundabouts=[((25, 11), ring)]))
+    assert autopsy.placed_at_end(s) == {"lights_end": 2, "roundabouts_end": 1}   # a ring is infrastructure 3, not a light
+    assert autopsy.placed_at_end(parse_observation(make_obs())) == {"lights_end": 0, "roundabouts_end": 0}
+
+
+def test_the_autopsy_summary_reports_the_mean_lights_and_roundabouts():
+    rows = [{"trips": 10, "seconds": 90.0, "cause": "cap", "lights_end": 1, "roundabouts_end": 0},
+            {"trips": 20, "seconds": 80.0, "cause": "cap", "lights_end": 2, "roundabouts_end": 1}]
+    lines = autopsy.summarise(rows, {}).splitlines()
+    assert "lights 1.50, roundabouts 0.50" in lines[2]
+
+
+def _placements(recording):
+    """The accepted traffic light and roundabout builds of a recording, in order."""
+    return [a["tool"] for a in recording["actions"]
+            if a["command"] == "build" and a["tool"] in ("TrafficLight", "Roundabout") and a["accepted"]]
+
+
+@pytest.mark.host
+def test_a_game_with_placements_passes_the_replay_verifier(host, tmp_path):
+    from evolved_rules.verify import verify_recording
+    seed = 3100  # LightRoundHand places 6 lights and a roundabout on 3100, so the first seed of the range will do
+    r = play_game(host, seed, LightRoundHand(), record=True)
+    assert _placements(r.recording)
+    path = tmp_path / f"{seed}.json"
+    path.write_text(json.dumps(r.recording), encoding="utf-8")
+    ok, out = verify_recording(path)
+    assert ok, out
+
+
+@pytest.mark.host
+def test_the_autopsy_row_counts_what_the_game_placed(host, monkeypatch):
+    monkeypatch.setattr(autopsy, "_HOST", host)
+    row = autopsy.play("lightround", 3100, cap_s=450.0)["row"]       # by 450 s: 4 lights and a roundabout
+    r = play_game(host, 3100, LightRoundHand(), cap_s=450.0, record=True)
+    placed = _placements(r.recording)
+    assert (row["trips"], row["seconds"]) == (r.trips, r.seconds)    # the autopsy plays the same game
+    assert (row["lights_end"], row["roundabouts_end"]) == (placed.count("TrafficLight"), placed.count("Roundabout"))
+    assert row["lights_end"] > 0 and row["roundabouts_end"] > 0
