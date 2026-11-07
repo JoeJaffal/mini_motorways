@@ -1,11 +1,13 @@
 """gp-4 step 1: the new build commands are allowed, roundabouts and car waiting times are parsed (task 1), routes
-use roundabout rings (task 2), and placement candidates for lights and roundabouts (task 3)."""
+use roundabout rings (task 2), placement candidates for lights and roundabouts (task 3), and their features (task 4)."""
 from dataclasses import replace
 
 from evolved_rules import candidates
 from evolved_rules.candidates import link_degree, route_candidates, unserved_targets
+from evolved_rules.features import GameMemory, placement_features
 from evolved_rules.placement import (
-    LIGHT, PLACE_CAP, PLACE_RADIUS, ROUNDABOUT, cars_near, is_stopped, placement_candidates, ring_new_links, ring_of,
+    LIGHT, PLACE_CAP, PLACE_RADIUS, ROUNDABOUT, PlacementCandidate, cars_near, is_stopped, placement_candidates,
+    ring_new_links, ring_of,
 )
 from evolved_rules.session import _replayable
 from evolved_rules.state import Car, Roundabout, parse_observation
@@ -275,3 +277,110 @@ def test_the_list_is_cut_to_the_cap_after_sorting():
     assert PLACE_CAP == 32 and len(out) == PLACE_CAP
     # the stopped car in cell (45, 11) makes (43..45, 11) the first three; then plain (y, x) order, cut at the cap
     assert [c.cell for c in out] == [(43, 11), (44, 11), (45, 11)] + [(x, 11) for x in range(3, 32)]
+
+
+# --- placement features -----------------------------------------------------------------------------------------
+
+PLACEMENT_KEYS = {
+    "pl_is_light", "pl_is_roundabout", "pl_degree", "pl_doorstep", "pl_cars_near", "pl_stopped_near",
+    "pl_max_wait_near", "pl_mean_wait_near", "pl_dist_worst_shop", "pl_worst_colour_stuck", "pl_new_links",
+    "pl_joins_separated", "pl_tiles_lost", "pl_light_stock", "pl_round_stock",
+}
+STOCK = (25, 1, 0, 2, 1, 0)  # roads, bridges, motorways, lights, roundabouts, unused
+
+
+def _waiting(car, wait):
+    return {**car, "waiting": wait}
+
+
+def _stocked(vehicles=(), extra=()):
+    return replace(_state(vehicles=vehicles, extra=extra), inventory=STOCK)
+
+
+def _at(s, tool, cell):
+    return next(c for c in placement_candidates(s, True, True) if c.tool == tool and c.cell == cell)
+
+
+def test_placement_features_have_the_named_keys_and_values():
+    s = _stocked(vehicles=[_waiting(_car("Outbound", 29.5, 11.5, 0.0), 6.0)])
+    pc = _at(s, LIGHT, (29, 11))     # not [0]: (28, 11) comes first when the car stands on (29, 11)
+    f = placement_features(s, pc)
+    assert set(f) == PLACEMENT_KEYS and all(type(v) is float for v in f.values())
+    assert (f["pl_is_light"], f["pl_is_roundabout"]) == (1, 0)
+    assert (f["pl_degree"], f["pl_doorstep"]) == (4, 1)
+    assert (f["pl_cars_near"], f["pl_stopped_near"]) == (1, 1)
+    assert (f["pl_max_wait_near"], f["pl_mean_wait_near"]) == (6.0, 6.0)
+    assert (f["pl_dist_worst_shop"], f["pl_worst_colour_stuck"]) == (0, 1)   # the red car stands at the red doorstep
+    assert (f["pl_new_links"], f["pl_joins_separated"], f["pl_tiles_lost"]) == (0, 0, 0)
+    assert (f["pl_light_stock"], f["pl_round_stock"]) == (2, 1)
+    assert placement_features(s, pc, GameMemory()) == f
+
+
+def test_a_roundabout_spot_reports_the_candidate_and_its_footprint():
+    s = _stocked(vehicles=[_car("Outbound", 27.5, 9.5, 0.0)])   # cell (27, 9): in the ring of (28, 10)
+    pc = _at(s, ROUNDABOUT, (28, 10))
+    f = placement_features(s, pc)
+    assert set(f) == PLACEMENT_KEYS
+    assert (f["pl_is_light"], f["pl_is_roundabout"]) == (0, 1)
+    assert (f["pl_degree"], f["pl_new_links"], f["pl_tiles_lost"]) == (3, 3, 3)
+    assert f["pl_joins_separated"] == 0
+    assert f["pl_doorstep"] == 1                                   # ring cell (28, 11) is next to the doorstep (29, 11)
+    assert f["pl_dist_worst_shop"] == 1                            # from the centre (28, 10) to (29, 11)
+    assert (f["pl_cars_near"], f["pl_stopped_near"]) == (1, 1)
+    assert placement_features(s, replace(pc, joins_separated=True))["pl_joins_separated"] == 1
+
+
+def test_waits_cover_exactly_the_cars_near_the_footprint():
+    cars = [_waiting(_car("Outbound", 29.5, 11.5, 0.0), 6.0),     # stopped, near
+            _waiting(_car("Outbound", 27.5, 12.5, 0.5), 2.0),     # moving, near (cell (27, 12))
+            _waiting(_car("Parking", 30.5, 13.5, 0.0), 1.0),      # parked: a car near, never stopped
+            _waiting(_car("Outbound", 33.5, 11.5, 0.0), 40.0)]    # cell (33, 11): 4 away, not near
+    s = _stocked(vehicles=cars)
+    f = placement_features(s, _at(s, LIGHT, (29, 11)))
+    assert (f["pl_cars_near"], f["pl_stopped_near"]) == (3, 1)
+    assert (f["pl_max_wait_near"], f["pl_mean_wait_near"]) == (6.0, 3.0)
+    quiet = placement_features(s, PlacementCandidate(LIGHT, (5, 5), ((5, 5),), 3, 0, False, 0))
+    assert (quiet["pl_cars_near"], quiet["pl_stopped_near"], quiet["pl_max_wait_near"],
+            quiet["pl_mean_wait_near"]) == (0, 0, 0, 0)
+
+
+def test_doorstep_and_distance_for_a_spot_away_from_the_shop():
+    far = PlacementCandidate(LIGHT, (5, 5), ((5, 5),), 3, 0, False, 0)
+    f = placement_features(_stocked(), far)
+    assert f["pl_doorstep"] == 0 and f["pl_dist_worst_shop"] == 24    # doorstep (29, 11): max(24, 6)
+    at = lambda c: placement_features(_stocked(), replace(far, cell=c, footprint=(c,)))["pl_doorstep"]
+    assert (at((27, 11)), at((28, 12)), at((30, 12))) == (0, 1, 1)    # within 1 of the doorstep, or not
+
+
+def _second_shop(over_second, over_first=0.0):
+    first = _shop(5, 0, 30, 10, over=over_first)
+    second = _shop(7, 1, 40, 20, over=over_second)                # blue shop, doorstep (39, 21)
+    return parse_observation(make_obs(
+        buildings=[first, second, house(1, 0, 19, 11, E)], roads=ROADS, inventory=STOCK,
+        vehicles=[_car("Outbound", 29.5, 11.5, 0.0, color=0), _car("Outbound", 30.5, 12.5, 0.0, color=0),
+                  _car("Outbound", 28.5, 10.5, 0.0, color=1), _car("Outbound", 28.5, 12.5, 0.5, color=1)]))
+
+
+def test_the_worst_shop_is_the_most_overcrowded_then_the_lowest_id():
+    spot = PlacementCandidate(LIGHT, (29, 11), ((29, 11),), 4, 0, False, 0)
+    # shop 7 is the most overcrowded: its doorstep (39, 21) is 10 away; of the cars near the spot, one blue car
+    # is stopped and the other is moving
+    f = placement_features(_second_shop(over_second=3.0), spot)
+    assert (f["pl_dist_worst_shop"], f["pl_worst_colour_stuck"]) == (10, 1)
+    # equal overcrowding: the lowest id (red shop 5, doorstep (29, 11)) is the worst; two red cars are stopped
+    f = placement_features(_second_shop(over_second=3.0, over_first=3.0), spot)
+    assert (f["pl_dist_worst_shop"], f["pl_worst_colour_stuck"]) == (0, 2)
+    # nobody overcrowded: still the lowest id
+    f = placement_features(_second_shop(over_second=0.0), spot)
+    assert (f["pl_dist_worst_shop"], f["pl_worst_colour_stuck"]) == (0, 2)
+    # the first shop is the most overcrowded: it wins whatever its id
+    f = placement_features(_second_shop(over_second=1.0, over_first=2.0), spot)
+    assert (f["pl_dist_worst_shop"], f["pl_worst_colour_stuck"]) == (0, 2)
+
+
+def test_without_a_shop_the_worst_shop_terms_are_neutral():
+    s = parse_observation(make_obs(roads=ROADS, inventory=STOCK, vehicles=[_car("Outbound", 29.5, 11.5, 0.0)]))
+    pc = placement_candidates(s, True, False)[0]
+    f = placement_features(s, pc)
+    assert (f["pl_dist_worst_shop"], f["pl_worst_colour_stuck"], f["pl_doorstep"]) == (64.0, 0.0, 0.0)
+    assert (f["pl_stopped_near"], f["pl_light_stock"]) == (1, 2)

@@ -13,13 +13,20 @@ from __future__ import annotations
 import heapq
 import math
 from collections import deque
+from typing import TYPE_CHECKING
 
 import numpy as np
 
-from .candidates import NEAR_SHOP_RADIUS, RemovalCandidate, RouteCandidate, link_degree
+from .candidates import (
+    DOORSTEP_RADIUS, NEAR_SHOP_RADIUS, RemovalCandidate, RouteCandidate, doorsteps, link_degree, near_cells,
+)
 from .state import DIRS, Building, Cell, CityState, Offer, _in_grid
 
+if TYPE_CHECKING:  # placement.py imports this module (STUCK_SPEED), so it is imported lazily at run time
+    from .placement import PlacementCandidate
+
 STUCK_SPEED = 0.05  # tiles/s: a driving car slower than this is stuck (as autopsy.py)
+NO_SHOP_DIST = 64.0  # pl_dist_worst_shop when the state has no shop: farther than any cell of the 50 x 30 grid
 
 N_ITEM_TYPES = 6  # inventory: roads, bridges, motorways, traffic lights, roundabouts, unused
 
@@ -484,6 +491,49 @@ def removal_features(state: CityState, rc: RemovalCandidate, memory: GameMemory 
         "rm_shop_heading": float(heading),
         "rm_shop_stuck": float(stuck),
         "rm_shop_unassigned": float(shop.demand - shop.reserved) if shop is not None else 0.0,
+    }
+
+
+def placement_features(state: CityState, pc: PlacementCandidate, memory: GameMemory | None = None) -> dict[str, float]:
+    """Features of one placement candidate (gp-4: where to put a traffic light or a roundabout).
+
+    "Near" and "stopped" are placement.cars_near (Chebyshev PLACE_RADIUS of any footprint cell) and
+    placement.is_stopped. A doorstep is the cell outside a shop entrance (candidates.doorsteps), as in the traffic
+    inputs. The worst shop has the highest overcrowded_for, ties by the lowest id (as agent.play_game's failed
+    shop); without a shop pl_dist_worst_shop is NO_SHOP_DIST and pl_worst_colour_stuck is 0.
+    """
+    from .placement import LIGHT, ROUNDABOUT, cars_near, is_stopped  # lazy: placement imports this module
+
+    shops = _analysis_of(state, memory).shops
+    near = cars_near(state, pc.footprint)
+    stopped = [c for c in near if is_stopped(c)]
+    waits = [c.waiting for c in near]
+    worst = max(shops, key=lambda s: (s.overcrowded_for, -s.id)) if shops else None
+    if worst is None:
+        dist, colour_stuck = NO_SHOP_DIST, 0
+    else:
+        cx, cy = pc.cell
+        reach = [max(abs(cx - ox), abs(cy - oy)) for ox, oy in worst.outside if _in_grid((ox, oy))]
+        dist = float(min(reach, default=NO_SHOP_DIST))
+        colour_stuck = sum(1 for c in stopped if c.color == worst.color)
+    steps = near_cells(doorsteps(state), DOORSTEP_RADIUS)
+    inv = state.inventory
+    return {
+        "pl_is_light": 1.0 if pc.tool == LIGHT else 0.0,
+        "pl_is_roundabout": 1.0 if pc.tool == ROUNDABOUT else 0.0,
+        "pl_degree": float(pc.degree),
+        "pl_doorstep": 1.0 if any(c in steps for c in pc.footprint) else 0.0,
+        "pl_cars_near": float(len(near)),
+        "pl_stopped_near": float(len(stopped)),
+        "pl_max_wait_near": max(waits, default=0.0),
+        "pl_mean_wait_near": sum(waits) / len(waits) if waits else 0.0,
+        "pl_dist_worst_shop": dist,
+        "pl_worst_colour_stuck": float(colour_stuck),
+        "pl_new_links": float(pc.new_links),
+        "pl_joins_separated": 1.0 if pc.joins_separated else 0.0,
+        "pl_tiles_lost": float(pc.tiles_lost),
+        "pl_light_stock": float(inv[3] if len(inv) > 3 else 0),
+        "pl_round_stock": float(inv[4] if len(inv) > 4 else 0),
     }
 
 
