@@ -1,0 +1,119 @@
+{
+ "runs": {
+  "gp": {
+   "run_dir": "C:\\Projects\\490 - Project\\mini_motorways\\output\\evolved_rules\\runs\\test-gp",
+   "n": 100,
+   "mean": 245.87,
+   "median": 252.5,
+   "verified": "100/100"
+  },
+  "cma": {
+   "run_dir": "C:\\Projects\\490 - Project\\mini_motorways\\output\\evolved_rules\\runs\\test-cma",
+   "n": 100,
+   "mean": 250.6,
+   "median": 250.0,
+   "verified": "100/100"
+  },
+  "hand": {
+   "run_dir": "C:\\Projects\\490 - Project\\mini_motorways\\output\\evolved_rules\\runs\\test-hand",
+   "n": 100,
+   "mean": 170.75,
+   "median": 149.0,
+   "verified": "100/100"
+  },
+  "separated": {
+   "run_dir": "C:\\Projects\\490 - Project\\mini_motorways\\output\\evolved_rules\\runs\\test-separated",
+   "n": 100,
+   "mean": 216.27,
+   "median": 207.5,
+   "verified": "100/100"
+  }
+ },
+ "comparisons": {
+  "gp - hand": {
+   "n": 100,
+   "mean_diff": 75.12,
+   "sd_diff": 104.58636950802283,
+   "boot_ci": [
+    54.80439411329034,
+    95.51723928754771
+   ],
+   "t_ci": [
+    54.36779527173004,
+    95.87220472826996
+   ],
+   "wilcoxon_p": 3.4187151098255453e-10,
+   "better": 83,
+   "worse": 17,
+   "ties": 0
+  },
+  "gp - cma": {
+   "n": 100,
+   "mean_diff": -4.73,
+   "sd_diff": 92.8455712514609,
+   "boot_ci": [
+    -22.89,
+    13.13
+   ],
+   "t_ci": [
+    -23.152575635687324,
+    13.692575635687323
+   ],
+   "wilcoxon_p": 0.6387387832066611,
+   "better": 46,
+   "worse": 53,
+   "ties": 1
+  },
+  "gp - separated": {
+   "n": 100,
+   "mean_diff": 29.6,
+   "sd_diff": 101.38186636811747,
+   "boot_ci": [
+    9.94276303097218,
+    49.45
+   ],
+   "t_ci": [
+    9.483638216891247,
+    49.71636178310875
+   ],
+   "wilcoxon_p": 0.005672620102709997,
+   "better": 63,
+   "worse": 36,
+   "ties": 1
+  },
+  "cma - hand": {
+   "n": 100,
+   "mean_diff": 79.85,
+   "sd_diff": 106.14478153194649,
+   "boot_ci": [
+    58.84,
+    100.27001743562074
+   ],
+   "t_ci": [
+    58.788572516187486,
+    100.9114274838125
+   ],
+   "wilcoxon_p": 3.613418351812222e-10,
+   "better": 80,
+   "worse": 20,
+   "ties": 0
+  },
+  "separated - hand": {
+   "n": 100,
+   "mean_diff": 45.52,
+   "sd_diff": 110.60024293541915,
+   "boot_ci": [
+    23.996491258556016,
+    67.26
+   ],
+   "t_ci": [
+    23.57451231179655,
+    67.46548768820345
+   ],
+   "wilcoxon_p": 8.925377744474898e-05,
+   "better": 69,
+   "worse": 30,
+   "ties": 1
+  }
+ }
+}

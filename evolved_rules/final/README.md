@@ -26,3 +26,24 @@ Picking the best of five on these maps flatters the winner slightly; the test-se
 | d39401f1 | 244.0 |
 
 Expectation written before the test: on 4000–4199 the GP final leads the CMA-ES final by +8.0 ± 9.1 trips. A 100-seed test detects about 25–30 trips, so GP vs CMA-ES will probably not exclude 0 on 7000–7099.
+
+## Test set, LA 7000–7099 (run once, 2026-11-07)
+
+Four locked policies, 100 maps each, every replay recorded and verified (400/400). Paired per-map differences (PLAN.md section 6); `test_7000-7099.json` has the full record.
+
+| Policy | Mean | Median |
+|---|---|---|
+| CMA-ES final | 250.6 | 250.0 |
+| GP final | 245.9 | 252.5 |
+| Separated rule | 216.3 | 207.5 |
+| Hand rule | 170.8 | 149.0 |
+
+| Comparison | Mean diff | 95% bootstrap CI | paired-t CI | Wilcoxon p | better / worse |
+|---|---|---|---|---|---|
+| GP − hand | +75.1 | [+54.8, +95.5] | [+54.4, +95.9] | 3.4e-10 | 83 / 17 |
+| GP − separated | +29.6 | [+9.9, +49.5] | [+9.5, +49.7] | 0.0057 | 63 / 36 |
+| GP − CMA-ES | −4.7 | [−22.9, +13.1] | [−23.2, +13.7] | 0.64 | 46 / 53 |
+| CMA-ES − hand | +79.8 | [+58.8, +100.3] | [+58.8, +100.9] | 3.6e-10 | 80 / 20 |
+| separated − hand | +45.5 | [+24.0, +67.3] | [+23.6, +67.5] | 8.9e-05 | 69 / 30 |
+
+**Verdict.** GP beats both hand-written rules with intervals that exclude 0. It does not beat CMA-ES: the two are statistically tied. The PLAN.md success criterion (beat the hand rule and CMA-ES) is met for the hand rule only. Each method was run once (no run-to-run variance), so this compares these two rules, not the methods.
