@@ -255,7 +255,7 @@ Summary in `final/RECAP.md`; every table is in `final/README.md`.
 
 Plan: `plans/2026-11-07-gp4-lights-roundabouts.md`. Code at `a6025c5` (branch `gp4`). The planner can now place traffic lights and roundabouts. Nothing is evolved here, so the tables give means and medians, not best and average. The step-2 decision (evolve with these moves or not) is the user's.
 
-**Setup.**
+**Setup:**
 - **Maps:** LA 3100–3199 (100 dev maps), 3600 s cap, every replay recorded and verified: **900/900**.
 - **Run:** `evaluate --policy <spec> --seeds 3100-3199 --verify`, one policy after the other, `--workers 6`. A first try at 10 workers crashed in its first run (`separated`) with `Failed to create CoreCLR, HRESULT 0x800705AA` (the host could not start; the machine had about 1 GB of free memory). Its partial folder is kept as `h4-separated.crashed1`. The rerun at 6 workers finished all 9 runs and both autopsies with no crash and no 4-worker retry. Games are deterministic per (policy, seed), so the worker count changes only the time.
 - **Package upgrade rule:** take an offer for an enabled tool (traffic lights or roundabout) before anything else, and otherwise the offer with the most roads (the hand rule's upgrade). With no tool enabled it is just "most roads".
@@ -276,7 +276,7 @@ Plan: `plans/2026-11-07-gp4-lights-roundabouts.md`. Code at `a6025c5` (branch `g
 | `separated` | 209.5 | 191.0 | 0 | 0 | 0 | 713 | 0.59 | 100/100 |
 | `light` | 213.4 | 199.0 | 4.09 | 0 | 93 | 720 | 1.39 | 100/100 |
 | `round` | 207.7 | 204.5 | 0 | 2.06 | 95 | 711 | 1.86 | 100/100 |
-| `lightround` | 201.7 | 197.0 | 3.24 | 1.69 | 100 | 704 | 2.08 | 100/100 |
+| `lightround` | 201.7 | 197.0 | 3.24 | 1.69 | 100 | 703 | 2.08 | 100/100 |
 | `gp` | 250.3 | 253.0 | 0 | 0 | 0 | 778 | 0.65 | 100/100 |
 | `gppkg` | 250.0 | 254.0 | 0 | 0 | 0 | 779 | 0.72 | 100/100 |
 | `gplight` | 254.0 | 256.5 | 4.42 | 0 | 89 | 784 | 0.92 | 100/100 |
@@ -295,12 +295,12 @@ Plan: `plans/2026-11-07-gp4-lights-roundabouts.md`. Code at `a6025c5` (branch `g
 | `gplightround` − `gppkg` | −12.8 | [−33.0, +7.1] | [−33.2, +7.5] | 0.29 | 45 / 54 / 1 |
 | `gppkg` − `gp` (the package rule alone) | −0.3 | [−10.0, +8.3] | [−9.5, +9.0] | 0.73 | 29 / 32 / 39 |
 
-- **Spread.** The SD of the per-map differences is 88–107 trips for the placement comparisons (46.6 for `gppkg` − `gp`), so each 100-map interval is about ±18–21 wide. Differences of +4 are not resolved either way.
+- **Spread.** The SD of the per-map differences is 88–107 trips for the placement comparisons (46.6 for `gppkg` − `gp`), so each 100-map interval is about ±17–21 wide. Differences of +4 are not resolved either way.
 - **Lights.** +3.9 on the hand rule and +4.0 on the GP rule. `gplight` has the highest mean, 254.0, against 250.3 for `gp` (+3.7; not one of the planned comparisons, so no interval).
-- **Roundabouts.** −1.9 on the hand rule and −28.2 on the GP rule, the one interval that excludes 0. Median difference −5.5 (worse on 54 maps, better on 36). Games with roundabouts are shorter: `gpround` 731 s against 779 s for `gppkg`.
+- **Roundabouts.** −1.9 on the hand rule and −28.2 on the GP rule, the one interval that excludes 0. Median difference −5.5 (worse on 54 maps, better on 36). `gpround` games are shorter: 731 s against 779 s for `gppkg`. For `round` against `separated` the lengths are 711 s and 713 s.
 - **Both tools.** −7.8 on the hand rule and −12.8 on the GP rule.
-- **Car wait.** Roundabouts raise the mean car wait: 0.59 to 1.86 s (`round` against `separated`) and 0.72 to 1.61 s (`gpround` against `gppkg`). Lights raise it less: 1.39 s (`light`) and 0.92 s (`gplight`).
-- **Package rule alone.** Swapping the GP rule's upgrade tree for "most roads" changes the mean by −0.3. The two rules play the same game on 39 of 100 maps (correlation of per-map trips 0.88).
+- **Car wait.** Paired difference in each game's mean car wait, same bootstrap. Roundabouts raise it: `round` − `separated` +1.28 s [+0.90, +1.74] (0.59 to 1.86 s) and `gpround` − `gppkg` +0.89 s [+0.45, +1.46] (0.72 to 1.61 s). So do both tools: `lightround` − `separated` +1.50 s [+1.10, +2.01] and `gplightround` − `gppkg` +1.09 s [+0.62, +1.66]. Lights alone: `light` − `separated` +0.80 s [+0.49, +1.24], and `gplight` − `gppkg` +0.21 s [−0.04, +0.49], which includes 0.
+- **Package rule alone.** Swapping the GP rule's upgrade tree for "most roads" changes the mean by −0.3. The two rules score the same trips on 39 of 100 maps (correlation of per-map trips 0.88), and play games identical in trips, seconds, commands and action counts on 33.
 - **Placements are not rare.** Every both-tool game placed something (100/100). The both-tool rules place 4.9 and 5.4 tools per game (3.24 + 1.69 and 3.56 + 1.85).
 
 **Autopsy** (`lightround` and `gplightround` on LA 3100–3119, 20 games each, `autopsy.py`; outputs `autopsy/an-h4-lightround` and `autopsy/an-h4-gplightround`). Each row's trips equal the evaluation run's on all 20 maps. Lights and roundabouts at the end are `lights_end` and `roundabouts_end` from the final state: 68 and 33 for `lightround`, 56 and 35 for `gplightround`, equal to the numbers placed, so none was removed.
@@ -329,12 +329,13 @@ Queue heads of the failing colour's stuck cars (the cars not just queued behind 
 | Traffic light | 37 (20%) | 36 (14%) |
 | Roundabout (entry yield, or yield to circulating traffic) | 30 (16%) | 39 (15%) |
 | Shop car-park gate | 33 (18%) | 43 (16%) |
+| No obstacle reported (`none`) | 1 (<1%) | 1 (<1%) |
 
-- **Same shape as before, plus gridlock.** The earlier autopsy of the GP final on 3000–3019 (different maps) had car shortage 13, slow arrival 5, unreachable cars 2, no gridlock, 22.8 tiles left and about a third of the failing colour's cars stuck. With both tools on 3100–3119, 5 of 20 games in each policy end as gridlock, the stuck share is 0.51–0.59 and 43.5–52.1 tiles are left. The maps differ, so this is a comparison of shape only.
-- **Lost with tiles to spare.** About 44–52 road tiles were unused at the end, so these games are not lost for lack of road. The failing colour has nearly all its cars out (busy 19.8 of 20.9 and 22.6 of 23.4).
+- **What differs from the earlier autopsy.** The earlier autopsy of the GP final (maps 3000–3019, not these) had car shortage 13, slow arrival 5, unreachable cars 2, no gridlock, 22.8 tiles left and about a third of the failing colour's cars stuck. Here, with both tools: gridlock in 5 of 20 games for each policy, 43.5–52.1 tiles left, and a stuck share of 0.51–0.59.
+- **Tiles left.** The lost games ended with 52.1 (`lightround`) and 43.5 (`gplightround`) road tiles unused on average. The failing colour has nearly all its cars out (busy 19.8 of 20.9 and 22.6 of 23.4).
 - **Stuck cars sit at junctions and shops.** Junction priority holds 45–55% of the queue heads and the shop's car-park gate 16–18%. Traffic lights and roundabouts hold 37% (`lightround`) and 29% (`gplightround`) of them.
 - **Not compared.** No autopsy of `separated` or `gppkg` on 3100–3119 was run, so the autopsy does not say what the tools changed in the causes of loss.
 
-**Verdict.** On LA 3100–3199 (100 maps, 900/900 replays verified, no placement rejected) traffic lights moved the mean by +3.9 [−14.0, +20.9] on the separated rule and +4.0 [−13.0, +21.4] on the GP rule's package version; both intervals include 0. Roundabouts moved it by −1.9 [−21.1, +17.3] and −28.2 [−48.3, −8.4] (worse on 54 maps, better on 36, Wilcoxon p 0.009). Both tools moved it by −7.8 [−29.3, +12.8] and −12.8 [−33.0, +7.1]. The package rule alone moved the GP rule by −0.3 [−10.0, +8.3]. Means: `separated` 209.5, `light` 213.4, `round` 207.7, `lightround` 201.7; `gp` 250.3, `gppkg` 250.0, `gplight` 254.0, `gpround` 221.8, `gplightround` 237.2. Both-tool rules place about 5 tools per game and raise the mean car wait to 1.8–2.1 s from 0.6–0.7 s. All 40 autopsied both-tool games were lost (none reached the cap): car shortage 17, slow arrival 10, gridlock 10, unreachable cars 2, not connected 1. A 100-map test resolves about ±18–21 trips here, and each rule played each map once. The step-2 decision is the user's.
+**Verdict:** On LA 3100–3199 (100 maps, 900/900 replays verified, no placement rejected) traffic lights moved the mean by +3.9 [−14.0, +20.9] on the separated rule and +4.0 [−13.0, +21.4] on the GP rule's package version; both intervals include 0. Roundabouts moved it by −1.9 [−21.1, +17.3] and −28.2 [−48.3, −8.4] (worse on 54 maps, better on 36, Wilcoxon p 0.009). Both tools moved it by −7.8 [−29.3, +12.8] and −12.8 [−33.0, +7.1]. The package rule alone moved the GP rule by −0.3 [−10.0, +8.3]. Means: `separated` 209.5, `light` 213.4, `round` 207.7, `lightround` 201.7; `gp` 250.3, `gppkg` 250.0, `gplight` 254.0, `gpround` 221.8, `gplightround` 237.2. Both-tool rules place about 5 tools per game and raise the mean car wait to 1.8–2.1 s from 0.6–0.7 s. All 40 autopsied both-tool games were lost (none reached the cap): car shortage 17, slow arrival 10, gridlock 10, unreachable cars 2, not connected 1. A 100-map test resolves about ±17–21 trips here, and each rule played each map once. The step-2 decision is the user's.
 
 Files (git-ignored, under `output/evolved_rules/`): runs `runs/h4-*`, autopsies `autopsy/an-h4-*`, comparison script and tables `analysis/h4_compare.py`, `h4_compare.json`, `h4_compare.md`, run log `analysis/h4_runs.log`.
