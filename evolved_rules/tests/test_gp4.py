@@ -621,6 +621,18 @@ def test_stock_of_a_kind_the_policy_does_not_place_changes_nothing(kinds, stock)
     assert [t.should_decide(s) for s in states] == old
 
 
+@pytest.mark.parametrize("stage, expected", [("Outbound", True), ("Home", False), ("Parking", False)])
+def test_only_a_driving_car_waiting_triggers_placement(stage, expected):
+    # the host never resets Waiting once a car parks or is home, so a stale wait must not keep the trigger firing
+    t = EventTracker(kinds=BOTH)
+    lights = (25, 1, 0, 1, 0, 0)
+    assert t.should_decide(_tick(0.0, lights)) is True
+    car = _waiting(_car(stage, 29.5, 11.5, 0.0), 9.0)
+    state = parse_observation(make_obs(buildings=[house(1, 0, 19, 11, E)], roads=ROADS, time=5.0,
+                                       inventory=lights, vehicles=[car]))
+    assert t.should_decide(state) is expected
+
+
 def test_the_placement_trigger_counts_from_the_last_decision():
     t = EventTracker(kinds=LIGHTS)
     lights = (25, 1, 0, 1, 0, 0)

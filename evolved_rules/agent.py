@@ -11,7 +11,8 @@ from dataclasses import asdict, dataclass
 
 from .candidates import coverage_targets, house_reaches, removal_candidates, route_candidates, unserved_targets
 from .executor import execute_route, place_item, remove_tile, take_offer
-from .features import candidate_features, global_features, offer_features, placement_features, removal_features
+from .features import (candidate_features, global_features, is_driving, offer_features, placement_features,
+                       removal_features)
 from .host import Host
 from .placement import placement_candidates
 from .rules import Policy
@@ -79,10 +80,11 @@ class EventTracker:
 
     def _placement_due(self, state: CityState) -> bool:
         """Stock of a kind the policy places, PLACE_EVERY_S since the last decision, and a car that has waited
-        PLACE_WAIT_S. Only reached after the first decision (the first call always decides)."""
+        PLACE_WAIT_S. Only driving cars count: the host never resets a car's Waiting once it parks or is home.
+        Only reached after the first decision (the first call always decides)."""
         return (((self._lights and _stock(state, 3) > 0) or (self._roundabouts and _stock(state, 4) > 0))
                 and state.time - self._last_decision >= PLACE_EVERY_S
-                and any(car.waiting >= PLACE_WAIT_S for car in state.cars))
+                and any(is_driving(car) and car.waiting >= PLACE_WAIT_S for car in state.cars))
 
 
 def _finite_or(x: float, default: float) -> float:
