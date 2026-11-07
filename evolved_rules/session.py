@@ -43,7 +43,8 @@ def raise_if_rejected(reply: dict, what: str, seed: int, scenario: str) -> None:
 
 
 def _replayable(request) -> bool:
-    """The only requests the agent may send (PLAN decision 6): draw, build with tool exactly "Remove", upgrade.
+    """The only requests the agent may send (PLAN decision 6, amended by gp-4): draw, upgrade, and build with
+    tool exactly "Remove", "TrafficLight" or "Roundabout".
 
     The host also runs other commands, and treats tool names case-insensitively with a missing tool as Road;
     AiReplaySession rejects or replays those differently, so such a game would not verify.
@@ -51,7 +52,8 @@ def _replayable(request) -> bool:
     if not isinstance(request, dict):
         return False
     command = request.get("command")
-    return command in ("draw", "upgrade") or (command == "build" and request.get("tool") == "Remove")
+    return command in ("draw", "upgrade") or (
+        command == "build" and request.get("tool") in ("Remove", "TrafficLight", "Roundabout"))
 
 
 class Recorder:

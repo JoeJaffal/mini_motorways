@@ -57,18 +57,22 @@ def make_obs(
     time: float = 0.0,
     offers: Iterable[dict] = (),
     vehicles: Iterable[dict] = (),
+    roundabouts: Iterable[tuple[Cell, Iterable[Cell]]] = (),
 ) -> dict:
     """A full observation dict.
 
     roads maps cell -> link mask (bit d = link towards DIRS[d]). Such a cell gets infrastructure 1
     unless it lies inside a building footprint; an explicit infra entry overrides that default.
     offers are upgradeChoices entries ({type, amount, roads}); vehicles are vehicle dicts
-    ({color, stage, waiting}). Like the real host, the observation also carries fields the agent
-    must never read: scheduledSpawns/randomAlgorithm/randomDraws, the per-building fields from
-    _excluded_building_fields, offer generation fields and vehicle route/returnRoute.
+    ({color, stage, waiting}). roundabouts are (centre, ring) pairs, the ring in host order N, W, S, E; each
+    is written in the host's snapshot shape and sets infrastructure 3 on its five cells. Like the real host,
+    the observation also carries fields the agent must never read: scheduledSpawns/randomAlgorithm/randomDraws,
+    the per-building fields from _excluded_building_fields, offer generation fields and vehicle
+    route/returnRoute.
     """
     buildings = list(buildings)
     roads, terrain, infra = dict(roads or {}), dict(terrain or {}), dict(infra or {})
+    roundabouts = [(centre, list(ring)) for centre, ring in roundabouts]
 
     def idx(c: Cell) -> int:
         return c[1] * W + c[0]
@@ -85,6 +89,9 @@ def make_obs(
     for c in roads:
         if kinds[idx(c)] == 0:
             infra_grid[idx(c)] = 1
+    for centre, ring in roundabouts:
+        for c in (centre, *ring):
+            infra_grid[idx(c)] = 3
     for c, v in infra.items():
         infra_grid[idx(c)] = v
 
@@ -112,5 +119,9 @@ def make_obs(
         ],
         "scheduledSpawns": [{"time": 12.5, "color": 0, "isHouse": True}],
         "randomAlgorithm": "MSWS reference stream", "randomDraws": 713,
+        "roundabouts": [
+            {"center": _xy(*centre), "ring": [_xy(*c) for c in ring], "pendingRemoval": False}
+            for centre, ring in roundabouts
+        ],
         "playableXMin": x0, "playableYMin": y0, "playableXMax": x1, "playableYMax": y1,
     }

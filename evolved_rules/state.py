@@ -48,8 +48,9 @@ class Building:
 
 @dataclass(frozen=True)
 class Car:
-    """One vehicle's current state (gp-3 traffic inputs). Read: colour, stage, home and shop ids, position and
-    speed. These are current-state fields; the planned `route` / `returnRoute` stay excluded (PLAN decision 7)."""
+    """One vehicle's current state (gp-3 traffic inputs, gp-4 waiting time). Read: colour, stage, home and shop
+    ids, position, speed and how long it has been waiting. These are current-state fields; the planned `route` /
+    `returnRoute` stay excluded (PLAN decision 7)."""
 
     color: int
     stage: str
@@ -58,6 +59,17 @@ class Car:
     x: float
     y: float
     speed: float
+    waiting: float = 0.0
+
+
+@dataclass(frozen=True)
+class Roundabout:
+    """One built roundabout (gp-4): its centre cell, its four ring cells in host order N, W, S, E (centre +
+    (0,-1), (-1,0), (0,1), (1,0)), and whether it is pending removal. Traffic circulates N -> W -> S -> E."""
+
+    centre: Cell
+    ring: tuple[Cell, Cell, Cell, Cell]
+    pending: bool
 
 
 @dataclass(frozen=True)
@@ -90,6 +102,7 @@ class CityState:
     vehicles_busy: dict[int, int]
     vehicles_waiting: tuple[float, ...]
     cars: tuple[Car, ...] = ()  # in observation order
+    roundabouts: tuple[Roundabout, ...] = ()  # in observation order
 
     def playable(self, c: Cell) -> bool:
         x0, y0, x1, y1 = self.bounds
@@ -136,6 +149,14 @@ class CityState:
             any(a in comp for a in s.access)
             for comp in (self.component(h.cell) for h in self.houses() if h.color == s.color)
         )
+
+    def centres(self) -> frozenset[Cell]:
+        """The centre cell of every roundabout."""
+        return frozenset(r.centre for r in self.roundabouts)
+
+    def ring_next(self) -> dict[Cell, Cell]:
+        """Maps ring[i] to ring[(i + 1) % 4] for every roundabout: the next ring cell in the circulation order."""
+        return {r.ring[i]: r.ring[(i + 1) % 4] for r in self.roundabouts for i in range(4)}
 
     def road_cell(self, c: Cell) -> bool:
         """Road or bridge, not pending removal. False for any cell outside the 50 x 30 grid."""
@@ -186,6 +207,13 @@ def _building(b: dict) -> Building:
     )
 
 
+def _roundabout(r: dict) -> Roundabout:
+    ring = tuple(_cell(c) for c in r["ring"])
+    if len(ring) != 4:
+        raise ValueError(f"roundabout ring: expected 4 cells, got {len(ring)}")
+    return Roundabout(centre=_cell(r["center"]), ring=ring, pending=bool(r["pendingRemoval"]))
+
+
 def parse_observation(obs: dict) -> CityState:
     if obs["width"] != W or obs["height"] != H:
         raise ValueError(f"expected a {W}x{H} grid, got {obs['width']}x{obs['height']}")
@@ -197,10 +225,11 @@ def parse_observation(obs: dict) -> CityState:
         color = _check_color(int(v["color"]))
         if v["stage"] != "Home":
             busy[color] = busy.get(color, 0) + 1
-        waiting.append(float(v["waiting"]))
+        wait = float(v["waiting"])
+        waiting.append(wait)
         cars.append(Car(color=color, stage=str(v["stage"]), home_id=int(v.get("homeId", -1)),
                         shop_id=int(v.get("shopId", -1)), x=float(v.get("x", 0.0)), y=float(v.get("y", 0.0)),
-                        speed=float(v.get("speed", 0.0))))
+                        speed=float(v.get("speed", 0.0)), waiting=wait))
     return CityState(
         time=float(obs["time"]),
         trips=int(obs["tripsCompleted"]),
@@ -219,4 +248,5 @@ def parse_observation(obs: dict) -> CityState:
         vehicles_busy=busy,
         vehicles_waiting=tuple(waiting),
         cars=tuple(cars),
+        roundabouts=tuple(_roundabout(r) for r in obs.get("roundabouts", [])),
     )
