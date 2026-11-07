@@ -1,19 +1,26 @@
 """gp-4 step 1: the new build commands are allowed, roundabouts and car waiting times are parsed (task 1), routes
 use roundabout rings (task 2), placement candidates for lights and roundabouts (task 3), and their features (task 4)."""
 from dataclasses import replace
+from pathlib import Path
+from types import SimpleNamespace
 
-from evolved_rules import candidates
+import pytest
+
+from evolved_rules import agent, autopsy, candidates
+from evolved_rules.agent import EventTracker, decide, places, play_game
 from evolved_rules.candidates import link_degree, route_candidates, unserved_targets
 from evolved_rules.features import GameMemory, placement_features
+from evolved_rules.gp import TreePolicy
 from evolved_rules.placement import (
     LIGHT, PLACE_CAP, PLACE_RADIUS, ROUNDABOUT, PlacementCandidate, cars_near, is_stopped, placement_candidates,
     ring_new_links, ring_of,
 )
+from evolved_rules.rules import CleanHand, CleanRemoveHand, HandRule, SeparatedPreference
 from evolved_rules.session import _replayable
 from evolved_rules.state import Car, Roundabout, parse_observation
 from evolved_rules.tests.helpers import house, make_obs, shop
 from evolved_rules.tests.test_features import _links, _merge, _row, _shop
-from evolved_rules.tests.test_gp3 import ROADS, _car, _state
+from evolved_rules.tests.test_gp3 import GP2_BEST, ROADS, _car, _Session, _state
 
 E, S, N = 0, 2, 6
 
@@ -384,3 +391,237 @@ def test_without_a_shop_the_worst_shop_terms_are_neutral():
     f = placement_features(s, pc)
     assert (f["pl_dist_worst_shop"], f["pl_worst_colour_stuck"], f["pl_doorstep"]) == (64.0, 0.0, 0.0)
     assert (f["pl_stopped_near"], f["pl_light_stock"]) == (1, 2)
+
+
+# --- task 5: the placement step and its decision trigger ------------------------------------------------------
+
+class _Places:
+    """A policy that only places: lights (and, if asked, roundabouts) at the spot its `place` score likes best."""
+
+    name = "places"
+
+    def __init__(self, score=lambda f: f["pl_stopped_near"], lights=True, roundabouts=False, wants_globals=False):
+        self.place, self.places_lights, self.places_roundabouts = score, lights, roundabouts
+        self.wants_globals = wants_globals
+
+    def priority(self, f):
+        return float("-inf")
+
+    def hold(self, g):
+        return float("inf")
+
+    def upgrade(self, f):
+        return 0.0
+
+    def remove(self, f):
+        return -1.0
+
+
+def _with_stock(vehicles=(), inventory=(25, 1, 0, 1, 0, 0)):
+    return replace(_state(vehicles=vehicles), inventory=inventory)
+
+
+def _decided(policy, state):
+    sess = _Session(state)
+    decide(sess, policy)
+    return sess.sent
+
+
+def _light(x, y):
+    return {"command": "build", "tool": "TrafficLight", "x": x, "y": y}
+
+
+def test_a_placing_policy_places_its_best_spot():
+    # A stopped car by the shop's south side is within 2 tiles of the doorstep junction (29, 11), not of (28, 11).
+    # Both are light spots; the one with the stopped car near it scores 1, the other 0.
+    s = _with_stock([_car("Outbound", 31.5, 12.5, 0.0)])
+    assert _decided(_Places(), s) == [_light(29, 11)]
+
+
+def test_the_best_score_wins_over_the_list_order_and_a_tie_keeps_the_earlier_spot():
+    # a car on the doorstep is near both junctions: equal scores, so the earlier spot of the list, (28, 11)
+    assert _decided(_Places(), _with_stock([_car("Outbound", 29.5, 11.5, 0.0)])) == [_light(28, 11)]
+    # no cars: (28, 11) (degree 3) comes first in the list, but (29, 11) (degree 4) scores higher
+    assert _decided(_Places(lambda f: f["pl_degree"]), _with_stock()) == [_light(29, 11)]
+
+
+@pytest.mark.parametrize("score", [0.0, -1.0, float("nan"), float("inf"), float("-inf")])
+def test_a_score_that_is_not_finite_and_positive_places_nothing(score):
+    assert _decided(_Places(lambda f: score), _with_stock([_car("Outbound", 31.5, 12.5, 0.0)])) == []
+
+
+def test_a_roundabout_policy_places_a_roundabout_from_its_own_stock():
+    pol = _Places(lambda f: f["pl_is_roundabout"] + f["pl_stopped_near"], lights=False, roundabouts=True)
+    sent = _decided(pol, _with_stock([_car("Outbound", 31.5, 12.5, 0.0)], inventory=(25, 1, 0, 2, 1, 0)))
+    assert len(sent) == 1 and sent[0]["tool"] == "Roundabout" and sent[0]["command"] == "build"
+    # the lights in stock are not its business: a light-only stock sends nothing
+    assert _decided(pol, _with_stock(inventory=(25, 1, 0, 2, 0, 0))) == []
+
+
+def test_a_policy_with_globals_sees_them_beside_the_placement_features():
+    pol = _Places(lambda f: f["road_stock"] + f["pl_degree"], wants_globals=True)
+    assert _decided(pol, _with_stock()) == [_light(29, 11)]
+
+
+def test_places_reads_the_policy_flags_with_defaults():
+    assert places(_Places(roundabouts=True)) == (True, True)
+    assert places(_Places(lights=False)) == (False, False)
+    assert places(_Places(lights=False, roundabouts=True)) == (False, True)
+    for policy in (SeparatedPreference(), HandRule(), CleanHand(), CleanRemoveHand(), TreePolicy(GP2_BEST)):
+        assert places(policy) == (False, False)
+    assert (agent.MAX_PLACEMENTS_PER_DECISION, agent.PLACE_WAIT_S, agent.PLACE_EVERY_S) == (1, 3.0, 5.0)
+
+
+FINAL = Path(agent.__file__).resolve().parent / "final"
+
+
+def _final_text(name):
+    return (FINAL / f"{name}.txt").read_text(encoding="utf-8")
+
+
+def test_no_stock_or_no_flag_never_looks(monkeypatch):
+    def looked(*args, **kwargs):
+        raise AssertionError("placement_candidates was called")
+
+    monkeypatch.setattr(agent, "placement_candidates", looked)
+    both = (25, 1, 0, 2, 2, 0)
+    cases = [
+        (_Places(), _with_stock(inventory=(25, 1, 0, 0, 2, 0))),  # lights only, none in stock
+        (_Places(lights=False, roundabouts=True), _with_stock(inventory=(25, 1, 0, 2, 0, 0))),
+        (_Places(), _with_stock(inventory=(25,))),  # a short inventory counts as no stock
+        (SeparatedPreference(), _with_stock(inventory=both)),
+        (TreePolicy(GP2_BEST), _with_stock(inventory=both)),
+        (TreePolicy(_final_text("gp3_final")), _with_stock(inventory=both)),
+        (TreePolicy(_final_text("cma_final")), _with_stock(inventory=both)),
+    ]
+    for policy, state in cases:
+        assert _decided(policy, state) == []
+
+
+def test_placement_comes_after_routes_and_before_removal():
+    class Everything(_Places):
+        removes = True
+
+        def remove(self, f):
+            return 1.0
+
+    # house 1 is served; two cars stuck at the doorstep make both a light and a removal worthwhile
+    cars = [_car("Outbound", 28.5, 11.0, 0.0), _car("Outbound", 29.0, 12.4, 0.0)]
+    sent = _decided(Everything(), _with_stock(cars))
+    assert [r["tool"] for r in sent] == ["TrafficLight", "Remove"]
+
+
+# The tracker before this task, as a function over the same tracker fields (a copy of the old should_decide).
+def _old_should_decide(t, state):
+    ids = frozenset(b.id for b in state.buildings)
+    overcrowded = {s.id: s.overcrowded_for >= agent.OVERCROWD_EVENT_S for s in state.shops()}
+    upgraded = {b.id: b.upgraded for b in state.buildings}
+    road_stock = state.inventory[0] if state.inventory else 0
+
+    decide = (
+        t._last_decision is None
+        or bool(ids - t._ids)
+        or bool(state.offers)
+        or any(now and not t._overcrowded.get(i, False) for i, now in overcrowded.items())
+        or any(i in t._upgraded and t._upgraded[i] != now for i, now in upgraded.items())
+        or (t._road_stock is not None and road_stock > t._road_stock)
+        or state.time - t._last_decision >= agent.FALLBACK_S
+    )
+
+    t._ids, t._overcrowded, t._upgraded, t._road_stock = ids, overcrowded, upgraded, road_stock
+    if decide:
+        t._last_decision = state.time
+    return decide
+
+
+def _tick(time, inventory=(25, 1, 0, 0, 0, 0), wait=None):
+    """The same house all game; a car stopped beside the shop that has waited `wait` seconds (no car if None)."""
+    cars = [] if wait is None else [_waiting(_car("Outbound", 29.5, 11.5, 0.0), wait)]
+    return parse_observation(make_obs(buildings=[house(1, 0, 19, 11, E)], roads=ROADS, time=time,
+                                      inventory=inventory, vehicles=cars))
+
+
+def test_the_tracker_is_unchanged_without_places():
+    lights, round_ = (25, 1, 0, 2, 0, 0), (25, 1, 0, 0, 1, 0)
+    states = [_tick(0.0, lights), _tick(1.0, lights, 4.0), _tick(6.0, lights, 4.0),
+              _tick(10.0, (25, 1, 0, 0, 0, 0), 4.0), _tick(16.0, round_, 9.0), _tick(21.0, lights, 9.0)]
+    old_t, new_t, flagged_off = EventTracker(), EventTracker(), EventTracker(places=False)
+    old = [_old_should_decide(old_t, s) for s in states]
+    assert old == [True, False, False, True, False, True]  # the sequence has long waits and stock but no event
+    assert [new_t.should_decide(s) for s in states] == old
+    assert [flagged_off.should_decide(s) for s in states] == old
+
+
+@pytest.mark.parametrize("time, inventory, wait, expected", [
+    (4.9, (25, 1, 0, 1, 0, 0), 4.0, False),  # not 5 s since the last decision
+    (5.0, (25, 1, 0, 1, 0, 0), 4.0, True),
+    (5.0, (25, 1, 0, 1, 0, 0), 2.9, False),  # nobody has waited 3 s
+    (5.0, (25, 1, 0, 1, 0, 0), 3.0, True),
+    (5.0, (25, 1, 0, 0, 0, 0), 4.0, False),  # nothing to place
+    (5.0, (25, 1, 0, 0, 1, 0), 4.0, True),  # a roundabout in stock is enough
+    (5.0, (25, 1, 0, 1, 0, 0), None, False),  # no car at all
+    (5.0, (25,), 4.0, False),  # a short inventory has no stock
+])
+def test_with_places_a_waiting_car_and_stock_trigger_a_decision(time, inventory, wait, expected):
+    for places_on, want in ((True, expected), (False, False)):  # without places, 5 s is no event at all
+        t = EventTracker(places=places_on)
+        assert t.should_decide(_tick(0.0, inventory)) is True  # the first call always decides
+        assert t.should_decide(_tick(time, inventory, wait)) is want
+
+
+def test_the_placement_trigger_counts_from_the_last_decision():
+    t = EventTracker(places=True)
+    lights = (25, 1, 0, 1, 0, 0)
+    assert [t.should_decide(_tick(s, lights, 4.0)) for s in (0.0, 4.0, 5.0, 9.0, 10.0, 14.9)] == [
+        True, False, True, False, True, False]
+
+
+@pytest.mark.parametrize("module", [agent, autopsy], ids=["play_game", "autopsy"])
+@pytest.mark.parametrize("policy, expected", [
+    (_Places(), True), (_Places(lights=False, roundabouts=True), True), (_Places(lights=False), False),
+    (HandRule(), False), (TreePolicy(GP2_BEST), False),
+])
+def test_both_game_loops_build_the_tracker_from_the_policy(monkeypatch, module, policy, expected):
+    """play_game and the autopsy's copy of its loop must give the tracker the same `places` (here: a probe that
+    records it and stops the game)."""
+    seen = []
+
+    class Stop(Exception):
+        pass
+
+    def tracker(**kwargs):
+        seen.append(kwargs)
+        raise Stop
+
+    monkeypatch.setattr(module, "EventTracker", tracker)
+    monkeypatch.setattr(module, "GameSession", lambda *a, **k: SimpleNamespace(reset=lambda: None))
+    with pytest.raises(Stop):
+        if module is agent:
+            play_game(None, 1, policy, record=False)
+        else:
+            monkeypatch.setattr(autopsy, "make_policy", lambda spec: policy)
+            autopsy.play("x", 1)
+    assert seen == [{"places": expected}]
+
+
+def test_the_watched_policy_passes_the_placement_switches_and_scores():
+    w = autopsy._Watched(_Places(lights=True, roundabouts=True), autopsy._Tally())
+    assert places(w) == (True, True)
+    assert places(autopsy._Watched(HandRule(), autopsy._Tally())) == (False, False)
+    assert w.place({"pl_stopped_near": 2.0, "pl_degree": 3.0, "road_stock": 9.0}) == 2.0
+    assert set(w.tally.stats) == {"pl_stopped_near", "pl_degree"}  # the globals are tallied by hold
+
+
+# gp-3's and the CMA-ES final rules play their test games (seeds 7000-7099) exactly as recorded before gp-4: the two
+# shortest games of each, as (seed, trips, seconds rounded to 2) from the runs test-gp and test-cma.
+FINAL_GAMES = [
+    ("gp3_final", 7045, 74, 444.45), ("gp3_final", 7006, 106, 497.95),
+    ("cma_final", 7019, 95, 501.8), ("cma_final", 7081, 109, 526.1),
+]
+
+
+@pytest.mark.host
+@pytest.mark.parametrize("name, seed, trips, seconds", FINAL_GAMES)
+def test_final_rules_still_play_their_test_games(host, name, seed, trips, seconds):
+    r = play_game(host, seed, TreePolicy(_final_text(name)), record=False)
+    assert (r.trips, round(r.seconds, 2)) == (trips, seconds)

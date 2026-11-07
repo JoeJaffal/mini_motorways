@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from .candidates import _ORTHO, RouteCandidate, Stroke, _is_road, _water
+from .placement import PlacementCandidate
 from .session import GameSession
 from .state import DIRS, Cell, CityState, _in_grid
 
@@ -73,6 +74,13 @@ def remove_tile(session: GameSession, cell: Cell) -> bool:
     routes and released when those cars are home (PLAN.md section 3.4).
     """
     accepted, _ = session.command({"command": "build", "tool": "Remove", "x": cell[0], "y": cell[1]})
+    return accepted
+
+
+def place_item(session: GameSession, pc: PlacementCandidate) -> bool:
+    """Build a traffic light or a roundabout (build with tool pc.tool at pc.cell; one command + 20 ticks).
+    Returns whether it was accepted. A light is placed on its own road tile, a roundabout on its centre."""
+    accepted, _ = session.command({"command": "build", "tool": pc.tool, "x": pc.cell[0], "y": pc.cell[1]})
     return accepted
 
 

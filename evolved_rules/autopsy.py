@@ -35,7 +35,7 @@ from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
 from . import evaluate as ev
-from .agent import EventTracker, decide
+from .agent import EventTracker, decide, places
 from .gp import TreePolicy
 from .host import ROOT, Host
 from .rules import CleanHand, CleanRemoveHand, HandRule, SeparatedPreference, SeparatedRemoveHand
@@ -77,6 +77,8 @@ class _Watched:
         self.coverage = getattr(inner, "coverage", False)
         self.clean_routes = getattr(inner, "clean_routes", False)
         self.removes = getattr(inner, "removes", False)
+        self.places_lights = getattr(inner, "places_lights", False)
+        self.places_roundabouts = getattr(inner, "places_roundabouts", False)
         self.wants_globals = getattr(inner, "wants_globals", False)
         self.acts = getattr(inner, "acts", True)
 
@@ -95,6 +97,10 @@ class _Watched:
     def remove(self, f):
         self.tally.add({k: v for k, v in f.items() if k.startswith("rm_")})  # the globals are tallied by hold
         return self.inner.remove(f)
+
+    def place(self, f):
+        self.tally.add({k: v for k, v in f.items() if k.startswith("pl_")})  # the globals are tallied by hold
+        return self.inner.place(f)
 
 
 def make_policy(spec: str):
@@ -199,7 +205,7 @@ def play(spec: str, seed: int, cap_s: float = ev.DEFAULT_CAP_S) -> dict:
     policy = _Watched(make_policy(spec), tally)
     session = GameSession(_HOST, seed, cap_s=cap_s, record=False)
     session.reset()
-    tracker = EventTracker()
+    tracker = EventTracker(places=any(places(policy)))
     while not session.done:
         if policy.acts and tracker.should_decide(session.state):
             decide(session, policy)

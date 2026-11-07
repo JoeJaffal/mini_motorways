@@ -1,4 +1,5 @@
-"""The agent: event trigger, one decision (offers, then routes) and the game loop (PLAN.md sections 3.2, 3.4, 4).
+"""The agent: event trigger, one decision (offers, routes, then, for policies that ask for them, a placement and a
+removal) and the game loop (PLAN.md sections 3.2, 3.4, 4).
 
 Every choice is made by an explicit, deterministic order (scores, then list positions); nothing depends on
 hash or set order, so a (policy, seed) game is identical in any process (PLAN.md section 5, Determinism).
@@ -9,9 +10,10 @@ import math
 from dataclasses import asdict, dataclass
 
 from .candidates import coverage_targets, house_reaches, removal_candidates, route_candidates, unserved_targets
-from .executor import execute_route, remove_tile, take_offer
-from .features import candidate_features, global_features, offer_features, removal_features
+from .executor import execute_route, place_item, remove_tile, take_offer
+from .features import candidate_features, global_features, offer_features, placement_features, removal_features
 from .host import Host
+from .placement import placement_candidates
 from .rules import Policy
 from .session import GameSession
 from .state import CityState
@@ -20,12 +22,31 @@ FALLBACK_S = 10.0
 OVERCROWD_EVENT_S = 20.0
 MAX_ROUTES_PER_DECISION = 20
 MAX_REMOVALS_PER_DECISION = 1  # gp-3
+MAX_PLACEMENTS_PER_DECISION = 1  # gp-4
+PLACE_WAIT_S = 3.0  # gp-4: a car that has waited this long (Car.waiting) makes a placing policy look for a spot
+PLACE_EVERY_S = 5.0  # gp-4: ...at most once per this many seconds since the last decision
+
+
+def places(policy: Policy) -> tuple[bool, bool]:
+    """gp-4: (places traffic lights, places roundabouts). A policy without the attributes places nothing."""
+    return (getattr(policy, "places_lights", False), getattr(policy, "places_roundabouts", False))
+
+
+def _stock(state: CityState, item: int) -> int:
+    """Inventory slot `item` (3 traffic lights, 4 roundabouts); 0 when the observation has no such slot."""
+    return state.inventory[item] if len(state.inventory) > item else 0
 
 
 class EventTracker:
-    """Decides when to decide (PLAN.md section 3.2). Its memory is updated on every call."""
+    """Decides when to decide (PLAN.md section 3.2). Its memory is updated on every call.
 
-    def __init__(self) -> None:
+    With `places` (gp-4: the policy places lights or roundabouts) it also decides when a light or a roundabout is
+    in stock, some car has waited PLACE_WAIT_S, and PLACE_EVERY_S have passed since the last decision. Without it
+    the trigger is exactly the Phase 1 one.
+    """
+
+    def __init__(self, places: bool = False) -> None:
+        self._places = bool(places)
         self._last_decision: float | None = None  # time of the last call that returned True
         self._ids: frozenset[int] = frozenset()
         self._overcrowded: dict[int, bool] = {}  # shop id -> overcrowded_for >= OVERCROWD_EVENT_S
@@ -47,12 +68,20 @@ class EventTracker:
             or any(i in self._upgraded and self._upgraded[i] != now for i, now in upgraded.items())
             or (self._road_stock is not None and road_stock > self._road_stock)
             or state.time - self._last_decision >= FALLBACK_S
+            or (self._places and self._placement_due(state))
         )
 
         self._ids, self._overcrowded, self._upgraded, self._road_stock = ids, overcrowded, upgraded, road_stock
         if decide:
             self._last_decision = state.time
         return decide
+
+    def _placement_due(self, state: CityState) -> bool:
+        """A light or a roundabout in stock, PLACE_EVERY_S since the last decision, and a car that has waited
+        PLACE_WAIT_S. Only reached after the first decision (the first call always decides)."""
+        return ((_stock(state, 3) > 0 or _stock(state, 4) > 0)
+                and state.time - self._last_decision >= PLACE_EVERY_S
+                and any(car.waiting >= PLACE_WAIT_S for car in state.cars))
 
 
 def _finite_or(x: float, default: float) -> float:
@@ -61,7 +90,8 @@ def _finite_or(x: float, default: float) -> float:
 
 
 def decide(session: GameSession, policy: Policy) -> None:
-    """One decision: take a pending offer, then build routes while the best priority clears the hold threshold.
+    """One decision: take a pending offer, then build routes while the best priority clears the hold threshold,
+    then place a light or a roundabout (gp-4, policies that place), then remove a tile (gp-3, policies that remove).
 
     Returns as soon as the game is over. A house whose route fails is not tried again in this decision (the
     executor never retries; the next decision re-plans). Phase 1 never removes roads. Features read the
@@ -90,8 +120,39 @@ def decide(session: GameSession, policy: Policy) -> None:
         take_offer(session, best.index)
 
     _build_routes(session, policy, memory, merge)
+    if any(places(policy)):
+        _place_one(session, policy, memory, merge)
     if getattr(policy, "removes", False):
         _remove_one(session, policy, memory, merge)
+
+
+def _place_one(session: GameSession, policy: Policy, memory, merge: bool) -> None:
+    """gp-4 (policies with `places_lights` / `places_roundabouts`): place the best placement candidate if its score
+    is above 0.
+
+    Only the kinds the policy places and the game has in stock are offered (placement_candidates is not even
+    called with neither). At most MAX_PLACEMENTS_PER_DECISION per decision (a placement changes the network, so
+    the next one is re-planned at the next decision). Ties keep the earlier candidate of placement_candidates'
+    order; a non-finite score never places anything.
+    """
+    want_lights, want_roundabouts = places(policy)
+    for _ in range(MAX_PLACEMENTS_PER_DECISION):
+        if session.done:
+            return
+        state = session.state
+        lights = want_lights and _stock(state, 3) > 0
+        roundabouts = want_roundabouts and _stock(state, 4) > 0
+        if not (lights or roundabouts):
+            return
+        g = global_features(state, memory) if merge else {}
+        best = None
+        for pc in placement_candidates(state, lights, roundabouts):
+            score = float(policy.place({**placement_features(state, pc, memory), **g}))
+            if math.isfinite(score) and score > 0 and (best is None or score > best[0]):
+                best = (score, pc)
+        if best is None:
+            return
+        place_item(session, best[1])
 
 
 def _remove_one(session: GameSession, policy: Policy, memory, merge: bool) -> None:
@@ -203,7 +264,7 @@ def play_game(host: Host, seed: int, policy: Policy, cap_s: float = 3600.0, reco
     """
     session = GameSession(host, seed, cap_s=cap_s, record=record)
     session.reset()
-    tracker = EventTracker()
+    tracker = EventTracker(places=any(places(policy)))
     acts = getattr(policy, "acts", True)
     # Always advances: a decision that sends nothing leaves the state unchanged, and the tracker never fires
     # twice on an unchanged state (offers would fire again, but a decision with offers always sends a command).

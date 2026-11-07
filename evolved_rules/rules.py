@@ -5,6 +5,19 @@ from typing import Protocol
 
 
 class Policy(Protocol):
+    """What agent.decide reads from a policy.
+
+    Optional attributes (read with getattr and a default, so a policy without them never reaches the code they
+    switch on): acts, coverage, clean_routes, wants_globals, removes (gp-3: also needs remove), and, for gp-4,
+    places_lights and places_roundabouts. A policy with either of the last two also provides
+
+        place(f: dict[str, float]) -> float
+
+    the score of one placement candidate (features.placement_features, "pl_*"; with wants_globals the global
+    features too): the highest score above 0 is built, at most once per decision. The agent only offers a kind
+    that the policy places and the game has in stock.
+    """
+
     name: str
 
     def priority(self, f: dict[str, float]) -> float:
