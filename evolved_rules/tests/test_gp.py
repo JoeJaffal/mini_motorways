@@ -60,7 +60,8 @@ def test_terminal_lists_match_the_feature_dicts_in_order():
 
 
 def test_every_terminal_has_a_power_of_two_divisor():
-    terms = set(gp.CANDIDATE_TERMS) | set(gp.GLOBAL_TERMS) | set(gp.OFFER_TERMS) | set(gp.REMOVAL_TERMS)
+    terms = (set(gp.CANDIDATE_TERMS) | set(gp.GLOBAL_TERMS) | set(gp.OFFER_TERMS) | set(gp.REMOVAL_TERMS)
+             | set(gp.PLACEMENT_TERMS))
     assert set(gp.SCALE) == terms
     for k, d in gp.SCALE.items():
         m, e = math.frexp(d)

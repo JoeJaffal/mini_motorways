@@ -1,10 +1,17 @@
 """GP representation: primitive sets, scaled terminals, individuals as text, TreePolicy and variation (Phase 2 Task 3).
 
-An individual is a list of three DEAP PrimitiveTrees (decision P2-5: Remove is dropped):
+An individual is a list of three, four or five DEAP PrimitiveTrees (decision P2-5: Remove is dropped from gp-1
+and gp-2; gp-3 adds it back as a fourth tree, gp-4 adds a fifth):
 
     priority  over candidate + global terminals   score of one route candidate (highest is built)
     hold      over global terminals               build while the best priority is at least this
     upgrade   over offer + global terminals       score of one upgrade offer (highest is taken)
+    remove    over removal + global terminals     (gp-3) score of one removal candidate (removed above 0)
+    place     over placement + global terminals   (gp-4) score of one light or roundabout spot (placed above 0)
+
+A 4-tree text turns on removal and clean routes; a 5-tree text also turns on placing lights and roundabouts
+(a place tree that is one constant <= 0 never places, so a 5-tree text with `place: -1.0` plays as its 4-tree
+text does).
 
 Terminals are the feature dicts of features.py divided by a fixed power of two (decision P2-7). Dividing by a
 power of two is exact in binary floating point, so it never changes an order or an equality: the Phase 1
@@ -63,10 +70,17 @@ OFFER_TERMS = _keep("offer_roads", "amount", *(f"type_{t}" for t in range(N_ITEM
 REMOVAL_TERMS = ("rm_degree", "rm_dist", "rm_links_doorstep", "rm_doorstep_degree", "rm_shop_junctions",
                  "rm_shop_heading", "rm_shop_stuck", "rm_shop_unassigned")
 
+# gp-4: the place tree scores one placement candidate (features.placement_features)
+PLACEMENT_TERMS = ("pl_is_light", "pl_is_roundabout", "pl_degree", "pl_doorstep", "pl_cars_near",
+                   "pl_stopped_near", "pl_max_wait_near", "pl_mean_wait_near", "pl_dist_worst_shop",
+                   "pl_worst_colour_stuck", "pl_new_links", "pl_joins_separated", "pl_tiles_lost",
+                   "pl_light_stock", "pl_round_stock")
+
 PRIORITY_TERMS = CANDIDATE_TERMS + GLOBAL_TERMS
 HOLD_TERMS = GLOBAL_TERMS
 UPGRADE_TERMS = OFFER_TERMS + GLOBAL_TERMS
 REMOVE_TERMS = REMOVAL_TERMS + GLOBAL_TERMS
+PLACE_TERMS = PLACEMENT_TERMS + GLOBAL_TERMS
 
 TILES = PINS = COUNT = 64  # tiles, stock, pins, pin rates and counts
 SHORT_S = 1024  # route costs, overcrowding timers, time to the next offer
@@ -95,6 +109,11 @@ _ALL_SCALES: dict[str, int] = {
     # removal (gp-3)
     "rm_degree": DEGREE, "rm_dist": DEGREE, "rm_links_doorstep": FLAG, "rm_doorstep_degree": DEGREE,
     "rm_shop_junctions": COUNT, "rm_shop_heading": COUNT, "rm_shop_stuck": COUNT, "rm_shop_unassigned": PINS,
+    # placement (gp-4)
+    "pl_is_light": FLAG, "pl_is_roundabout": FLAG, "pl_degree": DEGREE, "pl_doorstep": FLAG,
+    "pl_cars_near": COUNT, "pl_stopped_near": COUNT, "pl_max_wait_near": SHORT_S, "pl_mean_wait_near": SHORT_S,
+    "pl_dist_worst_shop": TILES, "pl_worst_colour_stuck": COUNT, "pl_new_links": DEGREE,
+    "pl_joins_separated": FLAG, "pl_tiles_lost": DEGREE, "pl_light_stock": COUNT, "pl_round_stock": COUNT,
 }
 SCALE: dict[str, int] = {k: v for k, v in _ALL_SCALES.items() if k not in DROPPED_TERMS}
 
@@ -172,15 +191,16 @@ PRIORITY_SET = _make_set("priority", PRIORITY_TERMS)
 HOLD_SET = _make_set("hold", HOLD_TERMS)
 UPGRADE_SET = _make_set("upgrade", UPGRADE_TERMS)
 REMOVE_SET = _make_set("remove", REMOVE_TERMS)
+PLACE_SET = _make_set("place", PLACE_TERMS)
 TREE_NAMES = ("priority", "hold", "upgrade")  # a gp-1 / gp-2 individual
 PSETS = (PRIORITY_SET, HOLD_SET, UPGRADE_SET)
 TREE_TERMS = (PRIORITY_TERMS, HOLD_TERMS, UPGRADE_TERMS)
-# gp-3 individuals have a fourth tree, remove. Every function below takes 3 or 4 trees; tree i is always
-# ALL_TREE_NAMES[i] over ALL_PSETS[i].
-ALL_TREE_NAMES = TREE_NAMES + ("remove",)
-ALL_PSETS = PSETS + (REMOVE_SET,)
-ALL_TREE_TERMS = TREE_TERMS + (REMOVE_TERMS,)
-TREE_COUNTS = (3, 4)
+# gp-3 individuals have a fourth tree, remove; gp-4 individuals a fifth, place. Every function below takes 3, 4 or
+# 5 trees; tree i is always ALL_TREE_NAMES[i] over ALL_PSETS[i].
+ALL_TREE_NAMES = TREE_NAMES + ("remove", "place")
+ALL_PSETS = PSETS + (REMOVE_SET, PLACE_SET)
+ALL_TREE_TERMS = TREE_TERMS + (REMOVE_TERMS, PLACE_TERMS)
+TREE_COUNTS = (3, 4, 5)
 
 MAX_DEPTH = 6  # static limit per tree (P2-9)
 INIT_MIN_DEPTH, INIT_MAX_DEPTH = 2, 4  # ramped half-and-half for random individuals (P2-9)
@@ -208,6 +228,7 @@ SEPARATED_TEXT = ("priority: add(neg(tiles_needed), mul(15.625, is_separated))\n
 CLEAN_TEXT = ("priority: add(add(neg(tiles_needed), mul(15.625, is_separated)), mul(31.25, is_clean))\n"
               "hold: sub(0.0625, road_stock)\nupgrade: offer_roads")
 NEVER_REMOVE = "-1.0"
+NEVER_PLACE = "-1.0"
 
 
 def with_remove(text: str, remove: str = NEVER_REMOVE) -> str:
@@ -216,6 +237,18 @@ def with_remove(text: str, remove: str = NEVER_REMOVE) -> str:
     lines = [ln for ln in text.strip().splitlines() if ln.strip()]
     if len(lines) == len(TREE_NAMES):
         lines.append(f"remove: {remove}")
+    return individual_text(individual_from_text("\n".join(lines)))
+
+
+def with_place(text: str, place: str = NEVER_PLACE) -> str:
+    """A 3- or 4-tree text as a 5-tree (gp-4) text with the given place tree (default: never place). A 3-tree
+    text first goes through with_remove (it gets a never-removing remove tree); a 5-tree text is returned in
+    canonical form, unchanged otherwise."""
+    lines = [ln for ln in text.strip().splitlines() if ln.strip()]
+    if len(lines) == len(TREE_NAMES):
+        lines = [ln for ln in with_remove(text).splitlines() if ln.strip()]
+    if len(lines) == len(TREE_NAMES) + 1:
+        lines.append(f"place: {place}")
     return individual_text(individual_from_text("\n".join(lines)))
 
 
@@ -300,10 +333,10 @@ def _parse_tree(expr: str, index: int) -> gp.PrimitiveTree:
 
 
 def individual_text(ind: Sequence[gp.PrimitiveTree]) -> str:
-    """Canonical text, one line per tree: 'priority: ...\\nhold: ...\\nupgrade: ...[\\nremove: ...]' (the cache
-    key). 3 trees (gp-1, gp-2) or 4 (gp-3)."""
+    """Canonical text, one line per tree: 'priority: ...\\nhold: ...\\nupgrade: ...[\\nremove: ...[\\nplace: ...]]'
+    (the cache key). 3 trees (gp-1, gp-2), 4 (gp-3) or 5 (gp-4)."""
     if len(ind) not in TREE_COUNTS:
-        raise ValueError(f"an individual has 3 or 4 trees, got {len(ind)}")
+        raise ValueError(f"an individual has 3, 4 or 5 trees, got {len(ind)}")
     return "\n".join(f"{name}: {tree}" for name, tree in zip(ALL_TREE_NAMES, ind))
 
 
@@ -311,7 +344,7 @@ def individual_from_text(text: str) -> creator.RulesIndividual:
     """Inverse of individual_text (fitness invalid). Blank lines and surrounding whitespace are ignored."""
     lines = [ln.strip() for ln in text.strip().splitlines() if ln.strip()]
     if len(lines) not in TREE_COUNTS:
-        raise ValueError(f"expected 3 or 4 lines ({', '.join(ALL_TREE_NAMES)}), got {len(lines)}")
+        raise ValueError(f"expected 3, 4 or 5 lines ({', '.join(ALL_TREE_NAMES)}), got {len(lines)}")
     trees = []
     for i, (line, name) in enumerate(zip(lines, ALL_TREE_NAMES)):
         label, sep, expr = line.partition(":")
@@ -322,27 +355,27 @@ def individual_from_text(text: str) -> creator.RulesIndividual:
 
 
 def _tree_exprs(texts: str | Sequence[str]) -> tuple[str, ...]:
-    """An individual text, or three or four bare tree expressions -> canonical expressions."""
+    """An individual text, or three, four or five bare tree expressions -> canonical expressions."""
     if isinstance(texts, str):
         ind = individual_from_text(texts)
     else:
         texts = list(texts)
         if len(texts) not in TREE_COUNTS:
-            raise ValueError(f"expected 3 or 4 tree expressions, got {len(texts)}")
+            raise ValueError(f"expected 3, 4 or 5 tree expressions, got {len(texts)}")
         ind = [_parse_tree(t, i) for i, t in enumerate(texts)]
     return tuple(str(t) for t in ind)
 
 
 def size(ind: Sequence[gp.PrimitiveTree]) -> int:
-    """Total nodes over the trees (parsimony; len(ind) is the number of trees, 3 or 4)."""
+    """Total nodes over the trees (parsimony; len(ind) is the number of trees, 3, 4 or 5)."""
     return sum(len(t) for t in ind)
 
 
 def random_individual(min_depth: int = INIT_MIN_DEPTH, max_depth: int = INIT_MAX_DEPTH,
                       trees: int = 3) -> creator.RulesIndividual:
-    """`trees` (3, or 4 for gp-3) ramped half-and-half trees (P2-9), drawn from the global `random` module."""
+    """`trees` (3; 4 for gp-3; 5 for gp-4) ramped half-and-half trees (P2-9), drawn from the global `random` module."""
     if trees not in TREE_COUNTS:
-        raise ValueError(f"an individual has 3 or 4 trees, got {trees}")
+        raise ValueError(f"an individual has 3, 4 or 5 trees, got {trees}")
     return creator.RulesIndividual(
         gp.PrimitiveTree(gp.genHalfAndHalf(pset, min_depth, max_depth)) for pset in ALL_PSETS[:trees])
 
@@ -390,6 +423,9 @@ class TreePolicy:
     A 3-tree text (gp-1, gp-2) has no remove tree: remove is always -1 and `removes` is False, and clean routes
     are off unless clean_routes=True, so it plays exactly as it did. A 4-tree text (gp-3) removes when its remove
     tree scores a removal candidate above 0 (a non-finite score never removes), and clean routes default to on.
+    A 5-tree text (gp-4) does the same and also places a traffic light or a roundabout where its place tree
+    scores a placement candidate above 0: places_lights and places_roundabouts are both True unless the place
+    tree is one constant <= 0, and `place` is -1 for fewer than 5 trees (the agent never calls it then).
     """
 
     wants_globals = True
@@ -401,9 +437,11 @@ class TreePolicy:
         self.trees = len(exprs)
         self.coverage = bool(coverage)
         # a remove tree that is one constant <= 0 can never remove: skip the removal step (and its cost) then
-        self.removes = self.trees == 4 and not _never_positive(exprs[3])
-        # gp-3: also offer clean routes; default on for a 4-tree text, off (plays exactly as before) for 3 trees
-        self.clean_routes = (self.trees == 4) if clean_routes is None else bool(clean_routes)
+        self.removes = self.trees >= 4 and not _never_positive(exprs[3])
+        # gp-3: also offer clean routes; default on for a 4- or 5-tree text, off (plays exactly as before) for 3 trees
+        self.clean_routes = (self.trees >= 4) if clean_routes is None else bool(clean_routes)
+        # gp-4: a place tree that is one constant <= 0 can never place: skip the placement step then
+        self.places_lights = self.places_roundabouts = self.trees == 5 and not _never_positive(exprs[4])
         self.name = name
         self._fns = tuple(_compile(i, e) for i, e in enumerate(exprs))
 
@@ -422,6 +460,12 @@ class TreePolicy:
         if self.trees < 4:
             return -1.0
         x = _call(self._fns[3], _READERS[3](f))
+        return x if math.isfinite(x) else -math.inf
+
+    def place(self, f: dict[str, float]) -> float:
+        if self.trees < 5:
+            return -1.0
+        x = _call(self._fns[4], _READERS[4](f))
         return x if math.isfinite(x) else -math.inf
 
 
@@ -501,7 +545,8 @@ __all__ = [
     "UPGRADE_TERMS", "SCALE",
     "FUNCTION_NAMES", "CONST_CHOICES", "ephemeral_constant", "PRIORITY_SET", "HOLD_SET", "UPGRADE_SET",
     "PSETS", "TREE_NAMES", "ALL_PSETS", "ALL_TREE_NAMES", "ALL_TREE_TERMS", "REMOVAL_TERMS", "REMOVE_TERMS",
-    "REMOVE_SET", "TREE_COUNTS", "CLEAN_TEXT", "NEVER_REMOVE", "with_remove",
+    "REMOVE_SET", "PLACEMENT_TERMS", "PLACE_TERMS", "PLACE_SET", "TREE_COUNTS", "CLEAN_TEXT", "NEVER_REMOVE",
+    "NEVER_PLACE", "with_remove", "with_place",
     "MAX_DEPTH", "HAND_TEXT", "SEPARATED_TEXT", "individual_text",
     "individual_from_text", "random_individual", "size", "TreePolicy", "mate", "mutate", "limit_depth",
 ]
