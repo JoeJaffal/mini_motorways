@@ -1085,3 +1085,15 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Supersedes** decision 070's stationary-occupant priority rule for OriginalReference.
 
 **Open question for the user.** The carpark approach-gate lock at shared lot 20 (gate owned by a car queued behind the requester) ends the replays.
+
+
+## 072 - Carpark gate measures every car at one point (8 November 2026)
+
+**User decision.** Keep the engineered approach gate, but rank cars as the original ranks entry candidates (one distance measure), let blocking-cycle recovery see gate waits, and send Mohammad a note inviting a better approach. The user also watches the real game for supporting behaviour.
+
+**Engineering choice.** The common point is Mohammad's existing reference, the start of the outside approach lane, now also used for cars passing through a shared lot (ranking, stopping and holding). Measuring every car to the entrance itself was rejected after a ParkingFlow overlap.
+
+**Open questions to Mohammad** ([note](../../docs/training/simulator-repairs-2026-11-08/NOTE_CARPARK_GATE_CHANGE.md)):
+
+1. Do carpark entrances use the original's chunk arbitration?
+2. How does the original switch signal phases when green-phase cars cannot move?

@@ -1,3 +1,7 @@
+# Carpark gate measures every car at one point — 8 November 2026
+
+[Report section 9](../docs/training/simulator-repairs-2026-11-08/README.md#9-carpark-gate-cars-passing-through-measured-at-the-same-point-simulator-2026-11-084), [note to Mohammad](../docs/training/simulator-repairs-2026-11-08/NOTE_CARPARK_GATE_CHANGE.md). Carpark approach gate: cars passing through a shared lot are now gated at the same outside-approach point as arriving cars, and gate waits are visible to cycle recovery (simulator `2026-11-08.4`). The v20 lock reconstruction fails on .3 and passes; 82 core/7 environment/6 reward/10 map PASS. v20 replay: 620 trips, no deadlock. New finding: a signal phase that never switches in v21; question sent to Mohammad with a note on the gate change. No training.
+
 # Original junction arbitration replicated — 8 November 2026
 
 [Report section 8](../docs/training/simulator-repairs-2026-11-08/README.md#8-original-junction-arbitration-replicated-simulator-2026-11-083), [handoff](../simulation/Docs/HANDOFF-2026-11-sim-fix.md). The original's junction entry arbitration is replicated from Mohammad's rule description (simulator `2026-11-08.3`): lane-count gate, red light, blocking-cycle shove, shared-exit space test, committed-candidate eligibility and route-time registration. Three new checks fail on the previous engine; 81 core/7 environment/6 reward/10 map PASS. Replays v20 and v21 have no deadlock (490 and 488 trips). A carpark gate lock at shared lot 20 now ends them; not fixed, awaiting the user. No training.

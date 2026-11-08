@@ -7860,3 +7860,8 @@ User authorized continuing after Mohammad's [response](../docs/training/full-rep
 ## 8 November 2026 — Original junction arbitration replicated, no learning
 
 User decision: replicate the original's space-checking logic, including its conditions, using Mohammad's read-only extract findings ([answer](../docs/training/simulator-repairs-2026-11-08/ORIGINAL_SPACE_CHECK_RULE_ANSWER.md)). Implemented independently for OriginalReference (`c1d23d0`, simulator `2026-11-08.3`). Registration, shared-exit and v21-gridlock checks fail on the previous engine and pass now; 81 core/7 environment/6 reward/10 map PASS. v20 and v21 replays: no deadlocked second; 490 and 488 trips, ended by a newly exposed carpark gate lock at shared lot 20 (gate owned by a car queued behind the requester). Partial diagnostics, not a comparison with 835. Gate lock not fixed; awaiting the user.
+
+
+## 8 November 2026 — Carpark gate measured at one point, no learning
+
+User decision: keep the approach gate but measure every car at the same point and expose gate waits to cycle recovery, then inform Mohammad. `7ef4071`, simulator `2026-11-08.4`: cars passing through a shared lot are gated at the start of the outside approach lane, like arriving cars. The v20 lock reconstruction fails on .3 and passes; two earlier variants were discarded (ParkingFlow overlap; departing-owner trap). 82 core/7 environment/6 reward/10 map PASS. Replays: v20 620 trips/1206.4 s, no deadlock; v21 537/1147.15 s, ended by a signal that stops switching (one stuck green car within 0.5 tiles), question sent to Mohammad. Partial diagnostics, not a comparison with 835.

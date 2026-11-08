@@ -322,3 +322,44 @@ Neither can move. This is Mohammad's engineered approach-gate rule combined with
 arbitration change does not touch it, and no link in the lock is a junction decision. It was not
 measured on the previous engine. It awaits the user's decision
 ([GateInspect](source/GateInspect.cs)).
+
+## 9. Carpark gate: cars passing through measured at the same point (simulator `2026-11-08.4`)
+
+**User decision.** Following Mohammad's description (one distance measure for all entry candidates),
+keep the gate but make it measure every car the same way, let blocking-cycle recovery see gate waits,
+and tell Mohammad ([note](NOTE_CARPARK_GATE_CHANGE.md)). The user is also watching the real game for
+supporting behaviour.
+
+**Change** (`7ef4071`).
+
+- A car passing through a shared lot is now gated, ranked and held at the start of the outside road
+  lane before the entrance connector. That is the point already used for arriving cars. Arriving and
+  departing cars are unchanged.
+- A gate refusal names its owner, so it becomes a cycle link, and a shoving car may pass a gate for
+  its immediate next lane.
+
+**Attempts discarded on evidence.**
+
+- Ranking all cars by distance to the entrance itself: ParkingFlow body overlap at the hub junction,
+  because the arrival queue backed up.
+- Ranking through-cars at the approach but still stopping them at the connector: a through-car trapped
+  the departing gate owner and starved yellow 34.
+
+**Test.** The new v20 lock reconstruction (t = 972) fails on `2026-11-08.3` and passes now; the
+ranking part alone suffices. 82 core suites ([output](measurements/core-82.txt)), environment 7/7,
+reward 6/6, five-map 10 runs and the Release build pass.
+
+**Replays** ([results](measurements/carpark-gate-results.json); partial diagnostics, not a comparison
+with 835):
+
+- v20: 620 trips, game-over 1206.4 s from overcrowding at red 27 (30,18), no deadlocked second and no
+  car waiting over 20 s at the end.
+- v21: 537 trips, game-over 1147.15 s.
+
+**New finding: a traffic light that stops switching (not changed).** In v21 the light at 20,13 stays
+on its east/west pair from about t = 1080. The only green-phase car within the 0.5-tile nearby
+distance is stopped by the shared-exit space rule. Our switching rule changes phase only with 0 or
+at least 3 nearby green cars, so it never switches, and the north/south side waits about 90 s until
+game-over. This combines the existing signal rule with the new space rule. A red-light refusal names
+no car, so cycle recovery cannot see it. The question has gone to Mohammad
+([LightInspect](source/LightInspect.cs)).
