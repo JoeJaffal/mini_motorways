@@ -368,3 +368,25 @@ no car, so cycle recovery cannot see it. The question has gone to Mohammad
 ## Original traffic-light/carpark response — 8 November2026
 
 [Full answers](ORIGINAL_SIGNALS_CARPARKS_ANSWER.md), numeric findings/hashes archived. Timer constants confirmed; nearby blocked counting, phase-weight multiplier ordering and amber permission differ from current simulator. Entrance/internal carpark lanes use chunk arbitration; no owner gate found in inspected extracts. Static audit only; no GP re-evaluation or engine changes.
+
+## 10. Stuck traffic lights in ordinary AI games (measured, not fixed)
+
+Aya's Evolved Rules session found that, on `2026-11-08.4`, its GP rule scores 408.4 trips with
+traffic lights against 513.2 without (LA seeds 3100–3109; worse on 8 of 10). All 30 of its
+recordings replay exactly on the `.4` Release host (`--verify-replay`), so they were played on this
+simulator and are deterministic.
+
+A replay probe ([LightProbe](source/LightProbe.cs), [results](measurements/light-stuck-ai-games.json))
+finds a light **stuck** in 9 of the 10 lights-on games. Stuck means another phase is preferred, but
+the switch is refused because 1–2 green-phase cars within 0.5 tiles are all stopped. Per game this
+lasts up to 237 s, with a longest single episode of 118 s. Trip loss correlates with stuck time,
+**r = 0.71** over 10 maps. The stopped green cars are held by the **shared-exit space rule (78%)** or a
+**carpark gate (22%)**. No light is on a two-lane tile.
+
+**Interpretation.** The original's space rule (`.3`) and the carpark gate hold green cars at the
+light, and our switching rule (0 or ≥3 nearby cars, 0.5 tiles; no recorded source) refuses to switch
+while 1–2 of them are nearby. This is a correlation over 10 maps, not proof that it is the only
+cause. **Status:** not fixed. The switching-rule questions have gone to Mohammad, together with the
+carpark arbitration questions. After his answer: implement it with a failing test first, then rerun
+the deterministic lights on/off comparison (Mohammad's `training/TRAFFIC_LIGHT_TEST.md` design: same
+policy, same seeds, only light placement changed).

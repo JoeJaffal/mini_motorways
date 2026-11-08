@@ -1,0 +1,161 @@
+{
+ "question": "Do stuck traffic-light phases explain the Evolved Rules agent's loss with lights on simulator 2026-11-08.4?",
+ "source": "Aya's Evolved Rules session: runs sim2-gplight and sim2-gp (gp rule with/without lights), LosAngeles seeds 3100-3109; recordings read only from the gp4 worktree output folder, not copied.",
+ "replay_verification": "All 30 recordings (sim2-gp, sim2-gplight, sim2-separated) pass --verify-replay on the 2026-11-08.4 Release host: the games were played on this simulator and replay deterministically.",
+ "definitions": {
+  "blockedSwitch": "a non-amber light whose best pair differs from the active pair but whose switch is refused because 1 to (SignalMinimumNearbyCars-1)=2 green-phase cars are within SignalNearbyDistance=0.5 tiles",
+  "stuck": "blockedSwitch with every one of those nearby green cars stopped (speed < 0.02)"
+ },
+ "maps": [
+  {
+   "map": 3100,
+   "tripsWithLights": 324,
+   "tripsWithoutLights": 516,
+   "lights": 4,
+   "lightsOnTwoLaneTiles": 0,
+   "blockedSwitchSeconds": 369.2,
+   "stuckSeconds": 125.6,
+   "longestStuckSeconds": 103.9,
+   "redCarSecondsWhileStuck": 1016.6
+  },
+  {
+   "map": 3101,
+   "tripsWithLights": 466,
+   "tripsWithoutLights": 684,
+   "lights": 6,
+   "lightsOnTwoLaneTiles": 0,
+   "blockedSwitchSeconds": 105.2,
+   "stuckSeconds": 76.2,
+   "longestStuckSeconds": 50.55,
+   "redCarSecondsWhileStuck": 350.5
+  },
+  {
+   "map": 3102,
+   "tripsWithLights": 466,
+   "tripsWithoutLights": 489,
+   "lights": 4,
+   "lightsOnTwoLaneTiles": 0,
+   "blockedSwitchSeconds": 45.0,
+   "stuckSeconds": 1.9,
+   "longestStuckSeconds": 1.6,
+   "redCarSecondsWhileStuck": 3.5
+  },
+  {
+   "map": 3103,
+   "tripsWithLights": 342,
+   "tripsWithoutLights": 484,
+   "lights": 6,
+   "lightsOnTwoLaneTiles": 0,
+   "blockedSwitchSeconds": 138.2,
+   "stuckSeconds": 30.2,
+   "longestStuckSeconds": 20,
+   "redCarSecondsWhileStuck": 33.5
+  },
+  {
+   "map": 3104,
+   "tripsWithLights": 270,
+   "tripsWithoutLights": 257,
+   "lights": 2,
+   "lightsOnTwoLaneTiles": 0,
+   "blockedSwitchSeconds": 0.1,
+   "stuckSeconds": 0,
+   "longestStuckSeconds": 0,
+   "redCarSecondsWhileStuck": 0
+  },
+  {
+   "map": 3105,
+   "tripsWithLights": 389,
+   "tripsWithoutLights": 353,
+   "lights": 4,
+   "lightsOnTwoLaneTiles": 0,
+   "blockedSwitchSeconds": 100.4,
+   "stuckSeconds": 72.3,
+   "longestStuckSeconds": 71.5,
+   "redCarSecondsWhileStuck": 294
+  },
+  {
+   "map": 3106,
+   "tripsWithLights": 379,
+   "tripsWithoutLights": 504,
+   "lights": 6,
+   "lightsOnTwoLaneTiles": 0,
+   "blockedSwitchSeconds": 320.9,
+   "stuckSeconds": 156.9,
+   "longestStuckSeconds": 116.55,
+   "redCarSecondsWhileStuck": 409.8
+  },
+  {
+   "map": 3107,
+   "tripsWithLights": 641,
+   "tripsWithoutLights": 669,
+   "lights": 6,
+   "lightsOnTwoLaneTiles": 0,
+   "blockedSwitchSeconds": 197.2,
+   "stuckSeconds": 69.2,
+   "longestStuckSeconds": 5.85,
+   "redCarSecondsWhileStuck": 288.6
+  },
+  {
+   "map": 3108,
+   "tripsWithLights": 257,
+   "tripsWithoutLights": 545,
+   "lights": 4,
+   "lightsOnTwoLaneTiles": 0,
+   "blockedSwitchSeconds": 273.0,
+   "stuckSeconds": 236.9,
+   "longestStuckSeconds": 118.3,
+   "redCarSecondsWhileStuck": 1028.9
+  },
+  {
+   "map": 3109,
+   "tripsWithLights": 550,
+   "tripsWithoutLights": 631,
+   "lights": 6,
+   "lightsOnTwoLaneTiles": 0,
+   "blockedSwitchSeconds": 316.9,
+   "stuckSeconds": 54.2,
+   "longestStuckSeconds": 6.9,
+   "redCarSecondsWhileStuck": 202.2
+  }
+ ],
+ "meanTrips": {
+  "withLights": 408.4,
+  "withoutLights": 513.2
+ },
+ "correlation": {
+  "lossVsStuckSeconds": 0.714,
+  "lossVsBlockedSwitchSeconds": 0.531
+ },
+ "stuckGreenCarObstacles": {
+  "Exit space": {
+   "carSeconds": 639.1,
+   "percent": 77.6
+  },
+  "Carpark entrance merge": {
+   "carSeconds": 179.5,
+   "percent": 21.8
+  },
+  "(none)": {
+   "carSeconds": 1.9,
+   "percent": 0.2
+  },
+  "Approaching vehicle priority": {
+   "carSeconds": 1.3,
+   "percent": 0.2
+  },
+  "Queue ahead": {
+   "carSeconds": 1.2,
+   "percent": 0.1
+  },
+  "Crossing vehicle": {
+   "carSeconds": 0.2,
+   "percent": 0.0
+  },
+  "Traffic light": {
+   "carSeconds": 0.1,
+   "percent": 0.0
+  }
+ },
+ "conclusion": "Measured: stuck phases occur on 9 of 10 maps (up to 237 s per game, longest episode 118 s); trip loss correlates with stuck time (r=0.71, n=10). The stopped nearby green cars are held by the shared-exit space rule (78%) or a carpark gate (22%). No light is on a two-lane tile. Interpretation: the original space rule (2026-11-08.3) and the carpark gate hold green cars at the light, and our unverified switching rule refuses to switch while 1-2 such cars are nearby. Correlation over 10 maps is evidence, not proof that this is the only cause.",
+ "status": "Not fixed; switching-rule questions sent to Mohammad."
+}
