@@ -1,5 +1,21 @@
 # Headless simulation
 
+`{"command":"drawchoices","x":6,"y":5}` returns a lightweight read-only
+`possibleChanges` array of 1,500 booleans. False proves the ordinary stroke
+cannot physically change roads, connections or a driveway; true is only
+conservative possibility, not a suggested/valid route. It never steps the world
+or changes LastAction. Ordinary responses now include topology `networkVersion`
+to invalidate agent-side caches, along with current resources and bounds.
+This endpoint supports an optional agent mask; game construction rules are unchanged.
+
+Training may opt into a read-only diagnostic by sending
+`"includeConnectivity":true` on reset. Reset/step/observe responses then include
+top-level `usefulConnectedHouses`: houses with a current legal same-color
+destination route and return route, counted once each. It uses ordinary routing,
+excludes retiring links, and does not build or step anything. Other responses
+and disabled sessions return null. This diagnostic is not added to the policy's
+observation channels. See the [shaping contract](../../training/REWARD_SHAPING.md).
+
 See [the simulation guide](../README.md#headless) and [version behavior](../Docs/VERSIONS.md).
 
 Run `dotnet run --project simulation/Headless -- --self-test` from the repository root. Both versions compile the same C# core as the Unity viewer. OriginalReference is unfinished and is not an exact-original training baseline.
@@ -42,6 +58,18 @@ The host reads one JSON object per input line and emits one response per request
 {"command":"observe"}
 {"command":"quit"}
 ```
+
+Every reply, including errors and `drawchoices`, carries `simulatorVersion` (for example
+`"2026-11-08.7"`); `TrafficHost --version` prints the same string, and `--run-scenario` and
+`--verify-replay` summaries include it. Key cached results on it: it changes whenever gameplay,
+scoring or observation meaning changes ([version table](../Docs/VERSIONS.md#simulator-version-string)).
+Hosts built before 8 November 2026 do not send it. The field is additive; no existing field changed.
+
+Vehicle `waiting` is the car's current continuous wait in seconds (speed below 0.02 tiles/s, not
+counting time in a bay). It resets when the car moves, and, since `2026-11-08.1`, on arrival home or in
+a bay. Observation `meanWaiting` is different: the mean, over every car ever spawned (including cars
+that never left home), of each car's cumulative waiting seconds. It only grows and is not a
+current-queue measure.
 
 Build places a tile; adjacency alone does not connect tiles. Draw builds and connects a stroke, which may partially succeed. Responses include `accepted`, `message`, trip/spending deltas, `terminated`, `truncated` and `observation`. Invalid requests return `error`.
 

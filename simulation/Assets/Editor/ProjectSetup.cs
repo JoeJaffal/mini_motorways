@@ -58,7 +58,7 @@ public static class ProjectSetup
     }
 
     [MenuItem("Traffic Lab/Build Original Windows app")]
-    public static void BuildOriginalWindows(){PrepareAndCheck();BuildApp(GameVersion.OriginalReference);}
+    public static void BuildOriginalWindows(){RunChecks();BuildApp(GameVersion.OriginalReference);}
 
     [MenuItem("Traffic Lab/Build Custom Windows app")]
     public static void BuildCustomWindows(){PrepareAndCheck();BuildApp(GameVersion.Custom);}
@@ -67,6 +67,8 @@ public static class ProjectSetup
     {
         bool custom=version==GameVersion.Custom;
         string name=custom?"TrafficLabCustom":"TrafficLabOriginal";
+        var args=Environment.GetCommandLineArgs();int outputArg=Array.IndexOf(args,"--traffic-build-root");
+        string buildRoot=outputArg>=0&&outputArg+1<args.Length?Path.GetFullPath(args[outputArg+1]):"Builds/Windows";
         string scene=custom?"Assets/Scenes/TrafficLabCustom.unity":"Assets/Scenes/TrafficLab.unity";
         string product=PlayerSettings.productName;
         string identifier=PlayerSettings.GetApplicationIdentifier(NamedBuildTarget.Standalone);
@@ -74,13 +76,14 @@ public static class ProjectSetup
         {
             PlayerSettings.productName=custom?"Traffic Lab Custom":"Traffic Lab Original";
             PlayerSettings.SetApplicationIdentifier(NamedBuildTarget.Standalone,custom?"com.trafficlab.custom":"com.trafficlab.original");
-            Directory.CreateDirectory("Builds/Windows/"+name);
+            Directory.CreateDirectory(Path.Combine(buildRoot,name));
             var result=BuildPipeline.BuildPlayer(new BuildPlayerOptions {
                 scenes=new[]{scene},
-                locationPathName="Builds/Windows/"+name+"/"+name+".exe",target=BuildTarget.StandaloneWindows64,
+                locationPathName=Path.Combine(buildRoot,name,name+".exe"),target=BuildTarget.StandaloneWindows64,
                 options=BuildOptions.None
             });
             if(result.summary.result!=BuildResult.Succeeded)throw new Exception(name+" Windows build failed");
+            Debug.Log("TRAFFIC_APP_BUILD_PASSED="+Path.Combine(buildRoot,name,name+".exe"));
         }
         finally
         {

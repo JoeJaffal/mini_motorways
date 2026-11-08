@@ -3,10 +3,15 @@ import argparse,json,subprocess,pathlib
 parser=argparse.ArgumentParser();parser.add_argument('--dotnet',default='dotnet');args=parser.parse_args()
 root=pathlib.Path(__file__).resolve().parents[1];dotnet=args.dotnet
 host=root/'simulation/Headless/bin/Debug/net8.0/TrafficHost.dll'
+# A host without --version would read stdin as requests; the quit line makes it exit with no output.
+simulator_version=subprocess.run([dotnet,str(host),'--version'],input='{"command":"quit"}\n',capture_output=True,text=True,timeout=60).stdout.strip()
+assert simulator_version,'--version must print the simulator version'
 process=subprocess.Popen([dotnet,str(host)],stdin=subprocess.PIPE,stdout=subprocess.PIPE,text=True)
 def call(**req):
  process.stdin.write(json.dumps(req)+'\n');process.stdin.flush()
  answer=json.loads(process.stdout.readline());assert 'error' not in answer,(req,answer)
+ # Every reply names the simulator build so result caches never mix simulator versions.
+ assert isinstance(answer.get('simulatorVersion'),str) and answer['simulatorVersion']==simulator_version,(req,answer.get('simulatorVersion'))
  return answer
 summaries=[]
 for version in ['OriginalReference','Custom']:
@@ -30,4 +35,4 @@ process.stdin.write(json.dumps(dict(command='reset',requireExact=True))+'\n');pr
 assert 'error' in json.loads(process.stdout.readline())
 process.stdin.write('{"command":"quit"}\n');process.stdin.flush();process.wait(timeout=10)
 (root/'simulation/Reports/five-map-protocol-checks.json').write_text(json.dumps(dict(result='PASS',checks='Both versions reset all five maps, complete 20-second debug-road smoke runs, expose fidelity=false, reject Custom motorways, expose weekly Original choices, and refuse requireExact resets.',runs=summaries),indent=2))
-print('PASS: five-map protocol checks (10 runs).')
+print('PASS: five-map protocol checks (10 runs), simulatorVersion '+simulator_version+'.')

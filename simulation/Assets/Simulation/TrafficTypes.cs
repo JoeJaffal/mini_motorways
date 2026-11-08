@@ -38,6 +38,7 @@ namespace MotorwaysSim
     public enum Infrastructure {None,Road,Bridge,Roundabout,TrafficLight}
     public enum BuildTool {Road,Bridge,Roundabout,TrafficLight,Remove,Motorway}
     public enum TripStage {Home,Outbound,EnteringParking,Parking,LeavingParking,Returning,AligningHome}
+    public enum ObstacleKind {None,Leader,BlockingJunction,RouteEnd}
     public enum ScenarioKind {LosAngeles,ReferenceLab,EmptyLab,Beijing,Tokyo,DarEsSalaam,London}
     public enum GameVersion {OriginalReference,Custom}
     public enum MapVariation {SameMap,DifferentMaps}
@@ -56,8 +57,9 @@ namespace MotorwaysSim
                 ConstructionGraceSeconds=version==GameVersion.Custom?30:0,UnlimitedConstruction=version==GameVersion.Custom};
         }
         public double TickSeconds=.05;
-        public double MotorwaySpeed=1.5; // Installed cap: 3 world units/s; tile width is 2.
-        // Original world units have tile width 2; all distances below are converted to tiles.
+        public double MotorwaySpeed=1.5; // Reference lane value3 converted for tile width2; not the final movement target.
+        // Original world units have tile width2; motion multiplies the converted lane value by its separate reference factor.
+        public double MovementSpeedMultiplier=>Version==GameVersion.OriginalReference?3:1;
         public double CarSpeed=.5,MaxAcceleration=.27,ControlledAcceleration=.4,RoundaboutAcceleration=.45;
         public double MaxDeceleration=6,FollowingGap=.05,CarLength=.325,DesiredTimeGap=1;
         public double LaneOffset=.1,SharpTurnMultiplier=1.0/3,RightAngleMultiplier=2.0/3;
@@ -108,7 +110,9 @@ namespace MotorwaysSim
         public double[] Distances;
         public double Length,SpeedLimit;
         public bool IsJunction,IsRoundabout,IsParking,IsMotorway,ReleasesParking,DeliversDriveThrough;
+        public string Chunk=""; // carpark lanes: "carpark:<id>:<chunk>" (CarparkArbitration.cs)
         public int MotorwayId=-1;
+        public int CarparkId=-1;
         public string Key;
         public Point Position(double distance)
         {
@@ -133,6 +137,14 @@ namespace MotorwaysSim
         public int RouteIndex,RouteVersion;
         public bool HasDelivered,WaitingAtSignal,WaitingAtIntersection,DrivingThrough;
         public string Obstacle="";
+        public readonly Dictionary<string,double> ApproachRegistered=new Dictionary<string,double>();
+        // Original junction arbitration state (JunctionArbitration.cs): the previous tick's nearest
+        // obstacle, and the blocking-cycle shove permission for one immediate next lane.
+        public ObstacleKind ObstacleState;public int ObstacleCar=-1;public double ObstacleDistance;
+        public bool Shoving;public string ShovingLane="";
+        // Tile of the junction lane this car was refused at (BlockingJunction), and the game time each planned
+        // lane first entered the first-two-remaining-lanes commitment window (original signal weights).
+        public Cell BlockingTile;public readonly Dictionary<string,double> CommittedAt=new Dictionary<string,double>();
         public Point ParkedPosition,ParkedHeading=new Point(0,-1);
         public bool Moving=>Lanes.Count>0&&RouteIndex<Lanes.Count;
         public Lane CurrentLane=>Moving?Lanes[RouteIndex]:null;
@@ -154,6 +166,8 @@ namespace MotorwaysSim
         public Cell Center;
         public Cell[] Ring;
         public bool PendingRemoval;
+        // Concrete replaced by the circle stays reserved until old surface lanes clear.
+        public int ReplacedRoadTiles;
     }
 
     public sealed class MotorwayState

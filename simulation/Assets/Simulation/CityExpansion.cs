@@ -19,6 +19,7 @@ namespace MotorwaysSim
         {
             get
             {
+                if(customScenarioBounds!=null)return (double[])customScenarioBounds.Clone();
                 if(Rules.Version!=GameVersion.OriginalReference||!Array.Exists(CityCatalog.Maps,m=>m==Scenario))return new double[]{0,0,Width,Height};
                 double size=CityZoom,progress=Math.Max(0,Math.Min(1,(size-Map.Zoom[0])/(Map.Zoom[1]-Map.Zoom[0])));
                 double cx=25.5+startOffsetX*(1-progress),cy=14.5-startOffsetY*(1-progress);
@@ -49,6 +50,7 @@ namespace MotorwaysSim
         void UpdatePlayableBounds()
         {
             if(boundsTime==Time)return;boundsTime=Time;
+            if(customScenarioBounds!=null){Array.Copy(customScenarioBounds,playableBounds,4);return;}
             if(Rules.Version!=GameVersion.OriginalReference||!Array.Exists(CityCatalog.Maps,m=>m==Scenario))
             {playableBounds[0]=0;playableBounds[1]=0;playableBounds[2]=Width;playableBounds[3]=Height;return;}
             double size=CityZoom,progress=Math.Max(0,Math.Min(1,(size-Map.Zoom[0])/(Map.Zoom[1]-Map.Zoom[0])));

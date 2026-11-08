@@ -9,7 +9,7 @@ namespace MotorwaysSim
         static void Check(bool value,string message){if(!value)throw new InvalidOperationException("CHECK FAILED: "+message);}
         public static string Run()
         {
-            int count=0;
+            int count=GameplayFidelityChecks.Run()+CustomScenarioChecks.Run()+ParkingFlowChecks.Run()+RecordedCarparkChecks.Run()+SharedTransitChecks.Run();
             void Test(string name,Action body){body();count++;}
             Test("AI command replay reproduces normal-play transitions",()=>{
                 var world=new TrafficWorld(42,false,Rules.ForVersion(GameVersion.OriginalReference));
@@ -41,6 +41,46 @@ namespace MotorwaysSim
                 Check(rejected,"privileged command refused");recording.version="Custom";rejected=false;
                 try{new AiReplaySession(recording);}catch(ArgumentException){rejected=true;}
                 Check(rejected,"version boundary enforced");
+            });
+            Test("useful connectivity counts matching round trips once without gameplay mutation",()=>{
+                var w=Pair();var home=w.Buildings.First(b=>b.IsHouse);var shop=w.Buildings.First(b=>!b.IsHouse);
+                var before=w.Observe();int version=w.NetworkVersion;
+                Check(w.UsefulConnectedHouseCount()==1&&w.UsefulConnectedHouseCount()==1,"one productive house, cached query");
+                Check(w.Observe().Connections.SequenceEqual(before.Connections)&&w.Inventory.SequenceEqual(before.Inventory)&&
+                    w.NetworkVersion==version&&w.Time==before.Time&&w.TripsCompleted==0,"diagnostic does not build, score or step");
+                w.SpawnBuilding(new Cell(5,9),1,true);w.DrawRoad(new Cell(5,9),new Cell(10,9));w.DrawRoad(new Cell(10,9),new Cell(10,5));
+                Check(w.UsefulConnectedHouseCount()==1,"wrong-color connection adds no house credit");
+                w.SetHouseDriveway(home.Id,6);Check(w.UsefulConnectedHouseCount()==0,"detached driveway invalidates cached count");
+                w.SetHouseDriveway(home.Id,0);Check(w.UsefulConnectedHouseCount()==1,"reconnected driveway restores count");
+                w.Build(BuildTool.Remove,new Cell(10,5));
+                Check(w.UsefulConnectedHouseCount()==0,"pending/deleted connection not credited");
+                w.Reset(42,ScenarioKind.EmptyLab);Check(w.UsefulConnectedHouseCount()==0,"reset invalidates query cache");
+                w=Pair();home=w.Buildings.First(b=>b.IsHouse);shop=w.Buildings.First(b=>!b.IsHouse);
+                // Diagnostic directed fixture: outbound link exists but return does not.
+                w.Connections[6,5]&=~(1<<4);w.Build(BuildTool.Road,new Cell(25,20));
+                Check(w.BestRouteTo(home.Access,shop).Count>1&&w.FindRoute(shop.Access,home.Access).Count==0,"one-way fixture");
+                Check(w.UsefulConnectedHouseCount()==0,"outbound-only connection earns no credit");
+            });
+            Test("draw-change diagnostic rejects only physically unchanged strokes",()=>{
+                var w=Pair();var from=new Cell(6,5);var to=new Cell(14,5);
+                int version=w.NetworkVersion;var before=w.Observe();
+                Check(!w.DrawMayChange(from,to),"existing connected stroke is a no-op");
+                Check(w.DrawMayChange(from,new Cell(10,8)),"new road extension remains available");
+                Check(w.DrawMayChange(new Cell(5,5),new Cell(5,8)),"house driveway rotation remains available");
+                var choices=w.DrawChangeChoices(from);
+                Check(choices.Length==TrafficWorld.Width*TrafficWorld.Height&&!choices[to.Y*TrafficWorld.Width+to.X],"batched diagnostic");
+                Check(w.NetworkVersion==version&&w.Observe().Connections.SequenceEqual(before.Connections),"query is read-only");
+                int checkedNoops=0;
+                foreach(var start in new[]{new Cell(5,5),from,new Cell(10,5),new Cell(14,6),new Cell(15,6)})
+                    for(int y=3;y<10;y++)for(int x=4;x<18;x++)
+                    {
+                        var end=new Cell(x,y);if(w.DrawMayChange(start,end))continue;
+                        var snapshot=w.Observe();int direction=w.Buildings[0].DrivewayDirection;
+                        w.DrawRoad(start,end);checkedNoops++;
+                        Check(w.Observe().Connections.SequenceEqual(snapshot.Connections)&&w.Observe().Infrastructure.SequenceEqual(snapshot.Infrastructure)&&
+                            w.Inventory.SequenceEqual(snapshot.Inventory)&&w.Buildings[0].DrivewayDirection==direction,"no false no-op classification");
+                    }
+                Check(checkedNoops>10,"multiple no-op geometries checked");
             });
             Test("terrain, fixed size, original clock",()=>{
                 var w=new TrafficWorld(42,false,LegacyFixtureRules());Check(TrafficWorld.Width==50&&TrafficWorld.Height==30,"50 x 30");
@@ -114,6 +154,40 @@ namespace MotorwaysSim
                 car.Stage=TripStage.Home;
                 Check(w.RetiringRoadLinks().Count==0,"pavement disappears when committed trip finishes");
             });
+            Test("Original roundabout conversion conserves replaced concrete",()=>{
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;
+                var w=new TrafficWorld(40,false,rules);w.Reset(40,ScenarioKind.EmptyLab);
+                int startingRoads=w.Inventory[0];w.Inventory[4]=1;var center=new Cell(15,15);
+                foreach(var c in new[]{center,new Cell(15,14),new Cell(14,15),new Cell(15,16),new Cell(16,15)})
+                    Check(w.Build(BuildTool.Road,c),"prepare five replaced roads");
+                Check(w.Inventory[0]==startingRoads,"unconnected markers spend no concrete");
+                foreach(var c in new[]{new Cell(15,14),new Cell(14,15),new Cell(15,16),new Cell(16,15)})Check(w.Connect(center,c),"connect footprint roads");
+                Check(w.Inventory[0]==startingRoads-4,"four ordinary connections spent");
+                for(int i=0;i<3;i++)
+                {
+                    Check(w.Build(BuildTool.Roundabout,center),"convert or rebuild unused circle");
+                    Check(w.Inventory[0]==startingRoads,"replaced roads refunded once");
+                    w.Step(2);Check(w.Inventory[0]==startingRoads,"no repeated refund on ticks");
+                    Check(w.Build(BuildTool.Remove,center),"remove unused circle");
+                    Check(w.Inventory[0]==startingRoads&&w.Inventory[4]==1,"stocks conserved after removal");
+                }
+            });
+            Test("Original roundabout concrete waits for committed surface paths",()=>{
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;
+                var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);
+                var home=w.SpawnBuilding(new Cell(5,10),0,true);var shop=w.SpawnBuilding(new Cell(18,8),0,false);
+                Check(w.DrawRoad(home.Access,shop.Access),"prepare occupied road");
+                shop.DemandCountdown=1e9;shop.NextDemand=1e9;shop.Demand=1;w.Step(1);
+                var center=new Cell(11,10);int before=w.Inventory[0];w.Inventory[4]=1;
+                Check(w.Cars.Any(v=>v.Moving&&v.Lanes.Any(l=>l.Tile==center)),"old path crosses footprint");
+                Check(w.Build(BuildTool.Roundabout,center),"convert occupied road");
+                int replaced=w.Roundabouts[0].ReplacedRoadTiles;
+                Check(replaced==4&&w.Inventory[0]==before,"hold concrete for four replaced connections");
+                Check(w.Build(BuildTool.Remove,center),"queue occupied circle removal");
+                w.Step(6000);
+                Check(w.Inventory[0]==before+replaced&&w.Inventory[4]==1&&w.Roundabouts.Count==0,
+                    "refund old concrete and circle exactly once after traffic clears");
+            });
             Test("roundabout circulation is directed",()=>{
                 var w=Lab();w.Build(BuildTool.Roundabout,new Cell(15,15));
                 var ring=w.Roundabouts[0].Ring;
@@ -163,8 +237,9 @@ namespace MotorwaysSim
             Test("adjacent city junctions release crossing reservations",()=>{
                 var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.OvercrowdingSeconds=100000;
                 var w=new TrafficWorld(42,false,rules);
-                for(int i=0;i<8000;i++){if(i%200==0){w.Inventory[0]=1000;w.BuildReferenceNetwork();}w.Step();}
-                Check(w.TripsCompleted>=60,"seeded connected city continues serving trips: "+w.TripsCompleted);
+                int recentTrips=0;
+                for(int i=0;i<8000;i++){if(i==7200)recentTrips=w.TripsCompleted;if(i%200==0){w.Inventory[0]=1000;w.BuildReferenceNetwork();}w.Step();}
+                Check(w.TripsCompleted>recentTrips,"connected city continues delivering in final40seconds: "+w.TripsCompleted);
                 Check(!w.Cars.Any(c=>c.Waiting>20&&(c.Obstacle=="Crossing vehicle"||c.Obstacle=="Approaching vehicle priority")),"no persistent crossing reservation cycle: "+Summary(w));
             });
             Test("reusable trips and functional parking",()=>{
@@ -250,9 +325,9 @@ namespace MotorwaysSim
                 custom.Water[20,10]=true;custom.Build(BuildTool.Bridge,new Cell(20,10));custom.Build(BuildTool.Roundabout,new Cell(15,15));
                 Check(custom.ConstructionSpent==25,"custom bridge ten and roundabout eight");
                 var original=new TrafficWorld(7,false,Rules.ForVersion(GameVersion.OriginalReference));original.Reset(7,ScenarioKind.EmptyLab);
-                for(int i=0;i<25;i++)Check(original.Build(BuildTool.Road,new Cell(i,10)),"original road stock available");
-                Check(!original.Build(BuildTool.Road,new Cell(26,10)),"original inventory is finite");
-                original.Build(BuildTool.Remove,new Cell(5,10));Check(original.RoadTilesAvailable==1,"original released road reusable");
+                for(int i=0;i<26;i++){Check(original.Build(BuildTool.Road,new Cell(i,10)),"road node available");if(i>0)Check(original.Connect(new Cell(i-1,10),new Cell(i,10)),"paid ordinary connection");}
+                Check(original.Build(BuildTool.Road,new Cell(26,10))&&!original.Connect(new Cell(25,10),new Cell(26,10)),"original connection inventory is finite");
+                original.Build(BuildTool.Remove,new Cell(5,10));Check(original.RoadTilesAvailable==2,"both incident connections refunded");
                 Check(original.ConstructionSpent==0&&original.Rules.ConstructionGraceSeconds==0&&!original.Rules.RejectInfeasibleScenarios,"no custom prices/grace/rejection in original");
                 Check(custom.Rules.ConstructionGraceSeconds==30,"custom grace retained");
                 original.Step(2800);Check(original.UpgradeChoices.Count>0,"original weekly choices appear");
@@ -261,7 +336,8 @@ namespace MotorwaysSim
                 Check(custom.UpgradeChoices.Count==0,"weekly rewards do not leak to custom");
                 var bridge=new TrafficWorld(7,false,Rules.ForVersion(GameVersion.OriginalReference));bridge.Reset(7,ScenarioKind.EmptyLab);
                 for(int i=20;i<23;i++){bridge.Water[i,8]=true;Check(bridge.Build(BuildTool.Bridge,new Cell(i,8)),"one bridge supports a water span");}
-                Check(bridge.Inventory[0]==22&&bridge.Inventory[1]==0,"span uses three road tiles and one bridge");
+                Check(bridge.Connect(new Cell(20,8),new Cell(21,8))&&bridge.Connect(new Cell(21,8),new Cell(22,8)),"connect water span");
+                Check(bridge.Inventory[0]==23&&bridge.Inventory[1]==0,"span uses two connections and one bridge");
                 bridge.Build(BuildTool.Remove,new Cell(21,8));bridge.Build(BuildTool.Remove,new Cell(20,8));
                 Check(bridge.Inventory[1]==0,"split/removal cannot duplicate bridge stock");
                 bridge.Build(BuildTool.Remove,new Cell(22,8));Check(bridge.Inventory[0]==25&&bridge.Inventory[1]==1,"bridge stock returned only after final tile clears");
@@ -368,7 +444,7 @@ namespace MotorwaysSim
                 var a=w.SpawnBuilding(new Cell(10,5),0,false);var b=w.SpawnBuilding(new Cell(20,5),0,false);var c=w.SpawnBuilding(new Cell(30,5),1,false);
                 Check(w.OriginalDemandInterval(a)==w.OriginalDemandInterval(b),"same-color destinations share oscillation phase");
                 Check(w.OriginalDemandInterval(a)!=w.OriginalDemandInterval(c),"different color profiles retain their demand");
-                w.Step(79);Check(a.Demand==0&&b.Demand==0,"no demand before first-pin delay");
+                w.Step(59);Check(a.Demand==0&&b.Demand==0,"no demand before initial three-second delay");
                 w.Step(2);Check(a.Demand==1&&b.Demand==1,"first pins after countdown");
             });
             Test("reference random generator matches installed-assembly oracle vectors",()=>{
@@ -518,7 +594,7 @@ namespace MotorwaysSim
                                 Check(high?across>=2:across<=1,"cars stay in parking strip, outside destination footprints");
                             }
                         }
-                        Check(Point.Distance(enter[0].Samples[0],new Point(access))<1e-9&&Point.Distance(exit.Last().Samples.Last(),new Point(access))<1e-9,"entrance and return continuity");
+                        Check(Point.Distance(enter[0].Samples[0],w.ParkingAccessPoint(shop,access,true))<1e-9&&Point.Distance(exit.Last().Samples.Last(),w.ParkingAccessPoint(shop,access,false))<1e-9,"entrance and return continuity");
                         Check(Point.Distance(enter.Last().Samples.Last(),w.ParkingPoint(shop,slot))<1e-9&&Point.Distance(exit[0].Samples[0],w.ParkingPoint(shop,slot))<1e-9,"stop at bay midpoint");
                         Check(exit[0].ReleasesParking&&!exit.Skip(1).Any(l=>l.ReleasesParking),"release occurs when the bay clears");
                         Check(Point.Distance(enter.Last().Tangent(enter.Last().Length),w.ParkingHeading(shop,access))<1e-7,"parked heading follows diagonal bay");
@@ -541,6 +617,253 @@ namespace MotorwaysSim
                 for(int i=0;i<4000&&!freed;i++){normal.Step();freed=normal.Cars.Any(c=>c.Stage==TripStage.LeavingParking&&c.ParkingSlot==-1);}
                 Check(freed,"bay becomes available before vehicle leaves the lot");
             });
+            Test("blocked approach priority cannot deadlock a junction beside a roundabout",()=>{
+                // Reconstructs the replay-v20 deadlock at junction 19,7 and ring cell 19,8 (t=1163) with
+                // the same lane offsets: A turns east at junction J but is blocked by B, stopped inside J;
+                // B queues behind C, which waits to enter the ring at T; D, leaving the ring at T, yields to
+                // A's closer approach, and E ahead of D keeps D on the conflicting part of the ring lane. Without the rule
+                // every car waits for the next one forever.
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.OvercrowdingSeconds=100000;
+                var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);w.Inventory[0]=1000;w.Inventory[4]=1;
+                var home=w.SpawnBuilding(new Cell(5,5),0,true);
+                Check(w.DrawRoad(new Cell(20,10),new Cell(20,20))&&w.DrawRoad(new Cell(17,15),new Cell(23,15))&&w.Build(BuildTool.Roundabout,new Cell(20,15))&&
+                    w.DrawRoad(new Cell(20,13),new Cell(23,13)),"junction north of a roundabout");
+                Vehicle Place(Cell from,Cell to,string key,double distance)
+                {
+                    var route=w.FindRoute(from,to);var lanes=w.MakeLanes(route);int index=lanes.FindIndex(l=>l.Key==key);
+                    Check(index>=0,"fixture lane "+key+" on route "+string.Join(",",route));
+                    var car=new Vehicle{Id=w.Cars.Count,HomeId=home.Id,Color=0,Stage=TripStage.Returning,At=route[0],Next=route[1],
+                        Route=route,ReturnRoute=new List<Cell>(route),Lanes=lanes,RouteIndex=index,DistanceAlongLane=distance,RouteVersion=w.NetworkVersion};
+                    w.Cars.Add(car);return car;
+                }
+                var a=Place(new Cell(20,11),new Cell(22,13),"20:12:2:2",.836);
+                var b=Place(new Cell(20,11),new Cell(18,15),"20:13:2:2",.461);
+                var c=Place(new Cell(20,11),new Cell(18,15),"20:13:2:2",.836);
+                var d=Place(new Cell(22,15),new Cell(20,10),"20:14:5:6",.853);
+                var e=Place(new Cell(22,15),new Cell(20,10),"20:14:5:6",1.237);
+                var fixture=new[]{a,b,c,d,e};
+                for(int tick=0;tick<1200&&fixture.Any(v=>v.Stage!=TripStage.Home);tick++)w.Step();
+                Check(fixture.All(v=>v.Stage==TripStage.Home),"junction and ring clear: "+Summary(w));
+            });
+            Test("Original junction entry registers inbound lanes and keeps a shared exit clear",()=>{
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.OvercrowdingSeconds=100000;
+                // Registration happens at route assignment (game time plus path lane count), not on entering lookahead.
+                var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);w.Inventory[0]=1000;
+                var home=w.SpawnBuilding(new Cell(5,12),0,true,0);var shop=w.SpawnBuilding(new Cell(20,11),0,false,0,0);
+                Check(w.DrawRoad(new Cell(6,12),new Cell(18,12))&&w.DrawRoad(new Cell(18,12),new Cell(18,13))&&w.DrawRoad(new Cell(18,13),new Cell(19,13))&&
+                    w.DrawRoad(new Cell(12,12),new Cell(12,9)),"route through a distant junction");
+                shop.Demand=1;shop.DemandCountdown=1e9;Vehicle car=null;
+                for(int i=0;i<4000&&car==null;i++){w.Step();car=w.Cars.FirstOrDefault(c=>c.Stage==TripStage.Outbound&&c.Moving);}
+                Check(car!=null,"a car departs: "+Summary(w));
+                var junction=car.Lanes.First(l=>l.Tile==new Cell(12,12));
+                Check(car.ApproachRegistered.TryGetValue(junction.Key,out double registered),"distant junction registered at departure");
+                Check(Math.Abs(registered-(car.JourneyStarted+car.Lanes.Count))<1e-9,"registration = assignment time + path lane count: "+registered+" vs "+car.JourneyStarted+"+"+car.Lanes.Count);
+                // Same exit: a car may not drive into a junction while a same-exit car still traverses it,
+                // even when that car is within its last vehicle length (no near-exit release for a shared exit).
+                var x=new TrafficWorld(42,false,rules);x.Reset(42,ScenarioKind.EmptyLab);x.Inventory[0]=1000;x.Inventory[3]=1;
+                var owner=x.SpawnBuilding(new Cell(5,5),0,true);
+                Check(x.DrawRoad(new Cell(20,8),new Cell(20,19))&&x.DrawRoad(new Cell(17,12),new Cell(20,12))&&x.DrawRoad(new Cell(20,14),new Cell(23,14))&&
+                    x.Build(BuildTool.TrafficLight,new Cell(20,14)),"junction with a signalled junction two tiles downstream");
+                var light=x.Signals[new Cell(20,14)];light.ActivePair=light.Pairs.First(p=>(p&(1<<6))==0);light.Amber=false;light.Elapsed=-1e9;
+                Vehicle Put(Cell from,Cell to,string key,double distance)
+                {
+                    var route=x.FindRoute(from,to);var lanes=x.MakeLanes(route);int index=lanes.FindIndex(l=>l.Key==key);
+                    Check(index>=0,"fixture lane "+key+" on route "+string.Join(",",route));
+                    var v=new Vehicle{Id=x.Cars.Count,HomeId=owner.Id,Color=0,Stage=TripStage.Returning,At=route[0],Next=route[1],Route=route,ReturnRoute=new List<Cell>(route),
+                        Lanes=lanes,RouteIndex=index,DistanceAlongLane=distance<0?lanes[index].Length+distance:distance,RouteVersion=x.NetworkVersion};
+                    x.Cars.Add(v);return v;
+                }
+                foreach(double d in new[]{.886,.511,.136})Put(new Cell(20,9),new Cell(20,18),"20:13:2:2",d);
+                var inside=Put(new Cell(18,12),new Cell(20,18),"20:12:0:2",-.239);
+                var entering=Put(new Cell(20,9),new Cell(20,18),"20:10:2:2",.5);
+                Check(inside.DistanceAlongLane>inside.CurrentLane.Length-rules.CarLength,"traversing car starts within its last vehicle length");
+                bool entered=false;
+                for(int i=0;i<400;i++){x.Step();Check(inside.CurrentLane.Key=="20:12:0:2","shared-exit car stays held inside the junction");entered|=entering.CurrentLane.Tile==new Cell(20,12);}
+                Check(!entered,"entering car waits outside the junction: "+entering.CurrentLane.Key+" '"+entering.Obstacle+"'");
+            });
+            Test("Original blocking-cycle shove clears an adjacent-junction gridlock",()=>{
+                // Replay v21 at t=1119 (junctions 20,11 and 20,12) with the measured lane offsets: 41 must turn east
+                // across 20,12 where 17 sits; 17 (behind 12) and 12 must enter 20,11 where 22 sits; 22 queues behind 41.
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.OvercrowdingSeconds=100000;
+                var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);w.Inventory[0]=1000;
+                var home=w.SpawnBuilding(new Cell(5,5),0,true);
+                Check(w.DrawRoad(new Cell(20,8),new Cell(20,16))&&w.DrawRoad(new Cell(20,11),new Cell(21,11))&&w.DrawRoad(new Cell(20,12),new Cell(22,12))&&
+                    w.DrawRoad(new Cell(20,11),new Cell(19,10))&&w.DrawRoad(new Cell(19,10),new Cell(17,10)),"two adjacent junctions");
+                Vehicle Place(Cell from,Cell to,string key,double distance)
+                {
+                    var route=w.FindRoute(from,to);var lanes=w.MakeLanes(route);int index=lanes.FindIndex(l=>l.Key==key);
+                    Check(index>=0,"fixture lane "+key+" on route "+string.Join(",",route));
+                    var car=new Vehicle{Id=w.Cars.Count,HomeId=home.Id,Color=0,Stage=TripStage.Returning,At=route[0],Next=route[1],
+                        Route=route,ReturnRoute=new List<Cell>(route),Lanes=lanes,RouteIndex=index,DistanceAlongLane=distance,RouteVersion=w.NetworkVersion};
+                    w.Cars.Add(car);return car;
+                }
+                var fixture=new[]{
+                    Place(new Cell(20,9),new Cell(22,12),"20:11:2:2",.8362),   // car 41
+                    Place(new Cell(20,9),new Cell(20,16),"20:11:2:2",.4533),   // car 22
+                    Place(new Cell(20,15),new Cell(17,10),"20:12:6:6",.8358),  // car 12
+                    Place(new Cell(20,15),new Cell(17,10),"20:12:6:6",.4578)}; // car 17
+                for(int tick=0;tick<1200&&fixture.Any(v=>v.Stage!=TripStage.Home);tick++)w.Step();
+                Check(fixture.All(v=>v.Stage==TripStage.Home),"adjacent junctions clear: "+Summary(w));
+            });
+            Test("Original carpark gate goes to the car nearest the entrance, not the car queued behind",()=>{
+                // Replay v20 at t=972 (shared lot 20, gate 19,18): T passes through the lot and is first on the outside
+                // approach 20:18:2:4; O, heading to park, queues behind it. Ranking O by the start of its final road lane
+                // made it the gate owner, so neither could move.
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.OvercrowdingSeconds=100000;
+                var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);w.Inventory[0]=1000;
+                var home=w.SpawnBuilding(new Cell(5,5),0,true);var lot=w.SpawnSharedCarpark(new Cell(16,16),0,0);
+                Check(lot!=null&&lot.Entrances.Contains(new Cell(19,18))&&lot.Entrances.Contains(new Cell(16,18)),"shared lot with east and west entrances");
+                Check(w.DrawRoad(new Cell(20,13),new Cell(20,18))&&w.DrawRoad(new Cell(15,18),new Cell(12,18)),"approach and far-side roads");
+                lot.Demand=1;lot.DemandCountdown=1e9;
+                Vehicle Place(Cell from,Cell to,TripStage stage,string key,double distance)
+                {
+                    var route=w.FindRoute(from,to);var lanes=w.MakeLanes(route);int index=lanes.FindIndex(l=>l.Key==key);
+                    Check(index>=0,"fixture lane "+key+" on route "+string.Join(",",route));
+                    var car=new Vehicle{Id=w.Cars.Count,HomeId=home.Id,ShopId=lot.Id,Color=0,Stage=stage,At=route[0],Next=route[1],Route=route,
+                        ReturnRoute=stage==TripStage.Outbound?w.FindRoute(new Cell(19,18),new Cell(20,13)):new List<Cell>(route),
+                        DestinationAccess=new Cell(19,18),Lanes=lanes,RouteIndex=index,DistanceAlongLane=distance,RouteVersion=w.NetworkVersion};
+                    w.Cars.Add(car);return car;
+                }
+                var through=Place(new Cell(20,14),new Cell(13,18),TripStage.Returning,"20:18:2:4",.218);
+                Check(through.Lanes.Any(l=>l.Key.Contains(":entrance:")),"through route crosses the shared lot");
+                var parking=Place(new Cell(20,14),new Cell(19,18),TripStage.Outbound,"20:17:2:2",.735);
+                for(int tick=0;tick<1200&&!(through.Stage==TripStage.Home&&parking.HasDelivered);tick++)w.Step();
+                Check(through.Stage==TripStage.Home&&parking.HasDelivered,"through car passes and the queued car parks: "+Summary(w));
+            });
+            Test("Original traffic lights follow the inspected phase and permission rules",()=>{
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.OvercrowdingSeconds=100000;
+                TrafficWorld Cross(out SignalHandle j)
+                {
+                    var x=new TrafficWorld(42,false,rules);x.Reset(42,ScenarioKind.EmptyLab);x.Inventory[0]=1000;x.Inventory[3]=2;
+                    x.SpawnBuilding(new Cell(5,5),0,true);
+                    Check(x.DrawRoad(new Cell(20,6),new Cell(20,18))&&x.DrawRoad(new Cell(15,12),new Cell(26,12))&&x.Build(BuildTool.TrafficLight,new Cell(20,12)),"signalled crossroads");
+                    j=new SignalHandle(x.Signals[new Cell(20,12)]);return x;
+                }
+                Vehicle Put(TrafficWorld x,Cell from,Cell to,string key,double distance)
+                {
+                    var route=x.FindRoute(from,to);var lanes=x.MakeLanes(route);int index=lanes.FindIndex(l=>l.Key==key);
+                    Check(index>=0,"fixture lane "+key+" on route "+string.Join(",",route));
+                    var v=new Vehicle{Id=x.Cars.Count,HomeId=0,Color=0,Stage=TripStage.Returning,At=route[0],Next=route[1],Route=route,ReturnRoute=new List<Cell>(route),
+                        Lanes=lanes,RouteIndex=index,DistanceAlongLane=distance<0?lanes[index].Length+distance:distance,RouteVersion=x.NetworkVersion};
+                    x.Cars.Add(v);return v;
+                }
+                // 1. A green car blocked inside the light's own chunk ends the nearby-car scan, so one stuck green car
+                // no longer holds the phase while the other direction waits.
+                var w=Cross(out var light);Check(w.DrawRoad(new Cell(23,11),new Cell(23,13))&&w.Build(BuildTool.TrafficLight,new Cell(23,12)),"second light downstream");
+                var east=light.Pair(4);light.Hold(east,false);var downstream=new SignalHandle(w.Signals[new Cell(23,12)]);downstream.Hold(downstream.PairWithout(4),true);
+                foreach(var item in new[]{("22:12:0:0",.886),("22:12:0:0",.511),("22:12:0:0",.136),("21:12:0:0",.761),("21:12:0:0",.386),("21:12:0:0",.011)})
+                    Put(w,new Cell(16,12),new Cell(25,12),item.Item1,item.Item2);
+                Put(w,new Cell(20,16),new Cell(25,12),"20:12:6:0",-.364);                       // same-exit car held inside the junction
+                var green=Put(w,new Cell(16,12),new Cell(25,12),"19:12:0:0",.6);               // the only nearby green car
+                green.ObstacleState=ObstacleKind.BlockingJunction;green.ObstacleDistance=.4;green.BlockingTile=new Cell(20,12);
+                var red=Put(w,new Cell(20,7),new Cell(20,17),"20:11:2:2",.6);
+                light.Release();bool switched=false;
+                for(int i=0;i<300&&!switched;i++){w.Step();switched=light.Permits(6);}
+                Check(switched,"phase switches to the waiting direction: green car '"+green.Obstacle+"' active "+w.Signals[new Cell(20,12)].ActivePair);
+                // 2. American red-light rules: the non-crossing (right) turn may proceed on red.
+                var r=Cross(out var light2);light2.Hold(light2.Pair(4),true);
+                var turning=Put(r,new Cell(20,7),new Cell(16,12),"20:11:2:2",.6);
+                bool turned=false;for(int i=0;i<200&&!turned;i++){r.Step();turned=turning.Moving&&turning.CurrentLane.Tile==new Cell(20,12);}
+                Check(turned,"right turn proceeds on red: '"+turning.Obstacle+"'");
+                // 3. Amber keeps the old active pair's permission.
+                var a=Cross(out var light3);light3.Hold(light3.Pair(4),true);
+                a.Signals[new Cell(20,12)].Amber=true;
+                var crossing=Put(a,new Cell(16,12),new Cell(25,12),"19:12:0:0",.6);
+                bool entered=false;for(int i=0;i<200&&!entered;i++){a.Step();entered=crossing.Moving&&crossing.CurrentLane.Tile==new Cell(20,12);}
+                Check(entered,"green-direction car may enter during amber: '"+crossing.Obstacle+"'");
+            });
+            Test("Original carpark lanes use chunk arbitration instead of a whole-entrance owner",()=>{
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.OvercrowdingSeconds=100000;
+                var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);w.Inventory[0]=1000;
+                var home=w.SpawnBuilding(new Cell(5,12),0,true);var shop=w.SpawnBuilding(new Cell(20,11),0,false,0,0);
+                Check(w.DrawRoad(home.Access,shop.Access),"route to a single lot");
+                shop.Demand=2;shop.DemandCountdown=1e9;
+                // 1. Carpark lanes are inbound reservations of their chunks: an arriving car registers them.
+                Vehicle parking=null;for(int i=0;i<6000&&parking==null;i++){w.Step();parking=w.Cars.FirstOrDefault(c=>c.Stage==TripStage.EnteringParking&&c.Moving);}
+                Check(parking!=null,"a car enters the lot: "+Summary(w));
+                Check(parking.Lanes.Skip(parking.RouteIndex+1).Where(l=>l.IsParking).All(l=>parking.ApproachRegistered.ContainsKey(l.Key)),"planned carpark lanes are registered");
+                // 2. No whole-entrance owner: a departing car held at the entrance by a queue outside does not stop an
+                // arriving car whose entrance lane does not cross it.
+                var x=new TrafficWorld(42,false,rules);x.Reset(42,ScenarioKind.EmptyLab);x.Inventory[0]=1000;x.Inventory[3]=1;
+                var owner=x.SpawnBuilding(new Cell(5,13),0,true);var lot=x.SpawnBuilding(new Cell(20,11),0,false,0,0);
+                Check(lot.Entrance==new Cell(20,13)&&x.DrawRoad(new Cell(6,13),new Cell(19,13))&&x.DrawRoad(new Cell(15,13),new Cell(15,15))&&
+                    x.Build(BuildTool.TrafficLight,new Cell(15,13)),"lot entrance on a road with a light outside");
+                lot.Demand=0;lot.DemandCountdown=1e9;
+                var held=new SignalHandle(x.Signals[new Cell(15,13)]);held.Hold(held.PairWithout(0),true);
+                var access=lot.Entrance;
+                Vehicle Car(TripStage stage,List<Lane> lanes,List<Cell> route,int index,double distance)
+                {
+                    var v=new Vehicle{Id=x.Cars.Count,HomeId=owner.Id,ShopId=lot.Id,Color=0,Stage=stage,At=route[0],Next=route.Count>1?route[1]:route[0],Route=route,
+                        ReturnRoute=x.FindRoute(access,owner.Access),DestinationAccess=access,Lanes=lanes,RouteIndex=index,
+                        DistanceAlongLane=distance<0?lanes[index].Length+distance:distance,RouteVersion=x.NetworkVersion};
+                    x.Cars.Add(v);return v;
+                }
+                var west=x.FindRoute(access,new Cell(6,13));var westLanes=x.MakeLanes(west);
+                // Tight queue held at the light, generated back from its head one spacing at a time onto the exit lane.
+                int head=westLanes.FindIndex(l=>l.Key=="16:13:4:4");Check(head>0,"queue lane at the light");
+                int lane=head;double at=.886,spacing=rules.CarLength+rules.FollowingGap;
+                while(true)
+                {
+                    Car(TripStage.Returning,westLanes,west,lane,at).ShopId=-1;at-=spacing;
+                    while(at<0&&lane>0){lane--;at+=westLanes[lane].Length;}
+                    if(at<0)break;
+                }
+                var leaving=x.ParkingRoute(lot,access,0,true);
+                var d=Car(TripStage.LeavingParking,leaving,new List<Cell>{access},leaving.Count-1,leaving.Last().Length+at);d.ParkingSlot=0;lot.Parking[0]=d.Id;
+                var inbound=x.FindRoute(new Cell(16,13),access);var arrive=x.MakeLanes(inbound);
+                var a=Car(TripStage.Outbound,arrive,inbound,arrive.FindIndex(l=>l.Tile==new Cell(17,13)),.5);
+                Check(!x.ConflictsPublic(x.ParkingRoute(lot,access,2)[0],leaving.Last()),"entrance and exit connectors do not cross");
+                bool entered=false;
+                for(int i=0;i<300&&!entered;i++){x.Step();entered=a.Moving&&a.CurrentLane.Key.Contains(":entrance:");}
+                Check(d.Stage!=TripStage.Home&&Point.Distance(d.Position,new Point(access))<1,"departing car is held at the entrance by the queue");
+                Check(entered,"arriving car enters beside the held departing car: '"+a.Obstacle+"'");
+            });
+            Test("Original carpark gate is not held by a car waiting at a red light",()=>{
+                // LA 3101 on 2026-11-08.6: car 25 took shop 9's gate while stopped at the red light just outside the
+                // entrance, and the green-side queue for the same lot could never enter. As in the original's entry
+                // eligibility, a red-blocked car may not take or keep the gate.
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.OvercrowdingSeconds=100000;
+                var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);w.Inventory[0]=1000;w.Inventory[3]=1;
+                var home=w.SpawnBuilding(new Cell(5,5),0,true);var lot=w.SpawnBuilding(new Cell(20,11),0,false,0,0);
+                Check(lot.Entrance==new Cell(20,13)&&w.DrawRoad(new Cell(19,9),new Cell(19,16))&&w.DrawRoad(new Cell(15,13),new Cell(19,13))&&
+                    w.Build(BuildTool.TrafficLight,new Cell(19,13)),"lit junction outside the lot entrance");
+                lot.Demand=2;lot.DemandCountdown=1e9;
+                var light=new SignalHandle(w.Signals[new Cell(19,13)]);light.Hold(light.Pair(6),true); // north/south green, west red
+                Vehicle Arrive(Cell from,string key,double distance)
+                {
+                    var route=w.FindRoute(from,lot.Entrance);var lanes=w.MakeLanes(route);int index=lanes.FindIndex(l=>l.Key==key);
+                    Check(index>=0,"fixture lane "+key+" on route "+string.Join(",",route));
+                    var v=new Vehicle{Id=w.Cars.Count,HomeId=home.Id,ShopId=lot.Id,Color=0,Stage=TripStage.Outbound,At=route[0],Next=route[1],Route=route,
+                        ReturnRoute=w.FindRoute(lot.Entrance,new Cell(19,9)),DestinationAccess=lot.Entrance,Lanes=lanes,RouteIndex=index,
+                        DistanceAlongLane=distance<0?lanes[index].Length+distance:distance,RouteVersion=w.NetworkVersion};
+                    w.Cars.Add(v);return v;
+                }
+                var red=Arrive(new Cell(16,13),"18:13:0:0",-.1);   // nearest to the gate, but held by the red light
+                var green=Arrive(new Cell(19,10),"19:12:2:2",.5);
+                bool entered=false;for(int i=0;i<400&&!entered;i++){w.Step();entered=green.Moving&&green.CurrentLane.IsParking;}
+                Check(red.Moving&&red.CurrentLane.Key=="18:13:0:0","red-side car still waits at the light: "+(red.Moving?red.CurrentLane.Key:"-"));
+                Check(entered,"green-side car enters the lot: '"+green.Obstacle+"'");
+            });
+            Test("arrival home or in a bay clears the current wait",()=>{
+                // A queued car released within one creeping tick of its journey end arrives
+                // below the 0.02 tiles/s waiting threshold. Its queue wait must not persist
+                // while it is parked or at home, where it no longer receives movement updates.
+                foreach(var stage in new[]{TripStage.Returning,TripStage.EnteringParking})
+                {
+                    var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.DemandCapacity=10000;
+                    var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);w.SpawnBuilding(new Cell(5,5),0,true);
+                    var shop=w.SpawnBuilding(new Cell(15,4),0,false);shop.DemandCountdown=1e9;shop.Demand=1;w.BuildReferenceNetwork();
+                    Vehicle car=null;
+                    for(int i=0;i<8000&&car==null;i++){w.Step();car=w.Cars.FirstOrDefault(c=>c.Stage==stage&&c.Moving&&!c.DrivingThrough);}
+                    Check(car!=null,"fixture reaches "+stage+": "+Summary(w));
+                    car.RouteIndex=car.Lanes.Count-1;car.DistanceAlongLane=car.CurrentLane.Length-1e-4;car.Speed=0;car.Waiting=12;
+                    double total=car.TotalWaiting;var arrived=stage==TripStage.Returning?TripStage.Home:TripStage.Parking;
+                    for(int i=0;i<20&&car.Stage==stage;i++)w.Step();
+                    Check(car.Stage==arrived,stage+" car arrives from its final creep: "+Summary(w));
+                    Check(car.Waiting==0,arrived+" car keeps no stale queue wait: waiting="+car.Waiting);
+                    Check(car.TotalWaiting>=total,"cumulative waiting is never reduced");
+                }
+            });
             return $"PASS: {count} simulation suites. Tests cover custom rules, recovered constants/structures, and integration; they do not prove bit-identical parity.\n";
         }
 
@@ -558,5 +881,16 @@ namespace MotorwaysSim
         }
         public static string Summary(TrafficWorld w)=>$"time={w.Time:0.0}, trips={w.TripsCompleted}, demand={w.DemandTotal}, failed={w.Failed}; "+
             string.Join(" | ",w.Cars.Select(c=>$"{c.Id} {c.Stage} {c.At} lane={c.RouteIndex}/{c.Lanes.Count} x={c.Position.X:0.00} speed={c.Speed:0.000} {c.Obstacle}"));
+    }
+
+    // Test helper: hold or inspect one traffic light's phase.
+    sealed class SignalHandle
+    {
+        readonly SignalState s;public SignalHandle(SignalState signal){s=signal;}
+        public int Pair(int approach)=>s.Pairs.First(p=>(p&(1<<approach))!=0);
+        public int PairWithout(int approach)=>s.Pairs.First(p=>(p&(1<<approach))==0);
+        public void Hold(int pair,bool frozen){s.ActivePair=pair;s.Amber=false;s.Overtime=false;s.Elapsed=frozen?-1e9:0;}
+        public void Release(){s.Elapsed=0;}
+        public bool Permits(int approach)=>!s.Amber&&(s.ActivePair&(1<<approach))!=0;
     }
 }
