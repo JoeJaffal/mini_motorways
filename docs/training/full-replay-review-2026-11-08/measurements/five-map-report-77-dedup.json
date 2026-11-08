@@ -1,0 +1,96 @@
+{
+  "result": "PASS",
+  "checks": "Both versions reset all five maps, complete 20-second debug-road smoke runs, expose fidelity=false, reject Custom motorways, expose weekly Original choices, and refuse requireExact resets.",
+  "runs": [
+    {
+      "version": "OriginalReference",
+      "map": "LosAngeles",
+      "seconds": 20,
+      "trips": 1,
+      "buildings": 3,
+      "failed": false,
+      "rejected": false
+    },
+    {
+      "version": "OriginalReference",
+      "map": "Beijing",
+      "seconds": 20,
+      "trips": 1,
+      "buildings": 3,
+      "failed": false,
+      "rejected": false
+    },
+    {
+      "version": "OriginalReference",
+      "map": "Tokyo",
+      "seconds": 20,
+      "trips": 1,
+      "buildings": 3,
+      "failed": false,
+      "rejected": false
+    },
+    {
+      "version": "OriginalReference",
+      "map": "DarEsSalaam",
+      "seconds": 20,
+      "trips": 1,
+      "buildings": 3,
+      "failed": false,
+      "rejected": false
+    },
+    {
+      "version": "OriginalReference",
+      "map": "London",
+      "seconds": 20,
+      "trips": 0,
+      "buildings": 2,
+      "failed": false,
+      "rejected": false
+    },
+    {
+      "version": "Custom",
+      "map": "LosAngeles",
+      "seconds": 20,
+      "trips": 0,
+      "buildings": 3,
+      "failed": false,
+      "rejected": false
+    },
+    {
+      "version": "Custom",
+      "map": "Beijing",
+      "seconds": 20,
+      "trips": 0,
+      "buildings": 3,
+      "failed": false,
+      "rejected": false
+    },
+    {
+      "version": "Custom",
+      "map": "Tokyo",
+      "seconds": 20,
+      "trips": 0,
+      "buildings": 3,
+      "failed": false,
+      "rejected": false
+    },
+    {
+      "version": "Custom",
+      "map": "DarEsSalaam",
+      "seconds": 20,
+      "trips": 0,
+      "buildings": 3,
+      "failed": false,
+      "rejected": false
+    },
+    {
+      "version": "Custom",
+      "map": "London",
+      "seconds": 20,
+      "trips": 0,
+      "buildings": 3,
+      "failed": false,
+      "rejected": false
+    }
+  ]
+}

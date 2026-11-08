@@ -1,0 +1,19 @@
+......E
+======================================================================
+ERROR: test_normal_roads_and_positive_reward (__main__.EnvironmentChecks.test_normal_roads_and_positive_reward)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>\training\test_environment.py", line 170, in test_normal_roads_and_positive_reward
+    with tempfile.TemporaryDirectory(dir=ROOT/'tmp') as directory:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<python>\Lib\tempfile.py", line 882, in __init__
+    self.name = mkdtemp(suffix, prefix, dir)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<python>\Lib\tempfile.py", line 384, in mkdtemp
+    _os.mkdir(file, 0o700)
+FileNotFoundError: [WinError 3] The system cannot find the path specified: '<repo>\\tmp\\tmpkfe3vpjw'
+
+----------------------------------------------------------------------
+Ran 7 tests in 6.888s
+
+FAILED (errors=1)

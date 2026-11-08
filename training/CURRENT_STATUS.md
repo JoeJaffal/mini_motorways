@@ -1,3 +1,7 @@
+# Resume check: reward-v4 regression found — 8 November 2026
+
+[Resume review for approval](../docs/training/full-replay-review-2026-11-08/RESUME_REVIEW_FOR_APPROVAL.md). Committed 77-suite source (`f7ce005`, including the dedup edit) re-checked on another machine: 77 core PASS, 10 map PASS; environment 6/7 (missing local `tmp/` only); **reward v4 FAILS: ordinary LA fixture now 23 trips/no game-over vs 13/game-over**, so the 75–77 changes alter ordinary play (cause not yet isolated). No engine, fixture or test changes. Awaiting Mohammad's approval and local files; no training.
+
 # EMERGENCY STOP — 8 November 2026
 
 User requested stop/save. [Saved state and exact continuation plan](../docs/training/full-replay-review-2026-11-08/EMERGENCY_HANDOFF.md). Installed74-suite player; source77candidate ahead, final small dedup edit not retested. No active matching diagnostics found. Full replay/parity unvalidated; do not resume automatically. No training.

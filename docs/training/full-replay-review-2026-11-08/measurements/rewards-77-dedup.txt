@@ -1,0 +1,14 @@
+.....F
+======================================================================
+FAIL: test_recorded_normal_game_connects_before_trip_and_keeps_simulation_identical (__main__.PotentialChecks.test_recorded_normal_game_connects_before_trip_and_keeps_simulation_identical)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>\training\test_rewards.py", line 91, in test_recorded_normal_game_connects_before_trip_and_keeps_simulation_identical
+    self.assertTrue(term);self.assertFalse(trunc)
+    ^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 6 tests in 4.267s
+
+FAILED (failures=1)
