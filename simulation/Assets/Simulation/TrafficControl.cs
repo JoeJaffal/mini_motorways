@@ -12,9 +12,17 @@ namespace MotorwaysSim
             lot=-1;access=new Cell();distance=0;if(car.ShopId<0||!car.Moving)return false;
             bool connector=lane.IsParking&&(lane.Key.Contains(":entrance:")||lane.Key.Contains(":exit:"));
             bool finalRoad=car.Stage==TripStage.Outbound&&ReferenceEquals(lane,car.Lanes.Last())&&!lane.IsParking;
-            if(!connector&&!finalRoad)return false;
-            lot=connector?lane.CarparkId:Buildings[car.ShopId].CarparkId;
-            access=connector?lane.Tile:car.DestinationAccess;
+            // A car passing through a shared lot is gated at the same point as an arriving car: the start
+            // of the outside road lane that leads into the entrance connector.
+            Lane entrance=null;
+            if(!connector&&!finalRoad&&!lane.IsParking)
+            {
+                int index=car.Lanes.IndexOf(lane);
+                if(index>=0&&index+1<car.Lanes.Count&&car.Lanes[index+1].IsParking&&car.Lanes[index+1].Key.Contains(":entrance:"))entrance=car.Lanes[index+1];
+            }
+            if(!connector&&!finalRoad&&entrance==null)return false;
+            lot=connector?lane.CarparkId:entrance!=null?entrance.CarparkId:Buildings[car.ShopId].CarparkId;
+            access=connector?lane.Tile:entrance!=null?entrance.Tile:car.DestinationAccess;
             // Reserve the outside approach before its turn starts, not at the
             // parcel boundary where a waiting car can obstruct an exiting turn.
             if(ReferenceEquals(lane,car.CurrentLane)){distance=-car.DistanceAlongLane;return true;}
@@ -38,6 +46,8 @@ namespace MotorwaysSim
         {
             if(!TryCarparkGate(car,lane,out int lot,out var access,out double distance)||distance>Rules.CarLength+.3)return true;
             var key=(lot,access);if(carparkThroats.TryGetValue(key,out int owner))return owner==car.Id;
+            // Every requester is ranked by its nearest gate point, which for arriving and passing-through
+            // cars alike is the start of the outside approach lane (one distance measure, as the original).
             Vehicle nearest=car;double nearestDistance=distance;
             foreach(var other in Cars.Where(v=>v.Id!=car.Id&&v.Moving))
             {
@@ -46,6 +56,11 @@ namespace MotorwaysSim
                 {nearest=other;nearestDistance=otherDistance;}
             }
             carparkThroats[key]=nearest.Id;return nearest.Id==car.Id;
+        }
+        int CarparkGateOwner(Vehicle car,Lane lane)
+        {
+            if(!TryCarparkGate(car,lane,out int lot,out var access,out _))return -1;
+            return carparkThroats.TryGetValue((lot,access),out int owner)&&owner!=car.Id?owner:-1;
         }
         void ReleaseCarparkThroats()
         {
@@ -62,8 +77,8 @@ namespace MotorwaysSim
                     bool clearing=PhysicalCarpark(car)==lot.CarparkId&&
                         (Point.Distance(car.Position,ParkingAccessPoint(lot,access,true))<Rules.CarLength+.1||
                          Point.Distance(car.Position,ParkingAccessPoint(lot,access,false))<Rules.CarLength+.1);
-                    bool onApproach=car.Stage==TripStage.Outbound&&car.RouteIndex==car.Lanes.Count-1&&
-                        !car.CurrentLane.IsParking&&Buildings[car.ShopId].CarparkId==lot.CarparkId&&car.DestinationAccess==access;
+                    bool onApproach=!car.CurrentLane.IsParking&&TryCarparkGate(car,car.CurrentLane,out int approachLot,out var approachAccess,out _)&&
+                        approachLot==lot.CarparkId&&approachAccess==access;
                     keep=onConnector||onApproach||approaching||clearing;
                 }
                 if(!keep)carparkThroats.Remove(item.Key);
@@ -187,8 +202,9 @@ namespace MotorwaysSim
         {
             why="";blocker=-1;
             if(!lane.IsMotorway&&IsRailCrossingClosed(lane.Tile)){why="Train crossing";return false;}
-            if(Rules.Version==GameVersion.OriginalReference&&!CarparkThroatAllows(car,lane))
-            {why="Carpark entrance merge";return false;}
+            // A gate refusal names its owner so blocking-cycle recovery can see it; a shoving car may pass.
+            if(Rules.Version==GameVersion.OriginalReference&&!(car.Shoving&&car.ShovingLane==lane.Key&&IsImmediateNext(car,lane))&&!CarparkThroatAllows(car,lane))
+            {why="Carpark entrance merge";blocker=CarparkGateOwner(car,lane);return false;}
             var parcel=AccessBuildingAt(lane.Tile);
             if(Rules.Version==GameVersion.Custom&&parcel!=null&&!parcel.IsHouse&&car.Stage==TripStage.Outbound&&
                 Cars.Any(v=>v.Id!=car.Id&&SameCarpark(v.ShopId,parcel.Id)&&(v.Stage==TripStage.EnteringParking||v.Stage==TripStage.LeavingParking)))
@@ -325,10 +341,10 @@ namespace MotorwaysSim
                 // A zero-length parcel lane is omitted by MakeLanes, so a car
                 // may already be on its final surface lane. Gate that approach
                 // here as well as future-lane transitions.
-                if(Rules.Version==GameVersion.OriginalReference&&car.Stage==TripStage.Outbound&&
-                    car.RouteIndex==car.Lanes.Count-1&&!CarparkThroatAllows(car,state.Lane))
+                if(Rules.Version==GameVersion.OriginalReference&&!state.Lane.IsParking&&TryCarparkGate(car,state.Lane,out _,out _,out _)&&
+                    !(car.Shoving&&car.ShovingLane==state.Lane.Key)&&!CarparkThroatAllows(car,state.Lane))
                 {
-                    stop=0;blockingDistance=0;
+                    stop=0;blockingDistance=0;blocker=CarparkGateOwner(car,state.Lane);blockedLane=state.Lane.Key;
                     obstacle="Carpark entrance merge";
                 }
                 double aheadDistance=state.Lane.Length-state.Distance;

@@ -705,6 +705,31 @@ namespace MotorwaysSim
                 for(int tick=0;tick<1200&&fixture.Any(v=>v.Stage!=TripStage.Home);tick++)w.Step();
                 Check(fixture.All(v=>v.Stage==TripStage.Home),"adjacent junctions clear: "+Summary(w));
             });
+            Test("Original carpark gate goes to the car nearest the entrance, not the car queued behind",()=>{
+                // Replay v20 at t=972 (shared lot 20, gate 19,18): T passes through the lot and is first on the outside
+                // approach 20:18:2:4; O, heading to park, queues behind it. Ranking O by the start of its final road lane
+                // made it the gate owner, so neither could move.
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.OvercrowdingSeconds=100000;
+                var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);w.Inventory[0]=1000;
+                var home=w.SpawnBuilding(new Cell(5,5),0,true);var lot=w.SpawnSharedCarpark(new Cell(16,16),0,0);
+                Check(lot!=null&&lot.Entrances.Contains(new Cell(19,18))&&lot.Entrances.Contains(new Cell(16,18)),"shared lot with east and west entrances");
+                Check(w.DrawRoad(new Cell(20,13),new Cell(20,18))&&w.DrawRoad(new Cell(15,18),new Cell(12,18)),"approach and far-side roads");
+                lot.Demand=1;lot.DemandCountdown=1e9;
+                Vehicle Place(Cell from,Cell to,TripStage stage,string key,double distance)
+                {
+                    var route=w.FindRoute(from,to);var lanes=w.MakeLanes(route);int index=lanes.FindIndex(l=>l.Key==key);
+                    Check(index>=0,"fixture lane "+key+" on route "+string.Join(",",route));
+                    var car=new Vehicle{Id=w.Cars.Count,HomeId=home.Id,ShopId=lot.Id,Color=0,Stage=stage,At=route[0],Next=route[1],Route=route,
+                        ReturnRoute=stage==TripStage.Outbound?w.FindRoute(new Cell(19,18),new Cell(20,13)):new List<Cell>(route),
+                        DestinationAccess=new Cell(19,18),Lanes=lanes,RouteIndex=index,DistanceAlongLane=distance,RouteVersion=w.NetworkVersion};
+                    w.Cars.Add(car);return car;
+                }
+                var through=Place(new Cell(20,14),new Cell(13,18),TripStage.Returning,"20:18:2:4",.218);
+                Check(through.Lanes.Any(l=>l.Key.Contains(":entrance:")),"through route crosses the shared lot");
+                var parking=Place(new Cell(20,14),new Cell(19,18),TripStage.Outbound,"20:17:2:2",.735);
+                for(int tick=0;tick<1200&&!(through.Stage==TripStage.Home&&parking.HasDelivered);tick++)w.Step();
+                Check(through.Stage==TripStage.Home&&parking.HasDelivered,"through car passes and the queued car parks: "+Summary(w));
+            });
             Test("arrival home or in a bay clears the current wait",()=>{
                 // A queued car released within one creeping tick of its journey end arrives
                 // below the 0.02 tiles/s waiting threshold. Its queue wait must not persist
