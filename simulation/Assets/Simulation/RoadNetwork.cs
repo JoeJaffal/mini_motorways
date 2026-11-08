@@ -186,7 +186,7 @@ namespace MotorwaysSim
             car.Route=new List<Cell>(route);car.Lanes=MakeLanes(route);car.RouteIndex=0;car.DistanceAlongLane=0;
             car.At=route.Count>0?route[0]:car.At;car.Next=route.Count>1?route[1]:car.At;
             car.Progress=0;car.SegmentEntered=Time;if(!preserveSpeed)car.Speed=0;
-            car.RouteVersion=NetworkVersion;
+            car.RouteVersion=NetworkVersion;RegisterRoute(car,false);
         }
 
         void RefreshJourney(Vehicle car)
@@ -202,7 +202,7 @@ namespace MotorwaysSim
             var replacement=CreateLane(Cubic(old.Samples[0],old.Samples[0]+tangent*.25,
                 first.Samples.Last()-first.Tangent(first.Length)*.25,first.Samples.Last(),12),old.Tile,old.Previous,first.Next,old.Incoming,first.Outgoing);
             replacement.SpeedLimit=first.SpeedLimit;replacement.IsJunction=first.IsJunction;replacement.IsMotorway=first.IsMotorway;replacement.MotorwayId=first.MotorwayId;lanes[0]=replacement;
-            car.Route=route;car.Lanes=lanes;car.RouteIndex=0;car.DistanceAlongLane=0;
+            car.Route=route;car.Lanes=lanes;car.RouteIndex=0;car.DistanceAlongLane=0;RegisterRoute(car,true);
             if(car.Stage==TripStage.Outbound)
             {var back=FindRoute(car.DestinationAccess,Buildings[car.HomeId].Access,true);if(back.Count>1)car.ReturnRoute=back;}
         }

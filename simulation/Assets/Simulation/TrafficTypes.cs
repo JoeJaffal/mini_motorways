@@ -38,6 +38,7 @@ namespace MotorwaysSim
     public enum Infrastructure {None,Road,Bridge,Roundabout,TrafficLight}
     public enum BuildTool {Road,Bridge,Roundabout,TrafficLight,Remove,Motorway}
     public enum TripStage {Home,Outbound,EnteringParking,Parking,LeavingParking,Returning,AligningHome}
+    public enum ObstacleKind {None,Leader,BlockingJunction,RouteEnd}
     public enum ScenarioKind {LosAngeles,ReferenceLab,EmptyLab,Beijing,Tokyo,DarEsSalaam,London}
     public enum GameVersion {OriginalReference,Custom}
     public enum MapVariation {SameMap,DifferentMaps}
@@ -136,6 +137,10 @@ namespace MotorwaysSim
         public bool HasDelivered,WaitingAtSignal,WaitingAtIntersection,DrivingThrough;
         public string Obstacle="";
         public readonly Dictionary<string,double> ApproachRegistered=new Dictionary<string,double>();
+        // Original junction arbitration state (JunctionArbitration.cs): the previous tick's nearest
+        // obstacle, and the blocking-cycle shove permission for one immediate next lane.
+        public ObstacleKind ObstacleState;public int ObstacleCar=-1;public double ObstacleDistance;
+        public bool Shoving;public string ShovingLane="";
         public Point ParkedPosition,ParkedHeading=new Point(0,-1);
         public bool Moving=>Lanes.Count>0&&RouteIndex<Lanes.Count;
         public Lane CurrentLane=>Moving?Lanes[RouteIndex]:null;

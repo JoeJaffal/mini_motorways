@@ -645,6 +645,66 @@ namespace MotorwaysSim
                 for(int tick=0;tick<1200&&fixture.Any(v=>v.Stage!=TripStage.Home);tick++)w.Step();
                 Check(fixture.All(v=>v.Stage==TripStage.Home),"junction and ring clear: "+Summary(w));
             });
+            Test("Original junction entry registers inbound lanes and keeps a shared exit clear",()=>{
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.OvercrowdingSeconds=100000;
+                // Registration happens at route assignment (game time plus path lane count), not on entering lookahead.
+                var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);w.Inventory[0]=1000;
+                var home=w.SpawnBuilding(new Cell(5,12),0,true,0);var shop=w.SpawnBuilding(new Cell(20,11),0,false,0,0);
+                Check(w.DrawRoad(new Cell(6,12),new Cell(18,12))&&w.DrawRoad(new Cell(18,12),new Cell(18,13))&&w.DrawRoad(new Cell(18,13),new Cell(19,13))&&
+                    w.DrawRoad(new Cell(12,12),new Cell(12,9)),"route through a distant junction");
+                shop.Demand=1;shop.DemandCountdown=1e9;Vehicle car=null;
+                for(int i=0;i<4000&&car==null;i++){w.Step();car=w.Cars.FirstOrDefault(c=>c.Stage==TripStage.Outbound&&c.Moving);}
+                Check(car!=null,"a car departs: "+Summary(w));
+                var junction=car.Lanes.First(l=>l.Tile==new Cell(12,12));
+                Check(car.ApproachRegistered.TryGetValue(junction.Key,out double registered),"distant junction registered at departure");
+                Check(Math.Abs(registered-(car.JourneyStarted+car.Lanes.Count))<1e-9,"registration = assignment time + path lane count: "+registered+" vs "+car.JourneyStarted+"+"+car.Lanes.Count);
+                // Same exit: a car may not drive into a junction while a same-exit car still traverses it,
+                // even when that car is within its last vehicle length (no near-exit release for a shared exit).
+                var x=new TrafficWorld(42,false,rules);x.Reset(42,ScenarioKind.EmptyLab);x.Inventory[0]=1000;x.Inventory[3]=1;
+                var owner=x.SpawnBuilding(new Cell(5,5),0,true);
+                Check(x.DrawRoad(new Cell(20,8),new Cell(20,19))&&x.DrawRoad(new Cell(17,12),new Cell(20,12))&&x.DrawRoad(new Cell(20,14),new Cell(23,14))&&
+                    x.Build(BuildTool.TrafficLight,new Cell(20,14)),"junction with a signalled junction two tiles downstream");
+                var light=x.Signals[new Cell(20,14)];light.ActivePair=light.Pairs.First(p=>(p&(1<<6))==0);light.Amber=false;light.Elapsed=-1e9;
+                Vehicle Put(Cell from,Cell to,string key,double distance)
+                {
+                    var route=x.FindRoute(from,to);var lanes=x.MakeLanes(route);int index=lanes.FindIndex(l=>l.Key==key);
+                    Check(index>=0,"fixture lane "+key+" on route "+string.Join(",",route));
+                    var v=new Vehicle{Id=x.Cars.Count,HomeId=owner.Id,Color=0,Stage=TripStage.Returning,At=route[0],Next=route[1],Route=route,ReturnRoute=new List<Cell>(route),
+                        Lanes=lanes,RouteIndex=index,DistanceAlongLane=distance<0?lanes[index].Length+distance:distance,RouteVersion=x.NetworkVersion};
+                    x.Cars.Add(v);return v;
+                }
+                foreach(double d in new[]{.886,.511,.136})Put(new Cell(20,9),new Cell(20,18),"20:13:2:2",d);
+                var inside=Put(new Cell(18,12),new Cell(20,18),"20:12:0:2",-.239);
+                var entering=Put(new Cell(20,9),new Cell(20,18),"20:10:2:2",.5);
+                Check(inside.DistanceAlongLane>inside.CurrentLane.Length-rules.CarLength,"traversing car starts within its last vehicle length");
+                bool entered=false;
+                for(int i=0;i<400;i++){x.Step();Check(inside.CurrentLane.Key=="20:12:0:2","shared-exit car stays held inside the junction");entered|=entering.CurrentLane.Tile==new Cell(20,12);}
+                Check(!entered,"entering car waits outside the junction: "+entering.CurrentLane.Key+" '"+entering.Obstacle+"'");
+            });
+            Test("Original blocking-cycle shove clears an adjacent-junction gridlock",()=>{
+                // Replay v21 at t=1119 (junctions 20,11 and 20,12) with the measured lane offsets: 41 must turn east
+                // across 20,12 where 17 sits; 17 (behind 12) and 12 must enter 20,11 where 22 sits; 22 queues behind 41.
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.OvercrowdingSeconds=100000;
+                var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);w.Inventory[0]=1000;
+                var home=w.SpawnBuilding(new Cell(5,5),0,true);
+                Check(w.DrawRoad(new Cell(20,8),new Cell(20,16))&&w.DrawRoad(new Cell(20,11),new Cell(21,11))&&w.DrawRoad(new Cell(20,12),new Cell(22,12))&&
+                    w.DrawRoad(new Cell(20,11),new Cell(19,10))&&w.DrawRoad(new Cell(19,10),new Cell(17,10)),"two adjacent junctions");
+                Vehicle Place(Cell from,Cell to,string key,double distance)
+                {
+                    var route=w.FindRoute(from,to);var lanes=w.MakeLanes(route);int index=lanes.FindIndex(l=>l.Key==key);
+                    Check(index>=0,"fixture lane "+key+" on route "+string.Join(",",route));
+                    var car=new Vehicle{Id=w.Cars.Count,HomeId=home.Id,Color=0,Stage=TripStage.Returning,At=route[0],Next=route[1],
+                        Route=route,ReturnRoute=new List<Cell>(route),Lanes=lanes,RouteIndex=index,DistanceAlongLane=distance,RouteVersion=w.NetworkVersion};
+                    w.Cars.Add(car);return car;
+                }
+                var fixture=new[]{
+                    Place(new Cell(20,9),new Cell(22,12),"20:11:2:2",.8362),   // car 41
+                    Place(new Cell(20,9),new Cell(20,16),"20:11:2:2",.4533),   // car 22
+                    Place(new Cell(20,15),new Cell(17,10),"20:12:6:6",.8358),  // car 12
+                    Place(new Cell(20,15),new Cell(17,10),"20:12:6:6",.4578)}; // car 17
+                for(int tick=0;tick<1200&&fixture.Any(v=>v.Stage!=TripStage.Home);tick++)w.Step();
+                Check(fixture.All(v=>v.Stage==TripStage.Home),"adjacent junctions clear: "+Summary(w));
+            });
             Test("arrival home or in a bay clears the current wait",()=>{
                 // A queued car released within one creeping tick of its journey end arrives
                 // below the 0.02 tiles/s waiting threshold. Its queue wait must not persist
