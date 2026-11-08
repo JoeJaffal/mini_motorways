@@ -7,7 +7,9 @@ from rewards import ConnectionPotential,GAMMA
 from environment import TrafficEnv,CELLS,ROOT
 
 DOTNET='dotnet'
-FIXTURE=ROOT/'docs/training/event-parity-2026-11-08/reward-fixture-v4.json'
+# v5 records the 77-suite rules (native common-endpoint joins in ordinary play).
+# v4 (13 trips/252.95s under the 69-74 rules) is kept unchanged as history.
+FIXTURE=ROOT/'docs/training/simulator-repairs-2026-11-08/reward-fixture-v5.json'
 
 
 class PotentialChecks(unittest.TestCase):
