@@ -32,12 +32,15 @@ The selectable cities are Los Angeles, Beijing, Tokyo, Dar es Salaam and London.
 
 Reference lab and Build reference roads are debugging helpers, not trained policies or network-quality guarantees. Original debug construction can exhaust material stock.
 
-On branch `mohammad`, Original plays exact AI command recordings. Launch with
+Original plays exact AI command recordings. Launch with
 `--replay <JSON path>` (paused at the beginning), or add `--replay-final` to show
 the final map. Its replay panel provides playback, speed, inspection and reload
 controls. See [the training quickstart](../training/QUICKSTART.md).
 Add `--replay-verify -batchmode -nographics` for windowless verification; success
 logs `TRAFFIC_AI_REPLAY_PASSED`. Recorded games are read-only and use normal rules.
+
+Retiring road links remain visible while committed car routes use them. This
+display does not reconnect roads for new trips or change materials.
 
 ## Build both Windows apps
 
@@ -71,7 +74,7 @@ python scripts/verify_five_maps.py
 dotnet run --project simulation/Headless
 ```
 
-The first command builds the Debug host that the Python check uses. There are currently 39 shared suites. Unity builds invoke those same checks. See [Headless/README.md](Headless/README.md) for requests and observations.
+The first command builds the Debug host that the Python check uses. There are currently 84 shared suites. Unity builds invoke those same checks. See [Headless/README.md](Headless/README.md) for requests and observations.
 
 Player startup checks use `--smoke-test --map London -batchmode -nographics`; replace London with another supported enum name. A successful run logs `TRAFFIC_APP_SMOKE_PASSED=<version>/<map>/20` and exits. These checks run 20 simulated seconds with debug roads; they do not inspect rendered pixels or prove exact original behavior.
 
