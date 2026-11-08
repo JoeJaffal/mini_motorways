@@ -60,7 +60,7 @@ The host reads one JSON object per input line and emits one response per request
 ```
 
 Every reply, including errors and `drawchoices`, carries `simulatorVersion` (for example
-`"2026-11-08.5"`); `TrafficHost --version` prints the same string, and `--run-scenario` and
+`"2026-11-08.6"`); `TrafficHost --version` prints the same string, and `--run-scenario` and
 `--verify-replay` summaries include it. Key cached results on it: it changes whenever gameplay,
 scoring or observation meaning changes ([version table](../Docs/VERSIONS.md#simulator-version-string)).
 Hosts built before 8 November 2026 do not send it. The field is additive; no existing field changed.

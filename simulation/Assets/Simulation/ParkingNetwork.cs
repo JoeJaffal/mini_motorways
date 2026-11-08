@@ -42,7 +42,7 @@ namespace MotorwaysSim
         Lane ParkingCurve(Building shop,string key,Point a,Point b,Point c,Point d,bool release=false,bool straight=false)
         {
             var lane=CreateLane(straight?new[]{a,d}:Cubic(a,b,c,d,10),shop.Entrance,shop.Entrance,shop.Entrance,0,0);
-            lane.Key="carpark:"+shop.CarparkId+":"+key;lane.CarparkId=shop.CarparkId;lane.IsParking=true;lane.ReleasesParking=release;lane.SpeedLimit=Rules.CarSpeed*.6;
+            lane.Key="carpark:"+shop.CarparkId+":"+key;lane.Chunk="carpark:"+shop.CarparkId+":"+ParkingChunkName(key);lane.CarparkId=shop.CarparkId;lane.IsParking=true;lane.ReleasesParking=release;lane.SpeedLimit=Rules.CarSpeed*.6;
             return lane;
         }
         Lane ParkingThroughBay(Building shop,int index,bool outer)

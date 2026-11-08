@@ -772,6 +772,52 @@ namespace MotorwaysSim
                 bool entered=false;for(int i=0;i<200&&!entered;i++){a.Step();entered=crossing.Moving&&crossing.CurrentLane.Tile==new Cell(20,12);}
                 Check(entered,"green-direction car may enter during amber: '"+crossing.Obstacle+"'");
             });
+            Test("Original carpark lanes use chunk arbitration instead of a whole-entrance owner",()=>{
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.OvercrowdingSeconds=100000;
+                var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);w.Inventory[0]=1000;
+                var home=w.SpawnBuilding(new Cell(5,12),0,true);var shop=w.SpawnBuilding(new Cell(20,11),0,false,0,0);
+                Check(w.DrawRoad(home.Access,shop.Access),"route to a single lot");
+                shop.Demand=2;shop.DemandCountdown=1e9;
+                // 1. Carpark lanes are inbound reservations of their chunks: an arriving car registers them.
+                Vehicle parking=null;for(int i=0;i<6000&&parking==null;i++){w.Step();parking=w.Cars.FirstOrDefault(c=>c.Stage==TripStage.EnteringParking&&c.Moving);}
+                Check(parking!=null,"a car enters the lot: "+Summary(w));
+                Check(parking.Lanes.Skip(parking.RouteIndex+1).Where(l=>l.IsParking).All(l=>parking.ApproachRegistered.ContainsKey(l.Key)),"planned carpark lanes are registered");
+                // 2. No whole-entrance owner: a departing car held at the entrance by a queue outside does not stop an
+                // arriving car whose entrance lane does not cross it.
+                var x=new TrafficWorld(42,false,rules);x.Reset(42,ScenarioKind.EmptyLab);x.Inventory[0]=1000;x.Inventory[3]=1;
+                var owner=x.SpawnBuilding(new Cell(5,13),0,true);var lot=x.SpawnBuilding(new Cell(20,11),0,false,0,0);
+                Check(lot.Entrance==new Cell(20,13)&&x.DrawRoad(new Cell(6,13),new Cell(19,13))&&x.DrawRoad(new Cell(15,13),new Cell(15,15))&&
+                    x.Build(BuildTool.TrafficLight,new Cell(15,13)),"lot entrance on a road with a light outside");
+                lot.Demand=0;lot.DemandCountdown=1e9;
+                var held=new SignalHandle(x.Signals[new Cell(15,13)]);held.Hold(held.PairWithout(0),true);
+                var access=lot.Entrance;
+                Vehicle Car(TripStage stage,List<Lane> lanes,List<Cell> route,int index,double distance)
+                {
+                    var v=new Vehicle{Id=x.Cars.Count,HomeId=owner.Id,ShopId=lot.Id,Color=0,Stage=stage,At=route[0],Next=route.Count>1?route[1]:route[0],Route=route,
+                        ReturnRoute=x.FindRoute(access,owner.Access),DestinationAccess=access,Lanes=lanes,RouteIndex=index,
+                        DistanceAlongLane=distance<0?lanes[index].Length+distance:distance,RouteVersion=x.NetworkVersion};
+                    x.Cars.Add(v);return v;
+                }
+                var west=x.FindRoute(access,new Cell(6,13));var westLanes=x.MakeLanes(west);
+                // Tight queue held at the light, generated back from its head one spacing at a time onto the exit lane.
+                int head=westLanes.FindIndex(l=>l.Key=="16:13:4:4");Check(head>0,"queue lane at the light");
+                int lane=head;double at=.886,spacing=rules.CarLength+rules.FollowingGap;
+                while(true)
+                {
+                    Car(TripStage.Returning,westLanes,west,lane,at).ShopId=-1;at-=spacing;
+                    while(at<0&&lane>0){lane--;at+=westLanes[lane].Length;}
+                    if(at<0)break;
+                }
+                var leaving=x.ParkingRoute(lot,access,0,true);
+                var d=Car(TripStage.LeavingParking,leaving,new List<Cell>{access},leaving.Count-1,leaving.Last().Length+at);d.ParkingSlot=0;lot.Parking[0]=d.Id;
+                var inbound=x.FindRoute(new Cell(16,13),access);var arrive=x.MakeLanes(inbound);
+                var a=Car(TripStage.Outbound,arrive,inbound,arrive.FindIndex(l=>l.Tile==new Cell(17,13)),.5);
+                Check(!x.ConflictsPublic(x.ParkingRoute(lot,access,2)[0],leaving.Last()),"entrance and exit connectors do not cross");
+                bool entered=false;
+                for(int i=0;i<300&&!entered;i++){x.Step();entered=a.Moving&&a.CurrentLane.Key.Contains(":entrance:");}
+                Check(d.Stage!=TripStage.Home&&Point.Distance(d.Position,new Point(access))<1,"departing car is held at the entrance by the queue");
+                Check(entered,"arriving car enters beside the held departing car: '"+a.Obstacle+"'");
+            });
             Test("arrival home or in a bay clears the current wait",()=>{
                 // A queued car released within one creeping tick of its journey end arrives
                 // below the 0.02 tiles/s waiting threshold. Its queue wait must not persist

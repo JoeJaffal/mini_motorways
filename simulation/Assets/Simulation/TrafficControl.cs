@@ -6,6 +6,10 @@ namespace MotorwaysSim
 {
     public sealed partial class TrafficWorld
     {
+        // The original has no whole-entrance owner gate; carpark lanes use chunk arbitration (CarparkArbitration.cs).
+        // This engineered gate still compensates for our reconstructed entrance geometry: with it off, an entering car
+        // and a drive-through car leaving by the same entrance block each other's body clearance (eight-car queue check).
+        const bool CarparkApproachGate=true;
         readonly Dictionary<(int,Cell),int> carparkThroats=new Dictionary<(int,Cell),int>();
         bool TryCarparkGate(Vehicle car,Lane lane,out int lot,out Cell access,out double distance)
         {
@@ -180,6 +184,7 @@ namespace MotorwaysSim
         }
 
         readonly Dictionary<string,bool> conflictCache=new Dictionary<string,bool>();
+        internal bool ConflictsPublic(Lane a,Lane b)=>Conflicts(a,b); // read-only, for checks
         bool Conflicts(Lane a,Lane b)
         {
             if(a.IsMotorway||b.IsMotorway)return false;
@@ -204,7 +209,7 @@ namespace MotorwaysSim
             why="";blocker=-1;
             if(!lane.IsMotorway&&IsRailCrossingClosed(lane.Tile)){why="Train crossing";return false;}
             // A gate refusal names its owner so blocking-cycle recovery can see it; a shoving car may pass.
-            if(Rules.Version==GameVersion.OriginalReference&&!(car.Shoving&&car.ShovingLane==lane.Key&&IsImmediateNext(car,lane))&&!CarparkThroatAllows(car,lane))
+            if(Rules.Version==GameVersion.OriginalReference&&CarparkApproachGate&&!(car.Shoving&&car.ShovingLane==lane.Key&&IsImmediateNext(car,lane))&&!CarparkThroatAllows(car,lane))
             {why="Carpark entrance merge";blocker=CarparkGateOwner(car,lane);return false;}
             var parcel=AccessBuildingAt(lane.Tile);
             if(Rules.Version==GameVersion.Custom&&parcel!=null&&!parcel.IsHouse&&car.Stage==TripStage.Outbound&&
@@ -213,7 +218,7 @@ namespace MotorwaysSim
             // Internal lot paths can revisit the same parcel many times. Tile-level
             // approach ordering would make an entering car yield to the car behind it.
             // Physical local clearance below governs these short circulation segments.
-            if(lane.IsParking&&Rules.Version==GameVersion.OriginalReference)return true;
+            if(lane.IsParking&&Rules.Version==GameVersion.OriginalReference)return MayEnterParkingOriginal(car,lane,snapshot,out why,out blocker);
             if(Rules.Version==GameVersion.OriginalReference)return MayEnterOriginal(car,lane,snapshot,out why,out blocker);
             if(!lane.IsJunction&&!lane.IsRoundabout&&!lane.IsParking)return true;
             if(!SignalAllows(lane.Tile,lane.Incoming)){why="Traffic light";return false;}
@@ -342,7 +347,7 @@ namespace MotorwaysSim
                 // A zero-length parcel lane is omitted by MakeLanes, so a car
                 // may already be on its final surface lane. Gate that approach
                 // here as well as future-lane transitions.
-                if(Rules.Version==GameVersion.OriginalReference&&!state.Lane.IsParking&&TryCarparkGate(car,state.Lane,out _,out _,out _)&&
+                if(Rules.Version==GameVersion.OriginalReference&&CarparkApproachGate&&!state.Lane.IsParking&&TryCarparkGate(car,state.Lane,out _,out _,out _)&&
                     !(car.Shoving&&car.ShovingLane==state.Lane.Key)&&!CarparkThroatAllows(car,state.Lane))
                 {
                     stop=0;blockingDistance=0;blocker=CarparkGateOwner(car,state.Lane);blockedLane=state.Lane.Key;
@@ -539,13 +544,13 @@ namespace MotorwaysSim
             {
                 car.DrivingThrough=true;
                 if(Rules.Version==GameVersion.OriginalReference)
-                {car.Stage=TripStage.EnteringParking;car.Lanes=ParkingDriveThrough(shop,car.DestinationAccess);car.RouteIndex=0;car.DistanceAlongLane=0;return;}
+                {car.Stage=TripStage.EnteringParking;car.Lanes=ParkingDriveThrough(shop,car.DestinationAccess);car.RouteIndex=0;car.DistanceAlongLane=0;RegisterRoute(car,false);return;}
                 Deliver(car);car.Stage=TripStage.Returning;SetJourney(car,car.ReturnRoute);return;
             }
             int slot=available.Count==1?available[0]:available[random.Next(available.Count)];
             car.ParkingSlot=slot;shop.Parking[slot]=car.Id;car.Stage=TripStage.EnteringParking;
             if(Rules.Version==GameVersion.OriginalReference)
-            {car.Lanes=ParkingRoute(shop,car.DestinationAccess,slot);car.RouteIndex=0;car.DistanceAlongLane=0;return;}
+            {car.Lanes=ParkingRoute(shop,car.DestinationAccess,slot);car.RouteIndex=0;car.DistanceAlongLane=0;RegisterRoute(car,false);return;}
             Point a=new Point(car.DestinationAccess),b=ParkingPoint(shop,slot);
             var lane=CreateLane(Cubic(a,a+ParkingVector(shop,.25,.15),b+ParkingVector(shop,0,.35),b,16),car.DestinationAccess,car.DestinationAccess,car.DestinationAccess,0,0);
             lane.IsParking=true;lane.SpeedLimit=Rules.CarSpeed*.6;lane.Key=$"parking-in:{shop.CarparkId}:{slot}";
@@ -562,7 +567,7 @@ namespace MotorwaysSim
                     double value=RouteCost(route);if(value<cost){cost=value;best=route;}
                 }
                 if(best!=null){car.DestinationAccess=best[0];car.ReturnRoute=best;}
-                car.Lanes=ParkingRoute(destination,car.DestinationAccess,car.ParkingSlot,true);car.Stage=TripStage.LeavingParking;car.RouteIndex=0;car.DistanceAlongLane=0;car.Speed=0;return;
+                car.Lanes=ParkingRoute(destination,car.DestinationAccess,car.ParkingSlot,true);car.Stage=TripStage.LeavingParking;car.RouteIndex=0;car.DistanceAlongLane=0;car.Speed=0;RegisterRoute(car,false);return;
             }
             var shop=Buildings[car.ShopId];Point a=ParkingPoint(shop,car.ParkingSlot),b=new Point(car.DestinationAccess);
             var lane=CreateLane(Cubic(a,a+ParkingVector(shop,0,.4),b+ParkingVector(shop,.4,.35),b,16),car.DestinationAccess,car.DestinationAccess,car.DestinationAccess,0,0);

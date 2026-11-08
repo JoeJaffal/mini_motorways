@@ -73,7 +73,7 @@ namespace MotorwaysSim
                 {
                     // Same exit: the space test runs first and the near-exit release does not apply;
                     // the geometry check below still does.
-                    space??=HasExitSpace(car,lane);
+                    space??=HasExitSpace(car,l=>l.Tile==lane.Tile&&!l.IsMotorway&&!l.IsParking);
                     if(!space.Value){blocker=other.Car.Id;why="Exit space";return false;}
                 }
                 else if(other.Distance>other.Lane.Length-Rules.CarLength)continue;
@@ -86,7 +86,7 @@ namespace MotorwaysSim
         Vehicle CarById(int id)=>id>=0&&id<Cars.Count&&Cars[id].Id==id?Cars[id]:Cars.Find(c=>c.Id==id);
 
         // Usable distance along the entering car's previous-tick obstacle chain.
-        bool HasExitSpace(Vehicle car,Lane lane)
+        bool HasExitSpace(Vehicle car,Func<Lane,bool> inChunk)
         {
             double usable=0,needed=2*Rules.CarLength;var state=car;
             for(int i=0;i<ExitSpaceStates;i++)
@@ -101,7 +101,7 @@ namespace MotorwaysSim
                         double distance=state.ObstacleDistance;
                         // A leader still inside the arbitrated chunk: discount its remaining distance there,
                         // keeping one vehicle length.
-                        if(leader.Moving&&leader.CurrentLane.Tile==lane.Tile&&!leader.CurrentLane.IsMotorway&&!leader.CurrentLane.IsParking)
+                        if(leader.Moving&&inChunk(leader.CurrentLane))
                             distance-=Math.Max(0,leader.CurrentLane.Length-leader.DistanceAlongLane-Rules.CarLength);
                         usable+=Math.Max(0,distance-Rules.CarLength);
                         if(usable>needed)return true;
@@ -155,7 +155,7 @@ namespace MotorwaysSim
         {
             if(Rules.Version!=GameVersion.OriginalReference)return;
             var planned=new HashSet<string>();
-            for(int i=car.RouteIndex+1;i<car.Lanes.Count;i++){var lane=car.Lanes[i];if(lane.IsJunction||lane.IsRoundabout)planned.Add(lane.Key);}
+            for(int i=car.RouteIndex+1;i<car.Lanes.Count;i++){var lane=car.Lanes[i];if(lane.IsJunction||lane.IsRoundabout||lane.IsParking)planned.Add(lane.Key);}
             if(keepExisting)
             {
                 foreach(var key in car.ApproachRegistered.Keys.Where(k=>!planned.Contains(k)).ToArray())car.ApproachRegistered.Remove(key);
