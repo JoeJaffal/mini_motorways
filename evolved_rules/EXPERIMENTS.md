@@ -450,3 +450,23 @@ The incumbent never changed. It is the `gplight` seed `9c5940ad`: gp3_final's ro
 - **Evolution did not improve on the hand-written placement rule.**
   - The population churned without climbing. From generation 3 on, the average stayed between 175 and 230 with no trend.
   - Every evolved rule that led on the racing maps lost on validation, the same pattern as gp-3.3.
+
+## 2026-11-09: gp-4 closed, superseded by gp-5 on simulator 2026-11-08.6
+
+gp-4 stays stopped at generation 21 (entry above) and is **not** resumed. Its run folder's `status.json` now says `stopped`.
+- **What replaces it:** gp-5, a fresh run with the same setup on the repaired simulator. That is `mohammad` at `1fb8f0a`, `simulatorVersion` `2026-11-08.6`, documented in `simulation/Docs/HANDOFF-2026-11-sim-fix.md` on that branch.
+- **Results now valid for the old simulator only:** gp-4's 22 generations, incumbent, hall of fame and validation scores, and every earlier result in this log.
+  - All of them were played on the engine `gp4` carried, which matches `e6119eb` (28 October).
+  - The new simulator changes car speed, construction prices, demand timing, parking, junction arbitration and traffic lights.
+- **Not run for gp-4:** its CMA-ES control, final selection, test and PPO head-to-head (the gp-4 design's steps 3–4).
+
+**A first look at the new simulator** (simulator session's measurements and our 30 `sim2-*` games; GP final rule, LA 3100–3109, deterministic, replays not verified):
+
+| Simulator | gp3_final with lights (`gplight:`) | gp3_final without lights (`tree:`) | Separated |
+|---|---|---|---|
+| Old (e6119eb, the `h4-*` runs) | 309.2 | 293.3 | 257.4 |
+| 2026-11-08.4 | 408.4 | 513.2 | 449.5 |
+| 2026-11-08.5 | 510.5 | 513.2 | – |
+| 2026-11-08.6 | 529.7 | 535.5 | – |
+
+The 105-trip loss with lights on `.4` came from stuck traffic lights, which `.5` fixes. On `.6` the hand light rule still loses on 6 of 10 maps. In gp-5 the evolved place and upgrade trees decide light use.
