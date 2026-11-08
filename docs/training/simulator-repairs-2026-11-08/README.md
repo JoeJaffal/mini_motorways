@@ -390,3 +390,65 @@ cause. **Status:** not fixed. The switching-rule questions have gone to Mohammad
 carpark arbitration questions. After his answer: implement it with a failing test first, then rerun
 the deterministic lights on/off comparison (Mohammad's `training/TRAFFIC_LIGHT_TEST.md` design: same
 policy, same seeds, only light placement changed).
+
+## 11. Original traffic lights replicated (simulator `2026-11-08.5`)
+
+**Evidence.** Mohammad's [answer](ORIGINAL_SIGNALS_CARPARKS_ANSWER.md) confirms the timing and
+nearby constants as original. It shows that our counting of blocked cars and our phase weights
+were not equivalent to the original.
+
+**Change** (`470784a`, `OriginalSignals.cs`, OriginalReference only).
+
+- **Timing:** strict reconsideration after 3 s, or after 1 s in overtime; 0.7 s amber.
+- **Nearby guard:** a phase cannot change while 1–2 green cars are nearby. Only committed candidates
+  count (chosen lane among the next two), measured by route distance to the start of that lane
+  (< 0.5 tiles), with no speed filter. The scan **ends** at the first committed candidate that is
+  blocked inside the light's own chunk.
+- **Phase weights:** commitment age, clamped at 30 s and squared. Multipliers: ×4 if the chosen lane
+  is being removed; ×0.1 for non-crossing turns, ordered per direction until the first crossing
+  candidate; ×10 for a car on a carpark lane. Then +1, and the whole contribution is ×0.1 if the car
+  is blocked inside this chunk and belongs to the active pair. The winner is chosen with strict
+  greater-than in stored order.
+- **Amber** keeps the old pair's permission.
+- **American red-light rules:** the first outbound direction within three turns to the right is the
+  non-crossing exit and may go on red.
+- The green geometry bypass applies only to permitted directions.
+
+**Interpretations.** The inbound-list order is approximated by registration time, then vehicle id.
+The "lane replacement" obstacle has no equivalent here, and the original direction-enumeration order
+is not reproduced.
+
+**Tests (each fails on `.4`, passes on `.5`).**
+
+| Check | Failure on `.4` |
+| --- | --- |
+| A light whose only nearby green car is blocked by "Exit space" inside its own junction switches to the waiting direction | stuck on phase 17 |
+| A right turn proceeds on red | 'Traffic light' |
+| A green-direction car may enter during amber | 'Traffic light' |
+
+83 core suites ([output](measurements/core-83.txt)), environment 7/7, reward 6/6, five-map 10 runs and
+the Release build pass.
+
+**Deterministic lights on/off comparison** ([results](measurements/lights-comparison-v5.json)).
+Mohammad's `TRAFFIC_LIGHT_TEST.md` design: the same frozen Evolved Rules policy, the same LA seeds
+3100–3109, and only light placement differs. The archived agent harness first reproduced the Evolved
+Rules session's `.4` games exactly.
+
+| Simulator | Lights | No lights | Better / worse | Mean car wait with lights |
+| --- | --- | --- | --- | --- |
+| `.4` | 408.4 | 513.2 | 2 / 8 | 2.35 s |
+| `.5` | 510.5 | 513.2 | 4 / 6 | 0.46 s (0.28 s without) |
+
+Stuck-phase time per game falls from 0–237 s to at most 4.7 s. The no-lights arm is identical on both
+versions. Map 3101 still loses 197 trips with lights and has almost no stuck time: a different cause,
+not investigated. Lights are now roughly neutral; on the old `e6119eb` simulator they gained about 16,
+but that comparison spans many unrelated changes.
+
+**Replays on `.5`:** v20 643 trips, game-over 1222.85 s; v21 605 trips, 1188.7 s. Neither has a
+deadlocked second or a car waiting over 20 s at the end.
+
+**Carpark (Mohammad's B1–B4), not yet done.** The original carpark uses the same chunk arbitration,
+with real entrance, exit and circulation lanes in multi-lane chunks, and no owner gate. Mohammad
+recommends mapping that lane and chunk structure first, then retiring our compensating gate only once
+the gate-lock, mixed-traffic, orientation, simultaneous entry/exit and separation checks pass. This is
+the next step.

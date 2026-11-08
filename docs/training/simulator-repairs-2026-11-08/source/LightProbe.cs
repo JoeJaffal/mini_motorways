@@ -6,10 +6,10 @@ namespace MotorwaysSim{public sealed partial class TrafficWorld{
  public readonly Dictionary<string,double> StuckReasons=new Dictionary<string,double>();
  public (bool blocked,bool stuck,int red) LightState(SignalState s){
   if(s.Amber)return(false,false,0);
-  var near=new List<Vehicle>();int red=0;
-  foreach(var c in Cars){if(!TryApproach(c,s.Cell,out var lane,out double d))continue;bool green=(s.ActivePair&(1<<((lane.Incoming+4)%8)))!=0;
-   if(green&&d<=Rules.SignalNearbyDistance)near.Add(c);if(!green&&c.Obstacle=="Traffic light")red++;}
-  int best=BestSignalPair(s,false);bool blocked=best!=s.ActivePair&&near.Count>0&&near.Count<Rules.SignalMinimumNearbyCars;
+  var cands=SignalCandidates(s.Cell);int nearbyCount=NearbyCount(s,cands);int red=0;
+  foreach(var c in Cars){if(!TryApproach(c,s.Cell,out var lane,out double d))continue;if((s.ActivePair&(1<<((lane.Incoming+4)%8)))==0&&c.Obstacle=="Traffic light")red++;}
+  var near=cands.Where(c=>(s.ActivePair&(1<<c.Approach))!=0&&c.Distance<Rules.SignalNearbyDistance).Select(c=>c.Car).ToList();
+  bool blocked=WinningPair(s,cands,false)!=s.ActivePair&&nearbyCount>0&&nearbyCount<Rules.SignalMinimumNearbyCars;
   bool stuck=blocked&&near.All(c=>c.Speed<.02);if(stuck)foreach(var c in near){var k=c.Obstacle==""?"(none)":c.Obstacle;StuckReasons[k]=StuckReasons.GetValueOrDefault(k)+Rules.TickSeconds;}
   return(blocked,stuck,red);}
  public bool FewLanes(Cell c)=>ChunkHasFewLanes(c);}}

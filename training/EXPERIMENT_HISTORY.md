@@ -7870,3 +7870,8 @@ User decision: keep the approach gate but measure every car at the same point an
 8 November2026 — User requests original traffic-light/carpark follow-up. Read-only private-rule/config audit: nearby0.5tiles/min3/overtime1sconfirmed, but blocked-candidate early termination and commitment-age phase weights differ materially from simulator. Installed age multipliers carpark10/mothball4, same-chunk active-pair total penalty0.1; no max-green cap. Amber retains prior ActivePair in shown chunk permission logic; American non-crossing red-turn exception on. Carpark entrance/exit/internal paths use road chunks; no separate one-owner gate found in inspected classes; bay allocation separate. Full response/provenance in ORIGINAL_SIGNALS_CARPARKS_ANSWER.md. Reported408vs513GPresult not rerun, no causal attribution/engine edit/learning/deployment.
 
 [Source-backed response](../docs/training/simulator-repairs-2026-11-08/ORIGINAL_SIGNALS_CARPARKS_ANSWER.md).
+
+
+## 8 November 2026 — Original traffic lights replicated; deterministic lights comparison, no learning
+
+From Mohammad's answer (`e58b1fd`), implemented in `470784a` (simulator `2026-11-08.5`): original phase timing, nearby guard with same-chunk early termination, commitment-age weights, amber permission and American red-light rules. Stuck-light, right-on-red and amber checks fail on .4 and pass. Deterministic Evolved Rules lights on/off comparison on LA 3100-3109 (20 games plus a 2-game harness check reproducing .4 exactly): lights 510.5 vs 513.2 without (was 408.4 vs 513.2); stuck-phase time ≤4.7 s per game (was up to 237 s). Map 3101 still -197 for another cause. Evaluation only, no learning or selection.

@@ -8,7 +8,7 @@ Full evidence: [simulator repairs report](../../docs/training/simulator-repairs-
 - **Branch:** `mohammad` in worktree `C:\Projects\490 - Project\mm-ppo`. Commits up to `d6c9f27` are on
   both `origin/mohammad` (Aya's fork) and `upstream/mohammad` (Mohammad's). `c1d23d0` and later commits are
   local until pushed. Nothing is merged anywhere.
-- **Simulator version:** `2026-11-08.4`.
+- **Simulator version:** `2026-11-08.5`.
 
 ## Commits (in order, after Mohammad's `8a4b447`)
 
@@ -23,7 +23,9 @@ Full evidence: [simulator repairs report](../../docs/training/simulator-repairs-
 | `c1d23d0` | **Original junction entry arbitration** (lane-count gate, shove, shared-exit space test, eligibility, route-time registration) for OriginalReference | **Yes** | No |
 | `8aa9683` | Documentation of `c1d23d0` | No | No |
 | `7ef4071` | **Carpark gate:** cars passing through a shared lot are gated at the outside approach like arriving cars; gate waits visible to cycle recovery | **Yes** | No |
-| next commit | Documentation of `7ef4071` and the note to Mohammad | No | No |
+| `c27107d`, `e58b1fd`, `dd65cd5` | Note to Mohammad, his signals/carpark answer, stuck-light measurement | No | No |
+| `470784a` | **Original traffic lights:** phase timing, nearby guard with same-chunk early stop, commitment-age weights, amber keeps permission, right on red | **Yes** | No |
+| next commit | Documentation of `470784a` | No | No |
 
 ## Which old results are invalid
 
@@ -53,7 +55,7 @@ produced on.
 
 ## Headless protocol
 
-Backward compatible from `e6119eb` to `2026-11-08.4`: no request or reply field was removed or
+Backward compatible from `e6119eb` to `2026-11-08.5`: no request or reply field was removed or
 renamed, and the observation layout is unchanged. Additions:
 
 - **`simulatorVersion`** (string) on every reply, including errors and `drawchoices`, and in the
@@ -85,22 +87,21 @@ renamed, and the observation layout is unchanged. Additions:
 
 ```
 dotnet build simulation/Headless -c Release      # DLL used by Evolved Rules
-dotnet simulation/Headless/bin/Release/net8.0/TrafficHost.dll --version   # 2026-11-08.4
-dotnet run --project simulation/Headless/TrafficHost.csproj -- --self-test   # 82 suites PASS
+dotnet simulation/Headless/bin/Release/net8.0/TrafficHost.dll --version   # 2026-11-08.5
+dotnet run --project simulation/Headless/TrafficHost.csproj -- --self-test   # 83 suites PASS
 dotnet build simulation/Headless -c Debug        # DLL used by PPO and the checks below
 python scripts/verify_five_maps.py               # 10 runs PASS (rewrites simulation/Reports/five-map-protocol-checks.json)
 cd training && python test_environment.py && python test_rewards.py   # 7/7 and 6/6; needs an existing tmp/ folder
 ```
 
-All of these were run on simulator `2026-11-08.4` (`7ef4071`) and passed: 82 suites, 7/7, 6/6 and 10 runs.
+All of these were run on simulator `2026-11-08.5` (`470784a`) and passed: 83 suites, 7/7, 6/6 and 10 runs.
 
 ## Not verified or still open
 
-- **A traffic light can stop switching.** If a stuck green-phase car is the only one near the light
-  (1 or 2 nearby, versus the required 0 or at least 3), the phase never changes. Replay v21 ends
-  that way on `2026-11-08.4`. A question has gone to Mohammad; the version will change if it is fixed.
-- **Carpark gate:** still our engineered rule (now measuring every car at one point). Mohammad has
-  been asked whether the original uses its junction arbitration at carpark entrances instead.
+- **Traffic lights now follow the original** (`.5`). In the deterministic lights on/off comparison on LA
+  3100–3109, lights went from −104.8 to −2.7 trips; map 3101 still loses 197 for an uninvestigated cause.
+- **Carpark is still our engineered gate.** The original uses chunk arbitration on real entrance, exit and
+  circulation lanes (Mohammad's answer B1–B4). This is the next simulator step and will change the version again.
 - **Partial replication:** the original arbitration is replicated as described, but all-leader
   "pushing", the stopped-candidate geometry argument and the 45 s escape are not implemented.
 - **Unity:** the Original player has not been rebuilt with these changes.

@@ -1,0 +1,159 @@
+{
+ "protocol": "Deterministic lights on/off comparison in the design of Mohammad's training/TRAFFIC_LIGHT_TEST.md: the same frozen policy (Evolved Rules gp3_final.txt; gplight: = lights enabled, tree: = no lights), the same LosAngeles seeds 3100-3109, 3600 s cap, only light placement differs. Agent code from git archive of gp4 (53d6d0c tree) in a scratch venv with its pinned packages (numpy 2.5.4, scipy 1.18.1, deap 1.4.4, cma 4.5.0), PYTHONHASHSEED=0, EVOLVED_RULES_HOST_DLL set to this simulator's Release build.",
+ "harness_check": "On a 2026-11-08.4 build, the archived harness reproduces the Evolved Rules session's sim2-gplight seeds 3100 and 3101 exactly (324 and 466 trips, 920.9 and 1027.3 s).",
+ "maps": [
+  {
+   "map": 3100,
+   "v4_lights": 324,
+   "v4_noLights": 516,
+   "v5_lights": 492,
+   "v5_noLights": 516,
+   "v4_stuckSeconds": 125.6,
+   "v5_stuckSeconds": 0.2,
+   "v5_lightsPlaced": 6,
+   "v5_meanCarWaitLights": 0.267,
+   "v5_maxCarWaitLights": 62.2
+  },
+  {
+   "map": 3101,
+   "v4_lights": 466,
+   "v4_noLights": 684,
+   "v5_lights": 487,
+   "v5_noLights": 684,
+   "v4_stuckSeconds": 76.2,
+   "v5_stuckSeconds": 0.1,
+   "v5_lightsPlaced": 8,
+   "v5_meanCarWaitLights": 0.681,
+   "v5_maxCarWaitLights": 72.3
+  },
+  {
+   "map": 3102,
+   "v4_lights": 466,
+   "v4_noLights": 489,
+   "v5_lights": 659,
+   "v5_noLights": 489,
+   "v4_stuckSeconds": 1.9,
+   "v5_stuckSeconds": 0.1,
+   "v5_lightsPlaced": 8,
+   "v5_meanCarWaitLights": 0.569,
+   "v5_maxCarWaitLights": 71.8
+  },
+  {
+   "map": 3103,
+   "v4_lights": 342,
+   "v4_noLights": 484,
+   "v5_lights": 465,
+   "v5_noLights": 484,
+   "v4_stuckSeconds": 30.2,
+   "v5_stuckSeconds": 0.1,
+   "v5_lightsPlaced": 6,
+   "v5_meanCarWaitLights": 0.69,
+   "v5_maxCarWaitLights": 68.3
+  },
+  {
+   "map": 3104,
+   "v4_lights": 270,
+   "v4_noLights": 257,
+   "v5_lights": 268,
+   "v5_noLights": 257,
+   "v4_stuckSeconds": 0,
+   "v5_stuckSeconds": 0,
+   "v5_lightsPlaced": 2,
+   "v5_meanCarWaitLights": 0.014,
+   "v5_maxCarWaitLights": 8.4
+  },
+  {
+   "map": 3105,
+   "v4_lights": 389,
+   "v4_noLights": 353,
+   "v5_lights": 424,
+   "v5_noLights": 353,
+   "v4_stuckSeconds": 72.3,
+   "v5_stuckSeconds": 0,
+   "v5_lightsPlaced": 4,
+   "v5_meanCarWaitLights": 1.296,
+   "v5_maxCarWaitLights": 97.9
+  },
+  {
+   "map": 3106,
+   "v4_lights": 379,
+   "v4_noLights": 504,
+   "v5_lights": 478,
+   "v5_noLights": 504,
+   "v4_stuckSeconds": 156.9,
+   "v5_stuckSeconds": 0,
+   "v5_lightsPlaced": 10,
+   "v5_meanCarWaitLights": 0.188,
+   "v5_maxCarWaitLights": 17.3
+  },
+  {
+   "map": 3107,
+   "v4_lights": 641,
+   "v4_noLights": 669,
+   "v5_lights": 654,
+   "v5_noLights": 669,
+   "v4_stuckSeconds": 69.2,
+   "v5_stuckSeconds": 0.2,
+   "v5_lightsPlaced": 4,
+   "v5_meanCarWaitLights": 0.295,
+   "v5_maxCarWaitLights": 55.3
+  },
+  {
+   "map": 3108,
+   "v4_lights": 257,
+   "v4_noLights": 545,
+   "v5_lights": 584,
+   "v5_noLights": 545,
+   "v4_stuckSeconds": 236.9,
+   "v5_stuckSeconds": 4.7,
+   "v5_lightsPlaced": 4,
+   "v5_meanCarWaitLights": 0.146,
+   "v5_maxCarWaitLights": 32.6
+  },
+  {
+   "map": 3109,
+   "v4_lights": 550,
+   "v4_noLights": 631,
+   "v5_lights": 594,
+   "v5_noLights": 631,
+   "v4_stuckSeconds": 54.2,
+   "v5_stuckSeconds": 0,
+   "v5_lightsPlaced": 8,
+   "v5_meanCarWaitLights": 0.426,
+   "v5_maxCarWaitLights": 42.5
+  }
+ ],
+ "means": {
+  "v4": {
+   "lights": 408.4,
+   "noLights": 513.2,
+   "meanCarWaitLights": 2.35
+  },
+  "v5": {
+   "lights": 510.5,
+   "noLights": 513.2,
+   "meanCarWaitLights": 0.46,
+   "meanCarWaitNoLights": 0.28,
+   "maxCarWaitLights": 52.9,
+   "maxCarWaitNoLights": 38.2,
+   "better": 4,
+   "worse": 6
+  }
+ },
+ "replays_v5": {
+  "v20": {
+   "score": 643,
+   "seconds": 1222.8500000000001,
+   "deadlockedSeconds": 0,
+   "carsWaitingOver20sAtEnd": 0
+  },
+  "v21": {
+   "score": 605,
+   "seconds": 1188.7,
+   "deadlockedSeconds": 0,
+   "carsWaitingOver20sAtEnd": 0
+  }
+ },
+ "interpretation": "Stuck-phase time falls from 0-237 s per game to at most 4.7 s; the no-lights arm is identical on both simulators (513.2), so the change is confined to signalled play. Lights are now roughly neutral (-2.7 mean; 4 better, 6 worse) instead of -104.8. Map 3101 still loses 197 with lights and almost no stuck time: a different cause, not investigated. On the old e6119eb simulator lights gained about 16; that comparison spans many unrelated changes.",
+ "runs": "20 games (10 per arm) plus a 2-game harness check; outputs kept in tmp/gp4code/output (local)."
+}

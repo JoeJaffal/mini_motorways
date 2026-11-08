@@ -1,3 +1,7 @@
+# Original traffic lights replicated — 8 November 2026
+
+[Report section 11](../../docs/training/simulator-repairs-2026-11-08/README.md#11-original-traffic-lights-replicated-simulator-2026-11-085). Original traffic-light phases and permissions replicated from Mohammad's inspected rules (simulator `2026-11-08.5`). Three new checks fail on .4 and pass; 83 core/7 environment/6 reward/10 map PASS. Deterministic lights on/off (LA 3100-3109): stuck time up to 237 s → ≤4.7 s; lights 408.4→510.5 vs 513.2 without. Carpark chunk arbitration is next. No training.
+
 # Original signal/carpark follow-up documented — 8 November2026
 
 [Read-only response](../../docs/training/simulator-repairs-2026-11-08/ORIGINAL_SIGNALS_CARPARKS_ANSWER.md). Signal blocked-count/weights/amber semantics and carpark chunk arbitration documented with numeric evidence. No engine edits, model evaluations, training or deployment; runtime merge-toggle/other overrides remain uncertain.

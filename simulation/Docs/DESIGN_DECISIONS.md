@@ -1102,3 +1102,19 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 8 November2026 — User requests original traffic-light/carpark follow-up. Read-only private-rule/config audit: nearby0.5tiles/min3/overtime1sconfirmed, but blocked-candidate early termination and commitment-age phase weights differ materially from simulator. Installed age multipliers carpark10/mothball4, same-chunk active-pair total penalty0.1; no max-green cap. Amber retains prior ActivePair in shown chunk permission logic; American non-crossing red-turn exception on. Carpark entrance/exit/internal paths use road chunks; no separate one-owner gate found in inspected classes; bay allocation separate. Full response/provenance in ORIGINAL_SIGNALS_CARPARKS_ANSWER.md. Reported408vs513GPresult not rerun, no causal attribution/engine edit/learning/deployment.
 
 [Source-backed response](../../docs/training/simulator-repairs-2026-11-08/ORIGINAL_SIGNALS_CARPARKS_ANSWER.md).
+
+
+## 073 - Replicate the original's traffic lights (8 November 2026)
+
+**User decision.** Ask Mohammad for the original's light and carpark rules, measure stuck lights deterministically meanwhile, then implement his answer with failing tests first and rerun the lights on/off comparison.
+
+**Engineering choices** ([report section 11](../../docs/training/simulator-repairs-2026-11-08/README.md)):
+
+- OriginalReference only.
+- The inbound-list order is approximated by registration time, then vehicle id.
+- "Lane replacement" has no equivalent here.
+- A light on a ≤2-lane tile still affects junction speed through `IsJunction`, as the original's controlled-chunk speed recalculation suggests.
+
+**Superseded.** The previous OriginalReference signal weights and the all-red amber.
+
+**Next.** Carpark entrance/exit chunk arbitration (Mohammad's B1–B4) before retiring the gate.
