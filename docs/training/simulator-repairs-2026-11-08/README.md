@@ -136,3 +136,70 @@ divergence. Neither replay score is a fidelity target or a validated comparison 
 **Gameplay consequence.** Any game in which an approaching car's conflicting lane is held by a stopped
 vehicle can now resolve differently, and permanent junction/roundabout deadlocks of this form no
 longer occur. Results from `2026-11-08.1` and earlier are not comparable in heavy traffic.
+
+## 5. Replay input v21: the seven handoff corrections, regenerated from the builder
+
+**Builder equivalence (open question in the handoff, now measured).** Mohammad's
+`build_full_trace.py`, with only its output paths redirected so his local working files are not
+overwritten, regenerates `replay-candidate-v20.json` exactly: all 406 events and every top-level field
+are identical. Its side outputs differ from his local copies only where those predate v20 (yellow
+35,12 onset 807 → 799; two motorway-toast native candidates now excluded).
+
+**v21.** [`build_full_trace_v21.py`](source/build_full_trace_v21.py) is that builder plus only the
+seven corrections listed in the handoff, each marked in the code. It writes to
+`tmp/simulator-repairs-2026-11-08/`. Output: [`replay-candidate-v21.json`](replay-candidate-v21.json),
+with 400 events. The diff against v20 is exactly:
+
+- removed: 715 draw 24,12–25,12 (correction 1); 731 draw 9,10–9,11 (2); 841 draws 38,16–38,17 and
+  38,17–38,18 (3); 841 draw, 849 erase and 857 draw of 37,20–38,20 (5); 859 draw 43,8–43,9 (7);
+- added: 846 driveway turn of green 38,19 to north (4); 855 erase 40,22–40,23 (6).
+
+**Visual check of correction 3.** Boards from 839 to 1007 show that the column-38 white area at rows
+16–18 is the new green lot's outline (with the spawn circle drawn over it at 840–841). It persists to
+1007, and no vertical road is ever drawn there, so the omission runs from 841 to the end. The same
+boards show the green 38,19 north connection at 846 (not at 841) and no horizontal 37,20–38,20 road.
+The contact sheet is cropped from the gameplay video and stays local, as `AGENTS.md` requires.
+
+**Not changed.** The green 37,20–37,21 branch onset stays at 858, about 1 s later than the stock
+evidence at 857: the handoff noted it but did not list it as a correction. The green north turn has
+about 1 s of timing uncertainty.
+
+**Direct topology check** (Mohammad's helper; placement and material only, no traffic or score;
+unused edges refunded immediately). Re-running it on v20 reproduces his archived
+`direct-topology-allstocks-v20.json` exactly (rejected at source 870, 372/406). **v21 passes all 400
+events** ([output](measurements/direct-topology-v21.json)). Road stock against the video's HUD:
+
+| Video s | 720 | 740 | 760 | 790 | 810 | 820 | 830 | 840 | 850 | 860 | 870 | 880 | 890 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Video HUD | 20 | 15 | 19 | 19 | 32 | 25 | 24 | 19 | 14 | 10 | 4 | 13 | 13 |
+| v20 | 18 | 12 | 18 | 18 | 29 | 23 | 22 | 16 | 10 | 3 | rejected | – | – |
+| v21 | 19 | 14 | 20 | 20 | 31 | 25 | 24 | 18 | 14 | 10 | 5 | 16 | 14 |
+
+The late material shortfall the handoff predicted is resolved through 860. Small differences remain
+at 540 (16 against 13), 720–810 (±1–2) and 870–890 (+1 to +3); they may involve delayed retirements or
+1–2 s detection lag and have not been investigated.
+
+**Strict scored runs** (`--run-scenario`, existing 120 s wall cap, simulator `2026-11-08.2`;
+[summary](measurements/replay-v21-results.json)). These are partial diagnostics, **not** a validated
+comparison with the original 835:
+
+| Candidate | Game-over | Trips | Events | Failing destination |
+| --- | --- | --- | --- | --- |
+| v20 | 1176.95 s | 580 | 336/406 | red 35 at 11,18 |
+| v21 | 1166.05 s | 570 | 325/400 | navy 14 at 12,14 |
+
+Only corrections 1 and 2 (game time 980 and 1012) occur before v21's simulated game-over. Corrections
+3–7 (game time 1190 or later) are not reached in the scored run.
+
+**New finding: a physical gridlock ends v21 (not fixed, user decision needed).** The wait-for probe,
+updated to the current priority rule, finds a deadlocked set from t = 1119 at the adjacent junctions
+20,11 and 20,12. Southbound car 41 must turn east across 20,12, where northbound car 17 sits inside
+the junction. Car 17 (behind car 12) must enter 20,11, where car 22 sits inside that junction. Car 22
+queues behind car 41. Every binding link is physical occupancy; no priority link is needed. The set
+grows to 22 cars, 8 of them navy-14 trips, and navy 14 overcrowds from about t = 1116 until the
+game-over. Preventing this needs a new rule (do not enter a junction without room to clear it),
+which is a gameplay change, so it is left for the user to decide.
+
+**Not done here.** Handoff step 6 (wall-clock playback synchronisation against the video's 1/2× and
+pauses) needs viewer work that has not been started. Hidden original demand/parking RNG and exact
+action times remain unverified.

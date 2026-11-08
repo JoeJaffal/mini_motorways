@@ -1,0 +1,332 @@
+{
+ "note": "Strict --run-scenario (existing 120 s wall cap, no grants, stop at first rejection or game-over) on simulator 2026-11-08.2. Partial diagnostic outputs, NOT a validated comparison with the original 835.",
+ "builder_equivalence": "Mohammad's builder, with only its output paths redirected, regenerates replay-candidate-v20.json exactly (all 406 events and top-level fields identical).",
+ "v20": {
+  "result": "COMPLETED",
+  "simulatorVersion": "2026-11-08.2",
+  "score": 580,
+  "seconds": 1176.95,
+  "failed": true,
+  "events": 336,
+  "totalEvents": 406,
+  "inventory": [
+   16,
+   1,
+   0,
+   2,
+   0,
+   0
+  ],
+  "overcrowded": [
+   {
+    "id": 4,
+    "cell": [
+     10,
+     8
+    ],
+    "color": 1,
+    "overcrowdedFor": 11.53,
+    "served": 67
+   },
+   {
+    "id": 14,
+    "cell": [
+     12,
+     14
+    ],
+    "color": 3,
+    "overcrowdedFor": 32.99,
+    "served": 61
+   },
+   {
+    "id": 20,
+    "cell": [
+     16,
+     16
+    ],
+    "color": 1,
+    "overcrowdedFor": 20.85,
+    "served": 44
+   },
+   {
+    "id": 25,
+    "cell": [
+     26,
+     18
+    ],
+    "color": 0,
+    "overcrowdedFor": 0.3,
+    "served": 32
+   },
+   {
+    "id": 27,
+    "cell": [
+     30,
+     18
+    ],
+    "color": 1,
+    "overcrowdedFor": 42.34,
+    "served": 28
+   },
+   {
+    "id": 34,
+    "cell": [
+     16,
+     16
+    ],
+    "color": 0,
+    "overcrowdedFor": 17.95,
+    "served": 17
+   },
+   {
+    "id": 35,
+    "cell": [
+     11,
+     18
+    ],
+    "color": 1,
+    "overcrowdedFor": 50.01,
+    "served": 12
+   }
+  ],
+  "carsWaitingOver20s": 4
+ },
+ "v21": {
+  "result": "COMPLETED",
+  "simulatorVersion": "2026-11-08.2",
+  "score": 570,
+  "seconds": 1166.05,
+  "failed": true,
+  "events": 325,
+  "totalEvents": 400,
+  "inventory": [
+   24,
+   1,
+   0,
+   2,
+   0,
+   0
+  ],
+  "overcrowded": [
+   {
+    "id": 4,
+    "cell": [
+     10,
+     8
+    ],
+    "color": 1,
+    "overcrowdedFor": 19.6,
+    "served": 66
+   },
+   {
+    "id": 14,
+    "cell": [
+     12,
+     14
+    ],
+    "color": 3,
+    "overcrowdedFor": 50.01,
+    "served": 56
+   },
+   {
+    "id": 20,
+    "cell": [
+     16,
+     16
+    ],
+    "color": 1,
+    "overcrowdedFor": 22.13,
+    "served": 42
+   },
+   {
+    "id": 27,
+    "cell": [
+     30,
+     18
+    ],
+    "color": 1,
+    "overcrowdedFor": 24.05,
+    "served": 28
+   },
+   {
+    "id": 34,
+    "cell": [
+     16,
+     16
+    ],
+    "color": 0,
+    "overcrowdedFor": 5.36,
+    "served": 17
+   },
+   {
+    "id": 35,
+    "cell": [
+     11,
+     18
+    ],
+    "color": 1,
+    "overcrowdedFor": 39.18,
+    "served": 10
+   }
+  ],
+  "carsWaitingOver20s": 17
+ },
+ "v21_corrections_reached": "Only corrections 1 and 2 (game time 980 and 1012) occur before the simulated game-over at 1166.05; corrections 3-7 (video 841-859, game time >=1190) are not reached in the scored run.",
+ "v21_gridlock": {
+  "first_deadlock_t": 1119,
+  "members_first": [
+   12,
+   17,
+   22,
+   41,
+   42,
+   43
+  ],
+  "edges_first": [
+   {
+    "car": 12,
+    "blocker": 22,
+    "kind": "conflict",
+    "why": "Crossing vehicle",
+    "lane": "20:11:6:5",
+    "at": [
+     20,
+     12
+    ],
+    "stage": "Returning",
+    "wait": 3.55
+   },
+   {
+    "car": 17,
+    "blocker": 12,
+    "kind": "queue",
+    "why": "Queue ahead",
+    "lane": "20:12:6:6",
+    "at": [
+     20,
+     12
+    ],
+    "stage": "Outbound",
+    "wait": 2.05
+   },
+   {
+    "car": 17,
+    "blocker": 22,
+    "kind": "conflict",
+    "why": "Crossing vehicle",
+    "lane": "20:11:6:5",
+    "at": [
+     20,
+     12
+    ],
+    "stage": "Outbound",
+    "wait": 2.05
+   },
+   {
+    "car": 22,
+    "blocker": 41,
+    "kind": "queue",
+    "why": "Queue ahead",
+    "lane": "20:11:2:2",
+    "at": [
+     20,
+     11
+    ],
+    "stage": "Returning",
+    "wait": 0.8
+   },
+   {
+    "car": 22,
+    "blocker": 26,
+    "kind": "priority",
+    "why": "Approaching vehicle priority",
+    "lane": "20:13:2:4",
+    "at": [
+     20,
+     11
+    ],
+    "stage": "Returning",
+    "wait": 0.8
+   },
+   {
+    "car": 41,
+    "blocker": 17,
+    "kind": "conflict",
+    "why": "Crossing vehicle",
+    "lane": "20:12:2:0",
+    "at": [
+     20,
+     11
+    ],
+    "stage": "Returning",
+    "wait": 5.55
+   },
+   {
+    "car": 42,
+    "blocker": 17,
+    "kind": "queue",
+    "why": "Queue ahead",
+    "lane": "20:12:6:6",
+    "at": [
+     20,
+     12
+    ],
+    "stage": "Returning",
+    "wait": 1.2
+   },
+   {
+    "car": 42,
+    "blocker": 22,
+    "kind": "conflict",
+    "why": "Crossing vehicle",
+    "lane": "20:11:6:5",
+    "at": [
+     20,
+     12
+    ],
+    "stage": "Returning",
+    "wait": 1.2
+   },
+   {
+    "car": 43,
+    "blocker": 42,
+    "kind": "queue",
+    "why": "Queue ahead",
+    "lane": "20:13:6:6",
+    "at": [
+     20,
+     13
+    ],
+    "stage": "Returning",
+    "wait": 0.55
+   },
+   {
+    "car": 43,
+    "blocker": 22,
+    "kind": "conflict",
+    "why": "Crossing vehicle",
+    "lane": "20:11:6:5",
+    "at": [
+     20,
+     13
+    ],
+    "stage": "Returning",
+    "wait": 0.55
+   }
+  ],
+  "members_at_end": 22,
+  "navy14_trips_among_deadlocked": [
+   18,
+   19,
+   20,
+   21,
+   60,
+   61,
+   62,
+   63
+  ],
+  "mechanism": "Adjacent junctions 20,11 and 20,12: southbound car 41 must turn east across 20,12 where northbound car 17 sits inside the junction; car 17 (behind car 12) must enter 20,11 where car 22 sits inside that junction; car 22 queues behind car 41. All binding links are physical occupancy (conflicting occupant or queue); no approach-priority link is required.",
+  "consequence": "Navy destination 14 at 12,14 overcrowds from about t=1116 and ends the game at 1166.05 (50.01 s).",
+  "status": "Not changed: preventing it needs a new rule (do not enter a junction without room to clear it), which is a gameplay rule change awaiting user decision."
+ }
+}
