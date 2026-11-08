@@ -1,3 +1,7 @@
+# Original junction-rule answer documented — 8 November 2026
+
+[Six-question response](../../docs/training/simulator-repairs-2026-11-08/ORIGINAL_SPACE_CHECK_RULE_ANSWER.md). Conditional gap checking plus eligible-prefix arbitration/blocking-cycle recovery confirmed; no blanket box rule or guarantee ofv21fix. Read-only source/config audit only; no engine/fixture/run changes. Runtime45sfeature and stopped-connection geometry remain unresolved.
+
 # Simulator repairs after resume — 8 November 2026
 
 [Report](../../docs/training/simulator-repairs-2026-11-08/README.md), [re-evaluation handoff](HANDOFF-2026-11-sim-fix.md). Reward-v4 drift isolated to the intended rule-77 native join (new fixture v5); stale `Waiting` on arrival fixed; additive `simulatorVersion` (`2026-11-08.2`); permanent roundabout/junction yield-cycle deadlock proven and fixed; v21 regenerated from the builder with the seven handoff corrections (topology check passes 400/400). 79 core/7 environment/6 reward-v5/10 map PASS. A physical adjacent-junction gridlock ends v21 and awaits a user rule decision; Unity player not rebuilt; no training or push.

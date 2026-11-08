@@ -239,3 +239,8 @@ reward v5 6/6 ([output](measurements/rewards-final.txt)); five-map protocol 10 r
   stays false.
 
 No training, model evaluation, deployment, push or original-game write was done in this work.
+
+
+## Original rule response — 8 November2026
+
+[Answer to all six questions](ORIGINAL_SPACE_CHECK_RULE_ANSWER.md), numeric findings/hashes archived. Static read-only audit confirms conditional shared-exit space checking, eligibility partition, commitment/registration timing and cycle-based shoving. No blanket-clearance engine patch or original/v21execution. Runtime timeout feature and stopped-connection geometry remain uncertain.

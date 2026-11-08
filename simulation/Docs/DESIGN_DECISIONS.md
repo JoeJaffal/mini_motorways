@@ -1063,3 +1063,6 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Open question for the user.** A physical gridlock at adjacent junctions 20,11-20,12 (cars inside a junction with no room to exit) ends replay v21. Preventing it would be a new traffic rule and has not been made.
 
 **Superseding.** Decision 069's statements that source 77 is unverified are superseded: 77 passed, and the source now has 79 suites. Original parity remains NOT_MATCHED.
+
+
+8 November2026 — User authorizes answering REQUEST_SPACE_CHECK_RULE. [Read-only original-rule audit](../../docs/training/simulator-repairs-2026-11-08/ORIGINAL_SPACE_CHECK_RULE_ANSWER.md): conditional shared-exit gap chain(5states,>2vehicle lengths), inbound eligible-prefix arbitration, first-two-lane commitment, route-time registration and explicit blocking-cycle shoving verified. Installed green bypass on/straight-entry option off;45swait feature runtime state unverified.191e9adpartial filter is not an exact reproduction. No engine changes, original execution, learning or score claim; private source stays local.
