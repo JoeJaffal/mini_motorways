@@ -48,3 +48,27 @@ their native driveway ends meeting at an empty cell now plays differently. Resul
 the 69–74 rules (both PPO and Evolved Rules) are valid for that simulator version only.
 
 The environment checks are 7/7 PASS once an empty, git-ignored `tmp/` exists.
+
+## 2. Stale `Waiting` on arrival fixed (agent-reported issue 1)
+
+**Cause (code-level, proven by a failing test).** `Waiting` is updated only in the movement-proposal
+loop of `TrafficControl.cs`, before the car advances. Arrival (`FinishHome`, and `EnteringParking`
+becoming `Parking`) did not clear it, and non-moving cars get no further proposals. A car
+accelerating from standstill gains 0.27 × 0.05 = 0.0135 tiles/s per tick, below the 0.02 waiting
+threshold. A queued car released within one creeping tick of its journey end therefore arrives home
+or in a bay with its queue wait, keeps it while there, and starts its next trip from it.
+
+**Frequency (measured before the fix).** No stale value occurred in 1,981 home/parked samples
+(reward-v5 game), 15,116 samples (reference networks on five cities × two seeds) or 300,697 samples
+(replay v20 on the 77-suite source; [WaitProbe](source/WaitProbe.cs),
+[results](measurements/waiting-staleness.json)). The defect is real but rare in practice.
+
+**Fix.** Clear `Waiting` on arrival home and on parking in a bay. `TotalWaiting` (cumulative) is
+unchanged. New suite "arrival home or in a bay clears the current wait": failed before the fix with
+`Home car keeps no stale queue wait: waiting=12.05`; 78 suites PASS after. Reward v5, environment
+and five-map checks are unchanged.
+
+**`meanWaiting` / `TotalWaiting`.** The observation's `meanWaiting` is the mean, over every car ever
+spawned, of its cumulative `TotalWaiting` in seconds. It includes cars that never left home and only
+grows. It is not stale, but it is not a current-queue measure. No code in `training/` or in Evolved
+Rules reads it. It is now documented in the headless README, and the field is unchanged.

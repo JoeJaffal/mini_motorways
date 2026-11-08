@@ -617,6 +617,26 @@ namespace MotorwaysSim
                 for(int i=0;i<4000&&!freed;i++){normal.Step();freed=normal.Cars.Any(c=>c.Stage==TripStage.LeavingParking&&c.ParkingSlot==-1);}
                 Check(freed,"bay becomes available before vehicle leaves the lot");
             });
+            Test("arrival home or in a bay clears the current wait",()=>{
+                // A queued car released within one creeping tick of its journey end arrives
+                // below the 0.02 tiles/s waiting threshold. Its queue wait must not persist
+                // while it is parked or at home, where it no longer receives movement updates.
+                foreach(var stage in new[]{TripStage.Returning,TripStage.EnteringParking})
+                {
+                    var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.DemandCapacity=10000;
+                    var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);w.SpawnBuilding(new Cell(5,5),0,true);
+                    var shop=w.SpawnBuilding(new Cell(15,4),0,false);shop.DemandCountdown=1e9;shop.Demand=1;w.BuildReferenceNetwork();
+                    Vehicle car=null;
+                    for(int i=0;i<8000&&car==null;i++){w.Step();car=w.Cars.FirstOrDefault(c=>c.Stage==stage&&c.Moving&&!c.DrivingThrough);}
+                    Check(car!=null,"fixture reaches "+stage+": "+Summary(w));
+                    car.RouteIndex=car.Lanes.Count-1;car.DistanceAlongLane=car.CurrentLane.Length-1e-4;car.Speed=0;car.Waiting=12;
+                    double total=car.TotalWaiting;var arrived=stage==TripStage.Returning?TripStage.Home:TripStage.Parking;
+                    for(int i=0;i<20&&car.Stage==stage;i++)w.Step();
+                    Check(car.Stage==arrived,stage+" car arrives from its final creep: "+Summary(w));
+                    Check(car.Waiting==0,arrived+" car keeps no stale queue wait: waiting="+car.Waiting);
+                    Check(car.TotalWaiting>=total,"cumulative waiting is never reduced");
+                }
+            });
             return $"PASS: {count} simulation suites. Tests cover custom rules, recovered constants/structures, and integration; they do not prove bit-identical parity.\n";
         }
 

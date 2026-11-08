@@ -474,7 +474,8 @@ namespace MotorwaysSim
                 case TripStage.EnteringParking:
                     Deliver(car);
                     if(car.DrivingThrough){car.Stage=TripStage.Returning;SetJourney(car,car.ReturnRoute);break;}
-                    car.Stage=TripStage.Parking;car.ParkedPosition=ParkingPoint(Buildings[car.ShopId],car.ParkingSlot);
+                    // Parked cars receive no movement updates; do not keep the approach wait.
+                    car.Stage=TripStage.Parking;car.Waiting=0;car.ParkedPosition=ParkingPoint(Buildings[car.ShopId],car.ParkingSlot);
                     car.ParkedHeading=Rules.Version==GameVersion.OriginalReference?ParkingHeading(Buildings[car.ShopId],car.DestinationAccess):new Point(0,-1);
                     car.Dwell=Rules.ServiceSeconds;break;
                 case TripStage.LeavingParking:
@@ -531,7 +532,7 @@ namespace MotorwaysSim
         {if(car.ParkingSlot>=0&&car.ShopId>=0)Buildings[car.ShopId].Parking[car.ParkingSlot]=-1;car.ParkingSlot=-1;}
         void FinishHome(Vehicle car)
         {
-            car.Stage=TripStage.Home;car.At=Buildings[car.HomeId].Cell;car.Next=car.At;car.Lanes.Clear();car.Route.Clear();
+            car.Stage=TripStage.Home;car.Waiting=0;car.At=Buildings[car.HomeId].Cell;car.Next=car.At;car.Lanes.Clear();car.Route.Clear();
             car.ReturnRoute.Clear();car.ApproachRegistered.Clear();car.ShopId=-1;car.Speed=0;car.ArrivedHome=Time;car.RouteIndex=0;car.DistanceAlongLane=0;car.Obstacle="";
         }
     }
