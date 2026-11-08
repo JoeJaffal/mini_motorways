@@ -377,3 +377,76 @@ Validated this generation (lights / roundabouts sent per game):
 
 - On the 32 training maps the reference averaged 240.1.
 - The +21.7 of `gplight` over the reference is the best of three validated means, so it is biased upwards. On 3100–3199 the same rule was +4.0 [−13.0, +21.4] over its package-only version. The stop rule's paired test, and the final test on fresh maps, decide whether this holds.
+
+## 2026-11-08: gp-4 evolution paused at generation 21 (simulator bug)
+
+**Status: paused, not converged.** The user stopped the run on 2026-11-08 at 12:20 because a bug was found in the simulator. Fixing it is happening on another branch. Every number below comes from the **old simulator** (the host built from `gp4`'s `simulation/`, last changed at `5360118`). Treat them as provisional until they are re-run on the fixed one. Next steps: `plans/2026-11-08-after-simulator-fix.md`.
+
+**Where it stopped:**
+- Generations 0–21 are complete: 22,993 games in 12.6 h of wall time.
+- Generation 22 was killed half way, and its games are lost.
+- The checkpoint at `output/evolved_rules/evolve/gp-4/checkpoint.pkl` is from the end of generation 21. The run's `status.json` still says `running`, because the process was killed rather than stopped.
+- **Do not `--resume` this run on a fixed simulator.** The game cache is keyed on (`CODE_VERSION`, text, seed, cap) and not on the simulator build. A resume would reuse games played on the old simulator, and so would the incumbent, the hall of fame and the validation scores.
+
+**Every generation.** Best = the incumbent's validation mean (1500–1549, n = 50). Average = the mean of all 64 rule sets on that generation's 8 round-1 maps.
+
+| Gen | Best on validation | Average, all 64 | Round-1 best | Newly validated (validation mean) | Minutes |
+|---|---|---|---|---|---|
+| 0 | 259.7 | 98.9 | 239.5 | `9c5940ad` 259.7, `19c396bd` 238.0, `b6100b46` 243.2 | 28 |
+| 1 | 259.7 | 179.1 | 290.8 | – | 25 |
+| 2 | 259.7 | 173.8 | 287.2 | `a30d7ab8` 232.1 | 31 |
+| 3 | 259.7 | 190.8 | 284.6 | `9e46a6d8` 239.1 | 35 |
+| 4 | 259.7 | 203.8 | 315.1 | – | 36 |
+| 5 | 259.7 | 230.2 | 306.1 | – | 42 |
+| 6 | 259.7 | 208.3 | 311.1 | `97326c56` 237.0 | 37 |
+| 7 | 259.7 | 219.1 | 289.2 | `ed2428a0` 225.1, `4a1ed298` 235.0 | 41 |
+| 8 | 259.7 | 211.1 | 336.0 | `1862fb95` 234.2 | 34 |
+| 9 | 259.7 | 204.9 | 287.4 | – | 33 |
+| 10 | 259.7 | 218.2 | 311.1 | `d8303498` 255.4 | 39 |
+| 11 | 259.7 | 187.3 | 253.1 | `6db8c43d` 225.9 | 35 |
+| 12 | 259.7 | 175.5 | 264.1 | – | 31 |
+| 13 | 259.7 | 219.0 | 309.0 | – | 35 |
+| 14 | 259.7 | 189.6 | 283.8 | `fed61277` 244.3 | 34 |
+| 15 | 259.7 | 185.4 | 274.6 | – | 36 |
+| 16 | 259.7 | 219.0 | 307.4 | – | 37 |
+| 17 | 259.7 | 177.0 | 291.0 | `fc995843` 232.4 | 34 |
+| 18 | 259.7 | 193.0 | 346.1 | – | 32 |
+| 19 | 259.7 | 191.7 | 302.4 | – | 32 |
+| 20 | 259.7 | 204.4 | 340.2 | – | 36 |
+| 21 | 259.7 | 208.4 | 336.5 | – | 34 |
+
+The incumbent never changed. It is the `gplight` seed `9c5940ad`: gp3_final's routes and hold, the lights package upgrade, and place `if_gt(pl_is_light, 0.5, pl_stopped_near, -1.0)`. After generation 21 there had been 21 generations without improvement, so the stop rule would have ended the run at generation 30 (about 16:30 on 2026-11-08).
+
+**Every validated rule** (lights and roundabouts are commands sent per game, averaged over the 50 validation maps):
+
+| Rule | Gen | Validation | Lights | Roundabouts | Place tree |
+|---|---|---|---|---|---|
+| `9c5940ad` (`gplight` seed, incumbent) | 0 | 259.7 | 4.76 | 0 | `if_gt(pl_is_light, 0.5, pl_stopped_near, -1.0)` |
+| `d8303498` | 10 | 255.4 | 4.52 | 0 | `if_gt(pl_is_light, 0.5, 0.5, -1.0)` |
+| `fed61277` | 14 | 244.3 | 3.48 | 0.58 | `if_gt(pl_is_light, 0.5, pl_stopped_near, 0.72)` |
+| `b6100b46` (`gplightround` seed) | 0 | 243.2 | 3.84 | 1.78 | `if_gt(mul(pl_joins_separated, pl_is_roundabout), 0.5, -1.0, pl_stopped_near)` |
+| `9e46a6d8` | 3 | 239.1 | 0 | 0 | `-1.0` |
+| `19c396bd` (reference, gp3_final) | 0 | 238.0 | 0 | 0 | `-1.0` |
+| `97326c56` | 6 | 237.0 | 4.36 | 0 | `if_gt(pl_is_light, 0.5, pl_stopped_near, -1.0)` |
+| `4a1ed298` | 7 | 235.0 | 4.04 | 0 | `if_gt(pl_is_light, 0.5, pl_is_light, -1.0)` |
+| `1862fb95` | 8 | 234.2 | 4.20 | 0 | `if_gt(pl_is_light, 0.5, pl_is_light, -1.0)` |
+| `fc995843` | 17 | 232.4 | 0 | 0 | `if_gt(pl_is_light, pl_is_light, …)` (never places) |
+| `a30d7ab8` | 2 | 232.1 | 4.04 | 0 | `if_gt(pl_is_light, 0.5, pl_stopped_near, -1.0)` |
+| `6db8c43d` | 11 | 225.9 | 4.18 | 0 | `if_gt(pl_is_light, 0.5, pl_stopped_near, -1.0)` |
+| `ed2428a0` | 7 | 225.1 | 3.68 | 0 | `if_gt(pl_is_light, 0.5, pl_cars_near, -1.0)` |
+
+**Hall of fame after generation 21** (per-map difference from the reference on training maps; lcb = mean − SE):
+
+| Rule | Maps | Mean diff | lcb |
+|---|---|---|---|
+| `9c5940ad` (incumbent) | 508 | +7.1 | +3.6 |
+| `a30d7ab8` | 486 | +5.0 | −0.5 |
+| `02fe0b60` | 290 | +1.2 | −2.9 |
+| 4 more evolved rules | 84–167 | −15.9 to −1.4 | all < 0 |
+
+**Provisional reading (old simulator):**
+- **Lights help a little.** The incumbent is +7.1 (lcb +3.6) over the same rule without placement across 508 training maps, and +21.8 on validation (t 2.36 against 2.68 needed at alpha 0.005, so not significant).
+- **Roundabouts do not help.** Only two validated rules placed any. Both were below the incumbent.
+- **Evolution did not improve on the hand-written placement rule.**
+  - The population churned without climbing. From generation 3 on, the average stayed between 175 and 230 with no trend.
+  - Every evolved rule that led on the racing maps lost on validation, the same pattern as gp-3.3.
