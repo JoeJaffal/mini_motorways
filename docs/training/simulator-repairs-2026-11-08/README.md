@@ -363,3 +363,8 @@ at least 3 nearby green cars, so it never switches, and the north/south side wai
 game-over. This combines the existing signal rule with the new space rule. A red-light refusal names
 no car, so cycle recovery cannot see it. The question has gone to Mohammad
 ([LightInspect](source/LightInspect.cs)).
+
+
+## Original traffic-light/carpark response — 8 November2026
+
+[Full answers](ORIGINAL_SIGNALS_CARPARKS_ANSWER.md), numeric findings/hashes archived. Timer constants confirmed; nearby blocked counting, phase-weight multiplier ordering and amber permission differ from current simulator. Entrance/internal carpark lanes use chunk arbitration; no owner gate found in inspected extracts. Static audit only; no GP re-evaluation or engine changes.

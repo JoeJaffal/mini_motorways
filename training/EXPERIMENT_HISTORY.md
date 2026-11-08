@@ -7865,3 +7865,8 @@ User decision: replicate the original's space-checking logic, including its cond
 ## 8 November 2026 — Carpark gate measured at one point, no learning
 
 User decision: keep the approach gate but measure every car at the same point and expose gate waits to cycle recovery, then inform Mohammad. `7ef4071`, simulator `2026-11-08.4`: cars passing through a shared lot are gated at the start of the outside approach lane, like arriving cars. The v20 lock reconstruction fails on .3 and passes; two earlier variants were discarded (ParkingFlow overlap; departing-owner trap). 82 core/7 environment/6 reward/10 map PASS. Replays: v20 620 trips/1206.4 s, no deadlock; v21 537/1147.15 s, ended by a signal that stops switching (one stuck green car within 0.5 tiles), question sent to Mohammad. Partial diagnostics, not a comparison with 835.
+
+
+8 November2026 — User requests original traffic-light/carpark follow-up. Read-only private-rule/config audit: nearby0.5tiles/min3/overtime1sconfirmed, but blocked-candidate early termination and commitment-age phase weights differ materially from simulator. Installed age multipliers carpark10/mothball4, same-chunk active-pair total penalty0.1; no max-green cap. Amber retains prior ActivePair in shown chunk permission logic; American non-crossing red-turn exception on. Carpark entrance/exit/internal paths use road chunks; no separate one-owner gate found in inspected classes; bay allocation separate. Full response/provenance in ORIGINAL_SIGNALS_CARPARKS_ANSWER.md. Reported408vs513GPresult not rerun, no causal attribution/engine edit/learning/deployment.
+
+[Source-backed response](../docs/training/simulator-repairs-2026-11-08/ORIGINAL_SIGNALS_CARPARKS_ANSWER.md).

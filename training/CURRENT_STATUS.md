@@ -1,3 +1,7 @@
+# Original signal/carpark follow-up documented — 8 November2026
+
+[Read-only response](../docs/training/simulator-repairs-2026-11-08/ORIGINAL_SIGNALS_CARPARKS_ANSWER.md). Signal blocked-count/weights/amber semantics and carpark chunk arbitration documented with numeric evidence. No engine edits, model evaluations, training or deployment; runtime merge-toggle/other overrides remain uncertain.
+
 # Carpark gate measures every car at one point — 8 November 2026
 
 [Report section 9](../docs/training/simulator-repairs-2026-11-08/README.md#9-carpark-gate-cars-passing-through-measured-at-the-same-point-simulator-2026-11-084), [note to Mohammad](../docs/training/simulator-repairs-2026-11-08/NOTE_CARPARK_GATE_CHANGE.md). Carpark approach gate: cars passing through a shared lot are now gated at the same outside-approach point as arriving cars, and gate waits are visible to cycle recovery (simulator `2026-11-08.4`). The v20 lock reconstruction fails on .3 and passes; 82 core/7 environment/6 reward/10 map PASS. v20 replay: 620 trips, no deadlock. New finding: a signal phase that never switches in v21; question sent to Mohammad with a note on the gate change. No training.
