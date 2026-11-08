@@ -63,3 +63,8 @@ Work stopped immediately on user request. [Exact saved state and continuation pl
 ## Resume review — awaiting approval
 
 [RESUME_REVIEW_FOR_APPROVAL.md](RESUME_REVIEW_FOR_APPROVAL.md). Committed 77-suite source (`f7ce005`, including the dedup edit) re-checked on another machine: 77 core PASS, 10 map PASS; environment 6/7 (missing local `tmp/` only); **reward v4 FAILS: ordinary LA fixture now 23 trips/no game-over vs 13/game-over**, so the 75–77 changes alter ordinary play (cause not yet isolated). No engine, fixture or test changes. Awaiting Mohammad's approval and local files; no training.
+
+
+## Missing local files packaged — 8 November 2026
+
+[Transfer response and review clarifications](LOCAL_TRANSFER_RESPONSE.md). User requests action on Aya review; local-only924MiBZIP contains2368payload files including video/boards/crops, all payload hashes verified. No external media upload, engine edits, fixture change or training. Simulator work remains stopped this iteration.
