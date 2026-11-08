@@ -13,7 +13,9 @@ namespace MotorwaysSim
         {
             if(!InBounds(at))yield break;
             var currentBuilding=BuildingAt(at);
-            if(currentBuilding!=null&&at!=start&&at!=goal)yield break;
+            if(currentBuilding!=null&&at!=start&&at!=goal&&(!currentBuilding.SharedLot||Rules.Version!=GameVersion.OriginalReference))yield break;
+            if(currentBuilding!=null&&currentBuilding.SharedLot&&Rules.Version==GameVersion.OriginalReference&&HasAccess(currentBuilding,at))
+                foreach(var exit in Accesses(currentBuilding))if(exit!=at)yield return exit;
             var round=RoundaboutAt(at);
             int ringIndex=round==null?-1:Array.IndexOf(round.Ring,at);
             foreach(var m in Motorways.Where(m=>(retired||!m.PendingRemoval)&&(m.Start==at||m.End==at)))
@@ -23,7 +25,7 @@ namespace MotorwaysSim
                 if((Connections[at.X,at.Y]&(1<<d))==0)continue;
                 var next=at+Directions[d];
                 if(!CanTraverse(next,retired)||!retired&&PendingRemoval[at.X,at.Y])continue;
-                var b=BuildingAt(next);if(b!=null&&next!=goal&&next!=start)continue;
+                var b=BuildingAt(next);if(b!=null&&next!=goal&&next!=start&&(!b.SharedLot||Rules.Version!=GameVersion.OriginalReference))continue;
                 if(ringIndex>=0&&round.Ring.Contains(next)&&next!=round.Ring[(ringIndex+1)%4])continue;
                 yield return next;
             }
@@ -55,11 +57,11 @@ namespace MotorwaysSim
                     if(closed.Contains(target))continue;
                     var motorway=MotorwayBetween(state.cell,next);
                     double speed=motorway==null?LaneSpeed(state.cell,state.dir,direction):Rules.MotorwaySpeed;
-                    if(RoundaboutAt(state.cell)!=null)speed/=Rules.RoundaboutMultiplier;
+                    var transit=SharedTransitBetween(state.cell,next);
                     double cost=Distance(state.cell,next)/Math.Max(.01,speed);
                     if(state.dir<8&&((direction-state.dir+8)%8)==4)cost+=500;
                     if(allowRetired&&(PendingRemoval[next.X,next.Y]||PendingRemoval[state.cell.X,state.cell.Y]))cost+=100000;
-                    double total=costs[state]+Math.Max(1,Math.Floor(10*cost));
+                    double total=costs[state]+(transit!=null?SharedTransitCost(transit,state.cell,next):Math.Max(1,Math.Floor(10*cost)));
                     if(!costs.TryGetValue(target,out var old)||total<old)
                     {costs[target]=total;previous[target]=state;queue.Push(target,total);}
                 }
@@ -72,7 +74,8 @@ namespace MotorwaysSim
             if(route.Count<2)return double.PositiveInfinity;double total=0;
             for(int i=0;i<route.Count-1;i++)
             {int incoming=i==0?8:Direction(route[i-1],route[i]);int outgoing=Direction(route[i],route[i+1]);
-                double speed=MotorwayBetween(route[i],route[i+1])==null?LaneSpeed(route[i],incoming,outgoing):Rules.MotorwaySpeed;if(RoundaboutAt(route[i])!=null)speed/=Rules.RoundaboutMultiplier;
+                double speed=MotorwayBetween(route[i],route[i+1])==null?LaneSpeed(route[i],incoming,outgoing):Rules.MotorwaySpeed;
+                var transit=SharedTransitBetween(route[i],route[i+1]);if(transit!=null){total+=SharedTransitCost(transit,route[i],route[i+1]);continue;}
                 total+=Math.Max(1,Math.Floor(10*Distance(route[i],route[i+1])/speed));}
             return total;
         }
@@ -96,12 +99,23 @@ namespace MotorwaysSim
             for(int i=0;i<route.Count;i++)
             {
                 Cell at=route[i],prev=i==0?at:route[i-1],next=i==route.Count-1?at:route[i+1];
+                var transit=SharedTransitBetween(at,next);
+                if(transit!=null){lanes.AddRange(ParkingTransitRoute(transit,at,next));i++;continue;}
                 Point center=new Point(at),a=new Point(prev),b=new Point(next);
                 Point incoming=(center-a).Unit,outgoing=(b-center).Unit;
                 bool fromMotorway=i>0&&MotorwayBetween(prev,at)!=null;
                 var motorway=i<route.Count-1?MotorwayBetween(at,next):null;
                 Point start=i==0?center:fromMotorway?center+incoming.Right*Rules.LaneOffset:(a+center)/2+incoming.Right*Rules.LaneOffset;
                 Point end=i==route.Count-1?center:(b+center)/2+outgoing.Right*Rules.LaneOffset;
+                if(Rules.Version==GameVersion.OriginalReference)
+                {
+                    var parcel=AccessBuildingAt(at);
+                    if(parcel!=null&&!parcel.IsHouse)
+                    {
+                        if(i==0)start=ParkingAccessPoint(parcel,at,false);
+                        if(i==route.Count-1)end=ParkingAccessPoint(parcel,at,true);
+                    }
+                }
                 int inDir=i==0?8:Direction(prev,at),outDir=i==route.Count-1?inDir:Direction(at,next);
                 var round=RoundaboutAt(at);
                 Point[] samples;
@@ -126,6 +140,9 @@ namespace MotorwaysSim
                 lane.IsRoundabout=round!=null;
                 if(motorway!=null){lane.IsMotorway=true;lane.MotorwayId=motorway.Id;lane.IsJunction=false;lane.SpeedLimit=Rules.MotorwaySpeed;lane.Key=$"motorway:{motorway.Id}:{at.X}:{at.Y}";}
                 else if(fromMotorway)lane.IsJunction=true;
+                // A boundary-based parcel endpoint can coincide with the next lane
+                // boundary. Do not create a zero-length lane with an undefined heading.
+                if(lane.Distances.Last()<1e-8&&route.Count>1)continue;
                 lanes.Add(lane);
             }
             return lanes;
@@ -174,7 +191,7 @@ namespace MotorwaysSim
 
         void RefreshJourney(Vehicle car)
         {
-            if(!car.Moving||car.RouteVersion==NetworkVersion||car.DistanceAlongLane>1e-8||car.CurrentLane.IsJunction||car.CurrentLane.IsRoundabout||car.CurrentLane.IsMotorway||
+            if(!car.Moving||car.RouteVersion==NetworkVersion||car.DistanceAlongLane>1e-8||car.CurrentLane.IsJunction||car.CurrentLane.IsRoundabout||car.CurrentLane.IsMotorway||car.CurrentLane.IsParking||
                 (car.Stage!=TripStage.Outbound&&car.Stage!=TripStage.Returning))return;
             var old=car.CurrentLane;
             Cell goal=car.Stage==TripStage.Outbound?car.DestinationAccess:Buildings[car.HomeId].Access;

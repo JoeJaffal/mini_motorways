@@ -35,6 +35,31 @@ static class Program
 
     public static void Main(string[] args)
     {
+        int scenarioArg=Array.IndexOf(args,"--run-scenario");
+        if(scenarioArg>=0)
+        {
+            CustomScenarioSession session=null;
+            try
+            {
+                if(scenarioArg+1>=args.Length)throw new ArgumentException("Missing scenario file");
+                var definition=JsonSerializer.Deserialize<CustomScenarioDefinition>(System.IO.File.ReadAllText(args[scenarioArg+1]),Json);
+                session=new CustomScenarioSession(definition);var timer=Stopwatch.StartNew();
+                while(!session.Complete){if(timer.Elapsed.TotalSeconds>120)throw new TimeoutException("Custom scenario exceeded120-second wall limit");session.AdvanceTick();}
+                Console.WriteLine(JsonSerializer.Serialize(new{result="COMPLETED",mode="custom-scenario-reconstruction",definition.id,definition.seed,
+                    referenceScore=definition.referenceScore,score=session.World.TripsCompleted,difference=session.World.TripsCompleted-definition.referenceScore,
+                    seconds=session.World.Time,failed=session.World.Failed,events=session.CompletedEvents,totalEvents=definition.events.Length,inventory=session.World.Inventory,
+                    destinations=session.World.Buildings.Where(b=>!b.IsHouse).Select(b=>new{b.Id,b.Color,b.Cell,b.Entrance,b.Demand,b.Reserved,b.Served,b.OvercrowdedFor}),
+                    cars=session.World.Cars.Select(c=>new{c.Id,c.HomeId,c.ShopId,c.Stage,c.At,c.Next,c.Waiting,c.Obstacle,c.ParkingSlot,c.RouteIndex,c.DistanceAlongLane,c.Speed,position=new[]{c.Position.X,c.Position.Y},heading=new[]{c.Heading.X,c.Heading.Y},lanes=c.Lanes.Skip(c.RouteIndex).Select(l=>new{l.Key,l.Length,samples=l.Samples.Select(p=>new[]{p.X,p.Y})}),c.Route,c.ReturnRoute}),audit=session.Audit},Json));
+            }
+            catch(Exception error)
+            {
+                if(session!=null)Console.WriteLine(JsonSerializer.Serialize(new{result="REJECTED_EVENT",error=error.Message,
+                    score=session.World.TripsCompleted,seconds=session.World.Time,failed=session.World.Failed,
+                    events=session.CompletedEvents,totalEvents=session.Definition.events.Length,audit=session.Audit},Json));
+                Console.Error.WriteLine(error.Message);Environment.ExitCode=1;
+            }
+            return;
+        }
         int replayArg=Array.IndexOf(args,"--verify-replay");
         if(replayArg>=0)
         {

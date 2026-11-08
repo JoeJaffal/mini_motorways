@@ -1,3 +1,23 @@
+# EMERGENCY STOP — 8 November 2026
+
+User requested stop/save. [Saved state and exact continuation plan](../../docs/training/full-replay-review-2026-11-08/EMERGENCY_HANDOFF.md). Installed74-suite player; source77candidate ahead, final small dedup edit not retested. No active matching diagnostics found. Full replay/parity unvalidated; do not resume automatically. No training.
+
+# Shared-carpark replay repair under verification — 8 November 2026
+
+[Full review](../../docs/training/full-replay-review-2026-11-08/README.md): shared-lot through-routing independently implemented; initial71core/7environment/6reward/10mapPASS. Erased old motorway endpoint cleanup72PASS. v15reaches371/game-over957.05s with shared outside-turn deadlock; approach-boundary correction and bent mixed-flow regression pending. Strict input reconstruction435events still incomplete; partial scores are not a valid835comparison. Installed69-rule player unchanged. No learning, grants or score fitting.
+
+# Movement audit installed; original event parity NOT matched — 8 November 2026
+
+Missing reference movement factor3 and ordinary weighted/motorway minimum lookahead corrected.69 core/7 environment/6 reward-v4/10 map-version PASS; Unity prefix50/330/99 and startup verified. Installed with backup. [Audit and failing original timing gate](../../docs/training/event-parity-2026-11-08/README.md). Original first-delivery estimate17.418vs17.45, but later events still mismatch. No exact original state/full trace or identical behavior claim. No learning.
+
+# Recorded carpark performance repair — 8 November 2026
+
+Boundary reservation bypass and bay merge cycles repaired;67 core/7 environment/6 reward/10 map-version checks PASS. Same297.45s trace improves24/game-over→30/no game-over,330s37/no failure. [Details](../../docs/training/video-performance-repair-2026-11-08/README.md). Full original parity and later trace remain unvalidated; no demand/stock/seed tuning or learning. Player rebuilt/verified/installed with local backup; visible prefix330 reopened paused.
+
+# Custom seed and scenario playback — 8 November 2026
+
+Numeric seed input/CLI and fixed-event JSON playback installed in Original player.58 core checks plus Unity/headless scenario agreement and normal startup smoke pass. [Usage](../Scenarios/README.md), [evidence/limits](../../docs/training/custom-video-scenario-2026-11-08/README.md). Video reconstruction remains draft: original835 vs simulation24 at297.45s,84/780events; not exact recovered seed or validated full parity. Red dynamic parking blockage remains open; no gameplay fix to fit score.
+
 # Current implementation status — 28 October 2026
 
 This is the current snapshot. [VERSIONS.md](VERSIONS.md) specifies the rule sets; [Reports/README.md](../Reports/README.md) indexes the supporting evidence. Earlier reports and the decision history describe their dated milestones and may use smaller test counts.
@@ -45,3 +65,7 @@ The user accepted the current parking entrance and concurrency approximations wh
 - Broader presentation/input differences. Independent viewer drawings are not original game artwork or UI.
 
 `exactReplicaValidated` remains false, and `requireExact:true` refuses a reset. Internal tests show reconstruction consistency, not original-game equivalence. Numeric source hashes are in [REFERENCE_DATA.json](REFERENCE_DATA.json).
+
+8 November fidelity repair: [roundabout concrete conservation](../../docs/training/roundabout-concrete-fix-2026-11-08/README.md) implemented in source;44 shared suites pass. Other approximation entries remain open; current Windows player has not been rebuilt.
+
+8 November repairs: [verification/deployment](../../docs/training/gameplay-fidelity-repairs-2026-11-08/README.md),54 suites plus adapter/player checks. Supersedes parking entrance-center/whole-lot gate and tile-based material descriptions above for current source/Original build. Exact placement/RNG/traffic parity remains open. New recording request now freezes further changes: [comparison audit](../../docs/training/recorded-game-comparison-2026-11-08/README.md),835 original, matched simulator score unavailable.

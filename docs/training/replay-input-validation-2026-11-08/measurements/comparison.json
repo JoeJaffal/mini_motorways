@@ -1,0 +1,213 @@
+{
+  "old-checkpoints.json": [
+    {
+      "video": 14,
+      "passed": false,
+      "differences": {
+        "extraEdges": [
+          [
+            [
+              13,
+              11
+            ],
+            [
+              13,
+              12
+            ]
+          ],
+          [
+            [
+              16,
+              8
+            ],
+            [
+              16,
+              9
+            ]
+          ]
+        ],
+        "missingEdges": [],
+        "extraRoadNodes": [
+          [
+            13,
+            11
+          ],
+          [
+            16,
+            9
+          ]
+        ],
+        "missingRoadNodes": []
+      }
+    },
+    {
+      "video": 16,
+      "passed": false,
+      "differences": {
+        "extraEdges": [
+          [
+            [
+              13,
+              11
+            ],
+            [
+              13,
+              12
+            ]
+          ]
+        ],
+        "missingEdges": [],
+        "extraRoadNodes": [
+          [
+            13,
+            11
+          ]
+        ],
+        "missingRoadNodes": []
+      }
+    },
+    {
+      "video": 18,
+      "passed": true,
+      "differences": {}
+    },
+    {
+      "video": 21,
+      "passed": false,
+      "differences": {
+        "extraEdges": [
+          [
+            [
+              11,
+              11
+            ],
+            [
+              11,
+              12
+            ]
+          ]
+        ],
+        "missingEdges": [],
+        "extraRoadNodes": [
+          [
+            11,
+            11
+          ]
+        ],
+        "missingRoadNodes": []
+      }
+    },
+    {
+      "video": 24,
+      "passed": true,
+      "differences": {}
+    },
+    {
+      "video": 57,
+      "passed": false,
+      "differences": {
+        "extraEdges": [
+          [
+            [
+              10,
+              7
+            ],
+            [
+              10,
+              8
+            ]
+          ],
+          [
+            [
+              18,
+              11
+            ],
+            [
+              19,
+              11
+            ]
+          ]
+        ],
+        "missingEdges": [],
+        "extraRoadNodes": [
+          [
+            10,
+            7
+          ],
+          [
+            18,
+            11
+          ]
+        ],
+        "missingRoadNodes": []
+      }
+    },
+    {
+      "video": 60,
+      "passed": false,
+      "differences": {
+        "extraEdges": [
+          [
+            [
+              10,
+              7
+            ],
+            [
+              10,
+              8
+            ]
+          ]
+        ],
+        "missingEdges": [],
+        "extraRoadNodes": [
+          [
+            10,
+            7
+          ],
+          [
+            18,
+            11
+          ]
+        ],
+        "missingRoadNodes": []
+      }
+    }
+  ],
+  "reviewed-checkpoints.json": [
+    {
+      "video": 14,
+      "passed": true,
+      "differences": {}
+    },
+    {
+      "video": 16,
+      "passed": true,
+      "differences": {}
+    },
+    {
+      "video": 18,
+      "passed": true,
+      "differences": {}
+    },
+    {
+      "video": 21,
+      "passed": true,
+      "differences": {}
+    },
+    {
+      "video": 24,
+      "passed": true,
+      "differences": {}
+    },
+    {
+      "video": 57,
+      "passed": true,
+      "differences": {}
+    },
+    {
+      "video": 60,
+      "passed": true,
+      "differences": {}
+    }
+  ]
+}

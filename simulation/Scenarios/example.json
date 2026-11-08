@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "id": "custom-seed-example",
+  "city": "LosAngeles",
+  "seed": 17,
+  "referenceScore": 0,
+  "duration": 80,
+  "events": [
+    {
+      "at": 0,
+      "kind": "house",
+      "id": "home",
+      "x": 28,
+      "y": 5,
+      "color": 0,
+      "direction": 0
+    },
+    {
+      "at": 0,
+      "kind": "shop",
+      "id": "destination",
+      "x": 35,
+      "y": 3,
+      "color": 0,
+      "layout": 0
+    },
+    {
+      "at": 1,
+      "kind": "draw",
+      "x": 28,
+      "y": 5,
+      "toX": 35,
+      "toY": 5
+    },
+    {
+      "at": 2,
+      "kind": "offer",
+      "offers": [
+        {
+          "type": 0,
+          "amount": 1,
+          "roads": 0
+        }
+      ]
+    },
+    {
+      "at": 2,
+      "kind": "choose",
+      "choice": 0
+    }
+  ]
+}

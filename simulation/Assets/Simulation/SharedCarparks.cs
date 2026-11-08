@@ -51,7 +51,7 @@ namespace MotorwaysSim
                 Layout=layout,SharedLot=true,IsStation=station,Entrance=entrances[0],DrivewayDirection=directions[0],Entrances=entrances,EntranceDirections=directions,
                 Parking=Enumerable.Repeat(-1,9).ToArray(),Platform=platform,SpawnTime=Time,SpawnGraceUntil=Time+Rules.ConstructionGraceSeconds,
                 DemandCountdown=Rules.FirstDemandDelay,NextDemand=Time+Rules.FirstDemandDelay};
-            Buildings.Add(shop);for(int i=0;i<2;i++){var outside=entrances[i]+Directions[directions[i]];if(CanTraverse(outside))Link(entrances[i],outside);}
+            Buildings.Add(shop);for(int i=0;i<2;i++)AttachNativeDrivewaysAt(entrances[i]+Directions[directions[i]]);
             Changed();return shop;
         }
         public Building JoinSharedCarpark(int id,int color)
@@ -62,7 +62,7 @@ namespace MotorwaysSim
                 Layout=first.Layout,SharedLot=true,IsStation=first.IsStation,Entrance=first.Entrance,DrivewayDirection=first.DrivewayDirection,
                 Entrances=first.Entrances,EntranceDirections=first.EntranceDirections,Parking=first.Parking,Platform=first.Platform,
                 SpawnTime=Time,SpawnGraceUntil=Time+Rules.ConstructionGraceSeconds,DemandCountdown=Rules.FirstDemandDelay,NextDemand=Time+Rules.FirstDemandDelay};
-            Buildings.Add(shop);Changed();return shop;
+            Buildings.Add(shop);InitializeDestinationDemand(shop);Changed();return shop;
         }
         bool CompleteSupply(Building shop)
         {

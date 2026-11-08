@@ -813,3 +813,231 @@ best games and held-out scores. Rules, input channels and tools are unchanged.
 No shaped learning run was started. See the
 [design, audit and limitations](../../training/REWARD_SHAPING.md) and history T15
 for rationale/evidence; faster learning remains unmeasured.
+
+## 045 - Model chooses construction directly; route planner is not the target (3 November 2026)
+
+User decision: after discussing how the hybrid generates routes and lets the
+model choose among them, the user explicitly rejected the planner idea and asked
+to put direct model control into the plan. The target learns tools, construction
+locations/endpoints/order, removal/reconnection, upgrades and waiting itself.
+Ordinary execution and legality checks remain environment code; hand-coded route
+generation or strategic action selection must not supply the target's solutions.
+The old hybrid is preserved as a comparison baseline. This supersedes the v2
+planner-led development path, not historical results or accepted simulator rules.
+
+Engineering plan: audit/reuse existing primitive all-tools adapter, version its
+observation/action/return/cursor contracts, prove actual direct construction on
+small withheld lessons, then select algorithms and expand to full network repair.
+Optional offline demonstrations are not a deployed planner and are not required.
+Direct control is a user preference, not measured evidence of higher scores.
+No simulator behavior, rewards or checkpoints changed and no training launched
+by this planning edit. [Roadmap v3](../../docs/training/learning-roadmap-v3-2026-11-03/README.md)
+and training history T63 preserve scope, dependencies and prior evidence.
+
+## 046 - Advance notice before longer training (4 November 2026)
+
+The user explicitly asks to be told before starting longer training. State the
+purpose, expected duration and stopping limits before such a run. Short probes
+must also have explicit bounded budgets, never silently extended. This request
+does not authorize a new long run. AGENTS.md records the continuing instruction.
+For issue8 a disclosed four-run classroom pilot finished35.50s total learning;
+the proposed next8min learning/10min inclusive pilot has NOT started. Historical
+game rewards/checkpoints and simulator rules remain unchanged. See historyT68–T69
+and [lesson evidence/proposal](../../docs/training/direct-learnability-2026-11-04/README.md).
+
+## 047 - User launches training from terminal commands (4 November 2026)
+
+The user approved the proposed classroom pilot but explicitly wants to launch
+training sessions personally: provide the terminal line, then review the results
+they return. This applies to diagnostic learning pilots too. The assistant may
+prepare/test non-training setup, plans and commands but must not start training
+on the user's behalf. AGENTS.md records the standing instruction. Approved pilot
+is four fresh4096-selection/120s runs,480s learning/600s inclusive; no extension or
+promotion. No run started during preparation. See historyT70 and the
+[manual execution plan](../../docs/training/direct-manual-pilot-2026-11-04/README.md).
+
+
+## 048 - Inform user before changes (6 November 2026)
+
+User explicitly requests notice before changing anything. Explain intended
+changes before editing; authorization to record and diagnose the completed run
+does not itself authorize a different lesson, algorithm or training session.
+All training remains user-launched under047. T73 records this review and its
+proposed, unimplemented next diagnosis. No simulator behavior change.
+
+
+## 049 - Preserve best evaluated model and replay for watching (6 November 2026)
+
+User explicitly requests that the NEXT training run save the best because they
+want to watch it. Preserve a checkpoint and matching exact-command replay,
+selection metric/step/hash, plus separate final/error files. Engineering choice:
+fit-only fixed screens, best means best evaluated snapshot, not a passed gate;
+never select on final holdouts. Next-run recorder is opt-in and source-pinned,
+not a training authorization. T77 records tests and a current short fit preview.
+
+
+## 050 - Correct examples for a bounded teaching diagnostic (6 November 2026)
+
+After completedPPOconstructiongates fail, user authorizes the proposed small
+experiment: teach correct trainingexamples, testseparate layouts with model-
+chosen actions. Offlineexamples are allowed for this diagnostic; the user's
+rejection of inference-time planners remains. This is not authorization for
+an automaticlearning session or largerdemonstration pipeline. Engineering
+choice isfit-only set-valuedmaskedactor imitation, originalphysicalsuccess
+checks, declaredteacher/sourcecost and no heldlabels. T85 preserves dataset/
+loss/counters/limits/checks/manualcommand. User still launchesalltraining.
+
+
+## 051 - Public high-score videos as optional teaching references (7 November 2026)
+
+User permits researching YouTube high-score/world-record videos for useful
+buildingactions. Publicsources may inform futureoffline lessons; any video-
+derived label still requires reconstruction/ordinary-rule verification and
+training-only provenance. This does not certify recordclaims, approve a planner
+atplay or authorize assistant-run learning. T86 records metadata-only research
+coverage, knownaccesslimits and unchangedcurrent192-example pilot.
+
+
+## 052 - Consistent-order teaching diagnostic (7 November 2026)
+
+User approves the proposed offline teaching order: unconnected goal first, then
+join the supplied road end. This authorizes a bounded prospective dataset/run
+preparation, not automaticlearning or runtimeforcedactions. Keep ordinarylegal
+moves and modelchosen inference, physicalheldtests and best/replay requirement.
+T88 records narrowercorpus/phaseweighting and matched50passes caveat; the old
+two-direction labels remainphysicallyvalid. Userlaunches alltraining.
+
+
+## 053 - Critical self-review and focused memorization diagnostic (7 November 2026)
+
+User asks us to proceed with the proposed tiny first-click diagnostic and to
+question our reasoning at every material step in this chat, flagging anything
+off or inconsistent with the rules. This is a user preference/authorization for
+preparation and critical review, not assistant-run learning. Engineering choice:
+fixed one-case then gated four-case FIT memorization, warm versus scratch, with
+explicit limits and no inference planner. T91 records prospective criteria,
+checks and limitations; no capability result exists yet.
+
+
+## 054 - Assistant execution until further notice (7 November 2026)
+
+User cannot run commands and explicitly asks assistant to run work autonomously
+while they sleep, through multiple justified roadmap steps. Supersedes decision047
+user-launched-only restriction until further notice. Advance notices, explicit
+bounded experiments, best/replay preservation, critical review and documentation
+remain required. No permission to invent results or relax capability gates.
+T92 begins the prepared tiny first-click experiment under a new launch plan;
+historical T91 preparation stays historical.
+
+
+## 055 - Empty-start full-route lesson audit (engineering choice, 7 November 2026)
+
+Following authorized autonomous roadmap work, distinguish supplied-leg extension
+from independent two-stroke construction. New opt-in FullRouteLesson removes
+the scaffold, ordinary legaltools/stock and observedgoals remain; no runtime
+witness/route hint. Deduplicate visiblegoalpairs/canonical offline labels before
+teaching to avoid contradictions when scaffold-specific states collapse.
+Explicit full-route observation schema; frozen64/44/6input-compatible probe
+not automaticcheckpoint migration/PPOready. T96 records48feasibleFITcases,
+freepolicy results and native demos; no full-route learning launched.
+
+
+## 056 - Return to manual training; full-route preparation (7 November 2026)
+
+User says they can run commands again; assistant commits to providing checked
+commands and user accepts continuing the plan. Restore user-launched training,
+ending decision054temporaryovernight exception (AGENTSupdated).
+Engineering choice:48FITfullroutes/288newstates plus432unchangedextension
+rehearsalstates, freshAdam/valuehead/counters from priorFIT-selectedbest250actors.
+Runtimeactions stay modelchosen/ordinarylegal; onevalidcanonicaloffline order
+isnot forcedatplay. BothBEST/FINALmustpassfullroute+priorretentiongates inboth
+seeds. T97records checks/budgets; preparation doesnotlaunchlearning.
+
+
+## 057 - Approved matched offline recovery comparison (7 November 2026)
+
+User accepts T99targetedfix if it follows the existingplan. Implement within
+roadmapv3directconstruction/offlinecorrections/retention (#8/#12/#15). User
+launches learning. Engineering choices:bothFIT-selectedbest750sources, broader
+124cleanFITcases, source-specificverifiedrepairprefixes, matched96batchallocation
+(clean48/prior48 vsclean24/recovery24/prior48), fixed1000updates/bothseeds,
+FIT-onlybest/replay andunchangedphysicalretentioncriteria plusold48FITguard.
+No runtimeplanner/strategicmask, no algorithm/reward/simulatorchange. T100has
+actualqualification/checks/budgets; no trainingstartsbythispreparation.
+
+
+## 058 - Branch-consistent offline teaching and historical control reuse (engineering, 7 November 2026)
+
+Following userrequestcontinueplan, T102audit finds canonicalmismatch isnot
+alwaysbadfirstroad; continuationwrong-goalfailuresobserved. Within#8/#12/#15,
+acceptcanonical+onephysicallyverifiedsource-preferredFITendpoint andteachits
+matchingremaining-goalcontinuation. No runtimeplanner/maskchange. Reusecompleted
+T100clean controls with hash/version/initialstate/samplerchecks; source750same.
+TwoUSERruns only, fixedmatchedpractice, samephysical/retentiongates. T103records
+non-learningqualification/checks; newlabelsets+stateallocationpackage notpure
+loss-onlyproof. Userlaunchrequired; no trainingbyplanpreparation.
+
+
+## 059 - Controlled goal-relative input ablation (engineering, 8 November 2026)
+
+Within continued#8/#12/#15plan, T105localizesremainingfailures afterbranchdata
+fix. Reuseexistinggoal/cursor-relativefeaturecandidate (+576), not a router or
+newalgorithm. EarlierT78–T84noreliableextensionadvantage remainsvalid; teston
+now-validatedfull-route/branchdata asunprovenhypothesis. SAMEsources/data/loss/
+samplers/FIT-onlyselection/gates ascompletedT103branchcontrols; onlycandidate
+newruns, newcolumnsinitialzero/matchedactor/valueoutputs. T106documentsfixed
+budgetsandno-learningchecks; USERlaunchonly,no trainingbypreparation.
+
+## 060 - User requests gameplay fidelity checks only (8 November 2026)
+
+User reports high-800 original scores versus 200s here and rejects treating that difference as acceptable merely because exact replication was not guaranteed. Checks only; no gameplay changes or training. Fresh internal suites pass but do not validate difficulty. [Investigation](../../docs/training/gameplay-fidelity-check-2026-11-08/README.md) records measured parking access blockage, confirmed provisional supporting-house differences, mixed-direction demand omissions and missing matched original traces. Earlier parking acceptance remains historical; it is not a difficulty-parity approval. No new implementation choice made.
+
+8 November road-stock follow-up to decision060: user reports constant road shortage. [Checks](../../docs/training/gameplay-fidelity-check-2026-11-08/ROAD_STOCK.md) confirm tile-vs-connection base-price mismatch and lost road stock on roundabout conversion/removal; redraw and unused ordinary-road refunds pass. Pending reward/retirement timing remain possible contributors. Checks only, no fix authorized or made.
+
+8 November roundabout follow-up under060: user reports differing behavior. [Checks](../../docs/training/gameplay-fidelity-check-2026-11-08/ROUNDABOUTS.md) document priority comparator mismatch, reconstructed merge/conflict geometry and automatic corner connections. Bare directed ring passes; no matched throughput evidence or implementation change.
+
+## 061 - Begin fidelity repairs and plan recorded-game comparison (8 November 2026)
+
+User authorizes fixes, proposes uploading a complete original-game recording, replicating seed/choices and comparing scores. Accept comparison objective; seed recoverability/full spawn equivalence not guaranteed. Distinguish reconstructed visible-layout/action comparison from verified same-seed parity. First engineering patch conserves concrete replaced by roundabouts, refunds after old surface lane paths clear, protects repeated removal/rebuild;44 suites PASS. [Source/test/deployment record](../../docs/training/roundabout-concrete-fix-2026-11-08/README.md). Running player still old build; no training or score claims. Connection pricing and other fidelity work remain open; historical comparisons stay historical.
+
+## 062 - Broader repairs verified and installed (8 November 2026)
+
+User authorized fixing all reported issues. Connection-based concrete/refunds, parking boundary/lane clearance/merge reservations, supply curves/per-color cadence, demand/failure timing, reward weights and viewer choice pause implemented and tested.54 core,7 environment,6 reward,10 map-version checks; Original installed at usual path after prior app closed, backup local;5 player city smoke passes. [Full changes, intermediate failures and limits](../../docs/training/gameplay-fidelity-repairs-2026-11-08/README.md). Exact RNG/placement/traffic/process parity remains unvalidated; not all original replication work complete. No learning/promotion. Earlier roundabout tile credit superseded by replaced-connection credit. Corner shortcut finding qualified: original permits some such connections.
+
+## 063 - Freeze for exact recorded-game comparison (8 November 2026)
+
+User uploads screen-capture (2).webm and requests exact seed, decisions and timing, score comparison, no changes yet. Stop further gameplay/build/settings edits. Read-only video/local records audit confirms last failure HUD835; initial826 was a paused score and is superseded. No matching seed/journal found in scoped local search; existing exact-mode guard refuses original parity. [Evidence and missing capability](../../docs/training/recorded-game-comparison-2026-11-08/README.md). No matched simulator score, no fabricated zero/delta. Visible-event reconstruction asked asynchronously; no answer/authorization inferred. Required documentation only after freeze; no training.
+
+## 064 - Custom seeding and visible-event replay (8 November 2026)
+
+User explicitly supersedes063 freeze for custom seeding and reconstruction from uploaded video. Add numeric seed input plus JSON scheduled spawns/actions/offers and read-only replay, strict event rejection, display-only reference score. Simulator RNG carrier is video-hash-derived, not recovered original seed; visible reconstruction cannot promise original hidden state or exact timing. No gameplay tuning to835, learning or holdout use.58 core suites pass; video trace remains under validation. [Durable diagnostics and limits](../../docs/training/custom-video-scenario-2026-11-08/README.md).
+
+064 continuation: corrected Unity offer serialization, player/headless agreement verified (draft24/297.45s/84, example4/80/5),58 core PASS; corrected player installed with previous app backup. Draft24vs835 is explicitly preliminary, not original parity; future696 events unvalidated after early simulated game-over. Dynamic red carpark waits>139s, static isolated control clears, so cause remains sequence-dependent/open. No further gameplay-rule tuning or training.
+
+## 065 - Fix recorded early carpark blockage (8 November 2026)
+
+User sees replay difference and authorizes playground tweaks. [Measured repairs](../../docs/training/video-performance-repair-2026-11-08/README.md): boundary lane omission bypassed entrance reservations; first fix exposed bay merge cycle; short merge sweep reservation with already-ahead priority resolves tested cycles. v1/v2 rejected on existing tests; v3 passes67 core,7 environment,6 reward,10 map/version checks. Identical297.45s inputs24/failure→30/no failure, red deliveries2→9;330s37/no failure. No demand/stock/seed tuning, training or original parity claim. Separate v8 trace hits CV diagonal rejection466.65s; original full draft remains historical/unvalidated. Player build pending; prefix330 provided.
+
+065 deployment: corrected Unity player prefix37/330/99 matches headless and normal LA startup20s PASS. Installed after graceful previous-replay close, prior app backed up local; prefix330 reopened visibly/paused. Assembly SHA256896AF3A97E05E4450C5A7B0671CA81669BDFFF7D2DA88B2B9C6A93B636260578. Scope remains carpark traffic repair, not full original parity or accepted entire video trace.
+
+## 066 - Require event-level parity; correct missing movement scale (8 November 2026)
+
+User explicitly requires identical performance, not merely improved comparisons. [Audit and failing observations](../../docs/training/event-parity-2026-11-08/README.md). Installed rule audit confirms omitted movement factor3 (separate from route lane values) and ordinary weighted/motorway minimum lookahead. Correct these without fitting835;69 core PASS. First delivery25.15→17.45 vs original estimated17.418, but second~2.2s late/third~6.3s early: NOT IDENTICAL.330s candidate50trips vs prior37, not original parity. Preserve failed/history fixtures and rewardv3/v4; final player verification pending. No learning, seed fitting or hidden-state match assertion.
+
+066 verification/deployment:69core/7environment/6reward-v4/10map-version PASS; Unity prefix50/330/99 and normal LA20s match/check pass, corrected player installed with local backup and prefix reopened paused. Original observed-event comparator exits1/NOT_MATCHED (2of3timings outside estimated intervals plus tick); exact behavior target remains unfulfilled. v4 ordinary fixture13trips/252.95s/253actions; v3(12)andv2(4) preserved. No training/score-fitting/promotion/source push.
+
+## 067 - Validate replay input before further tuning (8 November 2026)
+
+After user asks what now, engineering prioritizes video input review and makes no simulator-rule change this iteration. [Opening review](../../docs/training/replay-input-validation-2026-11-08/README.md): synthetic native-stub road edits/orphan cells removed, red native driveway west and observed user north turn corrected.16events/60video seconds(~90game). Manual topology/direction/stock checkpoints2/7old→7/7reviewed; player loader6/90/16passes, incidental score not parity. Full trace, exact timing/hidden state and actual wall-clock pause/2x playback remain unvalidated; original-event gate remains NOT_MATCHED. Reviewed JSON opened paused; no learning or binary/core change.
+
+## 068 - Continue full input review independently (8 November 2026)
+
+User accepts reviewed opening and explicitly authorizes continuing using their video and simulator without user timestamp review. [Ongoing full review](../../docs/training/full-replay-review-2026-11-08/README.md):55observed houses vs prior51, navy top/latergreen left entrance corrections,117diagonal candidates screened, dynamic parcel-time filtering and per-second registration. Strict v10–v13 diagnostics preserve failures/rejections, no grants or skipped inputs; v13alive286at832.95s then road-stock rejection, NOT valid835comparison. Native shared-endpoint behavior remains an open question. Engine unchanged/no learning; continue validation.
+
+
+## 069 - Shared-lot transit and erased endpoint cleanup (8 November 2026)
+
+Independent full-video work under068 identifies missing intermediate shared-carpark routing: source far-red is serviced before motorway edit while our prior route forbids any intermediate building. Private read-only rule evidence confirms shared circulation; independent physical-lane transit implemented with doubled path cost and no parking/delivery credit. Initial71core/7environment/6reward/10map checks PASS. Samev14earlyfailure295→335alive then strict material rejection; not a full835comparison. Input-specific rounded-curve false edge corrected, no stock grants. Deferred erased motorway endpoint blocks later spawn; targeted cleanup regression72PASS. Later v15reveals outside-turn shared gate deadlock, approach-boundary fix and bent mixed-flow test in progress. [Chronology, measurements, rejected hypotheses and limits](../../docs/training/full-replay-review-2026-11-08/README.md). No learning; installed69-rule app unchanged pending complete verification. Original parity remains NOT_MATCHED.
+
+
+069 emergency-stop continuation: user explicitly stops all work and requests branch checkpoint/continuation plan. [Handoff](../../docs/training/full-replay-review-2026-11-08/EMERGENCY_HANDOFF.md). Installed74verified; native motorway75PASS; common native endpoint77initialPASS then physical-access dedup correction untested. v20/75partial586at1185.95s,340/406events, NOT full835comparison. Late input corrections identified not applied; no77build or learning. Do not resume automatically.

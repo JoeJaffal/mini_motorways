@@ -31,7 +31,9 @@ namespace MotorwaysSim
             var motorway=new MotorwayState{Id=nextMotorwayId++,Number=number,Start=start,End=end};
             if(replacement==null)Inventory[2]--;
             else {replacement.PendingRemoval=true;replacement.RefundOnRemoval=false;}
-            Motorways.Add(motorway);Changed();FinishMotorwayRemovals();
+            Motorways.Add(motorway);
+            foreach(var endpoint in new[]{start,end})AttachNativeDrivewaysAt(endpoint);
+            Changed();FinishMotorwayRemovals();
             Record(BuildTool.Motorway,start,0,"Built motorway "+number+"; connect surface roads to both endpoints");return true;
         }
         public bool RemoveMotorway(int id)
@@ -52,7 +54,7 @@ namespace MotorwaysSim
             foreach(var m in Motorways.Where(m=>m.PendingRemoval).ToArray())
             {
                 bool used=Cars.Any(c=>c.Stage!=TripStage.Home&&
-                    (c.Lanes.Skip(c.RouteIndex).Any(l=>l.MotorwayId==m.Id)||RouteUsesMotorway(c.ReturnRoute,m)));
+                    (c.Lanes.Skip(c.RouteIndex).Any(l=>l.MotorwayId==m.Id)||c.Stage!=TripStage.Returning&&RouteUsesMotorway(c.ReturnRoute,m)));
                 if(used)continue;Motorways.Remove(m);if(m.RefundOnRemoval)Inventory[2]++;Changed();
             }
         }

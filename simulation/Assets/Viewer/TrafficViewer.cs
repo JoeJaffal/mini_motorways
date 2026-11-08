@@ -26,13 +26,22 @@ namespace MotorwaysSim
         string status="Draw roads from a house driveway to a matching shop entrance.";
         readonly Color land=new Color(.985f,.958f,.85f),road=new Color(1,.998f,.97f),ink=new Color(.25f,.32f,.32f);
         readonly Color[] palette={new Color(.91f,.31f,.38f),new Color(.34f,.64f,.81f),new Color(.35f,.69f,.55f),new Color(.94f,.72f,.29f),new Color(.75f,.43f,.67f),new Color(.96f,.51f,.25f)};
-        Color ColorFor(int c)=>palette[Math.Abs(c)%palette.Length];
+        Color ColorFor(int c)
+        {
+            var colors=customScenario?.Definition.paletteRgb;
+            if(colors!=null&&colors.Length>0)
+            {int rgb=colors[Math.Abs(c)%colors.Length];return new Color(((rgb>>16)&255)/255f,((rgb>>8)&255)/255f,(rgb&255)/255f);}
+            return palette[Math.Abs(c)%palette.Length];
+        }
         void Awake()
         {
             Application.targetFrameRate=60;
             version=appVersion;
             Debug.Log("TRAFFIC_APP_VERSION="+version);
             var launchArgs=Environment.GetCommandLineArgs();
+            int seedArg=Array.IndexOf(launchArgs,"--seed");
+            if(seedArg>=0&&seedArg+1<launchArgs.Length&&int.TryParse(launchArgs[seedArg+1],out var launchSeed))seed=launchSeed;
+            seedText=seed.ToString();
             int mapArg=Array.IndexOf(launchArgs,"--map");
             if(mapArg>=0&&mapArg+1<launchArgs.Length&&Enum.TryParse<ScenarioKind>(launchArgs[mapArg+1],out var launchMap)&&CityCatalog.Maps.Contains(launchMap))chosenMap=launchMap;
             World=new TrafficWorld(seed,false,Rules.ForVersion(version));
@@ -46,6 +55,7 @@ namespace MotorwaysSim
             }
             circle=Shape(true);rounded=Shape(false);
             if(TryReplayLaunch(launchArgs))return;
+            if(TryCustomScenarioLaunch(launchArgs))return;
             var args=Environment.GetCommandLineArgs();
             if(Array.IndexOf(args,"--lab")>=0)World.Reset(42,true);
             int capture=Array.IndexOf(args,"--capture");
@@ -66,8 +76,10 @@ namespace MotorwaysSim
         void Update()
         {
             if(aiReplay!=null){UpdateReplay();return;}
-            if(paused||World.Failed||World.ScenarioRejected)return;accumulator+=Math.Min(Time.unscaledDeltaTime,.25f)*speed;
-            int ticks=0;while(accumulator>=World.Rules.TickSeconds&&ticks++<200){World.Step();accumulator-=(float)World.Rules.TickSeconds;}
+            if(customScenario!=null){UpdateCustomScenario();return;}
+            if(paused||World.Failed||World.ScenarioRejected||World.UpgradeChoices.Count>0){accumulator=0;return;}
+            accumulator+=Math.Min(Time.unscaledDeltaTime,.25f)*speed;
+            int ticks=0;while(accumulator>=World.Rules.TickSeconds&&ticks++<200&&World.UpgradeChoices.Count==0){World.Step();accumulator-=(float)World.Rules.TickSeconds;}
         }
         Texture2D Shape(bool disc)
         {
@@ -253,6 +265,13 @@ namespace MotorwaysSim
             Say(x,y,width,version==GameVersion.Custom?"TRAFFIC LAB CUSTOM":"TRAFFIC LAB ORIGINAL",title);y+=38;
             Say(x,y,width,version==GameVersion.Custom?"YOUR RULES / unlimited construction":"ORIGINAL TARGET / fidelity incomplete",small);y+=29;
             if(aiReplay!=null){ReplayPanel(x,y,width);GUI.EndScrollView();return;}
+            if(customScenario!=null){CustomScenarioPanel(x,y,width);GUI.EndScrollView();return;}
+            seedText=GUI.TextField(new Rect(x,y,width-90,28),seedText);
+            if(GUI.Button(new Rect(x+width-85,y,85,28),"Use seed",button))
+            {if(int.TryParse(seedText,out var typedSeed)){seed=typedSeed;Reset(false);}else status="Enter a whole-number seed.";}y+=34;
+            customScenarioInput=GUI.TextField(new Rect(x,y,width,28),customScenarioInput);y+=33;
+            if(GUI.Button(new Rect(x,y,width,28),"Load custom scenario JSON",button))
+            {try{LoadCustomScenarioFile(customScenarioInput);}catch(Exception error){status=error.Message;}}y+=35;
             if(GUI.Button(new Rect(x,y,width,28),"Map: "+chosenMap,button)){chosenMap=CityCatalog.Maps[(Array.IndexOf(CityCatalog.Maps,chosenMap)+1)%CityCatalog.Maps.Length];Reset(false);}y+=34;
             if(GUI.Button(new Rect(x,y,width,28),variation==MapVariation.SameMap?"Runs: same map, varied events":"Runs: different maps + varied events",button)){variation=variation==MapVariation.SameMap?MapVariation.DifferentMaps:MapVariation.SameMap;Reset(false);}y+=34;
             if(GUI.Button(new Rect(x,y,width,28),"New run / seed "+seed,button)){seed++;Reset(false);}y+=36;
@@ -260,7 +279,7 @@ namespace MotorwaysSim
             Say(x,y,width,World.Rules.UnlimitedConstruction?$"{World.TripsCompleted} trips    |    {World.ConstructionSpent} spent":$"{World.TripsCompleted} trips    |    {World.RoadTilesAvailable} roads",title,35);y+=39;
             Say(x,y,width,$"{World.Time:0.0}s  /  {World.ActiveCars} active cars  /  {World.DemandTotal} pins",small);y+=30;
             if(GUI.Button(new Rect(x,y,80,30),paused?"Play":"Pause",button))paused=!paused;
-            if(GUI.Button(new Rect(x+87,y,80,30),"Step",button)){paused=true;World.Step();}
+            if(GUI.Button(new Rect(x+87,y,80,30),"Step",button)){paused=true;if(World.UpgradeChoices.Count==0)World.Step();}
             if(GUI.Button(new Rect(x+174,y,80,30),speed+"x",button))speed=speed==1?4:speed==4?16:1;y+=39;
             if(GUI.Button(new Rect(x,y,124,28),"Reset city",button))Reset(false);
             if(GUI.Button(new Rect(x+131,y,124,28),"Reference lab",button))Reset(true);y+=35;
@@ -304,7 +323,7 @@ namespace MotorwaysSim
                 selected=c;selectedCar=-1;var point=new Point(p.x/tile,p.y/tile);
                 var car=World.Cars.Where(v=>v.Stage!=TripStage.Home).OrderBy(v=>Point.Distance(v.Position,point)).FirstOrDefault();if(car!=null&&Point.Distance(car.Position,point)<.45)selectedCar=car.Id;e.Use();return;
             }
-            if(aiReplay!=null)return; // Inspection/pan/zoom only: never edit a replay.
+            if(aiReplay!=null||customScenario!=null)return; // Inspection/pan/zoom only for recorded sessions.
             var active=e.button==1?BuildTool.Remove:tool;
             if(active==BuildTool.Motorway)
             {

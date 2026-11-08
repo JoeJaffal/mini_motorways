@@ -1,0 +1,20 @@
+{
+  "reconstructionRevision": "v7",
+  "status": "PRELIMINARY_NOT_VALIDATED_SAME_SEED",
+  "originalFinal": 835,
+  "simulationFinal": 24,
+  "rawDifference": -811,
+  "simulationSeconds": 297.45,
+  "eventsApplied": 84,
+  "eventsTotal": 780,
+  "exactRepeat": true,
+  "originalHudAtVideo170": 49,
+  "originalSeedRecovered": false,
+  "learningRuns": 0,
+  "limits": [
+    "One-second visual sampling and approximate clock",
+    "Full future trace not validated because simulation ends early",
+    "Unknown original RNG/demand phase",
+    "Recorded red carpark stalls; static same-network control clears, mechanism not isolated"
+  ]
+}

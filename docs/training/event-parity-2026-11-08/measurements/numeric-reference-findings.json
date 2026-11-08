@@ -1,0 +1,21 @@
+{
+  "defaultDesiredSpeed": 3,
+  "speedMultiplier": 1,
+  "ordinaryLaneValue": 1,
+  "motorwayLaneValue": 3,
+  "worldUnitsPerTile": 2,
+  "ordinaryMovementTargetTilesPerSecond": 1.5,
+  "ordinaryLookahead": "distance-weighted average",
+  "motorwayLookahead": "minimum",
+  "priorMistake": "Converted lane value treated as final target; separate movement factor omitted",
+  "privateLocalEvidenceHashes": {
+    "Motorways.Processes.VehicleMovementProcess.cs": "38ec953fed2c0c5f4ad800edb36e60bcf2a920d237aba8bb4778c43d67abf296",
+    "Motorways.Models.GameBehaviourModel.cs": "fac1bf29fa03fffe8847400ed80664a136bd76fd10cd5617e2a50b5a89ba94d9",
+    "Motorways.Models.LaneModel.cs": "494ba95de1f85d7b04bcc6d996fdb587349f15aac1fb3c70f262606c739b38ec",
+    "Motorways.Processes.DispatchVehiclesProcess.cs": "063a111a8cabc11980426a8afb9841c409a1cd5b79085c5adea0bff327275fb4",
+    "Motorways.Models.DemandModel.cs": "ef7f664071e0304210b2657a6f83951dcc2734a56beec8434d025a4992056778",
+    "Motorways.Models.HouseModel.cs": "00ee2a97b1875981ebf7d0c47e0f989dfdee720fb9b25987ead0150e2422feb8",
+    "Motorways.Processes.GenerateDemandProcess.cs": "ded97aa6e5eade12d693f66b9a8a5a3403f11104c8aedc5882b14b0b6fe2094b"
+  },
+  "dispatchAudit": "Normal timer chooses lowest path-cost house with waiting vehicle.10second availability is referenced by permanent-balanced demand; do not infer normal timer cooldown."
+}

@@ -7,6 +7,7 @@ from rewards import ConnectionPotential,GAMMA
 from environment import TrafficEnv,CELLS,ROOT
 
 DOTNET='dotnet'
+FIXTURE=ROOT/'docs/training/event-parity-2026-11-08/reward-fixture-v4.json'
 
 
 class PotentialChecks(unittest.TestCase):
@@ -66,7 +67,9 @@ class PotentialChecks(unittest.TestCase):
 
     def test_recorded_normal_game_connects_before_trip_and_keeps_simulation_identical(self):
         import numpy as np
-        path=ROOT/'docs/training/evidence-2026-10-28/runs/seed-1000-parallel-02/best-game.json'
+        # Historical recordings retain their original rules/outcomes. This is a
+        # separately versioned ordinary-command fixture for the repaired rules.
+        path=FIXTURE
         recording=json.loads(path.read_text())
         plain=TrafficEnv(dotnet=DOTNET,seeds=[recording['seed']])
         shaped=TrafficEnv(dotnet=DOTNET,seeds=[recording['seed']],reward_mode='connectivity')
@@ -95,7 +98,7 @@ class PotentialChecks(unittest.TestCase):
         finally:plain.close();shaped.close()
 
     def test_connected_external_cap_retains_live_potential(self):
-        recording=json.loads((ROOT/'docs/training/evidence-2026-10-28/runs/seed-1000-parallel-02/best-game.json').read_text())
+        recording=json.loads(FIXTURE.read_text())
         env=TrafficEnv(dotnet=DOTNET,seeds=[recording['seed']],reward_mode='connectivity')
         try:
             env.reset(seed=42)

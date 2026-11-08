@@ -9,7 +9,7 @@ namespace MotorwaysSim
         static void Check(bool value,string message){if(!value)throw new InvalidOperationException("CHECK FAILED: "+message);}
         public static string Run()
         {
-            int count=0;
+            int count=GameplayFidelityChecks.Run()+CustomScenarioChecks.Run()+ParkingFlowChecks.Run()+RecordedCarparkChecks.Run()+SharedTransitChecks.Run();
             void Test(string name,Action body){body();count++;}
             Test("AI command replay reproduces normal-play transitions",()=>{
                 var world=new TrafficWorld(42,false,Rules.ForVersion(GameVersion.OriginalReference));
@@ -154,6 +154,40 @@ namespace MotorwaysSim
                 car.Stage=TripStage.Home;
                 Check(w.RetiringRoadLinks().Count==0,"pavement disappears when committed trip finishes");
             });
+            Test("Original roundabout conversion conserves replaced concrete",()=>{
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;
+                var w=new TrafficWorld(40,false,rules);w.Reset(40,ScenarioKind.EmptyLab);
+                int startingRoads=w.Inventory[0];w.Inventory[4]=1;var center=new Cell(15,15);
+                foreach(var c in new[]{center,new Cell(15,14),new Cell(14,15),new Cell(15,16),new Cell(16,15)})
+                    Check(w.Build(BuildTool.Road,c),"prepare five replaced roads");
+                Check(w.Inventory[0]==startingRoads,"unconnected markers spend no concrete");
+                foreach(var c in new[]{new Cell(15,14),new Cell(14,15),new Cell(15,16),new Cell(16,15)})Check(w.Connect(center,c),"connect footprint roads");
+                Check(w.Inventory[0]==startingRoads-4,"four ordinary connections spent");
+                for(int i=0;i<3;i++)
+                {
+                    Check(w.Build(BuildTool.Roundabout,center),"convert or rebuild unused circle");
+                    Check(w.Inventory[0]==startingRoads,"replaced roads refunded once");
+                    w.Step(2);Check(w.Inventory[0]==startingRoads,"no repeated refund on ticks");
+                    Check(w.Build(BuildTool.Remove,center),"remove unused circle");
+                    Check(w.Inventory[0]==startingRoads&&w.Inventory[4]==1,"stocks conserved after removal");
+                }
+            });
+            Test("Original roundabout concrete waits for committed surface paths",()=>{
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;
+                var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);
+                var home=w.SpawnBuilding(new Cell(5,10),0,true);var shop=w.SpawnBuilding(new Cell(18,8),0,false);
+                Check(w.DrawRoad(home.Access,shop.Access),"prepare occupied road");
+                shop.DemandCountdown=1e9;shop.NextDemand=1e9;shop.Demand=1;w.Step(1);
+                var center=new Cell(11,10);int before=w.Inventory[0];w.Inventory[4]=1;
+                Check(w.Cars.Any(v=>v.Moving&&v.Lanes.Any(l=>l.Tile==center)),"old path crosses footprint");
+                Check(w.Build(BuildTool.Roundabout,center),"convert occupied road");
+                int replaced=w.Roundabouts[0].ReplacedRoadTiles;
+                Check(replaced==4&&w.Inventory[0]==before,"hold concrete for four replaced connections");
+                Check(w.Build(BuildTool.Remove,center),"queue occupied circle removal");
+                w.Step(6000);
+                Check(w.Inventory[0]==before+replaced&&w.Inventory[4]==1&&w.Roundabouts.Count==0,
+                    "refund old concrete and circle exactly once after traffic clears");
+            });
             Test("roundabout circulation is directed",()=>{
                 var w=Lab();w.Build(BuildTool.Roundabout,new Cell(15,15));
                 var ring=w.Roundabouts[0].Ring;
@@ -203,8 +237,9 @@ namespace MotorwaysSim
             Test("adjacent city junctions release crossing reservations",()=>{
                 var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.OvercrowdingSeconds=100000;
                 var w=new TrafficWorld(42,false,rules);
-                for(int i=0;i<8000;i++){if(i%200==0){w.Inventory[0]=1000;w.BuildReferenceNetwork();}w.Step();}
-                Check(w.TripsCompleted>=60,"seeded connected city continues serving trips: "+w.TripsCompleted);
+                int recentTrips=0;
+                for(int i=0;i<8000;i++){if(i==7200)recentTrips=w.TripsCompleted;if(i%200==0){w.Inventory[0]=1000;w.BuildReferenceNetwork();}w.Step();}
+                Check(w.TripsCompleted>recentTrips,"connected city continues delivering in final40seconds: "+w.TripsCompleted);
                 Check(!w.Cars.Any(c=>c.Waiting>20&&(c.Obstacle=="Crossing vehicle"||c.Obstacle=="Approaching vehicle priority")),"no persistent crossing reservation cycle: "+Summary(w));
             });
             Test("reusable trips and functional parking",()=>{
@@ -290,9 +325,9 @@ namespace MotorwaysSim
                 custom.Water[20,10]=true;custom.Build(BuildTool.Bridge,new Cell(20,10));custom.Build(BuildTool.Roundabout,new Cell(15,15));
                 Check(custom.ConstructionSpent==25,"custom bridge ten and roundabout eight");
                 var original=new TrafficWorld(7,false,Rules.ForVersion(GameVersion.OriginalReference));original.Reset(7,ScenarioKind.EmptyLab);
-                for(int i=0;i<25;i++)Check(original.Build(BuildTool.Road,new Cell(i,10)),"original road stock available");
-                Check(!original.Build(BuildTool.Road,new Cell(26,10)),"original inventory is finite");
-                original.Build(BuildTool.Remove,new Cell(5,10));Check(original.RoadTilesAvailable==1,"original released road reusable");
+                for(int i=0;i<26;i++){Check(original.Build(BuildTool.Road,new Cell(i,10)),"road node available");if(i>0)Check(original.Connect(new Cell(i-1,10),new Cell(i,10)),"paid ordinary connection");}
+                Check(original.Build(BuildTool.Road,new Cell(26,10))&&!original.Connect(new Cell(25,10),new Cell(26,10)),"original connection inventory is finite");
+                original.Build(BuildTool.Remove,new Cell(5,10));Check(original.RoadTilesAvailable==2,"both incident connections refunded");
                 Check(original.ConstructionSpent==0&&original.Rules.ConstructionGraceSeconds==0&&!original.Rules.RejectInfeasibleScenarios,"no custom prices/grace/rejection in original");
                 Check(custom.Rules.ConstructionGraceSeconds==30,"custom grace retained");
                 original.Step(2800);Check(original.UpgradeChoices.Count>0,"original weekly choices appear");
@@ -301,7 +336,8 @@ namespace MotorwaysSim
                 Check(custom.UpgradeChoices.Count==0,"weekly rewards do not leak to custom");
                 var bridge=new TrafficWorld(7,false,Rules.ForVersion(GameVersion.OriginalReference));bridge.Reset(7,ScenarioKind.EmptyLab);
                 for(int i=20;i<23;i++){bridge.Water[i,8]=true;Check(bridge.Build(BuildTool.Bridge,new Cell(i,8)),"one bridge supports a water span");}
-                Check(bridge.Inventory[0]==22&&bridge.Inventory[1]==0,"span uses three road tiles and one bridge");
+                Check(bridge.Connect(new Cell(20,8),new Cell(21,8))&&bridge.Connect(new Cell(21,8),new Cell(22,8)),"connect water span");
+                Check(bridge.Inventory[0]==23&&bridge.Inventory[1]==0,"span uses two connections and one bridge");
                 bridge.Build(BuildTool.Remove,new Cell(21,8));bridge.Build(BuildTool.Remove,new Cell(20,8));
                 Check(bridge.Inventory[1]==0,"split/removal cannot duplicate bridge stock");
                 bridge.Build(BuildTool.Remove,new Cell(22,8));Check(bridge.Inventory[0]==25&&bridge.Inventory[1]==1,"bridge stock returned only after final tile clears");
@@ -408,7 +444,7 @@ namespace MotorwaysSim
                 var a=w.SpawnBuilding(new Cell(10,5),0,false);var b=w.SpawnBuilding(new Cell(20,5),0,false);var c=w.SpawnBuilding(new Cell(30,5),1,false);
                 Check(w.OriginalDemandInterval(a)==w.OriginalDemandInterval(b),"same-color destinations share oscillation phase");
                 Check(w.OriginalDemandInterval(a)!=w.OriginalDemandInterval(c),"different color profiles retain their demand");
-                w.Step(79);Check(a.Demand==0&&b.Demand==0,"no demand before first-pin delay");
+                w.Step(59);Check(a.Demand==0&&b.Demand==0,"no demand before initial three-second delay");
                 w.Step(2);Check(a.Demand==1&&b.Demand==1,"first pins after countdown");
             });
             Test("reference random generator matches installed-assembly oracle vectors",()=>{
@@ -558,7 +594,7 @@ namespace MotorwaysSim
                                 Check(high?across>=2:across<=1,"cars stay in parking strip, outside destination footprints");
                             }
                         }
-                        Check(Point.Distance(enter[0].Samples[0],new Point(access))<1e-9&&Point.Distance(exit.Last().Samples.Last(),new Point(access))<1e-9,"entrance and return continuity");
+                        Check(Point.Distance(enter[0].Samples[0],w.ParkingAccessPoint(shop,access,true))<1e-9&&Point.Distance(exit.Last().Samples.Last(),w.ParkingAccessPoint(shop,access,false))<1e-9,"entrance and return continuity");
                         Check(Point.Distance(enter.Last().Samples.Last(),w.ParkingPoint(shop,slot))<1e-9&&Point.Distance(exit[0].Samples[0],w.ParkingPoint(shop,slot))<1e-9,"stop at bay midpoint");
                         Check(exit[0].ReleasesParking&&!exit.Skip(1).Any(l=>l.ReleasesParking),"release occurs when the bay clears");
                         Check(Point.Distance(enter.Last().Tangent(enter.Last().Length),w.ParkingHeading(shop,access))<1e-7,"parked heading follows diagonal bay");

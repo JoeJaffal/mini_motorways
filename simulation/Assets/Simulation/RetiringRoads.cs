@@ -29,7 +29,7 @@ namespace MotorwaysSim
                     if(lane.IsParking||lane.IsMotorway||lane.IsRoundabout)continue;
                     Include(lane.Previous,lane.Tile);Include(lane.Tile,lane.Next);
                 }
-                for(int i=1;i<car.ReturnRoute.Count;i++)Include(car.ReturnRoute[i-1],car.ReturnRoute[i]);
+                if(car.Stage!=TripStage.Returning)for(int i=1;i<car.ReturnRoute.Count;i++)Include(car.ReturnRoute[i-1],car.ReturnRoute[i]);
             }
             return links;
         }

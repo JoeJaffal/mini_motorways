@@ -27,7 +27,7 @@ namespace MotorwaysSim
                 if(!CanTraverse(c))
                 {
                     if(IsPlayable(c)&&!Blocked[c.X,c.Y]&&BuildingAt(c)==null&&!PendingRemoval[c.X,c.Y]&&
-                        RoundaboutAt(c)==null&&Tile(c)==Infrastructure.None&&(Rules.UnlimitedConstruction||Inventory[0]>0))return true;
+                        RoundaboutAt(c)==null&&Tile(c)==Infrastructure.None)return true;
                     previous=null;continue;
                 }
                 if(previous.HasValue)
