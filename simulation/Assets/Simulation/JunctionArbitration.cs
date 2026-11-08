@@ -20,7 +20,7 @@ namespace MotorwaysSim
         // "below the minimum gap" test cannot fire; a gap within this tolerance counts as tight.
         const double TightGapTolerance=.01;
 
-        struct ObstacleRecord{public ObstacleKind Kind;public int Car;public double Distance;public int Blocker;public string BlockedLane;}
+        struct ObstacleRecord{public ObstacleKind Kind;public int Car;public double Distance;public int Blocker;public string BlockedLane;public Cell BlockedTile;}
 
         // A chunk with two or fewer lanes accepts entry without arbitration (before any light check).
         bool ChunkHasFewLanes(Cell tile)=>Degree(tile)+Motorways.Count(m=>!m.PendingRemoval&&(m.Start==tile||m.End==tile))<=2;
@@ -38,7 +38,7 @@ namespace MotorwaysSim
         {
             why="";blocker=-1;
             if(lane.IsMotorway||ChunkHasFewLanes(lane.Tile))return true;
-            if(!SignalAllows(lane.Tile,lane.Incoming)){why="Traffic light";return false;}
+            if(!LightAllowsEntry(lane)){why="Traffic light";return false;}
             if(car.Shoving&&car.ShovingLane==lane.Key&&IsImmediateNext(car,lane))return true;
             if(!TraversingAllows(car,lane,snapshot,out blocker,out why))return false;
             if(!TryApproach(car,lane.Tile,out _,out double ownDistance))return true;
@@ -47,7 +47,7 @@ namespace MotorwaysSim
             foreach(var other in snapshot)
             {
                 if(other.Car.Id==car.Id||!TryApproach(other.Car,lane.Tile,out var target,out double theirDistance))continue;
-                if(!Conflicts(lane,target)||!SignalAllows(lane.Tile,target.Incoming))continue;
+                if(!Conflicts(lane,target)||!LightAllowsEntry(target))continue;
                 bool theirShove=other.Car.Shoving&&other.Car.ShovingLane==target.Key&&IsImmediateNext(other.Car,target);
                 // Ineligible candidates (uncommitted, or blocked by traffic inside the chunk) sort behind
                 // every eligible one, so they never hold priority over an eligible entry.
@@ -64,7 +64,7 @@ namespace MotorwaysSim
 
         bool TraversingAllows(Vehicle car,Lane lane,List<MotionSnapshot> snapshot,out int blocker,out string why)
         {
-            blocker=-1;why="";bool? space=null;bool green=Signals.ContainsKey(lane.Tile);
+            blocker=-1;why="";bool? space=null;bool green=Signals.ContainsKey(lane.Tile)&&LightPermits(lane);
             foreach(var other in snapshot)
             {
                 if(other.Car.Id==car.Id||other.Lane.IsMotorway||other.Lane.IsParking||other.Lane.Tile!=lane.Tile)continue;
@@ -156,10 +156,15 @@ namespace MotorwaysSim
             if(Rules.Version!=GameVersion.OriginalReference)return;
             var planned=new HashSet<string>();
             for(int i=car.RouteIndex+1;i<car.Lanes.Count;i++){var lane=car.Lanes[i];if(lane.IsJunction||lane.IsRoundabout)planned.Add(lane.Key);}
-            if(keepExisting){foreach(var key in car.ApproachRegistered.Keys.Where(k=>!planned.Contains(k)).ToArray())car.ApproachRegistered.Remove(key);}
-            else car.ApproachRegistered.Clear();
+            if(keepExisting)
+            {
+                foreach(var key in car.ApproachRegistered.Keys.Where(k=>!planned.Contains(k)).ToArray())car.ApproachRegistered.Remove(key);
+                var lanes=new HashSet<string>(car.Lanes.Skip(car.RouteIndex+1).Select(l=>l.Key));
+                foreach(var key in car.CommittedAt.Keys.Where(k=>!lanes.Contains(k)).ToArray())car.CommittedAt.Remove(key);
+            }
+            else{car.ApproachRegistered.Clear();car.CommittedAt.Clear();}
             foreach(var key in planned)if(!car.ApproachRegistered.ContainsKey(key))car.ApproachRegistered[key]=Time+car.Lanes.Count;
-            car.Shoving=false;car.ShovingLane="";
+            car.Shoving=false;car.ShovingLane="";NoteCommitments(car);
         }
     }
 }

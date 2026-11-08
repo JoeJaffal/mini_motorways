@@ -730,6 +730,48 @@ namespace MotorwaysSim
                 for(int tick=0;tick<1200&&!(through.Stage==TripStage.Home&&parking.HasDelivered);tick++)w.Step();
                 Check(through.Stage==TripStage.Home&&parking.HasDelivered,"through car passes and the queued car parks: "+Summary(w));
             });
+            Test("Original traffic lights follow the inspected phase and permission rules",()=>{
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.OvercrowdingSeconds=100000;
+                TrafficWorld Cross(out SignalHandle j)
+                {
+                    var x=new TrafficWorld(42,false,rules);x.Reset(42,ScenarioKind.EmptyLab);x.Inventory[0]=1000;x.Inventory[3]=2;
+                    x.SpawnBuilding(new Cell(5,5),0,true);
+                    Check(x.DrawRoad(new Cell(20,6),new Cell(20,18))&&x.DrawRoad(new Cell(15,12),new Cell(26,12))&&x.Build(BuildTool.TrafficLight,new Cell(20,12)),"signalled crossroads");
+                    j=new SignalHandle(x.Signals[new Cell(20,12)]);return x;
+                }
+                Vehicle Put(TrafficWorld x,Cell from,Cell to,string key,double distance)
+                {
+                    var route=x.FindRoute(from,to);var lanes=x.MakeLanes(route);int index=lanes.FindIndex(l=>l.Key==key);
+                    Check(index>=0,"fixture lane "+key+" on route "+string.Join(",",route));
+                    var v=new Vehicle{Id=x.Cars.Count,HomeId=0,Color=0,Stage=TripStage.Returning,At=route[0],Next=route[1],Route=route,ReturnRoute=new List<Cell>(route),
+                        Lanes=lanes,RouteIndex=index,DistanceAlongLane=distance<0?lanes[index].Length+distance:distance,RouteVersion=x.NetworkVersion};
+                    x.Cars.Add(v);return v;
+                }
+                // 1. A green car blocked inside the light's own chunk ends the nearby-car scan, so one stuck green car
+                // no longer holds the phase while the other direction waits.
+                var w=Cross(out var light);Check(w.DrawRoad(new Cell(23,11),new Cell(23,13))&&w.Build(BuildTool.TrafficLight,new Cell(23,12)),"second light downstream");
+                var east=light.Pair(4);light.Hold(east,false);var downstream=new SignalHandle(w.Signals[new Cell(23,12)]);downstream.Hold(downstream.PairWithout(4),true);
+                foreach(var item in new[]{("22:12:0:0",.886),("22:12:0:0",.511),("22:12:0:0",.136),("21:12:0:0",.761),("21:12:0:0",.386),("21:12:0:0",.011)})
+                    Put(w,new Cell(16,12),new Cell(25,12),item.Item1,item.Item2);
+                Put(w,new Cell(20,16),new Cell(25,12),"20:12:6:0",-.364);                       // same-exit car held inside the junction
+                var green=Put(w,new Cell(16,12),new Cell(25,12),"19:12:0:0",.6);               // the only nearby green car
+                green.ObstacleState=ObstacleKind.BlockingJunction;green.ObstacleDistance=.4;green.BlockingTile=new Cell(20,12);
+                var red=Put(w,new Cell(20,7),new Cell(20,17),"20:11:2:2",.6);
+                light.Release();bool switched=false;
+                for(int i=0;i<300&&!switched;i++){w.Step();switched=light.Permits(6);}
+                Check(switched,"phase switches to the waiting direction: green car '"+green.Obstacle+"' active "+w.Signals[new Cell(20,12)].ActivePair);
+                // 2. American red-light rules: the non-crossing (right) turn may proceed on red.
+                var r=Cross(out var light2);light2.Hold(light2.Pair(4),true);
+                var turning=Put(r,new Cell(20,7),new Cell(16,12),"20:11:2:2",.6);
+                bool turned=false;for(int i=0;i<200&&!turned;i++){r.Step();turned=turning.Moving&&turning.CurrentLane.Tile==new Cell(20,12);}
+                Check(turned,"right turn proceeds on red: '"+turning.Obstacle+"'");
+                // 3. Amber keeps the old active pair's permission.
+                var a=Cross(out var light3);light3.Hold(light3.Pair(4),true);
+                a.Signals[new Cell(20,12)].Amber=true;
+                var crossing=Put(a,new Cell(16,12),new Cell(25,12),"19:12:0:0",.6);
+                bool entered=false;for(int i=0;i<200&&!entered;i++){a.Step();entered=crossing.Moving&&crossing.CurrentLane.Tile==new Cell(20,12);}
+                Check(entered,"green-direction car may enter during amber: '"+crossing.Obstacle+"'");
+            });
             Test("arrival home or in a bay clears the current wait",()=>{
                 // A queued car released within one creeping tick of its journey end arrives
                 // below the 0.02 tiles/s waiting threshold. Its queue wait must not persist
@@ -767,5 +809,16 @@ namespace MotorwaysSim
         }
         public static string Summary(TrafficWorld w)=>$"time={w.Time:0.0}, trips={w.TripsCompleted}, demand={w.DemandTotal}, failed={w.Failed}; "+
             string.Join(" | ",w.Cars.Select(c=>$"{c.Id} {c.Stage} {c.At} lane={c.RouteIndex}/{c.Lanes.Count} x={c.Position.X:0.00} speed={c.Speed:0.000} {c.Obstacle}"));
+    }
+
+    // Test helper: hold or inspect one traffic light's phase.
+    sealed class SignalHandle
+    {
+        readonly SignalState s;public SignalHandle(SignalState signal){s=signal;}
+        public int Pair(int approach)=>s.Pairs.First(p=>(p&(1<<approach))!=0);
+        public int PairWithout(int approach)=>s.Pairs.First(p=>(p&(1<<approach))==0);
+        public void Hold(int pair,bool frozen){s.ActivePair=pair;s.Amber=false;s.Overtime=false;s.Elapsed=frozen?-1e9:0;}
+        public void Release(){s.Elapsed=0;}
+        public bool Permits(int approach)=>!s.Amber&&(s.ActivePair&(1<<approach))!=0;
     }
 }

@@ -141,6 +141,9 @@ namespace MotorwaysSim
         // obstacle, and the blocking-cycle shove permission for one immediate next lane.
         public ObstacleKind ObstacleState;public int ObstacleCar=-1;public double ObstacleDistance;
         public bool Shoving;public string ShovingLane="";
+        // Tile of the junction lane this car was refused at (BlockingJunction), and the game time each planned
+        // lane first entered the first-two-remaining-lanes commitment window (original signal weights).
+        public Cell BlockingTile;public readonly Dictionary<string,double> CommittedAt=new Dictionary<string,double>();
         public Point ParkedPosition,ParkedHeading=new Point(0,-1);
         public bool Moving=>Lanes.Count>0&&RouteIndex<Lanes.Count;
         public Lane CurrentLane=>Moving?Lanes[RouteIndex]:null;
