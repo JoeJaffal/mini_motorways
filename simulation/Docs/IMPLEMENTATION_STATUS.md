@@ -1,3 +1,7 @@
+# Carpark gate ignores red-light cars — 9 November 2026
+
+[Report section 13](../../docs/training/simulator-repairs-2026-11-08/README.md#13-map-3101-a-red-light-car-held-the-carpark-gate-simulator-2026-11-087), [handoff](HANDOFF-2026-11-sim-fix.md). A car waiting at a red light can no longer take or keep the engineered carpark gate (simulator `2026-11-08.7`); this fixes LA 3101's late collapse. 85 core/7 environment/6 reward/10 map PASS. Deterministic lights comparison: 580.3 with lights vs 535.5 without (6 better, 4 worse). `main` carries the same simulator, as a simulator-only copy. No training.
+
 # Carpark chunk arbitration — 8 November 2026
 
 [Report section 12](../../docs/training/simulator-repairs-2026-11-08/README.md#12-carpark-lanes-as-original-chunks-gate-kept-simulator-2026-11-086), [handoff](HANDOFF-2026-11-sim-fix.md). Carpark lanes arbitrated as the original's chunks and registered as inbound lanes (simulator `2026-11-08.6`); removing the engineered gate deadlocks our entrance geometry, so it stays. 84 core/7 environment/6 reward/10 map PASS. Lights comparison 529.7 vs 535.5 without. Ready for the Evolved Rules re-evaluation and gp-5. No training here.

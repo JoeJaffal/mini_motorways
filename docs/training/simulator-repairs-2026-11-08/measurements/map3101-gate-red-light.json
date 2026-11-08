@@ -1,0 +1,90 @@
+{
+ "version": "2026-11-08.7",
+ "map3101_investigation": {
+  "observation_v6": "LA 3101 with lights: 495 trips, game-over 1049.9 s on shop 9 (entrance 10,13) overcrowding with 29 spare road tiles; without lights 684 trips. Trip counts match within a few trips until t=1000.",
+  "mechanism": "From about t=995 the light at 10,12 (directly outside shop 9's entrance) keeps its north/south pair, which correctly wins on weight (a queue of committed cars on the north approach). The head of that queue (car 6) is refused by the engineered carpark gate, owned by car 25, which took the gate while stopped at the red light on the north-east approach and kept it. The green side can never enter the lot, the red side never gets green, and shop 9 overcrowds.",
+  "cause": "Engineered gate assigned and kept by a red-light-blocked car; the original has no gate, and its entry eligibility excludes red-blocked candidates.",
+  "fix": "A car held by a red light before its gate lane may not take or keep the gate; the light is checked before the gate (commit on mohammad, simulator 2026-11-08.7).",
+  "regression": "SimulationChecks 'Original carpark gate is not held by a car waiting at a red light': fails on 2026-11-08.6 (green-side car stuck on 'Carpark entrance merge'), passes on .7."
+ },
+ "lights_comparison": {
+  "protocol": "Deterministic, Mohammad's TRAFFIC_LIGHT_TEST.md design: gp3_final with (gplight:) and without (tree:) lights, LA 3100-3109, archived gp4 code and pinned packages.",
+  "v6": {
+   "lights": 529.7,
+   "noLights": 535.5,
+   "better": 4,
+   "worse": 6
+  },
+  "v7": {
+   "lights": 580.3,
+   "noLights": 535.5,
+   "better": 6,
+   "worse": 4
+  },
+  "maps_v7": [
+   {
+    "map": 3100,
+    "lights": 485,
+    "noLights": 516
+   },
+   {
+    "map": 3101,
+    "lights": 752,
+    "noLights": 684
+   },
+   {
+    "map": 3102,
+    "lights": 702,
+    "noLights": 486
+   },
+   {
+    "map": 3103,
+    "lights": 673,
+    "noLights": 588
+   },
+   {
+    "map": 3104,
+    "lights": 268,
+    "noLights": 257
+   },
+   {
+    "map": 3105,
+    "lights": 554,
+    "noLights": 353
+   },
+   {
+    "map": 3106,
+    "lights": 533,
+    "noLights": 504
+   },
+   {
+    "map": 3107,
+    "lights": 654,
+    "noLights": 669
+   },
+   {
+    "map": 3108,
+    "lights": 599,
+    "noLights": 686
+   },
+   {
+    "map": 3109,
+    "lights": 583,
+    "noLights": 612
+   }
+  ]
+ },
+ "replays_v7": {
+  "v20": {
+   "score": 629,
+   "seconds": 1213.7,
+   "deadlockedSeconds": 0
+  },
+  "v21": {
+   "score": 642,
+   "seconds": 1220,
+   "deadlockedSeconds": 0
+  }
+ },
+ "note": "Agent and replay scores are diagnostics, not a comparison with the original 835; 20 games plus none extra."
+}

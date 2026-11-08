@@ -487,3 +487,29 @@ geometry is rebuilt; that needs layout evidence we do not have.
   or a car waiting over 20 s at the end.
 - Deterministic lights on/off (LA 3100–3109): 529.7 with lights against 535.5 without (4 better,
   6 worse). Both arms rose from `.5` (510.5 / 513.2).
+
+## 13. Map 3101: a red-light car held the carpark gate (simulator `2026-11-08.7`)
+
+**Observation (`.6`).** On LA 3101 the agent with lights made 495 trips against 684 without. Both
+games ran neck and neck until t = 1000. The lights game then collapsed at 1049.9 s on shop 9
+overcrowding, with 29 road tiles unused ([probe](source/M3101.cs)).
+
+**Cause (measured).** From about t = 995, the light at 10,12, directly outside shop 9's entrance,
+keeps its north/south pair. That is correct: a queue of committed cars on the north approach outweighs
+the north-east side. The head of that queue is refused by our engineered carpark gate, which belongs
+to car 25. Car 25 took the gate while stopped at the red light on the north-east approach and kept
+it. The green side can never enter the lot and the red side never gets green. The original has no
+such gate, and its entry eligibility excludes red-blocked candidates.
+
+**Fix** (`ad8e2ca`). A car held by a red light before its gate lane may not take or keep the gate,
+and the light is checked before the gate. A new check (a lit junction outside a lot, frozen red on one
+side) fails on `.6` and passes. 85 core suites ([output](measurements/core-85.txt)), environment 7/7,
+reward 6/6 and five-map 10 runs pass.
+
+**Results** ([details](measurements/map3101-gate-red-light.json)). Deterministic lights on/off on LA
+3100–3109: **580.3 with lights against 535.5 without** (6 better, 4 worse). Map 3101 now gives 752
+against 684. Lights now help, as they did on the old simulator. Replays are unchanged: v20 629, v21
+642, no deadlock.
+
+**`main`.** `main` takes the simulator only, as a copy of `simulation/` and `scripts/` from
+`mohammad` (decision 075 on `main`). It is updated to `.7` in the same way.

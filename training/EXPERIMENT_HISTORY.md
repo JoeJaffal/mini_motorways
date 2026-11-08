@@ -7880,3 +7880,8 @@ From Mohammad's answer (`e58b1fd`), implemented in `470784a` (simulator `2026-11
 ## 8 November 2026 — Carpark chunk arbitration; gate kept, no learning
 
 `59e8830`, simulator `2026-11-08.6`: carpark lanes arbitrated as the original's chunks and registered as inbound lanes (Mohammad's B1–B4). The registration check fails on .5 and passes; 84 core/7 environment/6 reward/10 map PASS. Gate-removal experiment: the eight-car queue deadlocks at the entrance (entering vs drive-through body clearance), so the engineered gate stays. Replays v20 629, v21 642, no deadlock; lights comparison 529.7 vs 535.5 without (20 games). User asked for the Evolved Rules session to start gp-5 on this simulator.
+
+
+## 9 November 2026 — Map 3101 gate lock fixed; lights now help, no learning
+
+Investigation of LA 3101 (lights −189 on .6): a car held at the red light outside shop 9 owned the engineered carpark gate, locking the lot for the green-side queue. `ad8e2ca` (simulator `2026-11-08.7`): red-blocked cars may not take or keep the gate. The new check fails on .6 and passes; 85 core/7 environment/6 reward/10 map PASS. Deterministic lights comparison (20 games): 580.3 vs 535.5 without (6 better, 4 worse; 3101 752 vs 684). `main` redone as simulator-only (`d4c8099`, full merge kept as `main-full-merge`) and pushed to Aya's fork; updated to .7 the same way.

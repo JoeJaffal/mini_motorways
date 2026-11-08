@@ -1133,3 +1133,12 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 
 - Rebuild the entrance and exit connector geometry, then retire the gate.
 - Bay chunks use the simple early-accept branch where they have two or fewer lanes.
+
+
+## 076 - A red-light car may not hold the carpark gate (9 November 2026)
+
+(075 is used on `main` for its simulator-only import.)
+
+**User decision.** Investigate LA 3101 before gp-5 starts; keep `main` simulator-only.
+
+**Engineering choice** ([report section 13](../../docs/training/simulator-repairs-2026-11-08/README.md)). Apply the original's eligibility rule (red-blocked candidates are not eligible) to our engineered carpark gate. A car held by a red light before its gate lane may not take or keep the gate, and the light is checked first. The gate itself remains an engineered compensation, as in decision 074.
