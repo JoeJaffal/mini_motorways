@@ -12,6 +12,8 @@ from concurrent.futures import ThreadPoolExecutor
 import numpy as np
 import pytest
 
+from evolved_rules.tests.helpers import TEST_SIM
+
 from evolved_rules import engine as en
 from evolved_rules import evolve as evo
 from evolved_rules import gp
@@ -168,7 +170,7 @@ def fake(monkeypatch):
     def job(text, seed, cap_s):
         with lock:
             log["plays"].append((text, seed))
-        return log["game"](text, seed, cap_s)
+        return {**log["game"](text, seed, cap_s), "simulator_version": TEST_SIM}
 
     monkeypatch.setattr(en, "_make_worker", lambda: ThreadPoolExecutor(max_workers=1))
     monkeypatch.setattr(en, "_play_job", job)

@@ -41,6 +41,7 @@ new line. One cache file must not be shared by two live engines.
 """
 from __future__ import annotations
 
+import functools
 import json
 import math
 import os
@@ -54,12 +55,13 @@ from pathlib import Path
 from . import evaluate as ev
 from .agent import play_game
 from .gp import TreePolicy, individual_from_text, individual_text
+from .host import default_host_dll, simulator_version
 from .power import SUSPEND_MARGIN_S, suspend_excess  # noqa: F401  (SUSPEND_MARGIN_S re-exported)
 from .verify import build_verifier, verify_recording
 
 # Bump whenever agent behaviour changes (agent, candidates, executor, features, gp, session, state, the
 # simulator): it is part of every cache key, so results from older code are never reused.
-CODE_VERSION = "gp4-v2"  # gp-4: placement, 5-tree texts, driving-only near cars and trigger (older texts as before)
+CODE_VERSION = "gp5-v1"  # gp-5: simulator version in the cache key and game records (agent as gp4-v2)
 DEFAULT_TIMEOUT_S = 900.0  # seconds of awake wall clock per game (a suspend does not count)
 KILL_TIMEOUT_S = 30.0
 POLL_S = 5.0  # the parent's longest single wait, so a suspend is seen within one poll of waking
@@ -80,9 +82,36 @@ def canonical_text(text: str) -> str:
     return individual_text(individual_from_text(text))
 
 
+@functools.lru_cache(maxsize=None)
+def _host_simulator_version(dll: str) -> str:
+    return simulator_version(Path(dll))
+
+
+def _simulator_version() -> str:
+    """The simulatorVersion of the host DLL the workers will load (asked once per DLL path and process)."""
+    return _host_simulator_version(str(default_host_dll()))
+
+
+def cache_version() -> str:
+    """The version part of every cache key: "<CODE_VERSION>@<simulatorVersion>".
+
+    gp-5: results depend on the simulator as much as on the agent, and the simulator changes on its own branch,
+    so a game is only reused for the same agent code and the same simulator version.
+    """
+    return f"{CODE_VERSION}@{_simulator_version()}"
+
+
+def check_simulator(result: dict, what: str) -> None:
+    """EngineError unless the game was played on the simulator version the cache key names."""
+    expected, got = _simulator_version(), result.get("simulator_version")
+    if got != expected:
+        raise EngineError(f"{what} was played on simulator {got!r}, but this engine keys results on {expected!r} "
+                          f"(the host DLL changed while the engine was running?)")
+
+
 def cache_key(text: str, seed: int, cap_s: float) -> tuple[str, str, int, float]:
-    """(CODE_VERSION, text, seed, cap_s) with text already canonical."""
-    return (CODE_VERSION, text, int(seed), float(cap_s))
+    """(cache_version(), text, seed, cap_s) with text already canonical."""
+    return (cache_version(), text, int(seed), float(cap_s))
 
 
 # ---------------------------------------------------------------------------------------------------------
@@ -190,11 +219,12 @@ class Engine:
     # --- cache ---------------------------------------------------------------------------------------------
 
     def _load_cache(self) -> None:
-        """Read every well-formed line; keep those of this CODE_VERSION. A torn line is skipped."""
+        """Read every well-formed line; keep those of this cache_version(). A torn line is skipped."""
         if not self.cache_path.exists():
             return
         data = self.cache_path.read_bytes()
         self._torn_tail = bool(data) and not data.endswith(b"\n")
+        version = cache_version()
         for raw in data.decode("utf-8", errors="replace").splitlines():
             try:
                 line = json.loads(raw)
@@ -202,7 +232,7 @@ class Engine:
                 result = line["result"]
             except (ValueError, KeyError, TypeError):
                 continue
-            if key[0] == CODE_VERSION and isinstance(result, dict):
+            if key[0] == version and isinstance(result, dict):
                 self._cache[key] = result
 
     def _store(self, key: tuple, result: dict) -> dict:
@@ -253,6 +283,7 @@ class Engine:
         if todo:
             def store(i: int, result: dict) -> None:
                 self.games_played += 1
+                check_simulator(result, f"seed {todo[i][2]}")
                 self._store(todo[i], result)
 
             tasks = [(f"seed {k[2]}", _play_job, (k[1], k[2], k[3]), self.timeout_s) for k in todo]
@@ -279,6 +310,7 @@ class Engine:
         summary = out[0]
         self.games_played += 1  # a recorded game is always played, cached or not
         game = {k: v for k, v in summary.items() if k != "verified"}
+        check_simulator(game, f"recorded seed {seed}")
         if key in self._cache:
             if json.loads(json.dumps(game)) != self._cache[key]:
                 raise EngineError(f"recorded game seed {seed} differs from its cached result: not deterministic "
@@ -390,5 +422,5 @@ class Engine:
         self.close()
 
 
-__all__ = ["CODE_VERSION", "DEFAULT_TIMEOUT_S", "POLL_S", "SUSPEND_MARGIN_S", "Engine", "EngineError", "cache_key",
+__all__ = ["CODE_VERSION", "cache_version", "check_simulator", "DEFAULT_TIMEOUT_S", "POLL_S", "SUSPEND_MARGIN_S", "Engine", "EngineError", "cache_key",
            "canonical_text", "suspend_excess"]

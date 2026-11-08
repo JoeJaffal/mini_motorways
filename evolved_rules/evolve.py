@@ -110,9 +110,10 @@ from dataclasses import asdict, dataclass, fields
 from pathlib import Path
 
 from . import evaluate as ev
+from . import engine as en
 from . import gp
 from .engine import CODE_VERSION, Engine
-from .host import ROOT, default_host_dll
+from .host import PRE_VERSIONING, ROOT, default_host_dll
 from .power import keep_awake
 
 EVOLVE_DIR = ROOT / "output" / "evolved_rules" / "evolve"  # /output/ is git-ignored
@@ -702,6 +703,7 @@ def _run_config(cfg: Config) -> dict:
         "python": sys.version,
         "PYTHONHASHSEED": os.environ.get("PYTHONHASHSEED"),
         "host_dll": str(default_host_dll()),
+        "simulator_version": en._simulator_version(),
         "created": time.strftime("%Y-%m-%dT%H:%M:%S"),
         "resumes": [],
     }
@@ -759,6 +761,12 @@ def load(run_dir: Path, overrides: dict | None = None, config_cls=Config) -> tup
         # Refuse before touching the folder: a GP resume of another method's run would log a resume in its
         # config.json, then fail on the foreign checkpoint and mark that run failed.
         raise ValueError(f"{run_dir} holds a {config['method']} run, not a GP run")
+    saved_sim, sim = config.get("simulator_version", PRE_VERSIONING), en._simulator_version()
+    if saved_sim != sim:
+        # gp-5: refuse before touching the folder. Its games, hall, incumbent and checkpoint all come from the
+        # saved simulator; a resume on another one would mix two simulators in one run. Start a new run.
+        raise ValueError(f"{run_dir} was played on simulator {saved_sim!r} but the host DLL is simulator {sim!r}; "
+                         f"a run cannot be resumed on another simulator (start a new run)")
     params = dict(config["params"])
     defaults = config_cls().to_json()  # a run made before a field existed ran with its default
     changed = {}

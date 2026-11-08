@@ -7,6 +7,9 @@ W, H = 50, 30
 Cell = tuple[int, int]
 
 
+TEST_SIM = "test-sim"  # gp-5: the simulator version fake games report (conftest pins the engine to it)
+
+
 def _xy(x: int, y: int) -> dict:
     return {"x": x, "y": y}
 

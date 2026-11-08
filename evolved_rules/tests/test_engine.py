@@ -16,6 +16,8 @@ import pytest
 
 from evolved_rules import engine as en
 from evolved_rules.engine import CODE_VERSION, Engine, EngineError, cache_key, canonical_text
+
+TEST_SIM = "test-sim"  # the simulator version the fake games report (gp-5: part of every cache key)
 from evolved_rules.gp import HAND_TEXT, SEPARATED_TEXT
 
 OTHER_TEXT = "priority: neg(path_len)\nhold: sub(0.0625, road_stock)\nupgrade: offer_roads"
@@ -25,7 +27,7 @@ def _summary(text: str, seed: int, cap_s: float) -> dict:
     """A deterministic fake game summary (shaped like GameResult.summary())."""
     return {"trips": seed % 100 + len(text) % 7, "seconds": cap_s, "commands": 3, "action_counts": {"wait": 3},
             "mean_car_wait": 0.5, "terminated": True, "scenario_seed": seed, "failed_shop": None,
-            "tiles_built": 4, "trips_per_tile": 0.25}
+            "tiles_built": 4, "trips_per_tile": 0.25, "simulator_version": TEST_SIM}
 
 
 @pytest.fixture
@@ -44,6 +46,7 @@ def fake(monkeypatch):
             log["plays"].append((text, seed, cap_s))
         return _summary(text, seed, cap_s)
 
+    monkeypatch.setattr(en, "_simulator_version", lambda: TEST_SIM)
     monkeypatch.setattr(en, "_make_worker", make_worker)
     monkeypatch.setattr(en, "_play_job", job)
     return log
@@ -60,7 +63,8 @@ def test_canonical_text_ignores_layout_and_rejects_non_individuals():
 
 
 def test_cache_key_has_version_text_seed_and_cap():
-    assert cache_key(HAND_TEXT, 7, 3600) == (CODE_VERSION, HAND_TEXT, 7, 3600.0)
+    assert cache_key(HAND_TEXT, 7, 3600) == (en.cache_version(), HAND_TEXT, 7, 3600.0)
+    assert en.cache_version().startswith(CODE_VERSION + "@")
     assert type(cache_key(HAND_TEXT, 7, 3600)[3]) is float
 
 
@@ -96,7 +100,7 @@ def test_results_in_job_order_and_a_cache_hit_avoids_replay(fake, tmp_path):
     assert again.cached(HAND_TEXT, 9) == first[2] and again.cached(HAND_TEXT, 10) is None
     lines = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()]
     assert [(d["version"], d["text"], d["seed"], d["cap_s"]) for d in lines] == [
-        (CODE_VERSION, t, s, 60.0) for t, s in jobs]
+        (f"{CODE_VERSION}@{TEST_SIM}", t, s, 60.0) for t, s in jobs]
 
 
 def test_results_are_independent_copies(fake):
@@ -127,7 +131,7 @@ def test_key_separation_by_cap_and_code_version(fake, tmp_path, monkeypatch):
     bumped.play([(HAND_TEXT, 1)])
     assert bumped.games_played == 1 and len(fake["plays"]) == 3
     versions = [json.loads(line)["version"] for line in path.read_text(encoding="utf-8").splitlines()]
-    assert versions == [CODE_VERSION, CODE_VERSION, "phase2-v-next"]  # append-only: old lines stay
+    assert versions == [f"{CODE_VERSION}@{TEST_SIM}"] * 2 + [f"phase2-v-next@{TEST_SIM}"]  # append-only
     monkeypatch.setattr(en, "CODE_VERSION", CODE_VERSION)
     back = Engine(1, 60.0, path)
     back.play([(HAND_TEXT, 1)])
@@ -352,7 +356,7 @@ def _crash_first_attempt(text, seed, cap_s):
     if not m.exists():
         m.write_text(str(os.getpid()))
         os._exit(3)  # the worker process dies mid-game
-    return {"seed": seed, "pid": os.getpid()}
+    return {"seed": seed, "pid": os.getpid(), "simulator_version": "test-sim"}
 
 
 def _hang_first_attempt(text, seed, cap_s):
@@ -360,7 +364,7 @@ def _hang_first_attempt(text, seed, cap_s):
     if not m.exists():
         m.write_text(str(os.getpid()))
         time.sleep(600)
-    return {"seed": seed, "pid": os.getpid()}
+    return {"seed": seed, "pid": os.getpid(), "simulator_version": "test-sim"}
 
 
 def _hang_with_a_busy_child(text, seed, cap_s):
@@ -371,7 +375,7 @@ def _hang_with_a_busy_child(text, seed, cap_s):
                                  stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         m.write_text(str(child.pid))
         time.sleep(600)
-    return {"seed": seed}
+    return {"seed": seed, "simulator_version": "test-sim"}
 
 
 def _hang_with_a_host(text, seed, cap_s):
@@ -382,7 +386,7 @@ def _hang_with_a_host(text, seed, cap_s):
         host = ev._worker_host()
         m.write_text(str(host._proc.pid))
         time.sleep(600)
-    return {"seed": seed}
+    return {"seed": seed, "simulator_version": "test-sim"}
 
 
 def _pid_alive(pid: int) -> bool:
@@ -413,7 +417,7 @@ def test_real_worker_timeout_kills_the_worker(tmp_path, monkeypatch):
     with Engine(1, 60.0, None, timeout_s=5) as e:
         res = e.play([(HAND_TEXT, 5)])
     hung_pid = int((tmp_path / "hang-5").read_text())
-    assert res == [{"seed": 5, "pid": res[0]["pid"]}] and res[0]["pid"] != hung_pid
+    assert res == [{"seed": 5, "pid": res[0]["pid"], "simulator_version": TEST_SIM}] and res[0]["pid"] != hung_pid
     assert e.retries == 1 and time.monotonic() - t0 < 90
     assert not _pid_alive(hung_pid)
 
@@ -430,7 +434,7 @@ def test_a_timed_out_worker_takes_a_busy_child_with_it(tmp_path, monkeypatch, tr
         no_taskkill = types.SimpleNamespace(run=lambda *a, **k: None, SubprocessError=subprocess.SubprocessError)
         monkeypatch.setattr(en, "subprocess", no_taskkill)  # the engine's taskkill only, not the tests' tasklist
     with Engine(1, 60.0, None, timeout_s=5) as e:
-        assert e.play([(HAND_TEXT, 7)]) == [{"seed": 7}]
+        assert e.play([(HAND_TEXT, 7)]) == [{"seed": 7, "simulator_version": TEST_SIM}]
     child_pid = int((tmp_path / "child-7").read_text())
     try:
         deadline = time.monotonic() + (10 if tree_kill else 3)
@@ -447,8 +451,9 @@ def test_a_timed_out_worker_takes_its_host_with_it(host_dll, tmp_path, monkeypat
     even without taskkill /T; the busy-child test above covers the tree kill)."""
     monkeypatch.setenv("ENGINE_TEST_DIR", str(tmp_path))
     monkeypatch.setattr(en, "_play_job", _hang_with_a_host)
+    monkeypatch.setattr(en, "_simulator_version", lambda: TEST_SIM)  # a host test: conftest does not pin it
     with Engine(1, 60.0, None, timeout_s=8) as e:
-        assert e.play([(HAND_TEXT, 6)]) == [{"seed": 6}]
+        assert e.play([(HAND_TEXT, 6)]) == [{"seed": 6, "simulator_version": TEST_SIM}]
     host_pid = int((tmp_path / "host-6").read_text())
     deadline = time.monotonic() + 20
     while _pid_alive(host_pid) and time.monotonic() < deadline:

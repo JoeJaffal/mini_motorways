@@ -476,7 +476,8 @@ def test_cli_place_tree_flag(fake, tmp_path, monkeypatch):  # noqa: F811
 
 
 def _game_with(trips: int, **counts: int) -> dict:
-    return {"trips": trips, "seconds": 300.0, "commands": 9, "tiles_built": 4, "action_counts": dict(counts)}
+    return {"trips": trips, "seconds": 300.0, "commands": 9, "tiles_built": 4, "action_counts": dict(counts),
+            "simulator_version": "test-sim"}
 
 
 def test_validation_record_counts_placements():

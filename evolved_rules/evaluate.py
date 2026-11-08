@@ -244,6 +244,7 @@ def run_reference(host: Host, seed: int, cap_s: float = DEFAULT_CAP_S) -> dict:
         "road_tiles_at_failure": road_tiles_at_failure,
         "tiles_built": tiles_built,
         "trips_per_tile": trips_per_tile(state.trips, tiles_built),
+        "simulator_version": getattr(host, "simulator_version", None),
         "privileged": True,
         "verified": None,
     }
@@ -377,6 +378,12 @@ def _package_version(name: str) -> str | None:
         return None
 
 
+def _simulator_version() -> str:
+    """The host DLL's simulatorVersion, as the engine keys its cache on it (imported late: engine imports us)."""
+    from . import engine
+    return engine._simulator_version()
+
+
 def _config(policy_name: str, seeds: list[int], cap_s: float, workers: int, verify: bool,
             policy_text: str | None = None) -> dict:
     commit = _git("rev-parse", "HEAD")
@@ -392,6 +399,7 @@ def _config(policy_name: str, seeds: list[int], cap_s: float, workers: int, veri
         "seeds": list(seeds),
         "cap_s": cap_s,
         "host_dll": str(default_host_dll()),
+        "simulator_version": _simulator_version(),
         "workers": workers,
         "verify": verify,
     }

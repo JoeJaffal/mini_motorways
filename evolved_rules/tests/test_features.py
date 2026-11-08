@@ -415,7 +415,7 @@ def test_trips_per_tile_and_summary_fields():
     assert trips_per_tile(57, 37) == 57 / 37 and trips_per_tile(5, 0) == 0.0
     r = GameResult(1, 2.0, 0, 3, {"wait": 3}, 0.0, 0.0, False, True, 7, "LosAngeles", True, None, None, None)
     assert (r.tiles_built, r.trips_per_tile) == (0, 0.0)
-    assert list(r.summary())[-2:] == ["tiles_built", "trips_per_tile"]
+    assert list(r.summary())[-3:] == ["tiles_built", "trips_per_tile", "simulator_version"]
 
 
 def test_play_game_reports_tiles_built(monkeypatch):

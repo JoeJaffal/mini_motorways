@@ -9,6 +9,15 @@ from evolved_rules.host import ROOT, Host, default_host_dll
 MOHAMMAD_REF = "upstream/mohammad"
 
 
+@pytest.fixture(autouse=True)
+def _pinned_simulator_version(request, monkeypatch):
+    """gp-5: outside real-host tests the engine keys results on helpers.TEST_SIM, the version fake games report."""
+    if request.node.get_closest_marker("host") is None:
+        from evolved_rules import engine as en
+        from evolved_rules.tests.helpers import TEST_SIM
+        monkeypatch.setattr(en, "_simulator_version", lambda: TEST_SIM)
+
+
 def pytest_configure(config):
     config.addinivalue_line(
         "markers",

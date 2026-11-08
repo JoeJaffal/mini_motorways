@@ -247,6 +247,7 @@ class GameResult:
     # Phase 2 game metrics (defaults keep positional construction of the Phase 1 fields working).
     tiles_built: int = 0  # road tiles spent by draws (GameSession.tiles_built)
     trips_per_tile: float = 0.0  # trips / tiles_built; 0.0 when no tile was built
+    simulator_version: str | None = None  # gp-5: the host's simulatorVersion (host.PRE_VERSIONING for old hosts)
 
     def summary(self) -> dict:
         """Every field except the recording (JSON-ready)."""
@@ -303,4 +304,5 @@ def play_game(host: Host, seed: int, policy: Policy, cap_s: float = 3600.0, reco
                    if session.recorder is not None else None),
         tiles_built=session.tiles_built,
         trips_per_tile=trips_per_tile(state.trips, session.tiles_built),
+        simulator_version=getattr(host, "simulator_version", None),
     )

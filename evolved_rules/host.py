@@ -5,6 +5,7 @@ import collections
 import json
 import os
 import queue
+import re
 import subprocess
 import threading
 import time
@@ -21,6 +22,12 @@ REPLY_SUSPEND_MARGIN_S = 10.0  # a reply wait this much longer than it asked for
 # The host would also take lab scenarios (ReferenceLab, EmptyLab), any letter case and numbers, but the agent may
 # not play labs, and AiReplaySession only replays these exact names.
 CITY_SCENARIOS = ("LosAngeles", "Beijing", "Tokyo", "DarEsSalaam", "London")
+
+# gp-5: simulator 2026-11-08.1 and later put "simulatorVersion" on every reply and print it for `--version`
+# (simulation/Docs/VERSIONS.md). Older hosts have neither: they are "pre-versioning".
+PRE_VERSIONING = "pre-versioning"
+VERSION_TIMEOUT_S = 60.0
+_VERSION_LINE = re.compile(r"^\d{4}-\d{2}-\d{2}\.\d+$")
 
 
 def check_scenario(scenario) -> str:
@@ -46,12 +53,28 @@ def default_host_dll() -> Path:
     return ROOT /"simulation" / "Headless" / "bin" / "Release" / "net8.0" / "TrafficHost.dll"
 
 
+def simulator_version(dll: Path | None = None, timeout: float = VERSION_TIMEOUT_S) -> str:
+    """The simulator version the host DLL reports (`dotnet DLL --version`), or PRE_VERSIONING.
+
+    stdin is the null device, so an old host (which ignores the argument and reads requests) sees EOF and
+    exits with no output. Any output other than one version line, or a non-zero exit, is PRE_VERSIONING.
+    """
+    try:
+        done = subprocess.run(["dotnet", str(dll or default_host_dll()), "--version"], stdin=subprocess.DEVNULL,
+                              capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=timeout)
+    except (OSError, subprocess.SubprocessError):
+        return PRE_VERSIONING
+    line = (done.stdout or "").strip()
+    return line if done.returncode == 0 and _VERSION_LINE.match(line) else PRE_VERSIONING
+
+
 class Host:
     def __init__(self, dll: Path | None = None, timeout: float = 30.0):
         self._start(["dotnet", str(dll or default_host_dll())], timeout)
 
     def _start(self, argv: list[str], timeout: float) -> None:
         self._timeout = timeout
+        self.simulator_version: str | None = None  # from the last reply (PRE_VERSIONING if it had none)
         self._clock = time.monotonic  # replaced in tests to simulate a suspend
         self._dead = False
         self._stderr_tail: collections.deque[str] = collections.deque(maxlen=STDERR_LINES)
@@ -127,6 +150,8 @@ class Host:
             reply = json.loads(line)
         except json.JSONDecodeError as e:
             raise self._fail(f"unparseable host reply {line[:200]!r}: {e}") from e
+        if isinstance(reply, dict):
+            self.simulator_version = str(reply.get("simulatorVersion") or PRE_VERSIONING)
         if "error" in reply:
             stderr = self._stderr_text()
             raise HostError(f"host error for {request.get('command')!r}: {reply['error']}"
