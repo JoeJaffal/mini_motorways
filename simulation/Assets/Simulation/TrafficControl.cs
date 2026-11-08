@@ -53,13 +53,26 @@ namespace MotorwaysSim
             // Every requester is ranked by its nearest gate point, which for arriving and passing-through
             // cars alike is the start of the outside approach lane (one distance measure, as the original).
             Vehicle nearest=car;double nearestDistance=distance;
-            foreach(var other in Cars.Where(v=>v.Id!=car.Id&&v.Moving))
+            foreach(var other in Cars.Where(v=>v.Id!=car.Id&&v.Moving&&!RedBeforeGate(v,lot,access)))
             {
                 double otherDistance=NearestCarparkGate(other,lot,access);
                 if(otherDistance<nearestDistance-1e-8||Math.Abs(otherDistance-nearestDistance)<1e-8&&other.Id<nearest.Id)
                 {nearest=other;nearestDistance=otherDistance;}
             }
             carparkThroats[key]=nearest.Id;return nearest.Id==car.Id;
+        }
+        // As in the original's entry eligibility, a car held by a red light before it reaches its gate lane is not
+        // eligible to take or keep the gate (it would otherwise lock the car park for the green-side queue).
+        bool RedBeforeGate(Vehicle car,int lot,Cell access)
+        {
+            if(Rules.Version!=GameVersion.OriginalReference||!car.Moving)return false;
+            for(int i=car.RouteIndex+1;i<car.Lanes.Count;i++)
+            {
+                var lane=car.Lanes[i];
+                if(!lane.IsParking&&!lane.IsMotorway&&Signals.ContainsKey(lane.Tile)&&!LightAllowsEntry(lane))return true;
+                if(TryCarparkGate(car,lane,out int candidate,out var point,out _)&&candidate==lot&&point==access)return false;
+            }
+            return false;
         }
         int CarparkGateOwner(Vehicle car,Lane lane)
         {
@@ -83,7 +96,7 @@ namespace MotorwaysSim
                          Point.Distance(car.Position,ParkingAccessPoint(lot,access,false))<Rules.CarLength+.1);
                     bool onApproach=!car.CurrentLane.IsParking&&TryCarparkGate(car,car.CurrentLane,out int approachLot,out var approachAccess,out _)&&
                         approachLot==lot.CarparkId&&approachAccess==access;
-                    keep=onConnector||onApproach||approaching||clearing;
+                    keep=onConnector||onApproach||clearing||approaching&&!RedBeforeGate(car,lot.CarparkId,access);
                 }
                 if(!keep)carparkThroats.Remove(item.Key);
             }
@@ -208,6 +221,9 @@ namespace MotorwaysSim
         {
             why="";blocker=-1;
             if(!lane.IsMotorway&&IsRailCrossingClosed(lane.Tile)){why="Train crossing";return false;}
+            // A red light refuses first, so a red-blocked car never takes the carpark gate.
+            if(Rules.Version==GameVersion.OriginalReference&&CarparkApproachGate&&!lane.IsParking&&!lane.IsMotorway&&Signals.ContainsKey(lane.Tile)&&!LightAllowsEntry(lane))
+            {why="Traffic light";return false;}
             // A gate refusal names its owner so blocking-cycle recovery can see it; a shoving car may pass.
             if(Rules.Version==GameVersion.OriginalReference&&CarparkApproachGate&&!(car.Shoving&&car.ShovingLane==lane.Key&&IsImmediateNext(car,lane))&&!CarparkThroatAllows(car,lane))
             {why="Carpark entrance merge";blocker=CarparkGateOwner(car,lane);return false;}

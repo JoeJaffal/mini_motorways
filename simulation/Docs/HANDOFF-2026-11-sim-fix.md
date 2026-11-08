@@ -7,8 +7,9 @@ Full evidence: [simulator repairs report](../../docs/training/simulator-repairs-
 
 - **Branch:** `mohammad` in worktree `C:\Projects\490 - Project\mm-ppo`. Commits up to `d6c9f27` are on
   both `origin/mohammad` (Aya's fork) and `upstream/mohammad` (Mohammad's). Everything through the
-  `2026-11-08.6` documentation commit is pushed to both remotes. Nothing is merged anywhere.
-- **Simulator version:** `2026-11-08.6`.
+  `2026-11-08.7` documentation commit is pushed to both remotes. Nothing is merged anywhere.
+- **Simulator version:** `2026-11-08.7`. `main` carries the same simulator, as a simulator-only copy of
+  `simulation/` and `scripts/`, without the training work.
 
 ## Commits (in order, after Mohammad's `8a4b447`)
 
@@ -27,7 +28,9 @@ Full evidence: [simulator repairs report](../../docs/training/simulator-repairs-
 | `470784a` | **Original traffic lights:** phase timing, nearby guard with same-chunk early stop, commitment-age weights, amber keeps permission, right on red | **Yes** | No |
 | `b307959` | Documentation of `470784a` | No | No |
 | `59e8830` | **Carpark chunk arbitration:** carpark lanes arbitrated as the original's chunks and registered as inbound lanes; engineered gate kept | **Yes** | No |
-| next commit | Documentation of `59e8830` | No | No |
+| `1fb8f0a`, `091f781` | Documentation of `59e8830`; simulator README aligned with `main` | No | No |
+| `ad8e2ca` | **Carpark gate:** a car held by a red light may not take or keep the gate (fixes LA 3101's late collapse) | **Yes** | No |
+| next commit | Documentation of `ad8e2ca` | No | No |
 
 ## Which old results are invalid
 
@@ -57,7 +60,7 @@ produced on.
 
 ## Headless protocol
 
-Backward compatible from `e6119eb` to `2026-11-08.6`: no request or reply field was removed or
+Backward compatible from `e6119eb` to `2026-11-08.7`: no request or reply field was removed or
 renamed, and the observation layout is unchanged. Additions:
 
 - **`simulatorVersion`** (string) on every reply, including errors and `drawchoices`, and in the
@@ -89,14 +92,14 @@ renamed, and the observation layout is unchanged. Additions:
 
 ```
 dotnet build simulation/Headless -c Release      # DLL used by Evolved Rules
-dotnet simulation/Headless/bin/Release/net8.0/TrafficHost.dll --version   # 2026-11-08.6
-dotnet run --project simulation/Headless/TrafficHost.csproj -- --self-test   # 84 suites PASS
+dotnet simulation/Headless/bin/Release/net8.0/TrafficHost.dll --version   # 2026-11-08.7
+dotnet run --project simulation/Headless/TrafficHost.csproj -- --self-test   # 85 suites PASS
 dotnet build simulation/Headless -c Debug        # DLL used by PPO and the checks below
 python scripts/verify_five_maps.py               # 10 runs PASS (rewrites simulation/Reports/five-map-protocol-checks.json)
 cd training && python test_environment.py && python test_rewards.py   # 7/7 and 6/6; needs an existing tmp/ folder
 ```
 
-All of these were run on simulator `2026-11-08.6` (`59e8830`) and passed: 84 suites, 7/7, 6/6 and 10 runs.
+All of these were run on simulator `2026-11-08.7` (`ad8e2ca`) and passed: 85 suites, 7/7, 6/6 and 10 runs.
 
 ## Not verified or still open
 
@@ -118,13 +121,13 @@ All of these were run on simulator `2026-11-08.6` (`59e8830`) and passed: 84 sui
 ## For the Evolved Rules session: next steps (user request, 8 November 2026)
 
 The user asks you to start retraining: a **fifth genetic-programming generation (gp-5)** on simulator
-`2026-11-08.6`.
+`2026-11-08.7`. Take it from `main` (simulator-only) or `mohammad`; the simulator code is identical.
 
 - Integrate `mohammad` as your resume plan says (ask the user how), rebuild Release, bump `CODE_VERSION`
   and key the cache on `simulatorVersion`.
 - Point `verify.py` at the new engine instead of `e6119eb`.
 - Baselines measured here with your archived `gp4` code and pinned packages (deterministic, LA 3100–3109):
-  `gp3_final` with lights 529.7, without 535.5 (`.5`: 510.5 / 513.2; `.4`: 408.4 / 513.2).
-- Your fixed light rules (take the light package first, place a light where ≥1 car is stopped) still lose on
-  6 of 10 maps. Consider letting gp-5 evolve the light and package decisions instead of fixing them.
+  `gp3_final` with lights 580.3, without 535.5 on `.7` (`.6`: 529.7 / 535.5; `.5`: 510.5 / 513.2; `.4`: 408.4 / 513.2).
+- With the gate fix, the fixed light rules now gain on 6 of 10 maps. gp-5's evolved place tree can still learn
+  when lights help.
 - Follow your standing rules: count games before any run of more than 20, and never select on held-out maps.
