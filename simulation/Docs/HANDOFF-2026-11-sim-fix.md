@@ -93,8 +93,8 @@ All of these were run on source `615f08c` and passed.
 ## Not verified or still open
 
 - **A physical gridlock is unfixed.** Cars can enter a junction without room to leave it; at adjacent
-  junctions this can lock permanently. Replay v21 ends that way. Preventing it is a new rule awaiting
-  the user's decision, so `simulatorVersion` will change again if it is adopted.
+  junctions this can lock permanently. Replay v21 ends that way. The user chose to replicate the
+  original's space-check rule once Mohammad describes it; `simulatorVersion` will change when it lands.
 - **Unity:** the Original player has not been rebuilt with these changes.
 - **Original parity:** exact parity, hidden RNG and action timing are unverified;
   `exactReplicaValidated` is false. Replay scores (v21: 570 trips) are partial diagnostics, not a

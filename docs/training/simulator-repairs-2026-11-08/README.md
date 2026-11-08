@@ -227,8 +227,10 @@ reward v5 6/6 ([output](measurements/rewards-final.txt)); five-map protocol 10 r
 
 **Open:**
 
-- The physical gridlock at adjacent junctions (section 5) needs a user decision on a new
-  "do not block the junction" rule.
+- The physical gridlock at adjacent junctions (section 5): the user decided to replicate the
+  original's space-checking logic, including its conditions, and to obtain it from Mohammad's existing
+  read-only extracts ([request](REQUEST_SPACE_CHECK_RULE.md)) rather than decompile anything here. Not
+  implemented until his answer arrives.
 - The Unity Original player has not been rebuilt. The handoff requires a stable source first, and the
   gridlock decision may change the source.
 - Wall-clock playback synchronisation (handoff step 6) has not been started.
