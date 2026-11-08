@@ -818,6 +818,32 @@ namespace MotorwaysSim
                 Check(d.Stage!=TripStage.Home&&Point.Distance(d.Position,new Point(access))<1,"departing car is held at the entrance by the queue");
                 Check(entered,"arriving car enters beside the held departing car: '"+a.Obstacle+"'");
             });
+            Test("Original carpark gate is not held by a car waiting at a red light",()=>{
+                // LA 3101 on 2026-11-08.6: car 25 took shop 9's gate while stopped at the red light just outside the
+                // entrance, and the green-side queue for the same lot could never enter. As in the original's entry
+                // eligibility, a red-blocked car may not take or keep the gate.
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.OvercrowdingSeconds=100000;
+                var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);w.Inventory[0]=1000;w.Inventory[3]=1;
+                var home=w.SpawnBuilding(new Cell(5,5),0,true);var lot=w.SpawnBuilding(new Cell(20,11),0,false,0,0);
+                Check(lot.Entrance==new Cell(20,13)&&w.DrawRoad(new Cell(19,9),new Cell(19,16))&&w.DrawRoad(new Cell(15,13),new Cell(19,13))&&
+                    w.Build(BuildTool.TrafficLight,new Cell(19,13)),"lit junction outside the lot entrance");
+                lot.Demand=2;lot.DemandCountdown=1e9;
+                var light=new SignalHandle(w.Signals[new Cell(19,13)]);light.Hold(light.Pair(6),true); // north/south green, west red
+                Vehicle Arrive(Cell from,string key,double distance)
+                {
+                    var route=w.FindRoute(from,lot.Entrance);var lanes=w.MakeLanes(route);int index=lanes.FindIndex(l=>l.Key==key);
+                    Check(index>=0,"fixture lane "+key+" on route "+string.Join(",",route));
+                    var v=new Vehicle{Id=w.Cars.Count,HomeId=home.Id,ShopId=lot.Id,Color=0,Stage=TripStage.Outbound,At=route[0],Next=route[1],Route=route,
+                        ReturnRoute=w.FindRoute(lot.Entrance,new Cell(19,9)),DestinationAccess=lot.Entrance,Lanes=lanes,RouteIndex=index,
+                        DistanceAlongLane=distance<0?lanes[index].Length+distance:distance,RouteVersion=w.NetworkVersion};
+                    w.Cars.Add(v);return v;
+                }
+                var red=Arrive(new Cell(16,13),"18:13:0:0",-.1);   // nearest to the gate, but held by the red light
+                var green=Arrive(new Cell(19,10),"19:12:2:2",.5);
+                bool entered=false;for(int i=0;i<400&&!entered;i++){w.Step();entered=green.Moving&&green.CurrentLane.IsParking;}
+                Check(red.Moving&&red.CurrentLane.Key=="18:13:0:0","red-side car still waits at the light: "+(red.Moving?red.CurrentLane.Key:"-"));
+                Check(entered,"green-side car enters the lot: '"+green.Obstacle+"'");
+            });
             Test("arrival home or in a bay clears the current wait",()=>{
                 // A queued car released within one creeping tick of its journey end arrives
                 // below the 0.02 tiles/s waiting threshold. Its queue wait must not persist
