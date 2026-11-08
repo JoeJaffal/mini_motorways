@@ -7855,3 +7855,8 @@ User authorized continuing after Mohammad's [response](../docs/training/full-rep
 
 
 8 November2026 — User authorizes answering REQUEST_SPACE_CHECK_RULE. [Read-only original-rule audit](../docs/training/simulator-repairs-2026-11-08/ORIGINAL_SPACE_CHECK_RULE_ANSWER.md): conditional shared-exit gap chain(5states,>2vehicle lengths), inbound eligible-prefix arbitration, first-two-lane commitment, route-time registration and explicit blocking-cycle shoving verified. Installed green bypass on/straight-entry option off;45swait feature runtime state unverified.191e9adpartial filter is not an exact reproduction. No engine changes, original execution, learning or score claim; private source stays local.
+
+
+## 8 November 2026 — Original junction arbitration replicated, no learning
+
+User decision: replicate the original's space-checking logic, including its conditions, using Mohammad's read-only extract findings ([answer](../docs/training/simulator-repairs-2026-11-08/ORIGINAL_SPACE_CHECK_RULE_ANSWER.md)). Implemented independently for OriginalReference (`c1d23d0`, simulator `2026-11-08.3`). Registration, shared-exit and v21-gridlock checks fail on the previous engine and pass now; 81 core/7 environment/6 reward/10 map PASS. v20 and v21 replays: no deadlocked second; 490 and 488 trips, ended by a newly exposed carpark gate lock at shared lot 20 (gate owned by a car queued behind the requester). Partial diagnostics, not a comparison with 835. Gate lock not fixed; awaiting the user.

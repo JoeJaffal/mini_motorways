@@ -1,3 +1,7 @@
+# Original junction arbitration replicated — 8 November 2026
+
+[Report section 8](../docs/training/simulator-repairs-2026-11-08/README.md#8-original-junction-arbitration-replicated-simulator-2026-11-083), [handoff](../simulation/Docs/HANDOFF-2026-11-sim-fix.md). The original's junction entry arbitration is replicated from Mohammad's rule description (simulator `2026-11-08.3`): lane-count gate, red light, blocking-cycle shove, shared-exit space test, committed-candidate eligibility and route-time registration. Three new checks fail on the previous engine; 81 core/7 environment/6 reward/10 map PASS. Replays v20 and v21 have no deadlock (490 and 488 trips). A carpark gate lock at shared lot 20 now ends them; not fixed, awaiting the user. No training.
+
 # Original junction-rule answer documented — 8 November 2026
 
 [Six-question response](../docs/training/simulator-repairs-2026-11-08/ORIGINAL_SPACE_CHECK_RULE_ANSWER.md). Conditional gap checking plus eligible-prefix arbitration/blocking-cycle recovery confirmed; no blanket box rule or guarantee ofv21fix. Read-only source/config audit only; no engine/fixture/run changes. Runtime45sfeature and stopped-connection geometry remain unresolved.

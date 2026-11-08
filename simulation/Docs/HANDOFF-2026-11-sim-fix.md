@@ -5,10 +5,10 @@ Full evidence: [simulator repairs report](../../docs/training/simulator-repairs-
 
 ## Where it is
 
-- **Branch:** `mohammad` in worktree `C:\Projects\490 - Project\mm-ppo`. The commits below are local
-  only: not pushed (the fork `origin/mohammad` is at `1779c0b`, Mohammad's `upstream/mohammad` at
-  `8a4b447`) and not merged anywhere.
-- **Simulator version:** `2026-11-08.2`.
+- **Branch:** `mohammad` in worktree `C:\Projects\490 - Project\mm-ppo`. Commits up to `d6c9f27` are on
+  both `origin/mohammad` (Aya's fork) and `upstream/mohammad` (Mohammad's). `c1d23d0` and its
+  documentation commit are local until pushed. Nothing is merged anywhere.
+- **Simulator version:** `2026-11-08.3`.
 
 ## Commits (in order, after Mohammad's `8a4b447`)
 
@@ -19,7 +19,9 @@ Full evidence: [simulator repairs report](../../docs/training/simulator-repairs-
 | `1b27821` | `simulatorVersion` on every reply; `TrafficHost --version` | No | Yes, additive |
 | `191e9ad` | A car blocked by a stationary conflicting vehicle no longer holds junction priority (removes a permanent roundabout/junction deadlock) | **Yes** | No |
 | `615f08c` | Replay input v21 regenerated from the builder with the seven handoff corrections | No (replay data only) | No |
-| next commit | Documentation, including this note | No | No |
+| `93367dc`, `acdf0ff`, `d6c9f27` | Documentation, the space-check request and Mohammad's answer | No | No |
+| `c1d23d0` | **Original junction entry arbitration** (lane-count gate, shove, shared-exit space test, eligibility, route-time registration) for OriginalReference | **Yes** | No |
+| next commit | Documentation of `c1d23d0` | No | No |
 
 ## Which old results are invalid
 
@@ -41,7 +43,7 @@ gameplay changes since `e6119eb`:
   free; two native stubs meeting at an empty cell join for free, including at spawn time. This alone
   changes ordinary games: the reward fixture went from 13 trips/game-over to 30 trips/game-over at
   305 s.
-- **Junction priority (`191e9ad`):** changes decisions in heavy traffic and removes a deadlock form.
+- **Junction priority (`191e9ad`), then the original arbitration (`c1d23d0`):** OriginalReference junction entry now follows the original's documented rules. This changes decisions wherever cars meet at junctions, including lights: green ignores crossing geometry, and a light on a tile with 2 or fewer lanes has no effect.
 
 **PPO results** recorded on the 74-suite or older simulator are likewise historical: the native-join
 rules and `191e9ad` change ordinary games. Old results stay valid only for the simulator they were
@@ -49,7 +51,7 @@ produced on.
 
 ## Headless protocol
 
-Backward compatible from `e6119eb` to `2026-11-08.2`: no request or reply field was removed or
+Backward compatible from `e6119eb` to `2026-11-08.3`: no request or reply field was removed or
 renamed, and the observation layout is unchanged. Additions:
 
 - **`simulatorVersion`** (string) on every reply, including errors and `drawchoices`, and in the
@@ -81,20 +83,22 @@ renamed, and the observation layout is unchanged. Additions:
 
 ```
 dotnet build simulation/Headless -c Release      # DLL used by Evolved Rules
-dotnet simulation/Headless/bin/Release/net8.0/TrafficHost.dll --version   # 2026-11-08.2
-dotnet run --project simulation/Headless/TrafficHost.csproj -- --self-test   # 79 suites PASS
+dotnet simulation/Headless/bin/Release/net8.0/TrafficHost.dll --version   # 2026-11-08.3
+dotnet run --project simulation/Headless/TrafficHost.csproj -- --self-test   # 81 suites PASS
 dotnet build simulation/Headless -c Debug        # DLL used by PPO and the checks below
 python scripts/verify_five_maps.py               # 10 runs PASS (rewrites simulation/Reports/five-map-protocol-checks.json)
 cd training && python test_environment.py && python test_rewards.py   # 7/7 and 6/6; needs an existing tmp/ folder
 ```
 
-All of these were run on source `615f08c` and passed.
+All of these were run on simulator `2026-11-08.3` (`c1d23d0`) and passed: 81 suites, 7/7, 6/6 and 10 runs.
 
 ## Not verified or still open
 
-- **A physical gridlock is unfixed.** Cars can enter a junction without room to leave it; at adjacent
-  junctions this can lock permanently. Replay v21 ends that way. The user chose to replicate the
-  original's space-check rule once Mohammad describes it; `simulatorVersion` will change when it lands.
+- **A carpark gate lock is unfixed.** A carpark approach gate can be owned by a car queued behind the
+  car that needs it, at shared lots with through traffic. This ends replays v20 and v21 on
+  `2026-11-08.3`. It awaits the user's decision; the version will change if it is fixed.
+- **Partial replication:** the original arbitration is replicated as described, but all-leader
+  "pushing", the stopped-candidate geometry argument and the 45 s escape are not implemented.
 - **Unity:** the Original player has not been rebuilt with these changes.
 - **Original parity:** exact parity, hidden RNG and action timing are unverified;
   `exactReplicaValidated` is false. Replay scores (v21: 570 trips) are partial diagnostics, not a

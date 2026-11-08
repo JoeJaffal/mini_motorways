@@ -1066,3 +1066,22 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 
 
 8 November2026 — User authorizes answering REQUEST_SPACE_CHECK_RULE. [Read-only original-rule audit](../../docs/training/simulator-repairs-2026-11-08/ORIGINAL_SPACE_CHECK_RULE_ANSWER.md): conditional shared-exit gap chain(5states,>2vehicle lengths), inbound eligible-prefix arbitration, first-two-lane commitment, route-time registration and explicit blocking-cycle shoving verified. Installed green bypass on/straight-entry option off;45swait feature runtime state unverified.191e9adpartial filter is not an exact reproduction. No engine changes, original execution, learning or score claim; private source stays local.
+
+
+## 071 - Replicate the original's junction entry arbitration (8 November 2026)
+
+**User decision.** Replicate the original's space-checking logic, including its conditions, for the adjacent-junction gridlock, using Mohammad's existing read-only extracts rather than decompiling anything on this machine.
+
+**Evidence.** [Mohammad's answer](../../docs/training/simulator-repairs-2026-11-08/ORIGINAL_SPACE_CHECK_RULE_ANSWER.md): there is no blanket box rule; the original uses a conditional shared-exit space test, eligibility partitioning and blocking-cycle shoving.
+
+**Engineering choices** ([report section 8](../../docs/training/simulator-repairs-2026-11-08/README.md)):
+
+- OriginalReference only; Custom keeps the previous rules.
+- A tight-gap tolerance of 0.01 tiles, because our follower holds the minimum gap exactly.
+- The same-exit geometry check is kept after the space test, because our engine does not follow across merging lanes.
+- Return routes are registered like any route.
+- Not implemented: all-leader pushing, the stopped-candidate geometry argument and the 45 s escape.
+
+**Supersedes** decision 070's stationary-occupant priority rule for OriginalReference.
+
+**Open question for the user.** The carpark approach-gate lock at shared lot 20 (gate owned by a car queued behind the requester) ends the replays.

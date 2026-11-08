@@ -244,3 +244,81 @@ No training, model evaluation, deployment, push or original-game write was done 
 ## Original rule response — 8 November2026
 
 [Answer to all six questions](ORIGINAL_SPACE_CHECK_RULE_ANSWER.md), numeric findings/hashes archived. Static read-only audit confirms conditional shared-exit space checking, eligibility partition, commitment/registration timing and cycle-based shoving. No blanket-clearance engine patch or original/v21execution. Runtime timeout feature and stopped-connection geometry remain uncertain.
+
+## 8. Original junction arbitration replicated (simulator `2026-11-08.3`)
+
+**User decision.** For the v21 gridlock, the user chose to replicate the original's space-checking
+logic, including its conditions, from Mohammad's read-only extracts. Nothing was decompiled on this
+machine. Mohammad's [answer](ORIGINAL_SPACE_CHECK_RULE_ANSWER.md) shows the original has no blanket
+"don't block the box" rule. It has a conditional shared-exit space test, committed-candidate
+eligibility and blocking-cycle recovery ("shoving").
+
+**Implementation** (`JunctionArbitration.cs`, commit `c1d23d0`, `OriginalReference` only; Custom
+keeps the previous logic, including `191e9ad`). Entry order:
+
+1. A chunk with ≤2 lanes accepts at once. This check comes before the light, so a light on a 2-lane
+   tile has no effect.
+2. A red light rejects.
+3. A shoving car is accepted for its immediate next lane.
+4. Cars inside the junction, the "traversing" vehicles. Those on their last lane are ignored.
+   - **Same exit:** the space test, then the crossing geometry; no near-exit release.
+   - **Different exit:** released within the last car length; otherwise the geometry check, which is
+     skipped on green (installed `greenLightsIgnoreCollisions`).
+5. Inbound reservations. Only committed candidates (chosen lane among the next two) that are neither
+   red-blocked nor blocked by traversing vehicles, or that are shoving, can rank earlier. Order:
+   shove, then ring membership, then distance, then registration time.
+
+**Space test.** Walks the entering car's previous-tick obstacle chain over at most 5 states: leader,
+blocking junction, route end or none. Entry is allowed when usable distance strictly exceeds 2 car
+lengths.
+
+**Registration.** Stamped at route assignment as game time plus the path's lane count, kept across
+route refreshes and removed on entering the lane.
+
+**Cycle recovery.** Each tick, links are followed from junction-blocked cars to their blocker, and
+from tightly queued slow cars (below 0.1 tiles/s) to their leader. Junction-blocked members of an
+actual cycle shove. The flag clears on the next lane change.
+
+**Interpretations and omissions (marked in the code).**
+
+- Our follower holds exactly the 0.05-tile minimum gap, so a gap within 0.01 tiles of it counts as
+  "below the minimum gap".
+- The leader-in-chunk discount subtracts only the leader's remaining in-chunk distance beyond one car
+  length.
+- Return routes are registered like any route assignment.
+- The same-exit geometry is still applied after the space test, because our engine does not follow
+  across merging lanes.
+- Not implemented: the effect of all-leader "pushing" cycles, the stopped-candidate geometry argument,
+  and the 45 s escape (enablement unverified). Train-crossing extras keep the existing mechanism.
+
+**Tests (each fails on the previous engine, passes now).**
+
+| Check | Failure on the previous engine |
+| --- | --- |
+| A distant junction is registered at departure, at `JourneyStarted` + lane count | not registered |
+| A car heading for the same exit as a car stuck inside the junction (held by a red light downstream) waits outside | it drove into the junction |
+| The replay-v21 adjacent-junction gridlock, four cars at their t = 1119 offsets, clears | all four stuck after 60 s |
+
+The earlier five-car roundabout regression still passes: the blocked car is now ineligible. Core: 81
+suites PASS ([output](measurements/core-81.txt)). Environment 7/7, reward v5 6/6 (the fixture game is
+unchanged), five-map 10 runs PASS, Release build 0 warnings.
+
+**Replays** ([results](measurements/original-arbitration-results.json); partial diagnostics, not a
+comparison with 835). The deadlock probe now calls the engine's own `MayEnter`.
+
+| Candidate | `2026-11-08.2` | `2026-11-08.3` | Deadlocked seconds |
+| --- | --- | --- | --- |
+| v20 | 1176.95 s, 580 trips | 1104.2 s, 490 trips | 0 |
+| v21 | 1166.05 s, 570 trips (gridlock from 1119) | 1104.2 s, 488 trips | 0 |
+
+25–26 cars shove per replay, the first at t = 803.45 ([ShoveCount](source/ShoveCount.cs)).
+
+**New finding: a carpark gate lock (not fixed).** The `2026-11-08.3` replays now end on red 20 at
+16,16, a shared lot that becomes unreachable from about t = 973. Car 34, passing through the lot, is
+first on the outside approach `20:18:2:4`, but gate 19,18 is owned by car 10, queued behind it. The
+gate rule measures an outbound car's distance to the start of its final road lane (car 10: 0.157)
+and a connector user's distance to the connector (car 34: 0.78), so the car behind ranks nearer.
+Neither can move. This is Mohammad's engineered approach-gate rule combined with shared transit; the
+arbitration change does not touch it, and no link in the lock is a junction decision. It was not
+measured on the previous engine. It awaits the user's decision
+([GateInspect](source/GateInspect.cs)).

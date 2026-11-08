@@ -1,4 +1,4 @@
-// Diagnostic only. Recomputes each moving car's binding constraint exactly as UpdateVehicles/MayEnter do,
+// Diagnostic only. Records each stopped car's queue leader and the engine MayEnter refusal (with its blocker),
 // but records the blocking car, then extracts the deadlocked set (greatest set of stopped cars each held
 // by a member). Usage: BlockerProbe scenario.json fromTime toTime everySeconds [wallCap]
 using System;using System.Collections.Generic;using System.Linq;using System.Text.Json;using System.IO;using MotorwaysSim;
@@ -16,20 +16,8 @@ public List<(int car,int blocker,string kind,string why,string lane)> Blockers()
   if(car.Stage==TripStage.Outbound&&car.RouteIndex==car.Lanes.Count-1&&!CarparkThroatAllows(car,state.Lane))result.Add((car.Id,-1,"gate","Carpark entrance merge",state.Lane.Key));
   double aheadDistance=state.Lane.Length-state.Distance;
   for(int i=car.RouteIndex+1;i<Math.Min(car.Lanes.Count,car.RouteIndex+7);i++){var lane=car.Lanes[i];
-   if(aheadDistance<Rules.LookaheadDistance&&!MayEnter(car,lane,snapshot,out string why)){
-    bool entrance=lane.IsParking&&lane.Key.Contains(":entrance:")||car.Stage==TripStage.Outbound&&i==car.Lanes.Count-1&&!lane.IsParking;
-    double stop=Math.Max(0,aheadDistance-(entrance?Rules.CarLength+.05:Rules.CarLength*.35));
-    {int b=-1;string kind="rule";
-     foreach(var other in snapshot){if(other.Car.Id==car.Id)continue;if(other.Distance<=other.Lane.Length-Rules.CarLength&&Conflicts(lane,other.Lane)){b=other.Car.Id;kind="conflict";break;}}
-     if(b<0&&TryApproach(car,lane.Tile,out _,out double own))foreach(var other in snapshot){
-      if(other.Car.Id==car.Id||!TryApproach(other.Car,lane.Tile,out var target,out double theirs))continue;
-      if(!Conflicts(lane,target)||!SignalAllows(lane.Tile,target.Incoming))continue;
-      bool ownRing=OnTargetRoundabout(car,lane),theirRing=OnTargetRoundabout(other.Car,lane);
-      double ownReg=car.ApproachRegistered.TryGetValue(lane.Key,out var t1)?t1:Time,theirReg=other.Car.ApproachRegistered.TryGetValue(target.Key,out var t2)?t2:Time;
-      bool priority=theirRing&&!ownRing||theirRing==ownRing&&(theirs<own-1e-6||Math.Abs(theirs-own)<1e-6&&theirReg<ownReg||Math.Abs(theirs-own)<1e-6&&theirReg==ownReg&&other.Car.Id<car.Id);
-      if(priority){b=other.Car.Id;kind="priority";break;}}
-     result.Add((car.Id,b,kind,why,lane.Key));}
-    break;}
+   if(aheadDistance<Rules.LookaheadDistance&&!MayEnter(car,lane,snapshot,out string why,out int b)){
+    result.Add((car.Id,b,b>=0?"entry":"rule",why,lane.Key));break;}
    aheadDistance+=lane.Length;if(aheadDistance>Rules.LookaheadDistance)break;}}
  return result;}}}
 class BlockerProbe{static void Main(string[] a){
