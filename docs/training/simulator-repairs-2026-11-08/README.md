@@ -87,3 +87,52 @@ The headless README documents the field and the `waiting`/`meanWaiting` meanings
 **Test.** `scripts/verify_five_maps.py` now requires `--version` to print a non-empty string, and every
 reply to carry the same value. It failed on the previous host (`--version must print the simulator
 version`) and passes now. Core suites: 78 PASS. Reward and environment checks: PASS.
+
+## 4. Roundabout 19,9 queue: permanent yield-cycle deadlock, cause proven and fixed
+
+**Reproduced.** On the unfixed source, replay v20 ends at game-over 1185.95 s with 586 trips and
+340/406 events, identical to the handoff's 75-suite run. All waits over 20 s begin after t = 1145, on
+the approaches and ring around junction 19,7 and roundabout 19,9 (ring 19,8, 18,9, 19,10, 20,9).
+
+**Cause (measured).** A probe ([BlockerProbe](source/BlockerProbe.cs)) recomputes each stopped car's
+binding constraint exactly as `UpdateVehicles`/`MayEnter` do (queue gap, conflicting occupant,
+approach priority), records the car responsible and extracts the deadlocked set: the greatest set of
+stopped cars each held by a member. That set is empty until t = 1163, then never empties and grows to
+27 cars by game-over ([evidence](measurements/roundabout-deadlock-v20.json)). At t = 1163:
+
+- cars 28 and 22, leaving the ring at 19,8 northbound, yield **approach priority** to car 6, which is
+  closer to junction 19,7;
+- car 6 cannot enter, because car 52 is **stopped inside** junction 19,7 on a conflicting lane
+  (`Conflicts(19:7:2:0, 19:7:2:2)` is true);
+- car 52 queues behind car 15, which cannot enter the ring because car 22 occupies the conflicting
+  ring-exit lane (`Conflicts(19:8:2:3, 19:8:5:6)` is true);
+- the northbound exit does **not** conflict with car 52 (`Conflicts(19:7:6:6, 19:7:2:2)` is false),
+  so only car 6's priority keeps 22 and 28 on the ring.
+
+The handoff's future-junction/yield-cycle hypothesis is therefore confirmed. A car blocked by a
+stationary conflicting vehicle kept priority, and the cycle closed through an adjacent junction and
+ring. **Correction:** this deadlock did not cause v20's game-over. Red shared destination 35 at 11,18
+was already overcrowded from about t = 1116. The 20–38 s waits are the time deadlocked cars spent
+before the game ended.
+
+**Fix.** In `MayEnter`'s priority comparison, a car does not hold priority while its own target is
+occupied by a **stationary** (speed < 0.02) vehicle on a conflicting lane. Physical conflict checks
+are unchanged, so no new overlaps are possible. A broader candidate (ignore any conflicting
+occupant, moving or not) also removed the deadlock but changed far more decisions (v20 game-over
+1104.3 s, 492 trips), so it was rejected.
+
+**Regression.** New suite "blocked approach priority cannot deadlock a junction beside a roundabout"
+rebuilds the five-car configuration at the measured lane offsets. It fails on the unfixed engine
+(all five cars stuck after 60 s) and passes with the fix. A first four-car version, without the car
+ahead of D, passed on the unfixed engine; it was diagnosed ([trace](source/CarTrace.cs)) and not used.
+
+**Measured effect.** v20 with the fix: no deadlock at any second, game-over 1176.95 s, 580 trips. The
+first divergence from the unfixed run is at t = 1007.65, where car 14 near 26,15 no longer yields to a
+car held by a stationary vehicle ([Timeline](source/Timeline.cs)). Later differences are chaotic
+divergence. Neither replay score is a fidelity target or a validated comparison with 835. Core suites:
+79 PASS. Reward v5, environment and five-map checks are unchanged. **Simulator version:
+`2026-11-08.2`.**
+
+**Gameplay consequence.** Any game in which an approaching car's conflicting lane is held by a stopped
+vehicle can now resolve differently, and permanent junction/roundabout deadlocks of this form no
+longer occur. Results from `2026-11-08.1` and earlier are not comparable in heavy traffic.

@@ -617,6 +617,34 @@ namespace MotorwaysSim
                 for(int i=0;i<4000&&!freed;i++){normal.Step();freed=normal.Cars.Any(c=>c.Stage==TripStage.LeavingParking&&c.ParkingSlot==-1);}
                 Check(freed,"bay becomes available before vehicle leaves the lot");
             });
+            Test("blocked approach priority cannot deadlock a junction beside a roundabout",()=>{
+                // Reconstructs the replay-v20 deadlock at junction 19,7 and ring cell 19,8 (t=1163) with
+                // the same lane offsets: A turns east at junction J but is blocked by B, stopped inside J;
+                // B queues behind C, which waits to enter the ring at T; D, leaving the ring at T, yields to
+                // A's closer approach, and E ahead of D keeps D on the conflicting part of the ring lane. Without the rule
+                // every car waits for the next one forever.
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.OvercrowdingSeconds=100000;
+                var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);w.Inventory[0]=1000;w.Inventory[4]=1;
+                var home=w.SpawnBuilding(new Cell(5,5),0,true);
+                Check(w.DrawRoad(new Cell(20,10),new Cell(20,20))&&w.DrawRoad(new Cell(17,15),new Cell(23,15))&&w.Build(BuildTool.Roundabout,new Cell(20,15))&&
+                    w.DrawRoad(new Cell(20,13),new Cell(23,13)),"junction north of a roundabout");
+                Vehicle Place(Cell from,Cell to,string key,double distance)
+                {
+                    var route=w.FindRoute(from,to);var lanes=w.MakeLanes(route);int index=lanes.FindIndex(l=>l.Key==key);
+                    Check(index>=0,"fixture lane "+key+" on route "+string.Join(",",route));
+                    var car=new Vehicle{Id=w.Cars.Count,HomeId=home.Id,Color=0,Stage=TripStage.Returning,At=route[0],Next=route[1],
+                        Route=route,ReturnRoute=new List<Cell>(route),Lanes=lanes,RouteIndex=index,DistanceAlongLane=distance,RouteVersion=w.NetworkVersion};
+                    w.Cars.Add(car);return car;
+                }
+                var a=Place(new Cell(20,11),new Cell(22,13),"20:12:2:2",.836);
+                var b=Place(new Cell(20,11),new Cell(18,15),"20:13:2:2",.461);
+                var c=Place(new Cell(20,11),new Cell(18,15),"20:13:2:2",.836);
+                var d=Place(new Cell(22,15),new Cell(20,10),"20:14:5:6",.853);
+                var e=Place(new Cell(22,15),new Cell(20,10),"20:14:5:6",1.237);
+                var fixture=new[]{a,b,c,d,e};
+                for(int tick=0;tick<1200&&fixture.Any(v=>v.Stage!=TripStage.Home);tick++)w.Step();
+                Check(fixture.All(v=>v.Stage==TripStage.Home),"junction and ring clear: "+Summary(w));
+            });
             Test("arrival home or in a bay clears the current wait",()=>{
                 // A queued car released within one creeping tick of its journey end arrives
                 // below the 0.02 tiles/s waiting threshold. Its queue wait must not persist

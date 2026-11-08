@@ -69,3 +69,4 @@ and add a row here. Hosts built before 8 November 2026 report no such field; tre
 | Value | Source | Meaning |
 | --- | --- | --- |
 | `2026-11-08.1` | `mohammad` after `f7ce005` | 78-suite source: 77-suite rules (native motorway/common-endpoint joins in ordinary play) plus clearing a car's current wait on arrival |
+| `2026-11-08.2` | `mohammad`, roundabout deadlock fix | Adds: an approaching car blocked by a stationary vehicle on a conflicting lane no longer holds entry priority (removes the permanent junction/roundabout yield-cycle deadlock found in replay v20) |

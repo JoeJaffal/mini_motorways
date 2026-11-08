@@ -213,6 +213,10 @@ namespace MotorwaysSim
                 {
                     if(other.Car.Id==car.Id||!TryApproach(other.Car,lane.Tile,out var target,out double theirDistance))continue;
                     if(!Conflicts(lane,target)||!SignalAllows(lane.Tile,target.Incoming))continue;
+                    // A car that cannot enter because a conflicting vehicle still occupies its
+                    // target does not hold priority. Otherwise it can wait on a car that is itself
+                    // waiting for this one, through an adjacent junction or roundabout.
+                    if(ConflictOccupied(target,other.Car,snapshot))continue;
                     bool ownRing=OnTargetRoundabout(car,lane),theirRing=OnTargetRoundabout(other.Car,lane);
                     double ownRegistered=car.ApproachRegistered.TryGetValue(lane.Key,out var ownTime)?ownTime:Time;
                     double theirRegistered=other.Car.ApproachRegistered.TryGetValue(target.Key,out var theirTime)?theirTime:Time;
@@ -222,6 +226,13 @@ namespace MotorwaysSim
                     if(priority){why=lane.IsRoundabout?"Roundabout entry yield":"Approaching vehicle priority";return false;}
                 }
             return true;
+        }
+
+        bool ConflictOccupied(Lane target,Vehicle entering,List<MotionSnapshot> snapshot)
+        {
+            foreach(var other in snapshot)
+                if(other.Car.Id!=entering.Id&&other.Speed<.02&&other.Distance<=other.Lane.Length-Rules.CarLength&&Conflicts(target,other.Lane))return true;
+            return false;
         }
 
         bool OnTargetRoundabout(Vehicle car,Lane target)
