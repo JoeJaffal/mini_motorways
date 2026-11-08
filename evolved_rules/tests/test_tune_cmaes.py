@@ -23,7 +23,7 @@ from evolved_rules.candidates import RouteCandidate
 from evolved_rules.engine import Engine
 from evolved_rules.evolve import read_checkpoint, read_jsonl
 from evolved_rules.rules import HandRule, SeparatedPreference
-from evolved_rules.tests.test_features import PHASE1_GAMES, SLOW
+from evolved_rules.tests.test_features import PHASE1_GAMES, SLOW, phase1_pin
 from evolved_rules.tests.test_gp import _cand, _merged, _state
 from evolved_rules.tune_cmaes import CmaConfig
 
@@ -112,10 +112,10 @@ LINEAR_GAMES = [g for g in PHASE1_GAMES if g[0] in ("hand", "separated")]
 
 
 @pytest.mark.host
-@pytest.mark.parametrize("name, seed, trips, commands, sha",
-                         [g for g in LINEAR_GAMES if SLOW or (g[0], g[1]) == ("hand", 2000)])
-def test_linear_phase1_vectors_play_the_phase1_games(host, name, seed, trips, commands, sha):
+@pytest.mark.parametrize("name, seed", [g for g in LINEAR_GAMES if SLOW or g == ("hand", 2000)])
+def test_linear_phase1_vectors_play_the_phase1_games(host, name, seed):
     """The default run plays hand on seed 2000; EVOLVED_RULES_SLOW=1 plays every hand and separated game."""
+    trips, commands, sha = phase1_pin(name, seed)
     w = tc.HAND_WEIGHTS if name == "hand" else tc.SEPARATED_WEIGHTS
     r = play_game(host, seed, gp.TreePolicy(tc.weights_to_text(w), coverage=False))
     digest = hashlib.sha256(json.dumps(r.recording["actions"], sort_keys=True,

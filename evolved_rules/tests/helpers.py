@@ -7,7 +7,33 @@ W, H = 50, 30
 Cell = tuple[int, int]
 
 
+import functools
+
+import pytest
+
+from evolved_rules.host import PRE_VERSIONING, default_host_dll, simulator_version
+
+SIM7 = "2026-11-08.7"  # gp-5: main 8025a60
+
 TEST_SIM = "test-sim"  # gp-5: the simulator version fake games report (conftest pins the engine to it)
+
+
+
+@functools.lru_cache(maxsize=None)
+def _host_version() -> str:
+    return simulator_version(default_host_dll())
+
+
+def for_simulator(table: dict):
+    """table[the simulatorVersion of the host DLL under test]; skips when nothing is pinned for that version.
+
+    Frozen game fingerprints depend on the simulator: the old ones (PRE_VERSIONING, the e6119eb engine of
+    phases 1-4) stay, and each new simulator gets its own entry, so the same tests guard either host.
+    """
+    version = _host_version()
+    if version not in table:
+        pytest.skip(f"no fingerprints pinned for simulator {version!r}")
+    return table[version]
 
 
 def _xy(x: int, y: int) -> dict:

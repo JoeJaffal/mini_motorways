@@ -1,10 +1,13 @@
 """Replay verifier: builds the headless `--verify-replay` mode and runs recordings through it.
 
-HEAD's simulation/Headless/Program.cs no longer has `--verify-replay`, but commit e6119eb (Mohammad's 28 Oct
-run) does, and its simulation code is identical to ours (PLAN section 6). It is built from `git archive`
-into an ignored output folder: no branch is ever checked out, and nothing under simulation/ is touched.
+It is built from `git archive` of VERIFIER_COMMIT into an ignored output folder: no branch is ever checked
+out, and nothing under simulation/ is touched. VERIFIER_COMMIT must hold the same simulation code as the host
+that plays the games (a replay only reproduces on the engine it was played on), and it must be bumped whenever
+simulation/ changes: test_gp5_verify checks that both report the same simulatorVersion.
+- Phases 1-4 (old simulator): e6119eb, Mohammad's 28 October run, whose simulation code matched ours.
+- gp-5: 8025a60, main with simulator 2026-11-08.7 (merged into gp4), whose simulation/ is ours.
 
-Contract of the C# mode (Program.cs at e6119eb, the `--verify-replay` block): it prints one JSON line with
+Contract of the C# mode (Program.cs, the `--verify-replay` block): it prints one JSON line with
 `"result":"PASS"` and exits 0 when AiReplaySession replays every command with the recorded acceptance, trips
 and time and the same final outcome. Any exception (unreadable or empty recording, a diverging command or
 outcome) is caught there: the message goes to stderr, nothing to stdout, and `Environment.ExitCode=1`.
@@ -22,7 +25,7 @@ from pathlib import Path
 
 from .host import ROOT
 
-VERIFIER_COMMIT = "e6119eb"
+VERIFIER_COMMIT = "8025a60"  # main: simulator 2026-11-08.7 (gp-5)
 VERIFIER_DIR = ROOT / "output" / "evolved_rules" / "verifier"  # /output/ is git-ignored
 
 # TrafficHost.csproj only compiles ../Assets/Simulation/*.cs next to the Headless folder, so these two
@@ -159,7 +162,7 @@ def _swap_in(staged: Path) -> None:
 
 
 def build_verifier(force: bool = False) -> Path:
-    """Build the e6119eb verifier once and return TrafficHost.dll; later calls reuse it.
+    """Build the VERIFIER_COMMIT verifier once and return TrafficHost.dll; later calls reuse it.
 
     "Built" means the DLL exists and `commit.txt` names VERIFIER_COMMIT (so a changed commit rebuilds by
     itself, and an old or half-removed tree never counts). A rebuild happens in a sibling folder

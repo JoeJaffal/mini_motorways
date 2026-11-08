@@ -27,7 +27,8 @@ from evolved_rules.rules import (
 )
 from evolved_rules.session import _replayable
 from evolved_rules.state import Car, Offer, Roundabout, parse_observation
-from evolved_rules.tests.helpers import house, make_obs, shop
+from evolved_rules.host import PRE_VERSIONING
+from evolved_rules.tests.helpers import SIM7, for_simulator, house, make_obs, shop
 from evolved_rules.tests.test_evaluate import fake_runs  # noqa: F401  (a fixture)
 from evolved_rules.tests.test_features import _links, _merge, _row, _shop
 from evolved_rules.tests.test_gp3 import GP2_BEST, ROADS, _car, _Session, _state
@@ -679,15 +680,18 @@ def test_the_watched_policy_passes_the_placement_switches_and_scores():
 
 # gp-3's and the CMA-ES final rules play their test games (seeds 7000-7099) exactly as recorded before gp-4: the two
 # shortest games of each, as (seed, trips, seconds rounded to 2) from the runs test-gp and test-cma.
-FINAL_GAMES = [
-    ("gp3_final", 7045, 74, 444.45), ("gp3_final", 7006, 106, 497.95),
-    ("cma_final", 7019, 95, 501.8), ("cma_final", 7081, 109, 526.1),
-]
+FINAL_GAMES = {
+    PRE_VERSIONING: {("gp3_final", 7045): (74, 444.45), ("gp3_final", 7006): (106, 497.95),
+                     ("cma_final", 7019): (95, 501.8), ("cma_final", 7081): (109, 526.1)},
+    SIM7: {("gp3_final", 7045): (452, 1020.05), ("gp3_final", 7006): (485, 1046.7),  # from play_game at
+           ("cma_final", 7019): (455, 998.9), ("cma_final", 7081): (384, 932.55)},   # gp-5's merge
+}
 
 
 @pytest.mark.host
-@pytest.mark.parametrize("name, seed, trips, seconds", FINAL_GAMES)
-def test_final_rules_still_play_their_test_games(host, name, seed, trips, seconds):
+@pytest.mark.parametrize("name, seed", sorted(FINAL_GAMES[PRE_VERSIONING]))
+def test_final_rules_still_play_their_test_games(host, name, seed):
+    trips, seconds = for_simulator(FINAL_GAMES)[(name, seed)]
     r = play_game(host, seed, TreePolicy(_final_text(name)), record=False)
     assert (r.trips, round(r.seconds, 2)) == (trips, seconds)
 
@@ -911,8 +915,10 @@ def test_a_game_with_placements_passes_the_replay_verifier(host, tmp_path):
 @pytest.mark.host
 def test_the_autopsy_row_counts_what_the_game_placed(host, monkeypatch):
     monkeypatch.setattr(autopsy, "_HOST", host)
-    row = autopsy.play("lightround", 3100, cap_s=450.0)["row"]       # by 450 s: 4 lights and a roundabout
-    r = play_game(host, 3100, LightRoundHand(), cap_s=450.0, record=True)
+    # old simulator: by 450 s, 4 lights and a roundabout; .7: the whole game (893 s), 2 lights and 3 roundabouts
+    cap = for_simulator({PRE_VERSIONING: 450.0, SIM7: 900.0})
+    row = autopsy.play("lightround", 3100, cap_s=cap)["row"]
+    r = play_game(host, 3100, LightRoundHand(), cap_s=cap, record=True)
     placed = _placements(r.recording)
     assert (row["trips"], row["seconds"]) == (r.trips, r.seconds)    # the autopsy plays the same game
     assert (row["lights_end"], row["roundabouts_end"]) == (placed.count("TrafficLight"), placed.count("Roundabout"))

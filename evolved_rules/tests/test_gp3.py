@@ -17,7 +17,8 @@ from evolved_rules.features import GameMemory, candidate_features, global_featur
 from evolved_rules.gp import TreePolicy
 from evolved_rules.rules import CleanHand, CleanRemoveHand, SeparatedPreference
 from evolved_rules.state import parse_observation
-from evolved_rules.tests.helpers import house, make_obs
+from evolved_rules.host import PRE_VERSIONING
+from evolved_rules.tests.helpers import SIM7, for_simulator, house, make_obs
 from evolved_rules.tests.test_features import _links, _merge, _row, _shop
 
 E, SE, S, SW, W_, NW, N, NE = range(8)
@@ -161,14 +162,15 @@ GP2_BEST = (
     "min(bridge_stock, 0.49))), neg(sub(mul(worst_overcrowded, houses), if_gt(houses, -0.82, "
     "disconnected_components, shops))))\n"
     "upgrade: sub(sub(edge_distance, time), add(pdiv(next_offer_s, type_4), disconnected_components))")
-GP2_GAMES = {1540: (33, 359.55), 1511: (100, 514.65)}
+GP2_GAMES = {PRE_VERSIONING: {1540: (33, 359.55), 1511: (100, 514.65)},
+             SIM7: {1540: (440, 1001.4), 1511: (513, 1064.0)}}  # .7: from play_game at gp-5's merge
 
 
 @pytest.mark.host
-@pytest.mark.parametrize("seed", sorted(GP2_GAMES))
+@pytest.mark.parametrize("seed", [1511, 1540])
 def test_gp2_best_still_plays_its_validation_games(host, seed):
     r = play_game(host, seed, TreePolicy(GP2_BEST), record=False)
-    assert (r.trips, round(r.seconds, 2)) == GP2_GAMES[seed]
+    assert (r.trips, round(r.seconds, 2)) == for_simulator(GP2_GAMES)[seed]
 
 
 # --- 4-tree individuals and the gp-3 evolution options ------------------------------------------------------

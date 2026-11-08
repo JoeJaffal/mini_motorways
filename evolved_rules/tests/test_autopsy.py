@@ -3,6 +3,9 @@ from __future__ import annotations
 
 import pytest
 
+from evolved_rules.host import PRE_VERSIONING
+from evolved_rules.tests.helpers import SIM7, for_simulator
+
 from evolved_rules import autopsy
 from evolved_rules.agent import play_game
 from evolved_rules.gp import HAND_TEXT, TreePolicy
@@ -16,7 +19,8 @@ def test_autopsy_plays_the_same_game_and_names_a_cause(host, monkeypatch):
     monkeypatch.setattr(autopsy, "_HOST", host)
     out = autopsy.play("hand", 2000)
     row = out["row"]
-    assert (row["trips"], round(row["seconds"], 1)) == (57, 404.8)  # the Phase 1 fingerprint of hand on 2000
+    # the Phase 1 fingerprint of hand on 2000, per simulator
+    assert (row["trips"], round(row["seconds"], 1)) == for_simulator({PRE_VERSIONING: (57, 404.8), SIM7: (210, 690.1)})
     assert row["cause"] in CAUSES and row["cause"] != "cap"
     assert row["houses_reaching"] <= row["houses_of_color"] and row["cars_busy"] <= row["cars_of_color"]
     tally = out["tally"]

@@ -31,9 +31,11 @@ def mohammad_best_game(tmp_path: Path) -> Path:
 # --- end to end, against the real C# verifier (builds it on the first run, about 10-60 s) ---
 
 @pytest.mark.host
-def test_mohammad_best_game_passes(verifier, mohammad_ref, tmp_path):
+def test_mohammad_old_simulator_game_is_rejected(verifier, mohammad_ref, tmp_path):
+    # gp-5: his 28 October recording was played on the old simulator (e6119eb). The verifier is now built from
+    # simulator 2026-11-08.7, where gameplay changed, so the replay diverges: a rejection, not a fault.
     ok, out = verify_recording(mohammad_best_game(tmp_path))
-    assert ok, out
+    assert ok is False and "diverged" in out, out
 
 
 @pytest.mark.host
@@ -91,8 +93,10 @@ def test_second_build_does_not_rebuild(verifier, monkeypatch):
 
 
 @pytest.mark.host
-def test_verify_recording_reuses_the_existing_build(verifier, mohammad_ref, tmp_path, monkeypatch):
+def test_verify_recording_reuses_the_existing_build(host, verifier, tmp_path, monkeypatch):
     build_verifier()
+    g = GameSession(host, 1000); g.reset(); g.wait(); g.wait()
+    game = tmp_path / "short.json"; g.recorder.save(game, g.raw, "test")
 
     def boom(*args, **kwargs):
         raise AssertionError("verify_recording rebuilt the verifier")
@@ -100,7 +104,7 @@ def test_verify_recording_reuses_the_existing_build(verifier, mohammad_ref, tmp_
     monkeypatch.setattr(verify, "_run", boom)
     monkeypatch.setattr(verify, "_build_into", boom)
     monkeypatch.setattr(verify, "_swap_in", boom)
-    ok, out = verify_recording(mohammad_best_game(tmp_path))
+    ok, out = verify_recording(game)
     assert ok, out
 
 
@@ -134,7 +138,7 @@ def test_real_dotnet_failing_to_load_the_dll_is_a_fault_not_a_verdict(tmp_path, 
 @pytest.mark.host
 def test_forced_rebuild_swaps_in_a_working_verifier(host, tmp_path, monkeypatch):
     # A private VERIFIER_DIR: the shared output/evolved_rules/verifier is never renamed, so a verified
-    # evaluation running at the same time is not disturbed. A forced rebuild always needs git and e6119eb.
+    # evaluation running at the same time is not disturbed. A forced rebuild always needs git and VERIFIER_COMMIT.
     if not conftest._git_resolves(f"{verify.VERIFIER_COMMIT}^{{commit}}"):
         pytest.skip(f"git cannot read commit {verify.VERIFIER_COMMIT}")
     shared = verify.VERIFIER_DIR
@@ -269,7 +273,7 @@ def test_build_commands_use_the_pinned_commit_and_only_what_the_csproj_needs(fak
     build_verifier()
     git, dotnet = fake.calls
     assert git[:3] == ["git", "archive", "--format=tar"]
-    assert git[-3:] == ["e6119eb", "simulation/Assets/Simulation", "simulation/Headless"]
+    assert git[-3:] == [verify.VERIFIER_COMMIT, "simulation/Assets/Simulation", "simulation/Headless"]
     assert dotnet[:2] == ["dotnet", "build"]
     assert Path(dotnet[2]).parent.parent.parent == fake_dir.parent  # built beside VERIFIER_DIR (the staging folder)
     assert Path(dotnet[2]).parent.parent.name.startswith("verifier.tmp-")

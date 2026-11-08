@@ -2,7 +2,8 @@ import os, json, subprocess, sys, pytest
 from evolved_rules.rules import HandRule, DoNothing
 from evolved_rules.agent import EventTracker, play_game
 from evolved_rules.state import parse_observation
-from evolved_rules.tests.helpers import make_obs, house, shop
+from evolved_rules.host import PRE_VERSIONING
+from evolved_rules.tests.helpers import SIM7, for_simulator, make_obs, house, shop
 
 def test_hand_rule_values():
     r = HandRule()
@@ -702,12 +703,15 @@ def test_coverage_policy_game_is_a_valid_repeatable_replay(host, verifier, tmp_p
         return ok
     monkeypatch.setattr(agent, "coverage_targets", counting)
     monkeypatch.setattr(agent, "house_reaches", reaching)
-    a = play_game(host, 1000, _Cover(), cap_s=300.0)
+    # a map and cap where coverage-only pairs come up and one is routed: 1000 by 300 s on the old simulator,
+    # 2000 by 300 s on .7 (1000 has none by then)
+    seed = for_simulator({PRE_VERSIONING: 1000, SIM7: 2000})
+    a = play_game(host, seed, _Cover(), cap_s=300.0)
     assert calls["extra"] > 0  # coverage-only pairs were offered to the policy
     assert calls["reached"] > 0  # and at least one was routed successfully
     monkeypatch.setattr(agent, "coverage_targets", real_targets)
     monkeypatch.setattr(agent, "house_reaches", real_reaches)
-    b = play_game(host, 1000, _Cover(), cap_s=300.0)
+    b = play_game(host, seed, _Cover(), cap_s=300.0)
     assert a.recording["actions"] == b.recording["actions"] and a.trips == b.trips > 0
     p = tmp_path / "g.json"; p.write_text(json.dumps(a.recording))
     assert verify_recording(p)[0]

@@ -67,7 +67,7 @@ def host_dll():
 
 @pytest.fixture
 def verifier():
-    """Skips unless the replay verifier can run (dotnet; git and e6119eb if it still has to be built)."""
+    """Skips unless the replay verifier can run (dotnet; git and VERIFIER_COMMIT if it still has to be built)."""
     skip_without_verifier()
 
 

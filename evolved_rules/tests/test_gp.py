@@ -19,7 +19,7 @@ from evolved_rules.features import candidate_features, global_features, offer_fe
 from evolved_rules.rules import HandRule, SeparatedPreference
 from evolved_rules.state import Offer, parse_observation
 from evolved_rules.tests.helpers import house, make_obs, shop
-from evolved_rules.tests.test_features import PHASE1_GAMES
+from evolved_rules.tests.test_features import PHASE1_GAMES, phase1_pin
 
 SLOW = os.environ.get("EVOLVED_RULES_SLOW") == "1"
 
@@ -415,15 +415,15 @@ def test_decide_passes_globals_to_tree_policies(monkeypatch):
 
 # --- real games: the trees play exactly the Phase 1 rules ----------------------------------------------------
 
-TREE_GAMES = [g for g in PHASE1_GAMES if g[0] in ("hand", "separated")]
+TREE_GAMES = [g for g in PHASE1_GAMES if g[0] in ("hand", "separated")]  # (name, seed)
 FAST_TREE_GAMES = {("hand", 1000), ("hand", 2000), ("separated", 1000), ("separated", 2000)}
 
 
 @pytest.mark.host
-@pytest.mark.parametrize("name, seed, trips, commands, sha",
-                         [g for g in TREE_GAMES if SLOW or (g[0], g[1]) in FAST_TREE_GAMES])
-def test_tree_texts_play_the_phase1_rules_byte_identically(host, name, seed, trips, commands, sha):
+@pytest.mark.parametrize("name, seed", [g for g in TREE_GAMES if SLOW or g in FAST_TREE_GAMES])
+def test_tree_texts_play_the_phase1_rules_byte_identically(host, name, seed):
     """Set EVOLVED_RULES_SLOW=1 to include seed 2004 (the longest games)."""
+    trips, commands, sha = phase1_pin(name, seed)
     text = gp.HAND_TEXT if name == "hand" else gp.SEPARATED_TEXT
     r = play_game(host, seed, gp.TreePolicy(text, coverage=False))
     digest = hashlib.sha256(json.dumps(r.recording["actions"], sort_keys=True,

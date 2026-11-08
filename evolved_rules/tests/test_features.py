@@ -21,7 +21,8 @@ from evolved_rules.features import (
 from evolved_rules.rules import DoNothing, HandRule, SeparatedPreference
 from evolved_rules.session import GameSession
 from evolved_rules.state import DIRS, Offer, parse_observation
-from evolved_rules.tests.helpers import house, make_obs, shop
+from evolved_rules.host import PRE_VERSIONING
+from evolved_rules.tests.helpers import SIM7, for_simulator, house, make_obs, shop
 
 E, SE, S, SW, W_, NW, N, NE = range(8)
 
@@ -445,9 +446,10 @@ def test_run_reference_reports_tiles_built():
 
 # --- real games: Phase 1 frozen, features on real states -----------------------------------------------------
 
-# name seed trips commands seconds sha256(json.dumps(actions, sort_keys=True, separators=(",", ":")))
-# produced by agent.play_game at commit 87256e6 (output/evolved_rules/phase1-fingerprints.txt)
-PHASE1_GAMES = [
+# name seed trips commands sha256(json.dumps(actions, sort_keys=True, separators=(",", ":")))
+# Old simulator: produced by agent.play_game at commit 87256e6 (output/evolved_rules/phase1-fingerprints.txt).
+# Simulator 2026-11-08.7: produced by agent.play_game at gp-5's merge of main 8025a60.
+PHASE1_GAMES_OLD = [
     ("hand", 1000, 90, 503, "ee5fd682d0e79e1ba71c24634ab3db6836cbb7cf7cb99acecbb96153010637c2"),
     ("hand", 2000, 57, 405, "129fcde363f3ebff72dddb1aadb52f9820c498ef75527f7a8a57ac82ea055fea"),
     ("hand", 2004, 288, 867, "e0d2cd28f861fb36173ee9c879835564306cbea481077151a7f8d695e3ff5ef6"),
@@ -456,23 +458,42 @@ PHASE1_GAMES = [
     ("separated", 2004, 302, 893, "c2cfc82096382abb0fcc580151b9e8f5f8d6f097bb987f25a70105e3f1f34094"),
     ("nothing", 2000, 0, 141, "286e175d407a7b30394169705d47c5c1332ab526bf6d1241441fa68887b4b15b"),
 ]
+PHASE1_GAMES_SIM7 = [
+    ("hand", 1000, 394, 981, "78442c3e5f33d9455b3fa9844ea89b4502c8aa6c5eb9844fb8002df20b5b8c93"),
+    ("hand", 2000, 210, 691, "84d98db590141f3f9506a501c521e4f3e31b00c5421609bdaba909c997ce84b2"),
+    ("hand", 2004, 381, 932, "f1314847b9d46b769ca5f60e551df9753267b17b9626fe6f4a06dfd13f25b4ce"),
+    ("separated", 1000, 405, 979, "eef0ac694ad59fda56875cc22e6cbd1189eb447d6301bd6872862d716d15629d"),
+    ("separated", 2000, 476, 1030, "67fa39584cbf57932b7e73c8ded8724ea399c8863760d347358fa7214ce3af39"),
+    ("separated", 2004, 499, 1057, "68d08981cf5918c7b1785217f80428daa3cba6ca05c3737b68855871b2676d4e"),
+    ("nothing", 2000, 0, 140, "21624c226b17e15d0a457a5f632abdae1ccf9302ad816b4d28c4eba41e09ec2c"),
+]
+PHASE1_BY_SIMULATOR = {PRE_VERSIONING: {(g[0], g[1]): g[2:] for g in PHASE1_GAMES_OLD},
+                       SIM7: {(g[0], g[1]): g[2:] for g in PHASE1_GAMES_SIM7}}
+PHASE1_GAMES = [(g[0], g[1]) for g in PHASE1_GAMES_OLD]  # (name, seed); the pinned values come from phase1_pin
+# road tiles hand spends on seed 2000: 37 counted by hand on the old final map; 52 from play_game on .7
+HAND_2000_TILES = {PRE_VERSIONING: 37, SIM7: 52}
+
+
+def phase1_pin(name: str, seed: int) -> tuple:
+    """(trips, commands, sha) of a Phase 1 game on the simulator under test (skips if none is pinned)."""
+    return for_simulator(PHASE1_BY_SIMULATOR)[(name, seed)]
 FAST_GAMES = {("hand", 2000), ("separated", 2000)}
 SLOW = os.environ.get("EVOLVED_RULES_SLOW") == "1"
 POLICIES = {"hand": HandRule, "separated": SeparatedPreference, "nothing": DoNothing}
 
 
 @pytest.mark.host
-@pytest.mark.parametrize("name, seed, trips, commands, sha",
-                         [g for g in PHASE1_GAMES if SLOW or (g[0], g[1]) in FAST_GAMES])
-def test_phase1_games_byte_identical(host, name, seed, trips, commands, sha):
+@pytest.mark.parametrize("name, seed", [g for g in PHASE1_GAMES if SLOW or g in FAST_GAMES])
+def test_phase1_games_byte_identical(host, name, seed):
     """Set EVOLVED_RULES_SLOW=1 to check all 7 games; the default run plays hand and separated on seed 2000."""
+    trips, commands, sha = phase1_pin(name, seed)
     r = play_game(host, seed, POLICIES[name]())
     digest = hashlib.sha256(json.dumps(r.recording["actions"], sort_keys=True,
                                        separators=(",", ":")).encode()).hexdigest()
     assert (r.trips, r.commands, digest) == (trips, commands, sha)
     if (name, seed) == ("hand", 2000):
-        # 37 = the road cells on the final map (counted by hand; this game never removes roads)
-        assert r.tiles_built == 37 and r.trips_per_tile == 57 / 37
+        tiles = for_simulator(HAND_2000_TILES)  # this game never removes roads
+        assert r.tiles_built == tiles and r.trips_per_tile == trips / tiles
 
 
 class _Probe(HandRule):
