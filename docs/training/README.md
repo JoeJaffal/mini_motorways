@@ -13,6 +13,7 @@ players and scratch captures remain local and are not backed up by this archive.
 | Record | Purpose |
 
 | --- | --- |
+| [Simulator repairs after resume](simulator-repairs-2026-11-08/README.md) | Reward-v4 drift isolated (fixture v5); wait-on-arrival and roundabout deadlock fixes; `simulatorVersion` 2026-11-08.2; v21 corrections, topology 400/400; adjacent-junction gridlock open; no learning |
 | [Full replay emergency checkpoint](full-replay-review-2026-11-08/EMERGENCY_HANDOFF.md) |User stopped work; installed74/source77candidate; exact pending corrections/plan saved; no valid full comparison or learning |
 | [Replay input validation: opening](replay-input-validation-2026-11-08/README.md) |60video seconds reviewed,16events;7layout/stock checkpoints match vs2old; full parity unvalidated |
 | [Event parity and movement audit](event-parity-2026-11-08/README.md) |Missing factor3/weighted lookahead corrected;69core, first closer but later events mismatch; NOT IDENTICAL |

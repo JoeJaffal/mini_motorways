@@ -1044,3 +1044,22 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 
 
 8 November2026 — User requests missing-file review/handoff work. [Response](../../docs/training/full-replay-review-2026-11-08/LOCAL_TRANSFER_RESPONSE.md). Fetched Aya1779c0b; packaged2368local payloads/video into verified924MiBZIP, kept out ofGit. No external upload, simulator changes, fixture update or learning. General native-rule intent distinguished from unproven implementation correctness; prior results remain historical/version-specific.
+
+
+## 070 - Resume simulator repairs on a second machine (8 November 2026)
+
+**User decisions.** Aya asked to continue and finish the stopped simulator update, remove gameplay bugs and protect the headless interface used by Evolved Rules and PPO, and requested a simulator version string so result caches never mix simulator versions. No training. The user is to be asked before any non-bug gameplay rule change, any run over 20 games, and any push. Mohammad confirmed (`8a4b447`) that the 75/77 native joins are intended general Original rules, asked for proof before any rule change or new fixture, and asked for all seven input corrections to be regenerated through the builder.
+
+**Engineering choices** ([report](../../docs/training/simulator-repairs-2026-11-08/README.md)):
+
+1. The reward-v4 change is the intended rule-77 join in ordinary play (isolated by single-rule variants), so a new fixture v5 was recorded; v4 stays historical.
+2. A car's current `Waiting` is cleared on arrival home or in a bay.
+3. Approach priority is not held by a car whose target is occupied by a stationary conflicting vehicle. This was chosen over a broader variant (any conflicting occupant) that changed many more decisions.
+4. `simulatorVersion` is additive, starting at `2026-11-08.1` and now `2026-11-08.2`.
+5. Replay input v21 is the builder plus only the handoff's seven corrections.
+
+**Hypothesis outcomes.** The roundabout future-junction/yield-cycle hypothesis is confirmed (deadlock from t=1163 in v20). The idea that this deadlock caused v20's game-over is rejected (overcrowding at 11,18 started earlier).
+
+**Open question for the user.** A physical gridlock at adjacent junctions 20,11-20,12 (cars inside a junction with no room to exit) ends replay v21. Preventing it would be a new traffic rule and has not been made.
+
+**Superseding.** Decision 069's statements that source 77 is unverified are superseded: 77 passed, and the source now has 79 suites. Original parity remains NOT_MATCHED.

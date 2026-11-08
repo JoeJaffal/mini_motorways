@@ -68,3 +68,8 @@ Work stopped immediately on user request. [Exact saved state and continuation pl
 ## Missing local files packaged — 8 November 2026
 
 [Transfer response and review clarifications](LOCAL_TRANSFER_RESPONSE.md). User requests action on Aya review; local-only924MiBZIP contains2368payload files including video/boards/crops, all payload hashes verified. No external media upload, engine edits, fixture change or training. Simulator work remains stopped this iteration.
+
+
+## Continuation — simulator repairs
+
+Work resumed on Aya's machine after the local transfer. Successor report: [simulator repairs](../simulator-repairs-2026-11-08/README.md). This folder's emergency handoff and earlier text remain historical.

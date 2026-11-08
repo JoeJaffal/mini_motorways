@@ -1,10 +1,12 @@
-# Simulator repairs after the emergency stop — 8 November 2026 (in progress)
+# Simulator repairs after the emergency stop — 8 November 2026
 
 Successor to the [emergency handoff](../full-replay-review-2026-11-08/EMERGENCY_HANDOFF.md) and the
 [resume review](../full-replay-review-2026-11-08/RESUME_REVIEW_FOR_APPROVAL.md). Work by Aya's
 session on branch `mohammad`, authorized by the user after Mohammad's
 [response](../full-replay-review-2026-11-08/LOCAL_TRANSFER_RESPONSE.md). No training, no deployment
 over an installed player, no tuning toward the recorded 835, and no historical fixture overwritten.
+
+Short note for the model re-evaluation session: [HANDOFF-2026-11-sim-fix.md](../../../simulation/Docs/HANDOFF-2026-11-sim-fix.md).
 
 ## 1. Reward-v4 drift isolated: intended rule-77 join in ordinary play
 
@@ -203,3 +205,35 @@ which is a gameplay change, so it is left for the user to decide.
 **Not done here.** Handoff step 6 (wall-clock playback synchronisation against the video's 1/2× and
 pauses) needs viewer work that has not been started. Hidden original demand/parking RNG and exact
 action times remain unverified.
+
+## 6. Parallel-host crash (agent-reported issue 2): no host cause found
+
+One host on `2026-11-08.2` uses about 56 MB working set, 30 MB private memory, 177 handles and 8
+threads, all flat over a 376 s game ([measurement](measurements/host-resources.json)). Ten hosts need
+roughly 0.6 GB and 1,800 handles, and nothing in the host grows with the number of processes. The
+0x800705AA (`ERROR_NO_SYSTEM_RESOURCES`) crash is therefore most likely a machine or session limit
+(commit memory, or desktop heap from many console processes). It was not reproduced; no 10-host run
+was attempted.
+
+## 7. Final verification and what remains open
+
+Source `615f08c` (simulator `2026-11-08.2`), .NET SDK 8.0.427: 79 core suites PASS
+([output](measurements/core-79.txt)); environment 7/7 ([output](measurements/environment-final.txt));
+reward v5 6/6 ([output](measurements/rewards-final.txt)); five-map protocol 10 runs PASS
+([output](measurements/maps-final.txt)); `dotnet build simulation/Headless -c Release` succeeds with
+0 warnings and its DLL reports `2026-11-08.2`. The tracked
+`simulation/Reports/five-map-protocol-checks.json` is the script's regenerated output for this source
+(its previous copy dated from 25 October).
+
+**Open:**
+
+- The physical gridlock at adjacent junctions (section 5) needs a user decision on a new
+  "do not block the junction" rule.
+- The Unity Original player has not been rebuilt. The handoff requires a stable source first, and the
+  gridlock decision may change the source.
+- Wall-clock playback synchronisation (handoff step 6) has not been started.
+- v21's late stock differences (540, 720–810, 870–890) have not been investigated.
+- Exact original parity, hidden RNG and action times remain unverified, and `exactReplicaValidated`
+  stays false.
+
+No training, model evaluation, deployment, push or original-game write was done in this work.
