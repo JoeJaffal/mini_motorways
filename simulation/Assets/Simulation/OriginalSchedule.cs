@@ -6,7 +6,7 @@ namespace MotorwaysSim
     public sealed class PlanChunk
     {public double Start,Duration,Variation;public bool Ordered;public double[][] Items;}
     public sealed class ScheduledSpawn
-    {public double Time,DemandMultiplier;public int Color,Grouping,Preference,Attempts,Order;}
+    {public double Time,DemandMultiplier;public int Type,Color,Grouping,Preference,Attempts,Order;}
     public sealed class ScheduledSpawnSnapshot
     {public double Time,DemandMultiplier;public int Color,Grouping,Preference,Attempts;}
     public sealed partial class TrafficWorld
@@ -25,10 +25,10 @@ namespace MotorwaysSim
                 {
                     int index=chunk.Ordered?i:random.Next(remaining.Count);var item=remaining[index];
                     if(!chunk.Ordered)remaining.RemoveAt(index);
-                    if((int)item[0]!=0)continue; // Dynamic supporting-house placement remains a separate system.
+                    if((int)item[0]!=0&&(int)item[0]!=1)continue;
                     double midpoint=start+duration*(i+.5)/n;
                     originalPlan.Add(new ScheduledSpawn{Time=midpoint*(1-chunk.Variation)+randomTimes[i]*chunk.Variation,
-                        Color=(int)item[1],Grouping=(int)item[2],DemandMultiplier=item[3],Preference=(int)item[4],Order=order++});
+                        Type=(int)item[0],Color=(int)item[1],Grouping=(int)item[2],DemandMultiplier=item[3],Preference=(int)item[4],Order=order++});
                 }
             }
             SortOriginalPlan();
@@ -42,13 +42,22 @@ namespace MotorwaysSim
             {
                 var planned=originalPlan[0];originalPlan.RemoveAt(0);
                 bool success;
-                if(planned.Grouping==3)success=ScheduleDestinationUpgrade(planned.Color,planned.DemandMultiplier);
+                if(planned.Type==1)
+                {
+                    var shop=Buildings.FirstOrDefault(b=>!b.IsHouse&&b.Color==planned.Color);
+                    success=shop!=null&&TrySpawnHouse(shop);
+                }
+                else if(planned.Grouping==3)success=ScheduleDestinationUpgrade(planned.Color,planned.DemandMultiplier);
                 else
                 {
                     success=Buildings.Count(b=>!b.IsHouse)<Rules.MaxShops&&TrySpawnPlannedDestination(planned);
-                    if(success)Buildings.Last(b=>!b.IsHouse).PlannedDemandMultiplier=planned.DemandMultiplier;
+                    if(success)
+                    {
+                        var destination=Buildings.Last(b=>!b.IsHouse);destination.PlannedDemandMultiplier=planned.DemandMultiplier;
+                        if(destination.SpawnTime==Time)InitializeDestinationDemand(destination);
+                    }
                 }
-                if(!success){planned.Attempts++;planned.Time=Time+20;originalPlan.Add(planned);}
+                if(!success){planned.Attempts++;planned.Time=Time+(planned.Type==1?OriginalGameplayTuning.HouseRetryDelay:20);originalPlan.Add(planned);}
                 SortOriginalPlan();
             }
         }

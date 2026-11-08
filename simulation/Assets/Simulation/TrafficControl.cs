@@ -6,9 +6,99 @@ namespace MotorwaysSim
 {
     public sealed partial class TrafficWorld
     {
+        // The original has no whole-entrance owner gate; carpark lanes use chunk arbitration (CarparkArbitration.cs).
+        // This engineered gate still compensates for our reconstructed entrance geometry: with it off, an entering car
+        // and a drive-through car leaving by the same entrance block each other's body clearance (eight-car queue check).
+        const bool CarparkApproachGate=true;
+        readonly Dictionary<(int,Cell),int> carparkThroats=new Dictionary<(int,Cell),int>();
+        bool TryCarparkGate(Vehicle car,Lane lane,out int lot,out Cell access,out double distance)
+        {
+            lot=-1;access=new Cell();distance=0;if(car.ShopId<0||!car.Moving)return false;
+            bool connector=lane.IsParking&&(lane.Key.Contains(":entrance:")||lane.Key.Contains(":exit:"));
+            bool finalRoad=car.Stage==TripStage.Outbound&&ReferenceEquals(lane,car.Lanes.Last())&&!lane.IsParking;
+            // A car passing through a shared lot is gated at the same point as an arriving car: the start
+            // of the outside road lane that leads into the entrance connector.
+            Lane entrance=null;
+            if(!connector&&!finalRoad&&!lane.IsParking)
+            {
+                int index=car.Lanes.IndexOf(lane);
+                if(index>=0&&index+1<car.Lanes.Count&&car.Lanes[index+1].IsParking&&car.Lanes[index+1].Key.Contains(":entrance:"))entrance=car.Lanes[index+1];
+            }
+            if(!connector&&!finalRoad&&entrance==null)return false;
+            lot=connector?lane.CarparkId:entrance!=null?entrance.CarparkId:Buildings[car.ShopId].CarparkId;
+            access=connector?lane.Tile:entrance!=null?entrance.Tile:car.DestinationAccess;
+            // Reserve the outside approach before its turn starts, not at the
+            // parcel boundary where a waiting car can obstruct an exiting turn.
+            if(ReferenceEquals(lane,car.CurrentLane)){distance=-car.DistanceAlongLane;return true;}
+            distance=car.CurrentLane.Length-car.DistanceAlongLane;
+            for(int i=car.RouteIndex+1;i<car.Lanes.Count;i++)
+            {
+                if(ReferenceEquals(car.Lanes[i],lane))return true;
+                distance+=car.Lanes[i].Length;
+            }
+            return false;
+        }
+        double NearestCarparkGate(Vehicle car,int lot,Cell access)
+        {
+            double nearest=double.PositiveInfinity;
+            for(int i=car.RouteIndex;i<car.Lanes.Count;i++)
+                if(TryCarparkGate(car,car.Lanes[i],out int candidate,out var point,out double distance)&&candidate==lot&&point==access)
+                    nearest=Math.Min(nearest,distance);
+            return nearest;
+        }
+        bool CarparkThroatAllows(Vehicle car,Lane lane)
+        {
+            if(!TryCarparkGate(car,lane,out int lot,out var access,out double distance)||distance>Rules.CarLength+.3)return true;
+            var key=(lot,access);if(carparkThroats.TryGetValue(key,out int owner))return owner==car.Id;
+            // Every requester is ranked by its nearest gate point, which for arriving and passing-through
+            // cars alike is the start of the outside approach lane (one distance measure, as the original).
+            Vehicle nearest=car;double nearestDistance=distance;
+            foreach(var other in Cars.Where(v=>v.Id!=car.Id&&v.Moving))
+            {
+                double otherDistance=NearestCarparkGate(other,lot,access);
+                if(otherDistance<nearestDistance-1e-8||Math.Abs(otherDistance-nearestDistance)<1e-8&&other.Id<nearest.Id)
+                {nearest=other;nearestDistance=otherDistance;}
+            }
+            carparkThroats[key]=nearest.Id;return nearest.Id==car.Id;
+        }
+        int CarparkGateOwner(Vehicle car,Lane lane)
+        {
+            if(!TryCarparkGate(car,lane,out int lot,out var access,out _))return -1;
+            return carparkThroats.TryGetValue((lot,access),out int owner)&&owner!=car.Id?owner:-1;
+        }
+        void ReleaseCarparkThroats()
+        {
+            foreach(var item in carparkThroats.ToArray())
+            {
+                var car=Cars.Find(c=>c.Id==item.Value);bool keep=false;
+                if(car!=null&&car.ShopId>=0&&car.Moving)
+                {
+                    var lot=Buildings[item.Key.Item1];var access=item.Key.Item2;
+                    bool onConnector=car.CurrentLane.IsParking&&car.CurrentLane.CarparkId==lot.CarparkId&&car.CurrentLane.Tile==access&&
+                        (car.CurrentLane.Key.Contains(":entrance:")||car.CurrentLane.Key.Contains(":exit:"));
+                    double distance=NearestCarparkGate(car,lot.CarparkId,access);
+                    bool approaching=distance>=0&&distance<=Rules.CarLength+.3;
+                    bool clearing=PhysicalCarpark(car)==lot.CarparkId&&
+                        (Point.Distance(car.Position,ParkingAccessPoint(lot,access,true))<Rules.CarLength+.1||
+                         Point.Distance(car.Position,ParkingAccessPoint(lot,access,false))<Rules.CarLength+.1);
+                    bool onApproach=!car.CurrentLane.IsParking&&TryCarparkGate(car,car.CurrentLane,out int approachLot,out var approachAccess,out _)&&
+                        approachLot==lot.CarparkId&&approachAccess==access;
+                    keep=onConnector||onApproach||approaching||clearing;
+                }
+                if(!keep)carparkThroats.Remove(item.Key);
+            }
+        }
         void UpdateSignalPairs(SignalState signal)
         {
-            int remaining=Connections[signal.Cell.X,signal.Cell.Y];var masks=new List<int>();
+            int remaining=Connections[signal.Cell.X,signal.Cell.Y];
+            // Committed lanes still need a signal phase after their surface
+            // connection is erased, until its retirement actually clears.
+            foreach(var edge in retiredConnectionConcrete.Keys)
+            {
+                if(edge.Item1==signal.Cell)remaining|=1<<Direction(signal.Cell,edge.Item2);
+                else if(edge.Item2==signal.Cell)remaining|=1<<Direction(signal.Cell,edge.Item1);
+            }
+            var masks=new List<int>();
             for(int d=0;d<4;d++)if((remaining&(1<<d))!=0&&(remaining&(1<<(d+4)))!=0)
             {int mask=(1<<d)|(1<<(d+4));masks.Add(mask);remaining&=~mask;}
             for(int d=0;d<8;d++)
@@ -33,6 +123,7 @@ namespace MotorwaysSim
 
         void UpdateSignals()
         {
+            if(Rules.Version==GameVersion.OriginalReference){UpdateSignalsOriginal();return;}
             foreach(var signal in Signals.Values)
             {
                 signal.Elapsed+=Rules.TickSeconds;
@@ -93,11 +184,13 @@ namespace MotorwaysSim
         }
 
         readonly Dictionary<string,bool> conflictCache=new Dictionary<string,bool>();
+        internal bool ConflictsPublic(Lane a,Lane b)=>Conflicts(a,b); // read-only, for checks
         bool Conflicts(Lane a,Lane b)
         {
             if(a.IsMotorway||b.IsMotorway)return false;
             if(a.Key==b.Key)return false;
-            if(a.Tile!=b.Tile)return false;
+            if(a.IsParking&&b.IsParking){if(a.CarparkId!=b.CarparkId)return false;}
+            else if(a.Tile!=b.Tile)return false;
             string key=string.CompareOrdinal(a.Key,b.Key)<0?a.Key+"/"+b.Key:b.Key+"/"+a.Key;
             if(conflictCache.TryGetValue(key,out bool value))return value;
             bool conflict=false;
@@ -111,15 +204,23 @@ namespace MotorwaysSim
             public Vehicle Car;public Lane Lane;public int Index;public double Distance,Speed,Acceleration;public Point Position;
         }
 
-        bool MayEnter(Vehicle car,Lane lane,List<MotionSnapshot> snapshot,out string why)
+        bool MayEnter(Vehicle car,Lane lane,List<MotionSnapshot> snapshot,out string why,out int blocker)
         {
-            why="";
+            why="";blocker=-1;
             if(!lane.IsMotorway&&IsRailCrossingClosed(lane.Tile)){why="Train crossing";return false;}
+            // A gate refusal names its owner so blocking-cycle recovery can see it; a shoving car may pass.
+            if(Rules.Version==GameVersion.OriginalReference&&CarparkApproachGate&&!(car.Shoving&&car.ShovingLane==lane.Key&&IsImmediateNext(car,lane))&&!CarparkThroatAllows(car,lane))
+            {why="Carpark entrance merge";blocker=CarparkGateOwner(car,lane);return false;}
             var parcel=AccessBuildingAt(lane.Tile);
-            if(parcel!=null&&!parcel.IsHouse&&car.Stage==TripStage.Outbound&&
+            if(Rules.Version==GameVersion.Custom&&parcel!=null&&!parcel.IsHouse&&car.Stage==TripStage.Outbound&&
                 Cars.Any(v=>v.Id!=car.Id&&SameCarpark(v.ShopId,parcel.Id)&&(v.Stage==TripStage.EnteringParking||v.Stage==TripStage.LeavingParking)))
             {why="Carpark access occupied";return false;}
-            if(!lane.IsJunction&&!lane.IsRoundabout)return true;
+            // Internal lot paths can revisit the same parcel many times. Tile-level
+            // approach ordering would make an entering car yield to the car behind it.
+            // Physical local clearance below governs these short circulation segments.
+            if(lane.IsParking&&Rules.Version==GameVersion.OriginalReference)return MayEnterParkingOriginal(car,lane,snapshot,out why,out blocker);
+            if(Rules.Version==GameVersion.OriginalReference)return MayEnterOriginal(car,lane,snapshot,out why,out blocker);
+            if(!lane.IsJunction&&!lane.IsRoundabout&&!lane.IsParking)return true;
             if(!SignalAllows(lane.Tile,lane.Incoming)){why="Traffic light";return false;}
             foreach(var other in snapshot)
             {
@@ -135,17 +236,66 @@ namespace MotorwaysSim
                 {
                     if(other.Car.Id==car.Id||!TryApproach(other.Car,lane.Tile,out var target,out double theirDistance))continue;
                     if(!Conflicts(lane,target)||!SignalAllows(lane.Tile,target.Incoming))continue;
-                    bool ownRing=car.CurrentLane.IsRoundabout,theirRing=other.Lane.IsRoundabout;
+                    // A car that cannot enter because a conflicting vehicle still occupies its
+                    // target does not hold priority. Otherwise it can wait on a car that is itself
+                    // waiting for this one, through an adjacent junction or roundabout.
+                    if(ConflictOccupied(target,other.Car,snapshot))continue;
+                    bool ownRing=OnTargetRoundabout(car,lane),theirRing=OnTargetRoundabout(other.Car,lane);
+                    double ownRegistered=car.ApproachRegistered.TryGetValue(lane.Key,out var ownTime)?ownTime:Time;
+                    double theirRegistered=other.Car.ApproachRegistered.TryGetValue(target.Key,out var theirTime)?theirTime:Time;
                     bool priority=theirRing&&!ownRing||theirRing==ownRing&&
-                        (theirDistance<ownDistance-1e-6||Math.Abs(theirDistance-ownDistance)<1e-6&&other.Car.JourneyStarted<car.JourneyStarted||
-                        Math.Abs(theirDistance-ownDistance)<1e-6&&other.Car.JourneyStarted==car.JourneyStarted&&other.Car.Id<car.Id);
+                        (theirDistance<ownDistance-1e-6||Math.Abs(theirDistance-ownDistance)<1e-6&&theirRegistered<ownRegistered||
+                        Math.Abs(theirDistance-ownDistance)<1e-6&&theirRegistered==ownRegistered&&other.Car.Id<car.Id);
                     if(priority){why=lane.IsRoundabout?"Roundabout entry yield":"Approaching vehicle priority";return false;}
                 }
             return true;
         }
 
+        bool ConflictOccupied(Lane target,Vehicle entering,List<MotionSnapshot> snapshot)
+        {
+            foreach(var other in snapshot)
+                if(other.Car.Id!=entering.Id&&other.Speed<.02&&other.Distance<=other.Lane.Length-Rules.CarLength&&Conflicts(target,other.Lane))return true;
+            return false;
+        }
+
+        bool OnTargetRoundabout(Vehicle car,Lane target)
+        {
+            var round=RoundaboutAt(target.Tile);
+            return round!=null&&car.CurrentLane!=null&&car.CurrentLane.IsRoundabout&&round.Ring.Contains(car.CurrentLane.Tile);
+        }
+
+        void RegisterApproaches(Vehicle car)
+        {
+            var active=new HashSet<string>();double distance=car.CurrentLane.Length-car.DistanceAlongLane;
+            for(int i=car.RouteIndex+1;i<car.Lanes.Count&&distance<=Rules.LookaheadDistance;i++)
+            {
+                var lane=car.Lanes[i];
+                if(lane.IsJunction||lane.IsRoundabout||lane.IsParking)
+                {active.Add(lane.Key);if(!car.ApproachRegistered.ContainsKey(lane.Key))car.ApproachRegistered[lane.Key]=Time;}
+                distance+=lane.Length;
+            }
+            foreach(var key in car.ApproachRegistered.Keys.Where(k=>!active.Contains(k)).ToArray())car.ApproachRegistered.Remove(key);
+        }
+
+        internal double DesiredMovementSpeed(Vehicle car)
+        {
+            if(Rules.Version!=GameVersion.OriginalReference)return car.CurrentLane.SpeedLimit;
+            double length=0,weighted=0,minimum=double.PositiveInfinity;
+            for(int i=car.RouteIndex;i<car.Lanes.Count&&length<Rules.LookaheadDistance;i++)
+            {
+                var lane=car.Lanes[i];double available=lane.Length-(i==car.RouteIndex?car.DistanceAlongLane:0);
+                double take=Math.Min(available,Rules.LookaheadDistance-length);
+                minimum=Math.Min(minimum,lane.SpeedLimit);weighted+=lane.SpeedLimit*take;length+=take;
+            }
+            // Reference ordinary movement uses a distance-weighted lane average;
+            // motorway movement instead uses the minimum in the same lookahead.
+            double laneValue=car.CurrentLane.IsMotorway?minimum:length>1e-9?weighted/length:car.CurrentLane.SpeedLimit;
+            return laneValue*Rules.MovementSpeedMultiplier;
+        }
+
         void UpdateVehicles()
         {
+            ReleaseCarparkThroats();
             foreach(var car in Cars)
             {
                 RefreshJourney(car);
@@ -160,17 +310,19 @@ namespace MotorwaysSim
                         (v.Stage==TripStage.EnteringParking||v.Stage==TripStage.LeavingParking||
                         v.Stage==TripStage.Outbound&&v.CurrentLane!=null&&HasAccess(shop,v.CurrentLane.Tile)));
                     bool finished=Rules.Version==GameVersion.OriginalReference?car.Dwell<0:car.Dwell<=0;
-                    if((finished||full&&longest)&&!accessBusy)StartLeavingParking(car);
+                    if((finished||full&&longest)&&(Rules.Version==GameVersion.OriginalReference?CanBeginBayDeparture(car):!accessBusy))StartLeavingParking(car);
                 }
                 else if(car.Stage==TripStage.Returning&&!car.Moving)FinishHome(car);
             }
             var snapshot=Cars.Where(c=>c.Moving).Select(c=>new MotionSnapshot{Car=c,Lane=c.CurrentLane,Index=c.RouteIndex,
                 Distance=c.DistanceAlongLane,Speed=c.Speed,Acceleration=c.Acceleration,Position=c.Position}).ToList();
+            if(Rules.Version!=GameVersion.OriginalReference)foreach(var state in snapshot)RegisterApproaches(state.Car);
+            var obstacles=new Dictionary<int,ObstacleRecord>();var nextSpeeds=new Dictionary<int,double>();
             var proposals=new List<(Vehicle car,double speed,double acceleration,double distance,string obstacle)>();
             foreach(var state in snapshot)
             {
-                var car=state.Car;double desired=state.Lane.SpeedLimit,gap=1e6,leaderSpeed=desired,leaderAcceleration=0;
-                string obstacle="";double stop=double.PositiveInfinity;
+                var car=state.Car;double desired=DesiredMovementSpeed(car),gap=1e6,leaderSpeed=desired,leaderAcceleration=0;
+                string obstacle="";double stop=double.PositiveInfinity;int leaderId=-1,blocker=-1;double blockingDistance=double.PositiveInfinity;string blockedLane="";var blockedTile=new Cell(-1,-1);
                 // Follow the next vehicle on this directed lane or a shared outgoing lane.
                 foreach(var other in snapshot)
                 {
@@ -190,7 +342,17 @@ namespace MotorwaysSim
                             ahead+=car.Lanes[i].Length;if(ahead>Rules.LookaheadDistance)break;
                         }
                     }
-                    if(distance<gap){gap=distance;leaderSpeed=other.Speed;leaderAcceleration=other.Acceleration;obstacle="Queue ahead";}
+                    if(distance<gap){gap=distance;leaderSpeed=other.Speed;leaderAcceleration=other.Acceleration;obstacle="Queue ahead";leaderId=other.Car.Id;}
+                }
+                // A zero-length parcel lane is omitted by MakeLanes, so a car
+                // may already be on its final surface lane. Gate that approach
+                // here as well as future-lane transitions.
+                if(Rules.Version==GameVersion.OriginalReference&&CarparkApproachGate&&!state.Lane.IsParking&&TryCarparkGate(car,state.Lane,out _,out _,out _)&&
+                    !(car.Shoving&&car.ShovingLane==state.Lane.Key)&&!CarparkThroatAllows(car,state.Lane))
+                {
+                    stop=0;blockingDistance=0;blocker=CarparkGateOwner(car,state.Lane);blockedLane=state.Lane.Key;
+                    if(TryCarparkGate(car,state.Lane,out _,out var gateAccess,out _))blockedTile=gateAccess;
+                    obstacle="Carpark entrance merge";
                 }
                 double aheadDistance=state.Lane.Length-state.Distance;
                 for(int i=car.RouteIndex+1;i<Math.Min(car.Lanes.Count,car.RouteIndex+7);i++)
@@ -198,9 +360,13 @@ namespace MotorwaysSim
                     var next=car.Lanes[i];
                     if(aheadDistance<Rules.LookaheadDistance)
                     {
-                        desired=Math.Min(desired,Math.Sqrt(next.SpeedLimit*next.SpeedLimit+2*Rules.MaxDeceleration*Math.Max(0,aheadDistance-.1)));
-                        if(!MayEnter(car,next,snapshot,out string reason))
-                        {stop=Math.Min(stop,Math.Max(0,aheadDistance-Rules.CarLength*.35));obstacle=reason;break;}
+                        if(Rules.Version!=GameVersion.OriginalReference)
+                            desired=Math.Min(desired,Math.Sqrt(next.SpeedLimit*next.SpeedLimit+2*Rules.MaxDeceleration*Math.Max(0,aheadDistance-.1)));
+                        if(!MayEnter(car,next,snapshot,out string reason,out int entryBlocker))
+                        {if(aheadDistance<blockingDistance){blockingDistance=aheadDistance;blocker=entryBlocker;blockedLane=next.Key;blockedTile=next.Tile;}
+                            bool entrance=next.IsParking&&next.Key.Contains(":entrance:")||
+                            car.Stage==TripStage.Outbound&&i==car.Lanes.Count-1&&!next.IsParking;
+                            stop=Math.Min(stop,Math.Max(0,aheadDistance-(entrance?Rules.CarLength+.05:Rules.CarLength*.35)));obstacle=reason;break;}
                     }
                     aheadDistance+=next.Length;if(aheadDistance>Rules.LookaheadDistance)break;
                 }
@@ -217,15 +383,93 @@ namespace MotorwaysSim
                 travel=Math.Min(travel,stop);
                 if(travel<=1e-7){speed=0;if(obstacle.Length==0)obstacle="Driveway queue";}
                 proposals.Add((car,speed,acceleration,Math.Max(0,travel),obstacle));
+                if(Rules.Version==GameVersion.OriginalReference)
+                {var record=NearestObstacle(leaderId,gap,blockingDistance,blocker,blockedLane,remaining,Rules.LookaheadDistance);record.BlockedTile=blockedTile;obstacles[car.Id]=record;nextSpeeds[car.Id]=speed;}
+            }
+            if(Rules.Version==GameVersion.OriginalReference)
+            {
+                foreach(var car in Cars){car.ObstacleState=ObstacleKind.None;car.ObstacleCar=-1;car.ObstacleDistance=0;}
+                foreach(var item in obstacles){var car=CarById(item.Key);car.ObstacleState=item.Value.Kind;car.ObstacleCar=item.Value.Car;car.ObstacleDistance=item.Value.Distance;car.BlockingTile=item.Value.BlockedTile;}
+                MarkBlockingCycles(obstacles,nextSpeeds);
             }
             foreach(var proposal in proposals)
             {
-                var car=proposal.car;car.Speed=proposal.speed;car.Acceleration=proposal.acceleration;
-                car.Obstacle=proposal.obstacle;car.WaitingAtSignal=car.Obstacle=="Traffic light";
+                var car=proposal.car;double travel=proposal.distance;
+                if(Rules.Version==GameVersion.OriginalReference&&NearCarpark(car))
+                {
+                    bool Clear(double distance)
+                    {
+                        PoseAlongJourney(car,distance,out var position,out var heading);
+                        foreach(var other in Cars.Where(other=>other.Id!=car.Id&&NearCarpark(other)&&SamePhysicalCarpark(car,other)))
+                        {
+                            if(Point.Distance(position,other.Position)<Rules.CarLength+.2&&
+                                VehicleBodiesOverlap(position,heading,other.Position,other.Heading))return false;
+                            // Once a bay departure starts, leave space for its short
+                            // merge to finish. A following circulation car must not
+                            // advance into the turn and trap both vehicles nose-to-side.
+                            if(other.Stage==TripStage.LeavingParking&&other.RouteIndex<2&&
+                                !other.Lanes.Skip(2).Any(l=>l.Key==car.CurrentLane.Key))
+                                for(int laneIndex=other.RouteIndex;laneIndex<Math.Min(2,other.Lanes.Count);laneIndex++)
+                                {
+                                    var merge=other.Lanes[laneIndex];
+                                    for(int i=0;i<merge.Samples.Length;i++)
+                                    {
+                                        if(laneIndex==other.RouteIndex&&merge.Distances[i]<other.DistanceAlongLane)continue;
+                                        if(Point.Distance(position,merge.Samples[i])<Rules.CarLength+.2&&
+                                            VehicleBodiesOverlap(position,heading,merge.Samples[i],merge.Tangent(merge.Distances[i])))return false;
+                                    }
+                                }
+                        }
+                        return true;
+                    }
+                    if(travel>0&&!Clear(travel))
+                    {
+                        double lo=0,hi=travel;for(int i=0;i<10;i++){double mid=(lo+hi)/2;if(Clear(mid))lo=mid;else hi=mid;}
+                        travel=lo;
+                    }
+                }
+                car.Speed=travel<proposal.distance-1e-8?0:proposal.speed;car.Acceleration=proposal.acceleration;
+                car.Obstacle=travel<proposal.distance-1e-8?"Carpark lane clearance":proposal.obstacle;car.WaitingAtSignal=car.Obstacle=="Traffic light";
                 car.WaitingAtIntersection=car.Obstacle.Contains("priority")||car.Obstacle.Contains("Crossing")||car.Obstacle.Contains("yield");
                 if(car.Speed<.02&&car.Stage!=TripStage.Parking){car.Waiting+=Rules.TickSeconds;car.TotalWaiting+=Rules.TickSeconds;}else car.Waiting=0;
-                AdvanceVehicle(car,proposal.distance);
+                AdvanceVehicle(car,travel);
             }
+        }
+
+        bool NearCarpark(Vehicle car)=>PhysicalCarpark(car)>=0;
+
+        bool CanBeginBayDeparture(Vehicle car)
+        {
+            var shop=Buildings[car.ShopId];
+            var launch=ParkingRoute(shop,car.DestinationAccess,car.ParkingSlot,true).Take(2).ToArray();
+            foreach(var other in Cars.Where(v=>v.Id!=car.Id&&v.Moving&&PhysicalCarpark(v)==shop.CarparkId))
+                foreach(var lane in other.Lanes.Skip(other.RouteIndex).Where(l=>l.IsParking&&l.CarparkId==shop.CarparkId))
+                    foreach(var own in launch)
+                        for(int i=0;i<own.Samples.Length;i++)for(int j=0;j<lane.Samples.Length;j++)
+                        {
+                            if(lane==other.CurrentLane&&lane.Distances[j]<other.DistanceAlongLane)continue;
+                            if(Point.Distance(own.Samples[i],lane.Samples[j])<Rules.CarLength+.025)return false;
+                        }
+            return true;
+        }
+
+        void PoseAlongJourney(Vehicle car,double distance,out Point position,out Point heading)
+        {
+            int index=car.RouteIndex;distance+=car.DistanceAlongLane;
+            while(index<car.Lanes.Count-1&&distance>car.Lanes[index].Length){distance-=car.Lanes[index].Length;index++;}
+            var lane=car.Lanes[index];distance=Math.Min(distance,lane.Length);
+            position=lane.Position(distance);heading=lane.Tangent(distance);
+        }
+        public bool VehicleBodiesOverlap(Point a,Point forwardA,Point b,Point forwardB)
+        {
+            var sideA=forwardA.Right;var sideB=forwardB.Right;var delta=b-a;
+            foreach(var axis in new[]{forwardA,sideA,forwardB,sideB})
+            {
+                double extentA=Math.Abs(Point.Dot(axis,forwardA))*Rules.CarLength*.5+Math.Abs(Point.Dot(axis,sideA))*.085;
+                double extentB=Math.Abs(Point.Dot(axis,forwardB))*Rules.CarLength*.5+Math.Abs(Point.Dot(axis,sideB))*.085;
+                if(Math.Abs(Point.Dot(delta,axis))>=extentA+extentB-.00001)return false;
+            }
+            return true;
         }
 
         public double AccelerationFor(double centerGap,double speed,double leadingSpeed,double leadingAcceleration,double desired,double maximumAcceleration)
@@ -258,8 +502,9 @@ namespace MotorwaysSim
                 if(distance<remaining-1e-8){car.DistanceAlongLane+=distance;break;}
                 distance-=remaining;if(car.CurrentLane.ReleasesParking)ReleaseParkingSlot(car);
                 if(car.CurrentLane.DeliversDriveThrough&&car.DrivingThrough)Deliver(car);
-                car.RouteIndex++;car.DistanceAlongLane=0;car.SegmentEntered=Time;
+                car.RouteIndex++;car.DistanceAlongLane=0;car.SegmentEntered=Time;car.Shoving=false;car.ShovingLane="";
                 if(car.RouteIndex>=car.Lanes.Count){FinishJourney(car);break;}
+                if(Rules.Version==GameVersion.OriginalReference){car.ApproachRegistered.Remove(car.CurrentLane.Key);car.CommittedAt.Remove(car.CurrentLane.Key);NoteCommitments(car);}
                 RefreshJourney(car);
             }
             if(car.Moving)
@@ -275,7 +520,8 @@ namespace MotorwaysSim
                 case TripStage.EnteringParking:
                     Deliver(car);
                     if(car.DrivingThrough){car.Stage=TripStage.Returning;SetJourney(car,car.ReturnRoute);break;}
-                    car.Stage=TripStage.Parking;car.ParkedPosition=ParkingPoint(Buildings[car.ShopId],car.ParkingSlot);
+                    // Parked cars receive no movement updates; do not keep the approach wait.
+                    car.Stage=TripStage.Parking;car.Waiting=0;car.ParkedPosition=ParkingPoint(Buildings[car.ShopId],car.ParkingSlot);
                     car.ParkedHeading=Rules.Version==GameVersion.OriginalReference?ParkingHeading(Buildings[car.ShopId],car.DestinationAccess):new Point(0,-1);
                     car.Dwell=Rules.ServiceSeconds;break;
                 case TripStage.LeavingParking:
@@ -298,13 +544,13 @@ namespace MotorwaysSim
             {
                 car.DrivingThrough=true;
                 if(Rules.Version==GameVersion.OriginalReference)
-                {car.Stage=TripStage.EnteringParking;car.Lanes=ParkingDriveThrough(shop,car.DestinationAccess);car.RouteIndex=0;car.DistanceAlongLane=0;return;}
+                {car.Stage=TripStage.EnteringParking;car.Lanes=ParkingDriveThrough(shop,car.DestinationAccess);car.RouteIndex=0;car.DistanceAlongLane=0;RegisterRoute(car,false);return;}
                 Deliver(car);car.Stage=TripStage.Returning;SetJourney(car,car.ReturnRoute);return;
             }
             int slot=available.Count==1?available[0]:available[random.Next(available.Count)];
             car.ParkingSlot=slot;shop.Parking[slot]=car.Id;car.Stage=TripStage.EnteringParking;
             if(Rules.Version==GameVersion.OriginalReference)
-            {car.Lanes=ParkingRoute(shop,car.DestinationAccess,slot);car.RouteIndex=0;car.DistanceAlongLane=0;return;}
+            {car.Lanes=ParkingRoute(shop,car.DestinationAccess,slot);car.RouteIndex=0;car.DistanceAlongLane=0;RegisterRoute(car,false);return;}
             Point a=new Point(car.DestinationAccess),b=ParkingPoint(shop,slot);
             var lane=CreateLane(Cubic(a,a+ParkingVector(shop,.25,.15),b+ParkingVector(shop,0,.35),b,16),car.DestinationAccess,car.DestinationAccess,car.DestinationAccess,0,0);
             lane.IsParking=true;lane.SpeedLimit=Rules.CarSpeed*.6;lane.Key=$"parking-in:{shop.CarparkId}:{slot}";
@@ -313,7 +559,16 @@ namespace MotorwaysSim
         void StartLeavingParking(Vehicle car)
         {
             if(Rules.Version==GameVersion.OriginalReference)
-            {car.Lanes=ParkingRoute(Buildings[car.ShopId],car.DestinationAccess,car.ParkingSlot,true);car.Stage=TripStage.LeavingParking;car.RouteIndex=0;car.DistanceAlongLane=0;car.Speed=0;return;}
+            {
+                var destination=Buildings[car.ShopId];List<Cell> best=null;double cost=double.PositiveInfinity;
+                foreach(var access in Accesses(destination))
+                {
+                    var route=FindRoute(access,Buildings[car.HomeId].Access);if(route.Count<2)continue;
+                    double value=RouteCost(route);if(value<cost){cost=value;best=route;}
+                }
+                if(best!=null){car.DestinationAccess=best[0];car.ReturnRoute=best;}
+                car.Lanes=ParkingRoute(destination,car.DestinationAccess,car.ParkingSlot,true);car.Stage=TripStage.LeavingParking;car.RouteIndex=0;car.DistanceAlongLane=0;car.Speed=0;RegisterRoute(car,false);return;
+            }
             var shop=Buildings[car.ShopId];Point a=ParkingPoint(shop,car.ParkingSlot),b=new Point(car.DestinationAccess);
             var lane=CreateLane(Cubic(a,a+ParkingVector(shop,0,.4),b+ParkingVector(shop,.4,.35),b,16),car.DestinationAccess,car.DestinationAccess,car.DestinationAccess,0,0);
             lane.IsParking=true;lane.SpeedLimit=Rules.CarSpeed*.6;lane.Key=$"parking-out:{shop.CarparkId}:{car.ParkingSlot}";
@@ -323,8 +578,8 @@ namespace MotorwaysSim
         {if(car.ParkingSlot>=0&&car.ShopId>=0)Buildings[car.ShopId].Parking[car.ParkingSlot]=-1;car.ParkingSlot=-1;}
         void FinishHome(Vehicle car)
         {
-            car.Stage=TripStage.Home;car.At=Buildings[car.HomeId].Cell;car.Next=car.At;car.Lanes.Clear();car.Route.Clear();
-            car.ReturnRoute.Clear();car.ShopId=-1;car.Speed=0;car.ArrivedHome=Time;car.RouteIndex=0;car.DistanceAlongLane=0;car.Obstacle="";
+            car.Stage=TripStage.Home;car.Waiting=0;car.At=Buildings[car.HomeId].Cell;car.Next=car.At;car.Lanes.Clear();car.Route.Clear();
+            car.ReturnRoute.Clear();car.ApproachRegistered.Clear();car.ShopId=-1;car.Speed=0;car.ArrivedHome=Time;car.RouteIndex=0;car.DistanceAlongLane=0;car.Obstacle="";
         }
     }
 }

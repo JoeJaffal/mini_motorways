@@ -6,6 +6,60 @@ namespace MotorwaysSim
 {
     public sealed partial class TrafficWorld
     {
+        readonly Dictionary<int,double> lastHouseSpawn=new Dictionary<int,double>();
+        readonly Dictionary<int,double> houseRetryAt=new Dictionary<int,double>();
+        readonly Dictionary<int,double> delayedSpawnDemand=new Dictionary<int,double>();
+        double ExtraDemandFor(int color)=>Rules.Version==GameVersion.OriginalReference&&delayedSpawnDemand.TryGetValue(color,out var value)?value:0;
+        void UpdateDelayedSpawnDemand()
+        {
+            delayedSpawnDemand.Clear();if(Rules.Version!=GameVersion.OriginalReference)return;
+            var active=Buildings.Where(b=>!b.IsHouse).GroupBy(b=>b.Color)
+                .ToDictionary(g=>g.Key,g=>g.Sum(b=>.800000011920929*(b.Upgraded?2:1)*b.PlannedDemandMultiplier));
+            double total=active.Values.Sum();if(total<=0)return;
+            int late=originalPlan.Count(p=>p.Attempts>5);double multiplier=late>0?1+Math.Log(late,2):1;
+            foreach(var group in originalPlan.Where(p=>p.Type==0&&p.Attempts>0).GroupBy(p=>p.Color))
+            {
+                double remainder=group.Sum(p=>p.DemandMultiplier*(p.Attempts>5?multiplier:1));
+                if(active.TryGetValue(group.Key,out var capacity))
+                {
+                    double allocated=Math.Min(capacity,remainder);delayedSpawnDemand[group.Key]=
+                        ExtraDemandFor(group.Key)+allocated/capacity;remainder-=allocated;
+                }
+                if(remainder>0)foreach(var color in active.Keys.Where(c=>c!=group.Key))
+                    delayedSpawnDemand[color]=ExtraDemandFor(color)+remainder/total;
+            }
+        }
+        public double HouseSupplyContribution(Building house,Building destination)
+        {
+            int dx=Math.Abs(house.Cell.X-destination.Access.X),dy=Math.Abs(house.Cell.Y-destination.Access.Y);
+            double distance=Math.Min(dx,dy)*Math.Sqrt(2)+Math.Abs(dx-dy);
+            return ReferenceCurves.Evaluate(OriginalGameplayTuning.HouseContribution,distance)*OriginalGameplayTuning.HouseContributionMultiplier;
+        }
+        public double RequiredHouseSupply(Building shop)=>shop.IsStation?double.Epsilon:
+            Rules.AverageCarsPerDay*DemandRamp*.800000011920929*(shop.Upgraded?2:1)*shop.PlannedDemandMultiplier+ExtraDemandFor(shop.Color);
+        public bool HasSufficientHouseSupply(Building shop)
+        {
+            double supply=Buildings.Where(h=>h.IsHouse&&h.Color==shop.Color).Sum(h=>HouseSupplyContribution(h,shop));
+            int count=Buildings.Count(s=>!s.IsHouse&&!s.IsStation&&s.Color==shop.Color);
+            return supply*(shop.IsStation?1:ReferenceCurves.Evaluate(OriginalGameplayTuning.DestinationSupplyScale,count))>=RequiredHouseSupply(shop);
+        }
+        void UpdateOriginalHouseSupply()
+        {
+            foreach(var group in Buildings.Where(s=>!s.IsHouse).GroupBy(s=>s.Color).ToArray())
+            {
+                int color=group.Key;
+                if(originalPlan.Any(p=>p.Type==1&&p.Color==color))continue;
+                if(lastHouseSpawn.TryGetValue(color,out var last)&&Time<last+OriginalGameplayTuning.HouseSpawnDelay||
+                    houseRetryAt.TryGetValue(color,out var retry)&&Time<retry)continue;
+                var shop=group.FirstOrDefault(s=>!HasSufficientHouseSupply(s));if(shop==null)continue;
+                if(!TrySpawnHouse(shop))houseRetryAt[color]=Time+OriginalGameplayTuning.HouseRetryDelay;
+            }
+        }
+        void InitializeDestinationDemand(Building shop)
+        {
+            shop.DemandCountdown=Time<1?3:OriginalDemandInterval(shop)*DemandRamp;
+            shop.NextDemand=Time+shop.DemandCountdown/DemandRamp;
+        }
         public Building SpawnBuilding(Cell cell,int color,bool house,int drivewayDirection=0,int layout=0)
         {
             if(color<0||color>=Map.BaseDemand.Length)return null;
@@ -23,8 +77,13 @@ namespace MotorwaysSim
             var outside=b.Access+Directions[b.DrivewayDirection];if(!InBounds(outside)||!IsPlayable(outside)||Blocked[outside.X,outside.Y]||Water[outside.X,outside.Y]||BuildingAt(outside)!=null||Roundabouts.Any(r=>r.Center==outside))return null;
             if(!house){b.CarparkId=b.Id;b.Entrances=new[]{b.Entrance};b.EntranceDirections=new[]{b.DrivewayDirection};}
             Buildings.Add(b);
+            if(house)lastHouseSpawn[color]=Time;
+            else if(Rules.Version==GameVersion.OriginalReference)
+            {
+                InitializeDestinationDemand(b);
+            }
             if(house)for(int i=0;i<2;i++)Cars.Add(new Vehicle{Id=Cars.Count,HomeId=b.Id,Color=color,Stage=TripStage.Home,At=cell,Next=cell,ArrivedHome=Time});
-            if(CanTraverse(outside))Link(b.Access,outside);
+            AttachNativeDrivewaysAt(outside);
             Changed();
             foreach(var s in Buildings.Where(v=>!v.IsHouse))s.LastFeasibilityCheck=-100;
             return b;
@@ -58,10 +117,10 @@ namespace MotorwaysSim
             var candidates=Map.HouseZones[shop.Color].Select(k=>new Cell(k%Width,k/Width)).ToList();
             Shuffle(candidates);
             // Original spawn regions are preferred. A feasible fallback is our explicitly provisional safeguard.
-            candidates=candidates.OrderBy(c=>Distance(c,shop.Access)<3?100:Math.Abs(Distance(c,shop.Access)-6)).ToList();
+            if(Rules.Version==GameVersion.Custom)candidates=candidates.OrderBy(c=>Distance(c,shop.Access)<3?100:Math.Abs(Distance(c,shop.Access)-6)).ToList();
             foreach(var candidate in candidates.Take(300))
             {
-                if(Distance(candidate,shop.Access)<3||Distance(candidate,shop.Access)>18)continue;
+                if(Rules.Version==GameVersion.Custom&&(Distance(candidate,shop.Access)<3||Distance(candidate,shop.Access)>18))continue;
                 int direction=Direction(candidate,shop.Access);
                 // A cardinal driveway keeps placement and parcel access unambiguous.
                 direction=((direction+1)/2*2)%8;
@@ -80,7 +139,7 @@ namespace MotorwaysSim
         void UpdateCity()
         {
             if(!Rules.EnableCityGrowth||!CityCatalog.Maps.Contains(Scenario))return;
-            if(Rules.Version==GameVersion.OriginalReference)ProcessOriginalPlan();
+            if(Rules.Version==GameVersion.OriginalReference){ProcessOriginalPlan();UpdateOriginalHouseSupply();return;}
             else if(nextScheduledShop<spawnSchedule.Count&&Time>=spawnSchedule[nextScheduledShop].time)
             {
                 int color=spawnSchedule[nextScheduledShop].color;
@@ -169,10 +228,11 @@ namespace MotorwaysSim
             return Rules.SecondsPerDay/(Rules.AverageCarsPerDay*(Rules.Version==GameVersion.OriginalReference?3435973888/4294967296.0*(shop.Upgraded?2:1)*shop.PlannedDemandMultiplier:Rules.DemandMultiplier)*Math.Max(.01,oscillation)*ramp);
         }
 
-        double DemandRamp=>Rules.Version==GameVersion.OriginalReference?1+Math.Max(0,Day-(int)Map.SpawnRamp[0])*Map.SpawnRamp[1]:1+Math.Max(0,Day-35)*.013;
+        double DemandRamp=>Rules.Version==GameVersion.OriginalReference?1+(Map.SpawnRamp[0]>0?Math.Max(0,Day-(int)Map.SpawnRamp[0])*Map.SpawnRamp[1]:0):1+Math.Max(0,Day-35)*.013;
 
         void UpdateDemand()
         {
+            UpdateDelayedSpawnDemand();
             foreach(var shop in Buildings.Where(b=>!b.IsHouse))
             {
                 if(Time-shop.LastFeasibilityCheck>20)RefreshFeasibility(shop);
@@ -182,7 +242,7 @@ namespace MotorwaysSim
                 if(shop.IsStation)shop.NextDemand=double.PositiveInfinity;
                 else if(Rules.Version==GameVersion.OriginalReference)
                 {
-                    shop.DemandCountdown-=Rules.TickSeconds*DemandRamp;
+                    shop.DemandCountdown-=Rules.TickSeconds*DemandRamp*(1+ExtraDemandFor(shop.Color));
                     if(shop.DemandCountdown<=0)
                     {
                         if(shop.Demand<DestinationCapacity(shop)+DestinationOverflow(shop))shop.Demand++;
@@ -202,7 +262,9 @@ namespace MotorwaysSim
                     LastAction=RejectionReason;return;
                 }
                 if(shop.Demand>DestinationCapacity(shop))
-                {shop.OvercrowdingSpeed=Math.Min(1,shop.OvercrowdingSpeed+Rules.OvercrowdingAcceleration*Rules.TickSeconds);shop.OvercrowdedFor+=shop.OvercrowdingSpeed*Rules.TickSeconds;}
+                {double speed=shop.OvercrowdingSpeed;shop.OvercrowdingSpeed=Math.Min(1,speed+Rules.OvercrowdingAcceleration*Rules.TickSeconds);
+                    shop.OvercrowdedFor+=(Rules.Version==GameVersion.OriginalReference?speed:shop.OvercrowdingSpeed)*Rules.TickSeconds*
+                        (Rules.Version==GameVersion.OriginalReference?ReferenceCurves.Evaluate(OriginalGameplayTuning.ExtraDemandTimerSpeed,ExtraDemandFor(shop.Color)):1);}
                 else
                 {shop.OvercrowdingSpeed=0;shop.OvercrowdedFor=Math.Max(0,Math.Min(shop.OvercrowdedFor,Rules.OvercrowdingSeconds-Rules.OvercrowdingGraceSeconds)-Rules.OvercrowdingReturnSpeed*Rules.TickSeconds);}
                 if(shop.OvercrowdedFor>Rules.OvercrowdingSeconds)Failed=true;
@@ -244,7 +306,8 @@ namespace MotorwaysSim
             var shop=Buildings[car.ShopId];shop.Demand=Math.Max(0,shop.Demand-1);shop.Reserved=Math.Max(0,shop.Reserved-1);
             shop.Served++;TripsCompleted++;car.HasDelivered=true;
             shop.OvercrowdedFor=Math.Min(shop.OvercrowdedFor,Rules.OvercrowdingSeconds-Rules.OvercrowdingGraceSeconds);
-            shop.OvercrowdedFor=Math.Max(0,shop.OvercrowdedFor-Math.Min(Rules.ArrivalTimerReductionMax,shop.OvercrowdedFor*Rules.ArrivalTimerReductionFraction));
+            shop.OvercrowdedFor=Math.Max(0,shop.OvercrowdedFor-Math.Min(Rules.ArrivalTimerReductionMax,shop.OvercrowdedFor*Rules.ArrivalTimerReductionFraction*
+                (Rules.Version==GameVersion.OriginalReference?ReferenceCurves.Evaluate(OriginalGameplayTuning.ArrivalReduction,Time):1)));
             shop.OvercrowdingSpeed*=Rules.ArrivalTimerDeceleration;
         }
     }
