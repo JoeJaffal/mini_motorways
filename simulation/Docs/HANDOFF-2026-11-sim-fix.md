@@ -6,9 +6,9 @@ Full evidence: [simulator repairs report](../../docs/training/simulator-repairs-
 ## Where it is
 
 - **Branch:** `mohammad` in worktree `C:\Projects\490 - Project\mm-ppo`. Commits up to `d6c9f27` are on
-  both `origin/mohammad` (Aya's fork) and `upstream/mohammad` (Mohammad's). `c1d23d0` and later commits are
-  local until pushed. Nothing is merged anywhere.
-- **Simulator version:** `2026-11-08.5`.
+  both `origin/mohammad` (Aya's fork) and `upstream/mohammad` (Mohammad's). Everything through the
+  `2026-11-08.6` documentation commit is pushed to both remotes. Nothing is merged anywhere.
+- **Simulator version:** `2026-11-08.6`.
 
 ## Commits (in order, after Mohammad's `8a4b447`)
 
@@ -25,7 +25,9 @@ Full evidence: [simulator repairs report](../../docs/training/simulator-repairs-
 | `7ef4071` | **Carpark gate:** cars passing through a shared lot are gated at the outside approach like arriving cars; gate waits visible to cycle recovery | **Yes** | No |
 | `c27107d`, `e58b1fd`, `dd65cd5` | Note to Mohammad, his signals/carpark answer, stuck-light measurement | No | No |
 | `470784a` | **Original traffic lights:** phase timing, nearby guard with same-chunk early stop, commitment-age weights, amber keeps permission, right on red | **Yes** | No |
-| next commit | Documentation of `470784a` | No | No |
+| `b307959` | Documentation of `470784a` | No | No |
+| `59e8830` | **Carpark chunk arbitration:** carpark lanes arbitrated as the original's chunks and registered as inbound lanes; engineered gate kept | **Yes** | No |
+| next commit | Documentation of `59e8830` | No | No |
 
 ## Which old results are invalid
 
@@ -55,7 +57,7 @@ produced on.
 
 ## Headless protocol
 
-Backward compatible from `e6119eb` to `2026-11-08.5`: no request or reply field was removed or
+Backward compatible from `e6119eb` to `2026-11-08.6`: no request or reply field was removed or
 renamed, and the observation layout is unchanged. Additions:
 
 - **`simulatorVersion`** (string) on every reply, including errors and `drawchoices`, and in the
@@ -87,21 +89,22 @@ renamed, and the observation layout is unchanged. Additions:
 
 ```
 dotnet build simulation/Headless -c Release      # DLL used by Evolved Rules
-dotnet simulation/Headless/bin/Release/net8.0/TrafficHost.dll --version   # 2026-11-08.5
-dotnet run --project simulation/Headless/TrafficHost.csproj -- --self-test   # 83 suites PASS
+dotnet simulation/Headless/bin/Release/net8.0/TrafficHost.dll --version   # 2026-11-08.6
+dotnet run --project simulation/Headless/TrafficHost.csproj -- --self-test   # 84 suites PASS
 dotnet build simulation/Headless -c Debug        # DLL used by PPO and the checks below
 python scripts/verify_five_maps.py               # 10 runs PASS (rewrites simulation/Reports/five-map-protocol-checks.json)
 cd training && python test_environment.py && python test_rewards.py   # 7/7 and 6/6; needs an existing tmp/ folder
 ```
 
-All of these were run on simulator `2026-11-08.5` (`470784a`) and passed: 83 suites, 7/7, 6/6 and 10 runs.
+All of these were run on simulator `2026-11-08.6` (`59e8830`) and passed: 84 suites, 7/7, 6/6 and 10 runs.
 
 ## Not verified or still open
 
 - **Traffic lights now follow the original** (`.5`). In the deterministic lights on/off comparison on LA
   3100–3109, lights went from −104.8 to −2.7 trips; map 3101 still loses 197 for an uninvestigated cause.
-- **Carpark is still our engineered gate.** The original uses chunk arbitration on real entrance, exit and
-  circulation lanes (Mohammad's answer B1–B4). This is the next simulator step and will change the version again.
+- **Carpark gate kept.** Carpark lanes now use the original's chunk arbitration (`.6`), but the engineered
+  approach gate stays because our entrance geometry deadlocks without it. Retiring it needs the entrance
+  and exit lanes rebuilt; that will change the version.
 - **Partial replication:** the original arbitration is replicated as described, but all-leader
   "pushing", the stopped-candidate geometry argument and the 45 s escape are not implemented.
 - **Unity:** the Original player has not been rebuilt with these changes.
@@ -111,3 +114,17 @@ All of these were run on simulator `2026-11-08.5` (`470784a`) and passed: 83 sui
 - **Parallel hosts:** the 10-host 0x800705AA crash has no host-side cause in measurement (about 56 MB,
   177 handles and 8 threads per host). It was not reproduced. Eight hosts remain the safe setting
   observed.
+
+## For the Evolved Rules session: next steps (user request, 8 November 2026)
+
+The user asks you to start retraining: a **fifth genetic-programming generation (gp-5)** on simulator
+`2026-11-08.6`.
+
+- Integrate `mohammad` as your resume plan says (ask the user how), rebuild Release, bump `CODE_VERSION`
+  and key the cache on `simulatorVersion`.
+- Point `verify.py` at the new engine instead of `e6119eb`.
+- Baselines measured here with your archived `gp4` code and pinned packages (deterministic, LA 3100–3109):
+  `gp3_final` with lights 529.7, without 535.5 (`.5`: 510.5 / 513.2; `.4`: 408.4 / 513.2).
+- Your fixed light rules (take the light package first, place a light where ≥1 car is stopped) still lose on
+  6 of 10 maps. Consider letting gp-5 evolve the light and package decisions instead of fixing them.
+- Follow your standing rules: count games before any run of more than 20, and never select on held-out maps.

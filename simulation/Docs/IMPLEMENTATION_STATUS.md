@@ -1,3 +1,7 @@
+# Carpark chunk arbitration — 8 November 2026
+
+[Report section 12](../../docs/training/simulator-repairs-2026-11-08/README.md#12-carpark-lanes-as-original-chunks-gate-kept-simulator-2026-11-086), [handoff](HANDOFF-2026-11-sim-fix.md). Carpark lanes arbitrated as the original's chunks and registered as inbound lanes (simulator `2026-11-08.6`); removing the engineered gate deadlocks our entrance geometry, so it stays. 84 core/7 environment/6 reward/10 map PASS. Lights comparison 529.7 vs 535.5 without. Ready for the Evolved Rules re-evaluation and gp-5. No training here.
+
 # Original traffic lights replicated — 8 November 2026
 
 [Report section 11](../../docs/training/simulator-repairs-2026-11-08/README.md#11-original-traffic-lights-replicated-simulator-2026-11-085). Original traffic-light phases and permissions replicated from Mohammad's inspected rules (simulator `2026-11-08.5`). Three new checks fail on .4 and pass; 83 core/7 environment/6 reward/10 map PASS. Deterministic lights on/off (LA 3100-3109): stuck time up to 237 s → ≤4.7 s; lights 408.4→510.5 vs 513.2 without. Carpark chunk arbitration is next. No training.

@@ -452,3 +452,38 @@ with real entrance, exit and circulation lanes in multi-lane chunks, and no owne
 recommends mapping that lane and chunk structure first, then retiring our compensating gate only once
 the gate-lock, mixed-traffic, orientation, simultaneous entry/exit and separation checks pass. This is
 the next step.
+
+## 12. Carpark lanes as original chunks; gate kept (simulator `2026-11-08.6`)
+
+**Evidence.** Mohammad's answer B1–B4: the original carpark has real entrance, exit and circulation
+lanes in multi-lane chunks, arbitrated like junctions, with no whole-entrance owner. He advised against
+removing our gate before the lane and geometry mismatch is repaired.
+
+**Change** (`59e8830`, `CarparkArbitration.cs`).
+
+- Carpark lanes carry a chunk: each entrance end holds its entrance, exit and turn-around lanes; each
+  bay has an outer and an inner circulation chunk (through, bay-entry and bay-exit lanes) and a bay
+  chunk.
+- Entry uses the junction order: lane-count gate, shove, traversing vehicles (shared-end space test,
+  different-end release, geometry), then committed candidates ordered by route distance and
+  registration time.
+- Carpark lanes are registered as inbound lanes when they are assigned.
+
+**Tests.** The registration check fails on `.5` and passes. A second check (an arriving car enters
+beside a departing car held at the entrance) passes on both and is kept as a guard. 84 core suites
+([output](measurements/core-84.txt)), environment 7/7, reward 6/6, five-map 10 runs and the Release
+build pass.
+
+**Gate-removal experiment (failed, gate kept).** With the engineered approach gate off, the existing
+eight-car single-lot queue check stops at 5 of 8 trips after 300 s, with no body overlap. Drive-through
+cars on the exit connector and an entering car on the entrance connector block each other through our
+body-clearance check. Our reconstructed connectors pass too close at the access, and the gate
+serialises them ([probe](source/EightCarGateOff.cs)). The gate stays until the entrance and exit
+geometry is rebuilt; that needs layout evidence we do not have.
+
+**Results** ([details](measurements/carpark-arbitration-results.json)).
+
+- Replays: v20 629 trips, game-over 1213.7 s; v21 642 trips, 1220 s. Neither has a deadlocked second
+  or a car waiting over 20 s at the end.
+- Deterministic lights on/off (LA 3100–3109): 529.7 with lights against 535.5 without (4 better,
+  6 worse). Both arms rose from `.5` (510.5 / 513.2).

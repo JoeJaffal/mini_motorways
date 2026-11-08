@@ -1,0 +1,87 @@
+{
+ "version": "2026-11-08.6",
+ "change": "OriginalReference carpark lanes are arbitrated as chunks (each entrance end: entrance/exit/turn lanes; per bay: outer and inner circulation chunks and a bay chunk) with the junction order: lane-count gate, shove, traversing vehicles (shared-end space test, different-end release, geometry), committed candidates by route distance and registration time. Carpark lanes are registered as inbound lanes when assigned. The engineered approach gate is kept on.",
+ "regression": "SimulationChecks 'Original carpark lanes use chunk arbitration instead of a whole-entrance owner': part 1 (planned carpark lanes registered) fails on 2026-11-08.5 and passes; part 2 (arriving car enters beside a departing car held at the entrance) passes on both and is kept as a guard.",
+ "gate_removal_experiment": {
+  "result": "FAILED: with CarparkApproachGate=false, GameplayFidelityChecks 'eight-car parking queue clears with safe concurrency' (single lot) stops at 5/8 trips after 300 s with no body overlap.",
+  "mechanism": "Lot full (cars 0-2 parked); drive-through cars 3-4 on the exit connector and entering car 5 on the entrance connector block each other through the engineered body-clearance check ('Carpark lane clearance'), with arrivals 6-7 queued outside. Our reconstructed entrance and exit connectors pass too close at the access for both bodies; the gate serialises them.",
+  "decision": "Gate kept (as Mohammad advised: do not remove it before the entrance/exit geometry mismatch is repaired)."
+ },
+ "replays": {
+  "v20": {
+   "score": 629,
+   "seconds": 1213.7,
+   "deadlockedSeconds": 0
+  },
+  "v21": {
+   "score": 642,
+   "seconds": 1220,
+   "deadlockedSeconds": 0
+  }
+ },
+ "lights_comparison": {
+  "v5": {
+   "lights": 510.5,
+   "noLights": 513.2
+  },
+  "v6": {
+   "lights": 529.7,
+   "noLights": 535.5,
+   "better": 4,
+   "worse": 6
+  },
+  "maps": [
+   {
+    "map": 3100,
+    "lights": 483,
+    "noLights": 516
+   },
+   {
+    "map": 3101,
+    "lights": 495,
+    "noLights": 684
+   },
+   {
+    "map": 3102,
+    "lights": 652,
+    "noLights": 486
+   },
+   {
+    "map": 3103,
+    "lights": 677,
+    "noLights": 588
+   },
+   {
+    "map": 3104,
+    "lights": 268,
+    "noLights": 257
+   },
+   {
+    "map": 3105,
+    "lights": 424,
+    "noLights": 353
+   },
+   {
+    "map": 3106,
+    "lights": 478,
+    "noLights": 504
+   },
+   {
+    "map": 3107,
+    "lights": 654,
+    "noLights": 669
+   },
+   {
+    "map": 3108,
+    "lights": 584,
+    "noLights": 686
+   },
+   {
+    "map": 3109,
+    "lights": 582,
+    "noLights": 612
+   }
+  ]
+ },
+ "note": "Replay and agent scores are diagnostics, not a comparison with the original 835."
+}

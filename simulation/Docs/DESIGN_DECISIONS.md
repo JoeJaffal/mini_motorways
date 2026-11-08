@@ -1118,3 +1118,18 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Superseded.** The previous OriginalReference signal weights and the all-red amber.
 
 **Next.** Carpark entrance/exit chunk arbitration (Mohammad's B1–B4) before retiring the gate.
+
+
+## 074 - Carpark chunk arbitration; keep the compensating gate (8 November 2026)
+
+**User decision.** Start the carpark rebuild, push when done, and ask the Evolved Rules session to start a fifth genetic-programming generation (gp-5) on the improved simulator.
+
+**Engineering choices** ([report section 12](../../docs/training/simulator-repairs-2026-11-08/README.md)):
+
+- Our parking lanes are mapped onto the original's chunk kinds and arbitrated with the junction order.
+- The gate is kept because removing it deadlocks the eight-car queue through our entrance geometry, per Mohammad's caution.
+
+**Open.**
+
+- Rebuild the entrance and exit connector geometry, then retire the gate.
+- Bay chunks use the simple early-accept branch where they have two or fewer lanes.

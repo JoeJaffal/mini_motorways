@@ -7875,3 +7875,8 @@ User decision: keep the approach gate but measure every car at the same point an
 ## 8 November 2026 — Original traffic lights replicated; deterministic lights comparison, no learning
 
 From Mohammad's answer (`e58b1fd`), implemented in `470784a` (simulator `2026-11-08.5`): original phase timing, nearby guard with same-chunk early termination, commitment-age weights, amber permission and American red-light rules. Stuck-light, right-on-red and amber checks fail on .4 and pass. Deterministic Evolved Rules lights on/off comparison on LA 3100-3109 (20 games plus a 2-game harness check reproducing .4 exactly): lights 510.5 vs 513.2 without (was 408.4 vs 513.2); stuck-phase time ≤4.7 s per game (was up to 237 s). Map 3101 still -197 for another cause. Evaluation only, no learning or selection.
+
+
+## 8 November 2026 — Carpark chunk arbitration; gate kept, no learning
+
+`59e8830`, simulator `2026-11-08.6`: carpark lanes arbitrated as the original's chunks and registered as inbound lanes (Mohammad's B1–B4). The registration check fails on .5 and passes; 84 core/7 environment/6 reward/10 map PASS. Gate-removal experiment: the eight-car queue deadlocks at the entrance (entering vs drive-through body clearance), so the engineered gate stays. Replays v20 629, v21 642, no deadlock; lights comparison 529.7 vs 535.5 without (20 games). User asked for the Evolved Rules session to start gp-5 on this simulator.
