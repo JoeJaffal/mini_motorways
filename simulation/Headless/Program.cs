@@ -35,6 +35,7 @@ static class Program
 
     public static void Main(string[] args)
     {
+        if(Array.IndexOf(args,"--version")>=0){Console.WriteLine(SimulatorVersion.Value);return;}
         int scenarioArg=Array.IndexOf(args,"--run-scenario");
         if(scenarioArg>=0)
         {
@@ -45,7 +46,7 @@ static class Program
                 var definition=JsonSerializer.Deserialize<CustomScenarioDefinition>(System.IO.File.ReadAllText(args[scenarioArg+1]),Json);
                 session=new CustomScenarioSession(definition);var timer=Stopwatch.StartNew();
                 while(!session.Complete){if(timer.Elapsed.TotalSeconds>120)throw new TimeoutException("Custom scenario exceeded120-second wall limit");session.AdvanceTick();}
-                Console.WriteLine(JsonSerializer.Serialize(new{result="COMPLETED",mode="custom-scenario-reconstruction",definition.id,definition.seed,
+                Console.WriteLine(JsonSerializer.Serialize(new{result="COMPLETED",simulatorVersion=SimulatorVersion.Value,mode="custom-scenario-reconstruction",definition.id,definition.seed,
                     referenceScore=definition.referenceScore,score=session.World.TripsCompleted,difference=session.World.TripsCompleted-definition.referenceScore,
                     seconds=session.World.Time,failed=session.World.Failed,events=session.CompletedEvents,totalEvents=definition.events.Length,inventory=session.World.Inventory,
                     destinations=session.World.Buildings.Where(b=>!b.IsHouse).Select(b=>new{b.Id,b.Color,b.Cell,b.Entrance,b.Demand,b.Reserved,b.Served,b.OvercrowdedFor}),
@@ -53,7 +54,7 @@ static class Program
             }
             catch(Exception error)
             {
-                if(session!=null)Console.WriteLine(JsonSerializer.Serialize(new{result="REJECTED_EVENT",error=error.Message,
+                if(session!=null)Console.WriteLine(JsonSerializer.Serialize(new{result="REJECTED_EVENT",simulatorVersion=SimulatorVersion.Value,error=error.Message,
                     score=session.World.TripsCompleted,seconds=session.World.Time,failed=session.World.Failed,
                     events=session.CompletedEvents,totalEvents=session.Definition.events.Length,audit=session.Audit},Json));
                 Console.Error.WriteLine(error.Message);Environment.ExitCode=1;
@@ -69,7 +70,7 @@ static class Program
                 var recording=JsonSerializer.Deserialize<AiReplayRecording>(System.IO.File.ReadAllText(args[replayArg+1]),Json);
                 var replay=new AiReplaySession(recording);
                 while(!replay.Complete)replay.AdvanceTick();
-                Console.WriteLine(JsonSerializer.Serialize(new {result="PASS",recording.seed,score=replay.World.TripsCompleted,
+                Console.WriteLine(JsonSerializer.Serialize(new {result="PASS",simulatorVersion=SimulatorVersion.Value,recording.seed,score=replay.World.TripsCompleted,
                     seconds=replay.World.Time,commands=replay.CompletedCommands},Json));
             }
             catch(Exception error){Console.Error.WriteLine(error.Message);Environment.ExitCode=1;}
@@ -125,7 +126,7 @@ static class Program
                 int trips=world.TripsCompleted,spending=world.ConstructionSpent;bool accepted=true;
                 if(request.Command=="drawchoices")
                 {
-                    Console.WriteLine(JsonSerializer.Serialize(new {accepted=true,terminated=world.Failed,truncated=world.ScenarioRejected,
+                    Console.WriteLine(JsonSerializer.Serialize(new {accepted=true,simulatorVersion=SimulatorVersion.Value,terminated=world.Failed,truncated=world.ScenarioRejected,
                         possibleChanges=world.DrawChangeChoices(new Cell(request.X,request.Y))},Json));continue;
                 }
                 switch(request.Command)
@@ -157,7 +158,7 @@ static class Program
                     case "observe":break;
                     default:throw new Exception("Commands: reset, build, connect, draw, motorway, editMotorway, removeMotorway, upgrade, reference (debug), step, observe, quit");
                 }
-                Console.WriteLine(JsonSerializer.Serialize(new {accepted,message=world.LastAction,
+                Console.WriteLine(JsonSerializer.Serialize(new {accepted,simulatorVersion=SimulatorVersion.Value,message=world.LastAction,
                     networkVersion=world.NetworkVersion,
                     tripsDelta=world.TripsCompleted-trips,spendingDelta=world.ConstructionSpent-spending,
                     terminated=world.Failed,truncated=world.ScenarioRejected,
@@ -168,7 +169,7 @@ static class Program
                     observation=world.Observe()},Json));
             }
             catch(Exception exception)
-            {Console.WriteLine(JsonSerializer.Serialize(new {error=exception.Message},Json));}
+            {Console.WriteLine(JsonSerializer.Serialize(new {error=exception.Message,simulatorVersion=SimulatorVersion.Value},Json));}
         }
     }
 }

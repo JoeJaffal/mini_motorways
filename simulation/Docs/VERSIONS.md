@@ -56,3 +56,16 @@ See [the headless guide](../Headless/README.md) for commands. Observations inclu
 The RNG matches 180 installed-component values; London rail ordering, loop and origin match the installed topology component. Read-only live observation, selected footage and a sanitized journal-envelope report supply additional structural evidence. No original driving trace was successfully measured through the UI tool, and the journal's full simulation graph is still undecoded. Component matches and 31 internal suites do not certify full-game equivalence.
 
 The remaining work is summarized in [implementation status](IMPLEMENTATION_STATUS.md). The chronological [design decision log](DESIGN_DECISIONS.md) preserves actual user choices; this current specification supersedes earlier provisional descriptions.
+
+## Simulator version string
+
+`SimulatorVersion.Value` (`simulation/Assets/Simulation/SimulatorVersion.cs`) names the gameplay,
+scoring and observation semantics of the shared core. The headless host reports it as
+`simulatorVersion` on every reply and prints it for `TrafficHost --version`. Bump it, as
+`YYYY-MM-DD.N`, with any change that can alter a game, a score or the meaning of an observation field,
+and add a row here. Hosts built before 8 November 2026 report no such field; treat its absence as
+"pre-versioning" and never reuse those results as current.
+
+| Value | Source | Meaning |
+| --- | --- | --- |
+| `2026-11-08.1` | `mohammad` after `f7ce005` | 78-suite source: 77-suite rules (native motorway/common-endpoint joins in ordinary play) plus clearing a car's current wait on arrival |

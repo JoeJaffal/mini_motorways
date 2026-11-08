@@ -59,7 +59,7 @@ threshold. A queued car released within one creeping tick of its journey end the
 or in a bay with its queue wait, keeps it while there, and starts its next trip from it.
 
 **Frequency (measured before the fix).** No stale value occurred in 1,981 home/parked samples
-(reward-v5 game), 15,116 samples (reference networks on five cities × two seeds) or 300,697 samples
+(reward-v5 game), 14,116 samples (reference networks on five cities × two seeds) or 300,697 samples
 (replay v20 on the 77-suite source; [WaitProbe](source/WaitProbe.cs),
 [results](measurements/waiting-staleness.json)). The defect is real but rare in practice.
 
@@ -72,3 +72,18 @@ and five-map checks are unchanged.
 spawned, of its cumulative `TotalWaiting` in seconds. It includes cars that never left home and only
 grows. It is not stale, but it is not a current-queue measure. No code in `training/` or in Evolved
 Rules reads it. It is now documented in the headless README, and the field is unchanged.
+
+## 3. Simulator version string (headless protocol, additive)
+
+**Requested by the user** so that result caches never reuse results from another simulator.
+Mohammad called it reasonable (`8a4b447`). `SimulatorVersion.Value` in the shared core is
+`2026-11-08.1`. The host reports it as top-level `simulatorVersion` on every reply (including errors and
+`drawchoices`) and in the `--run-scenario`/`--verify-replay` summaries, and prints it for
+`TrafficHost --version`. No existing field changed. Both clients read replies by key: Evolved Rules
+`Host.call`/`verify.py` checks `PASS` on stdout, and PPO's `TrafficEnv` reads named keys. The bump rule
+and value table are in [VERSIONS.md](../../../simulation/Docs/VERSIONS.md#simulator-version-string).
+The headless README documents the field and the `waiting`/`meanWaiting` meanings.
+
+**Test.** `scripts/verify_five_maps.py` now requires `--version` to print a non-empty string, and every
+reply to carry the same value. It failed on the previous host (`--version must print the simulator
+version`) and passes now. Core suites: 78 PASS. Reward and environment checks: PASS.

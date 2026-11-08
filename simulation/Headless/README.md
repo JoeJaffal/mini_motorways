@@ -59,6 +59,18 @@ The host reads one JSON object per input line and emits one response per request
 {"command":"quit"}
 ```
 
+Every reply, including errors and `drawchoices`, carries `simulatorVersion` (for example
+`"2026-11-08.1"`); `TrafficHost --version` prints the same string, and `--run-scenario` and
+`--verify-replay` summaries include it. Key cached results on it: it changes whenever gameplay,
+scoring or observation meaning changes ([version table](../Docs/VERSIONS.md#simulator-version-string)).
+Hosts built before 8 November 2026 do not send it. The field is additive; no existing field changed.
+
+Vehicle `waiting` is the car's current continuous wait in seconds (speed below 0.02 tiles/s, not
+counting time in a bay). It resets when the car moves, and, since `2026-11-08.1`, on arrival home or in
+a bay. Observation `meanWaiting` is different: the mean, over every car ever spawned (including cars
+that never left home), of each car's cumulative waiting seconds. It only grows and is not a
+current-queue measure.
+
 Build places a tile; adjacency alone does not connect tiles. Draw builds and connects a stroke, which may partially succeed. Responses include `accepted`, `message`, trip/spending deltas, `terminated`, `truncated` and `observation`. Invalid requests return `error`.
 
 Observations contain detached destination, vehicle, motorway, train, rail and crossing data, plus costs, inventory and fidelity status. Station/shared-lot metadata includes shared occupancy identity, entrance arrays and platform cells. A rejected Custom scenario sets `truncated=true`; ordinary overcrowding failure sets `terminated=true`. Bounded evaluation tools report duration truncation separately. Discard rejected runs rather than treating them as a policy failure. No scalar reward is invented.
