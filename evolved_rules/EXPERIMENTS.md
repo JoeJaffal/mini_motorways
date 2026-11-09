@@ -470,3 +470,55 @@ gp-4 stays stopped at generation 21 (entry above) and is **not** resumed. Its ru
 | 2026-11-08.6 | 529.7 | 535.5 | – |
 
 The 105-trip loss with lights on `.4` came from stuck traffic lights, which `.5` fixes. On `.6` the hand light rule still loses on 6 of 10 maps. In gp-5 the evolved place and upgrade trees decide light use.
+
+## 2026-11-09: Round A, the existing rules on simulator 2026-11-08.7
+
+**Setup:** code at `4d73f0b` on `gp4`, with `main` 8025a60 merged. `CODE_VERSION` `gp5-v1`, cache keyed on `simulatorVersion`.
+- 1,563 games, every replay verified (1,563/1,563), run by `output/evolved_rules/analysis/round-a.sh` in 2 h 43 min on 8 workers.
+- Each run repeats an old one with the same policy and maps, with `-s2` added to its name.
+- The PPO head-to-head was skipped, because PPO needs retraining first. Tables come from `output/evolved_rules/analysis/round-a-compare.py`.
+
+| Rule | Maps | Old simulator | Simulator .7 (median) | New − old [95% CI] | Lights/game |
+|---|---|---|---|---|---|
+| Do nothing | 1000, 2000–2019 | 0.0 | 0.6 (0) | +0.6 | 0 |
+| Hand | 1000, 2000–2019 | 149.1 | 351.1 (347) | +202.0 [+146.9, +272.4] | 0 |
+| Separated | 1000, 2000–2019 | 241.0 | 485.0 (499) | +243.9 [+169.2, +311.1] | 0 |
+| Hand | validation | 153.1 | 388.1 (384) | +235.0 [+195.6, +274.2] | 0 |
+| Separated | validation | 187.5 | 457.8 (465) | +270.3 [+234.2, +305.1] | 0 |
+| GP final (gp3_final) | validation | 238.0 | 488.0 (481) | – | 0 |
+| gp-4 incumbent (`gplight` seed) | validation | 259.7 | 510.2 (508) | – | 5.48 |
+| GP final | test 7000–7099 | 245.9 | 470.8 (490) | +224.9 [+194.6, +252.7] | 0 |
+| CMA-ES final | test | 250.6 | 477.7 (478) | +227.1 [+199.9, +251.0] | 0 |
+| Separated | test | 216.3 | 474.9 (486) | +258.6 [+231.3, +284.8] | 0 |
+| Hand | test | 170.8 | 364.8 (368) | +194.1 [+171.2, +217.7] | 0 |
+| separated | 3100–3199 | 209.5 | 459.2 (460) | +249.7 [+222.8, +276.8] | 0 |
+| light | 3100–3199 | 213.4 | 480.3 (478) | +266.9 [+237.1, +294.1] | 5.06 |
+| round | 3100–3199 | 207.7 | 406.9 (418) | +199.2 [+171.3, +228.0] | 0 |
+| lightround | 3100–3199 | 201.7 | 424.2 (430) | +222.5 [+191.2, +253.5] | 3.70 |
+| gp (tree) | 3100–3199 | 250.3 | 483.3 (491) | +233.0 [+201.9, +261.7] | 0 |
+| gppkg | 3100–3199 | 250.0 | 493.0 (490) | +242.9 [+214.7, +268.6] | 0 |
+| gplight | 3100–3199 | 254.0 | 513.5 (528) | +259.5 [+231.8, +286.5] | 5.20 |
+| gpround | 3100–3199 | 221.8 | 450.4 (452) | +228.7 [+201.5, +255.2] | 0 |
+| gplightround | 3100–3199 | 237.2 | 465.5 (475) | +228.3 [+195.4, +258.6] | 4.00 |
+
+Every rule gains about 200–270 trips. The simple rules gain the most: separated gains 250–270, the GP and CMA-ES finals about 225.
+
+**Gaps between rules (paired by map):**
+
+| Gap | Old simulator | Simulator .7 |
+|---|---|---|
+| GP final − separated, test | +29.6 [+9.9, +49.5] | **−4.1 [−29.4, +19.9]** |
+| GP final − hand, test | +75.1 [+54.8, +95.5] | +106.0 [+81.2, +130.6] |
+| GP final − CMA-ES final, test | −4.7 [−22.9, +13.1] | −6.9 [−31.6, +15.7] |
+| Separated − hand, test | +45.5 [+24.0, +67.3] | +110.0 [+87.3, +131.4] |
+| gp − separated, 3100–3199 | +40.7 [+18.5, +66.3] | +24.0 [+0.3, +48.3] |
+| gplight − gppkg (lights), 3100–3199 | +4.0 [−13.0, +21.4] | +20.6 [−1.1, +43.2] |
+| gpround − gppkg (roundabouts), 3100–3199 | −28.2 [−48.3, −8.4] | −42.5 [−68.7, −20.7] |
+| light − separated, 3100–3199 | +3.9 [−14.0, +20.9] | +21.1 [+4.2, +36.6] |
+| gp-4 incumbent − GP final, validation | +21.8 (unpaired) | +22.2 [−17.1, +55.8] |
+
+**Decision gate (criteria set before the results):**
+1. The ranking GP final > separated > hand holds on the test maps, with paired intervals above zero. **Fails.** Separated still beats hand, by more than before. But the GP final no longer beats separated on the test maps (−4.1), though it still does on 3100–3199 (+24.0, lower bound +0.3).
+2. Lights do not hurt on 3100–3199. **Passes:** lights now help, +20.6 with GP and +21.1 with the separated rule. Roundabouts still hurt (−42.5).
+
+**Reading:** the old simulator's evolved advantage over the simple separated rule mostly does not carry over. The GP final and CMA-ES final were evolved and chosen on the old simulator, so re-evolving on the new one is the remedy, and gp-5 is that re-evolution. Per the plan, the user decides before a run of a day or more.
