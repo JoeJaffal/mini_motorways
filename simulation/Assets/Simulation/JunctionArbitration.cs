@@ -40,6 +40,7 @@ namespace MotorwaysSim
             if(lane.IsMotorway||ChunkHasFewLanes(lane.Tile))return true;
             if(!LightAllowsEntry(lane)){why="Traffic light";return false;}
             if(car.Shoving&&car.ShovingLane==lane.Key&&IsImmediateNext(car,lane))return true;
+            if(WaitedTooLong(car,lane))return true;
             if(!TraversingAllows(car,lane,snapshot,out blocker,out why))return false;
             if(!TryApproach(car,lane.Tile,out _,out double ownDistance))return true;
             bool ownEligible=Committed(car,lane),ownRing=OnTargetRoundabout(car,lane);
@@ -85,6 +86,11 @@ namespace MotorwaysSim
             }
             return true;
         }
+
+        // Feature MaximumWaitTimeAtIntersections is enabled in the installed DefaultConfig: a car committed to a chunk
+        // lane for more than MaximumTimeToWaitAtIntersection (45 s) enters regardless of traffic and priority
+        // (checked after the light and shove, before traversing vehicles).
+        bool WaitedTooLong(Vehicle car,Lane lane)=>car.CommittedAt.TryGetValue(lane.Key,out var since)&&Time-since>Rules.MaximumIntersectionWait;
 
         Vehicle CarById(int id)=>id>=0&&id<Cars.Count&&Cars[id].Id==id?Cars[id]:Cars.Find(c=>c.Id==id);
 

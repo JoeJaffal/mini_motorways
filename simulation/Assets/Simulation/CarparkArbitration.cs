@@ -73,6 +73,7 @@ namespace MotorwaysSim
             why="";blocker=-1;
             if(ParkingChunkLaneCount(lane)<=2)return true;
             if(car.Shoving&&car.ShovingLane==lane.Key&&IsImmediateNext(car,lane))return true;
+            if(WaitedTooLong(car,lane))return true;
             if(!ParkingTraversingAllows(car,lane,snapshot,out blocker,out why))return false;
             if(!ParkingTarget(car,lane.Chunk,out var own,out double ownDistance)||!ReferenceEquals(own,lane))return true;
             double ownRegistered=car.ApproachRegistered.TryGetValue(lane.Key,out var ownTime)?ownTime:Time;

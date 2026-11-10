@@ -319,8 +319,9 @@ namespace MotorwaysSim
                 {
                     car.Dwell-=Rules.TickSeconds;
                     var shop=Buildings[car.ShopId];
-                    bool full=shop.Parking.All(p=>p>=0)&&Buildings.Any(b=>!b.IsHouse&&b.CarparkId==shop.CarparkId&&
-                        (Rules.Version==GameVersion.OriginalReference?b.Demand>0:b.Reserved>0));
+                    // Original eviction: a full lot sends its longest-parked car home only while a car is on its way
+                    // (waiting demand, i.e. dispatched pins) to one of its destinations.
+                    bool full=shop.Parking.All(p=>p>=0)&&Buildings.Any(b=>!b.IsHouse&&b.CarparkId==shop.CarparkId&&b.Reserved>0);
                     bool longest=Cars.Where(v=>SameCarpark(v.ShopId,shop.Id)&&v.Stage==TripStage.Parking).OrderBy(v=>v.Dwell).FirstOrDefault()==car;
                     bool accessBusy=Cars.Any(v=>v.Id!=car.Id&&SameCarpark(v.ShopId,shop.Id)&&
                         (v.Stage==TripStage.EnteringParking||v.Stage==TripStage.LeavingParking||
@@ -329,6 +330,7 @@ namespace MotorwaysSim
                     if((finished||full&&longest)&&(Rules.Version==GameVersion.OriginalReference||!accessBusy))StartLeavingParking(car);
                 }
                 else if(car.Stage==TripStage.Returning&&!car.Moving)FinishHome(car);
+                else if(car.Stage==TripStage.EnteringParking&&car.HasDelivered&&!car.DrivingThrough)car.Dwell-=Rules.TickSeconds;
             }
             var snapshot=Cars.Where(c=>c.Moving).Select(c=>new MotionSnapshot{Car=c,Lane=c.CurrentLane,Index=c.RouteIndex,
                 Distance=c.DistanceAlongLane,Speed=c.Speed,Acceleration=c.Acceleration,Position=c.Position}).ToList();
@@ -495,12 +497,12 @@ namespace MotorwaysSim
             {
                 case TripStage.Outbound:StartParking(car);break;
                 case TripStage.EnteringParking:
-                    Deliver(car);
+                    bool arrived=car.HasDelivered&&Rules.Version==GameVersion.OriginalReference;Deliver(car);
                     if(car.DrivingThrough){car.Stage=TripStage.Returning;SetJourney(car,car.ReturnRoute);break;}
                     // Parked cars receive no movement updates; do not keep the approach wait.
                     car.Stage=TripStage.Parking;car.Waiting=0;car.ParkedPosition=ParkingPoint(Buildings[car.ShopId],car.ParkingSlot);
                     car.ParkedHeading=Rules.Version==GameVersion.OriginalReference?ParkingHeading(Buildings[car.ShopId],car.DestinationAccess):new Point(0,-1);
-                    car.Dwell=Rules.ServiceSeconds;break;
+                    if(!arrived)car.Dwell=Rules.ServiceSeconds;break;
                 case TripStage.LeavingParking:
                     ReleaseParkingSlot(car);car.Stage=TripStage.Returning;SetJourney(car,car.ReturnRoute);break;
                 case TripStage.Returning:FinishHome(car);break;

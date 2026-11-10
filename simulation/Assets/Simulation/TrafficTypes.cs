@@ -66,7 +66,7 @@ namespace MotorwaysSim
         public double IntersectionMultiplier=.5,RoundaboutMultiplier=1.2,LookaheadDistance=2.5;
         public double ServiceSeconds=3,HomeCooldown=0;
         public double SignalGreenSeconds=3,SignalOvertimeSeconds=1,SignalAmberSeconds=.7;
-        public double SignalNearbyDistance=.5,SignalMaxWaitingWeightSeconds=30;
+        public double SignalNearbyDistance=.5,SignalMaxWaitingWeightSeconds=30,MaximumIntersectionWait=45;
         public int SignalMinimumNearbyCars=3;
         public double SecondsPerDay=20,SecondsPerWeek=140;
         public double AverageCarsPerDay=1.55,DemandMultiplier=.8,FirstDemandDelay=4;

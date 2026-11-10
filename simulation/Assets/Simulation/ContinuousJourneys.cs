@@ -59,6 +59,13 @@ namespace MotorwaysSim
                     ReleaseParkingSlot(car);car.Stage=TripStage.Returning;car.Route=new List<Cell>(car.ReturnRoute);car.SegmentEntered=Time;
                 }
             }
+            // Original AcceptVehicleArrival: the pin clears, the score counts and the 3 s parking timer starts when the
+            // car enters its bay lane, not when it reaches the bay's middle.
+            if(car.Stage==TripStage.EnteringParking&&!car.DrivingThrough&&!car.HasDelivered&&car.CurrentLane.Key.Contains(":bay-park:"))
+            {Deliver(car);car.Dwell=Rules.ServiceSeconds;}
+            // Original: a returning car is waiting for a destination (dispatchable) as soon as it enters its driveway lane.
+            if(car.Stage==TripStage.Returning&&car.RouteIndex==car.Lanes.Count-1&&car.HomeId>=0&&car.CurrentLane.Tile==Buildings[car.HomeId].Cell)
+                FinishHome(car);
         }
     }
 }

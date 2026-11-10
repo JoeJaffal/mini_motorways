@@ -1200,3 +1200,12 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Engineering choices** (`OriginalMovement.cs`, OriginalReference only). As above. Our roundabout route cost keeps the ring speed, because our centre-to-centre step (1.41 tiles) at the ring speed gives the same cost (23 per quarter) as the original's ~1.16-tile arc at default speed. The roundabout speed check now uses a real ring lane. A third body-overlap check (recorded carpark prefix) becomes "no shared position" like decision 079; the case found was a car passing on the aisle beside a car starting to leave its bay (centre distance 0.243).
 
 **Measured.** Simulator `2026-11-10.f4`: 16-phase mean 772.5 → 769.2 (645–807), median 783.5 → 791, 7/16 reach the end; fitted phases 777 → 774. These rules move speed in both directions; kept for fidelity. 85 suites pass.
+
+
+## 082 - 45 s intersection escape and the original's arrival timing (10 November 2026, `fidelity-aya`)
+
+**Evidence.** The installed `resources.assets` TextAsset `DefaultConfig` enables `MaximumWaitTimeAtIntersections` and disables `CheckForVehicleCollisionsWhenMerging`; the Steam config overrides neither. `RoadChunkModel.CanInboundVehicleEnter` therefore lets a car enter after more than `MaximumTimeToWaitAtIntersection` (45 s) since it committed to the lane (first among its next two path lanes), after the light and shove checks and before traversing vehicles and priority. `ParkVehiclesProcess` accepts an arrival (pin, score, overcrowd credit, parking timer) when the car enters its bay lane. `VehicleMovementProcess` makes a returning car wait for a destination as soon as it enters its driveway lane. Eviction from a full lot requires a destination of that lot with waiting (dispatched) demand.
+
+**Engineering choices** (OriginalReference). `WaitedTooLong` in road and carpark arbitration; delivery and the 3 s timer on entering the `bay-park` lane (the timer keeps running to the bay middle); a returning car finishes at the start of its house tile lane; eviction uses `Reserved > 0`.
+
+**Measured.** Simulator `2026-11-10.f5`: the 45 s escape alone 769.2 → 769.4; all together 16-phase mean 775.2 (605–806), 8/16 reach the end; fitted phases 800 at 1311 s (real 835 at ~1314.6 s). 85 suites pass.
