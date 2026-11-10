@@ -1209,3 +1209,14 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Engineering choices** (OriginalReference). `WaitedTooLong` in road and carpark arbitration; delivery and the 3 s timer on entering the `bay-park` lane (the timer keeps running to the bay middle); a returning car finishes at the start of its house tile lane; eviction uses `Reserved > 0`.
 
 **Measured.** Simulator `2026-11-10.f5`: the 45 s escape alone 769.2 → 769.4; all together 16-phase mean 775.2 (605–806), 8/16 reach the end; fitted phases 800 at 1311 s (real 835 at ~1314.6 s). 85 suites pass.
+
+
+## 083 - Pin relocation and the original failure-timer update (10 November 2026, `fidelity-aya`)
+
+**Evidence.** `GenerateDemandProcess.GenerateTimerDemand`: when a destination's timer fires at maximum demand and `GameRules.AllowDemandRelocation` (true in classic rules), the pin goes to the nearest active same-group destination with room, else the nearest destination of any group, by squared distance between carpark top-left tiles. `FailureStateProcess` runs after `ParkVehiclesProcess`; arrivals increment `demandJustCleared`, consumed only in the overcrowding branch (timer capped at max − grace, then per arrival speed × 0.02 and timer − clamp(10% × timer × curve, 0, 3)); the next-frame timer is floored at zero; game over tests the current-frame timer.
+
+**Engineering choices** (OriginalReference). `RelocationTarget` uses each lot's first destination cell as the anchor (an approximation of the original carpark top-left). `UpdateOriginalOvercrowding` runs after `UpdateVehicles`; `Deliver` only banks the arrival. Custom keeps the previous path.
+
+**Measured.** Simulator `2026-11-10.f6`: 16-phase mean 775.2 → 775.1 (604–806), 8/16 reach the end; fitted phases 800 at 1310 s. Effects are confined to the last seconds before failure. 85 suites pass.
+
+**Replay note (not a rule change).** The replay's destination spawn times put the red destination of plan window days 8–22 at 474 s and the red one of days 30–42 at 919 s, both after their windows close. In the original such delays add extra demand to that colour (`BalanceDemandFromFailedSpawns`), which may explain why the original delivered more pins early than our formula creates from the replay's spawn times. Its exact timing is not recoverable from the video, so the replay does not model it.

@@ -231,6 +231,24 @@ namespace MotorwaysSim
             return Rules.SecondsPerDay/(Rules.AverageCarsPerDay*(Rules.Version==GameVersion.OriginalReference?3435973888/4294967296.0*(shop.Upgraded?2:1)*shop.PlannedDemandMultiplier:Rules.DemandMultiplier)*Math.Max(.01,oscillation)*ramp);
         }
 
+        // Original GenerateDemandProcess (AllowDemandRelocation is true in classic rules): a pin that would exceed a full
+        // destination goes to the nearest active destination of the same colour with room, otherwise the nearest one
+        // of any colour, by squared distance between carpark anchors (first found wins ties). Our anchor is the lot's
+        // first destination cell, an approximation of the original carpark's top-left tile.
+        Building RelocationTarget(Building full)
+        {
+            Building same=null,other=null;double sameDistance=double.PositiveInfinity,otherDistance=double.PositiveInfinity;
+            var from=Buildings[full.CarparkId].Cell;
+            foreach(var b in Buildings)
+            {
+                if(b.IsHouse||b==full||b.Demand>=DestinationCapacity(b)+DestinationOverflow(b))continue;
+                var at=Buildings[b.CarparkId].Cell;double d=(at.X-from.X)*(at.X-from.X)+(at.Y-from.Y)*(at.Y-from.Y);
+                if(b.Color==full.Color){if(d<sameDistance){same=b;sameDistance=d;}}
+                else if(d<otherDistance){other=b;otherDistance=d;}
+            }
+            return same??other;
+        }
+
         double DemandRamp=>Rules.Version==GameVersion.OriginalReference?1+(Map.SpawnRamp[0]>0?Math.Max(0,Day-(int)Map.SpawnRamp[0])*Map.SpawnRamp[1]:0):1+Math.Max(0,Day-35)*.013;
 
         void UpdateDemand()
@@ -249,6 +267,7 @@ namespace MotorwaysSim
                     if(shop.DemandCountdown<=0)
                     {
                         if(shop.Demand<DestinationCapacity(shop)+DestinationOverflow(shop))shop.Demand++;
+                        else{var target=RelocationTarget(shop);if(target!=null)target.Demand++;}
                         shop.DemandCountdown=interval*DemandRamp;
                     }
                     shop.NextDemand=Time+shop.DemandCountdown/DemandRamp;
@@ -264,6 +283,7 @@ namespace MotorwaysSim
                     ScenarioRejected=true;RejectionReason=$"Capacity screen rejected {Map.Name}: shop {shop.Id} fails an optimistic supply bound at original demand. No demand was reduced.";
                     LastAction=RejectionReason;return;
                 }
+                if(Rules.Version==GameVersion.OriginalReference)continue; // UpdateOriginalOvercrowding runs after vehicles
                 if(shop.Demand>DestinationCapacity(shop))
                 {double speed=shop.OvercrowdingSpeed;shop.OvercrowdingSpeed=Math.Min(1,speed+Rules.OvercrowdingAcceleration*Rules.TickSeconds);
                     shop.OvercrowdedFor+=(Rules.Version==GameVersion.OriginalReference?speed:shop.OvercrowdingSpeed)*Rules.TickSeconds*
@@ -271,6 +291,42 @@ namespace MotorwaysSim
                 else
                 {shop.OvercrowdingSpeed=0;shop.OvercrowdedFor=Math.Max(0,Math.Min(shop.OvercrowdedFor,Rules.OvercrowdingSeconds-Rules.OvercrowdingGraceSeconds)-Rules.OvercrowdingReturnSpeed*Rules.TickSeconds);}
                 if(shop.OvercrowdedFor>Rules.OvercrowdingSeconds)Failed=true;
+            }
+        }
+
+        // Original FailureStateProcess, run after the tick's movement and parking. Arrivals are banked in
+        // DemandJustCleared and applied only on an overcrowded frame; game over tests the timer as it stood before
+        // this update (the original reads the current frame and writes the next).
+        void UpdateOriginalOvercrowding()
+        {
+            if(Rules.Version!=GameVersion.OriginalReference)return;
+            foreach(var shop in Buildings)
+            {
+                if(shop.IsHouse||Time<shop.SpawnGraceUntil)continue;
+                double before=shop.OvercrowdedFor,timer=before,rate=-Rules.OvercrowdingReturnSpeed;
+                if(shop.Demand>DestinationCapacity(shop))
+                {
+                    rate=shop.OvercrowdingSpeed*ReferenceCurves.Evaluate(OriginalGameplayTuning.ExtraDemandTimerSpeed,ExtraDemandFor(shop.Color));
+                    double speed=shop.OvercrowdingSpeed;
+                    if(shop.DemandJustCleared>0)
+                    {
+                        timer=Math.Min(timer,Rules.OvercrowdingSeconds-Rules.OvercrowdingGraceSeconds);
+                        for(int i=0;i<shop.DemandJustCleared;i++)
+                        {
+                            speed*=Rules.ArrivalTimerDeceleration;
+                            double cut=Rules.ArrivalTimerReductionFraction*timer*ReferenceCurves.Evaluate(OriginalGameplayTuning.ArrivalReduction,Time);
+                            timer=Math.Max(0,timer-Math.Max(0,Math.Min(Rules.ArrivalTimerReductionMax,cut)));
+                        }
+                        shop.DemandJustCleared=0;
+                    }
+                    shop.OvercrowdingSpeed=Math.Max(0,Math.Min(1,speed+Rules.OvercrowdingAcceleration*Rules.TickSeconds));
+                }
+                else
+                {
+                    shop.OvercrowdingSpeed=0;timer=Math.Min(timer,Rules.OvercrowdingSeconds-Rules.OvercrowdingGraceSeconds);
+                }
+                shop.OvercrowdedFor=Math.Max(0,timer+rate*Rules.TickSeconds);
+                if(before>Rules.OvercrowdingSeconds)Failed=true;
             }
         }
 
@@ -308,6 +364,7 @@ namespace MotorwaysSim
             if(car.HasDelivered||car.ShopId<0)return;
             var shop=Buildings[car.ShopId];shop.Demand=Math.Max(0,shop.Demand-1);shop.Reserved=Math.Max(0,shop.Reserved-1);
             shop.Served++;TripsCompleted++;car.HasDelivered=true;
+            if(Rules.Version==GameVersion.OriginalReference){shop.DemandJustCleared++;return;}
             shop.OvercrowdedFor=Math.Min(shop.OvercrowdedFor,Rules.OvercrowdingSeconds-Rules.OvercrowdingGraceSeconds);
             shop.OvercrowdedFor=Math.Max(0,shop.OvercrowdedFor-Math.Min(Rules.ArrivalTimerReductionMax,shop.OvercrowdedFor*Rules.ArrivalTimerReductionFraction*
                 (Rules.Version==GameVersion.OriginalReference?ReferenceCurves.Evaluate(OriginalGameplayTuning.ArrivalReduction,Time):1)));

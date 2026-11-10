@@ -89,7 +89,7 @@ namespace MotorwaysSim
         public Cell[] Entrances=new Cell[0],Platform=new Cell[0];public int[] EntranceDirections=new int[0];
         public int Width=1,Height=1,DrivewayDirection,Layout;
         public bool Upgraded;public double UpgradeAt=double.PositiveInfinity,PlannedDemandMultiplier=1;
-        public int Demand,Reserved;
+        public int Demand,Reserved,DemandJustCleared;
         public double NextDemand,OvercrowdedFor,OvercrowdingSpeed,SpawnTime,SpawnGraceUntil,Served;
         public double OriginalDemandInterval,FeasibleDemandInterval,LastFeasibilityCheck;
         public double DemandPhase,DemandCountdown;

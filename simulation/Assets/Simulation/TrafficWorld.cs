@@ -323,7 +323,7 @@ namespace MotorwaysSim
             for(int i=0;i<ticks&&!Failed&&!ScenarioRejected;i++)
             {
                 TickCount++;Time=TickCount*Rules.TickSeconds;
-                UpdateOriginalInventory();UpdateCity();UpdateDestinationUpgrades();UpdateTrains();UpdateDemand();DispatchDemand();UpdateSignals();UpdateVehicles();FinishRemovals();
+                UpdateOriginalInventory();UpdateCity();UpdateDestinationUpgrades();UpdateTrains();UpdateDemand();DispatchDemand();UpdateSignals();UpdateVehicles();UpdateOriginalOvercrowding();FinishRemovals();
             }
         }
 
