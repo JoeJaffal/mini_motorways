@@ -51,6 +51,25 @@ namespace MotorwaysSim
             return count;
         }
 
+        // Original RoadTileConnection.IntersectsOtherConnection (right-hand traffic, smallIntersection = true), decided
+        // from the sides a lane enters and leaves its tile: same exit conflicts (unless crossing in front of a stopped
+        // car is allowed and the entries differ), same entry never conflicts, exact reversal never conflicts, a lane
+        // conflicts with the other's half-turn rotation, otherwise the lanes cross when exactly one of the other's
+        // sides lies clockwise from this lane's entry through its exit. Our direction indices are clockwise like the
+        // original's, so the cyclic test needs no remapping.
+        static bool ConnectionsIntersect(Lane a,Lane b,bool allowCrossingInFrontOfOther)
+        {
+            int ai=(a.Incoming+4)%8,ao=a.Outgoing,bi=(b.Incoming+4)%8,bo=b.Outgoing;
+            if(ao==bo&&(!allowCrossingInFrontOfOther||ai==bi))return true;
+            if(ai==bi)return false;
+            if(ai==bo&&ao==bi)return false;
+            if(!b.IsMotorway&&ai==(bi+4)%8&&ao==(bo+4)%8)return true;
+            if(allowCrossingInFrontOfOther)return false;
+            int count=0;
+            for(int d=ai;d!=(ao+1)%8;d=(d+1)%8)if(bi==d||bo==d)count++;
+            return count==1;
+        }
+
         bool IsControlledLane(Lane lane)=>lane!=null&&!lane.IsParking&&!lane.IsMotorway&&Signals.ContainsKey(lane.Tile);
 
         // Original maximum acceleration: roundabout if the current or next chunk is a roundabout; controlled if the

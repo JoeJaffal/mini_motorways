@@ -62,6 +62,7 @@ Replay v21, 16-phase mean (min–max) and fitted-phase result. Real game: 835 at
 | `2026-11-10.f5` | 45 s intersection escape (alone: 769.4); arrival on bay-lane entry; car available on driveway entry; eviction only with a car on its way | 775.2 (605–806), 8/16 reach the end | 1298 s | 800 at 1311 s |
 | `2026-11-10.f6` | Pin relocation from full destinations; original failure-timer update (banked arrivals, after movement) | 775.1 (604–806), 8/16 reach the end | 1298 s | 800 at 1310 s |
 | `2026-11-10.f7` | U-turns only at dead ends, re-routes keep heading; last-destination dispatch quota; driveway excluded from house choice | 777.8 (726–819), 8/16 reach the end | 1301 s | 799 at 1307 s |
+| `2026-11-10.f8` | Original lane-conflict test by directions; retired motorway penalty when re-routing | 796.7 (613–822), 15/16 reach the end | 1306 s | 824, reaches the end (1314.6 s) |
 
 Self-test: 85 suites pass at every version listed.
 
@@ -73,7 +74,9 @@ Waiting time by reason on f1 (fitted phases): 890 car-seconds held by the shared
 
 - **Original tick length (0.1 s instead of 0.05 s), on f7:** 16-phase mean 777.8 → 762.5 (597–813), 5/16 reach the end; fitted 799 → 789 ([data](measurements/experiment-tick-0.1-on-f7.txt)). The original steps at 0.1 s, but our arbitration, dispatch quotas and tests were built around 0.05 s and the coarser step made results worse and noisier, so the step stays at 0.05 s.
 
-## Other checks on f7
+- **Automatic removal of a traffic light whose tile drops below three roads, on f7:** mean 777.8 → 745.4 ([data](measurements/experiment-light-cleanup-on-f7.txt)); the motorway penalty alone was neutral (777.1, [data](measurements/experiment-motorway-penalty-only-on-f7.txt)). The original counts pending roads toward the three and the replay erases and redraws at that light, so our version removed a light the real game kept (no rebuild appears in the video). Not adopted until pending roads are modelled.
 
-`scripts/verify_five_maps.py` (10 runs) and `scripts/check_training_readiness.py` (60 episodes, exact replays on all five maps) pass; their reports are regenerated in `simulation/Reports/`.
+## Other checks on f7 and f8
+
+`scripts/verify_five_maps.py` (10 runs) and `scripts/check_training_readiness.py` (60 episodes, exact replays on all five maps) pass on f7 and on f8; their reports are regenerated in `simulation/Reports/`.
 

@@ -1229,3 +1229,18 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Engineering choices** (OriginalReference). `FindRoute` refuses a reversal unless the tile has one connection (no penalty there) and takes the heading into the start tile; `RefreshJourney` passes the current lane's heading; the cache key includes it. Dispatch quota and `FirstStepCost` as above.
 
 **Measured.** Simulator `2026-11-10.f7`: 16-phase mean 775.1 → 777.8 (726–819; the 604 outlier is gone), 8/16 reach the end; fitted phases 799 at 1307 s. 85 suites pass.
+
+
+## 085 - The original's lane-conflict test; retired motorway cost (11 November 2026, `fidelity-aya`)
+
+(Decision numbers 085+ on the growth branch `fidelity-aya-growth` will be renumbered when merged.)
+
+**Evidence.** `RoadTileConnection.IntersectsOtherConnection`, called with right-hand traffic and `smallIntersection = true` from `RoadChunkModel` for traversing and inbound checks, decides conflicts from the entry and exit sides only: same exit conflicts (unless crossing in front of a stopped or hot-swapping candidate is allowed and the entries differ), same entry never conflicts, an exact reversal never conflicts, a lane conflicts with the other's half-turn rotation (opposing left or right turns), otherwise the lanes cross when exactly one of the other's sides lies clockwise from this lane's entry through its exit. An audit scripted our sample-distance test against it on a 4-way tile: every same-entry pair conflicted in ours, opposing half-turn pairs did not, and on roundabout tiles the entry lane conflicted with the same tile's exit lane. `LaneModel` charges a mothballed lane 100000 in pathfinding; ours did not penalise a retired motorway when cars re-route.
+
+**Engineering choices** (OriginalReference road lanes; carpark lanes keep the sample test). `ConnectionsIntersect` in `OriginalMovement.cs`, used by `Conflicts` and the inbound priority order (stopped candidate: speed below 0.0005 tiles/s, the original's 0.001 world-unit threshold). `FindRoute` adds 100000 for a retired motorway when retired links are allowed.
+
+**Not adopted.** Removing a traffic light when its tile drops below three roads: the original counts pending roads, which we do not model, and on the replay our version removed a light the real game kept (mean 777.8 → 745.4).
+
+**Measured.** Simulator `2026-11-10.f8`: 16-phase mean 777.8 → 796.7 (613–822), 15/16 runs reach the end of the replay; fitted phases 824, surviving to 1314.6 s (real 835, game over ~1314 s). 85 suites, five-map checks and training readiness pass.
+
+**Open (audit, not yet done).** Roundabout ring split into 8 lanes with corner chunks (ours 4, so commitment reaches twice as far upstream); motorway end-tile lanes and arbitration at motorway starts; diagonal tile-corner chunks and crossing diagonals; traffic-light pair order and post-amber hold; roundabout chunks counting as controlled for the blocked-acceleration boost.

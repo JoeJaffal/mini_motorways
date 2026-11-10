@@ -48,7 +48,9 @@ namespace MotorwaysSim
             foreach(var other in snapshot)
             {
                 if(other.Car.Id==car.Id||!TryApproach(other.Car,lane.Tile,out var target,out double theirDistance))continue;
-                if(!Conflicts(lane,target)||!LightAllowsEntry(target))continue;
+                // Original inbound order: crossing in front of a stopped candidate is allowed.
+                bool stopped=other.Speed<.0005;
+                if(!(lane.Incoming<8&&target.Incoming<8&&lane.Tile==target.Tile?ConnectionsIntersect(lane,target,stopped):Conflicts(lane,target))||!LightAllowsEntry(target))continue;
                 bool theirShove=other.Car.Shoving&&other.Car.ShovingLane==target.Key&&IsImmediateNext(other.Car,target);
                 // Ineligible candidates (uncommitted, or blocked by traffic inside the chunk) sort behind
                 // every eligible one, so they never hold priority over an eligible entry.

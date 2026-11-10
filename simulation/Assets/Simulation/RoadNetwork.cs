@@ -69,6 +69,9 @@ namespace MotorwaysSim
                         else if(Degree(state.cell)>1)continue;
                     }
                     if(allowRetired&&(PendingRemoval[next.X,next.Y]||PendingRemoval[state.cell.X,state.cell.Y]))cost+=100000;
+                    // The original charges a mothballed motorway lane like any mothballed lane (100000), so re-routing cars
+                    // only keep using a retired motorway when nothing else reaches their goal.
+                    else if(allowRetired&&motorway!=null&&motorway.PendingRemoval&&Rules.Version==GameVersion.OriginalReference)cost+=100000;
                     double total=costs[state]+(transit!=null?SharedTransitCost(transit,state.cell,next):Math.Max(1,Math.Floor(10*cost)));
                     if(!costs.TryGetValue(target,out var old)||total<old)
                     {costs[target]=total;previous[target]=state;queue.Push(target,total);}

@@ -204,6 +204,7 @@ namespace MotorwaysSim
             if(a.Key==b.Key)return false;
             if(a.IsParking&&b.IsParking){if(a.CarparkId!=b.CarparkId)return false;}
             else if(a.Tile!=b.Tile)return false;
+            if(Rules.Version==GameVersion.OriginalReference&&!a.IsParking&&!b.IsParking&&a.Incoming<8&&b.Incoming<8)return ConnectionsIntersect(a,b,false);
             string key=string.CompareOrdinal(a.Key,b.Key)<0?a.Key+"/"+b.Key:b.Key+"/"+a.Key;
             if(conflictCache.TryGetValue(key,out bool value))return value;
             bool conflict=false;
