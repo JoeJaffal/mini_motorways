@@ -58,6 +58,7 @@ Replay v21, 16-phase mean (min–max) and fitted-phase result. Real game: 835 at
 | `2026-11-10.f1` | First pin after 4 s for every destination | 606.1 (531–667) | 1190 s | 665 at 1247 s |
 | `2026-11-10.f2` | Original carparks: continuous trips, no gate / bay-departure check / body-clearance limiter, same-exit merges block | 749.4 (616–804), 4/16 reach the end | 1281 s | 748 at 1279 s |
 | `2026-11-10.f3` | Carpark lane speeds from the original's lane-speed rule | 772.5 (713–815), 6/16 reach the end | 1298 s | 777 at 1296 s |
+| `2026-11-10.f4` | Original movement: approach-lane junction factor, ring-only roundabout speed, acceleration by current/next chunk, uncontrolled-junction slowdown, stop offset | 769.2 (645–807), 7/16 reach the end | 1295 s | 774 at 1294 s |
 
 Self-test: 85 suites pass at every version listed.
 

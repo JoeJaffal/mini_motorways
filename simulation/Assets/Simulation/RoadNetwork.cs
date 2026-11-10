@@ -74,13 +74,14 @@ namespace MotorwaysSim
             if(route.Count<2)return double.PositiveInfinity;double total=0;
             for(int i=0;i<route.Count-1;i++)
             {int incoming=i==0?8:Direction(route[i-1],route[i]);int outgoing=Direction(route[i],route[i+1]);
-                double speed=MotorwayBetween(route[i],route[i+1])==null?LaneSpeed(route[i],incoming,outgoing):Rules.MotorwaySpeed;
+                double speed=MotorwayBetween(route[i],route[i+1])==null?LaneSpeed(route[i],incoming,outgoing,i>0&&MotorwayBetween(route[i-1],route[i])!=null,true):Rules.MotorwaySpeed;
                 var transit=SharedTransitBetween(route[i],route[i+1]);if(transit!=null){total+=SharedTransitCost(transit,route[i],route[i+1]);continue;}
                 total+=Math.Max(1,Math.Floor(10*Distance(route[i],route[i+1])/speed));}
             return total;
         }
-        public double LaneSpeed(Cell at,int incoming,int outgoing)
+        public double LaneSpeed(Cell at,int incoming,int outgoing,bool fromMotorway=false,bool forCost=false)
         {
+            if(Rules.Version==GameVersion.OriginalReference)return OriginalLaneSpeed(at,incoming,outgoing,fromMotorway,forCost);
             double speed=Rules.CarSpeed;
             if(RoundaboutAt(at)!=null)return speed*Rules.RoundaboutMultiplier;
             if(incoming<8)
@@ -135,7 +136,7 @@ namespace MotorwaysSim
                     samples=Cubic(start,start+incoming*Math.Min(.35,length*.45),end-outgoing*Math.Min(.35,length*.45),end,12);
                 }
                 var lane=CreateLane(samples,at,prev,next,inDir,outDir);
-                lane.SpeedLimit=LaneSpeed(at,inDir,outDir<8?outDir:0);
+                lane.SpeedLimit=LaneSpeed(at,inDir,outDir<8?outDir:0,fromMotorway);
                 lane.IsJunction=Degree(at)>=3||Tile(at)==Infrastructure.TrafficLight;
                 lane.IsRoundabout=round!=null;
                 if(motorway!=null){lane.IsMotorway=true;lane.MotorwayId=motorway.Id;lane.IsJunction=false;lane.SpeedLimit=Rules.MotorwaySpeed;lane.Key=$"motorway:{motorway.Id}:{at.X}:{at.Y}";}

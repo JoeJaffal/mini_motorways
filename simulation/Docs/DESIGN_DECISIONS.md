@@ -1191,3 +1191,12 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Engineering choice.** OriginalReference carpark lanes take these factors (`OriginalParkingLaneFactor`); Custom keeps 0.6. Simulator `2026-11-10.f3`.
 
 **Measured.** 16-phase mean 749.4 → 772.5 (713–815), 6/16 reach the end of the replay; fitted phases 748 → 777 at 1296 s. 85 suites pass.
+
+
+## 081 - Original lane speeds and movement details (10 November 2026, `fidelity-aya`)
+
+**Evidence.** Original `GameBehaviourModel.GetLaneSpeed` and `VehicleMovementProcess` (installed constants from the `core` asset): the 0.5 intersection factor belongs to a lane whose outbound lanes offer more than one way (the approach lane), skipped when any outbound lane is signal-controlled or a roundabout lane, and for U-turn/roundabout lanes; turn factors are skipped for ring-to-ring lanes and lanes coming off a motorway; the roundabout multiplier applies to ring lanes only. Maximum acceleration is 0.9 w/s² if the current or next chunk is a roundabout, 0.8 if the current or next chunk is controlled or the car's driveway or near a motorway lane end, else 0.54; it doubles when blocked at a controlled chunk within two vehicle lengths. With no obstacle, from more than two vehicle lengths before an uncontrolled chunk with at least `NumberOfRoadsAtIntersectionToSlowDownFor` (3) roads (houses, carparks and roundabout lanes ignored), acceleration is capped as if following a car at `targetSpeedTowardsIntersections` (0.55) of the desired speed, deceleration exponent 1.6. A refused junction is a stopped obstacle at distance + (vehicle length − half the minimum gap).
+
+**Engineering choices** (`OriginalMovement.cs`, OriginalReference only). As above. Our roundabout route cost keeps the ring speed, because our centre-to-centre step (1.41 tiles) at the ring speed gives the same cost (23 per quarter) as the original's ~1.16-tile arc at default speed. The roundabout speed check now uses a real ring lane. A third body-overlap check (recorded carpark prefix) becomes "no shared position" like decision 079; the case found was a car passing on the aisle beside a car starting to leave its bay (centre distance 0.243).
+
+**Measured.** Simulator `2026-11-10.f4`: 16-phase mean 772.5 → 769.2 (645–807), median 783.5 → 791, 7/16 reach the end; fitted phases 777 → 774. These rules move speed in both directions; kept for fidelity. 85 suites pass.

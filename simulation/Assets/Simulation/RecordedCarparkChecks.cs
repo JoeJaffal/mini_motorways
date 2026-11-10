@@ -105,7 +105,7 @@ static CustomScenarioDefinition Prefix()=>new CustomScenarioDefinition {schemaVe
 public static int Run(){var session=new CustomScenarioSession(Prefix());
 while(!session.Complete){session.AdvanceTick();var w=session.World;
 var cars=w.Cars.Where(c=>c.ShopId>=0&&c.Stage!=TripStage.Home&&(c.Stage==TripStage.Parking||c.Moving&&c.CurrentLane.IsParking)).ToArray();
-for(int i=0;i<cars.Length;i++)for(int j=i+1;j<cars.Length;j++)if(cars[i].ShopId==cars[j].ShopId&&w.VehicleBodiesOverlap(cars[i].Position,cars[i].Heading,cars[j].Position,cars[j].Heading))throw new InvalidOperationException("Recorded carpark regression: overlapping vehicles at "+w.Time);
+for(int i=0;i<cars.Length;i++)for(int j=i+1;j<cars.Length;j++)if(cars[i].ShopId==cars[j].ShopId&&Point.Distance(cars[i].Position,cars[j].Position)<.15)throw new InvalidOperationException("Recorded carpark regression: vehicles share a position at "+w.Time); // the original has no body-clearance check
 }
 if(session.World.Failed||session.CompletedEvents!=session.Definition.events.Length||session.World.Buildings.Single(b=>!b.IsHouse&&b.Cell==new Cell(10,8)).Served<=2||session.World.Cars.Any(c=>c.Waiting>20))throw new InvalidOperationException("Recorded carpark regression: early failure or persistent queue");
 return 1;}

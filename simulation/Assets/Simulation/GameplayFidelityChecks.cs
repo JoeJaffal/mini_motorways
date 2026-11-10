@@ -73,7 +73,7 @@ namespace MotorwaysSim
                 Require(!w.RoundaboutAllowsConnection(north,center),"no entry through roundabout center");
                 foreach(var offset in new[]{new Cell(-1,-1),new Cell(0,-1),new Cell(1,-1),new Cell(-1,0),new Cell(1,0)})
                     Require(w.RoundaboutAllowsConnection(north,north+offset),"original five outward exit directions");
-                Require(Math.Abs(w.LaneSpeed(north,0,0)-.6)<1e-9&&w.RouteCost(new[]{north,new Cell(14,15)})==23,"route cost retains circulating speed advantage");checks++;
+                Require(Math.Abs(w.LaneSpeed(north,TrafficWorld.Direction(new Cell(16,15),north),TrafficWorld.Direction(north,new Cell(14,15)))-.6)<1e-9&&w.RouteCost(new[]{north,new Cell(14,15)})==23,"route cost retains circulating speed advantage");checks++;
             }
             {
                 var w=Lab();w.Step(2800);var choices=w.UpgradeChoices.Select(o=>(o.Type,o.Amount,o.Roads)).ToArray();

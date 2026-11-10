@@ -370,7 +370,7 @@ namespace MotorwaysSim
                     if(TryCarparkGate(car,state.Lane,out _,out var gateAccess,out _))blockedTile=gateAccess;
                     obstacle="Carpark entrance merge";
                 }
-                double aheadDistance=state.Lane.Length-state.Distance;
+                double aheadDistance=state.Lane.Length-state.Distance;double? slowGap=null;bool blockedControlled=false;double blockedAhead=double.PositiveInfinity;
                 for(int i=car.RouteIndex+1;i<Math.Min(car.Lanes.Count,car.RouteIndex+7);i++)
                 {
                     var next=car.Lanes[i];
@@ -382,16 +382,34 @@ namespace MotorwaysSim
                         {if(aheadDistance<blockingDistance){blockingDistance=aheadDistance;blocker=entryBlocker;blockedLane=next.Key;blockedTile=next.Tile;}
                             bool entrance=next.IsParking&&next.Key.Contains(":entrance:")||
                             car.Stage==TripStage.Outbound&&i==car.Lanes.Count-1&&!next.IsParking;
-                            stop=Math.Min(stop,Math.Max(0,aheadDistance-(entrance&&Rules.Version!=GameVersion.OriginalReference?Rules.CarLength+.05:Rules.CarLength*.35)));obstacle=reason;break;}
+                            stop=Math.Min(stop,Math.Max(0,aheadDistance-(Rules.Version==GameVersion.OriginalReference?Rules.FollowingGap*.5:entrance?Rules.CarLength+.05:Rules.CarLength*.35)));obstacle=reason;
+                            if(Rules.Version==GameVersion.OriginalReference){blockedControlled=IsControlledLane(next);blockedAhead=aheadDistance;}break;}
+                        // Original intersection slowdown: with nothing ahead yet, cap acceleration as if a car moving at
+                        // 0.55 of the desired speed sat at the entry of an uncontrolled junction with 3+ real roads.
+                        if(Rules.Version==GameVersion.OriginalReference&&slowGap==null&&gap>aheadDistance&&aheadDistance>2*Rules.CarLength&&
+                            !next.IsParking&&!next.IsMotorway&&!IsControlledLane(next)&&RoadsForIntersectionSlowdown(next.Tile)>=3)
+                            slowGap=aheadDistance+Rules.CarLength-Rules.FollowingGap*.5;
                     }
                     aheadDistance+=next.Length;if(aheadDistance>Rules.LookaheadDistance)break;
                 }
                 double remaining=state.Lane.Length-state.Distance;
                 for(int i=car.RouteIndex+1;i<car.Lanes.Count;i++)remaining+=car.Lanes[i].Length;
                 desired=Math.Min(desired,Math.Sqrt(2*Rules.MaxDeceleration*Math.Max(0,remaining)));
-                double acceleration=AccelerationFor(gap,state.Speed,leaderSpeed,leaderAcceleration,Math.Max(.001,desired),
-                    state.Lane.IsRoundabout?Rules.RoundaboutAcceleration:state.Lane.IsJunction?Rules.ControlledAcceleration:Rules.MaxAcceleration);
-                if(!double.IsInfinity(stop))acceleration=Math.Min(acceleration,AccelerationFor(stop+Rules.CarLength,state.Speed,0,0,desired,Rules.ControlledAcceleration));
+                double maximumAcceleration=Rules.Version==GameVersion.OriginalReference?OriginalMaximumAcceleration(car,state.Lane,state.Distance):
+                    state.Lane.IsRoundabout?Rules.RoundaboutAcceleration:state.Lane.IsJunction?Rules.ControlledAcceleration:Rules.MaxAcceleration;
+                double acceleration=AccelerationFor(gap,state.Speed,leaderSpeed,leaderAcceleration,Math.Max(.001,desired),maximumAcceleration);
+                if(!double.IsInfinity(stop))
+                {
+                    double held=AccelerationFor(stop+Rules.CarLength,state.Speed,0,0,desired,Rules.Version==GameVersion.OriginalReference?maximumAcceleration:Rules.ControlledAcceleration);
+                    // Original: blocked at a signal-controlled chunk within two vehicle lengths doubles the acceleration.
+                    if(Rules.Version==GameVersion.OriginalReference&&blockedControlled&&blockedAhead<2*Rules.CarLength&&held<=acceleration)held*=2;
+                    acceleration=Math.Min(acceleration,held);
+                }
+                else if(slowGap!=null)
+                {
+                    double target=.55*Math.Max(.001,desired);
+                    acceleration=Math.Min(acceleration,AccelerationFor(slowGap.Value,state.Speed,target,0,target,maximumAcceleration,1.6));
+                }
                 double speed=Math.Max(0,state.Speed+acceleration*Rules.TickSeconds);
                 double travel=(state.Speed+speed)*.5*Rules.TickSeconds;
                 // Hard clearance bounds are independent of acceleration integration and tick ordering.
@@ -431,13 +449,13 @@ namespace MotorwaysSim
             return true;
         }
 
-        public double AccelerationFor(double centerGap,double speed,double leadingSpeed,double leadingAcceleration,double desired,double maximumAcceleration)
+        public double AccelerationFor(double centerGap,double speed,double leadingSpeed,double leadingAcceleration,double desired,double maximumAcceleration,double decelerationExponent=6)
         {
             // Independently expressed car-following equations matching the recovered reference model.
             if(desired<1e-6)return -Rules.MaxDeceleration;
             double space=Math.Max(centerGap-Rules.CarLength,Rules.FollowingGap),relative=speed-leadingSpeed;
             double free=speed<=desired?maximumAcceleration*(1-Math.Pow(speed/desired,4)):
-                -Rules.MaxDeceleration*(1-Math.Pow(desired/Math.Max(.001,speed),maximumAcceleration*6/Rules.MaxDeceleration));
+                -Rules.MaxDeceleration*(1-Math.Pow(desired/Math.Max(.001,speed),maximumAcceleration*decelerationExponent/Rules.MaxDeceleration));
             double wanted=Rules.FollowingGap+Math.Max(0,speed*Rules.DesiredTimeGap+speed*relative/(2*Math.Sqrt(maximumAcceleration*Rules.MaxDeceleration)));
             double ratio=wanted/space,interaction=maximumAcceleration*(1-ratio*ratio);
             double combined=speed<=desired?(ratio>=1?interaction:free*(1-Math.Pow(ratio,2*maximumAcceleration/Math.Max(.001,free)))):
