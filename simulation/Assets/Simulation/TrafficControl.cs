@@ -386,7 +386,7 @@ namespace MotorwaysSim
                             bool entrance=next.IsParking&&next.Key.Contains(":entrance:")||
                             car.Stage==TripStage.Outbound&&i==car.Lanes.Count-1&&!next.IsParking;
                             stop=Math.Min(stop,Math.Max(0,aheadDistance-(Rules.Version==GameVersion.OriginalReference?Rules.FollowingGap*.5:entrance?Rules.CarLength+.05:Rules.CarLength*.35)));obstacle=reason;
-                            if(Rules.Version==GameVersion.OriginalReference){blockedControlled=IsControlledLane(next);blockedAhead=aheadDistance;}break;}
+                            if(Rules.Version==GameVersion.OriginalReference){blockedControlled=IsControlledLane(next)||next.IsRoundabout;blockedAhead=aheadDistance;}break;}
                         // Original intersection slowdown: with nothing ahead yet, cap acceleration as if a car moving at
                         // 0.55 of the desired speed sat at the entry of an uncontrolled junction with 3+ real roads.
                         if(Rules.Version==GameVersion.OriginalReference&&slowGap==null&&gap>aheadDistance&&aheadDistance>2*Rules.CarLength&&

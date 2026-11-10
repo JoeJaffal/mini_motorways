@@ -28,9 +28,14 @@ namespace MotorwaysSim
         static bool IsImmediateNext(Vehicle car,Lane lane)=>car.RouteIndex+1<car.Lanes.Count&&ReferenceEquals(car.Lanes[car.RouteIndex+1],lane);
 
         // A chosen lane is committed when it is among the first two remaining planned lanes.
+        // The original ring has a corner chunk between consecutive ring tiles, so a circulating car reaches a ring
+        // tile's lane as its second path lane only from the previous ring tile; our ring lanes span both, so a
+        // ring-to-ring target counts only as the immediate next lane.
         static bool Committed(Vehicle car,Lane lane)
         {
-            for(int i=car.RouteIndex+1;i<Math.Min(car.Lanes.Count,car.RouteIndex+3);i++)if(ReferenceEquals(car.Lanes[i],lane))return true;
+            for(int i=car.RouteIndex+1;i<Math.Min(car.Lanes.Count,car.RouteIndex+3);i++)
+                if(ReferenceEquals(car.Lanes[i],lane))
+                    return !(i==car.RouteIndex+2&&lane.IsRoundabout&&car.Lanes[i-1].IsRoundabout&&car.Lanes[i-1].Tile!=lane.Tile);
             return false;
         }
 

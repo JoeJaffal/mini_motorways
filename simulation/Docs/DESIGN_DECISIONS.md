@@ -1244,3 +1244,12 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Measured.** Simulator `2026-11-10.f8`: 16-phase mean 777.8 → 796.7 (613–822), 15/16 runs reach the end of the replay; fitted phases 824, surviving to 1314.6 s (real 835, game over ~1314 s). 85 suites, five-map checks and training readiness pass.
 
 **Open (audit, not yet done).** Roundabout ring split into 8 lanes with corner chunks (ours 4, so commitment reaches twice as far upstream); motorway end-tile lanes and arbitration at motorway starts; diagonal tile-corner chunks and crossing diagonals; traffic-light pair order and post-amber hold; roundabout chunks counting as controlled for the blocked-acceleration boost.
+
+
+## 086 - Roundabout commitment reach and controlled roundabouts (11 November 2026, `fidelity-aya`)
+
+**Evidence.** The original ring has eight lanes: a 57° arc on each ring tile and a corner-chunk arc between ring tiles (`LaneUpdateProcess`, `TileCornerModel`). A car is committed to a lane only while it is among its next two path lanes (`VehicleModel.IsCommittedToLane`), so a circulating car counts for ring tile T only from T−1. Our ring has four 90° lanes, so the same rule reached T−2 and circulating cars held priority over entering cars from twice as far. `RoadChunkModel.IsControlled` is true for roundabout chunks as well as signals, so the blocked-within-two-vehicle-lengths acceleration doubling applies at roundabout entries too.
+
+**Engineering choice** (OriginalReference). In `Committed`, a ring lane reached from a different ring lane counts only as the immediate next lane; `blockedControlled` includes roundabout lanes.
+
+**Measured.** Simulator `2026-11-10.f9`: 16-phase mean 796.7 → 809.3 (800–822), all 16 runs reach the end of the replay; fitted phases 820 at the end. 85 suites pass.
