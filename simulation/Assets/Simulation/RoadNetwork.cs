@@ -186,12 +186,13 @@ namespace MotorwaysSim
             car.Route=new List<Cell>(route);car.Lanes=MakeLanes(route);car.RouteIndex=0;car.DistanceAlongLane=0;
             car.At=route.Count>0?route[0]:car.At;car.Next=route.Count>1?route[1]:car.At;
             car.Progress=0;car.SegmentEntered=Time;if(!preserveSpeed)car.Speed=0;
-            car.RouteVersion=NetworkVersion;RegisterRoute(car,false);
+            car.LegMarks.Clear();car.ParkingLegAt=-1;car.ParkingLegAttached=false;AppendEntranceLane(car);
+            car.RouteVersion=NetworkVersion;RegisterRoute(car,false);UpdateLegs(car);
         }
 
         void RefreshJourney(Vehicle car)
         {
-            if(!car.Moving||car.RouteVersion==NetworkVersion||car.DistanceAlongLane>1e-8||car.CurrentLane.IsJunction||car.CurrentLane.IsRoundabout||car.CurrentLane.IsMotorway||car.CurrentLane.IsParking||
+            if(!car.Moving||car.RouteVersion==NetworkVersion||car.DistanceAlongLane>1e-8||car.CurrentLane.IsJunction||car.CurrentLane.IsRoundabout||car.CurrentLane.IsMotorway||car.CurrentLane.IsParking||car.ParkingLegAttached||car.LegMarks.Count>0||
                 (car.Stage!=TripStage.Outbound&&car.Stage!=TripStage.Returning))return;
             var old=car.CurrentLane;
             Cell goal=car.Stage==TripStage.Outbound?car.DestinationAccess:Buildings[car.HomeId].Access;
@@ -202,7 +203,9 @@ namespace MotorwaysSim
             var replacement=CreateLane(Cubic(old.Samples[0],old.Samples[0]+tangent*.25,
                 first.Samples.Last()-first.Tangent(first.Length)*.25,first.Samples.Last(),12),old.Tile,old.Previous,first.Next,old.Incoming,first.Outgoing);
             replacement.SpeedLimit=first.SpeedLimit;replacement.IsJunction=first.IsJunction;replacement.IsMotorway=first.IsMotorway;replacement.MotorwayId=first.MotorwayId;lanes[0]=replacement;
-            car.Route=route;car.Lanes=lanes;car.RouteIndex=0;car.DistanceAlongLane=0;RegisterRoute(car,true);
+            car.Route=route;car.Lanes=lanes;car.RouteIndex=0;car.DistanceAlongLane=0;
+            if(car.Stage==TripStage.Outbound){car.ParkingLegAt=-1;AppendEntranceLane(car);}
+            RegisterRoute(car,true);UpdateLegs(car);
             if(car.Stage==TripStage.Outbound)
             {var back=FindRoute(car.DestinationAccess,Buildings[car.HomeId].Access,true);if(back.Count>1)car.ReturnRoute=back;}
         }

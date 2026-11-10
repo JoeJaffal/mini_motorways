@@ -607,6 +607,8 @@ namespace MotorwaysSim
                     var shop=world.SpawnBuilding(new Cell(15,4),0,false);shop.DemandCountdown=1e9;shop.Demand=1;world.BuildReferenceNetwork();return world;}
                 var w=fixture();var lot=w.Buildings[1];for(int i=0;i<lot.Parking.Length;i++)lot.Parking[i]=999;
                 Vehicle through=null;for(int i=0;i<4000&&through==null;i++){w.Step();through=w.Cars.FirstOrDefault(c=>c.DrivingThrough);}
+                // The original decides bay or drive-through on the lane before the entrance; wait until the car is in the lot.
+                for(int i=0;i<4000&&through!=null&&through.Stage!=TripStage.EnteringParking;i++)w.Step();
                 Check(through!=null&&through.Stage==TripStage.EnteringParking&&!through.HasDelivered&&w.TripsCompleted==0,"full-lot arrival does not deliver instantly at the entrance");
                 Check(through.Lanes.Count>5&&through.ParkingSlot==-1,"drive-through uses internal circuit without reserving a bay");
                 for(int i=0;i<4000&&!through.HasDelivered;i++)w.Step();

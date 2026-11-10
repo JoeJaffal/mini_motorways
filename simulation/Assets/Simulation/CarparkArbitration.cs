@@ -47,6 +47,8 @@ namespace MotorwaysSim
                 {
                     space??=HasExitSpace(car,l=>l.IsParking&&l.Chunk==lane.Chunk);
                     if(!space.Value){blocker=other.Car.Id;why="Exit space";return false;}
+                    // Same exit counts as intersecting in the original's connection test (see TraversingAllows).
+                    if(other.Lane.Key!=lane.Key){blocker=other.Car.Id;why="Merging vehicle";return false;}
                 }
                 else if(other.Distance>other.Lane.Length-Rules.CarLength)continue;
                 if(Conflicts(lane,other.Lane)){blocker=other.Car.Id;why="Carpark lane conflict";return false;}

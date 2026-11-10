@@ -1163,3 +1163,22 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Engineering choice.** Start every destination's countdown at `FirstDemandDelay` (4 s); correct the fidelity check and the oscillation test to the original's behaviour. Simulator `2026-11-10.f1`.
 
 **Measured** ([report](../../docs/training/fidelity-aya-2026-11-10/README.md)). Replay v21, 16 fixed phase sets: mean 576.6 → 606.1 trips, mean game over 1173 → 1190 s; fitted phases 642 → 665. 85 suites pass.
+
+
+## 079 - Original carparks: continuous trips, no engineered gate (10 November 2026, `fidelity-aya`)
+
+**Evidence.** Original `VehicleMovementProcess`/`ParkVehiclesProcess`: the outbound path ends on the carpark entrance lane; when the car moves onto the lane before it, a free bay (random) or a drive-through is chosen and the in-lot lanes are appended; after 3 s parked the car gets one path from its bay to its house. Carpark lanes are ordinary chunks arbitrated like junctions; there is no entrance owner, no whole-lot departure check and no body-clearance test. `RoadTileConnection.IntersectsOtherConnection` returns true for two connections with the same output, so in `WouldInboundVehicleCollideWithTraversingVehicle` a traversing car on a different lane with the same exit blocks entry after the space test (unless green).
+
+**Measured before the change.** On f1, our trips stopped at every leg boundary (outbound→lot, lot→return), the gate serialised each entrance, and toggling the gate or the departure check off alone deadlocked: entering and leaving cars blocked each other through our body-clearance limiter. Details and toggle results in the [report](../../docs/training/fidelity-aya-2026-11-10/README.md).
+
+**Engineering choices** (OriginalReference only; Custom unchanged).
+
+- `ContinuousJourneys.cs`: entrance lane appended to the outbound path; bay or drive-through attached on the lane before it; return lanes appended when leaving a bay or driving through; stage changes at recorded lane indices.
+- Removed the gate (decisions 074/076), `CanBeginBayDeparture` and the body-clearance step limiter; ordinary stop offset at entrances.
+- Same-exit merge rule added to road and carpark chunk arbitration.
+- The two body-overlap checks become "no two cars share a position" (centre distance ≥ 0.15 tiles), because the original has no body test; observed minimum after the change is above 0.2.
+- The drive-through test waits for the car to enter the lot, since the decision is now made one lane earlier (original timing).
+
+**Measured.** Simulator `2026-11-10.f2`: 16-phase mean 606.1 → 749.4 trips (616–804), mean game over 1190 → 1281 s, 4/16 runs reach the end of the replay; fitted phases 665 → 748 at 1279 s. 85 suites pass.
+
+**Supersedes** decisions 074 and 076 (gate) for OriginalReference.

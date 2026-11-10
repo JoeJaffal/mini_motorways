@@ -75,6 +75,9 @@ namespace MotorwaysSim
                     // the geometry check below still does.
                     space??=HasExitSpace(car,l=>l.Tile==lane.Tile&&!l.IsMotorway&&!l.IsParking);
                     if(!space.Value){blocker=other.Car.Id;why="Exit space";return false;}
+                    // The original's connection test treats two lanes with the same exit as intersecting, so a
+                    // car on a different lane merging into that exit blocks entry even when there is space.
+                    if(!green&&other.Lane.Key!=lane.Key){blocker=other.Car.Id;why="Merging vehicle";return false;}
                 }
                 else if(other.Distance>other.Lane.Length-Rules.CarLength)continue;
                 if(green)continue; // installed greenLightsIgnoreCollisions: bypasses geometry, not the space test

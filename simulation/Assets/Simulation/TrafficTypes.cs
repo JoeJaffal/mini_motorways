@@ -146,6 +146,10 @@ namespace MotorwaysSim
         // lane first entered the first-two-remaining-lanes commitment window (original signal weights).
         public Cell BlockingTile;public readonly Dictionary<string,double> CommittedAt=new Dictionary<string,double>();
         public Point ParkedPosition,ParkedHeading=new Point(0,-1);
+        // Continuous journeys (OriginalReference, ContinuousJourneys.cs): index of the carpark entrance lane at the
+        // end of an outbound path, whether the in-lot lanes are attached, and lane indices where the stage changes.
+        public int ParkingLegAt=-1;public bool ParkingLegAttached;
+        public readonly List<(int Index,TripStage Stage)> LegMarks=new List<(int Index,TripStage Stage)>();
         public bool Moving=>Lanes.Count>0&&RouteIndex<Lanes.Count;
         public Lane CurrentLane=>Moving?Lanes[RouteIndex]:null;
         public Point Position=>Stage==TripStage.Parking?ParkedPosition:CurrentLane?.Position(DistanceAlongLane)??new Point(At);

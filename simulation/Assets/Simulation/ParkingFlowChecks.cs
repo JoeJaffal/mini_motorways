@@ -26,8 +26,9 @@ namespace MotorwaysSim
                     w.Step();var cars=w.Cars.Where(c=>c.Stage!=TripStage.Home&&Point.Distance(c.Position,new Point(shop.Access))<4).ToArray();
                     concurrent=Math.Max(concurrent,cars.Count(c=>c.Moving&&c.CurrentLane.IsParking));
                     for(int i=0;i<cars.Length;i++)for(int j=i+1;j<cars.Length;j++)
-                        if(w.VehicleBodiesOverlap(cars[i].Position,cars[i].Heading,cars[j].Position,cars[j].Heading))
-                            throw new InvalidOperationException("PARKING FLOW: body overlap seed="+seed+" layout="+layout+" time="+w.Time+" cars="+cars[i].Id+","+cars[j].Id);
+                        // The original has no body-clearance check; arbitration and following must still keep cars apart.
+                        if(Point.Distance(cars[i].Position,cars[j].Position)<.15)
+                            throw new InvalidOperationException("PARKING FLOW: cars share a position seed="+seed+" layout="+layout+" time="+w.Time+" cars="+cars[i].Id+","+cars[j].Id);
                     if(w.TripsCompleted==8&&w.ActiveCars==0)break;
                 }
                 if(w.TripsCompleted!=8||w.ActiveCars!=0||concurrent<2)
