@@ -1220,3 +1220,12 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Measured.** Simulator `2026-11-10.f6`: 16-phase mean 775.2 → 775.1 (604–806), 8/16 reach the end; fitted phases 800 at 1310 s. Effects are confined to the last seconds before failure. 85 suites pass.
 
 **Replay note (not a rule change).** The replay's destination spawn times put the red destination of plan window days 8–22 at 474 s and the red one of days 30–42 at 919 s, both after their windows close. In the original such delays add extra demand to that colour (`BalanceDemandFromFailedSpawns`), which may explain why the original delivered more pins early than our formula creates from the replay's spawn times. Its exact timing is not recoverable from the video, so the replay does not model it.
+
+
+## 084 - U-turns only at dead ends; dispatch details (10 November 2026, `fidelity-aya`)
+
+**Evidence.** `RoadTileSignature` gives a tile a U-turn lane only when it has a single road connection; elsewhere a car can turn around only through a driveway or a carpark loop, at ordinary lane cost (`Pathfinder` declares a `UTurnPenalty` but never uses it). `VehiclePathfindingProcess` re-paths from the car's committed lanes, so it never reverses in place. `DispatchVehiclesProcess` removes items while counting up in its loop for the last destination, dispatching ceil(n/2) per tick, and measures house cost from the end of the driveway lane.
+
+**Engineering choices** (OriginalReference). `FindRoute` refuses a reversal unless the tile has one connection (no penalty there) and takes the heading into the start tile; `RefreshJourney` passes the current lane's heading; the cache key includes it. Dispatch quota and `FirstStepCost` as above.
+
+**Measured.** Simulator `2026-11-10.f7`: 16-phase mean 775.1 → 777.8 (726–819; the 604 outlier is gone), 8/16 reach the end; fitted phases 799 at 1307 s. 85 suites pass.

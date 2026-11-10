@@ -337,7 +337,9 @@ namespace MotorwaysSim
             for(int index=0;index<ordered.Count;index++)
             {
                 var shop=ordered[index];int remaining=shop.Demand-shop.Reserved;
-                int quota=index==ordered.Count-1?remaining:Math.Min(Math.Max(remaining/2,2),remaining);
+                // Original DispatchVehiclesProcess: min(max(n/2,2),n) per tick, except that its loop for the last
+                // destination removes entries while counting up, which dispatches only ceil(n/2).
+                int quota=index==ordered.Count-1?(Rules.Version==GameVersion.OriginalReference?(remaining+1)/2:remaining):Math.Min(Math.Max(remaining/2,2),remaining);
                 for(int attempt=0;attempt<quota;attempt++)
                 {
                     Vehicle chosen=null;List<Cell> best=null;double bestCost=double.PositiveInfinity;
@@ -346,7 +348,7 @@ namespace MotorwaysSim
                         var vehicle=Cars.FirstOrDefault(v=>v.HomeId==house.Id&&v.Stage==TripStage.Home&&Time-v.ArrivedHome>=Rules.HomeCooldown);
                         if(vehicle==null)continue;
                         var path=BestRouteTo(house.Access,shop);if(path.Count<2)continue;
-                        double cost=RouteCost(path);
+                        double cost=RouteCost(path)-(Rules.Version==GameVersion.OriginalReference?FirstStepCost(path):0);
                         if(cost<bestCost){chosen=vehicle;best=path;bestCost=cost;}
                     }
                     if(chosen==null)break;

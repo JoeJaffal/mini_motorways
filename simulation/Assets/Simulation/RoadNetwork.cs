@@ -6,7 +6,7 @@ namespace MotorwaysSim
 {
     public sealed partial class TrafficWorld
     {
-        readonly Dictionary<(Cell,Cell,bool),List<Cell>> routeCache=new Dictionary<(Cell,Cell,bool),List<Cell>>();
+        readonly Dictionary<(Cell,Cell,bool,int),List<Cell>> routeCache=new Dictionary<(Cell,Cell,bool,int),List<Cell>>();
 
         public IEnumerable<Cell> Neighbors(Cell at,Cell start,Cell goal)=>Neighbors(at,start,goal,false);
         IEnumerable<Cell> Neighbors(Cell at,Cell start,Cell goal,bool retired)
@@ -32,12 +32,16 @@ namespace MotorwaysSim
         }
 
         public List<Cell> FindRoute(Cell start,Cell goal)=>FindRoute(start,goal,false);
-        public List<Cell> FindRoute(Cell start,Cell goal,bool allowRetired)
+        public List<Cell> FindRoute(Cell start,Cell goal,bool allowRetired)=>FindRoute(start,goal,allowRetired,8);
+        // startDirection: heading into start (8 = none). Original U-turn lanes exist only on dead-end tiles (one road
+        // connection), so OriginalReference never reverses elsewhere and a re-route keeps the car's heading.
+        List<Cell> FindRoute(Cell start,Cell goal,bool allowRetired,int startDirection)
         {
             if(!InBounds(start)||!InBounds(goal))return new List<Cell>();
-            var key=(start,goal,allowRetired);
+            if(Rules.Version!=GameVersion.OriginalReference)startDirection=8;
+            var key=(start,goal,allowRetired,startDirection);
             if(routeCache.TryGetValue(key,out var cached))return new List<Cell>(cached);
-            var origin=(cell:start,dir:8);
+            var origin=(cell:start,dir:startDirection);
             var queue=new MinQueue<(Cell cell,int dir)>();queue.Push(origin,0);
             var costs=new Dictionary<(Cell,int),double>{{origin,0}};
             var previous=new Dictionary<(Cell,int),(Cell,int)>();
@@ -59,7 +63,11 @@ namespace MotorwaysSim
                     double speed=motorway==null?LaneSpeed(state.cell,state.dir,direction):Rules.MotorwaySpeed;
                     var transit=SharedTransitBetween(state.cell,next);
                     double cost=Distance(state.cell,next)/Math.Max(.01,speed);
-                    if(state.dir<8&&((direction-state.dir+8)%8)==4)cost+=500;
+                    if(state.dir<8&&((direction-state.dir+8)%8)==4)
+                    {
+                        if(Rules.Version!=GameVersion.OriginalReference)cost+=500;
+                        else if(Degree(state.cell)>1)continue;
+                    }
                     if(allowRetired&&(PendingRemoval[next.X,next.Y]||PendingRemoval[state.cell.X,state.cell.Y]))cost+=100000;
                     double total=costs[state]+(transit!=null?SharedTransitCost(transit,state.cell,next):Math.Max(1,Math.Floor(10*cost)));
                     if(!costs.TryGetValue(target,out var old)||total<old)
@@ -67,6 +75,14 @@ namespace MotorwaysSim
                 }
             }
             routeCache[key]=new List<Cell>();return new List<Cell>();
+        }
+
+        // The original measures a house's dispatch cost from the end of its driveway lane, so the step out of the house
+        // tile is not charged when choosing which house serves a destination.
+        double FirstStepCost(IList<Cell> route)
+        {
+            if(route.Count<2||MotorwayBetween(route[0],route[1])!=null||SharedTransitBetween(route[0],route[1])!=null)return 0;
+            return Math.Max(1,Math.Floor(10*Distance(route[0],route[1])/LaneSpeed(route[0],8,Direction(route[0],route[1]),false,true)));
         }
 
         public double RouteCost(IList<Cell> route)
@@ -197,7 +213,7 @@ namespace MotorwaysSim
                 (car.Stage!=TripStage.Outbound&&car.Stage!=TripStage.Returning))return;
             var old=car.CurrentLane;
             Cell goal=car.Stage==TripStage.Outbound?car.DestinationAccess:Buildings[car.HomeId].Access;
-            var route=FindRoute(old.Tile,goal,true);car.RouteVersion=NetworkVersion;
+            var route=FindRoute(old.Tile,goal,true,old.Incoming);car.RouteVersion=NetworkVersion;
             if(route.Count<2)return;
             var lanes=MakeLanes(route);var first=lanes[0];
             var tangent=old.Tangent(0);
