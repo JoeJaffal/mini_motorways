@@ -1142,3 +1142,15 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **User decision.** Investigate LA 3101 before gp-5 starts; keep `main` simulator-only.
 
 **Engineering choice** ([report section 13](../../docs/training/simulator-repairs-2026-11-08/README.md)). Apply the original's eligibility rule (red-blocked candidates are not eligible) to our engineered carpark gate. A car held by a red light before its gate lane may not take or keep the gate, and the light is checked first. The gate itself remains an engineered compensation, as in decision 074.
+
+
+## 077 - Local read-only original reference on this machine (10 November 2026)
+
+**User decision.** Work on a separate branch, `fidelity-aya` (pushed to origin), in parallel with Mohammad; the better simulator is chosen later. Set up, on this machine, the same original-game code reference Mohammad works from, to investigate why the recorded 835-point Los Angeles game ends earlier and lower in the simulator. This supersedes decision 071's "rather than decompiling anything on this machine" for future investigation.
+
+**Engineering choices.**
+
+- Decompiled the user's own Steam install read-only with ilspycmd 8.2.0.7535 (9.x needs a newer SDK than .NET 8). `App.dll` SHA256 `76c9d906…c638` equals `REFERENCE_DATA.json`, so this is the build the existing work studied.
+- Output is kept outside every Git repository, in `C:\Projects\490 - Project\mm-original-reference\`, with a README giving the regeneration commands. As before, no decompiled classes or assemblies are committed; only our independent code and numeric findings.
+
+**Not yet done.** No engine change, replay or score comparison has come from this setup yet.
