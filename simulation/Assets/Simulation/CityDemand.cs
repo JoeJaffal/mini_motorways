@@ -57,7 +57,10 @@ namespace MotorwaysSim
         }
         void InitializeDestinationDemand(Building shop)
         {
-            shop.DemandCountdown=Time<1?3:OriginalDemandInterval(shop)*DemandRamp;
+            // The original starts every new destination's demand timer at DelayBeforeFirstPinOfDestination (4 s),
+            // drained at the spawn ramp like any later interval. Its 3 s branch only applies when a timer resets
+            // before the clock reaches 1 s, which a 4 s timer never does.
+            shop.DemandCountdown=Rules.FirstDemandDelay;
             shop.NextDemand=Time+shop.DemandCountdown/DemandRamp;
         }
         public Building SpawnBuilding(Cell cell,int color,bool house,int drivewayDirection=0,int layout=0)

@@ -1154,3 +1154,12 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 - Output is kept outside every Git repository, in `C:\Projects\490 - Project\mm-original-reference\`, with a README giving the regeneration commands. As before, no decompiled classes or assemblies are committed; only our independent code and numeric findings.
 
 **Not yet done.** No engine change, replay or score comparison has come from this setup yet.
+
+
+## 078 - First pin after four seconds for every destination (10 November 2026, `fidelity-aya`)
+
+**Evidence.** In the original, both destination spawn paths call `DestinationModel.Initialize`, which sets the demand timer to `DelayBeforeFirstPinOfDestination` (4 s in the installed asset); nothing else writes the timer except the regular interval reset. The "3 s while the clock is under 1 s" branch only applies to a reset, which a 4 s timer never reaches. Our `InitializeDestinationDemand` instead gave every destination after time 0 a full demand interval (8–32 s), and a fidelity check asserted that.
+
+**Engineering choice.** Start every destination's countdown at `FirstDemandDelay` (4 s); correct the fidelity check and the oscillation test to the original's behaviour. Simulator `2026-11-10.f1`.
+
+**Measured** ([report](../../docs/training/fidelity-aya-2026-11-10/README.md)). Replay v21, 16 fixed phase sets: mean 576.6 → 606.1 trips, mean game over 1173 → 1190 s; fitted phases 642 → 665. 85 suites pass.

@@ -444,7 +444,7 @@ namespace MotorwaysSim
                 var a=w.SpawnBuilding(new Cell(10,5),0,false);var b=w.SpawnBuilding(new Cell(20,5),0,false);var c=w.SpawnBuilding(new Cell(30,5),1,false);
                 Check(w.OriginalDemandInterval(a)==w.OriginalDemandInterval(b),"same-color destinations share oscillation phase");
                 Check(w.OriginalDemandInterval(a)!=w.OriginalDemandInterval(c),"different color profiles retain their demand");
-                w.Step(59);Check(a.Demand==0&&b.Demand==0,"no demand before initial three-second delay");
+                w.Step(79);Check(a.Demand==0&&b.Demand==0,"no demand before the four-second first-pin delay");
                 w.Step(2);Check(a.Demand==1&&b.Demand==1,"first pins after countdown");
             });
             Test("reference random generator matches installed-assembly oracle vectors",()=>{

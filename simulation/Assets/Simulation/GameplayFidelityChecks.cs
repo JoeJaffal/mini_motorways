@@ -42,8 +42,8 @@ namespace MotorwaysSim
             }
             {
                 var w=Lab();w.Step(40);var shop=w.SpawnBuilding(new Cell(10,5),0,false);
-                Require(shop.DemandCountdown>4,"later destination uses demand interval instead of universal four-second timer");
-                w.Step(80);Require(shop.Demand==0,"later destination has no artificial early burst");checks++;
+                Require(shop.DemandCountdown==4,"later destination starts the original's four-second first-pin timer (DestinationModel.Initialize)");
+                w.Step(78);Require(shop.Demand==0,"no pin before four seconds");w.Step(3);Require(shop.Demand==1,"first pin at four seconds");checks++;
             }
             {
                 var w=Lab();w.DrawRoad(new Cell(5,5),new Cell(9,5));
