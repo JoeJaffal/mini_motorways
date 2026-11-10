@@ -14,7 +14,7 @@ namespace MotorwaysSim
         // of a roundabout tile use default speed with the turn factor. A lane coming off a motorway has no turn
         // factor. The intersection factor 0.5 applies to the lane whose next tile offers more than one way on
         // (the approach lane), unless that tile is signal-controlled or part of a roundabout, or the lane is a
-        // U-turn or roundabout lane.
+        // U-turn or ring lane (a ring tile's exit lane can take it; connection.IsRoundabout means ring-to-ring).
         double OriginalLaneSpeed(Cell at,int incoming,int outgoing,bool fromMotorway,bool forCost)
         {
             double speed=Rules.CarSpeed;var round=RoundaboutAt(at);
@@ -31,7 +31,7 @@ namespace MotorwaysSim
                 int turn=Math.Abs(incoming-outgoing);turn=Math.Min(turn,8-turn);uTurn=turn==4;
                 if(turn==2)speed*=Rules.RightAngleMultiplier;else if(turn>=3)speed*=Rules.SharpTurnMultiplier;
             }
-            if(incoming<8&&!uTurn&&round==null&&InBounds(next)&&Degree(next)>=3&&Tile(next)!=Infrastructure.TrafficLight&&RoundaboutAt(next)==null)
+            if(incoming<8&&!uTurn&&InBounds(next)&&Degree(next)>=3&&Tile(next)!=Infrastructure.TrafficLight&&RoundaboutAt(next)==null)
                 speed*=Rules.IntersectionMultiplier;
             return speed;
         }

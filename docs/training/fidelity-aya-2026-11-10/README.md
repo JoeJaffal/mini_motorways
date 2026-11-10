@@ -65,6 +65,7 @@ Replay v21, 16-phase mean (min–max) and fitted-phase result. Real game: 835 at
 | `2026-11-10.f8` | Original lane-conflict test by directions; retired motorway penalty when re-routing | 796.7 (613–822), 15/16 reach the end | 1306 s | 824, reaches the end (1314.6 s) |
 | `2026-11-10.f9` | Roundabout commitment from the previous ring tile only; roundabouts controlled for the blocked boost | 809.3 (800–822), 16/16 reach the end | 1315 s | 820, reaches the end |
 | `2026-11-10.f10` | Original motorway end tiles (ordinary start lane to the slot, straight motorway lane between slots, full end-tile lane) | 792.8 (741–809), 12/16 reach the end | 1309 s | 816, reaches the end |
+| `2026-11-10.f11` | Signal pair order, post-amber hold and pair-loss switch; roundabout exit-lane factor | 784.5 (747–808), 8/16 reach the end | 1304 s | 784, fails at 1301 s |
 
 Self-test: 85 suites pass at every version listed.
 

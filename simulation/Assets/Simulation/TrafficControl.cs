@@ -112,19 +112,33 @@ namespace MotorwaysSim
                 else if(edge.Item2==signal.Cell)remaining|=1<<Direction(signal.Cell,edge.Item1);
             }
             var masks=new List<int>();
-            for(int d=0;d<4;d++)if((remaining&(1<<d))!=0&&(remaining&(1<<(d+4)))!=0)
-            {int mask=(1<<d)|(1<<(d+4));masks.Add(mask);remaining&=~mask;}
-            for(int d=0;d<8;d++)
+            // The original (TrafficLightModel.CalculatePairs) scans directions starting at North (our 6).
+            int first=Rules.Version==GameVersion.OriginalReference?6:0;
+            for(int k=0;k<4;k++){int d=(first+k)%8,o=(d+4)%8;if((remaining&(1<<d))!=0&&(remaining&(1<<o))!=0)
+            {int mask=(1<<d)|(1<<o);masks.Add(mask);remaining&=~mask;}}
+            for(int k=0;k<8;k++)
             {
+                int d=(first+k)%8;
                 if((remaining&(1<<d))==0)continue;
                 int a=(d+3)%8,b=(d+5)%8;
                 if((remaining&(1<<a))!=0&&(remaining&(1<<b))!=0)continue;
                 int pair=(remaining&(1<<a))!=0?a:(remaining&(1<<b))!=0?b:-1;
                 if(pair>=0){int mask=(1<<d)|(1<<pair);masks.Add(mask);remaining&=~mask;}
             }
-            for(int d=0;d<8;d++)if((remaining&(1<<d))!=0)masks.Add(1<<d);
+            for(int k=0;k<8;k++){int d=(first+k)%8;if((remaining&(1<<d))!=0)masks.Add(1<<d);}
             signal.Pairs=masks;
-            if(!masks.Contains(signal.ActivePair))signal.ActivePair=masks.Count==0?0:masks[0];
+            if(!masks.Contains(signal.ActivePair))
+            {
+                if(Rules.Version==GameVersion.OriginalReference&&masks.Count>0)
+                {
+                    // Original: the active pair is gone, so rotate at once (no amber) to the best-weighted pair, or the
+                    // first one when nothing waits, and restart the timer.
+                    var candidates=SignalCandidates(signal.Cell);int best=masks[0];double weight=0;
+                    if(candidates.Count>0)foreach(int pair in masks){double w=PairWeight(signal,pair,candidates);if(w>weight){best=pair;weight=w;}}
+                    signal.ActivePair=best;signal.Amber=false;signal.Elapsed=0;
+                }
+                else signal.ActivePair=masks.Count==0?0:masks[0];
+            }
         }
 
         public int SignalPhase(Cell c)=>Signals.TryGetValue(c,out var s)?s.Amber?-1:(s.ActivePair&17)!=0?0:1:-1;

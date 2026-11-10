@@ -101,7 +101,8 @@ namespace MotorwaysSim
                 double w=PairWeight(signal,pair,candidates);if(w>weight){best=pair;weight=w;}
             }
             if(best>=0)return best;
-            if(!excludeCurrent)return signal.ActivePair;
+            // Original NextValidPairIndex: with cars inbound and no other pair weighted, keep the current pair.
+            if(!excludeCurrent||candidates.Count>0)return signal.ActivePair;
             int index=signal.Pairs.IndexOf(signal.ActivePair);return signal.Pairs[(index+1)%signal.Pairs.Count];
         }
 

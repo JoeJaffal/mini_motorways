@@ -1262,3 +1262,12 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Engineering choice** (OriginalReference). `OriginalMotorwayStart` in `OriginalMovement.cs` and the end-tile start point in `MakeLanes`. The slot is the closest of eight directions; the fallback to a neighbouring free slot is not modelled.
 
 **Measured.** Simulator `2026-11-10.f10`: 16-phase mean 809.3 → 792.8 (741–809), 12/16 reach the end (four now fail at 1281–1309 s, near the original's ~1314 s); fitted phases 816 at the end. No stuck cars; waits are dominated by the shared-exit space test as before. 85 suites, five-map checks and training readiness pass.
+
+
+## 088 - Signal pair order and rotation details; roundabout exit lanes (11 November 2026, `fidelity-aya`)
+
+**Evidence.** `TrafficLightModel.CalculatePairs` scans directions from North (opposite pairs, then leftover pairs three steps apart, then singles); ours started at East. `NextValidPairIndex`: with inbound vehicles it takes the highest-weighted other pair, keeping the current one when none has weight; only with no inbound vehicles does it step to the next index (ours always stepped). `TrafficLightAlternatingProcess`: when lanes change and the active pair no longer exists, the light rotates immediately without amber and restarts its timer (ours took the first pair and kept the elapsed time). `RoadTileConnection.IsRoundabout` is true only for ring-to-ring lanes, so a ring tile's exit lane takes the 0.5 intersection factor when its next tile offers several ways (ours excluded every roundabout-tile lane).
+
+**Engineering choice** (OriginalReference). As above in `UpdateSignalPairs`, `WinningPair` and `OriginalLaneSpeed`.
+
+**Measured.** Simulator `2026-11-10.f11`: 16-phase mean 792.8 → 784.5 (747–808), 8/16 reach the end; fitted phases 784, failing at 1301 s (original ~1314 s). Traffic-light waiting is unchanged (44 car-seconds on the fitted run). 85 suites, five-map checks and training readiness pass.
