@@ -7,7 +7,6 @@ namespace MotorwaysSim
     public sealed partial class TrafficWorld
     {
         readonly Dictionary<int,double> lastHouseSpawn=new Dictionary<int,double>();
-        readonly Dictionary<int,double> houseRetryAt=new Dictionary<int,double>();
         readonly Dictionary<int,double> delayedSpawnDemand=new Dictionary<int,double>();
         double ExtraDemandFor(int color)=>Rules.Version==GameVersion.OriginalReference&&delayedSpawnDemand.TryGetValue(color,out var value)?value:0;
         void UpdateDelayedSpawnDemand()
@@ -29,9 +28,12 @@ namespace MotorwaysSim
                     delayedSpawnDemand[color]=ExtraDemandFor(color)+remainder/total;
             }
         }
+        // Original DemandModel: octile distance from the house to the tile just outside the lot's top-left driveway
+        // (its only driveway for a single lot; west/north of a double lot).
         public double HouseSupplyContribution(Building house,Building destination)
         {
-            int dx=Math.Abs(house.Cell.X-destination.Access.X),dy=Math.Abs(house.Cell.Y-destination.Access.Y);
+            var anchor=destination.Entrances.Length>0?destination.Entrances[0]+Directions[destination.EntranceDirections[0]]:destination.Access+Directions[destination.DrivewayDirection];
+            int dx=Math.Abs(house.Cell.X-anchor.X),dy=Math.Abs(house.Cell.Y-anchor.Y);
             double distance=Math.Min(dx,dy)*Math.Sqrt(2)+Math.Abs(dx-dy);
             return ReferenceCurves.Evaluate(OriginalGameplayTuning.HouseContribution,distance)*OriginalGameplayTuning.HouseContributionMultiplier;
         }
@@ -42,18 +44,6 @@ namespace MotorwaysSim
             double supply=Buildings.Where(h=>h.IsHouse&&h.Color==shop.Color).Sum(h=>HouseSupplyContribution(h,shop));
             int count=Buildings.Count(s=>!s.IsHouse&&!s.IsStation&&s.Color==shop.Color);
             return supply*(shop.IsStation?1:ReferenceCurves.Evaluate(OriginalGameplayTuning.DestinationSupplyScale,count))>=RequiredHouseSupply(shop);
-        }
-        void UpdateOriginalHouseSupply()
-        {
-            foreach(var group in Buildings.Where(s=>!s.IsHouse).GroupBy(s=>s.Color).ToArray())
-            {
-                int color=group.Key;
-                if(originalPlan.Any(p=>p.Type==1&&p.Color==color))continue;
-                if(lastHouseSpawn.TryGetValue(color,out var last)&&Time<last+OriginalGameplayTuning.HouseSpawnDelay||
-                    houseRetryAt.TryGetValue(color,out var retry)&&Time<retry)continue;
-                var shop=group.FirstOrDefault(s=>!HasSufficientHouseSupply(s));if(shop==null)continue;
-                if(!TrySpawnHouse(shop))houseRetryAt[color]=Time+OriginalGameplayTuning.HouseRetryDelay;
-            }
         }
         void InitializeDestinationDemand(Building shop)
         {
@@ -142,7 +132,7 @@ namespace MotorwaysSim
         void UpdateCity()
         {
             if(!Rules.EnableCityGrowth||!CityCatalog.Maps.Contains(Scenario))return;
-            if(Rules.Version==GameVersion.OriginalReference){ProcessOriginalPlan();UpdateOriginalHouseSupply();return;}
+            if(Rules.Version==GameVersion.OriginalReference){ScheduleOriginalHouses();ProcessOriginalPlan();return;}
             else if(nextScheduledShop<spawnSchedule.Count&&Time>=spawnSchedule[nextScheduledShop].time)
             {
                 int color=spawnSchedule[nextScheduledShop].color;

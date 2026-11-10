@@ -77,3 +77,6 @@ Waiting time by reason on f1 (fitted phases): 890 car-seconds held by the shared
 
 `scripts/verify_five_maps.py` (10 runs) and `scripts/check_training_readiness.py` (60 episodes, exact replays on all five maps) pass; their reports are regenerated in `simulation/Reports/`.
 
+## Continued on `fidelity-aya-growth`
+
+Original free-play city growth (building placement, driveways, playable edges, spawn schedule, supply anchor; simulator `2026-11-11.g1`) is recorded in [fidelity-aya-growth-2026-11-11](../fidelity-aya-growth-2026-11-11/README.md). Replay v21 results are unchanged by it.
