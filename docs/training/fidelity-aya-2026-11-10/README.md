@@ -64,6 +64,7 @@ Replay v21, 16-phase mean (min–max) and fitted-phase result. Real game: 835 at
 | `2026-11-10.f7` | U-turns only at dead ends, re-routes keep heading; last-destination dispatch quota; driveway excluded from house choice | 777.8 (726–819), 8/16 reach the end | 1301 s | 799 at 1307 s |
 | `2026-11-10.f8` | Original lane-conflict test by directions; retired motorway penalty when re-routing | 796.7 (613–822), 15/16 reach the end | 1306 s | 824, reaches the end (1314.6 s) |
 | `2026-11-10.f9` | Roundabout commitment from the previous ring tile only; roundabouts controlled for the blocked boost | 809.3 (800–822), 16/16 reach the end | 1315 s | 820, reaches the end |
+| `2026-11-10.f10` | Original motorway end tiles (ordinary start lane to the slot, straight motorway lane between slots, full end-tile lane) | 792.8 (741–809), 12/16 reach the end | 1309 s | 816, reaches the end |
 
 Self-test: 85 suites pass at every version listed.
 

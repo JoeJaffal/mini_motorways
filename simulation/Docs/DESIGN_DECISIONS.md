@@ -1253,3 +1253,12 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Engineering choice** (OriginalReference). In `Committed`, a ring lane reached from a different ring lane counts only as the immediate next lane; `blockedControlled` includes roundabout lanes.
 
 **Measured.** Simulator `2026-11-10.f9`: 16-phase mean 796.7 → 809.3 (800–822), all 16 runs reach the end of the replay; fitted phases 820 at the end. 85 suites pass.
+
+
+## 087 - Original motorway end tiles (11 November 2026, `fidelity-aya`)
+
+**Evidence.** `LaneUpdateProcess` builds a motorway as a straight bespoke lane from the start tile's lane exiting in the motorway direction to the end tile's lane entering from it; the end tiles keep ordinary chunk lanes to and from that direction (`AddMotorwayAction.ValidTileDirectionFor`: the closest direction, or a neighbouring free one). The start-tile lane is arbitrated with the tile's other lanes and has a turn factor but no intersection factor (its single outbound lane is the motorway); the end-tile lane runs from the slot edge across the tile with no turn factor. Ours ran the fast lane from the start tile's entry edge to the end tile's centre, never arbitrated entry at the start tile, and gave cars half an end tile.
+
+**Engineering choice** (OriginalReference). `OriginalMotorwayStart` in `OriginalMovement.cs` and the end-tile start point in `MakeLanes`. The slot is the closest of eight directions; the fallback to a neighbouring free slot is not modelled.
+
+**Measured.** Simulator `2026-11-10.f10`: 16-phase mean 809.3 → 792.8 (741–809), 12/16 reach the end (four now fail at 1281–1309 s, near the original's ~1314 s); fitted phases 816 at the end. No stuck cars; waits are dominated by the shared-exit space test as before. 85 suites, five-map checks and training readiness pass.

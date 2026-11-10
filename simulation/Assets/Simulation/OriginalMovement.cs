@@ -70,6 +70,38 @@ namespace MotorwaysSim
             return count==1;
         }
 
+        // Original motorway lanes (LaneUpdateProcess, AddMotorwayAction.ValidTileDirectionFor): each end tile has a
+        // slot in the direction closest to the other end; the start tile keeps an ordinary lane from its entry edge to
+        // that slot (arbitrated with the tile's other lanes, turn factor only, since its single outbound lane is the
+        // motorway); a straight bespoke motorway lane joins the two slot edges at motorway speed. We take the closest
+        // direction and do not model the original's fallback to a neighbouring free slot.
+        static int ClosestDirection(Cell from,Cell to)
+        {
+            double dx=to.X-from.X,dy=to.Y-from.Y,best=double.NegativeInfinity;int result=0;
+            for(int d=0;d<8;d++){var v=DirectionVector(d);double dot=v.X*dx+v.Y*dy;if(dot>best+1e-9){best=dot;result=d;}}
+            return result;
+        }
+        static Point DirectionVector(int d)=>new Point(Directions[d].X,Directions[d].Y).Unit;
+        static Point SlotPoint(Cell tile,int d)=>new Point(tile)+new Point(Directions[d].X*.5,Directions[d].Y*.5);
+
+        List<Lane> OriginalMotorwayStart(MotorwayState motorway,Cell at,Cell prev,Cell next,Point start,Point incoming,int inDir)
+        {
+            int slot=ClosestDirection(at,next),endSlot=ClosestDirection(next,at);
+            var out1=DirectionVector(slot);var slotEnd=SlotPoint(at,slot)+out1.Right*Rules.LaneOffset;
+            double length=Point.Distance(start,slotEnd);
+            var local=CreateLane(Cubic(start,start+incoming*Math.Min(.35,length*.45),slotEnd-out1*Math.Min(.35,length*.45),slotEnd,12),at,prev,next,inDir,slot);
+            double speed=Rules.CarSpeed;
+            if(inDir<8){int turn=Math.Abs(inDir-slot);turn=Math.Min(turn,8-turn);if(turn==2)speed*=Rules.RightAngleMultiplier;else if(turn>=3)speed*=Rules.SharpTurnMultiplier;}
+            local.SpeedLimit=speed;local.IsJunction=Degree(at)>=3||Tile(at)==Infrastructure.TrafficLight;
+            var travel=DirectionVector((endSlot+4)%8);var entry=SlotPoint(next,endSlot)+travel.Right*Rules.LaneOffset;
+            var points=new Point[9];for(int k=0;k<9;k++)points[k]=slotEnd+(entry-slotEnd)*(k/8.0);
+            var fast=CreateLane(points,at,prev,next,slot,(endSlot+4)%8);
+            fast.IsMotorway=true;fast.MotorwayId=motorway.Id;fast.SpeedLimit=Rules.MotorwaySpeed;fast.Key=$"motorway:{motorway.Id}:{at.X}:{at.Y}";
+            var result=new List<Lane>();
+            if(local.Distances.Last()>1e-8)result.Add(local);
+            result.Add(fast);return result;
+        }
+
         bool IsControlledLane(Lane lane)=>lane!=null&&!lane.IsParking&&!lane.IsMotorway&&Signals.ContainsKey(lane.Tile);
 
         // Original maximum acceleration: roundabout if the current or next chunk is a roundabout; controlled if the

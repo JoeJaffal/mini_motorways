@@ -137,6 +137,17 @@ namespace MotorwaysSim
                     }
                 }
                 int inDir=i==0?8:Direction(prev,at),outDir=i==route.Count-1?inDir:Direction(at,next);
+                if(Rules.Version==GameVersion.OriginalReference&&fromMotorway)
+                {
+                    // Original: the end tile's lane starts at the motorway's slot edge and runs across the whole tile.
+                    int slot=ClosestDirection(at,prev);var travel=DirectionVector((slot+4)%8);
+                    inDir=(slot+4)%8;incoming=travel;start=SlotPoint(at,slot)+travel.Right*Rules.LaneOffset;
+                }
+                if(Rules.Version==GameVersion.OriginalReference&&motorway!=null)
+                {
+                    lanes.AddRange(OriginalMotorwayStart(motorway,at,prev,next,start,incoming,inDir));
+                    continue;
+                }
                 var round=RoundaboutAt(at);
                 Point[] samples;
                 if(motorway!=null)
