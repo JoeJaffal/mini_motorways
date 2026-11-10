@@ -1182,3 +1182,12 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Measured.** Simulator `2026-11-10.f2`: 16-phase mean 606.1 → 749.4 trips (616–804), mean game over 1190 → 1281 s, 4/16 runs reach the end of the replay; fitted phases 665 → 748 at 1279 s. 85 suites pass.
 
 **Supersedes** decisions 074 and 076 (gate) for OriginalReference.
+
+
+## 080 - Carpark lane speeds from the original's lane-speed rule (10 November 2026, `fidelity-aya`)
+
+**Evidence.** The original's `GameBehaviourModel.GetLaneSpeed` applies to every lane, carpark lanes included: default speed 1, times 2/3 (right angle) or 1/3 (sharp or U-turn) by the connection's directions, times `intersectionSpeedMultiplier` 0.5 when the lane has more than one outbound lane. Applied to the `CarparkModel` connections: entrance 0.5, exit 1, end U-turns 1/3, aisle through lanes 0.5 (1 where only the end turn follows), bay entry 1 (45 degrees), bay lanes 1, bay exit 1/3 × 0.5. Ours used a flat 0.6 for every carpark lane.
+
+**Engineering choice.** OriginalReference carpark lanes take these factors (`OriginalParkingLaneFactor`); Custom keeps 0.6. Simulator `2026-11-10.f3`.
+
+**Measured.** 16-phase mean 749.4 → 772.5 (713–815), 6/16 reach the end of the replay; fitted phases 748 → 777 at 1296 s. 85 suites pass.

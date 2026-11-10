@@ -42,8 +42,30 @@ namespace MotorwaysSim
         Lane ParkingCurve(Building shop,string key,Point a,Point b,Point c,Point d,bool release=false,bool straight=false)
         {
             var lane=CreateLane(straight?new[]{a,d}:Cubic(a,b,c,d,10),shop.Entrance,shop.Entrance,shop.Entrance,0,0);
-            lane.Key="carpark:"+shop.CarparkId+":"+key;lane.Chunk="carpark:"+shop.CarparkId+":"+ParkingChunkName(key);lane.CarparkId=shop.CarparkId;lane.IsParking=true;lane.ReleasesParking=release;lane.SpeedLimit=Rules.CarSpeed*.6;
+            lane.Key="carpark:"+shop.CarparkId+":"+key;lane.Chunk="carpark:"+shop.CarparkId+":"+ParkingChunkName(key);lane.CarparkId=shop.CarparkId;lane.IsParking=true;lane.ReleasesParking=release;
+            lane.SpeedLimit=Rules.Version==GameVersion.OriginalReference?Rules.CarSpeed*OriginalParkingLaneFactor(shop,key):Rules.CarSpeed*.6;
             return lane;
+        }
+        // The original's GetLaneSpeed applied to its carpark lanes (CarparkModel): default speed times the turn factor
+        // (45 degrees: 1, sharp/U-turn: 1/3) times the intersection factor 0.5 when the lane leads to more than one lane.
+        double OriginalParkingLaneFactor(Building shop,string key)
+        {
+            bool left=false,right=false;
+            foreach(var access in Accesses(shop)){int d=AccessDirection(shop,access);if(d==4||d==6)left=true;else right=true;}
+            string[] parts=key.Split(':');int index=parts.Length>1&&int.TryParse(parts[1],out int value)?value:-1;int last=shop.Parking.Length-1;
+            switch(parts[0])
+            {
+                case "entrance":return .5;                                  // straight, then bay entry or through aisle
+                case "exit":return 1;                                       // straight onto the road
+                case "turn-first":case "turn-last":return 1.0/3;            // U-turn at a lot end
+                case "outer":return index==last&&!right?1:.5;               // straight; next bay's entry and through lane
+                case "inner":return index==0&&!left?1:.5;
+                case "bay-outer-in":case "bay-inner-in":return 1;           // 45-degree turn into the bay
+                case "bay-park":case "bay-leave":return 1;                  // straight across the bay
+                case "bay-outer-out":return 1.0/3*(index==last&&!right?1:.5); // sharp turn onto the aisle
+                case "bay-inner-out":return 1.0/3*(index==0&&!left?1:.5);
+                default:return .6;
+            }
         }
         Lane ParkingThroughBay(Building shop,int index,bool outer)
         {
