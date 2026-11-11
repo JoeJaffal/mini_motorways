@@ -176,6 +176,10 @@ Against the dial, replay v21c is within about 1 s for most of the game ([compari
 
 ([Data](measurements/bench-f25-replay-v21d.txt).) The re-plan rule no longer costs anything on the re-timed replay, so it is on (decision 111). The exit-space test now follows `DoesVehicleHaveSpace` exactly (decision 112): a car may enter beside a same-exit car only if more than two vehicle lengths are free beyond the junction. Ours had credited the leader's progress through the junction. This rule only acts when traffic queues beyond a junction: f25 is within one trip of f24 up to 1000 s and five trips behind by 1200 s. It moves the replay away from the real game's 835, but it is the original's code. With it, the late-game congestion that ends the game comes earlier.
 
+### f26: traffic-light details and weekly offers (12 November 2026)
+
+The traffic lights and the weekly upgrade offers were checked against the decompiled code (decisions 114 and 115). For the lights, three details were ported: the candidate order, the mothballed-lane weight, and keeping the pair while cars are inbound. The offers now use the original's draw, whose second pick reads stale weights. Replay v21d: 773.5 (f25 783.4). The median run is unchanged, but one run tips into overcrowding at 1080 s ([data](measurements/bench-f26-replay-v21d.txt)).
+
 ## Experiments not adopted
 
 - **Original re-plan on road changes, on f22 (11 November 2026).** On the 60 plausible phase sets ([phases](measurements/plausible-phases-v21b-60.txt)) replay v21c scores 786.2 (700–833), 8/60 reach the end, against f22's 794.4 (669–833), 15/60. Paired difference −8.1 ± 4.8 trips; 22/60 runs improve ([data](measurements/experiment-repath-on-f22-p60.txt)). On the 20-set benchmark it was −11.6. It runs at f22's speed once return paths are re-found lazily; refreshing every stored return path at every change doubled run time. It is the original's rule, but it moves the replay away from the real game, so it stays off.
@@ -203,7 +207,7 @@ Against the dial, replay v21c is within about 1 s for most of the game ([compari
 
 Original free-play city growth (building placement by the original's weight layers and building influence, house driveways, playable edges, spawn schedule, supply anchor; branch simulator `2026-11-11.g1`, merged into `fidelity-aya` as `2026-11-10.f12`) is recorded in [fidelity-aya-growth-2026-11-11](../fidelity-aya-growth-2026-11-11/README.md). Replays force building spawns, so replay v21 results are not affected by it.
 
-## Open items (state at f25)
+## Open items (state at f26)
 
 Known differences from the original that are not yet modelled, roughly by expected effect:
 

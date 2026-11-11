@@ -7,9 +7,8 @@ namespace MotorwaysSim
     // OriginalReference traffic-light phases and permissions, independently implemented from the rule description in
     // docs/training/simulator-repairs-2026-11-08/ORIGINAL_SIGNALS_CARPARKS_ANSWER.md (installed constants; no original
     // code). Custom keeps UpdateSignals/BestSignalPair/SignalAllows in TrafficControl.cs.
-    // Not reproduced: the "lane replacement" (hot-swap) obstacle, which has no equivalent here; the original direction
-    // enumeration order for pairing and same-weight ties (our order is kept); inbound-list order is approximated by
-    // registration time, then vehicle id.
+    // Checked against the decompiled TrafficLightModel on 12 November 2026 (decision 114). Not reproduced: the hot-swap
+    // obstacle in the blocked-vehicle tests, and the traversing-collision part of inbound eligibility when ordering.
     public sealed partial class TrafficWorld
     {
         const double MothballedAgeMultiplier=4,NonCrossingAgeModifier=.10000000149011612,CarparkInputAgeMultiplier=10,BlockedCarWeightModifier=.10000000149011612;
@@ -32,6 +31,12 @@ namespace MotorwaysSim
 
         bool LightAllowsEntry(Lane lane)=>LightPermits(lane)||IsNonCrossing(lane);
 
+        // A chunk lane whose connection was erased (or whose tile is being removed): the original's mothballed lane.
+        bool IsRetiredLane(Lane l)=>PendingRemoval[l.Tile.X,l.Tile.Y]||l.Previous!=l.Tile&&!Linked(l.Previous,l.Tile)||l.Next!=l.Tile&&!Linked(l.Tile,l.Next);
+
+        // Any car with a lane of this chunk still ahead on its path (the original's inbound list, committed or not).
+        bool HasInbound(Cell chunk)=>Cars.Any(c=>c.Moving&&c.Lanes.Skip(c.RouteIndex+1).Any(l=>l.ChunkCell==chunk&&!l.IsMotorway&&!l.IsParking));
+
         bool BlockedInChunk(Vehicle car,Cell chunk)=>car.ObstacleState==ObstacleKind.BlockingJunction&&car.BlockingTile==chunk;
 
         // Committed inbound candidates of a signalled chunk: the chosen lane is among the first two remaining planned
@@ -53,7 +58,9 @@ namespace MotorwaysSim
                     distance+=lane.Length;
                 }
             }
-            return list.OrderBy(x=>x.registered).ThenBy(x=>x.c.Car.Id).Select(x=>x.c).ToList();
+            // Original SortInboundVehicles: eligible entries (here: not held by the light) first, by distance then
+            // registration stamp; the rest after them in registration order.
+            return list.OrderBy(x=>LightAllowsEntry(x.c.Lane)?0:1).ThenBy(x=>LightAllowsEntry(x.c.Lane)?x.c.Distance:0).ThenBy(x=>x.registered).ThenBy(x=>x.c.Car.Id).Select(x=>x.c).ToList();
         }
 
         // Rotation guard count: the scan ends at the first committed candidate blocked inside this chunk, before its
@@ -80,7 +87,7 @@ namespace MotorwaysSim
                 {
                     double committed=c.Car.CommittedAt.TryGetValue(c.Lane.Key,out var at)?at:Time;
                     double age=Math.Min(1,Math.Max(0,(Time-committed)/Rules.SignalMaxWaitingWeightSeconds));age*=age;
-                    if(PendingRemoval[c.Lane.Tile.X,c.Lane.Tile.Y])age*=MothballedAgeMultiplier;
+                    if(IsRetiredLane(c.Lane))age*=MothballedAgeMultiplier; // chosenLane.state == Mothballed
                     if(IsNonCrossing(c.Lane)){if(discount)age*=NonCrossingAgeModifier;}else discount=false;
                     if(c.Car.CurrentLane.IsParking)age*=CarparkInputAgeMultiplier;
                     double contribution=age+1;
@@ -102,7 +109,7 @@ namespace MotorwaysSim
             }
             if(best>=0)return best;
             // Original NextValidPairIndex: with cars inbound and no other pair weighted, keep the current pair.
-            if(!excludeCurrent||candidates.Count>0)return signal.ActivePair;
+            if(!excludeCurrent||candidates.Count>0||HasInbound(signal.Cell))return signal.ActivePair;
             int index=signal.Pairs.IndexOf(signal.ActivePair);return signal.Pairs[(index+1)%signal.Pairs.Count];
         }
 

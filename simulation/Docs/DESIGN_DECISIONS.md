@@ -1523,3 +1523,24 @@ The real score curve is re-timed the same way, and the 60 demand-phase sets are 
 
 **Measured.** Simulator `2026-11-10.f25` (decisions 111 to 113), replay v21d on the 60 refitted phase sets: 783.4 (684 to 832), 8/60 reach the end, mean end 1292 s. f24 scored 805.5 (paired -22.1 +/- 4.0). Without decision 113: 782.1 (decision 113 adds +1.3 +/- 4.2). Up to 1000 s, f25 is within one trip of f24 ([data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f25-replay-v21d.txt)). 98 suites, five-map checks and training readiness pass.
 
+
+## 114 - Traffic-light details from the decompiled code (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `TrafficLightModel` and `TrafficLightAlternatingProcess` were compared with our implementation, which had been written from a rule description. Matching: green pairs (opposites from north first, then three-step pairs clockwise before counter-clockwise, then singles); green 3 s, overtime 1 s, amber 0.7 s; the nearby guard (fewer than 3 cars within 1 world unit keeps the pair); the pair weight (committed cars only; squared waiting time over 30 s times multiplier 1; x4 on a mothballed lane; x0.1 for non-crossing turns until the first crossing car; x10 from a carpark lane; +1; x0.1 for a car blocked in the chunk on the current pair); strict-greater choice. Three details differed:
+- The candidate order is the chunk's sorted inbound list: eligible entries by distance, then the rest. It decides where the nearby count stops at a blocked car and which cars get the non-crossing discount. Ours used registration order.
+- The mothballed factor applies to a chosen lane whose connection was erased. Ours tested tile removal.
+- After amber with no weighted pair, the current pair stays while the chunk has any inbound vehicle, committed or not. Ours required a committed one.
+
+**Engineering choice** (OriginalReference). All three are ported. Eligibility ignores the traversing-collision part when ordering, and the blocked tests ignore the hot-swap obstacle.
+
+**Measured.** Replay v21d, 60 refitted sets: 773.5 against f25's 783.4. The median paired difference is +0.5, but one run tips into overcrowding at the far red lot at 1080 s (-295; no gridlock, red cars all busy). The mean is -9.9 +/- 6.9 ([data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f26-replay-v21d.txt)).
+
+
+## 115 - Weekly upgrade offers drawn as the original draws them (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `GameBehaviourModel.GenerateNextUpgradeChoices` computes the package weights and their total once. Each pick draws against that total and walks the remaining packages against the original weight positions; the picked package leaves the list but its weight does not. If the draw is not used up, the last package is taken. Afterwards `OnUpgradeNotPresented` runs for every package left, so a type with two packages left counts twice, and then `OnUpgradePresented` resets the presented types. When nothing is eligible the week grants an empty concrete package. Ours sampled correctly without replacement, counted per type, and offered 20 concrete when nothing was eligible.
+
+**Engineering choice** (OriginalReference, free play). Ported. Recorded replays keep their recorded offers, so the benchmark is unaffected.
+
+**Measured.** 98 suites, five-map checks and training readiness pass on `2026-11-10.f26`.
+
