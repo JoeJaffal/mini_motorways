@@ -341,6 +341,14 @@ namespace MotorwaysSim
                 Check(bridge.Inventory[0]==23&&bridge.Inventory[1]==0,"span uses two connections and one bridge");
                 bridge.Build(BuildTool.Remove,new Cell(21,8));bridge.Build(BuildTool.Remove,new Cell(20,8));
                 Check(bridge.Inventory[1]==0,"split/removal cannot duplicate bridge stock");
+                // Original Passage: a stroke from land onto fresh water starts a crossing; parallel strokes are separate
+                // crossings even when their bridge tiles touch, and linking two crossings returns one bridge.
+                var river=new TrafficWorld(7,false,Rules.ForVersion(GameVersion.OriginalReference));river.Reset(7,ScenarioKind.EmptyLab);
+                for(int y=8;y<10;y++)for(int x=20;x<23;x++)river.Water[x,y]=true;
+                river.Inventory[1]=2;river.Inventory[0]=100;
+                Check(river.DrawRoad(new Cell(19,8),new Cell(23,8))&&river.Inventory[1]==1,"first stroke across the river uses one bridge");
+                Check(river.DrawRoad(new Cell(19,9),new Cell(23,9))&&river.Inventory[1]==0,"a parallel stroke is a second crossing");
+                Check(river.Connect(new Cell(21,8),new Cell(21,9))&&river.Inventory[1]==1,"linking two crossings returns a bridge");
                 bridge.Build(BuildTool.Remove,new Cell(22,8));Check(bridge.Inventory[0]==25&&bridge.Inventory[1]==1,"bridge stock returned only after final tile clears");
             });
             Test("infeasible custom scenario rejected instead of demand reduced",()=>{

@@ -1362,3 +1362,12 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Engineering choice** (OriginalReference; not on roundabout, motorway or carpark-transit steps). `MakeLanes` trims diagonal tile lanes and inserts `CornerLane` (`IsCorner`, keyed by tile and direction); corner lanes are skipped by chunk arbitration, the traversing check and `Conflicts`. Crossing diagonals (a four-lane corner) remain unsupported. New fidelity check: alternating tile/corner lanes, corner length √2 − 1, continuity.
 
 **Measured.** Simulator `2026-11-10.f16`: 16-phase mean 788.3 → 791.1 (740–809), 13/16 reach the end; fitted phases 808 → 791, failing at 1310 s (original ~1314 s). 93 suites, five-map checks and training readiness pass.
+
+
+## 098 - Bridge crossings as the original's passages (11 November 2026, `fidelity-aya`)
+
+**Evidence.** `Passage.WillConnectionStartPassage`: a link from an unobstructed tile onto an obstructed (water) tile with no roads starts a passage, consuming one bridge (`AddRoadEdit.ApplyToUpgradeDatabase`); links along water extend it for free; `WillConnectionJoinPassages` (both water tiles already carrying roads) mothballs and releases one bridge, so joining two crossings returns one; stock returns when a mothballed crossing releases. Ours grouped bridge tiles into spans by orthogonal adjacency, so parallel bridges shared one bridge, and a bridge tile emptied by connection erases was never cleared or refunded.
+
+**Engineering choice** (OriginalReference). `DrawRoad` and the reference builder pass the stroke's previous cell to the bridge build: from a bridge tile it joins that crossing, otherwise it starts one; `Connect` merges two crossings and refunds one bridge; connection retirement clears an unconnected bridge tile and refunds the crossing when its last tile goes. The direct bridge-tile tool (no stroke) keeps the adjacency grouping. Water-tile junction limits are not modelled. New check: two parallel strokes use two bridges, linking them returns one.
+
+**Measured.** Simulator `2026-11-10.f17`: replay v21 unchanged (791.1; no parallel bridges in it). 93 suites, five-map checks and training readiness pass.

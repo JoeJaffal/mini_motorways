@@ -252,7 +252,7 @@ namespace MotorwaysSim
             if(!Rules.UnlimitedConstruction&&cost>0){if(!reclaim)Inventory[0]-=cost;paidRoadConnections.Add(edge);}
             if(reclaim){if(held==1)retiredConnectionConcrete.Remove(edge);else retiredConnectionConcrete[edge]=held-1;}
             else if(cost==0)retiredConnectionConcrete.Remove(edge);
-            Link(from,to);Changed();return true;
+            Link(from,to);MergeBridgeSpans(from,to);Changed();return true;
         }
         public bool RoundaboutAllowsConnection(Cell from,Cell to)
         {
@@ -291,7 +291,8 @@ namespace MotorwaysSim
                 {Reject("No road tiles remaining for this connection");break;}
                 if(!CanTraverse(c))
                 {
-                    if(!Build(Water[c.X,c.Y]?BuildTool.Bridge:BuildTool.Road,c)){previous=null;continue;}
+                    bridgeFrom=previous;bool built=Build(Water[c.X,c.Y]?BuildTool.Bridge:BuildTool.Road,c);bridgeFrom=null;
+                    if(!built){previous=null;continue;}
                     any=true;
                 }
                 if(previous.HasValue&&Connect(previous.Value,c))any=true;

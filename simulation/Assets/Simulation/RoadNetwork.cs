@@ -277,7 +277,7 @@ namespace MotorwaysSim
             var route=PotentialRoute(from,to);
             for(int i=0;i<route.Count;i++)
             {
-                var c=route[i];if(BuildingAt(c)==null&&Tile(c)==Infrastructure.None)Build(Water[c.X,c.Y]?BuildTool.Bridge:BuildTool.Road,c);
+                var c=route[i];if(BuildingAt(c)==null&&Tile(c)==Infrastructure.None){bridgeFrom=i>0?route[i-1]:(Cell?)null;Build(Water[c.X,c.Y]?BuildTool.Bridge:BuildTool.Road,c);bridgeFrom=null;}
                 if(i>0)Connect(route[i-1],c);
             }
         }

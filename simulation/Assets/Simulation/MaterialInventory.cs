@@ -50,7 +50,8 @@ namespace MotorwaysSim {
    if(tool==BuildTool.Road)return true; // Concrete is charged when a connection is made.
    if(tool==BuildTool.TrafficLight)return Inventory[3]>0||Reject("No traffic lights remaining");
    if(tool==BuildTool.Roundabout)return Inventory[4]>0||Reject("No roundabouts remaining");
-   if(tool==BuildTool.Bridge){bool joins=Directions.Where((d,i)=>i%2==0).Any(d=>Tile(cell+d)==Infrastructure.Bridge);return joins||Inventory[1]>0||Reject("Bridge requires an available bridge");}
+   if(tool==BuildTool.Bridge){bool joins=Rules.Version==GameVersion.OriginalReference&&bridgeFrom.HasValue?bridgeSpans.ContainsKey(bridgeFrom.Value):
+    Directions.Where((d,i)=>i%2==0).Any(d=>Tile(cell+d)==Infrastructure.Bridge);return joins||Inventory[1]>0||Reject("Bridge requires an available bridge");}
    return true;
   }
   void ConsumeOriginal(BuildTool tool,Cell cell){
@@ -58,11 +59,22 @@ namespace MotorwaysSim {
    if(tool==BuildTool.TrafficLight)Inventory[3]--;
    if(tool==BuildTool.Roundabout)Inventory[4]--;
    if(tool==BuildTool.Bridge){
-    var ids=Directions.Where((d,i)=>i%2==0).Select(d=>cell+d).Where(bridgeSpans.ContainsKey).Select(c=>bridgeSpans[c]).Distinct().ToArray();
+    // Original Passage: a crossing starts (one bridge) when a link goes from land onto a water tile without roads and
+    // extends for free from water already on it; spans follow links, so parallel bridges are separate crossings.
+    // (A tile built directly with the bridge tool has no stroke predecessor and keeps the adjacency grouping.)
+    var ids=Rules.Version==GameVersion.OriginalReference&&bridgeFrom.HasValue?(bridgeSpans.TryGetValue(bridgeFrom.Value,out int from)?new[]{from}:new int[0]):
+     Directions.Where((d,i)=>i%2==0).Select(d=>cell+d).Where(bridgeSpans.ContainsKey).Select(c=>bridgeSpans[c]).Distinct().ToArray();
     int span=ids.Length==0?++bridgeSerial:ids[0];if(ids.Length==0)Inventory[1]--;
     foreach(int other in ids.Skip(1)){foreach(var key in bridgeSpans.Where(p=>p.Value==other).Select(p=>p.Key).ToArray())bridgeSpans[key]=span;Inventory[1]++;}
     bridgeSpans[cell]=span;
    }
+  }
+  Cell? bridgeFrom; // stroke cell preceding a bridge being built (OriginalReference crossing rule)
+  // Original AddRoadEdit: a link joining two separate crossings makes one, returning a bridge.
+  void MergeBridgeSpans(Cell a,Cell b){
+   if(Rules.Version!=GameVersion.OriginalReference||Rules.UnlimitedConstruction)return;
+   if(!bridgeSpans.TryGetValue(a,out int keep)||!bridgeSpans.TryGetValue(b,out int other)||keep==other)return;
+   foreach(var key in bridgeSpans.Where(p=>p.Value==other).Select(p=>p.Key).ToArray())bridgeSpans[key]=keep;Inventory[1]++;
   }
   void RefundOriginal(Cell cell){
    if(Rules.UnlimitedConstruction)return;

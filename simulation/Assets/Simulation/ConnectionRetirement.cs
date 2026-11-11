@@ -47,7 +47,9 @@ namespace MotorwaysSim
                 if(Cars.Any(c=>UsesRetiredConnection(c,item.Key)))continue;
                 Inventory[0]+=item.Value;retiredConnectionConcrete.Remove(item.Key);Changed();
                 foreach(var cell in new[]{item.Key.Item1,item.Key.Item2})
-                    if(Tile(cell)==Infrastructure.Road&&Degree(cell)==0)
+                    if(Rules.Version==GameVersion.OriginalReference&&Tile(cell)==Infrastructure.Bridge&&Degree(cell)==0&&!IsMotorwayEndpoint(cell,true))
+                    {RefundOriginal(cell);Tiles[cell.X,cell.Y]=Infrastructure.None;Changed();} // original: the released crossing returns its bridge
+                    else if(Tile(cell)==Infrastructure.Road&&Degree(cell)==0)
                     {
                         if(IsMotorwayEndpoint(cell,true))erasedEndpointCleanup.Add(cell);
                         else {Tiles[cell.X,cell.Y]=Infrastructure.None;Changed();}

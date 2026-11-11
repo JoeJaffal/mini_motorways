@@ -2,7 +2,7 @@
   "result": "PASS",
   "version": "OriginalReference",
   "modelTrainingPerformed": false,
-  "simulatorCommit": "da8f9608e272ac8c8873efd7fd6bb0f636871fdc",
+  "simulatorCommit": "d6347af911ed9334b49cff190c83141e7d3ca50e",
   "seeds": [
     0,
     42,
@@ -11,7 +11,7 @@
   "episodeLimitSeconds": 300,
   "episodes": 60,
   "requests": 2451,
-  "wallSeconds": 31.941448099998524,
+  "wallSeconds": 32.41077249999944,
   "checks": [
     "fixed array shapes",
     "finite vehicle values",
@@ -121,13 +121,13 @@
       "seed": 0,
       "policy": "debug_roads",
       "seconds": 300,
-      "trips": 47,
+      "trips": 46,
       "terminated": false,
       "rejected": false,
       "capped": true,
       "maxWaiting": 0,
       "samples": 31,
-      "digest": "67e8377287dea29d1325d5187ca535a3d48574fe733144b5156f2f9713586a84"
+      "digest": "18c54a1649565cfc033c1f90c345b1601cd364aa1628203649df1e8cfa09c454"
     },
     {
       "map": "Beijing",
@@ -147,13 +147,13 @@
       "seed": 42,
       "policy": "debug_roads",
       "seconds": 300,
-      "trips": 27,
+      "trips": 30,
       "terminated": false,
       "rejected": false,
       "capped": true,
       "maxWaiting": 0,
       "samples": 31,
-      "digest": "30cf876fdf85da1b7738e30b207b523f20fbe89e9014f64559e63b884834a13c"
+      "digest": "07626a0c495b082e3e941035773a22f47ba49e9e0a225e2f7d001dbc82e27e20"
     },
     {
       "map": "Beijing",

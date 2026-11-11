@@ -71,6 +71,7 @@ Replay v21, 16-phase mean (min–max) and fitted-phase result. Real game: 835 at
 | `2026-11-10.f14` | Roundabout placement as the original (exits kept and paid, no automatic links, ring links cost 1) | 791.4 (763–804), 14/16 reach the end | 1313 s | 807, reaches the end |
 | `2026-11-10.f15` | Stored return paths re-routed when a link they use is erased; ring exits erasable | 788.3 (735–805), 13/16 reach the end | 1311 s | 808, reaches the end |
 | `2026-11-10.f16` | Diagonal steps through the original's tile-corner lanes | 791.1 (740–809), 13/16 reach the end | 1312 s | 791, fails at 1310 s |
+| `2026-11-10.f17` | Bridge stock by crossing (parallel bridges pay separately, joins refund, erased bridges refund) | 791.1 (740–809), unchanged: the replay has no parallel bridges | 1312 s | 791, fails at 1310 s |
 
 Self-test: 85 suites pass at every version listed (92 from f12 with 7 placement suites, 93 from f16 with the tile-corner check).
 
