@@ -65,6 +65,7 @@ namespace MotorwaysSim
                 }
                 foreach(var next in Neighbors(state.cell,start,goal,allowRetired))
                 {
+                    if(next!=goal&&InPlannedRoundabout(next))continue; // a planned roundabout has no usable lanes yet
                     int direction=Direction(state.cell,next),exit=direction;
                     bool turn=CornerTurn(state.cell,next,out var turnB,out var turnD);
                     if(turn){exit=Direction(state.cell,turnB);direction=Direction(turnD,next);}

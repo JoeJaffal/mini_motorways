@@ -1437,3 +1437,42 @@ Numbered 106 because upstream `main` already uses 105 (upstream's 042, renumbere
 
 **Measured.** Simulator `2026-11-10.f23`. Replay v21c on the 60 plausible phase sets scores 796.3 (669–829), with 18/60 reaching the end. f22 scored 794.4 with 15/60, a paired +2.0 ± 2.0. The replay has no crossings, so the change comes from corner lanes arbitrating as their own chunk. A new check covers the build rules, the shared corner chunk, the conflict between crossing lanes, routes straight through and turning, and a flow scenario: 12 deliveries over both diagonals with a turn, with crossing lanes never occupied together. 96 suites pass.
 
+
+## 107 - Blocking cycles start from stuck vehicles; all-leader cycles push (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `VehicleMovementProcess` adds a vehicle to its stuck list in two cases: it is refused entry to the chunk of its next lane (`path[0]`) with no leader on its own lane, or its nearest obstacle is a leader whose position is less than `MinimumGap` (0.1 world units) ahead while its next speed is below `minSpeedBeforePushingCycle` (0.2 world units/s). The distance is a position difference, so in the second case the two cars practically overlap (lane merges). From each stuck vehicle it follows `blockingVehicle`: the leader at any distance, or the vehicle refusing its next-lane entry; a junction further ahead sets no blocking vehicle. A chain that closes on itself is a cycle (`BreakCycle`). Members refused at a junction shove; if every member follows a leader, each pushes into its leader: it takes the leader's speed as at least 0.2 world units/s and the gap as at least a vehicle length plus two minimum gaps. The push ends when the leader moves faster on its own or the car's obstacle changes. Ours searched every chain made of junction refusals and tight, slow leaders, from any car, and left all-leader cycles alone.
+
+**Engineering choice** (OriginalReference). `MarkBlockingCycles` follows the original. `Vehicle.PushingInto` holds a push, and a pushing car may close in on its leader past the usual clearance. The adjacent-junction gridlock check now registers its fixture cars as dispatch would. It still clears by shoving, because two of its cars are refused at their next chunk.
+
+**Measured.** Replay v21c on the 60 plausible phase sets: 801.8 (732–839), against f23's 796.3 (669–829). Paired +5.5 ± 3.5 at the end, +0.4 to +1.0 trips at 900–1200 s ([data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f24-replay-v21c-p60.txt)).
+
+
+## 108 - A new roundabout stays planned until the lanes it replaces clear (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `AddRoundaboutEdit` puts the circle in the Planned state and mothballs the roads it replaces at once. Planned connections have no lanes. `ReleaseMothballedLanesProcess.CanPlannedRoundaboutHotswap` activates the circle in the first step in which every replaced lane, and every lane leading into or out of one, satisfies `LaneModel.CanHotswap`: no vehicle on it, and none committed to it (committed means within the next two lanes of a path). Meanwhile those lanes are `IsAboutToHotswap`. A car whose `path[0]` and `path[1]` are not about to hot-swap but whose `path[2]` is stops at the end of its current lane (`VehicleMovementProcess`, not from a carpark lane). Mothballed lanes cost 100000 in pathfinding and dispatch does not use them. Ours activated the circle at once, so cars still on the old junction drove through the new ring.
+
+**Engineering choice** (OriginalReference, `RoundaboutActivation.cs`).
+- `RoundaboutState.Planned` holds the circle back. New routes do not pass through its five tiles; a route with no other way keeps its old lanes.
+- Cars still on replaced lanes arbitrate with the old junction's road counts.
+- The hot-swap stop is applied as in the original.
+- The circle activates in the step after no car has a replaced lane among its current lane and next two. With no such car it activates at once (the original does so in the next step).
+- A stored way home through a planned circle is re-found when the car sets off home.
+- With several circles planned at once, one held circle holds all of them.
+
+**Measured.** Replay v21c, 60 sets: f24 (decisions 107–109) 796.0 (737–836), 16/60 reach the end. Decision 108 alone costs 5.8 ± 2.6 at the end against decision 107. The difference starts after the replay's only roundabout (19,9 at 1051 s): −1.2 trips by 1100 s. In the recording, a car crosses the old centre about a second after the circle is placed, which this model allows. The video does not show whether the circle was drawn as planned. A check covers a circle placed under traffic: it stays planned, no route passes through it, it activates once the old lanes clear, and every trip is delivered.
+
+
+## 109 - Cars at train crossings; tile-corner stopping points (12 November 2026, `fidelity-aya`)
+
+**Evidence.**
+- Constants (`SimulationConstantsData`): `maxAccelerationOnCrossings` 0.2, `targetSpeedTowardsCrossings` 0.5, `decelerationExponentTowardsCrossings` 1, `crossingSlowDistance` 3, `crossingStopDistance` 1.8.
+- On or just before a crossing chunk, the acceleration limit is `maxAccelerationOnCrossings`. With no other obstacle, a car more than `crossingSlowDistance` vehicle lengths from a crossing slows towards half its desired speed. The intersection slowdown takes precedence.
+- `RoadChunkModel.CanInboundVehicleEnter` runs the crossing tests before all others, unless the car is already on an open crossing. A closed crossing refuses entry, except at a tile-corner crossing less than one vehicle length ahead. An open crossing refuses entry while a car on a conflicting lane of a chunk along the path is stopped or within three vehicle lengths of the vehicle blocking it. The scan starts at the next lane and ends after the first chunk that is not a crossing.
+- A crossing further ahead than the next lane is approached `crossingStopDistance` vehicle lengths shorter. Tile-corner chunks take no `IntersectionStoppingOffset`, either for stopping or for the intersection slowdown.
+- `LaneUpdateProcess` makes a crossing at a tile corner where a diagonal road passes between the two tiles of a diagonal rail step.
+- Ours only refused closed crossings on rail tiles.
+
+**Engineering choice** (OriginalReference). The rules above are ported. A corner crossing closes when either rail tile is closed. The congestion test uses the previous tick's obstacles. Chunks with two lanes or fewer have no traversing list in the original, so they are not scanned. Two smaller changes: `ConnectionsIntersect` takes the original's `smallIntersection` argument (on for arbitration, off for the crossing test), and `Vehicle.BlockingVehicle` records the original's blocking vehicle. Crossing signal timing is unchanged; it already follows the train's blocked section and the 2 s reopening wait.
+
+**Measured.** The LA replay builds no road over its rail line (0 road tiles on rail at the end), so it is unchanged (f24 equals the run with only decisions 107 and 108). A new check: a car slows before an open crossing (entry speed 1.09 against 1.39 tiles/s cruising) and never accelerates above 0.1 tiles/s² on it. 98 suites pass.
+

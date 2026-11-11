@@ -7,6 +7,6 @@ namespace MotorwaysSim
     /// simulation/Docs/VERSIONS.md. Hosts built before this field existed report nothing.
     public static class SimulatorVersion
     {
-        public const string Value="2026-11-10.f23";
+        public const string Value="2026-11-10.f24";
     }
 }

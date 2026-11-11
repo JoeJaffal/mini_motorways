@@ -134,6 +134,22 @@ In the original, two diagonals may cross at a tile corner on land. The corner be
 
 The replay never builds a crossing: none of its builds is refused on f22. The corner-chunk change still moves it slightly. On the 60 plausible phase sets, v21c scores 796.3 (669–829) with 18/60 reaching the end, against f22's 794.4 with 15/60 (paired +2.0 ± 2.0; [data](measurements/bench-f23-replay-v21c-p60.txt)).
 
+### Gridlocks, roundabout activation and level crossings (f24, night of 11–12 November 2026)
+
+f24 ports three more rules from the original's code (decisions 107–109):
+- **Gridlocks:** blocking cycles are searched only from stuck vehicles (refused at their next junction, or overlapping their leader), and all-leader cycles push.
+- **Roundabout activation:** a new roundabout stays planned until the lanes it replaces are clear. Meanwhile cars about to commit to those lanes wait, and new routes avoid the circle.
+- **Level crossings:** cars slow towards, accelerate gently on, and do not enter a congested train crossing. A diagonal road between two diagonal rail tiles is a crossing too.
+
+| Replay v21c, 60 plausible phase sets | Mean | Range | Reach the end |
+|---|---|---|---|
+| f23 | 796.3 | 669–829 | 18/60 |
+| f23 + gridlock rule | 801.8 | 732–839 | 17/60 |
+| f24 (+ roundabout activation, crossings) | 796.0 | 737–836 | 16/60 |
+| Original (recording) | 835 | | ends at about 1314.6 s |
+
+The gridlock rule adds 5.5 ± 3.5; roundabout activation costs 5.8 ± 2.6, all of it after the replay's roundabout at 1051 s. The crossing rules cannot affect this replay, which never builds over the rail line. [Data](measurements/bench-f24-replay-v21c-p60.txt).
+
 ## Experiments not adopted
 
 - **Original re-plan on road changes, on f22 (11 November 2026).** On the 60 plausible phase sets ([phases](measurements/plausible-phases-v21b-60.txt)) replay v21c scores 786.2 (700–833), 8/60 reach the end, against f22's 794.4 (669–833), 15/60. Paired difference −8.1 ± 4.8 trips; 22/60 runs improve ([data](measurements/experiment-repath-on-f22-p60.txt)). On the 20-set benchmark it was −11.6. It runs at f22's speed once return paths are re-found lazily; refreshing every stored return path at every change doubled run time. It is the original's rule, but it moves the replay away from the real game, so it stays off.
@@ -161,13 +177,13 @@ The replay never builds a crossing: none of its builds is refused on f22. The co
 
 Original free-play city growth (building placement by the original's weight layers and building influence, house driveways, playable edges, spawn schedule, supply anchor; branch simulator `2026-11-11.g1`, merged into `fidelity-aya` as `2026-11-10.f12`) is recorded in [fidelity-aya-growth-2026-11-11](../fidelity-aya-growth-2026-11-11/README.md). Replays force building spawns, so replay v21 results are not affected by it.
 
-## Open items (state at f23)
+## Open items (state at f24)
 
 Known differences from the original that are not yet modelled, roughly by expected effect:
 
 1. **Replay demand input.** The real game had roughly 10% more demand by ~1260 s than replay v21 gives us (see above). v21b covers the three provably late destinations, using lower-bound delays. Circles that failed for a while and then succeeded (navy at 1030 s, yellow at 1106 s) and any pending cyan entry of plan days 40–76 cannot be timed from the video and are not represented.
 2. **Crossing diagonals.** Modelled from f23 (see above). Not modelled: a crossing next to a roundabout, and a turn at a corner when the two tiles are also linked directly (the direct link is used).
 3. **Re-routing details.** The original re-plans every car in the step after a road change, keeping its current lane and the next two (`VehicleModel.NumberOfLanesToCommitTo`). Ours re-plans at the car's next ordinary lane start, keeping only the current lane. The original's version is ported (`RefreshJourneyOriginal`, stored return paths re-found when the car sets off home) but switched off (`OriginalRepath=false`): see experiments. Up to 1200 s it changes deliveries by under 2 trips; the replay's final score drops because the game ends about 7 s earlier.
-4. **Roundabout activation.** The original keeps a new roundabout planned until conflicting lanes clear and holds affected cars (hot-swapping lanes); ours switches at once. Sized on the replay (best-fit phases): after the roundabout at 19,9 is built at 1051 s, 16 cars still have old footprint lanes ahead and the last clears at 1058 s, so the difference is a one-time window of about 7 s at one junction. Deferred: the port (`ReleaseMothballedLanesProcess` hot-swap rules, `IsAboutToHotswap` stops) is large for that effect.
+4. **Roundabout activation.** Modelled from f24 (decision 108). Earlier note: the original keeps a new roundabout planned until conflicting lanes clear and holds affected cars (hot-swapping lanes); ours switched at once. Sized on the replay (best-fit phases): after the roundabout at 19,9 is built at 1051 s, 16 cars still have old footprint lanes ahead and the last clears at 1058 s, so the difference is a one-time window of about 7 s at one junction. Deferred: the port (`ReleaseMothballedLanesProcess` hot-swap rules, `IsAboutToHotswap` stops) is large for that effect.
 5. **Traffic-light removal.** The original removes a light, and returns it to stock, when an erased link is released and leaves the tile with fewer than three roads. Erased links still in use count as roads. Ported and measured but not adopted: in the replay it removes a light that the real game kept (see experiments).
-6. **Smaller items.** All-leader pushing cycles (the 45 s escape covers deadlocks); the drag-time preference for a new motorway's anchor ramp, which depends on the mouse drag (edits are modelled); drawing by greedy eight-direction stepping instead of a raster line. Junctions on water (f21) and motorway ramp sides (f22) are now modelled.
+6. **Smaller items.** All-leader pushing cycles are modelled from f24 (decision 107); the drag-time preference for a new motorway's anchor ramp, which depends on the mouse drag (edits are modelled); drawing by greedy eight-direction stepping instead of a raster line. Junctions on water (f21) and motorway ramp sides (f22) are now modelled.

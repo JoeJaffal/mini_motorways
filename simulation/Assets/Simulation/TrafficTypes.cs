@@ -143,7 +143,9 @@ namespace MotorwaysSim
         // Original junction arbitration state (JunctionArbitration.cs): the previous tick's nearest
         // obstacle, and the blocking-cycle shove permission for one immediate next lane.
         public ObstacleKind ObstacleState;public int ObstacleCar=-1;public double ObstacleDistance;
+        public int BlockingVehicle=-1; // original blockingVehicle: the leader, or the vehicle refusing its junction entry
         public bool Shoving;public string ShovingLane="";
+        public int PushingInto=-1; // original vehiclePushingInto: leader this car pushes into while their all-leader cycle lasts
         // Tile of the junction lane this car was refused at (BlockingJunction), and the game time each planned
         // lane first entered the first-two-remaining-lanes commitment window (original signal weights).
         public Cell BlockingTile;public readonly Dictionary<string,double> CommittedAt=new Dictionary<string,double>();
@@ -172,6 +174,9 @@ namespace MotorwaysSim
         public Cell Center;
         public Cell[] Ring;
         public bool PendingRemoval;
+        // OriginalReference: placed but not yet hot-swapped (RoundaboutActivation.cs), with the footprint's road counts from
+        // before the circle for arbitration among cars still on the replaced lanes.
+        public bool Planned;public Dictionary<Cell,int> PlannedDegrees;
         // Concrete replaced by the circle stays reserved until old surface lanes clear.
         public int ReplacedRoadTiles;
     }

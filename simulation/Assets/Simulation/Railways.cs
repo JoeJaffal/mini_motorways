@@ -24,11 +24,12 @@ namespace MotorwaysSim
         public readonly List<RailLineState> RailLines=new List<RailLineState>();
         public readonly List<TrainState> Trains=new List<TrainState>();
         readonly Dictionary<Cell,double> railClosedUntil=new Dictionary<Cell,double>();
+        readonly HashSet<(Cell,Cell)> railDiagonalSteps=new HashSet<(Cell,Cell)>();
         public bool IsRailCrossingClosed(Cell c)=>Rules.Version==GameVersion.OriginalReference&&railClosedUntil.TryGetValue(c,out double until)&&Time<=until;
         public Point TrainPoint(TrainState train,double offset=0)=>RailLines[train.LineId].Position(train.Distance-train.Direction*offset);
         void InitializeRailways()
         {
-            RailLines.Clear();Trains.Clear();railClosedUntil.Clear();
+            RailLines.Clear();Trains.Clear();railClosedUntil.Clear();railDiagonalSteps.Clear();
             if(Rules.Version!=GameVersion.OriginalReference||!CityCatalog.Maps.Contains(Scenario))return;
             foreach(var profile in Map.RailLines)
             {
@@ -43,6 +44,12 @@ namespace MotorwaysSim
                     var lane=CreateLane(points,c,prev,next,Direction(prev,c),Direction(c,next));line.Offsets[i]=line.Length;line.Length+=lane.Length;line.Lanes[i]=lane;
                 }
                 RailLines.Add(line);
+                for(int i=0;i<line.Cells.Length;i++)
+                {
+                    if(i==line.Cells.Length-1&&!line.Loop)break;
+                    Cell p=line.Cells[i],q=line.Cells[(i+1)%line.Cells.Length];
+                    if(p.X!=q.X&&p.Y!=q.Y){railDiagonalSteps.Add((p,q));railDiagonalSteps.Add((q,p));}
+                }
                 if(profile.SpawnIndex>=0)Trains.Add(new TrainState{Id=Trains.Count,LineId=line.Id,Distance=line.Offsets[profile.SpawnIndex]});
             }
         }
@@ -120,6 +127,79 @@ namespace MotorwaysSim
                 pins=Math.Max(TrainTuning.MinimumDemand,Math.Min(TrainTuning.MaximumDemand,pins));
                 var destination=destinations[i];destination.Demand=Math.Min(DestinationCapacity(destination)+DestinationOverflow(destination),destination.Demand+pins);
             }
+        }
+        // Original TrainCrossingModel chunks: a road tile over a rail tile, or the tile corner where a diagonal road passes
+        // between the two tiles of a diagonal rail step (LaneUpdateProcess).
+        bool RailCornerCells(Lane lane,out Cell r1,out Cell r2)
+        {
+            r1=r2=default;if(lane.Corner==null||railDiagonalSteps.Count==0)return false;
+            var code=lane.Corner.Value;int x=(-code.X-3)/2,y=(-code.Y-3)/2;
+            Cell a=new Cell(x,y),b=new Cell(x+1,y+1),c=new Cell(x+1,y),d=new Cell(x,y+1);
+            bool roadAB=lane.Tile==a||lane.Tile==b;r1=roadAB?c:a;r2=roadAB?d:b;
+            return railDiagonalSteps.Contains((r1,r2));
+        }
+        bool IsRailChunk(Lane lane)
+        {
+            if(Rules.Version!=GameVersion.OriginalReference||lane==null||lane.IsMotorway||lane.IsParking)return false;
+            if(lane.Corner!=null)return RailCornerCells(lane,out _,out _);
+            return InBounds(lane.Tile)&&Rails[lane.Tile.X,lane.Tile.Y];
+        }
+        bool RailChunkClosed(Lane lane)=>lane.Corner!=null?RailCornerCells(lane,out var r1,out var r2)&&(IsRailCrossingClosed(r1)||IsRailCrossingClosed(r2)):IsRailCrossingClosed(lane.Tile);
+        double DistanceToLane(Vehicle car,Lane lane)
+        {
+            if(!car.Moving)return double.PositiveInfinity;double distance=car.CurrentLane.Length-car.DistanceAlongLane;
+            for(int i=car.RouteIndex+1;i<car.Lanes.Count;i++){if(ReferenceEquals(car.Lanes[i],lane))return distance;distance+=car.Lanes[i].Length;}
+            return double.PositiveInfinity;
+        }
+        double DistanceToCar(Vehicle car,int otherId)
+        {
+            var other=CarById(otherId);if(!car.Moving||other==null||!other.Moving)return double.PositiveInfinity;
+            if(other.CurrentLane.Key==car.CurrentLane.Key)return other.DistanceAlongLane-car.DistanceAlongLane;
+            double distance=car.CurrentLane.Length-car.DistanceAlongLane;
+            for(int i=car.RouteIndex+1;i<Math.Min(car.Lanes.Count,car.RouteIndex+8);i++)
+            {if(car.Lanes[i].Key==other.CurrentLane.Key)return distance+other.DistanceAlongLane;distance+=car.Lanes[i].Length;}
+            return double.PositiveInfinity;
+        }
+        // Original RoadChunkModel.CanInboundVehicleEnter, train crossing part (before every other test). Unless the car is
+        // already on an open crossing: a closed crossing refuses it (except a tile-corner crossing less than one vehicle
+        // length ahead); an open one refuses it while a car on a conflicting lane of a chunk along its path is stopped or
+        // within three vehicle lengths of the vehicle blocking it. The scan starts at the car's next lane and stops after
+        // the first chunk that is not a crossing (a chunk of two lanes or fewer has no traversing list and is not scanned).
+        const double CarStoppedSpeed=.0005; // CarStoppedSpeedThreshold 0.001 world units/s
+        bool RailCrossingAllows(Vehicle car,Lane lane,List<MotionSnapshot> snapshot,out string why)
+        {
+            why="";if(!IsRailChunk(lane))return true;
+            if(car.Moving&&IsRailChunk(car.CurrentLane)&&!RailChunkClosed(car.CurrentLane))return true;
+            if(RailChunkClosed(lane))
+            {
+                if(lane.Corner!=null&&DistanceToLane(car,lane)<=Rules.CarLength)return true;
+                why="Train crossing";return false;
+            }
+            for(int i=car.RouteIndex+1;i<car.Lanes.Count;i++)
+            {
+                var pathLane=car.Lanes[i];bool rail=IsRailChunk(pathLane);
+                if(rail||!pathLane.IsParking&&!pathLane.IsMotorway&&!ChunkHasFewLanes(pathLane.ChunkCell))
+                    foreach(var other in snapshot)
+                    {
+                        if(other.Car.Id==car.Id||other.Lane.IsParking||other.Lane.IsMotorway||other.Lane.ChunkCell!=pathLane.ChunkCell)continue;
+                        if(other.Lane.Incoming>=8||pathLane.Incoming>=8||!ConnectionsIntersect(other.Lane,pathLane,false,false))continue;
+                        int blocking=other.Car.BlockingVehicle;if(blocking<0)continue;
+                        double gap=other.Car.ObstacleState==ObstacleKind.Leader?other.Car.ObstacleDistance:DistanceToCar(other.Car,blocking);
+                        if(gap<3*Rules.CarLength||other.Speed<CarStoppedSpeed){why="Crossing congested";return false;}
+                    }
+                if(!rail)break;
+            }
+            return true;
+        }
+        // Original blocked-chunk stopping point: IntersectionStoppingOffset (one vehicle length less half a minimum gap) past
+        // the chunk start, none for a tile corner; a crossing beyond the next lane is approached crossingStopDistance (1.8)
+        // vehicle lengths shorter, and a corner crossing a further IntersectionStoppingOffset shorter. Returned as our stop
+        // distance (front travel before the hold), from the distance to the chunk start.
+        double OriginalBlockedStop(Lane next,bool immediate,double ahead)
+        {
+            double iso=Rules.CarLength-Rules.FollowingGap*.5,offset=next.Corner!=null?0:iso;
+            if(!immediate&&IsRailChunk(next))offset=-1.8*Rules.CarLength-(next.Corner!=null?iso:0);
+            return Math.Max(0,ahead+offset-Rules.CarLength);
         }
         public bool CanConnectAcrossRail(Cell from,Cell to)
         {

@@ -16,14 +16,11 @@ namespace MotorwaysSim
         const int ExitSpaceStates=5;
         // Original pushing-cycle speed 0.2 world units/s = 0.1 tiles/s (2 world units per tile).
         const double PushingCycleSpeed=.1;
-        // Our follower holds exactly FollowingGap behind a stopped leader, so the original's strict
-        // "below the minimum gap" test cannot fire; a gap within this tolerance counts as tight.
-        const double TightGapTolerance=.01;
 
         struct ObstacleRecord{public ObstacleKind Kind;public int Car;public double Distance;public int Blocker;public string BlockedLane;public Cell BlockedTile;}
 
         // A chunk with two or fewer lanes accepts entry without arbitration (before any light check).
-        bool ChunkHasFewLanes(Cell tile)=>tile.X<0?!IsCrossingCorner(tile):Degree(tile)+Motorways.Count(m=>!m.PendingRemoval&&(m.Start==tile||m.End==tile))<=2;
+        bool ChunkHasFewLanes(Cell tile)=>tile.X<0?!IsCrossingCorner(tile):TryPlannedChunkDegree(tile,out int planned)?planned<=2:Degree(tile)+Motorways.Count(m=>!m.PendingRemoval&&(m.Start==tile||m.End==tile))<=2;
 
         static bool IsImmediateNext(Vehicle car,Lane lane)=>car.RouteIndex+1<car.Lanes.Count&&ReferenceEquals(car.Lanes[car.RouteIndex+1],lane);
 
@@ -136,37 +133,76 @@ namespace MotorwaysSim
             return record;
         }
 
-        // Follow blocking links; members of an actual cycle that are blocked by junction entry shove into
-        // that junction lane next tick. All-leader cycles would become "pushing" relationships, whose
-        // effect the description does not give; they are left unchanged.
+        // Original VehicleMovementProcess blocking cycles. Stuck vehicles are those refused entry to the chunk of their
+        // immediate next lane (path[0]) with no leader on their own lane, and those whose nearest obstacle is a leader
+        // less than MinimumGap (0.1 world units) ahead by position (the two practically overlap) while their next speed
+        // is below minSpeedBeforePushingCycle (0.2 world units/s). From each stuck vehicle the chain of blocking vehicles
+        // is followed: a leader (at any distance) or, for a car refused at its immediate next chunk, the vehicle that
+        // refuses it; a junction further ahead has no blocking vehicle, so the chain ends there. A chain that closes on
+        // itself is a cycle: members refused at a junction shove into it next tick; if every member follows a leader they
+        // push into their leaders (PushingInto, see ApplyPushing).
+        bool RefusedAtNextLane(int id,ObstacleRecord r)
+        {
+            if(r.Kind!=ObstacleKind.BlockingJunction)return false;var car=CarById(id);
+            return car!=null&&car.Moving&&car.RouteIndex+1<car.Lanes.Count&&car.Lanes[car.RouteIndex+1].Key==r.BlockedLane;
+        }
         void MarkBlockingCycles(Dictionary<int,ObstacleRecord> records,Dictionary<int,double> nextSpeed)
         {
-            var link=new Dictionary<int,(int to,bool junction)>();
+            var checkedThisTick=new HashSet<int>();
             foreach(var item in records)
             {
                 var r=item.Value;
-                if(r.Kind==ObstacleKind.BlockingJunction&&r.Blocker>=0)link[item.Key]=(r.Blocker,true);
-                else if(r.Kind==ObstacleKind.Leader&&nextSpeed[item.Key]<PushingCycleSpeed&&r.Distance-Rules.CarLength<Rules.FollowingGap+TightGapTolerance)
-                    link[item.Key]=(r.Car,false);
-            }
-            var done=new HashSet<int>();
-            foreach(int start in link.Keys)
-            {
-                if(done.Contains(start))continue;
-                var path=new List<int>();var index=new Dictionary<int,int>();int at=start;
-                while(link.ContainsKey(at)&&!done.Contains(at)&&!index.ContainsKey(at)){index[at]=path.Count;path.Add(at);at=link[at].to;}
-                if(index.TryGetValue(at,out int first))
+                bool stuck=RefusedAtNextLane(item.Key,r)||r.Kind==ObstacleKind.Leader&&nextSpeed[item.Key]<PushingCycleSpeed&&r.Distance<Rules.FollowingGap;
+                if(!stuck)continue;
+                var chain=new List<int>();int at=item.Key;
+                while(at>=0)
                 {
-                    var cycle=path.Skip(first).ToList();
-                    foreach(int member in cycle)
-                        if(link[member].junction){var car=CarById(member);car.Shoving=true;car.ShovingLane=records[member].BlockedLane;}
+                    if(checkedThisTick.Contains(at))
+                    {
+                        int first=chain.IndexOf(at);
+                        if(first>=0)BreakCycle(chain.Skip(first).ToList(),records);
+                        break;
+                    }
+                    chain.Add(at);checkedThisTick.Add(at);
+                    if(!records.TryGetValue(at,out var link))break;
+                    at=link.Kind==ObstacleKind.Leader?link.Car:RefusedAtNextLane(at,link)?link.Blocker:-1;
                 }
-                foreach(int member in path)done.Add(member);
+            }
+        }
+        void BreakCycle(List<int> cycle,Dictionary<int,ObstacleRecord> records)
+        {
+            if(cycle.Any(m=>records[m].Kind==ObstacleKind.BlockingJunction))
+            {
+                foreach(int member in cycle)
+                    if(records[member].Kind==ObstacleKind.BlockingJunction){var car=CarById(member);car.Shoving=true;car.ShovingLane=records[member].BlockedLane;}
+            }
+            else if(cycle.All(m=>records[m].Kind==ObstacleKind.Leader))
+            {foreach(int member in cycle){var car=CarById(member);if(car!=null)car.PushingInto=records[member].Car;}}
+        }
+        // Original pushing: while a car's nearest obstacle is still the leader it pushes into, it takes the leader's speed
+        // as at least minSpeedBeforePushingCycle and the gap as at least a vehicle length plus two minimum gaps, so it
+        // creeps on. The cycle breaks (every member stops pushing) when that leader moves faster on its own or the car's
+        // obstacle changes.
+        bool ApplyPushing(Vehicle car,int leaderId,bool leaderNearest,ref double gap,ref double leaderSpeed,HashSet<int> broken)
+        {
+            if(car.PushingInto<0)return false;
+            if(!leaderNearest||leaderId!=car.PushingInto){broken.Add(car.Id);return false;}
+            if(leaderSpeed>PushingCycleSpeed)broken.Add(car.Id);
+            leaderSpeed=Math.Max(leaderSpeed,PushingCycleSpeed);gap=Math.Max(gap,Rules.CarLength+2*Rules.FollowingGap);
+            return true;
+        }
+        void BreakPushingCycles(HashSet<int> broken)
+        {
+            foreach(int id in broken)
+            {
+                var car=CarById(id);
+                while(car!=null&&car.PushingInto>=0){int next=car.PushingInto;car.PushingInto=-1;car=CarById(next);}
             }
         }
 
         // Inbound registration at route assignment: each newly planned arbitrated lane is stamped with
         // game time plus the path's lane count; retained entries keep their stamp.
+        internal void RegisterRouteForChecks(Vehicle car)=>RegisterRoute(car,false); // fixtures that place cars directly
         void RegisterRoute(Vehicle car,bool keepExisting)
         {
             if(Rules.Version!=GameVersion.OriginalReference)return;

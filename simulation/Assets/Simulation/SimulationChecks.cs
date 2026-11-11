@@ -597,6 +597,27 @@ namespace MotorwaysSim
                 Check(w.TripsCompleted==0&&w.Cars.Any(c=>c.Obstacle=="Train crossing"),"cars wait before active train crossing: "+Summary(w));
                 w.Trains.Clear();w.Step(1600);Check(w.TripsCompleted>0&&!w.IsRailCrossingClosed(crossing),"cars resume after crossing releases: "+Summary(w));
             });
+            Test("Original cars slow towards an open train crossing and accelerate gently on it",()=>{
+                // VehicleMovementProcess: targetSpeedTowardsCrossings 0.5 from crossingSlowDistance (3) vehicle lengths, and
+                // maxAccelerationOnCrossings 0.2 world units/s^2 (0.1 tiles/s^2) on and just before a crossing chunk.
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.DemandCapacity=10000;
+                var london=new TrafficWorld(42,false,rules);london.Reset(42,ScenarioKind.London);
+                var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);
+                var line=london.RailLines.Single();w.RailLines.Add(line);foreach(var c in line.Cells)w.Rails[c.X,c.Y]=true;
+                var crossing=new Cell(12,11);
+                var house=w.SpawnBuilding(new Cell(4,11),0,true);var shop=w.SpawnBuilding(new Cell(20,9),0,false);
+                Check(house!=null&&shop!=null&&w.DrawRoad(house.Access,shop.Access),"long road across the rail");
+                shop.Demand=1;double entrySpeed=-1,cruise=0,maxCrossingAcceleration=0;
+                for(int tick=0;tick<4000&&w.TripsCompleted==0;tick++)
+                {
+                    w.Step();var car=w.Cars.FirstOrDefault(v=>v.Moving&&v.Stage==TripStage.Outbound);if(car==null)continue;
+                    if(car.CurrentLane.Tile.X<10)cruise=Math.Max(cruise,car.Speed);
+                    if(car.CurrentLane.Tile==crossing){if(entrySpeed<0)entrySpeed=car.Speed;maxCrossingAcceleration=Math.Max(maxCrossingAcceleration,car.Acceleration);}
+                }
+                Check(w.TripsCompleted==1&&entrySpeed>0,"the car crosses: "+Summary(w));
+                Check(entrySpeed<.9*cruise,"slowed before the crossing: "+entrySpeed.ToString("F3")+" vs "+cruise.ToString("F3"));
+                Check(maxCrossingAcceleration<=.1+1e-9,"gentle acceleration on the crossing: "+maxCrossingAcceleration.ToString("F3"));
+            });
             Test("Original parking paths follow continuous circulation lanes and diagonal bays",()=>{
                 foreach(bool shared in new[]{false,true})for(int layout=0;layout<4;layout++)
                 {
@@ -709,6 +730,8 @@ namespace MotorwaysSim
             Test("Original blocking-cycle shove clears an adjacent-junction gridlock",()=>{
                 // Replay v21 at t=1119 (junctions 20,11 and 20,12) with the measured lane offsets: 41 must turn east
                 // across 20,12 where 17 sits; 17 (behind 12) and 12 must enter 20,11 where 22 sits; 22 queues behind 41.
+                // 41 and 12 are refused at their immediate next chunk, so they are stuck vehicles; the chain
+                // 41 -> 17 -> 12 -> 22 -> 41 closes and the refused members shove.
                 var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.OvercrowdingSeconds=100000;
                 var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);w.Inventory[0]=1000;
                 var home=w.SpawnBuilding(new Cell(5,5),0,true);
@@ -720,7 +743,7 @@ namespace MotorwaysSim
                     Check(index>=0,"fixture lane "+key+" on route "+string.Join(",",route));
                     var car=new Vehicle{Id=w.Cars.Count,HomeId=home.Id,Color=0,Stage=TripStage.Returning,At=route[0],Next=route[1],
                         Route=route,ReturnRoute=new List<Cell>(route),Lanes=lanes,RouteIndex=index,DistanceAlongLane=distance,RouteVersion=w.NetworkVersion};
-                    w.Cars.Add(car);return car;
+                    w.Cars.Add(car);w.RegisterRouteForChecks(car);return car;
                 }
                 var fixture=new[]{
                     Place(new Cell(20,9),new Cell(22,12),"20:11:2:2",.8362),   // car 41
@@ -728,7 +751,7 @@ namespace MotorwaysSim
                     Place(new Cell(20,15),new Cell(17,10),"20:12:6:6",.8358),  // car 12
                     Place(new Cell(20,15),new Cell(17,10),"20:12:6:6",.4578)}; // car 17
                 for(int tick=0;tick<1200&&fixture.Any(v=>v.Stage!=TripStage.Home);tick++)w.Step();
-                Check(fixture.All(v=>v.Stage==TripStage.Home),"adjacent junctions clear: "+Summary(w));
+                Check(fixture.All(v=>v.Stage==TripStage.Home)&&w.Time<40,"adjacent junctions clear by shoving, before the 45 s escape: "+Summary(w));
             });
             Test("Original carpark gate goes to the car nearest the entrance, not the car queued behind",()=>{
                 // Replay v20 at t=972 (shared lot 20, gate 19,18): T passes through the lot and is first on the outside

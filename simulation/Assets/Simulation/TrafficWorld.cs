@@ -75,7 +75,7 @@ namespace MotorwaysSim
             if(!Rules.UseOriginalIntersectionRules)throw new NotSupportedException("The Lebanese legal alternative remains undecided and is not implemented");
             Seed=seed;Scenario=scenario;random=new SimulationRandom(seed,Rules.Version);Time=0;TickCount=0;ConstructionSpent=0;TripsCompleted=0;Failed=false;
             CustomScenarioId=null;customScenarioBounds=null;
-            Buildings.Clear();Cars.Clear();Events.Clear();Roundabouts.Clear();Signals.Clear();Motorways.Clear();carparkThroats.Clear();nextMotorwayId=0;demandGroupPhases.Clear();spawnSchedule.Clear();nextScheduledShop=0;
+            Buildings.Clear();Cars.Clear();Events.Clear();Roundabouts.Clear();plannedRoundaboutCells.Clear();Signals.Clear();Motorways.Clear();carparkThroats.Clear();nextMotorwayId=0;demandGroupPhases.Clear();spawnSchedule.Clear();nextScheduledShop=0;
             retiredConnectionConcrete.Clear();
             erasedEndpointCleanup.Clear();
             nativeJoinVersion=-1;
@@ -197,6 +197,7 @@ namespace MotorwaysSim
             // Updated graph links route subsequent journeys around the new circle.
             var footprint=new HashSet<Cell>(ring.Concat(new[]{center}));
             int replacedRoadTiles=0;
+            var degrees=footprint.ToDictionary(c=>c,c=>Degree(c)+Motorways.Count(m=>!m.PendingRemoval&&(m.Start==c||m.End==c)));
             // Original AddRoundaboutEdit: valid exits from the ring stay connected and stay paid; every other link of the
             // footprint is mothballed and its concrete returns when traffic clears; no new links are made.
             bool original=Rules.Version==GameVersion.OriginalReference;
@@ -209,7 +210,7 @@ namespace MotorwaysSim
             }
             foreach(var c in ring){Tiles[c.X,c.Y]=Infrastructure.Roundabout;}
             Tiles[center.X,center.Y]=Infrastructure.Roundabout;
-            var state=new RoundaboutState{Center=center,Ring=ring,ReplacedRoadTiles=replacedRoadTiles};Roundabouts.Add(state);
+            var state=new RoundaboutState{Center=center,Ring=ring,ReplacedRoadTiles=replacedRoadTiles,Planned=original,PlannedDegrees=original?degrees:null};Roundabouts.Add(state);
             for(int i=0;i<4;i++)Link(ring[i],ring[(i+1)%4]);
             if(!original)foreach(var c in ring)for(int d=0;d<8;d++)
             {
@@ -217,6 +218,8 @@ namespace MotorwaysSim
                 if(InBounds(n)&&!ring.Contains(n)&&n!=center&&Tile(n)!=Infrastructure.None&&!PendingRemoval[n.X,n.Y]&&RoundaboutAt(n)==null&&RoundaboutAllowsConnection(c,n))
                     Link(c,n);
             }
+            // With no car on or committed to a replaced lane the original hot-swaps in the next step; do it now.
+            RebuildPlannedRoundaboutCells();ActivatePlannedRoundabouts();
             RefundReplacedRoundaboutRoads();
             Changed();Record(BuildTool.Roundabout,center,Rules.RoundaboutCost,"Built roundabout / circulating lanes enabled");return true;
         }
@@ -351,6 +354,7 @@ namespace MotorwaysSim
 
         void FinishRemovals()
         {
+            ActivatePlannedRoundabouts();
             FinishConnectionRetirements();
             RefundReplacedRoundaboutRoads();
             if(Rules.Version==GameVersion.OriginalReference&&PendingRemoval.Cast<bool>().Any(v=>v))
@@ -369,7 +373,7 @@ namespace MotorwaysSim
             foreach(var r in Roundabouts.ToArray())
             {
                 if(!r.PendingRemoval||r.Ring.Any(committed.Contains))continue;
-                foreach(var c in r.Ring.Concat(new[]{r.Center}))ReleaseTile(c);Roundabouts.Remove(r);
+                foreach(var c in r.Ring.Concat(new[]{r.Center}))ReleaseTile(c);Roundabouts.Remove(r);RebuildPlannedRoundaboutCells();
             }
             for(int y=0;y<Height;y++)for(int x=0;x<Width;x++)
             {var c=new Cell(x,y);if(PendingRemoval[x,y]&&!committed.Contains(c)&&RoundaboutAt(c)==null)ReleaseTile(c);}
