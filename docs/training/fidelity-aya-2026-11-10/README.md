@@ -8,6 +8,22 @@ rules that match the original's code, and the recorded 835-point Los Angeles gam
 close to 835 at about 1314.6 s. Reading the decompiled original locally and running its components as an
 oracle are allowed; decompiled code and assemblies stay outside Git (decision 077).
 
+## Current state (12 November 2026, simulator `2026-11-10.f26`)
+
+- **Benchmark:** replay v21d (event times read from the game's clock dial) on 60 demand-phase sets refitted to the dial-timed real score curve.
+- **Scores:**
+  - f24: 805.5, 22/60 runs reach the end.
+  - f25, after the original's junction exit-space formula: 783.4.
+  - f26: 773.5; the median run is unchanged, and one run collapses.
+  - The original scored 835 and ended at about 1314.6 s.
+- **Where it differs:** up to about 1000 s our runs follow the real curve within 5–13 trips. The gap opens in the late game, when our congestion ends the game earlier.
+- **Rules ported overnight from the decompiled code:**
+  - crossing diagonals (f23);
+  - gridlock cycles, roundabout activation and level crossings (f24);
+  - re-plan, exit space and registration stamps (f25);
+  - traffic-light details and the weekly offer draw (f26).
+- **Kept although it lowers the replay:** the exit-space formula (decision 112, -16.6). It is the original's code; see "f25" below.
+
 ## Method
 
 - **Original reference.** The installed `App.dll` (SHA256 `76c9d906…c638`, the build in
