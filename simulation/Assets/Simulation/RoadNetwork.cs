@@ -29,6 +29,14 @@ namespace MotorwaysSim
                 if(ringIndex>=0&&round.Ring.Contains(next)&&next!=round.Ring[(ringIndex+1)%4])continue;
                 yield return next;
             }
+            if(Rules.Version==GameVersion.OriginalReference&&(retired||!PendingRemoval[at.X,at.Y]))
+                for(int d=0;d<8;d+=2)
+                {
+                    var next=at+Directions[d];
+                    if(!CornerTurn(at,next,out _,out _)||!CanTraverse(next,retired))continue;
+                    var b=BuildingAt(next);if(b!=null&&next!=goal&&next!=start&&!b.SharedLot)continue;
+                    yield return next;
+                }
         }
 
         public List<Cell> FindRoute(Cell start,Cell goal)=>FindRoute(start,goal,false);
@@ -57,13 +65,16 @@ namespace MotorwaysSim
                 }
                 foreach(var next in Neighbors(state.cell,start,goal,allowRetired))
                 {
-                    int direction=Direction(state.cell,next);var target=(cell:next,dir:direction);
+                    int direction=Direction(state.cell,next),exit=direction;
+                    bool turn=CornerTurn(state.cell,next,out var turnB,out var turnD);
+                    if(turn){exit=Direction(state.cell,turnB);direction=Direction(turnD,next);}
+                    var target=(cell:next,dir:direction);
                     if(closed.Contains(target))continue;
                     var motorway=MotorwayBetween(state.cell,next);
-                    double speed=motorway==null?LaneSpeed(state.cell,state.dir,direction):Rules.MotorwaySpeed;
+                    double speed=motorway==null?LaneSpeed(state.cell,state.dir,exit):Rules.MotorwaySpeed;
                     var transit=SharedTransitBetween(state.cell,next);
-                    double cost=Distance(state.cell,next)/Math.Max(.01,speed);
-                    if(state.dir<8&&((direction-state.dir+8)%8)==4)
+                    double cost=turn?CornerTurnTime(state.cell,state.dir,next,false):Distance(state.cell,next)/Math.Max(.01,speed);
+                    if(state.dir<8&&((exit-state.dir+8)%8)==4)
                     {
                         if(Rules.Version!=GameVersion.OriginalReference)cost+=500;
                         else if(RoadDegree(state.cell)>1)continue;
@@ -92,7 +103,8 @@ namespace MotorwaysSim
         {
             if(route.Count<2)return double.PositiveInfinity;double total=0;
             for(int i=0;i<route.Count-1;i++)
-            {int incoming=i==0?8:Direction(route[i-1],route[i]);int outgoing=Direction(route[i],route[i+1]);
+            {int incoming=i==0?8:CornerTurn(route[i-1],route[i],out _,out var arrivedFrom)?Direction(arrivedFrom,route[i]):Direction(route[i-1],route[i]);int outgoing=Direction(route[i],route[i+1]);
+                if(CornerTurn(route[i],route[i+1],out _,out _)){total+=Math.Max(1,Math.Floor(10*CornerTurnTime(route[i],incoming,route[i+1],true)));continue;}
                 double speed=MotorwayBetween(route[i],route[i+1])==null?LaneSpeed(route[i],incoming,outgoing,i>0&&MotorwayBetween(route[i-1],route[i])!=null,true):Rules.MotorwaySpeed;
                 var transit=SharedTransitBetween(route[i],route[i+1]);if(transit!=null){total+=SharedTransitCost(transit,route[i],route[i+1]);continue;}
                 total+=Math.Max(1,Math.Floor(10*Distance(route[i],route[i+1])/speed));}
@@ -119,6 +131,11 @@ namespace MotorwaysSim
             for(int i=0;i<route.Count;i++)
             {
                 Cell at=route[i],prev=i==0?at:route[i-1],next=i==route.Count-1?at:route[i+1];
+                // A corner turn (CornerTurn): this tile's lane runs toward the crossing corner along its diagonal, a turning
+                // corner lane follows, and the next tile's lane starts as if arriving along the other diagonal.
+                Cell turnTo=next,turnB=at,turnD=at;bool turnOut=i<route.Count-1&&CornerTurn(at,next,out turnB,out turnD);
+                if(turnOut)next=turnB;
+                if(i>0&&CornerTurn(prev,at,out _,out var arrivedFrom))prev=arrivedFrom;
                 var transit=SharedTransitBetween(at,next);
                 if(transit!=null){lanes.AddRange(ParkingTransitRoute(transit,at,next));i++;continue;}
                 Point center=new Point(at),a=new Point(prev),b=new Point(next);
@@ -176,10 +193,10 @@ namespace MotorwaysSim
                 else if(fromMotorway)lane.IsJunction=true;
                 // A boundary-based parcel endpoint can coincide with the next lane
                 // boundary. Do not create a zero-length lane with an undefined heading.
-                if(cornerOut)lane.SpeedLimit=OriginalTurnSpeed(inDir,outDir,fromMotorway);
+                if(cornerOut)lane.SpeedLimit=OriginalTurnSpeed(inDir,outDir,fromMotorway)*(IsCrossingCorner(CornerCode(at,next))?Rules.IntersectionMultiplier:1);
                 if(lane.Distances.Last()<1e-8&&route.Count>1)continue;
                 lanes.Add(lane);
-                if(cornerOut)lanes.Add(CornerLane(at,next,outDir,end,outgoing));
+                if(cornerOut)lanes.Add(turnOut?CornerTurnLane(at,turnTo,turnB,turnD,end):CornerLane(at,next,outDir,end,outgoing));
             }
             return lanes;
         }
@@ -248,7 +265,7 @@ namespace MotorwaysSim
             var kept=car.Lanes[last];
             if(kept.IsParking||kept.Next==kept.Tile)return;
             Cell goal=car.Stage==TripStage.Outbound?car.DestinationAccess:Buildings[car.HomeId].Access;
-            var route=FindRoute(kept.Next,goal,true,Direction(kept.Tile,kept.Next));
+            var route=FindRoute(kept.Next,goal,true,kept.Outgoing);
             if(route.Count<1||route[0]!=kept.Next)return;
             var full=new List<Cell>{kept.Tile};full.AddRange(route);
             var tail=MakeLanes(full).SkipWhile(l=>l.Tile==kept.Tile).ToList();

@@ -247,7 +247,10 @@ namespace MotorwaysSim
             if(d%2==1)
             {
                 var crossA=new Cell(from.X,to.Y);var crossB=new Cell(to.X,from.Y);
-                if(InBounds(crossA)&&(Connections[crossA.X,crossA.Y]&(1<<Direction(crossA,crossB)))!=0)
+                // Original TileEditor.WouldConnectionPassPassageConstraints: crossing diagonals make a corner junction,
+                // refused only when the new link starts or ends on water. A roundabout end is not modelled at a corner.
+                if(InBounds(crossA)&&(Connections[crossA.X,crossA.Y]&(1<<Direction(crossA,crossB)))!=0&&
+                    !(Rules.Version==GameVersion.OriginalReference&&!Water[from.X,from.Y]&&!Water[to.X,to.Y]&&SplitsCorner(from,to)&&SplitsCorner(crossA,crossB)))
                     return Reject("Crossing diagonal roads require a junction tile");
             }
             int cost=RoadConnectionCost(from,to);

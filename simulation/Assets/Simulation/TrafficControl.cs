@@ -69,7 +69,7 @@ namespace MotorwaysSim
             for(int i=car.RouteIndex+1;i<car.Lanes.Count;i++)
             {
                 var lane=car.Lanes[i];
-                if(!lane.IsParking&&!lane.IsMotorway&&Signals.ContainsKey(lane.Tile)&&!LightAllowsEntry(lane))return true;
+                if(!lane.IsParking&&!lane.IsMotorway&&Signals.ContainsKey(lane.ChunkCell)&&!LightAllowsEntry(lane))return true;
                 if(TryCarparkGate(car,lane,out int candidate,out var point,out _)&&candidate==lot&&point==access)return false;
             }
             return false;
@@ -204,7 +204,7 @@ namespace MotorwaysSim
             distance=car.CurrentLane.Length-car.DistanceAlongLane;
             for(int i=car.RouteIndex+1;i<Math.Min(car.Lanes.Count,car.RouteIndex+7);i++)
             {
-                if(car.Lanes[i].Tile==junction){lane=car.Lanes[i];return true;}
+                if(car.Lanes[i].ChunkCell==junction){lane=car.Lanes[i];return true;}
                 distance+=car.Lanes[i].Length;if(distance>Rules.LookaheadDistance)return false;
             }
             return false;
@@ -214,10 +214,10 @@ namespace MotorwaysSim
         internal bool ConflictsPublic(Lane a,Lane b)=>Conflicts(a,b); // read-only, for checks
         bool Conflicts(Lane a,Lane b)
         {
-            if(a.IsMotorway||b.IsMotorway||a.IsCorner||b.IsCorner)return false;
+            if(a.IsMotorway||b.IsMotorway||a.IsCorner!=b.IsCorner)return false;
             if(a.Key==b.Key)return false;
             if(a.IsParking&&b.IsParking){if(a.CarparkId!=b.CarparkId)return false;}
-            else if(a.Tile!=b.Tile)return false;
+            else if(a.ChunkCell!=b.ChunkCell)return false;
             if(Rules.Version==GameVersion.OriginalReference&&!a.IsParking&&!b.IsParking&&a.Incoming<8&&b.Incoming<8)return ConnectionsIntersect(a,b,false);
             string key=string.CompareOrdinal(a.Key,b.Key)<0?a.Key+"/"+b.Key:b.Key+"/"+a.Key;
             if(conflictCache.TryGetValue(key,out bool value))return value;
@@ -237,7 +237,7 @@ namespace MotorwaysSim
             why="";blocker=-1;
             if(!lane.IsMotorway&&IsRailCrossingClosed(lane.Tile)){why="Train crossing";return false;}
             // A red light refuses first, so a red-blocked car never takes the carpark gate.
-            if(Rules.Version==GameVersion.OriginalReference&&CarparkApproachGate&&!lane.IsParking&&!lane.IsMotorway&&Signals.ContainsKey(lane.Tile)&&!LightAllowsEntry(lane))
+            if(Rules.Version==GameVersion.OriginalReference&&CarparkApproachGate&&!lane.IsParking&&!lane.IsMotorway&&Signals.ContainsKey(lane.ChunkCell)&&!LightAllowsEntry(lane))
             {why="Traffic light";return false;}
             // A gate refusal names its owner so blocking-cycle recovery can see it; a shoving car may pass.
             if(Rules.Version==GameVersion.OriginalReference&&CarparkApproachGate&&!(car.Shoving&&car.ShovingLane==lane.Key&&IsImmediateNext(car,lane))&&!CarparkThroatAllows(car,lane))
@@ -418,7 +418,7 @@ namespace MotorwaysSim
                         if(Rules.Version!=GameVersion.OriginalReference)
                             desired=Math.Min(desired,Math.Sqrt(next.SpeedLimit*next.SpeedLimit+2*Rules.MaxDeceleration*Math.Max(0,aheadDistance-.1)));
                         if(!MayEnter(car,next,snapshot,out string reason,out int entryBlocker))
-                        {if(aheadDistance<blockingDistance){blockingDistance=aheadDistance;blocker=entryBlocker;blockedLane=next.Key;blockedTile=next.Tile;}
+                        {if(aheadDistance<blockingDistance){blockingDistance=aheadDistance;blocker=entryBlocker;blockedLane=next.Key;blockedTile=next.ChunkCell;}
                             bool entrance=next.IsParking&&next.Key.Contains(":entrance:")||
                             car.Stage==TripStage.Outbound&&i==car.Lanes.Count-1&&!next.IsParking;
                             stop=Math.Min(stop,Math.Max(0,aheadDistance-(Rules.Version==GameVersion.OriginalReference?Rules.FollowingGap*.5:entrance?Rules.CarLength+.05:Rules.CarLength*.35)));obstacle=reason;
@@ -426,7 +426,7 @@ namespace MotorwaysSim
                         // Original intersection slowdown: with nothing ahead yet, cap acceleration as if a car moving at
                         // 0.55 of the desired speed sat at the entry of an uncontrolled junction with 3+ real roads.
                         if(Rules.Version==GameVersion.OriginalReference&&slowGap==null&&gap>aheadDistance&&aheadDistance>2*Rules.CarLength&&
-                            !next.IsParking&&!next.IsMotorway&&!IsControlledLane(next)&&RoadsForIntersectionSlowdown(next.Tile)>=3)
+                            !next.IsParking&&!next.IsMotorway&&!IsControlledLane(next)&&RoadsForIntersectionSlowdown(next.ChunkCell)>=3)
                             slowGap=aheadDistance+Rules.CarLength-Rules.FollowingGap*.5;
                     }
                     aheadDistance+=next.Length;if(aheadDistance>Rules.LookaheadDistance)break;

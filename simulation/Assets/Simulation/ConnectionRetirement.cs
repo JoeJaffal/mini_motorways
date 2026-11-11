@@ -24,7 +24,7 @@ namespace MotorwaysSim
             if(original)
                 foreach(var car in Cars.Where(c=>c.Stage!=TripStage.Home&&c.Stage!=TripStage.Returning&&c.ShopId>=0&&c.ReturnRoute.Count>1))
                 {
-                    bool uses=false;for(int i=1;i<car.ReturnRoute.Count&&!uses;i++)uses=RoadEdge(car.ReturnRoute[i-1],car.ReturnRoute[i])==edge;
+                    bool uses=false;for(int i=1;i<car.ReturnRoute.Count&&!uses;i++)uses=StepUsesEdge(car.ReturnRoute[i-1],car.ReturnRoute[i],edge);
                     if(!uses)continue;
                     var alternate=FindRoute(car.DestinationAccess,Buildings[car.HomeId].Access,true);
                     if(alternate.Count>1)car.ReturnRoute=alternate;
@@ -37,7 +37,7 @@ namespace MotorwaysSim
             if(car.Lanes.Skip(car.RouteIndex).Any(l=>!l.IsParking&&!l.IsMotorway&&
                 (RoadEdge(l.Previous,l.Tile)==edge||RoadEdge(l.Tile,l.Next)==edge)))return true;
             if(car.Stage!=TripStage.Returning)
-                for(int i=1;i<car.ReturnRoute.Count;i++)if(RoadEdge(car.ReturnRoute[i-1],car.ReturnRoute[i])==edge)return true;
+                for(int i=1;i<car.ReturnRoute.Count;i++)if(StepUsesEdge(car.ReturnRoute[i-1],car.ReturnRoute[i],edge))return true;
             return false;
         }
         void FinishConnectionRetirements()

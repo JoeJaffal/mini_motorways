@@ -98,6 +98,42 @@ namespace MotorwaysSim
                 for(int i=1;i<lanes.Count;i++)Require(Point.Distance(lanes[i-1].Samples.Last(),lanes[i].Samples[0])<1e-9,"diagonal lanes are continuous");
                 checks++;
             }
+            {
+                // Original corner chunk with four nodes: crossing diagonals form a junction where cars cross and turn.
+                var w=Lab();w.Inventory[0]=1000;
+                Cell a=new Cell(10,10),b=new Cell(11,11),c=new Cell(11,10),d=new Cell(10,11);
+                Require(w.DrawRoad(new Cell(8,8),new Cell(13,13)),"first diagonal");
+                Require(w.DrawRoad(new Cell(13,8),new Cell(8,13))&&w.Degree(c)==2&&w.Degree(d)==2,"crossing diagonal accepted on land");
+                Require(w.FindRoute(a,b).Count==2,"straight through the crossing corner");
+                var turn=w.FindRoute(a,c);Require(turn.Count==2&&turn[1]==c,"turn at the crossing corner onto the other diagonal");
+                var lanes=w.MakeLanes(new[]{new Cell(9,9),a,c,new Cell(12,9)});
+                Require(lanes.Count(l=>l.IsCorner)==3&&lanes.Any(l=>l.Key.StartsWith("cornerturn:")&&l.IsJunction),"turn runs through a turning corner lane");
+                for(int i=1;i<lanes.Count;i++)Require(Point.Distance(lanes[i-1].Samples.Last(),lanes[i].Samples[0])<1e-9,"turn lanes are continuous");
+                var se=w.MakeLanes(new[]{a,b})[1];var sw=w.MakeLanes(new[]{c,d})[1];var nw=w.MakeLanes(new[]{b,a})[1];
+                Require(se.IsCorner&&sw.IsCorner&&se.ChunkCell==sw.ChunkCell&&se.ChunkCell.X<0&&se.IsJunction,"both diagonals share one corner chunk");
+                Require(w.ConflictsPublic(se,sw)&&!w.ConflictsPublic(se,nw),"crossing lanes conflict, opposite lanes do not");
+                var x=Lab();x.Inventory[0]=1000;x.Inventory[1]=5;var water=new Cell(21,10);x.Water[water.X,water.Y]=true;
+                Require(x.DrawRoad(new Cell(23,10),water)&&x.Degree(water)==1,"bridge onto the water tile");
+                Require(x.DrawRoad(new Cell(20,10),new Cell(21,11))&&x.Build(BuildTool.Road,new Cell(20,11)),"land diagonal beside it");
+                Require(!x.Connect(water,new Cell(20,11))&&x.LastAction.Contains("Crossing diagonal"),"no crossing diagonal from a water tile");
+                // Traffic on both diagonals and a turn: everything is delivered and crossing lanes are never occupied together.
+                var f=Lab();f.Inventory[0]=1000;f.Rules.OvercrowdingSeconds=100000;
+                var h0=f.SpawnBuilding(new Cell(6,6),0,true);var s0=f.SpawnBuilding(new Cell(16,16),0,false);
+                var h1=f.SpawnBuilding(new Cell(16,5),1,true);var s1=f.SpawnBuilding(new Cell(4,16),1,false);
+                Cell front0=s0.Access+TrafficWorld.Directions[s0.DrivewayDirection],front1=s1.Access+TrafficWorld.Directions[s1.DrivewayDirection];
+                Require(f.DrawRoad(h0.Access,new Cell(8,8))&&f.DrawRoad(new Cell(8,8),new Cell(13,13))&&f.DrawRoad(new Cell(13,13),front0)&&f.DrawRoad(front0,s0.Access),"first crossing route");
+                Require(f.DrawRoad(h1.Access,new Cell(13,8))&&f.DrawRoad(new Cell(13,8),new Cell(8,13))&&f.DrawRoad(new Cell(8,13),new Cell(3,13))&&f.DrawRoad(new Cell(3,13),front1)&&f.DrawRoad(front1,s1.Access),"second crossing route");
+                Require(f.FindRoute(h0.Access,s0.Access).Contains(a)&&f.FindRoute(h1.Access,s1.Access).Contains(c)&&f.FindRoute(h0.Access,s1.Access).Contains(d),"routes use the crossing, one with a turn");
+                s0.Demand=6;s0.DemandCountdown=1e9;s1.Demand=6;s1.DemandCountdown=1e9;
+                for(int tick=0;tick<8000&&!(f.TripsCompleted==12&&f.ActiveCars==0);tick++)
+                {
+                    f.Step();var inCorner=f.Cars.Where(car=>car.Moving&&car.CurrentLane.IsJunction&&car.CurrentLane.IsCorner).ToArray();
+                    for(int i=0;i<inCorner.Length;i++)for(int j=i+1;j<inCorner.Length;j++)
+                        Require(!f.ConflictsPublic(inCorner[i].CurrentLane,inCorner[j].CurrentLane),"crossing lanes are never occupied together");
+                }
+                Require(f.TripsCompleted==12&&f.ActiveCars==0,"all twelve trips through the crossing are delivered");
+                checks++;
+            }
             foreach(bool shared in new[]{false,true})
             {
                 var w=Lab();w.Inventory[0]=1000;w.Rules.OvercrowdingSeconds=100000;

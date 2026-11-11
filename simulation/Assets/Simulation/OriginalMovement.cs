@@ -43,6 +43,7 @@ namespace MotorwaysSim
         // carpark entrances and roundabout lanes (IgnoreHouses/IgnoreDestinationsForIntersectionSlowDown = 1).
         int RoadsForIntersectionSlowdown(Cell tile)
         {
+            if(tile.X<0)return IsCrossingCorner(tile)?4:0;
             if(!InBounds(tile)||RoundaboutAt(tile)!=null)return 0;
             int mask=Connections[tile.X,tile.Y],count=0;
             for(int d=0;d<8;d++)
@@ -109,7 +110,67 @@ namespace MotorwaysSim
         // runs through a corner chunk. Each tile's lane ends 0.5 tiles from its centre and a short corner lane
         // (about 0.41 tiles) joins them. The corner chunk holds two lanes, so it is never arbitrated; the tile lane before
         // it has a single outbound lane and takes only its turn factor, while the corner lane takes the intersection
-        // factor when the next tile offers several ways. Crossing diagonals (a four-lane corner) are not modelled.
+        // factor when the next tile offers several ways.
+        // Crossing diagonals make a four-node corner chunk: a junction where every pair of nodes except a U-turn is a
+        // lane (RoadTileSignature.AddNode), so cars cross and also turn onto the other diagonal there. Corner chunks have
+        // a code cell (negative coordinates, never a real tile); their lanes arbitrate among themselves and are not
+        // controlled by a light on a neighbouring tile.
+        static Cell CornerCode(Cell a,Cell b)=>new Cell(-(a.X+b.X+2),-(a.Y+b.Y+2));
+        bool Linked(Cell a,Cell b)=>InBounds(a)&&InBounds(b)&&a!=b&&Math.Abs(a.X-b.X)<=1&&Math.Abs(a.Y-b.Y)<=1&&(Connections[a.X,a.Y]&(1<<Direction(a,b)))!=0;
+        bool IsCrossingCorner(Cell code)
+        {
+            if(Rules.Version!=GameVersion.OriginalReference||code.X>=0||code.Y>=0)return false;
+            int x=(-code.X-3)/2,y=(-code.Y-3)/2;
+            Cell a=new Cell(x,y),b=new Cell(x+1,y+1),c=new Cell(x+1,y),d=new Cell(x,y+1);
+            return Linked(a,b)&&Linked(c,d)&&SplitsCorner(a,b)&&SplitsCorner(c,d);
+        }
+        // A turn at a crossing corner from tile a to its orthogonal neighbour c: the car leaves a along the diagonal
+        // a->b and enters c as if from d (the other diagonal, d->c). Our routes list cells, so such a step is an
+        // orthogonal step without a direct link; where a and c are also linked directly the direct link is used, and
+        // with crossings on both sides of the a-c edge the first side is used.
+        bool CornerTurn(Cell a,Cell c,out Cell b,out Cell d)
+        {
+            b=d=a;
+            if(Rules.Version!=GameVersion.OriginalReference||!InBounds(a)||!InBounds(c))return false;
+            int dx=c.X-a.X,dy=c.Y-a.Y;if(Math.Abs(dx)+Math.Abs(dy)!=1||Linked(a,c))return false;
+            for(int s=-1;s<=1;s+=2)
+            {
+                var side=dx!=0?new Cell(0,s):new Cell(s,0);
+                var bb=c+side;var dd=a+side;
+                if(InBounds(bb)&&InBounds(dd)&&IsCrossingCorner(CornerCode(a,bb))){b=bb;d=dd;return true;}
+            }
+            return false;
+        }
+        // Route step p->q uses the link edge (a corner turn uses half of each crossing diagonal it joins).
+        bool StepUsesEdge(Cell p,Cell q,(Cell,Cell) edge)
+        {
+            if(RoadEdge(p,q)==edge)return true;
+            if(Rules.Version!=GameVersion.OriginalReference||Math.Abs(p.X-q.X)+Math.Abs(p.Y-q.Y)!=1||Linked(p,q))return false;
+            for(int s=-1;s<=1;s+=2)
+            {
+                var side=p.X!=q.X?new Cell(0,s):new Cell(s,0);
+                if(RoadEdge(p,q+side)==edge||RoadEdge(p+side,q)==edge)return true;
+            }
+            return false;
+        }
+        // Travel time of a corner turn for route costs: half a diagonal at the tile's lane speed, then half at turn speed.
+        double CornerTurnTime(Cell a,int incoming,Cell c,bool forCost)
+        {
+            CornerTurn(a,c,out var b,out var d);int exit=Direction(a,b),arrive=Direction(d,c);
+            return Math.Sqrt(.5)/Math.Max(.01,LaneSpeed(a,incoming,exit,false,forCost))+Math.Sqrt(.5)/Math.Max(.01,OriginalTurnSpeed(exit,arrive,false));
+        }
+        Lane CornerTurnLane(Cell at,Cell c,Cell b,Cell d,Point start)
+        {
+            int dirIn=Direction(at,b),dirOut=Direction(d,c);
+            var hin=DirectionVector(dirIn);var hout=DirectionVector(dirOut);
+            var finish=new Point(c)-hout*.5+hout.Right*Rules.LaneOffset;
+            double handle=Point.Distance(start,finish)*.4;
+            var lane=CreateLane(Cubic(start,start+hin*handle,finish-hout*handle,finish,8),at,at,c,dirIn,dirOut);
+            lane.IsCorner=true;lane.IsJunction=true;lane.Corner=CornerCode(at,b);lane.Key=$"cornerturn:{at.X}:{at.Y}:{c.X}:{c.Y}";
+            bool several=RoadDegree(c)>=3&&Tile(c)!=Infrastructure.TrafficLight&&RoundaboutAt(c)==null;
+            lane.SpeedLimit=OriginalTurnSpeed(dirIn,dirOut,false)*(several?Rules.IntersectionMultiplier:1);
+            return lane;
+        }
         bool SplitsCorner(Cell a,Cell b)=>Rules.Version==GameVersion.OriginalReference&&a.X!=b.X&&a.Y!=b.Y&&
             RoundaboutAt(a)==null&&RoundaboutAt(b)==null&&MotorwayBetween(a,b)==null&&SharedTransitBetween(a,b)==null;
 
@@ -125,12 +186,12 @@ namespace MotorwaysSim
             var finish=new Point(next)-heading*.5+heading.Right*Rules.LaneOffset;
             var points=new Point[5];for(int k=0;k<5;k++)points[k]=start+(finish-start)*(k/4.0);
             var lane=CreateLane(points,at,at,next,direction,direction);
-            lane.IsCorner=true;lane.Key=$"corner:{at.X}:{at.Y}:{direction}";
+            lane.IsCorner=true;lane.Key=$"corner:{at.X}:{at.Y}:{direction}";lane.Corner=CornerCode(at,next);lane.IsJunction=IsCrossingCorner(lane.Corner.Value);
             lane.SpeedLimit=OriginalLaneSpeed(at,direction,direction,false,false);
             return lane;
         }
 
-        bool IsControlledLane(Lane lane)=>lane!=null&&!lane.IsParking&&!lane.IsMotorway&&Signals.ContainsKey(lane.Tile);
+        bool IsControlledLane(Lane lane)=>lane!=null&&!lane.IsParking&&!lane.IsMotorway&&Signals.ContainsKey(lane.ChunkCell);
 
         // Original maximum acceleration: roundabout if the current or next chunk is a roundabout; controlled if the
         // current or next chunk is signal-controlled or the car's own driveway, or near the end of a motorway lane.

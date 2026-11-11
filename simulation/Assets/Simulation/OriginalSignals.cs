@@ -19,7 +19,7 @@ namespace MotorwaysSim
         static int ApproachOf(Lane lane)=>(lane.Incoming+4)%8;
 
         // Amber leaves ActivePair unchanged and permission is tested on the active pair only.
-        bool LightPermits(Lane lane)=>!Signals.TryGetValue(lane.Tile,out var s)||(s.ActivePair&(1<<ApproachOf(lane)))!=0;
+        bool LightPermits(Lane lane)=>!Signals.TryGetValue(lane.ChunkCell,out var s)||(s.ActivePair&(1<<ApproachOf(lane)))!=0;
 
         // American red-light rules: the first outbound direction found in three successive turns from the approach
         // toward the right is the non-crossing exit; no such direction means every connection crosses.
@@ -45,7 +45,7 @@ namespace MotorwaysSim
                 for(int i=car.RouteIndex+1;i<Math.Min(car.Lanes.Count,car.RouteIndex+3);i++)
                 {
                     var lane=car.Lanes[i];
-                    if(lane.Tile==chunk&&!lane.IsMotorway&&!lane.IsParking)
+                    if(lane.ChunkCell==chunk&&!lane.IsMotorway&&!lane.IsParking)
                     {
                         double registered=car.ApproachRegistered.TryGetValue(lane.Key,out var r)?r:Time;
                         list.Add((new SignalCandidate{Car=car,Lane=lane,Distance=distance,Approach=ApproachOf(lane)},registered));break;
