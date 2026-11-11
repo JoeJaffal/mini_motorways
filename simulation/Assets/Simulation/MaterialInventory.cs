@@ -8,8 +8,10 @@ namespace MotorwaysSim {
   readonly Dictionary<Cell,int> bridgeSpans=new Dictionary<Cell,int>();int bridgeSerial;
   readonly HashSet<(Cell,Cell)> paidRoadConnections=new HashSet<(Cell,Cell)>();
   static (Cell,Cell) RoadEdge(Cell a,Cell b)=>a.CompareTo(b)<0?(a,b):(b,a);
+  // Original GameBehaviourModel: a link costs 1 unless an end is a house, destination or carpark; ring tiles count as
+  // empty tiles, so a link from outside into a ring tile costs 1 (links inside a roundabout are its own lanes).
   public int RoadConnectionCost(Cell a,Cell b)=>Rules.Version!=GameVersion.OriginalReference||
-   BuildingAt(a)!=null||BuildingAt(b)!=null||RoundaboutAt(a)!=null||RoundaboutAt(b)!=null?0:1;
+   BuildingAt(a)!=null||BuildingAt(b)!=null||RoundaboutAt(a)!=null&&RoundaboutAt(b)!=null?0:1;
   int upgradeWeeksGranted;int[] packagesTaken=new int[6];
   readonly int[] weeksNotOffered=new int[6],totalUpgrades=new int[6];
   public void ResetInventory(){bridgeSpans.Clear();paidRoadConnections.Clear();bridgeSerial=0;Inventory=OriginalUpgrades.Starting(Map.Name);Array.Copy(Inventory,totalUpgrades,6);Array.Clear(weeksNotOffered,0,6);UpgradeChoices.Clear();upgradeWeeksGranted=0;Array.Clear(packagesTaken,0,6);}

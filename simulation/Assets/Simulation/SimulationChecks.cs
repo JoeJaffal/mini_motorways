@@ -182,11 +182,12 @@ namespace MotorwaysSim
                 Check(w.Cars.Any(v=>v.Moving&&v.Lanes.Any(l=>l.Tile==center)),"old path crosses footprint");
                 Check(w.Build(BuildTool.Roundabout,center),"convert occupied road");
                 int replaced=w.Roundabouts[0].ReplacedRoadTiles;
-                Check(replaced==4&&w.Inventory[0]==before,"hold concrete for four replaced connections");
+                Check(replaced==2&&w.Inventory[0]==before,"hold concrete for the two links into the centre; valid exits stay paid (original AddRoundaboutEdit)");
+                Check(w.Degree(new Cell(9,10))>0&&w.Degree(new Cell(13,10))>0&&w.RoundaboutAt(new Cell(10,10))!=null,"existing exits stay connected to the ring");
                 Check(w.Build(BuildTool.Remove,center),"queue occupied circle removal");
                 w.Step(6000);
-                Check(w.Inventory[0]==before+replaced&&w.Inventory[4]==1&&w.Roundabouts.Count==0,
-                    "refund old concrete and circle exactly once after traffic clears");
+                Check(w.Inventory[0]==before+4&&w.Inventory[4]==1&&w.Roundabouts.Count==0, // the 2 replaced links plus the 2 exits released with the circle
+                    "refund each original connection and the circle exactly once after traffic clears");
             });
             Test("roundabout circulation is directed",()=>{
                 var w=Lab();w.Build(BuildTool.Roundabout,new Cell(15,15));

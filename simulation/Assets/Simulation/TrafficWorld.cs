@@ -195,9 +195,13 @@ namespace MotorwaysSim
             // Updated graph links route subsequent journeys around the new circle.
             var footprint=new HashSet<Cell>(ring.Concat(new[]{center}));
             int replacedRoadTiles=0;
+            // Original AddRoundaboutEdit: valid exits from the ring stay connected and stay paid; every other link of the
+            // footprint is mothballed and its concrete returns when traffic clears; no new links are made.
+            bool original=Rules.Version==GameVersion.OriginalReference;
             foreach(var c in footprint)for(int d=0;d<8;d++)
             {
                 var n=c+Directions[d];if(!InBounds(n))continue;
+                if(original&&ring.Contains(c)&&!footprint.Contains(n)&&(Connections[c.X,c.Y]&(1<<d))!=0&&RoundaboutAllowsConnection(c,n))continue;
                 if(paidRoadConnections.Remove(RoadEdge(c,n)))replacedRoadTiles++;
                 Unlink(c,n);
             }
@@ -205,7 +209,7 @@ namespace MotorwaysSim
             Tiles[center.X,center.Y]=Infrastructure.Roundabout;
             var state=new RoundaboutState{Center=center,Ring=ring,ReplacedRoadTiles=replacedRoadTiles};Roundabouts.Add(state);
             for(int i=0;i<4;i++)Link(ring[i],ring[(i+1)%4]);
-            foreach(var c in ring)for(int d=0;d<8;d++)
+            if(!original)foreach(var c in ring)for(int d=0;d<8;d++)
             {
                 var n=c+Directions[d];
                 if(InBounds(n)&&!ring.Contains(n)&&n!=center&&Tile(n)!=Infrastructure.None&&!PendingRemoval[n.X,n.Y]&&RoundaboutAt(n)==null&&RoundaboutAllowsConnection(c,n))

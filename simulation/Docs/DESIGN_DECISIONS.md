@@ -1326,3 +1326,12 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Engineering choice** (OriginalReference). `RoadDegree` (connections plus active motorway ends) in `OriginalLaneSpeed`, `RoadsForIntersectionSlowdown` and the `FindRoute` U-turn test; `OnTargetRoundabout` requires the car's lane to continue on the ring.
 
 **Measured.** Simulator `2026-11-10.f13`: ablations showed the circulating change alone is neutral (784.5) and the U-turn test alone small; motorway slots in lane speeds and the slowdown lower the 16-phase mean 784.5 → 762.9 (584–803, the 584 run is a high-demand phase set with no stuck cars), 5/16 reach the end; fitted phases 784 at 1301 s → 795 at 1308 s. Kept for fidelity. 92 suites, five-map checks and training readiness pass.
+
+
+## 094 - Roundabout placement as the original (11 November 2026, `fidelity-aya`)
+
+**Evidence.** `AddRoundaboutEdit`: only ring-tile roads that cannot be exits, and the centre's links, are mothballed (their concrete returns on release); valid exits stay connected and stay spent; no links are created. `GameBehaviourModel` prices links to ring tiles like links to empty tiles (1 concrete). Ours unlinked and refunded every footprint link, then linked every neighbouring road in an allowed direction for free, and priced ring links at 0.
+
+**Engineering choice** (OriginalReference). `AddRoundabout` keeps existing valid exits and makes no new links; `RoadConnectionCost` charges 1 for an outside–ring link (0 inside a roundabout). The roundabout concrete test now expects two held links for a straight road through the centre, with both exits still connected, and each original connection refunded exactly once after removal. The roundabout's own activation delay and the hot-swap hold are not modelled.
+
+**Measured.** Simulator `2026-11-10.f14`: 16-phase mean 762.9 → 791.4 (763–804), 14/16 reach the end; fitted phases 807 at the end. All replay events still apply. The free links had been adding junction links the original never had. 92 suites, five-map checks and training readiness pass.

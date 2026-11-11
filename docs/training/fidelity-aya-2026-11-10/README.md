@@ -68,6 +68,7 @@ Replay v21, 16-phase mean (min–max) and fitted-phase result. Real game: 835 at
 | `2026-11-10.f11` | Signal pair order, post-amber hold and pair-loss switch; roundabout exit-lane factor | 784.5 (747–808), 8/16 reach the end | 1304 s | 784, fails at 1301 s |
 | `2026-11-10.f12` | Merge of `fidelity-aya-growth` (original free-play placement; replays unaffected) | 784.5 (747–808), 8/16 reach the end | 1304 s | 784, fails at 1301 s |
 | `2026-11-10.f13` | Motorway slots count as roads on end tiles; exit-lane cars not circulating | 762.9 (584–803), 5/16 reach the end | 1289 s | 795, fails at 1308 s |
+| `2026-11-10.f14` | Roundabout placement as the original (exits kept and paid, no automatic links, ring links cost 1) | 791.4 (763–804), 14/16 reach the end | 1313 s | 807, reaches the end |
 
 Self-test: 85 suites pass at every version listed (92 from f12, with 7 placement suites).
 
