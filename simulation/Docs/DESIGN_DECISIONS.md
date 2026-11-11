@@ -1380,3 +1380,12 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Engineering choice** (OriginalReference). `DrawRoad` skips the unaffordable link and continues; a stroke reaching a house from a side other than its driveway realigns the driveway first. Drawing remains a rounded raster line rather than the original's greedy eight-direction stepping. New check: a stroke into an east-facing house from the south turns its driveway south and links it.
 
 **Measured.** Simulator `2026-11-10.f18`: replay v21 unchanged (791.1). 94 suites, five-map checks and training readiness pass.
+
+
+## 100 - Traffic-light placement needs a junction (11 November 2026, `fidelity-aya`)
+
+**Evidence.** `TileEditor` allows a traffic light only on a tile with at least three roads (live or pending, motorway ramps included), no active ramp and no rail. Ours accepted any ordinary road tile (motorway ends excepted).
+
+**Engineering choice** (OriginalReference). `Build(TrafficLight)` refuses tiles with fewer than three connections or with rail. Our roads become active at once, so "pending" needs no separate count here; automatic removal of a light whose tile later drops below three roads stays unadopted (decision 085).
+
+**Measured.** Simulator `2026-11-10.f19`: both replay lights qualify; replay v21 unchanged (791.1). 94 suites, five-map checks and training readiness pass.

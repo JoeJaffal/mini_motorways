@@ -156,6 +156,8 @@ namespace MotorwaysSim
             if(tool==BuildTool.TrafficLight)
             {
                 if(old!=Infrastructure.Road)return Reject("Lights require an existing ordinary road");
+                // Original TileEditor: a light needs at least three roads on the tile and no rail.
+                if(Rules.Version==GameVersion.OriginalReference&&(Degree(cell)<3||Rails[cell.X,cell.Y]))return Reject("Traffic lights need a junction of three or more roads");
                 target=Infrastructure.TrafficLight;cost=Rules.LightCost;
                 Signals[cell]=new SignalState{Cell=cell};
             }
