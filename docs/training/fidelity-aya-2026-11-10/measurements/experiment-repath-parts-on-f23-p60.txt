@@ -1,0 +1,136 @@
+# replay v21c, 60 plausible phase sets, on 2026-11-10.f23: original re-plan (current lane + 2 kept) and current lane only, against f23
+# sNNN = trips completed at game time NNN s; 'end' = final score
+[c-repath] 60 plausible phases: score mean 785.1 median 789.5 min 708 max 831 | end mean 1290 min 1237 | reach end 10/60   (real 835 @ 1314.6)
+[c-c1] 60 plausible phases: score mean 796.0 median 800.0 min 717 max 830 | end mean 1299 min 1252 | reach end 12/60   (real 835 @ 1314.6)
+c-repath 900 n 60 mean -0.12 se 0.30 median +0.0 worse 23 better 21
+c-repath 1000 n 60 mean -0.68 se 0.37 median -1.0 worse 32 better 22
+c-repath 1100 n 60 mean -0.17 se 0.68 median -1.0 worse 33 better 25
+c-repath 1200 n 60 mean -1.55 se 0.87 median -2.0 worse 35 better 21
+c-repath end n 60 mean -11.18 se 4.37 median -12.5 worse 41 better 19
+c-c1 900 n 60 mean +0.10 se 0.26 median +0.0 worse 18 better 28
+c-c1 1000 n 60 mean +0.18 se 0.43 median +0.0 worse 28 better 24
+c-c1 1100 n 60 mean +0.75 se 0.70 median +0.0 worse 24 better 29
+c-c1 1200 n 60 mean -0.38 se 0.81 median -1.0 worse 35 better 21
+c-c1 end n 60 mean -0.35 se 4.00 median -5.0 worse 37 better 23
+## full re-plan (3 lanes kept)
+1.732 4.755 3.039 5.908 6.930 :: # end t=1284.75 score=782 failed=True events=381/400 s900=369 s1000=452 s1100=560 s1200=670 inventory=10,1,1,2,0,0
+2.071 4.761 4.158 5.874 6.619 :: # end t=1272.10 score=759 failed=True events=379/400 s900=368 s1000=455 s1100=557 s1200=670 inventory=11,1,1,2,0,0
+2.137 4.755 3.052 5.903 6.641 :: # end t=1286.35 score=779 failed=True events=381/400 s900=369 s1000=452 s1100=558 s1200=676 inventory=10,1,1,2,0,0
+2.070 4.762 3.039 5.971 6.669 :: # end t=1288.35 score=783 failed=True events=381/400 s900=368 s1000=451 s1100=563 s1200=671 inventory=10,1,1,2,0,0
+2.121 4.761 4.162 5.913 6.652 :: # end t=1288.40 score=776 failed=True events=381/400 s900=366 s1000=453 s1100=557 s1200=673 inventory=10,1,1,2,0,0
+2.397 4.880 3.687 7.063 6.903 :: # end t=1247.25 score=720 failed=True events=366/400 s900=368 s1000=448 s1100=552 s1200=660 inventory=3,1,0,2,0,0
+1.907 4.759 3.026 5.903 6.727 :: # end t=1288.65 score=789 failed=True events=381/400 s900=368 s1000=451 s1100=563 s1200=677 inventory=10,1,1,2,0,0
+2.137 4.768 3.043 5.903 6.657 :: # end t=1286.05 score=782 failed=True events=381/400 s900=371 s1000=454 s1100=563 s1200=680 inventory=10,1,1,2,0,0
+2.110 4.759 4.162 5.909 6.629 :: # end t=1285.40 score=783 failed=True events=381/400 s900=368 s1000=456 s1100=561 s1200=674 inventory=10,1,1,2,0,0
+2.145 4.782 3.049 5.912 6.667 :: # end t=1276.35 score=770 failed=True events=379/400 s900=369 s1000=454 s1100=568 s1200=677 inventory=11,1,1,2,0,0
+2.404 4.794 3.972 7.060 6.823 :: # end t=1302.60 score=794 failed=True events=397/400 s900=368 s1000=447 s1100=557 s1200=675 inventory=7,1,1,2,0,0
+2.147 4.783 3.039 5.896 6.700 :: # end t=1301.00 score=797 failed=True events=395/400 s900=368 s1000=453 s1100=565 s1200=677 inventory=7,1,1,2,0,0
+2.381 4.883 3.686 7.060 6.908 :: # end t=1306.30 score=810 failed=True events=400/400 s900=368 s1000=453 s1100=569 s1200=679 inventory=6,1,0,2,0,0
+2.386 4.869 3.699 7.059 6.894 :: # end t=1308.75 score=818 failed=True events=400/400 s900=368 s1000=455 s1100=563 s1200=680 inventory=6,1,0,2,0,0
+1.735 4.755 3.038 5.912 7.294 :: # end t=1260.45 score=741 failed=True events=375/400 s900=367 s1000=449 s1100=562 s1200=673 inventory=12,1,1,2,0,0
+2.134 4.767 3.037 5.912 7.096 :: # end t=1314.60 score=826 failed=False events=400/400 s900=370 s1000=452 s1100=565 s1200=678 inventory=6,1,0,2,0,0
+2.225 4.969 3.975 7.056 6.882 :: # end t=1277.80 score=771 failed=True events=379/400 s900=367 s1000=453 s1100=561 s1200=675 inventory=11,1,1,2,0,0
+1.737 4.760 3.033 5.913 7.100 :: # end t=1296.15 score=799 failed=True events=395/400 s900=370 s1000=456 s1100=567 s1200=674 inventory=7,1,1,2,0,0
+1.916 4.763 3.037 5.904 5.538 :: # end t=1300.95 score=806 failed=True events=395/400 s900=368 s1000=456 s1100=567 s1200=676 inventory=7,1,1,2,0,0
+2.154 5.475 4.161 5.901 6.678 :: # end t=1255.00 score=734 failed=True events=372/400 s900=368 s1000=452 s1100=549 s1200=662 inventory=2,1,0,2,0,0
+2.391 4.929 3.694 7.577 6.901 :: # end t=1262.45 score=742 failed=True events=375/400 s900=369 s1000=455 s1100=561 s1200=667 inventory=12,1,1,2,0,0
+2.155 5.467 4.161 5.873 6.646 :: # end t=1276.25 score=761 failed=True events=379/400 s900=367 s1000=452 s1100=558 s1200=672 inventory=11,1,1,2,0,0
+2.401 4.880 3.976 7.566 6.776 :: # end t=1249.15 score=714 failed=True events=368/400 s900=367 s1000=453 s1100=556 s1200=656 inventory=1,1,0,2,0,0
+2.094 5.304 4.157 5.793 5.554 :: # end t=1237.15 score=708 failed=True events=360/400 s900=368 s1000=452 s1100=551 s1200=660 inventory=6,1,0,2,0,0
+2.409 4.916 3.686 7.578 6.913 :: # end t=1280.90 score=770 failed=True events=380/400 s900=367 s1000=453 s1100=564 s1200=672 inventory=11,1,1,2,0,0
+1.735 4.789 4.093 5.902 6.693 :: # end t=1236.85 score=708 failed=True events=360/400 s900=369 s1000=450 s1100=547 s1200=659 inventory=6,1,0,2,0,0
+2.224 5.326 3.965 6.976 6.774 :: # end t=1273.55 score=768 failed=True events=379/400 s900=367 s1000=451 s1100=561 s1200=672 inventory=11,1,1,2,0,0
+2.074 5.307 4.158 5.908 6.652 :: # end t=1248.30 score=725 failed=True events=368/400 s900=367 s1000=451 s1100=547 s1200=664 inventory=1,1,0,2,0,0
+1.660 4.767 4.158 5.901 5.566 :: # end t=1277.30 score=773 failed=True events=379/400 s900=366 s1000=453 s1100=557 s1200=670 inventory=11,1,1,2,0,0
+2.226 4.930 3.676 8.144 6.889 :: # end t=1298.70 score=791 failed=True events=395/400 s900=370 s1000=452 s1100=558 s1200=668 inventory=7,1,1,2,0,0
+1.587 4.994 4.077 5.668 5.528 :: # end t=1263.40 score=749 failed=True events=375/400 s900=370 s1000=452 s1100=555 s1200=668 inventory=12,1,1,2,0,0
+2.081 3.743 10.648 5.872 6.763 :: # end t=1259.90 score=737 failed=True events=372/400 s900=366 s1000=446 s1100=542 s1200=669 inventory=2,1,0,2,0,0
+2.082 3.627 10.715 5.882 6.977 :: # end t=1285.90 score=773 failed=True events=381/400 s900=368 s1000=449 s1100=554 s1200=674 inventory=10,1,1,2,0,0
+2.135 5.261 3.032 5.879 6.687 :: # end t=1310.00 score=822 failed=True events=400/400 s900=369 s1000=454 s1100=563 s1200=679 inventory=6,1,0,2,0,0
+2.155 3.789 10.716 5.685 7.119 :: # end t=1298.05 score=795 failed=True events=395/400 s900=364 s1000=453 s1100=554 s1200=681 inventory=7,1,1,2,0,0
+2.155 3.782 11.323 5.879 6.728 :: # end t=1314.60 score=820 failed=False events=400/400 s900=367 s1000=455 s1100=560 s1200=677 inventory=6,1,0,2,0,0
+2.078 3.915 10.651 5.873 6.979 :: # end t=1313.20 score=817 failed=True events=400/400 s900=365 s1000=454 s1100=556 s1200=681 inventory=6,1,0,2,0,0
+2.067 3.930 11.331 5.638 6.700 :: # end t=1314.60 score=824 failed=False events=400/400 s900=368 s1000=455 s1100=558 s1200=682 inventory=6,1,0,2,0,0
+2.094 3.933 11.304 5.796 6.727 :: # end t=1303.10 score=804 failed=True events=397/400 s900=367 s1000=451 s1100=551 s1200=676 inventory=7,1,1,2,0,0
+2.088 3.931 10.704 5.710 7.237 :: # end t=1285.35 score=773 failed=True events=381/400 s900=369 s1000=450 s1100=547 s1200=669 inventory=10,1,1,2,0,0
+2.390 4.169 0.777 5.702 6.813 :: # end t=1314.60 score=831 failed=False events=400/400 s900=367 s1000=457 s1100=564 s1200=684 inventory=6,1,0,2,0,0
+2.218 3.819 11.368 5.714 6.678 :: # end t=1300.50 score=803 failed=True events=395/400 s900=367 s1000=451 s1100=560 s1200=678 inventory=7,1,1,2,0,0
+2.216 3.800 10.705 5.874 6.669 :: # end t=1314.60 score=818 failed=False events=400/400 s900=370 s1000=454 s1100=556 s1200=679 inventory=6,1,0,2,0,0
+2.093 3.933 11.328 5.872 5.499 :: # end t=1292.50 score=785 failed=True events=382/400 s900=368 s1000=453 s1100=555 s1200=678 inventory=10,1,1,2,0,0
+2.225 4.055 11.432 6.030 6.811 :: # end t=1287.30 score=771 failed=True events=381/400 s900=366 s1000=450 s1100=553 s1200=670 inventory=10,1,1,2,0,0
+2.071 3.781 11.323 5.630 6.720 :: # end t=1310.10 score=812 failed=True events=400/400 s900=369 s1000=456 s1100=558 s1200=676 inventory=6,1,0,2,0,0
+1.710 3.764 11.332 5.878 6.716 :: # end t=1306.70 score=803 failed=True events=400/400 s900=366 s1000=452 s1100=554 s1200=670 inventory=6,1,0,2,0,0
+2.219 4.592 1.160 5.956 6.641 :: # end t=1298.45 score=800 failed=True events=395/400 s900=369 s1000=452 s1100=565 s1200=680 inventory=7,1,1,2,0,0
+2.216 4.592 1.161 5.806 6.632 :: # end t=1292.40 score=786 failed=True events=382/400 s900=368 s1000=451 s1100=560 s1200=674 inventory=10,1,1,2,0,0
+2.024 4.379 1.158 5.965 6.723 :: # end t=1314.60 score=816 failed=False events=400/400 s900=370 s1000=456 s1100=566 s1200=685 inventory=6,1,0,2,0,0
+2.222 3.819 11.332 5.949 6.649 :: # end t=1314.60 score=829 failed=False events=400/400 s900=364 s1000=451 s1100=559 s1200=681 inventory=6,1,0,2,0,0
+2.141 3.796 11.400 5.871 6.690 :: # end t=1313.00 score=820 failed=True events=400/400 s900=366 s1000=455 s1100=556 s1200=677 inventory=6,1,0,2,0,0
+2.131 4.386 1.165 5.964 6.709 :: # end t=1314.60 score=823 failed=False events=400/400 s900=367 s1000=454 s1100=563 s1200=679 inventory=6,1,0,2,0,0
+2.081 3.741 11.452 5.632 6.633 :: # end t=1310.60 score=818 failed=True events=400/400 s900=367 s1000=453 s1100=558 s1200=677 inventory=6,1,0,2,0,0
+2.220 4.171 0.984 6.730 6.891 :: # end t=1296.85 score=790 failed=True events=395/400 s900=366 s1000=449 s1100=558 s1200=676 inventory=7,1,1,2,0,0
+2.128 4.006 0.112 5.879 6.633 :: # end t=1309.40 score=811 failed=True events=400/400 s900=366 s1000=451 s1100=556 s1200=677 inventory=6,1,0,2,0,0
+2.151 4.596 1.168 5.637 6.728 :: # end t=1314.60 score=827 failed=False events=400/400 s900=370 s1000=453 s1100=561 s1200=675 inventory=6,1,0,2,0,0
+2.399 4.947 1.945 5.788 6.801 :: # end t=1266.40 score=753 failed=True events=377/400 s900=370 s1000=451 s1100=558 s1200=669 inventory=11,1,1,2,0,0
+2.133 4.077 0.701 5.649 6.713 :: # end t=1298.05 score=796 failed=True events=395/400 s900=368 s1000=449 s1100=558 s1200=675 inventory=7,1,1,2,0,0
+2.226 4.046 11.451 0.864 6.783 :: # end t=1314.60 score=823 failed=False events=400/400 s900=368 s1000=455 s1100=561 s1200=682 inventory=6,1,0,2,0,0
+## re-plan keeping the current lane only
+2.404 4.794 3.972 7.060 6.823 :: # end t=1280.85 score=774 failed=True events=380/400 s900=368 s1000=451 s1100=557 s1200=671 inventory=11,1,1,2,0,0
+2.397 4.880 3.687 7.063 6.903 :: # end t=1281.20 score=777 failed=True events=380/400 s900=367 s1000=451 s1100=558 s1200=673 inventory=11,1,1,2,0,0
+2.381 4.883 3.686 7.060 6.908 :: # end t=1293.65 score=792 failed=True events=382/400 s900=370 s1000=458 s1100=569 s1200=678 inventory=10,1,1,2,0,0
+2.071 4.761 4.158 5.874 6.619 :: # end t=1303.70 score=799 failed=True events=397/400 s900=370 s1000=454 s1100=563 s1200=674 inventory=7,1,1,2,0,0
+2.147 4.783 3.039 5.896 6.700 :: # end t=1291.80 score=784 failed=True events=382/400 s900=371 s1000=451 s1100=564 s1200=673 inventory=10,1,1,2,0,0
+2.145 4.782 3.049 5.912 6.667 :: # end t=1278.85 score=775 failed=True events=379/400 s900=368 s1000=453 s1100=565 s1200=671 inventory=11,1,1,2,0,0
+1.907 4.759 3.026 5.903 6.727 :: # end t=1289.75 score=788 failed=True events=381/400 s900=368 s1000=453 s1100=559 s1200=675 inventory=10,1,1,2,0,0
+2.110 4.759 4.162 5.909 6.629 :: # end t=1273.15 score=765 failed=True events=379/400 s900=367 s1000=456 s1100=561 s1200=671 inventory=11,1,1,2,0,0
+2.121 4.761 4.162 5.913 6.652 :: # end t=1283.80 score=773 failed=True events=380/400 s900=368 s1000=453 s1100=555 s1200=671 inventory=11,1,1,2,0,0
+2.137 4.755 3.052 5.903 6.641 :: # end t=1284.55 score=774 failed=True events=381/400 s900=368 s1000=453 s1100=560 s1200=671 inventory=10,1,1,2,0,0
+2.386 4.869 3.699 7.059 6.894 :: # end t=1286.00 score=782 failed=True events=381/400 s900=370 s1000=455 s1100=562 s1200=672 inventory=10,1,1,2,0,0
+1.732 4.755 3.039 5.908 6.930 :: # end t=1314.60 score=830 failed=False events=400/400 s900=370 s1000=454 s1100=566 s1200=684 inventory=6,1,0,2,0,0
+2.070 4.762 3.039 5.971 6.669 :: # end t=1313.00 score=821 failed=True events=400/400 s900=372 s1000=455 s1100=564 s1200=676 inventory=6,1,0,2,0,0
+2.134 4.767 3.037 5.912 7.096 :: # end t=1308.15 score=806 failed=True events=400/400 s900=368 s1000=454 s1100=563 s1200=678 inventory=6,1,0,2,0,0
+2.137 4.768 3.043 5.903 6.657 :: # end t=1314.60 score=824 failed=False events=400/400 s900=371 s1000=454 s1100=566 s1200=682 inventory=6,1,0,2,0,0
+2.391 4.929 3.694 7.577 6.901 :: # end t=1297.85 score=784 failed=True events=395/400 s900=368 s1000=453 s1100=559 s1200=670 inventory=7,1,1,2,0,0
+2.409 4.916 3.686 7.578 6.913 :: # end t=1298.30 score=791 failed=True events=395/400 s900=367 s1000=454 s1100=564 s1200=671 inventory=7,1,1,2,0,0
+2.225 4.969 3.975 7.056 6.882 :: # end t=1274.25 score=747 failed=True events=379/400 s900=369 s1000=456 s1100=560 s1200=665 inventory=11,1,1,2,0,0
+2.226 4.930 3.676 8.144 6.889 :: # end t=1267.85 score=761 failed=True events=377/400 s900=368 s1000=454 s1100=561 s1200=670 inventory=11,1,1,2,0,0
+1.916 4.763 3.037 5.904 5.538 :: # end t=1293.10 score=788 failed=True events=382/400 s900=368 s1000=452 s1100=563 s1200=675 inventory=10,1,1,2,0,0
+1.735 4.755 3.038 5.912 7.294 :: # end t=1294.50 score=798 failed=True events=394/400 s900=366 s1000=453 s1100=562 s1200=675 inventory=8,1,1,2,0,0
+1.735 4.789 4.093 5.902 6.693 :: # end t=1304.85 score=814 failed=True events=397/400 s900=367 s1000=452 s1100=561 s1200=677 inventory=7,1,1,2,0,0
+2.154 5.475 4.161 5.901 6.678 :: # end t=1303.60 score=802 failed=True events=397/400 s900=370 s1000=453 s1100=561 s1200=673 inventory=7,1,1,2,0,0
+2.155 5.467 4.161 5.873 6.646 :: # end t=1309.90 score=806 failed=True events=400/400 s900=366 s1000=453 s1100=558 s1200=675 inventory=6,1,0,2,0,0
+1.737 4.760 3.033 5.913 7.100 :: # end t=1300.50 score=799 failed=True events=395/400 s900=368 s1000=454 s1100=562 s1200=681 inventory=7,1,1,2,0,0
+2.224 5.326 3.965 6.976 6.774 :: # end t=1309.30 score=816 failed=True events=400/400 s900=368 s1000=456 s1100=563 s1200=675 inventory=6,1,0,2,0,0
+2.074 5.307 4.158 5.908 6.652 :: # end t=1251.65 score=717 failed=True events=369/400 s900=372 s1000=453 s1100=550 s1200=659 inventory=1,1,0,2,0,0
+2.401 4.880 3.976 7.566 6.776 :: # end t=1262.10 score=738 failed=True events=375/400 s900=367 s1000=450 s1100=550 s1200=663 inventory=12,1,1,2,0,0
+1.660 4.767 4.158 5.901 5.566 :: # end t=1253.90 score=732 failed=True events=372/400 s900=366 s1000=452 s1100=552 s1200=664 inventory=2,1,0,2,0,0
+2.094 5.304 4.157 5.793 5.554 :: # end t=1314.60 score=818 failed=False events=400/400 s900=371 s1000=458 s1100=567 s1200=678 inventory=6,1,0,2,0,0
+2.082 3.627 10.715 5.882 6.977 :: # end t=1300.50 score=798 failed=True events=395/400 s900=369 s1000=451 s1100=554 s1200=679 inventory=7,1,1,2,0,0
+2.135 5.261 3.032 5.879 6.687 :: # end t=1309.10 score=817 failed=True events=400/400 s900=369 s1000=453 s1100=560 s1200=678 inventory=6,1,0,2,0,0
+2.081 3.743 10.648 5.872 6.763 :: # end t=1290.75 score=777 failed=True events=382/400 s900=367 s1000=453 s1100=552 s1200=674 inventory=10,1,1,2,0,0
+2.078 3.915 10.651 5.873 6.979 :: # end t=1296.05 score=793 failed=True events=395/400 s900=367 s1000=456 s1100=555 s1200=676 inventory=7,1,1,2,0,0
+2.216 3.800 10.705 5.874 6.669 :: # end t=1312.95 score=813 failed=True events=400/400 s900=368 s1000=452 s1100=552 s1200=676 inventory=6,1,0,2,0,0
+2.093 3.933 11.328 5.872 5.499 :: # end t=1312.45 score=811 failed=True events=400/400 s900=368 s1000=449 s1100=552 s1200=672 inventory=6,1,0,2,0,0
+2.094 3.933 11.304 5.796 6.727 :: # end t=1296.20 score=788 failed=True events=395/400 s900=367 s1000=451 s1100=552 s1200=675 inventory=7,1,1,2,0,0
+2.067 3.930 11.331 5.638 6.700 :: # end t=1303.65 score=802 failed=True events=397/400 s900=366 s1000=455 s1100=555 s1200=677 inventory=7,1,1,2,0,0
+1.587 4.994 4.077 5.668 5.528 :: # end t=1283.15 score=775 failed=True events=380/400 s900=369 s1000=453 s1100=560 s1200=672 inventory=11,1,1,2,0,0
+2.222 3.819 11.332 5.949 6.649 :: # end t=1312.30 score=813 failed=True events=400/400 s900=366 s1000=455 s1100=557 s1200=675 inventory=6,1,0,2,0,0
+2.141 3.796 11.400 5.871 6.690 :: # end t=1306.75 score=806 failed=True events=400/400 s900=367 s1000=453 s1100=557 s1200=677 inventory=6,1,0,2,0,0
+2.088 3.931 10.704 5.710 7.237 :: # end t=1314.60 score=822 failed=False events=400/400 s900=367 s1000=454 s1100=555 s1200=678 inventory=6,1,0,2,0,0
+2.155 3.789 10.716 5.685 7.119 :: # end t=1314.60 score=825 failed=False events=400/400 s900=364 s1000=454 s1100=558 s1200=683 inventory=6,1,0,2,0,0
+2.155 3.782 11.323 5.879 6.728 :: # end t=1309.05 score=813 failed=True events=400/400 s900=367 s1000=456 s1100=557 s1200=675 inventory=6,1,0,2,0,0
+2.081 3.741 11.452 5.632 6.633 :: # end t=1309.75 score=810 failed=True events=400/400 s900=364 s1000=452 s1100=553 s1200=676 inventory=6,1,0,2,0,0
+2.024 4.379 1.158 5.965 6.723 :: # end t=1308.00 score=819 failed=True events=400/400 s900=367 s1000=449 s1100=560 s1200=680 inventory=6,1,0,2,0,0
+2.216 4.592 1.161 5.806 6.632 :: # end t=1314.60 score=823 failed=False events=400/400 s900=366 s1000=449 s1100=561 s1200=677 inventory=6,1,0,2,0,0
+2.390 4.169 0.777 5.702 6.813 :: # end t=1314.60 score=817 failed=False events=400/400 s900=369 s1000=455 s1100=565 s1200=679 inventory=6,1,0,2,0,0
+2.071 3.781 11.323 5.630 6.720 :: # end t=1314.60 score=821 failed=False events=400/400 s900=369 s1000=454 s1100=556 s1200=684 inventory=6,1,0,2,0,0
+2.218 3.819 11.368 5.714 6.678 :: # end t=1314.60 score=815 failed=False events=400/400 s900=368 s1000=454 s1100=561 s1200=681 inventory=6,1,0,2,0,0
+2.131 4.386 1.165 5.964 6.709 :: # end t=1314.60 score=825 failed=False events=400/400 s900=369 s1000=456 s1100=563 s1200=680 inventory=6,1,0,2,0,0
+2.225 4.055 11.432 6.030 6.811 :: # end t=1308.00 score=812 failed=True events=400/400 s900=368 s1000=450 s1100=555 s1200=675 inventory=6,1,0,2,0,0
+2.219 4.592 1.160 5.956 6.641 :: # end t=1304.25 score=801 failed=True events=397/400 s900=369 s1000=457 s1100=563 s1200=678 inventory=7,1,1,2,0,0
+2.128 4.006 0.112 5.879 6.633 :: # end t=1314.60 score=821 failed=False events=400/400 s900=366 s1000=456 s1100=560 s1200=682 inventory=6,1,0,2,0,0
+1.710 3.764 11.332 5.878 6.716 :: # end t=1303.20 score=796 failed=True events=397/400 s900=366 s1000=452 s1100=560 s1200=680 inventory=7,1,1,2,0,0
+2.226 4.046 11.451 0.864 6.783 :: # end t=1314.60 score=813 failed=False events=400/400 s900=367 s1000=457 s1100=564 s1200=677 inventory=6,1,0,2,0,0
+2.151 4.596 1.168 5.637 6.728 :: # end t=1302.00 score=806 failed=True events=395/400 s900=367 s1000=451 s1100=560 s1200=675 inventory=7,1,1,2,0,0
+2.399 4.947 1.945 5.788 6.801 :: # end t=1295.75 score=787 failed=True events=394/400 s900=371 s1000=449 s1100=560 s1200=674 inventory=8,1,1,2,0,0
+2.133 4.077 0.701 5.649 6.713 :: # end t=1284.40 score=773 failed=True events=381/400 s900=369 s1000=453 s1100=560 s1200=675 inventory=10,1,1,2,0,0
+2.220 4.171 0.984 6.730 6.891 :: # end t=1300.55 score=791 failed=True events=395/400 s900=368 s1000=451 s1100=559 s1200=674 inventory=7,1,1,2,0,0

@@ -124,7 +124,27 @@ From f22, a motorway ramp's side of its end tile takes no road, as in the origin
 
 Data: [v21c on f22 and f21](measurements/bench-f22-replay-v21c-plausible.txt), [v21r on f22 and f21](measurements/bench-f21-f22-replay-v21r-random.txt).
 
+### Car speed measured in the recording (11 November 2026)
+
+At video 116–121 s the HUD shows normal speed (play highlighted, fast-forward dimmed). The clock dial changes between its day and night faces every 5.0 video seconds (2 frames per second, 10 frames per face), and half a day is 10 game seconds, so the game runs **2 game seconds per video second**. That is also the slope of the replay's video/game time pairs there (162 s ↔ video 100, 248 s ↔ video 143). One tile is 100 pixels at 1920×1200 at that zoom: the yellow lots at 16,7 and 15,11 are 400 px apart vertically and 100 px horizontally. A red car on the top straight moves 57 px per 0.2 video seconds, which is **1.43 tiles per game second** (our free straight speed: 1.5). Braking into a right-angle turn it slows to about **1.1** (ours: 1.0 after the 2/3 turn factor). Real car speeds agree with the simulator. So the roughly 11 s longer dispatch-to-delivery time in our replays (see "What remains is throughput") does not come from car speed. With the same roads it most likely comes from the replay's reconstructed event times, consistent with the real game's impossible zero lag in 200–500 s.
+
+### Crossing diagonals (f23, 11 November 2026)
+
+In the original, two diagonals may cross at a tile corner on land. The corner becomes a junction with four nodes, where cars cross and can also turn onto the other diagonal. It is refused only when the new link starts or ends on water (`TileEditor`). Ours refused every crossing. f23 accepts it and routes through the corner, both straight and turning. Corner lanes now arbitrate as their own chunk, as the original's corner chunks do, so a light or the junction slowdown of the tile they leave no longer applies to them (decision 106).
+
+The replay never builds a crossing: none of its builds is refused on f22. The corner-chunk change still moves it slightly. On the 60 plausible phase sets, v21c scores 796.3 (669–829) with 18/60 reaching the end, against f22's 794.4 with 15/60 (paired +2.0 ± 2.0; [data](measurements/bench-f23-replay-v21c-p60.txt)).
+
 ## Experiments not adopted
+
+- **Original re-plan on road changes, on f22 (11 November 2026).** On the 60 plausible phase sets ([phases](measurements/plausible-phases-v21b-60.txt)) replay v21c scores 786.2 (700–833), 8/60 reach the end, against f22's 794.4 (669–833), 15/60. Paired difference −8.1 ± 4.8 trips; 22/60 runs improve ([data](measurements/experiment-repath-on-f22-p60.txt)). On the 20-set benchmark it was −11.6. It runs at f22's speed once return paths are re-found lazily; refreshing every stored return path at every change doubled run time. It is the original's rule, but it moves the replay away from the real game, so it stays off.
+  **Which part, and where (f23).** Split into parts on the 60 sets, each against f23 (796.3), and scored at fixed times as well as at the end ([data](measurements/experiment-repath-parts-on-f23-p60.txt)):
+
+  | Against f23 | Trips by 900 s | 1000 s | 1100 s | 1200 s | Final score | Mean end |
+  |---|---|---|---|---|---|---|
+  | Full rule (current lane + 2 kept) | −0.1 ± 0.3 | −0.7 ± 0.4 | −0.2 ± 0.7 | −1.6 ± 0.9 | −11.2 ± 4.4 (41/60 worse) | 1290 s (f23 1297 s) |
+  | Re-plan keeping the current lane only | +0.1 ± 0.3 | +0.2 ± 0.4 | +0.8 ± 0.7 | −0.4 ± 0.8 | −0.4 ± 4.0 | 1299 s |
+
+  The whole loss comes from the two extra committed lanes, and it is not slower traffic: by 1200 s the full rule has delivered about 1.5 trips fewer. The final score falls because the game ends about 7 s earlier, when a crowded lot overflows slightly sooner. At the end the score moves about 1.6 trips per game second, so small differences there decide the result. The port matches the original. In the original, `path[0]` is the next lane and the car re-plans from `path[1]`, the current lane plus two; our extension to the end of a tile only keeps corner and motorway lanes, which lead one way anyway. So the effect looks real but small, and it is sensitive to the replay's timing near the end. It stays off.
 
 - **Original tick length (0.1 s instead of 0.05 s), on f7:** 16-phase mean 777.8 → 762.5 (597–813), 5/16 reach the end; fitted 799 → 789 ([data](measurements/experiment-tick-0.1-on-f7.txt)). The original steps at 0.1 s, but our arbitration, dispatch quotas and tests were built around 0.05 s and the coarser step made results worse and noisier, so the step stays at 0.05 s.
 
@@ -141,13 +161,13 @@ Data: [v21c on f22 and f21](measurements/bench-f22-replay-v21c-plausible.txt), [
 
 Original free-play city growth (building placement by the original's weight layers and building influence, house driveways, playable edges, spawn schedule, supply anchor; branch simulator `2026-11-11.g1`, merged into `fidelity-aya` as `2026-11-10.f12`) is recorded in [fidelity-aya-growth-2026-11-11](../fidelity-aya-growth-2026-11-11/README.md). Replays force building spawns, so replay v21 results are not affected by it.
 
-## Open items (state at f20)
+## Open items (state at f23)
 
 Known differences from the original that are not yet modelled, roughly by expected effect:
 
 1. **Replay demand input.** The real game had roughly 10% more demand by ~1260 s than replay v21 gives us (see above). v21b covers the three provably late destinations, using lower-bound delays. Circles that failed for a while and then succeeded (navy at 1030 s, yellow at 1106 s) and any pending cyan entry of plan days 40–76 cannot be timed from the video and are not represented.
-2. **Crossing diagonals.** The original lets two diagonal roads cross at a tile corner, forming a four-lane corner junction where cars can also turn; ours refuses the stroke. Needs corner nodes in the route graph.
-3. **Re-routing details (in progress).** Ported in `RefreshJourneyOriginal` but switched off (`OriginalRepath=false`, so behaviour is f22): re-plan every car in the step after a road change, keeping its current lane and the next two, and re-find the stored way home when the car sets off. On the 20 plausible phase sets it scored 789.8 against 801.4 (paired −11.6, range −76 to +40), within the noise of 20 sets, so it is being judged on 60 plausible sets ([phases](measurements/plausible-phases-v21b-60.txt)) before adoption.  The original re-paths from a car's committed lanes, keeping its next two lanes; ours rebuilds the current lane with a joining curve at the next eligible lane start. Re-paths of cars already on a trip may use erased (mothballed) lanes at cost 100000 (`allowMothballedLaneUse: true`), so an erased link can stay in use; ours drops the link from the graph and cars keep only the lanes they had.
-4. **Roundabout activation.** The original keeps a new roundabout planned until conflicting lanes clear and holds affected cars (hot-swapping lanes); ours switches at once.
+2. **Crossing diagonals.** Modelled from f23 (see above). Not modelled: a crossing next to a roundabout, and a turn at a corner when the two tiles are also linked directly (the direct link is used).
+3. **Re-routing details.** The original re-plans every car in the step after a road change, keeping its current lane and the next two (`VehicleModel.NumberOfLanesToCommitTo`). Ours re-plans at the car's next ordinary lane start, keeping only the current lane. The original's version is ported (`RefreshJourneyOriginal`, stored return paths re-found when the car sets off home) but switched off (`OriginalRepath=false`): see experiments. Up to 1200 s it changes deliveries by under 2 trips; the replay's final score drops because the game ends about 7 s earlier.
+4. **Roundabout activation.** The original keeps a new roundabout planned until conflicting lanes clear and holds affected cars (hot-swapping lanes); ours switches at once. Sized on the replay (best-fit phases): after the roundabout at 19,9 is built at 1051 s, 16 cars still have old footprint lanes ahead and the last clears at 1058 s, so the difference is a one-time window of about 7 s at one junction. Deferred: the port (`ReleaseMothballedLanesProcess` hot-swap rules, `IsAboutToHotswap` stops) is large for that effect.
 5. **Traffic-light removal.** The original removes a light, and returns it to stock, when an erased link is released and leaves the tile with fewer than three roads. Erased links still in use count as roads. Ported and measured but not adopted: in the replay it removes a light that the real game kept (see experiments).
 6. **Smaller items.** All-leader pushing cycles (the 45 s escape covers deadlocks); the drag-time preference for a new motorway's anchor ramp, which depends on the mouse drag (edits are modelled); drawing by greedy eight-direction stepping instead of a raster line. Junctions on water (f21) and motorway ramp sides (f22) are now modelled.

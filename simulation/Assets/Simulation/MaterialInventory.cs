@@ -78,8 +78,8 @@ namespace MotorwaysSim {
   }
   // Original TileEditor.WouldConnectionPassPassageConstraints (bridges): a water tile holds at most two roads, so a
   // link may not give one a third (roads erased but still in use count); a link may not start from a water tile with
-  // no road; restoring an erased link is always allowed. (Diagonals that would cross at a corner are refused for all
-  // tiles in Connect.)
+  // no road; restoring an erased link is always allowed. (A diagonal that would cross another at a corner is refused
+  // in Connect when it starts or ends on water.)
   int OriginalRoadCount(Cell c)=>Degree(c)+retiredConnectionConcrete.Keys.Count(e=>e.Item1==c||e.Item2==c);
   string WaterLinkViolation(Cell from,Cell to){
    if(Rules.Version!=GameVersion.OriginalReference)return null;

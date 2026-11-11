@@ -1448,3 +1448,15 @@ Unity 6000.6.0f1 batch import/compilation completed successfully, exit code 0,
 with no C# compiler errors. No player build or interactive visual inspection was
 performed in this port. The local-only editor log is
 C:/Users/moham/mini_motorways/tmp/playground-main-unity.log.
+
+
+## 106 - Crossing diagonals form a corner junction (11 November 2026, `fidelity-aya`)
+
+Numbered 106 because upstream `main` already uses 105 (upstream's 042, renumbered in the merge of 11 November).
+
+**Evidence.** `TileEditor.WouldConnectionPassPassageConstraints` refuses a diagonal that would cross another at a tile corner only when the new link starts or ends over an obstruction (water, mountain). On land the crossing is allowed. `LaneUpdateProcess` then builds a `TileCornerModel` whose signature has the four diagonal nodes. `RoadTileSignature.AddNode` connects every pair of nodes except a U-turn, so the corner is a junction: cars cross, and can also turn onto the other diagonal. `GetLaneSpeed` gives the intersection factor to a lane with more than one onward lane, so a tile lane leading into the crossing corner slows. Corner chunks are separate road chunks, never controlled by a light. Ours refused every crossing stroke, and its corner lanes were treated as part of the tile they leave: they could take that tile's light state and junction slowdown.
+
+**Engineering choice** (OriginalReference). `Connect` accepts a crossing diagonal unless the new link touches water or a roundabout end (roundabout corners are not modelled). Lanes carry a chunk cell (`Lane.ChunkCell`): the tile for ordinary lanes, a corner code with negative coordinates for corner lanes. Arbitration, conflict tests, light checks and the intersection slowdown compare chunks instead of tiles. A crossing corner arbitrates like any junction with more than two lanes, using the existing connection-intersection rule with the diagonal node directions. Our routes list cells, so a turn at the corner is an orthogonal step between two tiles that have no direct link (`CornerTurn`). Its lanes are the tile lane toward the corner, a turning corner lane, and the next tile's lane, as if arriving along the other diagonal. Where the two tiles are also linked directly the direct link is used, and with crossings on both sides of their edge the first side is used. The route cost of a turn is half a diagonal at the tile's lane speed plus half at turn speed. A route step through a turn counts as using both diagonals for erase-and-release.
+
+**Measured.** Simulator `2026-11-10.f23`. Replay v21c on the 60 plausible phase sets scores 796.3 (669–829), with 18/60 reaching the end. f22 scored 794.4 with 15/60, a paired +2.0 ± 2.0. The replay has no crossings, so the change comes from corner lanes arbitrating as their own chunk. A new check covers the build rules, the shared corner chunk, the conflict between crossing lanes, routes straight through and turning, and a flow scenario: 12 deliveries over both diagonals with a turn, with crossing lanes never occupied together. 96 suites pass.
+

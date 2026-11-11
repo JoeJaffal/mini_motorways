@@ -23,7 +23,7 @@ namespace MotorwaysSim
         struct ObstacleRecord{public ObstacleKind Kind;public int Car;public double Distance;public int Blocker;public string BlockedLane;public Cell BlockedTile;}
 
         // A chunk with two or fewer lanes accepts entry without arbitration (before any light check).
-        bool ChunkHasFewLanes(Cell tile)=>Degree(tile)+Motorways.Count(m=>!m.PendingRemoval&&(m.Start==tile||m.End==tile))<=2;
+        bool ChunkHasFewLanes(Cell tile)=>tile.X<0?!IsCrossingCorner(tile):Degree(tile)+Motorways.Count(m=>!m.PendingRemoval&&(m.Start==tile||m.End==tile))<=2;
 
         static bool IsImmediateNext(Vehicle car,Lane lane)=>car.RouteIndex+1<car.Lanes.Count&&ReferenceEquals(car.Lanes[car.RouteIndex+1],lane);
 
@@ -42,20 +42,20 @@ namespace MotorwaysSim
         bool MayEnterOriginal(Vehicle car,Lane lane,List<MotionSnapshot> snapshot,out string why,out int blocker)
         {
             why="";blocker=-1;
-            if(lane.IsMotorway||lane.IsCorner||ChunkHasFewLanes(lane.Tile))return true;
+            if(lane.IsMotorway||lane.IsCorner&&!lane.IsJunction||ChunkHasFewLanes(lane.ChunkCell))return true;
             if(!LightAllowsEntry(lane)){why="Traffic light";return false;}
             if(car.Shoving&&car.ShovingLane==lane.Key&&IsImmediateNext(car,lane))return true;
             if(WaitedTooLong(car,lane))return true;
             if(!TraversingAllows(car,lane,snapshot,out blocker,out why))return false;
-            if(!TryApproach(car,lane.Tile,out _,out double ownDistance))return true;
+            if(!TryApproach(car,lane.ChunkCell,out _,out double ownDistance))return true;
             bool ownEligible=Committed(car,lane),ownRing=OnTargetRoundabout(car,lane);
             double ownRegistered=car.ApproachRegistered.TryGetValue(lane.Key,out var ownTime)?ownTime:Time;
             foreach(var other in snapshot)
             {
-                if(other.Car.Id==car.Id||!TryApproach(other.Car,lane.Tile,out var target,out double theirDistance))continue;
+                if(other.Car.Id==car.Id||!TryApproach(other.Car,lane.ChunkCell,out var target,out double theirDistance))continue;
                 // Original inbound order: crossing in front of a stopped candidate is allowed.
                 bool stopped=other.Speed<.0005;
-                if(!(lane.Incoming<8&&target.Incoming<8&&lane.Tile==target.Tile?ConnectionsIntersect(lane,target,stopped):Conflicts(lane,target))||!LightAllowsEntry(target))continue;
+                if(!(lane.Incoming<8&&target.Incoming<8&&lane.ChunkCell==target.ChunkCell?ConnectionsIntersect(lane,target,stopped):Conflicts(lane,target))||!LightAllowsEntry(target))continue;
                 bool theirShove=other.Car.Shoving&&other.Car.ShovingLane==target.Key&&IsImmediateNext(other.Car,target);
                 // Ineligible candidates (uncommitted, or blocked by traffic inside the chunk) sort behind
                 // every eligible one, so they never hold priority over an eligible entry.
@@ -72,16 +72,16 @@ namespace MotorwaysSim
 
         bool TraversingAllows(Vehicle car,Lane lane,List<MotionSnapshot> snapshot,out int blocker,out string why)
         {
-            blocker=-1;why="";bool? space=null;bool green=Signals.ContainsKey(lane.Tile)&&LightPermits(lane);
+            blocker=-1;why="";bool? space=null;bool green=Signals.ContainsKey(lane.ChunkCell)&&LightPermits(lane);
             foreach(var other in snapshot)
             {
-                if(other.Car.Id==car.Id||other.Lane.IsMotorway||other.Lane.IsParking||other.Lane.IsCorner||other.Lane.Tile!=lane.Tile)continue;
+                if(other.Car.Id==car.Id||other.Lane.IsMotorway||other.Lane.IsParking||other.Lane.ChunkCell!=lane.ChunkCell)continue;
                 if(other.Index>=other.Car.Lanes.Count-1)continue; // no remaining path
                 if(other.Lane.Outgoing==lane.Outgoing)
                 {
                     // Same exit: the space test runs first and the near-exit release does not apply;
                     // the geometry check below still does.
-                    space??=HasExitSpace(car,l=>l.Tile==lane.Tile&&!l.IsMotorway&&!l.IsParking);
+                    space??=HasExitSpace(car,l=>l.ChunkCell==lane.ChunkCell&&!l.IsMotorway&&!l.IsParking);
                     if(!space.Value){blocker=other.Car.Id;why="Exit space";return false;}
                     // The original's connection test treats two lanes with the same exit as intersecting, so a
                     // car on a different lane merging into that exit blocks entry even when there is space.
