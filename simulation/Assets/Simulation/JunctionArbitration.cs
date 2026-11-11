@@ -4,12 +4,11 @@ using System.Linq;
 
 namespace MotorwaysSim
 {
-    // OriginalReference junction entry arbitration, independently implemented from the rule description in
-    // docs/training/simulator-repairs-2026-11-08/ORIGINAL_SPACE_CHECK_RULE_ANSWER.md (no original code).
-    // Order: lane-count gate, red light, shove, traversing vehicles (shared-exit space, different-exit
-    // release, geometry with green bypass), then inbound reservations among eligible candidates.
-    // Not implemented because the description leaves them open: the effect of all-leader "pushing"
-    // cycles, the stopped-candidate argument of the connection test, and the optional 45 s wait escape.
+    // OriginalReference junction entry arbitration. First written from the rule description in
+    // docs/training/simulator-repairs-2026-11-08/ORIGINAL_SPACE_CHECK_RULE_ANSWER.md, then checked against the decompiled
+    // RoadChunkModel / VehicleMovementProcess (decisions 107, 112, 113). Order: lane-count gate, red light, shove, 45 s
+    // wait escape, traversing vehicles (shared-exit space, different-exit release, geometry with green bypass), then
+    // inbound reservations among eligible candidates. Blocking cycles start from stuck vehicles; all-leader cycles push.
     public sealed partial class TrafficWorld
     {
         // Original: space must strictly exceed two vehicle lengths, found within five obstacle states.
