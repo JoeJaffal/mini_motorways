@@ -66,7 +66,7 @@ namespace MotorwaysSim
                     if(state.dir<8&&((direction-state.dir+8)%8)==4)
                     {
                         if(Rules.Version!=GameVersion.OriginalReference)cost+=500;
-                        else if(Degree(state.cell)>1)continue;
+                        else if(RoadDegree(state.cell)>1)continue;
                     }
                     if(allowRetired&&(PendingRemoval[next.X,next.Y]||PendingRemoval[state.cell.X,state.cell.Y]))cost+=100000;
                     // The original charges a mothballed motorway lane like any mothballed lane (100000), so re-routing cars

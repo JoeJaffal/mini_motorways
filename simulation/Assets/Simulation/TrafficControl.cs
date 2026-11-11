@@ -292,7 +292,9 @@ namespace MotorwaysSim
         bool OnTargetRoundabout(Vehicle car,Lane target)
         {
             var round=RoundaboutAt(target.Tile);
-            return round!=null&&car.CurrentLane!=null&&car.CurrentLane.IsRoundabout&&round.Ring.Contains(car.CurrentLane.Tile);
+            if(round==null||car.CurrentLane==null||!car.CurrentLane.IsRoundabout||!round.Ring.Contains(car.CurrentLane.Tile))return false;
+            // Original IsVehicleOnRoundabout: ring lanes and lanes feeding the ring count; a ring tile's exit lane does not.
+            return Rules.Version!=GameVersion.OriginalReference||round.Ring.Contains(car.CurrentLane.Next);
         }
 
         void RegisterApproaches(Vehicle car)

@@ -1317,3 +1317,12 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Engineering choice.** `HouseSupplyContribution` uses the tile outside the first entrance (`Entrances[0]`, the west/north one of a shared lot). It affects only house scheduling, i.e. free play.
 
 **Checks for 085–088.** Simulator `2026-11-11.g1`: 92 suites pass (85 + 7 new placement suites in `OriginalPlacementChecks.cs`; no existing assertion changed); five-map and training-readiness checks pass; replay v21 is bit-identical to f7 (default run COMPLETED, 353 of 400 events, 663 trips, game over at 1214.8 s; 16 fixed phase sets mean 777.8, fitted phases 799 at 1307 s with 400 of 400 events).
+
+
+## 093 - Motorway slots count as roads; who is circulating (11 November 2026, `fidelity-aya`)
+
+**Evidence.** `RoadTileSignature.AddNode` adds a motorway's slot as a road node of its end tile, so lanes into that tile see one more outbound choice (`GetLaneSpeed` intersection factor), `GetNumberOfRoadsInIntersectionForSlowingVehicles` counts the slot's direction, and a tile with one road plus a motorway has no U-turn lane. `InboundVehicleDistanceComparer.IsVehicleOnRoundabout` counts a car as circulating only on a ring lane or a lane feeding one; ours also counted cars on a ring tile's exit lane.
+
+**Engineering choice** (OriginalReference). `RoadDegree` (connections plus active motorway ends) in `OriginalLaneSpeed`, `RoadsForIntersectionSlowdown` and the `FindRoute` U-turn test; `OnTargetRoundabout` requires the car's lane to continue on the ring.
+
+**Measured.** Simulator `2026-11-10.f13`: ablations showed the circulating change alone is neutral (784.5) and the U-turn test alone small; motorway slots in lane speeds and the slowdown lower the 16-phase mean 784.5 → 762.9 (584–803, the 584 run is a high-demand phase set with no stuck cars), 5/16 reach the end; fitted phases 784 at 1301 s → 795 at 1308 s. Kept for fidelity. 92 suites, five-map checks and training readiness pass.

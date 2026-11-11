@@ -31,10 +31,13 @@ namespace MotorwaysSim
                 int turn=Math.Abs(incoming-outgoing);turn=Math.Min(turn,8-turn);uTurn=turn==4;
                 if(turn==2)speed*=Rules.RightAngleMultiplier;else if(turn>=3)speed*=Rules.SharpTurnMultiplier;
             }
-            if(incoming<8&&!uTurn&&InBounds(next)&&Degree(next)>=3&&Tile(next)!=Infrastructure.TrafficLight&&RoundaboutAt(next)==null)
+            if(incoming<8&&!uTurn&&InBounds(next)&&RoadDegree(next)>=3&&Tile(next)!=Infrastructure.TrafficLight&&RoundaboutAt(next)==null)
                 speed*=Rules.IntersectionMultiplier;
             return speed;
         }
+
+        // The original counts a motorway's slot on its end tile as a road connection (RoadTileSignature).
+        int RoadDegree(Cell tile)=>Degree(tile)+Motorways.Count(m=>!m.PendingRemoval&&(m.Start==tile||m.End==tile));
 
         // Original NumberOfRoadsAtIntersectionToSlowDownFor: distinct roads at the chunk, ignoring house driveways,
         // carpark entrances and roundabout lanes (IgnoreHouses/IgnoreDestinationsForIntersectionSlowDown = 1).
@@ -48,7 +51,7 @@ namespace MotorwaysSim
                 if(AccessBuildingAt(other)!=null||RoundaboutAt(other)!=null)continue;
                 count++;
             }
-            return count;
+            return count+Motorways.Count(m=>!m.PendingRemoval&&(m.Start==tile||m.End==tile));
         }
 
         // Original RoadTileConnection.IntersectsOtherConnection (right-hand traffic, smallIntersection = true), decided
