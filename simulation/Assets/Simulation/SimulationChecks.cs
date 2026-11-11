@@ -336,9 +336,9 @@ namespace MotorwaysSim
                 Check(original.ChooseUpgrade(0)&&original.Inventory[0]==roads+added,"original material package applied");
                 Check(custom.UpgradeChoices.Count==0,"weekly rewards do not leak to custom");
                 var bridge=new TrafficWorld(7,false,Rules.ForVersion(GameVersion.OriginalReference));bridge.Reset(7,ScenarioKind.EmptyLab);
-                for(int i=20;i<23;i++){bridge.Water[i,8]=true;Check(bridge.Build(BuildTool.Bridge,new Cell(i,8)),"one bridge supports a water span");}
-                Check(bridge.Connect(new Cell(20,8),new Cell(21,8))&&bridge.Connect(new Cell(21,8),new Cell(22,8)),"connect water span");
-                Check(bridge.Inventory[0]==23&&bridge.Inventory[1]==0,"span uses two connections and one bridge");
+                for(int i=20;i<23;i++)bridge.Water[i,8]=true;
+                Check(bridge.DrawRoad(new Cell(19,8),new Cell(22,8))&&Enumerable.Range(20,3).All(i=>bridge.Tile(new Cell(i,8))==Infrastructure.Bridge),"one bridge supports a water span");
+                Check(bridge.Inventory[0]==22&&bridge.Inventory[1]==0,"span uses three connections and one bridge");
                 bridge.Build(BuildTool.Remove,new Cell(21,8));bridge.Build(BuildTool.Remove,new Cell(20,8));
                 Check(bridge.Inventory[1]==0,"split/removal cannot duplicate bridge stock");
                 // Original Passage: a stroke from land onto fresh water starts a crossing; parallel strokes are separate
@@ -346,9 +346,13 @@ namespace MotorwaysSim
                 var river=new TrafficWorld(7,false,Rules.ForVersion(GameVersion.OriginalReference));river.Reset(7,ScenarioKind.EmptyLab);
                 for(int y=8;y<10;y++)for(int x=20;x<23;x++)river.Water[x,y]=true;
                 river.Inventory[1]=2;river.Inventory[0]=100;
-                Check(river.DrawRoad(new Cell(19,8),new Cell(23,8))&&river.Inventory[1]==1,"first stroke across the river uses one bridge");
-                Check(river.DrawRoad(new Cell(19,9),new Cell(23,9))&&river.Inventory[1]==0,"a parallel stroke is a second crossing");
-                Check(river.Connect(new Cell(21,8),new Cell(21,9))&&river.Inventory[1]==1,"linking two crossings returns a bridge");
+                Check(river.DrawRoad(new Cell(19,8),new Cell(21,8))&&river.Inventory[1]==1,"first stroke onto the river uses one bridge");
+                Check(river.DrawRoad(new Cell(19,9),new Cell(21,9))&&river.Inventory[1]==0,"a parallel stroke is a second crossing");
+                Check(river.Connect(new Cell(21,8),new Cell(21,9))&&river.Inventory[1]==1,"linking two crossing ends returns a bridge");
+                // Original: a water tile holds at most two roads, and a link cannot start from bare water.
+                Check(!river.Connect(new Cell(20,8),new Cell(20,9))&&!river.Connect(new Cell(21,8),new Cell(22,8)),"no junction on a bridge tile");
+                river.DrawRoad(new Cell(22,9),new Cell(23,9));
+                Check(river.Tile(new Cell(22,9))==Infrastructure.None&&river.Degree(new Cell(23,9))==0&&river.Inventory[1]==1,"no stroke from bare water");
                 bridge.Build(BuildTool.Remove,new Cell(22,8));Check(bridge.Inventory[0]==25&&bridge.Inventory[1]==1,"bridge stock returned only after final tile clears");
             });
             Test("infeasible custom scenario rejected instead of demand reduced",()=>{

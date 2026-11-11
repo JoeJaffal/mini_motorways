@@ -76,6 +76,19 @@ namespace MotorwaysSim {
    if(!bridgeSpans.TryGetValue(a,out int keep)||!bridgeSpans.TryGetValue(b,out int other)||keep==other)return;
    foreach(var key in bridgeSpans.Where(p=>p.Value==other).Select(p=>p.Key).ToArray())bridgeSpans[key]=keep;Inventory[1]++;
   }
+  // Original TileEditor.WouldConnectionPassPassageConstraints (bridges): a water tile holds at most two roads, so a
+  // link may not give one a third (roads erased but still in use count); a link may not start from a water tile with
+  // no road; restoring an erased link is always allowed. (Diagonals that would cross at a corner are refused for all
+  // tiles in Connect.)
+  int OriginalRoadCount(Cell c)=>Degree(c)+retiredConnectionConcrete.Keys.Count(e=>e.Item1==c||e.Item2==c);
+  string WaterLinkViolation(Cell from,Cell to){
+   if(Rules.Version!=GameVersion.OriginalReference)return null;
+   bool a=Water[from.X,from.Y],b=Water[to.X,to.Y];if(!a&&!b)return null;
+   if(retiredConnectionConcrete.ContainsKey(RoadEdge(from,to)))return null;
+   if(a&&OriginalRoadCount(from)>1||b&&OriginalRoadCount(to)>1)return "Cannot build a bridge that would create an intersection";
+   if(a&&OriginalRoadCount(from)==0)return "Cannot build a new bridge from an empty water tile";
+   return null;
+  }
   void RefundOriginal(Cell cell){
    if(Rules.UnlimitedConstruction)return;
    switch(Tile(cell)){

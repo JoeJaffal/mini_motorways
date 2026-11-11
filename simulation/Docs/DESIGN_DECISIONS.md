@@ -1407,3 +1407,12 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Engineering choice** (replay data, not a rule change). `replay-candidate-v21b.json` = v21a with `scheduledAt` 512 s on yellow 26,18 and 779 s on red 12,19, plus 405 s on red 17,17 as before. These are latest possible times, so lower-bound delays. With this demand, the five demand phases refitted to the real score curve fit far better: RMSE 3.9 instead of 8.7 trips, with a positive delivery lag. The 20 independent fits become the phase sets for judging the replay, in place of random phases that contradict the real curve.
 
 **Measured.** Simulator `2026-11-10.f20` on the 20 plausible phase sets: v21b mean 791.5 (744–824), 4/20 reach the end, mean end 1297 s; v21 784.8 (743–801). The original scored 835 and ended at about 1314.6 s. Pin creation matches the original formula within one pin, so the remaining gap is time from dispatch to delivery and late congestion at the red lots. Report: `docs/training/fidelity-aya-2026-11-10/README.md`, section "Replay v21b".
+
+
+## 103 - Bridges carry no junctions (11 November 2026, `fidelity-aya`)
+
+**Evidence.** `TileEditor.WouldConnectionPassPassageConstraints` (bridges over water): a link touching a water tile is refused if that tile already has more than one live or pending road. Live includes erased roads still in use. A link is also refused from a water tile with no road, and a link that restores an erased (mothballed) road is always allowed. Diagonals that would cross at a tile corner over water are refused; ours already refuses crossing diagonals on every tile. Ours allowed any number of roads on a bridge tile and strokes starting on bare water.
+
+**Engineering choice** (OriginalReference). `Connect` refuses such links. The stroke loop skips building a bridge tile for a refused link, so no bridge is spent on a road that cannot form. The two bridge-stock checks now use legal moves: the span is drawn from land, and two crossings are merged by linking their dead-end ends instead of their middles. A new check covers both refusals.
+
+**Measured.** Simulator `2026-11-10.f21`: replay v21b on the 20 plausible phase sets is identical to f20 (791.5; the replay's bridges have no junctions). 94 suites pass.

@@ -242,6 +242,7 @@ namespace MotorwaysSim
             if(!RoundaboutAllowsConnection(from,to)||!RoundaboutAllowsConnection(to,from))return Reject("Invalid roundabout entrance direction");
             int d=Direction(from,to);
             if((Connections[from.X,from.Y]&(1<<d))!=0)return true;
+            var overWater=WaterLinkViolation(from,to);if(overWater!=null)return Reject(overWater);
             if(d%2==1)
             {
                 var crossA=new Cell(from.X,to.Y);var crossB=new Cell(to.X,from.Y);
@@ -297,6 +298,10 @@ namespace MotorwaysSim
                 // Original TileEditor: a stroke into a house turns its driveway toward the road it arrives from.
                 if(Rules.Version==GameVersion.OriginalReference&&previous.HasValue&&BuildingAt(c) is Building home&&home.IsHouse&&home.Cell==c&&
                     !ValidParcelLink(previous.Value,c))SetHouseDriveway(home.Id,Direction(c,previous.Value));
+                // Original TileEditor: a link that breaks the water rules forms no road, so its bridge tile is not built.
+                if(!CanTraverse(c)&&Water[c.X,c.Y]&&Rules.Version==GameVersion.OriginalReference&&
+                    (!previous.HasValue||WaterLinkViolation(previous.Value,c)!=null))
+                {Reject(previous.HasValue?WaterLinkViolation(previous.Value,c):"Cannot build a new bridge from an empty water tile");previous=null;continue;}
                 if(!CanTraverse(c))
                 {
                     bridgeFrom=previous;bool built=Build(Water[c.X,c.Y]?BuildTool.Bridge:BuildTool.Road,c);bridgeFrom=null;

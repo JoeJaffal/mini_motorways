@@ -75,6 +75,7 @@ Replay v21, 16-phase mean (min–max) and fitted-phase result. Real game: 835 at
 | `2026-11-10.f18` | Strokes keep stepping past an unaffordable link; strokes into a house turn its driveway | 791.1, unchanged (no such strokes in the replay) | 1312 s | 791, fails at 1310 s |
 | `2026-11-10.f19` | Lights only on tiles with three or more roads, not on rail | 791.1, unchanged (both replay lights qualify) | 1312 s | 791, fails at 1310 s |
 | `2026-11-10.f20` | Full-lot drive-through crosses the nearest bay behind its parked car | 791.1, unchanged (no lot fills in the replay) | 1312 s | 791, fails at 1310 s |
+| `2026-11-10.f21` | No junctions on bridge tiles; no links from bare water | v21b on the 20 plausible phase sets unchanged (791.5): the replay's bridges have no junctions | | |
 
 Self-test: 85 suites pass at every version listed (92 from f12 with 7 placement suites, 93 from f16 with the tile-corner check, 94 from f18 with the house-driveway stroke check).
 
