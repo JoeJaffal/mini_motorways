@@ -1398,3 +1398,12 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Engineering choice** (OriginalReference). `ParkingDriveThrough` returns the nearest bay's entry and exit routes back to back (delivery still on leaving the entrance lane); the leader search treats a parked car as a stopped leader at the end of its `bay-park` lane for any car whose path crosses that bay.
 
 **Measured.** Simulator `2026-11-10.f20`: no lot fills in replay v21 (no drive-through time), so the replay is unchanged (791.1); the drive-through check and the carpark separation fixtures pass. 94 suites, five-map checks and training readiness pass.
+
+
+## 102 - Replay v21b: late destinations from circle conversion; plausible demand phases (11 November 2026, `fidelity-aya`)
+
+**Evidence.** In the LA plan, items with grouping 3 are circles (upgrades). `BuildingSpawningProcess`: a circle with no eligible destination retries every 20 s (`FailedDestinationRetryDelay`), becomes an ordinary destination of its colour at the attempt after its sixth failure, and is placed at the next retry. That is at least 140 s after it was scheduled, and its colour gets `BalanceDemandFromFailedSpawns` extra demand the whole time. The recording shows no upgrade before 1030 s, but the plan schedules a yellow circle (chunk days 16–36) and a red circle (chunk days 30–42). The slot bounds identify yellow 26,18 (652 s) and red 12,19 (919 s) as those converted circles, scheduled by 512 s and 779 s, and show red 30,18 (662 s) on time.
+
+**Engineering choice** (replay data, not a rule change). `replay-candidate-v21b.json` = v21a with `scheduledAt` 512 s on yellow 26,18 and 779 s on red 12,19, plus 405 s on red 17,17 as before. These are latest possible times, so lower-bound delays. With this demand, the five demand phases refitted to the real score curve fit far better: RMSE 3.9 instead of 8.7 trips, with a positive delivery lag. The 20 independent fits become the phase sets for judging the replay, in place of random phases that contradict the real curve.
+
+**Measured.** Simulator `2026-11-10.f20` on the 20 plausible phase sets: v21b mean 791.5 (744–824), 4/20 reach the end, mean end 1297 s; v21 784.8 (743–801). The original scored 835 and ended at about 1314.6 s. Pin creation matches the original formula within one pin, so the remaining gap is time from dispatch to delivery and late congestion at the red lots. Report: `docs/training/fidelity-aya-2026-11-10/README.md`, section "Replay v21b".

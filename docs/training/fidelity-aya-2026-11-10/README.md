@@ -94,6 +94,28 @@ The LA plan (`City.cs` schedule: item time = slot midpoint × (1 − variation) 
 
 On f15: v21 mean 788.3 (735–805), fitted 808 at the end; v21a mean 774.2 (630–815), median 796.5, 9/16 reach the end, fitted 815 at the end ([data](measurements/bench-f15-replay-v21a.txt)). Extra red demand moves the fitted run toward 835 and makes red the stressed colour, as in the video, but the lower-bound delays close only part of the gap. `REPLAY=<file> source/bench.sh <tag>` runs the benchmark on another replay.
 
+### Replay v21b: circle conversion settles the third late destination (11 November 2026)
+
+**The plan's upgrades explain it.** The LA plan items carry a grouping; grouping 3 is a circle (an upgrade of an existing destination, `BuildingSpawningProcess.LevelUpDestinationBasedOnAge`). A circle that finds no eligible destination of its colour (non-upgraded, carpark on a circle-zone tile) retries every 20 s (`FailedDestinationRetryDelay`); at the attempt after its sixth failure it becomes an ordinary destination of that colour and is placed at the next retry, so it appears at least 140 s after it was scheduled. While it waits its colour gets the failed-spawn extra demand. The recording shows no upgrade before 1030 s, although the plan schedules a yellow circle in chunk days 16–36 and a red circle in chunk days 30–42. Both failed and became ordinary destinations:
+
+- **Yellow 26,18 (appears 652 s)** is the converted yellow circle. In chunk days 16–36 (yellow circle, cyan, red; variation 0.15) cyan at 383 s must take slot 0, so the circle is slot 1 (490–550 s) and, from the 140 s minimum, was scheduled by 512 s. Red 30,18 at 662 s is slot 2 (603–663 s) and on time, which resolves the earlier yellow-or-red ambiguity.
+- **Red 12,19 (appears 919 s)** is the converted red circle. In chunk days 30–42, green at 639 s is slot 0, so the circle is slot 1 (690–810 s) and was scheduled by 779 s (v21a used the plan bound 810 s).
+- **Red 17,17** stays at 405 s (red item of chunk days 8–22, slot 2).
+
+[replay-candidate-v21b.json](replay-candidate-v21b.json) sets these three `scheduledAt` values, each the latest possible time, so the delays are lower bounds. No simulator change is needed: the replay session already applies the failed-spawn demand rule to `scheduledAt` events.
+
+**The real score curve supports it.** Refitting the five demand phases to the real score curve up to 1000 s with this extra demand ([fit_phases.py](source/fit_phases.py), `DELAYED=...`) lowers the error from 8.7 to 3.9 trips. The fit also no longer needs a zero delivery lag: it finds a lag of 6.5–9 s ([fits](measurements/phase-fits-v21b.txt)). Twenty independent fits agree on yellow (1.7–2.4 days), red (3.7–5.5), navy (5.6–7.6) and green (5.5–7.2); cyan has three families (about 1.2, 3–4 and 10.6–11.5). The 20 fitted sets ([plausible-phases-v21b.txt](measurements/plausible-phases-v21b.txt)) replace random phases for judging the replay, because many random sets contradict the real score curve (on f20, v21b on the 16 random sets ranges 361–841, [data](measurements/bench-f20-replay-v21a-v21b-random.txt)). [bench_plausible.sh](source/bench_plausible.sh) runs a replay on them.
+
+| On f20, 20 plausible phase sets | Mean | Median | Range | Reach the end | Mean end |
+|---|---|---|---|---|---|
+| Replay v21b | 791.5 | 793.5 | 744–824 | 4/20 | 1297 s |
+| Replay v21 | 784.8 | 786 | 743–801 | 11/20 | 1309 s |
+| Original (recording) | 835 | | | ends at ~1314.6 s | |
+
+Data: [v21b](measurements/bench-f20-replay-v21b-plausible.txt), [v21](measurements/bench-f20-replay-v21-plausible.txt).
+
+**What remains is throughput, not demand.** With the best fit (1.737 4.767 4.153 5.908 6.680), our pins per destination match the original formula within one pin (850 against 854 by 1284 s). Our score still trails the real curve by 5–15 trips from 450 s, and the run fails at 1284 s with 778. Pins wait only 1–3 s for a car until 1000 s; the difference is the time from dispatch to delivery (12.5 s in 200–500 s, 17.7 s in 500–800 s, 22.7 s in 800–1000 s by Little's law). The real game's fitted lag in the same windows (0, 4 and 12 s) is shorter than any physical trip, so part of this offset is timing error in the reconstructed replay. Car speeds, the ×3 movement factor, lookahead speed averaging, dispatch quotas, the 4 s first pin, and scoring on bay entry all match the original. The last part of the gap is congestion at the red lots near the end, where the video also shows red overcrowding.
+
 ## Experiments not adopted
 
 - **Original tick length (0.1 s instead of 0.05 s), on f7:** 16-phase mean 777.8 → 762.5 (597–813), 5/16 reach the end; fitted 799 → 789 ([data](measurements/experiment-tick-0.1-on-f7.txt)). The original steps at 0.1 s, but our arbitration, dispatch quotas and tests were built around 0.05 s and the coarser step made results worse and noisier, so the step stays at 0.05 s.
@@ -113,7 +135,7 @@ Original free-play city growth (building placement by the original's weight laye
 
 Known differences from the original that are not yet modelled, roughly by expected effect:
 
-1. **Replay demand input.** The real game had roughly 10% more demand by ~1260 s than replay v21 gives us (see above). v21a covers the two provable late destinations; the ambiguous one (yellow 26,18 or red 30,18) and the never-placed blue destination of plan days 40–76 are not represented.
+1. **Replay demand input.** The real game had roughly 10% more demand by ~1260 s than replay v21 gives us (see above). v21b covers the three provably late destinations, using lower-bound delays. Circles that failed for a while and then succeeded (navy at 1030 s, yellow at 1106 s) and any pending cyan entry of plan days 40–76 cannot be timed from the video and are not represented.
 2. **Crossing diagonals.** The original lets two diagonal roads cross at a tile corner, forming a four-lane corner junction where cars can also turn; ours refuses the stroke. Needs corner nodes in the route graph.
 3. **Re-routing details.** The original re-paths from a car's committed lanes, keeping its next two lanes; ours rebuilds the current lane with a joining curve at the next eligible lane start.
 4. **Roundabout activation.** The original keeps a new roundabout planned until conflicting lanes clear and holds affected cars (hot-swapping lanes); ours switches at once.
