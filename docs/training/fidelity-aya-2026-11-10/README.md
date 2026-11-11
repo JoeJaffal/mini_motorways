@@ -150,6 +150,21 @@ f24 ports three more rules from the original's code (decisions 107–109):
 
 The gridlock rule adds 5.5 ± 3.5; roundabout activation costs 5.8 ± 2.6, all of it after the replay's roundabout at 1051 s. The crossing rules cannot affect this replay, which never builds over the rail line. [Data](measurements/bench-f24-replay-v21c-p60.txt).
 
+### Replay v21d: event times from the game's own clock (12 November 2026)
+
+The clock dial in the top-right corner shows the game time in every frame. The hand turns once per 10 game seconds, the face is light from 6 am to 6 pm, and midnight is 12 o'clock on the dark face (decompiled `ClockView`). Reading it at 4 frames per second, anchored at each week's end (Monday 00:00 = 140k s), gives the game time for 2,245 frames of the recording. Every week's start and end agree exactly ([time series](measurements/dial-game-time.csv); tools in [source](source/read_dial.py)).
+
+Against the dial, replay v21c is within about 1 s for most of the game ([comparison](measurements/replay-v21c-vs-dial.txt)). Through weeks 4 and 5 (video 241 to 365 s) it converted video time slightly too slowly: its events there are 2 to 5 s early, and the player's paused building happened at 678.8 s, not 677 s. The recording runs at exactly 2 game seconds per video second whenever the game runs, and fast-forward is never used. [replay-candidate-v21d.json](replay-candidate-v21d.json) takes every event's time from the dial. The real score curve is re-timed the same way ([score_timeline_dial.csv](measurements/score_timeline_dial.csv)). Refitting the 60 demand-phase sets to it improves every fit (error 3.58 to 3.7 trips, was 3.86 to 3.9; [fits](measurements/phase-fits-v21d-60.txt)). v21d on the refitted sets ([plausible-phases-v21d-60.txt](measurements/plausible-phases-v21d-60.txt)) is the benchmark from here on.
+
+| Simulator f24, 60 phase sets | Mean | Median | Range | Reach the end | Mean end |
+|---|---|---|---|---|---|
+| v21c, v21b sets | 796.0 | 792 | 737 to 836 | 16/60 | 1297 s |
+| v21d, v21b sets | 805.1 | 808 | 747 to 835 | 22/60 | 1302 s |
+| **v21d, refitted sets (benchmark)** | **805.5** | **811.5** | **759 to 833** | **22/60** | **1302 s** |
+| Original (recording) | 835 | | | | ~1314.6 s |
+
+[Data](measurements/bench-f24-replay-v21d.txt). Where the rest goes: with the best refitted set, our score trails the real curve by about 6 trips at 260 s, by 10 to 13 from 500 to 1100 s, and by 23 to 37 after 1188 s. Our cars wait at junctions for only about 3% of their outbound time. The fitted demand lag (about 6 s from a pin to its delivery) is shorter than our trips, so the real game most likely created pins earlier or more often than the replay can tell us (see "Remaining replay gap").
+
 ## Experiments not adopted
 
 - **Original re-plan on road changes, on f22 (11 November 2026).** On the 60 plausible phase sets ([phases](measurements/plausible-phases-v21b-60.txt)) replay v21c scores 786.2 (700–833), 8/60 reach the end, against f22's 794.4 (669–833), 15/60. Paired difference −8.1 ± 4.8 trips; 22/60 runs improve ([data](measurements/experiment-repath-on-f22-p60.txt)). On the 20-set benchmark it was −11.6. It runs at f22's speed once return paths are re-found lazily; refreshing every stored return path at every change doubled run time. It is the original's rule, but it moves the replay away from the real game, so it stays off.

@@ -1476,3 +1476,23 @@ Numbered 106 because upstream `main` already uses 105 (upstream's 042, renumbere
 
 **Measured.** The LA replay builds no road over its rail line (0 road tiles on rail at the end), so it is unchanged (f24 equals the run with only decisions 107 and 108). A new check: a car slows before an open crossing (entry speed 1.09 against 1.39 tiles/s cruising) and never accelerates above 0.1 tiles/s² on it. 98 suites pass.
 
+
+## 110 - Replay v21d: event times read from the game's clock (12 November 2026, `fidelity-aya`)
+
+**Evidence.**
+- `ClockView` draws the hand at 12 o'clock at t = 0 and turns it 36 degrees per game second, so one turn is 10 s.
+- `IsDayTime` (hours 6 to 18) gives the light face and the night gives the dark face, so midnight is 12 o'clock on the dark face. Day 0 is Monday and a week is 140 s.
+- So every frame of the recording that shows the dial gives the game time within the day.
+- The weekly upgrade screen opens at or just after Monday 00:00. In week 4 the clock ran on for about 5 s because the player was still acting.
+- Read at 4 frames per second and anchored week by week, the dial puts each week's start and end in agreement exactly, with no day lost.
+- Against it, replay v21c is within about 1 s for most of the game. Through weeks 4 and 5 (video 241 to 365 s, game 433 to 677 s), v21c converted video time slightly too slowly, so its events there are 2 to 5 s early. Events made during a pause belong at the paused clock time (678.8 s, not 677).
+
+**Engineering choice** (replay data, not a rule change). `replay-candidate-v21d.json` = v21c with each player action and spawn timed by the dial ([source](../../docs/training/fidelity-aya-2026-11-10/source/week_dial.py), [make_v21d.py](../../docs/training/fidelity-aya-2026-11-10/source/make_v21d.py)):
+- Offers stay on the week boundaries.
+- Events in unreadable stretches take their neighbours' correction, or the paused time inside a pause.
+- The two converted circles keep the rule "scheduled at least 140 s before they appear", from their re-read appearance times.
+
+The real score curve is re-timed the same way, and the 60 demand-phase sets are refitted to it. All 60 fits improve, with error 3.58 to 3.7 trips instead of 3.86 to 3.9. The benchmark becomes v21d on these 60 sets.
+
+**Measured.** Simulator f24 on the 60 refitted sets: 805.5 (759 to 833, median 811.5), 22/60 reach the end, mean end 1302 s. On the old sets: v21c 796.0, v21d 805.1 (paired +9.1 +/- 3.5). The original scored 835 and ended at about 1314.6 s.
+
