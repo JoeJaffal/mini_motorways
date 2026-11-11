@@ -76,6 +76,7 @@ Replay v21, 16-phase mean (min–max) and fitted-phase result. Real game: 835 at
 | `2026-11-10.f19` | Lights only on tiles with three or more roads, not on rail | 791.1, unchanged (both replay lights qualify) | 1312 s | 791, fails at 1310 s |
 | `2026-11-10.f20` | Full-lot drive-through crosses the nearest bay behind its parked car | 791.1, unchanged (no lot fills in the replay) | 1312 s | 791, fails at 1310 s |
 | `2026-11-10.f21` | No junctions on bridge tiles; no links from bare water | v21b on the 20 plausible phase sets unchanged (791.5): the replay's bridges have no junctions | | |
+| `2026-11-10.f22` | Motorway ramps take a free side by the original's pair score and block it | v21r: 784.0 (626–805), 13/16 reach the end (f21: 791.1 (740–809), 13/16). Plausible phases, v21c: **801.4** (755–831), 6/20 reach the end (f21: 791.5) | 1306 s | 802, reaches the end (f21: 791, fails at 1310 s) |
 
 Self-test: 85 suites pass at every version listed (92 from f12 with 7 placement suites, 93 from f16 with the tile-corner check, 94 from f18 with the house-driveway stroke check).
 
@@ -117,6 +118,12 @@ Data: [v21b](measurements/bench-f20-replay-v21b-plausible.txt), [v21](measuremen
 
 **What remains is throughput, not demand.** With the best fit (1.737 4.767 4.153 5.908 6.680), our pins per destination match the original formula within one pin (850 against 854 by 1284 s). Our score still trails the real curve by 5–15 trips from 450 s, and the run fails at 1284 s with 778. Pins wait only 1–3 s for a car until 1000 s; the difference is the time from dispatch to delivery (12.5 s in 200–500 s, 17.7 s in 500–800 s, 22.7 s in 800–1000 s by Little's law). The real game's fitted lag in the same windows (0, 4 and 12 s) is shorter than any physical trip, so part of this offset is timing error in the reconstructed replay. Car speeds, the ×3 movement factor, lookahead speed averaging, dispatch quotas, the 4 s first pin, and scoring on bay entry all match the original. The last part of the gap is congestion at the red lots near the end, where the video also shows red overcrowding.
 
+### Replay v21c and v21r: two same-second reorderings (f22)
+
+From f22, a motorway ramp's side of its end tile takes no road, as in the original (`Tile.CanSetNodeState`), and each ramp's direction is chosen once, when the motorway is placed (`AddMotorwayAction` pair score). Replay v21 then fails at event 246. In two places the player's stroke into a new motorway end is recorded in the same video second as the motorway, and after it: the m2 edit and stroke 24,15→25,15 at 966.2 s (video 667 s), and motorway m4 and stroke 20,18→21,18 at 1306 s (video 1000 s). In both, the ramp would take exactly the side the stroke uses if the motorway came first, so the recorded layout is only possible with the stroke first. [replay-candidate-v21c.json](replay-candidate-v21c.json) is v21b with those two pairs swapped; it is now the benchmark replay. [replay-candidate-v21r.json](replay-candidate-v21r.json) is plain v21 with the same two swaps and no late-destination annotations. Use it to compare this branch with `mohammad` on the same input. The swaps change nothing on f21 (v21c and v21b give the same 791.5).
+
+Data: [v21c on f22 and f21](measurements/bench-f22-replay-v21c-plausible.txt), [v21r on f22 and f21](measurements/bench-f21-f22-replay-v21r-random.txt).
+
 ## Experiments not adopted
 
 - **Original tick length (0.1 s instead of 0.05 s), on f7:** 16-phase mean 777.8 → 762.5 (597–813), 5/16 reach the end; fitted 799 → 789 ([data](measurements/experiment-tick-0.1-on-f7.txt)). The original steps at 0.1 s, but our arbitration, dispatch quotas and tests were built around 0.05 s and the coarser step made results worse and noisier, so the step stays at 0.05 s.
@@ -143,4 +150,4 @@ Known differences from the original that are not yet modelled, roughly by expect
 3. **Re-routing details.** The original re-paths from a car's committed lanes, keeping its next two lanes; ours rebuilds the current lane with a joining curve at the next eligible lane start. Re-paths of cars already on a trip may use erased (mothballed) lanes at cost 100000 (`allowMothballedLaneUse: true`), so an erased link can stay in use; ours drops the link from the graph and cars keep only the lanes they had.
 4. **Roundabout activation.** The original keeps a new roundabout planned until conflicting lanes clear and holds affected cars (hot-swapping lanes); ours switches at once.
 5. **Traffic-light removal.** The original removes a light, and returns it to stock, when an erased link is released and leaves the tile with fewer than three roads. Erased links still in use count as roads. Ported and measured but not adopted: in the replay it removes a light that the real game kept (see experiments).
-6. **Smaller items.** All-leader pushing cycles (the 45 s escape covers deadlocks); motorway slot fallback to a neighbouring free direction; junction limits on water tiles; drawing by greedy eight-direction stepping instead of a raster line.
+6. **Smaller items.** All-leader pushing cycles (the 45 s escape covers deadlocks); the drag-time preference for a new motorway's anchor ramp, which depends on the mouse drag (edits are modelled); drawing by greedy eight-direction stepping instead of a raster line. Junctions on water (f21) and motorway ramp sides (f22) are now modelled.

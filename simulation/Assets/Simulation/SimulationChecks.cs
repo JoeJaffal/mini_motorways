@@ -394,6 +394,16 @@ namespace MotorwaysSim
                 Check(tokyo.SpawnBuilding(new Cell(5,5),5,true)==null,"LA does not have an orange group");
                 tokyo.Reset(5,ScenarioKind.Tokyo);Check(tokyo.Map.HouseZones.Length==6&&tokyo.Map.ShopZones.Length==6,"all Tokyo zones exported");
             });
+            Test("original motorway ramps take a free side and block it",()=>{
+                // Original AddMotorwayAction: ramps take free directions by the pair score; a ramp's side takes no road.
+                var w=new TrafficWorld(7,false,Rules.ForVersion(GameVersion.OriginalReference));w.Reset(7,ScenarioKind.EmptyLab);
+                w.Inventory[0]=100;w.Inventory[2]=1;Cell a=new Cell(10,10),b=new Cell(20,10);
+                Check(w.DrawRoad(a,new Cell(11,10)),"road on the east side of the start tile");
+                Check(w.AddMotorway(a,b),"motorway placed");var m=w.Motorways.Last();
+                Check(m.StartDirection==7&&m.EndDirection==4,"start ramp avoids the road (north-east), end ramp points back (west)");
+                Check(w.Build(BuildTool.Road,new Cell(19,10))&&!w.Connect(b,new Cell(19,10)),"no road on a ramp's side");
+                Check(w.Build(BuildTool.Road,new Cell(21,10))&&w.Connect(b,new Cell(21,10)),"the other sides stay open");
+            });
             Test("original motorway routing, continuous lanes and safe removal",()=>{
                 var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.DemandCapacity=10000;
                 var w=new TrafficWorld(7,false,rules);w.Reset(7,ScenarioKind.EmptyLab);

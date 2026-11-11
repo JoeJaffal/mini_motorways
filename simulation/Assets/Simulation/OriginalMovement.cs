@@ -89,7 +89,7 @@ namespace MotorwaysSim
 
         List<Lane> OriginalMotorwayStart(MotorwayState motorway,Cell at,Cell prev,Cell next,Point start,Point incoming,int inDir)
         {
-            int slot=ClosestDirection(at,next),endSlot=ClosestDirection(next,at);
+            int slot=RampDirection(motorway,at),endSlot=RampDirection(motorway,next);
             var out1=DirectionVector(slot);var slotEnd=SlotPoint(at,slot)+out1.Right*Rules.LaneOffset;
             double length=Point.Distance(start,slotEnd);
             var local=CreateLane(Cubic(start,start+incoming*Math.Min(.35,length*.45),slotEnd-out1*Math.Min(.35,length*.45),slotEnd,12),at,prev,next,inDir,slot);

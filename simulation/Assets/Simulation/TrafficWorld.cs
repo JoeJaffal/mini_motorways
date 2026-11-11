@@ -243,6 +243,7 @@ namespace MotorwaysSim
             int d=Direction(from,to);
             if((Connections[from.X,from.Y]&(1<<d))!=0)return true;
             var overWater=WaterLinkViolation(from,to);if(overWater!=null)return Reject(overWater);
+            if(RampBlocks(from,d)||RampBlocks(to,(d+4)%8))return Reject("A motorway ramp uses that side of the tile");
             if(d%2==1)
             {
                 var crossA=new Cell(from.X,to.Y);var crossB=new Cell(to.X,from.Y);

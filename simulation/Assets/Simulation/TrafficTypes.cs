@@ -175,7 +175,7 @@ namespace MotorwaysSim
     }
 
     public sealed class MotorwayState
-    {public int Id,Number;public Cell Start,End;public bool PendingRemoval,RefundOnRemoval=true;public Cell Other(Cell c)=>c==Start?End:Start;}
+    {public int Id,Number;public Cell Start,End;public bool PendingRemoval,RefundOnRemoval=true;public int StartDirection=-1,EndDirection=-1;public Cell Other(Cell c)=>c==Start?End:Start;}
     public sealed class MotorwaySnapshot
     {public int Id,Number;public Cell Start,End;public bool PendingRemoval;}
 

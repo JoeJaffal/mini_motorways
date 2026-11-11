@@ -140,7 +140,7 @@ namespace MotorwaysSim
                 if(Rules.Version==GameVersion.OriginalReference&&fromMotorway)
                 {
                     // Original: the end tile's lane starts at the motorway's slot edge and runs across the whole tile.
-                    int slot=ClosestDirection(at,prev);var travel=DirectionVector((slot+4)%8);
+                    int slot=RampDirection(MotorwayBetween(prev,at),at);var travel=DirectionVector((slot+4)%8);
                     inDir=(slot+4)%8;incoming=travel;start=SlotPoint(at,slot)+travel.Right*Rules.LaneOffset;
                 }
                 if(Rules.Version==GameVersion.OriginalReference&&motorway!=null)
