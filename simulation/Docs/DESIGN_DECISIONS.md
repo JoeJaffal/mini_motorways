@@ -1335,3 +1335,12 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Engineering choice** (OriginalReference). `AddRoundabout` keeps existing valid exits and makes no new links; `RoadConnectionCost` charges 1 for an outside–ring link (0 inside a roundabout). The roundabout concrete test now expects two held links for a straight road through the centre, with both exits still connected, and each original connection refunded exactly once after removal. The roundabout's own activation delay and the hot-swap hold are not modelled.
 
 **Measured.** Simulator `2026-11-10.f14`: 16-phase mean 762.9 → 791.4 (763–804), 14/16 reach the end; fitted phases 807 at the end. All replay events still apply. The free links had been adding junction links the original never had. 92 suites, five-map checks and training readiness pass.
+
+
+## 095 - Return paths after an erase; erasable ring exits (11 November 2026, `fidelity-aya`)
+
+**Evidence.** After any lane change the original flags every car whose committed lanes can reach a changed lane and re-paths it in the next pathfinding step, forward and return paths alike (`LaneUpdateProcess`, `VehiclePathfindingProcess`); a mothballed lane's concrete returns once no car has it in a forward or return path. Ours refreshed a stored return route only for whole-tile removals, so an erased link stayed held by cars parked or driving out until they left their bay. The original's eraser clears an exit into a ring tile like any road; ours refused any link touching a roundabout.
+
+**Engineering choice** (OriginalReference). `RemoveRoadConnection` re-routes the stored `ReturnRoute` of non-returning cars that used the erased link, keeping the old one when no alternative exists; only links inside a roundabout need the circle tool.
+
+**Measured.** Simulator `2026-11-10.f15`: 16-phase mean 791.4 → 788.3 (735–805), 13/16 reach the end; fitted phases 808 at the end. 92 suites, five-map checks and training readiness pass.
