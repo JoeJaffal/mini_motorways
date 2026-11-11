@@ -226,8 +226,44 @@ namespace MotorwaysSim
             car.RouteVersion=NetworkVersion;RegisterRoute(car,false);UpdateLegs(car);
         }
 
+        // Original VehiclePathfindingProcess after LaneUpdateProcess: in the step after a road change every car on a trip
+        // re-paths at once. It keeps the lane it is on and the next two (VehicleModel.NumberOfLanesToCommitTo; AssignPath
+        // replaces only path[2..]); here the kept lanes run to the end of their tile, so a corner or motorway pair stays
+        // whole. The rest is found from where the kept lanes end, arriving in their direction; erased roads are gone
+        // from the graph, so a car with no other way keeps its old lanes (the original's last-resort mothballed lane).
+        // The original also re-paths stored return paths at every change; the result only matters when the car sets off
+        // home, so it is re-found then (AppendReturnLanes), and at once when an erase touches it (RemoveRoadConnection).
+        // Work in progress (11 November 2026): off until the 60-phase replay benchmark decides; with it off, f22 behaviour.
+        static readonly bool OriginalRepath=false;
+        const int OriginalCommittedLanes=3;
+        void RefreshJourneyOriginal(Vehicle car)
+        {
+            if(!car.Moving||car.RouteVersion==NetworkVersion)return;
+            car.RouteVersion=NetworkVersion;
+            if((car.Stage!=TripStage.Outbound&&car.Stage!=TripStage.Returning)||car.ParkingLegAttached||car.LegMarks.Count>0)return;
+            int last=Math.Min(car.Lanes.Count,car.RouteIndex+OriginalCommittedLanes)-1;
+            while(last+1<car.Lanes.Count&&car.Lanes[last+1].Tile==car.Lanes[last].Tile)last++;
+            int limit=car.Stage==TripStage.Outbound&&car.ParkingLegAt>=0?car.ParkingLegAt:car.Lanes.Count;
+            if(last>=limit-1)return;
+            var kept=car.Lanes[last];
+            if(kept.IsParking||kept.Next==kept.Tile)return;
+            Cell goal=car.Stage==TripStage.Outbound?car.DestinationAccess:Buildings[car.HomeId].Access;
+            var route=FindRoute(kept.Next,goal,true,Direction(kept.Tile,kept.Next));
+            if(route.Count<1||route[0]!=kept.Next)return;
+            var full=new List<Cell>{kept.Tile};full.AddRange(route);
+            var tail=MakeLanes(full).SkipWhile(l=>l.Tile==kept.Tile).ToList();
+            if(tail.Count==0)return;
+            var oldTail=car.Lanes.Skip(last+1).Take(limit-last-1).Select(l=>l.Key);
+            if(oldTail.SequenceEqual(tail.Select(l=>l.Key)))return;
+            car.Lanes=car.Lanes.Take(last+1).Concat(tail).ToList();
+            var cells=new List<Cell>();foreach(var l in car.Lanes.Skip(car.RouteIndex))if(cells.Count==0||cells[cells.Count-1]!=l.Tile)cells.Add(l.Tile);
+            if(cells.Count==0||cells[cells.Count-1]!=goal)cells.Add(goal);car.Route=cells;
+            if(car.Stage==TripStage.Outbound){car.ParkingLegAt=-1;AppendEntranceLane(car);}
+            RegisterRoute(car,true);UpdateLegs(car);
+        }
         void RefreshJourney(Vehicle car)
         {
+            if(Rules.Version==GameVersion.OriginalReference&&OriginalRepath){RefreshJourneyOriginal(car);return;}
             if(!car.Moving||car.RouteVersion==NetworkVersion||car.DistanceAlongLane>1e-8||car.CurrentLane.IsJunction||car.CurrentLane.IsRoundabout||car.CurrentLane.IsMotorway||car.CurrentLane.IsParking||car.ParkingLegAttached||car.LegMarks.Count>0||
                 (car.Stage!=TripStage.Outbound&&car.Stage!=TripStage.Returning))return;
             var old=car.CurrentLane;
