@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Users\\moham\\mini_motorways\\.venv\\Scripts\\python.exe",
+    "training/test_environment.py",
+    "--dotnet",
+    "C:\\Users\\moham\\mini_motorways\\tmp\\dotnet\\dotnet.exe",
+    "-v"
+  ],
+  "returncode": 0,
+  "seconds": 16.98262270000123,
+  "stdout": "",
+  "stderr": "test_all_maps_replay (__main__.EnvironmentChecks.test_all_maps_replay) ... ok\ntest_all_tool_decoders (__main__.EnvironmentChecks.test_all_tool_decoders) ... ok\ntest_failure_is_termination (__main__.EnvironmentChecks.test_failure_is_termination) ... ok\ntest_gym_contract (__main__.EnvironmentChecks.test_gym_contract) ... ok\ntest_information_boundary (__main__.EnvironmentChecks.test_information_boundary) ... ok\ntest_invalid_time_and_truncation (__main__.EnvironmentChecks.test_invalid_time_and_truncation) ... ok\ntest_normal_roads_and_positive_reward (__main__.EnvironmentChecks.test_normal_roads_and_positive_reward) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 14.224s\n\nOK\n"
+}

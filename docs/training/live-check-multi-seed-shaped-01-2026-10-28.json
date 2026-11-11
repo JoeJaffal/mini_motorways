@@ -1,0 +1,54 @@
+{
+  "captured_utc": "2026-10-28T10:30:33.307788+00:00",
+  "run": "multi-seed-shaped-01",
+  "protocol": "Read-only interim check; first 556 completed episode records. Training continues; no new model evaluations or changes.",
+  "latest_episode_wall_seconds": 1343.691899099853,
+  "first100": {
+    "games": 100,
+    "mean_score": 5.04,
+    "positive_games": 43,
+    "best_score": 60
+  },
+  "last100": {
+    "games": 100,
+    "mean_score": 4.16,
+    "positive_games": 46,
+    "best_score": 36
+  },
+  "all": {
+    "games": 556,
+    "mean_score": 3.656474820143885,
+    "positive_games": 237,
+    "best_score": 60
+  },
+  "distinct_training_seeds": 100,
+  "matched_seed_count": 43,
+  "matched_cycle1_mean": 4.534883720930233,
+  "matched_cycle2_mean": 3.3372093023255816,
+  "last100_action_counts": {
+    "draw": 17057,
+    "Road": 203,
+    "upgrade": 85,
+    "Bridge": 27,
+    "wait": 3,
+    "driveway": 33,
+    "TrafficLight": 6,
+    "Roundabout": 7,
+    "Remove": 6
+  },
+  "optimizer_updates_seen": [
+    45677,
+    50029
+  ],
+  "optimizer_policy_steps_seen": [
+    512,
+    279040
+  ],
+  "conclusions": [
+    "Four hosts alive and optimizer counter advancing; no convincing performance improvement in this snapshot.",
+    "Same-seed cycle means are descriptive: second-cycle worker coverage is incomplete and stochastic trajectories differ.",
+    "Policy overwhelmingly selects draw commands. This suggests action coordination merits inspection, not a proven root cause.",
+    "Held-out final evaluation unavailable while training is active; no claim of generalization improvement."
+  ],
+  "limits": "First/last windows have different seed mixes. Matched seeds have unequal worker repeats. One run cannot isolate shaping, seed schedule, warm-start, or optimizer effects."
+}

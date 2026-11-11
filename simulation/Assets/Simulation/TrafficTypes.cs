@@ -38,6 +38,7 @@ namespace MotorwaysSim
     public enum Infrastructure {None,Road,Bridge,Roundabout,TrafficLight}
     public enum BuildTool {Road,Bridge,Roundabout,TrafficLight,Remove,Motorway}
     public enum TripStage {Home,Outbound,EnteringParking,Parking,LeavingParking,Returning,AligningHome}
+    public enum ObstacleKind {None,Leader,BlockingJunction,RouteEnd}
     public enum ScenarioKind {LosAngeles,ReferenceLab,EmptyLab,Beijing,Tokyo,DarEsSalaam,London}
     public enum GameVersion {OriginalReference,Custom}
     public enum MapVariation {SameMap,DifferentMaps}
@@ -56,15 +57,16 @@ namespace MotorwaysSim
                 ConstructionGraceSeconds=version==GameVersion.Custom?30:0,UnlimitedConstruction=version==GameVersion.Custom};
         }
         public double TickSeconds=.05;
-        public double MotorwaySpeed=1.5; // Installed cap: 3 world units/s; tile width is 2.
-        // Original world units have tile width 2; all distances below are converted to tiles.
+        public double MotorwaySpeed=1.5; // Reference lane value3 converted for tile width2; not the final movement target.
+        // Original world units have tile width2; motion multiplies the converted lane value by its separate reference factor.
+        public double MovementSpeedMultiplier=>Version==GameVersion.OriginalReference?3:1;
         public double CarSpeed=.5,MaxAcceleration=.27,ControlledAcceleration=.4,RoundaboutAcceleration=.45;
         public double MaxDeceleration=6,FollowingGap=.05,CarLength=.325,DesiredTimeGap=1;
         public double LaneOffset=.1,SharpTurnMultiplier=1.0/3,RightAngleMultiplier=2.0/3;
         public double IntersectionMultiplier=.5,RoundaboutMultiplier=1.2,LookaheadDistance=2.5;
         public double ServiceSeconds=3,HomeCooldown=0;
         public double SignalGreenSeconds=3,SignalOvertimeSeconds=1,SignalAmberSeconds=.7;
-        public double SignalNearbyDistance=.5,SignalMaxWaitingWeightSeconds=30;
+        public double SignalNearbyDistance=.5,SignalMaxWaitingWeightSeconds=30,MaximumIntersectionWait=45;
         public int SignalMinimumNearbyCars=3;
         public double SecondsPerDay=20,SecondsPerWeek=140;
         public double AverageCarsPerDay=1.55,DemandMultiplier=.8,FirstDemandDelay=4;
@@ -87,7 +89,7 @@ namespace MotorwaysSim
         public Cell[] Entrances=new Cell[0],Platform=new Cell[0];public int[] EntranceDirections=new int[0];
         public int Width=1,Height=1,DrivewayDirection,Layout;
         public bool Upgraded;public double UpgradeAt=double.PositiveInfinity,PlannedDemandMultiplier=1;
-        public int Demand,Reserved;
+        public int Demand,Reserved,DemandJustCleared;
         public double NextDemand,OvercrowdedFor,OvercrowdingSpeed,SpawnTime,SpawnGraceUntil,Served;
         public double OriginalDemandInterval,FeasibleDemandInterval,LastFeasibilityCheck;
         public double DemandPhase,DemandCountdown;
@@ -107,8 +109,10 @@ namespace MotorwaysSim
         public Point[] Samples;
         public double[] Distances;
         public double Length,SpeedLimit;
-        public bool IsJunction,IsRoundabout,IsParking,IsMotorway,ReleasesParking,DeliversDriveThrough;
+        public bool IsJunction,IsRoundabout,IsParking,IsMotorway,ReleasesParking,DeliversDriveThrough,IsCorner;
+        public string Chunk=""; // carpark lanes: "carpark:<id>:<chunk>" (CarparkArbitration.cs)
         public int MotorwayId=-1;
+        public int CarparkId=-1;
         public string Key;
         public Point Position(double distance)
         {
@@ -133,7 +137,19 @@ namespace MotorwaysSim
         public int RouteIndex,RouteVersion;
         public bool HasDelivered,WaitingAtSignal,WaitingAtIntersection,DrivingThrough;
         public string Obstacle="";
+        public readonly Dictionary<string,double> ApproachRegistered=new Dictionary<string,double>();
+        // Original junction arbitration state (JunctionArbitration.cs): the previous tick's nearest
+        // obstacle, and the blocking-cycle shove permission for one immediate next lane.
+        public ObstacleKind ObstacleState;public int ObstacleCar=-1;public double ObstacleDistance;
+        public bool Shoving;public string ShovingLane="";
+        // Tile of the junction lane this car was refused at (BlockingJunction), and the game time each planned
+        // lane first entered the first-two-remaining-lanes commitment window (original signal weights).
+        public Cell BlockingTile;public readonly Dictionary<string,double> CommittedAt=new Dictionary<string,double>();
         public Point ParkedPosition,ParkedHeading=new Point(0,-1);
+        // Continuous journeys (OriginalReference, ContinuousJourneys.cs): index of the carpark entrance lane at the
+        // end of an outbound path, whether the in-lot lanes are attached, and lane indices where the stage changes.
+        public int ParkingLegAt=-1;public bool ParkingLegAttached;
+        public readonly List<(int Index,TripStage Stage)> LegMarks=new List<(int Index,TripStage Stage)>();
         public bool Moving=>Lanes.Count>0&&RouteIndex<Lanes.Count;
         public Lane CurrentLane=>Moving?Lanes[RouteIndex]:null;
         public Point Position=>Stage==TripStage.Parking?ParkedPosition:CurrentLane?.Position(DistanceAlongLane)??new Point(At);
@@ -154,10 +170,12 @@ namespace MotorwaysSim
         public Cell Center;
         public Cell[] Ring;
         public bool PendingRemoval;
+        // Concrete replaced by the circle stays reserved until old surface lanes clear.
+        public int ReplacedRoadTiles;
     }
 
     public sealed class MotorwayState
-    {public int Id,Number;public Cell Start,End;public bool PendingRemoval,RefundOnRemoval=true;public Cell Other(Cell c)=>c==Start?End:Start;}
+    {public int Id,Number;public Cell Start,End;public bool PendingRemoval,RefundOnRemoval=true;public int StartDirection=-1,EndDirection=-1;public Cell Other(Cell c)=>c==Start?End:Start;}
     public sealed class MotorwaySnapshot
     {public int Id,Number;public Cell Start,End;public bool PendingRemoval;}
 

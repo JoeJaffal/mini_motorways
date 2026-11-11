@@ -1,0 +1,43 @@
+# experiment on f20: remove a traffic light (with refund) when a released erased connection leaves its tile with fewer than three live roads (original ReleaseMothballedLanesProcess + TileSupportsTrafficLight)
+## replay v21, 16 random phase sets + fitted (v21 fit)
+0.178 7.038 11.270 3.431 4.982 :: # end t=1268.20 score=732 failed=True events=377/400 inventory=11,1,1,3,0,0
+6.948 11.179 1.451 2.994 16.594 :: # end t=1314.60 score=804 failed=False events=400/400 inventory=6,1,0,3,0,0
+5.051 2.974 11.343 8.113 0.704 :: # end t=1314.60 score=800 failed=False events=400/400 inventory=6,1,0,3,0,0
+4.978 12.174 5.065 7.470 15.417 :: # end t=1314.60 score=798 failed=False events=400/400 inventory=6,1,0,3,0,0
+0.150 10.889 6.677 5.781 4.276 :: # end t=1314.60 score=796 failed=False events=400/400 inventory=6,1,0,3,0,0
+5.850 5.626 9.147 0.019 10.244 :: # end t=1314.60 score=781 failed=False events=400/400 inventory=6,1,0,3,0,0
+3.428 0.384 0.522 6.330 22.613 :: # end t=1314.60 score=800 failed=False events=400/400 inventory=6,1,0,3,0,0
+1.211 7.134 8.436 6.070 8.618 :: # end t=1314.60 score=784 failed=False events=400/400 inventory=6,1,0,3,0,0
+4.123 0.449 2.913 7.177 9.529 :: # end t=1314.60 score=785 failed=False events=400/400 inventory=6,1,0,3,0,0
+3.073 6.610 9.341 4.688 9.045 :: # end t=1314.60 score=795 failed=False events=400/400 inventory=6,1,0,3,0,0
+1.632 3.001 2.625 4.136 6.665 :: # end t=1300.85 score=772 failed=True events=395/400 inventory=7,1,1,3,0,0
+2.955 0.378 2.660 3.941 11.404 :: # end t=1314.60 score=796 failed=False events=400/400 inventory=6,1,0,3,0,0
+3.146 8.471 9.465 0.845 0.652 :: # end t=1314.60 score=786 failed=False events=400/400 inventory=6,1,0,3,0,0
+0.941 11.017 9.165 2.296 11.395 :: # end t=1314.60 score=793 failed=False events=400/400 inventory=6,1,0,3,0,0
+2.124 7.639 10.590 7.616 11.622 :: # end t=1314.60 score=789 failed=False events=400/400 inventory=6,1,0,3,0,0
+FIT :: # end t=1314.60 score=800 failed=False events=400/400 inventory=6,1,0,3,0,0
+4.152 5.117 2.044 4.520 22.588 :: # end t=1314.60 score=801 failed=False events=400/400 inventory=6,1,0,3,0,0
+## replay v21b, 20 plausible phase sets
+2.397 4.880 3.687 7.063 6.903 :: # end t=1269.55 score=751 failed=True events=377/400 inventory=11,1,1,3,0,0
+2.155 5.467 4.161 5.873 6.646 :: # end t=1284.50 score=779 failed=True events=381/400 inventory=10,1,1,3,0,0
+2.094 5.304 4.157 5.793 5.554 :: # end t=1273.05 score=754 failed=True events=379/400 inventory=11,1,1,3,0,0
+2.088 3.931 10.704 5.710 7.237 :: # end t=1298.10 score=783 failed=True events=395/400 inventory=7,1,1,3,0,0
+2.218 3.819 11.368 5.714 6.678 :: # end t=1314.60 score=824 failed=False events=400/400 inventory=6,1,0,3,0,0
+2.155 3.789 10.716 5.685 7.119 :: # end t=1298.25 score=793 failed=True events=395/400 inventory=7,1,1,3,0,0
+2.404 4.794 3.972 7.060 6.823 :: # end t=1282.30 score=768 failed=True events=380/400 inventory=11,1,1,3,0,0
+1.660 4.767 4.158 5.901 5.566 :: # end t=1273.70 score=752 failed=True events=379/400 inventory=11,1,1,3,0,0
+2.094 3.933 11.304 5.796 6.727 :: # end t=1293.35 score=778 failed=True events=382/400 inventory=10,1,1,3,0,0
+1.737 4.760 3.033 5.913 7.100 :: # end t=1292.05 score=785 failed=True events=382/400 inventory=10,1,1,3,0,0
+2.135 5.261 3.032 5.879 6.687 :: # end t=1285.50 score=771 failed=True events=381/400 inventory=10,1,1,3,0,0
+2.093 3.933 11.328 5.872 5.499 :: # end t=1294.15 score=780 failed=True events=394/400 inventory=8,1,1,3,0,0
+2.078 3.915 10.651 5.873 6.979 :: # end t=1296.00 score=783 failed=True events=394/400 inventory=8,1,1,3,0,0
+2.071 3.781 11.323 5.630 6.720 :: # end t=1310.05 score=801 failed=True events=400/400 inventory=6,1,0,3,0,0
+2.081 3.741 11.452 5.632 6.633 :: # end t=1312.95 score=815 failed=True events=400/400 inventory=6,1,0,3,0,0
+2.391 4.929 3.694 7.577 6.901 :: # end t=1304.70 score=796 failed=True events=397/400 inventory=7,1,1,3,0,0
+2.151 4.596 1.168 5.637 6.728 :: # end t=1291.05 score=778 failed=True events=382/400 inventory=10,1,1,3,0,0
+2.216 4.592 1.161 5.806 6.632 :: # end t=1287.05 score=773 failed=True events=381/400 inventory=10,1,1,3,0,0
+1.710 3.764 11.332 5.878 6.716 :: # end t=1312.60 score=809 failed=True events=400/400 inventory=6,1,0,3,0,0
+2.226 4.046 11.451 0.864 6.783 :: # end t=1314.60 score=822 failed=False events=400/400 inventory=6,1,0,3,0,0
+## light 20,13 in the best-fit v21b run
+LIGHTS TrafficLight TrafficLight t=820.85 degree=4,4
+LIGHTS Road TrafficLight t=979.00 degree=2,4   (erase of the south link at 970.15, redraw of west+south at 984.05)

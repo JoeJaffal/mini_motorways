@@ -1,0 +1,116 @@
+{
+  "training_wall_seconds": 1155.961656200001,
+  "policy_steps": 197120,
+  "completed_commands": 69187,
+  "episodes": 451,
+  "parameter_update_confirmed": true,
+  "interrupted": true,
+  "policy_steps_per_second": 170.52468733953827,
+  "commands_per_second": 59.85233128531166,
+  "best_training_score": 49,
+  "before": [
+    {
+      "trips": 0,
+      "seconds": 140.1,
+      "rejected_actions": 13,
+      "commands": 141,
+      "scenario_seed": 2000,
+      "city": "LosAngeles",
+      "seed_attempt": 1,
+      "seed_cycle": 1,
+      "mean_car_wait": 0.0,
+      "max_car_wait": 0.0,
+      "action_counts": {
+        "Road": 25,
+        "draw": 86,
+        "driveway": 10,
+        "Remove": 10,
+        "wait": 9,
+        "upgrade": 1
+      },
+      "command_completed": true,
+      "accepted": true,
+      "request": {
+        "command": "upgrade",
+        "choice": 1
+      },
+      "terminated": true,
+      "truncated": false,
+      "deterministic": false
+    },
+    {
+      "trips": 0,
+      "seconds": 139.55,
+      "rejected_actions": 22,
+      "commands": 140,
+      "scenario_seed": 2001,
+      "city": "LosAngeles",
+      "seed_attempt": 1,
+      "seed_cycle": 1,
+      "mean_car_wait": 0.0,
+      "max_car_wait": 0.0,
+      "action_counts": {
+        "wait": 12,
+        "Road": 15,
+        "draw": 91,
+        "Bridge": 3,
+        "driveway": 8,
+        "Remove": 11
+      },
+      "command_completed": true,
+      "accepted": true,
+      "request": {
+        "command": "draw",
+        "x": 21,
+        "y": 10,
+        "toX": 17,
+        "toY": 9
+      },
+      "terminated": true,
+      "truncated": false,
+      "deterministic": false
+    },
+    {
+      "trips": 2,
+      "seconds": 176.55,
+      "rejected_actions": 21,
+      "commands": 177,
+      "scenario_seed": 2002,
+      "city": "LosAngeles",
+      "seed_attempt": 1,
+      "seed_cycle": 1,
+      "mean_car_wait": 0.003700906344410876,
+      "max_car_wait": 2.4499999999999993,
+      "action_counts": {
+        "draw": 93,
+        "Road": 38,
+        "Remove": 9,
+        "driveway": 13,
+        "wait": 20,
+        "Bridge": 1,
+        "upgrade": 1,
+        "TrafficLight": 2
+      },
+      "command_completed": true,
+      "accepted": true,
+      "request": {
+        "command": "draw",
+        "x": 17,
+        "y": 11,
+        "toX": 19,
+        "toY": 9
+      },
+      "terminated": true,
+      "truncated": false,
+      "deterministic": false
+    }
+  ],
+  "after": [],
+  "deterministic_after": [],
+  "seed_schedule": "blocks",
+  "episodes_per_seed": 100,
+  "best_replay": "C:\\Users\\moham\\mini_motorways\\output\\training\\seed-1000-three-hours\\best-game.json",
+  "evaluation_skipped": true,
+  "target_score": 1000,
+  "target_met": false
+}

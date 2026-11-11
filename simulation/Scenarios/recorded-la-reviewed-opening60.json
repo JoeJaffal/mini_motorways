@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "id": "video-c9762eb1-reviewed-opening60-v1",
+  "city": "LosAngeles",
+  "seed": -915001679,
+  "referenceScore": 835,
+  "duration": 90,
+  "source": "Manually reviewed opening60video seconds",
+  "sourceSha256": "c9762eb1d8c474c328b01f59a4a0ca744a0c8a06e2794e2dafe285712b1d4629",
+  "startingInventory": [
+    25,
+    1,
+    0,
+    0,
+    0,
+    0
+  ],
+  "paletteRgb": [
+    16762216,
+    15879260,
+    7325152,
+    5204126,
+    6929289
+  ],
+  "bounds": [
+    0,
+    0,
+    50,
+    30
+  ],
+  "uncertainties": "ONLY opening60video seconds (~90 estimated simulator seconds). Topology/inventory checkpoints independently annotated; event times carry visual/animation/clock uncertainty. Original hidden RNG is not recovered.835 is full original final, not this prefix target.",
+  "events": [
+    {
+      "at": 0.0,
+      "videoTime": 0,
+      "kind": "house",
+      "id": "house:yellow:13,12",
+      "x": 13,
+      "y": 12,
+      "color": 0,
+      "direction": 6
+    },
+    {
+      "at": 0.0,
+      "videoTime": 0,
+      "kind": "shop",
+      "id": "shop:yellow:18,8",
+      "x": 16,
+      "y": 7,
+      "color": 0,
+      "layout": 3
+    },
+    {
+      "at": 5.4,
+      "videoTime": 15.4,
+      "kind": "draw",
+      "x": 16,
+      "y": 9,
+      "toX": 16,
+      "toY": 10
+    },
+    {
+      "at": 6.2,
+      "videoTime": 16.2,
+      "kind": "draw",
+      "x": 16,
+      "y": 10,
+      "toX": 15,
+      "toY": 10
+    },
+    {
+      "at": 6.4,
+      "videoTime": 16.4,
+      "kind": "draw",
+      "x": 15,
+      "y": 10,
+      "toX": 14,
+      "toY": 10
+    },
+    {
+      "at": 6.7,
+      "videoTime": 16.7,
+      "kind": "draw",
+      "x": 14,
+      "y": 10,
+      "toX": 13,
+      "toY": 10
+    },
+    {
+      "at": 7.0,
+      "videoTime": 17.0,
+      "kind": "draw",
+      "x": 13,
+      "y": 10,
+      "toX": 13,
+      "toY": 11
+    },
+    {
+      "at": 9.600000000000001,
+      "videoTime": 19.6,
+      "kind": "house",
+      "id": "house:yellow:11,12",
+      "x": 11,
+      "y": 12,
+      "color": 0,
+      "direction": 6
+    },
+    {
+      "at": 14.0,
+      "videoTime": 22.0,
+      "kind": "draw",
+      "x": 11,
+      "y": 11,
+      "toX": 11,
+      "toY": 10
+    },
+    {
+      "at": 14.8,
+      "videoTime": 22.4,
+      "kind": "draw",
+      "x": 11,
+      "y": 10,
+      "toX": 12,
+      "toY": 10
+    },
+    {
+      "at": 15.600000000000001,
+      "videoTime": 22.8,
+      "kind": "draw",
+      "x": 12,
+      "y": 10,
+      "toX": 13,
+      "toY": 10
+    },
+    {
+      "at": 81.0,
+      "videoTime": 55.5,
+      "kind": "house",
+      "id": "house:red:19,11",
+      "x": 19,
+      "y": 11,
+      "color": 1,
+      "direction": 4
+    },
+    {
+      "at": 81.0,
+      "videoTime": 55.5,
+      "kind": "shop",
+      "id": "shop:red:12,9",
+      "x": 10,
+      "y": 8,
+      "color": 1,
+      "layout": 2
+    },
+    {
+      "at": 86.80000000000001,
+      "videoTime": 58.4,
+      "kind": "driveway",
+      "target": "house:red:19,11",
+      "direction": 6
+    },
+    {
+      "at": 87.2,
+      "videoTime": 58.6,
+      "kind": "draw",
+      "x": 19,
+      "y": 10,
+      "toX": 19,
+      "toY": 9
+    },
+    {
+      "at": 87.60000000000001,
+      "videoTime": 58.8,
+      "kind": "draw",
+      "x": 19,
+      "y": 9,
+      "toX": 19,
+      "toY": 8
+    }
+  ]
+}

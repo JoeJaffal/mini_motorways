@@ -1,0 +1,79 @@
+{
+  "seed": 2000,
+  "weights_unchanged": true,
+  "outcomes": {
+    "protected": {
+      "trips": 0,
+      "seconds": 2,
+      "terminated": false,
+      "truncated": true,
+      "decisions": 1,
+      "disagreements": 0,
+      "first_disagreement": null,
+      "final_state": {
+        "time": 2,
+        "trips": 0,
+        "inventory": [
+          22,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "shops": [
+          {
+            "id": 0,
+            "cell": {
+              "x": 16,
+              "y": 8
+            },
+            "color": 0,
+            "demand": 0,
+            "reserved": 0,
+            "demandCapacity": 6,
+            "overcrowdedFor": 0
+          }
+        ],
+        "waiting": []
+      }
+    },
+    "final": {
+      "trips": 0,
+      "seconds": 2,
+      "terminated": false,
+      "truncated": true,
+      "decisions": 1,
+      "disagreements": 0,
+      "first_disagreement": null,
+      "final_state": {
+        "time": 2,
+        "trips": 0,
+        "inventory": [
+          22,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "shops": [
+          {
+            "id": 0,
+            "cell": {
+              "x": 16,
+              "y": 8
+            },
+            "color": 0,
+            "demand": 0,
+            "reserved": 0,
+            "demandCapacity": 6,
+            "overcrowdedFor": 0
+          }
+        ],
+        "waiting": []
+      }
+    }
+  },
+  "limits": "First disagreement is descriptive, not causal proof. Offered routes are planner-restricted; absence of an option does not prove impossibility. No counterfactual intervention performed."
+}

@@ -1,0 +1,35 @@
+{
+  "protocol": "Fixed ordinary commands, one transition per command; intermediate selections tested separately. No optimizer/policy calls.",
+  "source_revision": "6f06fbe59f63673a652f2a44be99612767a5a736",
+  "source_dirty": true,
+  "reward_schema": "trip-plus-connectivity-potential-v1",
+  "gamma": 0.999,
+  "weight": 0.25,
+  "house_cap": 8,
+  "replay_sha256": "20acb7b410d51f431939ed7b8eb5affe7e9aeb8cce89486c4c487bd6dff2d50c",
+  "score": 73,
+  "seconds": 461.35,
+  "commands": 462,
+  "observations_and_outcomes_identical": true,
+  "first_positive_shaping": {
+    "command": 23,
+    "seconds": 23,
+    "trips": 0,
+    "shaping": 0.24975
+  },
+  "max_connected_houses": 12,
+  "positive_shaping_transitions": 8,
+  "negative_shaping_transitions": 432,
+  "discounted_shaping_sum": 2.220446049250313e-15,
+  "shaping_reward_total": -0.7077499999999983,
+  "trip_reward_total": 73.0,
+  "training_reward_total": 72.29225,
+  "source_hashes": {
+    "training/environment.py": "13b81cbbc8fc2753fc76337413f8efb23d9ea7cb6843737691d810a3415f0099",
+    "training/rewards.py": "ea8cc85dad695962b88a860ca6178657cc0fbc877db310d535a9548803832a8d",
+    "training/audit_rewards.py": "a0572b6e9c42d285e042d1bf3439e95d1751d62626644fe0f6593cbb66285d82",
+    "simulation/Assets/Simulation/UsefulConnectivity.cs": "9d57d147b9ef4d4b826890c70c50fe933dbbc94bccf9b5d8758bb6daa7f9557e",
+    "simulation/Headless/Program.cs": "0ee7ad7b53d182ade68ad77b45380d99baf3893ca2314ebbf03bbb48ed89b22b"
+  },
+  "source_hash_normalization": "UTF-8 source bytes with CRLF normalized to LF"
+}

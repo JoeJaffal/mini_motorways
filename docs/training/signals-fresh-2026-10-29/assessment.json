@@ -1,0 +1,189 @@
+{
+  "completed_utc": "2026-10-29T09:27:12.543278+00:00",
+  "wall_seconds": 581.568067199998,
+  "protocol_sha256": "cf3cbbc69af0baa5ca75f92a90a2c5a0252e3ed3af2880777dcce1bb9128435b",
+  "weights_unchanged": true,
+  "results": {
+    "deterministic": {
+      "initial_mean": 161.3,
+      "selected_mean": 207.4,
+      "mean_difference": 46.099999999999994,
+      "wins": 9,
+      "ties": 0,
+      "losses": 1,
+      "paired_scores": [
+        {
+          "seed": 4000,
+          "initial": 145,
+          "selected": 153,
+          "difference": 8,
+          "initial_truncated": false,
+          "selected_truncated": false
+        },
+        {
+          "seed": 4001,
+          "initial": 125,
+          "selected": 155,
+          "difference": 30,
+          "initial_truncated": false,
+          "selected_truncated": false
+        },
+        {
+          "seed": 4002,
+          "initial": 65,
+          "selected": 83,
+          "difference": 18,
+          "initial_truncated": false,
+          "selected_truncated": false
+        },
+        {
+          "seed": 4003,
+          "initial": 147,
+          "selected": 221,
+          "difference": 74,
+          "initial_truncated": false,
+          "selected_truncated": false
+        },
+        {
+          "seed": 4004,
+          "initial": 119,
+          "selected": 327,
+          "difference": 208,
+          "initial_truncated": false,
+          "selected_truncated": false
+        },
+        {
+          "seed": 4005,
+          "initial": 164,
+          "selected": 326,
+          "difference": 162,
+          "initial_truncated": false,
+          "selected_truncated": false
+        },
+        {
+          "seed": 4006,
+          "initial": 72,
+          "selected": 95,
+          "difference": 23,
+          "initial_truncated": false,
+          "selected_truncated": false
+        },
+        {
+          "seed": 4007,
+          "initial": 408,
+          "selected": 265,
+          "difference": -143,
+          "initial_truncated": false,
+          "selected_truncated": false
+        },
+        {
+          "seed": 4008,
+          "initial": 81,
+          "selected": 142,
+          "difference": 61,
+          "initial_truncated": false,
+          "selected_truncated": false
+        },
+        {
+          "seed": 4009,
+          "initial": 287,
+          "selected": 307,
+          "difference": 20,
+          "initial_truncated": false,
+          "selected_truncated": false
+        }
+      ]
+    },
+    "sampled": {
+      "initial_mean": 182,
+      "selected_mean": 188.9,
+      "mean_difference": 6.900000000000006,
+      "wins": 5,
+      "ties": 2,
+      "losses": 3,
+      "paired_scores": [
+        {
+          "seed": 4000,
+          "initial": 170,
+          "selected": 170,
+          "difference": 0,
+          "initial_truncated": false,
+          "selected_truncated": false
+        },
+        {
+          "seed": 4001,
+          "initial": 169,
+          "selected": 152,
+          "difference": -17,
+          "initial_truncated": false,
+          "selected_truncated": false
+        },
+        {
+          "seed": 4002,
+          "initial": 288,
+          "selected": 285,
+          "difference": -3,
+          "initial_truncated": false,
+          "selected_truncated": false
+        },
+        {
+          "seed": 4003,
+          "initial": 218,
+          "selected": 217,
+          "difference": -1,
+          "initial_truncated": false,
+          "selected_truncated": false
+        },
+        {
+          "seed": 4004,
+          "initial": 138,
+          "selected": 148,
+          "difference": 10,
+          "initial_truncated": false,
+          "selected_truncated": false
+        },
+        {
+          "seed": 4005,
+          "initial": 221,
+          "selected": 226,
+          "difference": 5,
+          "initial_truncated": false,
+          "selected_truncated": false
+        },
+        {
+          "seed": 4006,
+          "initial": 102,
+          "selected": 172,
+          "difference": 70,
+          "initial_truncated": false,
+          "selected_truncated": false
+        },
+        {
+          "seed": 4007,
+          "initial": 231,
+          "selected": 234,
+          "difference": 3,
+          "initial_truncated": false,
+          "selected_truncated": false
+        },
+        {
+          "seed": 4008,
+          "initial": 75,
+          "selected": 77,
+          "difference": 2,
+          "initial_truncated": false,
+          "selected_truncated": false
+        },
+        {
+          "seed": 4009,
+          "initial": 208,
+          "selected": 208,
+          "difference": 0,
+          "initial_truncated": false,
+          "selected_truncated": false
+        }
+      ]
+    }
+  },
+  "limits": "Ten fresh maps, one training replicate; secondary sampling is one trajectory per seed. No tuning/reselection after these results."
+}

@@ -1,0 +1,25 @@
+{
+  "seeds": [
+    8000,
+    8001,
+    8002,
+    8003,
+    8004,
+    8005,
+    8006,
+    8007,
+    8008,
+    8009
+  ],
+  "checkpoint": "output\\training\\signals-context-02\\final.zip",
+  "checkpoint_sha256": "367fce0ed32810c7dfdf3e4a6aa0cf2724b8671d50505a02f3b1babcd217abea",
+  "cap": 3600,
+  "deterministic": true,
+  "no_training": true,
+  "conditions": [
+    "baseline",
+    "supported-filter"
+  ],
+  "source_sha256": "852442b85748ea5dc0f5ef4b958a81f3ab4a8683beb54ec4d862a2c731d102c5",
+  "limits": "Paired test of engineered rule for same frozen final policy, not learned improvement or isolated light physics; protected policy unchanged."
+}

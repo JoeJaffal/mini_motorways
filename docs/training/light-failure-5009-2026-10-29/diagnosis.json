@@ -1,0 +1,2433 @@
+{
+  "checkpoint_sha256": "f10899a74f7cd9fbf28eec542db828cdcaa00cf7c94fa6903f62ab3b172d0bf0",
+  "weights_unchanged": true,
+  "first_difference_index": 675,
+  "first_difference_on": {
+    "command": {
+      "command": "build",
+      "tool": "TrafficLight",
+      "x": 15,
+      "y": 15
+    },
+    "before": {
+      "time": 675,
+      "trips": 196,
+      "failed": false,
+      "inventory": [
+        42,
+        0,
+        0,
+        2,
+        1,
+        0
+      ],
+      "shops": [
+        {
+          "id": 0,
+          "color": 0,
+          "cell": {
+            "x": 18,
+            "y": 10
+          },
+          "demand": 2,
+          "reserved": 2,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 0
+        },
+        {
+          "id": 5,
+          "color": 1,
+          "cell": {
+            "x": 9,
+            "y": 8
+          },
+          "demand": 4,
+          "reserved": 4,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 1
+        },
+        {
+          "id": 11,
+          "color": 0,
+          "cell": {
+            "x": 17,
+            "y": 8
+          },
+          "demand": 1,
+          "reserved": 1,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 1
+        },
+        {
+          "id": 16,
+          "color": 3,
+          "cell": {
+            "x": 15,
+            "y": 13
+          },
+          "demand": 2,
+          "reserved": 2,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 1
+        },
+        {
+          "id": 22,
+          "color": 1,
+          "cell": {
+            "x": 18,
+            "y": 15
+          },
+          "demand": 4,
+          "reserved": 4,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 1
+        },
+        {
+          "id": 27,
+          "color": 1,
+          "cell": {
+            "x": 24,
+            "y": 12
+          },
+          "demand": 3,
+          "reserved": 3,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 1
+        },
+        {
+          "id": 28,
+          "color": 2,
+          "cell": {
+            "x": 21,
+            "y": 8
+          },
+          "demand": 6,
+          "reserved": 6,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 0
+        },
+        {
+          "id": 36,
+          "color": 2,
+          "cell": {
+            "x": 28,
+            "y": 8
+          },
+          "demand": 4,
+          "reserved": 3,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 0
+        }
+      ],
+      "obstacles": {
+        "": 20,
+        "Crossing vehicle": 7,
+        "Approaching vehicle priority": 4,
+        "Carpark access occupied": 6,
+        "Queue ahead": 10
+      },
+      "signals": [],
+      "waiting_cars": [
+        {
+          "id": 33,
+          "homeId": 20,
+          "shopId": 16,
+          "color": 3,
+          "stage": "Outbound",
+          "x": 15.624248602898408,
+          "y": 15.161261473118385,
+          "waiting": 10.500000000000014,
+          "speed": 0,
+          "obstacle": "Carpark access occupied"
+        },
+        {
+          "id": 65,
+          "homeId": 40,
+          "shopId": 28,
+          "color": 2,
+          "stage": "Outbound",
+          "x": 24.95635338548474,
+          "y": 10.188694633457818,
+          "waiting": 3.2499999999999964,
+          "speed": 0.0006019662646411428,
+          "obstacle": "Crossing vehicle"
+        }
+      ],
+      "network_sha256": "d1f83f60cbb3b95585c80bbf0a0e4b0c074081cad060ce77f269c395be77c778"
+    },
+    "after": {
+      "time": 676,
+      "trips": 196,
+      "failed": false,
+      "inventory": [
+        42,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "shops": [
+        {
+          "id": 0,
+          "color": 0,
+          "cell": {
+            "x": 18,
+            "y": 10
+          },
+          "demand": 2,
+          "reserved": 2,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 0
+        },
+        {
+          "id": 5,
+          "color": 1,
+          "cell": {
+            "x": 9,
+            "y": 8
+          },
+          "demand": 4,
+          "reserved": 4,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 1
+        },
+        {
+          "id": 11,
+          "color": 0,
+          "cell": {
+            "x": 17,
+            "y": 8
+          },
+          "demand": 2,
+          "reserved": 2,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 1
+        },
+        {
+          "id": 16,
+          "color": 3,
+          "cell": {
+            "x": 15,
+            "y": 13
+          },
+          "demand": 2,
+          "reserved": 2,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 0
+        },
+        {
+          "id": 22,
+          "color": 1,
+          "cell": {
+            "x": 18,
+            "y": 15
+          },
+          "demand": 4,
+          "reserved": 4,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 1
+        },
+        {
+          "id": 27,
+          "color": 1,
+          "cell": {
+            "x": 24,
+            "y": 12
+          },
+          "demand": 3,
+          "reserved": 3,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 1
+        },
+        {
+          "id": 28,
+          "color": 2,
+          "cell": {
+            "x": 21,
+            "y": 8
+          },
+          "demand": 7,
+          "reserved": 6,
+          "capacity": 6,
+          "overcrowded": 0.038,
+          "parked": 0
+        },
+        {
+          "id": 36,
+          "color": 2,
+          "cell": {
+            "x": 28,
+            "y": 8
+          },
+          "demand": 4,
+          "reserved": 3,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 0
+        }
+      ],
+      "obstacles": {
+        "": 19,
+        "Crossing vehicle": 7,
+        "Approaching vehicle priority": 6,
+        "Carpark access occupied": 7,
+        "Queue ahead": 8,
+        "Traffic light": 1
+      },
+      "signals": [
+        {
+          "cell": {
+            "x": 15,
+            "y": 15
+          },
+          "activePair": 17,
+          "amber": false,
+          "elapsed": 1.0000000000000002,
+          "pairs": [
+            17,
+            34,
+            72
+          ]
+        }
+      ],
+      "waiting_cars": [
+        {
+          "id": 33,
+          "homeId": 20,
+          "shopId": 16,
+          "color": 3,
+          "stage": "Outbound",
+          "x": 15.624248527478915,
+          "y": 15.16126120789132,
+          "waiting": 11.500000000000028,
+          "speed": 0,
+          "obstacle": "Carpark access occupied"
+        },
+        {
+          "id": 65,
+          "homeId": 40,
+          "shopId": 28,
+          "color": 2,
+          "stage": "Outbound",
+          "x": 24.956611896709166,
+          "y": 10.18843053316362,
+          "waiting": 4.249999999999993,
+          "speed": 0.00020632810884550255,
+          "obstacle": "Crossing vehicle"
+        }
+      ],
+      "network_sha256": "cd45222c040925f03bc164b686e55ea72bc7df1f5e908227265935a00a4bdbe4"
+    }
+  },
+  "first_difference_off": {
+    "command": {
+      "command": "draw",
+      "x": 16,
+      "y": 7,
+      "toX": 17,
+      "toY": 6
+    },
+    "before": {
+      "time": 675,
+      "trips": 196,
+      "failed": false,
+      "inventory": [
+        42,
+        0,
+        0,
+        2,
+        1,
+        0
+      ],
+      "shops": [
+        {
+          "id": 0,
+          "color": 0,
+          "cell": {
+            "x": 18,
+            "y": 10
+          },
+          "demand": 2,
+          "reserved": 2,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 0
+        },
+        {
+          "id": 5,
+          "color": 1,
+          "cell": {
+            "x": 9,
+            "y": 8
+          },
+          "demand": 4,
+          "reserved": 4,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 1
+        },
+        {
+          "id": 11,
+          "color": 0,
+          "cell": {
+            "x": 17,
+            "y": 8
+          },
+          "demand": 1,
+          "reserved": 1,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 1
+        },
+        {
+          "id": 16,
+          "color": 3,
+          "cell": {
+            "x": 15,
+            "y": 13
+          },
+          "demand": 2,
+          "reserved": 2,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 1
+        },
+        {
+          "id": 22,
+          "color": 1,
+          "cell": {
+            "x": 18,
+            "y": 15
+          },
+          "demand": 4,
+          "reserved": 4,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 1
+        },
+        {
+          "id": 27,
+          "color": 1,
+          "cell": {
+            "x": 24,
+            "y": 12
+          },
+          "demand": 3,
+          "reserved": 3,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 1
+        },
+        {
+          "id": 28,
+          "color": 2,
+          "cell": {
+            "x": 21,
+            "y": 8
+          },
+          "demand": 6,
+          "reserved": 6,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 0
+        },
+        {
+          "id": 36,
+          "color": 2,
+          "cell": {
+            "x": 28,
+            "y": 8
+          },
+          "demand": 4,
+          "reserved": 3,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 0
+        }
+      ],
+      "obstacles": {
+        "": 20,
+        "Crossing vehicle": 7,
+        "Approaching vehicle priority": 4,
+        "Carpark access occupied": 6,
+        "Queue ahead": 10
+      },
+      "signals": [],
+      "waiting_cars": [
+        {
+          "id": 33,
+          "homeId": 20,
+          "shopId": 16,
+          "color": 3,
+          "stage": "Outbound",
+          "x": 15.624248602898408,
+          "y": 15.161261473118385,
+          "waiting": 10.500000000000014,
+          "speed": 0,
+          "obstacle": "Carpark access occupied"
+        },
+        {
+          "id": 65,
+          "homeId": 40,
+          "shopId": 28,
+          "color": 2,
+          "stage": "Outbound",
+          "x": 24.95635338548474,
+          "y": 10.188694633457818,
+          "waiting": 3.2499999999999964,
+          "speed": 0.0006019662646411428,
+          "obstacle": "Crossing vehicle"
+        }
+      ],
+      "network_sha256": "d1f83f60cbb3b95585c80bbf0a0e4b0c074081cad060ce77f269c395be77c778"
+    },
+    "after": {
+      "time": 676,
+      "trips": 196,
+      "failed": false,
+      "inventory": [
+        41,
+        0,
+        0,
+        2,
+        1,
+        0
+      ],
+      "shops": [
+        {
+          "id": 0,
+          "color": 0,
+          "cell": {
+            "x": 18,
+            "y": 10
+          },
+          "demand": 2,
+          "reserved": 2,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 0
+        },
+        {
+          "id": 5,
+          "color": 1,
+          "cell": {
+            "x": 9,
+            "y": 8
+          },
+          "demand": 4,
+          "reserved": 4,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 1
+        },
+        {
+          "id": 11,
+          "color": 0,
+          "cell": {
+            "x": 17,
+            "y": 8
+          },
+          "demand": 2,
+          "reserved": 2,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 1
+        },
+        {
+          "id": 16,
+          "color": 3,
+          "cell": {
+            "x": 15,
+            "y": 13
+          },
+          "demand": 2,
+          "reserved": 2,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 0
+        },
+        {
+          "id": 22,
+          "color": 1,
+          "cell": {
+            "x": 18,
+            "y": 15
+          },
+          "demand": 4,
+          "reserved": 4,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 1
+        },
+        {
+          "id": 27,
+          "color": 1,
+          "cell": {
+            "x": 24,
+            "y": 12
+          },
+          "demand": 3,
+          "reserved": 3,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 1
+        },
+        {
+          "id": 28,
+          "color": 2,
+          "cell": {
+            "x": 21,
+            "y": 8
+          },
+          "demand": 7,
+          "reserved": 6,
+          "capacity": 6,
+          "overcrowded": 0.038,
+          "parked": 0
+        },
+        {
+          "id": 36,
+          "color": 2,
+          "cell": {
+            "x": 28,
+            "y": 8
+          },
+          "demand": 4,
+          "reserved": 3,
+          "capacity": 6,
+          "overcrowded": 0,
+          "parked": 0
+        }
+      ],
+      "obstacles": {
+        "": 20,
+        "Crossing vehicle": 7,
+        "Approaching vehicle priority": 6,
+        "Carpark access occupied": 7,
+        "Queue ahead": 8
+      },
+      "signals": [],
+      "waiting_cars": [
+        {
+          "id": 33,
+          "homeId": 20,
+          "shopId": 16,
+          "color": 3,
+          "stage": "Outbound",
+          "x": 15.624248527478915,
+          "y": 15.16126120789132,
+          "waiting": 11.500000000000028,
+          "speed": 0,
+          "obstacle": "Carpark access occupied"
+        },
+        {
+          "id": 65,
+          "homeId": 40,
+          "shopId": 28,
+          "color": 2,
+          "stage": "Outbound",
+          "x": 24.956611896709166,
+          "y": 10.18843053316362,
+          "waiting": 4.249999999999993,
+          "speed": 0.00020632810884550255,
+          "obstacle": "Crossing vehicle"
+        }
+      ],
+      "network_sha256": "c02a83821c04cd216d00ee672afba9f75e55b6837b35850787162e3658d2146d"
+    }
+  },
+  "lights": [
+    {
+      "command_index": 675,
+      "command": {
+        "command": "build",
+        "tool": "TrafficLight",
+        "x": 15,
+        "y": 15
+      },
+      "before": {
+        "time": 675,
+        "trips": 196,
+        "failed": false,
+        "inventory": [
+          42,
+          0,
+          0,
+          2,
+          1,
+          0
+        ],
+        "shops": [
+          {
+            "id": 0,
+            "color": 0,
+            "cell": {
+              "x": 18,
+              "y": 10
+            },
+            "demand": 2,
+            "reserved": 2,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 0
+          },
+          {
+            "id": 5,
+            "color": 1,
+            "cell": {
+              "x": 9,
+              "y": 8
+            },
+            "demand": 4,
+            "reserved": 4,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 11,
+            "color": 0,
+            "cell": {
+              "x": 17,
+              "y": 8
+            },
+            "demand": 1,
+            "reserved": 1,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 16,
+            "color": 3,
+            "cell": {
+              "x": 15,
+              "y": 13
+            },
+            "demand": 2,
+            "reserved": 2,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 22,
+            "color": 1,
+            "cell": {
+              "x": 18,
+              "y": 15
+            },
+            "demand": 4,
+            "reserved": 4,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 27,
+            "color": 1,
+            "cell": {
+              "x": 24,
+              "y": 12
+            },
+            "demand": 3,
+            "reserved": 3,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 28,
+            "color": 2,
+            "cell": {
+              "x": 21,
+              "y": 8
+            },
+            "demand": 6,
+            "reserved": 6,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 0
+          },
+          {
+            "id": 36,
+            "color": 2,
+            "cell": {
+              "x": 28,
+              "y": 8
+            },
+            "demand": 4,
+            "reserved": 3,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 0
+          }
+        ],
+        "obstacles": {
+          "": 20,
+          "Crossing vehicle": 7,
+          "Approaching vehicle priority": 4,
+          "Carpark access occupied": 6,
+          "Queue ahead": 10
+        },
+        "signals": [],
+        "waiting_cars": [
+          {
+            "id": 33,
+            "homeId": 20,
+            "shopId": 16,
+            "color": 3,
+            "stage": "Outbound",
+            "x": 15.624248602898408,
+            "y": 15.161261473118385,
+            "waiting": 10.500000000000014,
+            "speed": 0,
+            "obstacle": "Carpark access occupied"
+          },
+          {
+            "id": 65,
+            "homeId": 40,
+            "shopId": 28,
+            "color": 2,
+            "stage": "Outbound",
+            "x": 24.95635338548474,
+            "y": 10.188694633457818,
+            "waiting": 3.2499999999999964,
+            "speed": 0.0006019662646411428,
+            "obstacle": "Crossing vehicle"
+          }
+        ],
+        "network_sha256": "d1f83f60cbb3b95585c80bbf0a0e4b0c074081cad060ce77f269c395be77c778"
+      },
+      "after": {
+        "time": 676,
+        "trips": 196,
+        "failed": false,
+        "inventory": [
+          42,
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        "shops": [
+          {
+            "id": 0,
+            "color": 0,
+            "cell": {
+              "x": 18,
+              "y": 10
+            },
+            "demand": 2,
+            "reserved": 2,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 0
+          },
+          {
+            "id": 5,
+            "color": 1,
+            "cell": {
+              "x": 9,
+              "y": 8
+            },
+            "demand": 4,
+            "reserved": 4,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 11,
+            "color": 0,
+            "cell": {
+              "x": 17,
+              "y": 8
+            },
+            "demand": 2,
+            "reserved": 2,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 16,
+            "color": 3,
+            "cell": {
+              "x": 15,
+              "y": 13
+            },
+            "demand": 2,
+            "reserved": 2,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 0
+          },
+          {
+            "id": 22,
+            "color": 1,
+            "cell": {
+              "x": 18,
+              "y": 15
+            },
+            "demand": 4,
+            "reserved": 4,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 27,
+            "color": 1,
+            "cell": {
+              "x": 24,
+              "y": 12
+            },
+            "demand": 3,
+            "reserved": 3,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 28,
+            "color": 2,
+            "cell": {
+              "x": 21,
+              "y": 8
+            },
+            "demand": 7,
+            "reserved": 6,
+            "capacity": 6,
+            "overcrowded": 0.038,
+            "parked": 0
+          },
+          {
+            "id": 36,
+            "color": 2,
+            "cell": {
+              "x": 28,
+              "y": 8
+            },
+            "demand": 4,
+            "reserved": 3,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 0
+          }
+        ],
+        "obstacles": {
+          "": 19,
+          "Crossing vehicle": 7,
+          "Approaching vehicle priority": 6,
+          "Carpark access occupied": 7,
+          "Queue ahead": 8,
+          "Traffic light": 1
+        },
+        "signals": [
+          {
+            "cell": {
+              "x": 15,
+              "y": 15
+            },
+            "activePair": 17,
+            "amber": false,
+            "elapsed": 1.0000000000000002,
+            "pairs": [
+              17,
+              34,
+              72
+            ]
+          }
+        ],
+        "waiting_cars": [
+          {
+            "id": 33,
+            "homeId": 20,
+            "shopId": 16,
+            "color": 3,
+            "stage": "Outbound",
+            "x": 15.624248527478915,
+            "y": 15.16126120789132,
+            "waiting": 11.500000000000028,
+            "speed": 0,
+            "obstacle": "Carpark access occupied"
+          },
+          {
+            "id": 65,
+            "homeId": 40,
+            "shopId": 28,
+            "color": 2,
+            "stage": "Outbound",
+            "x": 24.956611896709166,
+            "y": 10.18843053316362,
+            "waiting": 4.249999999999993,
+            "speed": 0.00020632810884550255,
+            "obstacle": "Crossing vehicle"
+          }
+        ],
+        "network_sha256": "cd45222c040925f03bc164b686e55ea72bc7df1f5e908227265935a00a4bdbe4"
+      }
+    },
+    {
+      "command_index": 697,
+      "command": {
+        "command": "build",
+        "tool": "TrafficLight",
+        "x": 24,
+        "y": 14
+      },
+      "before": {
+        "time": 697,
+        "trips": 208,
+        "failed": false,
+        "inventory": [
+          37,
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        "shops": [
+          {
+            "id": 0,
+            "color": 0,
+            "cell": {
+              "x": 18,
+              "y": 10
+            },
+            "demand": 3,
+            "reserved": 3,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 2
+          },
+          {
+            "id": 5,
+            "color": 1,
+            "cell": {
+              "x": 9,
+              "y": 8
+            },
+            "demand": 3,
+            "reserved": 3,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 0
+          },
+          {
+            "id": 11,
+            "color": 0,
+            "cell": {
+              "x": 17,
+              "y": 8
+            },
+            "demand": 2,
+            "reserved": 2,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 0
+          },
+          {
+            "id": 16,
+            "color": 3,
+            "cell": {
+              "x": 15,
+              "y": 13
+            },
+            "demand": 1,
+            "reserved": 1,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 22,
+            "color": 1,
+            "cell": {
+              "x": 18,
+              "y": 15
+            },
+            "demand": 3,
+            "reserved": 3,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 27,
+            "color": 1,
+            "cell": {
+              "x": 24,
+              "y": 12
+            },
+            "demand": 2,
+            "reserved": 2,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 28,
+            "color": 2,
+            "cell": {
+              "x": 21,
+              "y": 8
+            },
+            "demand": 6,
+            "reserved": 4,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 36,
+            "color": 2,
+            "cell": {
+              "x": 28,
+              "y": 8
+            },
+            "demand": 5,
+            "reserved": 3,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 0
+          }
+        ],
+        "obstacles": {
+          "": 24,
+          "Crossing vehicle": 3,
+          "Carpark access occupied": 9,
+          "Traffic light": 1,
+          "Approaching vehicle priority": 3,
+          "Queue ahead": 4
+        },
+        "signals": [
+          {
+            "cell": {
+              "x": 15,
+              "y": 15
+            },
+            "activePair": 72,
+            "amber": false,
+            "elapsed": 0.7000000000000001,
+            "pairs": [
+              17,
+              34,
+              72
+            ]
+          }
+        ],
+        "waiting_cars": [
+          {
+            "id": 13,
+            "homeId": 8,
+            "shopId": 5,
+            "color": 1,
+            "stage": "Outbound",
+            "x": 9.629953547134702,
+            "y": 10.160360736051356,
+            "waiting": 10.15000000000001,
+            "speed": 0,
+            "obstacle": "Carpark access occupied"
+          },
+          {
+            "id": 41,
+            "homeId": 25,
+            "shopId": 27,
+            "color": 1,
+            "stage": "Outbound",
+            "x": 24.582972977727398,
+            "y": 14.154980611822857,
+            "waiting": 8.04999999999998,
+            "speed": 0,
+            "obstacle": "Carpark access occupied"
+          },
+          {
+            "id": 48,
+            "homeId": 31,
+            "shopId": 28,
+            "color": 2,
+            "stage": "Outbound",
+            "x": 21.419498335796888,
+            "y": 7.837467510855611,
+            "waiting": 3.949999999999994,
+            "speed": 0.0002816972570367118,
+            "obstacle": "Carpark access occupied"
+          }
+        ],
+        "network_sha256": "52c89eca531a62b4d070c312e8caed635d69a42cac0404167eafb2c9399125b2"
+      },
+      "after": {
+        "time": 698,
+        "trips": 208,
+        "failed": false,
+        "inventory": [
+          37,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "shops": [
+          {
+            "id": 0,
+            "color": 0,
+            "cell": {
+              "x": 18,
+              "y": 10
+            },
+            "demand": 3,
+            "reserved": 3,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 2
+          },
+          {
+            "id": 5,
+            "color": 1,
+            "cell": {
+              "x": 9,
+              "y": 8
+            },
+            "demand": 3,
+            "reserved": 3,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 0
+          },
+          {
+            "id": 11,
+            "color": 0,
+            "cell": {
+              "x": 17,
+              "y": 8
+            },
+            "demand": 2,
+            "reserved": 2,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 16,
+            "color": 3,
+            "cell": {
+              "x": 15,
+              "y": 13
+            },
+            "demand": 1,
+            "reserved": 1,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 22,
+            "color": 1,
+            "cell": {
+              "x": 18,
+              "y": 15
+            },
+            "demand": 3,
+            "reserved": 3,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 27,
+            "color": 1,
+            "cell": {
+              "x": 24,
+              "y": 12
+            },
+            "demand": 2,
+            "reserved": 2,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 28,
+            "color": 2,
+            "cell": {
+              "x": 21,
+              "y": 8
+            },
+            "demand": 6,
+            "reserved": 4,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 36,
+            "color": 2,
+            "cell": {
+              "x": 28,
+              "y": 8
+            },
+            "demand": 5,
+            "reserved": 3,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 0
+          }
+        ],
+        "obstacles": {
+          "": 27,
+          "Carpark access occupied": 9,
+          "Traffic light": 1,
+          "Crossing vehicle": 3,
+          "Queue ahead": 3,
+          "Approaching vehicle priority": 1
+        },
+        "signals": [
+          {
+            "cell": {
+              "x": 15,
+              "y": 15
+            },
+            "activePair": 72,
+            "amber": false,
+            "elapsed": 0.7000000000000001,
+            "pairs": [
+              17,
+              34,
+              72
+            ]
+          },
+          {
+            "cell": {
+              "x": 24,
+              "y": 14
+            },
+            "activePair": 72,
+            "amber": false,
+            "elapsed": 1.0000000000000002,
+            "pairs": [
+              72,
+              32
+            ]
+          }
+        ],
+        "waiting_cars": [
+          {
+            "id": 13,
+            "homeId": 8,
+            "shopId": 5,
+            "color": 1,
+            "stage": "Outbound",
+            "x": 9.62995345235832,
+            "y": 10.160360433637036,
+            "waiting": 11.150000000000023,
+            "speed": 0,
+            "obstacle": "Carpark access occupied"
+          },
+          {
+            "id": 41,
+            "homeId": 25,
+            "shopId": 27,
+            "color": 1,
+            "stage": "Outbound",
+            "x": 24.582972977727398,
+            "y": 14.154980611822857,
+            "waiting": 9.049999999999994,
+            "speed": 0,
+            "obstacle": "Carpark access occupied"
+          },
+          {
+            "id": 48,
+            "homeId": 31,
+            "shopId": 28,
+            "color": 2,
+            "stage": "Outbound",
+            "x": 21.419466667623354,
+            "y": 7.837637567116972,
+            "waiting": 4.94999999999999,
+            "speed": 9.659645863004733e-05,
+            "obstacle": "Carpark access occupied"
+          }
+        ],
+        "network_sha256": "85654c31995cb5bdbb59bd218ce84b41bd82808f5363f4658a7c1dd71b96cdcf"
+      }
+    }
+  ],
+  "on_final": {
+    "time": 824.9000000000001,
+    "trips": 279,
+    "failed": true,
+    "inventory": [
+      37,
+      1,
+      0,
+      0,
+      1,
+      0
+    ],
+    "shops": [
+      {
+        "id": 0,
+        "color": 0,
+        "cell": {
+          "x": 18,
+          "y": 10
+        },
+        "demand": 2,
+        "reserved": 2,
+        "capacity": 6,
+        "overcrowded": 0,
+        "parked": 1
+      },
+      {
+        "id": 5,
+        "color": 1,
+        "cell": {
+          "x": 9,
+          "y": 8
+        },
+        "demand": 2,
+        "reserved": 2,
+        "capacity": 6,
+        "overcrowded": 0,
+        "parked": 1
+      },
+      {
+        "id": 11,
+        "color": 0,
+        "cell": {
+          "x": 17,
+          "y": 8
+        },
+        "demand": 1,
+        "reserved": 1,
+        "capacity": 6,
+        "overcrowded": 0,
+        "parked": 1
+      },
+      {
+        "id": 16,
+        "color": 3,
+        "cell": {
+          "x": 15,
+          "y": 13
+        },
+        "demand": 3,
+        "reserved": 3,
+        "capacity": 6,
+        "overcrowded": 0,
+        "parked": 0
+      },
+      {
+        "id": 22,
+        "color": 1,
+        "cell": {
+          "x": 18,
+          "y": 15
+        },
+        "demand": 3,
+        "reserved": 3,
+        "capacity": 6,
+        "overcrowded": 0,
+        "parked": 0
+      },
+      {
+        "id": 27,
+        "color": 1,
+        "cell": {
+          "x": 24,
+          "y": 12
+        },
+        "demand": 2,
+        "reserved": 2,
+        "capacity": 6,
+        "overcrowded": 0,
+        "parked": 0
+      },
+      {
+        "id": 28,
+        "color": 2,
+        "cell": {
+          "x": 21,
+          "y": 8
+        },
+        "demand": 7,
+        "reserved": 6,
+        "capacity": 6,
+        "overcrowded": 50.043,
+        "parked": 2
+      },
+      {
+        "id": 36,
+        "color": 2,
+        "cell": {
+          "x": 28,
+          "y": 8
+        },
+        "demand": 6,
+        "reserved": 6,
+        "capacity": 6,
+        "overcrowded": 6.454,
+        "parked": 2
+      },
+      {
+        "id": 48,
+        "color": 4,
+        "cell": {
+          "x": 26,
+          "y": 19
+        },
+        "demand": 1,
+        "reserved": 1,
+        "capacity": 6,
+        "overcrowded": 0,
+        "parked": 1
+      }
+    ],
+    "obstacles": {
+      "": 31,
+      "Queue ahead": 7,
+      "Traffic light": 1,
+      "Carpark access occupied": 6,
+      "Crossing vehicle": 3,
+      "Approaching vehicle priority": 1
+    },
+    "signals": [
+      {
+        "cell": {
+          "x": 15,
+          "y": 15
+        },
+        "activePair": 72,
+        "amber": false,
+        "elapsed": 0.6,
+        "pairs": [
+          17,
+          34,
+          72
+        ]
+      },
+      {
+        "cell": {
+          "x": 24,
+          "y": 14
+        },
+        "activePair": 72,
+        "amber": false,
+        "elapsed": 0.35,
+        "pairs": [
+          33,
+          72
+        ]
+      }
+    ],
+    "waiting_cars": [
+      {
+        "id": 32,
+        "homeId": 20,
+        "shopId": 16,
+        "color": 3,
+        "stage": "Outbound",
+        "x": 16.163744316985234,
+        "y": 15.402878370807029,
+        "waiting": 6.249999999999986,
+        "speed": 2.439047209044402e-05,
+        "obstacle": "Traffic light"
+      },
+      {
+        "id": 54,
+        "homeId": 34,
+        "shopId": 28,
+        "color": 2,
+        "stage": "Outbound",
+        "x": 21.40698017563901,
+        "y": 7.904689307310362,
+        "waiting": 4.449999999999992,
+        "speed": 0,
+        "obstacle": "Carpark access occupied"
+      },
+      {
+        "id": 78,
+        "homeId": 47,
+        "shopId": 36,
+        "color": 2,
+        "stage": "Outbound",
+        "x": 27.836098482114373,
+        "y": 10.600000000000001,
+        "waiting": 4.499999999999992,
+        "speed": 0.00016209818877355842,
+        "obstacle": "Carpark access occupied"
+      }
+    ],
+    "network_sha256": "ff5deb11aab70b4f4df17ceb932f880afb54d9316da5296263e32a2057afae45"
+  },
+  "off_final": {
+    "time": 1097,
+    "trips": 475,
+    "failed": true,
+    "inventory": [
+      62,
+      0,
+      0,
+      4,
+      2,
+      0
+    ],
+    "shops": [
+      {
+        "id": 0,
+        "color": 0,
+        "cell": {
+          "x": 18,
+          "y": 10
+        },
+        "demand": 3,
+        "reserved": 3,
+        "capacity": 6,
+        "overcrowded": 0,
+        "parked": 1
+      },
+      {
+        "id": 5,
+        "color": 1,
+        "cell": {
+          "x": 9,
+          "y": 8
+        },
+        "demand": 4,
+        "reserved": 4,
+        "capacity": 6,
+        "overcrowded": 0,
+        "parked": 2
+      },
+      {
+        "id": 11,
+        "color": 0,
+        "cell": {
+          "x": 17,
+          "y": 8
+        },
+        "demand": 3,
+        "reserved": 3,
+        "capacity": 6,
+        "overcrowded": 0,
+        "parked": 2
+      },
+      {
+        "id": 16,
+        "color": 3,
+        "cell": {
+          "x": 15,
+          "y": 13
+        },
+        "demand": 3,
+        "reserved": 3,
+        "capacity": 6,
+        "overcrowded": 0,
+        "parked": 1
+      },
+      {
+        "id": 22,
+        "color": 1,
+        "cell": {
+          "x": 18,
+          "y": 15
+        },
+        "demand": 3,
+        "reserved": 3,
+        "capacity": 6,
+        "overcrowded": 0,
+        "parked": 0
+      },
+      {
+        "id": 27,
+        "color": 1,
+        "cell": {
+          "x": 24,
+          "y": 12
+        },
+        "demand": 2,
+        "reserved": 2,
+        "capacity": 6,
+        "overcrowded": 0,
+        "parked": 1
+      },
+      {
+        "id": 28,
+        "color": 2,
+        "cell": {
+          "x": 21,
+          "y": 8
+        },
+        "demand": 13,
+        "reserved": 10,
+        "capacity": 9,
+        "overcrowded": 50.049,
+        "parked": 1
+      },
+      {
+        "id": 36,
+        "color": 2,
+        "cell": {
+          "x": 28,
+          "y": 8
+        },
+        "demand": 5,
+        "reserved": 2,
+        "capacity": 6,
+        "overcrowded": 0,
+        "parked": 1
+      },
+      {
+        "id": 48,
+        "color": 4,
+        "cell": {
+          "x": 26,
+          "y": 19
+        },
+        "demand": 3,
+        "reserved": 3,
+        "capacity": 6,
+        "overcrowded": 0,
+        "parked": 2
+      },
+      {
+        "id": 54,
+        "color": 4,
+        "cell": {
+          "x": 37,
+          "y": 18
+        },
+        "demand": 6,
+        "reserved": 6,
+        "capacity": 6,
+        "overcrowded": 5.618,
+        "parked": 2
+      }
+    ],
+    "obstacles": {
+      "": 34,
+      "Carpark access occupied": 14,
+      "Approaching vehicle priority": 10,
+      "Crossing vehicle": 5,
+      "Queue ahead": 3
+    },
+    "signals": [],
+    "waiting_cars": [
+      {
+        "id": 32,
+        "homeId": 20,
+        "shopId": 16,
+        "color": 3,
+        "stage": "Outbound",
+        "x": 15.62441611624636,
+        "y": 15.161850565839393,
+        "waiting": 3.1999999999999966,
+        "speed": 0.0006564417026096381,
+        "obstacle": "Carpark access occupied"
+      },
+      {
+        "id": 34,
+        "homeId": 21,
+        "shopId": 0,
+        "color": 0,
+        "stage": "Outbound",
+        "x": 18.602384251577107,
+        "y": 12.048608218940785,
+        "waiting": 8.999999999999993,
+        "speed": 0,
+        "obstacle": "Carpark access occupied"
+      },
+      {
+        "id": 58,
+        "homeId": 37,
+        "shopId": 28,
+        "color": 2,
+        "stage": "Returning",
+        "x": 21.61497426703553,
+        "y": 8.162960916042259,
+        "waiting": 6.149999999999986,
+        "speed": 2.768045410925452e-05,
+        "obstacle": "Crossing vehicle"
+      },
+      {
+        "id": 61,
+        "homeId": 38,
+        "shopId": 28,
+        "color": 2,
+        "stage": "Returning",
+        "x": 21.546893036206402,
+        "y": 8.494900302033582,
+        "waiting": 3.399999999999996,
+        "speed": 0.0005415786241113886,
+        "obstacle": "Approaching vehicle priority"
+      },
+      {
+        "id": 65,
+        "homeId": 40,
+        "shopId": 28,
+        "color": 2,
+        "stage": "Outbound",
+        "x": 20.80934532326071,
+        "y": 6.959277736351948,
+        "waiting": 20.75000000000016,
+        "speed": 0,
+        "obstacle": "Crossing vehicle"
+      },
+      {
+        "id": 77,
+        "homeId": 46,
+        "shopId": 28,
+        "color": 2,
+        "stage": "Outbound",
+        "x": 22.16375008439615,
+        "y": 7.4,
+        "waiting": 16.200000000000095,
+        "speed": 0,
+        "obstacle": "Approaching vehicle priority"
+      },
+      {
+        "id": 87,
+        "homeId": 52,
+        "shopId": 54,
+        "color": 4,
+        "stage": "Outbound",
+        "x": 35.71038863099079,
+        "y": 18.6,
+        "waiting": 4.399999999999992,
+        "speed": 0.000731172664064989,
+        "obstacle": "Carpark access occupied"
+      },
+      {
+        "id": 89,
+        "homeId": 53,
+        "shopId": 54,
+        "color": 4,
+        "stage": "Outbound",
+        "x": 36.46122276291491,
+        "y": 18.6,
+        "waiting": 6.849999999999984,
+        "speed": 2.743204519531563e-05,
+        "obstacle": "Carpark access occupied"
+      },
+      {
+        "id": 92,
+        "homeId": 56,
+        "shopId": 54,
+        "color": 4,
+        "stage": "Outbound",
+        "x": 36.836247713766376,
+        "y": 18.6,
+        "waiting": 8.399999999999984,
+        "speed": 2.445468200998115e-06,
+        "obstacle": "Carpark access occupied"
+      },
+      {
+        "id": 96,
+        "homeId": 58,
+        "shopId": 54,
+        "color": 4,
+        "stage": "Outbound",
+        "x": 36.08606450848354,
+        "y": 18.599999999999998,
+        "waiting": 5.599999999999988,
+        "speed": 0.00017260544613539294,
+        "obstacle": "Carpark access occupied"
+      }
+    ],
+    "network_sha256": "803a3e6a587962820fb479b7c155c9f84ea093a7ae7144e4db079b813de9b902"
+  },
+  "counterfactuals": [
+    {
+      "omitted_commands": [
+        675
+      ],
+      "score": 277,
+      "seconds": 824.5500000000001,
+      "rejected": 0,
+      "final": {
+        "time": 824.5500000000001,
+        "trips": 277,
+        "failed": true,
+        "inventory": [
+          37,
+          1,
+          0,
+          1,
+          1,
+          0
+        ],
+        "shops": [
+          {
+            "id": 0,
+            "color": 0,
+            "cell": {
+              "x": 18,
+              "y": 10
+            },
+            "demand": 2,
+            "reserved": 2,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 5,
+            "color": 1,
+            "cell": {
+              "x": 9,
+              "y": 8
+            },
+            "demand": 3,
+            "reserved": 3,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 11,
+            "color": 0,
+            "cell": {
+              "x": 17,
+              "y": 8
+            },
+            "demand": 1,
+            "reserved": 1,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 0
+          },
+          {
+            "id": 16,
+            "color": 3,
+            "cell": {
+              "x": 15,
+              "y": 13
+            },
+            "demand": 4,
+            "reserved": 4,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 0
+          },
+          {
+            "id": 22,
+            "color": 1,
+            "cell": {
+              "x": 18,
+              "y": 15
+            },
+            "demand": 2,
+            "reserved": 2,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 0
+          },
+          {
+            "id": 27,
+            "color": 1,
+            "cell": {
+              "x": 24,
+              "y": 12
+            },
+            "demand": 2,
+            "reserved": 2,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 0
+          },
+          {
+            "id": 28,
+            "color": 2,
+            "cell": {
+              "x": 21,
+              "y": 8
+            },
+            "demand": 7,
+            "reserved": 6,
+            "capacity": 6,
+            "overcrowded": 50.044,
+            "parked": 2
+          },
+          {
+            "id": 36,
+            "color": 2,
+            "cell": {
+              "x": 28,
+              "y": 8
+            },
+            "demand": 6,
+            "reserved": 6,
+            "capacity": 6,
+            "overcrowded": 5.883,
+            "parked": 2
+          },
+          {
+            "id": 48,
+            "color": 4,
+            "cell": {
+              "x": 26,
+              "y": 19
+            },
+            "demand": 2,
+            "reserved": 2,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 2
+          }
+        ],
+        "obstacles": {
+          "": 29,
+          "Approaching vehicle priority": 1,
+          "Carpark access occupied": 6,
+          "Crossing vehicle": 9,
+          "Queue ahead": 5
+        },
+        "signals": [
+          {
+            "cell": {
+              "x": 24,
+              "y": 14
+            },
+            "activePair": 72,
+            "amber": false,
+            "elapsed": 0,
+            "pairs": [
+              33,
+              72
+            ]
+          }
+        ],
+        "waiting_cars": [
+          {
+            "id": 49,
+            "homeId": 31,
+            "shopId": 36,
+            "color": 2,
+            "stage": "Outbound",
+            "x": 24.836796319788135,
+            "y": 10.616157984854492,
+            "waiting": 3.4499999999999957,
+            "speed": 0.00048575955979115445,
+            "obstacle": "Crossing vehicle"
+          },
+          {
+            "id": 55,
+            "homeId": 34,
+            "shopId": 28,
+            "color": 2,
+            "stage": "Outbound",
+            "x": 22.163851325370413,
+            "y": 7.402879128561842,
+            "waiting": 4.6499999999999915,
+            "speed": 0.00013887412836341109,
+            "obstacle": "Crossing vehicle"
+          }
+        ],
+        "network_sha256": "45711da2cdf9fd158f06fd171f8878540aad2e848eb2974dd59e4386c92c9b01"
+      },
+      "note": "ON command schedule held fixed, then waits only; model not called"
+    },
+    {
+      "omitted_commands": [
+        697
+      ],
+      "score": 374,
+      "seconds": 964.95,
+      "rejected": 0,
+      "final": {
+        "time": 964.95,
+        "trips": 374,
+        "failed": true,
+        "inventory": [
+          37,
+          1,
+          0,
+          1,
+          1,
+          0
+        ],
+        "shops": [
+          {
+            "id": 0,
+            "color": 0,
+            "cell": {
+              "x": 18,
+              "y": 10
+            },
+            "demand": 2,
+            "reserved": 2,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 0
+          },
+          {
+            "id": 5,
+            "color": 1,
+            "cell": {
+              "x": 9,
+              "y": 8
+            },
+            "demand": 4,
+            "reserved": 4,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 0
+          },
+          {
+            "id": 11,
+            "color": 0,
+            "cell": {
+              "x": 17,
+              "y": 8
+            },
+            "demand": 3,
+            "reserved": 3,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 16,
+            "color": 3,
+            "cell": {
+              "x": 15,
+              "y": 13
+            },
+            "demand": 3,
+            "reserved": 3,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 2
+          },
+          {
+            "id": 22,
+            "color": 1,
+            "cell": {
+              "x": 18,
+              "y": 15
+            },
+            "demand": 3,
+            "reserved": 3,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 27,
+            "color": 1,
+            "cell": {
+              "x": 24,
+              "y": 12
+            },
+            "demand": 3,
+            "reserved": 3,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 2
+          },
+          {
+            "id": 28,
+            "color": 2,
+            "cell": {
+              "x": 21,
+              "y": 8
+            },
+            "demand": 4,
+            "reserved": 4,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 0
+          },
+          {
+            "id": 36,
+            "color": 2,
+            "cell": {
+              "x": 28,
+              "y": 8
+            },
+            "demand": 4,
+            "reserved": 4,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 48,
+            "color": 4,
+            "cell": {
+              "x": 26,
+              "y": 19
+            },
+            "demand": 3,
+            "reserved": 3,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 54,
+            "color": 4,
+            "cell": {
+              "x": 37,
+              "y": 18
+            },
+            "demand": 10,
+            "reserved": 0,
+            "capacity": 6,
+            "overcrowded": 50.025,
+            "parked": 0
+          }
+        ],
+        "obstacles": {
+          "Carpark access occupied": 8,
+          "Queue ahead": 10,
+          "": 29,
+          "Crossing vehicle": 3,
+          "Approaching vehicle priority": 5,
+          "Traffic light": 2
+        },
+        "signals": [
+          {
+            "cell": {
+              "x": 15,
+              "y": 15
+            },
+            "activePair": 17,
+            "amber": false,
+            "elapsed": 0.44999999999999996,
+            "pairs": [
+              17,
+              34,
+              72
+            ]
+          }
+        ],
+        "waiting_cars": [
+          {
+            "id": 13,
+            "homeId": 8,
+            "shopId": 5,
+            "color": 1,
+            "stage": "Outbound",
+            "x": 9.624248443414649,
+            "y": 10.161260912263248,
+            "waiting": 13.500000000000057,
+            "speed": 0,
+            "obstacle": "Carpark access occupied"
+          },
+          {
+            "id": 15,
+            "homeId": 9,
+            "shopId": 22,
+            "color": 1,
+            "stage": "Returning",
+            "x": 16.186500115813214,
+            "y": 16.045078759575905,
+            "waiting": 10.050000000000008,
+            "speed": 0,
+            "obstacle": "Traffic light"
+          },
+          {
+            "id": 23,
+            "homeId": 14,
+            "shopId": 0,
+            "color": 0,
+            "stage": "Outbound",
+            "x": 18.61616393807863,
+            "y": 12.163242670137254,
+            "waiting": 3.399999999999996,
+            "speed": 0.0005279933358258228,
+            "obstacle": "Carpark access occupied"
+          }
+        ],
+        "network_sha256": "075d4745756d95574ec11ffde2528d782c4ee9b8ebe8c86bad8dc024937d969a"
+      },
+      "note": "ON command schedule held fixed, then waits only; model not called"
+    },
+    {
+      "omitted_commands": [
+        675,
+        697
+      ],
+      "score": 276,
+      "seconds": 824.6,
+      "rejected": 0,
+      "final": {
+        "time": 824.6,
+        "trips": 276,
+        "failed": true,
+        "inventory": [
+          37,
+          1,
+          0,
+          2,
+          1,
+          0
+        ],
+        "shops": [
+          {
+            "id": 0,
+            "color": 0,
+            "cell": {
+              "x": 18,
+              "y": 10
+            },
+            "demand": 3,
+            "reserved": 3,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 5,
+            "color": 1,
+            "cell": {
+              "x": 9,
+              "y": 8
+            },
+            "demand": 3,
+            "reserved": 3,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 11,
+            "color": 0,
+            "cell": {
+              "x": 17,
+              "y": 8
+            },
+            "demand": 1,
+            "reserved": 1,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 16,
+            "color": 3,
+            "cell": {
+              "x": 15,
+              "y": 13
+            },
+            "demand": 4,
+            "reserved": 4,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 22,
+            "color": 1,
+            "cell": {
+              "x": 18,
+              "y": 15
+            },
+            "demand": 2,
+            "reserved": 2,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 1
+          },
+          {
+            "id": 27,
+            "color": 1,
+            "cell": {
+              "x": 24,
+              "y": 12
+            },
+            "demand": 2,
+            "reserved": 2,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 0
+          },
+          {
+            "id": 28,
+            "color": 2,
+            "cell": {
+              "x": 21,
+              "y": 8
+            },
+            "demand": 7,
+            "reserved": 7,
+            "capacity": 6,
+            "overcrowded": 50.044,
+            "parked": 2
+          },
+          {
+            "id": 36,
+            "color": 2,
+            "cell": {
+              "x": 28,
+              "y": 8
+            },
+            "demand": 6,
+            "reserved": 5,
+            "capacity": 6,
+            "overcrowded": 2.883,
+            "parked": 2
+          },
+          {
+            "id": 48,
+            "color": 4,
+            "cell": {
+              "x": 26,
+              "y": 19
+            },
+            "demand": 2,
+            "reserved": 2,
+            "capacity": 6,
+            "overcrowded": 0,
+            "parked": 2
+          }
+        ],
+        "obstacles": {
+          "": 27,
+          "Approaching vehicle priority": 4,
+          "Crossing vehicle": 6,
+          "Queue ahead": 3,
+          "Carpark access occupied": 9
+        },
+        "signals": [],
+        "waiting_cars": [
+          {
+            "id": 54,
+            "homeId": 34,
+            "shopId": 36,
+            "color": 2,
+            "stage": "Outbound",
+            "x": 27.8355449024495,
+            "y": 10.600000000000001,
+            "waiting": 3.049999999999997,
+            "speed": 0.0007548039246356447,
+            "obstacle": "Carpark access occupied"
+          }
+        ],
+        "network_sha256": "9c63ae669dcf25baf3e3a7f33ca74b5c28013e160558b614123f5f81f75f577b"
+      },
+      "note": "ON command schedule held fixed, then waits only; model not called"
+    }
+  ]
+}

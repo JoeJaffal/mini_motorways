@@ -1,0 +1,34 @@
+[
+  {
+    "run": "goal-hybrid-20261028",
+    "checkpoint_sha256": "460913d2d1aa0f48a450d9ad9f96f19c35fda1f6f63c50b3558af7c18799ec65",
+    "policy_weights_equal": true,
+    "optimizer_state_entries": 0,
+    "skip_forced_wait": false,
+    "learning_rate": 0.0001
+  },
+  {
+    "run": "goal-scaled-20261028",
+    "checkpoint_sha256": "fa5aa54b1677add2d240493e442d85835f88b0e936bc0c96fa2d3307dcf146ee",
+    "policy_weights_equal": true,
+    "optimizer_state_entries": 0,
+    "skip_forced_wait": false,
+    "learning_rate": 0.0001
+  },
+  {
+    "run": "goal-choice-20261028",
+    "checkpoint_sha256": "a2577db3bd156e3501ba26ecef9acf9fc40f8396811dd4a818a06e49e972144d",
+    "policy_weights_equal": true,
+    "optimizer_state_entries": 0,
+    "skip_forced_wait": true,
+    "learning_rate": 0.0001
+  },
+  {
+    "run": "goal-rate-20261028",
+    "checkpoint_sha256": "73e49336d78516ecb7c243780a5809c305cc8223baa340da8e524f36fba6efa3",
+    "policy_weights_equal": true,
+    "optimizer_state_entries": 0,
+    "skip_forced_wait": true,
+    "learning_rate": 0.001
+  }
+]

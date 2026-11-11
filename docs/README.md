@@ -11,6 +11,10 @@
 | [Fidelity evidence](../simulation/Docs/FIDELITY.md) | What reference comparisons do and do not establish |
 | [Validation reports](../simulation/Reports/README.md) | Current checks and dated historical evidence |
 | [Developer workflow](../CONTRIBUTING.md) | Editing, verification and repository hygiene |
+| [Current training status](../training/CURRENT_STATUS.md) | Completed investigation, fresh-map results, model limitations and replay commands |
+| [Latest model PDF](training/model-investigation-2026-10-28.pdf) | Ten-page experiment report, graphs, 356-trip recording and limited learning findings |
+| [Training history and evidence](training/README.md) | Every recorded update/decision, original PDF, graphs, analysis and archived measurements |
+| [Training commands](../training/QUICKSTART.md) | Start/resume, parallel workers and watch the best replay |
 | [Reference tools](../scripts/README.md) | Reproducing numeric exports and component checks |
 | [Legacy C++ guide](../legacy/cpp/README.md) | Separate older playground and its checks |
 

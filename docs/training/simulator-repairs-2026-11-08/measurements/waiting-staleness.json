@@ -1,0 +1,26 @@
+{
+ "question": "Do home or parked cars report a stale non-zero Waiting (agent-reported issue 1)?",
+ "code_finding": "TrafficControl.cs sets Waiting only in the movement-proposal loop, before AdvanceVehicle; FinishHome and the EnteringParking->Parking transition did not clear it, and non-moving cars get no proposals. A car accelerating from standstill gains 0.27*0.05=0.0135 tiles/s per tick, below the 0.02 waiting threshold, so a queued car released within one creeping tick of its journey end arrives with its queue wait.",
+ "empirical_before_fix": {
+  "reward_fixture_v5_game": {
+   "home_or_parked_samples": 1981,
+   "stale": 0
+  },
+  "reference_networks_5_cities_x_2_seeds": {
+   "home_or_parked_samples": 14116,
+   "stale": 0
+  },
+  "replay_candidate_v20_77_source": {
+   "stop": "120s cap",
+   "sim_time": 1174.05,
+   "trips": 576,
+   "events": "335/406",
+   "home_or_parked_samples": 300697,
+   "stale": 0,
+   "note": "WaitProbe per-tick bookkeeping slows the run; the 120 s wall cap stopped it, so this is not a replay result"
+  }
+ },
+ "regression": "SimulationChecks 'arrival home or in a bay clears the current wait': failed before the fix with 'Home car keeps no stale queue wait: waiting=12.05'; passes after (78 suites).",
+ "gameplay_effect": "Waiting feeds traffic-light phase weighting only for moving cars. A car leaving home or a bay previously started from any stale value; it now starts at 0. reward-fixture-v5, environment and five-map checks are unchanged after the fix. No stale case was observed in practice, so measured effect is nil on these games.",
+ "meanWaiting": "Observation meanWaiting is the mean over all cars ever spawned of cumulative TotalWaiting (seconds); not stale, monotonic, includes never-moved cars. No consumer in training/ or gp4 evolved_rules. Documented, not changed."
+}

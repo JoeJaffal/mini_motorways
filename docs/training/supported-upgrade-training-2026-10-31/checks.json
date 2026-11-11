@@ -1,0 +1,14 @@
+{
+  "training_started": false,
+  "simulation_games_run": 0,
+  "checks": [
+    "SignalEnv optional mask and defaults",
+    "road budget case",
+    "checkpoint attribute roundtrip",
+    "evaluation inheritance and explicit override",
+    "unchanged policy tensors",
+    "CLI help"
+  ],
+  "minutes": 240,
+  "workers": 4
+}

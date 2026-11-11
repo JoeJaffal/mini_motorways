@@ -1,0 +1,32 @@
+[
+  {
+    "run": "goal-hybrid-20261028",
+    "checkpoint_sha256": "3664e7e7caee98803f459d6240e278ddef6a76c8e40083ba9fb51f11cb998cc4",
+    "max_abs_parameter_changes": {
+      "features_extractor.residual.weight": 0.004400128033012152,
+      "features_extractor.prior.weight": 0.0054340362548828125,
+      "features_extractor.tools.2.weight": 0.004130160436034203,
+      "value_net.weight": 0.06322852522134781
+    }
+  },
+  {
+    "run": "goal-scaled-20261028",
+    "checkpoint_sha256": "9109203aaa8dbf1030096b7d1af56593a183fe8b3a4646b87420a90431d63bc4",
+    "max_abs_parameter_changes": {
+      "features_extractor.residual.weight": 0.007742446847259998,
+      "features_extractor.prior.weight": 0.004517304245382547,
+      "features_extractor.tools.2.weight": 0.006510478910058737,
+      "value_net.weight": 0.02801102213561535
+    }
+  },
+  {
+    "run": "goal-choice-20261028",
+    "checkpoint_sha256": "0e5e02c4b58fb764f29d3f637257b9db38b892480c32aac1bf427431b6c621b6",
+    "max_abs_parameter_changes": {
+      "features_extractor.residual.weight": 0.0009994128486141562,
+      "features_extractor.prior.weight": 0.0013266777386888862,
+      "features_extractor.tools.2.weight": 0.0013080995995551348,
+      "value_net.weight": 0.001613457454368472
+    }
+  }
+]

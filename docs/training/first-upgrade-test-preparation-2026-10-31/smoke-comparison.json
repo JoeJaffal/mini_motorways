@@ -1,0 +1,78 @@
+{
+  "results": {
+    "baseline": {
+      "trips": 0,
+      "seconds": 2,
+      "signals_placed": 0,
+      "intervention_applied": false,
+      "terminated": false,
+      "truncated": true,
+      "final_state": {
+        "time": 2,
+        "trips": 0,
+        "inventory": [
+          22,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "shops": [
+          {
+            "id": 0,
+            "cell": {
+              "x": 16,
+              "y": 8
+            },
+            "color": 0,
+            "demand": 0,
+            "reserved": 0,
+            "demandCapacity": 6,
+            "overcrowdedFor": 0
+          }
+        ],
+        "waiting": []
+      }
+    },
+    "changed-upgrade": {
+      "trips": 0,
+      "seconds": 2,
+      "signals_placed": 0,
+      "intervention_applied": false,
+      "terminated": false,
+      "truncated": true,
+      "final_state": {
+        "time": 2,
+        "trips": 0,
+        "inventory": [
+          22,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "shops": [
+          {
+            "id": 0,
+            "cell": {
+              "x": 16,
+              "y": 8
+            },
+            "color": 0,
+            "demand": 0,
+            "reserved": 0,
+            "demandCapacity": 6,
+            "overcrowdedFor": 0
+          }
+        ],
+        "waiting": []
+      }
+    }
+  },
+  "weights_unchanged": true,
+  "smoke": true,
+  "trip_difference": 0,
+  "limits": "One exposed development seed. Estimates total effect of changing one upgrade under this frozen policy, including later policy feedback; not isolated light physics or generalization evidence. Smoke does not exercise intervention."
+}

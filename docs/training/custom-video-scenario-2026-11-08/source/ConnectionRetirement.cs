@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+namespace MotorwaysSim
+{
+    public sealed partial class TrafficWorld
+    {
+        readonly Dictionary<(Cell,Cell),int> retiredConnectionConcrete=new Dictionary<(Cell,Cell),int>();
+        public bool RemoveRoadConnection(Cell from,Cell to)
+        {
+            if(Failed||ScenarioRejected||!InBounds(from)||!InBounds(to)||Distance(from,to)>1.5||from==to)
+                return Reject("Choose an existing neighboring road connection");
+            int direction=Direction(from,to);
+            if((Connections[from.X,from.Y]&(1<<direction))==0)return Reject("No such road connection");
+            if(RoundaboutAt(from)!=null||RoundaboutAt(to)!=null)return Reject("Remove a roundabout with its tool");
+            var edge=RoadEdge(from,to);int credit=paidRoadConnections.Remove(edge)?1:0;
+            Unlink(from,to);retiredConnectionConcrete[edge]=retiredConnectionConcrete.TryGetValue(edge,out int prior)?prior+credit:credit;
+            Changed();FinishConnectionRetirements();LastAction="Road connection retired";return true;
+        }
+        bool UsesRetiredConnection(Vehicle car,(Cell,Cell) edge)
+        {
+            if(car.Stage==TripStage.Home)return false;
+            if(car.Lanes.Skip(car.RouteIndex).Any(l=>!l.IsParking&&!l.IsMotorway&&
+                (RoadEdge(l.Previous,l.Tile)==edge||RoadEdge(l.Tile,l.Next)==edge)))return true;
+            if(car.Stage!=TripStage.Returning)
+                for(int i=1;i<car.ReturnRoute.Count;i++)if(RoadEdge(car.ReturnRoute[i-1],car.ReturnRoute[i])==edge)return true;
+            return false;
+        }
+        void FinishConnectionRetirements()
+        {
+            foreach(var item in retiredConnectionConcrete.ToArray())
+            {
+                if(Cars.Any(c=>UsesRetiredConnection(c,item.Key)))continue;
+                Inventory[0]+=item.Value;retiredConnectionConcrete.Remove(item.Key);
+                foreach(var cell in new[]{item.Key.Item1,item.Key.Item2})
+                    if(Tile(cell)==Infrastructure.Road&&Degree(cell)==0&&!IsMotorwayEndpoint(cell,true))
+                    {Tiles[cell.X,cell.Y]=Infrastructure.None;Changed();}
+            }
+        }
+    }
+}

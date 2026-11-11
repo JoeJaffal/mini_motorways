@@ -1,0 +1,7134 @@
+{
+  "schemaVersion": 1,
+  "id": "video-c9762eb1-la-reconstruction-v8",
+  "city": "LosAngeles",
+  "seed": -915001679,
+  "referenceScore": 835,
+  "duration": 1314.6,
+  "source": "User video reconstruction",
+  "sourceSha256": "c9762eb1d8c474c328b01f59a4a0ca744a0c8a06e2794e2dafe285712b1d4629",
+  "startingInventory": [
+    25,
+    1,
+    0,
+    0,
+    0,
+    0
+  ],
+  "paletteRgb": [
+    16762216,
+    15879260,
+    7325152,
+    5204126,
+    6929289
+  ],
+  "bounds": [
+    0,
+    0,
+    50,
+    30
+  ],
+  "uncertainties": "Video reconstruction, not recovered original RNG. Grid registration, ~1s video sampling, calibrated pauses/speed, and occluded edits require validation. Carrier seed is hash-derived; demand phase unknown.",
+  "events": [
+    {
+      "at": 0.0,
+      "videoTime": 0,
+      "kind": "house",
+      "id": "house:yellow:13,12",
+      "x": 13,
+      "y": 12,
+      "color": 0,
+      "direction": 6
+    },
+    {
+      "at": 0.0,
+      "videoTime": 0,
+      "kind": "shop",
+      "id": "shop:yellow:18,8",
+      "x": 16,
+      "y": 7,
+      "color": 0,
+      "layout": 3
+    },
+    {
+      "at": 4.0,
+      "videoTime": 14,
+      "kind": "draw",
+      "x": 16,
+      "y": 8,
+      "toX": 16,
+      "toY": 9
+    },
+    {
+      "at": 4.0,
+      "videoTime": 14,
+      "kind": "draw",
+      "x": 13,
+      "y": 12,
+      "toX": 13,
+      "toY": 11
+    },
+    {
+      "at": 6.0,
+      "videoTime": 16,
+      "kind": "draw",
+      "x": 16,
+      "y": 9,
+      "toX": 16,
+      "toY": 10
+    },
+    {
+      "at": 7.0,
+      "videoTime": 17,
+      "kind": "draw",
+      "x": 13,
+      "y": 10,
+      "toX": 14,
+      "toY": 10
+    },
+    {
+      "at": 7.0,
+      "videoTime": 17,
+      "kind": "draw",
+      "x": 13,
+      "y": 10,
+      "toX": 13,
+      "toY": 11
+    },
+    {
+      "at": 7.0,
+      "videoTime": 17,
+      "kind": "draw",
+      "x": 14,
+      "y": 10,
+      "toX": 15,
+      "toY": 10
+    },
+    {
+      "at": 7.0,
+      "videoTime": 17,
+      "kind": "draw",
+      "x": 15,
+      "y": 10,
+      "toX": 16,
+      "toY": 10
+    },
+    {
+      "at": 10.0,
+      "videoTime": 20,
+      "kind": "house",
+      "id": "house:yellow:11,12",
+      "x": 11,
+      "y": 12,
+      "color": 0,
+      "direction": 6
+    },
+    {
+      "at": 10.0,
+      "videoTime": 20,
+      "kind": "draw",
+      "x": 11,
+      "y": 12,
+      "toX": 11,
+      "toY": 11
+    },
+    {
+      "at": 14.0,
+      "videoTime": 22,
+      "kind": "draw",
+      "x": 11,
+      "y": 10,
+      "toX": 11,
+      "toY": 11
+    },
+    {
+      "at": 16.0,
+      "videoTime": 23,
+      "kind": "draw",
+      "x": 11,
+      "y": 10,
+      "toX": 12,
+      "toY": 10
+    },
+    {
+      "at": 16.0,
+      "videoTime": 23,
+      "kind": "draw",
+      "x": 12,
+      "y": 10,
+      "toX": 13,
+      "toY": 10
+    },
+    {
+      "at": 82.0,
+      "videoTime": 56,
+      "kind": "house",
+      "id": "house:red:19,11",
+      "x": 19,
+      "y": 11,
+      "color": 1,
+      "direction": 6
+    },
+    {
+      "at": 82.0,
+      "videoTime": 56,
+      "kind": "shop",
+      "id": "shop:red:12,9",
+      "x": 10,
+      "y": 8,
+      "color": 1,
+      "layout": 2
+    },
+    {
+      "at": 82.0,
+      "videoTime": 56,
+      "kind": "draw",
+      "x": 10,
+      "y": 7,
+      "toX": 10,
+      "toY": 8
+    },
+    {
+      "at": 82.0,
+      "videoTime": 56,
+      "kind": "draw",
+      "x": 19,
+      "y": 11,
+      "toX": 18,
+      "toY": 11
+    },
+    {
+      "at": 88.0,
+      "videoTime": 59,
+      "kind": "draw",
+      "x": 19,
+      "y": 8,
+      "toX": 19,
+      "toY": 9
+    },
+    {
+      "at": 88.0,
+      "videoTime": 59,
+      "kind": "draw",
+      "x": 19,
+      "y": 9,
+      "toX": 19,
+      "toY": 10
+    },
+    {
+      "at": 88.0,
+      "videoTime": 59,
+      "kind": "draw",
+      "x": 19,
+      "y": 11,
+      "toX": 19,
+      "toY": 10
+    },
+    {
+      "at": 92.0,
+      "videoTime": 61,
+      "kind": "house",
+      "id": "house:red:22,7",
+      "x": 22,
+      "y": 7,
+      "color": 1,
+      "direction": 2
+    },
+    {
+      "at": 94.0,
+      "videoTime": 62,
+      "kind": "draw",
+      "x": 22,
+      "y": 7,
+      "toX": 22,
+      "toY": 8
+    },
+    {
+      "at": 96.0,
+      "videoTime": 63,
+      "kind": "draw",
+      "x": 10,
+      "y": 6,
+      "toX": 11,
+      "toY": 6
+    },
+    {
+      "at": 96.0,
+      "videoTime": 63,
+      "kind": "draw",
+      "x": 10,
+      "y": 6,
+      "toX": 10,
+      "toY": 7
+    },
+    {
+      "at": 96.0,
+      "videoTime": 63,
+      "kind": "draw",
+      "x": 11,
+      "y": 6,
+      "toX": 12,
+      "toY": 6
+    },
+    {
+      "at": 100.0,
+      "videoTime": 65,
+      "kind": "draw",
+      "x": 12,
+      "y": 6,
+      "toX": 13,
+      "toY": 6
+    },
+    {
+      "at": 100.0,
+      "videoTime": 65,
+      "kind": "draw",
+      "x": 13,
+      "y": 6,
+      "toX": 14,
+      "toY": 6
+    },
+    {
+      "at": 104.0,
+      "videoTime": 67,
+      "kind": "draw",
+      "x": 14,
+      "y": 6,
+      "toX": 15,
+      "toY": 6
+    },
+    {
+      "at": 104.0,
+      "videoTime": 67,
+      "kind": "draw",
+      "x": 15,
+      "y": 6,
+      "toX": 16,
+      "toY": 6
+    },
+    {
+      "at": 104.0,
+      "videoTime": 67,
+      "kind": "draw",
+      "x": 16,
+      "y": 6,
+      "toX": 17,
+      "toY": 6
+    },
+    {
+      "at": 106.0,
+      "videoTime": 68,
+      "kind": "draw",
+      "x": 17,
+      "y": 6,
+      "toX": 18,
+      "toY": 6
+    },
+    {
+      "at": 106.0,
+      "videoTime": 68,
+      "kind": "draw",
+      "x": 18,
+      "y": 6,
+      "toX": 19,
+      "toY": 6
+    },
+    {
+      "at": 106.0,
+      "videoTime": 68,
+      "kind": "draw",
+      "x": 19,
+      "y": 6,
+      "toX": 19,
+      "toY": 7
+    },
+    {
+      "at": 108.0,
+      "videoTime": 69,
+      "kind": "draw",
+      "x": 19,
+      "y": 7,
+      "toX": 19,
+      "toY": 8
+    },
+    {
+      "at": 110.0,
+      "videoTime": 70,
+      "kind": "draw",
+      "x": 20,
+      "y": 7,
+      "toX": 21,
+      "toY": 7
+    },
+    {
+      "at": 112.0,
+      "videoTime": 71,
+      "kind": "draw",
+      "x": 19,
+      "y": 7,
+      "toX": 20,
+      "toY": 7
+    },
+    {
+      "at": 112.0,
+      "videoTime": 71,
+      "kind": "draw",
+      "x": 22,
+      "y": 7,
+      "toX": 21,
+      "toY": 7
+    },
+    {
+      "at": 140.0,
+      "videoTime": 86,
+      "kind": "offer",
+      "offers": [
+        {
+          "type": 3,
+          "amount": 2,
+          "roads": 20
+        },
+        {
+          "type": 4,
+          "amount": 1,
+          "roads": 20
+        }
+      ]
+    },
+    {
+      "at": 140.0,
+      "videoTime": 86.1,
+      "kind": "choose",
+      "choice": 1
+    },
+    {
+      "at": 162.0,
+      "videoTime": 100,
+      "kind": "shop",
+      "id": "shop:yellow:17,12",
+      "x": 15,
+      "y": 11,
+      "color": 0,
+      "layout": 2
+    },
+    {
+      "at": 162.0,
+      "videoTime": 100,
+      "kind": "draw",
+      "x": 15,
+      "y": 10,
+      "toX": 15,
+      "toY": 11
+    },
+    {
+      "at": 164.0,
+      "videoTime": 101,
+      "kind": "draw",
+      "x": 10,
+      "y": 11,
+      "toX": 10,
+      "toY": 12
+    },
+    {
+      "at": 166.0,
+      "videoTime": 102,
+      "kind": "draw",
+      "x": 10,
+      "y": 10,
+      "toX": 10,
+      "toY": 11
+    },
+    {
+      "at": 168.0,
+      "videoTime": 103,
+      "kind": "draw",
+      "x": 10,
+      "y": 10,
+      "toX": 11,
+      "toY": 10
+    },
+    {
+      "at": 170.0,
+      "videoTime": 104,
+      "kind": "draw",
+      "x": 13,
+      "y": 10,
+      "toX": 12,
+      "toY": 11
+    },
+    {
+      "at": 206.0,
+      "videoTime": 122,
+      "kind": "draw",
+      "x": 12,
+      "y": 11,
+      "toX": 13,
+      "toY": 11
+    },
+    {
+      "at": 208.0,
+      "videoTime": 123,
+      "kind": "house",
+      "id": "house:yellow:24,13",
+      "x": 24,
+      "y": 13,
+      "color": 0,
+      "direction": 4
+    },
+    {
+      "at": 208.0,
+      "videoTime": 123,
+      "kind": "house",
+      "id": "house:red:21,8",
+      "x": 21,
+      "y": 8,
+      "color": 1,
+      "direction": 6
+    },
+    {
+      "at": 208.0,
+      "videoTime": 123,
+      "kind": "draw",
+      "x": 21,
+      "y": 8,
+      "toX": 21,
+      "toY": 7
+    },
+    {
+      "at": 208.0,
+      "videoTime": 123,
+      "kind": "draw",
+      "x": 24,
+      "y": 13,
+      "toX": 24,
+      "toY": 12
+    },
+    {
+      "at": 212.0,
+      "videoTime": 125,
+      "kind": "erase",
+      "x": 12,
+      "y": 11,
+      "toX": 13,
+      "toY": 11
+    },
+    {
+      "at": 220.0,
+      "videoTime": 129,
+      "kind": "draw",
+      "x": 19,
+      "y": 13,
+      "toX": 20,
+      "toY": 13
+    },
+    {
+      "at": 220.0,
+      "videoTime": 129,
+      "kind": "draw",
+      "x": 20,
+      "y": 13,
+      "toX": 21,
+      "toY": 13
+    },
+    {
+      "at": 220.0,
+      "videoTime": 129,
+      "kind": "draw",
+      "x": 21,
+      "y": 13,
+      "toX": 22,
+      "toY": 13
+    },
+    {
+      "at": 220.0,
+      "videoTime": 129,
+      "kind": "draw",
+      "x": 22,
+      "y": 13,
+      "toX": 23,
+      "toY": 13
+    },
+    {
+      "at": 220.0,
+      "videoTime": 129,
+      "kind": "draw",
+      "x": 24,
+      "y": 13,
+      "toX": 23,
+      "toY": 13
+    },
+    {
+      "at": 222.0,
+      "videoTime": 130,
+      "kind": "draw",
+      "x": 18,
+      "y": 13,
+      "toX": 19,
+      "toY": 14
+    },
+    {
+      "at": 222.0,
+      "videoTime": 130,
+      "kind": "draw",
+      "x": 19,
+      "y": 13,
+      "toX": 19,
+      "toY": 14
+    },
+    {
+      "at": 226.0,
+      "videoTime": 132,
+      "kind": "erase",
+      "x": 18,
+      "y": 13,
+      "toX": 19,
+      "toY": 14
+    },
+    {
+      "at": 226.0,
+      "videoTime": 132,
+      "kind": "erase",
+      "x": 19,
+      "y": 13,
+      "toX": 19,
+      "toY": 14
+    },
+    {
+      "at": 228.0,
+      "videoTime": 133,
+      "kind": "draw",
+      "x": 15,
+      "y": 13,
+      "toX": 16,
+      "toY": 13
+    },
+    {
+      "at": 228.0,
+      "videoTime": 133,
+      "kind": "draw",
+      "x": 16,
+      "y": 13,
+      "toX": 17,
+      "toY": 13
+    },
+    {
+      "at": 228.0,
+      "videoTime": 133,
+      "kind": "draw",
+      "x": 17,
+      "y": 13,
+      "toX": 18,
+      "toY": 13
+    },
+    {
+      "at": 228.0,
+      "videoTime": 133,
+      "kind": "draw",
+      "x": 18,
+      "y": 13,
+      "toX": 19,
+      "toY": 13
+    },
+    {
+      "at": 230.0,
+      "videoTime": 134,
+      "kind": "draw",
+      "x": 14,
+      "y": 13,
+      "toX": 15,
+      "toY": 13
+    },
+    {
+      "at": 232.0,
+      "videoTime": 135,
+      "kind": "draw",
+      "x": 14,
+      "y": 10,
+      "toX": 14,
+      "toY": 11
+    },
+    {
+      "at": 232.0,
+      "videoTime": 135,
+      "kind": "draw",
+      "x": 14,
+      "y": 11,
+      "toX": 14,
+      "toY": 12
+    },
+    {
+      "at": 232.0,
+      "videoTime": 135,
+      "kind": "draw",
+      "x": 14,
+      "y": 12,
+      "toX": 14,
+      "toY": 13
+    },
+    {
+      "at": 248.0,
+      "videoTime": 143,
+      "kind": "house",
+      "id": "house:cyan:23,14",
+      "x": 23,
+      "y": 14,
+      "color": 2,
+      "direction": 6
+    },
+    {
+      "at": 248.0,
+      "videoTime": 143,
+      "kind": "shop",
+      "id": "shop:cyan:25,8",
+      "x": 24,
+      "y": 7,
+      "color": 2,
+      "layout": 0
+    },
+    {
+      "at": 248.0,
+      "videoTime": 143,
+      "kind": "draw",
+      "x": 23,
+      "y": 14,
+      "toX": 23,
+      "toY": 13
+    },
+    {
+      "at": 248.0,
+      "videoTime": 143,
+      "kind": "draw",
+      "x": 23,
+      "y": 9,
+      "toX": 24,
+      "toY": 9
+    },
+    {
+      "at": 254.0,
+      "videoTime": 146,
+      "kind": "draw",
+      "x": 23,
+      "y": 12,
+      "toX": 23,
+      "toY": 13
+    },
+    {
+      "at": 256.0,
+      "videoTime": 147,
+      "kind": "draw",
+      "x": 23,
+      "y": 10,
+      "toX": 23,
+      "toY": 11
+    },
+    {
+      "at": 256.0,
+      "videoTime": 147,
+      "kind": "draw",
+      "x": 23,
+      "y": 11,
+      "toX": 23,
+      "toY": 12
+    },
+    {
+      "at": 258.0,
+      "videoTime": 148,
+      "kind": "house",
+      "id": "house:cyan:18,14",
+      "x": 18,
+      "y": 14,
+      "color": 2,
+      "direction": 0
+    },
+    {
+      "at": 258.0,
+      "videoTime": 148,
+      "kind": "draw",
+      "x": 23,
+      "y": 9,
+      "toX": 23,
+      "toY": 10
+    },
+    {
+      "at": 258.0,
+      "videoTime": 148,
+      "kind": "draw",
+      "x": 18,
+      "y": 14,
+      "toX": 19,
+      "toY": 14
+    },
+    {
+      "at": 262.0,
+      "videoTime": 150,
+      "kind": "draw",
+      "x": 18,
+      "y": 14,
+      "toX": 18,
+      "toY": 13
+    },
+    {
+      "at": 278.0,
+      "videoTime": 158,
+      "kind": "draw",
+      "x": 20,
+      "y": 16,
+      "toX": 21,
+      "toY": 16
+    },
+    {
+      "at": 280.0,
+      "videoTime": 160,
+      "kind": "offer",
+      "offers": [
+        {
+          "type": 0,
+          "amount": 30,
+          "roads": 0
+        },
+        {
+          "type": 3,
+          "amount": 2,
+          "roads": 20
+        }
+      ]
+    },
+    {
+      "at": 280.0,
+      "videoTime": 160.1,
+      "kind": "choose",
+      "choice": 1
+    },
+    {
+      "at": 282.05,
+      "videoTime": 163,
+      "kind": "erase",
+      "x": 20,
+      "y": 16,
+      "toX": 21,
+      "toY": 16
+    },
+    {
+      "at": 310.45000000000005,
+      "videoTime": 177,
+      "kind": "draw",
+      "x": 20,
+      "y": 12,
+      "toX": 21,
+      "toY": 13
+    },
+    {
+      "at": 312.45000000000005,
+      "videoTime": 178,
+      "kind": "house",
+      "id": "house:navy:21,14",
+      "x": 21,
+      "y": 14,
+      "color": 3,
+      "direction": 4
+    },
+    {
+      "at": 312.45000000000005,
+      "videoTime": 178,
+      "kind": "shop",
+      "id": "shop:navy:14,15",
+      "x": 12,
+      "y": 14,
+      "color": 3,
+      "layout": 3
+    },
+    {
+      "at": 312.45000000000005,
+      "videoTime": 178,
+      "kind": "draw",
+      "x": 21,
+      "y": 14,
+      "toX": 20,
+      "toY": 14
+    },
+    {
+      "at": 314.5,
+      "videoTime": 179,
+      "kind": "draw",
+      "x": 12,
+      "y": 15,
+      "toX": 12,
+      "toY": 16
+    },
+    {
+      "at": 316.5,
+      "videoTime": 180,
+      "kind": "draw",
+      "x": 18,
+      "y": 14,
+      "toX": 19,
+      "toY": 15
+    },
+    {
+      "at": 316.5,
+      "videoTime": 180,
+      "kind": "erase",
+      "x": 20,
+      "y": 12,
+      "toX": 21,
+      "toY": 13
+    },
+    {
+      "at": 318.55,
+      "videoTime": 181,
+      "kind": "draw",
+      "x": 12,
+      "y": 13,
+      "toX": 13,
+      "toY": 13
+    },
+    {
+      "at": 318.55,
+      "videoTime": 181,
+      "kind": "draw",
+      "x": 23,
+      "y": 14,
+      "toX": 24,
+      "toY": 15
+    },
+    {
+      "at": 320.6,
+      "videoTime": 182,
+      "kind": "draw",
+      "x": 13,
+      "y": 13,
+      "toX": 14,
+      "toY": 13
+    },
+    {
+      "at": 322.6,
+      "videoTime": 183,
+      "kind": "house",
+      "id": "house:navy:21,15",
+      "x": 21,
+      "y": 15,
+      "color": 3,
+      "direction": 4
+    },
+    {
+      "at": 322.6,
+      "videoTime": 183,
+      "kind": "draw",
+      "x": 21,
+      "y": 14,
+      "toX": 20,
+      "toY": 15
+    },
+    {
+      "at": 322.6,
+      "videoTime": 183,
+      "kind": "draw",
+      "x": 21,
+      "y": 15,
+      "toX": 20,
+      "toY": 15
+    },
+    {
+      "at": 326.65000000000003,
+      "videoTime": 185,
+      "kind": "draw",
+      "x": 20,
+      "y": 13,
+      "toX": 20,
+      "toY": 14
+    },
+    {
+      "at": 326.65000000000003,
+      "videoTime": 185,
+      "kind": "draw",
+      "x": 20,
+      "y": 14,
+      "toX": 20,
+      "toY": 15
+    },
+    {
+      "at": 367.25,
+      "videoTime": 205,
+      "kind": "draw",
+      "x": 21,
+      "y": 14,
+      "toX": 21,
+      "toY": 13
+    },
+    {
+      "at": 383.5,
+      "videoTime": 213,
+      "kind": "house",
+      "id": "house:cyan:16,14",
+      "x": 16,
+      "y": 14,
+      "color": 2,
+      "direction": 4
+    },
+    {
+      "at": 383.5,
+      "videoTime": 213,
+      "kind": "shop",
+      "id": "shop:cyan:28,15",
+      "x": 27,
+      "y": 14,
+      "color": 2,
+      "layout": 0
+    },
+    {
+      "at": 383.5,
+      "videoTime": 213,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 14
+    },
+    {
+      "at": 385.5,
+      "videoTime": 214,
+      "kind": "draw",
+      "x": 26,
+      "y": 16,
+      "toX": 27,
+      "toY": 16
+    },
+    {
+      "at": 385.5,
+      "videoTime": 214,
+      "kind": "erase",
+      "x": 21,
+      "y": 14,
+      "toX": 21,
+      "toY": 13
+    },
+    {
+      "at": 393.6,
+      "videoTime": 218,
+      "kind": "house",
+      "id": "house:cyan:17,14",
+      "x": 17,
+      "y": 14,
+      "color": 2,
+      "direction": 6
+    },
+    {
+      "at": 393.6,
+      "videoTime": 218,
+      "kind": "draw",
+      "x": 17,
+      "y": 14,
+      "toX": 17,
+      "toY": 13
+    },
+    {
+      "at": 397.70000000000005,
+      "videoTime": 220,
+      "kind": "house",
+      "id": "house:red:20,8",
+      "x": 20,
+      "y": 8,
+      "color": 1,
+      "direction": 4
+    },
+    {
+      "at": 397.70000000000005,
+      "videoTime": 220,
+      "kind": "draw",
+      "x": 20,
+      "y": 8,
+      "toX": 19,
+      "toY": 8
+    },
+    {
+      "at": 399.70000000000005,
+      "videoTime": 221,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 16,
+      "toY": 13
+    },
+    {
+      "at": 403.75,
+      "videoTime": 223,
+      "kind": "draw",
+      "x": 26,
+      "y": 16,
+      "toX": 26,
+      "toY": 17
+    },
+    {
+      "at": 409.85,
+      "videoTime": 226,
+      "kind": "draw",
+      "x": 26,
+      "y": 14,
+      "toX": 26,
+      "toY": 15
+    },
+    {
+      "at": 409.85,
+      "videoTime": 226,
+      "kind": "draw",
+      "x": 26,
+      "y": 15,
+      "toX": 26,
+      "toY": 16
+    },
+    {
+      "at": 409.85,
+      "videoTime": 226,
+      "kind": "erase",
+      "x": 26,
+      "y": 16,
+      "toX": 26,
+      "toY": 17
+    },
+    {
+      "at": 411.90000000000003,
+      "videoTime": 227,
+      "kind": "draw",
+      "x": 25,
+      "y": 12,
+      "toX": 26,
+      "toY": 13
+    },
+    {
+      "at": 411.90000000000003,
+      "videoTime": 227,
+      "kind": "draw",
+      "x": 17,
+      "y": 14,
+      "toX": 18,
+      "toY": 13
+    },
+    {
+      "at": 411.90000000000003,
+      "videoTime": 227,
+      "kind": "draw",
+      "x": 26,
+      "y": 13,
+      "toX": 26,
+      "toY": 14
+    },
+    {
+      "at": 411.90000000000003,
+      "videoTime": 227,
+      "kind": "draw",
+      "x": 17,
+      "y": 14,
+      "toX": 18,
+      "toY": 15
+    },
+    {
+      "at": 415.95000000000005,
+      "videoTime": 229,
+      "kind": "draw",
+      "x": 23,
+      "y": 12,
+      "toX": 24,
+      "toY": 12
+    },
+    {
+      "at": 415.95000000000005,
+      "videoTime": 229,
+      "kind": "draw",
+      "x": 24,
+      "y": 12,
+      "toX": 25,
+      "toY": 12
+    },
+    {
+      "at": 420.0,
+      "videoTime": 232,
+      "kind": "offer",
+      "offers": [
+        {
+          "type": 2,
+          "amount": 1,
+          "roads": 10
+        },
+        {
+          "type": 1,
+          "amount": 1,
+          "roads": 20
+        }
+      ]
+    },
+    {
+      "at": 420.0,
+      "videoTime": 232.1,
+      "kind": "choose",
+      "choice": 0
+    },
+    {
+      "at": 420.0,
+      "videoTime": 234,
+      "kind": "draw",
+      "x": 21,
+      "y": 15,
+      "toX": 20,
+      "toY": 14
+    },
+    {
+      "at": 421.95000000000005,
+      "videoTime": 235,
+      "kind": "draw",
+      "x": 18,
+      "y": 14,
+      "toX": 19,
+      "toY": 13
+    },
+    {
+      "at": 429.70000000000005,
+      "videoTime": 239,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 17,
+      "toY": 13
+    },
+    {
+      "at": 433.6,
+      "videoTime": 241,
+      "kind": "draw",
+      "x": 19,
+      "y": 19,
+      "toX": 20,
+      "toY": 19
+    },
+    {
+      "at": 437.5,
+      "videoTime": 243,
+      "kind": "erase",
+      "x": 19,
+      "y": 19,
+      "toX": 20,
+      "toY": 19
+    },
+    {
+      "at": 445.3,
+      "videoTime": 247,
+      "kind": "draw",
+      "x": 23,
+      "y": 14,
+      "toX": 24,
+      "toY": 14
+    },
+    {
+      "at": 445.3,
+      "videoTime": 247,
+      "kind": "draw",
+      "x": 24,
+      "y": 14,
+      "toX": 25,
+      "toY": 14
+    },
+    {
+      "at": 445.3,
+      "videoTime": 247,
+      "kind": "draw",
+      "x": 25,
+      "y": 14,
+      "toX": 26,
+      "toY": 14
+    },
+    {
+      "at": 447.20000000000005,
+      "videoTime": 248,
+      "kind": "draw",
+      "x": 25,
+      "y": 12,
+      "toX": 25,
+      "toY": 13
+    },
+    {
+      "at": 460.85,
+      "videoTime": 255,
+      "kind": "draw",
+      "x": 24,
+      "y": 12,
+      "toX": 23,
+      "toY": 13
+    },
+    {
+      "at": 466.65000000000003,
+      "videoTime": 258,
+      "kind": "draw",
+      "x": 24,
+      "y": 13,
+      "toX": 23,
+      "toY": 12
+    },
+    {
+      "at": 474.45000000000005,
+      "videoTime": 262,
+      "kind": "shared",
+      "id": "shop:red:17,17",
+      "x": 16,
+      "y": 16,
+      "color": 1,
+      "layout": 0
+    },
+    {
+      "at": 476.40000000000003,
+      "videoTime": 263,
+      "kind": "draw",
+      "x": 20,
+      "y": 10,
+      "toX": 20,
+      "toY": 11
+    },
+    {
+      "at": 476.40000000000003,
+      "videoTime": 263,
+      "kind": "draw",
+      "x": 20,
+      "y": 11,
+      "toX": 20,
+      "toY": 12
+    },
+    {
+      "at": 476.40000000000003,
+      "videoTime": 263,
+      "kind": "draw",
+      "x": 20,
+      "y": 12,
+      "toX": 20,
+      "toY": 13
+    },
+    {
+      "at": 476.40000000000003,
+      "videoTime": 263,
+      "kind": "draw",
+      "x": 15,
+      "y": 18,
+      "toX": 16,
+      "toY": 18
+    },
+    {
+      "at": 476.40000000000003,
+      "videoTime": 263,
+      "kind": "draw",
+      "x": 19,
+      "y": 18,
+      "toX": 20,
+      "toY": 18
+    },
+    {
+      "at": 478.35,
+      "videoTime": 264,
+      "kind": "draw",
+      "x": 20,
+      "y": 9,
+      "toX": 21,
+      "toY": 10
+    },
+    {
+      "at": 478.35,
+      "videoTime": 264,
+      "kind": "draw",
+      "x": 21,
+      "y": 9,
+      "toX": 20,
+      "toY": 10
+    },
+    {
+      "at": 478.35,
+      "videoTime": 264,
+      "kind": "draw",
+      "x": 17,
+      "y": 14,
+      "toX": 16,
+      "toY": 14
+    },
+    {
+      "at": 480.3,
+      "videoTime": 265,
+      "kind": "draw",
+      "x": 21,
+      "y": 9,
+      "toX": 22,
+      "toY": 9
+    },
+    {
+      "at": 482.20000000000005,
+      "videoTime": 266,
+      "kind": "draw",
+      "x": 22,
+      "y": 9,
+      "toX": 23,
+      "toY": 9
+    },
+    {
+      "at": 484.15000000000003,
+      "videoTime": 267,
+      "kind": "draw",
+      "x": 21,
+      "y": 9,
+      "toX": 21,
+      "toY": 10
+    },
+    {
+      "at": 484.15000000000003,
+      "videoTime": 267,
+      "kind": "draw",
+      "x": 20,
+      "y": 10,
+      "toX": 21,
+      "toY": 10
+    },
+    {
+      "at": 484.15000000000003,
+      "videoTime": 267,
+      "kind": "draw",
+      "x": 17,
+      "y": 14,
+      "toX": 16,
+      "toY": 13
+    },
+    {
+      "at": 484.15000000000003,
+      "videoTime": 267,
+      "kind": "draw",
+      "x": 18,
+      "y": 14,
+      "toX": 17,
+      "toY": 13
+    },
+    {
+      "at": 486.1,
+      "videoTime": 268,
+      "kind": "erase",
+      "x": 23,
+      "y": 11,
+      "toX": 23,
+      "toY": 12
+    },
+    {
+      "at": 486.1,
+      "videoTime": 268,
+      "kind": "erase",
+      "x": 23,
+      "y": 12,
+      "toX": 24,
+      "toY": 12
+    },
+    {
+      "at": 486.1,
+      "videoTime": 268,
+      "kind": "erase",
+      "x": 23,
+      "y": 12,
+      "toX": 23,
+      "toY": 13
+    },
+    {
+      "at": 486.1,
+      "videoTime": 268,
+      "kind": "erase",
+      "x": 24,
+      "y": 13,
+      "toX": 23,
+      "toY": 12
+    },
+    {
+      "at": 486.1,
+      "videoTime": 268,
+      "kind": "erase",
+      "x": 24,
+      "y": 12,
+      "toX": 23,
+      "toY": 13
+    },
+    {
+      "at": 493.90000000000003,
+      "videoTime": 272,
+      "kind": "draw",
+      "x": 23,
+      "y": 11,
+      "toX": 23,
+      "toY": 12
+    },
+    {
+      "at": 493.90000000000003,
+      "videoTime": 272,
+      "kind": "draw",
+      "x": 23,
+      "y": 12,
+      "toX": 24,
+      "toY": 12
+    },
+    {
+      "at": 499.70000000000005,
+      "videoTime": 275,
+      "kind": "build",
+      "tool": "TrafficLight",
+      "x": 20,
+      "y": 13
+    },
+    {
+      "at": 503.6,
+      "videoTime": 277,
+      "kind": "draw",
+      "x": 18,
+      "y": 14,
+      "toX": 17,
+      "toY": 15
+    },
+    {
+      "at": 511.40000000000003,
+      "videoTime": 281,
+      "kind": "house",
+      "id": "house:yellow:32,10",
+      "x": 32,
+      "y": 10,
+      "color": 0,
+      "direction": 0
+    },
+    {
+      "at": 513.35,
+      "videoTime": 282,
+      "kind": "erase",
+      "x": 18,
+      "y": 14,
+      "toX": 17,
+      "toY": 15
+    },
+    {
+      "at": 517.2,
+      "videoTime": 284,
+      "kind": "motorway",
+      "id": "m1",
+      "x": 15,
+      "y": 6,
+      "toX": 14,
+      "toY": 18
+    },
+    {
+      "at": 517.2,
+      "videoTime": 284,
+      "kind": "draw",
+      "x": 15,
+      "y": 6,
+      "toX": 15,
+      "toY": 7
+    },
+    {
+      "at": 523.0500000000001,
+      "videoTime": 287,
+      "kind": "draw",
+      "x": 13,
+      "y": 11,
+      "toX": 14,
+      "toY": 12
+    },
+    {
+      "at": 523.0500000000001,
+      "videoTime": 287,
+      "kind": "draw",
+      "x": 13,
+      "y": 12,
+      "toX": 14,
+      "toY": 11
+    },
+    {
+      "at": 532.8000000000001,
+      "videoTime": 292,
+      "kind": "draw",
+      "x": 27,
+      "y": 10,
+      "toX": 28,
+      "toY": 10
+    },
+    {
+      "at": 532.8000000000001,
+      "videoTime": 292,
+      "kind": "draw",
+      "x": 28,
+      "y": 10,
+      "toX": 29,
+      "toY": 10
+    },
+    {
+      "at": 532.8000000000001,
+      "videoTime": 292,
+      "kind": "draw",
+      "x": 29,
+      "y": 10,
+      "toX": 30,
+      "toY": 10
+    },
+    {
+      "at": 532.8000000000001,
+      "videoTime": 292,
+      "kind": "draw",
+      "x": 30,
+      "y": 10,
+      "toX": 31,
+      "toY": 10
+    },
+    {
+      "at": 532.8000000000001,
+      "videoTime": 292,
+      "kind": "draw",
+      "x": 32,
+      "y": 10,
+      "toX": 31,
+      "toY": 10
+    },
+    {
+      "at": 534.7,
+      "videoTime": 293,
+      "kind": "draw",
+      "x": 26,
+      "y": 10,
+      "toX": 27,
+      "toY": 10
+    },
+    {
+      "at": 536.65,
+      "videoTime": 294,
+      "kind": "draw",
+      "x": 23,
+      "y": 10,
+      "toX": 24,
+      "toY": 10
+    },
+    {
+      "at": 536.65,
+      "videoTime": 294,
+      "kind": "draw",
+      "x": 24,
+      "y": 10,
+      "toX": 25,
+      "toY": 10
+    },
+    {
+      "at": 536.65,
+      "videoTime": 294,
+      "kind": "draw",
+      "x": 25,
+      "y": 10,
+      "toX": 26,
+      "toY": 10
+    },
+    {
+      "at": 536.65,
+      "videoTime": 294,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 17,
+      "toY": 15
+    },
+    {
+      "at": 542.5,
+      "videoTime": 297,
+      "kind": "draw",
+      "x": 20,
+      "y": 16,
+      "toX": 20,
+      "toY": 17
+    },
+    {
+      "at": 542.5,
+      "videoTime": 297,
+      "kind": "draw",
+      "x": 20,
+      "y": 17,
+      "toX": 20,
+      "toY": 18
+    },
+    {
+      "at": 544.45,
+      "videoTime": 298,
+      "kind": "draw",
+      "x": 20,
+      "y": 15,
+      "toX": 20,
+      "toY": 16
+    },
+    {
+      "at": 550.3000000000001,
+      "videoTime": 301,
+      "kind": "draw",
+      "x": 20,
+      "y": 9,
+      "toX": 21,
+      "toY": 9
+    },
+    {
+      "at": 550.3000000000001,
+      "videoTime": 301,
+      "kind": "draw",
+      "x": 20,
+      "y": 9,
+      "toX": 20,
+      "toY": 10
+    },
+    {
+      "at": 554.15,
+      "videoTime": 303,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 16,
+      "toY": 15
+    },
+    {
+      "at": 554.15,
+      "videoTime": 303,
+      "kind": "erase",
+      "x": 21,
+      "y": 9,
+      "toX": 21,
+      "toY": 10
+    },
+    {
+      "at": 554.15,
+      "videoTime": 303,
+      "kind": "erase",
+      "x": 20,
+      "y": 10,
+      "toX": 21,
+      "toY": 10
+    },
+    {
+      "at": 556.1,
+      "videoTime": 304,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 13
+    },
+    {
+      "at": 558.0500000000001,
+      "videoTime": 305,
+      "kind": "draw",
+      "x": 25,
+      "y": 13,
+      "toX": 26,
+      "toY": 13
+    },
+    {
+      "at": 560.0,
+      "videoTime": 307,
+      "kind": "offer",
+      "offers": [
+        {
+          "type": 1,
+          "amount": 1,
+          "roads": 20
+        },
+        {
+          "type": 0,
+          "amount": 30,
+          "roads": 0
+        }
+      ]
+    },
+    {
+      "at": 560.0,
+      "videoTime": 307.1,
+      "kind": "choose",
+      "choice": 0
+    },
+    {
+      "at": 560.0,
+      "videoTime": 310,
+      "kind": "erase",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 13
+    },
+    {
+      "at": 568.35,
+      "videoTime": 314,
+      "kind": "draw",
+      "x": 25,
+      "y": 15,
+      "toX": 25,
+      "toY": 16
+    },
+    {
+      "at": 585.0500000000001,
+      "videoTime": 322,
+      "kind": "erase",
+      "x": 25,
+      "y": 15,
+      "toX": 25,
+      "toY": 16
+    },
+    {
+      "at": 589.25,
+      "videoTime": 324,
+      "kind": "draw",
+      "x": 13,
+      "y": 12,
+      "toX": 14,
+      "toY": 12
+    },
+    {
+      "at": 589.25,
+      "videoTime": 324,
+      "kind": "draw",
+      "x": 25,
+      "y": 15,
+      "toX": 26,
+      "toY": 16
+    },
+    {
+      "at": 589.25,
+      "videoTime": 324,
+      "kind": "draw",
+      "x": 26,
+      "y": 15,
+      "toX": 25,
+      "toY": 16
+    },
+    {
+      "at": 622.7,
+      "videoTime": 340,
+      "kind": "erase",
+      "x": 26,
+      "y": 15,
+      "toX": 25,
+      "toY": 16
+    },
+    {
+      "at": 635.2,
+      "videoTime": 346,
+      "kind": "erase",
+      "x": 25,
+      "y": 15,
+      "toX": 26,
+      "toY": 16
+    },
+    {
+      "at": 639.4000000000001,
+      "videoTime": 348,
+      "kind": "house",
+      "id": "house:green:36,19",
+      "x": 36,
+      "y": 19,
+      "color": 4,
+      "direction": 0
+    },
+    {
+      "at": 639.4000000000001,
+      "videoTime": 348,
+      "kind": "shop",
+      "id": "shop:green:24,18",
+      "x": 23,
+      "y": 17,
+      "color": 4,
+      "layout": 1
+    },
+    {
+      "at": 641.5,
+      "videoTime": 349,
+      "kind": "draw",
+      "x": 36,
+      "y": 19,
+      "toX": 37,
+      "toY": 19
+    },
+    {
+      "at": 643.6,
+      "videoTime": 350,
+      "kind": "draw",
+      "x": 24,
+      "y": 19,
+      "toX": 25,
+      "toY": 19
+    },
+    {
+      "at": 649.85,
+      "videoTime": 353,
+      "kind": "house",
+      "id": "house:green:34,20",
+      "x": 34,
+      "y": 20,
+      "color": 4,
+      "direction": 0
+    },
+    {
+      "at": 651.95,
+      "videoTime": 354,
+      "kind": "shop",
+      "id": "shop:yellow:28,19",
+      "x": 26,
+      "y": 18,
+      "color": 0,
+      "layout": 2
+    },
+    {
+      "at": 651.95,
+      "videoTime": 354,
+      "kind": "draw",
+      "x": 26,
+      "y": 17,
+      "toX": 26,
+      "toY": 18
+    },
+    {
+      "at": 651.95,
+      "videoTime": 354,
+      "kind": "draw",
+      "x": 34,
+      "y": 20,
+      "toX": 34,
+      "toY": 19
+    },
+    {
+      "at": 658.2,
+      "videoTime": 357,
+      "kind": "draw",
+      "x": 25,
+      "y": 19,
+      "toX": 26,
+      "toY": 20
+    },
+    {
+      "at": 660.3000000000001,
+      "videoTime": 358,
+      "kind": "draw",
+      "x": 11,
+      "y": 10,
+      "toX": 10,
+      "toY": 11
+    },
+    {
+      "at": 662.4000000000001,
+      "videoTime": 359,
+      "kind": "house",
+      "id": "house:red:20,6",
+      "x": 20,
+      "y": 6,
+      "color": 1,
+      "direction": 6
+    },
+    {
+      "at": 662.4000000000001,
+      "videoTime": 359,
+      "kind": "shop",
+      "id": "shop:red:31,19",
+      "x": 30,
+      "y": 18,
+      "color": 1,
+      "layout": 0
+    },
+    {
+      "at": 664.5,
+      "videoTime": 360,
+      "kind": "draw",
+      "x": 20,
+      "y": 6,
+      "toX": 20,
+      "toY": 5
+    },
+    {
+      "at": 664.5,
+      "videoTime": 360,
+      "kind": "draw",
+      "x": 29,
+      "y": 20,
+      "toX": 30,
+      "toY": 20
+    },
+    {
+      "at": 666.5500000000001,
+      "videoTime": 361,
+      "kind": "draw",
+      "x": 25,
+      "y": 16,
+      "toX": 25,
+      "toY": 17
+    },
+    {
+      "at": 666.5500000000001,
+      "videoTime": 361,
+      "kind": "draw",
+      "x": 25,
+      "y": 17,
+      "toX": 25,
+      "toY": 18
+    },
+    {
+      "at": 666.5500000000001,
+      "videoTime": 361,
+      "kind": "draw",
+      "x": 25,
+      "y": 18,
+      "toX": 25,
+      "toY": 19
+    },
+    {
+      "at": 666.5500000000001,
+      "videoTime": 361,
+      "kind": "erase",
+      "x": 25,
+      "y": 19,
+      "toX": 26,
+      "toY": 20
+    },
+    {
+      "at": 668.6500000000001,
+      "videoTime": 362,
+      "kind": "draw",
+      "x": 25,
+      "y": 15,
+      "toX": 25,
+      "toY": 16
+    },
+    {
+      "at": 670.75,
+      "videoTime": 363,
+      "kind": "draw",
+      "x": 24,
+      "y": 14,
+      "toX": 25,
+      "toY": 15
+    },
+    {
+      "at": 670.75,
+      "videoTime": 363,
+      "kind": "draw",
+      "x": 25,
+      "y": 14,
+      "toX": 24,
+      "toY": 15
+    },
+    {
+      "at": 670.75,
+      "videoTime": 363,
+      "kind": "draw",
+      "x": 24,
+      "y": 15,
+      "toX": 25,
+      "toY": 15
+    },
+    {
+      "at": 672.85,
+      "videoTime": 364,
+      "kind": "house",
+      "id": "house:red:21,6",
+      "x": 21,
+      "y": 6,
+      "color": 1,
+      "direction": 2
+    },
+    {
+      "at": 672.85,
+      "videoTime": 364,
+      "kind": "draw",
+      "x": 18,
+      "y": 14,
+      "toX": 17,
+      "toY": 14
+    },
+    {
+      "at": 674.95,
+      "videoTime": 365,
+      "kind": "draw",
+      "x": 21,
+      "y": 6,
+      "toX": 21,
+      "toY": 7
+    },
+    {
+      "at": 674.95,
+      "videoTime": 365,
+      "kind": "erase",
+      "x": 24,
+      "y": 14,
+      "toX": 25,
+      "toY": 15
+    },
+    {
+      "at": 674.95,
+      "videoTime": 365,
+      "kind": "erase",
+      "x": 25,
+      "y": 14,
+      "toX": 24,
+      "toY": 15
+    },
+    {
+      "at": 674.95,
+      "videoTime": 365,
+      "kind": "erase",
+      "x": 24,
+      "y": 15,
+      "toX": 25,
+      "toY": 15
+    },
+    {
+      "at": 674.95,
+      "videoTime": 365,
+      "kind": "erase",
+      "x": 25,
+      "y": 15,
+      "toX": 25,
+      "toY": 16
+    },
+    {
+      "at": 677.0,
+      "videoTime": 368,
+      "kind": "draw",
+      "x": 25,
+      "y": 15,
+      "toX": 25,
+      "toY": 16
+    },
+    {
+      "at": 677.0,
+      "videoTime": 369,
+      "kind": "draw",
+      "x": 25,
+      "y": 14,
+      "toX": 25,
+      "toY": 15
+    },
+    {
+      "at": 677.0,
+      "videoTime": 372,
+      "kind": "draw",
+      "x": 23,
+      "y": 14,
+      "toX": 24,
+      "toY": 13
+    },
+    {
+      "at": 677.0,
+      "videoTime": 374,
+      "kind": "draw",
+      "x": 25,
+      "y": 20,
+      "toX": 26,
+      "toY": 20
+    },
+    {
+      "at": 677.0,
+      "videoTime": 374,
+      "kind": "draw",
+      "x": 26,
+      "y": 20,
+      "toX": 27,
+      "toY": 20
+    },
+    {
+      "at": 677.0,
+      "videoTime": 374,
+      "kind": "draw",
+      "x": 27,
+      "y": 20,
+      "toX": 28,
+      "toY": 20
+    },
+    {
+      "at": 677.0,
+      "videoTime": 374,
+      "kind": "draw",
+      "x": 28,
+      "y": 20,
+      "toX": 29,
+      "toY": 20
+    },
+    {
+      "at": 677.0,
+      "videoTime": 375,
+      "kind": "draw",
+      "x": 25,
+      "y": 19,
+      "toX": 25,
+      "toY": 20
+    },
+    {
+      "at": 677.0,
+      "videoTime": 377,
+      "kind": "draw",
+      "x": 26,
+      "y": 16,
+      "toX": 26,
+      "toY": 17
+    },
+    {
+      "at": 677.0,
+      "videoTime": 378,
+      "kind": "draw",
+      "x": 34,
+      "y": 20,
+      "toX": 34,
+      "toY": 21
+    },
+    {
+      "at": 677.0,
+      "videoTime": 383,
+      "kind": "draw",
+      "x": 34,
+      "y": 21,
+      "toX": 34,
+      "toY": 22
+    },
+    {
+      "at": 677.0,
+      "videoTime": 384,
+      "kind": "draw",
+      "x": 30,
+      "y": 22,
+      "toX": 31,
+      "toY": 22
+    },
+    {
+      "at": 677.0,
+      "videoTime": 384,
+      "kind": "draw",
+      "x": 31,
+      "y": 22,
+      "toX": 32,
+      "toY": 22
+    },
+    {
+      "at": 677.0,
+      "videoTime": 384,
+      "kind": "draw",
+      "x": 32,
+      "y": 22,
+      "toX": 33,
+      "toY": 22
+    },
+    {
+      "at": 677.0,
+      "videoTime": 384,
+      "kind": "draw",
+      "x": 33,
+      "y": 22,
+      "toX": 34,
+      "toY": 22
+    },
+    {
+      "at": 677.0,
+      "videoTime": 385,
+      "kind": "draw",
+      "x": 29,
+      "y": 22,
+      "toX": 30,
+      "toY": 22
+    },
+    {
+      "at": 677.0,
+      "videoTime": 386,
+      "kind": "draw",
+      "x": 29,
+      "y": 20,
+      "toX": 29,
+      "toY": 21
+    },
+    {
+      "at": 677.0,
+      "videoTime": 386,
+      "kind": "draw",
+      "x": 29,
+      "y": 21,
+      "toX": 29,
+      "toY": 22
+    },
+    {
+      "at": 677.0,
+      "videoTime": 389,
+      "kind": "draw",
+      "x": 36,
+      "y": 20,
+      "toX": 36,
+      "toY": 21
+    },
+    {
+      "at": 677.0,
+      "videoTime": 390,
+      "kind": "draw",
+      "x": 36,
+      "y": 19,
+      "toX": 36,
+      "toY": 20
+    },
+    {
+      "at": 677.0,
+      "videoTime": 390,
+      "kind": "draw",
+      "x": 34,
+      "y": 21,
+      "toX": 35,
+      "toY": 21
+    },
+    {
+      "at": 677.0,
+      "videoTime": 390,
+      "kind": "draw",
+      "x": 35,
+      "y": 21,
+      "toX": 36,
+      "toY": 21
+    },
+    {
+      "at": 677.0,
+      "videoTime": 400,
+      "kind": "erase",
+      "x": 20,
+      "y": 6,
+      "toX": 20,
+      "toY": 5
+    },
+    {
+      "at": 677.0,
+      "videoTime": 401,
+      "kind": "draw",
+      "x": 20,
+      "y": 6,
+      "toX": 20,
+      "toY": 7
+    },
+    {
+      "at": 677.0,
+      "videoTime": 401,
+      "kind": "draw",
+      "x": 20,
+      "y": 8,
+      "toX": 21,
+      "toY": 7
+    },
+    {
+      "at": 677.0,
+      "videoTime": 401,
+      "kind": "draw",
+      "x": 35,
+      "y": 21,
+      "toX": 34,
+      "toY": 22
+    },
+    {
+      "at": 677.0,
+      "videoTime": 402,
+      "kind": "draw",
+      "x": 20,
+      "y": 8,
+      "toX": 20,
+      "toY": 7
+    },
+    {
+      "at": 677.0,
+      "videoTime": 402,
+      "kind": "draw",
+      "x": 24,
+      "y": 10,
+      "toX": 23,
+      "toY": 11
+    },
+    {
+      "at": 677.0,
+      "videoTime": 402,
+      "kind": "draw",
+      "x": 26,
+      "y": 14,
+      "toX": 25,
+      "toY": 15
+    },
+    {
+      "at": 677.0,
+      "videoTime": 403,
+      "kind": "draw",
+      "x": 20,
+      "y": 7,
+      "toX": 19,
+      "toY": 8
+    },
+    {
+      "at": 678.0500000000001,
+      "videoTime": 404,
+      "kind": "draw",
+      "x": 15,
+      "y": 10,
+      "toX": 14,
+      "toY": 11
+    },
+    {
+      "at": 693.75,
+      "videoTime": 412,
+      "kind": "erase",
+      "x": 35,
+      "y": 21,
+      "toX": 34,
+      "toY": 22
+    },
+    {
+      "at": 700.0,
+      "videoTime": 416,
+      "kind": "offer",
+      "offers": [
+        {
+          "type": 2,
+          "amount": 1,
+          "roads": 10
+        },
+        {
+          "type": 1,
+          "amount": 1,
+          "roads": 20
+        }
+      ]
+    },
+    {
+      "at": 700.0,
+      "videoTime": 416.1,
+      "kind": "choose",
+      "choice": 0
+    },
+    {
+      "at": 708.0500000000001,
+      "videoTime": 424,
+      "kind": "erase",
+      "x": 24,
+      "y": 10,
+      "toX": 23,
+      "toY": 11
+    },
+    {
+      "at": 718.1500000000001,
+      "videoTime": 429,
+      "kind": "draw",
+      "x": 18,
+      "y": 14,
+      "toX": 19,
+      "toY": 13
+    },
+    {
+      "at": 722.1500000000001,
+      "videoTime": 431,
+      "kind": "draw",
+      "x": 18,
+      "y": 14,
+      "toX": 18,
+      "toY": 15
+    },
+    {
+      "at": 724.1500000000001,
+      "videoTime": 432,
+      "kind": "draw",
+      "x": 10,
+      "y": 13,
+      "toX": 10,
+      "toY": 14
+    },
+    {
+      "at": 730.2,
+      "videoTime": 435,
+      "kind": "motorway",
+      "id": "m2",
+      "x": 13,
+      "y": 10,
+      "toX": 26,
+      "toY": 17
+    },
+    {
+      "at": 730.2,
+      "videoTime": 435,
+      "kind": "draw",
+      "x": 19,
+      "y": 14,
+      "toX": 19,
+      "toY": 15
+    },
+    {
+      "at": 732.25,
+      "videoTime": 436,
+      "kind": "draw",
+      "x": 17,
+      "y": 14,
+      "toX": 16,
+      "toY": 15
+    },
+    {
+      "at": 734.25,
+      "videoTime": 437,
+      "kind": "draw",
+      "x": 25,
+      "y": 17,
+      "toX": 26,
+      "toY": 17
+    },
+    {
+      "at": 740.3000000000001,
+      "videoTime": 440,
+      "kind": "draw",
+      "x": 11,
+      "y": 13,
+      "toX": 12,
+      "toY": 13
+    },
+    {
+      "at": 740.3000000000001,
+      "videoTime": 440,
+      "kind": "draw",
+      "x": 11,
+      "y": 13,
+      "toX": 11,
+      "toY": 14
+    },
+    {
+      "at": 742.3000000000001,
+      "videoTime": 441,
+      "kind": "draw",
+      "x": 12,
+      "y": 10,
+      "toX": 12,
+      "toY": 11
+    },
+    {
+      "at": 742.3000000000001,
+      "videoTime": 441,
+      "kind": "draw",
+      "x": 12,
+      "y": 11,
+      "toX": 12,
+      "toY": 12
+    },
+    {
+      "at": 742.3000000000001,
+      "videoTime": 441,
+      "kind": "draw",
+      "x": 11,
+      "y": 12,
+      "toX": 12,
+      "toY": 13
+    },
+    {
+      "at": 742.3000000000001,
+      "videoTime": 441,
+      "kind": "draw",
+      "x": 12,
+      "y": 12,
+      "toX": 12,
+      "toY": 13
+    },
+    {
+      "at": 742.3000000000001,
+      "videoTime": 441,
+      "kind": "draw",
+      "x": 12,
+      "y": 12,
+      "toX": 11,
+      "toY": 13
+    },
+    {
+      "at": 752.35,
+      "videoTime": 446,
+      "kind": "draw",
+      "x": 13,
+      "y": 10,
+      "toX": 14,
+      "toY": 11
+    },
+    {
+      "at": 752.35,
+      "videoTime": 446,
+      "kind": "draw",
+      "x": 14,
+      "y": 10,
+      "toX": 13,
+      "toY": 11
+    },
+    {
+      "at": 756.4000000000001,
+      "videoTime": 448,
+      "kind": "draw",
+      "x": 11,
+      "y": 12,
+      "toX": 10,
+      "toY": 12
+    },
+    {
+      "at": 756.4000000000001,
+      "videoTime": 448,
+      "kind": "erase",
+      "x": 17,
+      "y": 14,
+      "toX": 16,
+      "toY": 15
+    },
+    {
+      "at": 774.5500000000001,
+      "videoTime": 457,
+      "kind": "draw",
+      "x": 10,
+      "y": 14,
+      "toX": 11,
+      "toY": 14
+    },
+    {
+      "at": 778.5500000000001,
+      "videoTime": 459,
+      "kind": "house",
+      "id": "house:red:21,12",
+      "x": 21,
+      "y": 12,
+      "color": 1,
+      "direction": 6
+    },
+    {
+      "at": 778.5500000000001,
+      "videoTime": 459,
+      "kind": "draw",
+      "x": 21,
+      "y": 12,
+      "toX": 21,
+      "toY": 11
+    },
+    {
+      "at": 788.6500000000001,
+      "videoTime": 464,
+      "kind": "house",
+      "id": "house:red:21,5",
+      "x": 21,
+      "y": 5,
+      "color": 1,
+      "direction": 0
+    },
+    {
+      "at": 788.6500000000001,
+      "videoTime": 464,
+      "kind": "draw",
+      "x": 21,
+      "y": 5,
+      "toX": 22,
+      "toY": 5
+    },
+    {
+      "at": 810.8000000000001,
+      "videoTime": 475,
+      "kind": "erase",
+      "x": 25,
+      "y": 12,
+      "toX": 26,
+      "toY": 13
+    },
+    {
+      "at": 810.8000000000001,
+      "videoTime": 475,
+      "kind": "erase",
+      "x": 25,
+      "y": 13,
+      "toX": 26,
+      "toY": 13
+    },
+    {
+      "at": 810.8000000000001,
+      "videoTime": 475,
+      "kind": "erase",
+      "x": 26,
+      "y": 13,
+      "toX": 26,
+      "toY": 14
+    },
+    {
+      "at": 812.8000000000001,
+      "videoTime": 476,
+      "kind": "draw",
+      "x": 25,
+      "y": 13,
+      "toX": 25,
+      "toY": 14
+    },
+    {
+      "at": 820.85,
+      "videoTime": 480,
+      "kind": "build",
+      "tool": "TrafficLight",
+      "x": 25,
+      "y": 14
+    },
+    {
+      "at": 832.95,
+      "videoTime": 490,
+      "kind": "erase",
+      "x": 15,
+      "y": 10,
+      "toX": 14,
+      "toY": 11
+    },
+    {
+      "at": 832.95,
+      "videoTime": 498,
+      "kind": "draw",
+      "x": 19,
+      "y": 9,
+      "toX": 20,
+      "toY": 9
+    },
+    {
+      "at": 832.95,
+      "videoTime": 502,
+      "kind": "draw",
+      "x": 16,
+      "y": 6,
+      "toX": 15,
+      "toY": 7
+    },
+    {
+      "at": 832.95,
+      "videoTime": 502,
+      "kind": "draw",
+      "x": 29,
+      "y": 19,
+      "toX": 28,
+      "toY": 20
+    },
+    {
+      "at": 832.95,
+      "videoTime": 507,
+      "kind": "draw",
+      "x": 18,
+      "y": 14,
+      "toX": 19,
+      "toY": 13
+    },
+    {
+      "at": 832.95,
+      "videoTime": 508,
+      "kind": "erase",
+      "x": 19,
+      "y": 13,
+      "toX": 20,
+      "toY": 13
+    },
+    {
+      "at": 832.95,
+      "videoTime": 509,
+      "kind": "erase",
+      "x": 18,
+      "y": 14,
+      "toX": 19,
+      "toY": 13
+    },
+    {
+      "at": 832.95,
+      "videoTime": 511,
+      "kind": "editMotorway",
+      "target": "m1",
+      "x": 15,
+      "y": 6,
+      "toX": 29,
+      "toY": 20
+    },
+    {
+      "at": 832.95,
+      "videoTime": 513,
+      "kind": "draw",
+      "x": 15,
+      "y": 13,
+      "toX": 15,
+      "toY": 14
+    },
+    {
+      "at": 832.95,
+      "videoTime": 513,
+      "kind": "draw",
+      "x": 15,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 832.95,
+      "videoTime": 513,
+      "kind": "draw",
+      "x": 15,
+      "y": 15,
+      "toX": 15,
+      "toY": 16
+    },
+    {
+      "at": 832.95,
+      "videoTime": 513,
+      "kind": "draw",
+      "x": 15,
+      "y": 16,
+      "toX": 15,
+      "toY": 17
+    },
+    {
+      "at": 832.95,
+      "videoTime": 513,
+      "kind": "draw",
+      "x": 15,
+      "y": 17,
+      "toX": 15,
+      "toY": 18
+    },
+    {
+      "at": 832.95,
+      "videoTime": 518,
+      "kind": "draw",
+      "x": 18,
+      "y": 9,
+      "toX": 19,
+      "toY": 9
+    },
+    {
+      "at": 832.95,
+      "videoTime": 528,
+      "kind": "erase",
+      "x": 24,
+      "y": 12,
+      "toX": 25,
+      "toY": 12
+    },
+    {
+      "at": 832.95,
+      "videoTime": 529,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 832.95,
+      "videoTime": 529,
+      "kind": "erase",
+      "x": 23,
+      "y": 10,
+      "toX": 23,
+      "toY": 11
+    },
+    {
+      "at": 832.95,
+      "videoTime": 529,
+      "kind": "erase",
+      "x": 23,
+      "y": 11,
+      "toX": 23,
+      "toY": 12
+    },
+    {
+      "at": 832.95,
+      "videoTime": 529,
+      "kind": "erase",
+      "x": 23,
+      "y": 12,
+      "toX": 24,
+      "toY": 12
+    },
+    {
+      "at": 832.95,
+      "videoTime": 531,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 13
+    },
+    {
+      "at": 833.95,
+      "videoTime": 533,
+      "kind": "draw",
+      "x": 29,
+      "y": 19,
+      "toX": 29,
+      "toY": 20
+    },
+    {
+      "at": 838.0,
+      "videoTime": 535,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 840.0,
+      "videoTime": 537,
+      "kind": "offer",
+      "offers": [
+        {
+          "type": 0,
+          "amount": 30,
+          "roads": 0
+        },
+        {
+          "type": 2,
+          "amount": 1,
+          "roads": 10
+        }
+      ]
+    },
+    {
+      "at": 840.0,
+      "videoTime": 537.1,
+      "kind": "choose",
+      "choice": 1
+    },
+    {
+      "at": 841.95,
+      "videoTime": 540,
+      "kind": "erase",
+      "x": 13,
+      "y": 11,
+      "toX": 14,
+      "toY": 12
+    },
+    {
+      "at": 843.95,
+      "videoTime": 541,
+      "kind": "erase",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 843.95,
+      "videoTime": 544,
+      "kind": "draw",
+      "x": 23,
+      "y": 10,
+      "toX": 23,
+      "toY": 11
+    },
+    {
+      "at": 843.95,
+      "videoTime": 545,
+      "kind": "draw",
+      "x": 23,
+      "y": 11,
+      "toX": 24,
+      "toY": 11
+    },
+    {
+      "at": 843.95,
+      "videoTime": 545,
+      "kind": "draw",
+      "x": 24,
+      "y": 11,
+      "toX": 25,
+      "toY": 12
+    },
+    {
+      "at": 843.95,
+      "videoTime": 545,
+      "kind": "draw",
+      "x": 25,
+      "y": 11,
+      "toX": 24,
+      "toY": 12
+    },
+    {
+      "at": 843.95,
+      "videoTime": 546,
+      "kind": "draw",
+      "x": 24,
+      "y": 11,
+      "toX": 24,
+      "toY": 12
+    },
+    {
+      "at": 843.95,
+      "videoTime": 552,
+      "kind": "draw",
+      "x": 16,
+      "y": 9,
+      "toX": 17,
+      "toY": 9
+    },
+    {
+      "at": 843.95,
+      "videoTime": 554,
+      "kind": "draw",
+      "x": 19,
+      "y": 5,
+      "toX": 20,
+      "toY": 5
+    },
+    {
+      "at": 843.95,
+      "videoTime": 554,
+      "kind": "draw",
+      "x": 21,
+      "y": 5,
+      "toX": 20,
+      "toY": 5
+    },
+    {
+      "at": 843.95,
+      "videoTime": 555,
+      "kind": "draw",
+      "x": 19,
+      "y": 5,
+      "toX": 19,
+      "toY": 6
+    },
+    {
+      "at": 843.95,
+      "videoTime": 559,
+      "kind": "draw",
+      "x": 17,
+      "y": 9,
+      "toX": 18,
+      "toY": 9
+    },
+    {
+      "at": 843.95,
+      "videoTime": 561,
+      "kind": "draw",
+      "x": 25,
+      "y": 20,
+      "toX": 25,
+      "toY": 21
+    },
+    {
+      "at": 843.95,
+      "videoTime": 565,
+      "kind": "erase",
+      "x": 25,
+      "y": 20,
+      "toX": 25,
+      "toY": 21
+    },
+    {
+      "at": 849.85,
+      "videoTime": 570,
+      "kind": "draw",
+      "x": 17,
+      "y": 14,
+      "toX": 16,
+      "toY": 13
+    },
+    {
+      "at": 853.8000000000001,
+      "videoTime": 572,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 855.75,
+      "videoTime": 573,
+      "kind": "erase",
+      "x": 21,
+      "y": 9,
+      "toX": 20,
+      "toY": 10
+    },
+    {
+      "at": 877.45,
+      "videoTime": 584,
+      "kind": "draw",
+      "x": 17,
+      "y": 14,
+      "toX": 17,
+      "toY": 15
+    },
+    {
+      "at": 881.4000000000001,
+      "videoTime": 586,
+      "kind": "house",
+      "id": "house:red:40,14",
+      "x": 40,
+      "y": 14,
+      "color": 1,
+      "direction": 2
+    },
+    {
+      "at": 881.4000000000001,
+      "videoTime": 586,
+      "kind": "draw",
+      "x": 40,
+      "y": 14,
+      "toX": 39,
+      "toY": 14
+    },
+    {
+      "at": 883.4000000000001,
+      "videoTime": 587,
+      "kind": "erase",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 887.3000000000001,
+      "videoTime": 589,
+      "kind": "draw",
+      "x": 21,
+      "y": 12,
+      "toX": 20,
+      "toY": 12
+    },
+    {
+      "at": 889.3000000000001,
+      "videoTime": 590,
+      "kind": "draw",
+      "x": 21,
+      "y": 8,
+      "toX": 20,
+      "toY": 8
+    },
+    {
+      "at": 893.25,
+      "videoTime": 592,
+      "kind": "house",
+      "id": "house:yellow:32,11",
+      "x": 32,
+      "y": 11,
+      "color": 0,
+      "direction": 4
+    },
+    {
+      "at": 893.25,
+      "videoTime": 592,
+      "kind": "join",
+      "id": "shop:yellow:19,17",
+      "x": 16,
+      "y": 16,
+      "color": 0,
+      "layout": 0,
+      "target": "shop:red:17,17"
+    },
+    {
+      "at": 893.25,
+      "videoTime": 592,
+      "kind": "draw",
+      "x": 19,
+      "y": 11,
+      "toX": 18,
+      "toY": 11
+    },
+    {
+      "at": 893.25,
+      "videoTime": 592,
+      "kind": "draw",
+      "x": 40,
+      "y": 14,
+      "toX": 40,
+      "toY": 15
+    },
+    {
+      "at": 893.25,
+      "videoTime": 592,
+      "kind": "draw",
+      "x": 40,
+      "y": 20,
+      "toX": 40,
+      "toY": 21
+    },
+    {
+      "at": 895.2,
+      "videoTime": 593,
+      "kind": "draw",
+      "x": 32,
+      "y": 11,
+      "toX": 31,
+      "toY": 11
+    },
+    {
+      "at": 895.2,
+      "videoTime": 593,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 895.2,
+      "videoTime": 593,
+      "kind": "draw",
+      "x": 40,
+      "y": 19,
+      "toX": 40,
+      "toY": 20
+    },
+    {
+      "at": 895.2,
+      "videoTime": 593,
+      "kind": "draw",
+      "x": 38,
+      "y": 21,
+      "toX": 39,
+      "toY": 21
+    },
+    {
+      "at": 895.2,
+      "videoTime": 593,
+      "kind": "draw",
+      "x": 39,
+      "y": 21,
+      "toX": 40,
+      "toY": 21
+    },
+    {
+      "at": 901.1500000000001,
+      "videoTime": 596,
+      "kind": "erase",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 901.1500000000001,
+      "videoTime": 602,
+      "kind": "draw",
+      "x": 21,
+      "y": 13,
+      "toX": 20,
+      "toY": 14
+    },
+    {
+      "at": 901.1500000000001,
+      "videoTime": 602,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 901.1500000000001,
+      "videoTime": 607,
+      "kind": "erase",
+      "x": 15,
+      "y": 6,
+      "toX": 15,
+      "toY": 7
+    },
+    {
+      "at": 901.1500000000001,
+      "videoTime": 607,
+      "kind": "erase",
+      "x": 20,
+      "y": 9,
+      "toX": 21,
+      "toY": 10
+    },
+    {
+      "at": 901.1500000000001,
+      "videoTime": 607,
+      "kind": "erase",
+      "x": 40,
+      "y": 19,
+      "toX": 40,
+      "toY": 20
+    },
+    {
+      "at": 901.1500000000001,
+      "videoTime": 608,
+      "kind": "draw",
+      "x": 25,
+      "y": 11,
+      "toX": 25,
+      "toY": 12
+    },
+    {
+      "at": 901.1500000000001,
+      "videoTime": 608,
+      "kind": "erase",
+      "x": 40,
+      "y": 20,
+      "toX": 40,
+      "toY": 21
+    },
+    {
+      "at": 901.1500000000001,
+      "videoTime": 608,
+      "kind": "erase",
+      "x": 38,
+      "y": 21,
+      "toX": 39,
+      "toY": 21
+    },
+    {
+      "at": 901.1500000000001,
+      "videoTime": 608,
+      "kind": "erase",
+      "x": 39,
+      "y": 21,
+      "toX": 40,
+      "toY": 21
+    },
+    {
+      "at": 901.1500000000001,
+      "videoTime": 610,
+      "kind": "draw",
+      "x": 31,
+      "y": 10,
+      "toX": 31,
+      "toY": 11
+    },
+    {
+      "at": 901.1500000000001,
+      "videoTime": 611,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 14
+    },
+    {
+      "at": 903.1,
+      "videoTime": 614,
+      "kind": "draw",
+      "x": 16,
+      "y": 13,
+      "toX": 15,
+      "toY": 14
+    },
+    {
+      "at": 907.0500000000001,
+      "videoTime": 616,
+      "kind": "erase",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 14
+    },
+    {
+      "at": 918.85,
+      "videoTime": 622,
+      "kind": "shared",
+      "id": "shop:red:12,19",
+      "x": 11,
+      "y": 18,
+      "color": 1,
+      "layout": 0
+    },
+    {
+      "at": 920.85,
+      "videoTime": 623,
+      "kind": "draw",
+      "x": 14,
+      "y": 20,
+      "toX": 15,
+      "toY": 20
+    },
+    {
+      "at": 922.8000000000001,
+      "videoTime": 624,
+      "kind": "draw",
+      "x": 10,
+      "y": 20,
+      "toX": 11,
+      "toY": 20
+    },
+    {
+      "at": 922.8000000000001,
+      "videoTime": 641,
+      "kind": "draw",
+      "x": 18,
+      "y": 14,
+      "toX": 19,
+      "toY": 13
+    },
+    {
+      "at": 922.8000000000001,
+      "videoTime": 642,
+      "kind": "draw",
+      "x": 15,
+      "y": 18,
+      "toX": 15,
+      "toY": 19
+    },
+    {
+      "at": 922.8000000000001,
+      "videoTime": 642,
+      "kind": "draw",
+      "x": 15,
+      "y": 19,
+      "toX": 15,
+      "toY": 20
+    },
+    {
+      "at": 928.75,
+      "videoTime": 648,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 930.7,
+      "videoTime": 649,
+      "kind": "erase",
+      "x": 18,
+      "y": 14,
+      "toX": 19,
+      "toY": 13
+    },
+    {
+      "at": 942.5500000000001,
+      "videoTime": 655,
+      "kind": "erase",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 948.45,
+      "videoTime": 658,
+      "kind": "draw",
+      "x": 13,
+      "y": 9,
+      "toX": 14,
+      "toY": 10
+    },
+    {
+      "at": 948.45,
+      "videoTime": 658,
+      "kind": "draw",
+      "x": 14,
+      "y": 9,
+      "toX": 13,
+      "toY": 10
+    },
+    {
+      "at": 948.45,
+      "videoTime": 658,
+      "kind": "draw",
+      "x": 19,
+      "y": 12,
+      "toX": 20,
+      "toY": 12
+    },
+    {
+      "at": 948.45,
+      "videoTime": 658,
+      "kind": "draw",
+      "x": 18,
+      "y": 14,
+      "toX": 19,
+      "toY": 14
+    },
+    {
+      "at": 948.45,
+      "videoTime": 658,
+      "kind": "erase",
+      "x": 19,
+      "y": 14,
+      "toX": 19,
+      "toY": 15
+    },
+    {
+      "at": 950.4000000000001,
+      "videoTime": 659,
+      "kind": "draw",
+      "x": 17,
+      "y": 14,
+      "toX": 17,
+      "toY": 13
+    },
+    {
+      "at": 954.35,
+      "videoTime": 661,
+      "kind": "draw",
+      "x": 18,
+      "y": 14,
+      "toX": 19,
+      "toY": 15
+    },
+    {
+      "at": 954.35,
+      "videoTime": 661,
+      "kind": "draw",
+      "x": 24,
+      "y": 16,
+      "toX": 25,
+      "toY": 16
+    },
+    {
+      "at": 954.35,
+      "videoTime": 661,
+      "kind": "erase",
+      "x": 13,
+      "y": 9,
+      "toX": 14,
+      "toY": 10
+    },
+    {
+      "at": 954.35,
+      "videoTime": 661,
+      "kind": "erase",
+      "x": 14,
+      "y": 9,
+      "toX": 13,
+      "toY": 10
+    },
+    {
+      "at": 954.35,
+      "videoTime": 661,
+      "kind": "erase",
+      "x": 19,
+      "y": 12,
+      "toX": 20,
+      "toY": 12
+    },
+    {
+      "at": 958.3000000000001,
+      "videoTime": 663,
+      "kind": "draw",
+      "x": 18,
+      "y": 14,
+      "toX": 18,
+      "toY": 15
+    },
+    {
+      "at": 958.3000000000001,
+      "videoTime": 663,
+      "kind": "draw",
+      "x": 19,
+      "y": 14,
+      "toX": 18,
+      "toY": 15
+    },
+    {
+      "at": 958.3000000000001,
+      "videoTime": 663,
+      "kind": "draw",
+      "x": 18,
+      "y": 15,
+      "toX": 19,
+      "toY": 15
+    },
+    {
+      "at": 958.3000000000001,
+      "videoTime": 663,
+      "kind": "erase",
+      "x": 24,
+      "y": 16,
+      "toX": 25,
+      "toY": 16
+    },
+    {
+      "at": 960.3000000000001,
+      "videoTime": 664,
+      "kind": "house",
+      "id": "house:cyan:8,8",
+      "x": 8,
+      "y": 8,
+      "color": 2,
+      "direction": 0
+    },
+    {
+      "at": 960.3000000000001,
+      "videoTime": 664,
+      "kind": "shop",
+      "id": "shop:cyan:40,8",
+      "x": 39,
+      "y": 7,
+      "color": 2,
+      "layout": 0
+    },
+    {
+      "at": 960.3000000000001,
+      "videoTime": 664,
+      "kind": "draw",
+      "x": 8,
+      "y": 8,
+      "toX": 9,
+      "toY": 8
+    },
+    {
+      "at": 962.25,
+      "videoTime": 665,
+      "kind": "draw",
+      "x": 38,
+      "y": 9,
+      "toX": 39,
+      "toY": 9
+    },
+    {
+      "at": 964.25,
+      "videoTime": 666,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 964.25,
+      "videoTime": 666,
+      "kind": "draw",
+      "x": 18,
+      "y": 14,
+      "toX": 19,
+      "toY": 14
+    },
+    {
+      "at": 966.2,
+      "videoTime": 667,
+      "kind": "editMotorway",
+      "target": "m2",
+      "x": 13,
+      "y": 10,
+      "toX": 25,
+      "toY": 15
+    },
+    {
+      "at": 966.2,
+      "videoTime": 667,
+      "kind": "draw",
+      "x": 18,
+      "y": 13,
+      "toX": 19,
+      "toY": 14
+    },
+    {
+      "at": 966.2,
+      "videoTime": 667,
+      "kind": "draw",
+      "x": 18,
+      "y": 14,
+      "toX": 19,
+      "toY": 13
+    },
+    {
+      "at": 966.2,
+      "videoTime": 667,
+      "kind": "draw",
+      "x": 24,
+      "y": 15,
+      "toX": 25,
+      "toY": 15
+    },
+    {
+      "at": 968.1500000000001,
+      "videoTime": 668,
+      "kind": "erase",
+      "x": 19,
+      "y": 14,
+      "toX": 18,
+      "toY": 15
+    },
+    {
+      "at": 968.1500000000001,
+      "videoTime": 668,
+      "kind": "erase",
+      "x": 18,
+      "y": 15,
+      "toX": 19,
+      "toY": 15
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 669,
+      "kind": "house",
+      "id": "house:cyan:8,10",
+      "x": 8,
+      "y": 10,
+      "color": 2,
+      "direction": 6
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 669,
+      "kind": "draw",
+      "x": 8,
+      "y": 10,
+      "toX": 8,
+      "toY": 9
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 669,
+      "kind": "draw",
+      "x": 8,
+      "y": 9,
+      "toX": 9,
+      "toY": 10
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 671,
+      "kind": "erase",
+      "x": 8,
+      "y": 9,
+      "toX": 9,
+      "toY": 10
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 672,
+      "kind": "draw",
+      "x": 15,
+      "y": 6,
+      "toX": 15,
+      "toY": 7
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 672,
+      "kind": "erase",
+      "x": 16,
+      "y": 6,
+      "toX": 15,
+      "toY": 7
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 672,
+      "kind": "erase",
+      "x": 20,
+      "y": 13,
+      "toX": 20,
+      "toY": 14
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 672,
+      "kind": "erase",
+      "x": 21,
+      "y": 13,
+      "toX": 20,
+      "toY": 14
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 672,
+      "kind": "erase",
+      "x": 26,
+      "y": 17,
+      "toX": 26,
+      "toY": 18
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 672,
+      "kind": "erase",
+      "x": 29,
+      "y": 19,
+      "toX": 29,
+      "toY": 20
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 672,
+      "kind": "erase",
+      "x": 29,
+      "y": 19,
+      "toX": 28,
+      "toY": 20
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 673,
+      "kind": "draw",
+      "x": 40,
+      "y": 14,
+      "toX": 41,
+      "toY": 14
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 674,
+      "kind": "draw",
+      "x": 15,
+      "y": 5,
+      "toX": 16,
+      "toY": 6
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 674,
+      "kind": "draw",
+      "x": 16,
+      "y": 5,
+      "toX": 15,
+      "toY": 6
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 674,
+      "kind": "erase",
+      "x": 15,
+      "y": 6,
+      "toX": 15,
+      "toY": 7
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 675,
+      "kind": "draw",
+      "x": 34,
+      "y": 6,
+      "toX": 35,
+      "toY": 6
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 678,
+      "kind": "erase",
+      "x": 34,
+      "y": 6,
+      "toX": 35,
+      "toY": 6
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 679,
+      "kind": "draw",
+      "x": 32,
+      "y": 5,
+      "toX": 33,
+      "toY": 5
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 680,
+      "kind": "draw",
+      "x": 34,
+      "y": 20,
+      "toX": 35,
+      "toY": 20
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 681,
+      "kind": "draw",
+      "x": 16,
+      "y": 6,
+      "toX": 15,
+      "toY": 7
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 681,
+      "kind": "draw",
+      "x": 19,
+      "y": 9,
+      "toX": 20,
+      "toY": 10
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 681,
+      "kind": "draw",
+      "x": 20,
+      "y": 9,
+      "toX": 19,
+      "toY": 10
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 681,
+      "kind": "draw",
+      "x": 26,
+      "y": 9,
+      "toX": 27,
+      "toY": 10
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 681,
+      "kind": "draw",
+      "x": 27,
+      "y": 9,
+      "toX": 26,
+      "toY": 10
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 681,
+      "kind": "erase",
+      "x": 15,
+      "y": 5,
+      "toX": 16,
+      "toY": 6
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 681,
+      "kind": "erase",
+      "x": 16,
+      "y": 5,
+      "toX": 15,
+      "toY": 6
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 681,
+      "kind": "erase",
+      "x": 32,
+      "y": 5,
+      "toX": 33,
+      "toY": 5
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 683,
+      "kind": "erase",
+      "x": 20,
+      "y": 9,
+      "toX": 19,
+      "toY": 10
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 686,
+      "kind": "editMotorway",
+      "target": "m1",
+      "x": 15,
+      "y": 6,
+      "toX": 38,
+      "toY": 9
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 686,
+      "kind": "draw",
+      "x": 37,
+      "y": 9,
+      "toX": 38,
+      "toY": 9
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 689,
+      "kind": "erase",
+      "x": 27,
+      "y": 9,
+      "toX": 26,
+      "toY": 10
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 691,
+      "kind": "draw",
+      "x": 8,
+      "y": 6,
+      "toX": 8,
+      "toY": 7
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 691,
+      "kind": "draw",
+      "x": 8,
+      "y": 8,
+      "toX": 8,
+      "toY": 7
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 691,
+      "kind": "draw",
+      "x": 27,
+      "y": 7,
+      "toX": 28,
+      "toY": 8
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 691,
+      "kind": "draw",
+      "x": 28,
+      "y": 7,
+      "toX": 27,
+      "toY": 8
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 692,
+      "kind": "draw",
+      "x": 8,
+      "y": 6,
+      "toX": 9,
+      "toY": 6
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 692,
+      "kind": "draw",
+      "x": 9,
+      "y": 6,
+      "toX": 10,
+      "toY": 6
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 694,
+      "kind": "draw",
+      "x": 8,
+      "y": 8,
+      "toX": 7,
+      "toY": 8
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 694,
+      "kind": "draw",
+      "x": 8,
+      "y": 8,
+      "toX": 7,
+      "toY": 9
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 695,
+      "kind": "draw",
+      "x": 7,
+      "y": 7,
+      "toX": 7,
+      "toY": 8
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 695,
+      "kind": "draw",
+      "x": 7,
+      "y": 8,
+      "toX": 8,
+      "toY": 9
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 695,
+      "kind": "draw",
+      "x": 8,
+      "y": 8,
+      "toX": 8,
+      "toY": 9
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 696,
+      "kind": "erase",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 700,
+      "kind": "draw",
+      "x": 31,
+      "y": 15,
+      "toX": 32,
+      "toY": 15
+    },
+    {
+      "at": 970.1500000000001,
+      "videoTime": 705,
+      "kind": "erase",
+      "x": 31,
+      "y": 15,
+      "toX": 32,
+      "toY": 15
+    },
+    {
+      "at": 980.0,
+      "videoTime": 712,
+      "kind": "offer",
+      "offers": [
+        {
+          "type": 1,
+          "amount": 1,
+          "roads": 20
+        },
+        {
+          "type": 4,
+          "amount": 1,
+          "roads": 20
+        }
+      ]
+    },
+    {
+      "at": 980.0,
+      "videoTime": 712.1,
+      "kind": "choose",
+      "choice": 0
+    },
+    {
+      "at": 984.0500000000001,
+      "videoTime": 717,
+      "kind": "draw",
+      "x": 19,
+      "y": 13,
+      "toX": 20,
+      "toY": 13
+    },
+    {
+      "at": 984.0500000000001,
+      "videoTime": 717,
+      "kind": "draw",
+      "x": 20,
+      "y": 13,
+      "toX": 20,
+      "toY": 14
+    },
+    {
+      "at": 984.0500000000001,
+      "videoTime": 717,
+      "kind": "draw",
+      "x": 21,
+      "y": 14,
+      "toX": 20,
+      "toY": 14
+    },
+    {
+      "at": 984.0500000000001,
+      "videoTime": 717,
+      "kind": "draw",
+      "x": 26,
+      "y": 17,
+      "toX": 26,
+      "toY": 18
+    },
+    {
+      "at": 984.0500000000001,
+      "videoTime": 717,
+      "kind": "erase",
+      "x": 19,
+      "y": 11,
+      "toX": 18,
+      "toY": 11
+    },
+    {
+      "at": 984.0500000000001,
+      "videoTime": 717,
+      "kind": "erase",
+      "x": 25,
+      "y": 17,
+      "toX": 26,
+      "toY": 17
+    },
+    {
+      "at": 986.1,
+      "videoTime": 718,
+      "kind": "house",
+      "id": "house:cyan:10,5",
+      "x": 10,
+      "y": 5,
+      "color": 2,
+      "direction": 2
+    },
+    {
+      "at": 990.1500000000001,
+      "videoTime": 720,
+      "kind": "house",
+      "id": "house:cyan:9,5",
+      "x": 9,
+      "y": 5,
+      "color": 2,
+      "direction": 0
+    },
+    {
+      "at": 992.1500000000001,
+      "videoTime": 721,
+      "kind": "draw",
+      "x": 9,
+      "y": 5,
+      "toX": 8,
+      "toY": 5
+    },
+    {
+      "at": 992.1500000000001,
+      "videoTime": 721,
+      "kind": "erase",
+      "x": 7,
+      "y": 7,
+      "toX": 7,
+      "toY": 8
+    },
+    {
+      "at": 992.1500000000001,
+      "videoTime": 721,
+      "kind": "erase",
+      "x": 7,
+      "y": 8,
+      "toX": 8,
+      "toY": 9
+    },
+    {
+      "at": 996.25,
+      "videoTime": 723,
+      "kind": "draw",
+      "x": 10,
+      "y": 5,
+      "toX": 9,
+      "toY": 6
+    },
+    {
+      "at": 996.25,
+      "videoTime": 723,
+      "kind": "draw",
+      "x": 18,
+      "y": 14,
+      "toX": 17,
+      "toY": 14
+    },
+    {
+      "at": 996.25,
+      "videoTime": 723,
+      "kind": "erase",
+      "x": 19,
+      "y": 9,
+      "toX": 20,
+      "toY": 10
+    },
+    {
+      "at": 1000.3000000000001,
+      "videoTime": 725,
+      "kind": "house",
+      "id": "house:cyan:8,11",
+      "x": 8,
+      "y": 11,
+      "color": 2,
+      "direction": 0
+    },
+    {
+      "at": 1000.3000000000001,
+      "videoTime": 725,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 1002.3000000000001,
+      "videoTime": 726,
+      "kind": "draw",
+      "x": 9,
+      "y": 5,
+      "toX": 9,
+      "toY": 6
+    },
+    {
+      "at": 1002.3000000000001,
+      "videoTime": 726,
+      "kind": "draw",
+      "x": 8,
+      "y": 11,
+      "toX": 8,
+      "toY": 12
+    },
+    {
+      "at": 1004.35,
+      "videoTime": 727,
+      "kind": "erase",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 1008.4000000000001,
+      "videoTime": 729,
+      "kind": "draw",
+      "x": 8,
+      "y": 10,
+      "toX": 9,
+      "toY": 10
+    },
+    {
+      "at": 1008.4000000000001,
+      "videoTime": 729,
+      "kind": "draw",
+      "x": 9,
+      "y": 10,
+      "toX": 10,
+      "toY": 10
+    },
+    {
+      "at": 1010.45,
+      "videoTime": 730,
+      "kind": "house",
+      "id": "house:cyan:33,17",
+      "x": 33,
+      "y": 17,
+      "color": 2,
+      "direction": 4
+    },
+    {
+      "at": 1012.45,
+      "videoTime": 731,
+      "kind": "draw",
+      "x": 8,
+      "y": 10,
+      "toX": 9,
+      "toY": 11
+    },
+    {
+      "at": 1012.45,
+      "videoTime": 731,
+      "kind": "draw",
+      "x": 9,
+      "y": 10,
+      "toX": 9,
+      "toY": 11
+    },
+    {
+      "at": 1012.45,
+      "videoTime": 731,
+      "kind": "draw",
+      "x": 8,
+      "y": 11,
+      "toX": 9,
+      "toY": 10
+    },
+    {
+      "at": 1012.45,
+      "videoTime": 731,
+      "kind": "draw",
+      "x": 33,
+      "y": 17,
+      "toX": 33,
+      "toY": 16
+    },
+    {
+      "at": 1020.6,
+      "videoTime": 735,
+      "kind": "draw",
+      "x": 26,
+      "y": 17,
+      "toX": 27,
+      "toY": 17
+    },
+    {
+      "at": 1020.6,
+      "videoTime": 735,
+      "kind": "draw",
+      "x": 28,
+      "y": 17,
+      "toX": 29,
+      "toY": 17
+    },
+    {
+      "at": 1020.6,
+      "videoTime": 735,
+      "kind": "draw",
+      "x": 29,
+      "y": 17,
+      "toX": 30,
+      "toY": 17
+    },
+    {
+      "at": 1020.6,
+      "videoTime": 735,
+      "kind": "draw",
+      "x": 30,
+      "y": 17,
+      "toX": 31,
+      "toY": 17
+    },
+    {
+      "at": 1020.6,
+      "videoTime": 735,
+      "kind": "draw",
+      "x": 31,
+      "y": 17,
+      "toX": 32,
+      "toY": 17
+    },
+    {
+      "at": 1020.6,
+      "videoTime": 735,
+      "kind": "draw",
+      "x": 33,
+      "y": 17,
+      "toX": 32,
+      "toY": 17
+    },
+    {
+      "at": 1022.6,
+      "videoTime": 736,
+      "kind": "draw",
+      "x": 27,
+      "y": 17,
+      "toX": 28,
+      "toY": 17
+    },
+    {
+      "at": 1028.7,
+      "videoTime": 739,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 1030.7,
+      "videoTime": 740,
+      "kind": "house",
+      "id": "house:navy:21,17",
+      "x": 21,
+      "y": 17,
+      "color": 3,
+      "direction": 4
+    },
+    {
+      "at": 1030.7,
+      "videoTime": 740,
+      "kind": "circle",
+      "target": "shop:navy:14,15"
+    },
+    {
+      "at": 1030.7,
+      "videoTime": 740,
+      "kind": "draw",
+      "x": 14,
+      "y": 13,
+      "toX": 15,
+      "toY": 14
+    },
+    {
+      "at": 1030.7,
+      "videoTime": 740,
+      "kind": "draw",
+      "x": 15,
+      "y": 15,
+      "toX": 14,
+      "toY": 16
+    },
+    {
+      "at": 1032.75,
+      "videoTime": 741,
+      "kind": "draw",
+      "x": 21,
+      "y": 17,
+      "toX": 20,
+      "toY": 17
+    },
+    {
+      "at": 1034.8,
+      "videoTime": 742,
+      "kind": "draw",
+      "x": 21,
+      "y": 17,
+      "toX": 20,
+      "toY": 16
+    },
+    {
+      "at": 1034.8,
+      "videoTime": 742,
+      "kind": "erase",
+      "x": 14,
+      "y": 13,
+      "toX": 15,
+      "toY": 14
+    },
+    {
+      "at": 1034.8,
+      "videoTime": 742,
+      "kind": "erase",
+      "x": 15,
+      "y": 15,
+      "toX": 14,
+      "toY": 16
+    },
+    {
+      "at": 1038.8500000000001,
+      "videoTime": 744,
+      "kind": "erase",
+      "x": 21,
+      "y": 17,
+      "toX": 20,
+      "toY": 16
+    },
+    {
+      "at": 1040.8500000000001,
+      "videoTime": 745,
+      "kind": "house",
+      "id": "house:navy:18,20",
+      "x": 18,
+      "y": 20,
+      "color": 3,
+      "direction": 2
+    },
+    {
+      "at": 1040.8500000000001,
+      "videoTime": 745,
+      "kind": "draw",
+      "x": 18,
+      "y": 20,
+      "toX": 19,
+      "toY": 20
+    },
+    {
+      "at": 1040.8500000000001,
+      "videoTime": 745,
+      "kind": "draw",
+      "x": 18,
+      "y": 20,
+      "toX": 18,
+      "toY": 21
+    },
+    {
+      "at": 1049.0,
+      "videoTime": 749,
+      "kind": "draw",
+      "x": 8,
+      "y": 10,
+      "toX": 8,
+      "toY": 9
+    },
+    {
+      "at": 1049.0,
+      "videoTime": 749,
+      "kind": "draw",
+      "x": 8,
+      "y": 10,
+      "toX": 7,
+      "toY": 11
+    },
+    {
+      "at": 1049.0,
+      "videoTime": 749,
+      "kind": "draw",
+      "x": 36,
+      "y": 19,
+      "toX": 37,
+      "toY": 19
+    },
+    {
+      "at": 1051.0,
+      "videoTime": 750,
+      "kind": "build",
+      "tool": "Roundabout",
+      "x": 19,
+      "y": 9
+    },
+    {
+      "at": 1059.15,
+      "videoTime": 754,
+      "kind": "draw",
+      "x": 21,
+      "y": 17,
+      "toX": 20,
+      "toY": 16
+    },
+    {
+      "at": 1063.2,
+      "videoTime": 756,
+      "kind": "draw",
+      "x": 21,
+      "y": 9,
+      "toX": 21,
+      "toY": 10
+    },
+    {
+      "at": 1063.2,
+      "videoTime": 756,
+      "kind": "draw",
+      "x": 20,
+      "y": 10,
+      "toX": 21,
+      "toY": 11
+    },
+    {
+      "at": 1063.2,
+      "videoTime": 756,
+      "kind": "draw",
+      "x": 21,
+      "y": 10,
+      "toX": 20,
+      "toY": 11
+    },
+    {
+      "at": 1063.2,
+      "videoTime": 756,
+      "kind": "draw",
+      "x": 11,
+      "y": 12,
+      "toX": 12,
+      "toY": 12
+    },
+    {
+      "at": 1067.25,
+      "videoTime": 758,
+      "kind": "draw",
+      "x": 20,
+      "y": 11,
+      "toX": 21,
+      "toY": 11
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 767,
+      "kind": "draw",
+      "x": 32,
+      "y": 14,
+      "toX": 33,
+      "toY": 14
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 769,
+      "kind": "erase",
+      "x": 32,
+      "y": 14,
+      "toX": 33,
+      "toY": 14
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 770,
+      "kind": "erase",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 770,
+      "kind": "erase",
+      "x": 26,
+      "y": 14,
+      "toX": 25,
+      "toY": 15
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 775,
+      "kind": "motorway",
+      "id": "m3",
+      "x": 19,
+      "y": 6,
+      "toX": 15,
+      "toY": 20
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 775,
+      "kind": "draw",
+      "x": 16,
+      "y": 19,
+      "toX": 15,
+      "toY": 20
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 776,
+      "kind": "draw",
+      "x": 21,
+      "y": 6,
+      "toX": 21,
+      "toY": 5
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 776,
+      "kind": "draw",
+      "x": 25,
+      "y": 5,
+      "toX": 25,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 776,
+      "kind": "draw",
+      "x": 25,
+      "y": 5,
+      "toX": 26,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 776,
+      "kind": "draw",
+      "x": 26,
+      "y": 5,
+      "toX": 25,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 776,
+      "kind": "draw",
+      "x": 29,
+      "y": 5,
+      "toX": 29,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 776,
+      "kind": "draw",
+      "x": 29,
+      "y": 5,
+      "toX": 30,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 776,
+      "kind": "draw",
+      "x": 30,
+      "y": 5,
+      "toX": 29,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 776,
+      "kind": "draw",
+      "x": 20,
+      "y": 6,
+      "toX": 19,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 776,
+      "kind": "draw",
+      "x": 21,
+      "y": 6,
+      "toX": 20,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 776,
+      "kind": "draw",
+      "x": 21,
+      "y": 6,
+      "toX": 22,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 776,
+      "kind": "draw",
+      "x": 22,
+      "y": 6,
+      "toX": 23,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 776,
+      "kind": "draw",
+      "x": 23,
+      "y": 6,
+      "toX": 24,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 776,
+      "kind": "draw",
+      "x": 24,
+      "y": 6,
+      "toX": 25,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 776,
+      "kind": "draw",
+      "x": 25,
+      "y": 6,
+      "toX": 26,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 776,
+      "kind": "draw",
+      "x": 26,
+      "y": 6,
+      "toX": 27,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 776,
+      "kind": "draw",
+      "x": 27,
+      "y": 6,
+      "toX": 28,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 776,
+      "kind": "draw",
+      "x": 28,
+      "y": 6,
+      "toX": 29,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 776,
+      "kind": "draw",
+      "x": 29,
+      "y": 6,
+      "toX": 30,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 776,
+      "kind": "draw",
+      "x": 30,
+      "y": 6,
+      "toX": 31,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 776,
+      "kind": "erase",
+      "x": 19,
+      "y": 5,
+      "toX": 20,
+      "toY": 5
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 776,
+      "kind": "erase",
+      "x": 18,
+      "y": 6,
+      "toX": 19,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 776,
+      "kind": "erase",
+      "x": 19,
+      "y": 6,
+      "toX": 19,
+      "toY": 7
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 779,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 780,
+      "kind": "draw",
+      "x": 19,
+      "y": 5,
+      "toX": 20,
+      "toY": 5
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 780,
+      "kind": "draw",
+      "x": 21,
+      "y": 5,
+      "toX": 20,
+      "toY": 5
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 780,
+      "kind": "draw",
+      "x": 18,
+      "y": 6,
+      "toX": 19,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 780,
+      "kind": "draw",
+      "x": 18,
+      "y": 6,
+      "toX": 19,
+      "toY": 7
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 780,
+      "kind": "draw",
+      "x": 19,
+      "y": 6,
+      "toX": 19,
+      "toY": 7
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 780,
+      "kind": "draw",
+      "x": 20,
+      "y": 6,
+      "toX": 20,
+      "toY": 7
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 780,
+      "kind": "draw",
+      "x": 21,
+      "y": 6,
+      "toX": 21,
+      "toY": 7
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 780,
+      "kind": "erase",
+      "x": 29,
+      "y": 5,
+      "toX": 29,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 780,
+      "kind": "erase",
+      "x": 29,
+      "y": 5,
+      "toX": 30,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 780,
+      "kind": "erase",
+      "x": 30,
+      "y": 5,
+      "toX": 29,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 780,
+      "kind": "erase",
+      "x": 26,
+      "y": 6,
+      "toX": 27,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 780,
+      "kind": "erase",
+      "x": 27,
+      "y": 6,
+      "toX": 28,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 780,
+      "kind": "erase",
+      "x": 28,
+      "y": 6,
+      "toX": 29,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 780,
+      "kind": "erase",
+      "x": 29,
+      "y": 6,
+      "toX": 30,
+      "toY": 6
+    },
+    {
+      "at": 1081.45,
+      "videoTime": 780,
+      "kind": "erase",
+      "x": 30,
+      "y": 6,
+      "toX": 31,
+      "toY": 6
+    },
+    {
+      "at": 1103.75,
+      "videoTime": 794,
+      "kind": "house",
+      "id": "house:yellow:35,11",
+      "x": 35,
+      "y": 11,
+      "color": 0,
+      "direction": 6
+    },
+    {
+      "at": 1103.75,
+      "videoTime": 794,
+      "kind": "draw",
+      "x": 35,
+      "y": 11,
+      "toX": 35,
+      "toY": 10
+    },
+    {
+      "at": 1103.75,
+      "videoTime": 794,
+      "kind": "draw",
+      "x": 19,
+      "y": 20,
+      "toX": 20,
+      "toY": 20
+    },
+    {
+      "at": 1105.8,
+      "videoTime": 795,
+      "kind": "circle",
+      "target": "shop:yellow:19,17"
+    },
+    {
+      "at": 1105.8,
+      "videoTime": 795,
+      "kind": "draw",
+      "x": 21,
+      "y": 5,
+      "toX": 22,
+      "toY": 5
+    },
+    {
+      "at": 1105.8,
+      "videoTime": 795,
+      "kind": "draw",
+      "x": 22,
+      "y": 7,
+      "toX": 23,
+      "toY": 7
+    },
+    {
+      "at": 1105.8,
+      "videoTime": 795,
+      "kind": "draw",
+      "x": 20,
+      "y": 18,
+      "toX": 20,
+      "toY": 19
+    },
+    {
+      "at": 1105.8,
+      "videoTime": 795,
+      "kind": "draw",
+      "x": 20,
+      "y": 19,
+      "toX": 20,
+      "toY": 20
+    },
+    {
+      "at": 1105.8,
+      "videoTime": 795,
+      "kind": "erase",
+      "x": 21,
+      "y": 17,
+      "toX": 20,
+      "toY": 16
+    },
+    {
+      "at": 1109.8500000000001,
+      "videoTime": 797,
+      "kind": "erase",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 1113.9,
+      "videoTime": 799,
+      "kind": "house",
+      "id": "house:yellow:35,12",
+      "x": 35,
+      "y": 12,
+      "color": 0,
+      "direction": 0
+    },
+    {
+      "at": 1113.9,
+      "videoTime": 799,
+      "kind": "draw",
+      "x": 35,
+      "y": 12,
+      "toX": 34,
+      "toY": 12
+    },
+    {
+      "at": 1115.95,
+      "videoTime": 800,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 1115.95,
+      "videoTime": 800,
+      "kind": "draw",
+      "x": 21,
+      "y": 17,
+      "toX": 20,
+      "toY": 16
+    },
+    {
+      "at": 1115.95,
+      "videoTime": 800,
+      "kind": "draw",
+      "x": 21,
+      "y": 16,
+      "toX": 20,
+      "toY": 17
+    },
+    {
+      "at": 1120.0,
+      "videoTime": 803,
+      "kind": "offer",
+      "offers": [
+        {
+          "type": 3,
+          "amount": 2,
+          "roads": 20
+        },
+        {
+          "type": 4,
+          "amount": 1,
+          "roads": 20
+        }
+      ]
+    },
+    {
+      "at": 1120.0,
+      "videoTime": 803.1,
+      "kind": "choose",
+      "choice": 0
+    },
+    {
+      "at": 1122.0,
+      "videoTime": 807,
+      "kind": "house",
+      "id": "house:green:38,19",
+      "x": 38,
+      "y": 19,
+      "color": 4,
+      "direction": 6
+    },
+    {
+      "at": 1122.0,
+      "videoTime": 807,
+      "kind": "draw",
+      "x": 8,
+      "y": 8,
+      "toX": 7,
+      "toY": 8
+    },
+    {
+      "at": 1122.0,
+      "videoTime": 807,
+      "kind": "draw",
+      "x": 24,
+      "y": 11,
+      "toX": 25,
+      "toY": 11
+    },
+    {
+      "at": 1122.0,
+      "videoTime": 807,
+      "kind": "draw",
+      "x": 38,
+      "y": 19,
+      "toX": 38,
+      "toY": 18
+    },
+    {
+      "at": 1124.0,
+      "videoTime": 808,
+      "kind": "house",
+      "id": "house:yellow:36,12",
+      "x": 36,
+      "y": 12,
+      "color": 0,
+      "direction": 2
+    },
+    {
+      "at": 1124.0,
+      "videoTime": 808,
+      "kind": "draw",
+      "x": 32,
+      "y": 12,
+      "toX": 33,
+      "toY": 12
+    },
+    {
+      "at": 1124.0,
+      "videoTime": 808,
+      "kind": "draw",
+      "x": 33,
+      "y": 12,
+      "toX": 34,
+      "toY": 12
+    },
+    {
+      "at": 1124.0,
+      "videoTime": 808,
+      "kind": "draw",
+      "x": 36,
+      "y": 12,
+      "toX": 37,
+      "toY": 12
+    },
+    {
+      "at": 1126.0,
+      "videoTime": 809,
+      "kind": "draw",
+      "x": 31,
+      "y": 11,
+      "toX": 31,
+      "toY": 12
+    },
+    {
+      "at": 1126.0,
+      "videoTime": 809,
+      "kind": "draw",
+      "x": 31,
+      "y": 12,
+      "toX": 32,
+      "toY": 12
+    },
+    {
+      "at": 1126.0,
+      "videoTime": 809,
+      "kind": "erase",
+      "x": 8,
+      "y": 8,
+      "toX": 7,
+      "toY": 8
+    },
+    {
+      "at": 1128.0,
+      "videoTime": 810,
+      "kind": "draw",
+      "x": 34,
+      "y": 11,
+      "toX": 34,
+      "toY": 12
+    },
+    {
+      "at": 1130.0,
+      "videoTime": 811,
+      "kind": "draw",
+      "x": 35,
+      "y": 11,
+      "toX": 34,
+      "toY": 11
+    },
+    {
+      "at": 1132.0,
+      "videoTime": 812,
+      "kind": "draw",
+      "x": 21,
+      "y": 15,
+      "toX": 20,
+      "toY": 16
+    },
+    {
+      "at": 1134.0,
+      "videoTime": 813,
+      "kind": "house",
+      "id": "house:yellow:36,11",
+      "x": 36,
+      "y": 11,
+      "color": 0,
+      "direction": 6
+    },
+    {
+      "at": 1134.0,
+      "videoTime": 813,
+      "kind": "draw",
+      "x": 36,
+      "y": 11,
+      "toX": 37,
+      "toY": 11
+    },
+    {
+      "at": 1134.0,
+      "videoTime": 813,
+      "kind": "draw",
+      "x": 34,
+      "y": 12,
+      "toX": 34,
+      "toY": 13
+    },
+    {
+      "at": 1134.0,
+      "videoTime": 813,
+      "kind": "draw",
+      "x": 36,
+      "y": 12,
+      "toX": 36,
+      "toY": 13
+    },
+    {
+      "at": 1134.0,
+      "videoTime": 813,
+      "kind": "draw",
+      "x": 34,
+      "y": 13,
+      "toX": 35,
+      "toY": 13
+    },
+    {
+      "at": 1134.0,
+      "videoTime": 813,
+      "kind": "draw",
+      "x": 35,
+      "y": 13,
+      "toX": 36,
+      "toY": 13
+    },
+    {
+      "at": 1136.0,
+      "videoTime": 814,
+      "kind": "draw",
+      "x": 15,
+      "y": 6,
+      "toX": 15,
+      "toY": 7
+    },
+    {
+      "at": 1138.0,
+      "videoTime": 815,
+      "kind": "draw",
+      "x": 35,
+      "y": 10,
+      "toX": 36,
+      "toY": 10
+    },
+    {
+      "at": 1138.0,
+      "videoTime": 815,
+      "kind": "draw",
+      "x": 36,
+      "y": 11,
+      "toX": 36,
+      "toY": 10
+    },
+    {
+      "at": 1138.0,
+      "videoTime": 815,
+      "kind": "erase",
+      "x": 21,
+      "y": 15,
+      "toX": 20,
+      "toY": 16
+    },
+    {
+      "at": 1140.0,
+      "videoTime": 816,
+      "kind": "draw",
+      "x": 9,
+      "y": 5,
+      "toX": 8,
+      "toY": 6
+    },
+    {
+      "at": 1140.0,
+      "videoTime": 816,
+      "kind": "draw",
+      "x": 34,
+      "y": 10,
+      "toX": 35,
+      "toY": 10
+    },
+    {
+      "at": 1140.0,
+      "videoTime": 816,
+      "kind": "draw",
+      "x": 34,
+      "y": 10,
+      "toX": 34,
+      "toY": 11
+    },
+    {
+      "at": 1142.0,
+      "videoTime": 817,
+      "kind": "house",
+      "id": "house:navy:16,20",
+      "x": 16,
+      "y": 20,
+      "color": 3,
+      "direction": 4
+    },
+    {
+      "at": 1142.0,
+      "videoTime": 817,
+      "kind": "draw",
+      "x": 16,
+      "y": 20,
+      "toX": 17,
+      "toY": 20
+    },
+    {
+      "at": 1144.0,
+      "videoTime": 818,
+      "kind": "house",
+      "id": "house:yellow:26,12",
+      "x": 26,
+      "y": 12,
+      "color": 0,
+      "direction": 2
+    },
+    {
+      "at": 1144.0,
+      "videoTime": 818,
+      "kind": "draw",
+      "x": 26,
+      "y": 12,
+      "toX": 26,
+      "toY": 13
+    },
+    {
+      "at": 1146.0,
+      "videoTime": 819,
+      "kind": "draw",
+      "x": 16,
+      "y": 20,
+      "toX": 16,
+      "toY": 21
+    },
+    {
+      "at": 1150.0,
+      "videoTime": 821,
+      "kind": "erase",
+      "x": 16,
+      "y": 20,
+      "toX": 16,
+      "toY": 21
+    },
+    {
+      "at": 1152.0,
+      "videoTime": 822,
+      "kind": "draw",
+      "x": 16,
+      "y": 20,
+      "toX": 15,
+      "toY": 20
+    },
+    {
+      "at": 1154.0,
+      "videoTime": 823,
+      "kind": "house",
+      "id": "house:yellow:42,6",
+      "x": 42,
+      "y": 6,
+      "color": 0,
+      "direction": 0
+    },
+    {
+      "at": 1154.0,
+      "videoTime": 823,
+      "kind": "draw",
+      "x": 42,
+      "y": 6,
+      "toX": 42,
+      "toY": 7
+    },
+    {
+      "at": 1164.0,
+      "videoTime": 828,
+      "kind": "draw",
+      "x": 38,
+      "y": 19,
+      "toX": 37,
+      "toY": 20
+    },
+    {
+      "at": 1164.0,
+      "videoTime": 828,
+      "kind": "draw",
+      "x": 36,
+      "y": 20,
+      "toX": 37,
+      "toY": 20
+    },
+    {
+      "at": 1166.0,
+      "videoTime": 829,
+      "kind": "draw",
+      "x": 41,
+      "y": 5,
+      "toX": 41,
+      "toY": 6
+    },
+    {
+      "at": 1166.0,
+      "videoTime": 829,
+      "kind": "draw",
+      "x": 37,
+      "y": 19,
+      "toX": 38,
+      "toY": 20
+    },
+    {
+      "at": 1170.0,
+      "videoTime": 831,
+      "kind": "draw",
+      "x": 41,
+      "y": 5,
+      "toX": 40,
+      "toY": 6
+    },
+    {
+      "at": 1170.0,
+      "videoTime": 831,
+      "kind": "draw",
+      "x": 39,
+      "y": 6,
+      "toX": 40,
+      "toY": 6
+    },
+    {
+      "at": 1170.0,
+      "videoTime": 831,
+      "kind": "draw",
+      "x": 20,
+      "y": 10,
+      "toX": 21,
+      "toY": 10
+    },
+    {
+      "at": 1172.0,
+      "videoTime": 832,
+      "kind": "draw",
+      "x": 40,
+      "y": 5,
+      "toX": 41,
+      "toY": 6
+    },
+    {
+      "at": 1172.0,
+      "videoTime": 832,
+      "kind": "draw",
+      "x": 37,
+      "y": 6,
+      "toX": 38,
+      "toY": 7
+    },
+    {
+      "at": 1172.0,
+      "videoTime": 832,
+      "kind": "draw",
+      "x": 38,
+      "y": 6,
+      "toX": 39,
+      "toY": 6
+    },
+    {
+      "at": 1172.0,
+      "videoTime": 832,
+      "kind": "draw",
+      "x": 38,
+      "y": 6,
+      "toX": 37,
+      "toY": 7
+    },
+    {
+      "at": 1172.0,
+      "videoTime": 832,
+      "kind": "draw",
+      "x": 37,
+      "y": 7,
+      "toX": 38,
+      "toY": 8
+    },
+    {
+      "at": 1172.0,
+      "videoTime": 832,
+      "kind": "draw",
+      "x": 38,
+      "y": 7,
+      "toX": 37,
+      "toY": 8
+    },
+    {
+      "at": 1172.0,
+      "videoTime": 832,
+      "kind": "draw",
+      "x": 38,
+      "y": 8,
+      "toX": 38,
+      "toY": 9
+    },
+    {
+      "at": 1174.0,
+      "videoTime": 833,
+      "kind": "draw",
+      "x": 24,
+      "y": 12,
+      "toX": 25,
+      "toY": 12
+    },
+    {
+      "at": 1174.0,
+      "videoTime": 833,
+      "kind": "erase",
+      "x": 27,
+      "y": 7,
+      "toX": 28,
+      "toY": 8
+    },
+    {
+      "at": 1174.0,
+      "videoTime": 833,
+      "kind": "erase",
+      "x": 28,
+      "y": 7,
+      "toX": 27,
+      "toY": 8
+    },
+    {
+      "at": 1176.0,
+      "videoTime": 834,
+      "kind": "erase",
+      "x": 37,
+      "y": 7,
+      "toX": 38,
+      "toY": 8
+    },
+    {
+      "at": 1176.0,
+      "videoTime": 834,
+      "kind": "erase",
+      "x": 38,
+      "y": 7,
+      "toX": 37,
+      "toY": 8
+    },
+    {
+      "at": 1178.0,
+      "videoTime": 835,
+      "kind": "draw",
+      "x": 39,
+      "y": 5,
+      "toX": 39,
+      "toY": 6
+    },
+    {
+      "at": 1178.0,
+      "videoTime": 835,
+      "kind": "draw",
+      "x": 38,
+      "y": 6,
+      "toX": 38,
+      "toY": 7
+    },
+    {
+      "at": 1178.0,
+      "videoTime": 835,
+      "kind": "draw",
+      "x": 13,
+      "y": 12,
+      "toX": 12,
+      "toY": 12
+    },
+    {
+      "at": 1180.0,
+      "videoTime": 836,
+      "kind": "draw",
+      "x": 38,
+      "y": 7,
+      "toX": 38,
+      "toY": 8
+    },
+    {
+      "at": 1182.0,
+      "videoTime": 837,
+      "kind": "draw",
+      "x": 27,
+      "y": 7,
+      "toX": 28,
+      "toY": 8
+    },
+    {
+      "at": 1182.0,
+      "videoTime": 837,
+      "kind": "draw",
+      "x": 28,
+      "y": 7,
+      "toX": 27,
+      "toY": 8
+    },
+    {
+      "at": 1182.0,
+      "videoTime": 837,
+      "kind": "erase",
+      "x": 21,
+      "y": 17,
+      "toX": 20,
+      "toY": 16
+    },
+    {
+      "at": 1184.0,
+      "videoTime": 838,
+      "kind": "house",
+      "id": "house:yellow:37,5",
+      "x": 37,
+      "y": 5,
+      "color": 0,
+      "direction": 2
+    },
+    {
+      "at": 1184.0,
+      "videoTime": 838,
+      "kind": "erase",
+      "x": 37,
+      "y": 6,
+      "toX": 38,
+      "toY": 7
+    },
+    {
+      "at": 1184.0,
+      "videoTime": 838,
+      "kind": "erase",
+      "x": 38,
+      "y": 6,
+      "toX": 37,
+      "toY": 7
+    },
+    {
+      "at": 1186.0,
+      "videoTime": 839,
+      "kind": "draw",
+      "x": 42,
+      "y": 6,
+      "toX": 41,
+      "toY": 6
+    },
+    {
+      "at": 1188.0,
+      "videoTime": 840,
+      "kind": "house",
+      "id": "house:green:37,22",
+      "x": 37,
+      "y": 22,
+      "color": 4,
+      "direction": 4
+    },
+    {
+      "at": 1188.0,
+      "videoTime": 840,
+      "kind": "shop",
+      "id": "shop:green:40,17",
+      "x": 39,
+      "y": 16,
+      "color": 4,
+      "layout": 1
+    },
+    {
+      "at": 1188.0,
+      "videoTime": 840,
+      "kind": "erase",
+      "x": 9,
+      "y": 5,
+      "toX": 8,
+      "toY": 6
+    },
+    {
+      "at": 1190.0,
+      "videoTime": 841,
+      "kind": "draw",
+      "x": 40,
+      "y": 6,
+      "toX": 41,
+      "toY": 6
+    },
+    {
+      "at": 1190.0,
+      "videoTime": 841,
+      "kind": "draw",
+      "x": 38,
+      "y": 16,
+      "toX": 38,
+      "toY": 17
+    },
+    {
+      "at": 1190.0,
+      "videoTime": 841,
+      "kind": "draw",
+      "x": 38,
+      "y": 17,
+      "toX": 38,
+      "toY": 18
+    },
+    {
+      "at": 1190.0,
+      "videoTime": 841,
+      "kind": "draw",
+      "x": 37,
+      "y": 20,
+      "toX": 38,
+      "toY": 20
+    },
+    {
+      "at": 1190.0,
+      "videoTime": 841,
+      "kind": "erase",
+      "x": 13,
+      "y": 12,
+      "toX": 12,
+      "toY": 12
+    },
+    {
+      "at": 1194.0,
+      "videoTime": 843,
+      "kind": "house",
+      "id": "house:yellow:36,6",
+      "x": 36,
+      "y": 6,
+      "color": 0,
+      "direction": 0
+    },
+    {
+      "at": 1194.0,
+      "videoTime": 843,
+      "kind": "draw",
+      "x": 37,
+      "y": 5,
+      "toX": 37,
+      "toY": 6
+    },
+    {
+      "at": 1194.0,
+      "videoTime": 843,
+      "kind": "draw",
+      "x": 36,
+      "y": 6,
+      "toX": 37,
+      "toY": 6
+    },
+    {
+      "at": 1194.0,
+      "videoTime": 843,
+      "kind": "draw",
+      "x": 37,
+      "y": 6,
+      "toX": 38,
+      "toY": 6
+    },
+    {
+      "at": 1194.0,
+      "videoTime": 843,
+      "kind": "erase",
+      "x": 20,
+      "y": 10,
+      "toX": 20,
+      "toY": 11
+    },
+    {
+      "at": 1198.0,
+      "videoTime": 845,
+      "kind": "house",
+      "id": "house:green:41,23",
+      "x": 41,
+      "y": 23,
+      "color": 4,
+      "direction": 4
+    },
+    {
+      "at": 1200.0,
+      "videoTime": 846,
+      "kind": "draw",
+      "x": 41,
+      "y": 23,
+      "toX": 40,
+      "toY": 23
+    },
+    {
+      "at": 1200.0,
+      "videoTime": 846,
+      "kind": "erase",
+      "x": 37,
+      "y": 19,
+      "toX": 38,
+      "toY": 20
+    },
+    {
+      "at": 1202.0,
+      "videoTime": 847,
+      "kind": "erase",
+      "x": 38,
+      "y": 19,
+      "toX": 37,
+      "toY": 20
+    },
+    {
+      "at": 1206.0,
+      "videoTime": 849,
+      "kind": "draw",
+      "x": 37,
+      "y": 18,
+      "toX": 38,
+      "toY": 18
+    },
+    {
+      "at": 1206.0,
+      "videoTime": 849,
+      "kind": "draw",
+      "x": 37,
+      "y": 18,
+      "toX": 37,
+      "toY": 19
+    },
+    {
+      "at": 1206.0,
+      "videoTime": 849,
+      "kind": "draw",
+      "x": 37,
+      "y": 19,
+      "toX": 37,
+      "toY": 20
+    },
+    {
+      "at": 1206.0,
+      "videoTime": 849,
+      "kind": "erase",
+      "x": 37,
+      "y": 20,
+      "toX": 38,
+      "toY": 20
+    },
+    {
+      "at": 1208.0,
+      "videoTime": 850,
+      "kind": "erase",
+      "x": 27,
+      "y": 7,
+      "toX": 28,
+      "toY": 8
+    },
+    {
+      "at": 1208.0,
+      "videoTime": 850,
+      "kind": "erase",
+      "x": 28,
+      "y": 7,
+      "toX": 27,
+      "toY": 8
+    },
+    {
+      "at": 1214.0,
+      "videoTime": 853,
+      "kind": "draw",
+      "x": 40,
+      "y": 21,
+      "toX": 40,
+      "toY": 22
+    },
+    {
+      "at": 1214.0,
+      "videoTime": 853,
+      "kind": "draw",
+      "x": 40,
+      "y": 22,
+      "toX": 40,
+      "toY": 23
+    },
+    {
+      "at": 1216.0,
+      "videoTime": 854,
+      "kind": "draw",
+      "x": 9,
+      "y": 5,
+      "toX": 8,
+      "toY": 6
+    },
+    {
+      "at": 1216.0,
+      "videoTime": 854,
+      "kind": "draw",
+      "x": 27,
+      "y": 7,
+      "toX": 28,
+      "toY": 8
+    },
+    {
+      "at": 1216.0,
+      "videoTime": 854,
+      "kind": "erase",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 1216.0,
+      "videoTime": 854,
+      "kind": "erase",
+      "x": 21,
+      "y": 16,
+      "toX": 20,
+      "toY": 17
+    },
+    {
+      "at": 1218.0,
+      "videoTime": 855,
+      "kind": "draw",
+      "x": 9,
+      "y": 5,
+      "toX": 10,
+      "toY": 6
+    },
+    {
+      "at": 1218.0,
+      "videoTime": 855,
+      "kind": "draw",
+      "x": 28,
+      "y": 7,
+      "toX": 27,
+      "toY": 8
+    },
+    {
+      "at": 1218.0,
+      "videoTime": 855,
+      "kind": "erase",
+      "x": 40,
+      "y": 21,
+      "toX": 40,
+      "toY": 22
+    },
+    {
+      "at": 1220.0,
+      "videoTime": 856,
+      "kind": "draw",
+      "x": 37,
+      "y": 20,
+      "toX": 38,
+      "toY": 21
+    },
+    {
+      "at": 1220.0,
+      "videoTime": 856,
+      "kind": "draw",
+      "x": 38,
+      "y": 20,
+      "toX": 37,
+      "toY": 21
+    },
+    {
+      "at": 1220.0,
+      "videoTime": 856,
+      "kind": "draw",
+      "x": 38,
+      "y": 21,
+      "toX": 39,
+      "toY": 22
+    },
+    {
+      "at": 1220.0,
+      "videoTime": 856,
+      "kind": "draw",
+      "x": 39,
+      "y": 21,
+      "toX": 38,
+      "toY": 22
+    },
+    {
+      "at": 1220.0,
+      "videoTime": 856,
+      "kind": "draw",
+      "x": 39,
+      "y": 22,
+      "toX": 40,
+      "toY": 23
+    },
+    {
+      "at": 1220.0,
+      "videoTime": 856,
+      "kind": "draw",
+      "x": 40,
+      "y": 22,
+      "toX": 39,
+      "toY": 23
+    },
+    {
+      "at": 1222.0,
+      "videoTime": 857,
+      "kind": "draw",
+      "x": 37,
+      "y": 20,
+      "toX": 38,
+      "toY": 20
+    },
+    {
+      "at": 1224.0,
+      "videoTime": 858,
+      "kind": "draw",
+      "x": 37,
+      "y": 20,
+      "toX": 37,
+      "toY": 21
+    },
+    {
+      "at": 1224.0,
+      "videoTime": 858,
+      "kind": "draw",
+      "x": 37,
+      "y": 22,
+      "toX": 37,
+      "toY": 21
+    },
+    {
+      "at": 1226.0,
+      "videoTime": 859,
+      "kind": "draw",
+      "x": 43,
+      "y": 8,
+      "toX": 43,
+      "toY": 9
+    },
+    {
+      "at": 1234.0,
+      "videoTime": 863,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 1240.0,
+      "videoTime": 866,
+      "kind": "draw",
+      "x": 40,
+      "y": 14,
+      "toX": 41,
+      "toY": 15
+    },
+    {
+      "at": 1240.0,
+      "videoTime": 866,
+      "kind": "draw",
+      "x": 41,
+      "y": 14,
+      "toX": 40,
+      "toY": 15
+    },
+    {
+      "at": 1240.0,
+      "videoTime": 866,
+      "kind": "draw",
+      "x": 41,
+      "y": 15,
+      "toX": 41,
+      "toY": 16
+    },
+    {
+      "at": 1240.0,
+      "videoTime": 866,
+      "kind": "draw",
+      "x": 41,
+      "y": 16,
+      "toX": 41,
+      "toY": 17
+    },
+    {
+      "at": 1240.0,
+      "videoTime": 866,
+      "kind": "draw",
+      "x": 41,
+      "y": 17,
+      "toX": 41,
+      "toY": 18
+    },
+    {
+      "at": 1242.0,
+      "videoTime": 867,
+      "kind": "house",
+      "id": "house:yellow:36,5",
+      "x": 36,
+      "y": 5,
+      "color": 0,
+      "direction": 4
+    },
+    {
+      "at": 1242.0,
+      "videoTime": 867,
+      "kind": "house",
+      "id": "house:red:42,14",
+      "x": 42,
+      "y": 14,
+      "color": 1,
+      "direction": 0
+    },
+    {
+      "at": 1242.0,
+      "videoTime": 867,
+      "kind": "draw",
+      "x": 36,
+      "y": 5,
+      "toX": 35,
+      "toY": 5
+    },
+    {
+      "at": 1242.0,
+      "videoTime": 867,
+      "kind": "draw",
+      "x": 42,
+      "y": 14,
+      "toX": 41,
+      "toY": 14
+    },
+    {
+      "at": 1242.0,
+      "videoTime": 867,
+      "kind": "draw",
+      "x": 40,
+      "y": 18,
+      "toX": 41,
+      "toY": 18
+    },
+    {
+      "at": 1246.0,
+      "videoTime": 869,
+      "kind": "draw",
+      "x": 42,
+      "y": 14,
+      "toX": 41,
+      "toY": 15
+    },
+    {
+      "at": 1246.0,
+      "videoTime": 869,
+      "kind": "erase",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 1248.0,
+      "videoTime": 870,
+      "kind": "draw",
+      "x": 41,
+      "y": 14,
+      "toX": 41,
+      "toY": 15
+    },
+    {
+      "at": 1248.0,
+      "videoTime": 870,
+      "kind": "draw",
+      "x": 41,
+      "y": 14,
+      "toX": 42,
+      "toY": 15
+    },
+    {
+      "at": 1248.0,
+      "videoTime": 870,
+      "kind": "draw",
+      "x": 42,
+      "y": 15,
+      "toX": 43,
+      "toY": 15
+    },
+    {
+      "at": 1250.0,
+      "videoTime": 871,
+      "kind": "house",
+      "id": "house:green:42,23",
+      "x": 42,
+      "y": 23,
+      "color": 4,
+      "direction": 0
+    },
+    {
+      "at": 1250.0,
+      "videoTime": 871,
+      "kind": "draw",
+      "x": 42,
+      "y": 23,
+      "toX": 42,
+      "toY": 22
+    },
+    {
+      "at": 1252.0,
+      "videoTime": 872,
+      "kind": "circle",
+      "target": "shop:green:24,18"
+    },
+    {
+      "at": 1252.0,
+      "videoTime": 872,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 1252.0,
+      "videoTime": 872,
+      "kind": "draw",
+      "x": 21,
+      "y": 17,
+      "toX": 20,
+      "toY": 16
+    },
+    {
+      "at": 1252.0,
+      "videoTime": 872,
+      "kind": "erase",
+      "x": 42,
+      "y": 15,
+      "toX": 43,
+      "toY": 15
+    },
+    {
+      "at": 1256.0,
+      "videoTime": 874,
+      "kind": "draw",
+      "x": 42,
+      "y": 23,
+      "toX": 41,
+      "toY": 22
+    },
+    {
+      "at": 1258.0,
+      "videoTime": 875,
+      "kind": "draw",
+      "x": 41,
+      "y": 23,
+      "toX": 40,
+      "toY": 22
+    },
+    {
+      "at": 1258.0,
+      "videoTime": 875,
+      "kind": "draw",
+      "x": 41,
+      "y": 22,
+      "toX": 40,
+      "toY": 23
+    },
+    {
+      "at": 1258.0,
+      "videoTime": 875,
+      "kind": "draw",
+      "x": 41,
+      "y": 23,
+      "toX": 42,
+      "toY": 22
+    },
+    {
+      "at": 1260.0,
+      "videoTime": 877,
+      "kind": "offer",
+      "offers": [
+        {
+          "type": 2,
+          "amount": 1,
+          "roads": 10
+        },
+        {
+          "type": 0,
+          "amount": 30,
+          "roads": 0
+        }
+      ]
+    },
+    {
+      "at": 1260.0,
+      "videoTime": 877.1,
+      "kind": "choose",
+      "choice": 0
+    },
+    {
+      "at": 1260.0,
+      "videoTime": 878,
+      "kind": "draw",
+      "x": 41,
+      "y": 23,
+      "toX": 41,
+      "toY": 22
+    },
+    {
+      "at": 1262.0,
+      "videoTime": 879,
+      "kind": "house",
+      "id": "house:green:42,21",
+      "x": 42,
+      "y": 21,
+      "color": 4,
+      "direction": 0
+    },
+    {
+      "at": 1262.0,
+      "videoTime": 879,
+      "kind": "draw",
+      "x": 13,
+      "y": 12,
+      "toX": 12,
+      "toY": 12
+    },
+    {
+      "at": 1264.0,
+      "videoTime": 880,
+      "kind": "draw",
+      "x": 41,
+      "y": 21,
+      "toX": 42,
+      "toY": 22
+    },
+    {
+      "at": 1264.0,
+      "videoTime": 880,
+      "kind": "draw",
+      "x": 42,
+      "y": 21,
+      "toX": 41,
+      "toY": 22
+    },
+    {
+      "at": 1266.0,
+      "videoTime": 881,
+      "kind": "draw",
+      "x": 41,
+      "y": 22,
+      "toX": 42,
+      "toY": 22
+    },
+    {
+      "at": 1270.0,
+      "videoTime": 883,
+      "kind": "house",
+      "id": "house:green:36,22",
+      "x": 36,
+      "y": 22,
+      "color": 4,
+      "direction": 6
+    },
+    {
+      "at": 1270.0,
+      "videoTime": 883,
+      "kind": "draw",
+      "x": 36,
+      "y": 5,
+      "toX": 37,
+      "toY": 6
+    },
+    {
+      "at": 1270.0,
+      "videoTime": 883,
+      "kind": "draw",
+      "x": 36,
+      "y": 6,
+      "toX": 37,
+      "toY": 5
+    },
+    {
+      "at": 1270.0,
+      "videoTime": 883,
+      "kind": "draw",
+      "x": 36,
+      "y": 22,
+      "toX": 36,
+      "toY": 21
+    },
+    {
+      "at": 1270.0,
+      "videoTime": 883,
+      "kind": "erase",
+      "x": 21,
+      "y": 17,
+      "toX": 20,
+      "toY": 16
+    },
+    {
+      "at": 1274.0,
+      "videoTime": 885,
+      "kind": "erase",
+      "x": 13,
+      "y": 12,
+      "toX": 12,
+      "toY": 12
+    },
+    {
+      "at": 1276.0,
+      "videoTime": 886,
+      "kind": "draw",
+      "x": 21,
+      "y": 17,
+      "toX": 20,
+      "toY": 18
+    },
+    {
+      "at": 1284.0,
+      "videoTime": 890,
+      "kind": "house",
+      "id": "house:green:30,8",
+      "x": 30,
+      "y": 8,
+      "color": 4,
+      "direction": 2
+    },
+    {
+      "at": 1284.0,
+      "videoTime": 890,
+      "kind": "draw",
+      "x": 39,
+      "y": 22,
+      "toX": 40,
+      "toY": 22
+    },
+    {
+      "at": 1286.0,
+      "videoTime": 891,
+      "kind": "erase",
+      "x": 21,
+      "y": 17,
+      "toX": 20,
+      "toY": 18
+    },
+    {
+      "at": 1290.0,
+      "videoTime": 893,
+      "kind": "house",
+      "id": "house:green:31,9",
+      "x": 31,
+      "y": 9,
+      "color": 4,
+      "direction": 4
+    },
+    {
+      "at": 1290.0,
+      "videoTime": 893,
+      "kind": "draw",
+      "x": 31,
+      "y": 9,
+      "toX": 30,
+      "toY": 9
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 897,
+      "kind": "erase",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 898,
+      "kind": "draw",
+      "x": 41,
+      "y": 15,
+      "toX": 42,
+      "toY": 15
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 898,
+      "kind": "erase",
+      "x": 20,
+      "y": 11,
+      "toX": 21,
+      "toY": 11
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 901,
+      "kind": "editMotorway",
+      "target": "m3",
+      "x": 19,
+      "y": 6,
+      "toX": 15,
+      "toY": 18
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 902,
+      "kind": "draw",
+      "x": 13,
+      "y": 9,
+      "toX": 13,
+      "toY": 10
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 904,
+      "kind": "draw",
+      "x": 17,
+      "y": 14,
+      "toX": 17,
+      "toY": 13
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 904,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 15,
+      "toY": 15
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 909,
+      "kind": "draw",
+      "x": 9,
+      "y": 5,
+      "toX": 8,
+      "toY": 6
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 910,
+      "kind": "draw",
+      "x": 30,
+      "y": 8,
+      "toX": 30,
+      "toY": 9
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 910,
+      "kind": "draw",
+      "x": 31,
+      "y": 9,
+      "toX": 31,
+      "toY": 10
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 911,
+      "kind": "draw",
+      "x": 30,
+      "y": 9,
+      "toX": 30,
+      "toY": 10
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 914,
+      "kind": "draw",
+      "x": 26,
+      "y": 13,
+      "toX": 26,
+      "toY": 14
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 916,
+      "kind": "draw",
+      "x": 39,
+      "y": 14,
+      "toX": 38,
+      "toY": 15
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 919,
+      "kind": "draw",
+      "x": 21,
+      "y": 17,
+      "toX": 20,
+      "toY": 16
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 920,
+      "kind": "erase",
+      "x": 9,
+      "y": 5,
+      "toX": 8,
+      "toY": 6
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 920,
+      "kind": "erase",
+      "x": 39,
+      "y": 14,
+      "toX": 38,
+      "toY": 15
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 923,
+      "kind": "draw",
+      "x": 16,
+      "y": 14,
+      "toX": 16,
+      "toY": 13
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 923,
+      "kind": "erase",
+      "x": 17,
+      "y": 14,
+      "toX": 17,
+      "toY": 13
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 930,
+      "kind": "draw",
+      "x": 9,
+      "y": 5,
+      "toX": 8,
+      "toY": 6
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 934,
+      "kind": "draw",
+      "x": 13,
+      "y": 9,
+      "toX": 14,
+      "toY": 10
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 934,
+      "kind": "draw",
+      "x": 14,
+      "y": 9,
+      "toX": 13,
+      "toY": 10
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 937,
+      "kind": "erase",
+      "x": 14,
+      "y": 9,
+      "toX": 13,
+      "toY": 10
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 938,
+      "kind": "erase",
+      "x": 13,
+      "y": 9,
+      "toX": 13,
+      "toY": 10
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 938,
+      "kind": "erase",
+      "x": 13,
+      "y": 9,
+      "toX": 14,
+      "toY": 10
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 941,
+      "kind": "draw",
+      "x": 25,
+      "y": 16,
+      "toX": 26,
+      "toY": 16
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 943,
+      "kind": "erase",
+      "x": 25,
+      "y": 16,
+      "toX": 26,
+      "toY": 16
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 949,
+      "kind": "draw",
+      "x": 20,
+      "y": 11,
+      "toX": 21,
+      "toY": 11
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 949,
+      "kind": "draw",
+      "x": 16,
+      "y": 20,
+      "toX": 16,
+      "toY": 19
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 949,
+      "kind": "draw",
+      "x": 36,
+      "y": 22,
+      "toX": 36,
+      "toY": 23
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 951,
+      "kind": "erase",
+      "x": 36,
+      "y": 22,
+      "toX": 36,
+      "toY": 23
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 954,
+      "kind": "erase",
+      "x": 20,
+      "y": 11,
+      "toX": 21,
+      "toY": 11
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 962,
+      "kind": "erase",
+      "x": 9,
+      "y": 5,
+      "toX": 8,
+      "toY": 6
+    },
+    {
+      "at": 1294.0,
+      "videoTime": 962,
+      "kind": "erase",
+      "x": 21,
+      "y": 17,
+      "toX": 20,
+      "toY": 16
+    },
+    {
+      "at": 1296.0,
+      "videoTime": 965,
+      "kind": "draw",
+      "x": 20,
+      "y": 11,
+      "toX": 21,
+      "toY": 11
+    },
+    {
+      "at": 1300.0,
+      "videoTime": 967,
+      "kind": "erase",
+      "x": 27,
+      "y": 7,
+      "toX": 28,
+      "toY": 8
+    },
+    {
+      "at": 1300.0,
+      "videoTime": 967,
+      "kind": "erase",
+      "x": 28,
+      "y": 7,
+      "toX": 27,
+      "toY": 8
+    },
+    {
+      "at": 1302.0,
+      "videoTime": 968,
+      "kind": "house",
+      "id": "house:cyan:11,5",
+      "x": 11,
+      "y": 5,
+      "color": 2,
+      "direction": 2
+    },
+    {
+      "at": 1302.0,
+      "videoTime": 968,
+      "kind": "house",
+      "id": "house:green:32,9",
+      "x": 32,
+      "y": 9,
+      "color": 4,
+      "direction": 0
+    },
+    {
+      "at": 1302.0,
+      "videoTime": 968,
+      "kind": "draw",
+      "x": 32,
+      "y": 9,
+      "toX": 33,
+      "toY": 9
+    },
+    {
+      "at": 1304.0,
+      "videoTime": 969,
+      "kind": "draw",
+      "x": 9,
+      "y": 5,
+      "toX": 8,
+      "toY": 6
+    },
+    {
+      "at": 1304.0,
+      "videoTime": 969,
+      "kind": "draw",
+      "x": 11,
+      "y": 5,
+      "toX": 11,
+      "toY": 6
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 971,
+      "kind": "draw",
+      "x": 27,
+      "y": 7,
+      "toX": 28,
+      "toY": 8
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 971,
+      "kind": "draw",
+      "x": 28,
+      "y": 7,
+      "toX": 27,
+      "toY": 8
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 971,
+      "kind": "draw",
+      "x": 17,
+      "y": 14,
+      "toX": 17,
+      "toY": 13
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 976,
+      "kind": "draw",
+      "x": 32,
+      "y": 10,
+      "toX": 31,
+      "toY": 9
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 976,
+      "kind": "draw",
+      "x": 32,
+      "y": 9,
+      "toX": 31,
+      "toY": 10
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 982,
+      "kind": "erase",
+      "x": 15,
+      "y": 6,
+      "toX": 15,
+      "toY": 7
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 982,
+      "kind": "erase",
+      "x": 28,
+      "y": 7,
+      "toX": 27,
+      "toY": 8
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 989,
+      "kind": "draw",
+      "x": 28,
+      "y": 7,
+      "toX": 27,
+      "toY": 8
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 996,
+      "kind": "draw",
+      "x": 8,
+      "y": 10,
+      "toX": 7,
+      "toY": 10
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 996,
+      "kind": "draw",
+      "x": 10,
+      "y": 10,
+      "toX": 11,
+      "toY": 11
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 996,
+      "kind": "draw",
+      "x": 21,
+      "y": 12,
+      "toX": 20,
+      "toY": 13
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 996,
+      "kind": "draw",
+      "x": 36,
+      "y": 22,
+      "toX": 36,
+      "toY": 23
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 998,
+      "kind": "erase",
+      "x": 8,
+      "y": 10,
+      "toX": 7,
+      "toY": 10
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 1000,
+      "kind": "motorway",
+      "id": "m4",
+      "x": 20,
+      "y": 18,
+      "toX": 29,
+      "toY": 20
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 1000,
+      "kind": "draw",
+      "x": 10,
+      "y": 5,
+      "toX": 11,
+      "toY": 6
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 1000,
+      "kind": "draw",
+      "x": 13,
+      "y": 12,
+      "toX": 12,
+      "toY": 12
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 1000,
+      "kind": "draw",
+      "x": 21,
+      "y": 17,
+      "toX": 20,
+      "toY": 18
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 1000,
+      "kind": "draw",
+      "x": 20,
+      "y": 18,
+      "toX": 21,
+      "toY": 18
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 1000,
+      "kind": "draw",
+      "x": 29,
+      "y": 19,
+      "toX": 28,
+      "toY": 20
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 1001,
+      "kind": "draw",
+      "x": 40,
+      "y": 10,
+      "toX": 41,
+      "toY": 11
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 1001,
+      "kind": "draw",
+      "x": 41,
+      "y": 10,
+      "toX": 40,
+      "toY": 11
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 1001,
+      "kind": "erase",
+      "x": 36,
+      "y": 22,
+      "toX": 36,
+      "toY": 23
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 1002,
+      "kind": "erase",
+      "x": 13,
+      "y": 12,
+      "toX": 12,
+      "toY": 12
+    },
+    {
+      "at": 1306.0,
+      "videoTime": 1003,
+      "kind": "erase",
+      "x": 41,
+      "y": 10,
+      "toX": 40,
+      "toY": 11
+    },
+    {
+      "at": 1310.0,
+      "videoTime": 1005,
+      "kind": "erase",
+      "x": 9,
+      "y": 5,
+      "toX": 8,
+      "toY": 6
+    },
+    {
+      "at": 1310.0,
+      "videoTime": 1005,
+      "kind": "erase",
+      "x": 10,
+      "y": 20,
+      "toX": 11,
+      "toY": 20
+    }
+  ]
+}

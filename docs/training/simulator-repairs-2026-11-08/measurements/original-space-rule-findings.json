@@ -1,0 +1,48 @@
+{
+  "classification": "read-only original installed-reference verification, independent paraphrase and numeric facts only",
+  "date": "2026-11-08",
+  "simulatorRevisionReviewed": "acdf0ff4eb4fb903a0224c9c6146f74ab5842475",
+  "originalConfiguration": {
+    "MaximumTimeToWaitAtIntersection": 45.0,
+    "PercentageOfStraightLanesIntoRoundaboutsToCountOutside": 0.5,
+    "TreatStraightRoundaboutEntrancesAsNotRoundabouts": 0,
+    "LookaheadDistance": 5.0,
+    "minSpeedBeforePushingCycle": 0.20000000298023224,
+    "greenLightsIgnoreCollisions": 1
+  },
+  "fixedPointConstants": {
+    "vehicleLengthWorld": 0.6499999999068677,
+    "minimumGapWorld": 0.09999999986030161,
+    "spaceThresholdWorld": 1.2999999998137355,
+    "stoppedSpeedWorldApprox": 0.001
+  },
+  "privateEvidence": [
+    {
+      "file": "Motorways.Models.RoadChunkModel.cs",
+      "sha256": "7471c715d60f5950b83dd1bd36d7bd076ad443c9e5162c8c313850c04836b63c"
+    },
+    {
+      "file": "Motorways.Models.VehicleModel.cs",
+      "sha256": "f1e1f403a5931963179b80591d334142e964d0b2a35be4e075d8ce7c634a86cd"
+    },
+    {
+      "file": "Motorways.Models.LaneModel.cs",
+      "sha256": "494ba95de1f85d7b04bcc6d996fdb587349f15aac1fb3c70f262606c739b38ec"
+    },
+    {
+      "file": "Motorways.Processes.VehicleMovementProcess.cs",
+      "sha256": "38ec953fed2c0c5f4ad800edb36e60bcf2a920d237aba8bb4778c43d67abf296"
+    },
+    {
+      "file": "StreamingAssets_AssetBundles_core_3551449716704022488_SimulationConstantsData.json",
+      "sha256": "ae878a0c88e08a44f5b085b0fb2a215272b1f2b0509ee3802ec9263699292b5e"
+    }
+  ],
+  "unresolved": [
+    "Feature.MaximumWaitTimeAtIntersections runtime enablement not established in available extracts.",
+    "IntersectsOtherConnection fourth-argument geometry semantics not available in inspected extracts.",
+    "No original matched-state execution of v21 and no proof that space checking alone resolves v21.",
+    "Other installed versions or runtime constant overrides not checked."
+  ],
+  "changes": "Documentation only; no original/simulator code changes, no learning or scored runs."
+}

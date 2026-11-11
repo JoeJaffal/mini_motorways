@@ -1,0 +1,73 @@
+{
+  "date": "2026-11-08",
+  "kind": "read-only installed-reference audit; independent prose/numeric facts only",
+  "simulatorRevisionRead": "c27107d19b6d9636d0bbf99f076b1f8106b73413",
+  "installedSignalConstants": {
+    "changeDelay": 3.0,
+    "overtimeChangeDelay": 1.0,
+    "amberDelay": 0.699999988079071,
+    "minimumNearbyCarsBeforeSwapping": 3,
+    "distanceToCountForNearbyCars": 1.0,
+    "MaximumIdleTimeAtTrafficLightBeforeMaxWeight": 30.0,
+    "IdleTimeAtTrafficLightWeightMultiplier": 1.0,
+    "IdleTimeAtTrafficLightWeightMultiplierOnMothballedLane": 4.0,
+    "CanTurnRightWeightModifier": 0.10000000149011612,
+    "CarparkPriorityModifier": 10.0,
+    "BlockedCarWeightModifier": 0.10000000149011612,
+    "americanRedLightRules": 1,
+    "greenLightsIgnoreCollisions": 1
+  },
+  "evidence": [
+    {
+      "file": "Motorways.Processes.TrafficLightAlternatingProcess.cs",
+      "sha256": "358b86c9e974adc267967675f4318802e5b3fac64264753adc7ae7eb31b8cf4f"
+    },
+    {
+      "file": "Motorways.Models.TrafficLightModel.cs",
+      "sha256": "a00b8d8bf8e0c41950d1815bca4934ce89649eb1b1b9f9bf6d173c30838e101c"
+    },
+    {
+      "file": "Motorways.Models.RoadChunkModel.cs",
+      "sha256": "7471c715d60f5950b83dd1bd36d7bd076ad443c9e5162c8c313850c04836b63c"
+    },
+    {
+      "file": "Motorways.Models.VehicleModel.cs",
+      "sha256": "f1e1f403a5931963179b80591d334142e964d0b2a35be4e075d8ce7c634a86cd"
+    },
+    {
+      "file": "Motorways.Models.LaneModel.cs",
+      "sha256": "494ba95de1f85d7b04bcc6d996fdb587349f15aac1fb3c70f262606c739b38ec"
+    },
+    {
+      "file": "Motorways.Models.CarparkModel.cs",
+      "sha256": "ddf33cc83b7105ad492f1f097d50c6c200274f5afdb5bda0fdc60d32768d5d8f"
+    },
+    {
+      "file": "Motorways.Processes.ParkVehiclesProcess.cs",
+      "sha256": "6163e35ed8628dd07c020576f360ddff46c5971d014797fd198bba9e4a684eff"
+    },
+    {
+      "file": "Motorways.Processes.VehicleMovementProcess.cs",
+      "sha256": "38ec953fed2c0c5f4ad800edb36e60bcf2a920d237aba8bb4778c43d67abf296"
+    },
+    {
+      "file": "StreamingAssets_AssetBundles_core_3551449716704022488_SimulationConstantsData.json",
+      "sha256": "ae878a0c88e08a44f5b085b0fb2a215272b1f2b0509ee3802ec9263699292b5e"
+    }
+  ],
+  "reportedNotReproducedHere": {
+    "source": "user message",
+    "simulator": "2026-11-08.4",
+    "lightsTrips": 408,
+    "noLightsTrips": 513,
+    "maps": "Los Angeles3100\u20133109",
+    "meaning": "Reported result only; no new GP/model runs or causal attribution in this audit"
+  },
+  "limits": [
+    "Static installed extracts/configuration, not original matched-state execution.",
+    "Other runtime configuration/observer overrides not exhaustively inspected.",
+    "Merging collision feature-toggle state unverified.",
+    "No promise that removing our gate alone preserves progress/body separation with reconstructed geometry.",
+    "No simulator edits, learning, re-evaluation or deployment."
+  ]
+}

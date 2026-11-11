@@ -1,0 +1,314 @@
+WARM START | legacy | policy copied; added input/residual outputs zero; optimizer reset
+RUN DIRECTORY | C:\Users\moham\mini_motorways\output\training\pilot-productive-20261028
+REWARD | trip-plus-connectivity-potential-v1 | score/best/evaluation remain actual trips
+WORKERS | 2 simultaneous games | shared model | 256 aggregate selections per rollout
+SCHEDULE | 1 consecutive games per seed | 1000 through 1099 | random
+EVALUATION | checking starting policy on reserved seeds before learner timer starts
+EVAL | seed 2000 | score 20 | survived 258.3s | car wait mean/max 5.21/92.75s | sampled | game failure
+EVAL | seed 2001 | score 0 | survived 139.6s | car wait mean/max 0.00/0.00s | sampled | game failure
+EVAL | seed 2002 | score 2 | survived 140.8s | car wait mean/max 0.00/0.70s | sampled | game failure
+EVAL | seed 2003 | score 0 | survived 139.7s | car wait mean/max 0.00/0.00s | sampled | game failure
+EVAL | seed 2004 | score 0 | survived 144.8s | car wait mean/max 0.00/0.00s | sampled | game failure
+TRAINING | learner budget 00:22:00 or 65,536 selections | progress every 30s | Ctrl+C saves and stops
+WORKER 0 | SEED 1008 | block attempt 1/1 | cycle 1 | model weights continue
+WORKER 1 | SEED 1050 | block attempt 1/1 | cycle 1 | model weights continue
+NEW BEST | seed 1050 | score 0 | survived 142.4s | replay: C:\Users\moham\mini_motorways\output\training\pilot-productive-20261028\best-game.json
+GAME 1 | worker 1 | seed 1050 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 142.4s | car wait mean/max 0.00/0.00s | wait actions 104/143 | rejected 2 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1065 | block attempt 1/1 | cycle 1 | model weights continue
+NEW BEST | seed 1008 | score 0 | survived 148.5s | replay: C:\Users\moham\mini_motorways\output\training\pilot-productive-20261028\best-game.json
+GAME 2 | worker 0 | seed 1008 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 148.5s | car wait mean/max 0.00/0.00s | wait actions 92/149 | rejected 3 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1077 | block attempt 1/1 | cycle 1 | model weights continue
+NEW BEST | seed 1077 | score 0 | survived 154.2s | replay: C:\Users\moham\mini_motorways\output\training\pilot-productive-20261028\best-game.json
+GAME 3 | worker 0 | seed 1077 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 154.2s | car wait mean/max 0.00/1.00s | wait actions 115/155 | rejected 1 | connected 2 | shaping -0.011
+WORKER 0 | SEED 1065 | block attempt 1/1 | cycle 1 | model weights continue
+NEW BEST | seed 1065 | score 14 | survived 262.8s | replay: C:\Users\moham\mini_motorways\output\training\pilot-productive-20261028\best-game.json
+GAME 4 | worker 1 | seed 1065 try 1/1 | score 14 | seed mean 14.00 recent20 14.00 best 14 | survival 262.8s | car wait mean/max 0.02/6.90s | wait actions 196/263 | rejected 3 | connected 5 | shaping -0.627
+WORKER 1 | SEED 1040 | block attempt 1/1 | cycle 1 | model weights continue
+NEW BEST | seed 1065 | score 15 | survived 218.6s | replay: C:\Users\moham\mini_motorways\output\training\pilot-productive-20261028\best-game.json
+GAME 5 | worker 0 | seed 1065 try 1/1 | score 15 | seed mean 14.50 recent20 14.50 best 15 | survival 218.6s | car wait mean/max 0.04/5.20s | wait actions 149/219 | rejected 0 | connected 7 | shaping -0.621
+WORKER 0 | SEED 1043 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 6 | worker 1 | seed 1040 try 1/1 | score 1 | seed mean 1.00 recent20 1.00 best 1 | survival 154.6s | car wait mean/max 0.00/1.75s | wait actions 104/155 | rejected 0 | connected 3 | shaping -0.039
+WORKER 1 | SEED 1004 | block attempt 1/1 | cycle 1 | model weights continue
+PROGRESS | elapsed 00:00:30 | ETA ~00:09:16 | 3,356/65,536 selections | 37.5 commands/s | seed 1004 try 1/1 | current score 0 at 1.0s | best 15 | 2 workers | connected 0 | shaping +0.000
+GAME 7 | worker 0 | seed 1043 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 148.0s | car wait mean/max 0.00/0.00s | wait actions 114/148 | rejected 1 | connected 0 | shaping +0.000
+GAME 8 | worker 1 | seed 1004 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 142.4s | car wait mean/max 0.00/0.00s | wait actions 113/143 | rejected 0 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1057 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 9 | worker 0 | seed 1043 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 148.0s | car wait mean/max 0.00/0.00s | wait actions 117/148 | rejected 1 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1085 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 10 | worker 1 | seed 1057 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 143.4s | car wait mean/max 0.00/0.00s | wait actions 105/144 | rejected 0 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1002 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 11 | worker 0 | seed 1085 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 139.5s | car wait mean/max 0.00/0.00s | wait actions 114/140 | rejected 0 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1008 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 12 | worker 1 | seed 1002 try 1/1 | score 10 | seed mean 10.00 recent20 10.00 best 10 | survival 206.1s | car wait mean/max 0.02/8.15s | wait actions 144/207 | rejected 0 | connected 3 | shaping -0.383
+WORKER 1 | SEED 1027 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 13 | worker 0 | seed 1008 try 1/1 | score 2 | seed mean 1.00 recent20 1.00 best 2 | survival 148.5s | car wait mean/max 0.00/0.00s | wait actions 115/149 | rejected 0 | connected 1 | shaping -0.059
+WORKER 0 | SEED 1069 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 14 | worker 1 | seed 1027 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 141.2s | car wait mean/max 0.00/0.00s | wait actions 109/142 | rejected 0 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1083 | block attempt 1/1 | cycle 1 | model weights continue
+PROGRESS | elapsed 00:01:00 | ETA ~00:08:11 | 7,170/65,536 selections | 39.8 commands/s | seed 1083 try 1/1 | current score 0 at 3.0s | best 15 | 2 workers | connected 0 | shaping +0.000
+GAME 15 | worker 0 | seed 1069 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 154.7s | car wait mean/max 0.00/1.00s | wait actions 119/155 | rejected 0 | connected 2 | shaping -0.003
+WORKER 0 | SEED 1020 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 16 | worker 1 | seed 1083 try 1/1 | score 10 | seed mean 10.00 recent20 10.00 best 10 | survival 230.1s | car wait mean/max 0.24/22.60s | wait actions 165/231 | rejected 0 | connected 6 | shaping -0.436
+WORKER 1 | SEED 1046 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 17 | worker 0 | seed 1020 try 1/1 | score 14 | seed mean 14.00 recent20 14.00 best 14 | survival 217.2s | car wait mean/max 0.01/4.55s | wait actions 165/218 | rejected 0 | connected 7 | shaping -0.600
+WORKER 0 | SEED 1009 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 18 | worker 1 | seed 1046 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 153.1s | car wait mean/max 0.00/1.00s | wait actions 111/154 | rejected 1 | connected 1 | shaping -0.002
+WORKER 1 | SEED 1058 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 19 | worker 0 | seed 1009 try 1/1 | score 2 | seed mean 2.00 recent20 2.00 best 2 | survival 146.3s | car wait mean/max 0.00/2.10s | wait actions 108/147 | rejected 1 | connected 2 | shaping -0.040
+WORKER 0 | SEED 1052 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 20 | worker 1 | seed 1058 try 1/1 | score 9 | seed mean 9.00 recent20 9.00 best 9 | survival 219.0s | car wait mean/max 0.03/9.25s | wait actions 151/219 | rejected 1 | connected 2 | shaping -0.281
+WORKER 1 | SEED 1096 | block attempt 1/1 | cycle 1 | model weights continue
+PROGRESS | elapsed 00:01:30 | ETA ~00:07:32 | 10,922/65,536 selections | 40.5 commands/s | seed 1096 try 1/1 | current score 0 at 27.0s | best 15 | 2 workers | connected 0 | shaping +0.000
+GAME 21 | worker 0 | seed 1052 try 1/1 | score 9 | seed mean 9.00 recent20 9.00 best 9 | survival 218.6s | car wait mean/max 0.04/13.20s | wait actions 144/219 | rejected 1 | connected 4 | shaping -0.340
+WORKER 0 | SEED 1097 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 22 | worker 1 | seed 1096 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 150.2s | car wait mean/max 0.00/0.00s | wait actions 107/151 | rejected 0 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1022 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 23 | worker 0 | seed 1097 try 1/1 | score 10 | seed mean 10.00 recent20 10.00 best 10 | survival 244.0s | car wait mean/max 0.08/17.20s | wait actions 183/244 | rejected 1 | connected 3 | shaping -0.295
+WORKER 0 | SEED 1073 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 24 | worker 1 | seed 1022 try 1/1 | score 10 | seed mean 10.00 recent20 10.00 best 10 | survival 252.2s | car wait mean/max 0.03/12.40s | wait actions 186/253 | rejected 0 | connected 2 | shaping -0.269
+WORKER 1 | SEED 1084 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 25 | worker 0 | seed 1073 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 153.5s | car wait mean/max 0.00/1.00s | wait actions 106/154 | rejected 1 | connected 2 | shaping -0.015
+WORKER 0 | SEED 1076 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 26 | worker 0 | seed 1076 try 1/1 | score 2 | seed mean 2.00 recent20 2.00 best 2 | survival 154.0s | car wait mean/max 0.00/1.45s | wait actions 104/154 | rejected 0 | connected 1 | shaping -0.040
+CHECKPOINT | latest.zip saved
+WORKER 0 | SEED 1071 | block attempt 1/1 | cycle 1 | model weights continue
+PROGRESS | elapsed 00:02:01 | ETA ~00:07:11 | 14,338/65,536 selections | 39.7 commands/s | seed 1084 try 1/1 | current score 11 at 194.0s | best 15 | 2 workers | connected 4 | shaping +0.710
+NEW BEST | seed 1084 | score 17 | survived 250.1s | replay: C:\Users\moham\mini_motorways\output\training\pilot-productive-20261028\best-game.json
+GAME 27 | worker 1 | seed 1084 try 1/1 | score 17 | seed mean 17.00 recent20 17.00 best 17 | survival 250.1s | car wait mean/max 0.05/13.60s | wait actions 148/251 | rejected 2 | connected 6 | shaping -0.516
+WORKER 1 | SEED 1075 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 28 | worker 1 | seed 1075 try 1/1 | score 7 | seed mean 7.00 recent20 7.00 best 7 | survival 202.0s | car wait mean/max 0.05/10.20s | wait actions 134/202 | rejected 0 | connected 3 | shaping -0.201
+WORKER 1 | SEED 1037 | block attempt 1/1 | cycle 1 | model weights continue
+NEW BEST | seed 1071 | score 28 | survived 275.2s | replay: C:\Users\moham\mini_motorways\output\training\pilot-productive-20261028\best-game.json
+GAME 29 | worker 0 | seed 1071 try 1/1 | score 28 | seed mean 28.00 recent20 28.00 best 28 | survival 275.2s | car wait mean/max 0.05/7.50s | wait actions 198/276 | rejected 0 | connected 8 | shaping -0.934
+WORKER 0 | SEED 1078 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 30 | worker 1 | seed 1037 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 141.1s | car wait mean/max 0.00/0.00s | wait actions 106/142 | rejected 1 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1026 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 31 | worker 0 | seed 1078 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 139.6s | car wait mean/max 0.00/0.00s | wait actions 107/140 | rejected 0 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1051 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 32 | worker 0 | seed 1051 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 143.4s | car wait mean/max 0.00/1.40s | wait actions 108/144 | rejected 0 | connected 2 | shaping -0.002
+WORKER 0 | SEED 1012 | block attempt 1/1 | cycle 1 | model weights continue
+PROGRESS | elapsed 00:02:31 | ETA ~00:06:47 | 17,716/65,536 selections | 39.3 commands/s | seed 1026 try 1/1 | current score 6 at 164.0s | best 28 | 2 workers | connected 4 | shaping +0.803
+GAME 33 | worker 1 | seed 1026 try 1/1 | score 21 | seed mean 21.00 recent20 21.00 best 21 | survival 286.1s | car wait mean/max 0.16/16.20s | wait actions 36/287 | rejected 13 | connected 8 | shaping -0.640
+WORKER 1 | SEED 1027 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 34 | worker 0 | seed 1012 try 1/1 | score 20 | seed mean 20.00 recent20 20.00 best 20 | survival 257.6s | car wait mean/max 0.06/13.60s | wait actions 199/258 | rejected 1 | connected 7 | shaping -0.670
+WORKER 0 | SEED 1083 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 35 | worker 1 | seed 1027 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 141.2s | car wait mean/max 0.00/0.00s | wait actions 109/142 | rejected 0 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1041 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 36 | worker 1 | seed 1041 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 139.5s | car wait mean/max 0.00/0.00s | wait actions 107/140 | rejected 0 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1063 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 37 | worker 0 | seed 1083 try 1/1 | score 10 | seed mean 10.00 recent20 10.00 best 10 | survival 230.1s | car wait mean/max 3.40/63.65s | wait actions 176/231 | rejected 0 | connected 8 | shaping -0.483
+WORKER 0 | SEED 1045 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 38 | worker 1 | seed 1063 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 146.0s | car wait mean/max 0.00/0.00s | wait actions 107/146 | rejected 3 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1045 | block attempt 1/1 | cycle 1 | model weights continue
+PROGRESS | elapsed 00:03:01 | ETA ~00:06:15 | 21,304/65,536 selections | 39.4 commands/s | seed 1045 try 1/1 | current score 0 at 48.0s | best 28 | 2 workers | connected 0 | shaping +0.000
+GAME 39 | worker 0 | seed 1045 try 1/1 | score 2 | seed mean 2.00 recent20 2.00 best 2 | survival 143.7s | car wait mean/max 0.00/0.05s | wait actions 114/144 | rejected 0 | connected 2 | shaping -0.065
+WORKER 0 | SEED 1050 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 40 | worker 1 | seed 1045 try 1/1 | score 0 | seed mean 1.00 recent20 1.00 best 2 | survival 143.7s | car wait mean/max 0.00/0.00s | wait actions 118/144 | rejected 0 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1014 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 41 | worker 0 | seed 1050 try 1/1 | score 3 | seed mean 1.50 recent20 1.50 best 3 | survival 142.4s | car wait mean/max 0.00/1.70s | wait actions 110/143 | rejected 0 | connected 4 | shaping -0.099
+WORKER 0 | SEED 1037 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 42 | worker 1 | seed 1014 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 139.8s | car wait mean/max 0.00/0.00s | wait actions 65/140 | rejected 8 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1095 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 43 | worker 0 | seed 1037 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 141.1s | car wait mean/max 0.00/0.00s | wait actions 118/142 | rejected 0 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1018 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 44 | worker 1 | seed 1095 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 154.6s | car wait mean/max 0.00/0.00s | wait actions 114/155 | rejected 0 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1038 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 45 | worker 0 | seed 1018 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 145.6s | car wait mean/max 0.00/0.00s | wait actions 115/146 | rejected 0 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1092 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 46 | worker 0 | seed 1092 try 1/1 | score 4 | seed mean 4.00 recent20 4.00 best 4 | survival 143.2s | car wait mean/max 0.01/3.10s | wait actions 103/144 | rejected 0 | connected 4 | shaping -0.118
+WORKER 0 | SEED 1078 | block attempt 1/1 | cycle 1 | model weights continue
+PROGRESS | elapsed 00:03:31 | ETA ~00:05:40 | 25,104/65,536 selections | 39.8 commands/s | seed 1038 try 1/1 | current score 14 at 244.0s | best 28 | 2 workers | connected 5 | shaping +0.690
+GAME 47 | worker 1 | seed 1038 try 1/1 | score 14 | seed mean 14.00 recent20 14.00 best 14 | survival 244.4s | car wait mean/max 0.01/6.20s | wait actions 178/245 | rejected 0 | connected 5 | shaping -0.560
+WORKER 1 | SEED 1089 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 48 | worker 0 | seed 1078 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 139.6s | car wait mean/max 0.00/0.00s | wait actions 113/140 | rejected 0 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1064 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 49 | worker 1 | seed 1089 try 1/1 | score 2 | seed mean 2.00 recent20 2.00 best 2 | survival 151.5s | car wait mean/max 0.00/0.05s | wait actions 104/152 | rejected 0 | connected 2 | shaping -0.046
+WORKER 1 | SEED 1018 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 50 | worker 0 | seed 1064 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 152.5s | car wait mean/max 0.00/0.00s | wait actions 115/153 | rejected 0 | connected 2 | shaping +0.000
+WORKER 0 | SEED 1040 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 51 | worker 1 | seed 1018 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 145.6s | car wait mean/max 0.00/0.00s | wait actions 125/146 | rejected 0 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1027 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 52 | worker 1 | seed 1027 try 1/1 | score 3 | seed mean 1.00 recent20 1.00 best 3 | survival 141.2s | car wait mean/max 0.01/3.15s | wait actions 102/142 | rejected 0 | connected 2 | shaping -0.081
+WORKER 1 | SEED 1077 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 53 | worker 0 | seed 1040 try 1/1 | score 14 | seed mean 7.50 recent20 7.50 best 14 | survival 219.5s | car wait mean/max 0.21/14.15s | wait actions 149/220 | rejected 0 | connected 6 | shaping -0.579
+WORKER 0 | SEED 1082 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 54 | worker 1 | seed 1077 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 154.2s | car wait mean/max 0.00/1.00s | wait actions 103/155 | rejected 6 | connected 1 | shaping -0.005
+WORKER 1 | SEED 1027 | block attempt 1/1 | cycle 1 | model weights continue
+CHECKPOINT | latest.zip saved
+EVAL | seed 2000 | score 0 | survived 140.1s | car wait mean/max 0.00/1.45s | highest-probability | game failure
+EVAL | seed 2001 | score 0 | survived 139.6s | car wait mean/max 0.00/0.00s | highest-probability | game failure
+EVAL | seed 2002 | score 0 | survived 140.8s | car wait mean/max 0.00/1.05s | highest-probability | game failure
+EVAL | seed 2003 | score 0 | survived 139.7s | car wait mean/max 0.00/0.00s | highest-probability | game failure
+EVAL | seed 2004 | score 0 | survived 144.8s | car wait mean/max 0.00/0.00s | highest-probability | game failure
+VALIDATION | mean 0.00 | scores [0, 0, 0, 0, 0] | real trips, no updates
+PROGRESS | elapsed 00:04:10 | ETA ~00:05:21 | 28,676/65,536 selections | 38.4 commands/s | seed 1027 try 1/1 | current score 0 at 3.0s | best 28 | 2 workers | connected 0 | shaping +0.000
+GAME 55 | worker 0 | seed 1082 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 143.7s | car wait mean/max 0.00/0.00s | wait actions 77/144 | rejected 0 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1054 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 56 | worker 1 | seed 1027 try 1/1 | score 0 | seed mean 0.75 recent20 0.75 best 3 | survival 141.2s | car wait mean/max 0.00/0.00s | wait actions 95/142 | rejected 0 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1089 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 57 | worker 0 | seed 1054 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 153.9s | car wait mean/max 0.00/0.00s | wait actions 100/154 | rejected 0 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1044 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 58 | worker 1 | seed 1089 try 1/1 | score 0 | seed mean 1.00 recent20 1.00 best 2 | survival 151.5s | car wait mean/max 0.00/0.00s | wait actions 86/152 | rejected 0 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1042 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 59 | worker 0 | seed 1044 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 139.6s | car wait mean/max 0.00/0.00s | wait actions 93/140 | rejected 0 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1045 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 60 | worker 1 | seed 1042 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 139.5s | car wait mean/max 0.00/0.00s | wait actions 107/140 | rejected 3 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1045 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 61 | worker 0 | seed 1045 try 1/1 | score 0 | seed mean 0.67 recent20 0.67 best 2 | survival 143.7s | car wait mean/max 0.00/0.00s | wait actions 114/144 | rejected 0 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1022 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 62 | worker 0 | seed 1022 try 1/1 | score 0 | seed mean 5.00 recent20 5.00 best 10 | survival 145.1s | car wait mean/max 0.00/0.00s | wait actions 117/146 | rejected 1 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1009 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 63 | worker 1 | seed 1045 try 1/1 | score 11 | seed mean 3.25 recent20 3.25 best 11 | survival 204.4s | car wait mean/max 0.06/7.30s | wait actions 144/205 | rejected 0 | connected 7 | shaping -0.332
+WORKER 1 | SEED 1000 | block attempt 1/1 | cycle 1 | model weights continue
+PROGRESS | elapsed 00:04:40 | ETA ~00:04:45 | 32,490/65,536 selections | 38.9 commands/s | seed 1000 try 1/1 | current score 0 at 3.0s | best 28 | 2 workers | connected 0 | shaping +0.000
+GAME 64 | worker 0 | seed 1009 try 1/1 | score 0 | seed mean 1.00 recent20 1.00 best 2 | survival 146.3s | car wait mean/max 0.00/0.00s | wait actions 110/147 | rejected 3 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1055 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 65 | worker 1 | seed 1000 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 145.5s | car wait mean/max 0.00/0.00s | wait actions 74/146 | rejected 0 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1042 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 66 | worker 0 | seed 1055 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 148.4s | car wait mean/max 0.00/0.00s | wait actions 106/149 | rejected 8 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1088 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 67 | worker 1 | seed 1042 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 139.5s | car wait mean/max 0.00/0.00s | wait actions 108/140 | rejected 0 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1030 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 68 | worker 1 | seed 1030 try 1/1 | score 7 | seed mean 7.00 recent20 7.00 best 7 | survival 202.2s | car wait mean/max 0.16/14.95s | wait actions 126/203 | rejected 0 | connected 3 | shaping -0.202
+WORKER 1 | SEED 1054 | block attempt 1/1 | cycle 1 | model weights continue
+PROGRESS | elapsed 00:05:10 | ETA ~00:04:17 | 35,842/65,536 selections | 38.7 commands/s | seed 1054 try 1/1 | current score 0 at 75.0s | best 28 | 2 workers | connected 0 | shaping +0.000
+GAME 69 | worker 0 | seed 1088 try 1/1 | score 26 | seed mean 26.00 recent20 26.00 best 26 | survival 303.7s | car wait mean/max 0.35/18.05s | wait actions 205/304 | rejected 0 | connected 8 | shaping -0.960
+WORKER 0 | SEED 1006 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 70 | worker 1 | seed 1054 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 153.9s | car wait mean/max 0.00/0.00s | wait actions 112/154 | rejected 0 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1095 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 71 | worker 1 | seed 1095 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 154.6s | car wait mean/max 0.00/1.00s | wait actions 114/155 | rejected 0 | connected 3 | shaping -0.011
+WORKER 1 | SEED 1001 | block attempt 1/1 | cycle 1 | model weights continue
+NEW BEST | seed 1006 | score 40 | survived 374.6s | replay: C:\Users\moham\mini_motorways\output\training\pilot-productive-20261028\best-game.json
+GAME 72 | worker 0 | seed 1006 try 1/1 | score 40 | seed mean 40.00 recent20 40.00 best 40 | survival 374.6s | car wait mean/max 0.28/16.75s | wait actions 196/375 | rejected 18 | connected 12 | shaping -1.180
+WORKER 0 | SEED 1085 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 73 | worker 1 | seed 1001 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 145.3s | car wait mean/max 0.00/0.00s | wait actions 111/146 | rejected 3 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1083 | block attempt 1/1 | cycle 1 | model weights continue
+PROGRESS | elapsed 00:05:40 | ETA ~00:03:53 | 38,914/65,536 selections | 38.3 commands/s | seed 1083 try 1/1 | current score 3 at 134.0s | best 40 | 2 workers | connected 1 | shaping +0.164
+GAME 74 | worker 0 | seed 1085 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 139.5s | car wait mean/max 0.00/0.00s | wait actions 110/140 | rejected 0 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1082 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 75 | worker 1 | seed 1083 try 1/1 | score 10 | seed mean 10.00 recent20 10.00 best 10 | survival 230.1s | car wait mean/max 0.13/18.20s | wait actions 167/231 | rejected 0 | connected 4 | shaping -0.284
+WORKER 1 | SEED 1039 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 76 | worker 0 | seed 1082 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 143.7s | car wait mean/max 0.00/0.00s | wait actions 88/144 | rejected 0 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1027 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 77 | worker 0 | seed 1027 try 1/1 | score 2 | seed mean 1.00 recent20 1.00 best 3 | survival 141.2s | car wait mean/max 0.00/1.05s | wait actions 107/142 | rejected 0 | connected 2 | shaping -0.063
+WORKER 0 | SEED 1063 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 78 | worker 1 | seed 1039 try 1/1 | score 8 | seed mean 8.00 recent20 8.00 best 8 | survival 213.1s | car wait mean/max 0.09/15.40s | wait actions 170/214 | rejected 2 | connected 4 | shaping -0.260
+WORKER 1 | SEED 1053 | block attempt 1/1 | cycle 1 | model weights continue
+CHECKPOINT | latest.zip saved
+GAME 79 | worker 0 | seed 1063 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 146.0s | car wait mean/max 0.00/0.00s | wait actions 121/146 | rejected 0 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1016 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 80 | worker 1 | seed 1053 try 1/1 | score 8 | seed mean 8.00 recent20 8.00 best 8 | survival 204.1s | car wait mean/max 0.01/3.85s | wait actions 141/205 | rejected 0 | connected 4 | shaping -0.277
+WORKER 1 | SEED 1047 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 81 | worker 0 | seed 1016 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 144.5s | car wait mean/max 0.00/0.00s | wait actions 107/145 | rejected 3 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1075 | block attempt 1/1 | cycle 1 | model weights continue
+PROGRESS | elapsed 00:06:10 | ETA ~00:03:19 | 42,616/65,536 selections | 38.6 commands/s | seed 1047 try 1/1 | current score 4 at 103.0s | best 40 | 2 workers | connected 3 | shaping +0.625
+GAME 82 | worker 0 | seed 1075 try 1/1 | score 13 | seed mean 10.00 recent20 10.00 best 13 | survival 216.4s | car wait mean/max 0.16/15.30s | wait actions 149/217 | rejected 4 | connected 4 | shaping -0.355
+WORKER 0 | SEED 1070 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 83 | worker 1 | seed 1047 try 1/1 | score 29 | seed mean 29.00 recent20 29.00 best 29 | survival 301.8s | car wait mean/max 0.11/14.90s | wait actions 213/302 | rejected 2 | connected 14 | shaping -1.092
+WORKER 1 | SEED 1048 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 84 | worker 0 | seed 1070 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 139.8s | car wait mean/max 0.00/0.00s | wait actions 108/140 | rejected 1 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1035 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 85 | worker 0 | seed 1035 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 151.2s | car wait mean/max 0.00/0.00s | wait actions 120/152 | rejected 2 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1006 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 86 | worker 1 | seed 1048 try 1/1 | score 28 | seed mean 28.00 recent20 28.00 best 28 | survival 294.2s | car wait mean/max 0.07/14.70s | wait actions 160/295 | rejected 0 | connected 6 | shaping -0.976
+WORKER 1 | SEED 1082 | block attempt 1/1 | cycle 1 | model weights continue
+PROGRESS | elapsed 00:06:40 | ETA ~00:02:52 | 45,876/65,536 selections | 38.4 commands/s | seed 1082 try 1/1 | current score 0 at 52.0s | best 40 | 2 workers | connected 0 | shaping +0.000
+GAME 87 | worker 1 | seed 1082 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 143.7s | car wait mean/max 0.00/0.00s | wait actions 68/144 | rejected 0 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1094 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 88 | worker 1 | seed 1094 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 143.7s | car wait mean/max 0.00/0.00s | wait actions 118/144 | rejected 3 | connected 0 | shaping +0.000
+GAME 89 | worker 0 | seed 1006 try 1/1 | score 25 | seed mean 32.50 recent20 32.50 best 40 | survival 296.8s | car wait mean/max 0.40/19.75s | wait actions 182/297 | rejected 2 | connected 8 | shaping -0.870
+WORKER 1 | SEED 1098 | block attempt 1/1 | cycle 1 | model weights continue
+WORKER 0 | SEED 1097 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 90 | worker 0 | seed 1097 try 1/1 | score 0 | seed mean 5.00 recent20 5.00 best 10 | survival 146.5s | car wait mean/max 0.00/0.00s | wait actions 123/147 | rejected 0 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1044 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 91 | worker 1 | seed 1098 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 150.3s | car wait mean/max 0.00/1.00s | wait actions 110/151 | rejected 0 | connected 3 | shaping -0.007
+WORKER 1 | SEED 1059 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 92 | worker 0 | seed 1044 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 139.6s | car wait mean/max 0.00/0.00s | wait actions 102/140 | rejected 8 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1089 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 93 | worker 1 | seed 1059 try 1/1 | score 4 | seed mean 4.00 recent20 4.00 best 4 | survival 154.5s | car wait mean/max 0.05/11.60s | wait actions 117/155 | rejected 0 | connected 5 | shaping -0.114
+WORKER 1 | SEED 1070 | block attempt 1/1 | cycle 1 | model weights continue
+PROGRESS | elapsed 00:07:10 | ETA ~00:02:19 | 49,522/65,536 selections | 38.6 commands/s | seed 1070 try 1/1 | current score 3 at 84.0s | best 40 | 2 workers | connected 3 | shaping +0.639
+GAME 94 | worker 0 | seed 1089 try 1/1 | score 2 | seed mean 1.33 recent20 1.33 best 2 | survival 151.5s | car wait mean/max 0.00/1.00s | wait actions 97/152 | rejected 0 | connected 6 | shaping -0.093
+WORKER 0 | SEED 1067 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 95 | worker 1 | seed 1070 try 1/1 | score 14 | seed mean 7.00 recent20 7.00 best 14 | survival 244.6s | car wait mean/max 0.04/8.00s | wait actions 178/245 | rejected 0 | connected 5 | shaping -0.545
+WORKER 1 | SEED 1094 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 96 | worker 0 | seed 1067 try 1/1 | score 2 | seed mean 2.00 recent20 2.00 best 2 | survival 153.3s | car wait mean/max 0.00/2.85s | wait actions 118/154 | rejected 0 | connected 2 | shaping -0.036
+WORKER 0 | SEED 1077 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 97 | worker 1 | seed 1094 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 143.7s | car wait mean/max 0.00/0.00s | wait actions 119/144 | rejected 0 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1093 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 98 | worker 0 | seed 1077 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 154.2s | car wait mean/max 0.00/1.05s | wait actions 119/155 | rejected 1 | connected 1 | shaping -0.026
+WORKER 0 | SEED 1075 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 99 | worker 1 | seed 1093 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 152.0s | car wait mean/max 0.00/1.00s | wait actions 118/152 | rejected 3 | connected 1 | shaping -0.002
+WORKER 1 | SEED 1099 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 100 | worker 0 | seed 1075 try 1/1 | score 2 | seed mean 7.33 recent20 7.33 best 13 | survival 139.6s | car wait mean/max 0.01/2.15s | wait actions 114/140 | rejected 0 | connected 3 | shaping -0.080
+WORKER 0 | SEED 1019 | block attempt 1/1 | cycle 1 | model weights continue
+PROGRESS | elapsed 00:07:40 | ETA ~00:01:46 | 53,250/65,536 selections | 38.8 commands/s | seed 1099 try 1/1 | current score 6 at 167.0s | best 40 | 2 workers | connected 3 | shaping +0.542
+GAME 101 | worker 1 | seed 1099 try 1/1 | score 9 | seed mean 9.00 recent20 9.00 best 9 | survival 206.7s | car wait mean/max 0.03/7.55s | wait actions 145/207 | rejected 1 | connected 3 | shaping -0.296
+WORKER 1 | SEED 1004 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 102 | worker 0 | seed 1019 try 1/1 | score 8 | seed mean 8.00 recent20 8.00 best 8 | survival 187.5s | car wait mean/max 0.02/6.90s | wait actions 134/188 | rejected 0 | connected 7 | shaping -0.355
+WORKER 0 | SEED 1036 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 103 | worker 1 | seed 1004 try 1/1 | score 2 | seed mean 1.00 recent20 1.00 best 2 | survival 142.4s | car wait mean/max 0.00/0.00s | wait actions 110/143 | rejected 0 | connected 1 | shaping -0.047
+WORKER 1 | SEED 1003 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 104 | worker 0 | seed 1036 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 139.8s | car wait mean/max 0.00/0.00s | wait actions 101/140 | rejected 1 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1046 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 105 | worker 0 | seed 1046 try 1/1 | score 7 | seed mean 3.50 recent20 3.50 best 7 | survival 185.4s | car wait mean/max 0.08/11.15s | wait actions 121/186 | rejected 0 | connected 8 | shaping -0.372
+WORKER 0 | SEED 1049 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 106 | worker 1 | seed 1003 try 1/1 | score 8 | seed mean 8.00 recent20 8.00 best 8 | survival 214.0s | car wait mean/max 0.09/14.05s | wait actions 118/214 | rejected 6 | connected 3 | shaping -0.299
+WORKER 1 | SEED 1058 | block attempt 1/1 | cycle 1 | model weights continue
+CHECKPOINT | latest.zip saved
+GAME 107 | worker 0 | seed 1049 try 1/1 | score 6 | seed mean 6.00 recent20 6.00 best 6 | survival 201.5s | car wait mean/max 0.00/2.15s | wait actions 146/202 | rejected 0 | connected 2 | shaping -0.183
+WORKER 0 | SEED 1004 | block attempt 1/1 | cycle 1 | model weights continue
+EVAL | seed 2000 | score 0 | survived 140.1s | car wait mean/max 0.00/0.00s | highest-probability | game failure
+EVAL | seed 2001 | score 0 | survived 139.6s | car wait mean/max 0.00/0.00s | highest-probability | game failure
+EVAL | seed 2002 | score 0 | survived 140.8s | car wait mean/max 0.00/1.05s | highest-probability | game failure
+EVAL | seed 2003 | score 11 | survived 242.6s | car wait mean/max 0.07/15.00s | highest-probability | game failure
+EVAL | seed 2004 | score 0 | survived 144.8s | car wait mean/max 0.00/0.00s | highest-probability | game failure
+VALIDATION | mean 2.20 | scores [0, 0, 0, 11, 0] | real trips, no updates
+PROGRESS | elapsed 00:08:20 | ETA ~00:01:17 | 56,836/65,536 selections | 38.2 commands/s | seed 1058 try 1/1 | current score 22 at 245.0s | best 40 | 2 workers | connected 9 | shaping +1.252
+GAME 108 | worker 0 | seed 1004 try 1/1 | score 2 | seed mean 1.33 recent20 1.33 best 2 | survival 142.4s | car wait mean/max 0.00/0.00s | wait actions 112/143 | rejected 0 | connected 1 | shaping -0.047
+WORKER 0 | SEED 1054 | block attempt 1/1 | cycle 1 | model weights continue
+NEW BEST | seed 1058 | score 65 | survived 459.2s | replay: C:\Users\moham\mini_motorways\output\training\pilot-productive-20261028\best-game.json
+GAME 109 | worker 1 | seed 1058 try 1/1 | score 65 | seed mean 37.00 recent20 37.00 best 65 | survival 459.2s | car wait mean/max 2.94/71.65s | wait actions 257/460 | rejected 0 | connected 18 | shaping -1.956
+WORKER 1 | SEED 1011 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 110 | worker 0 | seed 1054 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 153.9s | car wait mean/max 0.00/0.00s | wait actions 105/154 | rejected 0 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1015 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 111 | worker 0 | seed 1015 try 1/1 | score 4 | seed mean 4.00 recent20 4.00 best 4 | survival 140.3s | car wait mean/max 0.00/0.05s | wait actions 77/141 | rejected 0 | connected 1 | shaping -0.029
+WORKER 0 | SEED 1074 | block attempt 1/1 | cycle 1 | model weights continue
+PROGRESS | elapsed 00:08:50 | ETA ~00:00:53 | 59,616/65,536 selections | 37.9 commands/s | seed 1011 try 1/1 | current score 16 at 263.0s | best 65 | 2 workers | connected 6 | shaping +0.786
+GAME 112 | worker 1 | seed 1011 try 1/1 | score 20 | seed mean 20.00 recent20 20.00 best 20 | survival 294.3s | car wait mean/max 0.12/17.60s | wait actions 218/295 | rejected 0 | connected 7 | shaping -0.864
+WORKER 1 | SEED 1086 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 113 | worker 0 | seed 1074 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 145.2s | car wait mean/max 0.00/0.00s | wait actions 104/146 | rejected 2 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1068 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 114 | worker 0 | seed 1068 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 153.5s | car wait mean/max 0.00/0.00s | wait actions 99/154 | rejected 0 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1092 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 115 | worker 0 | seed 1092 try 1/1 | score 2 | seed mean 3.00 recent20 3.00 best 4 | survival 143.2s | car wait mean/max 0.01/4.30s | wait actions 72/144 | rejected 0 | connected 3 | shaping -0.041
+WORKER 0 | SEED 1074 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 116 | worker 1 | seed 1086 try 1/1 | score 53 | seed mean 53.00 recent20 53.00 best 53 | survival 426.4s | car wait mean/max 0.21/17.85s | wait actions 291/427 | rejected 0 | connected 11 | shaping -1.639
+WORKER 1 | SEED 1076 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 117 | worker 0 | seed 1074 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 145.2s | car wait mean/max 0.00/0.00s | wait actions 113/146 | rejected 0 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1036 | block attempt 1/1 | cycle 1 | model weights continue
+PROGRESS | elapsed 00:09:21 | ETA ~00:00:25 | 62,722/65,536 selections | 37.8 commands/s | seed 1076 try 1/1 | current score 0 at 91.0s | best 65 | 2 workers | connected 4 | shaping +0.937
+GAME 118 | worker 0 | seed 1036 try 1/1 | score 1 | seed mean 0.50 recent20 0.50 best 1 | survival 139.8s | car wait mean/max 0.00/0.00s | wait actions 77/140 | rejected 0 | connected 2 | shaping -0.038
+WORKER 0 | SEED 1096 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 119 | worker 1 | seed 1076 try 1/1 | score 14 | seed mean 8.00 recent20 8.00 best 14 | survival 218.9s | car wait mean/max 0.15/14.60s | wait actions 142/219 | rejected 0 | connected 10 | shaping -0.636
+WORKER 1 | SEED 1012 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 120 | worker 0 | seed 1096 try 1/1 | score 0 | seed mean 0.00 recent20 0.00 best 0 | survival 150.2s | car wait mean/max 0.00/0.00s | wait actions 96/151 | rejected 3 | connected 0 | shaping +0.000
+WORKER 0 | SEED 1041 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 121 | worker 1 | seed 1012 try 1/1 | score 0 | seed mean 10.00 recent20 10.00 best 20 | survival 143.9s | car wait mean/max 0.00/0.00s | wait actions 116/144 | rejected 1 | connected 0 | shaping +0.000
+GAME 122 | worker 0 | seed 1041 try 1/1 | score 2 | seed mean 1.00 recent20 1.00 best 2 | survival 139.5s | car wait mean/max 0.00/0.00s | wait actions 103/140 | rejected 0 | connected 0 | shaping -0.057
+WORKER 0 | SEED 1032 | block attempt 1/1 | cycle 1 | model weights continue
+GAME 123 | worker 1 | seed 1012 try 1/1 | score 0 | seed mean 6.67 recent20 6.67 best 20 | survival 143.9s | car wait mean/max 0.00/0.00s | wait actions 102/144 | rejected 3 | connected 0 | shaping +0.000
+WORKER 1 | SEED 1010 | block attempt 1/1 | cycle 1 | model weights continue
+EVALUATION | final checkpoint on reserved seeds; learner has stopped
+EVAL | seed 2000 | score 12 | survived 232.4s | car wait mean/max 0.13/11.15s | sampled | game failure
+EVAL | seed 2001 | score 4 | survived 184.7s | car wait mean/max 0.00/0.30s | sampled | game failure
+EVAL | seed 2002 | score 0 | survived 140.8s | car wait mean/max 0.00/1.05s | sampled | game failure
+EVAL | seed 2003 | score 12 | survived 209.2s | car wait mean/max 0.02/4.15s | sampled | game failure
+EVAL | seed 2004 | score 0 | survived 144.8s | car wait mean/max 0.00/0.00s | sampled | game failure
+EVAL | seed 2000 | score 0 | survived 140.1s | car wait mean/max 0.00/1.00s | highest-probability | game failure
+EVAL | seed 2001 | score 0 | survived 139.6s | car wait mean/max 0.00/0.00s | highest-probability | game failure
+EVAL | seed 2002 | score 0 | survived 140.8s | car wait mean/max 0.00/1.05s | highest-probability | game failure
+EVAL | seed 2003 | score 6 | survived 193.9s | car wait mean/max 0.02/5.35s | highest-probability | game failure
+EVAL | seed 2004 | score 0 | survived 144.8s | car wait mean/max 0.00/0.00s | highest-probability | game failure
+RESULT {"training_wall_seconds": 583.1768056000583, "policy_steps": 65536, "completed_commands": 22146, "episodes": 123, "parameter_update_confirmed": true, "interrupted": false, "policy_steps_per_second": 112.37758321435109, "commands_per_second": 37.97476131996184, "best_training_score": 65, "before": [{"trips": 20, "seconds": 258.3, "rejected_actions": 2, "commands": 259, "scenario_seed": 2000, "city": "LosAngeles", "seed_attempt": 1, "seed_cycle": 1, "mean_car_wait": 5.211899563318723, "max_car_wait": 92.74999999999687, "action_counts": {"draw": 63, "wait": 194, "upgrade": 1, "Roundabout": 1}, "reward_mode": "trips", "reward_schema": "trip-delta-v1", "connected_houses": 7, "connection_potential": 0.0, "trip_reward_total": 20.0, "shaping_reward_total": 0.0, "training_reward_total": 20.0, "observation_mode": "connectivity", "draw_mask": "productive", "draw_noop_commands": 2, "draw_change_commands": 61, "draw_distinct_pairs": 61, "command_completed": true, "accepted": true, "request": null, "trip_reward": 0, "shaping_reward": 0.0, "terminated": true, "truncated": false, "deterministic": false}, {"trips": 0, "seconds": 139.55, "rejected_actions": 0, "commands": 140, "scenario_seed": 2001, "city": "LosAngeles", "seed_attempt": 1, "seed_cycle": 1, "mean_car_wait": 0.0, "max_car_wait": 0.0, "action_counts": {"draw": 21, "wait": 119}, "reward_mode": "trips", "reward_schema": "trip-delta-v1", "connected_houses": 0, "connection_potential": 0.0, "trip_reward_total": 0.0, "shaping_reward_total": 0.0, "training_reward_total": 0.0, "observation_mode": "connectivity", "draw_mask": "productive", "draw_noop_commands": 0, "draw_change_commands": 21, "draw_distinct_pairs": 21, "command_completed": true, "accepted": true, "request": null, "trip_reward": 0, "shaping_reward": 0.0, "terminated": true, "truncated": false, "deterministic": false}, {"trips": 2, "seconds": 140.75, "rejected_actions": 2, "commands": 141, "scenario_seed": 2002, "city": "LosAngeles", "seed_attempt": 1, "seed_cycle": 1, "mean_car_wait": 0.0006144393241167436, "max_car_wait": 0.7000000000000001, "action_counts": {"draw": 32, "wait": 108, "upgrade": 1}, "reward_mode": "trips", "reward_schema": "trip-delta-v1", "connected_houses": 1, "connection_potential": 0.0, "trip_reward_total": 2.0, "shaping_reward_total": 0.0, "training_reward_total": 2.0, "observation_mode": "connectivity", "draw_mask": "productive", "draw_noop_commands": 5, "draw_change_commands": 27, "draw_distinct_pairs": 30, "command_completed": true, "accepted": true, "request": {"command": "upgrade", "choice": 0}, "trip_reward": 0, "shaping_reward": 0.0, "terminated": true, "truncated": false, "deterministic": false}, {"trips": 0, "seconds": 139.65, "rejected_actions": 5, "commands": 140, "scenario_seed": 2003, "city": "LosAngeles", "seed_attempt": 1, "seed_cycle": 1, "mean_car_wait": 0.0, "max_car_wait": 0.0, "action_counts": {"draw": 41, "wait": 99}, "reward_mode": "trips", "reward_schema": "trip-delta-v1", "connected_houses": 0, "connection_potential": 0.0, "trip_reward_total": 0.0, "shaping_reward_total": 0.0, "training_reward_total": 0.0, "observation_mode": "connectivity", "draw_mask": "productive", "draw_noop_commands": 1, "draw_change_commands": 40, "draw_distinct_pairs": 29, "command_completed": true, "accepted": true, "request": {"command": "draw", "x": 20, "y": 10, "toX": 10, "toY": 10}, "trip_reward": 0, "shaping_reward": 0.0, "terminated": true, "truncated": false, "deterministic": false}, {"trips": 0, "seconds": 144.8, "rejected_actions": 0, "commands": 145, "scenario_seed": 2004, "city": "LosAngeles", "seed_attempt": 1, "seed_cycle": 1, "mean_car_wait": 0.0, "max_car_wait": 0.0, "action_counts": {"draw": 34, "wait": 110, "upgrade": 1}, "reward_mode": "trips", "reward_schema": "trip-delta-v1", "connected_houses": 0, "connection_potential": 0.0, "trip_reward_total": 0.0, "shaping_reward_total": 0.0, "training_reward_total": 0.0, "observation_mode": "connectivity", "draw_mask": "productive", "draw_noop_commands": 1, "draw_change_commands": 33, "draw_distinct_pairs": 32, "command_completed": true, "accepted": true, "request": {"command": "draw", "x": 10, "y": 10, "toX": 14, "toY": 13}, "trip_reward": 0, "shaping_reward": 0.0, "terminated": true, "truncated": false, "deterministic": false}], "after": [{"trips": 12, "seconds": 232.4, "rejected_actions": 0, "commands": 233, "scenario_seed": 2000, "city": "LosAngeles", "seed_attempt": 1, "seed_cycle": 1, "mean_car_wait": 0.12981434864694757, "max_car_wait": 11.150000000000023, "action_counts": {"draw": 60, "driveway": 19, "wait": 153, "upgrade": 1}, "reward_mode": "trips", "reward_schema": "trip-delta-v1", "connected_houses": 5, "connection_potential": 0.0, "trip_reward_total": 12.0, "shaping_reward_total": 0.0, "training_reward_total": 12.0, "observation_mode": "connectivity", "draw_mask": "productive", "draw_noop_commands": 0, "draw_change_commands": 60, "draw_distinct_pairs": 58, "command_completed": true, "accepted": true, "request": null, "trip_reward": 1, "shaping_reward": 0.0, "terminated": true, "truncated": false, "deterministic": false}, {"trips": 4, "seconds": 184.65, "rejected_actions": 0, "commands": 185, "scenario_seed": 2001, "city": "LosAngeles", "seed_attempt": 1, "seed_cycle": 1, "mean_car_wait": 0.00021286660359508042, "max_car_wait": 0.3, "action_counts": {"draw": 51, "driveway": 22, "wait": 111, "upgrade": 1}, "reward_mode": "trips", "reward_schema": "trip-delta-v1", "connected_houses": 1, "connection_potential": 0.0, "trip_reward_total": 4.0, "shaping_reward_total": 0.0, "training_reward_total": 4.0, "observation_mode": "connectivity", "draw_mask": "productive", "draw_noop_commands": 0, "draw_change_commands": 51, "draw_distinct_pairs": 51, "command_completed": true, "accepted": true, "request": null, "trip_reward": 0, "shaping_reward": 0.0, "terminated": true, "truncated": false, "deterministic": false}, {"trips": 0, "seconds": 140.75, "rejected_actions": 0, "commands": 141, "scenario_seed": 2002, "city": "LosAngeles", "seed_attempt": 1, "seed_cycle": 1, "mean_car_wait": 0.0016513056835637484, "max_car_wait": 1.0500000000000003, "action_counts": {"driveway": 2, "draw": 28, "wait": 110, "upgrade": 1}, "reward_mode": "trips", "reward_schema": "trip-delta-v1", "connected_houses": 2, "connection_potential": 0.0, "trip_reward_total": 0.0, "shaping_reward_total": 0.0, "training_reward_total": 0.0, "observation_mode": "connectivity", "draw_mask": "productive", "draw_noop_commands": 1, "draw_change_commands": 27, "draw_distinct_pairs": 27, "command_completed": true, "accepted": true, "request": {"command": "upgrade", "choice": 0}, "trip_reward": 0, "shaping_reward": 0.0, "terminated": true, "truncated": false, "deterministic": false}, {"trips": 12, "seconds": 209.20000000000002, "rejected_actions": 2, "commands": 210, "scenario_seed": 2003, "city": "LosAngeles", "seed_attempt": 1, "seed_cycle": 1, "mean_car_wait": 0.015892053973013492, "max_car_wait": 4.149999999999993, "action_counts": {"draw": 104, "wait": 92, "driveway": 13, "upgrade": 1}, "reward_mode": "trips", "reward_schema": "trip-delta-v1", "connected_houses": 4, "connection_potential": 0.0, "trip_reward_total": 12.0, "shaping_reward_total": 0.0, "training_reward_total": 12.0, "observation_mode": "connectivity", "draw_mask": "productive", "draw_noop_commands": 0, "draw_change_commands": 104, "draw_distinct_pairs": 58, "command_completed": true, "accepted": true, "request": null, "trip_reward": 0, "shaping_reward": 0.0, "terminated": true, "truncated": false, "deterministic": false}, {"trips": 0, "seconds": 144.8, "rejected_actions": 4, "commands": 145, "scenario_seed": 2004, "city": "LosAngeles", "seed_attempt": 1, "seed_cycle": 1, "mean_car_wait": 0.0, "max_car_wait": 0.0, "action_counts": {"draw": 55, "wait": 87, "driveway": 2, "upgrade": 1}, "reward_mode": "trips", "reward_schema": "trip-delta-v1", "connected_houses": 0, "connection_potential": 0.0, "trip_reward_total": 0.0, "shaping_reward_total": 0.0, "training_reward_total": 0.0, "observation_mode": "connectivity", "draw_mask": "productive", "draw_noop_commands": 1, "draw_change_commands": 54, "draw_distinct_pairs": 32, "command_completed": true, "accepted": true, "request": {"command": "draw", "x": 22, "y": 12, "toX": 14, "toY": 13}, "trip_reward": 0, "shaping_reward": 0.0, "terminated": true, "truncated": false, "deterministic": false}], "deterministic_after": [{"trips": 0, "seconds": 140.1, "rejected_actions": 0, "commands": 141, "scenario_seed": 2000, "city": "LosAngeles", "seed_attempt": 1, "seed_cycle": 1, "mean_car_wait": 0.0015243902439024393, "max_car_wait": 1.0000000000000002, "action_counts": {"draw": 18, "wait": 122, "upgrade": 1}, "reward_mode": "trips", "reward_schema": "trip-delta-v1", "connected_houses": 2, "connection_potential": 0.0, "trip_reward_total": 0.0, "shaping_reward_total": 0.0, "training_reward_total": 0.0, "observation_mode": "connectivity", "draw_mask": "productive", "draw_noop_commands": 0, "draw_change_commands": 18, "draw_distinct_pairs": 18, "command_completed": true, "accepted": true, "request": {"command": "upgrade", "choice": 0}, "trip_reward": 0, "shaping_reward": 0.0, "terminated": true, "truncated": false, "deterministic": true}, {"trips": 0, "seconds": 139.55, "rejected_actions": 0, "commands": 140, "scenario_seed": 2001, "city": "LosAngeles", "seed_attempt": 1, "seed_cycle": 1, "mean_car_wait": 0.0, "max_car_wait": 0.0, "action_counts": {"draw": 12, "wait": 128}, "reward_mode": "trips", "reward_schema": "trip-delta-v1", "connected_houses": 0, "connection_potential": 0.0, "trip_reward_total": 0.0, "shaping_reward_total": 0.0, "training_reward_total": 0.0, "observation_mode": "connectivity", "draw_mask": "productive", "draw_noop_commands": 0, "draw_change_commands": 12, "draw_distinct_pairs": 12, "command_completed": true, "accepted": true, "request": null, "trip_reward": 0, "shaping_reward": 0.0, "terminated": true, "truncated": false, "deterministic": true}, {"trips": 0, "seconds": 140.75, "rejected_actions": 0, "commands": 141, "scenario_seed": 2002, "city": "LosAngeles", "seed_attempt": 1, "seed_cycle": 1, "mean_car_wait": 0.001459293394777266, "max_car_wait": 1.0500000000000003, "action_counts": {"draw": 5, "wait": 135, "upgrade": 1}, "reward_mode": "trips", "reward_schema": "trip-delta-v1", "connected_houses": 1, "connection_potential": 0.0, "trip_reward_total": 0.0, "shaping_reward_total": 0.0, "training_reward_total": 0.0, "observation_mode": "connectivity", "draw_mask": "productive", "draw_noop_commands": 0, "draw_change_commands": 5, "draw_distinct_pairs": 5, "command_completed": true, "accepted": true, "request": {"command": "upgrade", "choice": 0}, "trip_reward": 0, "shaping_reward": 0.0, "terminated": true, "truncated": false, "deterministic": true}, {"trips": 6, "seconds": 193.85000000000002, "rejected_actions": 0, "commands": 194, "scenario_seed": 2003, "city": "LosAngeles", "seed_attempt": 1, "seed_cycle": 1, "mean_car_wait": 0.02242046431642302, "max_car_wait": 5.349999999999989, "action_counts": {"draw": 33, "wait": 160, "upgrade": 1}, "reward_mode": "trips", "reward_schema": "trip-delta-v1", "connected_houses": 1, "connection_potential": 0.0, "trip_reward_total": 6.0, "shaping_reward_total": 0.0, "training_reward_total": 6.0, "observation_mode": "connectivity", "draw_mask": "productive", "draw_noop_commands": 0, "draw_change_commands": 33, "draw_distinct_pairs": 26, "command_completed": true, "accepted": true, "request": null, "trip_reward": 0, "shaping_reward": 0.0, "terminated": true, "truncated": false, "deterministic": true}, {"trips": 0, "seconds": 144.8, "rejected_actions": 0, "commands": 145, "scenario_seed": 2004, "city": "LosAngeles", "seed_attempt": 1, "seed_cycle": 1, "mean_car_wait": 0.0, "max_car_wait": 0.0, "action_counts": {"draw": 11, "wait": 134}, "reward_mode": "trips", "reward_schema": "trip-delta-v1", "connected_houses": 0, "connection_potential": 0.0, "trip_reward_total": 0.0, "shaping_reward_total": 0.0, "training_reward_total": 0.0, "observation_mode": "connectivity", "draw_mask": "productive", "draw_noop_commands": 0, "draw_change_commands": 11, "draw_distinct_pairs": 11, "command_completed": true, "accepted": true, "request": null, "trip_reward": 0, "shaping_reward": 0.0, "terminated": true, "truncated": false, "deterministic": true}], "workers": 2, "reward_mode": "connectivity", "reward_schema": "trip-plus-connectivity-potential-v1", "seed_schedule": "random", "episodes_per_seed": 1, "best_replay": "C:\\Users\\moham\\mini_motorways\\output\\training\\pilot-productive-20261028\\best-game.json", "evaluation_skipped": false, "target_score": 1000, "target_met": false}
+Artifacts: C:\Users\moham\mini_motorways\output\training\pilot-productive-20261028

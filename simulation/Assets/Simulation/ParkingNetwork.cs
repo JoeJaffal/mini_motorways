@@ -6,6 +6,11 @@ namespace MotorwaysSim
     {
         struct ParkingBayGeometry
         {public Point OuterStart,OuterEnd,InnerStart,InnerEnd,OuterBay,InnerBay,Center;}
+        public Point ParkingAccessPoint(Building shop,Cell access,bool entering)
+        {
+            var step=Directions[AccessDirection(shop,access)];var outward=new Point(step.X,step.Y);
+            return new Point(access)+outward*.5+(entering?outward*-1:outward).Right*Rules.LaneOffset;
+        }
 
         void ParkingAxes(Building shop,out Point axis,out Point side,out Point diagonal,out Point anchor)
         {
@@ -37,8 +42,30 @@ namespace MotorwaysSim
         Lane ParkingCurve(Building shop,string key,Point a,Point b,Point c,Point d,bool release=false,bool straight=false)
         {
             var lane=CreateLane(straight?new[]{a,d}:Cubic(a,b,c,d,10),shop.Entrance,shop.Entrance,shop.Entrance,0,0);
-            lane.Key="carpark:"+shop.CarparkId+":"+key;lane.IsParking=true;lane.ReleasesParking=release;lane.SpeedLimit=Rules.CarSpeed*.6;
+            lane.Key="carpark:"+shop.CarparkId+":"+key;lane.Chunk="carpark:"+shop.CarparkId+":"+ParkingChunkName(key);lane.CarparkId=shop.CarparkId;lane.IsParking=true;lane.ReleasesParking=release;
+            lane.SpeedLimit=Rules.Version==GameVersion.OriginalReference?Rules.CarSpeed*OriginalParkingLaneFactor(shop,key):Rules.CarSpeed*.6;
             return lane;
+        }
+        // The original's GetLaneSpeed applied to its carpark lanes (CarparkModel): default speed times the turn factor
+        // (45 degrees: 1, sharp/U-turn: 1/3) times the intersection factor 0.5 when the lane leads to more than one lane.
+        double OriginalParkingLaneFactor(Building shop,string key)
+        {
+            bool left=false,right=false;
+            foreach(var access in Accesses(shop)){int d=AccessDirection(shop,access);if(d==4||d==6)left=true;else right=true;}
+            string[] parts=key.Split(':');int index=parts.Length>1&&int.TryParse(parts[1],out int value)?value:-1;int last=shop.Parking.Length-1;
+            switch(parts[0])
+            {
+                case "entrance":return .5;                                  // straight, then bay entry or through aisle
+                case "exit":return 1;                                       // straight onto the road
+                case "turn-first":case "turn-last":return 1.0/3;            // U-turn at a lot end
+                case "outer":return index==last&&!right?1:.5;               // straight; next bay's entry and through lane
+                case "inner":return index==0&&!left?1:.5;
+                case "bay-outer-in":case "bay-inner-in":return 1;           // 45-degree turn into the bay
+                case "bay-park":case "bay-leave":return 1;                  // straight across the bay
+                case "bay-outer-out":return 1.0/3*(index==last&&!right?1:.5); // sharp turn onto the aisle
+                case "bay-inner-out":return 1.0/3*(index==0&&!left?1:.5);
+                default:return .6;
+            }
         }
         Lane ParkingThroughBay(Building shop,int index,bool outer)
         {
@@ -50,14 +77,15 @@ namespace MotorwaysSim
         {
             ParkingAxes(shop,out var axis,out var side,out _,out _);var bend=(axis*-1-side).Unit;
             bool left=AccessDirection(shop,access)==4||AccessDirection(shop,access)==6;
-            var bay=ParkingBay(shop,left?0:shop.Parking.Length-1);var end=new Point(access);
+            var bay=ParkingBay(shop,left?0:shop.Parking.Length-1);var end=ParkingAccessPoint(shop,access,entering);
             string key=(entering?"entrance:":"exit:")+(left?"first":"last");
-            // Surface routes currently end at the entrance centre; these short connectors
-            // join that existing endpoint to the recovered internal lane graph.
-            if(entering)return left?ParkingCurve(shop,key,end,end+axis*.1,bay.OuterStart+bend*.05,bay.OuterStart):
+            // Join the surface boundary to the physical internal circulation lanes.
+            Lane connector;
+            if(entering)connector=left?ParkingCurve(shop,key,end,end+axis*.1,bay.OuterStart+bend*.05,bay.OuterStart):
                 ParkingCurve(shop,key,end,end-axis*.1,bay.InnerStart-bend*.1,bay.InnerStart);
-            return left?ParkingCurve(shop,key,bay.InnerEnd,bay.InnerEnd-axis*.5,end+axis*.375,end):
+            else connector=left?ParkingCurve(shop,key,bay.InnerEnd,bay.InnerEnd-axis*.5,end+axis*.375,end):
                 ParkingCurve(shop,key,bay.OuterEnd,bay.OuterEnd+axis*.5,end-axis*.375,end);
+            connector.Tile=access;connector.Previous=access;connector.Next=access;return connector;
         }
         public List<Lane> ParkingRoute(Building shop,Cell access,int slot,bool leaving=false)
         {
@@ -90,6 +118,15 @@ namespace MotorwaysSim
         }
         public List<Lane> ParkingDriveThrough(Building shop,Cell access)
         {
+            if(Rules.Version==GameVersion.OriginalReference)
+            {
+                // Original ParkVehiclesProcess: a car finding no free bay paths home from the entrance over every lane,
+                // carpark lanes at double cost, so the cheapest way out crosses the bay nearest the entrance (behind the
+                // car parked there) rather than lapping the lot.
+                bool near=AccessDirection(shop,access)==4||AccessDirection(shop,access)==6;int slot=near?0:shop.Parking.Length-1;
+                var through=ParkingRoute(shop,access,slot);through[0].DeliversDriveThrough=true;
+                through.AddRange(ParkingRoute(shop,access,slot,true));return through;
+            }
             ParkingAxes(shop,out var axis,out var side,out _,out _);var bend=(axis*-1-side).Unit;
             bool left=AccessDirection(shop,access)==4||AccessDirection(shop,access)==6;
             var lanes=new List<Lane>{ParkingConnector(shop,access,true)};lanes[0].DeliversDriveThrough=true;

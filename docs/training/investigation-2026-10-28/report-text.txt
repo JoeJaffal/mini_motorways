@@ -1,0 +1,360 @@
+Traffic Lab / completed investigation / 28 October 2026
+1
+Model training investigation
+Authorized three-hour window | 28 October 2026 | Branch mohammad
+Stronger construction, with a limited fresh-map learning gain.
+The old primitive policy averaged 0.6 trips on ten fresh maps. The planner-aided frozen initial policy
+averaged 119.1; the selected trained goal policy averaged 125.7. The secondary sampled-policy means
+were 130.4 and 130.4. Most of the change from the old agent comes from the new route-planning/action
+abstraction and informed starting policy. The initial-versus-trained comparison is the relevant check for
+learning; one small experiment cannot establish robust convergence.
+Measurement
+Outcome
+Best recorded primitive training game
+126 trips
+Best recorded planner-aided training game
+356 trips
+Planner-aided frozen start, development mean
+162.6 trips (5 maps)
+Selected planner-aided checkpoint, development
+mean
+162.6 trips (5 maps)
+Target
+1,000 actual completed trips; not reached
+Rules
+OriginalReference; normal finite materials; future schedules
+hidden
+What counts as learning?
+A better hand-written prior or a pathfinder can improve scores before any training. Learning means the
+updated policy improves on its own frozen starting policy on separate maps. This report shows those
+baselines explicitly. A single impressive replay or increasing shaped reward is insufficient.
+The original all-tools agent remains available. The new goal agent is a separate restricted, planner-aided experiment.
+OriginalReference is a reconstruction, not a validated exact copy of the commercial game. Checkpoints and binaries stay local;
+small evidence and report sources are archived in Git.
+
+
+Traffic Lab / completed investigation / 28 October 2026
+2
+1 / What was wrong?
+The main difficulty was coordinating useful road construction, not an artificial game-per-second limit.
+Pilot
+Selections
+Best training
+Final deterministic mean
+Legacy control
+65,536
+34
+0.0
+Connectivity inputs
+65,536
+33
+1.4
+Spatial residual
+63,490
+39
+0.0
+Productive draw mask
+65,536
+65
+1.2
+The input-only pilot preserved starting action probabilities and compared against the same old weights with
+a fresh optimizer. Adding explicit missing connections did not establish an improvement. Early logs showed
+about 89% of draws made no measured change to road-tile/connection arrays, motivating endpoint
+diagnostics. Driveway-only changes or pending-removal cancellation are outside that metric; it is not a
+complete no-effect test.
+Five development seeds, one run per configuration. Spatial residual stopped at its 18-minute cap (63,490 selections); others
+reached 65,536. Sampled and deterministic policies differ. These are engineering pilots, not replicated significance tests or speed
+benchmarks. Shared CPU load and validation overhead affect timings.
+
+
+Traffic Lab / completed investigation / 28 October 2026
+3
+2 / Better inputs and masks
+These changes help the policy understand the current map without changing the game rules.
+Change
+What it does / why
+52-channel option
+Adds unconnected houses and destinations without connected matching-color
+supply to the original 50 map channels. Binary supply is not a capacity guarantee.
+Explicit checkpoint adaptation
+Copies old weights and zero-fills the new input weights; tests verify initial action
+probabilities match. A fresh optimizer is explicit.
+Spatial residual option
+Shared per-cell scoring supplements global coordinate logits; zero initialization
+preserves the original starting policy.
+Productive draw mask
+Removes endpoints only when a read-only simulator query proves a stroke cannot
+change the road network. Possible changes may still be rejected by normal rules.
+Immediate draw diagnostics
+Counts unchanged road-tile/connection arrays and distinct endpoint pairs before
+advancing time. Other state changes are outside this measurement.
+Development checkpoints
+Periodically freezes inference on seeds 2000-2004; logs actual trips and saves
+validation-best separately from the best training replay.
+Reward remains tied to actual delivery
+The primitive agent uses completed-trip delta plus discounted potential shaping: reward = new trips +
+gamma * next potential - previous potential. Potential is 0.25 times the number of usefully connected
+houses, capped at eight. True game failure resets potential to zero; external time limits retain it for
+bootstrapping. Breaking and rebuilding a connection cannot repeatedly collect net discounted credit.
+All primitive tools remain exposed. Structured inputs exclude future schedules and RNG state. Cells beyond
+the current playable map are hidden. Every experimental input/action schema is named explicitly so
+incompatible checkpoints are not silently reused.
+Original parameters: 450,610. Connectivity inputs: 450,898. Informed spatial policy: 453,484. Parameter counts describe
+numerical weights, not games or rules. The original policy has no recurrent memory.
+
+
+Traffic Lab / completed investigation / 28 October 2026
+4
+3 / Informed actions and credit
+A useful starting bias improved behavior, but that improvement must not be attributed to PPO.
+The informed spatial variant initially favors current house-driveway endpoints, matching destination
+endpoints, waiting when no relevant missing supply remains, and offered upgrades. This is an engineered
+prior. It does not compute routes. The prior is trainable and the spatial residual can adjust cell scores.
+Its frozen deterministic development scores were 0, 0, 8, 33, 22: mean 12.6. The short-credit run used
+aggregate rollout 256 and GAE lambda 0.95. The longer-credit arm started from the exact same checkpoint,
+with rollout 1,024 and lambda 0.99. Both used gamma 0.999, four workers, the same reward and productive
+masks.
+Arm
+Final deterministic mean
+Best training
+Short credit
+12.0
+110
+Longer credit
+11.4
+126
+Two interacting credit changes were tested together, not an isolated one-factor ablation. The runs temporarily shared eight
+simulator processes, so wall speeds are not comparable hardware benchmarks. Selection includes frozen initial and final
+checkpoints, not only periodic validation-best.
+
+
+Traffic Lab / completed investigation / 28 October 2026
+5
+4 / A separate connection agent
+The neural policy chooses which connection to build; a visible-state router handles the individual strokes.
+Stage
+What happens
+1. Observe
+Read the current map, materials, houses, destination entrances, colors, demand, congestion
+and connectivity. Never read future spawns.
+2. Propose
+A deterministic shortest-cost router proposes current matching house/destination connections
+using ordinary road tiles and available stock.
+3. Choose
+Maskable PPO scores up to 512 candidate connections, two upgrade choices and waiting.
+Shared weights score candidate rows rather than memorizing coordinate IDs.
+4. Execute
+Compress the chosen route into ordinary straight strokes. Each completed command advances
+normal simulation time. Waiting executes up to five ordinary one-second commands.
+5. Learn
+Collect actual trip changes plus bounded potential shaping, estimate future returns, and update
+policy/critic weights with PPO.
+6. Check
+Freeze the policy on separate development maps and compare against its own frozen initial
+checkpoint.
+What it sees
+Each candidate has 25 values: home/destination coordinates and displacement, color, new-road and route
+costs, demand, missing home/shop supply, existing-road fraction, traffic/waiting, overcrowding, new water
+tiles and validity. Forty-two globals summarize materials, offers, current clock/week, trips, supply and
+congestion. Up to 512 candidates are supported; overflow raises an error instead of silently dropping
+entries.
+What it cannot do in this experiment
+It builds road/bridge strokes, waits and chooses upgrades. Motorways, roundabouts, traffic lights,
+demolition and manual driveway edits are excluded. This is deliberately a different action abstraction; it
+does not establish that the original full-tools model learned those skills.
+10,334 trainable parameters. Hand-designed initial candidate scores prefer low cost, demand and missing supply. PPO learning
+rate 0.0001 (final rate pilot: 0.001), entropy 0.005, gamma/lambda 0.99 per macro decision, rollout 256, four epochs.
+Variable-duration macro actions change the discounting problem. The router is assistance, not learned route construction or an
+optimal planner.
+
+
+Traffic Lab / completed investigation / 28 October 2026
+6
+5 / Did the connection agent learn?
+Training results and frozen validation answer different questions.
+Run
+Wall
+minutes
+Macro decisions
+Games
+Best training
+Final dev mean
+Scale 1
+25.0
+9,450
+72
+304
+162.6
+Scale .01
+25.0
+8,508
+63
+300
+162.6
+Choice only
+25.0
+2,586
+70
+296
+162.6
+Choice + rate .001
+25.0
+3,556
+91
+356
+128.0
+All four arms began with the same informed weights and a deterministic development mean of 162.6 trips.
+The best trained development candidate averaged 162.6. Operational selection chose
+output\training\goal-hybrid-20261028\initial.zip. The frozen initial policy was eligible for selection and wins
+exact ties. Actor and critic weights were verified to change; this alone is not evidence of better play. Reward
+scaling addressed numerical loss balance; choice-only timing removed policy calls with no alternative
+action; the last arm increased learning rate tenfold. These are adaptive engineering pilots, not replicated
+causal estimates.
+Why games per second changed
+There is no deliberate 0.8-games/second limit. Each game lasts a different number of simulated seconds
+and requires a different amount of routing, serialization and policy work. Better games can take longer to
+finish. Workers collect experience for one shared policy; they are not separate independently learning
+models. Path planning adds CPU work, while macro decisions reduce the number of neural choices per
+game.
+These arms start from the same initial checkpoint; they are not consecutive training stages. Scaled rewards multiply numerical
+learning rewards by 0.01, never actual scores. Choice-only timing folds forced waits into the preceding decision and uses a
+separately versioned macro reward. Its decision counts are not comparable to five-second-wait counts. Periodic validation
+consumes learner time; initial/final evaluation is additional. Shared CPU load and changing seed mixes limit comparisons of wall
+speed and training means.
+
+
+Traffic Lab / completed investigation / 28 October 2026
+7
+6 / Fresh-map final test
+Candidate selection was recorded before examining seeds 3000-3009. No subsequent optimization uses
+these results.
+Frozen policy
+Mean
+Median
+Best
+Old primitive PPO
+0.6
+0.0
+4
+Frozen informed primitive
+23.4
+7.5
+93
+Selected trained primitive
+20.7
+12.5
+92
+Frozen initial goal policy
+119.1
+105.5
+270
+Selected trained goal policy
+125.7
+127.0
+270
+Compared with its timing-matched frozen initial policy, the trained goal candidate changed the paired mean
+by +6.6 trips: Across the ten maps, 1 improved, 0 worsened and 9 tied. Checkpoints were chosen using
+development maps before these results were opened. No subsequent training or selection used this test
+set. The old-versus-goal comparison includes engineered route planning and a different action space; it is
+not a measure of learning alone.
+Ten paired scenario seeds, deterministic inference, 3,600 simulated-second external cap, normal failure rules. Frozen model
+parameters were checked before/after inference and remained unchanged. Training and test city are both Los Angeles; seed
+separation does not establish transfer to other cities. One training replicate and ten test maps are not evidence of robust
+generalization or guaranteed future improvement.
+
+
+Traffic Lab / completed investigation / 28 October 2026
+8
+7 / Sampled-policy check
+Small probability changes can matter even when the most likely action stays the same.
+Sampled frozen policy
+Mean
+Median
+Best
+Initial goal
+130.4
+136.0
+235
+Trained goal
+130.4
+136.0
+235
+The frozen initial goal policy averaged 130.4 trips and the selected trained policy 130.4, a change of +0.0.
+This secondary test samples one trajectory per scenario with Torch seed 43 plus scenario offset, reset after
+checkpoint loading and before each game. Scenario seeds are paired, but action histories can consume
+random numbers differently. One sampled trajectory per map is noisy and does not estimate expected
+performance precisely. It was predeclared before final testing and was not used to select a checkpoint or
+restart training.
+Greedy and sampled play answer different questions
+Deterministic evaluation always chooses the currently most likely legal action. Sampled evaluation draws
+an action from the policy probabilities, as training does. Neither a single sampled win nor an unchanged
+greedy score proves the whole learning process is successful or broken. Both should be compared against
+the same starting policy and separate maps.
+Each policy gets one sampled game on each of ten scenario seeds, with a 3,600-second cap. The requested RNG seed is
+applied after loading the checkpoint; reproducibility was checked by repeating a sampled development game and comparing
+exact ordinary-command recordings. These are inference-only tests: weights remain unchanged.
+
+
+Traffic Lab / completed investigation / 28 October 2026
+9
+8 / The best recording
+A replay is an exact action history, not proof that the final checkpoint will reproduce that score.
+Recorded game
+Value
+Source
+hybrid-training
+Seed / actual trips
+1075 / 356
+Simulated duration / ordinary commands
+971.65s / 972
+Recording end
+Normal failure
+Verification
+Exact headless/native replay; see final-best-native.log and
+final-best-headless.txt
+Best-game ranking uses actual trips, then survival time, then fewer rejected actions. An episode can span
+PPO updates and uses sampled actions during training. The exact command recording preserves that
+game; the checkpoint saved at its end is only a policy snapshot.
+Planner-aided and heuristic replays are labeled separately in the native viewer. No material grants, debug construction or future
+schedule are used. Native/headless agreement validates replay determinism for the tested recordings, not perfect fidelity to the
+commercial game.
+
+
+Traffic Lab / completed investigation / 28 October 2026
+10
+9 / What to do next
+Use the measured checkpoint and preserve the comparison, rather than blindly extending an unchanged
+run.
+Preserve both the frozen initial baseline and the development-selected checkpoint. Use the separate goal
+trainer for further planner-aided experiments and keep the original all-tools trainer as a baseline. Do not
+assume that more hours on the same seed, more parameters or a higher training best will solve transfer. A
+next investigation should remove proven unchanged strokes from the router, test capacity-aware route
+alternatives and meaningful decision credit, and repeat whole training runs with different
+optimization/sampling seeds and new validation/test partitions. No further run is automatically scheduled.
+Run and view
+Open PowerShell in C:\Users\moham\mini_motorways. The documented commands in
+training/QUICKSTART.md use the separate goal trainer for planner-aided experiments and the existing
+start_training.ps1 for the primitive policy. Every new run needs a fresh output folder. Ctrl+C saves and
+stops; a stop-file also supports graceful completion.
+To inspect the best recording: .venv/Scripts/python.exe training/watch_best.py --run
+output/training/goal-rate-20261028. Add --play to begin paused at the start instead of loading the final
+map.
+Durable evidence and boundaries
+The archive contains run configs, source snapshots, summaries, progress/episode logs, frozen evaluations,
+exact best recordings, selection protocol and SHA-256 manifest. Model weights and generated game
+binaries remain local. GitHub contains the code, small evidence and PDF on mohammad; main remains the
+playground.
+Relevant checks covered simulator invariants, structured observation boundaries, input migration, actual
+gradient changes, checkpoint reloads, parallel workers, reward cancellation, no-op masks, shutdown and
+cross-runtime ordinary-command replays. The rebuilt native player passed the simulator check suite. Full
+test outcomes and any command corrections are recorded in the experiment log.
+Open limits
+The experiments are small and adaptive. Development maps influenced engineering decisions, so they are
+not final tests. The planner uses approximate costs, can encounter ordinary rejection rules and redraws
+reused path segments. In five frozen initial development games, 438 of 668 accepted draw commands
+changed no network state; avoiding those is a future executor optimization, not a skill the current policy can
+learn inside a macro. The goal agent has fewer tools than the original policy. City transfer, replicated
+learning gains and the 1,000-trip target remain separate questions.
+Rebuild: docs/training/build_investigation_report.py using bundled Python with Matplotlib, ReportLab, Pillow and pypdf. The
+builder reads only archived files and never trains or runs a game. Historical PDFs are preserved. Primary shaping reference: Ng,
+Harada & Russell (1999), Policy Invariance Under Reward Transformations, ai.stanford.edu/~ang/papers/shaping-icml99.pdf.

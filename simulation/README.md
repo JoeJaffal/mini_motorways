@@ -32,12 +32,12 @@ The selectable cities are Los Angeles, Beijing, Tokyo, Dar es Salaam and London.
 
 Reference lab and Build reference roads are debugging helpers, not trained policies or network-quality guarantees. Original debug construction can exhaust material stock.
 
-Original supports AI command recordings with `--replay <JSON path>` (starts paused).
-Add `--replay-final` to show the final map, or `--replay-verify -batchmode
--nographics` for verification (`TRAFFIC_AI_REPLAY_PASSED` on success). The replay
-panel supports playback, stepping, speed, inspection, reload and exit to manual
-play. Recordings use schema version 1, OriginalReference and SameMap; only normal
-gameplay commands are accepted. No training installation is needed for playback.
+Original plays exact AI command recordings. Launch with
+`--replay <JSON path>` (paused at the beginning), or add `--replay-final` to show
+the final map. Its replay panel provides playback, speed, inspection and reload
+controls. See [the training quickstart](../training/QUICKSTART.md).
+Add `--replay-verify -batchmode -nographics` for windowless verification; success
+logs `TRAFFIC_AI_REPLAY_PASSED`. Recorded games are read-only and use normal rules.
 
 Retiring road links remain visible while committed car routes use them. This
 display does not reconnect roads for new trips or change materials.
@@ -74,7 +74,7 @@ python scripts/verify_five_maps.py
 dotnet run --project simulation/Headless
 ```
 
-The first command builds the Debug host that the Python check uses. There are currently 40 shared suites. Unity builds invoke those same checks. See [Headless/README.md](Headless/README.md) for requests and observations.
+The first command builds the Debug host that the Python check uses. There are currently 95 shared suites. Unity builds invoke those same checks. See [Headless/README.md](Headless/README.md) for requests and observations.
 
 Player startup checks use `--smoke-test --map London -batchmode -nographics`; replace London with another supported enum name. A successful run logs `TRAFFIC_APP_SMOKE_PASSED=<version>/<map>/20` and exits. These checks run 20 simulated seconds with debug roads; they do not inspect rendered pixels or prove exact original behavior.
 

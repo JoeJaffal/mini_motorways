@@ -1,0 +1,66 @@
+{
+  "wall_seconds": 15471.3,
+  "policy_steps": 125924,
+  "completed_commands": 569758,
+  "episodes": 832,
+  "best_training_score": 494,
+  "policy_steps_per_second": 8.1,
+  "commands_per_second": 36.8,
+  "estimated_seconds_remaining": 13328.7,
+  "current_seed": 1023,
+  "seed_attempt": 1,
+  "seed_cycle": 3,
+  "seed_games": 8,
+  "seed_mean_score": 172.5,
+  "seed_best_score": 297,
+  "current_score": 245,
+  "current_game_seconds": 765,
+  "mean_car_wait": 0.34756256044487427,
+  "max_car_wait": 21.000000000000163,
+  "finished": false,
+  "workers": [
+    {
+      "worker": 0,
+      "seed": 1096,
+      "attempt": 1,
+      "score": 141,
+      "game_seconds": 583,
+      "connected_houses": 32,
+      "shaping_reward_total": -0.27750000000000274
+    },
+    {
+      "worker": 1,
+      "seed": 1079,
+      "attempt": 1,
+      "score": 0,
+      "game_seconds": 31,
+      "connected_houses": 2,
+      "shaping_reward_total": 0.4725
+    },
+    {
+      "worker": 2,
+      "seed": 1070,
+      "attempt": 1,
+      "score": 286,
+      "game_seconds": 840,
+      "connected_houses": 41,
+      "shaping_reward_total": -1.4250000000000038
+    },
+    {
+      "worker": 3,
+      "seed": 1023,
+      "attempt": 1,
+      "score": 245,
+      "game_seconds": 765,
+      "connected_houses": 40,
+      "shaping_reward_total": -1.387500000000004
+    }
+  ],
+  "reward_mode": "goal-connectivity",
+  "reward_schema": "goal-trip-potential-gamma099-v1",
+  "connected_houses": 40,
+  "connection_potential": 2.0,
+  "trip_reward_total": 245,
+  "shaping_reward_total": -1.387500000000004,
+  "training_reward_total": 2.436124999999996
+}

@@ -1,0 +1,230 @@
+{
+  "baseRevision": "a65204242056c26c97b22f31fc4392f495429020",
+  "dirtyTree": true,
+  "files": [
+    {
+      "path": "diagnostics/city-diagnostics.cs",
+      "sha256": "ad4767176e42b4a2f0bf3f5d8dbb228bfc6a0be6d4d8049ebceea63094892754"
+    },
+    {
+      "path": "diagnostics/parking-stress.cs",
+      "sha256": "b936ba74a1d0544456857ff57c3a6b5d358ec50728c6daee8ce3ea026858b138"
+    },
+    {
+      "path": "diagnostics/parking-stress.csproj",
+      "sha256": "028bff646bf635cfb084c94e813352bba08b4b2abe96a87b9395fb7b52eee977"
+    },
+    {
+      "path": "diagnostics/verification.py",
+      "sha256": "f1ca43dab54b2e948e09c5ff1d14899d8f8b4ae9216383028880193fb64ef298"
+    },
+    {
+      "path": "generate_reward_fixture.py",
+      "sha256": "de4c78801ccb40539876f1e96ded2e9be1013a2a84684a3fd6cae5fd52ab125e"
+    },
+    {
+      "path": "logs/city-diagnostics-final.jsonl",
+      "sha256": "15f8996f3fa4a8aad477b3ecf47bbcf0ee52c2b6fe224b5873c7b430e2f43935"
+    },
+    {
+      "path": "logs/city-stall-detail.jsonl",
+      "sha256": "1df4a93f3f5cacd22223352624965a527b009f61c9bfe5be462e815d7c02c66f"
+    },
+    {
+      "path": "logs/core-v3.txt",
+      "sha256": "022e1aa16b2a829b5c6db2d5f5c2ce2d0fd47c727cf14483d19ce144776e7858"
+    },
+    {
+      "path": "logs/environment-final.json",
+      "sha256": "e26486fbb9e35e2697aa0bd4677bf9319c822a3be664fac53862206427330f5e"
+    },
+    {
+      "path": "logs/maps-final.json",
+      "sha256": "6c84a84fca276093e07ad74737ea6599409d040a67d447bc6f9f9e8226097465"
+    },
+    {
+      "path": "logs/parking-stall-detail.jsonl",
+      "sha256": "8419b4a5580da369963555237fa2599494ef87b53eae6fb2123f21d8cc718a6e"
+    },
+    {
+      "path": "logs/parking-stall-shared-detail.jsonl",
+      "sha256": "9c4d0172d1019116f68086c1e3403a57b242a5328a625070c87a64aae5363215"
+    },
+    {
+      "path": "logs/parking-stall-shared-v8.jsonl",
+      "sha256": "473ea960c40c539c81a3a67d1b291dfc1305417f892ab65f01fea64ab9b66c03"
+    },
+    {
+      "path": "logs/parking-stress-v1.jsonl",
+      "sha256": "04f96014c1a588c4a161428e7a7737866d4c9f06c3fbe579aad384334e9b58b4"
+    },
+    {
+      "path": "logs/parking-stress-v2.jsonl",
+      "sha256": "a87f7905a88c0e0ea3aa90fbd898d78ac0c8a4211b367cf4251b0c1ae817809e"
+    },
+    {
+      "path": "logs/parking-stress-v3.jsonl",
+      "sha256": "ff37b9b3a52df3a483a0188a0ce3775d3af6f31706eaba9316d7736bd931892b"
+    },
+    {
+      "path": "logs/parking-stress-v4.jsonl",
+      "sha256": "0a5413a58cc756755bfacc05ebeaed78b0a75824de22225632b4b2cbdb421e39"
+    },
+    {
+      "path": "logs/parking-stress-v5.jsonl",
+      "sha256": "5fd357e05b6a53015fe7519de2474d3fb9621d972184c379d03da4202ac7096e"
+    },
+    {
+      "path": "logs/parking-stress-v6.jsonl",
+      "sha256": "6d8a0567ec3cf32b7775e4ab540537be9f9aa55c7bbc7c2f59061dc68729a4ce"
+    },
+    {
+      "path": "logs/parking-stress-v7.jsonl",
+      "sha256": "94f1a4fcbc95e52fbf2345766ccad922f9afeadad4e935bb410c378db85f854a"
+    },
+    {
+      "path": "logs/parking-stress-v8.jsonl",
+      "sha256": "33feab72a447f4fda6f5e69366b7659ca7fb81f8877be578c6d5d9c71db90d19"
+    },
+    {
+      "path": "logs/parking-stress-v9.jsonl",
+      "sha256": "e025d55cbf31abf472c0cad418d5b36800ac5ef785ba247c1dfef8c6dcb8fdc7"
+    },
+    {
+      "path": "logs/rewards-final.json",
+      "sha256": "8868d482e8b70fd570ab723e484a8c50461271229df3180709dd5406fc7b4645"
+    },
+    {
+      "path": "logs/rewards-v2.txt",
+      "sha256": "38c625b75545cce9c5820a533a057634af59dd80b0d19c40b501c986ff7875c5"
+    },
+    {
+      "path": "README.md",
+      "sha256": "0b5a4621bfa49820500d2abd3c64e7898d640ca0e9173795e02fda4918003353"
+    },
+    {
+      "path": "reward-fixture-v2.json",
+      "sha256": "6b752da901263a61778980fb19958c38d2fc45a59f3ff69c62c8e6f7d8b4f935"
+    },
+    {
+      "path": "source/core/AiReplay.cs",
+      "sha256": "c4b42593a74f4e878e3c8cd674056873e9cacf121bfb8206e96b24e8dde62f46"
+    },
+    {
+      "path": "source/core/CityCatalog.cs",
+      "sha256": "3d4107f2d69007a09ae1e899eb0c23688e8cc3d8a3d9f54c8671ec9f3b79316d"
+    },
+    {
+      "path": "source/core/CityDemand.cs",
+      "sha256": "91e52e48228563a6b0ac736d88af03524106d18fdaf102d3d63ee30bc1186118"
+    },
+    {
+      "path": "source/core/CityExpansion.cs",
+      "sha256": "ade8382aa7d9dff869bbb37772f6c9818606a16db721f66d0aeccbb4dae5639d"
+    },
+    {
+      "path": "source/core/DrawDiagnostics.cs",
+      "sha256": "f240eb40128e6e37bf23b6653319bf4b13cf967a09ed5a4c0f2acc0684250584"
+    },
+    {
+      "path": "source/core/GameplayFidelityChecks.cs",
+      "sha256": "aaeade4646cffe9c181b2e10c3f19bc1cc05b9a4711fc5d362f8f14b2c16d1a2"
+    },
+    {
+      "path": "source/core/MaterialInventory.cs",
+      "sha256": "ec49e506709283af896f03d5b1e531d5cf6b1652c7bd3b8e41d13b1ef5de4a0f"
+    },
+    {
+      "path": "source/core/MotorwayNetwork.cs",
+      "sha256": "f482fe5e6e6108622362ec17165f7d014003e87d07e3ea1890cb0289ecb0dab6"
+    },
+    {
+      "path": "source/core/OriginalGameplayTuning.cs",
+      "sha256": "84ddd71b79c2c7a9578357a9ad077c72b13325862bb901c5d9e7de4f544742ed"
+    },
+    {
+      "path": "source/core/OriginalMapProfile.cs",
+      "sha256": "2a5135b265d583fd18174041adb8850755a98d28e0e9a9a1a94ec6984893067e"
+    },
+    {
+      "path": "source/core/OriginalSchedule.cs",
+      "sha256": "496efd16dfc391cdfbd42b156b092b11408f97e58ee80a03614825c41315b96e"
+    },
+    {
+      "path": "source/core/OriginalUpgrades.cs",
+      "sha256": "906e49c1a168f5ec7f3fbd0532d56068ebcf7eda9cb37829b348950926ff917b"
+    },
+    {
+      "path": "source/core/ParkingNetwork.cs",
+      "sha256": "32c82a754bdb39a257814507c5c15e60007d8dde93c1d3acb5ca1c2aeb3525b1"
+    },
+    {
+      "path": "source/core/Railways.cs",
+      "sha256": "132a21199299f0df839961741ba030a03bfcdc9d824fa129aa9754fed13af445"
+    },
+    {
+      "path": "source/core/ReferenceCurves.cs",
+      "sha256": "e96895312d4fb8a27854591d52f7921583d678d134197eeea2bba4614f49ec28"
+    },
+    {
+      "path": "source/core/ReferenceRandom.cs",
+      "sha256": "35d1a5439c0cc8f68cf0970fb0492201fef7dbfb9f8a489e1979b7b4280a4e76"
+    },
+    {
+      "path": "source/core/RetiringRoads.cs",
+      "sha256": "e83e90d522208f0e7d901bff2247318f1b1307552f631e7a95d552a0e3ff28e8"
+    },
+    {
+      "path": "source/core/RoadNetwork.cs",
+      "sha256": "987c08c112045e9291a8b4e4f0fe3ef5928809078dd8348f58f373cb4a470a1e"
+    },
+    {
+      "path": "source/core/SharedCarparks.cs",
+      "sha256": "252e770846e64b7bbd29d1c38b6be8a6d5bdd88450c71b12748d1f642b32acb0"
+    },
+    {
+      "path": "source/core/SimulationChecks.cs",
+      "sha256": "8b21c1e60f9372cc247a0d453481fea0b687f3fd40d552a9e0ff29775193cf4d"
+    },
+    {
+      "path": "source/core/TrafficControl.cs",
+      "sha256": "9819c8ab7e9c4a88ef364123520eb2ec4067c22044525448ec8850703eb98cdb"
+    },
+    {
+      "path": "source/core/TrafficTypes.cs",
+      "sha256": "b147dc3d6fbc9304ed9c97c43ba110dbb56d1c99f38270330608c85cc5b6a09b"
+    },
+    {
+      "path": "source/core/TrafficWorld.cs",
+      "sha256": "8181d52ca7694d33176c6df27d059b46cd801cd0489d7fdc53999c1717af78c9"
+    },
+    {
+      "path": "source/core/TrainTuning.cs",
+      "sha256": "d5a56d191be15a4bdb6184fe10164d89d74163c508690892b7f56ced7e1fd964"
+    },
+    {
+      "path": "source/core/UsefulConnectivity.cs",
+      "sha256": "46b38ae028e120d082a85f66b488734df14ff5a415bf12dc05a2ce5df58b4050"
+    },
+    {
+      "path": "source/export_gameplay_tuning.py",
+      "sha256": "68731eac4f370ec26beb89b4c82d4ed7920ef5dfd38f9c2f9feb81cfb708cef0"
+    },
+    {
+      "path": "source/ProjectSetup.cs",
+      "sha256": "5775ff14bab9cc7bb427a8bb40a714781bdd3b2cba4dfe9edc790582a53e2700"
+    },
+    {
+      "path": "source/test_rewards.py",
+      "sha256": "f57436b27ef0a113bddb668eb7c19abc4f3b5a1f02777d653296efee9a597bce"
+    },
+    {
+      "path": "source/TrafficViewer.cs",
+      "sha256": "20fef75ccabe6046999e96aca37fa1678549b5b36da7878016f5f88a32dd471a"
+    },
+    {
+      "path": "verification-summary.json",
+      "sha256": "b51ce01d760f6b175512721d33a174a59ef07d58e7f87e527819b229181e27af"
+    }
+  ]
+}

@@ -21,6 +21,7 @@ sealed class Request
     public string Scenario { get; set; }
     public string Version { get; set; }
     public bool RequireExact {get;set;}
+    public bool IncludeConnectivity {get;set;}
     public string Variation { get; set; } = "SameMap";
 }
 
@@ -34,6 +35,47 @@ static class Program
 
     public static void Main(string[] args)
     {
+        if(Array.IndexOf(args,"--version")>=0){Console.WriteLine(SimulatorVersion.Value);return;}
+        int scenarioArg=Array.IndexOf(args,"--run-scenario");
+        if(scenarioArg>=0)
+        {
+            CustomScenarioSession session=null;
+            try
+            {
+                if(scenarioArg+1>=args.Length)throw new ArgumentException("Missing scenario file");
+                var definition=JsonSerializer.Deserialize<CustomScenarioDefinition>(System.IO.File.ReadAllText(args[scenarioArg+1]),Json);
+                session=new CustomScenarioSession(definition);var timer=Stopwatch.StartNew();int wallArg=Array.IndexOf(args,"--wall-limit");double wallLimit=wallArg>=0&&wallArg+1<args.Length?double.Parse(args[wallArg+1],System.Globalization.CultureInfo.InvariantCulture):120;
+                while(!session.Complete){if(timer.Elapsed.TotalSeconds>wallLimit)throw new TimeoutException($"Custom scenario exceeded {wallLimit}-second wall limit");session.AdvanceTick();}
+                Console.WriteLine(JsonSerializer.Serialize(new{result="COMPLETED",simulatorVersion=SimulatorVersion.Value,mode="custom-scenario-reconstruction",definition.id,definition.seed,
+                    referenceScore=definition.referenceScore,score=session.World.TripsCompleted,difference=session.World.TripsCompleted-definition.referenceScore,
+                    seconds=session.World.Time,failed=session.World.Failed,events=session.CompletedEvents,totalEvents=definition.events.Length,inventory=session.World.Inventory,
+                    destinations=session.World.Buildings.Where(b=>!b.IsHouse).Select(b=>new{b.Id,b.Color,b.Cell,b.Entrance,b.Demand,b.Reserved,b.Served,b.OvercrowdedFor}),
+                    cars=session.World.Cars.Select(c=>new{c.Id,c.HomeId,c.ShopId,c.Stage,c.At,c.Next,c.Waiting,c.Obstacle,c.ParkingSlot,c.RouteIndex,c.DistanceAlongLane,c.Speed,position=new[]{c.Position.X,c.Position.Y},heading=new[]{c.Heading.X,c.Heading.Y},lanes=c.Lanes.Skip(c.RouteIndex).Select(l=>new{l.Key,l.Length,samples=l.Samples.Select(p=>new[]{p.X,p.Y})}),c.Route,c.ReturnRoute}),audit=session.Audit},Json));
+            }
+            catch(Exception error)
+            {
+                if(session!=null)Console.WriteLine(JsonSerializer.Serialize(new{result="REJECTED_EVENT",simulatorVersion=SimulatorVersion.Value,error=error.Message,
+                    score=session.World.TripsCompleted,seconds=session.World.Time,failed=session.World.Failed,
+                    events=session.CompletedEvents,totalEvents=session.Definition.events.Length,audit=session.Audit},Json));
+                Console.Error.WriteLine(error.Message);Environment.ExitCode=1;
+            }
+            return;
+        }
+        int replayArg=Array.IndexOf(args,"--verify-replay");
+        if(replayArg>=0)
+        {
+            try
+            {
+                if(replayArg+1>=args.Length)throw new ArgumentException("Missing replay file");
+                var recording=JsonSerializer.Deserialize<AiReplayRecording>(System.IO.File.ReadAllText(args[replayArg+1]),Json);
+                var replay=new AiReplaySession(recording);
+                while(!replay.Complete)replay.AdvanceTick();
+                Console.WriteLine(JsonSerializer.Serialize(new {result="PASS",simulatorVersion=SimulatorVersion.Value,recording.seed,score=replay.World.TripsCompleted,
+                    seconds=replay.World.Time,commands=replay.CompletedCommands},Json));
+            }
+            catch(Exception error){Console.Error.WriteLine(error.Message);Environment.ExitCode=1;}
+            return;
+        }
         if(Array.IndexOf(args,"--self-test")>=0){Console.WriteLine(SimulationChecks.Run());return;}
         if(Array.IndexOf(args,"--evaluate-crossings")>=0)
         {
@@ -73,6 +115,7 @@ static class Program
                 ticksPerSecond=ticks/timer.Elapsed.TotalSeconds},Json));return;
         }
         var world=new TrafficWorld(42,false);
+        bool includeConnectivity=false;
         string line;
         while((line=Console.ReadLine())!=null)
         {
@@ -81,6 +124,11 @@ static class Program
                 var request=JsonSerializer.Deserialize<Request>(line,Json)??throw new Exception("Missing request");
                 if(request.Command=="quit")break;
                 int trips=world.TripsCompleted,spending=world.ConstructionSpent;bool accepted=true;
+                if(request.Command=="drawchoices")
+                {
+                    Console.WriteLine(JsonSerializer.Serialize(new {accepted=true,simulatorVersion=SimulatorVersion.Value,terminated=world.Failed,truncated=world.ScenarioRejected,
+                        possibleChanges=world.DrawChangeChoices(new Cell(request.X,request.Y))},Json));continue;
+                }
                 switch(request.Command)
                 {
                     case "reset":
@@ -90,6 +138,7 @@ static class Program
                         if(request.RequireExact)throw new Exception("Exact-original parity is not yet validated. OriginalReference remains under development.");
                         world=new TrafficWorld(request.Seed,false,Rules.ForVersion(version));
                         world.Reset(request.Seed,scenario,Enum.Parse<MapVariation>(request.Variation,true));
+                        includeConnectivity=request.IncludeConnectivity;
                         trips=0;spending=0;break;
                     case "upgrade":accepted=world.ChooseUpgrade(request.Choice);break;
                     case "motorway":accepted=world.AddMotorway(new Cell(request.X,request.Y),new Cell(request.ToX,request.ToY));break;
@@ -109,12 +158,18 @@ static class Program
                     case "observe":break;
                     default:throw new Exception("Commands: reset, build, connect, draw, motorway, editMotorway, removeMotorway, upgrade, reference (debug), step, observe, quit");
                 }
-                Console.WriteLine(JsonSerializer.Serialize(new {accepted,message=world.LastAction,
+                Console.WriteLine(JsonSerializer.Serialize(new {accepted,simulatorVersion=SimulatorVersion.Value,message=world.LastAction,
+                    networkVersion=world.NetworkVersion,
                     tripsDelta=world.TripsCompleted-trips,spendingDelta=world.ConstructionSpent-spending,
-                    terminated=world.Failed,truncated=world.ScenarioRejected,observation=world.Observe()},Json));
+                    terminated=world.Failed,truncated=world.ScenarioRejected,
+                    usefulConnectedHouses=includeConnectivity&&(request.Command=="reset"||request.Command=="step"||request.Command=="observe")
+                        ?(int?)world.UsefulConnectedHouseCount():null,
+                    usefulConnectivity=includeConnectivity&&(request.Command=="reset"||request.Command=="step"||request.Command=="observe")
+                        ?world.UsefulConnectivityState():null,
+                    observation=world.Observe()},Json));
             }
             catch(Exception exception)
-            {Console.WriteLine(JsonSerializer.Serialize(new {error=exception.Message},Json));}
+            {Console.WriteLine(JsonSerializer.Serialize(new {error=exception.Message,simulatorVersion=SimulatorVersion.Value},Json));}
         }
     }
 }

@@ -1,0 +1,50 @@
+{
+  "completed_utc": "2026-10-28T12:57:09.549736+00:00",
+  "wall_seconds": 386.37693880009465,
+  "selection_sha256": "87222294ebf8e8d95082ecebb762d7829892c5a25daa23c3227c6f553736bd94",
+  "results": [
+    {
+      "key": "old-baseline",
+      "checkpoint_sha256": "b5ac4ed6ad2b3a659622627a7b464d9e8cd73ff367c41bab95d72013c2347312",
+      "mean_trips": 0.6,
+      "mode": "deterministic"
+    },
+    {
+      "key": "informed-initial",
+      "checkpoint_sha256": "186e02702f4a1eeb5f3b19c9e7cd9cdf47fc3c63c2f5021a45d3519ef0fc2035",
+      "mean_trips": 23.4,
+      "mode": "deterministic"
+    },
+    {
+      "key": "primitive-selected",
+      "checkpoint_sha256": "e9e432bb5dd1ffd32f29436e759e94ccea33f07040433be6c5539f6cb9057fb2",
+      "mean_trips": 20.7,
+      "mode": "deterministic"
+    },
+    {
+      "key": "goal-initial",
+      "checkpoint_sha256": "460913d2d1aa0f48a450d9ad9f96f19c35fda1f6f63c50b3558af7c18799ec65",
+      "mean_trips": 119.1,
+      "mode": "deterministic"
+    },
+    {
+      "key": "goal-trained",
+      "checkpoint_sha256": "d646a241c575b7a71cd8d24f304795baa6278bed44d54461ac38514fc6b2b91b",
+      "mean_trips": 125.7,
+      "mode": "deterministic"
+    },
+    {
+      "key": "goal-initial-sampled",
+      "checkpoint_sha256": "460913d2d1aa0f48a450d9ad9f96f19c35fda1f6f63c50b3558af7c18799ec65",
+      "mean_trips": 130.4,
+      "mode": "sampled"
+    },
+    {
+      "key": "goal-trained-sampled",
+      "checkpoint_sha256": "d646a241c575b7a71cd8d24f304795baa6278bed44d54461ac38514fc6b2b91b",
+      "mean_trips": 130.4,
+      "mode": "sampled"
+    }
+  ],
+  "note": "Inference only; no optimizer updates or candidate reselection after test results."
+}

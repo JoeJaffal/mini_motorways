@@ -1,0 +1,53 @@
+{
+  "status": "NOT_IDENTICAL",
+  "sampleVideoSeconds": 0.1,
+  "originalFinalScore": 835,
+  "observations": [
+    {
+      "score": 1,
+      "videoInterval": [
+        23.605,
+        23.709
+      ],
+      "estimatedGameInterval": [
+        17.21,
+        17.418
+      ],
+      "simulationBefore": 25.150000000000002,
+      "simulationFactorOnly": 17.55,
+      "simulationFactorAndAverage": 17.45,
+      "clockAndActionTimingNotExact": true
+    },
+    {
+      "score": 2,
+      "videoInterval": [
+        29.811,
+        29.913
+      ],
+      "estimatedGameInterval": [
+        29.622,
+        29.826
+      ],
+      "simulationBefore": 44.550000000000004,
+      "simulationFactorOnly": 32.15,
+      "simulationFactorAndAverage": 32.050000000000004,
+      "clockAndActionTimingNotExact": true
+    },
+    {
+      "score": 3,
+      "videoInterval": [
+        38.608,
+        38.704
+      ],
+      "estimatedGameInterval": [
+        47.215999999999994,
+        47.408
+      ],
+      "simulationBefore": 56.050000000000004,
+      "simulationFactorOnly": 47.150000000000006,
+      "simulationFactorAndAverage": 41.150000000000006,
+      "clockAndActionTimingNotExact": true
+    }
+  ],
+  "limits": "Clock calibrated from weekly/day anchors; visual road edits sampled at1second; original seed/demand phase/parking RNG unavailable. Intervals are HUD first-observation intervals, not exact simulator state."
+}

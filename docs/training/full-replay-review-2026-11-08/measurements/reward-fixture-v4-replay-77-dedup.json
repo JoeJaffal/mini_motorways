@@ -1,0 +1,28 @@
+{
+ "fixture": "docs/training/event-parity-2026-11-08/reward-fixture-v4.json",
+ "engine": "mohammad f7ce005 source (77 suites, after dedup edit), Debug TrafficHost, system .NET 8.0.427",
+ "fixtureResult": {
+  "trips": 13,
+  "terminated": true,
+  "duration": 252.95000000000002,
+  "actions": 253
+ },
+ "currentResult": {
+  "trips": 23,
+  "terminated": false,
+  "truncated": false,
+  "time": 253
+ },
+ "firstDivergence": {
+  "actionIndex": 66,
+  "fixtureAction": {
+   "command": "wait",
+   "ticks": 20,
+   "accepted": true,
+   "afterTrips": 3,
+   "afterTime": 67
+  },
+  "simulatorTrips": 2,
+  "simulatorTime": 67
+ }
+}

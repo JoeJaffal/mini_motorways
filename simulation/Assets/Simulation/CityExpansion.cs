@@ -19,6 +19,7 @@ namespace MotorwaysSim
         {
             get
             {
+                if(customScenarioBounds!=null)return (double[])customScenarioBounds.Clone();
                 if(Rules.Version!=GameVersion.OriginalReference||!Array.Exists(CityCatalog.Maps,m=>m==Scenario))return new double[]{0,0,Width,Height};
                 double size=CityZoom,progress=Math.Max(0,Math.Min(1,(size-Map.Zoom[0])/(Map.Zoom[1]-Map.Zoom[0])));
                 double cx=25.5+startOffsetX*(1-progress),cy=14.5-startOffsetY*(1-progress);
@@ -49,16 +50,24 @@ namespace MotorwaysSim
         void UpdatePlayableBounds()
         {
             if(boundsTime==Time)return;boundsTime=Time;
+            if(customScenarioBounds!=null){Array.Copy(customScenarioBounds,playableBounds,4);return;}
             if(Rules.Version!=GameVersion.OriginalReference||!Array.Exists(CityCatalog.Maps,m=>m==Scenario))
-            {playableBounds[0]=0;playableBounds[1]=0;playableBounds[2]=Width;playableBounds[3]=Height;return;}
+            {playableBounds[0]=0;playableBounds[1]=0;playableBounds[2]=Width;playableBounds[3]=Height;
+                playableTiles[0]=0;playableTiles[1]=0;playableTiles[2]=Width-1;playableTiles[3]=Height-1;return;}
             double size=CityZoom,progress=Math.Max(0,Math.Min(1,(size-Map.Zoom[0])/(Map.Zoom[1]-Map.Zoom[0])));
             double cx=startOffsetX*(1-progress),cy=startOffsetY*(1-progress),halfWidth=size*8/9;
-            // Original whole-tile bounds use ceil(min) and floor(max), with an exclusive upper edge.
-            playableBounds[0]=Math.Max(0,25+Math.Ceiling(cx-halfWidth));
-            playableBounds[2]=Math.Min(Width,25+Math.Floor(cx+halfWidth));
-            playableBounds[1]=Math.Max(0,15-Math.Floor(cy+size/2));
-            playableBounds[3]=Math.Min(Height,15-Math.Ceiling(cy-size/2));
+            // Original whole-tile bounds use ceil(min) and floor(max); RectFixed.Contains includes both edges, so the
+            // last column and the top row (original maximum y) are playable. Canvas y = 14 - original y. The stored
+            // bounds keep an exclusive maximum (observation semantics); the unclamped inclusive tiles feed placement.
+            playableTiles[0]=25+(int)Math.Ceiling(cx-halfWidth);playableTiles[2]=25+(int)Math.Floor(cx+halfWidth);
+            playableTiles[1]=14-(int)Math.Floor(cy+size/2);playableTiles[3]=14-(int)Math.Ceiling(cy-size/2);
+            playableBounds[0]=Math.Max(0,playableTiles[0]);
+            playableBounds[2]=Math.Min(Width,playableTiles[2]+1);
+            playableBounds[1]=Math.Max(0,playableTiles[1]);
+            playableBounds[3]=Math.Min(Height,playableTiles[3]+1);
         }
+        // Inclusive, unclamped canvas tile bounds of the original playable area (OriginalReference cities only).
+        readonly int[] playableTiles=new int[4];
         public bool IsPlayable(Cell c)
         {
             if(!InBounds(c))return false;UpdatePlayableBounds();

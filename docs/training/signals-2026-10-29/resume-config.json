@@ -1,0 +1,61 @@
+{
+  "schema": "visible-route-signals-policy-v3",
+  "congestion_aware": true,
+  "traffic_lights": true,
+  "prior_temperature": 2.0,
+  "planner_aided": true,
+  "replay_source": "hybrid-training",
+  "action_semantics": "choose current house/destination connection or optional congestion bypass; visible router executes ordinary strokes",
+  "restricted_tools": [
+    "road strokes including bridges",
+    "wait up to five seconds",
+    "upgrade choices",
+    "traffic lights at legal junctions"
+  ],
+  "excluded_tools": [
+    "motorways",
+    "roundabouts",
+    "demolition",
+    "manual driveway edits"
+  ],
+  "reward_schema": "goal-trip-potential-gamma099-v1",
+  "reward": "trip delta + gamma099 potential difference per macro decision",
+  "simulator_commit": "f48480f007ad9c93fb3196bef10c1b9a82c7ef28",
+  "dirty": true,
+  "created_utc": "2026-10-28T23:21:28.317892+00:00",
+  "arguments": {
+    "output": "output\\training\\signals-resume-smoke-20261029",
+    "minutes": 0.02,
+    "steps": 8,
+    "workers": 4,
+    "dotnet": "C:\\Users\\moham\\mini_motorways\\tmp\\dotnet\\dotnet.exe",
+    "host_dll": null,
+    "resume": "output\\training\\signals-soft-prior-20261029\\validation-best.zip",
+    "stop_file": null,
+    "reward_scale": 0.01,
+    "skip_forced_wait": false,
+    "congestion_aware": true,
+    "traffic_lights": true,
+    "prior_temperature": 2.0,
+    "eval_seconds": 30,
+    "learning_rate": null,
+    "validation_minutes": 0.0,
+    "eval_count": 1
+  },
+  "training_seeds": [
+    1000,
+    1099
+  ],
+  "validation_seeds": [
+    2000
+  ],
+  "gamma": 0.99,
+  "gae_lambda": 0.99,
+  "learning_rate": 0.0001,
+  "ent_coef": 0.005,
+  "aggregate_rollout": 256,
+  "reward_scale": 0.01,
+  "decision_timing": "five-second-wait-v1",
+  "trainable_parameters": 21107,
+  "initial_validation_mean": 1.0
+}
