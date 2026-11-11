@@ -112,10 +112,10 @@ namespace MotorwaysSim
                     default:
                         var leader=CarById(state.ObstacleCar);if(leader==null)return usable>needed;
                         double distance=state.ObstacleDistance;
-                        // A leader still inside the arbitrated chunk: discount its remaining distance there,
-                        // keeping one vehicle length.
+                        // Original DoesVehicleHaveSpace: a leader on a lane of the chunk being entered has that lane's
+                        // length less one vehicle length taken off its distance, wherever on the lane it is.
                         if(leader.Moving&&inChunk(leader.CurrentLane))
-                            distance-=Math.Max(0,leader.CurrentLane.Length-leader.DistanceAlongLane-Rules.CarLength);
+                            distance-=leader.CurrentLane.Length-Rules.CarLength;
                         usable+=Math.Max(0,distance-Rules.CarLength);
                         if(usable>needed)return true;
                         state=leader;break;
@@ -200,22 +200,23 @@ namespace MotorwaysSim
             }
         }
 
-        // Inbound registration at route assignment: each newly planned arbitrated lane is stamped with
-        // game time plus the path's lane count; retained entries keep their stamp.
+        // Inbound registration at route assignment (original AssignPath -> AddInboundVehicle): each newly planned
+        // arbitrated lane is stamped with game time plus its position in the path (1 for the next lane); retained
+        // entries keep their stamp.
         internal void RegisterRouteForChecks(Vehicle car)=>RegisterRoute(car,false); // fixtures that place cars directly
         void RegisterRoute(Vehicle car,bool keepExisting)
         {
             if(Rules.Version!=GameVersion.OriginalReference)return;
-            var planned=new HashSet<string>();
-            for(int i=car.RouteIndex+1;i<car.Lanes.Count;i++){var lane=car.Lanes[i];if(lane.IsJunction||lane.IsRoundabout||lane.IsParking)planned.Add(lane.Key);}
+            var planned=new Dictionary<string,int>();
+            for(int i=car.RouteIndex+1;i<car.Lanes.Count;i++){var lane=car.Lanes[i];if((lane.IsJunction||lane.IsRoundabout||lane.IsParking)&&!planned.ContainsKey(lane.Key))planned[lane.Key]=i-car.RouteIndex;}
             if(keepExisting)
             {
-                foreach(var key in car.ApproachRegistered.Keys.Where(k=>!planned.Contains(k)).ToArray())car.ApproachRegistered.Remove(key);
+                foreach(var key in car.ApproachRegistered.Keys.Where(k=>!planned.ContainsKey(k)).ToArray())car.ApproachRegistered.Remove(key);
                 var lanes=new HashSet<string>(car.Lanes.Skip(car.RouteIndex+1).Select(l=>l.Key));
                 foreach(var key in car.CommittedAt.Keys.Where(k=>!lanes.Contains(k)).ToArray())car.CommittedAt.Remove(key);
             }
             else{car.ApproachRegistered.Clear();car.CommittedAt.Clear();}
-            foreach(var key in planned)if(!car.ApproachRegistered.ContainsKey(key))car.ApproachRegistered[key]=Time+car.Lanes.Count;
+            foreach(var item in planned)if(!car.ApproachRegistered.ContainsKey(item.Key))car.ApproachRegistered[item.Key]=Time+item.Value;
             car.Shoving=false;car.ShovingLane="";NoteCommitments(car);
         }
     }

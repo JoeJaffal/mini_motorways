@@ -693,7 +693,8 @@ namespace MotorwaysSim
             });
             Test("Original junction entry registers inbound lanes and keeps a shared exit clear",()=>{
                 var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.OvercrowdingSeconds=100000;
-                // Registration happens at route assignment (game time plus path lane count), not on entering lookahead.
+                // Registration happens at route assignment (game time plus the lane's position in the path), not on
+                // entering lookahead (AddInboundVehicle offset = path.Count when the lane is added).
                 var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);w.Inventory[0]=1000;
                 var home=w.SpawnBuilding(new Cell(5,12),0,true,0);var shop=w.SpawnBuilding(new Cell(20,11),0,false,0,0);
                 Check(w.DrawRoad(new Cell(6,12),new Cell(18,12))&&w.DrawRoad(new Cell(18,12),new Cell(18,13))&&w.DrawRoad(new Cell(18,13),new Cell(19,13))&&
@@ -703,7 +704,7 @@ namespace MotorwaysSim
                 Check(car!=null,"a car departs: "+Summary(w));
                 var junction=car.Lanes.First(l=>l.Tile==new Cell(12,12));
                 Check(car.ApproachRegistered.TryGetValue(junction.Key,out double registered),"distant junction registered at departure");
-                Check(Math.Abs(registered-(car.JourneyStarted+car.Lanes.Count))<1e-9,"registration = assignment time + path lane count: "+registered+" vs "+car.JourneyStarted+"+"+car.Lanes.Count);
+                Check(Math.Abs(registered-(car.JourneyStarted+car.Lanes.IndexOf(junction)))<1e-9,"registration = assignment time + path position: "+registered+" vs "+car.JourneyStarted+"+"+car.Lanes.IndexOf(junction));
                 // Same exit: a car may not drive into a junction while a same-exit car still traverses it,
                 // even when that car is within its last vehicle length (no near-exit release for a shared exit).
                 var x=new TrafficWorld(42,false,rules);x.Reset(42,ScenarioKind.EmptyLab);x.Inventory[0]=1000;x.Inventory[3]=1;

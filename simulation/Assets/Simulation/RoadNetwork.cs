@@ -251,8 +251,8 @@ namespace MotorwaysSim
         // from the graph, so a car with no other way keeps its old lanes (the original's last-resort mothballed lane).
         // The original also re-paths stored return paths at every change; the result only matters when the car sets off
         // home, so it is re-found then (AppendReturnLanes), and at once when an erase touches it (RemoveRoadConnection).
-        // Work in progress (11 November 2026): off until the 60-phase replay benchmark decides; with it off, f22 behaviour.
-        static readonly bool OriginalRepath=false;
+        // On from f25 (decision 111): on the dial-timed replay v21d it costs nothing measurable (-1.9 +/- 3.2).
+        static readonly bool OriginalRepath=true;
         const int OriginalCommittedLanes=3;
         void RefreshJourneyOriginal(Vehicle car)
         {

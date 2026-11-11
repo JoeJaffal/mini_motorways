@@ -2,7 +2,7 @@
   "result": "PASS",
   "version": "OriginalReference",
   "modelTrainingPerformed": false,
-  "simulatorCommit": "f20c39ef74f84a99a8637852e432b906e729124d",
+  "simulatorCommit": "6d5181d2c6772a3eec78f79f91730016d8235223",
   "seeds": [
     0,
     42,
@@ -11,7 +11,7 @@
   "episodeLimitSeconds": 300,
   "episodes": 60,
   "requests": 2451,
-  "wallSeconds": 31.589836000000105,
+  "wallSeconds": 33.056012299999566,
   "checks": [
     "fixed array shapes",
     "finite vehicle values",
@@ -49,7 +49,7 @@
       "capped": true,
       "maxWaiting": 0,
       "samples": 31,
-      "digest": "8b702f9d3e30d62dbfce02426d7d7758d4b57e39c531e63c764f5a6d9cc9227e"
+      "digest": "adaf412848ee5f57a99ad6faf825cb2cc9d42fbc9216e421e3cb12c3e476f766"
     },
     {
       "map": "LosAngeles",
@@ -69,13 +69,13 @@
       "seed": 42,
       "policy": "debug_roads",
       "seconds": 300,
-      "trips": 44,
+      "trips": 43,
       "terminated": false,
       "rejected": false,
       "capped": true,
       "maxWaiting": 0,
       "samples": 31,
-      "digest": "543a51202ed8781797c2f5544a77cc93787ae81f2b31c8bb2b6a6fa735915744"
+      "digest": "588974e2bee7504f6cf4133ed517fb7a087ebcb5b35bf64d4263116c8275315f"
     },
     {
       "map": "LosAngeles",
@@ -101,7 +101,7 @@
       "capped": true,
       "maxWaiting": 0,
       "samples": 31,
-      "digest": "1cad29ba503a805ca95d7cc9732ec6ef3801b5deb2863bdb70593c56b379b580"
+      "digest": "126f0361fab7bd7a574b0ac3c56bf6b5f48d144944d4d83d1153149ad503c4fd"
     },
     {
       "map": "Beijing",
@@ -127,7 +127,7 @@
       "capped": true,
       "maxWaiting": 0,
       "samples": 31,
-      "digest": "875eb06de13c888a9c78b2a23469c9279c155b34d795c09cbad5bf56ad2b4a02"
+      "digest": "7cc760155e1514f47b6b6ecb7ee4a0bf054b6d64de21bbefb7c44daa5cec1679"
     },
     {
       "map": "Beijing",
@@ -153,7 +153,7 @@
       "capped": true,
       "maxWaiting": 0,
       "samples": 31,
-      "digest": "2a5cb5a7ff3a471def0276880cd37c79edfe854eaf5537d2fbf0beabbdb8c1bf"
+      "digest": "c796f641e21fd8ae36a7692f68ed32b38933aa82f3ac1a308451b5c426cc9fb5"
     },
     {
       "map": "Beijing",
@@ -179,7 +179,7 @@
       "capped": true,
       "maxWaiting": 0,
       "samples": 31,
-      "digest": "93fa009475ee5bf0f0e0614e7cbb51a7373ec4f2df9da3d7d079c1cf2654a403"
+      "digest": "e205c64e74c6ac31ceea0e946fc1d6402b90ed0004a6a87847f91cca4c1b1e4c"
     },
     {
       "map": "Tokyo",
@@ -205,7 +205,7 @@
       "capped": true,
       "maxWaiting": 0,
       "samples": 31,
-      "digest": "27bc3452c3ab2db62492c66bec8c1bdc235cce6f72aab5cd39f5d85c2bc707c5"
+      "digest": "4e90c795e27bd89a9513483c89b7caa00ab313a3c078b3ad8a75daa3d6256ebe"
     },
     {
       "map": "Tokyo",
@@ -231,7 +231,7 @@
       "capped": true,
       "maxWaiting": 0,
       "samples": 31,
-      "digest": "d71bfce8dc3bcfa508a9be22c6066c4c7f5e6e212d8086527049395723bd905e"
+      "digest": "20373c3315cf05b4c909d46863e2f8ad665fe4a550af555bfa55d727098ac2eb"
     },
     {
       "map": "Tokyo",
@@ -257,7 +257,7 @@
       "capped": true,
       "maxWaiting": 0,
       "samples": 31,
-      "digest": "690f8e15d0f9f11d7da26ab397760f1d5cd476a9c84a2cf28bd362c7fe9fffcf"
+      "digest": "66f4de2db880b61b6b4753eb51d77836e7b607cc15463950d2199d1b8eb4cb1e"
     },
     {
       "map": "DarEsSalaam",
@@ -283,7 +283,7 @@
       "capped": true,
       "maxWaiting": 0,
       "samples": 31,
-      "digest": "9ef81cb5e879a490e6358e45a6d15690bf47fae281250f53fdaab8bb95afa7e6"
+      "digest": "4e157f504d5fd7f4e555ba8650d6d28208ef13160f9cb208d77478fba2807a67"
     },
     {
       "map": "DarEsSalaam",
@@ -309,7 +309,7 @@
       "capped": true,
       "maxWaiting": 0,
       "samples": 31,
-      "digest": "b151253f5aa3c38ddf14b5d94bea56c7360e180c81f623d36292e387b525a41e"
+      "digest": "c2a2b954cde4013a1c76f65a86638b5f84672ffe2af18ee8756fefa8d41ded6f"
     },
     {
       "map": "DarEsSalaam",
@@ -329,13 +329,13 @@
       "seed": 99,
       "policy": "debug_roads",
       "seconds": 300,
-      "trips": 47,
+      "trips": 46,
       "terminated": false,
       "rejected": false,
       "capped": true,
       "maxWaiting": 0,
       "samples": 31,
-      "digest": "b330422485800e38d3bc44936262b95ad51efecae0ade9447ae78ad5b3822a71"
+      "digest": "c64d6fa7df664c9370f72e26abdb111a3aecff812e7b243108507a602562255d"
     },
     {
       "map": "London",
@@ -361,7 +361,7 @@
       "capped": false,
       "maxWaiting": 0,
       "samples": 28,
-      "digest": "8aec2536f3b1dba2faa353e942cae65631e599a01407c242ac448b9da5f490bb"
+      "digest": "97d472bb8ebcebbf8ab706539ec99a990958b7e63a3735948deccbbf0b2542b8"
     },
     {
       "map": "London",
@@ -385,9 +385,9 @@
       "terminated": false,
       "rejected": false,
       "capped": true,
-      "maxWaiting": 5.849999999999987,
+      "maxWaiting": 5.4999999999999885,
       "samples": 31,
-      "digest": "4bc1d6a96126b2e95058e2b78c24a70755fce88b1d53f9ee670164242e0792d3"
+      "digest": "69958847647b637afecee9e440b9828e455fe40c46b6f078ee8996c8d3991a4a"
     },
     {
       "map": "London",
@@ -413,7 +413,7 @@
       "capped": false,
       "maxWaiting": 0,
       "samples": 28,
-      "digest": "9f099b8a4d8c88eb8880f656114de557cfab0823b80239af6ce5a2d71ae821ed"
+      "digest": "7cbcdbe001a3b229642bd101861cf7d334d6faa8fad5d0e1905aa4453e44d2d8"
     }
   ]
 }

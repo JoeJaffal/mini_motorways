@@ -1496,3 +1496,30 @@ The real score curve is re-timed the same way, and the 60 demand-phase sets are 
 
 **Measured.** Simulator f24 on the 60 refitted sets: 805.5 (759 to 833, median 811.5), 22/60 reach the end, mean end 1302 s. On the old sets: v21c 796.0, v21d 805.1 (paired +9.1 +/- 3.5). The original scored 835 and ended at about 1314.6 s.
 
+
+## 111 - The original re-plan is switched on (12 November 2026, `fidelity-aya`)
+
+**Evidence.** The port of `VehiclePathfindingProcess` (current lane plus two kept, `RefreshJourneyOriginal`, 11 November) matches the original's code. It was off because it lowered replay v21c by about 11 trips. On replay v21d (decision 110) with the refitted phases it changes f24 by -1.9 +/- 3.2 (median +0.5, 30/60 better), under one trip at any time up to 1200 s. The earlier loss came from the replay's timing errors.
+
+**Engineering choice** (OriginalReference). `OriginalRepath = true`. Stored ways home are re-found when the car sets off home.
+
+**Measured.** See decision 113.
+
+
+## 112 - Junction exit space: a leader on the entered chunk counts the lane length less one vehicle length (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `RoadChunkModel.DoesVehicleHaveSpace` follows the entering car's obstacle chain for up to five vehicles. For a leading vehicle on a lane of the chunk being entered, it takes `lane.Length - VehicleLength` off the distance to that leader, wherever on the lane the leader is, and then adds `max(distance - VehicleLength, 0)`. In effect the junction lane itself offers no space: the car may enter beside a same-exit car only if more than two vehicle lengths are free beyond the junction, or the leader in the junction has no obstacle. Ours, built from the earlier rule description, took off only the part of the lane ahead of the leader, which credits the leader's progress through the junction.
+
+**Engineering choice** (OriginalReference). `HasExitSpace` uses the original formula.
+
+**Measured.** On f24 alone: -16.6 +/- 3.2 at the end, -2.2 trips by 1100 s, -4.0 by 1200 s. Nothing changes before 1000 s; the rule bites only when traffic queues beyond a junction. It moves the replay away from the real game; it is kept because it is the original's code.
+
+
+## 113 - Inbound registrations are stamped with the lane's position in the path (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `AssignPath` registers each new path lane with `AddInboundVehicle(vehicle, lane, path.Count)`, whose timestamp is the game time plus that offset: 1 for the next lane, 2 for the one after, and so on. The stamp breaks ties between candidates at the same distance. Ours added the route's total lane count to every registration.
+
+**Engineering choice** (OriginalReference). `RegisterRoute` stamps time plus the lane's position after the current lane. Kept registrations keep their stamps.
+
+**Measured.** Simulator `2026-11-10.f25` (decisions 111 to 113), replay v21d on the 60 refitted phase sets: 783.4 (684 to 832), 8/60 reach the end, mean end 1292 s. f24 scored 805.5 (paired -22.1 +/- 4.0). Without decision 113: 782.1 (decision 113 adds +1.3 +/- 4.2). Up to 1000 s, f25 is within one trip of f24 ([data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f25-replay-v21d.txt)). 98 suites, five-map checks and training readiness pass.
+
