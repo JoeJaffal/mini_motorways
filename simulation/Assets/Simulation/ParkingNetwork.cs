@@ -118,6 +118,15 @@ namespace MotorwaysSim
         }
         public List<Lane> ParkingDriveThrough(Building shop,Cell access)
         {
+            if(Rules.Version==GameVersion.OriginalReference)
+            {
+                // Original ParkVehiclesProcess: a car finding no free bay paths home from the entrance over every lane,
+                // carpark lanes at double cost, so the cheapest way out crosses the bay nearest the entrance (behind the
+                // car parked there) rather than lapping the lot.
+                bool near=AccessDirection(shop,access)==4||AccessDirection(shop,access)==6;int slot=near?0:shop.Parking.Length-1;
+                var through=ParkingRoute(shop,access,slot);through[0].DeliversDriveThrough=true;
+                through.AddRange(ParkingRoute(shop,access,slot,true));return through;
+            }
             ParkingAxes(shop,out var axis,out var side,out _,out _);var bend=(axis*-1-side).Unit;
             bool left=AccessDirection(shop,access)==4||AccessDirection(shop,access)==6;
             var lanes=new List<Lane>{ParkingConnector(shop,access,true)};lanes[0].DeliversDriveThrough=true;

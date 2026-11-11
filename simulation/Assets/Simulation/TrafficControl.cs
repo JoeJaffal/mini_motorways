@@ -379,6 +379,26 @@ namespace MotorwaysSim
                     }
                     if(distance<gap){gap=distance;leaderSpeed=other.Speed;leaderAcceleration=other.Acceleration;obstacle="Queue ahead";leaderId=other.Car.Id;}
                 }
+                // Original: a parked car sits on its bay lane, so a car whose path crosses that bay (a drive-through)
+                // follows it as a stopped leader at the bay's middle.
+                if(Rules.Version==GameVersion.OriginalReference)
+                {
+                    double ahead=0;
+                    for(int i=car.RouteIndex;i<Math.Min(car.Lanes.Count,car.RouteIndex+7)&&ahead<=Rules.LookaheadDistance;i++)
+                    {
+                        var lane=car.Lanes[i];double laneLeft=i==car.RouteIndex?lane.Length-state.Distance:lane.Length;
+                        if(lane.IsParking&&lane.Key.Contains(":bay-park:"))
+                        {
+                            var parts=lane.Key.Split(':');
+                            if(parts.Length>3&&int.TryParse(parts[3],out int slot))
+                            {
+                                var parked=Cars.Find(v=>v.Id!=car.Id&&v.Stage==TripStage.Parking&&v.ParkingSlot==slot&&v.ShopId>=0&&Buildings[v.ShopId].CarparkId==lane.CarparkId);
+                                if(parked!=null&&ahead+laneLeft<gap){gap=ahead+laneLeft;leaderSpeed=0;leaderAcceleration=0;obstacle="Parked car";leaderId=parked.Id;}
+                            }
+                        }
+                        ahead+=laneLeft;
+                    }
+                }
                 // A zero-length parcel lane is omitted by MakeLanes, so a car
                 // may already be on its final surface lane. Gate that approach
                 // here as well as future-lane transitions.

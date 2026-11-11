@@ -1389,3 +1389,12 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Engineering choice** (OriginalReference). `Build(TrafficLight)` refuses tiles with fewer than three connections or with rail. Our roads become active at once, so "pending" needs no separate count here; automatic removal of a light whose tile later drops below three roads stays unadopted (decision 085).
 
 **Measured.** Simulator `2026-11-10.f19`: both replay lights qualify; replay v21 unchanged (791.1). 94 suites, five-map checks and training readiness pass.
+
+
+## 101 - Full-lot drive-through across the nearest bay (11 November 2026, `fidelity-aya`)
+
+**Evidence.** `ParkVehiclesProcess`: with no free bay the car becomes `DrivingHome` and `VehiclePathfindingProcess` paths from its committed lane to its house over every lane; bay lanes are ordinary graph edges (carpark lanes at double cost), so the cheapest way out crosses the bay nearest the entrance (`CarparkModel`: outer bay entry → bay lane → inner bay exit). The parked car sits at the middle of that bay lane, so the drive-through follows it. Ours drove a full lap of the lot and could not see parked cars.
+
+**Engineering choice** (OriginalReference). `ParkingDriveThrough` returns the nearest bay's entry and exit routes back to back (delivery still on leaving the entrance lane); the leader search treats a parked car as a stopped leader at the end of its `bay-park` lane for any car whose path crosses that bay.
+
+**Measured.** Simulator `2026-11-10.f20`: no lot fills in replay v21 (no drive-through time), so the replay is unchanged (791.1); the drive-through check and the carpark separation fixtures pass. 94 suites, five-map checks and training readiness pass.
