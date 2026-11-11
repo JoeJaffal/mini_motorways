@@ -81,7 +81,7 @@ namespace MotorwaysSim
             nativeJoinVersion=-1;
             Array.Clear(Tiles,0,Tiles.Length);Array.Clear(Water,0,Water.Length);Array.Clear(Blocked,0,Blocked.Length);
             Array.Clear(Rails,0,Rails.Length);Array.Clear(Unzoneable,0,Unzoneable.Length);Array.Clear(PendingRemoval,0,PendingRemoval.Length);Array.Clear(Connections,0,Connections.Length);
-            RailLines.Clear();Trains.Clear();railClosedUntil.Clear();originalPlan.Clear();lastHouseSpawn.Clear();houseRetryAt.Clear();delayedSpawnDemand.Clear();doubleLotProbability=.3;InitializePlayableArea();
+            RailLines.Clear();Trains.Clear();railClosedUntil.Clear();originalPlan.Clear();lastHouseSpawn.Clear();suburbCount.Clear();planOrder=0;delayedSpawnDemand.Clear();doubleLotProbability=.3;InitializePlayableArea();
             NetworkVersion++;routeCache.Clear();conflictCache.Clear();
             autoConnectReference=scenario==ScenarioKind.ReferenceLab;
             if(CityCatalog.Maps.Contains(scenario))
@@ -92,7 +92,7 @@ namespace MotorwaysSim
                     Water[x,y]=t=='~';Rails[x,y]=Map.RailLines.Any(line=>line.Cells.Contains(new Cell(x,y)));Blocked[x,y]=t=='#'||t=='^';Unzoneable[x,y]=t==':'||t=='#'||t=='~'||t=='^'||t=='=';
                 }
                 InitializeRailways();
-                if(Rules.Version==GameVersion.OriginalReference){InitializeOriginalPlan();ProcessOriginalPlan();}
+                if(Rules.Version==GameVersion.OriginalReference){InitializeOriginalPlan();ProcessOriginalPlan();ScheduleOriginalHouses();ProcessOriginalPlan();}
                 else
                 {
                     foreach(var item in Map.ShopSchedule)spawnSchedule.Add((item[0]*20+random.NextDouble()*item[1]*20,(int)item[2]));
@@ -376,7 +376,7 @@ namespace MotorwaysSim
                     At=v.At,Next=v.Next,X=v.Position.X,Y=v.Position.Y,HeadingX=v.Heading.X,HeadingY=v.Heading.Y,Speed=v.Speed,Acceleration=v.Acceleration,
                     Waiting=v.Waiting,Progress=v.Progress,Obstacle=v.Obstacle,Route=v.Route.ToArray(),ReturnRoute=v.ReturnRoute.ToArray()}).ToArray(),
                 RandomAlgorithm=random.Algorithm,RandomDraws=random.Draws,
-                ScheduledSpawns=originalPlan.Select(p=>new ScheduledSpawnSnapshot{Time=p.Time,Color=p.Color,Grouping=p.Grouping,Preference=p.Preference,DemandMultiplier=p.DemandMultiplier,Attempts=p.Attempts}).ToArray(),
+                ScheduledSpawns=originalPlan.Where(p=>p.Type==0).Select(p=>new ScheduledSpawnSnapshot{Time=p.Time,Color=p.Color,Grouping=p.Grouping,Preference=p.Preference,DemandMultiplier=p.DemandMultiplier,Attempts=p.Attempts}).ToArray(),
                 Buildings=Buildings.Select(b=>new BuildingState{CarparkId=b.CarparkId,DestinationSlot=b.DestinationSlot,SharedLot=b.SharedLot,IsStation=b.IsStation,Entrances=(Cell[])b.Entrances.Clone(),Platform=(Cell[])b.Platform.Clone(),EntranceDirections=(int[])b.EntranceDirections.Clone(),Layout=b.Layout,Upgraded=b.Upgraded,DemandCapacity=DestinationCapacity(b),UpgradeAt=double.IsPositiveInfinity(b.UpgradeAt)?(double?)null:b.UpgradeAt,PlannedDemandMultiplier=b.PlannedDemandMultiplier,Id=b.Id,Color=b.Color,Cell=b.Cell,Entrance=b.Entrance,Width=b.Width,Height=b.Height,
                     IsHouse=b.IsHouse,Demand=b.Demand,Reserved=b.Reserved,DrivewayDirection=b.DrivewayDirection,OvercrowdedFor=b.OvercrowdedFor,FeasibilityVerified=b.FeasibilityVerified,
                     FeasibleDemandInterval=double.IsInfinity(b.FeasibleDemandInterval)?(double?)null:b.FeasibleDemandInterval,OriginalDemandInterval=b.OriginalDemandInterval,Parking=b.Parking==null?new int[0]:(int[])b.Parking.Clone()}).ToArray(),

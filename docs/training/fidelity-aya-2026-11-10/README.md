@@ -66,8 +66,9 @@ Replay v21, 16-phase mean (min–max) and fitted-phase result. Real game: 835 at
 | `2026-11-10.f9` | Roundabout commitment from the previous ring tile only; roundabouts controlled for the blocked boost | 809.3 (800–822), 16/16 reach the end | 1315 s | 820, reaches the end |
 | `2026-11-10.f10` | Original motorway end tiles (ordinary start lane to the slot, straight motorway lane between slots, full end-tile lane) | 792.8 (741–809), 12/16 reach the end | 1309 s | 816, reaches the end |
 | `2026-11-10.f11` | Signal pair order, post-amber hold and pair-loss switch; roundabout exit-lane factor | 784.5 (747–808), 8/16 reach the end | 1304 s | 784, fails at 1301 s |
+| `2026-11-10.f12` | Merge of `fidelity-aya-growth` (original free-play placement; replays unaffected) | 784.5 (747–808), 8/16 reach the end | 1304 s | 784, fails at 1301 s |
 
-Self-test: 85 suites pass at every version listed.
+Self-test: 85 suites pass at every version listed (92 from f12, with 7 placement suites).
 
 ### f2 evidence
 
@@ -89,3 +90,7 @@ Waiting time by reason on f1 (fitted phases): 890 car-seconds held by the shared
 
 `scripts/verify_five_maps.py` (10 runs) and `scripts/check_training_readiness.py` (60 episodes, exact replays on all five maps) pass on f7 and on f8; their reports are regenerated in `simulation/Reports/`.
 
+
+## Continued on `fidelity-aya-growth` (merged as f12)
+
+Original free-play city growth (building placement by the original's weight layers and building influence, house driveways, playable edges, spawn schedule, supply anchor; branch simulator `2026-11-11.g1`, merged into `fidelity-aya` as `2026-11-10.f12`) is recorded in [fidelity-aya-growth-2026-11-11](../fidelity-aya-growth-2026-11-11/README.md). Replays force building spawns, so replay v21 results are not affected by it.

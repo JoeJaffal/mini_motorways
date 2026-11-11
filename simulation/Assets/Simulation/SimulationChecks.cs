@@ -9,7 +9,7 @@ namespace MotorwaysSim
         static void Check(bool value,string message){if(!value)throw new InvalidOperationException("CHECK FAILED: "+message);}
         public static string Run()
         {
-            int count=GameplayFidelityChecks.Run()+CustomScenarioChecks.Run()+ParkingFlowChecks.Run()+RecordedCarparkChecks.Run()+SharedTransitChecks.Run();
+            int count=GameplayFidelityChecks.Run()+CustomScenarioChecks.Run()+ParkingFlowChecks.Run()+RecordedCarparkChecks.Run()+SharedTransitChecks.Run()+OriginalPlacementChecks.Run();
             void Test(string name,Action body){body();count++;}
             Test("AI command replay reproduces normal-play transitions",()=>{
                 var world=new TrafficWorld(42,false,Rules.ForVersion(GameVersion.OriginalReference));

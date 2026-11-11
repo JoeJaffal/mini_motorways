@@ -97,7 +97,7 @@ The user accepted the current parking entrance and concurrency approximations wh
 
 ## Remaining replication work
 
-- Exact spawn placement, support-house logic, random draw ordering, seed initialization and fixed-point/process timing.
+- Exact spawn placement, support-house logic, random draw ordering, seed initialization and fixed-point/process timing. (`2026-11-11.g1`, decisions 085–088: OriginalReference free play now follows the original's placement weights, building influence, dead zones, driveways, edges, house scheduling and double-lot/circle fallbacks; random draw ordering and process timing remain open.)
 - Full motorway/traffic geometry, merge/conflict/rerouting rules and queue behavior.
 - Weekly weighting/history, bridge/edit accounting and tunnels.
 - Exact station placement, train stopping/motion, batch demand and crossing timing.
