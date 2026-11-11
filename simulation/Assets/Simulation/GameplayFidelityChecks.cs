@@ -82,6 +82,14 @@ namespace MotorwaysSim
                 Require(w.ChooseUpgrade(0)&&w.Inventory[0]==stock+grant&&!w.ChooseUpgrade(0),"reward grants concrete exactly once");checks++;
             }
             {
+                // Original TileEditor: a stroke into a house from another side turns its driveway toward that road.
+                var w=Lab();w.Inventory[0]=1000;var home=w.SpawnBuilding(new Cell(10,10),0,true,0);
+                int before=home.DrivewayDirection;var south=new Cell(10,13);
+                Require(w.DrawRoad(south,home.Cell),"stroke into a house");
+                Require(home.DrivewayDirection==TrafficWorld.Direction(home.Cell,new Cell(10,11))&&w.Degree(new Cell(10,11))>0,"driveway turned toward the arriving road (was "+before+")");
+                checks++;
+            }
+            {
                 // Original tile corners: a diagonal step runs tile lane (ends 0.5 from centre), corner lane (~0.41), tile lane.
                 var w=Lab();w.Inventory[0]=1000;Require(w.DrawRoad(new Cell(10,10),new Cell(13,13)),"diagonal road drawn");
                 var lanes=w.MakeLanes(new[]{new Cell(10,10),new Cell(11,11),new Cell(12,12),new Cell(13,13)});

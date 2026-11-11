@@ -288,7 +288,13 @@ namespace MotorwaysSim
                 if(Rules.Version==GameVersion.OriginalReference&&previous.HasValue&&
                     (Connections[previous.Value.X,previous.Value.Y]&(1<<Direction(previous.Value,c)))==0&&
                     RoadConnectionCost(previous.Value,c)>Inventory[0]&&!retiredConnectionConcrete.ContainsKey(RoadEdge(previous.Value,c)))
-                {Reject("No road tiles remaining for this connection");break;}
+                {
+                    // Original DrawRoadAction keeps stepping when a link cannot be paid, so later free links still form.
+                    Reject("No road tiles remaining for this connection");previous=CanTraverse(c)?c:(Cell?)null;continue;
+                }
+                // Original TileEditor: a stroke into a house turns its driveway toward the road it arrives from.
+                if(Rules.Version==GameVersion.OriginalReference&&previous.HasValue&&BuildingAt(c) is Building home&&home.IsHouse&&home.Cell==c&&
+                    !ValidParcelLink(previous.Value,c))SetHouseDriveway(home.Id,Direction(c,previous.Value));
                 if(!CanTraverse(c))
                 {
                     bridgeFrom=previous;bool built=Build(Water[c.X,c.Y]?BuildTool.Bridge:BuildTool.Road,c);bridgeFrom=null;

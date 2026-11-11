@@ -1371,3 +1371,12 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Engineering choice** (OriginalReference). `DrawRoad` and the reference builder pass the stroke's previous cell to the bridge build: from a bridge tile it joins that crossing, otherwise it starts one; `Connect` merges two crossings and refunds one bridge; connection retirement clears an unconnected bridge tile and refunds the crossing when its last tile goes. The direct bridge-tile tool (no stroke) keeps the adjacency grouping. Water-tile junction limits are not modelled. New check: two parallel strokes use two bridges, linking them returns one.
 
 **Measured.** Simulator `2026-11-10.f17`: replay v21 unchanged (791.1; no parallel bridges in it). 93 suites, five-map checks and training readiness pass.
+
+
+## 099 - Stroke details: unaffordable links and strokes into houses (11 November 2026, `fidelity-aya`)
+
+**Evidence.** `DrawRoadAction` keeps stepping when concrete runs out, so later free or mothballed links in the same stroke are still made; `TileEditor` turns a house's driveway toward a stroke that enters or passes through the house. Ours abandoned the rest of the stroke at the first unaffordable link and realigned a driveway only when the stroke started at the house.
+
+**Engineering choice** (OriginalReference). `DrawRoad` skips the unaffordable link and continues; a stroke reaching a house from a side other than its driveway realigns the driveway first. Drawing remains a rounded raster line rather than the original's greedy eight-direction stepping. New check: a stroke into an east-facing house from the south turns its driveway south and links it.
+
+**Measured.** Simulator `2026-11-10.f18`: replay v21 unchanged (791.1). 94 suites, five-map checks and training readiness pass.
