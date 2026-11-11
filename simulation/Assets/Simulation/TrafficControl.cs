@@ -413,7 +413,11 @@ namespace MotorwaysSim
                 }
                 double aheadDistance=state.Lane.Length-state.Distance;double? slowGap=null,crossGap=null;bool blockedControlled=false;double blockedAhead=double.PositiveInfinity;
                 if(Rules.Version==GameVersion.OriginalReference&&HotswapHold(car))
-                {double hold=Math.Max(0,aheadDistance-Rules.FollowingGap*.5);if(hold<stop){stop=hold;obstacle="Roundabout opening";}}
+                {
+                    double hold=Math.Max(0,aheadDistance-Rules.FollowingGap*.5);if(hold<stop){stop=hold;obstacle="Roundabout opening";}
+                    // Original HotswappingLane obstacle: counted like a blocked junction in the exit-space test.
+                    if(aheadDistance<blockingDistance){blockingDistance=aheadDistance;blocker=-1;blockedLane="";}
+                }
                 for(int i=car.RouteIndex+1;i<Math.Min(car.Lanes.Count,car.RouteIndex+7);i++)
                 {
                     var next=car.Lanes[i];

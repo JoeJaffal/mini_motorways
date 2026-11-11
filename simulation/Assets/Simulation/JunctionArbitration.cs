@@ -19,7 +19,10 @@ namespace MotorwaysSim
         struct ObstacleRecord{public ObstacleKind Kind;public int Car;public double Distance;public int Blocker;public string BlockedLane;public Cell BlockedTile;}
 
         // A chunk with two or fewer lanes accepts entry without arbitration (before any light check).
-        bool ChunkHasFewLanes(Cell tile)=>tile.X<0?!IsCrossingCorner(tile):TryPlannedChunkDegree(tile,out int planned)?planned<=2:Degree(tile)+Motorways.Count(m=>!m.PendingRemoval&&(m.Start==tile||m.End==tile))<=2;
+        // A crossing corner keeps arbitrating while a car still holds one of its junction lanes (an erased diagonal's
+        // lanes stay until empty, as mothballed lanes do in the original).
+        bool CornerStillCrossing(Cell code)=>Cars.Any(c=>c.Moving&&c.Lanes.Skip(c.RouteIndex).Take(3).Any(l=>l.IsJunction&&l.Corner==code));
+        bool ChunkHasFewLanes(Cell tile)=>tile.X<0?!(IsCrossingCorner(tile)||CornerStillCrossing(tile)):TryPlannedChunkDegree(tile,out int planned)?planned<=2:Degree(tile)+Motorways.Count(m=>!m.PendingRemoval&&(m.Start==tile||m.End==tile))<=2;
 
         static bool IsImmediateNext(Vehicle car,Lane lane)=>car.RouteIndex+1<car.Lanes.Count&&ReferenceEquals(car.Lanes[car.RouteIndex+1],lane);
 
@@ -216,7 +219,7 @@ namespace MotorwaysSim
             }
             else{car.ApproachRegistered.Clear();car.CommittedAt.Clear();}
             foreach(var item in planned)if(!car.ApproachRegistered.ContainsKey(item.Key))car.ApproachRegistered[item.Key]=Time+item.Value;
-            car.Shoving=false;car.ShovingLane="";NoteCommitments(car);
+            car.Shoving=false;car.ShovingLane="";car.PushingInto=-1;NoteCommitments(car);
         }
     }
 }

@@ -226,5 +226,5 @@ namespace MotorwaysSim
     public sealed class SignalSnapshot
     {public Cell Cell;public int ActivePair;public bool Amber;public double Elapsed;public int[] Pairs;}
     public sealed class RoundaboutSnapshot
-    {public Cell Center;public Cell[] Ring;public bool PendingRemoval;}
+    {public Cell Center;public Cell[] Ring;public bool PendingRemoval;public bool Planned; /* OriginalReference: placed, not yet active */}
 }

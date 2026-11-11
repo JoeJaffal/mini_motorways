@@ -411,7 +411,7 @@ namespace MotorwaysSim
                 Trains=Trains.Select(t=>{var p=TrainPoint(t);return new TrainSnapshot{Id=t.Id,LineId=t.LineId,Direction=t.Direction,Stops=t.Stops,X=p.X,Y=p.Y,Speed=t.Speed,Wait=t.Wait,Distance=t.Distance};}).ToArray(),
                 RailLines=RailLines.Select(l=>new RailSnapshot{Id=l.Id,Loop=l.Loop,Cells=(Cell[])l.Cells.Clone()}).ToArray(),ClosedRailCrossings=railClosedUntil.Where(p=>p.Value>=Time).Select(p=>p.Key).ToArray(),
                 Motorways=Motorways.Select(m=>new MotorwaySnapshot{Id=m.Id,Number=m.Number,Start=m.Start,End=m.End,PendingRemoval=m.PendingRemoval}).ToArray(),
-                Roundabouts=Roundabouts.Select(r=>new RoundaboutSnapshot{Center=r.Center,Ring=(Cell[])r.Ring.Clone(),PendingRemoval=r.PendingRemoval}).ToArray(),
+                Roundabouts=Roundabouts.Select(r=>new RoundaboutSnapshot{Center=r.Center,Ring=(Cell[])r.Ring.Clone(),PendingRemoval=r.PendingRemoval,Planned=r.Planned}).ToArray(),
                 DisconnectedColorComponents=DisconnectedColorComponents(),MeanWaiting=Cars.Count==0?0:Cars.Average(c=>c.TotalWaiting)};
             for(int y=0;y<Height;y++)for(int x=0;x<Width;x++)
             {int k=y*Width+x;o.Infrastructure[k]=(int)Tiles[x,y];o.Terrain[k]=Blocked[x,y]?2:Water[x,y]?1:0;o.Connections[k]=Connections[x,y];o.PendingRemovals[k]=PendingRemoval[x,y]?1:0;}

@@ -1544,3 +1544,19 @@ The real score curve is re-timed the same way, and the 60 demand-phase sets are 
 
 **Measured.** 98 suites, five-map checks and training readiness pass on `2026-11-10.f26`.
 
+
+## 116 - Fixes from an independent review of f23 to f26 (12 November 2026, `fidelity-aya`)
+
+**Evidence.** A separate review of the f23 to f26 simulator changes found no crashes, loops or out-of-range indexing, and no change to the Custom version. It found three defects:
+- The roundabout-opening hold (decision 108) recorded no obstacle, so the exit-space test treated a held car as free road. The original records a HotswappingLane obstacle and counts only the distance to it.
+- `Vehicle.PushingInto` survived into a car's next trip.
+- Erasing one diagonal of a crossing stopped arbitration at the corner at once, while the original keeps the erased lanes until they are empty.
+
+**Engineering choice** (OriginalReference).
+- The hold also sets the blocking distance, so it counts like a blocked junction.
+- `RegisterRoute` clears pushing.
+- A corner keeps arbitrating while any car still holds one of its junction lanes.
+- The observation now reports `Planned` for roundabouts, so an agent can tell a planned circle from an active one.
+
+**Measured.** Replay v21d, 60 refitted sets: 771.9 against f26's 773.5 (paired -1.6 +/- 2.2; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f27-replay-v21d.txt)). 98 suites, five-map checks and training readiness pass on `2026-11-10.f27`.
+
