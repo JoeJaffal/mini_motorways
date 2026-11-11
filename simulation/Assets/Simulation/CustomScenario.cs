@@ -17,6 +17,10 @@ namespace MotorwaysSim
     [Serializable] public sealed class CustomScenarioEvent
     {
         public double at,videoTime=-1;
+        // Optional, destination events only: the time the original's plan scheduled this destination, when the
+        // recording shows it arriving later. Between the two the original retries placement every 20 s and adds
+        // extra demand to the colour (GenerateDemandProcess.BalanceDemandFromFailedSpawns).
+        public double scheduledAt=-1;
         public string kind,id,target,tool;
         public int x,y,toX,toY,color,direction,layout,choice;
         public CustomScenarioOffer[] offers;
@@ -25,6 +29,11 @@ namespace MotorwaysSim
     public sealed partial class TrafficWorld
     {
         public string CustomScenarioId {get;private set;}
+        internal void SetReplayDelayedDestinations(List<(int color,int attempts)> delayed)
+        {
+            originalPlan.RemoveAll(p=>p.Order==-1);
+            foreach(var d in delayed)originalPlan.Add(new ScheduledSpawn{Time=double.PositiveInfinity,Type=0,Color=d.color,DemandMultiplier=1,Attempts=d.attempts,Order=-1});
+        }
         double[] customScenarioBounds;
         bool? growthBeforeCustomScenario;
         public void LoadCustomScenario(CustomScenarioDefinition definition)
@@ -79,7 +88,20 @@ namespace MotorwaysSim
         public void AdvanceTick()
         {
             if(Complete)return;
-            World.Step();ApplyDue();
+            World.Step();ApplyDue();UpdateDelayedDestinations();
+        }
+        // Destinations the recording shows arriving after their scheduled time count as delayed plan entries until they
+        // appear, with one failed attempt per 20 s retry, so the simulator's own failed-spawn demand rule applies.
+        void UpdateDelayedDestinations()
+        {
+            var delayed=new List<(int color,int attempts)>();
+            for(int i=CompletedEvents;i<events.Length;i++)
+            {
+                var e=events[i];
+                if(e.scheduledAt<0||e.scheduledAt>World.Time||(e.kind!="shop"&&e.kind!="shared"&&e.kind!="join"))continue;
+                delayed.Add((e.color,1+(int)Math.Floor((World.Time-e.scheduledAt)/20)));
+            }
+            World.SetReplayDelayedDestinations(delayed);
         }
         void ApplyDue()
         {

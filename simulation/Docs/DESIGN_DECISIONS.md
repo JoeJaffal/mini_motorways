@@ -1344,3 +1344,12 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Engineering choice** (OriginalReference). `RemoveRoadConnection` re-routes the stored `ReturnRoute` of non-returning cars that used the erased link, keeping the old one when no alternative exists; only links inside a roundabout need the circle tool.
 
 **Measured.** Simulator `2026-11-10.f15`: 16-phase mean 791.4 → 788.3 (735–805), 13/16 reach the end; fitted phases 808 at the end. 92 suites, five-map checks and training readiness pass.
+
+
+## 096 - Optional scheduled time for late destinations in replays (11 November 2026, `fidelity-aya`)
+
+**Evidence.** The original adds extra demand to a colour while one of its scheduled destinations is waiting for a placement (`GenerateDemandProcess.BalanceDemandFromFailedSpawns`, retries every `FailedDestinationRetryDelay` 20 s). Recorded replays force spawns and disable growth, so this demand was always zero, although the plan's schedule formula proves two red destinations in replay v21 arrived at least 69 s and 108 s after they were scheduled. The video at ~1260 s shows red overcrowding that our replay does not reproduce.
+
+**Engineering choice.** Custom-scenario destination events accept an optional `scheduledAt`; between it and the event the session keeps a delayed plan entry for the colour (one attempt per 20 s), feeding the simulator's existing extra-demand rule. Scenarios without the field behave exactly as before (no version bump). Replay v21 stays the benchmark; `docs/training/fidelity-aya-2026-11-10/replay-candidate-v21a.json` carries the two lower-bound annotations.
+
+**Measured.** On `2026-11-10.f15`: v21a 16-phase mean 774.2 (630–815), median 796.5, 9/16 reach the end; fitted phases 815 at the end (v21: 788.3, fitted 808). 92 suites pass.

@@ -3,7 +3,7 @@
 TAG=$1; cd "/c/Projects/490 - Project/mm-fidelity"
 (cd tmp/harness && dotnet build -c Release -nologo -v q 2>&1 | grep -E " error |rror\(s\)" | head -3)
 rm -rf tmp/hbin-$TAG && cp -r tmp/harness/bin/Release/net8.0 tmp/hbin-$TAG
-R=docs/training/simulator-repairs-2026-11-08/replay-candidate-v21.json
+R=${REPLAY:-docs/training/simulator-repairs-2026-11-08/replay-candidate-v21.json}
 (cat tmp/runs/bench-phases.txt; echo "FIT $(cat tmp/runs/fitted-phases.txt)") | xargs -P 15 -L 1 sh -c 'if [ "$0" = FIT ]; then echo "FIT :: $(tmp/hbin-'$TAG'/Harness.exe '$R' - $1 $2 $3 $4 $5 | head -1)"; else echo "$0 $1 $2 $3 $4 :: $(tmp/hbin-'$TAG'/Harness.exe '$R' - $0 $1 $2 $3 $4 | head -1)"; fi' > tmp/runs/bench-$TAG.txt
 py -3 - "$TAG" <<'PY'
 import sys,re,statistics as st
