@@ -1353,3 +1353,12 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 **Engineering choice.** Custom-scenario destination events accept an optional `scheduledAt`; between it and the event the session keeps a delayed plan entry for the colour (one attempt per 20 s), feeding the simulator's existing extra-demand rule. Scenarios without the field behave exactly as before (no version bump). Replay v21 stays the benchmark; `docs/training/fidelity-aya-2026-11-10/replay-candidate-v21a.json` carries the two lower-bound annotations.
 
 **Measured.** On `2026-11-10.f15`: v21a 16-phase mean 774.2 (630–815), median 796.5, 9/16 reach the end; fitted phases 815 at the end (v21: 788.3, fitted 808). 92 suites pass.
+
+
+## 097 - Tile-corner lanes on diagonal steps (11 November 2026, `fidelity-aya`)
+
+**Evidence.** `LaneUpdateProcess`/`TileCornerModel`: a diagonal link between two tiles passes through a corner chunk; each tile chunk's lane ends 0.5 tiles (one world unit) from its centre and the corner chunk's lane covers the rest (√2 − 1 tiles). A corner chunk with two lanes is never arbitrated (`lanes.Count <= 2`). By `GetLaneSpeed`, the tile lane before the corner has one outbound lane and takes only its turn factor, while the corner lane takes the intersection factor when the next tile branches. Ours ran each tile lane to the shared corner point, so the whole approach took the 0.5 factor, diagonal junction legs were ~0.2 tiles longer, and commitment reached further up diagonal approaches.
+
+**Engineering choice** (OriginalReference; not on roundabout, motorway or carpark-transit steps). `MakeLanes` trims diagonal tile lanes and inserts `CornerLane` (`IsCorner`, keyed by tile and direction); corner lanes are skipped by chunk arbitration, the traversing check and `Conflicts`. Crossing diagonals (a four-lane corner) remain unsupported. New fidelity check: alternating tile/corner lanes, corner length √2 − 1, continuity.
+
+**Measured.** Simulator `2026-11-10.f16`: 16-phase mean 788.3 → 791.1 (740–809), 13/16 reach the end; fitted phases 808 → 791, failing at 1310 s (original ~1314 s). 93 suites, five-map checks and training readiness pass.

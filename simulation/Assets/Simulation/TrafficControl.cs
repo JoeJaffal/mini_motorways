@@ -214,7 +214,7 @@ namespace MotorwaysSim
         internal bool ConflictsPublic(Lane a,Lane b)=>Conflicts(a,b); // read-only, for checks
         bool Conflicts(Lane a,Lane b)
         {
-            if(a.IsMotorway||b.IsMotorway)return false;
+            if(a.IsMotorway||b.IsMotorway||a.IsCorner||b.IsCorner)return false;
             if(a.Key==b.Key)return false;
             if(a.IsParking&&b.IsParking){if(a.CarparkId!=b.CarparkId)return false;}
             else if(a.Tile!=b.Tile)return false;

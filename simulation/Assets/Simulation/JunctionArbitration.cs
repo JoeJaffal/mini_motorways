@@ -42,7 +42,7 @@ namespace MotorwaysSim
         bool MayEnterOriginal(Vehicle car,Lane lane,List<MotionSnapshot> snapshot,out string why,out int blocker)
         {
             why="";blocker=-1;
-            if(lane.IsMotorway||ChunkHasFewLanes(lane.Tile))return true;
+            if(lane.IsMotorway||lane.IsCorner||ChunkHasFewLanes(lane.Tile))return true;
             if(!LightAllowsEntry(lane)){why="Traffic light";return false;}
             if(car.Shoving&&car.ShovingLane==lane.Key&&IsImmediateNext(car,lane))return true;
             if(WaitedTooLong(car,lane))return true;
@@ -75,7 +75,7 @@ namespace MotorwaysSim
             blocker=-1;why="";bool? space=null;bool green=Signals.ContainsKey(lane.Tile)&&LightPermits(lane);
             foreach(var other in snapshot)
             {
-                if(other.Car.Id==car.Id||other.Lane.IsMotorway||other.Lane.IsParking||other.Lane.Tile!=lane.Tile)continue;
+                if(other.Car.Id==car.Id||other.Lane.IsMotorway||other.Lane.IsParking||other.Lane.IsCorner||other.Lane.Tile!=lane.Tile)continue;
                 if(other.Index>=other.Car.Lanes.Count-1)continue; // no remaining path
                 if(other.Lane.Outgoing==lane.Outgoing)
                 {

@@ -105,6 +105,31 @@ namespace MotorwaysSim
             result.Add(fast);return result;
         }
 
+        // Original tile corners (LaneUpdateProcess, TileCornerModel): a diagonal step between two ordinary road tiles
+        // runs through a corner chunk. Each tile's lane ends 0.5 tiles from its centre and a short corner lane
+        // (about 0.41 tiles) joins them. The corner chunk holds two lanes, so it is never arbitrated; the tile lane before
+        // it has a single outbound lane and takes only its turn factor, while the corner lane takes the intersection
+        // factor when the next tile offers several ways. Crossing diagonals (a four-lane corner) are not modelled.
+        bool SplitsCorner(Cell a,Cell b)=>Rules.Version==GameVersion.OriginalReference&&a.X!=b.X&&a.Y!=b.Y&&
+            RoundaboutAt(a)==null&&RoundaboutAt(b)==null&&MotorwayBetween(a,b)==null&&SharedTransitBetween(a,b)==null;
+
+        double OriginalTurnSpeed(int incoming,int outgoing,bool fromMotorway)
+        {
+            double speed=Rules.CarSpeed;
+            if(incoming<8&&!fromMotorway){int turn=Math.Abs(incoming-outgoing);turn=Math.Min(turn,8-turn);if(turn==2)speed*=Rules.RightAngleMultiplier;else if(turn>=3)speed*=Rules.SharpTurnMultiplier;}
+            return speed;
+        }
+
+        Lane CornerLane(Cell at,Cell next,int direction,Point start,Point heading)
+        {
+            var finish=new Point(next)-heading*.5+heading.Right*Rules.LaneOffset;
+            var points=new Point[5];for(int k=0;k<5;k++)points[k]=start+(finish-start)*(k/4.0);
+            var lane=CreateLane(points,at,at,next,direction,direction);
+            lane.IsCorner=true;lane.Key=$"corner:{at.X}:{at.Y}:{direction}";
+            lane.SpeedLimit=OriginalLaneSpeed(at,direction,direction,false,false);
+            return lane;
+        }
+
         bool IsControlledLane(Lane lane)=>lane!=null&&!lane.IsParking&&!lane.IsMotorway&&Signals.ContainsKey(lane.Tile);
 
         // Original maximum acceleration: roundabout if the current or next chunk is a roundabout; controlled if the

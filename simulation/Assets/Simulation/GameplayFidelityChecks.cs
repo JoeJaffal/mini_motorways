@@ -81,6 +81,15 @@ namespace MotorwaysSim
                 int stock=w.Inventory[0],grant=w.UpgradeChoices[0].Roads+(w.UpgradeChoices[0].Type==0?w.UpgradeChoices[0].Amount:0);
                 Require(w.ChooseUpgrade(0)&&w.Inventory[0]==stock+grant&&!w.ChooseUpgrade(0),"reward grants concrete exactly once");checks++;
             }
+            {
+                // Original tile corners: a diagonal step runs tile lane (ends 0.5 from centre), corner lane (~0.41), tile lane.
+                var w=Lab();w.Inventory[0]=1000;Require(w.DrawRoad(new Cell(10,10),new Cell(13,13)),"diagonal road drawn");
+                var lanes=w.MakeLanes(new[]{new Cell(10,10),new Cell(11,11),new Cell(12,12),new Cell(13,13)});
+                Require(lanes.Count==7&&lanes[1].IsCorner&&lanes[3].IsCorner&&lanes[5].IsCorner&&!lanes[2].IsCorner,"tile and corner lanes alternate on a diagonal");
+                Require(Math.Abs(lanes[1].Length-(Math.Sqrt(2)-1))<1e-6,"corner lane spans the corner region (sqrt2 - 1 tiles)");
+                for(int i=1;i<lanes.Count;i++)Require(Point.Distance(lanes[i-1].Samples.Last(),lanes[i].Samples[0])<1e-9,"diagonal lanes are continuous");
+                checks++;
+            }
             foreach(bool shared in new[]{false,true})
             {
                 var w=Lab();w.Inventory[0]=1000;w.Rules.OvercrowdingSeconds=100000;

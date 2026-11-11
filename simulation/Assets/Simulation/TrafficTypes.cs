@@ -109,7 +109,7 @@ namespace MotorwaysSim
         public Point[] Samples;
         public double[] Distances;
         public double Length,SpeedLimit;
-        public bool IsJunction,IsRoundabout,IsParking,IsMotorway,ReleasesParking,DeliversDriveThrough;
+        public bool IsJunction,IsRoundabout,IsParking,IsMotorway,ReleasesParking,DeliversDriveThrough,IsCorner;
         public string Chunk=""; // carpark lanes: "carpark:<id>:<chunk>" (CarparkArbitration.cs)
         public int MotorwayId=-1;
         public int CarparkId=-1;

@@ -149,6 +149,9 @@ namespace MotorwaysSim
                     continue;
                 }
                 var round=RoundaboutAt(at);
+                bool cornerIn=i>0&&!fromMotorway&&SplitsCorner(prev,at),cornerOut=i<route.Count-1&&motorway==null&&SplitsCorner(at,next);
+                if(cornerIn&&!(i==0))start=center-incoming*.5+incoming.Right*Rules.LaneOffset;
+                if(cornerOut&&!(i==route.Count-1))end=center+outgoing*.5+outgoing.Right*Rules.LaneOffset;
                 Point[] samples;
                 if(motorway!=null)
                 {
@@ -173,8 +176,10 @@ namespace MotorwaysSim
                 else if(fromMotorway)lane.IsJunction=true;
                 // A boundary-based parcel endpoint can coincide with the next lane
                 // boundary. Do not create a zero-length lane with an undefined heading.
+                if(cornerOut)lane.SpeedLimit=OriginalTurnSpeed(inDir,outDir,fromMotorway);
                 if(lane.Distances.Last()<1e-8&&route.Count>1)continue;
                 lanes.Add(lane);
+                if(cornerOut)lanes.Add(CornerLane(at,next,outDir,end,outgoing));
             }
             return lanes;
         }
