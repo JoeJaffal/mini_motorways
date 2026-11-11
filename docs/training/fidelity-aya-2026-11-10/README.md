@@ -108,3 +108,14 @@ On f15: v21 mean 788.3 (735–805), fitted 808 at the end; v21a mean 774.2 (630�
 ## Continued on `fidelity-aya-growth` (merged as f12)
 
 Original free-play city growth (building placement by the original's weight layers and building influence, house driveways, playable edges, spawn schedule, supply anchor; branch simulator `2026-11-11.g1`, merged into `fidelity-aya` as `2026-11-10.f12`) is recorded in [fidelity-aya-growth-2026-11-11](../fidelity-aya-growth-2026-11-11/README.md). Replays force building spawns, so replay v21 results are not affected by it.
+
+## Open items (state at f20)
+
+Known differences from the original that are not yet modelled, roughly by expected effect:
+
+1. **Replay demand input.** The real game had roughly 10% more demand by ~1260 s than replay v21 gives us (see above). v21a covers the two provable late destinations; the ambiguous one (yellow 26,18 or red 30,18) and the never-placed blue destination of plan days 40–76 are not represented.
+2. **Crossing diagonals.** The original lets two diagonal roads cross at a tile corner, forming a four-lane corner junction where cars can also turn; ours refuses the stroke. Needs corner nodes in the route graph.
+3. **Re-routing details.** The original re-paths from a car's committed lanes, keeping its next two lanes; ours rebuilds the current lane with a joining curve at the next eligible lane start.
+4. **Roundabout activation.** The original keeps a new roundabout planned until conflicting lanes clear and holds affected cars (hot-swapping lanes); ours switches at once.
+5. **Traffic-light removal.** The original removes a light when its tile drops below three roads counting pending roads; needs pending roads.
+6. **Smaller items.** All-leader pushing cycles (the 45 s escape covers deadlocks); motorway slot fallback to a neighbouring free direction; junction limits on water tiles; drawing by greedy eight-direction stepping instead of a raster line.
