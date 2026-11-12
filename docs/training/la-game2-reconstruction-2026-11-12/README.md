@@ -1,4 +1,21 @@
-# Second recorded LA game (score 601): draft reconstruction, 12 November 2026
+# Second recorded LA game (score 601): reconstruction, 12 November 2026
+
+## Current result (draft 4)
+
+[replay-g2-draft4c-unlimited.json](replay-g2-draft4c-unlimited.json), 60 demand-phase sets fitted to this game's score curve:
+
+| simulator | mean score | median | mean end (game s) | runs reaching 1162 s | score at 900 s | at 1000 s | at 1100 s |
+|---|---|---|---|---|---|---|---|
+| f24 | 558.0 | 579 | 1093 | 14 | 366 | 454 | 556 |
+| f31 | **608.3** | 621.5 | **1149** | **42** | 367 | 454 | 557 |
+| f33, earlier exit-space formula | 606.2 | 615 | 1144 | 29 | 367 | 455 | 559 |
+| f34 | 591.5 | 589 | 1135 | 16 | 366 | 453 | 553 |
+| real game | 601 | | about 1162 | | 373 | 459 | about 549 |
+
+All builds are within about 2% of the real score at every checkpoint. f31 matches best: its mean score is within 7 of the real game's, and 42 of its 60 runs reach the real end time. The order f31 ahead of f34, with the earlier exit-space formula close to f31, matches the first recording.
+
+**Correction to draft 3 (below).** Draft 3's conclusion, that every build ends 80 to 125 s too early because lots overflow too soon, was mostly an artefact of the reconstruction. The erase pass ([post_erase.py](source/post_erase.py)) also removed links added on purpose (manual and connectivity repairs) whenever their exact pixels looked like land. One such link was 32,11 to 31,12, which joins the shared lot's east access to the row-12 road. Without it, magenta cars from the far-east houses drove through the shared lot and crossed the river twice to reach 27,18: 35 tiles instead of 28. Real tracked trips were much shorter. For example, (24,19) to (27,18) took 7 s in the video against 13.5 s in the simulator, through a wrong driveway, now also fixed. Draft 4 keeps deliberate links out of the erase pass and builds route-length checks into the harness (`ROUTEALL`, `ROUTEPAIR`, `TRIPS`, `DUMPEVERY`, `REGION` in `tmp/harness/Trace.cs`). Its network still has about 25 to 35 more road tiles than the stock series implies (about 20%), so the replay still runs with unlimited stock.
+
 
 Source: `la-game2-score-601.mp4` (1596x928, 30 fps, 1197.7 s; stays local in `tmp/video/`). Recorded by the user. Final score 601, game over at about game second 1162.
 

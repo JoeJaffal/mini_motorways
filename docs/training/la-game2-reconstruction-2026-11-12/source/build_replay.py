@@ -57,6 +57,16 @@ for k,(offers,ch) in enumerate(OFF):
     t=140*(k+1)
     ev.append(dict(at=t,kind='offer',offers=[dict(type=a,amount=b,roads=c) for a,b,c in offers]))
     ev.append(dict(at=t+0.01,kind='choose',choice=ch))
+# a link through a house tile must be gone before the house appears
+hs_t={(e['x'],e['y']):e['at'] for e in ev if e['kind']=='house'}
+extra=[]
+for e in ev:
+    if e['kind']!='draw':continue
+    for c in ((e['x'],e['y']),(e['toX'],e['toY'])):
+        if c in hs_t and e['at']<hs_t[c]:
+            extra.append(dict(at=round(hs_t[c]-0.02,2),kind='erase',x=e['x'],y=e['y'],toX=e['toX'],toY=e['toY'],allowRejection=True,clear=True))
+        elif c in hs_t and e['at']>=hs_t[c]:e['skip']=True
+ev=[e for e in ev if not e.get('skip')]+extra
 ev=[e for e in ev if 0<e['at']<1162.0]
 order={'offer':0,'choose':1,'shop':2,'shared':2,'join':2,'house':3,'circle':4,'erase':5,'driveway':6,'draw':7}
 ev.sort(key=lambda e:(e['at'],order[e['kind']]))

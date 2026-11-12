@@ -1,7 +1,7 @@
 #!/bin/sh
 # rebuild the draft replay and run it with unlimited stock; extra env vars pass through to the harness
 cd "/c/Projects/490 - Project/mm-fidelity/tmp/video/g2"
-py -3 build_replay.py >/dev/null && py -3 - <<'PY'
+py -3 build_replay.py >/dev/null && py -3 post_erase.py >/dev/null && py -3 - <<'PY'
 import json
 r=json.load(open('replay-g2-draft1.json'))
 for e in r['events']:

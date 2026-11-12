@@ -17,7 +17,7 @@ def key(e):
 # on-intervals per link from the replay
 ivs={}
 for e in sorted(rep['events'],key=lambda e:e.get('videoTime',e['at'])):
-    if e['kind'] not in('draw','erase'):continue
+    if e['kind'] not in('draw','erase') or e.get('manual'):continue
     k=key(e);v=e.get('videoTime')
     if e['kind']=='draw' and k not in ivs:ivs[k]=[[v,None,e]]
     elif e['kind']=='draw' and ivs[k][-1][1] is not None:ivs[k].append([v,None,e])
