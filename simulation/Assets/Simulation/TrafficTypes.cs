@@ -112,6 +112,7 @@ namespace MotorwaysSim
         public bool IsJunction,IsRoundabout,IsParking,IsMotorway,ReleasesParking,DeliversDriveThrough,IsCorner;
         public string Chunk=""; // carpark lanes: "carpark:<id>:<chunk>" (CarparkArbitration.cs)
         public Cell? Corner; // corner lanes (OriginalReference): code cell of the tile corner chunk they belong to
+        public bool MotorwayNode; // OriginalReference: a tile lane into or out of a motorway slot (a Motorway node in the original)
         public bool ParkingNodes; // carpark aisle lanes whose Incoming/Outgoing carry the original's connection nodes
         public Cell ChunkCell=>Corner??Tile; // the road chunk whose lanes arbitrate with this one
         public int MotorwayId=-1;

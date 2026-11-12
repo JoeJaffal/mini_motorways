@@ -403,7 +403,8 @@ namespace MotorwaysSim
                             var parts=lane.Key.Split(':');
                             if(parts.Length>3&&int.TryParse(parts[3],out int slot))
                             {
-                                var parked=Cars.Find(v=>v.Id!=car.Id&&v.Stage==TripStage.Parking&&v.ParkingSlot==slot&&v.ShopId>=0&&Buildings[v.ShopId].CarparkId==lane.CarparkId);
+                                var parked=Cars.Find(v=>v.Id!=car.Id&&v.Stage==TripStage.Parking&&v.ParkingSlot==slot&&v.ShopId>=0&&Buildings[v.ShopId].CarparkId==lane.CarparkId&&
+                                    v.Lanes.Count>0&&v.Lanes[v.Lanes.Count-1].Key==lane.Key); // only on the same one-way bay lane
                                 if(parked!=null&&ahead+laneLeft<gap){gap=ahead+laneLeft;leaderSpeed=0;leaderAcceleration=0;obstacle="Parked car";leaderId=parked.Id;}
                             }
                         }

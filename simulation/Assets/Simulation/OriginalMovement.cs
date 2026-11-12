@@ -67,7 +67,8 @@ namespace MotorwaysSim
             if(ao==bo&&(!allowCrossingInFrontOfOther||ai==bi))return true;
             if(ai==bi)return false;
             if(ai==bo&&ao==bi)return false;
-            if(smallIntersection&&!b.IsMotorway&&ai==(bi+4)%8&&ao==(bo+4)%8)return true;
+            // The half-turn test is skipped when the other connection has a Motorway node (a lane into or out of a slot).
+            if(smallIntersection&&!b.IsMotorway&&!b.MotorwayNode&&ai==(bi+4)%8&&ao==(bo+4)%8)return true;
             if(allowCrossingInFrontOfOther)return false;
             int count=0;
             for(int d=ai;d!=(ao+1)%8;d=(d+1)%8)if(bi==d||bo==d)count++;
@@ -96,7 +97,7 @@ namespace MotorwaysSim
             var local=CreateLane(Cubic(start,start+incoming*Math.Min(.35,length*.45),slotEnd-out1*Math.Min(.35,length*.45),slotEnd,12),at,prev,next,inDir,slot);
             double speed=Rules.CarSpeed;
             if(inDir<8){int turn=Math.Abs(inDir-slot);turn=Math.Min(turn,8-turn);if(turn==2)speed*=Rules.RightAngleMultiplier;else if(turn>=3)speed*=Rules.SharpTurnMultiplier;}
-            local.SpeedLimit=speed;local.IsJunction=Degree(at)>=3||Tile(at)==Infrastructure.TrafficLight;
+            local.SpeedLimit=speed;local.IsJunction=Degree(at)>=3||Tile(at)==Infrastructure.TrafficLight;local.MotorwayNode=true;
             var travel=DirectionVector((endSlot+4)%8);var entry=SlotPoint(next,endSlot)+travel.Right*Rules.LaneOffset;
             var points=new Point[9];for(int k=0;k<9;k++)points[k]=slotEnd+(entry-slotEnd)*(k/8.0);
             var fast=CreateLane(points,at,prev,next,slot,(endSlot+4)%8);

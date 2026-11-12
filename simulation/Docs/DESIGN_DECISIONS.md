@@ -1692,3 +1692,14 @@ Ours asked every lane in the lookahead (only within it, at most six lanes), brak
 **Engineering choice** (OriginalReference). `RegisterRoute` clears them only for a new route (`keepExisting` false), which still keeps pushing from surviving into the next trip (the reason for decision 116).
 
 **Measured.** On f32f: 754.1 (paired -4.0 +/- 4.6; only 2 of 60 runs change; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f32-replay-v21d-p21e.txt)).
+
+
+## 130 - Motorway nodes in the half-turn test; drive-throughs follow only a car parked on their own bay lane (12 November 2026, `fidelity-aya`)
+
+**Evidence.** Both found by the f32 audits.
+- `RoadTileConnection.IntersectsOtherConnection` skips the half-turn conflict when the other connection has a Motorway node, that is a lane into or out of a motorway slot. Ours skipped it only for the bespoke motorway lane, so it found extra conflicts on motorway end tiles.
+- A parked car in the original sits on one of the bay's two one-way lanes (decision 125). A drive-through car on the opposite lane is not behind it. Ours matched the parked car by bay only.
+
+**Engineering choice** (OriginalReference). The end tile's lane from the slot and the start tile's lane to the slot carry `Lane.MotorwayNode`, which skips the half-turn test. The parked-car leader for drive-throughs requires the parked car's bay lane to be the same lane.
+
+**Measured.** Replay v21d, v21e sets: identical to f32 in all 60 runs (754.1; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f33-replay-v21d-p21e.txt)); neither case arises in the LA replay. 99 suites, five-map checks and training readiness pass on `2026-11-10.f33`.
