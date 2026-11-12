@@ -1603,3 +1603,12 @@ Arbitration in these chunks uses `IntersectsOtherConnection` (shared exits by ou
 
 **Measured.** Replay v21d, v21e sets: 792.3 against f29's 792.5 (paired -0.3 +/- 3.2; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f30-replay-v21d-p21e.txt)). 99 suites, five-map checks and training readiness pass on `2026-11-10.f30`.
 
+
+## 121 - Motorway route costs as the original's lanes (12 November 2026, `fidelity-aya`)
+
+**Evidence.** A motorway trip in the original runs on the start tile's lane to the ramp slot, at that lane's speed with its turn factor, and then on the bespoke motorway lane between the two slot edges at `maxSpeedOnMotorways`. The motorway lane is about one tile shorter than centre to centre. Pathfinding charges each lane its length over its speed (decision 119). Ours charged the whole centre-to-centre distance at motorway speed, which made motorways slightly cheaper than in the original.
+
+**Engineering choice** (OriginalReference). `MotorwayStepTime` gives a motorway step the start tile's lane (our tile-lane length from the entry to the ramp slot, at turn speed) plus `max(0, distance - 1)` at motorway speed. `FindRoute` and `RouteCost` both use it.
+
+**Measured.** Replay v21d, v21e sets: 795.4 (745 to 830, median 804), 18/60 reach the end, against f30's 792.3 (paired +3.1 +/- 3.0; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f31-replay-v21d-p21e.txt)). 99 suites, five-map checks and training readiness pass on `2026-11-10.f31`.
+
