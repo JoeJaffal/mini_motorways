@@ -14,6 +14,23 @@
 
 All builds are within about 2% of the real score at every checkpoint. f31 matches best: its mean score is within 7 of the real game's, and 42 of its 60 runs reach the real end time. The order f31 ahead of f34, with the earlier exit-space formula close to f31, matches the first recording.
 
+**Which step from f31 to f34 costs the points** (draft 4, the same 60 phase sets, paired against the previous step):
+
+| step | mean score | runs reaching 1162 s | paired change |
+|---|---|---|---|
+| f31 | 608.3 | 42 | |
+| + 122, exit-space target case (f32a) | 617.0 | 50 | +8.7 +/- 4.7 |
+| + 123, target braking (f32b) | 585.0 | 22 | **-32.0 +/- 6.1** |
+| + 124 and 125, crossing skip and one-way bays (f32c) | 585.2 | 15 | +0.2 +/- 5.6 |
+| + 126, lookahead order (f32d) | 583.5 | 13 | -1.7 +/- 4.9 |
+| + 127, eviction (f32e) | 578.0 | 10 | -5.5 +/- 4.7 |
+| + 128, inbound order (f32f) | 592.9 | 16 | +14.9 +/- 5.0 |
+| + 129, re-plan keeps shove (f32g); f33; f34 | 592.9, 592.9, 591.5 | 16 | 0, 0, -1.4 |
+
+The loss comes almost entirely from target braking (decision 123), as on the first recording (-28.1 there). Short trips are not slower with it: (24,19) or (25,19) to the lot at 27,18 takes 7 to 9 s in f34, against 7 s for a car tracked in the video. The cost therefore sits in busy lots late in the game, where arriving cars creep towards their bay. Re-reading the original confirms how the target is chosen: the outbound path ends at the lot's entrance lane, with the target at that lane's length (`DispatchVehiclesProcess`, `VehiclePathfindingProcess`); the bay middle is set once the lot assigns a bay. The open question is how a creeping car affects the cars behind it inside a busy lot.
+
+On 12 November, at the user's request, f31 (fidelity-aya 4f3bb7c) was merged into upstream main as b018019.
+
 **Correction to draft 3 (below).** Draft 3's conclusion, that every build ends 80 to 125 s too early because lots overflow too soon, was mostly an artefact of the reconstruction. The erase pass ([post_erase.py](source/post_erase.py)) also removed links added on purpose (manual and connectivity repairs) whenever their exact pixels looked like land. One such link was 32,11 to 31,12, which joins the shared lot's east access to the row-12 road. Without it, magenta cars from the far-east houses drove through the shared lot and crossed the river twice to reach 27,18: 35 tiles instead of 28. Real tracked trips were much shorter. For example, (24,19) to (27,18) took 7 s in the video against 13.5 s in the simulator, through a wrong driveway, now also fixed. Draft 4 keeps deliberate links out of the erase pass and builds route-length checks into the harness (`ROUTEALL`, `ROUTEPAIR`, `TRIPS`, `DUMPEVERY`, `REGION` in `tmp/harness/Trace.cs`). Its network still has about 25 to 35 more road tiles than the stock series implies (about 20%), so the replay still runs with unlimited stock.
 
 
