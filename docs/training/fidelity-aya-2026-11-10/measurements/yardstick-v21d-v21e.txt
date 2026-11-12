@@ -1,0 +1,9 @@
+# Same yardstick for every version: replay v21d, the 60 phase sets refitted to the re-read real score curve (v21e)
+[y22] 60 plausible phases: score mean 806.1 median 807.0 min 767 max 838 | end mean 1303 min 1274 | reach end 21/60   (real 835 @ 1314.6)
+[y24] 60 plausible phases: score mean 808.5 median 818.0 min 745 max 835 | end mean 1304 min 1256 | reach end 28/60   (real 835 @ 1314.6)
+[f28-p21e] 60 plausible phases: score mean 778.3 median 780.0 min 705 max 827 | end mean 1288 min 1234 | reach end 6/60   (real 835 @ 1314.6)
+[len] 60 plausible phases: score mean 792.5 median 791.0 min 736 max 831 | end mean 1297 min 1261 | reach end 17/60   (real 835 @ 1314.6)
+[exitleg] 60 plausible phases: score mean 792.3 median 791.5 min 730 max 829 | end mean 1298 min 1253 | reach end 17/60   (real 835 @ 1314.6)
+[mwc] 60 plausible phases: score mean 795.4 median 804.0 min 745 max 830 | end mean 1300 min 1266 | reach end 18/60   (real 835 @ 1314.6)
+# labels: y22=f22, y24=f24, f28-p21e=f28, len=f29, exitleg=f30, mwc=f31
+[f31 with the pre-f25 exit-space formula] [f31-oldspace] 60 plausible phases: score mean 808.1 median 817.0 min 735 max 837 | end mean 1305 min 1259 | reach end 29/60   (real 835 @ 1314.6) | paired: mean +12.8  se 4.1  min -64 max +76  better 40/60 vs f31

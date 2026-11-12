@@ -24,3 +24,15 @@ DarEsSalaam seed 41: [300s +48 trips, out 9] [600s +133 trips, out 21] [900s +21
 London seed 40: [300s +36 trips, out 9] [600s +80 trips, out 23] [900s +128 trips, out 36] [1200s +183 trips, out 66] [1500s +257 trips, out 128] maxStuck>30s=4 maxWait=41s failed=False
 London seed 41: [300s +39 trips, out 10] [600s +68 trips, out 15] [900s +109 trips, out 21] [1200s +192 trips, out 45] [1500s +284 trips, out 72] maxStuck>30s=0 maxWait=18s failed=False
 TOTAL trips f24 10362 f27 10561 (+1.9%); last 300 s f24 4253 f27 4374; longest wait f24 42 s f27 45 s
+
+# f29 (4840c41+...: lane-length costs) on the same soak test:
+LosAngeles seed 40: [300s +48 trips, out 7] [600s +122 trips, out 20] [900s +190 trips, out 29] [1200s +291 trips, out 66] [1500s +467 trips, out 130] maxStuck>30s=0 maxWait=16s failed=False
+LosAngeles seed 41: [300s +47 trips, out 8] [600s +130 trips, out 11] [900s +184 trips, out 27] [1200s +256 trips, out 70] [1500s +441 trips, out 122] maxStuck>30s=1 maxWait=36s failed=False
+Beijing seed 40: [300s +39 trips, out 8] [600s +94 trips, out 11] [900s +176 trips, out 45] [1200s +319 trips, out 75] [1500s +487 trips, out 144] maxStuck>30s=0 maxWait=18s failed=False
+Beijing seed 41: [300s +44 trips, out 8] [600s +106 trips, out 18] [900s +167 trips, out 32] [1200s +300 trips, out 83] [1500s +436 trips, out 145] maxStuck>30s=1 maxWait=35s failed=False
+Tokyo seed 40: [300s +46 trips, out 4] [600s +96 trips, out 11] [900s +164 trips, out 32] [1200s +306 trips, out 95] [1500s +355 trips, out 150] maxStuck>30s=2 maxWait=36s failed=False
+Tokyo seed 41: [300s +49 trips, out 6] [600s +85 trips, out 10] [900s +174 trips, out 30] [1200s +323 trips, out 72] [1500s +393 trips, out 140] maxStuck>30s=1 maxWait=39s failed=False
+DarEsSalaam seed 40: [300s +34 trips, out 8] [600s +118 trips, out 15] [900s +232 trips, out 45] [1200s +342 trips, out 105] [1500s +514 trips, out 156] maxStuck>30s=1 maxWait=30s failed=False
+DarEsSalaam seed 41: [300s +48 trips, out 9] [600s +133 trips, out 20] [900s +210 trips, out 35] [1200s +363 trips, out 78] [1500s +463 trips, out 130] maxStuck>30s=1 maxWait=32s failed=False
+London seed 40: [300s +35 trips, out 10] [600s +83 trips, out 19] [900s +124 trips, out 32] [1200s +165 trips, out 82] [1500s +200 trips, out 148] maxStuck>30s=24 maxWait=69s failed=False
+London seed 41: [300s +39 trips, out 10] [600s +69 trips, out 14] [900s +103 trips, out 25] [1200s +166 trips, out 52] [1500s +294 trips, out 68] maxStuck>30s=1 maxWait=31s failed=False
