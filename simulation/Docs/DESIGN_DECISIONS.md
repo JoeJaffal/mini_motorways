@@ -1703,3 +1703,12 @@ Ours asked every lane in the lookahead (only within it, at most six lanes), brak
 **Engineering choice** (OriginalReference). The end tile's lane from the slot and the start tile's lane to the slot carry `Lane.MotorwayNode`, which skips the half-turn test. The parked-car leader for drive-throughs requires the parked car's bay lane to be the same lane.
 
 **Measured.** Replay v21d, v21e sets: identical to f32 in all 60 runs (754.1; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f33-replay-v21d-p21e.txt)); neither case arises in the LA replay. 99 suites, five-map checks and training readiness pass on `2026-11-10.f33`.
+
+
+## 131 - A re-plan re-registers from the first changed lane (12 November 2026, `fidelity-aya`)
+
+**Evidence.** The original `AssignPath` compares the new path with the old one after the two committed lanes. It keeps the inbound registrations along the common start and removes and re-adds every lane from the first difference. Re-added entries get a fresh timestamp, go to the back of the chunk's inbound list and get a new commitment time. Ours kept the old registration for any lane still planned anywhere on the new route. Found by the f32 junction audit; it matters for exact-distance ties and for the order of ineligible cars (decision 128).
+
+**Engineering choice** (OriginalReference). Each car keeps its registered lanes in path order (`RegisteredPath`). `RegisterRoute` with `keepExisting` keeps the common prefix with the new route and re-registers the rest: new stamp, new sequence number, and the 45 s commitment time cleared.
+
+**Measured.** Replay v21d, v21e sets: 752.7 against f33's 754.1 (paired -1.4 +/- 0.9, 8 of 60 runs change; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f34-replay-v21d-p21e.txt)). 99 suites, five-map checks and training readiness pass on `2026-11-10.f34`.

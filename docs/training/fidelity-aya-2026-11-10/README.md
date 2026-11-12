@@ -8,7 +8,7 @@ rules that match the original's code, and the recorded 835-point Los Angeles gam
 close to 835 at about 1314.6 s. Reading the decompiled original locally and running its components as an
 oracle are allowed; decompiled code and assemblies stay outside Git (decision 077).
 
-## Current state (12 November 2026, simulator `2026-11-10.f33`)
+## Current state (12 November 2026, simulator `2026-11-10.f34`)
 
 - **Benchmark:** replay v21d (event times read from the game's clock dial) on 60 demand-phase sets refitted to the real score curve, re-read at exact frame times (decision 118).
 - **Scores:**
@@ -22,6 +22,7 @@ oracle are allowed; decompiled code and assemblies stay outside Git (decision 07
   - f31 (motorway costs, decision 121): **795.4** (median 804), 18/60 reach the end.
   - f32 (seven rules from an audit of the decompiled movement, junction and parking code, decisions 122 to 129): **754.1** (median 760), 0/60 reach the end. Fixed-time scores are as close to the real curve as before: 365.4 at 900 s (real 364), 449.2 at 1000 s (454), 553.5 at 1100 s (551), 666.1 at 1200 s (663). The loss is in when the game ends, see "f32" below.
   - f33 (two audit details, decision 130): identical to f32 on the replay.
+  - f34 (re-plan registrations, decision 131): 752.7.
   - The original scored 835 and ended at about 1314.6 s.
 - **Where it differs:** up to about 360 s our score is within 3 trips of the real curve, and from 430 to 1000 s 5 to 17 trips behind. The gap opens in the late game, when the far red lot overflows earlier than in the original.
 - **Rules ported overnight from the decompiled code:**
@@ -276,7 +277,7 @@ Three independent read-only audits compared the decompiled original with our cod
 
 Original free-play city growth (building placement by the original's weight layers and building influence, house driveways, playable edges, spawn schedule, supply anchor; branch simulator `2026-11-11.g1`, merged into `fidelity-aya` as `2026-11-10.f12`) is recorded in [fidelity-aya-growth-2026-11-11](../fidelity-aya-growth-2026-11-11/README.md). Replays force building spawns, so replay v21 results are not affected by it.
 
-## Open items (state at f33)
+## Open items (state at f34)
 
 Differences from the original that remain, roughly by expected effect:
 
@@ -295,7 +296,6 @@ Differences from the original that remain, roughly by expected effect:
 Small differences found by the f32 audits and not yet ported (each judged low effect):
 - Lanes leaving a driveway have no leader in the original.
 - A car in a roundabout hot-swap counts as stopped for the cross-in-front relaxation.
-- A re-plan re-stamps every later registration.
 - The small-intersection lane count includes mothballed lanes.
 - Dispatch does not require a return route.
 - Bays are assigned after all movement in the step.

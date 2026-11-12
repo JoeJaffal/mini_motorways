@@ -216,7 +216,7 @@ namespace MotorwaysSim
 
         // Inbound registration at route assignment (original AssignPath -> AddInboundVehicle): each newly planned
         // arbitrated lane is stamped with game time plus its position in the path (1 for the next lane); retained
-        // entries keep their stamp.
+        // entries (the unchanged start of a re-planned path) keep their stamp.
         long registrationSequence;
         bool RegisteredBefore(Vehicle a,string laneA,Vehicle b,string laneB)=>
             a.RegisteredOrder.TryGetValue(laneA,out long x)&&b.RegisteredOrder.TryGetValue(laneB,out long y)&&x<y;
@@ -228,12 +228,19 @@ namespace MotorwaysSim
             for(int i=car.RouteIndex+1;i<car.Lanes.Count;i++){var lane=car.Lanes[i];if((lane.IsJunction||lane.IsRoundabout||lane.IsParking)&&!planned.ContainsKey(lane.Key))planned[lane.Key]=i-car.RouteIndex;}
             if(keepExisting)
             {
-                foreach(var key in car.ApproachRegistered.Keys.Where(k=>!planned.ContainsKey(k)).ToArray())car.ApproachRegistered.Remove(key);
+                // Original AssignPath keeps the registrations along the unchanged start of the new path and re-registers
+                // every lane from the first difference (fresh stamp, back of the inbound list, new commitment time).
+                var order=planned.OrderBy(p=>p.Value).Select(p=>p.Key).ToList();
+                var old=car.RegisteredPath.Where(k=>car.ApproachRegistered.ContainsKey(k)).ToList();
+                int common=0;while(common<old.Count&&common<order.Count&&old[common]==order[common])common++;
+                var kept=new HashSet<string>(order.Take(common));
+                foreach(var key in car.ApproachRegistered.Keys.Where(k=>!kept.Contains(k)).ToArray()){car.ApproachRegistered.Remove(key);car.CommittedAt.Remove(key);}
                 var lanes=new HashSet<string>(car.Lanes.Skip(car.RouteIndex+1).Select(l=>l.Key));
                 foreach(var key in car.CommittedAt.Keys.Where(k=>!lanes.Contains(k)).ToArray())car.CommittedAt.Remove(key);
             }
             else{car.ApproachRegistered.Clear();car.CommittedAt.Clear();}
             foreach(var item in planned.OrderBy(p=>p.Value))if(!car.ApproachRegistered.ContainsKey(item.Key)){car.ApproachRegistered[item.Key]=Time+item.Value;car.RegisteredOrder[item.Key]=++registrationSequence;}
+            car.RegisteredPath=planned.OrderBy(p=>p.Value).Select(p=>p.Key).ToList();
             // Original AssignPath keeps shoving and pushing through a re-plan; only a new trip starts clear (decision 116).
             if(!keepExisting){car.Shoving=false;car.ShovingLane="";car.PushingInto=-1;}
             NoteCommitments(car);
