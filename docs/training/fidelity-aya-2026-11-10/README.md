@@ -8,7 +8,7 @@ rules that match the original's code, and the recorded 835-point Los Angeles gam
 close to 835 at about 1314.6 s. Reading the decompiled original locally and running its components as an
 oracle are allowed; decompiled code and assemblies stay outside Git (decision 077).
 
-## Current state (12 November 2026, simulator `2026-11-10.f28`)
+## Current state (12 November 2026, simulator `2026-11-10.f29`)
 
 - **Benchmark:** replay v21d (event times read from the game's clock dial) on 60 demand-phase sets refitted to the real score curve, re-read at exact frame times (decision 118).
 - **Scores:**
@@ -17,6 +17,7 @@ oracle are allowed; decompiled code and assemblies stay outside Git (decision 07
   - f26: 773.5; the median run is unchanged, and one run collapses.
   - f27 (review fixes, decision 116): 771.9.
   - f28 (carpark connection nodes, decision 117): 780.1, 12/60 reach the end; 778.3 on the corrected-curve phase sets (decision 118).
+  - f29 (lane-length route costs, decision 119): **792.5**, 17/60 reach the end.
   - The original scored 835 and ended at about 1314.6 s.
 - **Where it differs:** up to about 360 s our score is within 3 trips of the real curve, and from 430 to 1000 s 5 to 17 trips behind. The gap opens in the late game, when the far red lot overflows earlier than in the original.
 - **Rules ported overnight from the decompiled code:**
@@ -208,6 +209,10 @@ The original real score curve (10 November) was read from frames that turn out t
 
 f28 on them: 778.3 (705 to 827), 6/60 reach the end ([data](measurements/bench-f28-replay-v21d-p21e.txt)). With the best set, our curve is within 3 trips of the real one up to about 360 s and 5 to 17 trips behind from 430 to 1000 s. The real first delivery (car leaving at about video 18 s, parked by video 24 s) agrees with ours (game 15.5 s). Much of the mid-game "deficit" reported earlier came from the shifted real curve.
 
+### f29: route costs use lane lengths (12 November 2026)
+
+The original charges a lane its length over its speed limit. Ours charged each step a whole tile, so a right turn (lane 0.64 tiles) cost as much as a left turn (0.95) and more than the original's. With lane lengths in the costs, replay v21d on the current phase sets scores 792.5 against 778.3 (paired +14.2 +/- 4.0, 42/60 better; [data](measurements/bench-f29-replay-v21d-p21e.txt); decision 119).
+
 ## Experiments not adopted
 
 - **Original re-plan on road changes, on f22 (11 November 2026).** On the 60 plausible phase sets ([phases](measurements/plausible-phases-v21b-60.txt)) replay v21c scores 786.2 (700–833), 8/60 reach the end, against f22's 794.4 (669–833), 15/60. Paired difference −8.1 ± 4.8 trips; 22/60 runs improve ([data](measurements/experiment-repath-on-f22-p60.txt)). On the 20-set benchmark it was −11.6. It runs at f22's speed once return paths are re-found lazily; refreshing every stored return path at every change doubled run time. It is the original's rule, but it moves the replay away from the real game, so it stays off.
@@ -236,7 +241,7 @@ f28 on them: 778.3 (705 to 827), 6/60 reach the end ([data](measurements/bench-f
 
 Original free-play city growth (building placement by the original's weight layers and building influence, house driveways, playable edges, spawn schedule, supply anchor; branch simulator `2026-11-11.g1`, merged into `fidelity-aya` as `2026-11-10.f12`) is recorded in [fidelity-aya-growth-2026-11-11](../fidelity-aya-growth-2026-11-11/README.md). Replays force building spawns, so replay v21 results are not affected by it.
 
-## Open items (state at f28)
+## Open items (state at f29)
 
 Differences from the original that remain, roughly by expected effect:
 

@@ -1585,3 +1585,12 @@ Arbitration in these chunks uses `IntersectsOtherConnection` (shared exits by ou
 
 **Measured.** f28 on the new sets: 778.3 (705 to 827), 6/60 reach the end ([data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f28-replay-v21d-p21e.txt)). With the best set, our score is within 3 trips of the real curve up to about 360 s and 5 to 17 behind from 430 to 1000 s. Before the correction it was 7 behind by 317 s and 10 to 13 behind in mid-game. The late game still ends earlier than the original's 1314.6 s.
 
+
+## 119 - Route costs use lane lengths (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `LaneModel.PathfindingCost` is `max(1, int(10 x Length / SpeedLimit))`, so a lane costs its actual length over its speed limit (twice for carpark lanes; mothballed lanes 100000). Ours charged every road step its centre-to-centre distance. Our lane lengths at a junction are 1.0 tile straight, 0.64 for a right turn and 0.95 for a left turn. At turn speed our router therefore charged a right turn 30 instead of about 19, steered cars away from right turns, and could pick a different house in dispatch, which uses the same costs.
+
+**Engineering choice** (OriginalReference). `StepLength` gives an ordinary road step the length of our tile lane for its entry and exit, built with the same geometry as `MakeLanes` and cached per direction pair, plus the corner lane on a diagonal exit. `FindRoute` and `RouteCost` divide it by the step's speed. Starting steps, motorways, roundabouts and parcels keep the centre-to-centre distance.
+
+**Measured.** Replay v21d on the v21e phase sets: 792.5 (736 to 831), 17/60 reach the end, against f28's 778.3 with 6/60. Paired +14.2 +/- 4.0, better in 42/60 runs, with gains at every time from 900 s ([data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f29-replay-v21d-p21e.txt)). 99 suites, five-map checks and training readiness pass.
+

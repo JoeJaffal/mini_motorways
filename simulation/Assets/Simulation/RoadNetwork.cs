@@ -74,7 +74,7 @@ namespace MotorwaysSim
                     var motorway=MotorwayBetween(state.cell,next);
                     double speed=motorway==null?LaneSpeed(state.cell,state.dir,exit):Rules.MotorwaySpeed;
                     var transit=SharedTransitBetween(state.cell,next);
-                    double cost=turn?CornerTurnTime(state.cell,state.dir,next,false):Distance(state.cell,next)/Math.Max(.01,speed);
+                    double cost=turn?CornerTurnTime(state.cell,state.dir,next,false):StepLength(state.cell,state.dir,exit,next,motorway,transit)/Math.Max(.01,speed);
                     if(state.dir<8&&((exit-state.dir+8)%8)==4)
                     {
                         if(Rules.Version!=GameVersion.OriginalReference)cost+=500;
@@ -108,7 +108,7 @@ namespace MotorwaysSim
                 if(CornerTurn(route[i],route[i+1],out _,out _)){total+=Math.Max(1,Math.Floor(10*CornerTurnTime(route[i],incoming,route[i+1],true)));continue;}
                 double speed=MotorwayBetween(route[i],route[i+1])==null?LaneSpeed(route[i],incoming,outgoing,i>0&&MotorwayBetween(route[i-1],route[i])!=null,true):Rules.MotorwaySpeed;
                 var transit=SharedTransitBetween(route[i],route[i+1]);if(transit!=null){total+=SharedTransitCost(transit,route[i],route[i+1]);continue;}
-                total+=Math.Max(1,Math.Floor(10*Distance(route[i],route[i+1])/speed));}
+                total+=Math.Max(1,Math.Floor(10*StepLength(route[i],incoming,outgoing,route[i+1],MotorwayBetween(route[i],route[i+1]),null)/speed));}
             return total;
         }
         public double LaneSpeed(Cell at,int incoming,int outgoing,bool fromMotorway=false,bool forCost=false)
@@ -227,6 +227,29 @@ namespace MotorwaysSim
                 Incoming=incoming,Outgoing=outgoing,Key=$"{tile.X}:{tile.Y}:{incoming}:{outgoing}"};
             for(int i=1;i<points.Length;i++)lane.Distances[i]=lane.Distances[i-1]+Point.Distance(points[i-1],points[i]);
             lane.Length=Math.Max(.001,lane.Distances.Last());return lane;
+        }
+        // Original LaneModel.PathfindingCost charges a lane its actual length over its speed limit. On an ordinary road tile
+        // the step's length is the length of our tile lane for that entry and exit (a right turn is shorter than a left
+        // turn), plus the corner lane on a diagonal exit; elsewhere (start, motorway, roundabout, parcel) the
+        // centre-to-centre distance is kept.
+        static readonly Dictionary<(int,int),double> stepLengthCache=new Dictionary<(int,int),double>();
+        double StepLength(Cell at,int inDir,int outDir,Cell next,MotorwayState motorway,Building transit)
+        {
+            if(Rules.Version!=GameVersion.OriginalReference||inDir>=8||outDir>=8||motorway!=null||transit!=null||
+                RoundaboutAt(at)!=null||RoundaboutAt(next)!=null||BuildingAt(at)!=null||BuildingAt(next)!=null||MotorwayBetween(new Cell(at.X-Directions[inDir].X,at.Y-Directions[inDir].Y),at)!=null)
+                return Distance(at,next);
+            lock(stepLengthCache)
+            {
+                if(stepLengthCache.TryGetValue((inDir,outDir),out double cached))return cached;
+                var inc=new Point(Directions[inDir].X,Directions[inDir].Y).Unit;var outv=new Point(Directions[outDir].X,Directions[outDir].Y).Unit;
+                var center=new Point(0,0);var a=center-new Point(Directions[inDir].X,Directions[inDir].Y);var b=center+new Point(Directions[outDir].X,Directions[outDir].Y);
+                var start=inDir%2==1?center-inc*.5+inc.Right*Rules.LaneOffset:(a+center)/2+inc.Right*Rules.LaneOffset;
+                var end=outDir%2==1?center+outv*.5+outv.Right*Rules.LaneOffset:(b+center)/2+outv.Right*Rules.LaneOffset;
+                double chord=Point.Distance(start,end);var samples=Cubic(start,start+inc*Math.Min(.35,chord*.45),end-outv*Math.Min(.35,chord*.45),end,12);
+                double length=0;for(int i=1;i<samples.Length;i++)length+=Point.Distance(samples[i-1],samples[i]);
+                if(outDir%2==1)length+=Math.Sqrt(2)-1; // corner lane
+                stepLengthCache[(inDir,outDir)]=length;return length;
+            }
         }
         static Point[] Cubic(Point a,Point b,Point c,Point d,int count)
         {
