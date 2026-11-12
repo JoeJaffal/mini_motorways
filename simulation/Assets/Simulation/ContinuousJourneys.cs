@@ -23,7 +23,8 @@ namespace MotorwaysSim
         void AppendReturnLanes(Vehicle car)
         {
             if(!ContinuousJourneys)return;
-            if(OriginalRepath){var back=FindRoute(car.DestinationAccess,Buildings[car.HomeId].Access,true);if(back.Count>1)car.ReturnRoute=back;}
+            if(OriginalRepath||car.ReturnRoute.Any(InPlannedRoundabout))
+            {var back=FindRoute(car.DestinationAccess,Buildings[car.HomeId].Access,true);if(back.Count>1)car.ReturnRoute=back;}
             if(car.ReturnRoute.Count<2)return;
             int at=car.Lanes.Count;car.Lanes.AddRange(MakeLanes(car.ReturnRoute));car.LegMarks.Add((at,TripStage.Returning));car.RouteVersion=NetworkVersion;
         }

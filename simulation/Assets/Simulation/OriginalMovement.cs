@@ -61,13 +61,13 @@ namespace MotorwaysSim
         // conflicts with the other's half-turn rotation, otherwise the lanes cross when exactly one of the other's
         // sides lies clockwise from this lane's entry through its exit. Our direction indices are clockwise like the
         // original's, so the cyclic test needs no remapping.
-        static bool ConnectionsIntersect(Lane a,Lane b,bool allowCrossingInFrontOfOther)
+        static bool ConnectionsIntersect(Lane a,Lane b,bool allowCrossingInFrontOfOther,bool smallIntersection=true)
         {
             int ai=(a.Incoming+4)%8,ao=a.Outgoing,bi=(b.Incoming+4)%8,bo=b.Outgoing;
             if(ao==bo&&(!allowCrossingInFrontOfOther||ai==bi))return true;
             if(ai==bi)return false;
             if(ai==bo&&ao==bi)return false;
-            if(!b.IsMotorway&&ai==(bi+4)%8&&ao==(bo+4)%8)return true;
+            if(smallIntersection&&!b.IsMotorway&&ai==(bi+4)%8&&ao==(bo+4)%8)return true;
             if(allowCrossingInFrontOfOther)return false;
             int count=0;
             for(int d=ai;d!=(ao+1)%8;d=(d+1)%8)if(bi==d||bo==d)count++;
@@ -195,10 +195,12 @@ namespace MotorwaysSim
 
         // Original maximum acceleration: roundabout if the current or next chunk is a roundabout; controlled if the
         // current or next chunk is signal-controlled or the car's own driveway, or near the end of a motorway lane.
+        const double CrossingAcceleration=.1; // 0.2 world units/s^2
         double OriginalMaximumAcceleration(Vehicle car,Lane current,double distanceAlong)
         {
             var next=car.RouteIndex+1<car.Lanes.Count?car.Lanes[car.RouteIndex+1]:null;
             if(current.IsRoundabout||next!=null&&next.IsRoundabout)return Rules.RoundaboutAcceleration;
+            if(IsRailChunk(current)||IsRailChunk(next))return CrossingAcceleration; // maxAccelerationOnCrossings
             var home=car.HomeId>=0&&car.HomeId<Buildings.Count?Buildings[car.HomeId].Cell:new Cell(-1,-1);
             bool driveway=!current.IsParking&&current.Tile==home||next!=null&&!next.IsParking&&next.Tile==home;
             bool motorwayEnd=current.IsMotorway&&current.Length-distanceAlong<Rules.CarLength;

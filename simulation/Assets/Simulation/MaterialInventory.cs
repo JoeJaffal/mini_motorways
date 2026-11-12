@@ -29,14 +29,19 @@ namespace MotorwaysSim {
    var profiles=OriginalGameplayTuning.UpgradeWeights(Map.Name);
    var available=OriginalUpgrades.Offers(Map.Name).Select((o,i)=>(offer:o,weight:UpgradeWeight(o,profiles[i])))
     .Where(v=>v.offer.Type<6&&v.offer.FirstWeek<=upgradeWeeksGranted&&(v.offer.LastWeek<=0||upgradeWeeksGranted<=v.offer.LastWeek)&&(v.offer.Maximum<=0||packagesTaken[v.offer.Type]<v.offer.Maximum)).ToList();
-   var eligibleTypes=available.Select(v=>v.offer.Type).Distinct().ToArray();
-   for(int i=0;i<2&&available.Count>0;i++){
-    double total=available.Sum(v=>v.weight),value=random.NextDouble()*total;var chosen=available[available.Count-1];
-    foreach(var candidate in available){value-=candidate.weight;if(value<=0){chosen=candidate;break;}}
-    UpgradeChoices.Add(chosen.offer);available.Remove(chosen);
+   // Original GameBehaviourModel.GenerateNextUpgradeChoices: the weights and their total are computed once; a pick
+   // removes the package from the list but not its weight, so later picks read the remaining packages against the
+   // original weight positions and total, falling back to the last package when the draw is not used up.
+   var packages=available.Select(v=>v.offer).ToList();var weights=available.Select(v=>v.weight).ToList();double total=weights.Sum();
+   for(int i=0;i<2&&packages.Count>0;i++){
+    double value=random.NextDouble()*total;int pick=packages.Count-1;
+    for(int j=0;j<packages.Count;j++){value-=weights[j];if(value<=0){pick=j;break;}}
+    UpgradeChoices.Add(packages[pick]);packages.RemoveAt(pick);
    }
-   foreach(int type in eligibleTypes)weeksNotOffered[type]=UpgradeChoices.Any(o=>o.Type==type)?0:weeksNotOffered[type]+1;
-   if(UpgradeChoices.Count==0)UpgradeChoices.Add(new UpgradeOffer{Type=0,Amount=20});
+   // OnUpgradeNotPresented for every package left (per package, so a type can count twice), then OnUpgradePresented.
+   foreach(var left in packages)weeksNotOffered[left.Type]++;
+   foreach(var shown in UpgradeChoices)weeksNotOffered[shown.Type]=0;
+   if(UpgradeChoices.Count==0)return; // the original grants an empty concrete package: nothing to choose
    Shuffle(UpgradeChoices);
   }
   public bool ChooseUpgrade(int index){

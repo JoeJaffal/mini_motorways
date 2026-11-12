@@ -8,6 +8,27 @@ rules that match the original's code, and the recorded 835-point Los Angeles gam
 close to 835 at about 1314.6 s. Reading the decompiled original locally and running its components as an
 oracle are allowed; decompiled code and assemblies stay outside Git (decision 077).
 
+## Current state (12 November 2026, simulator `2026-11-10.f31`)
+
+- **Benchmark:** replay v21d (event times read from the game's clock dial) on 60 demand-phase sets refitted to the real score curve, re-read at exact frame times (decision 118).
+- **Scores:**
+  - f24: 805.5, 22/60 runs reach the end.
+  - f25, after the original's junction exit-space formula: 783.4.
+  - f26: 773.5; the median run is unchanged, and one run collapses.
+  - f27 (review fixes, decision 116): 771.9.
+  - f28 (carpark connection nodes, decision 117): 780.1, 12/60 reach the end; 778.3 on the corrected-curve phase sets (decision 118).
+  - f29 (lane-length route costs, decision 119): **792.5**, 17/60 reach the end.
+  - f30 (in-lot leg when choosing an exit, decision 120): 792.3.
+  - f31 (motorway costs, decision 121): **795.4** (median 804), 18/60 reach the end.
+  - The original scored 835 and ended at about 1314.6 s.
+- **Where it differs:** up to about 360 s our score is within 3 trips of the real curve, and from 430 to 1000 s 5 to 17 trips behind. The gap opens in the late game, when the far red lot overflows earlier than in the original.
+- **Rules ported overnight from the decompiled code:**
+  - crossing diagonals (f23);
+  - gridlock cycles, roundabout activation and level crossings (f24);
+  - re-plan, exit space and registration stamps (f25);
+  - traffic-light details and the weekly offer draw (f26).
+- **Kept although it lowers the replay:** the exit-space formula (decision 112, -16.6). It is the original's code; see "f25" below.
+
 ## Method
 
 - **Original reference.** The installed `App.dll` (SHA256 `76c9d906…c638`, the build in
@@ -134,6 +155,66 @@ In the original, two diagonals may cross at a tile corner on land. The corner be
 
 The replay never builds a crossing: none of its builds is refused on f22. The corner-chunk change still moves it slightly. On the 60 plausible phase sets, v21c scores 796.3 (669–829) with 18/60 reaching the end, against f22's 794.4 with 15/60 (paired +2.0 ± 2.0; [data](measurements/bench-f23-replay-v21c-p60.txt)).
 
+### Gridlocks, roundabout activation and level crossings (f24, night of 11–12 November 2026)
+
+f24 ports three more rules from the original's code (decisions 107–109):
+- **Gridlocks:** blocking cycles are searched only from stuck vehicles (refused at their next junction, or overlapping their leader), and all-leader cycles push.
+- **Roundabout activation:** a new roundabout stays planned until the lanes it replaces are clear. Meanwhile cars about to commit to those lanes wait, and new routes avoid the circle.
+- **Level crossings:** cars slow towards, accelerate gently on, and do not enter a congested train crossing. A diagonal road between two diagonal rail tiles is a crossing too.
+
+| Replay v21c, 60 plausible phase sets | Mean | Range | Reach the end |
+|---|---|---|---|
+| f23 | 796.3 | 669–829 | 18/60 |
+| f23 + gridlock rule | 801.8 | 732–839 | 17/60 |
+| f24 (+ roundabout activation, crossings) | 796.0 | 737–836 | 16/60 |
+| Original (recording) | 835 | | ends at about 1314.6 s |
+
+The gridlock rule adds 5.5 ± 3.5; roundabout activation costs 5.8 ± 2.6, all of it after the replay's roundabout at 1051 s. The crossing rules cannot affect this replay, which never builds over the rail line. [Data](measurements/bench-f24-replay-v21c-p60.txt).
+
+### Replay v21d: event times from the game's own clock (12 November 2026)
+
+The clock dial in the top-right corner shows the game time in every frame. The hand turns once per 10 game seconds, the face is light from 6 am to 6 pm, and midnight is 12 o'clock on the dark face (decompiled `ClockView`). Reading it at 4 frames per second, anchored at each week's end (Monday 00:00 = 140k s), gives the game time for 2,245 frames of the recording. Every week's start and end agree exactly ([time series](measurements/dial-game-time.csv); tools in [source](source/read_dial.py)).
+
+Against the dial, replay v21c is within about 1 s for most of the game ([comparison](measurements/replay-v21c-vs-dial.txt)). Through weeks 4 and 5 (video 241 to 365 s) it converted video time slightly too slowly: its events there are 2 to 5 s early, and the player's paused building happened at 678.8 s, not 677 s. The recording runs at exactly 2 game seconds per video second whenever the game runs, and fast-forward is never used. [replay-candidate-v21d.json](replay-candidate-v21d.json) takes every event's time from the dial. The real score curve is re-timed the same way ([score_timeline_dial.csv](measurements/score_timeline_dial.csv)). Refitting the 60 demand-phase sets to it improves every fit (error 3.58 to 3.7 trips, was 3.86 to 3.9; [fits](measurements/phase-fits-v21d-60.txt)). v21d on the refitted sets ([plausible-phases-v21d-60.txt](measurements/plausible-phases-v21d-60.txt)) is the benchmark from here on.
+
+| Simulator f24, 60 phase sets | Mean | Median | Range | Reach the end | Mean end |
+|---|---|---|---|---|---|
+| v21c, v21b sets | 796.0 | 792 | 737 to 836 | 16/60 | 1297 s |
+| v21d, v21b sets | 805.1 | 808 | 747 to 835 | 22/60 | 1302 s |
+| **v21d, refitted sets (benchmark)** | **805.5** | **811.5** | **759 to 833** | **22/60** | **1302 s** |
+| Original (recording) | 835 | | | | ~1314.6 s |
+
+[Data](measurements/bench-f24-replay-v21d.txt). Where the rest goes: with the best refitted set, our score trails the real curve by about 6 trips at 260 s, by 10 to 13 from 500 to 1100 s, and by 23 to 37 after 1188 s. Our cars wait at junctions for only about 3% of their outbound time. The fitted demand lag (about 6 s from a pin to its delivery) is shorter than our trips, so the real game most likely created pins earlier or more often than the replay can tell us (see "Remaining replay gap").
+
+### f25: re-plan on, original exit space, registration stamps (12 November 2026)
+
+| Replay v21d, 60 refitted phase sets | Mean | Range | Reach the end | Paired vs f24 |
+|---|---|---|---|---|
+| f24 | 805.5 | 759 to 833 | 22/60 | |
+| f24 + original re-plan | 803.7 | 745 to 833 | 23/60 | -1.9 +/- 3.2 |
+| f24 + original exit-space formula | 789.0 | 693 to 828 | 14/60 | -16.6 +/- 3.2 |
+| **f25** (both + registration stamps) | **783.4** | **684 to 832** | **8/60** | **-22.1 +/- 4.0** |
+
+([Data](measurements/bench-f25-replay-v21d.txt).) The re-plan rule no longer costs anything on the re-timed replay, so it is on (decision 111). The exit-space test now follows `DoesVehicleHaveSpace` exactly (decision 112): a car may enter beside a same-exit car only if more than two vehicle lengths are free beyond the junction. Ours had credited the leader's progress through the junction. This rule only acts when traffic queues beyond a junction: f25 is within one trip of f24 up to 1000 s and five trips behind by 1200 s. It moves the replay away from the real game's 835, but it is the original's code. With it, the late-game congestion that ends the game comes earlier.
+
+### f26: traffic-light details and weekly offers (12 November 2026)
+
+The traffic lights and the weekly upgrade offers were checked against the decompiled code (decisions 114 and 115). For the lights, three details were ported: the candidate order, the mothballed-lane weight, and keeping the pair while cars are inbound. The offers now use the original's draw, whose second pick reads stale weights. Replay v21d: 773.5 (f25 783.4). The median run is unchanged, but one run tips into overcrowding at 1080 s ([data](measurements/bench-f26-replay-v21d.txt)).
+
+### Free-play soak test on all five maps: f22 against f27 (12 November 2026)
+
+Tonight's ported rules lower the replay score, so they were also checked away from it. On each map, with two seeds, the reference road builder ran for 1500 game seconds. It rebuilt every 10 s with stock topped up and the failure timer extended. f27 delivered 10,561 trips against f22's 9,486 (+11%). The longest car wait fell from 352 s to 45 s; f22 had a lasting gridlock on Beijing seed 41. In 8 of 10 runs f27 had no car stuck for more than 30 s ([data](measurements/soak-f22-f24-f27.txt)). The same test on f24 gives 10,362 trips, so the f25 to f27 changes, including the exit-space formula, also add about 2% in free play. So the original's gridlock-breaking and junction rules make the network flow better in free play, while the replay's late game ends earlier. The replay difference therefore comes from how its particular late-game layout loads the network, not from extra gridlock.
+
+### The real score curve re-read (12 November 2026)
+
+The original real score curve (10 November) was read from frames that turn out to be about 5 video seconds late. Re-read at exact frame times, the HUD shows for example 53 at video 180 s (old curve 55), 277 at 450 s (285) and 691 at 850 s (705) ([new curve on the dial clock](measurements/score_timeline_dial.csv)). Refitted to it, the 60 demand-phase sets fit much better: error 2.27 to 2.3 trips instead of 3.58. The fitted delivery lag becomes a physical 11 to 12 s ([fits](measurements/phase-fits-v21e-60.txt)). The benchmark is now v21d on these sets ([plausible-phases-v21e-60.txt](measurements/plausible-phases-v21e-60.txt)).
+
+f28 on them: 778.3 (705 to 827), 6/60 reach the end ([data](measurements/bench-f28-replay-v21d-p21e.txt)). With the best set, our curve is within 3 trips of the real one up to about 360 s and 5 to 17 trips behind from 430 to 1000 s. The real first delivery (car leaving at about video 18 s, parked by video 24 s) agrees with ours (game 15.5 s). Much of the mid-game "deficit" reported earlier came from the shifted real curve.
+
+### f29: route costs use lane lengths (12 November 2026)
+
+The original charges a lane its length over its speed limit. Ours charged each step a whole tile, so a right turn (lane 0.64 tiles) cost as much as a left turn (0.95) and more than the original's. With lane lengths in the costs, replay v21d on the current phase sets scores 792.5 against 778.3 (paired +14.2 +/- 4.0, 42/60 better; [data](measurements/bench-f29-replay-v21d-p21e.txt); decision 119).
+
 ## Experiments not adopted
 
 - **Original re-plan on road changes, on f22 (11 November 2026).** On the 60 plausible phase sets ([phases](measurements/plausible-phases-v21b-60.txt)) replay v21c scores 786.2 (700–833), 8/60 reach the end, against f22's 794.4 (669–833), 15/60. Paired difference −8.1 ± 4.8 trips; 22/60 runs improve ([data](measurements/experiment-repath-on-f22-p60.txt)). On the 20-set benchmark it was −11.6. It runs at f22's speed once return paths are re-found lazily; refreshing every stored return path at every change doubled run time. It is the original's rule, but it moves the replay away from the real game, so it stays off.
@@ -146,6 +227,7 @@ The replay never builds a crossing: none of its builds is refused on f22. The co
 
   The whole loss comes from the two extra committed lanes, and it is not slower traffic: by 1200 s the full rule has delivered about 1.5 trips fewer. The final score falls because the game ends about 7 s earlier, when a crowded lot overflows slightly sooner. At the end the score moves about 1.6 trips per game second, so small differences there decide the result. The port matches the original. In the original, `path[0]` is the next lane and the car re-plans from `path[1]`, the current lane plus two; our extension to the end of a tile only keeps corner and motorway lanes, which lead one way anyway. So the effect looks real but small, and it is sensitive to the replay's timing near the end. It stays off.
 
+- **Original tick length again, on f27 (12 November 2026).** The original steps at exactly 0.1 s (`Simulation.DefaultTimestep`). Some rules act once per step, such as dispatch quotas and junction decisions, so at 0.05 s ours dispatches up to twice as often per second. On replay v21d with the refitted sets, f27 at 0.1 s scores 766.6 (669 to 823) against 771.9 at 0.05 s: paired -5.3 +/- 7.2, no measurable difference ([data](measurements/experiment-tick-0.1-on-f27.txt)). The step stays at 0.05 s because the headless host's `step` command counts ticks: a change would silently double the game time of every agent step in existing training code. A switch would need the host and the training code changed together.
 - **Original tick length (0.1 s instead of 0.05 s), on f7:** 16-phase mean 777.8 → 762.5 (597–813), 5/16 reach the end; fitted 799 → 789 ([data](measurements/experiment-tick-0.1-on-f7.txt)). The original steps at 0.1 s, but our arbitration, dispatch quotas and tests were built around 0.05 s and the coarser step made results worse and noisier, so the step stays at 0.05 s.
 
 - **Automatic removal of a traffic light whose tile drops below three roads, on f7:** mean 777.8 → 745.4 ([data](measurements/experiment-light-cleanup-on-f7.txt)); the motorway penalty alone was neutral (777.1, [data](measurements/experiment-motorway-penalty-only-on-f7.txt)). The original counts pending roads toward the three and the replay erases and redraws at that light, so our version removed a light the real game kept (no rebuild appears in the video). Not adopted until pending roads are modelled.
@@ -161,13 +243,20 @@ The replay never builds a crossing: none of its builds is refused on f22. The co
 
 Original free-play city growth (building placement by the original's weight layers and building influence, house driveways, playable edges, spawn schedule, supply anchor; branch simulator `2026-11-11.g1`, merged into `fidelity-aya` as `2026-11-10.f12`) is recorded in [fidelity-aya-growth-2026-11-11](../fidelity-aya-growth-2026-11-11/README.md). Replays force building spawns, so replay v21 results are not affected by it.
 
-## Open items (state at f23)
+## Open items (state at f29)
 
-Known differences from the original that are not yet modelled, roughly by expected effect:
+Differences from the original that remain, roughly by expected effect:
 
-1. **Replay demand input.** The real game had roughly 10% more demand by ~1260 s than replay v21 gives us (see above). v21b covers the three provably late destinations, using lower-bound delays. Circles that failed for a while and then succeeded (navy at 1030 s, yellow at 1106 s) and any pending cyan entry of plan days 40–76 cannot be timed from the video and are not represented.
-2. **Crossing diagonals.** Modelled from f23 (see above). Not modelled: a crossing next to a roundabout, and a turn at a corner when the two tiles are also linked directly (the direct link is used).
-3. **Re-routing details.** The original re-plans every car in the step after a road change, keeping its current lane and the next two (`VehicleModel.NumberOfLanesToCommitTo`). Ours re-plans at the car's next ordinary lane start, keeping only the current lane. The original's version is ported (`RefreshJourneyOriginal`, stored return paths re-found when the car sets off home) but switched off (`OriginalRepath=false`): see experiments. Up to 1200 s it changes deliveries by under 2 trips; the replay's final score drops because the game ends about 7 s earlier.
-4. **Roundabout activation.** The original keeps a new roundabout planned until conflicting lanes clear and holds affected cars (hot-swapping lanes); ours switches at once. Sized on the replay (best-fit phases): after the roundabout at 19,9 is built at 1051 s, 16 cars still have old footprint lanes ahead and the last clears at 1058 s, so the difference is a one-time window of about 7 s at one junction. Deferred: the port (`ReleaseMothballedLanesProcess` hot-swap rules, `IsAboutToHotswap` stops) is large for that effect.
-5. **Traffic-light removal.** The original removes a light, and returns it to stock, when an erased link is released and leaves the tile with fewer than three roads. Erased links still in use count as roads. Ported and measured but not adopted: in the replay it removes a light that the real game kept (see experiments).
-6. **Smaller items.** All-leader pushing cycles (the 45 s escape covers deadlocks); the drag-time preference for a new motorway's anchor ramp, which depends on the mouse drag (edits are modelled); drawing by greedy eight-direction stepping instead of a raster line. Junctions on water (f21) and motorway ramp sides (f22) are now modelled.
+1. **Replay demand input.** The real game created more demand by the late game than the replay can give us. Circles that failed for a while and then succeeded (navy at 1031 s, yellow at 1106 s) and destinations whose first placement failed briefly cannot be timed from the video. Through about 1000 s our score and waiting pins are close to the real ones (score 272 against 277 at 760 s; pins 12 against about 15).
+2. **Carpark lane geometry.** Conflicts now follow the original connections (f28). The bay lanes run from the bay's side to its middle rather than straight across, which gives the same distances.
+3. **Simulation step.** The original steps at 0.1 s and ours at 0.05 s. Measured without a replay difference; kept because the host's `step` command counts ticks (see experiments).
+4. **Traffic-light removal.** The original removes a light when an erased link is released and leaves fewer than three roads. Ported and measured but not adopted, because the replay then removes a light that the real game kept (see experiments).
+5. **Smaller items.**
+   - Crossing diagonals next to a roundabout.
+   - A corner turn where the two tiles are also linked directly (the direct link is used).
+   - The hot-swap obstacle in the traffic-light blocked-car tests.
+   - The traversing-collision part of inbound eligibility when ordering light candidates.
+   - The drag-time preference for a new motorway's anchor ramp.
+   - Strokes drawn by greedy eight-direction stepping.
+
+Modelled since f22: crossing diagonals (f23); gridlock cycles from stuck vehicles with pushing, roundabout activation, and car rules at train crossings (f24); the original re-plan, junction exit space and registration stamps (f25); traffic-light details and the weekly offer draw (f26); fixes from an independent review (f27).

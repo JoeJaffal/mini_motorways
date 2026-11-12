@@ -1,12 +1,12 @@
 import numpy as np,csv,sys,os
-# usage: [DELAYED='[[colour,scheduledAt,appears],...]'] [DESTS=<DUMP_DESTS output>] py -3 fit_phases.py <fit-until-s> <seed>
+# usage: [DELAYED='[[colour,scheduledAt,appears],...]'] [DESTS=<DUMP_DESTS output>] [SCORE=<score timeline csv>] py -3 fit_phases.py <fit-until-s> <seed>
 # DELAYED lists late scheduled destinations; their colour gets the original's failed-spawn extra demand while they wait.
 BASE=[0.9,1.3,0.85,0.85,0.7];BURST=[1.3,0.5,1.9,1.75,1.3];ECC=[2,3,6,9,1];PER=[7,13,12,9,23]
 dests=[]
 for l in open(os.environ.get('DESTS','tmp/runs/dests.txt')):
     if l.startswith('D '):
         p=l.split();dests.append((int(p[2]),float(p[3]),{14:1030.7,34:1105.8,22:1252.0}.get(int(p[1]),1e9)))
-real=[(float(r['game_s']),int(r['score'])) for r in csv.DictReader(open('tmp/video/score_timeline.csv'))]
+real=[(float(r['game_s']),int(r['score'])) for r in csv.DictReader(open(os.environ.get('SCORE','tmp/video/score_timeline.csv')))]
 TMAX=float(sys.argv[1]) if len(sys.argv)>1 else 1200
 rt=np.array([g for g,s in real if g<=TMAX]);rs=np.array([s for g,s in real if g<=TMAX])
 T=np.arange(0,1320,1.0)

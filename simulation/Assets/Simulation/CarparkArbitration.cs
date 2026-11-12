@@ -30,7 +30,7 @@ namespace MotorwaysSim
             string name=lane.Chunk.Substring(lane.Chunk.LastIndexOf(':')+1);
             if(name=="end-first")return (left?2:0)+1;
             if(name=="end-last")return (right?2:0)+1;
-            if(name.StartsWith("bay-"))return left&&right?4:2;
+            if(name.StartsWith("bay-"))return 2; // original parkRoadChunk: one lane each way across the bay
             return 3;
         }
 
@@ -43,7 +43,7 @@ namespace MotorwaysSim
             {
                 if(other.Car.Id==car.Id||!other.Lane.IsParking||other.Lane.Chunk!=lane.Chunk)continue;
                 if(other.Index>=other.Car.Lanes.Count-1)continue; // no remaining path
-                if(SameEnd(other.Lane,lane))
+                if(other.Lane.ParkingNodes&&lane.ParkingNodes?other.Lane.Outgoing==lane.Outgoing:SameEnd(other.Lane,lane))
                 {
                     space??=HasExitSpace(car,l=>l.IsParking&&l.Chunk==lane.Chunk);
                     if(!space.Value){blocker=other.Car.Id;why="Exit space";return false;}
@@ -80,7 +80,9 @@ namespace MotorwaysSim
             foreach(var other in snapshot)
             {
                 if(other.Car.Id==car.Id||!ParkingTarget(other.Car,lane.Chunk,out var target,out double theirDistance))continue;
-                if(!Conflicts(lane,target))continue;
+                // Original inbound order: crossing in front of a stopped candidate is allowed (connection test).
+                bool conflict=lane.ParkingNodes&&target.ParkingNodes&&lane.Chunk==target.Chunk?ConnectionsIntersect(lane,target,other.Speed<.0005):Conflicts(lane,target);
+                if(!conflict)continue;
                 bool theirShove=other.Car.Shoving&&other.Car.ShovingLane==target.Key&&IsImmediateNext(other.Car,target);
                 if(!theirShove&&!ParkingTraversingAllows(other.Car,target,snapshot,out _,out _))continue;
                 double theirRegistered=other.Car.ApproachRegistered.TryGetValue(target.Key,out var theirTime)?theirTime:Time;

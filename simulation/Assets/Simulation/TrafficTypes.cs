@@ -112,6 +112,7 @@ namespace MotorwaysSim
         public bool IsJunction,IsRoundabout,IsParking,IsMotorway,ReleasesParking,DeliversDriveThrough,IsCorner;
         public string Chunk=""; // carpark lanes: "carpark:<id>:<chunk>" (CarparkArbitration.cs)
         public Cell? Corner; // corner lanes (OriginalReference): code cell of the tile corner chunk they belong to
+        public bool ParkingNodes; // carpark aisle lanes whose Incoming/Outgoing carry the original's connection nodes
         public Cell ChunkCell=>Corner??Tile; // the road chunk whose lanes arbitrate with this one
         public int MotorwayId=-1;
         public int CarparkId=-1;
@@ -143,7 +144,9 @@ namespace MotorwaysSim
         // Original junction arbitration state (JunctionArbitration.cs): the previous tick's nearest
         // obstacle, and the blocking-cycle shove permission for one immediate next lane.
         public ObstacleKind ObstacleState;public int ObstacleCar=-1;public double ObstacleDistance;
+        public int BlockingVehicle=-1; // original blockingVehicle: the leader, or the vehicle refusing its junction entry
         public bool Shoving;public string ShovingLane="";
+        public int PushingInto=-1; // original vehiclePushingInto: leader this car pushes into while their all-leader cycle lasts
         // Tile of the junction lane this car was refused at (BlockingJunction), and the game time each planned
         // lane first entered the first-two-remaining-lanes commitment window (original signal weights).
         public Cell BlockingTile;public readonly Dictionary<string,double> CommittedAt=new Dictionary<string,double>();
@@ -172,6 +175,9 @@ namespace MotorwaysSim
         public Cell Center;
         public Cell[] Ring;
         public bool PendingRemoval;
+        // OriginalReference: placed but not yet hot-swapped (RoundaboutActivation.cs), with the footprint's road counts from
+        // before the circle for arbitration among cars still on the replaced lanes.
+        public bool Planned;public Dictionary<Cell,int> PlannedDegrees;
         // Concrete replaced by the circle stays reserved until old surface lanes clear.
         public int ReplacedRoadTiles;
     }
@@ -221,5 +227,5 @@ namespace MotorwaysSim
     public sealed class SignalSnapshot
     {public Cell Cell;public int ActivePair;public bool Amber;public double Elapsed;public int[] Pairs;}
     public sealed class RoundaboutSnapshot
-    {public Cell Center;public Cell[] Ring;public bool PendingRemoval;}
+    {public Cell Center;public Cell[] Ring;public bool PendingRemoval;public bool Planned; /* OriginalReference: placed, not yet active */}
 }

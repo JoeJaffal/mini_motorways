@@ -134,6 +134,35 @@ namespace MotorwaysSim
                 Require(f.TripsCompleted==12&&f.ActiveCars==0,"all twelve trips through the crossing are delivered");
                 checks++;
             }
+            {
+                // Original roundabout activation: a new circle stays Planned (no lanes, old roads mothballed) until no car is on,
+                // or committed to, a replaced lane; then it hot-swaps.
+                var w=Lab();w.Inventory[0]=1000;w.Inventory[4]=2;w.Rules.OvercrowdingSeconds=100000;
+                var h=w.SpawnBuilding(new Cell(3,10),0,true);var s=w.SpawnBuilding(new Cell(17,9),0,false);
+                var front=s.Access+TrafficWorld.Directions[s.DrivewayDirection];var center=new Cell(10,10);
+                Require(w.DrawRoad(h.Access,center)&&w.DrawRoad(center,front)&&w.DrawRoad(front,s.Access)&&w.DrawRoad(new Cell(10,5),new Cell(10,15)),"crossroads");
+                s.Demand=4;s.DemandCountdown=1e9;
+                var footprint=new[]{center,new Cell(10,9),new Cell(9,10),new Cell(10,11),new Cell(11,10)};
+                for(int tick=0;tick<4000&&!w.Cars.Any(c=>c.Moving&&footprint.Contains(c.CurrentLane.Tile));tick++)w.Step();
+                Require(w.Build(BuildTool.Roundabout,center)&&w.Roundabouts.Single().Planned,"a circle placed under traffic starts planned");
+                Require(w.FindRoute(new Cell(10,6),new Cell(10,14)).Count==0,"no route through a planned circle");
+                double placed=w.Time;while(w.Roundabouts.Single().Planned&&w.Time<placed+30)w.Step();
+                Require(!w.Roundabouts.Single().Planned&&w.Time>placed+.5,"the circle activates once the replaced lanes clear");
+                Require(w.FindRoute(new Cell(10,6),new Cell(10,14)).Contains(new Cell(9,10)),"routes use the activated circle");
+                for(int tick=0;tick<6000&&!(w.TripsCompleted==4&&w.ActiveCars==0);tick++)w.Step();
+                Require(w.TripsCompleted==4&&w.ActiveCars==0,"all trips delivered across the conversion");
+                checks++;
+            }
+            {
+                // Original CarparkModel aisle chunk: through and bay entry share their entry side (no conflict); the bay
+                // exit shares the through lane's exit and crosses the bay entry (both conflict).
+                var w=Lab();var lot=w.SpawnSharedCarpark(new Cell(16,16),0,0);Require(lot!=null&&lot.Entrances.Length==2,"shared lot with two entrances");
+                Cell left=lot.Entrances.First(e=>{int d=w.AccessDirection(lot,e);return d==4||d==6;}),right=lot.Entrances.First(e=>e!=left);
+                var through=w.ParkingRoute(lot,left,1)[1];var entry=w.ParkingRoute(lot,left,0)[1];var exit=w.ParkingRoute(lot,right,0,true)[1];
+                Require(through.Key.EndsWith("outer:0")&&entry.Key.EndsWith("bay-outer-in:0")&&exit.Key.EndsWith("bay-outer-out:0")&&through.ParkingNodes,"aisle lanes of bay 0: "+through.Key+" "+entry.Key+" "+exit.Key);
+                Require(!w.ConflictsPublic(through,entry)&&w.ConflictsPublic(through,exit)&&w.ConflictsPublic(entry,exit),"aisle conflicts follow the original connections");
+                checks++;
+            }
             foreach(bool shared in new[]{false,true})
             {
                 var w=Lab();w.Inventory[0]=1000;w.Rules.OvercrowdingSeconds=100000;

@@ -216,7 +216,8 @@ namespace MotorwaysSim
         {
             if(a.IsMotorway||b.IsMotorway||a.IsCorner!=b.IsCorner)return false;
             if(a.Key==b.Key)return false;
-            if(a.IsParking&&b.IsParking){if(a.CarparkId!=b.CarparkId)return false;}
+            if(a.IsParking&&b.IsParking){if(a.CarparkId!=b.CarparkId)return false;
+                if(a.ParkingNodes&&b.ParkingNodes&&a.Chunk==b.Chunk)return ConnectionsIntersect(a,b,false);}
             else if(a.ChunkCell!=b.ChunkCell)return false;
             if(Rules.Version==GameVersion.OriginalReference&&!a.IsParking&&!b.IsParking&&a.Incoming<8&&b.Incoming<8)return ConnectionsIntersect(a,b,false);
             string key=string.CompareOrdinal(a.Key,b.Key)<0?a.Key+"/"+b.Key:b.Key+"/"+a.Key;
@@ -235,7 +236,8 @@ namespace MotorwaysSim
         bool MayEnter(Vehicle car,Lane lane,List<MotionSnapshot> snapshot,out string why,out int blocker)
         {
             why="";blocker=-1;
-            if(!lane.IsMotorway&&IsRailCrossingClosed(lane.Tile)){why="Train crossing";return false;}
+            if(Rules.Version==GameVersion.OriginalReference){if(!RailCrossingAllows(car,lane,snapshot,out why))return false;}
+            else if(!lane.IsMotorway&&IsRailCrossingClosed(lane.Tile)){why="Train crossing";return false;}
             // A red light refuses first, so a red-blocked car never takes the carpark gate.
             if(Rules.Version==GameVersion.OriginalReference&&CarparkApproachGate&&!lane.IsParking&&!lane.IsMotorway&&Signals.ContainsKey(lane.ChunkCell)&&!LightAllowsEntry(lane))
             {why="Traffic light";return false;}
@@ -354,6 +356,7 @@ namespace MotorwaysSim
             if(Rules.Version!=GameVersion.OriginalReference)foreach(var state in snapshot)RegisterApproaches(state.Car);
             var obstacles=new Dictionary<int,ObstacleRecord>();var nextSpeeds=new Dictionary<int,double>();
             var proposals=new List<(Vehicle car,double speed,double acceleration,double distance,string obstacle)>();
+            var brokenPushing=new HashSet<int>();
             foreach(var state in snapshot)
             {
                 var car=state.Car;double desired=DesiredMovementSpeed(car),gap=1e6,leaderSpeed=desired,leaderAcceleration=0;
@@ -409,7 +412,13 @@ namespace MotorwaysSim
                     if(TryCarparkGate(car,state.Lane,out _,out var gateAccess,out _))blockedTile=gateAccess;
                     obstacle="Carpark entrance merge";
                 }
-                double aheadDistance=state.Lane.Length-state.Distance;double? slowGap=null;bool blockedControlled=false;double blockedAhead=double.PositiveInfinity;
+                double aheadDistance=state.Lane.Length-state.Distance;double? slowGap=null,crossGap=null;bool blockedControlled=false;double blockedAhead=double.PositiveInfinity;
+                if(Rules.Version==GameVersion.OriginalReference&&HotswapHold(car))
+                {
+                    double hold=Math.Max(0,aheadDistance-Rules.FollowingGap*.5);if(hold<stop){stop=hold;obstacle="Roundabout opening";}
+                    // Original HotswappingLane obstacle: counted like a blocked junction in the exit-space test.
+                    if(aheadDistance<blockingDistance){blockingDistance=aheadDistance;blocker=-1;blockedLane="";}
+                }
                 for(int i=car.RouteIndex+1;i<Math.Min(car.Lanes.Count,car.RouteIndex+7);i++)
                 {
                     var next=car.Lanes[i];
@@ -421,13 +430,16 @@ namespace MotorwaysSim
                         {if(aheadDistance<blockingDistance){blockingDistance=aheadDistance;blocker=entryBlocker;blockedLane=next.Key;blockedTile=next.ChunkCell;}
                             bool entrance=next.IsParking&&next.Key.Contains(":entrance:")||
                             car.Stage==TripStage.Outbound&&i==car.Lanes.Count-1&&!next.IsParking;
-                            stop=Math.Min(stop,Math.Max(0,aheadDistance-(Rules.Version==GameVersion.OriginalReference?Rules.FollowingGap*.5:entrance?Rules.CarLength+.05:Rules.CarLength*.35)));obstacle=reason;
+                            stop=Math.Min(stop,Rules.Version==GameVersion.OriginalReference?OriginalBlockedStop(next,i==car.RouteIndex+1,aheadDistance):Math.Max(0,aheadDistance-(entrance?Rules.CarLength+.05:Rules.CarLength*.35)));obstacle=reason;
                             if(Rules.Version==GameVersion.OriginalReference){blockedControlled=IsControlledLane(next)||next.IsRoundabout;blockedAhead=aheadDistance;}break;}
                         // Original intersection slowdown: with nothing ahead yet, cap acceleration as if a car moving at
                         // 0.55 of the desired speed sat at the entry of an uncontrolled junction with 3+ real roads.
                         if(Rules.Version==GameVersion.OriginalReference&&slowGap==null&&gap>aheadDistance&&aheadDistance>2*Rules.CarLength&&
                             !next.IsParking&&!next.IsMotorway&&!IsControlledLane(next)&&RoadsForIntersectionSlowdown(next.ChunkCell)>=3)
-                            slowGap=aheadDistance+Rules.CarLength-Rules.FollowingGap*.5;
+                            slowGap=aheadDistance+(next.Corner!=null?0:Rules.CarLength-Rules.FollowingGap*.5);
+                        // Original slowdown towards a train crossing (when no intersection slowdown applies).
+                        if(Rules.Version==GameVersion.OriginalReference&&crossGap==null&&gap>aheadDistance&&aheadDistance>3*Rules.CarLength&&IsRailChunk(next))
+                            crossGap=aheadDistance;
                     }
                     aheadDistance+=next.Length;if(aheadDistance>Rules.LookaheadDistance)break;
                 }
@@ -436,7 +448,9 @@ namespace MotorwaysSim
                 desired=Math.Min(desired,Math.Sqrt(2*Rules.MaxDeceleration*Math.Max(0,remaining)));
                 double maximumAcceleration=Rules.Version==GameVersion.OriginalReference?OriginalMaximumAcceleration(car,state.Lane,state.Distance):
                     state.Lane.IsRoundabout?Rules.RoundaboutAcceleration:state.Lane.IsJunction?Rules.ControlledAcceleration:Rules.MaxAcceleration;
-                double acceleration=AccelerationFor(gap,state.Speed,leaderSpeed,leaderAcceleration,Math.Max(.001,desired),maximumAcceleration);
+                double followGap=gap,followSpeed=leaderSpeed;
+                bool pushing=Rules.Version==GameVersion.OriginalReference&&ApplyPushing(car,leaderId,gap<=stop&&gap<=blockingDistance,ref followGap,ref followSpeed,brokenPushing);
+                double acceleration=AccelerationFor(followGap,state.Speed,followSpeed,leaderAcceleration,Math.Max(.001,desired),maximumAcceleration);
                 if(!double.IsInfinity(stop))
                 {
                     double held=AccelerationFor(stop+Rules.CarLength,state.Speed,0,0,desired,Rules.Version==GameVersion.OriginalReference?maximumAcceleration:Rules.ControlledAcceleration);
@@ -449,10 +463,15 @@ namespace MotorwaysSim
                     double target=.55*Math.Max(.001,desired);
                     acceleration=Math.Min(acceleration,AccelerationFor(slowGap.Value,state.Speed,target,0,target,maximumAcceleration,1.6));
                 }
+                else if(crossGap!=null)
+                {
+                    double target=.5*Math.Max(.001,desired); // targetSpeedTowardsCrossings, decelerationExponentTowardsCrossings 1
+                    acceleration=Math.Min(acceleration,AccelerationFor(crossGap.Value,state.Speed,target,0,target,maximumAcceleration,1));
+                }
                 double speed=Math.Max(0,state.Speed+acceleration*Rules.TickSeconds);
                 double travel=(state.Speed+speed)*.5*Rules.TickSeconds;
                 // Hard clearance bounds are independent of acceleration integration and tick ordering.
-                travel=Math.Min(travel,Math.Max(0,gap-Rules.CarLength-Rules.FollowingGap));
+                travel=Math.Min(travel,Math.Max(0,pushing?gap-1e-3:gap-Rules.CarLength-Rules.FollowingGap)); // a pushing car may close in on its leader
                 travel=Math.Min(travel,stop);
                 if(travel<=1e-7){speed=0;if(obstacle.Length==0)obstacle="Driveway queue";}
                 proposals.Add((car,speed,acceleration,Math.Max(0,travel),obstacle));
@@ -461,8 +480,10 @@ namespace MotorwaysSim
             }
             if(Rules.Version==GameVersion.OriginalReference)
             {
-                foreach(var car in Cars){car.ObstacleState=ObstacleKind.None;car.ObstacleCar=-1;car.ObstacleDistance=0;}
-                foreach(var item in obstacles){var car=CarById(item.Key);car.ObstacleState=item.Value.Kind;car.ObstacleCar=item.Value.Car;car.ObstacleDistance=item.Value.Distance;car.BlockingTile=item.Value.BlockedTile;}
+                foreach(var car in Cars){car.ObstacleState=ObstacleKind.None;car.ObstacleCar=-1;car.ObstacleDistance=0;car.BlockingVehicle=-1;}
+                foreach(var item in obstacles){var car=CarById(item.Key);car.ObstacleState=item.Value.Kind;car.ObstacleCar=item.Value.Car;car.ObstacleDistance=item.Value.Distance;car.BlockingTile=item.Value.BlockedTile;
+                    car.BlockingVehicle=item.Value.Kind==ObstacleKind.Leader?item.Value.Car:item.Value.Kind==ObstacleKind.BlockingJunction?item.Value.Blocker:-1;}
+                BreakPushingCycles(brokenPushing);
                 MarkBlockingCycles(obstacles,nextSpeeds);
             }
             foreach(var proposal in proposals)
@@ -577,10 +598,13 @@ namespace MotorwaysSim
             if(Rules.Version==GameVersion.OriginalReference)
             {
                 var destination=Buildings[car.ShopId];List<Cell> best=null;double cost=double.PositiveInfinity;
+                // Original: the way home is planned from the parking space over the carpark lanes (double cost) and
+                // the roads, so the in-lot leg to each exit counts when choosing between a shared lot's entrances.
                 foreach(var access in Accesses(destination))
                 {
                     var route=FindRoute(access,Buildings[car.HomeId].Access);if(route.Count<2)continue;
-                    double value=RouteCost(route);if(value<cost){cost=value;best=route;}
+                    double leg=car.ParkingSlot>=0?ParkingRoute(destination,access,car.ParkingSlot,true).Sum(l=>Math.Max(1,Math.Floor(20*l.Length/Math.Max(.01,l.SpeedLimit)))):0;
+                    double value=RouteCost(route)+leg;if(value<cost){cost=value;best=route;}
                 }
                 if(best!=null){car.DestinationAccess=best[0];car.ReturnRoute=best;}
                 car.Lanes=ParkingRoute(destination,car.DestinationAccess,car.ParkingSlot,true);car.Stage=TripStage.LeavingParking;car.RouteIndex=0;car.DistanceAlongLane=0;car.Speed=0;
