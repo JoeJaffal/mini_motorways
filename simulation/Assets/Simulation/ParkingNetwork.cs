@@ -44,7 +44,41 @@ namespace MotorwaysSim
             var lane=CreateLane(straight?new[]{a,d}:Cubic(a,b,c,d,10),shop.Entrance,shop.Entrance,shop.Entrance,0,0);
             lane.Key="carpark:"+shop.CarparkId+":"+key;lane.Chunk="carpark:"+shop.CarparkId+":"+ParkingChunkName(key);lane.CarparkId=shop.CarparkId;lane.IsParking=true;lane.ReleasesParking=release;
             lane.SpeedLimit=Rules.Version==GameVersion.OriginalReference?Rules.CarSpeed*OriginalParkingLaneFactor(shop,key):Rules.CarSpeed*.6;
+            if(Rules.Version==GameVersion.OriginalReference)SetParkingNodes(shop,key,lane);
             return lane;
+        }
+        // Original CarparkModel: each bay's outer and inner aisle chunks hold a through lane, a bay entry and a bay exit
+        // whose connections run between the aisle sides (backward B, forward F along the lot axis) and the bay node
+        // (the outer chunk's bay node is F turned 45 degrees counter-clockwise, the inner chunk's the opposite).
+        // Incoming is the travel direction on entry (entry side + 4), Outgoing the exit side, as for road lanes.
+        void SetParkingNodes(Building shop,string key,Lane lane)
+        {
+            ParkingAxes(shop,out var axis,out _,out var diagonal,out _);
+            int F=DirectionOf(axis),B=(F+4)%8,bayO=DirectionOf(diagonal),bayI=(bayO+4)%8;
+            string kind=key.Split(':')[0];int inSide,outSide;
+            switch(kind)
+            {
+                case "outer":inSide=B;outSide=F;break;
+                case "bay-outer-in":inSide=B;outSide=bayO;break;
+                case "bay-outer-out":inSide=bayO;outSide=F;break;
+                case "inner":inSide=F;outSide=B;break;
+                case "bay-inner-in":inSide=F;outSide=bayI;break;
+                case "bay-inner-out":inSide=bayI;outSide=B;break;
+                // Lot ends: the first end's aisles lie on its F side and its road on the B side, the last end the reverse.
+                // U-turn F->F (first) / B->B (last); entrance road->aisle; exit aisle->road.
+                case "turn-first":inSide=F;outSide=F;break;
+                case "turn-last":inSide=B;outSide=B;break;
+                case "entrance":if(key.EndsWith("first")){inSide=B;outSide=F;}else{inSide=F;outSide=B;}break;
+                case "exit":if(key.EndsWith("first")){inSide=F;outSide=B;}else{inSide=B;outSide=F;}break;
+                default:return;
+            }
+            lane.Incoming=(inSide+4)%8;lane.Outgoing=outSide;lane.ParkingNodes=true;
+        }
+        static int DirectionOf(Point v)
+        {
+            int best=0;double score=double.NegativeInfinity;var u=v.Unit;
+            for(int d=0;d<8;d++){var w=new Point(Directions[d].X,Directions[d].Y).Unit;double s=u.X*w.X+u.Y*w.Y;if(s>score+1e-9){score=s;best=d;}}
+            return best;
         }
         // The original's GetLaneSpeed applied to its carpark lanes (CarparkModel): default speed times the turn factor
         // (45 degrees: 1, sharp/U-turn: 1/3) times the intersection factor 0.5 when the lane leads to more than one lane.

@@ -8,7 +8,7 @@ rules that match the original's code, and the recorded 835-point Los Angeles gam
 close to 835 at about 1314.6 s. Reading the decompiled original locally and running its components as an
 oracle are allowed; decompiled code and assemblies stay outside Git (decision 077).
 
-## Current state (12 November 2026, simulator `2026-11-10.f27`)
+## Current state (12 November 2026, simulator `2026-11-10.f28`)
 
 - **Benchmark:** replay v21d (event times read from the game's clock dial) on 60 demand-phase sets refitted to the dial-timed real score curve.
 - **Scores:**
@@ -16,6 +16,7 @@ oracle are allowed; decompiled code and assemblies stay outside Git (decision 07
   - f25, after the original's junction exit-space formula: 783.4.
   - f26: 773.5; the median run is unchanged, and one run collapses.
   - f27 (review fixes, decision 116): 771.9.
+  - f28 (carpark connection nodes, decision 117): 780.1, 12/60 reach the end.
   - The original scored 835 and ended at about 1314.6 s.
 - **Where it differs:** up to about 1000 s our runs follow the real curve within 5–13 trips. The gap opens in the late game, when our congestion ends the game earlier.
 - **Rules ported overnight from the decompiled code:**
@@ -229,12 +230,12 @@ Tonight's ported rules lower the replay score, so they were also checked away fr
 
 Original free-play city growth (building placement by the original's weight layers and building influence, house driveways, playable edges, spawn schedule, supply anchor; branch simulator `2026-11-11.g1`, merged into `fidelity-aya` as `2026-11-10.f12`) is recorded in [fidelity-aya-growth-2026-11-11](../fidelity-aya-growth-2026-11-11/README.md). Replays force building spawns, so replay v21 results are not affected by it.
 
-## Open items (state at f27)
+## Open items (state at f28)
 
 Differences from the original that remain, roughly by expected effect:
 
 1. **Replay demand input.** The real game created more demand by the late game than the replay can give us. Circles that failed for a while and then succeeded (navy at 1031 s, yellow at 1106 s) and destinations whose first placement failed briefly cannot be timed from the video. Through about 1000 s our score and waiting pins are close to the real ones (score 272 against 277 at 760 s; pins 12 against about 15).
-2. **Carpark lane conflicts.** Inside carparks, shared exits and conflicts are decided from lane geometry. The original uses each carpark lane's connection directions (`CarparkModel`), so the result can differ where carpark lanes meet.
+2. **Carpark lane geometry.** Conflicts now follow the original connections (f28). The bay lanes run from the bay's side to its middle rather than straight across, which gives the same distances.
 3. **Simulation step.** The original steps at 0.1 s and ours at 0.05 s. Measured without a replay difference; kept because the host's `step` command counts ticks (see experiments).
 4. **Traffic-light removal.** The original removes a light when an erased link is released and leaves fewer than three roads. Ported and measured but not adopted, because the replay then removes a light that the real game kept (see experiments).
 5. **Smaller items.**

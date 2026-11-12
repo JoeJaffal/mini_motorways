@@ -1560,3 +1560,19 @@ The real score curve is re-timed the same way, and the 60 demand-phase sets are 
 
 **Measured.** Replay v21d, 60 refitted sets: 771.9 against f26's 773.5 (paired -1.6 +/- 2.2; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f27-replay-v21d.txt)). 98 suites, five-map checks and training readiness pass on `2026-11-10.f27`.
 
+
+## 117 - Carpark lanes use the original's connection nodes (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `CarparkModel` builds each bay's aisle chunks from connections between node directions along the lot axis (backward B, forward F) and a bay node (F turned 45 degrees counter-clockwise for the outer aisle, the opposite for the inner):
+- **Outer aisle:** through B->F, bay entry B->bay, bay exit bay->F.
+- **Inner aisle:** through F->B, bay entry F->bay, bay exit bay->B.
+- **First end:** U-turn F->F, entrance road->F, exit F->road.
+- **Last end:** U-turn B->B, entrance road->B, exit B->road.
+- **Bay chunk (`parkRoadChunk`):** one lane each way, two in all.
+
+Arbitration in these chunks uses `IntersectsOtherConnection` (shared exits by output direction), the same as at road junctions. In an aisle, through and bay entry share their entry side and do not conflict. Ours decided carpark conflicts from lane geometry: two lanes starting at the same point counted as conflicting. It also counted four bay lanes in two-entrance lots, which made it arbitrate the bay.
+
+**Engineering choice** (OriginalReference). Aisle and lot-end lanes carry the original nodes (`Lane.ParkingNodes`; Incoming = entry side + 4, Outgoing = exit side). Conflicts, the stopped-candidate argument and shared exits use the connection test for them. The bay chunk counts two lanes. A new check pins the aisle conflict pattern.
+
+**Measured.** Replay v21d, 60 refitted sets: 780.1 (685 to 823), 12/60 reach the end, against f27's 771.9 with 8/60. Paired +8.2 +/- 6.4, median +7.5 ([data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f28-replay-v21d.txt)). 99 suites, five-map checks and training readiness pass.
+

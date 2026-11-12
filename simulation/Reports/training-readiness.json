@@ -2,7 +2,7 @@
   "result": "PASS",
   "version": "OriginalReference",
   "modelTrainingPerformed": false,
-  "simulatorCommit": "f213e9866a0973ed6377362cb7dca64db242d6ed",
+  "simulatorCommit": "6217daca4f50675e4fa28b6daf9ca9c015f3e066",
   "seeds": [
     0,
     42,
@@ -11,7 +11,7 @@
   "episodeLimitSeconds": 300,
   "episodes": 60,
   "requests": 2451,
-  "wallSeconds": 33.09389030000057,
+  "wallSeconds": 32.95775879999928,
   "checks": [
     "fixed array shapes",
     "finite vehicle values",
@@ -179,7 +179,7 @@
       "capped": true,
       "maxWaiting": 0,
       "samples": 31,
-      "digest": "e205c64e74c6ac31ceea0e946fc1d6402b90ed0004a6a87847f91cca4c1b1e4c"
+      "digest": "75e97565ed3edc89b793b45cbf2ef4cb77285b95ccb089127d09fb04ad7ed156"
     },
     {
       "map": "Tokyo",
@@ -283,7 +283,7 @@
       "capped": true,
       "maxWaiting": 0,
       "samples": 31,
-      "digest": "4e157f504d5fd7f4e555ba8650d6d28208ef13160f9cb208d77478fba2807a67"
+      "digest": "a6d32dbc0378f00b3ef06c939e2b969c3f2fb833cd59997ed4631915dc83a23e"
     },
     {
       "map": "DarEsSalaam",
@@ -361,7 +361,7 @@
       "capped": false,
       "maxWaiting": 0,
       "samples": 28,
-      "digest": "97d472bb8ebcebbf8ab706539ec99a990958b7e63a3735948deccbbf0b2542b8"
+      "digest": "43e4edd6b6fa37f1d2c5c423537f4e36a028e98e69504f4e6e463bf6953fca39"
     },
     {
       "map": "London",
@@ -387,7 +387,7 @@
       "capped": true,
       "maxWaiting": 5.4999999999999885,
       "samples": 31,
-      "digest": "69958847647b637afecee9e440b9828e455fe40c46b6f078ee8996c8d3991a4a"
+      "digest": "6b12ec7a5cced9e1729f5511ea68bc22cd1fc094d061b793d9e9c7011064e255"
     },
     {
       "map": "London",
@@ -413,7 +413,7 @@
       "capped": false,
       "maxWaiting": 0,
       "samples": 28,
-      "digest": "7cbcdbe001a3b229642bd101861cf7d334d6faa8fad5d0e1905aa4453e44d2d8"
+      "digest": "3f4e30cd68e66245b4ee45bc0edf205898cfec921366cd3c613fbc648ff59868"
     }
   ]
 }

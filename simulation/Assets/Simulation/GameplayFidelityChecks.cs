@@ -153,6 +153,16 @@ namespace MotorwaysSim
                 Require(w.TripsCompleted==4&&w.ActiveCars==0,"all trips delivered across the conversion");
                 checks++;
             }
+            {
+                // Original CarparkModel aisle chunk: through and bay entry share their entry side (no conflict); the bay
+                // exit shares the through lane's exit and crosses the bay entry (both conflict).
+                var w=Lab();var lot=w.SpawnSharedCarpark(new Cell(16,16),0,0);Require(lot!=null&&lot.Entrances.Length==2,"shared lot with two entrances");
+                Cell left=lot.Entrances.First(e=>{int d=w.AccessDirection(lot,e);return d==4||d==6;}),right=lot.Entrances.First(e=>e!=left);
+                var through=w.ParkingRoute(lot,left,1)[1];var entry=w.ParkingRoute(lot,left,0)[1];var exit=w.ParkingRoute(lot,right,0,true)[1];
+                Require(through.Key.EndsWith("outer:0")&&entry.Key.EndsWith("bay-outer-in:0")&&exit.Key.EndsWith("bay-outer-out:0")&&through.ParkingNodes,"aisle lanes of bay 0: "+through.Key+" "+entry.Key+" "+exit.Key);
+                Require(!w.ConflictsPublic(through,entry)&&w.ConflictsPublic(through,exit)&&w.ConflictsPublic(entry,exit),"aisle conflicts follow the original connections");
+                checks++;
+            }
             foreach(bool shared in new[]{false,true})
             {
                 var w=Lab();w.Inventory[0]=1000;w.Rules.OvercrowdingSeconds=100000;

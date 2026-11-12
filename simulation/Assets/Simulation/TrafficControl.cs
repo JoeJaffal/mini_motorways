@@ -216,7 +216,8 @@ namespace MotorwaysSim
         {
             if(a.IsMotorway||b.IsMotorway||a.IsCorner!=b.IsCorner)return false;
             if(a.Key==b.Key)return false;
-            if(a.IsParking&&b.IsParking){if(a.CarparkId!=b.CarparkId)return false;}
+            if(a.IsParking&&b.IsParking){if(a.CarparkId!=b.CarparkId)return false;
+                if(a.ParkingNodes&&b.ParkingNodes&&a.Chunk==b.Chunk)return ConnectionsIntersect(a,b,false);}
             else if(a.ChunkCell!=b.ChunkCell)return false;
             if(Rules.Version==GameVersion.OriginalReference&&!a.IsParking&&!b.IsParking&&a.Incoming<8&&b.Incoming<8)return ConnectionsIntersect(a,b,false);
             string key=string.CompareOrdinal(a.Key,b.Key)<0?a.Key+"/"+b.Key:b.Key+"/"+a.Key;
