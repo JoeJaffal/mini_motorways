@@ -79,6 +79,12 @@ All four deliver within 2 to 4% of the real game up to 1100 s. They differ mainl
 - braking towards the target at lot entrances ("Destination ahead", the target-braking rule of decision 123);
 - exit-space queues at the river bridge at 22,14 and the junctions east of it, 23 to 25 by 13 to 17.
 
+**Bridge area.** Cars in tiles 20 to 25 by 12 to 17, around the main bridge and the junctions east of it:
+- in the video, counted by eye at video 900 to 1040 s: about 10 to 20, with real queues there too (a line of yellow cars at 980 s);
+- in the simulator at game 880 to 1040 s: 10 to 19, of which 2 to 11 are stopped.
+
+Congestion there is comparable, so it does not explain the gap. The player also built a curved second bridge just south of row 14 at about video 1000 s.
+
 **Limit.** The total score curve does not separate colours, so the per-colour timing of demand is not identified by the phase fit. Most good fits give magenta a burst in this period. In one basin of nearly equal fit, the magenta phase is about 10 and the blue lot fails first instead ([18 representative sets](measurements/phases-g2-div.txt)). With f34, the first lot to fail is magenta in 15 of the 18 sets and blue in the other 3. So the magenta under-service is likely, but partly a consequence of the fitted demand timing.
 
 ## Open (after draft 3)
