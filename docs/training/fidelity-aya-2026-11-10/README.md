@@ -197,6 +197,10 @@ Against the dial, replay v21c is within about 1 s for most of the game ([compari
 
 The traffic lights and the weekly upgrade offers were checked against the decompiled code (decisions 114 and 115). For the lights, three details were ported: the candidate order, the mothballed-lane weight, and keeping the pair while cars are inbound. The offers now use the original's draw, whose second pick reads stale weights. Replay v21d: 773.5 (f25 783.4). The median run is unchanged, but one run tips into overcrowding at 1080 s ([data](measurements/bench-f26-replay-v21d.txt)).
 
+### Free-play soak test on all five maps: f22 against f27 (12 November 2026)
+
+Tonight's ported rules lower the replay score, so they were also checked away from it. On each map, with two seeds, the reference road builder ran for 1500 game seconds. It rebuilt every 10 s with stock topped up and the failure timer extended. f27 delivered 10,561 trips against f22's 9,486 (+11%). The longest car wait fell from 352 s to 45 s; f22 had a lasting gridlock on Beijing seed 41. In 8 of 10 runs f27 had no car stuck for more than 30 s ([data](measurements/soak-f22-vs-f27.txt)). So the original's gridlock-breaking and junction rules make the network flow better in free play, while the replay's late game ends earlier. The replay difference therefore comes from how its particular late-game layout loads the network, not from extra gridlock.
+
 ## Experiments not adopted
 
 - **Original re-plan on road changes, on f22 (11 November 2026).** On the 60 plausible phase sets ([phases](measurements/plausible-phases-v21b-60.txt)) replay v21c scores 786.2 (700–833), 8/60 reach the end, against f22's 794.4 (669–833), 15/60. Paired difference −8.1 ± 4.8 trips; 22/60 runs improve ([data](measurements/experiment-repath-on-f22-p60.txt)). On the 20-set benchmark it was −11.6. It runs at f22's speed once return paths are re-found lazily; refreshing every stored return path at every change doubled run time. It is the original's rule, but it moves the replay away from the real game, so it stays off.

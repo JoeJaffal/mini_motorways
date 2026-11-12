@@ -1,0 +1,13 @@
+# Soak test: OriginalReference free play, reference roads every 10 s (stock topped up), failure timer extended, 1500 game s
+# run | f22 total trips, last 300 s, max cars stuck >30 s, longest wait | f27 same
+LosAngeles seed 40 | f22 988 347 6 48s | f27 1128 461 0 17s
+LosAngeles seed 41 | f22 1096 449 0 26s | f27 1092 436 0 12s
+Beijing seed 40 | f22 901 376 9 41s | f27 1086 482 0 20s
+Beijing seed 41 | f22 821 275 17 352s | f27 1110 469 1 31s
+Tokyo seed 40 | f22 879 326 6 41s | f27 1074 472 1 38s
+Tokyo seed 41 | f22 950 351 3 41s | f27 1096 463 0 17s
+DarEsSalaam seed 40 | f22 1237 510 6 40s | f27 1286 545 0 18s
+DarEsSalaam seed 41 | f22 1186 458 2 41s | f27 1205 449 2 34s
+London seed 40 | f22 721 293 6 41s | f27 788 304 2 45s
+London seed 41 | f22 707 293 0 21s | f27 696 293 0 16s
+TOTAL trips f22 9486 f27 10561; longest wait f22 352s f27 45s
