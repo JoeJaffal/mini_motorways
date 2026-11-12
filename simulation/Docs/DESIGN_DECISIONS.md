@@ -1594,3 +1594,12 @@ Arbitration in these chunks uses `IntersectsOtherConnection` (shared exits by ou
 
 **Measured.** Replay v21d on the v21e phase sets: 792.5 (736 to 831), 17/60 reach the end, against f28's 778.3 with 6/60. Paired +14.2 +/- 4.0, better in 42/60 runs, with gains at every time from 900 s ([data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f29-replay-v21d-p21e.txt)). 99 suites, five-map checks and training readiness pass.
 
+
+## 120 - A car leaving a shared lot counts the in-lot leg to each exit (12 November 2026, `fidelity-aya`)
+
+**Evidence.** When a parked car's time is up, `VehiclePathfindingProcess` (DrivingHome) plans from the car's committed lane, the parking space, over the carpark lanes (double cost) and the roads. Ours chose the exit of a two-entrance lot by road cost from each entrance alone.
+
+**Engineering choice** (OriginalReference). `StartLeavingParking` adds the cost of the in-lot leg from the bay to each exit, with carpark lanes at double cost.
+
+**Measured.** Replay v21d, v21e sets: 792.3 against f29's 792.5 (paired -0.3 +/- 3.2; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f30-replay-v21d-p21e.txt)). 99 suites, five-map checks and training readiness pass on `2026-11-10.f30`.
+

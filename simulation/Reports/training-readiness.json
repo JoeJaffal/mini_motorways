@@ -2,7 +2,7 @@
   "result": "PASS",
   "version": "OriginalReference",
   "modelTrainingPerformed": false,
-  "simulatorCommit": "670b60dddc5c21fc2d096c4c1e167acc111ace4f",
+  "simulatorCommit": "06b3adc200858619c1e5f51472b0123ee97c6876",
   "seeds": [
     0,
     42,
@@ -11,7 +11,7 @@
   "episodeLimitSeconds": 300,
   "episodes": 60,
   "requests": 2451,
-  "wallSeconds": 34.68407880000086,
+  "wallSeconds": 37.64013900000282,
   "checks": [
     "fixed array shapes",
     "finite vehicle values",
@@ -381,13 +381,13 @@
       "seed": 42,
       "policy": "debug_roads",
       "seconds": 300,
-      "trips": 33,
+      "trips": 31,
       "terminated": false,
       "rejected": false,
       "capped": true,
       "maxWaiting": 0,
       "samples": 31,
-      "digest": "9f160238a706b7055d306116931a35f8c7ce960d32c3c6618644c6e91036f3bf"
+      "digest": "9e82c691a738718c68856393acfa0cea69404937d4cfa7246ae1c7ac8db0919a"
     },
     {
       "map": "London",

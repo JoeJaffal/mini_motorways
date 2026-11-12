@@ -8,7 +8,7 @@ rules that match the original's code, and the recorded 835-point Los Angeles gam
 close to 835 at about 1314.6 s. Reading the decompiled original locally and running its components as an
 oracle are allowed; decompiled code and assemblies stay outside Git (decision 077).
 
-## Current state (12 November 2026, simulator `2026-11-10.f29`)
+## Current state (12 November 2026, simulator `2026-11-10.f30`)
 
 - **Benchmark:** replay v21d (event times read from the game's clock dial) on 60 demand-phase sets refitted to the real score curve, re-read at exact frame times (decision 118).
 - **Scores:**
@@ -18,6 +18,7 @@ oracle are allowed; decompiled code and assemblies stay outside Git (decision 07
   - f27 (review fixes, decision 116): 771.9.
   - f28 (carpark connection nodes, decision 117): 780.1, 12/60 reach the end; 778.3 on the corrected-curve phase sets (decision 118).
   - f29 (lane-length route costs, decision 119): **792.5**, 17/60 reach the end.
+  - f30 (in-lot leg when choosing an exit, decision 120): 792.3.
   - The original scored 835 and ended at about 1314.6 s.
 - **Where it differs:** up to about 360 s our score is within 3 trips of the real curve, and from 430 to 1000 s 5 to 17 trips behind. The gap opens in the late game, when the far red lot overflows earlier than in the original.
 - **Rules ported overnight from the decompiled code:**

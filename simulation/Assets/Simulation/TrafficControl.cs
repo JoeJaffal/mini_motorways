@@ -598,10 +598,13 @@ namespace MotorwaysSim
             if(Rules.Version==GameVersion.OriginalReference)
             {
                 var destination=Buildings[car.ShopId];List<Cell> best=null;double cost=double.PositiveInfinity;
+                // Original: the way home is planned from the parking space over the carpark lanes (double cost) and
+                // the roads, so the in-lot leg to each exit counts when choosing between a shared lot's entrances.
                 foreach(var access in Accesses(destination))
                 {
                     var route=FindRoute(access,Buildings[car.HomeId].Access);if(route.Count<2)continue;
-                    double value=RouteCost(route);if(value<cost){cost=value;best=route;}
+                    double leg=car.ParkingSlot>=0?ParkingRoute(destination,access,car.ParkingSlot,true).Sum(l=>Math.Max(1,Math.Floor(20*l.Length/Math.Max(.01,l.SpeedLimit)))):0;
+                    double value=RouteCost(route)+leg;if(value<cost){cost=value;best=route;}
                 }
                 if(best!=null){car.DestinationAccess=best[0];car.ReturnRoute=best;}
                 car.Lanes=ParkingRoute(destination,car.DestinationAccess,car.ParkingSlot,true);car.Stage=TripStage.LeavingParking;car.RouteIndex=0;car.DistanceAlongLane=0;car.Speed=0;
