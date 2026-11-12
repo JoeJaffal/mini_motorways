@@ -61,7 +61,7 @@ from .verify import build_verifier, verify_recording
 
 # Bump whenever agent behaviour changes (agent, candidates, executor, features, gp, session, state, the
 # simulator): it is part of every cache key, so results from older code are never reused.
-CODE_VERSION = "gp5-v1"  # gp-5: simulator version in the cache key and game records (agent as gp4-v2)
+CODE_VERSION = "gp6-v1"  # gp-6: planner follows simulator f34 (road stock per paid link, bridge per crossing, water degree <= 2)
 DEFAULT_TIMEOUT_S = 900.0  # seconds of awake wall clock per game (a suspend does not count)
 KILL_TIMEOUT_S = 30.0
 POLL_S = 5.0  # the parent's longest single wait, so a suspend is seen within one poll of waking

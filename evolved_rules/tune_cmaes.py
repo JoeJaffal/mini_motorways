@@ -184,7 +184,10 @@ HAND_WEIGHTS = weights_from({"priority": {"tiles_needed": -1.0},
 SEPARATED_WEIGHTS = weights_from({"priority": {"tiles_needed": -1.0, "is_separated": BOUND},
                                   "hold": {BIAS: 0.0625, "road_stock": -1.0},
                                   "upgrade": {"offer_roads": 1.0}})
-X0 = {"separated": SEPARATED_WEIGHTS, "hand": HAND_WEIGHTS, "zero": snap([0.0] * DIM)}
+# gp-6: start from the final weights of cma-1 (old simulator), the strongest rule on simulator f34 before gp-6.
+CMA1_FINAL = __import__("pathlib").Path(__file__).with_name("final") / "cma_final.txt"
+X0 = {"separated": SEPARATED_WEIGHTS, "hand": HAND_WEIGHTS, "zero": snap([0.0] * DIM),
+      "cma1": text_to_weights(CMA1_FINAL.read_text(encoding="utf-8").strip())}
 SIZE = gp.size(gp.individual_from_text(weights_to_text(X0["zero"])))  # every linear text has this many nodes
 
 

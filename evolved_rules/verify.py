@@ -25,7 +25,7 @@ from pathlib import Path
 
 from .host import ROOT
 
-VERIFIER_COMMIT = "8025a60"  # main: simulator 2026-11-08.7 (gp-5)
+VERIFIER_COMMIT = "b96d98d"  # gp6: simulator 2026-11-10.f34 (upstream main 938b9f8, simulator only)
 VERIFIER_DIR = ROOT / "output" / "evolved_rules" / "verifier"  # /output/ is git-ignored
 
 # TrafficHost.csproj only compiles ../Assets/Simulation/*.cs next to the Headless folder, so these two

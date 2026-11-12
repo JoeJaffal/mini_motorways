@@ -1,7 +1,7 @@
 """Execute a route candidate on a GameSession, one draw stroke at a time."""
 from __future__ import annotations
 
-from .candidates import _ORTHO, RouteCandidate, Stroke, _is_road, _water
+from .candidates import RouteCandidate, Stroke, crossings, road_cost
 from .placement import PlacementCandidate
 from .session import GameSession
 from .state import DIRS, Cell, CityState, _in_grid
@@ -25,25 +25,14 @@ def _linked(state: CityState, a: Cell, b: Cell) -> bool:
 
 
 def _new_tiles(state: CityState, cells: list[Cell]) -> int:
-    """Road tiles the stroke has to build. cells[0] is the house or the previous stroke's end, never a new
-    tile; counting cells[1:] matches candidates' tiles_needed (path[1:]), with the same road predicate."""
-    return sum(1 for c in cells[1:] if not _is_road(state, c))
+    """Road stock the stroke spends (gp-6, simulator f34: one road per new paid link, candidates.road_cost; the
+    name is kept from the per-tile model of the older simulators)."""
+    return road_cost(state, cells)
 
 
 def _new_spans(state: CityState, cells: list[Cell]) -> int:
-    """Bridge items the stroke needs, counted as candidates' A* does: an unbuilt water cell starts a new span
-    unless the previous cell on the path is water, or an orthogonal neighbour is already a bridge."""
-    def bridge_at(c: Cell) -> bool:
-        return _in_grid(c) and int(state.infra[c[1], c[0]]) == 2
-
-    spans = 0
-    for prev, c in zip(cells, cells[1:]):
-        if not _water(state, c) or _is_road(state, c) or _water(state, prev):
-            continue
-        if any(bridge_at((c[0] + dx, c[1] + dy)) for dx, dy in _ORTHO):
-            continue
-        spans += 1
-    return spans
+    """Bridges the stroke needs (gp-6, f34: each step from land onto unbuilt water, candidates.crossings)."""
+    return crossings(state, cells)
 
 
 def execute_route(session: GameSession, cand: RouteCandidate) -> bool:

@@ -175,6 +175,66 @@ def _water(state: CityState, c: Cell) -> bool:
     return _in_grid(c) and int(state.terrain[c[1], c[0]]) == 1
 
 
+def _linked(state: CityState, a: Cell, b: Cell) -> bool:
+    """The road graph already has the link a -> b (conn[a] has the bit of direction a -> b)."""
+    delta = (b[0] - a[0], b[1] - a[1])
+    return (_in_grid(a) and _in_grid(b) and delta in DIRS
+            and bool(int(state.conn[a[1], a[0]]) & (1 << DIRS.index(delta))))
+
+
+def _building(state: CityState, c: Cell) -> bool:
+    return _in_grid(c) and int(state.kinds[c[1], c[0]]) != 0
+
+
+def _round_cell(state: CityState, c: Cell) -> bool:
+    return _in_grid(c) and int(state.infra[c[1], c[0]]) == 3
+
+
+def paid_link(state: CityState, a: Cell, b: Cell, planned_links: frozenset[Link] = frozenset()) -> bool:
+    """gp-6, simulator f34 (MaterialInventory.RoadConnectionCost, TrafficWorld.Connect): road stock is charged per
+    new connection, not per tile. A link costs 1 road unless it exists already (or is planned in this decision),
+    touches a building cell (driveways and entrances are free), or joins two roundabout cells."""
+    if _linked(state, a, b) or _link_key(a, b) in planned_links:
+        return False
+    if _building(state, a) or _building(state, b):
+        return False
+    return not (_round_cell(state, a) and _round_cell(state, b))
+
+
+def road_cost(state: CityState, cells, planned_links: frozenset[Link] = frozenset()) -> int:
+    """Road stock a path or stroke spends (gp-6, f34): its paid links."""
+    return sum(1 for a, b in zip(cells, cells[1:]) if paid_link(state, a, b, planned_links))
+
+
+def _new_crossing(state: CityState, u: Cell, n: Cell, planned: frozenset[Cell] = frozenset()) -> bool:
+    """gp-6, f34 (MaterialInventory.CanAffordOriginal/ConsumeOriginal with bridgeFrom): a step onto unbuilt water
+    starts a new crossing, costing one bridge, unless it comes from water (a bridge being extended). Unlike the
+    old simulator, an orthogonal neighbour that is already a bridge does not make it free."""
+    if not _water(state, n) or _water(state, u):
+        return False
+    return int(state.infra[n[1], n[0]]) == 0 and n not in planned
+
+
+def crossings(state: CityState, cells, planned: frozenset[Cell] = frozenset()) -> int:
+    """Bridges a path or stroke needs (gp-6, f34)."""
+    return sum(1 for a, b in zip(cells, cells[1:]) if _new_crossing(state, a, b, planned))
+
+
+def _water_degree_ok(state: CityState, prev: Cell | None, u: Cell, n: Cell, planned_links: frozenset[Link]) -> bool:
+    """gp-6, f34 (MaterialInventory.WaterLinkViolation): a water tile holds at most two roads. Checked for a new
+    link u -> n against the existing links of a water road cell at either end (plus the path's own new link into
+    u). Existing links that the path only follows are always fine."""
+    if _linked(state, u, n) or _link_key(u, n) in planned_links:
+        return True
+    if _water(state, n) and _is_road(state, n) and _popcount(int(state.conn[n[1], n[0]])) + 1 > 2:
+        return False
+    if _water(state, u) and _is_road(state, u):
+        new_in = prev is not None and not _linked(state, prev, u) and _link_key(prev, u) not in planned_links
+        if _popcount(int(state.conn[u[1], u[0]])) + int(new_in) + 1 > 2:
+            return False
+    return True
+
+
 def _enterable(state: CityState, c: Cell) -> bool:
     if not _in_grid(c) or not state.playable(c):
         return False
@@ -304,18 +364,19 @@ def _astar(
                 a, b = (n[0], y), (x, n[1])  # the other diagonal of this 2x2 block, existing or planned
                 if (int(state.conn[a[1], a[0]]) >> _direction(a, b)) & 1 or _link_key(a, b) in planned_links:
                     continue
+            if not _water_degree_ok(state, prev if u != start else None, u, n, planned_links):
+                continue  # gp-6, f34: a water tile holds at most two roads
             n_spans = spans
-            if n_water and not (
-                bridge_at(n) or u_water or any(bridge_at((n[0] + ox, n[1] + oy)) for ox, oy in _ORTHO)
-            ):
-                n_spans = spans + 1  # starts a new bridge span: one bridge item
+            if n_water and not (bridge_at(n) or u_water):
+                n_spans = spans + 1  # f34: every step from land onto unbuilt water starts a crossing (one bridge)
                 if n_spans > max_spans:
                     continue
             n_key = (n[0], n[1], n_spans)
             if n_key in closed:
                 continue
-            road_n = _is_road(state, n)
-            cost = (DIAG_BASE if diagonal else 1.0) * (ROAD_FACTOR if road_n or n in planned else 1.0) + STEP_EXTRA
+            # gp-6, f34: road stock is spent per new link, so only an existing (or planned, or free) link is cheap.
+            paid = paid_link(state, u, n, planned_links)
+            cost = (DIAG_BASE if diagonal else 1.0) * (1.0 if paid else ROAD_FACTOR) + STEP_EXTRA
             # Junction term, an approximation that keeps the state at (cell, spans): u is charged on its
             # outgoing edge using its fixed parent (u is closed, so its in-link is known), and a target n
             # (the path ends there) is charged on its incoming edge. Each path cell is thus charged at most
@@ -396,7 +457,8 @@ def route_candidates(
 
     def make(kind: str, found) -> RouteCandidate | None:
         path, spans = found
-        tiles = sum(1 for c in path[1:] if not _is_road(state, c) and c not in planned)
+        # gp-6, f34: "tiles needed" is the road stock the route spends, i.e. its paid links (road_cost).
+        tiles = road_cost(state, path, planned_links)
         if tiles > road_stock:
             return None
         strokes = split_strokes(path)
