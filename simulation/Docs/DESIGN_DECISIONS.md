@@ -1135,15 +1135,299 @@ Independent full-video work under068 identifies missing intermediate shared-carp
 - Bay chunks use the simple early-accept branch where they have two or fewer lanes.
 
 
-## 075 - Bring the repaired simulator into main, simulator only (9 November 2026)
+## 076 - A red-light car may not hold the carpark gate (9 November 2026)
 
-User decision (Aya): `main` takes the repaired simulator from `mohammad` at `1fb8f0a` (simulator `2026-11-08.6`) but not the training work, consistent with 042 and the repository rule that training work stays on `mohammad`. A first full merge (`7b3c31e`, unpushed) was redone: `main` returned to `87256e6` and received only `simulation/` and `scripts/` from `mohammad`. The full merge is kept on the local branch `main-full-merge`.
+(075 is used on `main` for its simulator-only import.)
 
-Resolution, as in the full merge: `mohammad`'s versions of the code that 042 ported (`RetiringRoads.cs`, `SimulationChecks.cs`, `TrafficViewer.cs`) are used as they are, since `mohammad` has carried that code since `e6119eb` with later repairs. The README keeps `mohammad`'s replay paragraph without its branch remark and adds back `main`'s retiring-road note.
+**User decision.** Investigate LA 3101 before gp-5 starts; keep `main` simulator-only.
 
-Links from simulator docs into `docs/training/...` point at evidence that lives on branch `mohammad` (for this repair: `docs/training/simulator-repairs-2026-11-08/`). Future simulator updates come to `main` the same way, by copying `simulation/` and `scripts/`.
+**Engineering choice** ([report section 13](../../docs/training/simulator-repairs-2026-11-08/README.md)). Apply the original's eligibility rule (red-blocked candidates are not eligible) to our engineered carpark gate. A car held by a red light before its gate lane may not take or keep the gate, and the light is checked first. The gate itself remains an engineered compensation, as in decision 074.
 
-### Recorded on main as 042 - Selective playground updates from mohammad (29 October 2026)
+
+## 077 - Local read-only original reference on this machine (10 November 2026)
+
+**User decision.** Work on a separate branch, `fidelity-aya` (pushed to origin), in parallel with Mohammad; the better simulator is chosen later. Set up, on this machine, the same original-game code reference Mohammad works from, to investigate why the recorded 835-point Los Angeles game ends earlier and lower in the simulator. This supersedes decision 071's "rather than decompiling anything on this machine" for future investigation.
+
+**Engineering choices.**
+
+- Decompiled the user's own Steam install read-only with ilspycmd 8.2.0.7535 (9.x needs a newer SDK than .NET 8). `App.dll` SHA256 `76c9d906…c638` equals `REFERENCE_DATA.json`, so this is the build the existing work studied.
+- Output is kept outside every Git repository, in `C:\Projects\490 - Project\mm-original-reference\`, with a README giving the regeneration commands. As before, no decompiled classes or assemblies are committed; only our independent code and numeric findings.
+
+**Not yet done.** No engine change, replay or score comparison has come from this setup yet.
+
+
+## 078 - First pin after four seconds for every destination (10 November 2026, `fidelity-aya`)
+
+**Evidence.** In the original, both destination spawn paths call `DestinationModel.Initialize`, which sets the demand timer to `DelayBeforeFirstPinOfDestination` (4 s in the installed asset); nothing else writes the timer except the regular interval reset. The "3 s while the clock is under 1 s" branch only applies to a reset, which a 4 s timer never reaches. Our `InitializeDestinationDemand` instead gave every destination after time 0 a full demand interval (8–32 s), and a fidelity check asserted that.
+
+**Engineering choice.** Start every destination's countdown at `FirstDemandDelay` (4 s); correct the fidelity check and the oscillation test to the original's behaviour. Simulator `2026-11-10.f1`.
+
+**Measured** ([report](../../docs/training/fidelity-aya-2026-11-10/README.md)). Replay v21, 16 fixed phase sets: mean 576.6 → 606.1 trips, mean game over 1173 → 1190 s; fitted phases 642 → 665. 85 suites pass.
+
+
+## 079 - Original carparks: continuous trips, no engineered gate (10 November 2026, `fidelity-aya`)
+
+**Evidence.** Original `VehicleMovementProcess`/`ParkVehiclesProcess`: the outbound path ends on the carpark entrance lane; when the car moves onto the lane before it, a free bay (random) or a drive-through is chosen and the in-lot lanes are appended; after 3 s parked the car gets one path from its bay to its house. Carpark lanes are ordinary chunks arbitrated like junctions; there is no entrance owner, no whole-lot departure check and no body-clearance test. `RoadTileConnection.IntersectsOtherConnection` returns true for two connections with the same output, so in `WouldInboundVehicleCollideWithTraversingVehicle` a traversing car on a different lane with the same exit blocks entry after the space test (unless green).
+
+**Measured before the change.** On f1, our trips stopped at every leg boundary (outbound→lot, lot→return), the gate serialised each entrance, and toggling the gate or the departure check off alone deadlocked: entering and leaving cars blocked each other through our body-clearance limiter. Details and toggle results in the [report](../../docs/training/fidelity-aya-2026-11-10/README.md).
+
+**Engineering choices** (OriginalReference only; Custom unchanged).
+
+- `ContinuousJourneys.cs`: entrance lane appended to the outbound path; bay or drive-through attached on the lane before it; return lanes appended when leaving a bay or driving through; stage changes at recorded lane indices.
+- Removed the gate (decisions 074/076), `CanBeginBayDeparture` and the body-clearance step limiter; ordinary stop offset at entrances.
+- Same-exit merge rule added to road and carpark chunk arbitration.
+- The two body-overlap checks become "no two cars share a position" (centre distance ≥ 0.15 tiles), because the original has no body test; observed minimum after the change is above 0.2.
+- The drive-through test waits for the car to enter the lot, since the decision is now made one lane earlier (original timing).
+
+**Measured.** Simulator `2026-11-10.f2`: 16-phase mean 606.1 → 749.4 trips (616–804), mean game over 1190 → 1281 s, 4/16 runs reach the end of the replay; fitted phases 665 → 748 at 1279 s. 85 suites pass.
+
+**Supersedes** decisions 074 and 076 (gate) for OriginalReference.
+
+
+## 080 - Carpark lane speeds from the original's lane-speed rule (10 November 2026, `fidelity-aya`)
+
+**Evidence.** The original's `GameBehaviourModel.GetLaneSpeed` applies to every lane, carpark lanes included: default speed 1, times 2/3 (right angle) or 1/3 (sharp or U-turn) by the connection's directions, times `intersectionSpeedMultiplier` 0.5 when the lane has more than one outbound lane. Applied to the `CarparkModel` connections: entrance 0.5, exit 1, end U-turns 1/3, aisle through lanes 0.5 (1 where only the end turn follows), bay entry 1 (45 degrees), bay lanes 1, bay exit 1/3 × 0.5. Ours used a flat 0.6 for every carpark lane.
+
+**Engineering choice.** OriginalReference carpark lanes take these factors (`OriginalParkingLaneFactor`); Custom keeps 0.6. Simulator `2026-11-10.f3`.
+
+**Measured.** 16-phase mean 749.4 → 772.5 (713–815), 6/16 reach the end of the replay; fitted phases 748 → 777 at 1296 s. 85 suites pass.
+
+
+## 081 - Original lane speeds and movement details (10 November 2026, `fidelity-aya`)
+
+**Evidence.** Original `GameBehaviourModel.GetLaneSpeed` and `VehicleMovementProcess` (installed constants from the `core` asset): the 0.5 intersection factor belongs to a lane whose outbound lanes offer more than one way (the approach lane), skipped when any outbound lane is signal-controlled or a roundabout lane, and for U-turn/roundabout lanes; turn factors are skipped for ring-to-ring lanes and lanes coming off a motorway; the roundabout multiplier applies to ring lanes only. Maximum acceleration is 0.9 w/s² if the current or next chunk is a roundabout, 0.8 if the current or next chunk is controlled or the car's driveway or near a motorway lane end, else 0.54; it doubles when blocked at a controlled chunk within two vehicle lengths. With no obstacle, from more than two vehicle lengths before an uncontrolled chunk with at least `NumberOfRoadsAtIntersectionToSlowDownFor` (3) roads (houses, carparks and roundabout lanes ignored), acceleration is capped as if following a car at `targetSpeedTowardsIntersections` (0.55) of the desired speed, deceleration exponent 1.6. A refused junction is a stopped obstacle at distance + (vehicle length − half the minimum gap).
+
+**Engineering choices** (`OriginalMovement.cs`, OriginalReference only). As above. Our roundabout route cost keeps the ring speed, because our centre-to-centre step (1.41 tiles) at the ring speed gives the same cost (23 per quarter) as the original's ~1.16-tile arc at default speed. The roundabout speed check now uses a real ring lane. A third body-overlap check (recorded carpark prefix) becomes "no shared position" like decision 079; the case found was a car passing on the aisle beside a car starting to leave its bay (centre distance 0.243).
+
+**Measured.** Simulator `2026-11-10.f4`: 16-phase mean 772.5 → 769.2 (645–807), median 783.5 → 791, 7/16 reach the end; fitted phases 777 → 774. These rules move speed in both directions; kept for fidelity. 85 suites pass.
+
+
+## 082 - 45 s intersection escape and the original's arrival timing (10 November 2026, `fidelity-aya`)
+
+**Evidence.** The installed `resources.assets` TextAsset `DefaultConfig` enables `MaximumWaitTimeAtIntersections` and disables `CheckForVehicleCollisionsWhenMerging`; the Steam config overrides neither. `RoadChunkModel.CanInboundVehicleEnter` therefore lets a car enter after more than `MaximumTimeToWaitAtIntersection` (45 s) since it committed to the lane (first among its next two path lanes), after the light and shove checks and before traversing vehicles and priority. `ParkVehiclesProcess` accepts an arrival (pin, score, overcrowd credit, parking timer) when the car enters its bay lane. `VehicleMovementProcess` makes a returning car wait for a destination as soon as it enters its driveway lane. Eviction from a full lot requires a destination of that lot with waiting (dispatched) demand.
+
+**Engineering choices** (OriginalReference). `WaitedTooLong` in road and carpark arbitration; delivery and the 3 s timer on entering the `bay-park` lane (the timer keeps running to the bay middle); a returning car finishes at the start of its house tile lane; eviction uses `Reserved > 0`.
+
+**Measured.** Simulator `2026-11-10.f5`: the 45 s escape alone 769.2 → 769.4; all together 16-phase mean 775.2 (605–806), 8/16 reach the end; fitted phases 800 at 1311 s (real 835 at ~1314.6 s). 85 suites pass.
+
+
+## 083 - Pin relocation and the original failure-timer update (10 November 2026, `fidelity-aya`)
+
+**Evidence.** `GenerateDemandProcess.GenerateTimerDemand`: when a destination's timer fires at maximum demand and `GameRules.AllowDemandRelocation` (true in classic rules), the pin goes to the nearest active same-group destination with room, else the nearest destination of any group, by squared distance between carpark top-left tiles. `FailureStateProcess` runs after `ParkVehiclesProcess`; arrivals increment `demandJustCleared`, consumed only in the overcrowding branch (timer capped at max − grace, then per arrival speed × 0.02 and timer − clamp(10% × timer × curve, 0, 3)); the next-frame timer is floored at zero; game over tests the current-frame timer.
+
+**Engineering choices** (OriginalReference). `RelocationTarget` uses each lot's first destination cell as the anchor (an approximation of the original carpark top-left). `UpdateOriginalOvercrowding` runs after `UpdateVehicles`; `Deliver` only banks the arrival. Custom keeps the previous path.
+
+**Measured.** Simulator `2026-11-10.f6`: 16-phase mean 775.2 → 775.1 (604–806), 8/16 reach the end; fitted phases 800 at 1310 s. Effects are confined to the last seconds before failure. 85 suites pass.
+
+**Replay note (not a rule change).** The replay's destination spawn times put the red destination of plan window days 8–22 at 474 s and the red one of days 30–42 at 919 s, both after their windows close. In the original such delays add extra demand to that colour (`BalanceDemandFromFailedSpawns`), which may explain why the original delivered more pins early than our formula creates from the replay's spawn times. Its exact timing is not recoverable from the video, so the replay does not model it.
+
+
+## 084 - U-turns only at dead ends; dispatch details (10 November 2026, `fidelity-aya`)
+
+**Evidence.** `RoadTileSignature` gives a tile a U-turn lane only when it has a single road connection; elsewhere a car can turn around only through a driveway or a carpark loop, at ordinary lane cost (`Pathfinder` declares a `UTurnPenalty` but never uses it). `VehiclePathfindingProcess` re-paths from the car's committed lanes, so it never reverses in place. `DispatchVehiclesProcess` removes items while counting up in its loop for the last destination, dispatching ceil(n/2) per tick, and measures house cost from the end of the driveway lane.
+
+**Engineering choices** (OriginalReference). `FindRoute` refuses a reversal unless the tile has one connection (no penalty there) and takes the heading into the start tile; `RefreshJourney` passes the current lane's heading; the cache key includes it. Dispatch quota and `FirstStepCost` as above.
+
+**Measured.** Simulator `2026-11-10.f7`: 16-phase mean 775.1 → 777.8 (726–819; the 604 outlier is gone), 8/16 reach the end; fitted phases 799 at 1307 s. 85 suites pass.
+
+
+## 085 - The original's lane-conflict test; retired motorway cost (11 November 2026, `fidelity-aya`)
+
+(Decision numbers 085+ on the growth branch `fidelity-aya-growth` will be renumbered when merged.)
+
+**Evidence.** `RoadTileConnection.IntersectsOtherConnection`, called with right-hand traffic and `smallIntersection = true` from `RoadChunkModel` for traversing and inbound checks, decides conflicts from the entry and exit sides only: same exit conflicts (unless crossing in front of a stopped or hot-swapping candidate is allowed and the entries differ), same entry never conflicts, an exact reversal never conflicts, a lane conflicts with the other's half-turn rotation (opposing left or right turns), otherwise the lanes cross when exactly one of the other's sides lies clockwise from this lane's entry through its exit. An audit scripted our sample-distance test against it on a 4-way tile: every same-entry pair conflicted in ours, opposing half-turn pairs did not, and on roundabout tiles the entry lane conflicted with the same tile's exit lane. `LaneModel` charges a mothballed lane 100000 in pathfinding; ours did not penalise a retired motorway when cars re-route.
+
+**Engineering choices** (OriginalReference road lanes; carpark lanes keep the sample test). `ConnectionsIntersect` in `OriginalMovement.cs`, used by `Conflicts` and the inbound priority order (stopped candidate: speed below 0.0005 tiles/s, the original's 0.001 world-unit threshold). `FindRoute` adds 100000 for a retired motorway when retired links are allowed.
+
+**Not adopted.** Removing a traffic light when its tile drops below three roads: the original counts pending roads, which we do not model, and on the replay our version removed a light the real game kept (mean 777.8 → 745.4).
+
+**Measured.** Simulator `2026-11-10.f8`: 16-phase mean 777.8 → 796.7 (613–822), 15/16 runs reach the end of the replay; fitted phases 824, surviving to 1314.6 s (real 835, game over ~1314 s). 85 suites, five-map checks and training readiness pass.
+
+**Open (audit, not yet done).** Roundabout ring split into 8 lanes with corner chunks (ours 4, so commitment reaches twice as far upstream); motorway end-tile lanes and arbitration at motorway starts; diagonal tile-corner chunks and crossing diagonals; traffic-light pair order and post-amber hold; roundabout chunks counting as controlled for the blocked-acceleration boost.
+
+
+## 086 - Roundabout commitment reach and controlled roundabouts (11 November 2026, `fidelity-aya`)
+
+**Evidence.** The original ring has eight lanes: a 57° arc on each ring tile and a corner-chunk arc between ring tiles (`LaneUpdateProcess`, `TileCornerModel`). A car is committed to a lane only while it is among its next two path lanes (`VehicleModel.IsCommittedToLane`), so a circulating car counts for ring tile T only from T−1. Our ring has four 90° lanes, so the same rule reached T−2 and circulating cars held priority over entering cars from twice as far. `RoadChunkModel.IsControlled` is true for roundabout chunks as well as signals, so the blocked-within-two-vehicle-lengths acceleration doubling applies at roundabout entries too.
+
+**Engineering choice** (OriginalReference). In `Committed`, a ring lane reached from a different ring lane counts only as the immediate next lane; `blockedControlled` includes roundabout lanes.
+
+**Measured.** Simulator `2026-11-10.f9`: 16-phase mean 796.7 → 809.3 (800–822), all 16 runs reach the end of the replay; fitted phases 820 at the end. 85 suites pass.
+
+
+## 087 - Original motorway end tiles (11 November 2026, `fidelity-aya`)
+
+**Evidence.** `LaneUpdateProcess` builds a motorway as a straight bespoke lane from the start tile's lane exiting in the motorway direction to the end tile's lane entering from it; the end tiles keep ordinary chunk lanes to and from that direction (`AddMotorwayAction.ValidTileDirectionFor`: the closest direction, or a neighbouring free one). The start-tile lane is arbitrated with the tile's other lanes and has a turn factor but no intersection factor (its single outbound lane is the motorway); the end-tile lane runs from the slot edge across the tile with no turn factor. Ours ran the fast lane from the start tile's entry edge to the end tile's centre, never arbitrated entry at the start tile, and gave cars half an end tile.
+
+**Engineering choice** (OriginalReference). `OriginalMotorwayStart` in `OriginalMovement.cs` and the end-tile start point in `MakeLanes`. The slot is the closest of eight directions; the fallback to a neighbouring free slot is not modelled.
+
+**Measured.** Simulator `2026-11-10.f10`: 16-phase mean 809.3 → 792.8 (741–809), 12/16 reach the end (four now fail at 1281–1309 s, near the original's ~1314 s); fitted phases 816 at the end. No stuck cars; waits are dominated by the shared-exit space test as before. 85 suites, five-map checks and training readiness pass.
+
+
+## 088 - Signal pair order and rotation details; roundabout exit lanes (11 November 2026, `fidelity-aya`)
+
+**Evidence.** `TrafficLightModel.CalculatePairs` scans directions from North (opposite pairs, then leftover pairs three steps apart, then singles); ours started at East. `NextValidPairIndex`: with inbound vehicles it takes the highest-weighted other pair, keeping the current one when none has weight; only with no inbound vehicles does it step to the next index (ours always stepped). `TrafficLightAlternatingProcess`: when lanes change and the active pair no longer exists, the light rotates immediately without amber and restarts its timer (ours took the first pair and kept the elapsed time). `RoadTileConnection.IsRoundabout` is true only for ring-to-ring lanes, so a ring tile's exit lane takes the 0.5 intersection factor when its next tile offers several ways (ours excluded every roundabout-tile lane).
+
+**Engineering choice** (OriginalReference). As above in `UpdateSignalPairs`, `WinningPair` and `OriginalLaneSpeed`.
+
+**Measured.** Simulator `2026-11-10.f11`: 16-phase mean 792.8 → 784.5 (747–808), 8/16 reach the end; fitted phases 784, failing at 1301 s (original ~1314 s). Traffic-light waiting is unchanged (44 car-seconds on the fitted run). 85 suites, five-map checks and training readiness pass.
+## 089 - Original free-play building placement: weight layers and building influence (11 November 2026, `fidelity-aya-growth`, merged into `fidelity-aya` as f12)
+
+**Scope.** OriginalReference free play only (`TrafficWorld` with growth). Custom and recorded replays (`CustomScenarioSession` forces spawns and disables growth) are unchanged; replay v21 gives bit-identical results to f7.
+
+**Evidence (our reading of the original's building placer and spawning process).**
+
+- Each placement reads one weight layer: the colour's house ("Supply") layer for houses, its destination ("Demand") layer for lots, the station layer for stations. Layers are keyed by type and colour; a definition painted for "all colours" has its own key that no colour placement reads. A tile outside the layer is forbidden; once the entry has failed more than five times it is allowed at weight 0.
+- A tile must be driveable (buildable, not water or mountain), zoneable and free of content. Its weight is then scaled by nearby buildings, using per-colour distance maps filled 4-neighbour from house tiles and from the 2x2 destination tiles (not the parking strip), never entering water, mountain or rail tiles: weight 0 within one step of any destination or on a house tile. Houses: own destination within 7 multiplies by 0.425^(7−d); other-colour house within 7 by 0.9^((7−d)/2); own house within 7 by 0.6^(7−d) (grouping Far) or p^(7−d) with p = max(1.05, 1.3 − 0.035 × own houses within Euclidean radius 5) (Near). Lots: own destination within 12 multiplies by 0.6^(12−d) (Far) or 1.3^(12−d) (Near); the original's house term for lots requires 0 < d < 7 and d > 7 at once, so it never applies.
+- Then: every tile in the 3x3 around a roundabout centre is forbidden; around every house the density map (painted in Los Angeles only; elsewhere all high) halves ring 1 (medium) or multiplies rings 1/2/3 by 0.125/0.25/0.5 (low); when placing a lot, the 3x3 around every house is forbidden and each own-colour lot multiplies Chebyshev rings 1–4 around its footprint by 0.0625/0.125/0.25/0.5; the footprint plus a one-tile ring of every lot is forbidden for houses and lots; a new lot's driveway may not use an existing lot's driveway tile.
+- Every footprint tile must have weight ≥ 0; the placement weight is the footprint average. Every legal (tile, layout) placement draws uniform(0, average); placements are sorted by draw, highest first, and the first whose driveways can find a path away wins.
+- Houses get a grouping when they are scheduled: a colour's first house Normal; later ones Near, becoming a new suburb (Far) with probability ((min − count) × 0.7)^1.2 below the minimum suburb count, else ((max − count) × 0.4)^1.4 below the maximum; min/max are the colour's suburb curves at days since its first destination, scaled by lerp(1, 4, clamp01((highest attempts among the colour's pending destination entries − 5)/5)). Lots use the plan's grouping (0 Normal, 1 Near, 2 Far).
+
+**Engineering choices.**
+
+- `scripts/export_placement_data.py` exports, for all five cities, the per-tile house/destination weights per colour (one character per tile, weight = digit/4; every installed weight is a quarter step), the density map, the unbuildable mask, the station layer and the suburb curves (all unweighted Hermite keys) into `OriginalPlacementData.cs` (numbers only).
+- `OriginalPlacement.cs` implements the above in our own code. Our single-lot layouts 0–3 are the original's four single layouts; ordinary double lots use only our shared layouts 2 (vertical, carpark west) and 0 (horizontal, carpark south); stations keep all four shared layouts with platforms on rail. The scan visits rows from the bottom as the original does, but our RNG stream is not aligned with the original's, so individual draws are not comparable.
+- Rail tiles are treated as zoneable so station platforms can be placed (the original must, since station footprints need weights on their rail tiles); ordinary footprints still reject rail.
+
+**Measured** (free play, no roads, failure timer disabled, seeds 1–5, [report](../../docs/training/fidelity-aya-growth-2026-11-11/README.md)): houses inside a lot's one-tile ring fall from 4.2 and 8.6 per game (Los Angeles, t = 600/1200 s) and 1.2 and 4.2 (London) to 0; mean house-to-own-destination distance rises 6.6 → 8.4 and 9.4 → 10.7 tiles (Los Angeles) and 7.7 → 8.3 and 8.4 → 8.6 (London). Houses at 1200 s: 44.4 → 50.0 (Los Angeles), 34.0 → 37.8 (London).
+
+**Open questions.** Stations now use the station layer (London's covers 85 tiles at weight 1). Beijing paints an "all colours" destination layer that the original never reads for a colour; the older zone export (`ShopZones`, still used by Custom) includes it. `isActive` and destination activation time are taken as "exists" and spawn time.
+
+
+## 090 - House driveways, the path-away test and playable edges (11 November 2026, `fidelity-aya-growth`, merged into `fidelity-aya` as f12)
+
+**Evidence.** House placement offers four layouts (driveway north, east, south, west), each its own placement with its own random draw; a driveway's target tile must lie inside the placeable area, be driveable and empty of buildings, not be rail, and the road node must be settable. The chosen placement must pass the original's path-away test: up to eight directions radiating from the driveway (forward, then ±45°, ±90°, ±135°, back), each probing five tiles out (up to five further if that tile holds a building) and asking a tile A* (8-neighbour, costs 70/99, octile heuristic, 300 iterations, buildable tiles only, the new footprint blocked) for a path; after five probes that reached a free tile without a path it gives up. The whole-tile playable area is [ceil(min), floor(max)] and `RectFixed.Contains` includes both edges; classic rules do not allow spawning at map edges, so placement uses the playable area inset by one tile on every side, and the driveway target must be inside the inset area too.
+
+**Engineering choices.** Our previous code pointed a house's driveway at the destination that triggered it; it now comes from the placement. The path-away test follows the original's probe and A*; outside the data canvas counts as buildable and free, as the original's matrix default does; tie-breaking inside the open list may differ. The driveway-node test is approximated by our existing rules (no roundabout tile, no tile pending removal). `UpdatePlayableBounds` now includes the maximum column and the top row (original maximum y); stored bounds keep an exclusive maximum, so the observation fields `playableXMax`/`playableYMax` are one larger and `playableYMin` one smaller where not clipped. Custom (full canvas) and custom-scenario bounds are untouched.
+
+
+## 091 - Spawn schedule: houses only from the supply test, 10 s between lots, double-lot and circle fallbacks (11 November 2026, `fidelity-aya-growth`, merged into `fidelity-aya` as f12)
+
+**Evidence.** In the original a destination never brings a house: houses are scheduled only when a colour with no pending house has a destination with insufficient supply, at max(now, that colour's latest house spawn or schedule + 10 s), and a failed house retries 2 s later. After a new lot spawns, every later non-fixed destination entry is pushed to at least now + 10 s; joining a double lot does not push. A NoPreference entry rolls double/solo once (p = 0.3, +0.05 per solo roll, reset on a double) and keeps the result. A double-capable entry is offered only the first vacant double lot of its kind (station or not) and does not join it if that lot's destination has the same colour; it then places a new lot. A double entry that fails while its attempts exceed 4 becomes Solo for good with attempts 1 (a forced double instead hands its preference to the next entry of its colour; otherwise p += 0.05). A circle entry that fails while its attempts exceed 5 becomes a Normal destination of its colour (a random active colour for "any"), attempts reset.
+
+**Engineering choices.** Pending houses are `ScheduledSpawn` entries of type 1 carrying their grouping; they are not listed in the `scheduledSpawns` observation (it keeps meaning "pending destination entries"). Reset runs the plan, the house schedule and the plan again at time 0, so the first house appears at reset rather than after the first tick (the protocol checks expect at least two buildings at reset). Failed entries still retry at now + delay (the original adds the delay to the entry's time; the two differ only when an entry is processed late). The old code's immediate supporting house, its discard of a destination without one, and its retry-forever circles are removed for OriginalReference.
+
+**Measured.** Destinations at 1200 s: 11.0 → 11.4 (Los Angeles), 13.0 → 14.2 (London); circle upgrades at 1200 s: 2.2 → 3.0 and 1.4 → 0.8.
+
+
+## 092 - Supply distance from the tile outside the driveway (11 November 2026, `fidelity-aya-growth`, merged into `fidelity-aya` as f12)
+
+**Evidence.** The original's supply contribution measures the octile distance from the house tile to the lot's top-left driveway tile if it has one, else its bottom-right one; the carpark model defines these as the tile just outside the lot (the west/north entrance of a double lot). Ours used the entrance tile inside the lot.
+
+**Engineering choice.** `HouseSupplyContribution` uses the tile outside the first entrance (`Entrances[0]`, the west/north one of a shared lot). It affects only house scheduling, i.e. free play.
+
+**Checks for 085–088.** Simulator `2026-11-11.g1`: 92 suites pass (85 + 7 new placement suites in `OriginalPlacementChecks.cs`; no existing assertion changed); five-map and training-readiness checks pass; replay v21 is bit-identical to f7 (default run COMPLETED, 353 of 400 events, 663 trips, game over at 1214.8 s; 16 fixed phase sets mean 777.8, fitted phases 799 at 1307 s with 400 of 400 events).
+
+
+## 093 - Motorway slots count as roads; who is circulating (11 November 2026, `fidelity-aya`)
+
+**Evidence.** `RoadTileSignature.AddNode` adds a motorway's slot as a road node of its end tile, so lanes into that tile see one more outbound choice (`GetLaneSpeed` intersection factor), `GetNumberOfRoadsInIntersectionForSlowingVehicles` counts the slot's direction, and a tile with one road plus a motorway has no U-turn lane. `InboundVehicleDistanceComparer.IsVehicleOnRoundabout` counts a car as circulating only on a ring lane or a lane feeding one; ours also counted cars on a ring tile's exit lane.
+
+**Engineering choice** (OriginalReference). `RoadDegree` (connections plus active motorway ends) in `OriginalLaneSpeed`, `RoadsForIntersectionSlowdown` and the `FindRoute` U-turn test; `OnTargetRoundabout` requires the car's lane to continue on the ring.
+
+**Measured.** Simulator `2026-11-10.f13`: ablations showed the circulating change alone is neutral (784.5) and the U-turn test alone small; motorway slots in lane speeds and the slowdown lower the 16-phase mean 784.5 → 762.9 (584–803, the 584 run is a high-demand phase set with no stuck cars), 5/16 reach the end; fitted phases 784 at 1301 s → 795 at 1308 s. Kept for fidelity. 92 suites, five-map checks and training readiness pass.
+
+
+## 094 - Roundabout placement as the original (11 November 2026, `fidelity-aya`)
+
+**Evidence.** `AddRoundaboutEdit`: only ring-tile roads that cannot be exits, and the centre's links, are mothballed (their concrete returns on release); valid exits stay connected and stay spent; no links are created. `GameBehaviourModel` prices links to ring tiles like links to empty tiles (1 concrete). Ours unlinked and refunded every footprint link, then linked every neighbouring road in an allowed direction for free, and priced ring links at 0.
+
+**Engineering choice** (OriginalReference). `AddRoundabout` keeps existing valid exits and makes no new links; `RoadConnectionCost` charges 1 for an outside–ring link (0 inside a roundabout). The roundabout concrete test now expects two held links for a straight road through the centre, with both exits still connected, and each original connection refunded exactly once after removal. The roundabout's own activation delay and the hot-swap hold are not modelled.
+
+**Measured.** Simulator `2026-11-10.f14`: 16-phase mean 762.9 → 791.4 (763–804), 14/16 reach the end; fitted phases 807 at the end. All replay events still apply. The free links had been adding junction links the original never had. 92 suites, five-map checks and training readiness pass.
+
+
+## 095 - Return paths after an erase; erasable ring exits (11 November 2026, `fidelity-aya`)
+
+**Evidence.** After any lane change the original flags every car whose committed lanes can reach a changed lane and re-paths it in the next pathfinding step, forward and return paths alike (`LaneUpdateProcess`, `VehiclePathfindingProcess`); a mothballed lane's concrete returns once no car has it in a forward or return path. Ours refreshed a stored return route only for whole-tile removals, so an erased link stayed held by cars parked or driving out until they left their bay. The original's eraser clears an exit into a ring tile like any road; ours refused any link touching a roundabout.
+
+**Engineering choice** (OriginalReference). `RemoveRoadConnection` re-routes the stored `ReturnRoute` of non-returning cars that used the erased link, keeping the old one when no alternative exists; only links inside a roundabout need the circle tool.
+
+**Measured.** Simulator `2026-11-10.f15`: 16-phase mean 791.4 → 788.3 (735–805), 13/16 reach the end; fitted phases 808 at the end. 92 suites, five-map checks and training readiness pass.
+
+
+## 096 - Optional scheduled time for late destinations in replays (11 November 2026, `fidelity-aya`)
+
+**Evidence.** The original adds extra demand to a colour while one of its scheduled destinations is waiting for a placement (`GenerateDemandProcess.BalanceDemandFromFailedSpawns`, retries every `FailedDestinationRetryDelay` 20 s). Recorded replays force spawns and disable growth, so this demand was always zero, although the plan's schedule formula proves two red destinations in replay v21 arrived at least 69 s and 108 s after they were scheduled. The video at ~1260 s shows red overcrowding that our replay does not reproduce.
+
+**Engineering choice.** Custom-scenario destination events accept an optional `scheduledAt`; between it and the event the session keeps a delayed plan entry for the colour (one attempt per 20 s), feeding the simulator's existing extra-demand rule. Scenarios without the field behave exactly as before (no version bump). Replay v21 stays the benchmark; `docs/training/fidelity-aya-2026-11-10/replay-candidate-v21a.json` carries the two lower-bound annotations.
+
+**Measured.** On `2026-11-10.f15`: v21a 16-phase mean 774.2 (630–815), median 796.5, 9/16 reach the end; fitted phases 815 at the end (v21: 788.3, fitted 808). 92 suites pass.
+
+
+## 097 - Tile-corner lanes on diagonal steps (11 November 2026, `fidelity-aya`)
+
+**Evidence.** `LaneUpdateProcess`/`TileCornerModel`: a diagonal link between two tiles passes through a corner chunk; each tile chunk's lane ends 0.5 tiles (one world unit) from its centre and the corner chunk's lane covers the rest (√2 − 1 tiles). A corner chunk with two lanes is never arbitrated (`lanes.Count <= 2`). By `GetLaneSpeed`, the tile lane before the corner has one outbound lane and takes only its turn factor, while the corner lane takes the intersection factor when the next tile branches. Ours ran each tile lane to the shared corner point, so the whole approach took the 0.5 factor, diagonal junction legs were ~0.2 tiles longer, and commitment reached further up diagonal approaches.
+
+**Engineering choice** (OriginalReference; not on roundabout, motorway or carpark-transit steps). `MakeLanes` trims diagonal tile lanes and inserts `CornerLane` (`IsCorner`, keyed by tile and direction); corner lanes are skipped by chunk arbitration, the traversing check and `Conflicts`. Crossing diagonals (a four-lane corner) remain unsupported. New fidelity check: alternating tile/corner lanes, corner length √2 − 1, continuity.
+
+**Measured.** Simulator `2026-11-10.f16`: 16-phase mean 788.3 → 791.1 (740–809), 13/16 reach the end; fitted phases 808 → 791, failing at 1310 s (original ~1314 s). 93 suites, five-map checks and training readiness pass.
+
+
+## 098 - Bridge crossings as the original's passages (11 November 2026, `fidelity-aya`)
+
+**Evidence.** `Passage.WillConnectionStartPassage`: a link from an unobstructed tile onto an obstructed (water) tile with no roads starts a passage, consuming one bridge (`AddRoadEdit.ApplyToUpgradeDatabase`); links along water extend it for free; `WillConnectionJoinPassages` (both water tiles already carrying roads) mothballs and releases one bridge, so joining two crossings returns one; stock returns when a mothballed crossing releases. Ours grouped bridge tiles into spans by orthogonal adjacency, so parallel bridges shared one bridge, and a bridge tile emptied by connection erases was never cleared or refunded.
+
+**Engineering choice** (OriginalReference). `DrawRoad` and the reference builder pass the stroke's previous cell to the bridge build: from a bridge tile it joins that crossing, otherwise it starts one; `Connect` merges two crossings and refunds one bridge; connection retirement clears an unconnected bridge tile and refunds the crossing when its last tile goes. The direct bridge-tile tool (no stroke) keeps the adjacency grouping. Water-tile junction limits are not modelled. New check: two parallel strokes use two bridges, linking them returns one.
+
+**Measured.** Simulator `2026-11-10.f17`: replay v21 unchanged (791.1; no parallel bridges in it). 93 suites, five-map checks and training readiness pass.
+
+
+## 099 - Stroke details: unaffordable links and strokes into houses (11 November 2026, `fidelity-aya`)
+
+**Evidence.** `DrawRoadAction` keeps stepping when concrete runs out, so later free or mothballed links in the same stroke are still made; `TileEditor` turns a house's driveway toward a stroke that enters or passes through the house. Ours abandoned the rest of the stroke at the first unaffordable link and realigned a driveway only when the stroke started at the house.
+
+**Engineering choice** (OriginalReference). `DrawRoad` skips the unaffordable link and continues; a stroke reaching a house from a side other than its driveway realigns the driveway first. Drawing remains a rounded raster line rather than the original's greedy eight-direction stepping. New check: a stroke into an east-facing house from the south turns its driveway south and links it.
+
+**Measured.** Simulator `2026-11-10.f18`: replay v21 unchanged (791.1). 94 suites, five-map checks and training readiness pass.
+
+
+## 100 - Traffic-light placement needs a junction (11 November 2026, `fidelity-aya`)
+
+**Evidence.** `TileEditor` allows a traffic light only on a tile with at least three roads (live or pending, motorway ramps included), no active ramp and no rail. Ours accepted any ordinary road tile (motorway ends excepted).
+
+**Engineering choice** (OriginalReference). `Build(TrafficLight)` refuses tiles with fewer than three connections or with rail. Our roads become active at once, so "pending" needs no separate count here; automatic removal of a light whose tile later drops below three roads stays unadopted (decision 085).
+
+**Measured.** Simulator `2026-11-10.f19`: both replay lights qualify; replay v21 unchanged (791.1). 94 suites, five-map checks and training readiness pass.
+
+
+## 101 - Full-lot drive-through across the nearest bay (11 November 2026, `fidelity-aya`)
+
+**Evidence.** `ParkVehiclesProcess`: with no free bay the car becomes `DrivingHome` and `VehiclePathfindingProcess` paths from its committed lane to its house over every lane; bay lanes are ordinary graph edges (carpark lanes at double cost), so the cheapest way out crosses the bay nearest the entrance (`CarparkModel`: outer bay entry → bay lane → inner bay exit). The parked car sits at the middle of that bay lane, so the drive-through follows it. Ours drove a full lap of the lot and could not see parked cars.
+
+**Engineering choice** (OriginalReference). `ParkingDriveThrough` returns the nearest bay's entry and exit routes back to back (delivery still on leaving the entrance lane); the leader search treats a parked car as a stopped leader at the end of its `bay-park` lane for any car whose path crosses that bay.
+
+**Measured.** Simulator `2026-11-10.f20`: no lot fills in replay v21 (no drive-through time), so the replay is unchanged (791.1); the drive-through check and the carpark separation fixtures pass. 94 suites, five-map checks and training readiness pass.
+
+
+## 102 - Replay v21b: late destinations from circle conversion; plausible demand phases (11 November 2026, `fidelity-aya`)
+
+**Evidence.** In the LA plan, items with grouping 3 are circles (upgrades). `BuildingSpawningProcess`: a circle with no eligible destination retries every 20 s (`FailedDestinationRetryDelay`), becomes an ordinary destination of its colour at the attempt after its sixth failure, and is placed at the next retry. That is at least 140 s after it was scheduled, and its colour gets `BalanceDemandFromFailedSpawns` extra demand the whole time. The recording shows no upgrade before 1030 s, but the plan schedules a yellow circle (chunk days 16–36) and a red circle (chunk days 30–42). The slot bounds identify yellow 26,18 (652 s) and red 12,19 (919 s) as those converted circles, scheduled by 512 s and 779 s, and show red 30,18 (662 s) on time.
+
+**Engineering choice** (replay data, not a rule change). `replay-candidate-v21b.json` = v21a with `scheduledAt` 512 s on yellow 26,18 and 779 s on red 12,19, plus 405 s on red 17,17 as before. These are latest possible times, so lower-bound delays. With this demand, the five demand phases refitted to the real score curve fit far better: RMSE 3.9 instead of 8.7 trips, with a positive delivery lag. The 20 independent fits become the phase sets for judging the replay, in place of random phases that contradict the real curve.
+
+**Measured.** Simulator `2026-11-10.f20` on the 20 plausible phase sets: v21b mean 791.5 (744–824), 4/20 reach the end, mean end 1297 s; v21 784.8 (743–801). The original scored 835 and ended at about 1314.6 s. Pin creation matches the original formula within one pin, so the remaining gap is time from dispatch to delivery and late congestion at the red lots. Report: `docs/training/fidelity-aya-2026-11-10/README.md`, section "Replay v21b".
+
+
+## 103 - Bridges carry no junctions (11 November 2026, `fidelity-aya`)
+
+**Evidence.** `TileEditor.WouldConnectionPassPassageConstraints` (bridges over water): a link touching a water tile is refused if that tile already has more than one live or pending road. Live includes erased roads still in use. A link is also refused from a water tile with no road, and a link that restores an erased (mothballed) road is always allowed. Diagonals that would cross at a tile corner over water are refused; ours already refuses crossing diagonals on every tile. Ours allowed any number of roads on a bridge tile and strokes starting on bare water.
+
+**Engineering choice** (OriginalReference). `Connect` refuses such links. The stroke loop skips building a bridge tile for a refused link, so no bridge is spent on a road that cannot form. The two bridge-stock checks now use legal moves: the span is drawn from land, and two crossings are merged by linking their dead-end ends instead of their middles. A new check covers both refusals.
+
+**Measured.** Simulator `2026-11-10.f21`: replay v21b on the 20 plausible phase sets is identical to f20 (791.5; the replay's bridges have no junctions). 94 suites pass.
+
+
+## 104 - Motorway ramps take a free side and keep it (11 November 2026, `fidelity-aya`)
+
+**Evidence.** `AddMotorwayAction.SetDanglingTile`: the free ramp directions of each end tile are those where `CanSetNodeState` accepts a motorway node, meaning no road or other ramp on that side. Every pair (start ramp a, end ramp b) is scored (a·n/2+1/2)(b·(−n)/2+1/2), with n the unit vector from start to end, plus 0.1 when a and b lie on the same side of the line, and the best pair wins; ties go to the first in enumeration order N, NE, E, SE, S, SW, W, NW. In an edit, the kept end keeps its ramp when that ramp is within one step of the closest direction and within 45° of the new line. The ramp is stored on the motorway, and `Tile.CanSetNodeState` refuses any road node on a side that holds a live or planned motorway. Ours recomputed the closest direction whenever lanes were rebuilt, ignored roads already on that side, and let roads use the ramp's side.
+
+**Engineering choice** (OriginalReference). `MotorwayState` stores `StartDirection` and `EndDirection`, chosen as above when the motorway is created or edited. Motorway lanes use the stored directions, and `Connect` refuses a road link on a ramp's side. The rail-diagonal penalty (−0.5 for a diagonal ramp between two rail tiles) is not modelled. For a new motorway, the anchor ramp's dependence on the mouse drag is also omitted. Replay v21 records two strokes into new motorway ends in the same video second as, and after, the motorway; under this rule they are refused, so v21c/v21r swap those two pairs (README, "Replay v21c and v21r").
+
+**Measured.** Simulator `2026-11-10.f22`: v21c on the 20 plausible phase sets 801.4 (755–831), 6/20 reach the end (f21 791.5, 4/20; paired +9.9, range −62 to +63). v21r on the 16 random sets 784.0 (626–805; f21 791.1), fitted 802 reaching the end (f21 791 failing at 1310 s). 95 suites pass (new: ramps take a free side and block it).
+
+
+## 105 - Selective playground updates from mohammad (29 October 2026; numbered 042 on `main`, renumbered when `fidelity-aya` was merged into `main` on 11 November 2026)
 
 User decision: copy only AI replay playback and retiring-road display fixes to
 main, without merging training work. Engineering choice: port the replay core,
@@ -1165,10 +1449,289 @@ with no C# compiler errors. No player build or interactive visual inspection was
 performed in this port. The local-only editor log is
 C:/Users/moham/mini_motorways/tmp/playground-main-unity.log.
 
-## 076 - A red-light car may not hold the carpark gate (9 November 2026)
 
-(075 is used on `main` for its simulator-only import.)
+## 106 - Crossing diagonals form a corner junction (11 November 2026, `fidelity-aya`)
 
-**User decision.** Investigate LA 3101 before gp-5 starts; keep `main` simulator-only.
+Numbered 106 because upstream `main` already uses 105 (upstream's 042, renumbered in the merge of 11 November).
 
-**Engineering choice** ([report section 13](../../docs/training/simulator-repairs-2026-11-08/README.md)). Apply the original's eligibility rule (red-blocked candidates are not eligible) to our engineered carpark gate. A car held by a red light before its gate lane may not take or keep the gate, and the light is checked first. The gate itself remains an engineered compensation, as in decision 074.
+**Evidence.** `TileEditor.WouldConnectionPassPassageConstraints` refuses a diagonal that would cross another at a tile corner only when the new link starts or ends over an obstruction (water, mountain). On land the crossing is allowed. `LaneUpdateProcess` then builds a `TileCornerModel` whose signature has the four diagonal nodes. `RoadTileSignature.AddNode` connects every pair of nodes except a U-turn, so the corner is a junction: cars cross, and can also turn onto the other diagonal. `GetLaneSpeed` gives the intersection factor to a lane with more than one onward lane, so a tile lane leading into the crossing corner slows. Corner chunks are separate road chunks, never controlled by a light. Ours refused every crossing stroke, and its corner lanes were treated as part of the tile they leave: they could take that tile's light state and junction slowdown.
+
+**Engineering choice** (OriginalReference). `Connect` accepts a crossing diagonal unless the new link touches water or a roundabout end (roundabout corners are not modelled). Lanes carry a chunk cell (`Lane.ChunkCell`): the tile for ordinary lanes, a corner code with negative coordinates for corner lanes. Arbitration, conflict tests, light checks and the intersection slowdown compare chunks instead of tiles. A crossing corner arbitrates like any junction with more than two lanes, using the existing connection-intersection rule with the diagonal node directions. Our routes list cells, so a turn at the corner is an orthogonal step between two tiles that have no direct link (`CornerTurn`). Its lanes are the tile lane toward the corner, a turning corner lane, and the next tile's lane, as if arriving along the other diagonal. Where the two tiles are also linked directly the direct link is used, and with crossings on both sides of their edge the first side is used. The route cost of a turn is half a diagonal at the tile's lane speed plus half at turn speed. A route step through a turn counts as using both diagonals for erase-and-release.
+
+**Measured.** Simulator `2026-11-10.f23`. Replay v21c on the 60 plausible phase sets scores 796.3 (669–829), with 18/60 reaching the end. f22 scored 794.4 with 15/60, a paired +2.0 ± 2.0. The replay has no crossings, so the change comes from corner lanes arbitrating as their own chunk. A new check covers the build rules, the shared corner chunk, the conflict between crossing lanes, routes straight through and turning, and a flow scenario: 12 deliveries over both diagonals with a turn, with crossing lanes never occupied together. 96 suites pass.
+
+
+## 107 - Blocking cycles start from stuck vehicles; all-leader cycles push (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `VehicleMovementProcess` adds a vehicle to its stuck list in two cases: it is refused entry to the chunk of its next lane (`path[0]`) with no leader on its own lane, or its nearest obstacle is a leader whose position is less than `MinimumGap` (0.1 world units) ahead while its next speed is below `minSpeedBeforePushingCycle` (0.2 world units/s). The distance is a position difference, so in the second case the two cars practically overlap (lane merges). From each stuck vehicle it follows `blockingVehicle`: the leader at any distance, or the vehicle refusing its next-lane entry; a junction further ahead sets no blocking vehicle. A chain that closes on itself is a cycle (`BreakCycle`). Members refused at a junction shove; if every member follows a leader, each pushes into its leader: it takes the leader's speed as at least 0.2 world units/s and the gap as at least a vehicle length plus two minimum gaps. The push ends when the leader moves faster on its own or the car's obstacle changes. Ours searched every chain made of junction refusals and tight, slow leaders, from any car, and left all-leader cycles alone.
+
+**Engineering choice** (OriginalReference). `MarkBlockingCycles` follows the original. `Vehicle.PushingInto` holds a push, and a pushing car may close in on its leader past the usual clearance. The adjacent-junction gridlock check now registers its fixture cars as dispatch would. It still clears by shoving, because two of its cars are refused at their next chunk.
+
+**Measured.** Replay v21c on the 60 plausible phase sets: 801.8 (732–839), against f23's 796.3 (669–829). Paired +5.5 ± 3.5 at the end, +0.4 to +1.0 trips at 900–1200 s ([data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f24-replay-v21c-p60.txt)).
+
+
+## 108 - A new roundabout stays planned until the lanes it replaces clear (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `AddRoundaboutEdit` puts the circle in the Planned state and mothballs the roads it replaces at once. Planned connections have no lanes. `ReleaseMothballedLanesProcess.CanPlannedRoundaboutHotswap` activates the circle in the first step in which every replaced lane, and every lane leading into or out of one, satisfies `LaneModel.CanHotswap`: no vehicle on it, and none committed to it (committed means within the next two lanes of a path). Meanwhile those lanes are `IsAboutToHotswap`. A car whose `path[0]` and `path[1]` are not about to hot-swap but whose `path[2]` is stops at the end of its current lane (`VehicleMovementProcess`, not from a carpark lane). Mothballed lanes cost 100000 in pathfinding and dispatch does not use them. Ours activated the circle at once, so cars still on the old junction drove through the new ring.
+
+**Engineering choice** (OriginalReference, `RoundaboutActivation.cs`).
+- `RoundaboutState.Planned` holds the circle back. New routes do not pass through its five tiles; a route with no other way keeps its old lanes.
+- Cars still on replaced lanes arbitrate with the old junction's road counts.
+- The hot-swap stop is applied as in the original.
+- The circle activates in the step after no car has a replaced lane among its current lane and next two. With no such car it activates at once (the original does so in the next step).
+- A stored way home through a planned circle is re-found when the car sets off home.
+- With several circles planned at once, one held circle holds all of them.
+
+**Measured.** Replay v21c, 60 sets: f24 (decisions 107–109) 796.0 (737–836), 16/60 reach the end. Decision 108 alone costs 5.8 ± 2.6 at the end against decision 107. The difference starts after the replay's only roundabout (19,9 at 1051 s): −1.2 trips by 1100 s. In the recording, a car crosses the old centre about a second after the circle is placed, which this model allows. The video does not show whether the circle was drawn as planned. A check covers a circle placed under traffic: it stays planned, no route passes through it, it activates once the old lanes clear, and every trip is delivered.
+
+
+## 109 - Cars at train crossings; tile-corner stopping points (12 November 2026, `fidelity-aya`)
+
+**Evidence.**
+- Constants (`SimulationConstantsData`): `maxAccelerationOnCrossings` 0.2, `targetSpeedTowardsCrossings` 0.5, `decelerationExponentTowardsCrossings` 1, `crossingSlowDistance` 3, `crossingStopDistance` 1.8.
+- On or just before a crossing chunk, the acceleration limit is `maxAccelerationOnCrossings`. With no other obstacle, a car more than `crossingSlowDistance` vehicle lengths from a crossing slows towards half its desired speed. The intersection slowdown takes precedence.
+- `RoadChunkModel.CanInboundVehicleEnter` runs the crossing tests before all others, unless the car is already on an open crossing. A closed crossing refuses entry, except at a tile-corner crossing less than one vehicle length ahead. An open crossing refuses entry while a car on a conflicting lane of a chunk along the path is stopped or within three vehicle lengths of the vehicle blocking it. The scan starts at the next lane and ends after the first chunk that is not a crossing.
+- A crossing further ahead than the next lane is approached `crossingStopDistance` vehicle lengths shorter. Tile-corner chunks take no `IntersectionStoppingOffset`, either for stopping or for the intersection slowdown.
+- `LaneUpdateProcess` makes a crossing at a tile corner where a diagonal road passes between the two tiles of a diagonal rail step.
+- Ours only refused closed crossings on rail tiles.
+
+**Engineering choice** (OriginalReference). The rules above are ported. A corner crossing closes when either rail tile is closed. The congestion test uses the previous tick's obstacles. Chunks with two lanes or fewer have no traversing list in the original, so they are not scanned. Two smaller changes: `ConnectionsIntersect` takes the original's `smallIntersection` argument (on for arbitration, off for the crossing test), and `Vehicle.BlockingVehicle` records the original's blocking vehicle. Crossing signal timing is unchanged; it already follows the train's blocked section and the 2 s reopening wait.
+
+**Measured.** The LA replay builds no road over its rail line (0 road tiles on rail at the end), so it is unchanged (f24 equals the run with only decisions 107 and 108). A new check: a car slows before an open crossing (entry speed 1.09 against 1.39 tiles/s cruising) and never accelerates above 0.1 tiles/s² on it. 98 suites pass.
+
+
+## 110 - Replay v21d: event times read from the game's clock (12 November 2026, `fidelity-aya`)
+
+**Evidence.**
+- `ClockView` draws the hand at 12 o'clock at t = 0 and turns it 36 degrees per game second, so one turn is 10 s.
+- `IsDayTime` (hours 6 to 18) gives the light face and the night gives the dark face, so midnight is 12 o'clock on the dark face. Day 0 is Monday and a week is 140 s.
+- So every frame of the recording that shows the dial gives the game time within the day.
+- The weekly upgrade screen opens at or just after Monday 00:00. In week 4 the clock ran on for about 5 s because the player was still acting.
+- Read at 4 frames per second and anchored week by week, the dial puts each week's start and end in agreement exactly, with no day lost.
+- Against it, replay v21c is within about 1 s for most of the game. Through weeks 4 and 5 (video 241 to 365 s, game 433 to 677 s), v21c converted video time slightly too slowly, so its events there are 2 to 5 s early. Events made during a pause belong at the paused clock time (678.8 s, not 677).
+
+**Engineering choice** (replay data, not a rule change). `replay-candidate-v21d.json` = v21c with each player action and spawn timed by the dial ([source](../../docs/training/fidelity-aya-2026-11-10/source/week_dial.py), [make_v21d.py](../../docs/training/fidelity-aya-2026-11-10/source/make_v21d.py)):
+- Offers stay on the week boundaries.
+- Events in unreadable stretches take their neighbours' correction, or the paused time inside a pause.
+- The two converted circles keep the rule "scheduled at least 140 s before they appear", from their re-read appearance times.
+
+The real score curve is re-timed the same way, and the 60 demand-phase sets are refitted to it. All 60 fits improve, with error 3.58 to 3.7 trips instead of 3.86 to 3.9. The benchmark becomes v21d on these 60 sets.
+
+**Measured.** Simulator f24 on the 60 refitted sets: 805.5 (759 to 833, median 811.5), 22/60 reach the end, mean end 1302 s. On the old sets: v21c 796.0, v21d 805.1 (paired +9.1 +/- 3.5). The original scored 835 and ended at about 1314.6 s.
+
+
+## 111 - The original re-plan is switched on (12 November 2026, `fidelity-aya`)
+
+**Evidence.** The port of `VehiclePathfindingProcess` (current lane plus two kept, `RefreshJourneyOriginal`, 11 November) matches the original's code. It was off because it lowered replay v21c by about 11 trips. On replay v21d (decision 110) with the refitted phases it changes f24 by -1.9 +/- 3.2 (median +0.5, 30/60 better), under one trip at any time up to 1200 s. The earlier loss came from the replay's timing errors.
+
+**Engineering choice** (OriginalReference). `OriginalRepath = true`. Stored ways home are re-found when the car sets off home.
+
+**Measured.** See decision 113.
+
+
+## 112 - Junction exit space: a leader on the entered chunk counts the lane length less one vehicle length (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `RoadChunkModel.DoesVehicleHaveSpace` follows the entering car's obstacle chain for up to five vehicles. For a leading vehicle on a lane of the chunk being entered, it takes `lane.Length - VehicleLength` off the distance to that leader, wherever on the lane the leader is, and then adds `max(distance - VehicleLength, 0)`. In effect the junction lane itself offers no space: the car may enter beside a same-exit car only if more than two vehicle lengths are free beyond the junction, or the leader in the junction has no obstacle. Ours, built from the earlier rule description, took off only the part of the lane ahead of the leader, which credits the leader's progress through the junction.
+
+**Engineering choice** (OriginalReference). `HasExitSpace` uses the original formula.
+
+**Measured.** On f24 alone: -16.6 +/- 3.2 at the end, -2.2 trips by 1100 s, -4.0 by 1200 s. Nothing changes before 1000 s; the rule bites only when traffic queues beyond a junction. It moves the replay away from the real game; it is kept because it is the original's code.
+
+
+## 113 - Inbound registrations are stamped with the lane's position in the path (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `AssignPath` registers each new path lane with `AddInboundVehicle(vehicle, lane, path.Count)`, whose timestamp is the game time plus that offset: 1 for the next lane, 2 for the one after, and so on. The stamp breaks ties between candidates at the same distance. Ours added the route's total lane count to every registration.
+
+**Engineering choice** (OriginalReference). `RegisterRoute` stamps time plus the lane's position after the current lane. Kept registrations keep their stamps.
+
+**Measured.** Simulator `2026-11-10.f25` (decisions 111 to 113), replay v21d on the 60 refitted phase sets: 783.4 (684 to 832), 8/60 reach the end, mean end 1292 s. f24 scored 805.5 (paired -22.1 +/- 4.0). Without decision 113: 782.1 (decision 113 adds +1.3 +/- 4.2). Up to 1000 s, f25 is within one trip of f24 ([data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f25-replay-v21d.txt)). 98 suites, five-map checks and training readiness pass.
+
+
+## 114 - Traffic-light details from the decompiled code (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `TrafficLightModel` and `TrafficLightAlternatingProcess` were compared with our implementation, which had been written from a rule description. Matching: green pairs (opposites from north first, then three-step pairs clockwise before counter-clockwise, then singles); green 3 s, overtime 1 s, amber 0.7 s; the nearby guard (fewer than 3 cars within 1 world unit keeps the pair); the pair weight (committed cars only; squared waiting time over 30 s times multiplier 1; x4 on a mothballed lane; x0.1 for non-crossing turns until the first crossing car; x10 from a carpark lane; +1; x0.1 for a car blocked in the chunk on the current pair); strict-greater choice. Three details differed:
+- The candidate order is the chunk's sorted inbound list: eligible entries by distance, then the rest. It decides where the nearby count stops at a blocked car and which cars get the non-crossing discount. Ours used registration order.
+- The mothballed factor applies to a chosen lane whose connection was erased. Ours tested tile removal.
+- After amber with no weighted pair, the current pair stays while the chunk has any inbound vehicle, committed or not. Ours required a committed one.
+
+**Engineering choice** (OriginalReference). All three are ported. Eligibility ignores the traversing-collision part when ordering, and the blocked tests ignore the hot-swap obstacle.
+
+**Measured.** Replay v21d, 60 refitted sets: 773.5 against f25's 783.4. The median paired difference is +0.5, but one run tips into overcrowding at the far red lot at 1080 s (-295; no gridlock, red cars all busy). The mean is -9.9 +/- 6.9 ([data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f26-replay-v21d.txt)).
+
+
+## 115 - Weekly upgrade offers drawn as the original draws them (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `GameBehaviourModel.GenerateNextUpgradeChoices` computes the package weights and their total once. Each pick draws against that total and walks the remaining packages against the original weight positions; the picked package leaves the list but its weight does not. If the draw is not used up, the last package is taken. Afterwards `OnUpgradeNotPresented` runs for every package left, so a type with two packages left counts twice, and then `OnUpgradePresented` resets the presented types. When nothing is eligible the week grants an empty concrete package. Ours sampled correctly without replacement, counted per type, and offered 20 concrete when nothing was eligible.
+
+**Engineering choice** (OriginalReference, free play). Ported. Recorded replays keep their recorded offers, so the benchmark is unaffected.
+
+**Measured.** 98 suites, five-map checks and training readiness pass on `2026-11-10.f26`.
+
+
+## 116 - Fixes from an independent review of f23 to f26 (12 November 2026, `fidelity-aya`)
+
+**Evidence.** A separate review of the f23 to f26 simulator changes found no crashes, loops or out-of-range indexing, and no change to the Custom version. It found three defects:
+- The roundabout-opening hold (decision 108) recorded no obstacle, so the exit-space test treated a held car as free road. The original records a HotswappingLane obstacle and counts only the distance to it.
+- `Vehicle.PushingInto` survived into a car's next trip.
+- Erasing one diagonal of a crossing stopped arbitration at the corner at once, while the original keeps the erased lanes until they are empty.
+
+**Engineering choice** (OriginalReference).
+- The hold also sets the blocking distance, so it counts like a blocked junction.
+- `RegisterRoute` clears pushing.
+- A corner keeps arbitrating while any car still holds one of its junction lanes.
+- The observation now reports `Planned` for roundabouts, so an agent can tell a planned circle from an active one.
+
+**Measured.** Replay v21d, 60 refitted sets: 771.9 against f26's 773.5 (paired -1.6 +/- 2.2; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f27-replay-v21d.txt)). 98 suites, five-map checks and training readiness pass on `2026-11-10.f27`.
+
+
+## 117 - Carpark lanes use the original's connection nodes (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `CarparkModel` builds each bay's aisle chunks from connections between node directions along the lot axis (backward B, forward F) and a bay node (F turned 45 degrees counter-clockwise for the outer aisle, the opposite for the inner):
+- **Outer aisle:** through B->F, bay entry B->bay, bay exit bay->F.
+- **Inner aisle:** through F->B, bay entry F->bay, bay exit bay->B.
+- **First end:** U-turn F->F, entrance road->F, exit F->road.
+- **Last end:** U-turn B->B, entrance road->B, exit B->road.
+- **Bay chunk (`parkRoadChunk`):** one lane each way, two in all.
+
+Arbitration in these chunks uses `IntersectsOtherConnection` (shared exits by output direction), the same as at road junctions. In an aisle, through and bay entry share their entry side and do not conflict. Ours decided carpark conflicts from lane geometry: two lanes starting at the same point counted as conflicting. It also counted four bay lanes in two-entrance lots, which made it arbitrate the bay.
+
+**Engineering choice** (OriginalReference). Aisle and lot-end lanes carry the original nodes (`Lane.ParkingNodes`; Incoming = entry side + 4, Outgoing = exit side). Conflicts, the stopped-candidate argument and shared exits use the connection test for them. The bay chunk counts two lanes. A new check pins the aisle conflict pattern.
+
+**Measured.** Replay v21d, 60 refitted sets: 780.1 (685 to 823), 12/60 reach the end, against f27's 771.9 with 8/60. Paired +8.2 +/- 6.4, median +7.5 ([data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f28-replay-v21d.txt)). 99 suites, five-map checks and training readiness pass.
+
+
+## 118 - The real score curve re-read from frames at exact times (12 November 2026, `fidelity-aya`)
+
+**Evidence.** The real score curve used since 10 November (`score_by_video.py`, read every 10 video seconds) was compared with frames extracted at exact times. Its values match the frames about 5 video seconds later at every point. Examples: at video 180 s the HUD shows 53 (curve 55), at 450 s 277 (285), at 850 s 691 (705). The two agree only where the game was paused. The frame sampler behind the original reading evidently ran several seconds late. The real curve therefore led the game by about 10 game seconds of deliveries. That explains why the fitted delivery lag (about 6 s) was shorter than any physical trip.
+
+**Engineering choice** (benchmark data). The score was re-read at exact frame times every 10 s (87 points) and mapped to game time with the dial (decision 110). The game-over screen confirms the final 835, with the failing lot being red 30,18. The 60 demand-phase sets were refitted to this curve. Every fit improves (error 2.27 to 2.3 trips, was 3.58), and the lag becomes 11 to 12.4 s, a physical trip time. The benchmark is v21d on these sets (`plausible-phases-v21e-60.txt`). `measurements/score_timeline_dial.csv` now holds the re-read curve; the v21d phase sets of decision 110 were fitted to the earlier readings, which the old `score_timeline.csv` still shows on the old time base.
+
+**Measured.** f28 on the new sets: 778.3 (705 to 827), 6/60 reach the end ([data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f28-replay-v21d-p21e.txt)). With the best set, our score is within 3 trips of the real curve up to about 360 s and 5 to 17 behind from 430 to 1000 s. Before the correction it was 7 behind by 317 s and 10 to 13 behind in mid-game. The late game still ends earlier than the original's 1314.6 s.
+
+
+## 119 - Route costs use lane lengths (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `LaneModel.PathfindingCost` is `max(1, int(10 x Length / SpeedLimit))`, so a lane costs its actual length over its speed limit (twice for carpark lanes; mothballed lanes 100000). Ours charged every road step its centre-to-centre distance. Our lane lengths at a junction are 1.0 tile straight, 0.64 for a right turn and 0.95 for a left turn. At turn speed our router therefore charged a right turn 30 instead of about 19, steered cars away from right turns, and could pick a different house in dispatch, which uses the same costs.
+
+**Engineering choice** (OriginalReference). `StepLength` gives an ordinary road step the length of our tile lane for its entry and exit, built with the same geometry as `MakeLanes` and cached per direction pair, plus the corner lane on a diagonal exit. `FindRoute` and `RouteCost` divide it by the step's speed. Starting steps, motorways, roundabouts and parcels keep the centre-to-centre distance.
+
+**Measured.** Replay v21d on the v21e phase sets: 792.5 (736 to 831), 17/60 reach the end, against f28's 778.3 with 6/60. Paired +14.2 +/- 4.0, better in 42/60 runs, with gains at every time from 900 s ([data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f29-replay-v21d-p21e.txt)). 99 suites, five-map checks and training readiness pass.
+
+
+## 120 - A car leaving a shared lot counts the in-lot leg to each exit (12 November 2026, `fidelity-aya`)
+
+**Evidence.** When a parked car's time is up, `VehiclePathfindingProcess` (DrivingHome) plans from the car's committed lane, the parking space, over the carpark lanes (double cost) and the roads. Ours chose the exit of a two-entrance lot by road cost from each entrance alone.
+
+**Engineering choice** (OriginalReference). `StartLeavingParking` adds the cost of the in-lot leg from the bay to each exit, with carpark lanes at double cost.
+
+**Measured.** Replay v21d, v21e sets: 792.3 against f29's 792.5 (paired -0.3 +/- 3.2; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f30-replay-v21d-p21e.txt)). 99 suites, five-map checks and training readiness pass on `2026-11-10.f30`.
+
+
+## 121 - Motorway route costs as the original's lanes (12 November 2026, `fidelity-aya`)
+
+**Evidence.** A motorway trip in the original runs on the start tile's lane to the ramp slot, at that lane's speed with its turn factor, and then on the bespoke motorway lane between the two slot edges at `maxSpeedOnMotorways`. The motorway lane is about one tile shorter than centre to centre. Pathfinding charges each lane its length over its speed (decision 119). Ours charged the whole centre-to-centre distance at motorway speed, which made motorways slightly cheaper than in the original.
+
+**Engineering choice** (OriginalReference). `MotorwayStepTime` gives a motorway step the start tile's lane (our tile-lane length from the entry to the ramp slot, at turn speed) plus `max(0, distance - 1)` at motorway speed. `FindRoute` and `RouteCost` both use it.
+
+**Measured.** Replay v21d, v21e sets: 795.4 (745 to 830, median 804), 18/60 reach the end, against f30's 792.3 (paired +3.1 +/- 3.0; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f31-replay-v21d-p21e.txt)). 99 suites, five-map checks and training readiness pass on `2026-11-10.f31`.
+
+
+
+## 122 - Exit space: the original's Target case measures from the vehicle's current lane (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `RoadChunkModel.DoesVehicleHaveSpace` adds `targetDistanceAlongLastLane - distanceAlongLane - VehicleLength` when a vehicle in the chain has its target as nearest obstacle. Both distances are along lanes, but `distanceAlongLane` is on the vehicle's current lane, also when the target lies on a later lane of its path; the value is not floored at zero. Ours added the full distance to the route end less a vehicle length.
+
+**Engineering choice** (OriginalReference). `HasExitSpace` uses the original expression with the target lane of the current leg (decision 123).
+
+**Measured.** Replay v21d, v21e sets: 789.2 against f31's 795.4 (paired -6.2 +/- 4.1; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f32a-replay-v21d-p21e.txt)). 99 suites, five-map checks and training readiness pass.
+
+
+## 123 - Cars brake towards their target as the original's Target obstacle (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `VehicleMovementProcess` treats the end of a vehicle's path as an obstacle. When the last path lane starts within `LookaheadDistance` (2.5 tiles), or the vehicle is on it, the target point is followed like a stopped car with `TargetStoppingOffset` (vehicle length plus minimum gap). The car therefore decelerates as the IDM does towards a standing vehicle and creeps the last stretch. The target is the end of the destination's entrance lane until the lot assigns a bay (`ParkVehiclesProcess`, when the car moves onto the lane before the entrance), then the middle of the bay lane (`list[last].Length / 2`); on the way home it is the driveway. Arrival is credited on entering the bay lane or driveway, not on reaching the target. Found by an independent audit of the movement code and checked on both sides. Ours only capped the speed by `sqrt(2 b d)` to the route end, which bites within about 0.2 tiles.
+
+**Engineering choice** (OriginalReference). The movement loop follows the current leg's end as a stopped leader when it is nearer than the leader; the obstacle record carries it for the exit-space test. `TargetLaneIndex` gives the leg's end: the entrance lane before the parking leg is attached, otherwise the last lane. The approach to the bay's middle is asymptotic, so a delivered car whose 3 s parking timer has run out is placed at the bay's middle and leaves as before (the original leaves from wherever it is on the bay lane). A car on its last lane within 0.001 tiles of its end finishes. Two parking-flow checks asserted that cars in a lot never come within 0.15 tiles. They now exempt cars in the same lot where neither is on the other's next lanes, because the original does not separate a car turning slowly into its bay from one continuing along the aisle: the two lanes share an entry, so they do not conflict, and neither car leads the other.
+
+**Measured.** On f32a: 761.0 (544 to 822), 2/60 reach the end (paired -28.1 +/- 5.4). Fixed-time scores move little and towards the real curve: 365.4 at 900 s (real 364, f32a 367.0), 449.3 at 1000 s (454), 553.1 at 1100 s (551), 666.9 at 1200 s (663). The loss comes from earlier game over: slower intake makes the red lots overflow sooner ([data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f32b-replay-v21d-p21e.txt)). Kept because it is the original's code.
+
+
+## 124 - Level crossings: the checks are skipped while the car's own crossing is closed (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `CanInboundVehicleEnter` runs the crossing checks only `if (trainCrossingModel == null || trainCrossingModel.SignalState != 0)` for the chunk the car is on. `TrainSignalState` is `{ Closed, Open }`, so a car on a closed crossing may always continue. Ours skipped the checks when the car's crossing was open, so a car caught on closed tracks could be refused and stop there. Found by an independent audit of the junction code.
+
+**Engineering choice** (OriginalReference). `RailCrossingAllows` skips when the current crossing chunk is closed.
+
+
+## 125 - Bay lanes are one-way: leaving by the other entrance laps the aisle (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `CarparkModel` gives each bay two lanes across the parking chunk:
+- outer to inner, entered from the first entrance's aisle and continuing on the inner aisle towards the first end;
+- inner to outer, entered from the last entrance's aisle and continuing on the outer aisle towards the last end.
+
+A parked car stays on the lane it entered by and plans home from it. To leave by the other entrance it therefore follows its own side's aisle to the lot end, takes the U-turn lane there (speed one third) and drives the whole other aisle. Ours let it cross the bay backwards onto the other side. Found by an independent audit of the parking code.
+
+**Engineering choice** (OriginalReference). `ParkingRoute(..., leaving: true, enteredLeft)` builds that route when the exit differs from the side the car parked from. `StartLeavingParking` passes the side from the car's bay lane, both for the exit choice (decision 120) and for the route.
+
+**Measured** (124 and 125 together, on f32b). 765.0 (paired +4.0 +/- 5.0; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f32c-replay-v21d-p21e.txt)).
+
+
+## 126 - The original's obstacle order in the lookahead (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `VehicleMovementProcess` handles junction entry in this order:
+- It asks `CanInboundVehicleEnter` for path[0] at any distance. If path[0] is refused while a leader is on the current lane, the car is only kept on its lane (`flag3`), with no braking and no stuck mark.
+- Later lanes are asked only within the lookahead and only while no obstacle has been found, so a leader, the target or a refusal ends the scan. Their refusals do not set `blockingVehicle`.
+- The intersection and crossing slowdowns need no obstacle up to and including the lane. They are combined with the blocked-junction acceleration; only the hot-swap case excludes them.
+- When a blocked signal-controlled chunk is the nearest obstacle within two vehicle lengths, the acceleration is doubled with either sign.
+
+Ours asked every lane in the lookahead (only within it, at most six lanes), braked for refusals behind a leader, dropped the slowdowns whenever a stop existed, and doubled only a braking value. Found by independent audits of the movement and junction code.
+
+**Engineering choice** (OriginalReference). The movement loop follows the original order; a refusal of path[0] behind a leader limits travel to the lane end.
+
+**Measured.** On f32c: 751.4 (510 to 818), 1/60 reach the end (paired -13.6 +/- 7.0, median -8). Fixed-time scores are unchanged (364.9, 449.2, 553.0, 666.5 at 900 to 1200 s). Two phase sets with high red demand fail before 1100 s on the late red lot at 11,18, which red cars cannot supply in time; it is not a gridlock ([data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f32d-replay-v21d-p21e.txt)). 99 suites, five-map checks and training readiness pass on `2026-11-10.f32`.
+
+
+## 127 - One eviction per lot and step, rolling cars included (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `ParkVehiclesProcess` visits each lot once per step. It picks the parked car with the longest time parked among those within their 3 s and not already sent home, including a car still rolling along its bay lane (its timer runs from entering the bay chunk). If no bay is free and a car is on its way to one of the lot's destinations, it sends that one car home. A car sent home keeps its bay until it leaves the bay chunk, so a full lot sends one more car each step until a bay frees. Ours ran the test per car, so every parked car of a full lot could leave in the same tick, and rolling cars were never chosen. Found by an independent audit of the parking code.
+
+**Engineering choice** (OriginalReference). `EvictFromFullLots` runs once per tick before the vehicle loop. A rolling car that is chosen is placed at its bay's middle first (decision 123). Our tick is 0.05 s against the original's 0.1 s, so the cascade runs at up to twice the original's rate.
+
+**Measured.** On f32d: 758.3 (703 to 805; paired +6.9 +/- 6.3; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f32e-replay-v21d-p21e.txt)).
+
+
+## 128 - Ineligible inbound cars keep their registration order (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `SortInboundVehicles` moves eligible entries to the front of the inbound list, where the priority comparer sorts them. An entry is eligible if it is committed to its lane, not held by a red light and not colliding with a traversing vehicle; a shoving entry is always eligible. The rest stay behind, roughly in the order they were added. `CanInboundVehicleEnter` walks the list until it reaches the car itself and refuses on any conflicting entry before it. So an uncommitted car checking a junction further ahead is blocked by conflicting eligible entries and also by conflicting ineligible entries ahead of it in the tail. Ours ignored every ineligible entry, skipped light-held entries even when they were shoving, and so let an uncommitted car pass more often. Found by an independent audit of the junction code.
+
+**Engineering choice** (OriginalReference). Each new inbound registration gets a sequence number (`RegisteredOrder`, in path order within a route). An ineligible car is refused by a conflicting ineligible car registered before it. A shoving car held at red stays eligible. The original's swaps permute the tail, which this does not reproduce.
+
+**Measured.** On f32e: 758.1 (509 to 810; paired -0.3 +/- 6.3; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f32f-replay-v21d-p21e.txt)). 99 suites, five-map checks and training readiness pass on `2026-11-10.f32`.
+
+
+## 129 - A re-plan keeps shoving and pushing (12 November 2026, `fidelity-aya`)
+
+**Evidence.** The original `AssignPath` never clears `isShovingIntoNextIntersection` or `vehiclePushingInto`; only a lane change (shoving), a broken pushing cycle and the vehicle's reset do. Since decision 116 ours cleared both on every route registration, including the re-plans after road edits and when the parking leg is attached. Found by an independent audit of the junction code.
+
+**Engineering choice** (OriginalReference). `RegisterRoute` clears them only for a new route (`keepExisting` false), which still keeps pushing from surviving into the next trip (the reason for decision 116).
+
+**Measured.** On f32f: 754.1 (paired -4.0 +/- 4.6; only 2 of 60 runs change; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f32-replay-v21d-p21e.txt)).
+
+
+## 130 - Motorway nodes in the half-turn test; drive-throughs follow only a car parked on their own bay lane (12 November 2026, `fidelity-aya`)
+
+**Evidence.** Both found by the f32 audits.
+- `RoadTileConnection.IntersectsOtherConnection` skips the half-turn conflict when the other connection has a Motorway node, that is a lane into or out of a motorway slot. Ours skipped it only for the bespoke motorway lane, so it found extra conflicts on motorway end tiles.
+- A parked car in the original sits on one of the bay's two one-way lanes (decision 125). A drive-through car on the opposite lane is not behind it. Ours matched the parked car by bay only.
+
+**Engineering choice** (OriginalReference). The end tile's lane from the slot and the start tile's lane to the slot carry `Lane.MotorwayNode`, which skips the half-turn test. The parked-car leader for drive-throughs requires the parked car's bay lane to be the same lane.
+
+**Measured.** Replay v21d, v21e sets: identical to f32 in all 60 runs (754.1; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f33-replay-v21d-p21e.txt)); neither case arises in the LA replay. 99 suites, five-map checks and training readiness pass on `2026-11-10.f33`.
+
+
+## 131 - A re-plan re-registers from the first changed lane (12 November 2026, `fidelity-aya`)
+
+**Evidence.** The original `AssignPath` compares the new path with the old one after the two committed lanes. It keeps the inbound registrations along the common start and removes and re-adds every lane from the first difference. Re-added entries get a fresh timestamp, go to the back of the chunk's inbound list and get a new commitment time. Ours kept the old registration for any lane still planned anywhere on the new route. Found by the f32 junction audit; it matters for exact-distance ties and for the order of ineligible cars (decision 128).
+
+**Engineering choice** (OriginalReference). Each car keeps its registered lanes in path order (`RegisteredPath`). `RegisterRoute` with `keepExisting` keeps the common prefix with the new route and re-registers the rest: new stamp, new sequence number, and the 45 s commitment time cleared.
+
+**Measured.** Replay v21d, v21e sets: 752.7 against f33's 754.1 (paired -1.4 +/- 0.9, 8 of 60 runs change; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f34-replay-v21d-p21e.txt)). 99 suites, five-map checks and training readiness pass on `2026-11-10.f34`.

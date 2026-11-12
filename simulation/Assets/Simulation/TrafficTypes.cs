@@ -66,7 +66,7 @@ namespace MotorwaysSim
         public double IntersectionMultiplier=.5,RoundaboutMultiplier=1.2,LookaheadDistance=2.5;
         public double ServiceSeconds=3,HomeCooldown=0;
         public double SignalGreenSeconds=3,SignalOvertimeSeconds=1,SignalAmberSeconds=.7;
-        public double SignalNearbyDistance=.5,SignalMaxWaitingWeightSeconds=30;
+        public double SignalNearbyDistance=.5,SignalMaxWaitingWeightSeconds=30,MaximumIntersectionWait=45;
         public int SignalMinimumNearbyCars=3;
         public double SecondsPerDay=20,SecondsPerWeek=140;
         public double AverageCarsPerDay=1.55,DemandMultiplier=.8,FirstDemandDelay=4;
@@ -89,7 +89,7 @@ namespace MotorwaysSim
         public Cell[] Entrances=new Cell[0],Platform=new Cell[0];public int[] EntranceDirections=new int[0];
         public int Width=1,Height=1,DrivewayDirection,Layout;
         public bool Upgraded;public double UpgradeAt=double.PositiveInfinity,PlannedDemandMultiplier=1;
-        public int Demand,Reserved;
+        public int Demand,Reserved,DemandJustCleared;
         public double NextDemand,OvercrowdedFor,OvercrowdingSpeed,SpawnTime,SpawnGraceUntil,Served;
         public double OriginalDemandInterval,FeasibleDemandInterval,LastFeasibilityCheck;
         public double DemandPhase,DemandCountdown;
@@ -109,8 +109,12 @@ namespace MotorwaysSim
         public Point[] Samples;
         public double[] Distances;
         public double Length,SpeedLimit;
-        public bool IsJunction,IsRoundabout,IsParking,IsMotorway,ReleasesParking,DeliversDriveThrough;
+        public bool IsJunction,IsRoundabout,IsParking,IsMotorway,ReleasesParking,DeliversDriveThrough,IsCorner;
         public string Chunk=""; // carpark lanes: "carpark:<id>:<chunk>" (CarparkArbitration.cs)
+        public Cell? Corner; // corner lanes (OriginalReference): code cell of the tile corner chunk they belong to
+        public bool MotorwayNode; // OriginalReference: a tile lane into or out of a motorway slot (a Motorway node in the original)
+        public bool ParkingNodes; // carpark aisle lanes whose Incoming/Outgoing carry the original's connection nodes
+        public Cell ChunkCell=>Corner??Tile; // the road chunk whose lanes arbitrate with this one
         public int MotorwayId=-1;
         public int CarparkId=-1;
         public string Key;
@@ -141,11 +145,19 @@ namespace MotorwaysSim
         // Original junction arbitration state (JunctionArbitration.cs): the previous tick's nearest
         // obstacle, and the blocking-cycle shove permission for one immediate next lane.
         public ObstacleKind ObstacleState;public int ObstacleCar=-1;public double ObstacleDistance;
+        public int BlockingVehicle=-1; // original blockingVehicle: the leader, or the vehicle refusing its junction entry
         public bool Shoving;public string ShovingLane="";
+        public int PushingInto=-1; // original vehiclePushingInto: leader this car pushes into while their all-leader cycle lasts
         // Tile of the junction lane this car was refused at (BlockingJunction), and the game time each planned
         // lane first entered the first-two-remaining-lanes commitment window (original signal weights).
         public Cell BlockingTile;public readonly Dictionary<string,double> CommittedAt=new Dictionary<string,double>();
         public Point ParkedPosition,ParkedHeading=new Point(0,-1);
+        // Continuous journeys (OriginalReference, ContinuousJourneys.cs): index of the carpark entrance lane at the
+        // end of an outbound path, whether the in-lot lanes are attached, and lane indices where the stage changes.
+        public int ParkingLegAt=-1;public bool ParkingLegAttached;
+        public Dictionary<string,long> RegisteredOrder=new Dictionary<string,long>(); // OriginalReference: order of inbound registration per lane
+        public List<string> RegisteredPath=new List<string>(); // OriginalReference: registered lanes in path order
+        public readonly List<(int Index,TripStage Stage)> LegMarks=new List<(int Index,TripStage Stage)>();
         public bool Moving=>Lanes.Count>0&&RouteIndex<Lanes.Count;
         public Lane CurrentLane=>Moving?Lanes[RouteIndex]:null;
         public Point Position=>Stage==TripStage.Parking?ParkedPosition:CurrentLane?.Position(DistanceAlongLane)??new Point(At);
@@ -166,12 +178,15 @@ namespace MotorwaysSim
         public Cell Center;
         public Cell[] Ring;
         public bool PendingRemoval;
+        // OriginalReference: placed but not yet hot-swapped (RoundaboutActivation.cs), with the footprint's road counts from
+        // before the circle for arbitration among cars still on the replaced lanes.
+        public bool Planned;public Dictionary<Cell,int> PlannedDegrees;
         // Concrete replaced by the circle stays reserved until old surface lanes clear.
         public int ReplacedRoadTiles;
     }
 
     public sealed class MotorwayState
-    {public int Id,Number;public Cell Start,End;public bool PendingRemoval,RefundOnRemoval=true;public Cell Other(Cell c)=>c==Start?End:Start;}
+    {public int Id,Number;public Cell Start,End;public bool PendingRemoval,RefundOnRemoval=true;public int StartDirection=-1,EndDirection=-1;public Cell Other(Cell c)=>c==Start?End:Start;}
     public sealed class MotorwaySnapshot
     {public int Id,Number;public Cell Start,End;public bool PendingRemoval;}
 
@@ -215,5 +230,5 @@ namespace MotorwaysSim
     public sealed class SignalSnapshot
     {public Cell Cell;public int ActivePair;public bool Amber;public double Elapsed;public int[] Pairs;}
     public sealed class RoundaboutSnapshot
-    {public Cell Center;public Cell[] Ring;public bool PendingRemoval;}
+    {public Cell Center;public Cell[] Ring;public bool PendingRemoval;public bool Planned; /* OriginalReference: placed, not yet active */}
 }

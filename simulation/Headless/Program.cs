@@ -44,8 +44,8 @@ static class Program
             {
                 if(scenarioArg+1>=args.Length)throw new ArgumentException("Missing scenario file");
                 var definition=JsonSerializer.Deserialize<CustomScenarioDefinition>(System.IO.File.ReadAllText(args[scenarioArg+1]),Json);
-                session=new CustomScenarioSession(definition);var timer=Stopwatch.StartNew();
-                while(!session.Complete){if(timer.Elapsed.TotalSeconds>120)throw new TimeoutException("Custom scenario exceeded120-second wall limit");session.AdvanceTick();}
+                session=new CustomScenarioSession(definition);var timer=Stopwatch.StartNew();int wallArg=Array.IndexOf(args,"--wall-limit");double wallLimit=wallArg>=0&&wallArg+1<args.Length?double.Parse(args[wallArg+1],System.Globalization.CultureInfo.InvariantCulture):120;
+                while(!session.Complete){if(timer.Elapsed.TotalSeconds>wallLimit)throw new TimeoutException($"Custom scenario exceeded {wallLimit}-second wall limit");session.AdvanceTick();}
                 Console.WriteLine(JsonSerializer.Serialize(new{result="COMPLETED",simulatorVersion=SimulatorVersion.Value,mode="custom-scenario-reconstruction",definition.id,definition.seed,
                     referenceScore=definition.referenceScore,score=session.World.TripsCompleted,difference=session.World.TripsCompleted-definition.referenceScore,
                     seconds=session.World.Time,failed=session.World.Failed,events=session.CompletedEvents,totalEvents=definition.events.Length,inventory=session.World.Inventory,

@@ -64,39 +64,11 @@ namespace MotorwaysSim
                 SpawnTime=Time,SpawnGraceUntil=Time+Rules.ConstructionGraceSeconds,DemandCountdown=Rules.FirstDemandDelay,NextDemand=Time+Rules.FirstDemandDelay};
             Buildings.Add(shop);InitializeDestinationDemand(shop);Changed();return shop;
         }
-        bool CompleteSupply(Building shop)
-        {
-            bool supply=Buildings.Any(b=>b.IsHouse&&b.Color==shop.Color&&BestPotentialRoute(b.Access,shop).Count>1)||TrySpawnHouse(shop);
-            if(!supply){DiscardDestination(shop);return false;}RefreshFeasibility(shop);return true;
-        }
         void DiscardDestination(Building shop)
         {
             if(shop.DestinationSlot==0)foreach(var entry in Accesses(shop))
                 for(int d=0;d<8;d++)if((Connections[entry.X,entry.Y]&(1<<d))!=0)Unlink(entry,entry+Directions[d]);
             Buildings.Remove(shop);Changed();
-        }
-        bool TrySpawnPlannedDestination(ScheduledSpawn plan)
-        {
-            int color=plan.Color<0?random.Next(Map.BaseDemand.Length):plan.Color;int preference=plan.Preference;
-            if(preference==0){if(random.NextDouble()<=doubleLotProbability){preference=3;doubleLotProbability=.3;}else doubleLotProbability+=.05;}
-            bool station=preference==5||preference==6||preference==8;
-            bool shared=station||preference==2||preference==3||preference==4||preference==7;
-            if(shared&&preference!=7&&preference!=8)
-            {
-                foreach(var first in Buildings.Where(b=>b.SharedLot&&b.DestinationSlot==0&&b.IsStation==station).ToArray())
-                {var joined=JoinSharedCarpark(first.Id,color);if(joined!=null&&CompleteSupply(joined)){joined.PlannedDemandMultiplier=plan.DemandMultiplier;return true;}}
-            }
-            if(!shared)return TrySpawnShop(color);
-            var candidates=Enumerable.Range(0,Width*Height).Select(k=>new Cell(k%Width,k/Width)).ToList();Shuffle(candidates);
-            foreach(var cell in candidates)
-            {
-                if(station?!Map.StationZone.Any(k=>k%Width>=cell.X&&k%Width<cell.X+4&&k/Width>=cell.Y&&k/Width<cell.Y+4):Array.IndexOf(Map.ShopZones[color],cell.Y*Width+cell.X)<0)continue;
-                int firstLayout=random.Next(4);
-                for(int i=0;i<4;i++)
-                {var shop=SpawnSharedCarpark(cell,color,(firstLayout+i)%4,station);if(shop!=null&&CompleteSupply(shop)){shop.PlannedDemandMultiplier=plan.DemandMultiplier;return true;}}
-            }
-            // Original falls back after repeated failed double-lot placements; never turn a station into a normal destination.
-            return !station&&plan.Attempts>10&&TrySpawnShop(color);
         }
         public Point DestinationCenter(Building shop)=>LayoutPoint(shop,1+2*shop.DestinationSlot,1);
     }

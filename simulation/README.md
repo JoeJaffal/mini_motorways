@@ -74,7 +74,7 @@ python scripts/verify_five_maps.py
 dotnet run --project simulation/Headless
 ```
 
-The first command builds the Debug host that the Python check uses. There are currently 84 shared suites. Unity builds invoke those same checks. See [Headless/README.md](Headless/README.md) for requests and observations.
+The first command builds the Debug host that the Python check uses. There are currently 95 shared suites. Unity builds invoke those same checks. See [Headless/README.md](Headless/README.md) for requests and observations.
 
 Player startup checks use `--smoke-test --map London -batchmode -nographics`; replace London with another supported enum name. A successful run logs `TRAFFIC_APP_SMOKE_PASSED=<version>/<map>/20` and exits. These checks run 20 simulated seconds with debug roads; they do not inspect rendered pixels or prove exact original behavior.
 

@@ -4,6 +4,22 @@ namespace MotorwaysSim
 {
     public static class ParkingFlowChecks
     {
+        // First pair of cars closer than 0.15 tiles that the original would keep apart, or null.
+        public static string Overlap(Vehicle[] cars)
+        {
+            for(int i=0;i<cars.Length;i++)for(int j=i+1;j<cars.Length;j++)
+                if(Point.Distance(cars[i].Position,cars[j].Position)<.15&&!Diverging(cars[i],cars[j]))return Describe(cars[i])+" | "+Describe(cars[j]);
+            return null;
+        }
+        public static string Describe(Vehicle c)=>c.Id+" "+c.Stage+" "+(c.CurrentLane?.Key??"-")+" d="+c.DistanceAlongLane.ToString("F3")+" v="+c.Speed.ToString("F3")+" "+c.Obstacle;
+        // Neither car is on the other's next lanes, so neither follows the other; in the original only junction
+        // arbitration separates such cars, and lanes leaving the same point (a bay turn and the aisle) never conflict.
+        static bool Diverging(Vehicle a,Vehicle b)=>a.Moving&&b.Moving&&a.CurrentLane.IsParking&&b.CurrentLane.IsParking&&!Ahead(a,b)&&!Ahead(b,a);
+        static bool Ahead(Vehicle a,Vehicle b)
+        {
+            for(int i=a.RouteIndex;i<Math.Min(a.Lanes.Count,a.RouteIndex+3);i++)if(a.Lanes[i].Key==b.CurrentLane.Key)return true;
+            return false;
+        }
         public static int Run()
         {
             int checks=0;
@@ -26,8 +42,10 @@ namespace MotorwaysSim
                     w.Step();var cars=w.Cars.Where(c=>c.Stage!=TripStage.Home&&Point.Distance(c.Position,new Point(shop.Access))<4).ToArray();
                     concurrent=Math.Max(concurrent,cars.Count(c=>c.Moving&&c.CurrentLane.IsParking));
                     for(int i=0;i<cars.Length;i++)for(int j=i+1;j<cars.Length;j++)
-                        if(w.VehicleBodiesOverlap(cars[i].Position,cars[i].Heading,cars[j].Position,cars[j].Heading))
-                            throw new InvalidOperationException("PARKING FLOW: body overlap seed="+seed+" layout="+layout+" time="+w.Time+" cars="+cars[i].Id+","+cars[j].Id);
+                        // The original has no body-clearance check; arbitration and following must still keep cars apart.
+                        // A car turning slowly into its bay may be passed by a car continuing along the aisle.
+                        if(Point.Distance(cars[i].Position,cars[j].Position)<.15&&!Diverging(cars[i],cars[j]))
+                            throw new InvalidOperationException("PARKING FLOW: cars share a position seed="+seed+" layout="+layout+" time="+w.Time+" cars="+Describe(cars[i])+" | "+Describe(cars[j]));
                     if(w.TripsCompleted==8&&w.ActiveCars==0)break;
                 }
                 if(w.TripsCompleted!=8||w.ActiveCars!=0||concurrent<2)

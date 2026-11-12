@@ -9,7 +9,7 @@ namespace MotorwaysSim
         static void Check(bool value,string message){if(!value)throw new InvalidOperationException("CHECK FAILED: "+message);}
         public static string Run()
         {
-            int count=GameplayFidelityChecks.Run()+CustomScenarioChecks.Run()+ParkingFlowChecks.Run()+RecordedCarparkChecks.Run()+SharedTransitChecks.Run();
+            int count=GameplayFidelityChecks.Run()+CustomScenarioChecks.Run()+ParkingFlowChecks.Run()+RecordedCarparkChecks.Run()+SharedTransitChecks.Run()+OriginalPlacementChecks.Run();
             void Test(string name,Action body){body();count++;}
             Test("AI command replay reproduces normal-play transitions",()=>{
                 var world=new TrafficWorld(42,false,Rules.ForVersion(GameVersion.OriginalReference));
@@ -182,11 +182,12 @@ namespace MotorwaysSim
                 Check(w.Cars.Any(v=>v.Moving&&v.Lanes.Any(l=>l.Tile==center)),"old path crosses footprint");
                 Check(w.Build(BuildTool.Roundabout,center),"convert occupied road");
                 int replaced=w.Roundabouts[0].ReplacedRoadTiles;
-                Check(replaced==4&&w.Inventory[0]==before,"hold concrete for four replaced connections");
+                Check(replaced==2&&w.Inventory[0]==before,"hold concrete for the two links into the centre; valid exits stay paid (original AddRoundaboutEdit)");
+                Check(w.Degree(new Cell(9,10))>0&&w.Degree(new Cell(13,10))>0&&w.RoundaboutAt(new Cell(10,10))!=null,"existing exits stay connected to the ring");
                 Check(w.Build(BuildTool.Remove,center),"queue occupied circle removal");
                 w.Step(6000);
-                Check(w.Inventory[0]==before+replaced&&w.Inventory[4]==1&&w.Roundabouts.Count==0,
-                    "refund old concrete and circle exactly once after traffic clears");
+                Check(w.Inventory[0]==before+4&&w.Inventory[4]==1&&w.Roundabouts.Count==0, // the 2 replaced links plus the 2 exits released with the circle
+                    "refund each original connection and the circle exactly once after traffic clears");
             });
             Test("roundabout circulation is directed",()=>{
                 var w=Lab();w.Build(BuildTool.Roundabout,new Cell(15,15));
@@ -335,11 +336,23 @@ namespace MotorwaysSim
                 Check(original.ChooseUpgrade(0)&&original.Inventory[0]==roads+added,"original material package applied");
                 Check(custom.UpgradeChoices.Count==0,"weekly rewards do not leak to custom");
                 var bridge=new TrafficWorld(7,false,Rules.ForVersion(GameVersion.OriginalReference));bridge.Reset(7,ScenarioKind.EmptyLab);
-                for(int i=20;i<23;i++){bridge.Water[i,8]=true;Check(bridge.Build(BuildTool.Bridge,new Cell(i,8)),"one bridge supports a water span");}
-                Check(bridge.Connect(new Cell(20,8),new Cell(21,8))&&bridge.Connect(new Cell(21,8),new Cell(22,8)),"connect water span");
-                Check(bridge.Inventory[0]==23&&bridge.Inventory[1]==0,"span uses two connections and one bridge");
+                for(int i=20;i<23;i++)bridge.Water[i,8]=true;
+                Check(bridge.DrawRoad(new Cell(19,8),new Cell(22,8))&&Enumerable.Range(20,3).All(i=>bridge.Tile(new Cell(i,8))==Infrastructure.Bridge),"one bridge supports a water span");
+                Check(bridge.Inventory[0]==22&&bridge.Inventory[1]==0,"span uses three connections and one bridge");
                 bridge.Build(BuildTool.Remove,new Cell(21,8));bridge.Build(BuildTool.Remove,new Cell(20,8));
                 Check(bridge.Inventory[1]==0,"split/removal cannot duplicate bridge stock");
+                // Original Passage: a stroke from land onto fresh water starts a crossing; parallel strokes are separate
+                // crossings even when their bridge tiles touch, and linking two crossings returns one bridge.
+                var river=new TrafficWorld(7,false,Rules.ForVersion(GameVersion.OriginalReference));river.Reset(7,ScenarioKind.EmptyLab);
+                for(int y=8;y<10;y++)for(int x=20;x<23;x++)river.Water[x,y]=true;
+                river.Inventory[1]=2;river.Inventory[0]=100;
+                Check(river.DrawRoad(new Cell(19,8),new Cell(21,8))&&river.Inventory[1]==1,"first stroke onto the river uses one bridge");
+                Check(river.DrawRoad(new Cell(19,9),new Cell(21,9))&&river.Inventory[1]==0,"a parallel stroke is a second crossing");
+                Check(river.Connect(new Cell(21,8),new Cell(21,9))&&river.Inventory[1]==1,"linking two crossing ends returns a bridge");
+                // Original: a water tile holds at most two roads, and a link cannot start from bare water.
+                Check(!river.Connect(new Cell(20,8),new Cell(20,9))&&!river.Connect(new Cell(21,8),new Cell(22,8)),"no junction on a bridge tile");
+                river.DrawRoad(new Cell(22,9),new Cell(23,9));
+                Check(river.Tile(new Cell(22,9))==Infrastructure.None&&river.Degree(new Cell(23,9))==0&&river.Inventory[1]==1,"no stroke from bare water");
                 bridge.Build(BuildTool.Remove,new Cell(22,8));Check(bridge.Inventory[0]==25&&bridge.Inventory[1]==1,"bridge stock returned only after final tile clears");
             });
             Test("infeasible custom scenario rejected instead of demand reduced",()=>{
@@ -380,6 +393,16 @@ namespace MotorwaysSim
                 var tokyo=new TrafficWorld(5,false,Rules.ForVersion(GameVersion.Custom));tokyo.Reset(5,ScenarioKind.EmptyLab);
                 Check(tokyo.SpawnBuilding(new Cell(5,5),5,true)==null,"LA does not have an orange group");
                 tokyo.Reset(5,ScenarioKind.Tokyo);Check(tokyo.Map.HouseZones.Length==6&&tokyo.Map.ShopZones.Length==6,"all Tokyo zones exported");
+            });
+            Test("original motorway ramps take a free side and block it",()=>{
+                // Original AddMotorwayAction: ramps take free directions by the pair score; a ramp's side takes no road.
+                var w=new TrafficWorld(7,false,Rules.ForVersion(GameVersion.OriginalReference));w.Reset(7,ScenarioKind.EmptyLab);
+                w.Inventory[0]=100;w.Inventory[2]=1;Cell a=new Cell(10,10),b=new Cell(20,10);
+                Check(w.DrawRoad(a,new Cell(11,10)),"road on the east side of the start tile");
+                Check(w.AddMotorway(a,b),"motorway placed");var m=w.Motorways.Last();
+                Check(m.StartDirection==7&&m.EndDirection==4,"start ramp avoids the road (north-east), end ramp points back (west)");
+                Check(w.Build(BuildTool.Road,new Cell(19,10))&&!w.Connect(b,new Cell(19,10)),"no road on a ramp's side");
+                Check(w.Build(BuildTool.Road,new Cell(21,10))&&w.Connect(b,new Cell(21,10)),"the other sides stay open");
             });
             Test("original motorway routing, continuous lanes and safe removal",()=>{
                 var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.DemandCapacity=10000;
@@ -444,7 +467,7 @@ namespace MotorwaysSim
                 var a=w.SpawnBuilding(new Cell(10,5),0,false);var b=w.SpawnBuilding(new Cell(20,5),0,false);var c=w.SpawnBuilding(new Cell(30,5),1,false);
                 Check(w.OriginalDemandInterval(a)==w.OriginalDemandInterval(b),"same-color destinations share oscillation phase");
                 Check(w.OriginalDemandInterval(a)!=w.OriginalDemandInterval(c),"different color profiles retain their demand");
-                w.Step(59);Check(a.Demand==0&&b.Demand==0,"no demand before initial three-second delay");
+                w.Step(79);Check(a.Demand==0&&b.Demand==0,"no demand before the four-second first-pin delay");
                 w.Step(2);Check(a.Demand==1&&b.Demand==1,"first pins after countdown");
             });
             Test("reference random generator matches installed-assembly oracle vectors",()=>{
@@ -574,6 +597,27 @@ namespace MotorwaysSim
                 Check(w.TripsCompleted==0&&w.Cars.Any(c=>c.Obstacle=="Train crossing"),"cars wait before active train crossing: "+Summary(w));
                 w.Trains.Clear();w.Step(1600);Check(w.TripsCompleted>0&&!w.IsRailCrossingClosed(crossing),"cars resume after crossing releases: "+Summary(w));
             });
+            Test("Original cars slow towards an open train crossing and accelerate gently on it",()=>{
+                // VehicleMovementProcess: targetSpeedTowardsCrossings 0.5 from crossingSlowDistance (3) vehicle lengths, and
+                // maxAccelerationOnCrossings 0.2 world units/s^2 (0.1 tiles/s^2) on and just before a crossing chunk.
+                var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.DemandCapacity=10000;
+                var london=new TrafficWorld(42,false,rules);london.Reset(42,ScenarioKind.London);
+                var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);
+                var line=london.RailLines.Single();w.RailLines.Add(line);foreach(var c in line.Cells)w.Rails[c.X,c.Y]=true;
+                var crossing=new Cell(12,11);
+                var house=w.SpawnBuilding(new Cell(4,11),0,true);var shop=w.SpawnBuilding(new Cell(20,9),0,false);
+                Check(house!=null&&shop!=null&&w.DrawRoad(house.Access,shop.Access),"long road across the rail");
+                shop.Demand=1;double entrySpeed=-1,cruise=0,maxCrossingAcceleration=0;
+                for(int tick=0;tick<4000&&w.TripsCompleted==0;tick++)
+                {
+                    w.Step();var car=w.Cars.FirstOrDefault(v=>v.Moving&&v.Stage==TripStage.Outbound);if(car==null)continue;
+                    if(car.CurrentLane.Tile.X<10)cruise=Math.Max(cruise,car.Speed);
+                    if(car.CurrentLane.Tile==crossing){if(entrySpeed<0)entrySpeed=car.Speed;maxCrossingAcceleration=Math.Max(maxCrossingAcceleration,car.Acceleration);}
+                }
+                Check(w.TripsCompleted==1&&entrySpeed>0,"the car crosses: "+Summary(w));
+                Check(entrySpeed<.9*cruise,"slowed before the crossing: "+entrySpeed.ToString("F3")+" vs "+cruise.ToString("F3"));
+                Check(maxCrossingAcceleration<=.1+1e-9,"gentle acceleration on the crossing: "+maxCrossingAcceleration.ToString("F3"));
+            });
             Test("Original parking paths follow continuous circulation lanes and diagonal bays",()=>{
                 foreach(bool shared in new[]{false,true})for(int layout=0;layout<4;layout++)
                 {
@@ -607,6 +651,8 @@ namespace MotorwaysSim
                     var shop=world.SpawnBuilding(new Cell(15,4),0,false);shop.DemandCountdown=1e9;shop.Demand=1;world.BuildReferenceNetwork();return world;}
                 var w=fixture();var lot=w.Buildings[1];for(int i=0;i<lot.Parking.Length;i++)lot.Parking[i]=999;
                 Vehicle through=null;for(int i=0;i<4000&&through==null;i++){w.Step();through=w.Cars.FirstOrDefault(c=>c.DrivingThrough);}
+                // The original decides bay or drive-through on the lane before the entrance; wait until the car is in the lot.
+                for(int i=0;i<4000&&through!=null&&through.Stage!=TripStage.EnteringParking;i++)w.Step();
                 Check(through!=null&&through.Stage==TripStage.EnteringParking&&!through.HasDelivered&&w.TripsCompleted==0,"full-lot arrival does not deliver instantly at the entrance");
                 Check(through.Lanes.Count>5&&through.ParkingSlot==-1,"drive-through uses internal circuit without reserving a bay");
                 for(int i=0;i<4000&&!through.HasDelivered;i++)w.Step();
@@ -647,7 +693,8 @@ namespace MotorwaysSim
             });
             Test("Original junction entry registers inbound lanes and keeps a shared exit clear",()=>{
                 var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.OvercrowdingSeconds=100000;
-                // Registration happens at route assignment (game time plus path lane count), not on entering lookahead.
+                // Registration happens at route assignment (game time plus the lane's position in the path), not on
+                // entering lookahead (AddInboundVehicle offset = path.Count when the lane is added).
                 var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);w.Inventory[0]=1000;
                 var home=w.SpawnBuilding(new Cell(5,12),0,true,0);var shop=w.SpawnBuilding(new Cell(20,11),0,false,0,0);
                 Check(w.DrawRoad(new Cell(6,12),new Cell(18,12))&&w.DrawRoad(new Cell(18,12),new Cell(18,13))&&w.DrawRoad(new Cell(18,13),new Cell(19,13))&&
@@ -657,7 +704,7 @@ namespace MotorwaysSim
                 Check(car!=null,"a car departs: "+Summary(w));
                 var junction=car.Lanes.First(l=>l.Tile==new Cell(12,12));
                 Check(car.ApproachRegistered.TryGetValue(junction.Key,out double registered),"distant junction registered at departure");
-                Check(Math.Abs(registered-(car.JourneyStarted+car.Lanes.Count))<1e-9,"registration = assignment time + path lane count: "+registered+" vs "+car.JourneyStarted+"+"+car.Lanes.Count);
+                Check(Math.Abs(registered-(car.JourneyStarted+car.Lanes.IndexOf(junction)))<1e-9,"registration = assignment time + path position: "+registered+" vs "+car.JourneyStarted+"+"+car.Lanes.IndexOf(junction));
                 // Same exit: a car may not drive into a junction while a same-exit car still traverses it,
                 // even when that car is within its last vehicle length (no near-exit release for a shared exit).
                 var x=new TrafficWorld(42,false,rules);x.Reset(42,ScenarioKind.EmptyLab);x.Inventory[0]=1000;x.Inventory[3]=1;
@@ -684,6 +731,8 @@ namespace MotorwaysSim
             Test("Original blocking-cycle shove clears an adjacent-junction gridlock",()=>{
                 // Replay v21 at t=1119 (junctions 20,11 and 20,12) with the measured lane offsets: 41 must turn east
                 // across 20,12 where 17 sits; 17 (behind 12) and 12 must enter 20,11 where 22 sits; 22 queues behind 41.
+                // 41 and 12 are refused at their immediate next chunk, so they are stuck vehicles; the chain
+                // 41 -> 17 -> 12 -> 22 -> 41 closes and the refused members shove.
                 var rules=Rules.ForVersion(GameVersion.OriginalReference);rules.EnableCityGrowth=false;rules.OvercrowdingSeconds=100000;
                 var w=new TrafficWorld(42,false,rules);w.Reset(42,ScenarioKind.EmptyLab);w.Inventory[0]=1000;
                 var home=w.SpawnBuilding(new Cell(5,5),0,true);
@@ -695,7 +744,7 @@ namespace MotorwaysSim
                     Check(index>=0,"fixture lane "+key+" on route "+string.Join(",",route));
                     var car=new Vehicle{Id=w.Cars.Count,HomeId=home.Id,Color=0,Stage=TripStage.Returning,At=route[0],Next=route[1],
                         Route=route,ReturnRoute=new List<Cell>(route),Lanes=lanes,RouteIndex=index,DistanceAlongLane=distance,RouteVersion=w.NetworkVersion};
-                    w.Cars.Add(car);return car;
+                    w.Cars.Add(car);w.RegisterRouteForChecks(car);return car;
                 }
                 var fixture=new[]{
                     Place(new Cell(20,9),new Cell(22,12),"20:11:2:2",.8362),   // car 41
@@ -703,7 +752,7 @@ namespace MotorwaysSim
                     Place(new Cell(20,15),new Cell(17,10),"20:12:6:6",.8358),  // car 12
                     Place(new Cell(20,15),new Cell(17,10),"20:12:6:6",.4578)}; // car 17
                 for(int tick=0;tick<1200&&fixture.Any(v=>v.Stage!=TripStage.Home);tick++)w.Step();
-                Check(fixture.All(v=>v.Stage==TripStage.Home),"adjacent junctions clear: "+Summary(w));
+                Check(fixture.All(v=>v.Stage==TripStage.Home)&&w.Time<40,"adjacent junctions clear by shoving, before the 45 s escape: "+Summary(w));
             });
             Test("Original carpark gate goes to the car nearest the entrance, not the car queued behind",()=>{
                 // Replay v20 at t=972 (shared lot 20, gate 19,18): T passes through the lot and is first on the outside

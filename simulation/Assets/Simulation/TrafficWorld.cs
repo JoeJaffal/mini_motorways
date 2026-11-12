@@ -75,13 +75,13 @@ namespace MotorwaysSim
             if(!Rules.UseOriginalIntersectionRules)throw new NotSupportedException("The Lebanese legal alternative remains undecided and is not implemented");
             Seed=seed;Scenario=scenario;random=new SimulationRandom(seed,Rules.Version);Time=0;TickCount=0;ConstructionSpent=0;TripsCompleted=0;Failed=false;
             CustomScenarioId=null;customScenarioBounds=null;
-            Buildings.Clear();Cars.Clear();Events.Clear();Roundabouts.Clear();Signals.Clear();Motorways.Clear();carparkThroats.Clear();nextMotorwayId=0;demandGroupPhases.Clear();spawnSchedule.Clear();nextScheduledShop=0;
+            Buildings.Clear();Cars.Clear();Events.Clear();Roundabouts.Clear();plannedRoundaboutCells.Clear();Signals.Clear();Motorways.Clear();carparkThroats.Clear();nextMotorwayId=0;demandGroupPhases.Clear();spawnSchedule.Clear();nextScheduledShop=0;
             retiredConnectionConcrete.Clear();
             erasedEndpointCleanup.Clear();
             nativeJoinVersion=-1;
             Array.Clear(Tiles,0,Tiles.Length);Array.Clear(Water,0,Water.Length);Array.Clear(Blocked,0,Blocked.Length);
             Array.Clear(Rails,0,Rails.Length);Array.Clear(Unzoneable,0,Unzoneable.Length);Array.Clear(PendingRemoval,0,PendingRemoval.Length);Array.Clear(Connections,0,Connections.Length);
-            RailLines.Clear();Trains.Clear();railClosedUntil.Clear();originalPlan.Clear();lastHouseSpawn.Clear();houseRetryAt.Clear();delayedSpawnDemand.Clear();doubleLotProbability=.3;InitializePlayableArea();
+            RailLines.Clear();Trains.Clear();railClosedUntil.Clear();originalPlan.Clear();lastHouseSpawn.Clear();suburbCount.Clear();planOrder=0;delayedSpawnDemand.Clear();doubleLotProbability=.3;InitializePlayableArea();
             NetworkVersion++;routeCache.Clear();conflictCache.Clear();
             autoConnectReference=scenario==ScenarioKind.ReferenceLab;
             if(CityCatalog.Maps.Contains(scenario))
@@ -92,7 +92,7 @@ namespace MotorwaysSim
                     Water[x,y]=t=='~';Rails[x,y]=Map.RailLines.Any(line=>line.Cells.Contains(new Cell(x,y)));Blocked[x,y]=t=='#'||t=='^';Unzoneable[x,y]=t==':'||t=='#'||t=='~'||t=='^'||t=='=';
                 }
                 InitializeRailways();
-                if(Rules.Version==GameVersion.OriginalReference){InitializeOriginalPlan();ProcessOriginalPlan();}
+                if(Rules.Version==GameVersion.OriginalReference){InitializeOriginalPlan();ProcessOriginalPlan();ScheduleOriginalHouses();ProcessOriginalPlan();}
                 else
                 {
                     foreach(var item in Map.ShopSchedule)spawnSchedule.Add((item[0]*20+random.NextDouble()*item[1]*20,(int)item[2]));
@@ -156,6 +156,8 @@ namespace MotorwaysSim
             if(tool==BuildTool.TrafficLight)
             {
                 if(old!=Infrastructure.Road)return Reject("Lights require an existing ordinary road");
+                // Original TileEditor: a light needs at least three roads on the tile and no rail.
+                if(Rules.Version==GameVersion.OriginalReference&&(Degree(cell)<3||Rails[cell.X,cell.Y]))return Reject("Traffic lights need a junction of three or more roads");
                 target=Infrastructure.TrafficLight;cost=Rules.LightCost;
                 Signals[cell]=new SignalState{Cell=cell};
             }
@@ -195,22 +197,29 @@ namespace MotorwaysSim
             // Updated graph links route subsequent journeys around the new circle.
             var footprint=new HashSet<Cell>(ring.Concat(new[]{center}));
             int replacedRoadTiles=0;
+            var degrees=footprint.ToDictionary(c=>c,c=>Degree(c)+Motorways.Count(m=>!m.PendingRemoval&&(m.Start==c||m.End==c)));
+            // Original AddRoundaboutEdit: valid exits from the ring stay connected and stay paid; every other link of the
+            // footprint is mothballed and its concrete returns when traffic clears; no new links are made.
+            bool original=Rules.Version==GameVersion.OriginalReference;
             foreach(var c in footprint)for(int d=0;d<8;d++)
             {
                 var n=c+Directions[d];if(!InBounds(n))continue;
+                if(original&&ring.Contains(c)&&!footprint.Contains(n)&&(Connections[c.X,c.Y]&(1<<d))!=0&&RoundaboutAllowsConnection(c,n))continue;
                 if(paidRoadConnections.Remove(RoadEdge(c,n)))replacedRoadTiles++;
                 Unlink(c,n);
             }
             foreach(var c in ring){Tiles[c.X,c.Y]=Infrastructure.Roundabout;}
             Tiles[center.X,center.Y]=Infrastructure.Roundabout;
-            var state=new RoundaboutState{Center=center,Ring=ring,ReplacedRoadTiles=replacedRoadTiles};Roundabouts.Add(state);
+            var state=new RoundaboutState{Center=center,Ring=ring,ReplacedRoadTiles=replacedRoadTiles,Planned=original,PlannedDegrees=original?degrees:null};Roundabouts.Add(state);
             for(int i=0;i<4;i++)Link(ring[i],ring[(i+1)%4]);
-            foreach(var c in ring)for(int d=0;d<8;d++)
+            if(!original)foreach(var c in ring)for(int d=0;d<8;d++)
             {
                 var n=c+Directions[d];
                 if(InBounds(n)&&!ring.Contains(n)&&n!=center&&Tile(n)!=Infrastructure.None&&!PendingRemoval[n.X,n.Y]&&RoundaboutAt(n)==null&&RoundaboutAllowsConnection(c,n))
                     Link(c,n);
             }
+            // With no car on or committed to a replaced lane the original hot-swaps in the next step; do it now.
+            RebuildPlannedRoundaboutCells();ActivatePlannedRoundabouts();
             RefundReplacedRoundaboutRoads();
             Changed();Record(BuildTool.Roundabout,center,Rules.RoundaboutCost,"Built roundabout / circulating lanes enabled");return true;
         }
@@ -236,10 +245,15 @@ namespace MotorwaysSim
             if(!RoundaboutAllowsConnection(from,to)||!RoundaboutAllowsConnection(to,from))return Reject("Invalid roundabout entrance direction");
             int d=Direction(from,to);
             if((Connections[from.X,from.Y]&(1<<d))!=0)return true;
+            var overWater=WaterLinkViolation(from,to);if(overWater!=null)return Reject(overWater);
+            if(RampBlocks(from,d)||RampBlocks(to,(d+4)%8))return Reject("A motorway ramp uses that side of the tile");
             if(d%2==1)
             {
                 var crossA=new Cell(from.X,to.Y);var crossB=new Cell(to.X,from.Y);
-                if(InBounds(crossA)&&(Connections[crossA.X,crossA.Y]&(1<<Direction(crossA,crossB)))!=0)
+                // Original TileEditor.WouldConnectionPassPassageConstraints: crossing diagonals make a corner junction,
+                // refused only when the new link starts or ends on water. A roundabout end is not modelled at a corner.
+                if(InBounds(crossA)&&(Connections[crossA.X,crossA.Y]&(1<<Direction(crossA,crossB)))!=0&&
+                    !(Rules.Version==GameVersion.OriginalReference&&!Water[from.X,from.Y]&&!Water[to.X,to.Y]&&SplitsCorner(from,to)&&SplitsCorner(crossA,crossB)))
                     return Reject("Crossing diagonal roads require a junction tile");
             }
             int cost=RoadConnectionCost(from,to);
@@ -248,7 +262,7 @@ namespace MotorwaysSim
             if(!Rules.UnlimitedConstruction&&cost>0){if(!reclaim)Inventory[0]-=cost;paidRoadConnections.Add(edge);}
             if(reclaim){if(held==1)retiredConnectionConcrete.Remove(edge);else retiredConnectionConcrete[edge]=held-1;}
             else if(cost==0)retiredConnectionConcrete.Remove(edge);
-            Link(from,to);Changed();return true;
+            Link(from,to);MergeBridgeSpans(from,to);Changed();return true;
         }
         public bool RoundaboutAllowsConnection(Cell from,Cell to)
         {
@@ -284,10 +298,21 @@ namespace MotorwaysSim
                 if(Rules.Version==GameVersion.OriginalReference&&previous.HasValue&&
                     (Connections[previous.Value.X,previous.Value.Y]&(1<<Direction(previous.Value,c)))==0&&
                     RoadConnectionCost(previous.Value,c)>Inventory[0]&&!retiredConnectionConcrete.ContainsKey(RoadEdge(previous.Value,c)))
-                {Reject("No road tiles remaining for this connection");break;}
+                {
+                    // Original DrawRoadAction keeps stepping when a link cannot be paid, so later free links still form.
+                    Reject("No road tiles remaining for this connection");previous=CanTraverse(c)?c:(Cell?)null;continue;
+                }
+                // Original TileEditor: a stroke into a house turns its driveway toward the road it arrives from.
+                if(Rules.Version==GameVersion.OriginalReference&&previous.HasValue&&BuildingAt(c) is Building home&&home.IsHouse&&home.Cell==c&&
+                    !ValidParcelLink(previous.Value,c))SetHouseDriveway(home.Id,Direction(c,previous.Value));
+                // Original TileEditor: a link that breaks the water rules forms no road, so its bridge tile is not built.
+                if(!CanTraverse(c)&&Water[c.X,c.Y]&&Rules.Version==GameVersion.OriginalReference&&
+                    (!previous.HasValue||WaterLinkViolation(previous.Value,c)!=null))
+                {Reject(previous.HasValue?WaterLinkViolation(previous.Value,c):"Cannot build a new bridge from an empty water tile");previous=null;continue;}
                 if(!CanTraverse(c))
                 {
-                    if(!Build(Water[c.X,c.Y]?BuildTool.Bridge:BuildTool.Road,c)){previous=null;continue;}
+                    bridgeFrom=previous;bool built=Build(Water[c.X,c.Y]?BuildTool.Bridge:BuildTool.Road,c);bridgeFrom=null;
+                    if(!built){previous=null;continue;}
                     any=true;
                 }
                 if(previous.HasValue&&Connect(previous.Value,c))any=true;
@@ -323,12 +348,13 @@ namespace MotorwaysSim
             for(int i=0;i<ticks&&!Failed&&!ScenarioRejected;i++)
             {
                 TickCount++;Time=TickCount*Rules.TickSeconds;
-                UpdateOriginalInventory();UpdateCity();UpdateDestinationUpgrades();UpdateTrains();UpdateDemand();DispatchDemand();UpdateSignals();UpdateVehicles();FinishRemovals();
+                UpdateOriginalInventory();UpdateCity();UpdateDestinationUpgrades();UpdateTrains();UpdateDemand();DispatchDemand();UpdateSignals();UpdateVehicles();UpdateOriginalOvercrowding();FinishRemovals();
             }
         }
 
         void FinishRemovals()
         {
+            ActivatePlannedRoundabouts();
             FinishConnectionRetirements();
             RefundReplacedRoundaboutRoads();
             if(Rules.Version==GameVersion.OriginalReference&&PendingRemoval.Cast<bool>().Any(v=>v))
@@ -347,7 +373,7 @@ namespace MotorwaysSim
             foreach(var r in Roundabouts.ToArray())
             {
                 if(!r.PendingRemoval||r.Ring.Any(committed.Contains))continue;
-                foreach(var c in r.Ring.Concat(new[]{r.Center}))ReleaseTile(c);Roundabouts.Remove(r);
+                foreach(var c in r.Ring.Concat(new[]{r.Center}))ReleaseTile(c);Roundabouts.Remove(r);RebuildPlannedRoundaboutCells();
             }
             for(int y=0;y<Height;y++)for(int x=0;x<Width;x++)
             {var c=new Cell(x,y);if(PendingRemoval[x,y]&&!committed.Contains(c)&&RoundaboutAt(c)==null)ReleaseTile(c);}
@@ -376,7 +402,7 @@ namespace MotorwaysSim
                     At=v.At,Next=v.Next,X=v.Position.X,Y=v.Position.Y,HeadingX=v.Heading.X,HeadingY=v.Heading.Y,Speed=v.Speed,Acceleration=v.Acceleration,
                     Waiting=v.Waiting,Progress=v.Progress,Obstacle=v.Obstacle,Route=v.Route.ToArray(),ReturnRoute=v.ReturnRoute.ToArray()}).ToArray(),
                 RandomAlgorithm=random.Algorithm,RandomDraws=random.Draws,
-                ScheduledSpawns=originalPlan.Select(p=>new ScheduledSpawnSnapshot{Time=p.Time,Color=p.Color,Grouping=p.Grouping,Preference=p.Preference,DemandMultiplier=p.DemandMultiplier,Attempts=p.Attempts}).ToArray(),
+                ScheduledSpawns=originalPlan.Where(p=>p.Type==0).Select(p=>new ScheduledSpawnSnapshot{Time=p.Time,Color=p.Color,Grouping=p.Grouping,Preference=p.Preference,DemandMultiplier=p.DemandMultiplier,Attempts=p.Attempts}).ToArray(),
                 Buildings=Buildings.Select(b=>new BuildingState{CarparkId=b.CarparkId,DestinationSlot=b.DestinationSlot,SharedLot=b.SharedLot,IsStation=b.IsStation,Entrances=(Cell[])b.Entrances.Clone(),Platform=(Cell[])b.Platform.Clone(),EntranceDirections=(int[])b.EntranceDirections.Clone(),Layout=b.Layout,Upgraded=b.Upgraded,DemandCapacity=DestinationCapacity(b),UpgradeAt=double.IsPositiveInfinity(b.UpgradeAt)?(double?)null:b.UpgradeAt,PlannedDemandMultiplier=b.PlannedDemandMultiplier,Id=b.Id,Color=b.Color,Cell=b.Cell,Entrance=b.Entrance,Width=b.Width,Height=b.Height,
                     IsHouse=b.IsHouse,Demand=b.Demand,Reserved=b.Reserved,DrivewayDirection=b.DrivewayDirection,OvercrowdedFor=b.OvercrowdedFor,FeasibilityVerified=b.FeasibilityVerified,
                     FeasibleDemandInterval=double.IsInfinity(b.FeasibleDemandInterval)?(double?)null:b.FeasibleDemandInterval,OriginalDemandInterval=b.OriginalDemandInterval,Parking=b.Parking==null?new int[0]:(int[])b.Parking.Clone()}).ToArray(),
@@ -385,7 +411,7 @@ namespace MotorwaysSim
                 Trains=Trains.Select(t=>{var p=TrainPoint(t);return new TrainSnapshot{Id=t.Id,LineId=t.LineId,Direction=t.Direction,Stops=t.Stops,X=p.X,Y=p.Y,Speed=t.Speed,Wait=t.Wait,Distance=t.Distance};}).ToArray(),
                 RailLines=RailLines.Select(l=>new RailSnapshot{Id=l.Id,Loop=l.Loop,Cells=(Cell[])l.Cells.Clone()}).ToArray(),ClosedRailCrossings=railClosedUntil.Where(p=>p.Value>=Time).Select(p=>p.Key).ToArray(),
                 Motorways=Motorways.Select(m=>new MotorwaySnapshot{Id=m.Id,Number=m.Number,Start=m.Start,End=m.End,PendingRemoval=m.PendingRemoval}).ToArray(),
-                Roundabouts=Roundabouts.Select(r=>new RoundaboutSnapshot{Center=r.Center,Ring=(Cell[])r.Ring.Clone(),PendingRemoval=r.PendingRemoval}).ToArray(),
+                Roundabouts=Roundabouts.Select(r=>new RoundaboutSnapshot{Center=r.Center,Ring=(Cell[])r.Ring.Clone(),PendingRemoval=r.PendingRemoval,Planned=r.Planned}).ToArray(),
                 DisconnectedColorComponents=DisconnectedColorComponents(),MeanWaiting=Cars.Count==0?0:Cars.Average(c=>c.TotalWaiting)};
             for(int y=0;y<Height;y++)for(int x=0;x<Width;x++)
             {int k=y*Width+x;o.Infrastructure[k]=(int)Tiles[x,y];o.Terrain[k]=Blocked[x,y]?2:Water[x,y]?1:0;o.Connections[k]=Connections[x,y];o.PendingRemovals[k]=PendingRemoval[x,y]?1:0;}

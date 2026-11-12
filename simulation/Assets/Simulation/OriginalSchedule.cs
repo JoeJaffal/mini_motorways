@@ -31,10 +31,10 @@ namespace MotorwaysSim
                         Type=(int)item[0],Color=(int)item[1],Grouping=(int)item[2],DemandMultiplier=item[3],Preference=(int)item[4],Order=order++});
                 }
             }
-            SortOriginalPlan();
+            SortOriginalPlan();planOrder=order;
         }
         void SortOriginalPlan()=>originalPlan.Sort((a,b)=>{int time=a.Time.CompareTo(b.Time);return time!=0?time:a.Order.CompareTo(b.Order);});
-        void ProcessOriginalPlan()
+        internal void ProcessOriginalPlan()
         {
             // Retry failed events at their new scheduled time; they must not block unrelated due events.
             int due=originalPlan.Count(p=>p.Time<=Time);
@@ -44,10 +44,17 @@ namespace MotorwaysSim
                 bool success;
                 if(planned.Type==1)
                 {
-                    var shop=Buildings.FirstOrDefault(b=>!b.IsHouse&&b.Color==planned.Color);
-                    success=shop!=null&&TrySpawnHouse(shop);
+                    // Houses come only from the supply test (ScheduleOriginalHouses) and carry their grouping.
+                    success=TrySpawnOriginalHouse(planned.Color,planned.Grouping,planned.Attempts>MaxFailedSpawnsBeforeIgnoringWeights)!=null;
                 }
-                else if(planned.Grouping==3)success=ScheduleDestinationUpgrade(planned.Color,planned.DemandMultiplier);
+                else if(planned.Grouping==3)
+                {
+                    success=ScheduleDestinationUpgrade(planned.Color,planned.DemandMultiplier);
+                    // A circle entry that keeps failing becomes an ordinary destination of its colour (a random active
+                    // colour for "any"); its attempts restart.
+                    if(!success&&planned.Attempts>MaxFailedSpawnsBeforeIgnoringWeights)
+                    {if(planned.Color<0)planned.Color=RandomActiveColor();planned.Grouping=0;planned.Attempts=0;}
+                }
                 else
                 {
                     success=Buildings.Count(b=>!b.IsHouse)<Rules.MaxShops&&TrySpawnPlannedDestination(planned);
@@ -56,8 +63,26 @@ namespace MotorwaysSim
                         var destination=Buildings.Last(b=>!b.IsHouse);destination.PlannedDemandMultiplier=planned.DemandMultiplier;
                         if(destination.SpawnTime==Time)InitializeDestinationDemand(destination);
                     }
+                    else if(PrefersDoubleLot(planned.Preference)&&planned.Attempts>MaxFailedDoubleSpawnsBeforeSolo)
+                    {
+                        // A double entry that keeps failing becomes a solo destination for good. A forced double hands
+                        // its preference to the next pending entry of its colour instead of raising the double chance.
+                        bool raise=true;
+                        if(planned.Preference==2)
+                        {
+                            var next=originalPlan.FirstOrDefault(p=>p.Type==0&&p.Color==planned.Color);
+                            if(next!=null){next.Preference=2;raise=false;}
+                        }
+                        if(raise)doubleLotProbability+=.05;
+                        planned.Preference=1;planned.Attempts=1;
+                    }
                 }
-                if(!success){planned.Attempts++;planned.Time=Time+(planned.Type==1?OriginalGameplayTuning.HouseRetryDelay:20);originalPlan.Add(planned);}
+                if(!success)
+                {
+                    planned.Attempts++;
+                    planned.Time=Time+(planned.Type==1?OriginalGameplayTuning.HouseRetryDelay:FailedDestinationRetryDelay);
+                    AddPlanned(planned);
+                }
                 SortOriginalPlan();
             }
         }
