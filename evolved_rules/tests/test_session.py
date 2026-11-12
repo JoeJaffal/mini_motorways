@@ -326,7 +326,8 @@ def test_link_check_covers_every_pair_of_the_stroke():
     (1, [(2, 5), (5, 5)], {}, 0),                    # two separate runs need two items
     (2, [(2, 5), (5, 5)], {}, 2),
     (0, [(3, 5)], {(3, 5): 2}, 2),                   # the water cell is already a bridge
-    (0, [(3, 5)], {(3, 4): 2}, 2),                   # an orthogonal neighbour is an existing bridge
+    (0, [(3, 5)], {(3, 4): 2}, 0),                   # gp-6, f34: an orthogonal bridge no longer makes it free
+    (1, [(3, 5)], {(3, 4): 2}, 2),
     (0, [(3, 5)], {(2, 4): 2}, 0),                   # a diagonal neighbour does not count
     (0, [(3, 5)], {(3, 4): 1}, 0),                   # a plain road next to the water is not a bridge
     (0, [(1, 5)], {}, 0),                            # the stroke's very first step goes into the water
@@ -340,13 +341,13 @@ def test_execute_route_checks_bridge_stock_before_a_stroke(bridges, water, infra
     assert len(s.sent) == expected_sent  # how many strokes went out before the bridge stock stopped the route
 
 
-def test_pending_bridge_still_counts_as_an_orthogonal_bridge_neighbour():
-    # Same rule as candidates' bridge_at: infra == 2 counts, whether or not the bridge is pending removal.
+def test_neighbouring_bridge_pending_or_not_pays_for_no_crossing():
+    # gp-6, f34 (bridgeFrom): stepping from land onto unbuilt water needs a bridge whatever its neighbours are.
     links = _row_links(0, 6, 5) + [((6, y), (6, y + 1)) for y in range(5, 8)]
     s = _FakeSession(_city(inventory=(25, 0, 0, 0, 0, 0), links=links, water=[(3, 5)],
                            infra={(3, 4): 2}, pending=[(3, 4)]))
     execute_route(s, _route(Stroke(0, 5, 6, 5), Stroke(6, 5, 6, 8)))
-    assert len(s.sent) == 2
+    assert len(s.sent) == 0
 
 
 def test_road_tile_count_matches_candidates_for_traffic_lights_and_pending_cells():
@@ -355,7 +356,7 @@ def test_road_tile_count_matches_candidates_for_traffic_lights_and_pending_cells
     s = _FakeSession(_city(inventory=(0, 1, 0, 0, 0, 0), links=links, infra={(1, 5): 4, (2, 5): 4, (3, 5): 1}))
     execute_route(s, _route(Stroke(0, 5, 3, 5)))
     assert len(s.sent) == 1
-    # A road cell pending removal is not road: it needs a new tile.
+    # A road cell pending removal is not road: its links are going away, so linking through it is paid (gp-6, f34).
     s = _FakeSession(_city(inventory=(0, 1, 0, 0, 0, 0), links=links, infra={(1, 5): 1, (2, 5): 1, (3, 5): 1},
                            pending=[(2, 5)]))
     execute_route(s, _route(Stroke(0, 5, 3, 5)))
@@ -364,12 +365,12 @@ def test_road_tile_count_matches_candidates_for_traffic_lights_and_pending_cells
 
 @pytest.mark.host
 def test_execute_route_stops_when_the_session_reaches_its_cap_mid_route(host):
-    g = GameSession(host, 1000, cap_s=3.0); s = g.reset()
+    g = GameSession(host, 1000, cap_s=2.0); s = g.reset()  # gp-6, f34: seed 1000's first route has 3 strokes
     h, shops = unserved_targets(s)[0]
     cand = route_candidates(s, h, shops)[0]
-    assert len(cand.strokes) > 3
+    assert len(cand.strokes) > 2
     execute_route(g, cand)  # must stop quietly, not raise RuntimeError on the next stroke
-    assert g.commands == 3 and g.done
+    assert g.commands == 2 and g.done
 
 
 # ---------------------------------------------------------------------------------------------------------

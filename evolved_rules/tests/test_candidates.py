@@ -14,7 +14,8 @@ def test_direct_route_ends_on_entrance_outside_cell():
     s = parse_observation(_layout())
     # Ruling T3: with no roads, attach and direct find the same path and dedup keeps "attach".
     c = route_candidates(s, s.houses()[0], s.shops())[0]
-    assert c.path == ((20, 13), (19, 13), (18, 13), (17, 13), (16, 13)) and c.tiles_needed == 4
+    # gp-6, f34: road stock is spent per paid link; the driveway link out of the house is free (4 tiles, 3 roads)
+    assert c.path == ((20, 13), (19, 13), (18, 13), (17, 13), (16, 13)) and c.tiles_needed == 3
 
 def test_blocked_terrain_and_buildings_avoided():
     s = parse_observation(_layout(terrain={(18, y): 2 for y in range(30) if y != 20}))
@@ -238,12 +239,16 @@ def test_two_wide_river_is_one_span():
     assert c.bridges_needed == 1 and (17, 13) in c.path and (18, 13) in c.path
 
 
-def test_orthogonal_existing_bridge_means_no_new_span():
+def test_orthogonal_existing_bridge_does_not_make_a_crossing_free():
+    # gp-6, f34 (bridgeFrom): a step from land onto unbuilt water starts a crossing even next to an existing bridge
     terrain = {**{(18, y): 1 for y in range(30)}, (19, 14): 2, (17, 14): 2}
     s = parse_observation(_layout(terrain=terrain, inventory=(25, 0, 0, 0, 0, 0),
                                   infra={(18, 14): 2}, roads={(18, 14): 0}))
-    cs = route_candidates(s, s.houses()[0], s.shops())
-    assert cs and cs[0].bridges_needed == 0 and (18, 13) in cs[0].path
+    assert route_candidates(s, s.houses()[0], s.shops()) == []
+    s1 = parse_observation(_layout(terrain=terrain, inventory=(25, 1, 0, 0, 0, 0),
+                                   infra={(18, 14): 2}, roads={(18, 14): 0}))
+    cs = route_candidates(s1, s1.houses()[0], s1.shops())
+    assert cs and cs[0].bridges_needed == 1
 
 
 def test_planned_water_cell_counts_as_bridge():
@@ -270,11 +275,12 @@ def test_riding_into_shop_network_is_no_junction():
     assert d.path[-2:] == ((17, 13), (16, 13)) and d.new_junctions == 0
 
 
-def test_passing_through_dead_end_stub_is_one_junction():
-    # demo1 case 1b: stub (18,13)-N-(18,12); the path adds links E and W at (18,13) -> degree 3
+def test_passing_through_dead_end_stub_costs_like_fresh_road():
+    # demo1 case 1b: stub (18,13)-N-(18,12). gp-6, f34: crossing it needs two new paid links, the same road stock as
+    # fresh tiles, so the junction penalty steers the route around it.
     s = parse_observation(_layout(roads={(18, 13): 1 << N, (18, 12): 1 << S}))
     c = route_candidates(s, s.houses()[0], s.shops())[0]
-    assert (18, 13) in c.path and c.new_junctions == 1
+    assert (18, 13) not in c.path and c.new_junctions == 0 and c.tiles_needed == 3
 
 
 def test_junction_penalty_picks_the_unlinked_road_tile():
@@ -329,9 +335,10 @@ def test_separated_avoids_other_colour_network():
     same = tuple(x for x in s.shops() if x.color == 0)
     cs = route_candidates(s, s.houses()[0], same)
     by = {c.kind: c for c in cs}
-    assert (18, 13) in by["attach"].path and by["attach"].shared_cells == 1 and by["attach"].tiles_needed == 3
-    assert (18, 13) not in by["separated"].path and by["separated"].shared_cells == 0
-    assert [c.kind for c in cs] == ["attach", "separated"]
+    # gp-6, f34: the foreign cell (18,13) offers no existing link along the route, so passing it costs as much as
+    # fresh road plus a junction: attach already avoids it and the separated route is the same path (deduplicated).
+    assert (18, 13) not in by["attach"].path and by["attach"].shared_cells == 0 and by["attach"].tiles_needed == 3
+    assert [c.kind for c in cs] == ["attach"]
 
 
 def test_separated_survives_merged_red_blue_network():
@@ -364,21 +371,24 @@ def test_metrics_turns_shop_ids_house_id():
 def test_planned_cells_are_cheap_and_free():
     planned = frozenset({(19, 14), (18, 14), (17, 14)})
     s = parse_observation(_layout())
-    c = route_candidates(s, s.houses()[0], s.shops(), planned=planned)[0]
+    links = path_links(((19, 14), (18, 14), (17, 14)))  # gp-6, f34: planned links are free, planned tiles alone not
+    c = route_candidates(s, s.houses()[0], s.shops(), planned=planned, planned_links=links)[0]
     assert c.path == ((20, 13), (19, 14), (18, 14), (17, 14), (16, 13)) and c.tiles_needed == 1
 
 
 def test_planned_on_straight_line_not_counted():
     s = parse_observation(_layout())
-    c = route_candidates(s, s.houses()[0], s.shops(), planned=frozenset({(19, 13), (18, 13)}))[0]
-    assert c.tiles_needed == 2
+    c = route_candidates(s, s.houses()[0], s.shops(), planned=frozenset({(19, 13), (18, 13)}),
+                         planned_links=path_links(((19, 13), (18, 13))))[0]
+    assert c.tiles_needed == 2  # gp-6, f34: house link free, (19,13)-(18,13) planned, two paid links
 
 
 def test_road_tile_stock_filter():
+    # gp-6, f34: the straight route spends 3 roads (paid links), not 4 (tiles)
+    s2 = parse_observation(_layout(inventory=(2, 1, 0, 0, 0, 0)))
+    assert route_candidates(s2, s2.houses()[0], s2.shops()) == []
     s3 = parse_observation(_layout(inventory=(3, 1, 0, 0, 0, 0)))
-    assert route_candidates(s3, s3.houses()[0], s3.shops()) == []
-    s4 = parse_observation(_layout(inventory=(4, 1, 0, 0, 0, 0)))
-    assert route_candidates(s4, s4.houses()[0], s4.shops())[0].tiles_needed == 4
+    assert route_candidates(s3, s3.houses()[0], s3.shops())[0].tiles_needed == 3
 
 
 def test_empty_inventory_gives_no_candidates():
@@ -420,11 +430,12 @@ def _patch(monkeypatch, results):
 def test_sort_dedup_and_cap(monkeypatch):
     s = parse_observation(_layout(roads={(19, 12): 0, (18, 12): 0, (18, 14): 0}))
     h, sh = s.houses()[0], s.shops()
-    A = ((20, 13), (19, 13), (18, 13), (17, 13), (16, 13))             # 4 tiles, len 5
-    D = ((20, 13), (19, 12), (18, 12), (17, 13), (16, 13))             # 2 tiles, len 5
-    Sp = ((20, 13), (19, 12), (18, 12), (17, 12), (16, 12), (16, 13))  # 3 tiles, len 6
+    # gp-6, f34 costs (paid links; the unlinked road tiles save nothing): A 3, D 3, Sp 4
+    A = ((20, 13), (19, 13), (18, 13), (17, 13), (16, 13))             # 3 roads, len 5
+    D = ((20, 13), (19, 12), (18, 12), (17, 13), (16, 13))             # 3 roads, len 5
+    Sp = ((20, 13), (19, 12), (18, 12), (17, 12), (16, 12), (16, 13))  # 4 roads, len 6
     _patch(monkeypatch, [(A, 0), (D, 0), (Sp, 0)])                     # generated attach, direct, separated
-    assert [c.kind for c in route_candidates(s, h, sh)] == ["direct", "separated", "attach"]
+    assert [c.kind for c in route_candidates(s, h, sh)] == ["attach", "direct", "separated"]
     T = ((20, 13), (19, 13), (18, 14), (17, 13), (16, 13))             # 3 tiles, len 5
     D2 = ((20, 13), (19, 12), (18, 13), (17, 13), (16, 13))            # 3 tiles, len 5
     _patch(monkeypatch, [(T, 0), (D2, 0), (T, 0)])                     # separated duplicates attach

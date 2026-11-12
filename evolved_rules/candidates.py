@@ -176,9 +176,11 @@ def _water(state: CityState, c: Cell) -> bool:
 
 
 def _linked(state: CityState, a: Cell, b: Cell) -> bool:
-    """The road graph already has the link a -> b (conn[a] has the bit of direction a -> b)."""
+    """The road graph already has the live link a -> b (conn[a] has the bit of direction a -> b and neither end is
+    pending removal: a pending tile keeps its bits until its cars clear, but no new route may use it)."""
     delta = (b[0] - a[0], b[1] - a[1])
     return (_in_grid(a) and _in_grid(b) and delta in DIRS
+            and int(state.pending[a[1], a[0]]) != 1 and int(state.pending[b[1], b[0]]) != 1
             and bool(int(state.conn[a[1], a[0]]) & (1 << DIRS.index(delta))))
 
 

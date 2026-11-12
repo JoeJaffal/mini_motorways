@@ -522,3 +522,95 @@ Every rule gains about 200–270 trips. The simple rules gain the most: separate
 2. Lights do not hurt on 3100–3199. **Passes:** lights now help, +20.6 with GP and +21.1 with the separated rule. Roundabouts still hurt (−42.5).
 
 **Reading:** the old simulator's evolved advantage over the simple separated rule mostly does not carry over. The GP final and CMA-ES final were evolved and chosen on the old simulator, so re-evolving on the new one is the remedy, and gp-5 is that re-evolution. Per the plan, the user decides before a run of a day or more.
+
+## 2026-11-09: gp-5 paused at generation 4 (simulator .7)
+
+gp-5 is gp-4's setup on simulator .7 (`gp5-v1`). It completed generations 0–3 and was paused by the user on 2026-11-09 at 15:30, during generation 4. It is not resumed: it is superseded by gp-6 on simulator f34 (below).
+
+| Gen | Best on validation (1500–1549) | Average, all 64 (8 round-1 maps) | Round-1 best |
+|---|---|---|---|
+| 0 | 510.2 (`gplight` seed `9c5940ad`) | 261.0 | 510.9 |
+| 1 | 510.2 | 341.4 | 561.1 |
+| 2 | 510.2 | 383.8 | 558.5 |
+| 3 | 510.2 | 400.2 | 548.0 |
+
+The incumbent never changed, so gp-5's best rule is gp-4's. The racing best of generation 3 (`01e8a18f`) was never validated.
+
+## 2026-11-12: every version on simulator f34 (upstream main 938b9f8)
+
+**Setup:** simulator `2026-11-10.f34`, a clean `git archive upstream/main simulation` build. The gp4 code (`gp5-v1` agent) was played through `EVOLVED_RULES_HOST_DLL`, on LA 7000–7099, with 100 games per rule.
+- 900/900 replays pass `--verify-replay` on the same f34 build. The pinned verifier was still .7, so `--verify` was off and the replays were verified afterwards.
+- Files: `output/evolved_rules/analysis/f34-eval/` (`run.py`, `compare.py`, `results.md`, `verify.txt`); runs in `runs/f34-*`.
+- These are fixed rules, not populations, so there is no average column.
+
+| Rule | Old sim, test | Sim .7, test | **f34, test** [95% CI] | f34 median | Rejected draws/game |
+|---|---|---|---|---|---|
+| gp-1 best `36fc30a3` | – | – | **710.6** [662.6, 759.8] | 705 | 3.8 |
+| gp-2 best `7dea530b` (= gp-3.1 best) | – | – | **811.3** [738.9, 881.6] | 860 | 6.4 |
+| gp-3.3 best `4f9e0cba` (identical games to gp-2) | – | – | **811.3** | 860 | 6.4 |
+| gp-3 final `209634e8` | 245.9 | 470.8 | **831.9** [760.4, 904.2] | 824 | 7.8 |
+| gp-4 best `9c5940ad` (= gp-5 best) | – | – | **840.6** [760.1, 920.1] | 878 | 8.7 |
+| gp-5 gen-3 racing best `01e8a18f` | – | – | **659.8** [604.3, 725.0] | 640 | 7.4 |
+| CMA-ES final `fa7648c7` | 250.6 | 477.7 | **981.3** [909.5, 1047.9] | 1016 | 5.1 |
+| Separated | 216.3 | 474.9 | **733.3** [669.9, 793.3] | 764 | 3.8 |
+| Hand | 170.8 | 364.8 | **524.0** [489.4, 560.5] | 498 | 3.7 |
+
+**Paired gaps on f34:**
+- gp-4 − separated +107.3 [+7.8, +206.0]
+- gp-3 final − separated +98.5 [−0.5, +196.7]
+- CMA-ES − separated +248.0 [+154.5, +339.0]
+- CMA-ES − gp-3 final +149.5 [+54.1, +235.9]
+- gp-4 − gp-3 final +8.7 [−95.4, +109.0]
+- separated − hand +209.3 [+134.9, +276.9]
+
+**Reading:**
+- Scores roughly double again (gp-3 final: 246 → 471 → 832).
+- The GP rules lead separated again, by about +80 to +107.
+- The old-simulator CMA-ES weights are the best rule on f34, by about 150 trips.
+
+**Rejected draws:** every rule loses 4–9 draws per game on f34 (0 on .7). The messages are "Bridge requires an available bridge" and "No road tiles remaining for this connection". The planner still used the old cost rules:
+- f34 charges road stock per new link between two non-building cells (`MaterialInventory.RoadConnectionCost`), not per new tile;
+- a step from land onto unbuilt water always starts a crossing (`bridgeFrom`), even next to an existing bridge;
+- a water tile holds at most two roads (`WaterLinkViolation`).
+
+## 2026-11-12: gp-6 and cma-6 on simulator f34
+
+**Planner fix** (`94c9f18`, branch `gp6` off `gp4`, simulator copied from upstream main in `b96d98d`; `CODE_VERSION` `gp6-v1`):
+- the A* and the executor count paid links, crossings and water degree as f34 does;
+- `tiles_needed` is now the road stock a route spends.
+
+On LA 7000–7011 the gp-4 rule goes from 811.6 to 965.2 trips with 0 rejected draws (before: up to 30 per game). Its two collapsed games, 119 and 212 trips, become 844 and 1048.
+
+`0d0cb20` fixes the host-version pattern, which rejected `2026-11-10.f34` and made the engine refuse every game.
+
+**Budget (user, 2026-11-12):**
+- Both runs go to at least 30 generations. If not converged, they continue under the stop rule (patience 20, gain ≥ max(3 trips, 2%), paired t at α 0.005), with a 72 h backstop.
+- The user chose moderate settings over gp-5's, because an f34 game takes about 3× longer (about 450 games per hour on 12 workers).
+
+| | gp-6 (GP) | cma-6 (CMA-ES) |
+|---|---|---|
+| Rule sets per generation | 32 | 16 |
+| Maps | 8 each; top 8 play 8 more | 8 each |
+| Validation | top 2 on 1500–1549 | best on 1500–1549 |
+| Trees | priority, hold, upgrade, remove, place | linear priority, hold, upgrade (81 weights) |
+| Start | hand, separated, clean + `seeds/gp6/`: gp-4 best, gp-3 final, CMA-ES final, gp-2; 4 immigrants; hall of fame 4 | `--x0 cma1` (cma-1's final weights) |
+| Reference (hall of fame) | CMA-ES final | – |
+| Workers | 8 | 4 |
+
+**Commands** (run by the watchdog):
+
+```
+python -m evolved_rules.evolve --run gp-6 --workers 8 --pop 32 --first-seeds 8 --more-seeds 8 --racing-top 8 \
+  --validate-top 2 --immigrants 4 --hof 4 --max-hours 72 --remove-tree --place-tree \
+  --reference evolved_rules/seeds/gp6/cma1_final.txt --seed-text evolved_rules/seeds/gp6/gp4_best.txt \
+  --seed-text evolved_rules/seeds/gp6/gp3_final.txt --seed-text evolved_rules/seeds/gp6/cma1_final.txt \
+  --seed-text evolved_rules/seeds/gp6/gp2.txt
+python -m evolved_rules.tune_cmaes --run cma-6 --workers 4 --x0 cma1 --max-hours 72
+```
+
+**Watchdog:** the scheduled task `gp6-watchdog` runs `output/evolved_rules/analysis/gp6/watchdog.ps1` every 10 minutes and at logon.
+- A run with no live process whose status is not `converged`, `budget` or `stopped` is restarted, with `--resume` once a checkpoint exists.
+- It stops restarting after 4 restarts in 2 hours.
+- Log: `analysis/gp6/watchdog.log`; run logs `analysis/gp-6.{log,err}` and `analysis/cma-6.{log,err}`.
+
+Launched 2026-11-12 at 23:06.
