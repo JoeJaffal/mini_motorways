@@ -154,6 +154,7 @@ namespace MotorwaysSim
         // Continuous journeys (OriginalReference, ContinuousJourneys.cs): index of the carpark entrance lane at the
         // end of an outbound path, whether the in-lot lanes are attached, and lane indices where the stage changes.
         public int ParkingLegAt=-1;public bool ParkingLegAttached;
+        public Dictionary<string,long> RegisteredOrder=new Dictionary<string,long>(); // OriginalReference: order of inbound registration per lane
         public readonly List<(int Index,TripStage Stage)> LegMarks=new List<(int Index,TripStage Stage)>();
         public bool Moving=>Lanes.Count>0&&RouteIndex<Lanes.Count;
         public Lane CurrentLane=>Moving?Lanes[RouteIndex]:null;

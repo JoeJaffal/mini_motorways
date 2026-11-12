@@ -1,0 +1,11 @@
+# Free-play soak, London and Tokyo, seeds 40-41 (tmp/harness Dbg3, 30000 ticks, reference network rebuilt every 200 ticks)
+# f31 as committed (decision 112 exit-space formula)
+London seed 40: [300s +35 trips, out 10] [600s +85 trips, out 14] [900s +144 trips, out 25] [1200s +208 trips, out 52] [1500s +314 trips, out 131] maxStuck>30s=2 maxWait=39s failed=False
+London seed 41: [300s +39 trips, out 10] [600s +67 trips, out 10] [900s +91 trips, out 20] [1200s +168 trips, out 38] [1500s +320 trips, out 74] maxStuck>30s=0 maxWait=15s failed=False
+Tokyo seed 40: [300s +46 trips, out 4] [600s +96 trips, out 11] [900s +164 trips, out 32] [1200s +309 trips, out 93] [1500s +404 trips, out 166] maxStuck>30s=4 maxWait=41s failed=False
+Tokyo seed 41: [300s +49 trips, out 6] [600s +85 trips, out 10] [900s +174 trips, out 30] [1200s +323 trips, out 72] [1500s +393 trips, out 140] maxStuck>30s=1 maxWait=39s failed=False
+# f31 with the earlier exit-space formula (distance-=max(0,leaderLaneLength-leaderDistance-carLength))
+London seed 40: [300s +36 trips, out 9] [600s +79 trips, out 18] [900s +146 trips, out 32] [1200s +210 trips, out 45] [1500s +312 trips, out 126] maxStuck>30s=0 maxWait=29s failed=False
+London seed 41: [300s +39 trips, out 10] [600s +70 trips, out 13] [900s +100 trips, out 22] [1200s +171 trips, out 45] [1500s +316 trips, out 76] maxStuck>30s=0 maxWait=14s failed=False
+Tokyo seed 40: [300s +46 trips, out 4] [600s +96 trips, out 11] [900s +162 trips, out 35] [1200s +329 trips, out 99] [1500s +505 trips, out 181] maxStuck>30s=3 maxWait=42s failed=False
+Tokyo seed 41: [300s +49 trips, out 6] [600s +85 trips, out 10] [900s +168 trips, out 32] [1200s +269 trips, out 61] [1500s +466 trips, out 163] maxStuck>30s=1 maxWait=39s failed=False

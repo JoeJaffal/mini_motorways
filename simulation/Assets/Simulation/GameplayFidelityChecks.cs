@@ -178,8 +178,10 @@ namespace MotorwaysSim
                 {
                     w.Step();var moving=w.Cars.Where(c=>c.Moving&&c.CurrentLane.IsParking).ToArray();
                     concurrent=Math.Max(concurrent,moving.Length);
-                    for(int i=0;i<moving.Length;i++)for(int j=i+1;j<moving.Length;j++)
-                        Require(Point.Distance(moving[i].Position,moving[j].Position)>=.15,"parking cars never share a position (the original has no body-clearance check; chunk arbitration and following keep cars apart)");
+                    // The original has no body-clearance check; chunk arbitration and following keep cars apart, except
+                    // that a car turning slowly into its bay may be passed by one continuing along the aisle.
+                    var overlap=ParkingFlowChecks.Overlap(moving);
+                    Require(overlap==null,"parking cars never share a position: t="+w.Time.ToString("F2")+" "+overlap);
                     if(w.TripsCompleted==8&&w.ActiveCars==0)break;
                 }
                 Require(w.TripsCompleted==8&&w.ActiveCars==0&&concurrent>=2,"eight-car parking queue clears with safe concurrency: shared="+shared);

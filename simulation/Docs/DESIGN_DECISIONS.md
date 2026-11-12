@@ -1612,3 +1612,83 @@ Arbitration in these chunks uses `IntersectsOtherConnection` (shared exits by ou
 
 **Measured.** Replay v21d, v21e sets: 795.4 (745 to 830, median 804), 18/60 reach the end, against f30's 792.3 (paired +3.1 +/- 3.0; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f31-replay-v21d-p21e.txt)). 99 suites, five-map checks and training readiness pass on `2026-11-10.f31`.
 
+
+
+## 122 - Exit space: the original's Target case measures from the vehicle's current lane (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `RoadChunkModel.DoesVehicleHaveSpace` adds `targetDistanceAlongLastLane - distanceAlongLane - VehicleLength` when a vehicle in the chain has its target as nearest obstacle. Both distances are along lanes, but `distanceAlongLane` is on the vehicle's current lane, also when the target lies on a later lane of its path; the value is not floored at zero. Ours added the full distance to the route end less a vehicle length.
+
+**Engineering choice** (OriginalReference). `HasExitSpace` uses the original expression with the target lane of the current leg (decision 123).
+
+**Measured.** Replay v21d, v21e sets: 789.2 against f31's 795.4 (paired -6.2 +/- 4.1; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f32a-replay-v21d-p21e.txt)). 99 suites, five-map checks and training readiness pass.
+
+
+## 123 - Cars brake towards their target as the original's Target obstacle (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `VehicleMovementProcess` treats the end of a vehicle's path as an obstacle. When the last path lane starts within `LookaheadDistance` (2.5 tiles), or the vehicle is on it, the target point is followed like a stopped car with `TargetStoppingOffset` (vehicle length plus minimum gap). The car therefore decelerates as the IDM does towards a standing vehicle and creeps the last stretch. The target is the end of the destination's entrance lane until the lot assigns a bay (`ParkVehiclesProcess`, when the car moves onto the lane before the entrance), then the middle of the bay lane (`list[last].Length / 2`); on the way home it is the driveway. Arrival is credited on entering the bay lane or driveway, not on reaching the target. Found by an independent audit of the movement code and checked on both sides. Ours only capped the speed by `sqrt(2 b d)` to the route end, which bites within about 0.2 tiles.
+
+**Engineering choice** (OriginalReference). The movement loop follows the current leg's end as a stopped leader when it is nearer than the leader; the obstacle record carries it for the exit-space test. `TargetLaneIndex` gives the leg's end: the entrance lane before the parking leg is attached, otherwise the last lane. The approach to the bay's middle is asymptotic, so a delivered car whose 3 s parking timer has run out is placed at the bay's middle and leaves as before (the original leaves from wherever it is on the bay lane). A car on its last lane within 0.001 tiles of its end finishes. Two parking-flow checks asserted that cars in a lot never come within 0.15 tiles. They now exempt cars in the same lot where neither is on the other's next lanes, because the original does not separate a car turning slowly into its bay from one continuing along the aisle: the two lanes share an entry, so they do not conflict, and neither car leads the other.
+
+**Measured.** On f32a: 761.0 (544 to 822), 2/60 reach the end (paired -28.1 +/- 5.4). Fixed-time scores move little and towards the real curve: 365.4 at 900 s (real 364, f32a 367.0), 449.3 at 1000 s (454), 553.1 at 1100 s (551), 666.9 at 1200 s (663). The loss comes from earlier game over: slower intake makes the red lots overflow sooner ([data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f32b-replay-v21d-p21e.txt)). Kept because it is the original's code.
+
+
+## 124 - Level crossings: the checks are skipped while the car's own crossing is closed (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `CanInboundVehicleEnter` runs the crossing checks only `if (trainCrossingModel == null || trainCrossingModel.SignalState != 0)` for the chunk the car is on. `TrainSignalState` is `{ Closed, Open }`, so a car on a closed crossing may always continue. Ours skipped the checks when the car's crossing was open, so a car caught on closed tracks could be refused and stop there. Found by an independent audit of the junction code.
+
+**Engineering choice** (OriginalReference). `RailCrossingAllows` skips when the current crossing chunk is closed.
+
+
+## 125 - Bay lanes are one-way: leaving by the other entrance laps the aisle (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `CarparkModel` gives each bay two lanes across the parking chunk:
+- outer to inner, entered from the first entrance's aisle and continuing on the inner aisle towards the first end;
+- inner to outer, entered from the last entrance's aisle and continuing on the outer aisle towards the last end.
+
+A parked car stays on the lane it entered by and plans home from it. To leave by the other entrance it therefore follows its own side's aisle to the lot end, takes the U-turn lane there (speed one third) and drives the whole other aisle. Ours let it cross the bay backwards onto the other side. Found by an independent audit of the parking code.
+
+**Engineering choice** (OriginalReference). `ParkingRoute(..., leaving: true, enteredLeft)` builds that route when the exit differs from the side the car parked from. `StartLeavingParking` passes the side from the car's bay lane, both for the exit choice (decision 120) and for the route.
+
+**Measured** (124 and 125 together, on f32b). 765.0 (paired +4.0 +/- 5.0; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f32c-replay-v21d-p21e.txt)).
+
+
+## 126 - The original's obstacle order in the lookahead (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `VehicleMovementProcess` handles junction entry in this order:
+- It asks `CanInboundVehicleEnter` for path[0] at any distance. If path[0] is refused while a leader is on the current lane, the car is only kept on its lane (`flag3`), with no braking and no stuck mark.
+- Later lanes are asked only within the lookahead and only while no obstacle has been found, so a leader, the target or a refusal ends the scan. Their refusals do not set `blockingVehicle`.
+- The intersection and crossing slowdowns need no obstacle up to and including the lane. They are combined with the blocked-junction acceleration; only the hot-swap case excludes them.
+- When a blocked signal-controlled chunk is the nearest obstacle within two vehicle lengths, the acceleration is doubled with either sign.
+
+Ours asked every lane in the lookahead (only within it, at most six lanes), braked for refusals behind a leader, dropped the slowdowns whenever a stop existed, and doubled only a braking value. Found by independent audits of the movement and junction code.
+
+**Engineering choice** (OriginalReference). The movement loop follows the original order; a refusal of path[0] behind a leader limits travel to the lane end.
+
+**Measured.** On f32c: 751.4 (510 to 818), 1/60 reach the end (paired -13.6 +/- 7.0, median -8). Fixed-time scores are unchanged (364.9, 449.2, 553.0, 666.5 at 900 to 1200 s). Two phase sets with high red demand fail before 1100 s on the late red lot at 11,18, which red cars cannot supply in time; it is not a gridlock ([data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f32d-replay-v21d-p21e.txt)). 99 suites, five-map checks and training readiness pass on `2026-11-10.f32`.
+
+
+## 127 - One eviction per lot and step, rolling cars included (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `ParkVehiclesProcess` visits each lot once per step. It picks the parked car with the longest time parked among those within their 3 s and not already sent home, including a car still rolling along its bay lane (its timer runs from entering the bay chunk). If no bay is free and a car is on its way to one of the lot's destinations, it sends that one car home. A car sent home keeps its bay until it leaves the bay chunk, so a full lot sends one more car each step until a bay frees. Ours ran the test per car, so every parked car of a full lot could leave in the same tick, and rolling cars were never chosen. Found by an independent audit of the parking code.
+
+**Engineering choice** (OriginalReference). `EvictFromFullLots` runs once per tick before the vehicle loop. A rolling car that is chosen is placed at its bay's middle first (decision 123). Our tick is 0.05 s against the original's 0.1 s, so the cascade runs at up to twice the original's rate.
+
+**Measured.** On f32d: 758.3 (703 to 805; paired +6.9 +/- 6.3; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f32e-replay-v21d-p21e.txt)).
+
+
+## 128 - Ineligible inbound cars keep their registration order (12 November 2026, `fidelity-aya`)
+
+**Evidence.** `SortInboundVehicles` moves eligible entries to the front of the inbound list, where the priority comparer sorts them. An entry is eligible if it is committed to its lane, not held by a red light and not colliding with a traversing vehicle; a shoving entry is always eligible. The rest stay behind, roughly in the order they were added. `CanInboundVehicleEnter` walks the list until it reaches the car itself and refuses on any conflicting entry before it. So an uncommitted car checking a junction further ahead is blocked by conflicting eligible entries and also by conflicting ineligible entries ahead of it in the tail. Ours ignored every ineligible entry, skipped light-held entries even when they were shoving, and so let an uncommitted car pass more often. Found by an independent audit of the junction code.
+
+**Engineering choice** (OriginalReference). Each new inbound registration gets a sequence number (`RegisteredOrder`, in path order within a route). An ineligible car is refused by a conflicting ineligible car registered before it. A shoving car held at red stays eligible. The original's swaps permute the tail, which this does not reproduce.
+
+**Measured.** On f32e: 758.1 (509 to 810; paired -0.3 +/- 6.3; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f32f-replay-v21d-p21e.txt)). 99 suites, five-map checks and training readiness pass on `2026-11-10.f32`.
+
+
+## 129 - A re-plan keeps shoving and pushing (12 November 2026, `fidelity-aya`)
+
+**Evidence.** The original `AssignPath` never clears `isShovingIntoNextIntersection` or `vehiclePushingInto`; only a lane change (shoving), a broken pushing cycle and the vehicle's reset do. Since decision 116 ours cleared both on every route registration, including the re-plans after road edits and when the parking leg is attached. Found by an independent audit of the junction code.
+
+**Engineering choice** (OriginalReference). `RegisterRoute` clears them only for a new route (`keepExisting` false), which still keeps pushing from surviving into the next trip (the reason for decision 116).
+
+**Measured.** On f32f: 754.1 (paired -4.0 +/- 4.6; only 2 of 60 runs change; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f32-replay-v21d-p21e.txt)).
