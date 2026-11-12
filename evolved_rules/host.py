@@ -27,7 +27,7 @@ CITY_SCENARIOS = ("LosAngeles", "Beijing", "Tokyo", "DarEsSalaam", "London")
 # (simulation/Docs/VERSIONS.md). Older hosts have neither: they are "pre-versioning".
 PRE_VERSIONING = "pre-versioning"
 VERSION_TIMEOUT_S = 60.0
-_VERSION_LINE = re.compile(r"^\d{4}-\d{2}-\d{2}\.\d+$")
+_VERSION_LINE = re.compile(r"^\d{4}-\d{2}-\d{2}\.[a-z]*\d+$")  # gp-6: also "2026-11-10.f34" (fidelity line)
 
 
 def check_scenario(scenario) -> str:

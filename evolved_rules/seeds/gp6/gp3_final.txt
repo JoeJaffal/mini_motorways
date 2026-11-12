@@ -1,0 +1,4 @@
+priority: add(sub(neg(shop_demand), add(sub(path_cost_s, shop_demand), sub(path_cost_s, bridge_stock))), mul(15.625, is_separated))
+hold: sub(worst_margin, shops)
+upgrade: sub(sub(unserved_shops, amount), neg(unserved_houses))
+remove: -1.0

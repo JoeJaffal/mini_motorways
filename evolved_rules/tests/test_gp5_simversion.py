@@ -11,7 +11,7 @@ from evolved_rules.agent import GameResult
 from evolved_rules.host import PRE_VERSIONING, Host, simulator_version
 
 HAND_TEXT = "priority: 1.0\nhold: 0.0\nupgrade: 0.0"
-VERSION_RE = re.compile(r"^\d{4}-\d{2}-\d{2}\.\d+$")
+VERSION_RE = re.compile(r"^\d{4}-\d{2}-\d{2}\.[a-z]*\d+$")  # gp-6: also "2026-11-10.f34"
 
 
 def _completed(stdout: str, returncode: int = 0):

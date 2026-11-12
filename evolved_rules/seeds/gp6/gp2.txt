@@ -1,0 +1,5 @@
+priority: sub(sub(shop_demand, add(sub(add(sub(worst_margin, shops), mul(path_cost_s, disconnected_components)), shop_demand), sub(path_cost_s, bridge_stock))), mul(1000.0, is_clean))
+hold: sub(mul(if_gt(neg(unserved_houses), min(houses, unserved_shops), max(shops, next_offer_s), mul(worst_margin, bridge_stock)), sub(if_gt(bridge_stock, houses, edge_distance, 0.72), min(bridge_stock, 0.49))), neg(sub(mul(worst_overcrowded, houses), if_gt(houses, -0.82, disconnected_components, shops))))
+upgrade: sub(sub(edge_distance, time), add(pdiv(next_offer_s, type_4), disconnected_components))
+remove: -1.0
+place: -1.0
