@@ -6,9 +6,10 @@ namespace MotorwaysSim
 {
     // OriginalReference junction entry arbitration. First written from the rule description in
     // docs/training/simulator-repairs-2026-11-08/ORIGINAL_SPACE_CHECK_RULE_ANSWER.md, then checked against the decompiled
-    // RoadChunkModel / VehicleMovementProcess (decisions 107, 112, 113). Order: lane-count gate, red light, shove, 45 s
-    // wait escape, traversing vehicles (shared-exit space, different-exit release, geometry with green bypass), then
-    // inbound reservations among eligible candidates. Blocking cycles start from stuck vehicles; all-leader cycles push.
+    // RoadChunkModel / VehicleMovementProcess (decisions 107, 112, 113, 122, 128). Order: lane-count gate, red light, shove,
+    // 45 s wait escape, traversing vehicles (shared-exit space, different-exit release, geometry with green bypass), then
+    // inbound reservations: eligible candidates first, ineligible ones behind in registration order. Blocking cycles start
+    // from stuck vehicles; all-leader cycles push.
     public sealed partial class TrafficWorld
     {
         // Original: space must strictly exceed two vehicle lengths, found within five obstacle states.
@@ -54,11 +55,16 @@ namespace MotorwaysSim
                 if(other.Car.Id==car.Id||!TryApproach(other.Car,lane.ChunkCell,out var target,out double theirDistance))continue;
                 // Original inbound order: crossing in front of a stopped candidate is allowed.
                 bool stopped=other.Speed<.0005;
-                if(!(lane.Incoming<8&&target.Incoming<8&&lane.ChunkCell==target.ChunkCell?ConnectionsIntersect(lane,target,stopped):Conflicts(lane,target))||!LightAllowsEntry(target))continue;
+                if(!(lane.Incoming<8&&target.Incoming<8&&lane.ChunkCell==target.ChunkCell?ConnectionsIntersect(lane,target,stopped):Conflicts(lane,target)))continue;
                 bool theirShove=other.Car.Shoving&&other.Car.ShovingLane==target.Key&&IsImmediateNext(other.Car,target);
-                // Ineligible candidates (uncommitted, or blocked by traffic inside the chunk) sort behind
-                // every eligible one, so they never hold priority over an eligible entry.
-                if(!theirShove&&!(Committed(other.Car,target)&&TraversingAllows(other.Car,target,snapshot,out _,out _)))continue;
+                // Ineligible candidates (uncommitted, held by a red light or blocked by traffic inside the chunk; a
+                // shoving car is always eligible) sort behind every eligible one and keep roughly their registration
+                // order, so they never hold priority over an eligible entry but do over a later ineligible one.
+                if(!theirShove&&!(Committed(other.Car,target)&&LightAllowsEntry(target)&&TraversingAllows(other.Car,target,snapshot,out _,out _)))
+                {
+                    if(ownEligible||!RegisteredBefore(other.Car,target.Key,car,lane.Key))continue;
+                    why=lane.IsRoundabout?"Roundabout entry yield":"Approaching vehicle priority";blocker=other.Car.Id;return false;
+                }
                 bool theirRing=OnTargetRoundabout(other.Car,lane);
                 double theirRegistered=other.Car.ApproachRegistered.TryGetValue(target.Key,out var theirTime)?theirTime:Time;
                 bool earlier=!ownEligible||theirShove||theirRing&&!ownRing||theirRing==ownRing&&
@@ -109,7 +115,13 @@ namespace MotorwaysSim
                 switch(state.ObstacleState)
                 {
                     case ObstacleKind.None:return true;
-                    case ObstacleKind.RouteEnd:usable+=state.ObstacleDistance-Rules.CarLength;return usable>needed;
+                    case ObstacleKind.RouteEnd:
+                        // Original Target case: targetDistanceAlongLastLane - distanceAlongLane - vehicle length, taken
+                        // from the vehicle's current lane even when its target lies on a later lane (no floor at zero).
+                        if(Rules.Version==GameVersion.OriginalReference&&state.Moving&&state.RouteIndex<TargetLaneIndex(state))
+                            usable+=state.Lanes[TargetLaneIndex(state)].Length-state.DistanceAlongLane-Rules.CarLength;
+                        else usable+=state.ObstacleDistance-Rules.CarLength;
+                        return usable>needed;
                     case ObstacleKind.BlockingJunction:usable+=state.ObstacleDistance;return usable>needed;
                     default:
                         var leader=CarById(state.ObstacleCar);if(leader==null)return usable>needed;
@@ -204,7 +216,10 @@ namespace MotorwaysSim
 
         // Inbound registration at route assignment (original AssignPath -> AddInboundVehicle): each newly planned
         // arbitrated lane is stamped with game time plus its position in the path (1 for the next lane); retained
-        // entries keep their stamp.
+        // entries (the unchanged start of a re-planned path) keep their stamp.
+        long registrationSequence;
+        bool RegisteredBefore(Vehicle a,string laneA,Vehicle b,string laneB)=>
+            a.RegisteredOrder.TryGetValue(laneA,out long x)&&b.RegisteredOrder.TryGetValue(laneB,out long y)&&x<y;
         internal void RegisterRouteForChecks(Vehicle car)=>RegisterRoute(car,false); // fixtures that place cars directly
         void RegisterRoute(Vehicle car,bool keepExisting)
         {
@@ -213,13 +228,22 @@ namespace MotorwaysSim
             for(int i=car.RouteIndex+1;i<car.Lanes.Count;i++){var lane=car.Lanes[i];if((lane.IsJunction||lane.IsRoundabout||lane.IsParking)&&!planned.ContainsKey(lane.Key))planned[lane.Key]=i-car.RouteIndex;}
             if(keepExisting)
             {
-                foreach(var key in car.ApproachRegistered.Keys.Where(k=>!planned.ContainsKey(k)).ToArray())car.ApproachRegistered.Remove(key);
+                // Original AssignPath keeps the registrations along the unchanged start of the new path and re-registers
+                // every lane from the first difference (fresh stamp, back of the inbound list, new commitment time).
+                var order=planned.OrderBy(p=>p.Value).Select(p=>p.Key).ToList();
+                var old=car.RegisteredPath.Where(k=>car.ApproachRegistered.ContainsKey(k)).ToList();
+                int common=0;while(common<old.Count&&common<order.Count&&old[common]==order[common])common++;
+                var kept=new HashSet<string>(order.Take(common));
+                foreach(var key in car.ApproachRegistered.Keys.Where(k=>!kept.Contains(k)).ToArray()){car.ApproachRegistered.Remove(key);car.CommittedAt.Remove(key);}
                 var lanes=new HashSet<string>(car.Lanes.Skip(car.RouteIndex+1).Select(l=>l.Key));
                 foreach(var key in car.CommittedAt.Keys.Where(k=>!lanes.Contains(k)).ToArray())car.CommittedAt.Remove(key);
             }
             else{car.ApproachRegistered.Clear();car.CommittedAt.Clear();}
-            foreach(var item in planned)if(!car.ApproachRegistered.ContainsKey(item.Key))car.ApproachRegistered[item.Key]=Time+item.Value;
-            car.Shoving=false;car.ShovingLane="";car.PushingInto=-1;NoteCommitments(car);
+            foreach(var item in planned.OrderBy(p=>p.Value))if(!car.ApproachRegistered.ContainsKey(item.Key)){car.ApproachRegistered[item.Key]=Time+item.Value;car.RegisteredOrder[item.Key]=++registrationSequence;}
+            car.RegisteredPath=planned.OrderBy(p=>p.Value).Select(p=>p.Key).ToList();
+            // Original AssignPath keeps shoving and pushing through a re-plan; only a new trip starts clear (decision 116).
+            if(!keepExisting){car.Shoving=false;car.ShovingLane="";car.PushingInto=-1;}
+            NoteCommitments(car);
         }
     }
 }

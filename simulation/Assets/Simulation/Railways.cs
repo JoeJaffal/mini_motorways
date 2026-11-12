@@ -169,7 +169,9 @@ namespace MotorwaysSim
         bool RailCrossingAllows(Vehicle car,Lane lane,List<MotionSnapshot> snapshot,out string why)
         {
             why="";if(!IsRailChunk(lane))return true;
-            if(car.Moving&&IsRailChunk(car.CurrentLane)&&!RailChunkClosed(car.CurrentLane))return true;
+            // Original: the checks are skipped while the car's own chunk is a closed crossing (TrainSignalState 0 is
+            // Closed), so a car caught on the tracks may always move on.
+            if(car.Moving&&IsRailChunk(car.CurrentLane)&&RailChunkClosed(car.CurrentLane))return true;
             if(RailChunkClosed(lane))
             {
                 if(lane.Corner!=null&&DistanceToLane(car,lane)<=Rules.CarLength)return true;

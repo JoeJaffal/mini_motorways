@@ -112,6 +112,7 @@ namespace MotorwaysSim
         public bool IsJunction,IsRoundabout,IsParking,IsMotorway,ReleasesParking,DeliversDriveThrough,IsCorner;
         public string Chunk=""; // carpark lanes: "carpark:<id>:<chunk>" (CarparkArbitration.cs)
         public Cell? Corner; // corner lanes (OriginalReference): code cell of the tile corner chunk they belong to
+        public bool MotorwayNode; // OriginalReference: a tile lane into or out of a motorway slot (a Motorway node in the original)
         public bool ParkingNodes; // carpark aisle lanes whose Incoming/Outgoing carry the original's connection nodes
         public Cell ChunkCell=>Corner??Tile; // the road chunk whose lanes arbitrate with this one
         public int MotorwayId=-1;
@@ -154,6 +155,8 @@ namespace MotorwaysSim
         // Continuous journeys (OriginalReference, ContinuousJourneys.cs): index of the carpark entrance lane at the
         // end of an outbound path, whether the in-lot lanes are attached, and lane indices where the stage changes.
         public int ParkingLegAt=-1;public bool ParkingLegAttached;
+        public Dictionary<string,long> RegisteredOrder=new Dictionary<string,long>(); // OriginalReference: order of inbound registration per lane
+        public List<string> RegisteredPath=new List<string>(); // OriginalReference: registered lanes in path order
         public readonly List<(int Index,TripStage Stage)> LegMarks=new List<(int Index,TripStage Stage)>();
         public bool Moving=>Lanes.Count>0&&RouteIndex<Lanes.Count;
         public Lane CurrentLane=>Moving?Lanes[RouteIndex]:null;

@@ -194,7 +194,7 @@ namespace MotorwaysSim
                 lane.IsJunction=Degree(at)>=3||Tile(at)==Infrastructure.TrafficLight;
                 lane.IsRoundabout=round!=null;
                 if(motorway!=null){lane.IsMotorway=true;lane.MotorwayId=motorway.Id;lane.IsJunction=false;lane.SpeedLimit=Rules.MotorwaySpeed;lane.Key=$"motorway:{motorway.Id}:{at.X}:{at.Y}";}
-                else if(fromMotorway)lane.IsJunction=true;
+                else if(fromMotorway){lane.IsJunction=true;lane.MotorwayNode=true;}
                 // A boundary-based parcel endpoint can coincide with the next lane
                 // boundary. Do not create a zero-length lane with an undefined heading.
                 if(cornerOut)lane.SpeedLimit=OriginalTurnSpeed(inDir,outDir,fromMotorway)*(IsCrossingCorner(CornerCode(at,next))?Rules.IntersectionMultiplier:1);

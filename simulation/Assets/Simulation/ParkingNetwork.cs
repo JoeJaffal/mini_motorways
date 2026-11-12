@@ -121,7 +121,10 @@ namespace MotorwaysSim
                 ParkingCurve(shop,key,bay.OuterEnd,bay.OuterEnd+axis*.5,end-axis*.375,end);
             connector.Tile=access;connector.Previous=access;connector.Next=access;return connector;
         }
-        public List<Lane> ParkingRoute(Building shop,Cell access,int slot,bool leaving=false)
+        // enteredLeft (leaving only): the side the car parked from. The original's bay lanes are one-way across the
+        // bay (outer to inner for the first entrance, inner to outer for the last), so a car leaving by the other
+        // entrance first follows its own side's aisle to the lot end, U-turns, and drives the whole other aisle.
+        public List<Lane> ParkingRoute(Building shop,Cell access,int slot,bool leaving=false,bool? enteredLeft=null)
         {
             if(slot<0||slot>=shop.Parking.Length||!HasAccess(shop,access))throw new ArgumentException("Invalid parking bay or entrance");
             ParkingAxes(shop,out var axis,out var side,out var diagonal,out _);
@@ -140,12 +143,21 @@ namespace MotorwaysSim
             }
             else
             {
-                var end=left?bay.InnerBay:bay.OuterBay;
-                lanes.Add(ParkingCurve(shop,"bay-leave:"+slot+":"+left,bay.Center,bay.Center,end,end,release:true,straight:true));
-                if(left)lanes.Add(ParkingCurve(shop,"bay-inner-out:"+slot,bay.InnerBay,bay.InnerBay-normal*.15,bay.InnerEnd+axis*.1,bay.InnerEnd));
+                bool from=enteredLeft??left;int last=shop.Parking.Length-1;
+                var end=from?bay.InnerBay:bay.OuterBay;
+                lanes.Add(ParkingCurve(shop,"bay-leave:"+slot+":"+from,bay.Center,bay.Center,end,end,release:true,straight:true));
+                if(from)lanes.Add(ParkingCurve(shop,"bay-inner-out:"+slot,bay.InnerBay,bay.InnerBay-normal*.15,bay.InnerEnd+axis*.1,bay.InnerEnd));
                 else lanes.Add(ParkingCurve(shop,"bay-outer-out:"+slot,bay.OuterBay,bay.OuterBay+normal*.15,bay.OuterEnd-axis*.1,bay.OuterEnd));
-                if(left)for(int i=slot-1;i>=0;i--)lanes.Add(ParkingThroughBay(shop,i,false));
-                else for(int i=slot+1;i<shop.Parking.Length;i++)lanes.Add(ParkingThroughBay(shop,i,true));
+                if(from)for(int i=slot-1;i>=0;i--)lanes.Add(ParkingThroughBay(shop,i,false));
+                else for(int i=slot+1;i<=last;i++)lanes.Add(ParkingThroughBay(shop,i,true));
+                if(from!=left)
+                {
+                    var turn=ParkingBay(shop,from?0:last);
+                    lanes.Add(from?ParkingCurve(shop,"turn-first",turn.InnerEnd,turn.InnerEnd-axis*.15,turn.OuterStart+bend*.35,turn.OuterStart):
+                        ParkingCurve(shop,"turn-last",turn.OuterEnd,turn.OuterEnd+axis*.15,turn.InnerStart-bend*.35,turn.InnerStart));
+                    if(from)for(int i=0;i<=last;i++)lanes.Add(ParkingThroughBay(shop,i,true));
+                    else for(int i=last;i>=0;i--)lanes.Add(ParkingThroughBay(shop,i,false));
+                }
                 lanes.Add(ParkingConnector(shop,access,false));
             }
             return lanes;

@@ -8,7 +8,7 @@ rules that match the original's code, and the recorded 835-point Los Angeles gam
 close to 835 at about 1314.6 s. Reading the decompiled original locally and running its components as an
 oracle are allowed; decompiled code and assemblies stay outside Git (decision 077).
 
-## Current state (12 November 2026, simulator `2026-11-10.f31`)
+## Current state (12 November 2026, simulator `2026-11-10.f34`)
 
 - **Benchmark:** replay v21d (event times read from the game's clock dial) on 60 demand-phase sets refitted to the real score curve, re-read at exact frame times (decision 118).
 - **Scores:**
@@ -20,6 +20,9 @@ oracle are allowed; decompiled code and assemblies stay outside Git (decision 07
   - f29 (lane-length route costs, decision 119): **792.5**, 17/60 reach the end.
   - f30 (in-lot leg when choosing an exit, decision 120): 792.3.
   - f31 (motorway costs, decision 121): **795.4** (median 804), 18/60 reach the end.
+  - f32 (seven rules from an audit of the decompiled movement, junction and parking code, decisions 122 to 129): **754.1** (median 760), 0/60 reach the end. Fixed-time scores are as close to the real curve as before: 365.4 at 900 s (real 364), 449.2 at 1000 s (454), 553.5 at 1100 s (551), 666.1 at 1200 s (663). The loss is in when the game ends, see "f32" below.
+  - f33 (two audit details, decision 130): identical to f32 on the replay.
+  - f34 (re-plan registrations, decision 131): 752.7.
   - The original scored 835 and ended at about 1314.6 s.
 - **Where it differs:** up to about 360 s our score is within 3 trips of the real curve, and from 430 to 1000 s 5 to 17 trips behind. The gap opens in the late game, when the far red lot overflows earlier than in the original.
 - **Rules ported overnight from the decompiled code:**
@@ -27,7 +30,7 @@ oracle are allowed; decompiled code and assemblies stay outside Git (decision 07
   - gridlock cycles, roundabout activation and level crossings (f24);
   - re-plan, exit space and registration stamps (f25);
   - traffic-light details and the weekly offer draw (f26).
-- **Kept although it lowers the replay:** the exit-space formula (decision 112, -16.6). It is the original's code; see "f25" below.
+- **Kept although it lowers the replay:** the exit-space formula (decision 112, -16.6), cars braking towards their target (decision 123, -28.1) and the original's lookahead order (decision 126, -13.6). All are the original's code; see "f25" and "f32" below.
 
 ## Method
 
@@ -215,8 +218,39 @@ f28 on them: 778.3 (705 to 827), 6/60 reach the end ([data](measurements/bench-f
 
 The original charges a lane its length over its speed limit. Ours charged each step a whole tile, so a right turn (lane 0.64 tiles) cost as much as a left turn (0.95) and more than the original's. With lane lengths in the costs, replay v21d on the current phase sets scores 792.5 against 778.3 (paired +14.2 +/- 4.0, 42/60 better; [data](measurements/bench-f29-replay-v21d-p21e.txt); decision 119).
 
+### f32: audit of the decompiled movement, junction and parking code (12 November 2026)
+
+Three independent read-only audits compared the decompiled original with our code: movement, junction entry, parking and dispatch. Each difference was checked on both sides before it was ported. Demand, dispatch, the parking timer, the failure timer and the junction check order were confirmed as already faithful. Ported (decisions 122 to 129):
+
+- **Target braking (123).** In the original, a car brakes towards the end of its path as if a stopped car stood there: the lot's entrance lane, then the middle of its bay, or its driveway. Ours had no such obstacle, so cars arrived at lane speed.
+- **Exit space (122).** The exit-space test measures the target case from the car's current lane.
+- **Lookahead order (126).** The next lane is always tested. Later lanes are tested only until a leader, the target or a refusal is found, and a refusal behind a leader does not brake. The junction slowdowns combine with a blocked junction, and the signal doubling applies with either sign.
+- **Level crossings (124).** The crossing checks are skipped while the car's own crossing is closed; the condition was inverted.
+- **One-way bay lanes (125).** A car leaving by the other entrance laps the aisle with a U-turn instead of reversing across its bay.
+- **Eviction (127).** A full lot sends home one car per step, and a car still rolling into its bay counts.
+- **Inbound order (128).** Ineligible inbound cars keep their registration order, so an uncommitted car also yields to an earlier uncommitted one.
+- **Re-plans (129).** A re-plan keeps shoving and pushing.
+
+**Measured:**
+
+| step | replay mean | paired vs previous | data |
+|---|---|---|---|
+| f31 | 795.4 | | [f31](measurements/bench-f31-replay-v21d-p21e.txt) |
+| + 122 | 789.2 | -6.2 +/- 4.1 | [f32a](measurements/bench-f32a-replay-v21d-p21e.txt) |
+| + 123 | 761.0 | -28.1 +/- 5.4 | [f32b](measurements/bench-f32b-replay-v21d-p21e.txt) |
+| + 124, 125 | 765.0 | +4.0 +/- 5.0 | [f32c](measurements/bench-f32c-replay-v21d-p21e.txt) |
+| + 126 | 751.4 | -13.6 +/- 7.0 | [f32d](measurements/bench-f32d-replay-v21d-p21e.txt) |
+| + 127 | 758.3 | +6.9 +/- 6.3 | [f32e](measurements/bench-f32e-replay-v21d-p21e.txt) |
+| + 128 | 758.1 | -0.3 +/- 6.3 | [f32f](measurements/bench-f32f-replay-v21d-p21e.txt) |
+| + 129 (f32) | 754.1 | -4.0 +/- 4.6 | [f32](measurements/bench-f32-replay-v21d-p21e.txt) |
+
+**Where the loss comes from.** Up to 1200 s the score barely moves: f32 is within 5 trips of the real curve at 900, 1000, 1100 and 1200 s, as f31 was, and closer at 1100 and 1200 s. The loss comes from an earlier game over. Our runs end on average at 1273 s instead of 1314.6 s: slower lot intake lets the red lots overflow sooner. They are the same lots that were overcrowding in the real game at 1260 s (red 30,18 fails in both). In two phase sets with high red demand, the late red lot at 11,18 fails before 1100 s because the few red houses cannot supply four red lots; no cars are stuck. The demand-phase sets were selected under earlier versions, so the end-of-game score partly measures the replay's demand input as well as the rules (see "Why the demand phases matter").
+
+**Free play.** The five-map soak (two seeds each, 1500 s, no game over) has no gridlock in f32: at most 4 cars waiting over 30 s, longest wait 45 s. Throughput is not lower: 10,260 trips in the ten runs, against 10,163 for f32a and 10,070 for f29. So target braking slows lot intake mainly where lots are short of cars, as on the replay's late red lots ([data](measurements/soak-f29-f32.txt)). The London jam seen on f29 does not recur. On f31 it is gone with either exit-space formula; with the earlier formula Tokyo carries more traffic late in the game ([data](measurements/soak-LT-f31-vs-old-exit-space.txt)).
+
 ## Experiments not adopted
 
+- **The earlier exit-space formula (decision 112 reverted), 12 November 2026.** It credits a leader's progress through the junction being entered: the distance is reduced by `max(0, lane length - leader distance - vehicle length)` instead of `lane length - vehicle length`. On f31 it scores 808.1 against 795.4 (paired +12.8 +/- 4.1; [data](measurements/bench-f31-oldspace-replay-v21d-p21e.txt)). On f33 it scores 781.9 against 754.1 (paired +27.8 +/- 7.6, 42/60 better; fixed-time +4.7 at 1200 s; [data](measurements/bench-f33-oldspace-replay-v21d-p21e.txt)). It is not the original's code, so it stays out. The one-line change is in `HasExitSpace` (JunctionArbitration.cs).
 - **Original re-plan on road changes, on f22 (11 November 2026).** On the 60 plausible phase sets ([phases](measurements/plausible-phases-v21b-60.txt)) replay v21c scores 786.2 (700–833), 8/60 reach the end, against f22's 794.4 (669–833), 15/60. Paired difference −8.1 ± 4.8 trips; 22/60 runs improve ([data](measurements/experiment-repath-on-f22-p60.txt)). On the 20-set benchmark it was −11.6. It runs at f22's speed once return paths are re-found lazily; refreshing every stored return path at every change doubled run time. It is the original's rule, but it moves the replay away from the real game, so it stays off.
   **Which part, and where (f23).** Split into parts on the 60 sets, each against f23 (796.3), and scored at fixed times as well as at the end ([data](measurements/experiment-repath-parts-on-f23-p60.txt)):
 
@@ -243,7 +277,7 @@ The original charges a lane its length over its speed limit. Ours charged each s
 
 Original free-play city growth (building placement by the original's weight layers and building influence, house driveways, playable edges, spawn schedule, supply anchor; branch simulator `2026-11-11.g1`, merged into `fidelity-aya` as `2026-11-10.f12`) is recorded in [fidelity-aya-growth-2026-11-11](../fidelity-aya-growth-2026-11-11/README.md). Replays force building spawns, so replay v21 results are not affected by it.
 
-## Open items (state at f29)
+## Open items (state at f34)
 
 Differences from the original that remain, roughly by expected effect:
 
@@ -258,5 +292,13 @@ Differences from the original that remain, roughly by expected effect:
    - The traversing-collision part of inbound eligibility when ordering light candidates.
    - The drag-time preference for a new motorway's anchor ramp.
    - Strokes drawn by greedy eight-direction stepping.
+
+Small differences found by the f32 audits and not yet ported (each judged low effect):
+- Lanes leaving a driveway have no leader in the original.
+- A car in a roundabout hot-swap counts as stopped for the cross-in-front relaxation.
+- The small-intersection lane count includes mothballed lanes.
+- Dispatch does not require a return route.
+- Bays are assigned after all movement in the step.
+- The car leaving a house is the first to have arrived there.
 
 Modelled since f22: crossing diagonals (f23); gridlock cycles from stuck vehicles with pushing, roundabout activation, and car rules at train crossings (f24); the original re-plan, junction exit space and registration stamps (f25); traffic-light details and the weekly offer draw (f26); fixes from an independent review (f27).
