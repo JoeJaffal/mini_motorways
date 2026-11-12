@@ -4,15 +4,19 @@ W=[(139.25,0.9),(285.5,-3.35),(425.75,-5.79),(570.0,-8.51),(713.0,-12.86),(863.2
 def game(v):
     for end,c in W:
         if v<=end+2:return round(max(0.05,v+c),2)
-COLOR={'yellow':0,'magenta':1,'blue':2,'charcoal':3,'green':4}
+COLOR={'yellow':0,'magenta':1,'charcoal':2,'blue':3,'green':4}  # plan order: charcoal plays the cyan role, blue the navy role
 ev=[]
 # lots: (origin, size, colour, layout, spawn video, kind)
 LOTS=[((12,15),'yellow',3,0.5,'shop'),((16,17),'magenta',2,68,'shop'),((15,12),'yellow',3,294,'shop'),((11,12),'blue',3,304,'shop'),
       ((27,15),'charcoal',3,334,'shop'),((27,18),'magenta',3,391,'shop'),((28,9),'charcoal',0,492,'shared'),((10,9),'magenta',3,537,'shop'),((38,15),'green',1,807,'shop')]
 lid={}
+# late plan items (game s): yellow chunk days 7-9, navy slot 0 of days 8-22, cyan slot 0 of days 16-36
+LATE={(15,12):160.0,(11,12):230.0,(28,9):407.0}
 for (x,y),c,lay,v,kind in LOTS:
     i=f'{kind}:{c}:{x},{y}';lid[(x,y)]=i
-    ev.append(dict(at=game(v),videoTime=v,kind=kind,id=i,x=x,y=y,color=COLOR[c],layout=lay))
+    e=dict(at=game(v),videoTime=v,kind=kind,id=i,x=x,y=y,color=COLOR[c],layout=lay)
+    if (x,y) in LATE:e['scheduledAt']=LATE[(x,y)]
+    ev.append(e)
 # round conversions (approximate, mid of the 30 s window where the shape changes)
 for (x,y),v in [((12,15),671),((27,18),671),((28,9),840),((11,12),929),((15,12),1055)]:
     ev.append(dict(at=game(v),videoTime=v,kind='circle',target=lid[(x,y)]))
@@ -31,6 +35,9 @@ for h in hs:
         d=dom[k][1]
         if d!=cur and all(dom[j][1]==d for j in range(k,min(len(dom),k+3))) and dom[k][2]>0.5:
             ev.append(dict(at=game(dom[k][0]+0.5),videoTime=dom[k][0]+0.5,kind='driveway',target=i,direction=d));cur=d
+for hx,hy,hd,hv in MAN.get('drivewayEvents',[]):
+    hid=next(e['id'] for e in ev if e['kind']=='house' and e['x']==hx and e['y']==hy)
+    ev.append(dict(at=game(hv),videoTime=hv,kind='driveway',target=hid,direction=hd))
 # missing houses detected only by the looser rule (no dominant series)
 for (x,y),h in hraw.items():
     if not any(e.get('id')==f"house:{h['name']}:{x},{y}" for e in ev):

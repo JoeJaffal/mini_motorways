@@ -36,7 +36,42 @@ On the unlimited draft, with the first game's 60 phase sets:
 
 f31 and f34 deliver at the same rate up to 1000 s, about 10% below the real game. As on the first game, they differ in when the game ends: f34 ends earlier. The failing lot is the magenta lot at 27,18, as in the real game.
 
-## Open
+## Draft 3: plan delays, fitted demand, strict roads (same day, later)
+
+- **Colours from the city plan.** The LA plan's items fix the colour indices: this game's charcoal plays the cyan role (index 2) and its blue the navy role (index 3). The late chunk's three round conversions (yellow, cyan, navy) match this game's conversions at game 821, 906 and 1030 s only this way, and the shared lot is the cyan item that may become a double lot.
+- **Late planned destinations.** Three lots appear after their plan slot. The replay marks them with `scheduledAt`, so the simulator's delayed-demand rule adds demand to their colour while they wait:
+  - yellow 15,12: chunk days 7 to 9, scheduled at about 160 s, appears at 288 s;
+  - blue 11,12: slot 0 of days 8 to 22, scheduled by 265 s (230 used), appears at 298 s;
+  - charcoal shared 28,9: slot 0 of days 16 to 36, scheduled between 377 and 437 s (407 used), appears at 484 s.
+- **Demand phases fitted to this game.** The analytic pin model with delayed demand fits the real curve to 1000 s with an rmse of 2.5 trips and a delivery lag of 15 s. The 60 best of 90 random starts are in [plausible-phases-g2b-60.txt](measurements/plausible-phases-g2b-60.txt).
+- **Driveways reviewed.** All 39 houses were checked on crops; 8 driveways were corrected and 2 timed rotations added ([manual.json](measurements/manual.json)).
+- **Roads from strict detection plus repairs.** The base is the strict link test with weakest-segment scores, crossing diagonals resolved, and staircases next to strong diagonals dropped. On top of it:
+  - a dead-end repair;
+  - a connectivity repair (every house must reach a lot of its colour, using links with weak video evidence);
+  - four links hidden under lot shadows, added by hand;
+  - an erase pass for any link that turns to land colour for 15 visible seconds.
+  The network ends with about 155 land road tiles against the 134 the stock series implies, roughly 15% too many. A false burst of 18 links after the week 4 screen (frames 425 to 431) is excluded.
+- At 900 s every house reaches a lot of its colour.
+
+**Result**, [replay-g2-draft3c-unlimited.json](replay-g2-draft3c-unlimited.json) on the 60 fitted phase sets:
+
+| simulator | mean score | median | mean end (game s) | runs reaching 1162 s | score at 900 s | at 1000 s | at 1100 s |
+|---|---|---|---|---|---|---|---|
+| f24 | 479.2 | 513 | 1037 | 0 | 362 | 445 | 541 |
+| f31 | 509.1 | 514 | 1075 | 0 | 361 | 443 | 543 |
+| f33, earlier exit-space formula | 519.9 | 530 | 1082 | 2 | 362 | 445 | 544 |
+| f34 | 478.1 | 487.5 | 1050 | 0 | 358 | 441 | 538 |
+| real game | 601 | | 1162 | | 373 | 459 | about 549 |
+
+All four deliver within 2 to 4% of the real game up to 1100 s. They differ mainly in when the game ends, and every one ends 80 to 125 s too early on the same lot as the real game (magenta 27,18). The order matches the first recording: the earlier exit-space formula, then f31, then f34. Both recordings therefore point to the same gap: lots overflow earlier than in the original while deliveries keep pace. That suggests looking at the late game (failure timing, late demand, service of the failing lot) rather than general traffic flow.
+
+## Open (after draft 3)
+
+1. The road network has about 15% more tiles than the real one, and the replay still runs with unlimited stock.
+2. Items scheduled near the end (chunk days 40 to 76) that never appeared may have added demand in the last 100 s; this is not modelled.
+3. The motorway built at about video 1175 s, right before game over, is not in the replay.
+
+## Open (draft 1)
 
 1. Map each lot to its slot in the LA plan and add `scheduledAt` for late items. The analytic pin model under-predicts the middle of the game (37 against 51 at 304 s), which points to pending planned destinations adding demand.
 2. Fit demand phases to this game's curve once (1) is in.
