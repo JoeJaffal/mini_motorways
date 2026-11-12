@@ -229,13 +229,20 @@ Tonight's ported rules lower the replay score, so they were also checked away fr
 
 Original free-play city growth (building placement by the original's weight layers and building influence, house driveways, playable edges, spawn schedule, supply anchor; branch simulator `2026-11-11.g1`, merged into `fidelity-aya` as `2026-11-10.f12`) is recorded in [fidelity-aya-growth-2026-11-11](../fidelity-aya-growth-2026-11-11/README.md). Replays force building spawns, so replay v21 results are not affected by it.
 
-## Open items (state at f26)
+## Open items (state at f27)
 
-Known differences from the original that are not yet modelled, roughly by expected effect:
+Differences from the original that remain, roughly by expected effect:
 
-1. **Replay demand input.** The real game had roughly 10% more demand by ~1260 s than replay v21 gives us (see above). v21b covers the three provably late destinations, using lower-bound delays. Circles that failed for a while and then succeeded (navy at 1030 s, yellow at 1106 s) and any pending cyan entry of plan days 40–76 cannot be timed from the video and are not represented.
-2. **Crossing diagonals.** Modelled from f23 (see above). Not modelled: a crossing next to a roundabout, and a turn at a corner when the two tiles are also linked directly (the direct link is used).
-3. **Re-routing details.** The original's re-plan (current lane and the next two kept) is on from f25 (decision 111). The comparison below, made on replay v21c, is kept for the record.
-4. **Roundabout activation.** Modelled from f24 (decision 108). Earlier note: the original keeps a new roundabout planned until conflicting lanes clear and holds affected cars (hot-swapping lanes); ours switched at once. Sized on the replay (best-fit phases): after the roundabout at 19,9 is built at 1051 s, 16 cars still have old footprint lanes ahead and the last clears at 1058 s, so the difference is a one-time window of about 7 s at one junction. Deferred: the port (`ReleaseMothballedLanesProcess` hot-swap rules, `IsAboutToHotswap` stops) is large for that effect.
-5. **Traffic-light removal.** The original removes a light, and returns it to stock, when an erased link is released and leaves the tile with fewer than three roads. Erased links still in use count as roads. Ported and measured but not adopted: in the replay it removes a light that the real game kept (see experiments).
-6. **Smaller items.** All-leader pushing cycles are modelled from f24 (decision 107); the drag-time preference for a new motorway's anchor ramp, which depends on the mouse drag (edits are modelled); drawing by greedy eight-direction stepping instead of a raster line. Junctions on water (f21) and motorway ramp sides (f22) are now modelled.
+1. **Replay demand input.** The real game created more demand by the late game than the replay can give us. Circles that failed for a while and then succeeded (navy at 1031 s, yellow at 1106 s) and destinations whose first placement failed briefly cannot be timed from the video. Through about 1000 s our score and waiting pins are close to the real ones (score 272 against 277 at 760 s; pins 12 against about 15).
+2. **Carpark lane conflicts.** Inside carparks, shared exits and conflicts are decided from lane geometry. The original uses each carpark lane's connection directions (`CarparkModel`), so the result can differ where carpark lanes meet.
+3. **Simulation step.** The original steps at 0.1 s and ours at 0.05 s. Measured without a replay difference; kept because the host's `step` command counts ticks (see experiments).
+4. **Traffic-light removal.** The original removes a light when an erased link is released and leaves fewer than three roads. Ported and measured but not adopted, because the replay then removes a light that the real game kept (see experiments).
+5. **Smaller items.**
+   - Crossing diagonals next to a roundabout.
+   - A corner turn where the two tiles are also linked directly (the direct link is used).
+   - The hot-swap obstacle in the traffic-light blocked-car tests.
+   - The traversing-collision part of inbound eligibility when ordering light candidates.
+   - The drag-time preference for a new motorway's anchor ramp.
+   - Strokes drawn by greedy eight-direction stepping.
+
+Modelled since f22: crossing diagonals (f23); gridlock cycles from stuck vehicles with pushing, roundabout activation, and car rules at train crossings (f24); the original re-plan, junction exit space and registration stamps (f25); traffic-light details and the weekly offer draw (f26); fixes from an independent review (f27).
