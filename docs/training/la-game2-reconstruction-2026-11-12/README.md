@@ -65,6 +65,22 @@ f31 and f34 deliver at the same rate up to 1000 s, about 10% below the real game
 
 All four deliver within 2 to 4% of the real game up to 1100 s. They differ mainly in when the game ends, and every one ends 80 to 125 s too early on the same lot as the real game (magenta 27,18). The order matches the first recording: the earlier exit-space formula, then f31, then f34. Both recordings therefore point to the same gap: lots overflow earlier than in the original while deliveries keep pace. That suggests looking at the late game (failure timing, late demand, service of the failing lot) rather than general traffic flow.
 
+## Late game: where the early game over comes from (f34, best phase set)
+
+**Real pins waiting per lot**, read from the boards every 20 video seconds. The magenta lot at 27,18 shows 1 to 4 pins between game 957 and 1015 s, 8 at 1075 s, and starts its timer at about 1095 s, failing at about 1162 s. The other magenta lots and both yellow lots start their timers only in the last 60 s.
+
+**Simulator.** The magenta lot at 27,18 holds 8 to 10 pins from 940 s, starts its timer at about 997 s and fails at about 1050 s. The other magenta lots also fill up early: 10,9 holds 8 pins with its timer running at 1020 s, where the video shows 1 to 4. The yellow lots stay close to the video.
+
+**Totals agree, delivery lags.** At about game 980 s, the simulator has created about 482 pins (delivered 441 plus waiting 41), and the real game about 483 (delivered about 459 plus about 24 waiting on lots). Demand totals therefore match. The simulator delivers about 4% less, and the backlog sits mostly on magenta: 18 pins waiting against about 5 in the video.
+
+**Magenta cars.** At 940 to 1000 s the simulator has 20 to 22 of its 24 magenta cars on the move and none idle at home. The video shows 13 to 16 magenta cars on roads and lots, with several magenta houses holding a car at home. The simulator's magenta trips take 42 s out and 42 s back on average (850 to 1050 s, [g2-trips.txt](measurements/g2-trips.txt)).
+
+**Where simulator cars wait** (whole game, wait-location log):
+- braking towards the target at lot entrances ("Destination ahead", the target-braking rule of decision 123);
+- exit-space queues at the river bridge at 22,14 and the junctions east of it, 23 to 25 by 13 to 17.
+
+**Limit.** The total score curve does not separate colours, so the per-colour timing of demand is not identified by the phase fit. Most good fits give magenta a burst in this period. In one basin of nearly equal fit, the magenta phase is about 10 and the blue lot fails first instead ([18 representative sets](measurements/phases-g2-div.txt)). With f34, the first lot to fail is magenta in 15 of the 18 sets and blue in the other 3. So the magenta under-service is likely, but partly a consequence of the fitted demand timing.
+
 ## Open (after draft 3)
 
 1. The road network has about 15% more tiles than the real one, and the replay still runs with unlimited stock.
