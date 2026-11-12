@@ -10,15 +10,15 @@ oracle are allowed; decompiled code and assemblies stay outside Git (decision 07
 
 ## Current state (12 November 2026, simulator `2026-11-10.f28`)
 
-- **Benchmark:** replay v21d (event times read from the game's clock dial) on 60 demand-phase sets refitted to the dial-timed real score curve.
+- **Benchmark:** replay v21d (event times read from the game's clock dial) on 60 demand-phase sets refitted to the real score curve, re-read at exact frame times (decision 118).
 - **Scores:**
   - f24: 805.5, 22/60 runs reach the end.
   - f25, after the original's junction exit-space formula: 783.4.
   - f26: 773.5; the median run is unchanged, and one run collapses.
   - f27 (review fixes, decision 116): 771.9.
-  - f28 (carpark connection nodes, decision 117): 780.1, 12/60 reach the end.
+  - f28 (carpark connection nodes, decision 117): 780.1, 12/60 reach the end; 778.3 on the corrected-curve phase sets (decision 118).
   - The original scored 835 and ended at about 1314.6 s.
-- **Where it differs:** up to about 1000 s our runs follow the real curve within 5–13 trips. The gap opens in the late game, when our congestion ends the game earlier.
+- **Where it differs:** up to about 360 s our score is within 3 trips of the real curve, and from 430 to 1000 s 5 to 17 trips behind. The gap opens in the late game, when the far red lot overflows earlier than in the original.
 - **Rules ported overnight from the decompiled code:**
   - crossing diagonals (f23);
   - gridlock cycles, roundabout activation and level crossings (f24);
@@ -201,6 +201,12 @@ The traffic lights and the weekly upgrade offers were checked against the decomp
 ### Free-play soak test on all five maps: f22 against f27 (12 November 2026)
 
 Tonight's ported rules lower the replay score, so they were also checked away from it. On each map, with two seeds, the reference road builder ran for 1500 game seconds. It rebuilt every 10 s with stock topped up and the failure timer extended. f27 delivered 10,561 trips against f22's 9,486 (+11%). The longest car wait fell from 352 s to 45 s; f22 had a lasting gridlock on Beijing seed 41. In 8 of 10 runs f27 had no car stuck for more than 30 s ([data](measurements/soak-f22-f24-f27.txt)). The same test on f24 gives 10,362 trips, so the f25 to f27 changes, including the exit-space formula, also add about 2% in free play. So the original's gridlock-breaking and junction rules make the network flow better in free play, while the replay's late game ends earlier. The replay difference therefore comes from how its particular late-game layout loads the network, not from extra gridlock.
+
+### The real score curve re-read (12 November 2026)
+
+The original real score curve (10 November) was read from frames that turn out to be about 5 video seconds late. Re-read at exact frame times, the HUD shows for example 53 at video 180 s (old curve 55), 277 at 450 s (285) and 691 at 850 s (705) ([new curve on the dial clock](measurements/score_timeline_dial.csv)). Refitted to it, the 60 demand-phase sets fit much better: error 2.27 to 2.3 trips instead of 3.58. The fitted delivery lag becomes a physical 11 to 12 s ([fits](measurements/phase-fits-v21e-60.txt)). The benchmark is now v21d on these sets ([plausible-phases-v21e-60.txt](measurements/plausible-phases-v21e-60.txt)).
+
+f28 on them: 778.3 (705 to 827), 6/60 reach the end ([data](measurements/bench-f28-replay-v21d-p21e.txt)). With the best set, our curve is within 3 trips of the real one up to about 360 s and 5 to 17 trips behind from 430 to 1000 s. The real first delivery (car leaving at about video 18 s, parked by video 24 s) agrees with ours (game 15.5 s). Much of the mid-game "deficit" reported earlier came from the shifted real curve.
 
 ## Experiments not adopted
 

@@ -1576,3 +1576,12 @@ Arbitration in these chunks uses `IntersectsOtherConnection` (shared exits by ou
 
 **Measured.** Replay v21d, 60 refitted sets: 780.1 (685 to 823), 12/60 reach the end, against f27's 771.9 with 8/60. Paired +8.2 +/- 6.4, median +7.5 ([data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f28-replay-v21d.txt)). 99 suites, five-map checks and training readiness pass.
 
+
+## 118 - The real score curve re-read from frames at exact times (12 November 2026, `fidelity-aya`)
+
+**Evidence.** The real score curve used since 10 November (`score_by_video.py`, read every 10 video seconds) was compared with frames extracted at exact times. Its values match the frames about 5 video seconds later at every point. Examples: at video 180 s the HUD shows 53 (curve 55), at 450 s 277 (285), at 850 s 691 (705). The two agree only where the game was paused. The frame sampler behind the original reading evidently ran several seconds late. The real curve therefore led the game by about 10 game seconds of deliveries. That explains why the fitted delivery lag (about 6 s) was shorter than any physical trip.
+
+**Engineering choice** (benchmark data). The score was re-read at exact frame times every 10 s (87 points) and mapped to game time with the dial (decision 110). The game-over screen confirms the final 835, with the failing lot being red 30,18. The 60 demand-phase sets were refitted to this curve. Every fit improves (error 2.27 to 2.3 trips, was 3.58), and the lag becomes 11 to 12.4 s, a physical trip time. The benchmark is v21d on these sets (`plausible-phases-v21e-60.txt`).
+
+**Measured.** f28 on the new sets: 778.3 (705 to 827), 6/60 reach the end ([data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f28-replay-v21d-p21e.txt)). With the best set, our score is within 3 trips of the real curve up to about 360 s and 5 to 17 behind from 430 to 1000 s. Before the correction it was 7 behind by 317 s and 10 to 13 behind in mid-game. The late game still ends earlier than the original's 1314.6 s.
+
