@@ -209,3 +209,10 @@ def test_reset_refuses_other_scenarios_before_sending(scenario):
         assert h.reset(1000, "LosAngeles")["observation"]["version"] == "OriginalReference"
     finally:
         h.close()
+
+
+def test_the_default_reply_timeout_is_two_minutes():  # gp-6: hosts stall on battery
+    import inspect
+    from evolved_rules.host import REPLY_TIMEOUT_S
+    assert REPLY_TIMEOUT_S == 120.0
+    assert inspect.signature(Host.__init__).parameters["timeout"].default == REPLY_TIMEOUT_S

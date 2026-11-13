@@ -17,6 +17,9 @@ ROOT = Path(__file__).resolve().parents[1]
 STDERR_LINES = 20
 REPLY_POLL_S = 1.0  # longest single wait for a reply, so a suspend is seen within a second of waking
 REPLY_SUSPEND_MARGIN_S = 10.0  # a reply wait this much longer than it asked for is a suspend, not a slow host
+# gp-6: on battery the hosts can stall for over 30 s in one step; 120 s keeps a slow game going instead of
+# failing it. Only how long we wait changes, never what the game does.
+REPLY_TIMEOUT_S = 120.0
 
 # The five city maps, spelled exactly as CityCatalog.Maps names them (simulation/Assets/Simulation/CityCatalog.cs).
 # The host would also take lab scenarios (ReferenceLab, EmptyLab), any letter case and numbers, but the agent may
@@ -69,7 +72,7 @@ def simulator_version(dll: Path | None = None, timeout: float = VERSION_TIMEOUT_
 
 
 class Host:
-    def __init__(self, dll: Path | None = None, timeout: float = 30.0):
+    def __init__(self, dll: Path | None = None, timeout: float = REPLY_TIMEOUT_S):
         self._start(["dotnet", str(dll or default_host_dll())], timeout)
 
     def _start(self, argv: list[str], timeout: float) -> None:
