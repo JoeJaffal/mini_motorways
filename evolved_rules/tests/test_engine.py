@@ -622,7 +622,7 @@ def test_the_wait_never_blocks_past_the_poll_interval(fake, monkeypatch):
 
     monkeypatch.setattr(en, "wait", wait)
     monkeypatch.setattr(en, "POLL_S", 0.05)
-    e = Engine(1, 60.0, None)  # the default 900 s deadline: the wait is capped by the poll interval
+    e = Engine(1, 60.0, None)  # the default 3600 s deadline: the wait is capped by the poll interval
     try:
         e.play([(HAND_TEXT, 1)])
     finally:

@@ -14,7 +14,7 @@ freshly played one are equal and independent.
 Workers. Each worker slot is a spawn-context ProcessPoolExecutor with exactly one process, set up by
 evaluate.py's worker initializer (the parent watchdog: a worker exits when the parent dies) and keeping one
 long-lived Host (evaluate._worker_host) across games. The engine hands a slot one game at a time, so every
-game starts as soon as it is submitted and its wall-clock deadline (timeout_s, default 900 s) is exact. One
+game starts as soon as it is submitted and its wall-clock deadline (timeout_s, default 3600 s) is exact. One
 process per executor is what makes a fault local: a timed-out worker is killed with its host (taskkill /T on
 Windows) and a crashed one (BrokenProcessPool) is attributed to the one game it was playing; either way only
 that slot is replaced. A shared pool can do neither: it cannot kill one worker, and a crash breaks every
@@ -62,7 +62,7 @@ from .verify import build_verifier, verify_recording
 # Bump whenever agent behaviour changes (agent, candidates, executor, features, gp, session, state, the
 # simulator): it is part of every cache key, so results from older code are never reused.
 CODE_VERSION = "gp6-v1"  # gp-6: planner follows simulator f34 (road stock per paid link, bridge per crossing, water degree <= 2)
-DEFAULT_TIMEOUT_S = 900.0  # seconds of awake wall clock per game (a suspend does not count)
+DEFAULT_TIMEOUT_S = 3600.0  # seconds of awake wall clock per game (a suspend does not count); gp-6: was 900, a game on battery can take over 15 min
 KILL_TIMEOUT_S = 30.0
 POLL_S = 5.0  # the parent's longest single wait, so a suspend is seen within one poll of waking
 MP_CONTEXT = ev.MP_CONTEXT  # spawn, as evaluate.py
