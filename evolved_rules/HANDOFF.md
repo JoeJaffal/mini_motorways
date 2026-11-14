@@ -154,6 +154,13 @@ If no elevated shell is available, drop `$t2` and say so.
 
 **When runs end,** remove their entries from runs7.json. At the end, run `Unregister-ScheduledTask gp7-watchdog -Confirm:$false`, plus the queue task if you made one.
 
+**macOS (the machine actually used; added 2026-11-14).** `evolved_rules/ops/watchdog7_mac.py` replaces `watchdog7.ps1` and the separate queue task:
+- **Same run list** (`output/evolved_rules/ops/runs7.json`, same evolve7 fields, `RepoDir` absolute) plus a `"Kind": "queue"` entry for restartable shell scripts such as the L pre-play queue (`Script`, `DoneFile`), so one agent supervises both. Optional `"Env"` per entry. Same rules: alive → leave; status converged/budget/stopped (or DoneFile present) → done; else start (ResumeArgs once checkpoint.pkl exists); hold after 8 starts in 2 h.
+- **Detached and awake.** Each job starts in its own session (`start_new_session`) under `caffeinate -ims`, with `PYTHONHASHSEED=0`, `DOTNET_ROOT=~/.dotnet` first on PATH and `EVOLVED_RULES_HOST_DLL` removed unless the entry's Env sets it. On macOS `caffeinate <cmd>` runs the command under the original pid and forks a helper that holds the assertion, so the recorded pid (`<ops>/<Name>.pid`) is the job itself.
+- **Scheduler.** A user LaunchAgent `com.minimotorways.gp7-watchdog` (every 600 s and at load; `AbandonProcessGroup` so a pass never kills its jobs): `.venv/bin/python evolved_rules/ops/watchdog7_mac.py --install` (or `--status`, `--uninstall`). No admin needed. A LaunchAgent runs only while the user is logged in; after a reboot nothing restarts until login (as on Windows).
+- **At the end:** `.venv/bin/python evolved_rules/ops/watchdog7_mac.py --uninstall`.
+- Tests: `evolved_rules/tests/test_watchdog7_mac.py` (macOS only).
+
 ## 6. Budget table (fill in at setup, then commit)
 
 | Item | Value |
@@ -191,7 +198,7 @@ If no elevated shell is available, drop `$t2` and say so.
   Consequences still to handle: the PowerShell/Task Scheduler/WMI parts of §4–§5 (queue launch, `watchdog7.ps1`) need macOS equivalents before any detached run. D1 compares an arm64 Mac with the old x64 Windows machine, so it may fail; per §4 that is recorded and cross-machine numbers are then never compared.
 - [ ] Worker sweep, R0; D1 (pass/fail: ____); D2 pass; budget table committed
 - [ ] L pre-play queue started; alive or finished? (check at every milestone and after any reboot)
-- [ ] Watchdog registered and tested
+- [x] Watchdog registered and tested (2026-11-14, macOS: `watchdog7_mac.py` LaunchAgent installed; 11 unit tests pass; end-to-end under launchd: a queue job started from `../mm-gp6-final` with `PYTHONHASHSEED=0` and `~/.dotnet/dotnet`, finished, and was not restarted on the next pass; runs7.json then reset to `[]`)
 - [ ] C4-min + decision logging; identity tests (1), (3), edge-cost unit, text round trip: pass
 - [ ] x0 calibration (pair-open ____%, evo-built ____%)
 - [ ] Screen done (n_s ____); x0\* = ____; scales and θ frozen
