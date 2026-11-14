@@ -614,3 +614,63 @@ python -m evolved_rules.tune_cmaes --run cma-6 --workers 4 --x0 cma1 --max-hours
 - Log: `analysis/gp6/watchdog.log`; run logs `analysis/gp-6.{log,err}` and `analysis/cma-6.{log,err}`.
 
 Launched 2026-11-12 at 23:06.
+
+**Outcome: budget, not converged.** On 2026-11-13 at 21:47 the user cut both runs to 15 generations. Both were restarted with `--resume --max-gens 15`. gp-6 ended at 02:36 on 2026-11-14 and cma-6 at 06:35, both with status `budget`.
+- **Why the cut.** Per-map scores are very noisy: the paired SD between unrelated rules on one map is about 370 trips, so a 50-map validation mean is only good to about ±50. At α 0.005 a challenger needs a gain of about 135 trips to count. No challenger came close, so the 30 + 20 stop rule could only have ended both runs at generation 30, with nothing more learned.
+- **Neither run counted an improvement.** gp-6's best stayed its generation-0 rule. cma-6's best rose from 992.4 to 1037.0, but neither rise passed the paired test.
+
+**gp-6.** Best = the incumbent's validation mean (1500–1549, n = 50). Average = all 32 rule sets on that generation's 8 round-1 maps. Hours = wall time of the generation; generations 7 and 11 count only the part after a restart.
+
+| Gen | Best (validation) | Average, all 32 (8 round-1 maps) | New rules validated | Hours |
+|---|---|---|---|---|
+| 0 | 1027.7 | 491.4 | `1d6a7017` 1027.7, `397c280c` 848.6 | 1.13 |
+| 1 | 1027.7 | 623.0 | – | 0.98 |
+| 2 | 1027.7 | 666.5 | – | 1.08 |
+| 3 | 1027.7 | 851.5 | – | 1.35 |
+| 4 | 1027.7 | 772.0 | – | 1.11 |
+| 5 | 1027.7 | 823.4 | `5c561e75` 933.9, `1755afcc` 995.9 | 3.72 |
+| 6 | 1027.7 | 664.9 | `7fa4b2ec` 1019.5 | 1.66 |
+| 7 | 1027.7 | 838.3 | – | 0.11 |
+| 8 | 1027.7 | 764.0 | – | 1.26 |
+| 9 | 1027.7 | 813.6 | `94e270cf` 1016.6 | 2.42 |
+| 10 | 1027.7 | 792.8 | – | 2.33 |
+| 11 | 1027.7 | 762.6 | – | 0.51 |
+| 12 | 1027.7 | 788.9 | – | 1.25 |
+| 13 | 1027.7 | 810.8 | – | 1.36 |
+| 14 | 1027.7 | 841.7 | `9aeafc1f` 999.5 | 1.69 |
+
+**cma-6.** Best = the incumbent's validation mean (1500–1549, n = 50). Average = all 16 weight sets on that generation's 8 maps.
+
+| Gen | Best (validation) | Average, all 16 (8 maps) | Validated (the generation's best sample) | Hours |
+|---|---|---|---|---|
+| 0 | 992.4 | 906.0 | `620329e4` 992.4 | 1.49 |
+| 1 | 992.4 | 900.1 | `5fb4c417` 956.3 | 1.79 |
+| 2 | 992.4 | 977.5 | `fe3dc026` 986.6 | 1.80 |
+| 3 | 1010.2 | 958.8 | `9b66d6f2` 1010.2 | 1.75 |
+| 4 | 1010.2 | 1054.5 | `6bb7b206` 979.6 | 1.41 |
+| 5 | 1037.0 | 841.0 | `3d999a2c` 1037.0 | 1.77 |
+| 6 | 1037.0 | 989.5 | `de8a5821` 918.5 | 0.65 |
+| 7 | 1037.0 | 983.4 | `b0ca0624` 970.6 | 1.91 |
+| 8 | 1037.0 | 973.2 | `cf9d8bf2` 975.7 | 2.01 |
+| 9 | 1037.0 | 963.1 | `5e563f5b` 1032.0 | 2.44 |
+| 10 | 1037.0 | 910.9 | `d3cea828` 981.9 | 2.10 |
+| 11 | 1037.0 | 1030.6 | `2e43fb71` 1032.6 | 2.22 |
+| 12 | 1037.0 | 957.7 | `e1038cb6` 966.8 | 1.43 |
+| 13 | 1037.0 | 1048.3 | `d79fd706` 1008.7 | 1.45 |
+| 14 | 1037.0 | 1105.3 | `0f52f930` 989.9 | 1.59 |
+
+**What to keep in mind when reading these:**
+- **gp-6's incumbent is the cma-1 seed.** `1d6a7017` is cma-1's weights with "remove: −1.0" and "place: −1.0" added, and it led all 15 generations.
+- **The seed could not evolve.** Its priority tree has height 7, above `MAX_DEPTH` 6 (gp.py:205), so any mutation of that tree reverts to the parent (gp.py:480-482).
+- **The two runs did not play equal amounts.** gp-6 played 4,644 games (plus 1,050 cache hits) against cma-6's 2,503.
+- **Clean routes differ between the 3-tree and 5-tree forms of cma-1.** Clean routes are on for 4- and 5-tree texts and off for 3-tree texts (gp.py:442). So gp-6's incumbent (5-tree) played with clean routes on, while cma-6 (3-tree) played with them off.
+- **cma-6's 1037.0 is the best of 15 noisy validation means.** Those 15 average 989.2 (SD 31.7), so the true level of its best is probably closer to 1000 than to 1037.
+- **The training and validation scores of gp-6's top rules disagree.** Its hall-of-fame members led the reference by +60 to +78 per map on 45–75 shared training maps, but trailed it by 8 to 94 on validation. That is consistent with the noise above plus the winner's curse.
+
+**Operations (2026-11-13):**
+- A Modern Standby (06:13–08:13) paused both runs.
+- The charger dropped out about 11 times. On battery, hosts missed the 30 s reply limit, and one game took over 900 s. The watchdog made 13 restarts, and no finished game was lost.
+- Two fixes followed. `430ea40` sets the host reply timeout to 120 s and `693bc7b` sets the per-game awake deadline to 3600 s. Both change only how long the engine waits, not what a game does.
+- The watchdog's restart cap was raised to 8 in 2 hours. The task was unregistered after both runs ended.
+
+**Close-out (in progress, 2026-11-14):** 7 policies on LA 5100–5299 (200 maps never played), gp6-v1 code, 1,400 games. The policies are cma-1 5-tree (`1d6a7017`), cma-1 3-tree (`fa7648c7`), cma-6's final distribution mean (`39954974`), cma-6's incumbent (`3d999a2c`), gp-6's `7fa4b2ec`, separated and hand. Runner: `output/evolved_rules/analysis/gp6-closeout/run.py`; runs `c6-*`.
