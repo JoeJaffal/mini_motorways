@@ -15,6 +15,7 @@ You are an agent picking up the gp-7 / cma-7 work on a fresh machine. The old ma
 2. **Pushing.**
    - Never push unless the user asks. The user publishes this work on branch `dynamic-gp` on **both** `origin` (aya007kh) and `upstream` (JoeJaffal). When asked to push, push `dynamic-gp` to both, fast-forward only, never force.
    - Ask once, early, whether you may push at milestones.
+   - Answer (user, 2026-11-14): push at every HANDOFF §7 milestone **and at every gate** (identity gates, fork gate, cut-lines, trend guard, validation and test), pass or fail, once its record is committed.
    - Never touch `main`.
 3. **Averages.** Every evolution recap and every EXPERIMENTS.md table shows the **population average next to the best (or mean)**, both labelled.
 4. **Seed blocks.**
@@ -31,6 +32,7 @@ You are an agent picking up the gp-7 / cma-7 work on a fresh machine. The old ma
 9. **Honesty.** Say plainly when something failed or was skipped. Runs end with status `budget`.
 10. **Detached runs.** Launch long runs detached (§5). An agent session can die; the runs must not die with it.
 11. **Seed counters.** Keep every seed counter below 49999 (user, 2026-11-14). The gp-7 race-probe counter runs 10000-49999 (`evolve7.PROBE_LAST`); an epoch that would pass it skips its race.
+12. **Seed conflicts.** The user's other session StrokeQ (another model) reports seed conflicts. It was sent this project's seed blocks on 2026-11-14. Tell it about any new block. Check what it reports against plan §7 and tell the user before changing a run.
 
 ## 2. State of the world at handoff
 
