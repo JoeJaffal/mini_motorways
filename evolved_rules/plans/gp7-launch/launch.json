@@ -1,0 +1,126 @@
+{
+ "x0_star": {
+  "route_point": "fast",
+  "rate_factor": 1.0,
+  "lights": false,
+  "eligible_route_points": [
+   "fast",
+   "bypass"
+  ],
+  "bug_gate": {
+   "fast": " rejected draws"
+  }
+ },
+ "rate_note": "as screened",
+ "weights": {
+  "w_reuse": 1.0,
+  "w_stop": 0.2,
+  "b_t": -0.5667,
+  "w_con": 0.0,
+  "w_det": 0.2,
+  "w_over": 0.2,
+  "n_t": 1.2,
+  "is_evo": 1.0,
+  "w_jl": 1.0
+ },
+ "lights": false,
+ "theta": 0.0,
+ "x0_hash": "7bf3469481eb3fb9",
+ "space_hash": "fc79267c218669ba",
+ "L_hash": "fa7648c7352d9db2",
+ "bug_check": "Rejected draws in the screen: a house spawning on a route while it is being drawn (shared executor, not C4-min); no fix, launch.\n\n# gp-7 screen: bug check (plan section 5 bug gate)\n\n**Trigger.** Point Fast had 1 rejected draw in its first 100 screen games (seed 3332, 1 of 1651 commands).\nEvery other point had 0, and so did L in its 400 pre-played games (screen 3300-3599, test 6100-6199). No point was\nbelow -3 SE. Started 2026-11-14 20:25, done 21:05 (about 40 min of the 2 h box).\n\n**Reproduction.** Replayed seed 3332 with Fast's policy text from the frozen screen worktree (4453544, gp7-v1), with\nthe same DLL (f34). Identical game: 1394 trips, 1 rejected action.\n\n**Cause.**\n- At t = 522 a pair route (kind evo) was planned through (24,14) -> (25,13) -> (24,13) -> (23,14) -> ... -> (19,14).\n  At planning time (23,14) was empty.\n- The route is drawn one segment per command, and each command steps 20 ticks. At t = 524, between two segments,\n  the game spawned a house on (23,14).\n- The next segment (24,13) -> (23,14) ran into the new house (\"House driveway moved\").\n- The segment after that, (23,14) -> (19,14), now started at a house. The simulator's DrawRoad tried to turn that\n  house's driveway and refused (\"Driveway needs a clear neighboring tile\",\n  TrafficWorld.cs SetHouseDriveway).\n- The route's later segments, and the next decision at t = 527-530, connected the same cells with no rejection.\n\n**Assessment.**\n- This is a race between planning and house spawns inside the multi-command executor (`execute_route`). L and\n  every earlier policy share that executor, so it is not a C4-min or EvoCost defect.\n- The planner's search never enters building cells (`_enterable`), so it can't plan through a house that exists.\n- Cost: one refused command (one wasted 20-tick step) and no road tiles. The game state stays valid, and the game\n  is deterministic and fully scored.\n- New routes make the race slightly more likely because they draw more segments per decision. The observed rate\n  (1 in 1,500 screen games) is negligible.\n\n**Decision.**\n- No code change. A fix (re-checking each segment against the live state) would change the executor for L as well.\n  It would also invalidate the screen and the identity gates two days before T_freeze.\n- The finding is recorded. cma-7 launches on gp7-v1 as screened.\n- Any further rejected draws in the rest of the screen are listed below and checked the same way. Any other cause\n  stops the launch.\n\n**Remaining screen chunks (3400-3599):** no further rejected draws: 0 in all 1,000 games of chunks 3400 and 3500 (5 points x 200 maps). Over the full screen: 1 rejected draw in 1,500 games (Fast, seed 3332).\n",
+ "max_abs_x0": 4.5,
+ "decisions_for_scales": 233029,
+ "screen": {
+  "gentle": {
+   "n": 300,
+   "diff_mean": 102.35,
+   "diff_se": 22.037564021056472,
+   "z": 4.644342718741805,
+   "point_mean": 1089.9133333333334,
+   "L_mean": 987.5633333333334,
+   "rejected_actions": 0,
+   "rates": {
+    "decisions": 47314,
+    "games": 300,
+    "pair_open": 0.0563892294035592,
+    "evo_built": 0.02821575009510927,
+    "evo_first": 0.016422200617153486,
+    "route_decisions": 0.2540896986092911
+   },
+   "meets_rate_minimums": false
+  },
+  "fast": {
+   "n": 300,
+   "diff_mean": 135.07333333333332,
+   "diff_se": 23.440782950106627,
+   "z": 5.762321745857849,
+   "point_mean": 1122.6366666666668,
+   "L_mean": 987.5633333333334,
+   "rejected_actions": 1,
+   "rates": {
+    "decisions": 47587,
+    "games": 300,
+    "pair_open": 0.05234622901212516,
+    "evo_built": 0.07149011284594532,
+    "evo_first": 0.04904700863681258,
+    "route_decisions": 0.2562254397209322
+   },
+   "meets_rate_minimums": true
+  },
+  "bypass": {
+   "n": 300,
+   "diff_mean": -31.07,
+   "diff_se": 30.71111657842919,
+   "z": -1.0116857822689156,
+   "point_mean": 956.4933333333333,
+   "L_mean": 987.5633333333334,
+   "rejected_actions": 0,
+   "rates": {
+    "decisions": 41159,
+    "games": 300,
+    "pair_open": 0.8894773925508395,
+    "evo_built": 0.10930780631210671,
+    "evo_first": 0.0699482494715615,
+    "route_decisions": 0.24599723025340753
+   },
+   "meets_rate_minimums": true
+  },
+  "jam_avoid": {
+   "n": 300,
+   "diff_mean": 103.5,
+   "diff_se": 22.242263695819748,
+   "z": 4.653303342476422,
+   "point_mean": 1091.0633333333333,
+   "L_mean": 987.5633333333334,
+   "rejected_actions": 0,
+   "rates": {
+    "decisions": 47341,
+    "games": 300,
+    "pair_open": 0.05682178238735979,
+    "evo_built": 0.028453137872034812,
+    "evo_first": 0.01666631461101371,
+    "route_decisions": 0.253522316807841
+   },
+   "meets_rate_minimums": false
+  },
+  "lights": {
+   "n": 300,
+   "diff_mean": -9.22,
+   "diff_se": 14.290762848325066,
+   "z": -0.6451719966146259,
+   "point_mean": 978.3433333333334,
+   "L_mean": 987.5633333333334,
+   "rejected_actions": 0,
+   "rates": {
+    "decisions": 45785,
+    "games": 300,
+    "pair_open": 0.0,
+    "evo_built": 0.0,
+    "evo_first": 0.0,
+    "route_decisions": 0.24649994539696407
+   },
+   "meets_rate_minimums": false
+  }
+ }
+}
