@@ -1,0 +1,5 @@
+priority: add(sub(neg(shop_demand), add(sub(path_cost_s, shop_demand), sub(path_cost_s, bridge_stock))), mul(15.625, is_separated))
+hold: sub(worst_margin, shops)
+upgrade: add(neg(mul(type_3, shops)), offer_roads)
+remove: -1.0
+place: if_gt(pl_is_light, 0.5, pl_stopped_near, -1.0)

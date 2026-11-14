@@ -673,4 +673,22 @@ Launched 2026-11-12 at 23:06.
 - Two fixes followed. `430ea40` sets the host reply timeout to 120 s and `693bc7b` sets the per-game awake deadline to 3600 s. Both change only how long the engine waits, not what a game does.
 - The watchdog's restart cap was raised to 8 in 2 hours. The task was unregistered after both runs ended.
 
-**Close-out (in progress, 2026-11-14):** 7 policies on LA 5100–5299 (200 maps never played), gp6-v1 code, 1,400 games. The policies are cma-1 5-tree (`1d6a7017`), cma-1 3-tree (`fa7648c7`), cma-6's final distribution mean (`39954974`), cma-6's incumbent (`3d999a2c`), gp-6's `7fa4b2ec`, separated and hand. Runner: `output/evolved_rules/analysis/gp6-closeout/run.py`; runs `c6-*`.
+**Close-out (2026-11-14):** 7 policies on LA 5100–5299 (200 maps never played), gp6-v1 code, 1,400 games, 12 workers. Runner: `output/evolved_rules/analysis/gp6-closeout/run.py`. Games and summaries are committed under `evolved_rules/closeout/gp6/`, and `analyze.py` there reproduces the table.
+
+| Arm | Rule | Games | Mean trips | Median | SD | Mean s/game | vs cma-1 3-tree |
+|---|---|---|---|---|---|---|---|
+| cma-1 3-tree | `fa7648c7` | 200 | 1021.2 | 1015.5 | 285.6 | 1431 | - |
+| cma-1 5-tree (gp-6 incumbent) | `1d6a7017` | 200 | 1021.2 | 1015.5 | 285.6 | 1431 | +0.0 (identical games) |
+| cma-6 final mean | `39954974` | 200 | 1013.0 | 996.0 | 264.4 | 1427 | -8.2 (paired SE 19.2, t -0.43) |
+| cma-6 best sample | `3d999a2c` | 200 | 996.0 | 988.5 | 273.5 | 1415 | -25.3 (paired SE 18.9, t -1.34) |
+| gp-6 tree | `7fa4b2ec` | 200 | 956.6 | 989.5 | 282.0 | 1384 | -64.7 (paired SE 27.6, t -2.34) |
+| separated (built-in) | - | 200 | 865.2 | 890.5 | 266.9 | 1326 | -156.1 (paired SE 25.8, t -6.04) |
+| hand (built-in) | - | 200 | 545.4 | 521.0 | 184.5 | 1095 | -475.8 (paired SE 24.6, t -19.36) |
+
+Average over the 5 learned arms: 1001.6 trips (best 1021.2).
+
+**What this says:**
+- **cma-1 is still the best rule.** The 3-tree and 5-tree forms play identical games here, so clean routes never changed a decision on these maps.
+- **Neither gp-6 nor cma-6 beat their seed.** cma-6's final mean (−8.2) and best sample (−25.3) are within noise of cma-1, but below it. cma-6's 1037.0 on validation was the winner's curse, as expected.
+- **gp-6's own best tree, `7fa4b2ec`, is clearly worse** (−64.7, t −2.34).
+- **Previous-version best (L) = cma-1 3-tree, 1021.2.** gp-7/cma-7 must beat this (plan `plans/2026-11-14-gp7-cma7-plan.md` §2).
