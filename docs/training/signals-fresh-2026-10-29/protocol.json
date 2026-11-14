@@ -1,0 +1,58 @@
+{
+  "created_utc": "2026-10-29T09:17:30.646727+00:00",
+  "selection": "Overnight development validation-best selected before fresh tests; initial same-run baseline. No latest/best-training selection.",
+  "selected_development": {
+    "mean_trips": 204.2,
+    "policy_steps": 77220,
+    "baseline": false,
+    "scores": [
+      125,
+      291,
+      154,
+      122,
+      329
+    ],
+    "checkpoint": "validation-best.zip"
+  },
+  "checkpoints": {
+    "initial": {
+      "path": "output\\training\\signals-night-01\\initial.zip",
+      "sha256": "a1f0f811a6ef135104214e359e99ce5c133b3c29fb159ec79b2060cfefd187a9"
+    },
+    "selected": {
+      "path": "output\\training\\signals-night-01\\validation-best.zip",
+      "sha256": "f10899a74f7cd9fbf28eec542db828cdcaa00cf7c94fa6903f62ab3b172d0bf0"
+    }
+  },
+  "seeds": [
+    4000,
+    4001,
+    4002,
+    4003,
+    4004,
+    4005,
+    4006,
+    4007,
+    4008,
+    4009
+  ],
+  "primary": "deterministic",
+  "secondary": "sampled, one trajectory per map; common RNG seed 43 + scenario offset",
+  "cap_seconds": 3600,
+  "city": "LosAngeles",
+  "version": "OriginalReference",
+  "workers_per_policy": 1,
+  "max_concurrent_jobs": 2,
+  "no_tuning_after_results": true,
+  "no_training": true,
+  "host_sha256": "6487d65da78532250fb9ad922dc1b777afb772fb26aebc6893dc0f45809660ac",
+  "git_commit": "1249e5649345756978a9075b423a4d047737119a",
+  "source_sha256": {
+    "evaluate_checkpoint.py": "d1d8f305d7dac7f1811c4f31ff9cbec84c053cd4345d08197f7827fd7777ad0c",
+    "goal_agent.py": "db834de5407ba2ca14641a17b50176e7f6a8f40cddfecb5272decc7e10acf0b3",
+    "signal_agent.py": "358c8983f832ea42a9db5f9ff5efb0615b46825a6185964cffda2e1c1ebcab5a",
+    "train_goal.py": "b03c0ed06a8f2bf5a498bb4f8d7b043953394d8186f2dc03e11a2b57fbb1c174",
+    "environment.py": "01da7fb3dc7b066e0238aed7ec5b0f6d31da8438d53c26d3fafe3b5d88700611",
+    "planner_diagnostic.py": "405c47dd2706f4b2da32ba43e0dbe5ce4f7d6a22a2688efa395bf7658290d756"
+  }
+}

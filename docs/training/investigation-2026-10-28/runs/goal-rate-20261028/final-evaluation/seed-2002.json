@@ -1,0 +1,4304 @@
+{
+  "schemaVersion": 1,
+  "version": "OriginalReference",
+  "scenario": "LosAngeles",
+  "seed": 2002,
+  "variation": "SameMap",
+  "score": 93,
+  "duration": 516.25,
+  "terminated": true,
+  "truncated": false,
+  "partial": false,
+  "actions": [
+    {
+      "command": "draw",
+      "x": 12,
+      "y": 12,
+      "toX": 15,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 1
+    },
+    {
+      "command": "draw",
+      "x": 15,
+      "y": 9,
+      "toX": 17,
+      "toY": 11,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 2
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 3
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 4
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 5
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 6
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 7
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 8
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 9
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 10
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 11
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 12
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 13
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 14
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 15
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 16
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 17
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 18
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 19
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 20
+    },
+    {
+      "command": "draw",
+      "x": 12,
+      "y": 13,
+      "toX": 12,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 21
+    },
+    {
+      "command": "draw",
+      "x": 12,
+      "y": 12,
+      "toX": 15,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 22
+    },
+    {
+      "command": "draw",
+      "x": 15,
+      "y": 9,
+      "toX": 17,
+      "toY": 11,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 23
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 24
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 25
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 26
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 0,
+      "afterTime": 27
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 28
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 29
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 30
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 31
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 32
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 33
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 34
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 35
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 36
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 37
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 38
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 39
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 40
+    },
+    {
+      "command": "draw",
+      "x": 19,
+      "y": 7,
+      "toX": 16,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 41
+    },
+    {
+      "command": "draw",
+      "x": 16,
+      "y": 10,
+      "toX": 17,
+      "toY": 11,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 42
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 1,
+      "afterTime": 43
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 44
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 45
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 46
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 47
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 48
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 49
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 50
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 51
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 52
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 53
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 54
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 55
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 56
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 57
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 58
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 59
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 60
+    },
+    {
+      "command": "draw",
+      "x": 12,
+      "y": 10,
+      "toX": 13,
+      "toY": 11,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 61
+    },
+    {
+      "command": "draw",
+      "x": 13,
+      "y": 11,
+      "toX": 15,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 62
+    },
+    {
+      "command": "draw",
+      "x": 15,
+      "y": 9,
+      "toX": 17,
+      "toY": 11,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 2,
+      "afterTime": 63
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 3,
+      "afterTime": 64
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 3,
+      "afterTime": 65
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 3,
+      "afterTime": 66
+    },
+    {
+      "command": "draw",
+      "x": 14,
+      "y": 10,
+      "toX": 13,
+      "toY": 11,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 3,
+      "afterTime": 67
+    },
+    {
+      "command": "draw",
+      "x": 13,
+      "y": 11,
+      "toX": 10,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 3,
+      "afterTime": 68
+    },
+    {
+      "command": "draw",
+      "x": 10,
+      "y": 8,
+      "toX": 9,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 69
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 70
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 71
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 72
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 73
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 74
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 75
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 76
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 77
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 78
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 79
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 80
+    },
+    {
+      "command": "draw",
+      "x": 14,
+      "y": 12,
+      "toX": 10,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 81
+    },
+    {
+      "command": "draw",
+      "x": 10,
+      "y": 8,
+      "toX": 9,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 82
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 83
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 84
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 4,
+      "afterTime": 85
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 5,
+      "afterTime": 86
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 5,
+      "afterTime": 87
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 5,
+      "afterTime": 88
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 5,
+      "afterTime": 89
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 5,
+      "afterTime": 90
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 5,
+      "afterTime": 91
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 5,
+      "afterTime": 92
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 5,
+      "afterTime": 93
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 5,
+      "afterTime": 94
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 5,
+      "afterTime": 95
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 5,
+      "afterTime": 96
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 5,
+      "afterTime": 97
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 5,
+      "afterTime": 98
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 5,
+      "afterTime": 99
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 5,
+      "afterTime": 100
+    },
+    {
+      "command": "draw",
+      "x": 13,
+      "y": 7,
+      "toX": 11,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 5,
+      "afterTime": 101
+    },
+    {
+      "command": "draw",
+      "x": 11,
+      "y": 9,
+      "toX": 10,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 5,
+      "afterTime": 102
+    },
+    {
+      "command": "draw",
+      "x": 10,
+      "y": 8,
+      "toX": 9,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 5,
+      "afterTime": 103
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 5,
+      "afterTime": 104
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 5,
+      "afterTime": 105
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 5,
+      "afterTime": 106
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 6,
+      "afterTime": 107
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 7,
+      "afterTime": 108
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 7,
+      "afterTime": 109
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 7,
+      "afterTime": 110
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 7,
+      "afterTime": 111
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 7,
+      "afterTime": 112
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 7,
+      "afterTime": 113
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 7,
+      "afterTime": 114
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 7,
+      "afterTime": 115
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 7,
+      "afterTime": 116
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 7,
+      "afterTime": 117
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 7,
+      "afterTime": 118
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 7,
+      "afterTime": 119
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 7,
+      "afterTime": 120
+    },
+    {
+      "command": "draw",
+      "x": 14,
+      "y": 8,
+      "toX": 13,
+      "toY": 7,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 7,
+      "afterTime": 121
+    },
+    {
+      "command": "draw",
+      "x": 13,
+      "y": 7,
+      "toX": 11,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 7,
+      "afterTime": 122
+    },
+    {
+      "command": "draw",
+      "x": 11,
+      "y": 9,
+      "toX": 10,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 7,
+      "afterTime": 123
+    },
+    {
+      "command": "draw",
+      "x": 10,
+      "y": 8,
+      "toX": 9,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 7,
+      "afterTime": 124
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 8,
+      "afterTime": 125
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 9,
+      "afterTime": 126
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 9,
+      "afterTime": 127
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 9,
+      "afterTime": 128
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 9,
+      "afterTime": 129
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 9,
+      "afterTime": 130
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 10,
+      "afterTime": 131
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 10,
+      "afterTime": 132
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 10,
+      "afterTime": 133
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 10,
+      "afterTime": 134
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 10,
+      "afterTime": 135
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 10,
+      "afterTime": 136
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 10,
+      "afterTime": 137
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 10,
+      "afterTime": 138
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 10,
+      "afterTime": 139
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 11,
+      "afterTime": 140
+    },
+    {
+      "command": "upgrade",
+      "choice": 1,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 11,
+      "afterTime": 141
+    },
+    {
+      "command": "draw",
+      "x": 15,
+      "y": 11,
+      "toX": 14,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 11,
+      "afterTime": 142
+    },
+    {
+      "command": "draw",
+      "x": 14,
+      "y": 10,
+      "toX": 13,
+      "toY": 11,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 11,
+      "afterTime": 143
+    },
+    {
+      "command": "draw",
+      "x": 13,
+      "y": 11,
+      "toX": 10,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 11,
+      "afterTime": 144
+    },
+    {
+      "command": "draw",
+      "x": 10,
+      "y": 8,
+      "toX": 9,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 11,
+      "afterTime": 145
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 11,
+      "afterTime": 146
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 11,
+      "afterTime": 147
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 11,
+      "afterTime": 148
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 11,
+      "afterTime": 149
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 11,
+      "afterTime": 150
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 11,
+      "afterTime": 151
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 12,
+      "afterTime": 152
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 12,
+      "afterTime": 153
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 12,
+      "afterTime": 154
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 155
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 156
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 157
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 158
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 159
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 160
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 161
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 162
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 163
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 12,
+      "toX": 23,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 164
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 10,
+      "toX": 21,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 165
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 8,
+      "toX": 20,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 166
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 8,
+      "toX": 19,
+      "toY": 7,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 167
+    },
+    {
+      "command": "draw",
+      "x": 19,
+      "y": 7,
+      "toX": 18,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 168
+    },
+    {
+      "command": "draw",
+      "x": 18,
+      "y": 8,
+      "toX": 18,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 169
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 170
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 171
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 172
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 173
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 174
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 175
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 176
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 177
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 13,
+      "afterTime": 178
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 14,
+      "afterTime": 179
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 14,
+      "afterTime": 180
+    },
+    {
+      "command": "draw",
+      "x": 12,
+      "y": 14,
+      "toX": 12,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 14,
+      "afterTime": 181
+    },
+    {
+      "command": "draw",
+      "x": 12,
+      "y": 12,
+      "toX": 15,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 14,
+      "afterTime": 182
+    },
+    {
+      "command": "draw",
+      "x": 15,
+      "y": 9,
+      "toX": 17,
+      "toY": 11,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 14,
+      "afterTime": 183
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 14,
+      "afterTime": 184
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 14,
+      "afterTime": 185
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 14,
+      "afterTime": 186
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 15,
+      "afterTime": 187
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 15,
+      "afterTime": 188
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 15,
+      "afterTime": 189
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 15,
+      "afterTime": 190
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 15,
+      "afterTime": 191
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 15,
+      "afterTime": 192
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 15,
+      "afterTime": 193
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 15,
+      "afterTime": 194
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 15,
+      "afterTime": 195
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 15,
+      "afterTime": 196
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 15,
+      "afterTime": 197
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 16,
+      "afterTime": 198
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 16,
+      "afterTime": 199
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 16,
+      "afterTime": 200
+    },
+    {
+      "command": "draw",
+      "x": 24,
+      "y": 10,
+      "toX": 23,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 17,
+      "afterTime": 201
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 10,
+      "toX": 21,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 17,
+      "afterTime": 202
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 8,
+      "toX": 20,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 17,
+      "afterTime": 203
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 8,
+      "toX": 19,
+      "toY": 7,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 17,
+      "afterTime": 204
+    },
+    {
+      "command": "draw",
+      "x": 19,
+      "y": 7,
+      "toX": 16,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 17,
+      "afterTime": 205
+    },
+    {
+      "command": "draw",
+      "x": 16,
+      "y": 10,
+      "toX": 17,
+      "toY": 11,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 17,
+      "afterTime": 206
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 18,
+      "afterTime": 207
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 18,
+      "afterTime": 208
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 18,
+      "afterTime": 209
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 18,
+      "afterTime": 210
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 18,
+      "afterTime": 211
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 19,
+      "afterTime": 212
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 19,
+      "afterTime": 213
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 19,
+      "afterTime": 214
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 14,
+      "toX": 20,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 20,
+      "afterTime": 215
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 13,
+      "toX": 21,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 20,
+      "afterTime": 216
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 12,
+      "toX": 23,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 20,
+      "afterTime": 217
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 12,
+      "toX": 23,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 20,
+      "afterTime": 218
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 10,
+      "toX": 21,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 20,
+      "afterTime": 219
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 8,
+      "toX": 20,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 20,
+      "afterTime": 220
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 8,
+      "toX": 19,
+      "toY": 7,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 21,
+      "afterTime": 221
+    },
+    {
+      "command": "draw",
+      "x": 19,
+      "y": 7,
+      "toX": 14,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 21,
+      "afterTime": 222
+    },
+    {
+      "command": "draw",
+      "x": 14,
+      "y": 12,
+      "toX": 15,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 21,
+      "afterTime": 223
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 21,
+      "afterTime": 224
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 22,
+      "afterTime": 225
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 22,
+      "afterTime": 226
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 22,
+      "afterTime": 227
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 22,
+      "afterTime": 228
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 22,
+      "afterTime": 229
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 22,
+      "afterTime": 230
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 22,
+      "afterTime": 231
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 23,
+      "afterTime": 232
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 23,
+      "afterTime": 233
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 23,
+      "afterTime": 234
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 23,
+      "afterTime": 235
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 23,
+      "afterTime": 236
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 23,
+      "afterTime": 237
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 23,
+      "afterTime": 238
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 23,
+      "afterTime": 239
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 24,
+      "afterTime": 240
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 24,
+      "afterTime": 241
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 24,
+      "afterTime": 242
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 24,
+      "afterTime": 243
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 25,
+      "afterTime": 244
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 25,
+      "afterTime": 245
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 25,
+      "afterTime": 246
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 26,
+      "afterTime": 247
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 26,
+      "afterTime": 248
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 26,
+      "afterTime": 249
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 26,
+      "afterTime": 250
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 27,
+      "afterTime": 251
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 28,
+      "afterTime": 252
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 28,
+      "afterTime": 253
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 28,
+      "afterTime": 254
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 28,
+      "afterTime": 255
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 28,
+      "afterTime": 256
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 28,
+      "afterTime": 257
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 28,
+      "afterTime": 258
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 28,
+      "afterTime": 259
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 29,
+      "afterTime": 260
+    },
+    {
+      "command": "draw",
+      "x": 19,
+      "y": 14,
+      "toX": 21,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 29,
+      "afterTime": 261
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 12,
+      "toX": 23,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 29,
+      "afterTime": 262
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 12,
+      "toX": 23,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 29,
+      "afterTime": 263
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 10,
+      "toX": 21,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 29,
+      "afterTime": 264
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 8,
+      "toX": 20,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 29,
+      "afterTime": 265
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 8,
+      "toX": 19,
+      "toY": 7,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 29,
+      "afterTime": 266
+    },
+    {
+      "command": "draw",
+      "x": 19,
+      "y": 7,
+      "toX": 14,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 29,
+      "afterTime": 267
+    },
+    {
+      "command": "draw",
+      "x": 14,
+      "y": 12,
+      "toX": 15,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 29,
+      "afterTime": 268
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 29,
+      "afterTime": 269
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 31,
+      "afterTime": 270
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 31,
+      "afterTime": 271
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 31,
+      "afterTime": 272
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 31,
+      "afterTime": 273
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 32,
+      "afterTime": 274
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 32,
+      "afterTime": 275
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 32,
+      "afterTime": 276
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 32,
+      "afterTime": 277
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 32,
+      "afterTime": 278
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 32,
+      "afterTime": 279
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 32,
+      "afterTime": 280
+    },
+    {
+      "command": "upgrade",
+      "choice": 1,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 32,
+      "afterTime": 281
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 15,
+      "toX": 20,
+      "toY": 14,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 32,
+      "afterTime": 282
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 14,
+      "toX": 20,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 32,
+      "afterTime": 283
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 13,
+      "toX": 21,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 32,
+      "afterTime": 284
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 12,
+      "toX": 23,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 32,
+      "afterTime": 285
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 12,
+      "toX": 23,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 33,
+      "afterTime": 286
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 10,
+      "toX": 21,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 33,
+      "afterTime": 287
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 8,
+      "toX": 20,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 34,
+      "afterTime": 288
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 8,
+      "toX": 19,
+      "toY": 7,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 34,
+      "afterTime": 289
+    },
+    {
+      "command": "draw",
+      "x": 19,
+      "y": 7,
+      "toX": 14,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 34,
+      "afterTime": 290
+    },
+    {
+      "command": "draw",
+      "x": 14,
+      "y": 12,
+      "toX": 15,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 34,
+      "afterTime": 291
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 34,
+      "afterTime": 292
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 35,
+      "afterTime": 293
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 35,
+      "afterTime": 294
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 35,
+      "afterTime": 295
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 35,
+      "afterTime": 296
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 35,
+      "afterTime": 297
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 35,
+      "afterTime": 298
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 35,
+      "afterTime": 299
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 37,
+      "afterTime": 300
+    },
+    {
+      "command": "draw",
+      "x": 13,
+      "y": 15,
+      "toX": 12,
+      "toY": 14,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 38,
+      "afterTime": 301
+    },
+    {
+      "command": "draw",
+      "x": 12,
+      "y": 14,
+      "toX": 12,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 38,
+      "afterTime": 302
+    },
+    {
+      "command": "draw",
+      "x": 12,
+      "y": 12,
+      "toX": 15,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 38,
+      "afterTime": 303
+    },
+    {
+      "command": "draw",
+      "x": 15,
+      "y": 9,
+      "toX": 17,
+      "toY": 11,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 38,
+      "afterTime": 304
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 38,
+      "afterTime": 305
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 38,
+      "afterTime": 306
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 38,
+      "afterTime": 307
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 40,
+      "afterTime": 308
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 40,
+      "afterTime": 309
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 40,
+      "afterTime": 310
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 40,
+      "afterTime": 311
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 40,
+      "afterTime": 312
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 40,
+      "afterTime": 313
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 40,
+      "afterTime": 314
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 40,
+      "afterTime": 315
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 40,
+      "afterTime": 316
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 40,
+      "afterTime": 317
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 41,
+      "afterTime": 318
+    },
+    {
+      "command": "draw",
+      "x": 15,
+      "y": 11,
+      "toX": 19,
+      "toY": 7,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 42,
+      "afterTime": 319
+    },
+    {
+      "command": "draw",
+      "x": 19,
+      "y": 7,
+      "toX": 20,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 43,
+      "afterTime": 320
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 8,
+      "toX": 21,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 43,
+      "afterTime": 321
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 8,
+      "toX": 23,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 43,
+      "afterTime": 322
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 10,
+      "toX": 23,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 43,
+      "afterTime": 323
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 12,
+      "toX": 24,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 43,
+      "afterTime": 324
+    },
+    {
+      "command": "draw",
+      "x": 24,
+      "y": 13,
+      "toX": 23,
+      "toY": 14,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 43,
+      "afterTime": 325
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 14,
+      "toX": 25,
+      "toY": 16,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 43,
+      "afterTime": 326
+    },
+    {
+      "command": "draw",
+      "x": 26,
+      "y": 11,
+      "toX": 25,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 43,
+      "afterTime": 327
+    },
+    {
+      "command": "draw",
+      "x": 25,
+      "y": 10,
+      "toX": 23,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 43,
+      "afterTime": 328
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 10,
+      "toX": 21,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 43,
+      "afterTime": 329
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 8,
+      "toX": 20,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 43,
+      "afterTime": 330
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 8,
+      "toX": 19,
+      "toY": 7,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 44,
+      "afterTime": 331
+    },
+    {
+      "command": "draw",
+      "x": 19,
+      "y": 7,
+      "toX": 16,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 44,
+      "afterTime": 332
+    },
+    {
+      "command": "draw",
+      "x": 16,
+      "y": 10,
+      "toX": 13,
+      "toY": 7,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 45,
+      "afterTime": 333
+    },
+    {
+      "command": "draw",
+      "x": 13,
+      "y": 7,
+      "toX": 11,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 45,
+      "afterTime": 334
+    },
+    {
+      "command": "draw",
+      "x": 11,
+      "y": 9,
+      "toX": 10,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 45,
+      "afterTime": 335
+    },
+    {
+      "command": "draw",
+      "x": 10,
+      "y": 8,
+      "toX": 9,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 45,
+      "afterTime": 336
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 46,
+      "afterTime": 337
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 46,
+      "afterTime": 338
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 47,
+      "afterTime": 339
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 47,
+      "afterTime": 340
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 17,
+      "toX": 20,
+      "toY": 16,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 47,
+      "afterTime": 341
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 16,
+      "toX": 21,
+      "toY": 15,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 47,
+      "afterTime": 342
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 15,
+      "toX": 20,
+      "toY": 14,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 47,
+      "afterTime": 343
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 14,
+      "toX": 20,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 47,
+      "afterTime": 344
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 13,
+      "toX": 21,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 47,
+      "afterTime": 345
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 12,
+      "toX": 23,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 47,
+      "afterTime": 346
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 12,
+      "toX": 24,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 47,
+      "afterTime": 347
+    },
+    {
+      "command": "draw",
+      "x": 24,
+      "y": 13,
+      "toX": 23,
+      "toY": 14,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 47,
+      "afterTime": 348
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 14,
+      "toX": 25,
+      "toY": 16,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 47,
+      "afterTime": 349
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 48,
+      "afterTime": 350
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 48,
+      "afterTime": 351
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 48,
+      "afterTime": 352
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 48,
+      "afterTime": 353
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 48,
+      "afterTime": 354
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 48,
+      "afterTime": 355
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 49,
+      "afterTime": 356
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 50,
+      "afterTime": 357
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 50,
+      "afterTime": 358
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 51,
+      "afterTime": 359
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 51,
+      "afterTime": 360
+    },
+    {
+      "command": "draw",
+      "x": 28,
+      "y": 11,
+      "toX": 27,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 51,
+      "afterTime": 361
+    },
+    {
+      "command": "draw",
+      "x": 27,
+      "y": 10,
+      "toX": 26,
+      "toY": 11,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 52,
+      "afterTime": 362
+    },
+    {
+      "command": "draw",
+      "x": 26,
+      "y": 11,
+      "toX": 25,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 52,
+      "afterTime": 363
+    },
+    {
+      "command": "draw",
+      "x": 25,
+      "y": 10,
+      "toX": 24,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 52,
+      "afterTime": 364
+    },
+    {
+      "command": "draw",
+      "x": 24,
+      "y": 10,
+      "toX": 23,
+      "toY": 11,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 52,
+      "afterTime": 365
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 11,
+      "toX": 23,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 52,
+      "afterTime": 366
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 12,
+      "toX": 24,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 52,
+      "afterTime": 367
+    },
+    {
+      "command": "draw",
+      "x": 24,
+      "y": 13,
+      "toX": 23,
+      "toY": 14,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 52,
+      "afterTime": 368
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 14,
+      "toX": 25,
+      "toY": 16,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 52,
+      "afterTime": 369
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 52,
+      "afterTime": 370
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 52,
+      "afterTime": 371
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 52,
+      "afterTime": 372
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 52,
+      "afterTime": 373
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 53,
+      "afterTime": 374
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 55,
+      "afterTime": 375
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 55,
+      "afterTime": 376
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 56,
+      "afterTime": 377
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 57,
+      "afterTime": 378
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 57,
+      "afterTime": 379
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 58,
+      "afterTime": 380
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 60,
+      "afterTime": 381
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 60,
+      "afterTime": 382
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 60,
+      "afterTime": 383
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 60,
+      "afterTime": 384
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 60,
+      "afterTime": 385
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 60,
+      "afterTime": 386
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 60,
+      "afterTime": 387
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 60,
+      "afterTime": 388
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 60,
+      "afterTime": 389
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 60,
+      "afterTime": 390
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 60,
+      "afterTime": 391
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 61,
+      "afterTime": 392
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 61,
+      "afterTime": 393
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 61,
+      "afterTime": 394
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 63,
+      "afterTime": 395
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 63,
+      "afterTime": 396
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 63,
+      "afterTime": 397
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 63,
+      "afterTime": 398
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 64,
+      "afterTime": 399
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 65,
+      "afterTime": 400
+    },
+    {
+      "command": "draw",
+      "x": 11,
+      "y": 15,
+      "toX": 12,
+      "toY": 14,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 65,
+      "afterTime": 401
+    },
+    {
+      "command": "draw",
+      "x": 12,
+      "y": 14,
+      "toX": 12,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 65,
+      "afterTime": 402
+    },
+    {
+      "command": "draw",
+      "x": 12,
+      "y": 12,
+      "toX": 13,
+      "toY": 11,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 65,
+      "afterTime": 403
+    },
+    {
+      "command": "draw",
+      "x": 13,
+      "y": 11,
+      "toX": 10,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 65,
+      "afterTime": 404
+    },
+    {
+      "command": "draw",
+      "x": 10,
+      "y": 8,
+      "toX": 9,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 66,
+      "afterTime": 405
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 17,
+      "toX": 23,
+      "toY": 16,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 67,
+      "afterTime": 406
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 16,
+      "toX": 24,
+      "toY": 15,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 67,
+      "afterTime": 407
+    },
+    {
+      "command": "draw",
+      "x": 24,
+      "y": 15,
+      "toX": 23,
+      "toY": 14,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 67,
+      "afterTime": 408
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 14,
+      "toX": 24,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 67,
+      "afterTime": 409
+    },
+    {
+      "command": "draw",
+      "x": 24,
+      "y": 13,
+      "toX": 23,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 68,
+      "afterTime": 410
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 12,
+      "toX": 21,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 68,
+      "afterTime": 411
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 12,
+      "toX": 20,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 68,
+      "afterTime": 412
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 13,
+      "toX": 20,
+      "toY": 14,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 68,
+      "afterTime": 413
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 14,
+      "toX": 21,
+      "toY": 15,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 68,
+      "afterTime": 414
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 15,
+      "toX": 20,
+      "toY": 16,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 69,
+      "afterTime": 415
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 16,
+      "toX": 21,
+      "toY": 17,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 69,
+      "afterTime": 416
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 17,
+      "toX": 20,
+      "toY": 18,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 70,
+      "afterTime": 417
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 18,
+      "toX": 17,
+      "toY": 18,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 70,
+      "afterTime": 418
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 70,
+      "afterTime": 419
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 70,
+      "afterTime": 420
+    },
+    {
+      "command": "upgrade",
+      "choice": 1,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 71,
+      "afterTime": 421
+    },
+    {
+      "command": "draw",
+      "x": 13,
+      "y": 14,
+      "toX": 12,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 71,
+      "afterTime": 422
+    },
+    {
+      "command": "draw",
+      "x": 12,
+      "y": 13,
+      "toX": 12,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 71,
+      "afterTime": 423
+    },
+    {
+      "command": "draw",
+      "x": 12,
+      "y": 12,
+      "toX": 15,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 72,
+      "afterTime": 424
+    },
+    {
+      "command": "draw",
+      "x": 15,
+      "y": 9,
+      "toX": 16,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 72,
+      "afterTime": 425
+    },
+    {
+      "command": "draw",
+      "x": 16,
+      "y": 10,
+      "toX": 19,
+      "toY": 7,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 72,
+      "afterTime": 426
+    },
+    {
+      "command": "draw",
+      "x": 19,
+      "y": 7,
+      "toX": 20,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 72,
+      "afterTime": 427
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 8,
+      "toX": 21,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 72,
+      "afterTime": 428
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 8,
+      "toX": 23,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 72,
+      "afterTime": 429
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 10,
+      "toX": 23,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 73,
+      "afterTime": 430
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 12,
+      "toX": 21,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 73,
+      "afterTime": 431
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 12,
+      "toX": 20,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 73,
+      "afterTime": 432
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 13,
+      "toX": 20,
+      "toY": 14,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 74,
+      "afterTime": 433
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 14,
+      "toX": 21,
+      "toY": 15,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 74,
+      "afterTime": 434
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 15,
+      "toX": 20,
+      "toY": 16,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 74,
+      "afterTime": 435
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 16,
+      "toX": 21,
+      "toY": 17,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 75,
+      "afterTime": 436
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 17,
+      "toX": 20,
+      "toY": 18,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 75,
+      "afterTime": 437
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 18,
+      "toX": 17,
+      "toY": 18,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 76,
+      "afterTime": 438
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 76,
+      "afterTime": 439
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 77,
+      "afterTime": 440
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 77,
+      "afterTime": 441
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 77,
+      "afterTime": 442
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 77,
+      "afterTime": 443
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 77,
+      "afterTime": 444
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 77,
+      "afterTime": 445
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 77,
+      "afterTime": 446
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 77,
+      "afterTime": 447
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 78,
+      "afterTime": 448
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 78,
+      "afterTime": 449
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 78,
+      "afterTime": 450
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 78,
+      "afterTime": 451
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 78,
+      "afterTime": 452
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 78,
+      "afterTime": 453
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 79,
+      "afterTime": 454
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 79,
+      "afterTime": 455
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 80,
+      "afterTime": 456
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 81,
+      "afterTime": 457
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 81,
+      "afterTime": 458
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 81,
+      "afterTime": 459
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 81,
+      "afterTime": 460
+    },
+    {
+      "command": "draw",
+      "x": 12,
+      "y": 17,
+      "toX": 13,
+      "toY": 16,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 81,
+      "afterTime": 461
+    },
+    {
+      "command": "draw",
+      "x": 13,
+      "y": 16,
+      "toX": 13,
+      "toY": 15,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 81,
+      "afterTime": 462
+    },
+    {
+      "command": "draw",
+      "x": 13,
+      "y": 15,
+      "toX": 12,
+      "toY": 14,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 81,
+      "afterTime": 463
+    },
+    {
+      "command": "draw",
+      "x": 12,
+      "y": 14,
+      "toX": 12,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 81,
+      "afterTime": 464
+    },
+    {
+      "command": "draw",
+      "x": 12,
+      "y": 12,
+      "toX": 15,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 81,
+      "afterTime": 465
+    },
+    {
+      "command": "draw",
+      "x": 15,
+      "y": 9,
+      "toX": 16,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 81,
+      "afterTime": 466
+    },
+    {
+      "command": "draw",
+      "x": 16,
+      "y": 10,
+      "toX": 19,
+      "toY": 7,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 81,
+      "afterTime": 467
+    },
+    {
+      "command": "draw",
+      "x": 19,
+      "y": 7,
+      "toX": 20,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 81,
+      "afterTime": 468
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 8,
+      "toX": 21,
+      "toY": 8,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 81,
+      "afterTime": 469
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 8,
+      "toX": 23,
+      "toY": 10,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 81,
+      "afterTime": 470
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 10,
+      "toX": 23,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 81,
+      "afterTime": 471
+    },
+    {
+      "command": "draw",
+      "x": 23,
+      "y": 12,
+      "toX": 21,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 81,
+      "afterTime": 472
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 12,
+      "toX": 20,
+      "toY": 13,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 81,
+      "afterTime": 473
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 13,
+      "toX": 20,
+      "toY": 14,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 81,
+      "afterTime": 474
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 14,
+      "toX": 21,
+      "toY": 15,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 81,
+      "afterTime": 475
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 15,
+      "toX": 20,
+      "toY": 16,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 82,
+      "afterTime": 476
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 16,
+      "toX": 21,
+      "toY": 17,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 82,
+      "afterTime": 477
+    },
+    {
+      "command": "draw",
+      "x": 21,
+      "y": 17,
+      "toX": 20,
+      "toY": 18,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 82,
+      "afterTime": 478
+    },
+    {
+      "command": "draw",
+      "x": 20,
+      "y": 18,
+      "toX": 17,
+      "toY": 18,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 83,
+      "afterTime": 479
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 83,
+      "afterTime": 480
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 83,
+      "afterTime": 481
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 83,
+      "afterTime": 482
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 83,
+      "afterTime": 483
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 84,
+      "afterTime": 484
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 84,
+      "afterTime": 485
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 84,
+      "afterTime": 486
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 84,
+      "afterTime": 487
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 84,
+      "afterTime": 488
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 84,
+      "afterTime": 489
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 85,
+      "afterTime": 490
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 86,
+      "afterTime": 491
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 87,
+      "afterTime": 492
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 87,
+      "afterTime": 493
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 87,
+      "afterTime": 494
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 87,
+      "afterTime": 495
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 88,
+      "afterTime": 496
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 88,
+      "afterTime": 497
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 88,
+      "afterTime": 498
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 88,
+      "afterTime": 499
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 88,
+      "afterTime": 500
+    },
+    {
+      "command": "draw",
+      "x": 15,
+      "y": 17,
+      "toX": 12,
+      "toY": 14,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 89,
+      "afterTime": 501
+    },
+    {
+      "command": "draw",
+      "x": 12,
+      "y": 14,
+      "toX": 12,
+      "toY": 12,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 90,
+      "afterTime": 502
+    },
+    {
+      "command": "draw",
+      "x": 12,
+      "y": 12,
+      "toX": 15,
+      "toY": 9,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 90,
+      "afterTime": 503
+    },
+    {
+      "command": "draw",
+      "x": 15,
+      "y": 9,
+      "toX": 17,
+      "toY": 11,
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 90,
+      "afterTime": 504
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 90,
+      "afterTime": 505
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 90,
+      "afterTime": 506
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 91,
+      "afterTime": 507
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 92,
+      "afterTime": 508
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 92,
+      "afterTime": 509
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 92,
+      "afterTime": 510
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 92,
+      "afterTime": 511
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 92,
+      "afterTime": 512
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 92,
+      "afterTime": 513
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 92,
+      "afterTime": 514
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 92,
+      "afterTime": 515
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 93,
+      "afterTime": 516
+    },
+    {
+      "command": "wait",
+      "ticks": 20,
+      "accepted": true,
+      "afterTrips": 93,
+      "afterTime": 516.25
+    }
+  ],
+  "source": "hybrid-evaluation",
+  "policySchema": "visible-route-goal-policy-v1",
+  "plannerAided": true,
+  "skipForcedWait": true
+}

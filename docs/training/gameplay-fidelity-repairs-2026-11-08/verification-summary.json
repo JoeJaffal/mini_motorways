@@ -1,0 +1,25 @@
+{
+  "smoke-Beijing": [
+    "TRAFFIC_APP_SMOKE_PASSED=OriginalReference/Beijing/20"
+  ],
+  "smoke-DarEsSalaam": [
+    "TRAFFIC_APP_SMOKE_PASSED=OriginalReference/DarEsSalaam/20"
+  ],
+  "smoke-London": [
+    "TRAFFIC_APP_SMOKE_PASSED=OriginalReference/London/20"
+  ],
+  "smoke-LosAngeles": [
+    "TRAFFIC_APP_SMOKE_PASSED=OriginalReference/LosAngeles/20"
+  ],
+  "smoke-Tokyo": [
+    "TRAFFIC_APP_SMOKE_PASSED=OriginalReference/Tokyo/20"
+  ],
+  "installedAssemblySha256": "ed62ee4eaf665863527432cbf578116792b331673c918a5f2655589f4f7d2e9b",
+  "previousAssemblySha256": "8d854972ab42f95033061c4ecf68dfdd644a2981df3fc6196d04f88fafdf8253",
+  "unityBuild": "TRAFFIC_APP_BUILD_PASSED",
+  "coreSuites": 54,
+  "environmentChecks": 7,
+  "rewardChecks": 6,
+  "mapVersionChecks": 10,
+  "training": false
+}

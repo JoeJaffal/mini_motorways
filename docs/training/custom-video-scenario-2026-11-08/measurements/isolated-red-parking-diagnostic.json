@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "id": "isolated-recorded-red-carpark-diagnostic",
+  "city": "LosAngeles",
+  "seed": -915001679,
+  "referenceScore": 0,
+  "duration": 400,
+  "source": "Non-comparison diagnostic: recorded red layout/network isolated; all input at time zero",
+  "sourceSha256": "c9762eb1d8c474c328b01f59a4a0ca744a0c8a06e2794e2dafe285712b1d4629",
+  "startingInventory": [
+    25,
+    1,
+    0,
+    0,
+    0,
+    0
+  ],
+  "paletteRgb": [
+    16762216,
+    15879260,
+    7325152,
+    5204126,
+    6929289
+  ],
+  "bounds": [
+    0,
+    0,
+    50,
+    30
+  ],
+  "uncertainties": "Video reconstruction, not recovered original RNG. Grid registration, ~1s video sampling, calibrated pauses/speed, and occluded edits require validation. Carrier seed is hash-derived; demand phase unknown.",
+  "events": [
+    {
+      "at": 0,
+      "kind": "house",
+      "id": "h1",
+      "x": 19,
+      "y": 11,
+      "color": 1,
+      "direction": 6
+    },
+    {
+      "at": 0,
+      "kind": "house",
+      "id": "h2",
+      "x": 22,
+      "y": 7,
+      "color": 1,
+      "direction": 4
+    },
+    {
+      "at": 0,
+      "kind": "house",
+      "id": "h3",
+      "x": 21,
+      "y": 8,
+      "color": 1,
+      "direction": 6
+    },
+    {
+      "at": 0,
+      "kind": "shop",
+      "id": "s1",
+      "x": 10,
+      "y": 8,
+      "color": 1,
+      "layout": 2
+    },
+    {
+      "at": 0,
+      "kind": "draw",
+      "x": 19,
+      "y": 11,
+      "toX": 19,
+      "toY": 6
+    },
+    {
+      "at": 0,
+      "kind": "draw",
+      "x": 19,
+      "y": 6,
+      "toX": 10,
+      "toY": 6
+    },
+    {
+      "at": 0,
+      "kind": "draw",
+      "x": 10,
+      "y": 6,
+      "toX": 10,
+      "toY": 8
+    },
+    {
+      "at": 0,
+      "kind": "draw",
+      "x": 22,
+      "y": 7,
+      "toX": 19,
+      "toY": 7
+    },
+    {
+      "at": 0,
+      "kind": "draw",
+      "x": 21,
+      "y": 8,
+      "toX": 21,
+      "toY": 7
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:\\Users\\moham\\mini_motorways\\.venv\\Scripts\\python.exe",
+    "scripts/verify_five_maps.py",
+    "--dotnet",
+    "C:\\Users\\moham\\mini_motorways\\tmp\\dotnet\\dotnet.exe"
+  ],
+  "returncode": 0,
+  "seconds": 2.512537799993879,
+  "stdout": "PASS: five-map protocol checks (10 runs).\n",
+  "stderr": ""
+}

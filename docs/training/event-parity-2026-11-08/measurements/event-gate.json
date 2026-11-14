@@ -1,0 +1,34 @@
+{
+  "status": "NOT_MATCHED",
+  "canCertifyExactOriginalParity": false,
+  "checks": [
+    {
+      "delivery": 1,
+      "originalEstimatedInterval": [
+        17.21,
+        17.418
+      ],
+      "simulation": 17.45,
+      "consistentWithinOneTick": true
+    },
+    {
+      "delivery": 2,
+      "originalEstimatedInterval": [
+        29.622,
+        29.826
+      ],
+      "simulation": 32.050000000000004,
+      "consistentWithinOneTick": false
+    },
+    {
+      "delivery": 3,
+      "originalEstimatedInterval": [
+        47.215999999999994,
+        47.408
+      ],
+      "simulation": 41.150000000000006,
+      "consistentWithinOneTick": false
+    }
+  ],
+  "limits": "Clock calibrated from weekly/day anchors; visual road edits sampled at1second; original seed/demand phase/parking RNG unavailable. Intervals are HUD first-observation intervals, not exact simulator state."
+}

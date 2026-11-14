@@ -1,0 +1,22 @@
+<!doctype html><meta charset="utf-8"><title>Traffic Lab — live AI game</title>
+<style>body{margin:0;background:#f9f3dc;color:#334b4d;font:16px system-ui}header{padding:16px;display:flex;gap:18px;align-items:center}button{padding:8px 20px;border:1px solid #b3bfba;border-radius:8px;background:white;cursor:pointer}canvas{display:block;width:98vw;max-height:82vh;object-fit:contain;margin:auto}small{display:block;margin:12px 20px}</style>
+<header><b>TRAFFIC LAB · LIVE AI</b><button onclick="fetch('/play',{method:'POST'})">Play</button><button onclick="fetch('/pause',{method:'POST'})">Pause</button><span id="stats">Loading…</span></header>
+<canvas width="1500" height="900" id="map"></canvas><small id="status"></small>
+<small>Live simulator state · simplified browser rendering · no training. Houses are small squares; destinations are larger squares with demand/capacity. Cars are dots. Red outlines indicate active overcrowding.</small>
+<script>
+const c=document.getElementById('map'),g=c.getContext('2d'),S=30;
+const colors=['#e84c63','#50a4c7','#edbd45','#61ac8d','#b66aac','#e48b4c','#8992c7','#6e7379'];
+const dirs=[[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1],[0,-1],[1,-1]];
+function box(x,y,w,h,color){g.fillStyle=color;g.fillRect(x,y,w,h)}
+function draw(o){
+ g.clearRect(0,0,c.width,c.height);box(0,0,1500,900,'#faf3da');
+ for(let i=0;i<1500;i++){let x=i%50,y=Math.floor(i/50);if(o.terrain[i]===1)box(x*S,y*S,S,S,'#94cdbb');else if(o.terrain[i]===2)box(x*S,y*S,S,S,'#cccbb6');}
+ g.lineCap='round';g.strokeStyle='#c9c9af';g.lineWidth=12;
+ function roads(){for(let i=0;i<1500;i++){let x=i%50+.5,y=Math.floor(i/50)+.5;for(let d=0;d<8;d++)if(o.connections[i]&(1<<d)){g.beginPath();g.moveTo(x*S,y*S);g.lineTo((x+dirs[d][0])*S,(y+dirs[d][1])*S);g.stroke();}}}
+ roads();g.strokeStyle='#fffdf1';g.lineWidth=8;roads();
+ for(const b of o.buildings){let x=(b.cell.x+.5)*S,y=(b.cell.y+.5)*S,z=b.isHouse?16:27;box(x-z/2-2,y-z/2-2,z+4,z+4,'white');box(x-z/2,y-z/2,z,z,colors[b.color%8]);if(!b.isHouse){g.fillStyle='#263b3f';g.font='11px system-ui';g.fillText(b.demand+'/'+b.demandCapacity,x-12,y+25);if(b.overcrowdedFor>0){g.strokeStyle='#d33';g.lineWidth=2;g.strokeRect(x-z/2-4,y-z/2-4,z+8,z+8);}}}
+ for(let i=0;i<1500;i++)if(o.infrastructure[i]===4){box((i%50+.5)*S-3,(Math.floor(i/50)+.5)*S-6,6,12,'#283b3b');}
+ for(const v of o.vehicles){if(v.stage==='Home')continue;g.beginPath();g.fillStyle=colors[v.color%8];g.arc((v.x+.5)*S,(v.y+.5)*S,3.5,0,Math.PI*2);g.fill();}
+}
+async function refresh(){try{let r=await fetch('/state'),s=await r.json();document.getElementById('status').textContent=s.status;if(s.data){document.getElementById('stats').textContent=`Seed ${s.seed} · ${s.data.tripsCompleted} trips · ${s.data.time.toFixed(1)}s`;draw(s.data);}}catch(e){document.getElementById('status').textContent='Disconnected — check terminal.'}setTimeout(refresh,150)}refresh();
+</script>

@@ -1,0 +1,134 @@
+{
+ "note": "Simulator junction arbitration replaced by the original's documented rules (code later bumped to 2026-11-08.3; these runs used identical code before the version-string bump). Strict --run-scenario, 120 s wall cap; deadlock probe now calls the engine's own MayEnter. Partial diagnostics, NOT a comparison with 835.",
+ "v20": {
+  "score": 490,
+  "seconds": 1104.2,
+  "failed": true,
+  "events": "297/406",
+  "deadlockedFrames": 0,
+  "carsWaitingOver20sAtEnd": 21,
+  "overcrowded": [
+   {
+    "id": 14,
+    "cell": [
+     12,
+     14
+    ],
+    "color": 3,
+    "overcrowdedFor": 35.38
+   },
+   {
+    "id": 20,
+    "cell": [
+     16,
+     16
+    ],
+    "color": 1,
+    "overcrowdedFor": 50.02
+   },
+   {
+    "id": 34,
+    "cell": [
+     16,
+     16
+    ],
+    "color": 0,
+    "overcrowdedFor": 33.98
+   },
+   {
+    "id": 35,
+    "cell": [
+     11,
+     18
+    ],
+    "color": 1,
+    "overcrowdedFor": 18.33
+   }
+  ]
+ },
+ "v21": {
+  "score": 488,
+  "seconds": 1104.2,
+  "failed": true,
+  "events": "295/400",
+  "deadlockedFrames": 0,
+  "carsWaitingOver20sAtEnd": 23,
+  "overcrowded": [
+   {
+    "id": 14,
+    "cell": [
+     12,
+     14
+    ],
+    "color": 3,
+    "overcrowdedFor": 35.38
+   },
+   {
+    "id": 20,
+    "cell": [
+     16,
+     16
+    ],
+    "color": 1,
+    "overcrowdedFor": 50.02
+   },
+   {
+    "id": 27,
+    "cell": [
+     30,
+     18
+    ],
+    "color": 1,
+    "overcrowdedFor": 4.02
+   },
+   {
+    "id": 34,
+    "cell": [
+     16,
+     16
+    ],
+    "color": 0,
+    "overcrowdedFor": 33.98
+   },
+   {
+    "id": 35,
+    "cell": [
+     11,
+     18
+    ],
+    "color": 1,
+    "overcrowdedFor": 8.37
+   }
+  ]
+ },
+ "shoving": {
+  "v20": {
+   "carsThatShoved": 26,
+   "shoveCarTicks": 1718
+  },
+  "v21": {
+   "carsThatShoved": 25,
+   "shoveCarTicks": 1793
+  },
+  "first": "t=803.45 cars 2 and 38 at junctions 13,10 and 12,10"
+ },
+ "previous_2026_11_08_2": {
+  "v20": {
+   "score": 580,
+   "seconds": 1176.95,
+   "deadlock": "none after 191e9ad"
+  },
+  "v21": {
+   "score": 570,
+   "seconds": 1166.05,
+   "deadlock": "physical gridlock from t=1119 at 20,11-20,12"
+  }
+ },
+ "carpark_gate_lock": {
+  "where": "shared carpark 20 (destinations 20 red and 34 yellow at 16,16), gate at access 19,18",
+  "first_seen": "car 34 waits from about t=973 until game-over (131 s at 1104)",
+  "mechanism": "Car 34 (returning, passing through the shared lot) is first on the outside approach lane 20:18:2:4 and needs gate 19,18. The gate is owned by car 10 (outbound to destination 34), queued behind car 34 on 20:17:2:2. TryCarparkGate measures an outbound car's gate distance to the start of its final road lane (car 10: 0.157) but a connector user's distance to the carpark connector (car 34: 0.78), so the car behind ranks nearer. Car 10 cannot reach the gate past car 34; car 34 cannot enter without the gate; car 43 then backs up at the other gate.",
+  "relation_to_this_change": "The gate rule (Mohammad's 74-suite approach gate plus shared transit) is untouched by the arbitration change, and no link of this lock is a junction-arbitration decision; the changed traffic exposed it. Not measured on the previous engine.",
+  "status": "Not fixed; reported to the user."
+ }
+}

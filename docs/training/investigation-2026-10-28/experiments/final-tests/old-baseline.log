@@ -1,0 +1,11 @@
+EVAL | 3000 | score 0 | 154.3s | draw noops 153/154
+EVAL | 3001 | score 0 | 139.7s | draw noops 139/140
+EVAL | 3002 | score 0 | 148.0s | draw noops 146/147
+EVAL | 3003 | score 0 | 141.3s | draw noops 139/141
+EVAL | 3004 | score 4 | 186.5s | draw noops 183/186
+EVAL | 3005 | score 0 | 148.0s | draw noops 146/147
+EVAL | 3006 | score 0 | 150.1s | draw noops 149/150
+EVAL | 3007 | score 0 | 141.9s | draw noops 139/141
+EVAL | 3008 | score 2 | 146.0s | draw noops 142/145
+EVAL | 3009 | score 0 | 144.2s | draw noops 141/144
+RESULT | mean 0.60, best 4 | output\experiments\three-hour-20261028\final-tests\old-baseline.json

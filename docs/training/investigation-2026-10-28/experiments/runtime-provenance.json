@@ -1,0 +1,34 @@
+{
+  "source_commit": "708957fb7cc75d31729bf351f70da1c7074e86bc",
+  "core_tree": "72e12727df8a9e64bdcb2e8225f75c8ebd3d9ccb",
+  "headless_tree": "0d907477c9c7013f8e31a2e78ca0f0935a0c12d8",
+  "binaries": [
+    {
+      "path": "tmp/headless-productivity/TrafficHost.dll",
+      "sha256": "6e9cfc0018b3f74c7336782e12047fdb64a6f9b72a4fe8a4ff89aa1bc2cd8249"
+    },
+    {
+      "path": "simulation/Headless/bin/Debug/net8.0/TrafficHost.dll",
+      "sha256": "687c2200cc45406d16021cab19cad7cfa6d16d7627cb7e75166a1965b7be2859"
+    },
+    {
+      "path": "simulation/Builds/Windows/TrafficLabOriginal/TrafficLabOriginal.exe",
+      "sha256": "a4c71b1bfc3e42d02f2f129fe04adef3ebf2343a662884e4b99598e9dfc90e7d"
+    },
+    {
+      "path": "simulation/Builds/Windows/TrafficLabOriginal/TrafficLabOriginal_Data/Managed/Assembly-CSharp.dll",
+      "sha256": "8d854972ab42f95033061c4ecf68dfdd644a2981df3fc6196d04f88fafdf8253"
+    }
+  ],
+  "note": "Binary hashes identify actual local runtimes. Core and headless source trees are unchanged across the goal pilots. These hashes alone do not prove a reproducible Unity build.",
+  "libraries_observed_utc": "2026-10-28T13:10:53.427802+00:00",
+  "libraries": {
+    "python": "3.12.14",
+    "torch": "2.14.1+cpu",
+    "stable_baselines3": "2.9.2",
+    "sb3_contrib": "2.9.2",
+    "gymnasium": "1.4.0",
+    "numpy": "2.5.4"
+  },
+  "package_changes_during_study": "No package installation or upgrade was performed during this investigation."
+}

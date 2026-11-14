@@ -1,0 +1,13 @@
+{
+  "command": [
+    "C:\\Users\\moham\\mini_motorways\\.venv\\Scripts\\python.exe",
+    "training/test_rewards.py",
+    "--dotnet",
+    "C:\\Users\\moham\\mini_motorways\\tmp\\dotnet\\dotnet.exe",
+    "-v"
+  ],
+  "returncode": 1,
+  "seconds": 15.769302400003653,
+  "stdout": "",
+  "stderr": "test_cap_reset_and_external_limit_bootstrap (__main__.PotentialChecks.test_cap_reset_and_external_limit_bootstrap) ... ok\ntest_connected_external_cap_retains_live_potential (__main__.PotentialChecks.test_connected_external_cap_retains_live_potential) ... FAIL\ntest_connection_break_cycle_and_terminal_cancel (__main__.PotentialChecks.test_connection_break_cycle_and_terminal_cancel) ... ok\ntest_intermediate_selection_is_shaped_without_simulation_time (__main__.PotentialChecks.test_intermediate_selection_is_shaped_without_simulation_time) ... ok\ntest_real_hosts_identical_observations_and_nonconnection_zero (__main__.PotentialChecks.test_real_hosts_identical_observations_and_nonconnection_zero) ... ok\ntest_recorded_normal_game_connects_before_trip_and_keeps_simulation_identical (__main__.PotentialChecks.test_recorded_normal_game_connects_before_trip_and_keeps_simulation_identical) ... FAIL\n\n======================================================================\nFAIL: test_connected_external_cap_retains_live_potential (__main__.PotentialChecks.test_connected_external_cap_retains_live_potential)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\moham\\mini_motorways\\training\\test_rewards.py\", line 106, in test_connected_external_cap_retains_live_potential\n    self.assertGreater(env.connected_houses,0)\nAssertionError: 0 not greater than 0\n\n======================================================================\nFAIL: test_recorded_normal_game_connects_before_trip_and_keeps_simulation_identical (__main__.PotentialChecks.test_recorded_normal_game_connects_before_trip_and_keeps_simulation_identical)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"C:\\Users\\moham\\mini_motorways\\training\\test_rewards.py\", line 89, in test_recorded_normal_game_connects_before_trip_and_keeps_simulation_identical\n    self.assertEqual(ia['trips'],recording['score'])\nAssertionError: 0 != 73\n\n----------------------------------------------------------------------\nRan 6 tests in 14.957s\n\nFAILED (failures=2)\n"
+}

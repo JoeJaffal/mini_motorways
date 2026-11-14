@@ -1,0 +1,73 @@
+{
+  "schema": "full-tools-staged-grid-v1",
+  "simulator_commit": "53b425137de898e5d1d1acf13eed2acff9a7dddd",
+  "branch": "mohammad",
+  "dirty": false,
+  "version": "OriginalReference",
+  "city": "LosAngeles",
+  "device": "cpu",
+  "algorithm": "MaskablePPO",
+  "reward": "tripsCompleted_after - tripsCompleted_before; no shaping",
+  "tools": [
+    "wait",
+    "draw",
+    "Road",
+    "Bridge",
+    "TrafficLight",
+    "Roundabout",
+    "Remove",
+    "driveway",
+    "motorway",
+    "editMotorway",
+    "removeMotorway",
+    "upgrade0",
+    "upgrade1"
+  ],
+  "tick_interval": 20,
+  "maximum_selection_decisions": 4,
+  "training_seeds": [
+    1000,
+    1000
+  ],
+  "seed_schedule": "blocks",
+  "episodes_per_seed": 100,
+  "evaluation_seeds": [
+    2000,
+    2002
+  ],
+  "created_utc": "2026-10-27T23:20:34.590116+00:00",
+  "arguments": {
+    "dotnet": "C:\\Users\\moham\\mini_motorways\\tmp\\dotnet\\dotnet.exe",
+    "minutes": 30.0,
+    "steps": 10000000,
+    "episode_seconds": 3600,
+    "threads": 2,
+    "seed": 42,
+    "output": "output\\training\\seed-1000-continued",
+    "resume": "output\\training\\seed-test-01\\final.zip",
+    "eval_episodes": 3,
+    "episodes_per_seed": 100,
+    "train_seed_start": 1000,
+    "train_seed_count": 1,
+    "seed_schedule": "blocks",
+    "print_seconds": 5
+  },
+  "packages": {
+    "torch": "2.14.1+cpu",
+    "numpy": "2.5.4",
+    "gymnasium": "1.4.0",
+    "stable-baselines3": "2.9.2",
+    "sb3-contrib": "2.9.2"
+  },
+  "hyperparameters": {
+    "n_steps": 256,
+    "batch_size": 64,
+    "n_epochs": 4,
+    "gamma": 0.999,
+    "learning_rate": 0.0003,
+    "ent_coef": 0.01,
+    "net_arch": [
+      64
+    ]
+  }
+}

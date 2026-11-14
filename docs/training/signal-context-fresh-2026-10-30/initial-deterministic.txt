@@ -1,0 +1,11 @@
+EVAL | 6000 | score 109 | 546.1s | draw noops 80/137
+EVAL | 6001 | score 131 | 589.2s | draw noops 104/168
+EVAL | 6002 | score 239 | 759.2s | draw noops 120/200
+EVAL | 6003 | score 250 | 783.0s | draw noops 167/263
+EVAL | 6004 | score 132 | 574.6s | draw noops 144/222
+EVAL | 6005 | score 151 | 608.1s | draw noops 107/170
+EVAL | 6006 | score 153 | 618.3s | draw noops 88/147
+EVAL | 6007 | score 162 | 627.2s | draw noops 128/196
+EVAL | 6008 | score 274 | 839.0s | draw noops 158/246
+EVAL | 6009 | score 158 | 611.1s | draw noops 143/214
+RESULT | mean 175.90, best 274 | output\experiments\signals-context-fresh-01\initial-deterministic.json

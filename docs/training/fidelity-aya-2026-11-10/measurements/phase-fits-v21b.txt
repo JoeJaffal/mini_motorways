@@ -1,0 +1,25 @@
+# 20 independent fits (seeds 10-29) of the five demand phases to the real score curve up to 1000 s, with the v21b late destinations
+# DELAYED='[[1,405,474.45],[0,512,651.95],[1,779,918.85]]' py -3 source/fit_phases.py 1000 <seed>
+rmse 3.86 lag 6.9 phases 2.397 4.880 3.687 7.063 6.903
+rmse 3.88 lag 7.0 phases 2.404 4.794 3.972 7.060 6.823
+rmse 3.89 lag 9.1 phases 1.737 4.760 3.033 5.913 7.100
+rmse 3.9 lag 6.5 phases 2.391 4.929 3.694 7.577 6.901
+rmse 3.93 lag 8.85 phases 2.155 5.467 4.161 5.873 6.646
+rmse 3.95 lag 9.2 phases 1.660 4.767 4.158 5.901 5.566
+rmse 3.96 lag 9.0 phases 2.135 5.261 3.032 5.879 6.687
+rmse 3.97 lag 9.1 phases 2.094 5.304 4.157 5.793 5.554
+rmse 3.98 lag 9.0 phases 2.078 3.915 10.651 5.873 6.979
+rmse 3.99 lag 9.0 phases 2.088 3.931 10.704 5.710 7.237
+rmse 4.0 lag 8.85 phases 2.155 3.789 10.716 5.685 7.119
+rmse 4.0 lag 9.0 phases 2.093 3.933 11.328 5.872 5.499
+rmse 4.03 lag 8.91 phases 2.094 3.933 11.304 5.796 6.727
+rmse 4.05 lag 8.3 phases 2.218 3.819 11.368 5.714 6.678
+rmse 4.05 lag 8.8 phases 2.071 3.781 11.323 5.630 6.720
+rmse 4.05 lag 9.0 phases 2.081 3.741 11.452 5.632 6.633
+rmse 4.07 lag 9.06 phases 1.710 3.764 11.332 5.878 6.716
+rmse 4.08 lag 8.7 phases 2.151 4.596 1.168 5.637 6.728
+rmse 4.09 lag 8.0 phases 2.216 4.592 1.161 5.806 6.632
+rmse 4.3 lag 7.0 phases 2.226 4.046 11.451 0.864 6.783
+
+# same fit without late destinations (v21): seed 0
+rmse 8.72 lag 0 phases 0.734 3.577 9.625 5.001 20.124

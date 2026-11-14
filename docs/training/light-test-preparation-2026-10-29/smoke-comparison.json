@@ -1,0 +1,20 @@
+{
+  "lights_on_mean": 1,
+  "lights_off_mean": 1,
+  "mean_car_wait_on": 0.0,
+  "mean_car_wait_off": 0.0,
+  "better_with_lights": 0,
+  "ties": 1,
+  "worse_with_lights": 0,
+  "paired_scores": [
+    {
+      "seed": 2000,
+      "on": 1,
+      "off": 1,
+      "difference": 0
+    }
+  ],
+  "weights_unchanged": true,
+  "waiting_limit": "Descriptive episode averages; different survival/load can confound waiting",
+  "checkpoint_sha256": "f10899a74f7cd9fbf28eec542db828cdcaa00cf7c94fa6903f62ab3b172d0bf0"
+}

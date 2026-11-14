@@ -1,0 +1,536 @@
+{
+  "results": {
+    "baseline": {
+      "trips": 83,
+      "seconds": 469.70000000000005,
+      "signals_placed": 0,
+      "intervention_applied": false,
+      "terminated": true,
+      "truncated": false,
+      "final_state": {
+        "time": 469.70000000000005,
+        "trips": 83,
+        "inventory": [
+          33,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        "shops": [
+          {
+            "id": 0,
+            "cell": {
+              "x": 16,
+              "y": 8
+            },
+            "color": 0,
+            "demand": 10,
+            "reserved": 9,
+            "demandCapacity": 6,
+            "overcrowdedFor": 50.024999999999295
+          },
+          {
+            "id": 5,
+            "cell": {
+              "x": 13,
+              "y": 10
+            },
+            "color": 1,
+            "demand": 3,
+            "reserved": 3,
+            "demandCapacity": 6,
+            "overcrowdedFor": 0
+          },
+          {
+            "id": 12,
+            "cell": {
+              "x": 20,
+              "y": 12
+            },
+            "color": 0,
+            "demand": 4,
+            "reserved": 3,
+            "demandCapacity": 6,
+            "overcrowdedFor": 0
+          },
+          {
+            "id": 14,
+            "cell": {
+              "x": 21,
+              "y": 8
+            },
+            "color": 2,
+            "demand": 7,
+            "reserved": 4,
+            "demandCapacity": 6,
+            "overcrowdedFor": 7.674999999999981
+          },
+          {
+            "id": 20,
+            "cell": {
+              "x": 9,
+              "y": 9
+            },
+            "color": 1,
+            "demand": 3,
+            "reserved": 3,
+            "demandCapacity": 6,
+            "overcrowdedFor": 0
+          },
+          {
+            "id": 26,
+            "cell": {
+              "x": 10,
+              "y": 12
+            },
+            "color": 3,
+            "demand": 3,
+            "reserved": 3,
+            "demandCapacity": 6,
+            "overcrowdedFor": 0
+          }
+        ],
+        "waiting": [
+          {
+            "id": 0,
+            "shopId": 0,
+            "stage": "Outbound",
+            "x": 15.882495179548197,
+            "y": 11.018279876457699,
+            "waiting": 25.65000000000023,
+            "obstacle": "Approaching vehicle priority"
+          },
+          {
+            "id": 1,
+            "shopId": 12,
+            "stage": "Returning",
+            "x": 18.17988474023757,
+            "y": 12.051252295845762,
+            "waiting": 98.14999999999657,
+            "obstacle": "Crossing vehicle"
+          },
+          {
+            "id": 2,
+            "shopId": 0,
+            "stage": "Outbound",
+            "x": 17.94874770415424,
+            "y": 11.17988474023757,
+            "waiting": 104.44999999999621,
+            "obstacle": "Crossing vehicle"
+          },
+          {
+            "id": 4,
+            "shopId": 0,
+            "stage": "Returning",
+            "x": 17.83809361131883,
+            "y": 10.579152153517104,
+            "waiting": 81.6499999999975,
+            "obstacle": "Crossing vehicle"
+          },
+          {
+            "id": 5,
+            "shopId": 12,
+            "stage": "Outbound",
+            "x": 16.163104946110106,
+            "y": 11.265617981504867,
+            "waiting": 49.34999999999933,
+            "obstacle": "Crossing vehicle"
+          },
+          {
+            "id": 6,
+            "shopId": 0,
+            "stage": "Outbound",
+            "x": 17.639703782487334,
+            "y": 11.391420590222994,
+            "waiting": 94.29999999999679,
+            "obstacle": "Crossing vehicle"
+          },
+          {
+            "id": 16,
+            "shopId": 0,
+            "stage": "Outbound",
+            "x": 19.310243100245604,
+            "y": 9.548335543517087,
+            "waiting": 67.84999999999829,
+            "obstacle": "Crossing vehicle"
+          },
+          {
+            "id": 17,
+            "shopId": 0,
+            "stage": "Outbound",
+            "x": 19.045078057300646,
+            "y": 9.813500586462045,
+            "waiting": 99.2499999999965,
+            "obstacle": "Crossing vehicle"
+          },
+          {
+            "id": 18,
+            "shopId": 5,
+            "stage": "Returning",
+            "x": 17.298622861815367,
+            "y": 11.545631321396076,
+            "waiting": 80.29999999999758,
+            "obstacle": "Approaching vehicle priority"
+          },
+          {
+            "id": 22,
+            "shopId": 14,
+            "stage": "Returning",
+            "x": 21.06237543263139,
+            "y": 7.834961470060906,
+            "waiting": 13.200000000000053,
+            "obstacle": "Crossing vehicle"
+          },
+          {
+            "id": 24,
+            "shopId": 14,
+            "stage": "Returning",
+            "x": 18.310243100245604,
+            "y": 10.548335543517087,
+            "waiting": 94.29999999999679,
+            "obstacle": "Crossing vehicle"
+          },
+          {
+            "id": 25,
+            "shopId": 14,
+            "stage": "Returning",
+            "x": 19.57540814319056,
+            "y": 9.28317050057213,
+            "waiting": 59.39999999999876,
+            "obstacle": "Approaching vehicle priority"
+          },
+          {
+            "id": 26,
+            "shopId": 14,
+            "stage": "Returning",
+            "x": 20.045078057302206,
+            "y": 8.813500586460483,
+            "waiting": 42.299999999999734,
+            "obstacle": "Crossing vehicle"
+          },
+          {
+            "id": 27,
+            "shopId": 14,
+            "stage": "Returning",
+            "x": 20.31024310027594,
+            "y": 8.548335543486749,
+            "waiting": 37.74999999999999,
+            "obstacle": "Crossing vehicle"
+          },
+          {
+            "id": 28,
+            "shopId": 12,
+            "stage": "Returning",
+            "x": 18.391420590222996,
+            "y": 12.360296217512666,
+            "waiting": 76.04999999999782,
+            "obstacle": "Crossing vehicle"
+          },
+          {
+            "id": 29,
+            "shopId": 12,
+            "stage": "Outbound",
+            "x": 18.045078057300646,
+            "y": 10.813500586462045,
+            "waiting": 95.8499999999967,
+            "obstacle": "Crossing vehicle"
+          },
+          {
+            "id": 30,
+            "shopId": 14,
+            "stage": "Outbound",
+            "x": 16.837522556431026,
+            "y": 11.581667492139376,
+            "waiting": 65.7999999999984,
+            "obstacle": "Approaching vehicle priority"
+          },
+          {
+            "id": 31,
+            "shopId": 14,
+            "stage": "Outbound",
+            "x": 16.484983210123147,
+            "y": 11.457101532453166,
+            "waiting": 50.94999999999924,
+            "obstacle": "Approaching vehicle priority"
+          },
+          {
+            "id": 38,
+            "shopId": 0,
+            "stage": "Outbound",
+            "x": 19.063596655909397,
+            "y": 9.836712969956112,
+            "waiting": 71.89999999999806,
+            "obstacle": "Crossing vehicle"
+          },
+          {
+            "id": 39,
+            "shopId": 0,
+            "stage": "Outbound",
+            "x": 20.186499413540233,
+            "y": 10.045078057302923,
+            "waiting": 41.29999999999979,
+            "obstacle": "Crossing vehicle"
+          },
+          {
+            "id": 42,
+            "shopId": 26,
+            "stage": "Outbound",
+            "x": 16.163757412812686,
+            "y": 14.400000000000002,
+            "waiting": 7.299999999999982,
+            "obstacle": "Crossing vehicle"
+          },
+          {
+            "id": 48,
+            "shopId": 0,
+            "stage": "Outbound",
+            "x": 15.954918671350045,
+            "y": 12.186502684887264,
+            "waiting": 7.7499999999999805,
+            "obstacle": "Crossing vehicle"
+          }
+        ]
+      }
+    },
+    "changed-upgrade": {
+      "trips": 266,
+      "seconds": 838.3000000000001,
+      "signals_placed": 2,
+      "intervention_applied": true,
+      "terminated": true,
+      "truncated": false,
+      "final_state": {
+        "time": 838.3000000000001,
+        "trips": 266,
+        "inventory": [
+          35,
+          2,
+          1,
+          0,
+          0,
+          0
+        ],
+        "shops": [
+          {
+            "id": 0,
+            "cell": {
+              "x": 16,
+              "y": 8
+            },
+            "color": 0,
+            "demand": 3,
+            "reserved": 3,
+            "demandCapacity": 6,
+            "overcrowdedFor": 0
+          },
+          {
+            "id": 5,
+            "cell": {
+              "x": 13,
+              "y": 10
+            },
+            "color": 1,
+            "demand": 3,
+            "reserved": 3,
+            "demandCapacity": 6,
+            "overcrowdedFor": 0
+          },
+          {
+            "id": 12,
+            "cell": {
+              "x": 20,
+              "y": 12
+            },
+            "color": 0,
+            "demand": 4,
+            "reserved": 4,
+            "demandCapacity": 6,
+            "overcrowdedFor": 0
+          },
+          {
+            "id": 14,
+            "cell": {
+              "x": 21,
+              "y": 8
+            },
+            "color": 2,
+            "demand": 5,
+            "reserved": 5,
+            "demandCapacity": 6,
+            "overcrowdedFor": 0
+          },
+          {
+            "id": 20,
+            "cell": {
+              "x": 9,
+              "y": 9
+            },
+            "color": 1,
+            "demand": 14,
+            "reserved": 14,
+            "demandCapacity": 9,
+            "overcrowdedFor": 50.02234999999902
+          },
+          {
+            "id": 26,
+            "cell": {
+              "x": 10,
+              "y": 12
+            },
+            "color": 3,
+            "demand": 4,
+            "reserved": 4,
+            "demandCapacity": 6,
+            "overcrowdedFor": 0
+          },
+          {
+            "id": 35,
+            "cell": {
+              "x": 19,
+              "y": 15
+            },
+            "color": 1,
+            "demand": 7,
+            "reserved": 6,
+            "demandCapacity": 6,
+            "overcrowdedFor": 8.124999999999982
+          },
+          {
+            "id": 42,
+            "cell": {
+              "x": 30,
+              "y": 6
+            },
+            "color": 2,
+            "demand": 3,
+            "reserved": 3,
+            "demandCapacity": 6,
+            "overcrowdedFor": 0
+          },
+          {
+            "id": 48,
+            "cell": {
+              "x": 24,
+              "y": 17
+            },
+            "color": 4,
+            "demand": 2,
+            "reserved": 2,
+            "demandCapacity": 6,
+            "overcrowdedFor": 0
+          },
+          {
+            "id": 54,
+            "cell": {
+              "x": 8,
+              "y": 5
+            },
+            "color": 4,
+            "demand": 1,
+            "reserved": 0,
+            "demandCapacity": 6,
+            "overcrowdedFor": 0
+          }
+        ],
+        "waiting": [
+          {
+            "id": 2,
+            "shopId": 12,
+            "stage": "Outbound",
+            "x": 18.809345326098686,
+            "y": 13.959277738879097,
+            "waiting": 21.55000000000017,
+            "obstacle": "Crossing vehicle"
+          },
+          {
+            "id": 7,
+            "shopId": 12,
+            "stage": "Outbound",
+            "x": 12.838093056838149,
+            "y": 13.579152003053183,
+            "waiting": 11.450000000000028,
+            "obstacle": "Crossing vehicle"
+          },
+          {
+            "id": 9,
+            "shopId": 35,
+            "stage": "Outbound",
+            "x": 19.397507795416615,
+            "y": 14.952147502355773,
+            "waiting": 4.049999999999994,
+            "obstacle": "Carpark access occupied"
+          },
+          {
+            "id": 11,
+            "shopId": 20,
+            "stage": "Outbound",
+            "x": 8.4120057571083,
+            "y": 9.873854313996965,
+            "waiting": 10.400000000000013,
+            "obstacle": "Carpark access occupied"
+          },
+          {
+            "id": 22,
+            "shopId": 14,
+            "stage": "Outbound",
+            "x": 21.28316231222679,
+            "y": 7.936320032408411,
+            "waiting": 14.750000000000075,
+            "obstacle": "Carpark access occupied"
+          },
+          {
+            "id": 48,
+            "shopId": 12,
+            "stage": "Outbound",
+            "x": 18.5038292529037,
+            "y": 13.742985407880383,
+            "waiting": 20.00000000000015,
+            "obstacle": "Crossing vehicle"
+          },
+          {
+            "id": 61,
+            "shopId": 20,
+            "stage": "Outbound",
+            "x": 8.529437881781242,
+            "y": 9.51232483961717,
+            "waiting": 6.749999999999984,
+            "obstacle": "Carpark access occupied"
+          },
+          {
+            "id": 66,
+            "shopId": 35,
+            "stage": "Outbound",
+            "x": 18.837245014957993,
+            "y": 14.616089475287279,
+            "waiting": 23.800000000000203,
+            "obstacle": "Crossing vehicle"
+          },
+          {
+            "id": 67,
+            "shopId": 35,
+            "stage": "Outbound",
+            "x": 18.487928629775237,
+            "y": 14.747846516489753,
+            "waiting": 14.250000000000068,
+            "obstacle": "Crossing vehicle"
+          },
+          {
+            "id": 68,
+            "shopId": 35,
+            "stage": "Outbound",
+            "x": 18.614970727733684,
+            "y": 15.16293552552429,
+            "waiting": 13.600000000000058,
+            "obstacle": "Crossing vehicle"
+          }
+        ]
+      }
+    }
+  },
+  "weights_unchanged": true,
+  "smoke": false,
+  "trip_difference": 183,
+  "limits": "One exposed development seed. Estimates total effect of changing one upgrade under this frozen policy, including later policy feedback; not isolated light physics or generalization evidence. Smoke does not exercise intervention."
+}

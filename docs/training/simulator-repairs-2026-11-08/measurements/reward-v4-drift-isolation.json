@@ -1,0 +1,24 @@
+{
+  "question": "Which 75-77 change makes reward-fixture-v4 end at 23 trips/no game-over instead of 13 trips/game-over 252.95s?",
+  "engine": "mohammad 8a4b447 (engine identical to f7ce005), Debug TrafficHost, .NET SDK 8.0.427",
+  "fixture": "docs/training/event-parity-2026-11-08/reward-fixture-v4.json (253 actions, every command followed by a 20-tick step as in TrafficEnv._advance)",
+  "variants": {
+    "current source": {"trips": 23, "terminated": false, "time": 253},
+    "AttachNativeDrivewaysAt disabled (75 motorway attach and 77 spawn/turn attach)": {"trips": 13, "terminated": true, "time": 252.95},
+    "NativeJoinAt disabled (77 traversable join cell)": {"trips": 13, "terminated": true, "time": 252.95},
+    "dedup edit reverted (count shared access twice)": {"trips": 23, "terminated": false, "time": 253},
+    "attach and join both disabled": {"trips": 13, "terminated": true, "time": 252.95},
+    "only the AttachNativeDrivewaysAt call in CityDemand spawn removed": {"trips": 13, "terminated": true, "time": 252.95}
+  },
+  "lockstep_current_vs_spawn_attach_removed": {
+    "connection_differences": [
+      {"from_time": 1, "cells": []},
+      {"from_time": 74, "cells": [[10, 7, 4, 0], [10, 8, 68, 0], [10, 9, 64, 0]], "note": "x, y, current connection bits, variant bits; no other difference for the rest of the game"}
+    ],
+    "buildings": "id 5 red house at 10,7 spawned ~74s with driveway direction 2 (down, outside 10,8); id 3 red destination at 10,9 layout 2 with top entrance facing direction 6 (outside 10,8). 10,8 has no road tile.",
+    "end_state_t253": {"current": {"trips": 23, "failed": false, "red_destination_3": {"demand": 0, "overcrowdedFor": 0}},
+                       "variant": {"trips": 13, "failed": true, "red_destination_3": {"demand": 10, "overcrowdedFor": 50.0}}}
+  },
+  "unrelated_observation": "Per-action afterTrips first differ from the fixture at action 66 (t=67: fixture 3, simulator 2) in every variant, including those reproducing 13/252.95 exactly. The reward test checks only final score/terminal, so this is not the drift.",
+  "conclusion": "Measured: the drift is the rule-77 native common-endpoint join applied at ordinary spawn time, requiring both the spawn attach and the traversable join cell; the dedup edit has no effect. Mohammad confirmed (8a4b447) the 75/77 joins are intended general Original rules, so this is intended ordinary-play behaviour, not an implementation defect. Whether the original game joins this exact house/destination pair is not independently verified."
+}

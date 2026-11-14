@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-29",
+  "protocol": "Two 512-decision pilots; same initial tensors/seed, only prior temperature differs; development maps only; no tuning after results",
+  "arms": {
+    "control": {
+      "run": "signals-control-20261029",
+      "prior_temperature": 1.0,
+      "before": [
+        79,
+        207,
+        82
+      ],
+      "after": [
+        79,
+        208,
+        80
+      ],
+      "before_mean": 122.66666666666667,
+      "after_mean": 122.33333333333333,
+      "policy_steps": 512,
+      "wall_seconds": 85.52092090016231,
+      "parameter_l2_changes": {
+        "features_extractor.prior": 0.007257410325109959,
+        "features_extractor.route_context": 0.024539178237318993,
+        "features_extractor.signal_row": 0.003410611068829894,
+        "features_extractor.signal_prior": 0.0016427697846665978,
+        "features_extractor.traffic_encoder": 0.04651808366179466
+      },
+      "selected_initial": true,
+      "checkpoint_sha256": {
+        "initial": "65c665461b2f6a1200d619511873a5482472d4ac5dca60df697768fa586c2bba",
+        "final": "dd7e731da83a8aa1c66a682692ec3762786514b06007ce5527f9016acbe3e891",
+        "validation-best": "0a31ca892ed2b17647dec70b36cb3f633291eb8a9ce325b82a43af29bcc38a51"
+      }
+    },
+    "soft-prior": {
+      "run": "signals-soft-prior-20261029",
+      "prior_temperature": 2.0,
+      "before": [
+        79,
+        207,
+        82
+      ],
+      "after": [
+        79,
+        208,
+        80
+      ],
+      "before_mean": 122.66666666666667,
+      "after_mean": 122.33333333333333,
+      "policy_steps": 512,
+      "wall_seconds": 72.29451030003838,
+      "parameter_l2_changes": {
+        "features_extractor.prior": 0.008461924269795418,
+        "features_extractor.route_context": 0.022091161459684372,
+        "features_extractor.signal_row": 0.003995887935161591,
+        "features_extractor.signal_prior": 0.0029694843105971813,
+        "features_extractor.traffic_encoder": 0.042093098163604736
+      },
+      "selected_initial": true,
+      "checkpoint_sha256": {
+        "initial": "2343e02261028f36aba7c4512bc6a47e54e2d47a5a74a747389c48cc1ef4bc35",
+        "final": "3bf3eba395df0805978437a72b95ee83dae7cc5d587a7fb37fe2e1ef71bf510a",
+        "validation-best": "9eaeeb35662e204428020538ea941ff3b71460e7947b0f3f53b34d401300a3b5"
+      }
+    }
+  },
+  "initial_tensors_equal": true
+}

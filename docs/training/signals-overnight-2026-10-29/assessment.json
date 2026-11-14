@@ -1,0 +1,126 @@
+{
+  "run": "signals-night-01",
+  "assessment_date": "2026-10-29",
+  "trainer_running_at_inspection": false,
+  "final_summary_present": false,
+  "final_checkpoint_present": false,
+  "stop_cause": "unknown",
+  "configured_minutes": 480,
+  "last_status": {
+    "wall_seconds": 15471.3,
+    "policy_steps": 125924,
+    "completed_commands": 569758,
+    "episodes": 832,
+    "best_training_score": 494,
+    "policy_steps_per_second": 8.1,
+    "commands_per_second": 36.8,
+    "estimated_seconds_remaining": 13328.7,
+    "current_seed": 1023,
+    "seed_attempt": 1,
+    "seed_cycle": 3,
+    "seed_games": 8,
+    "seed_mean_score": 172.5,
+    "seed_best_score": 297,
+    "current_score": 245,
+    "current_game_seconds": 765,
+    "mean_car_wait": 0.34756256044487427,
+    "max_car_wait": 21.000000000000163,
+    "finished": false,
+    "workers": [
+      {
+        "worker": 0,
+        "seed": 1096,
+        "attempt": 1,
+        "score": 141,
+        "game_seconds": 583,
+        "connected_houses": 32,
+        "shaping_reward_total": -0.27750000000000274
+      },
+      {
+        "worker": 1,
+        "seed": 1079,
+        "attempt": 1,
+        "score": 0,
+        "game_seconds": 31,
+        "connected_houses": 2,
+        "shaping_reward_total": 0.4725
+      },
+      {
+        "worker": 2,
+        "seed": 1070,
+        "attempt": 1,
+        "score": 286,
+        "game_seconds": 840,
+        "connected_houses": 41,
+        "shaping_reward_total": -1.4250000000000038
+      },
+      {
+        "worker": 3,
+        "seed": 1023,
+        "attempt": 1,
+        "score": 245,
+        "game_seconds": 765,
+        "connected_houses": 40,
+        "shaping_reward_total": -1.387500000000004
+      }
+    ],
+    "reward_mode": "goal-connectivity",
+    "reward_schema": "goal-trip-potential-gamma099-v1",
+    "connected_houses": 40,
+    "connection_potential": 2.0,
+    "trip_reward_total": 245,
+    "shaping_reward_total": -1.387500000000004,
+    "training_reward_total": 2.436124999999996
+  },
+  "initial_validation_mean": 167.4,
+  "initial_scores": [
+    79,
+    207,
+    82,
+    132,
+    337
+  ],
+  "best_validation": {
+    "mean_trips": 204.2,
+    "policy_steps": 77220,
+    "baseline": false,
+    "scores": [
+      125,
+      291,
+      154,
+      122,
+      329
+    ],
+    "checkpoint": "validation-best.zip"
+  },
+  "best_validation_relative_gain": 0.219832735961768,
+  "latest_validation": {
+    "policy_steps": 123388,
+    "mean_trips": 185.4,
+    "scores": [
+      237,
+      85,
+      135,
+      134,
+      336
+    ]
+  },
+  "best_recording": {
+    "score": 494,
+    "seed": 1099,
+    "duration": 1124.7,
+    "partial": false,
+    "terminated": true
+  },
+  "checkpoints_sha256": {
+    "initial.zip": "a1f0f811a6ef135104214e359e99ce5c133b3c29fb159ec79b2060cfefd187a9",
+    "latest.zip": "265f5a766a1296a067345bd4b0671e5443c1b098e2873a35e35543bf79f334af",
+    "validation-best.zip": "f10899a74f7cd9fbf28eec542db828cdcaa00cf7c94fa6903f62ab3b172d0bf0",
+    "best-policy.zip": "8b27584527e817bc4716a8d8d54d8db36e9537292bcd7eade4032af3dc2820a9"
+  },
+  "limitations": [
+    "Incomplete run; no final evaluation",
+    "Repeated development maps; fresh-seed generalization not assessed",
+    "Best training recording is not the validation-best policy evaluation"
+  ]
+}

@@ -1,0 +1,203 @@
+{
+ "question": "Cause of the long 20-38 s waits near roundabout 19,9 in replay v20 (handoff step 5)",
+ "scenario": "docs/training/full-replay-review-2026-11-08/measurements/replay-candidate-v20.json (strict, no grants); diagnostic wall cap raised to 900 s",
+ "unfixed_77_and_78_source": {
+  "result": "game-over 1185.95 s, 586 trips, 340/406 events (identical to the handoff's 75-suite run)",
+  "long_waits": "all waits over 20 s begin after t=1145 on the approaches/ring around 19,7, 19,8, 20,9, 18,9",
+  "first_deadlock_t": 1163,
+  "deadlock_definition": "greatest set of stopped cars (speed<0.02) each held by a member, where held = queue gap, conflicting occupant, or approach priority recomputed exactly as MayEnter",
+  "first_deadlock_members": [
+   6,
+   15,
+   22,
+   27,
+   28,
+   52
+  ],
+  "first_deadlock_edges": [
+   {
+    "car": 6,
+    "blocker": 52,
+    "kind": "conflict",
+    "why": "Crossing vehicle",
+    "lane": "19:7:2:0",
+    "at": [
+     19,
+     6
+    ],
+    "stage": "Returning",
+    "wait": 4.2
+   },
+   {
+    "car": 14,
+    "blocker": -1,
+    "kind": "rule",
+    "why": "Carpark entrance merge",
+    "lane": "carpark:11:exit:first",
+    "at": [
+     24,
+     9
+    ],
+    "stage": "LeavingParking",
+    "wait": 4.95
+   },
+   {
+    "car": 15,
+    "blocker": 22,
+    "kind": "conflict",
+    "why": "Yield to circulating traffic",
+    "lane": "19:8:2:3",
+    "at": [
+     19,
+     7
+    ],
+    "stage": "Returning",
+    "wait": 9.85
+   },
+   {
+    "car": 22,
+    "blocker": 28,
+    "kind": "queue",
+    "why": "Queue ahead",
+    "lane": "19:8:5:6",
+    "at": [
+     19,
+     8
+    ],
+    "stage": "Outbound",
+    "wait": 0.9
+   },
+   {
+    "car": 22,
+    "blocker": 6,
+    "kind": "priority",
+    "why": "Approaching vehicle priority",
+    "lane": "19:7:6:6",
+    "at": [
+     19,
+     8
+    ],
+    "stage": "Outbound",
+    "wait": 0.9
+   },
+   {
+    "car": 23,
+    "blocker": 65,
+    "kind": "conflict",
+    "why": "Crossing vehicle",
+    "lane": "23:9:0:0",
+    "at": [
+     22,
+     9
+    ],
+    "stage": "Outbound",
+    "wait": 15.35
+   },
+   {
+    "car": 27,
+    "blocker": 22,
+    "kind": "conflict",
+    "why": "Yield to circulating traffic",
+    "lane": "19:8:2:3",
+    "at": [
+     19,
+     7
+    ],
+    "stage": "Outbound",
+    "wait": 12.8
+   },
+   {
+    "car": 28,
+    "blocker": 6,
+    "kind": "priority",
+    "why": "Approaching vehicle priority",
+    "lane": "19:7:6:6",
+    "at": [
+     19,
+     8
+    ],
+    "stage": "Outbound",
+    "wait": 2.5
+   },
+   {
+    "car": 29,
+    "blocker": 35,
+    "kind": "queue",
+    "why": "Queue ahead",
+    "lane": "21:9:4:4",
+    "at": [
+     21,
+     9
+    ],
+    "stage": "Outbound",
+    "wait": 1
+   },
+   {
+    "car": 29,
+    "blocker": 16,
+    "kind": "conflict",
+    "why": "Yield to circulating traffic",
+    "lane": "20:9:4:5",
+    "at": [
+     21,
+     9
+    ],
+    "stage": "Outbound",
+    "wait": 1
+   },
+   {
+    "car": 35,
+    "blocker": 16,
+    "kind": "conflict",
+    "why": "Yield to circulating traffic",
+    "lane": "20:9:4:5",
+    "at": [
+     21,
+     9
+    ],
+    "stage": "Returning",
+    "wait": 3.45
+   },
+   {
+    "car": 52,
+    "blocker": 15,
+    "kind": "queue",
+    "why": "Queue ahead",
+    "lane": "19:7:2:2",
+    "at": [
+     19,
+     7
+    ],
+    "stage": "Outbound",
+    "wait": 8.2
+   },
+   {
+    "car": 52,
+    "blocker": 22,
+    "kind": "conflict",
+    "why": "Yield to circulating traffic",
+    "lane": "19:8:2:3",
+    "at": [
+     19,
+     7
+    ],
+    "stage": "Outbound",
+    "wait": 8.2
+   }
+  ],
+  "deadlocked_set_size_at_end": 27,
+  "lane_conflicts_at_1163": {
+   "19:7:6:6 vs 19:7:2:2": false,
+   "19:7:6:6 vs 19:7:2:0": true,
+   "19:7:2:0 vs 19:7:2:2": true,
+   "19:8:2:3 vs 19:8:5:6": true
+  },
+  "roundabout": "center 19,9; ring 19,8, 18,9, 19,10, 20,9; junction 19,7 north of ring cell 19,8",
+  "game_over_cause": "red shared destination 35 at 11,18 overcrowded from about t=1116 (50.01 s at 1185.95), before the deadlock formed; the deadlock did not cause this game-over"
+ },
+ "cause": "Approach priority (MayEnter comparator) was granted to car 6, which could not enter junction 19,7 because car 52 was stopped inside it on a conflicting lane. Cars 28/22 leaving the ring northward yielded to car 6 although their exit lane does not conflict with car 52; car 22 therefore occupied the ring lane car 15 needed; car 15 held car 52 in the junction. Each car waits for the next permanently.",
+ "broad_candidate": "Skip priority of any car whose target is occupied by a conflicting vehicle: v20 game-over 1104.3 s, 492 trips, no deadlock. Rejected as too broad (also overrides priority behind normal moving cross traffic).",
+ "adopted_fix": "Skip priority only when the conflicting occupant is stationary (speed<0.02, the waiting threshold). v20: game-over 1176.95 s, 580 trips, no deadlock at any second. First divergence from the unfixed run at t=1007.65 (car 14 near 26,15 no longer yields to a car held by a stationary vehicle); later differences are chaotic divergence, not a measured quality signal. The v20 score is not a fidelity target.",
+ "regression": "SimulationChecks 'blocked approach priority cannot deadlock a junction beside a roundabout' (five cars at the measured v20 lane offsets): fails on the unfixed engine (all five stuck after 60 s), passes with the fix. A four-car version without the car ahead of D passed on the unfixed engine and was not used.",
+ "checks_after_fix": "79 core suites, reward v5 6/6, environment 7/7, five-map 10 runs PASS"
+}

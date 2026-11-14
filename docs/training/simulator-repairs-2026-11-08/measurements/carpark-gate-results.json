@@ -1,0 +1,146 @@
+{
+ "version": "2026-11-08.4",
+ "change": "Carpark approach gate: a car passing through a shared lot is gated at the start of the outside road lane before the entrance connector, the same point already used for arriving (outbound) cars, for ranking, stopping and holding the gate. Gate refusals name the owning car (visible to blocking-cycle recovery) and a shoving car may pass a gate.",
+ "regression": "SimulationChecks 'Original carpark gate goes to the car nearest the entrance, not the car queued behind' (v20 t=972 reconstruction): fails on 2026-11-08.3 (through car stuck on 'Carpark entrance merge', queued car on 'Queue ahead' after 60 s), passes on .4. The ranking part alone already passes it; the cycle-recovery part is a safety net.",
+ "rejected_first_attempt": "Ranking all requesters by distance to the entrance itself (rank only, gating unchanged) made arriving cars lose the gate more often; the queue backed into the hub junction and ParkingFlow seed 42 layout 2 failed with a body overlap at t=22.85. A second attempt ranking through cars at the approach start but still stopping them at the connector let a through car (car 18) drive up to the west entrance and trap departing gate owner car 7 ('Carpark lane clearance' on both, from t~980), starving yellow 34 (3 served, game-over 1075.35 s). Both were discarded.",
+ "v20": {
+  "score": 620,
+  "seconds": 1206.4,
+  "failed": true,
+  "events": "356/406",
+  "deadlockedFrames": 0,
+  "carsWaitingOver20sAtEnd": 0,
+  "overcrowded": [
+   {
+    "id": 4,
+    "cell": [
+     10,
+     8
+    ],
+    "color": 1,
+    "overcrowdedFor": 34.93,
+    "served": 69
+   },
+   {
+    "id": 20,
+    "cell": [
+     16,
+     16
+    ],
+    "color": 1,
+    "overcrowdedFor": 34.75,
+    "served": 46
+   },
+   {
+    "id": 27,
+    "cell": [
+     30,
+     18
+    ],
+    "color": 1,
+    "overcrowdedFor": 50.03,
+    "served": 30
+   },
+   {
+    "id": 34,
+    "cell": [
+     16,
+     16
+    ],
+    "color": 0,
+    "overcrowdedFor": 40.99,
+    "served": 19
+   },
+   {
+    "id": 35,
+    "cell": [
+     11,
+     18
+    ],
+    "color": 1,
+    "overcrowdedFor": 44.91,
+    "served": 14
+   }
+  ]
+ },
+ "v21": {
+  "score": 537,
+  "seconds": 1147.15,
+  "failed": true,
+  "events": "321/400",
+  "deadlockedFrames": 0,
+  "carsWaitingOver20sAtEnd": 23,
+  "overcrowded": [
+   {
+    "id": 4,
+    "cell": [
+     10,
+     8
+    ],
+    "color": 1,
+    "overcrowdedFor": 2.72,
+    "served": 65
+   },
+   {
+    "id": 14,
+    "cell": [
+     12,
+     14
+    ],
+    "color": 3,
+    "overcrowdedFor": 50.02,
+    "served": 51
+   },
+   {
+    "id": 20,
+    "cell": [
+     16,
+     16
+    ],
+    "color": 1,
+    "overcrowdedFor": 39.47,
+    "served": 39
+   },
+   {
+    "id": 27,
+    "cell": [
+     30,
+     18
+    ],
+    "color": 1,
+    "overcrowdedFor": 17.43,
+    "served": 26
+   },
+   {
+    "id": 34,
+    "cell": [
+     16,
+     16
+    ],
+    "color": 0,
+    "overcrowdedFor": 3.47,
+    "served": 13
+   },
+   {
+    "id": 35,
+    "cell": [
+     11,
+     18
+    ],
+    "color": 1,
+    "overcrowdedFor": 31.58,
+    "served": 8
+   }
+  ]
+ },
+ "shoving": {
+  "v20": 39,
+  "v21": 35
+ },
+ "traffic_light_lock": {
+  "where": "replay v21, signal at 20,13 (pairs 17 and 68)",
+  "observed": "From about t=1080 the active pair stays 17 (east/west approaches) in overtime; elapsed restarts each cycle. Only green-phase car within the 0.5-tile nearby distance is car 21, stopped by 'Exit space'; nearby=1 is neither 0 nor >= SignalMinimumNearbyCars (3), so the phase never switches. North/south cars 37, 40, 61 wait about 90 s on red until game-over at 1147.15 (navy 14 overcrowded).",
+  "cause": "Existing signal switching rule combined with the new shared-exit space rule; the red-light refusal names no car, so cycle recovery cannot see it.",
+  "status": "Not changed; question sent to Mohammad (original phase switching when green-phase cars cannot move)."
+ }
+}

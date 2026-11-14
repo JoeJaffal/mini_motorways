@@ -1,0 +1,812 @@
+{
+  "schemaVersion": 1,
+  "id": "matched-prefix29745",
+  "city": "LosAngeles",
+  "seed": -915001679,
+  "referenceScore": 835,
+  "duration": 297.45,
+  "source": "User video reconstruction",
+  "sourceSha256": "c9762eb1d8c474c328b01f59a4a0ca744a0c8a06e2794e2dafe285712b1d4629",
+  "startingInventory": [
+    25,
+    1,
+    0,
+    0,
+    0,
+    0
+  ],
+  "paletteRgb": [
+    16762216,
+    15879260,
+    7325152,
+    5204126,
+    6929289
+  ],
+  "bounds": [
+    0,
+    0,
+    50,
+    30
+  ],
+  "uncertainties": "Video reconstruction, not recovered original RNG. Grid registration, ~1s video sampling, calibrated pauses/speed, and occluded edits require validation. Carrier seed is hash-derived; demand phase unknown.",
+  "events": [
+    {
+      "at": 0.0,
+      "videoTime": 0,
+      "kind": "house",
+      "id": "house:yellow:13,12",
+      "x": 13,
+      "y": 12,
+      "color": 0,
+      "direction": 6
+    },
+    {
+      "at": 0.0,
+      "videoTime": 0,
+      "kind": "shop",
+      "id": "shop:yellow:18,8",
+      "x": 16,
+      "y": 7,
+      "color": 0,
+      "layout": 3
+    },
+    {
+      "at": 4.0,
+      "videoTime": 14,
+      "kind": "draw",
+      "x": 16,
+      "y": 8,
+      "toX": 16,
+      "toY": 9
+    },
+    {
+      "at": 4.0,
+      "videoTime": 14,
+      "kind": "draw",
+      "x": 13,
+      "y": 12,
+      "toX": 13,
+      "toY": 11
+    },
+    {
+      "at": 6.0,
+      "videoTime": 16,
+      "kind": "draw",
+      "x": 16,
+      "y": 9,
+      "toX": 16,
+      "toY": 10
+    },
+    {
+      "at": 7.0,
+      "videoTime": 17,
+      "kind": "draw",
+      "x": 13,
+      "y": 10,
+      "toX": 14,
+      "toY": 10
+    },
+    {
+      "at": 7.0,
+      "videoTime": 17,
+      "kind": "draw",
+      "x": 13,
+      "y": 10,
+      "toX": 13,
+      "toY": 11
+    },
+    {
+      "at": 7.0,
+      "videoTime": 17,
+      "kind": "draw",
+      "x": 14,
+      "y": 10,
+      "toX": 15,
+      "toY": 10
+    },
+    {
+      "at": 7.0,
+      "videoTime": 17,
+      "kind": "draw",
+      "x": 15,
+      "y": 10,
+      "toX": 16,
+      "toY": 10
+    },
+    {
+      "at": 10.0,
+      "videoTime": 20,
+      "kind": "house",
+      "id": "house:yellow:11,12",
+      "x": 11,
+      "y": 12,
+      "color": 0,
+      "direction": 6
+    },
+    {
+      "at": 10.0,
+      "videoTime": 20,
+      "kind": "draw",
+      "x": 11,
+      "y": 12,
+      "toX": 11,
+      "toY": 11
+    },
+    {
+      "at": 14.0,
+      "videoTime": 22,
+      "kind": "draw",
+      "x": 11,
+      "y": 10,
+      "toX": 11,
+      "toY": 11
+    },
+    {
+      "at": 16.0,
+      "videoTime": 23,
+      "kind": "draw",
+      "x": 11,
+      "y": 10,
+      "toX": 12,
+      "toY": 10
+    },
+    {
+      "at": 16.0,
+      "videoTime": 23,
+      "kind": "draw",
+      "x": 12,
+      "y": 10,
+      "toX": 13,
+      "toY": 10
+    },
+    {
+      "at": 82.0,
+      "videoTime": 56,
+      "kind": "house",
+      "id": "house:red:19,11",
+      "x": 19,
+      "y": 11,
+      "color": 1,
+      "direction": 6
+    },
+    {
+      "at": 82.0,
+      "videoTime": 56,
+      "kind": "shop",
+      "id": "shop:red:12,9",
+      "x": 10,
+      "y": 8,
+      "color": 1,
+      "layout": 2
+    },
+    {
+      "at": 82.0,
+      "videoTime": 56,
+      "kind": "draw",
+      "x": 10,
+      "y": 7,
+      "toX": 10,
+      "toY": 8
+    },
+    {
+      "at": 82.0,
+      "videoTime": 56,
+      "kind": "draw",
+      "x": 19,
+      "y": 11,
+      "toX": 18,
+      "toY": 11
+    },
+    {
+      "at": 88.0,
+      "videoTime": 59,
+      "kind": "draw",
+      "x": 19,
+      "y": 8,
+      "toX": 19,
+      "toY": 9
+    },
+    {
+      "at": 88.0,
+      "videoTime": 59,
+      "kind": "draw",
+      "x": 19,
+      "y": 9,
+      "toX": 19,
+      "toY": 10
+    },
+    {
+      "at": 88.0,
+      "videoTime": 59,
+      "kind": "draw",
+      "x": 19,
+      "y": 11,
+      "toX": 19,
+      "toY": 10
+    },
+    {
+      "at": 92.0,
+      "videoTime": 61,
+      "kind": "house",
+      "id": "house:red:22,7",
+      "x": 22,
+      "y": 7,
+      "color": 1,
+      "direction": 2
+    },
+    {
+      "at": 94.0,
+      "videoTime": 62,
+      "kind": "draw",
+      "x": 22,
+      "y": 7,
+      "toX": 22,
+      "toY": 8
+    },
+    {
+      "at": 96.0,
+      "videoTime": 63,
+      "kind": "draw",
+      "x": 10,
+      "y": 6,
+      "toX": 11,
+      "toY": 6
+    },
+    {
+      "at": 96.0,
+      "videoTime": 63,
+      "kind": "draw",
+      "x": 10,
+      "y": 6,
+      "toX": 10,
+      "toY": 7
+    },
+    {
+      "at": 96.0,
+      "videoTime": 63,
+      "kind": "draw",
+      "x": 11,
+      "y": 6,
+      "toX": 12,
+      "toY": 6
+    },
+    {
+      "at": 100.0,
+      "videoTime": 65,
+      "kind": "draw",
+      "x": 12,
+      "y": 6,
+      "toX": 13,
+      "toY": 6
+    },
+    {
+      "at": 100.0,
+      "videoTime": 65,
+      "kind": "draw",
+      "x": 13,
+      "y": 6,
+      "toX": 14,
+      "toY": 6
+    },
+    {
+      "at": 104.0,
+      "videoTime": 67,
+      "kind": "draw",
+      "x": 14,
+      "y": 6,
+      "toX": 15,
+      "toY": 6
+    },
+    {
+      "at": 104.0,
+      "videoTime": 67,
+      "kind": "draw",
+      "x": 15,
+      "y": 6,
+      "toX": 16,
+      "toY": 6
+    },
+    {
+      "at": 104.0,
+      "videoTime": 67,
+      "kind": "draw",
+      "x": 16,
+      "y": 6,
+      "toX": 17,
+      "toY": 6
+    },
+    {
+      "at": 106.0,
+      "videoTime": 68,
+      "kind": "draw",
+      "x": 17,
+      "y": 6,
+      "toX": 18,
+      "toY": 6
+    },
+    {
+      "at": 106.0,
+      "videoTime": 68,
+      "kind": "draw",
+      "x": 18,
+      "y": 6,
+      "toX": 19,
+      "toY": 6
+    },
+    {
+      "at": 106.0,
+      "videoTime": 68,
+      "kind": "draw",
+      "x": 19,
+      "y": 6,
+      "toX": 19,
+      "toY": 7
+    },
+    {
+      "at": 108.0,
+      "videoTime": 69,
+      "kind": "draw",
+      "x": 19,
+      "y": 7,
+      "toX": 19,
+      "toY": 8
+    },
+    {
+      "at": 110.0,
+      "videoTime": 70,
+      "kind": "draw",
+      "x": 20,
+      "y": 7,
+      "toX": 21,
+      "toY": 7
+    },
+    {
+      "at": 112.0,
+      "videoTime": 71,
+      "kind": "draw",
+      "x": 19,
+      "y": 7,
+      "toX": 20,
+      "toY": 7
+    },
+    {
+      "at": 112.0,
+      "videoTime": 71,
+      "kind": "draw",
+      "x": 22,
+      "y": 7,
+      "toX": 21,
+      "toY": 7
+    },
+    {
+      "at": 140.0,
+      "videoTime": 86,
+      "kind": "offer",
+      "offers": [
+        {
+          "type": 3,
+          "amount": 2,
+          "roads": 20
+        },
+        {
+          "type": 4,
+          "amount": 1,
+          "roads": 20
+        }
+      ]
+    },
+    {
+      "at": 140.0,
+      "videoTime": 86.1,
+      "kind": "choose",
+      "choice": 1
+    },
+    {
+      "at": 162.0,
+      "videoTime": 100,
+      "kind": "shop",
+      "id": "shop:yellow:17,12",
+      "x": 15,
+      "y": 11,
+      "color": 0,
+      "layout": 2
+    },
+    {
+      "at": 162.0,
+      "videoTime": 100,
+      "kind": "draw",
+      "x": 15,
+      "y": 10,
+      "toX": 15,
+      "toY": 11
+    },
+    {
+      "at": 164.0,
+      "videoTime": 101,
+      "kind": "draw",
+      "x": 10,
+      "y": 11,
+      "toX": 10,
+      "toY": 12
+    },
+    {
+      "at": 166.0,
+      "videoTime": 102,
+      "kind": "draw",
+      "x": 10,
+      "y": 10,
+      "toX": 10,
+      "toY": 11
+    },
+    {
+      "at": 168.0,
+      "videoTime": 103,
+      "kind": "draw",
+      "x": 10,
+      "y": 10,
+      "toX": 11,
+      "toY": 10
+    },
+    {
+      "at": 170.0,
+      "videoTime": 104,
+      "kind": "draw",
+      "x": 13,
+      "y": 10,
+      "toX": 12,
+      "toY": 11
+    },
+    {
+      "at": 206.0,
+      "videoTime": 122,
+      "kind": "draw",
+      "x": 12,
+      "y": 11,
+      "toX": 13,
+      "toY": 11
+    },
+    {
+      "at": 208.0,
+      "videoTime": 123,
+      "kind": "house",
+      "id": "house:yellow:24,13",
+      "x": 24,
+      "y": 13,
+      "color": 0,
+      "direction": 4
+    },
+    {
+      "at": 208.0,
+      "videoTime": 123,
+      "kind": "house",
+      "id": "house:red:21,8",
+      "x": 21,
+      "y": 8,
+      "color": 1,
+      "direction": 6
+    },
+    {
+      "at": 208.0,
+      "videoTime": 123,
+      "kind": "draw",
+      "x": 21,
+      "y": 8,
+      "toX": 21,
+      "toY": 7
+    },
+    {
+      "at": 208.0,
+      "videoTime": 123,
+      "kind": "draw",
+      "x": 24,
+      "y": 13,
+      "toX": 24,
+      "toY": 12
+    },
+    {
+      "at": 212.0,
+      "videoTime": 125,
+      "kind": "erase",
+      "x": 12,
+      "y": 11,
+      "toX": 13,
+      "toY": 11
+    },
+    {
+      "at": 220.0,
+      "videoTime": 129,
+      "kind": "draw",
+      "x": 19,
+      "y": 13,
+      "toX": 20,
+      "toY": 13
+    },
+    {
+      "at": 220.0,
+      "videoTime": 129,
+      "kind": "draw",
+      "x": 20,
+      "y": 13,
+      "toX": 21,
+      "toY": 13
+    },
+    {
+      "at": 220.0,
+      "videoTime": 129,
+      "kind": "draw",
+      "x": 21,
+      "y": 13,
+      "toX": 22,
+      "toY": 13
+    },
+    {
+      "at": 220.0,
+      "videoTime": 129,
+      "kind": "draw",
+      "x": 22,
+      "y": 13,
+      "toX": 23,
+      "toY": 13
+    },
+    {
+      "at": 220.0,
+      "videoTime": 129,
+      "kind": "draw",
+      "x": 24,
+      "y": 13,
+      "toX": 23,
+      "toY": 13
+    },
+    {
+      "at": 222.0,
+      "videoTime": 130,
+      "kind": "draw",
+      "x": 18,
+      "y": 13,
+      "toX": 19,
+      "toY": 14
+    },
+    {
+      "at": 222.0,
+      "videoTime": 130,
+      "kind": "draw",
+      "x": 19,
+      "y": 13,
+      "toX": 19,
+      "toY": 14
+    },
+    {
+      "at": 226.0,
+      "videoTime": 132,
+      "kind": "erase",
+      "x": 18,
+      "y": 13,
+      "toX": 19,
+      "toY": 14
+    },
+    {
+      "at": 226.0,
+      "videoTime": 132,
+      "kind": "erase",
+      "x": 19,
+      "y": 13,
+      "toX": 19,
+      "toY": 14
+    },
+    {
+      "at": 228.0,
+      "videoTime": 133,
+      "kind": "draw",
+      "x": 15,
+      "y": 13,
+      "toX": 16,
+      "toY": 13
+    },
+    {
+      "at": 228.0,
+      "videoTime": 133,
+      "kind": "draw",
+      "x": 16,
+      "y": 13,
+      "toX": 17,
+      "toY": 13
+    },
+    {
+      "at": 228.0,
+      "videoTime": 133,
+      "kind": "draw",
+      "x": 17,
+      "y": 13,
+      "toX": 18,
+      "toY": 13
+    },
+    {
+      "at": 228.0,
+      "videoTime": 133,
+      "kind": "draw",
+      "x": 18,
+      "y": 13,
+      "toX": 19,
+      "toY": 13
+    },
+    {
+      "at": 230.0,
+      "videoTime": 134,
+      "kind": "draw",
+      "x": 14,
+      "y": 13,
+      "toX": 15,
+      "toY": 13
+    },
+    {
+      "at": 232.0,
+      "videoTime": 135,
+      "kind": "draw",
+      "x": 14,
+      "y": 10,
+      "toX": 14,
+      "toY": 11
+    },
+    {
+      "at": 232.0,
+      "videoTime": 135,
+      "kind": "draw",
+      "x": 14,
+      "y": 11,
+      "toX": 14,
+      "toY": 12
+    },
+    {
+      "at": 232.0,
+      "videoTime": 135,
+      "kind": "draw",
+      "x": 14,
+      "y": 12,
+      "toX": 14,
+      "toY": 13
+    },
+    {
+      "at": 248.0,
+      "videoTime": 143,
+      "kind": "house",
+      "id": "house:cyan:23,14",
+      "x": 23,
+      "y": 14,
+      "color": 2,
+      "direction": 6
+    },
+    {
+      "at": 248.0,
+      "videoTime": 143,
+      "kind": "shop",
+      "id": "shop:cyan:25,8",
+      "x": 24,
+      "y": 7,
+      "color": 2,
+      "layout": 0
+    },
+    {
+      "at": 248.0,
+      "videoTime": 143,
+      "kind": "draw",
+      "x": 23,
+      "y": 14,
+      "toX": 23,
+      "toY": 13
+    },
+    {
+      "at": 248.0,
+      "videoTime": 143,
+      "kind": "draw",
+      "x": 23,
+      "y": 9,
+      "toX": 24,
+      "toY": 9
+    },
+    {
+      "at": 254.0,
+      "videoTime": 146,
+      "kind": "draw",
+      "x": 23,
+      "y": 12,
+      "toX": 23,
+      "toY": 13
+    },
+    {
+      "at": 256.0,
+      "videoTime": 147,
+      "kind": "draw",
+      "x": 23,
+      "y": 10,
+      "toX": 23,
+      "toY": 11
+    },
+    {
+      "at": 256.0,
+      "videoTime": 147,
+      "kind": "draw",
+      "x": 23,
+      "y": 11,
+      "toX": 23,
+      "toY": 12
+    },
+    {
+      "at": 258.0,
+      "videoTime": 148,
+      "kind": "house",
+      "id": "house:cyan:18,14",
+      "x": 18,
+      "y": 14,
+      "color": 2,
+      "direction": 0
+    },
+    {
+      "at": 258.0,
+      "videoTime": 148,
+      "kind": "draw",
+      "x": 23,
+      "y": 9,
+      "toX": 23,
+      "toY": 10
+    },
+    {
+      "at": 258.0,
+      "videoTime": 148,
+      "kind": "draw",
+      "x": 18,
+      "y": 14,
+      "toX": 19,
+      "toY": 14
+    },
+    {
+      "at": 262.0,
+      "videoTime": 150,
+      "kind": "draw",
+      "x": 18,
+      "y": 14,
+      "toX": 18,
+      "toY": 13
+    },
+    {
+      "at": 278.0,
+      "videoTime": 158,
+      "kind": "draw",
+      "x": 20,
+      "y": 16,
+      "toX": 21,
+      "toY": 16
+    },
+    {
+      "at": 280.0,
+      "videoTime": 160,
+      "kind": "offer",
+      "offers": [
+        {
+          "type": 0,
+          "amount": 30,
+          "roads": 0
+        },
+        {
+          "type": 3,
+          "amount": 2,
+          "roads": 20
+        }
+      ]
+    },
+    {
+      "at": 280.0,
+      "videoTime": 160.1,
+      "kind": "choose",
+      "choice": 1
+    },
+    {
+      "at": 282.05,
+      "videoTime": 163,
+      "kind": "erase",
+      "x": 20,
+      "y": 16,
+      "toX": 21,
+      "toY": 16
+    }
+  ]
+}

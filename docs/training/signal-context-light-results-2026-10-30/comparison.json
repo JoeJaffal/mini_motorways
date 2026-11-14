@@ -1,0 +1,74 @@
+{
+  "lights_on_mean": 177.5,
+  "lights_off_mean": 159.1,
+  "mean_car_wait_on": 1.0563939622636476,
+  "mean_car_wait_off": 1.524011784069637,
+  "better_with_lights": 3,
+  "ties": 6,
+  "worse_with_lights": 1,
+  "paired_scores": [
+    {
+      "seed": 7000,
+      "on": 298,
+      "off": 164,
+      "difference": 134
+    },
+    {
+      "seed": 7001,
+      "on": 176,
+      "off": 176,
+      "difference": 0
+    },
+    {
+      "seed": 7002,
+      "on": 165,
+      "off": 165,
+      "difference": 0
+    },
+    {
+      "seed": 7003,
+      "on": 139,
+      "off": 124,
+      "difference": 15
+    },
+    {
+      "seed": 7004,
+      "on": 81,
+      "off": 81,
+      "difference": 0
+    },
+    {
+      "seed": 7005,
+      "on": 188,
+      "off": 188,
+      "difference": 0
+    },
+    {
+      "seed": 7006,
+      "on": 58,
+      "off": 58,
+      "difference": 0
+    },
+    {
+      "seed": 7007,
+      "on": 222,
+      "off": 67,
+      "difference": 155
+    },
+    {
+      "seed": 7008,
+      "on": 305,
+      "off": 425,
+      "difference": -120
+    },
+    {
+      "seed": 7009,
+      "on": 143,
+      "off": 143,
+      "difference": 0
+    }
+  ],
+  "weights_unchanged": true,
+  "waiting_limit": "Descriptive episode averages; different survival/load can confound waiting",
+  "checkpoint_sha256": "1e1b56e1d2b0a69dd85b7b01ba96b3ccc8672a2c6a6d0f0d722d5ba1ce6187a2"
+}

@@ -1,0 +1,16 @@
+{
+  "seed": 2000,
+  "cap": 3600,
+  "smoke": false,
+  "checkpoint": "C:\\Users\\moham\\mini_motorways\\output\\training\\signals-context-02\\final.zip",
+  "checkpoint_sha256": "367fce0ed32810c7dfdf3e4a6aa0cf2724b8671d50505a02f3b1babcd217abea",
+  "source_sha256": "cae52e1c97826f8d5bbdaf7e9d1cd8b2bbcd740a03b4555231678a41c053d5f2",
+  "diagnosis_protocol_sha256": "12af6cd1f4a49d075df36449b7aee1b9c6857ee58ab20cbbc3926f0f542e3235",
+  "intervention": {
+    "time": 140,
+    "original_action": 1,
+    "replacement": 2
+  },
+  "no_training": true,
+  "protocol": "Same frozen final policy; override exactly one upgrade, then normal deterministic decisions. No later commands held fixed."
+}

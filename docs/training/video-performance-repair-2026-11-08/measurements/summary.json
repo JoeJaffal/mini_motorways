@@ -1,0 +1,38 @@
+{
+  "status": "INSTALLED_AND_PLAYER_VERIFIED",
+  "sourceOriginalFinal": 835,
+  "comparisonLimit": "Original hidden state unknown and full reconstructed trace invalid beyond early prefix. These are paired simulator before/after measurements, not parity.",
+  "matchedGameSeconds": 297.45,
+  "before": {
+    "score": 24,
+    "failed": true,
+    "redDelivered": 2
+  },
+  "after": {
+    "score": 30,
+    "failed": false,
+    "redDelivered": 9
+  },
+  "afterAt330": {
+    "score": 37,
+    "failed": false,
+    "events": 99,
+    "maximumWaitingSecondsUnder20": true
+  },
+  "coreSuites": 67,
+  "environmentTests": 7,
+  "rewardTests": 6,
+  "mapVersionProtocolChecks": 10,
+  "learningRuns": 0,
+  "traceV8Frontier": {
+    "result": "REJECTED_EVENT",
+    "gameSeconds": 466.65,
+    "eventsAccepted": 132,
+    "score": 64,
+    "isFinalScore": false
+  },
+  "playerPrefix": "37/330/99",
+  "playerNormalSmoke": "OriginalReference/LosAngeles/20",
+  "installedAssemblySha256": "896af3a97e05e4450c5a7b0671ca81669bdfff7d2da88b2b9c6a93b636260578",
+  "previousPlayerBackupLocalOnly": "C:\\Users\\moham\\mini_motorways\\tmp\\video-performance-repair-2026-11-08\\previous-player"
+}

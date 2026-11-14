@@ -1,0 +1,46 @@
+[
+  {
+    "file": "initial-deterministic-replay.json",
+    "verified": true,
+    "result": {
+      "result": "PASS",
+      "seed": 4007,
+      "score": 408,
+      "seconds": 1032.5,
+      "commands": 1033
+    }
+  },
+  {
+    "file": "initial-sampled-replay.json",
+    "verified": true,
+    "result": {
+      "result": "PASS",
+      "seed": 4002,
+      "score": 288,
+      "seconds": 860.1500000000001,
+      "commands": 861
+    }
+  },
+  {
+    "file": "selected-deterministic-replay.json",
+    "verified": true,
+    "result": {
+      "result": "PASS",
+      "seed": 4004,
+      "score": 327,
+      "seconds": 930.6,
+      "commands": 931
+    }
+  },
+  {
+    "file": "selected-sampled-replay.json",
+    "verified": true,
+    "result": {
+      "result": "PASS",
+      "seed": 4002,
+      "score": 285,
+      "seconds": 848.6,
+      "commands": 849
+    }
+  }
+]

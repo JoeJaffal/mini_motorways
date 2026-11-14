@@ -1,0 +1,32 @@
+{
+  "reason": "Video198 grid crop shows orthogonal road and left-facing house stub, not crossing diagonals. Remove false corner/house-halo diagonals and paired disappearance before600; later602 detection remains unvalidated.",
+  "removed": [
+    {
+      "at": 346.95000000000005,
+      "videoTime": 195,
+      "kind": "draw",
+      "x": 21,
+      "y": 13,
+      "toX": 20,
+      "toY": 14
+    },
+    {
+      "at": 353.05,
+      "videoTime": 198,
+      "kind": "draw",
+      "x": 21,
+      "y": 14,
+      "toX": 20,
+      "toY": 13
+    },
+    {
+      "at": 893.25,
+      "videoTime": 592,
+      "kind": "erase",
+      "x": 21,
+      "y": 13,
+      "toX": 20,
+      "toY": 14
+    }
+  ]
+}

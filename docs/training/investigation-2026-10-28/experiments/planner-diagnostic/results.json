@@ -1,0 +1,93 @@
+{
+  "protocol": "Visible-state greedy routing, not learned; finite normal stock, upgrades, no debug actions",
+  "cap": 1200,
+  "results": [
+    {
+      "trips": 216,
+      "seconds": 789.6,
+      "rejected_actions": 0,
+      "commands": 790,
+      "scenario_seed": 2000,
+      "city": "LosAngeles",
+      "seed_attempt": 1,
+      "seed_cycle": 1,
+      "mean_car_wait": 2.3385933873067857,
+      "max_car_wait": 81.6999999999975,
+      "action_counts": {
+        "draw": 166,
+        "wait": 619,
+        "upgrade": 5
+      },
+      "reward_mode": "trips",
+      "reward_schema": "trip-delta-v1",
+      "connected_houses": 41,
+      "connection_potential": 0.0,
+      "trip_reward_total": 216.0,
+      "shaping_reward_total": 0.0,
+      "training_reward_total": 216.0,
+      "observation_mode": "connectivity",
+      "draw_mask": "all",
+      "draw_noop_commands": 109,
+      "draw_change_commands": 57,
+      "draw_distinct_pairs": 78
+    },
+    {
+      "trips": 85,
+      "seconds": 465.25,
+      "rejected_actions": 0,
+      "commands": 466,
+      "scenario_seed": 2001,
+      "city": "LosAngeles",
+      "seed_attempt": 1,
+      "seed_cycle": 1,
+      "mean_car_wait": 0.1887329931972787,
+      "max_car_wait": 12.400000000000041,
+      "action_counts": {
+        "draw": 114,
+        "wait": 349,
+        "upgrade": 3
+      },
+      "reward_mode": "trips",
+      "reward_schema": "trip-delta-v1",
+      "connected_houses": 27,
+      "connection_potential": 0.0,
+      "trip_reward_total": 85.0,
+      "shaping_reward_total": 0.0,
+      "training_reward_total": 85.0,
+      "observation_mode": "connectivity",
+      "draw_mask": "all",
+      "draw_noop_commands": 71,
+      "draw_change_commands": 43,
+      "draw_distinct_pairs": 54
+    },
+    {
+      "trips": 116,
+      "seconds": 578.15,
+      "rejected_actions": 0,
+      "commands": 579,
+      "scenario_seed": 2002,
+      "city": "LosAngeles",
+      "seed_attempt": 1,
+      "seed_cycle": 1,
+      "mean_car_wait": 1.4894317483090813,
+      "max_car_wait": 72.04999999999805,
+      "action_counts": {
+        "draw": 103,
+        "wait": 472,
+        "upgrade": 4
+      },
+      "reward_mode": "trips",
+      "reward_schema": "trip-delta-v1",
+      "connected_houses": 32,
+      "connection_potential": 0.0,
+      "trip_reward_total": 116.0,
+      "shaping_reward_total": 0.0,
+      "training_reward_total": 116.0,
+      "observation_mode": "connectivity",
+      "draw_mask": "all",
+      "draw_noop_commands": 64,
+      "draw_change_commands": 39,
+      "draw_distinct_pairs": 55
+    }
+  ]
+}

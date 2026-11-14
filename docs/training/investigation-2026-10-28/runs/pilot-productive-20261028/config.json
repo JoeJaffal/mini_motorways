@@ -1,0 +1,92 @@
+{
+  "schema": "full-tools-staged-grid-connectivity-v2",
+  "simulator_commit": "a0c4bc469b93743f3ce35024fa1b11e30def6e51",
+  "branch": "mohammad",
+  "dirty": false,
+  "version": "OriginalReference",
+  "city": "LosAngeles",
+  "device": "cpu",
+  "algorithm": "MaskablePPO",
+  "reward": "trip delta + gamma*Phi(next)-Phi(current), per selection",
+  "reward_schema": "trip-plus-connectivity-potential-v1",
+  "reward_parameters": {
+    "gamma": 0.999,
+    "connection_weight": 0.25,
+    "house_cap": 8,
+    "terminal_potential": 0,
+    "external_time_limit": "bootstrap live potential"
+  },
+  "tools": [
+    "wait",
+    "draw",
+    "Road",
+    "Bridge",
+    "TrafficLight",
+    "Roundabout",
+    "Remove",
+    "driveway",
+    "motorway",
+    "editMotorway",
+    "removeMotorway",
+    "upgrade0",
+    "upgrade1"
+  ],
+  "tick_interval": 20,
+  "maximum_selection_decisions": 4,
+  "training_seeds": [
+    1000,
+    1099
+  ],
+  "seed_schedule": "random",
+  "episodes_per_seed": 1,
+  "evaluation_seeds": [
+    2000,
+    2004
+  ],
+  "created_utc": "2026-10-28T11:07:16.328010+00:00",
+  "arguments": {
+    "dotnet": "C:/Users/moham/mini_motorways/tmp/dotnet/dotnet.exe",
+    "host_dll": "C:\\Users\\moham\\mini_motorways\\tmp\\headless-productivity\\TrafficHost.dll",
+    "minutes": 22.0,
+    "steps": 65536,
+    "episode_seconds": 3600,
+    "threads": 2,
+    "workers": 2,
+    "seed": 42,
+    "output": "output\\training\\pilot-productive-20261028",
+    "resume": "output\\training\\multi-seed-shaped-01\\final.zip",
+    "eval_episodes": 5,
+    "episodes_per_seed": 1,
+    "train_seed_start": 1000,
+    "train_seed_count": 100,
+    "seed_schedule": "random",
+    "print_seconds": 30.0,
+    "reward_mode": "connectivity",
+    "observation_mode": "connectivity",
+    "adapt_inputs": true,
+    "reset_optimizer": false,
+    "validation_minutes": 4.0,
+    "architecture": "legacy",
+    "draw_mask": "productive"
+  },
+  "packages": {
+    "torch": "2.14.1+cpu",
+    "numpy": "2.5.4",
+    "gymnasium": "1.4.0",
+    "stable-baselines3": "2.9.2",
+    "sb3-contrib": "2.9.2"
+  },
+  "workers": 2,
+  "aggregate_rollout_size": 256,
+  "hyperparameters": {
+    "n_steps": 128,
+    "batch_size": 64,
+    "n_epochs": 4,
+    "gamma": 0.999,
+    "learning_rate": 0.0003,
+    "ent_coef": 0.01,
+    "net_arch": [
+      64
+    ]
+  }
+}

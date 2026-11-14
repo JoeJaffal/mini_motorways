@@ -1,0 +1,29 @@
+{
+  "classification": "read-only reference behavioral findings; independent implementation; no private source copied",
+  "files": [
+    {
+      "name": "Motorways.Models.CarparkModel.cs",
+      "sha256": "ddf33cc83b7105ad492f1f097d50c6c200274f5afdb5bda0fdc60d32768d5d8f"
+    },
+    {
+      "name": "Motorways.Models.LaneModel.cs",
+      "sha256": "494ba95de1f85d7b04bcc6d996fdb587349f15aac1fb3c70f262606c739b38ec"
+    },
+    {
+      "name": "Motorways.Processes.VehicleMovementProcess.cs",
+      "sha256": "38ec953fed2c0c5f4ad800edb36e60bcf2a920d237aba8bb4778c43d67abf296"
+    },
+    {
+      "name": "Motorways.Processes.DispatchVehiclesProcess.cs",
+      "sha256": "063a111a8cabc11980426a8afb9841c409a1cd5b79085c5adea0bff327275fb4"
+    }
+  ],
+  "findings": [
+    "Shared carpark circulation connects the two entrances physically in both directions.",
+    "Path cost for carpark lanes is doubled.",
+    "An intermediate carpark traversal does not reserve a bay or complete a delivery."
+  ],
+  "limits": [
+    "Our bay geometry and parking speed remain reconstructed; not certified identical."
+  ]
+}

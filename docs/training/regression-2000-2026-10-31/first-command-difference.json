@@ -1,0 +1,171 @@
+{
+  "index": 140,
+  "protected": {
+    "command": {
+      "command": "upgrade",
+      "choice": 1
+    },
+    "before": {
+      "time": 140,
+      "trips": 9,
+      "inventory": [
+        8,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "shops": [
+        {
+          "id": 0,
+          "cell": {
+            "x": 16,
+            "y": 8
+          },
+          "color": 0,
+          "demand": 2,
+          "reserved": 2,
+          "demandCapacity": 6,
+          "overcrowdedFor": 0
+        },
+        {
+          "id": 5,
+          "cell": {
+            "x": 13,
+            "y": 10
+          },
+          "color": 1,
+          "demand": 1,
+          "reserved": 1,
+          "demandCapacity": 6,
+          "overcrowdedFor": 0
+        }
+      ],
+      "waiting": []
+    },
+    "after": {
+      "time": 141,
+      "trips": 9,
+      "inventory": [
+        28,
+        1,
+        0,
+        2,
+        0,
+        0
+      ],
+      "shops": [
+        {
+          "id": 0,
+          "cell": {
+            "x": 16,
+            "y": 8
+          },
+          "color": 0,
+          "demand": 2,
+          "reserved": 2,
+          "demandCapacity": 6,
+          "overcrowdedFor": 0
+        },
+        {
+          "id": 5,
+          "cell": {
+            "x": 13,
+            "y": 10
+          },
+          "color": 1,
+          "demand": 2,
+          "reserved": 2,
+          "demandCapacity": 6,
+          "overcrowdedFor": 0
+        }
+      ],
+      "waiting": []
+    }
+  },
+  "final": {
+    "command": {
+      "command": "upgrade",
+      "choice": 0
+    },
+    "before": {
+      "time": 140,
+      "trips": 9,
+      "inventory": [
+        8,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "shops": [
+        {
+          "id": 0,
+          "cell": {
+            "x": 16,
+            "y": 8
+          },
+          "color": 0,
+          "demand": 2,
+          "reserved": 2,
+          "demandCapacity": 6,
+          "overcrowdedFor": 0
+        },
+        {
+          "id": 5,
+          "cell": {
+            "x": 13,
+            "y": 10
+          },
+          "color": 1,
+          "demand": 1,
+          "reserved": 1,
+          "demandCapacity": 6,
+          "overcrowdedFor": 0
+        }
+      ],
+      "waiting": []
+    },
+    "after": {
+      "time": 141,
+      "trips": 9,
+      "inventory": [
+        28,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "shops": [
+        {
+          "id": 0,
+          "cell": {
+            "x": 16,
+            "y": 8
+          },
+          "color": 0,
+          "demand": 2,
+          "reserved": 2,
+          "demandCapacity": 6,
+          "overcrowdedFor": 0
+        },
+        {
+          "id": 5,
+          "cell": {
+            "x": 13,
+            "y": 10
+          },
+          "color": 1,
+          "demand": 2,
+          "reserved": 2,
+          "demandCapacity": 6,
+          "overcrowdedFor": 0
+        }
+      ],
+      "waiting": []
+    }
+  }
+}

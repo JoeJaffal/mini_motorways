@@ -1,0 +1,3929 @@
+{
+ "schemaVersion": 1,
+ "id": "video-la-game2-draft1",
+ "city": "LosAngeles",
+ "seed": -915001679,
+ "referenceScore": 601,
+ "duration": 1162.0,
+ "source": "la-game2-score-601.mp4, automatic reconstruction draft 1",
+ "sourceSha256": "",
+ "startingInventory": [
+  500,
+  20,
+  0,
+  0,
+  0,
+  0
+ ],
+ "paletteRgb": [
+  16762216,
+  15879260,
+  7325152,
+  5204126,
+  6929289
+ ],
+ "bounds": [
+  0,
+  0,
+  50,
+  30
+ ],
+ "uncertainties": "draft",
+ "events": [
+  {
+   "at": 1.4,
+   "videoTime": 0.5,
+   "kind": "shop",
+   "id": "shop:yellow:12,15",
+   "x": 12,
+   "y": 15,
+   "color": 0,
+   "layout": 3
+  },
+  {
+   "at": 1.4,
+   "videoTime": 0.5,
+   "kind": "house",
+   "id": "house:yellow:21,15",
+   "x": 21,
+   "y": 15,
+   "color": 0,
+   "direction": 2
+  },
+  {
+   "at": 7.4,
+   "videoTime": 6.5,
+   "kind": "draw",
+   "x": 21,
+   "y": 16,
+   "toX": 21,
+   "toY": 17,
+   "allowRejection": true
+  },
+  {
+   "at": 7.4,
+   "videoTime": 6.5,
+   "kind": "draw",
+   "x": 12,
+   "y": 17,
+   "toX": 13,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 7.4,
+   "videoTime": 6.5,
+   "kind": "draw",
+   "x": 13,
+   "y": 18,
+   "toX": 14,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 7.4,
+   "videoTime": 6.5,
+   "kind": "draw",
+   "x": 14,
+   "y": 18,
+   "toX": 15,
+   "toY": 19,
+   "allowRejection": true
+  },
+  {
+   "at": 7.4,
+   "videoTime": 6.5,
+   "kind": "draw",
+   "x": 19,
+   "y": 18,
+   "toX": 20,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 7.4,
+   "videoTime": 6.5,
+   "kind": "draw",
+   "x": 19,
+   "y": 18,
+   "toX": 18,
+   "toY": 19,
+   "allowRejection": true
+  },
+  {
+   "at": 9.4,
+   "videoTime": 8.5,
+   "kind": "draw",
+   "x": 21,
+   "y": 17,
+   "toX": 20,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 10.4,
+   "videoTime": 9.5,
+   "kind": "house",
+   "id": "house:yellow:20,17",
+   "x": 20,
+   "y": 17,
+   "color": 0,
+   "direction": 6
+  },
+  {
+   "at": 14.4,
+   "videoTime": 13.5,
+   "kind": "draw",
+   "x": 20,
+   "y": 16,
+   "toX": 21,
+   "toY": 16,
+   "allowRejection": true
+  },
+  {
+   "at": 34.4,
+   "videoTime": 33.5,
+   "kind": "draw",
+   "x": 13,
+   "y": 18,
+   "toX": 14,
+   "toY": 19,
+   "allowRejection": true
+  },
+  {
+   "at": 34.4,
+   "videoTime": 33.5,
+   "kind": "draw",
+   "x": 14,
+   "y": 19,
+   "toX": 15,
+   "toY": 20,
+   "allowRejection": true
+  },
+  {
+   "at": 34.4,
+   "videoTime": 33.5,
+   "kind": "draw",
+   "x": 15,
+   "y": 20,
+   "toX": 16,
+   "toY": 21,
+   "allowRejection": true
+  },
+  {
+   "at": 37.4,
+   "videoTime": 36.5,
+   "kind": "draw",
+   "x": 20,
+   "y": 18,
+   "toX": 19,
+   "toY": 19,
+   "allowRejection": true
+  },
+  {
+   "at": 38.4,
+   "videoTime": 37.5,
+   "kind": "draw",
+   "x": 19,
+   "y": 19,
+   "toX": 18,
+   "toY": 20,
+   "allowRejection": true
+  },
+  {
+   "at": 38.4,
+   "videoTime": 37.5,
+   "kind": "draw",
+   "x": 18,
+   "y": 20,
+   "toX": 17,
+   "toY": 21,
+   "allowRejection": true
+  },
+  {
+   "at": 44.4,
+   "videoTime": 43.5,
+   "kind": "erase",
+   "x": 14,
+   "y": 18,
+   "toX": 15,
+   "toY": 19,
+   "allowRejection": true
+  },
+  {
+   "at": 44.4,
+   "videoTime": 43.5,
+   "kind": "erase",
+   "x": 19,
+   "y": 18,
+   "toX": 18,
+   "toY": 19,
+   "allowRejection": true
+  },
+  {
+   "at": 44.4,
+   "videoTime": 43.5,
+   "kind": "draw",
+   "x": 16,
+   "y": 21,
+   "toX": 17,
+   "toY": 21,
+   "allowRejection": true
+  },
+  {
+   "at": 68.9,
+   "videoTime": 68,
+   "kind": "shop",
+   "id": "shop:magenta:16,17",
+   "x": 16,
+   "y": 17,
+   "color": 1,
+   "layout": 2
+  },
+  {
+   "at": 72.4,
+   "videoTime": 71.5,
+   "kind": "draw",
+   "x": 19,
+   "y": 19,
+   "toX": 20,
+   "toY": 19,
+   "allowRejection": true
+  },
+  {
+   "at": 79.4,
+   "videoTime": 78.5,
+   "kind": "house",
+   "id": "house:magenta:23,17",
+   "x": 23,
+   "y": 17,
+   "color": 1,
+   "direction": 6
+  },
+  {
+   "at": 79.4,
+   "videoTime": 78.5,
+   "kind": "draw",
+   "x": 11,
+   "y": 17,
+   "toX": 12,
+   "toY": 17,
+   "allowRejection": true
+  },
+  {
+   "at": 79.4,
+   "videoTime": 78.5,
+   "kind": "draw",
+   "x": 19,
+   "y": 18,
+   "toX": 19,
+   "toY": 19,
+   "allowRejection": true
+  },
+  {
+   "at": 83.4,
+   "videoTime": 82.5,
+   "kind": "draw",
+   "x": 11,
+   "y": 14,
+   "toX": 12,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 83.4,
+   "videoTime": 82.5,
+   "kind": "draw",
+   "x": 12,
+   "y": 14,
+   "toX": 13,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 83.4,
+   "videoTime": 82.5,
+   "kind": "draw",
+   "x": 13,
+   "y": 14,
+   "toX": 14,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 83.4,
+   "videoTime": 82.5,
+   "kind": "draw",
+   "x": 14,
+   "y": 14,
+   "toX": 15,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 83.4,
+   "videoTime": 82.5,
+   "kind": "draw",
+   "x": 18,
+   "y": 19,
+   "toX": 19,
+   "toY": 19,
+   "allowRejection": true
+  },
+  {
+   "at": 87.4,
+   "videoTime": 86.5,
+   "kind": "draw",
+   "x": 11,
+   "y": 15,
+   "toX": 11,
+   "toY": 16,
+   "allowRejection": true
+  },
+  {
+   "at": 87.4,
+   "videoTime": 86.5,
+   "kind": "draw",
+   "x": 12,
+   "y": 18,
+   "toX": 12,
+   "toY": 19,
+   "allowRejection": true
+  },
+  {
+   "at": 89.4,
+   "videoTime": 88.5,
+   "kind": "draw",
+   "x": 11,
+   "y": 14,
+   "toX": 11,
+   "toY": 15,
+   "allowRejection": true
+  },
+  {
+   "at": 93.4,
+   "videoTime": 92.5,
+   "kind": "draw",
+   "x": 11,
+   "y": 16,
+   "toX": 11,
+   "toY": 17,
+   "allowRejection": true
+  },
+  {
+   "at": 93.4,
+   "videoTime": 92.5,
+   "kind": "draw",
+   "x": 11,
+   "y": 17,
+   "toX": 12,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 94.4,
+   "videoTime": 93.5,
+   "kind": "house",
+   "id": "house:magenta:12,20",
+   "x": 12,
+   "y": 20,
+   "color": 1,
+   "direction": 6
+  },
+  {
+   "at": 94.4,
+   "videoTime": 93.5,
+   "kind": "draw",
+   "x": 15,
+   "y": 15,
+   "toX": 16,
+   "toY": 16,
+   "allowRejection": true
+  },
+  {
+   "at": 95.4,
+   "videoTime": 94.5,
+   "kind": "draw",
+   "x": 14,
+   "y": 14,
+   "toX": 15,
+   "toY": 15,
+   "allowRejection": true
+  },
+  {
+   "at": 97.4,
+   "videoTime": 96.5,
+   "kind": "draw",
+   "x": 19,
+   "y": 18,
+   "toX": 20,
+   "toY": 19,
+   "allowRejection": true
+  },
+  {
+   "at": 100.4,
+   "videoTime": 99.5,
+   "kind": "draw",
+   "x": 21,
+   "y": 14,
+   "toX": 22,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 101.4,
+   "videoTime": 100.5,
+   "kind": "draw",
+   "x": 22,
+   "y": 14,
+   "toX": 23,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 102.4,
+   "videoTime": 101.5,
+   "kind": "draw",
+   "x": 23,
+   "y": 14,
+   "toX": 23,
+   "toY": 15,
+   "allowRejection": true
+  },
+  {
+   "at": 103.4,
+   "videoTime": 102.5,
+   "kind": "draw",
+   "x": 23,
+   "y": 15,
+   "toX": 23,
+   "toY": 16,
+   "allowRejection": true
+  },
+  {
+   "at": 118.4,
+   "videoTime": 117.5,
+   "kind": "draw",
+   "x": 12,
+   "y": 17,
+   "toX": 11,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 130.9,
+   "videoTime": 130,
+   "kind": "draw",
+   "x": 11,
+   "y": 15,
+   "toX": 11,
+   "toY": 14,
+   "manual": true,
+   "allowRejection": true
+  },
+  {
+   "at": 130.9,
+   "videoTime": 130,
+   "kind": "draw",
+   "x": 11,
+   "y": 17,
+   "toX": 11,
+   "toY": 16,
+   "manual": true,
+   "allowRejection": true
+  },
+  {
+   "at": 130.9,
+   "videoTime": 130,
+   "kind": "draw",
+   "x": 12,
+   "y": 18,
+   "toX": 11,
+   "toY": 17,
+   "manual": true,
+   "allowRejection": true
+  },
+  {
+   "at": 137.4,
+   "videoTime": 136.5,
+   "kind": "erase",
+   "x": 15,
+   "y": 15,
+   "toX": 16,
+   "toY": 16,
+   "allowRejection": true,
+   "post": true
+  },
+  {
+   "at": 138.4,
+   "videoTime": 137.5,
+   "kind": "erase",
+   "x": 14,
+   "y": 14,
+   "toX": 15,
+   "toY": 14,
+   "allowRejection": true,
+   "post": true
+  },
+  {
+   "at": 138.4,
+   "videoTime": 137.5,
+   "kind": "erase",
+   "x": 14,
+   "y": 14,
+   "toX": 15,
+   "toY": 15,
+   "allowRejection": true,
+   "post": true
+  },
+  {
+   "at": 140,
+   "kind": "offer",
+   "offers": [
+    {
+     "type": 3,
+     "amount": 2,
+     "roads": 20
+    },
+    {
+     "type": 4,
+     "amount": 1,
+     "roads": 20
+    }
+   ]
+  },
+  {
+   "at": 140.01,
+   "kind": "choose",
+   "choice": 1
+  },
+  {
+   "at": 141.15,
+   "videoTime": 144.5,
+   "kind": "erase",
+   "x": 11,
+   "y": 14,
+   "toX": 12,
+   "toY": 14,
+   "allowRejection": true,
+   "post": true
+  },
+  {
+   "at": 142.15,
+   "videoTime": 145.5,
+   "kind": "erase",
+   "x": 11,
+   "y": 14,
+   "toX": 11,
+   "toY": 15,
+   "allowRejection": true
+  },
+  {
+   "at": 143.15,
+   "videoTime": 146.5,
+   "kind": "erase",
+   "x": 11,
+   "y": 17,
+   "toX": 12,
+   "toY": 17,
+   "allowRejection": true,
+   "post": true
+  },
+  {
+   "at": 145.15,
+   "videoTime": 148.5,
+   "kind": "erase",
+   "x": 11,
+   "y": 16,
+   "toX": 11,
+   "toY": 17,
+   "allowRejection": true
+  },
+  {
+   "at": 145.15,
+   "videoTime": 148.5,
+   "kind": "erase",
+   "x": 11,
+   "y": 17,
+   "toX": 12,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 145.15,
+   "videoTime": 148.5,
+   "kind": "erase",
+   "x": 12,
+   "y": 17,
+   "toX": 11,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 148.15,
+   "videoTime": 151.5,
+   "kind": "draw",
+   "x": 18,
+   "y": 14,
+   "toX": 19,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 148.15,
+   "videoTime": 151.5,
+   "kind": "draw",
+   "x": 19,
+   "y": 14,
+   "toX": 20,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 148.15,
+   "videoTime": 151.5,
+   "kind": "draw",
+   "x": 20,
+   "y": 14,
+   "toX": 21,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 152.15,
+   "videoTime": 155.5,
+   "kind": "draw",
+   "x": 18,
+   "y": 14,
+   "toX": 17,
+   "toY": 15,
+   "allowRejection": true
+  },
+  {
+   "at": 152.15,
+   "videoTime": 155.5,
+   "kind": "draw",
+   "x": 17,
+   "y": 15,
+   "toX": 16,
+   "toY": 16,
+   "allowRejection": true
+  },
+  {
+   "at": 153.15,
+   "videoTime": 156.5,
+   "kind": "draw",
+   "x": 12,
+   "y": 17,
+   "toX": 12,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 158.15,
+   "videoTime": 161.5,
+   "kind": "draw",
+   "x": 12,
+   "y": 14,
+   "toX": 11,
+   "toY": 15,
+   "allowRejection": true
+  },
+  {
+   "at": 167.15,
+   "videoTime": 170.5,
+   "kind": "draw",
+   "x": 11,
+   "y": 16,
+   "toX": 11,
+   "toY": 17,
+   "allowRejection": true
+  },
+  {
+   "at": 167.15,
+   "videoTime": 170.5,
+   "kind": "draw",
+   "x": 11,
+   "y": 17,
+   "toX": 12,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 168.15,
+   "videoTime": 171.5,
+   "kind": "house",
+   "id": "house:yellow:24,14",
+   "x": 24,
+   "y": 14,
+   "color": 0,
+   "direction": 2
+  },
+  {
+   "at": 176.65,
+   "videoTime": 180,
+   "kind": "draw",
+   "x": 24,
+   "y": 15,
+   "toX": 23,
+   "toY": 15,
+   "manual": true,
+   "allowRejection": true
+  },
+  {
+   "at": 197.15,
+   "videoTime": 200.5,
+   "kind": "erase",
+   "x": 11,
+   "y": 14,
+   "toX": 12,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 197.15,
+   "videoTime": 200.5,
+   "kind": "erase",
+   "x": 12,
+   "y": 14,
+   "toX": 11,
+   "toY": 15,
+   "allowRejection": true
+  },
+  {
+   "at": 197.15,
+   "videoTime": 200.5,
+   "kind": "erase",
+   "x": 11,
+   "y": 15,
+   "toX": 11,
+   "toY": 16,
+   "allowRejection": true
+  },
+  {
+   "at": 197.15,
+   "videoTime": 200.5,
+   "kind": "erase",
+   "x": 11,
+   "y": 16,
+   "toX": 11,
+   "toY": 17,
+   "allowRejection": true
+  },
+  {
+   "at": 197.15,
+   "videoTime": 200.5,
+   "kind": "erase",
+   "x": 11,
+   "y": 17,
+   "toX": 12,
+   "toY": 17,
+   "allowRejection": true
+  },
+  {
+   "at": 197.15,
+   "videoTime": 200.5,
+   "kind": "erase",
+   "x": 11,
+   "y": 17,
+   "toX": 12,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 201.15,
+   "videoTime": 204.5,
+   "kind": "house",
+   "id": "house:yellow:25,16",
+   "x": 25,
+   "y": 16,
+   "color": 0,
+   "direction": 4
+  },
+  {
+   "at": 201.15,
+   "videoTime": 204.5,
+   "kind": "house",
+   "id": "house:magenta:25,19",
+   "x": 25,
+   "y": 19,
+   "color": 1,
+   "direction": 6
+  },
+  {
+   "at": 201.15,
+   "videoTime": 204.5,
+   "kind": "draw",
+   "x": 14,
+   "y": 18,
+   "toX": 14,
+   "toY": 19,
+   "allowRejection": true
+  },
+  {
+   "at": 202.15,
+   "videoTime": 205.5,
+   "kind": "draw",
+   "x": 14,
+   "y": 17,
+   "toX": 14,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 210.15,
+   "videoTime": 213.5,
+   "kind": "erase",
+   "x": 12,
+   "y": 14,
+   "toX": 13,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 210.15,
+   "videoTime": 213.5,
+   "kind": "erase",
+   "x": 13,
+   "y": 14,
+   "toX": 14,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 210.15,
+   "videoTime": 213.5,
+   "kind": "erase",
+   "x": 14,
+   "y": 14,
+   "toX": 15,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 210.15,
+   "videoTime": 213.5,
+   "kind": "erase",
+   "x": 14,
+   "y": 14,
+   "toX": 15,
+   "toY": 15,
+   "allowRejection": true
+  },
+  {
+   "at": 226.65,
+   "videoTime": 230,
+   "kind": "draw",
+   "x": 15,
+   "y": 16,
+   "toX": 15,
+   "toY": 15,
+   "manual": true,
+   "allowRejection": true
+  },
+  {
+   "at": 226.65,
+   "videoTime": 230,
+   "kind": "draw",
+   "x": 14,
+   "y": 17,
+   "toX": 15,
+   "toY": 16,
+   "manual": true,
+   "allowRejection": true
+  },
+  {
+   "at": 227.15,
+   "videoTime": 230.5,
+   "kind": "draw",
+   "x": 23,
+   "y": 16,
+   "toX": 24,
+   "toY": 16,
+   "allowRejection": true
+  },
+  {
+   "at": 234.15,
+   "videoTime": 237.5,
+   "kind": "draw",
+   "x": 25,
+   "y": 17,
+   "toX": 25,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 236.15,
+   "videoTime": 239.5,
+   "kind": "draw",
+   "x": 24,
+   "y": 16,
+   "toX": 25,
+   "toY": 17,
+   "allowRejection": true
+  },
+  {
+   "at": 264.15,
+   "videoTime": 267.5,
+   "kind": "erase",
+   "x": 15,
+   "y": 15,
+   "toX": 16,
+   "toY": 16,
+   "allowRejection": true
+  },
+  {
+   "at": 264.15,
+   "videoTime": 267.5,
+   "kind": "erase",
+   "x": 15,
+   "y": 16,
+   "toX": 15,
+   "toY": 15,
+   "allowRejection": true,
+   "post": true
+  },
+  {
+   "at": 275.15,
+   "videoTime": 278.5,
+   "kind": "house",
+   "id": "house:yellow:27,13",
+   "x": 27,
+   "y": 13,
+   "color": 0,
+   "direction": 4
+  },
+  {
+   "at": 275.15,
+   "videoTime": 278.5,
+   "kind": "house",
+   "id": "house:magenta:24,19",
+   "x": 24,
+   "y": 19,
+   "color": 1,
+   "direction": 7
+  },
+  {
+   "at": 276.65,
+   "videoTime": 280,
+   "kind": "draw",
+   "x": 15,
+   "y": 17,
+   "toX": 16,
+   "toY": 16,
+   "manual": true,
+   "allowRejection": true
+  },
+  {
+   "at": 276.65,
+   "videoTime": 280,
+   "kind": "draw",
+   "x": 14,
+   "y": 18,
+   "toX": 15,
+   "toY": 17,
+   "manual": true,
+   "allowRejection": true
+  },
+  {
+   "at": 280,
+   "kind": "offer",
+   "offers": [
+    {
+     "type": 0,
+     "amount": 30,
+     "roads": 0
+    },
+    {
+     "type": 3,
+     "amount": 2,
+     "roads": 20
+    }
+   ]
+  },
+  {
+   "at": 280.01,
+   "kind": "choose",
+   "choice": 0
+  },
+  {
+   "at": 288.21,
+   "videoTime": 294,
+   "kind": "shop",
+   "id": "shop:yellow:15,12",
+   "x": 15,
+   "y": 12,
+   "color": 0,
+   "layout": 3,
+   "scheduledAt": 160.0
+  },
+  {
+   "at": 288.71,
+   "videoTime": 294.5,
+   "kind": "house",
+   "id": "house:yellow:25,12",
+   "x": 25,
+   "y": 12,
+   "color": 0,
+   "direction": 6
+  },
+  {
+   "at": 290.71,
+   "videoTime": 296.5,
+   "kind": "draw",
+   "x": 17,
+   "y": 14,
+   "toX": 18,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 291.71,
+   "videoTime": 297.5,
+   "kind": "draw",
+   "x": 18,
+   "y": 13,
+   "toX": 18,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 298.21,
+   "videoTime": 304,
+   "kind": "shop",
+   "id": "shop:blue:11,12",
+   "x": 11,
+   "y": 12,
+   "color": 3,
+   "layout": 3,
+   "scheduledAt": 230.0
+  },
+  {
+   "at": 298.71,
+   "videoTime": 304.5,
+   "kind": "house",
+   "id": "house:yellow:24,13",
+   "x": 24,
+   "y": 13,
+   "color": 0,
+   "direction": 0
+  },
+  {
+   "at": 298.71,
+   "videoTime": 304.5,
+   "kind": "house",
+   "id": "house:blue:17,20",
+   "x": 17,
+   "y": 20,
+   "color": 3,
+   "direction": 3
+  },
+  {
+   "at": 299.71,
+   "videoTime": 305.5,
+   "kind": "draw",
+   "x": 23,
+   "y": 12,
+   "toX": 23,
+   "toY": 13,
+   "allowRejection": true
+  },
+  {
+   "at": 299.71,
+   "videoTime": 305.5,
+   "kind": "draw",
+   "x": 23,
+   "y": 13,
+   "toX": 23,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 300.71,
+   "videoTime": 306.5,
+   "kind": "draw",
+   "x": 23,
+   "y": 11,
+   "toX": 23,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 301.71,
+   "videoTime": 307.5,
+   "kind": "draw",
+   "x": 18,
+   "y": 14,
+   "toX": 18,
+   "toY": 15,
+   "allowRejection": true
+  },
+  {
+   "at": 307.71,
+   "videoTime": 313.5,
+   "kind": "draw",
+   "x": 26,
+   "y": 12,
+   "toX": 26,
+   "toY": 13,
+   "allowRejection": true
+  },
+  {
+   "at": 307.71,
+   "videoTime": 313.5,
+   "kind": "draw",
+   "x": 18,
+   "y": 19,
+   "toX": 18,
+   "toY": 20,
+   "allowRejection": true
+  },
+  {
+   "at": 308.71,
+   "videoTime": 314.5,
+   "kind": "house",
+   "id": "house:blue:19,20",
+   "x": 19,
+   "y": 20,
+   "color": 3,
+   "direction": 0
+  },
+  {
+   "at": 310.71,
+   "videoTime": 316.5,
+   "kind": "draw",
+   "x": 24,
+   "y": 11,
+   "toX": 25,
+   "toY": 11,
+   "allowRejection": true
+  },
+  {
+   "at": 310.71,
+   "videoTime": 316.5,
+   "kind": "draw",
+   "x": 24,
+   "y": 11,
+   "toX": 23,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 312.71,
+   "videoTime": 318.5,
+   "kind": "erase",
+   "x": 23,
+   "y": 11,
+   "toX": 23,
+   "toY": 12,
+   "allowRejection": true,
+   "post": true
+  },
+  {
+   "at": 315.71,
+   "videoTime": 321.5,
+   "kind": "draw",
+   "x": 25,
+   "y": 11,
+   "toX": 26,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 328.21,
+   "videoTime": 334,
+   "kind": "shop",
+   "id": "shop:charcoal:27,15",
+   "x": 27,
+   "y": 15,
+   "color": 2,
+   "layout": 3
+  },
+  {
+   "at": 328.71,
+   "videoTime": 334.5,
+   "kind": "house",
+   "id": "house:charcoal:20,13",
+   "x": 20,
+   "y": 13,
+   "color": 2,
+   "direction": 2
+  },
+  {
+   "at": 328.71,
+   "videoTime": 334.5,
+   "kind": "erase",
+   "x": 23,
+   "y": 11,
+   "toX": 23,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 328.71,
+   "videoTime": 334.5,
+   "kind": "draw",
+   "x": 11,
+   "y": 14,
+   "toX": 12,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 328.71,
+   "videoTime": 334.5,
+   "kind": "draw",
+   "x": 15,
+   "y": 14,
+   "toX": 16,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 329.71,
+   "videoTime": 335.5,
+   "kind": "draw",
+   "x": 13,
+   "y": 14,
+   "toX": 14,
+   "toY": 14,
+   "manual": true,
+   "allowRejection": true
+  },
+  {
+   "at": 329.71,
+   "videoTime": 335.5,
+   "kind": "draw",
+   "x": 14,
+   "y": 14,
+   "toX": 15,
+   "toY": 14,
+   "manual": true,
+   "allowRejection": true
+  },
+  {
+   "at": 329.71,
+   "videoTime": 335.5,
+   "kind": "draw",
+   "x": 12,
+   "y": 14,
+   "toX": 13,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 330.71,
+   "videoTime": 336.5,
+   "kind": "draw",
+   "x": 16,
+   "y": 14,
+   "toX": 17,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 338.71,
+   "videoTime": 344.5,
+   "kind": "house",
+   "id": "house:charcoal:21,13",
+   "x": 21,
+   "y": 13,
+   "color": 2,
+   "direction": 2
+  },
+  {
+   "at": 350.71,
+   "videoTime": 356.5,
+   "kind": "draw",
+   "x": 18,
+   "y": 13,
+   "toX": 17,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 352.71,
+   "videoTime": 358.5,
+   "kind": "draw",
+   "x": 19,
+   "y": 14,
+   "toX": 18,
+   "toY": 15,
+   "allowRejection": true
+  },
+  {
+   "at": 354.71,
+   "videoTime": 360.5,
+   "kind": "draw",
+   "x": 24,
+   "y": 12,
+   "toX": 25,
+   "toY": 13,
+   "allowRejection": true
+  },
+  {
+   "at": 354.71,
+   "videoTime": 360.5,
+   "kind": "draw",
+   "x": 25,
+   "y": 13,
+   "toX": 25,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 356.71,
+   "videoTime": 362.5,
+   "kind": "draw",
+   "x": 23,
+   "y": 11,
+   "toX": 24,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 362.71,
+   "videoTime": 368.5,
+   "kind": "erase",
+   "x": 25,
+   "y": 11,
+   "toX": 26,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 362.71,
+   "videoTime": 368.5,
+   "kind": "erase",
+   "x": 26,
+   "y": 12,
+   "toX": 26,
+   "toY": 13,
+   "allowRejection": true
+  },
+  {
+   "at": 363.71,
+   "videoTime": 369.5,
+   "kind": "draw",
+   "x": 25,
+   "y": 13,
+   "toX": 26,
+   "toY": 13,
+   "allowRejection": true
+  },
+  {
+   "at": 365.71,
+   "videoTime": 371.5,
+   "kind": "erase",
+   "x": 24,
+   "y": 11,
+   "toX": 25,
+   "toY": 11,
+   "allowRejection": true
+  },
+  {
+   "at": 366.71,
+   "videoTime": 372.5,
+   "kind": "draw",
+   "x": 23,
+   "y": 11,
+   "toX": 23,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 373.71,
+   "videoTime": 379.5,
+   "kind": "draw",
+   "x": 24,
+   "y": 15,
+   "toX": 25,
+   "toY": 15,
+   "allowRejection": true
+  },
+  {
+   "at": 373.71,
+   "videoTime": 379.5,
+   "kind": "draw",
+   "x": 25,
+   "y": 15,
+   "toX": 26,
+   "toY": 15,
+   "allowRejection": true
+  },
+  {
+   "at": 373.71,
+   "videoTime": 379.5,
+   "kind": "draw",
+   "x": 26,
+   "y": 15,
+   "toX": 26,
+   "toY": 16,
+   "allowRejection": true
+  },
+  {
+   "at": 373.71,
+   "videoTime": 379.5,
+   "kind": "draw",
+   "x": 26,
+   "y": 16,
+   "toX": 27,
+   "toY": 17,
+   "allowRejection": true
+  },
+  {
+   "at": 374.21,
+   "videoTime": 380,
+   "kind": "draw",
+   "x": 23,
+   "y": 12,
+   "toX": 23,
+   "toY": 13,
+   "manual": true,
+   "allowRejection": true
+  },
+  {
+   "at": 374.21,
+   "videoTime": 380,
+   "kind": "draw",
+   "x": 24,
+   "y": 11,
+   "toX": 23,
+   "toY": 12,
+   "manual": true,
+   "allowRejection": true
+  },
+  {
+   "at": 374.21,
+   "videoTime": 380,
+   "kind": "draw",
+   "x": 25,
+   "y": 11,
+   "toX": 24,
+   "toY": 11,
+   "manual": true,
+   "allowRejection": true
+  },
+  {
+   "at": 374.71,
+   "videoTime": 380.5,
+   "kind": "draw",
+   "x": 23,
+   "y": 15,
+   "toX": 24,
+   "toY": 15,
+   "allowRejection": true
+  },
+  {
+   "at": 379.71,
+   "videoTime": 385.5,
+   "kind": "erase",
+   "x": 25,
+   "y": 11,
+   "toX": 24,
+   "toY": 11,
+   "allowRejection": true,
+   "post": true
+  },
+  {
+   "at": 385.21,
+   "videoTime": 391,
+   "kind": "shop",
+   "id": "shop:magenta:27,18",
+   "x": 27,
+   "y": 18,
+   "color": 1,
+   "layout": 3
+  },
+  {
+   "at": 385.71,
+   "videoTime": 391.5,
+   "kind": "erase",
+   "x": 23,
+   "y": 11,
+   "toX": 23,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 385.71,
+   "videoTime": 391.5,
+   "kind": "erase",
+   "x": 23,
+   "y": 11,
+   "toX": 24,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 385.71,
+   "videoTime": 391.5,
+   "kind": "erase",
+   "x": 24,
+   "y": 11,
+   "toX": 23,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 385.71,
+   "videoTime": 391.5,
+   "kind": "draw",
+   "x": 24,
+   "y": 12,
+   "toX": 23,
+   "toY": 13,
+   "allowRejection": true
+  },
+  {
+   "at": 387.71,
+   "videoTime": 393.5,
+   "kind": "erase",
+   "x": 23,
+   "y": 12,
+   "toX": 23,
+   "toY": 13,
+   "allowRejection": true
+  },
+  {
+   "at": 398.71,
+   "videoTime": 404.5,
+   "kind": "draw",
+   "x": 25,
+   "y": 18,
+   "toX": 26,
+   "toY": 19,
+   "allowRejection": true
+  },
+  {
+   "at": 399.71,
+   "videoTime": 405.5,
+   "kind": "draw",
+   "x": 26,
+   "y": 19,
+   "toX": 27,
+   "toY": 20,
+   "allowRejection": true
+  },
+  {
+   "at": 400.71,
+   "videoTime": 406.5,
+   "kind": "draw",
+   "x": 27,
+   "y": 20,
+   "toX": 26,
+   "toY": 21,
+   "allowRejection": true
+  },
+  {
+   "at": 402.71,
+   "videoTime": 408.5,
+   "kind": "draw",
+   "x": 23,
+   "y": 18,
+   "toX": 23,
+   "toY": 19,
+   "allowRejection": true
+  },
+  {
+   "at": 402.71,
+   "videoTime": 408.5,
+   "kind": "draw",
+   "x": 23,
+   "y": 19,
+   "toX": 23,
+   "toY": 20,
+   "allowRejection": true
+  },
+  {
+   "at": 403.71,
+   "videoTime": 409.5,
+   "kind": "draw",
+   "x": 23,
+   "y": 18,
+   "toX": 24,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 405.71,
+   "videoTime": 411.5,
+   "kind": "house",
+   "id": "house:charcoal:21,11",
+   "x": 21,
+   "y": 11,
+   "color": 2,
+   "direction": 5
+  },
+  {
+   "at": 405.71,
+   "videoTime": 411.5,
+   "kind": "draw",
+   "x": 24,
+   "y": 18,
+   "toX": 25,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 408.71,
+   "videoTime": 414.5,
+   "kind": "draw",
+   "x": 23,
+   "y": 20,
+   "toX": 24,
+   "toY": 21,
+   "allowRejection": true
+  },
+  {
+   "at": 408.71,
+   "videoTime": 414.5,
+   "kind": "draw",
+   "x": 24,
+   "y": 21,
+   "toX": 25,
+   "toY": 21,
+   "allowRejection": true
+  },
+  {
+   "at": 409.71,
+   "videoTime": 415.5,
+   "kind": "draw",
+   "x": 29,
+   "y": 20,
+   "toX": 30,
+   "toY": 20,
+   "allowRejection": true
+  },
+  {
+   "at": 409.71,
+   "videoTime": 415.5,
+   "kind": "draw",
+   "x": 25,
+   "y": 21,
+   "toX": 26,
+   "toY": 21,
+   "allowRejection": true
+  },
+  {
+   "at": 416.71,
+   "videoTime": 422.5,
+   "kind": "draw",
+   "x": 20,
+   "y": 12,
+   "toX": 19,
+   "toY": 13,
+   "allowRejection": true
+  },
+  {
+   "at": 416.71,
+   "videoTime": 422.5,
+   "kind": "draw",
+   "x": 19,
+   "y": 13,
+   "toX": 19,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 417.71,
+   "videoTime": 423.5,
+   "kind": "draw",
+   "x": 20,
+   "y": 11,
+   "toX": 20,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 420,
+   "kind": "offer",
+   "offers": [
+    {
+     "type": 2,
+     "amount": 1,
+     "roads": 10
+    },
+    {
+     "type": 1,
+     "amount": 1,
+     "roads": 20
+    }
+   ]
+  },
+  {
+   "at": 420.01,
+   "kind": "choose",
+   "choice": 1
+  },
+  {
+   "at": 427.99,
+   "videoTime": 436.5,
+   "kind": "draw",
+   "x": 21,
+   "y": 17,
+   "toX": 21,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 428.99,
+   "videoTime": 437.5,
+   "kind": "draw",
+   "x": 21,
+   "y": 18,
+   "toX": 21,
+   "toY": 19,
+   "allowRejection": true
+  },
+  {
+   "at": 430.99,
+   "videoTime": 439.5,
+   "kind": "draw",
+   "x": 30,
+   "y": 7,
+   "toX": 31,
+   "toY": 7,
+   "allowRejection": true
+  },
+  {
+   "at": 430.99,
+   "videoTime": 439.5,
+   "kind": "draw",
+   "x": 31,
+   "y": 7,
+   "toX": 32,
+   "toY": 7,
+   "allowRejection": true
+  },
+  {
+   "at": 433.99,
+   "videoTime": 442.5,
+   "kind": "draw",
+   "x": 21,
+   "y": 19,
+   "toX": 20,
+   "toY": 20,
+   "allowRejection": true
+  },
+  {
+   "at": 434.99,
+   "videoTime": 443.5,
+   "kind": "draw",
+   "x": 30,
+   "y": 19,
+   "toX": 30,
+   "toY": 20,
+   "allowRejection": true
+  },
+  {
+   "at": 438.99,
+   "videoTime": 447.5,
+   "kind": "draw",
+   "x": 19,
+   "y": 21,
+   "toX": 18,
+   "toY": 22,
+   "allowRejection": true
+  },
+  {
+   "at": 438.99,
+   "videoTime": 447.5,
+   "kind": "draw",
+   "x": 17,
+   "y": 22,
+   "toX": 18,
+   "toY": 22,
+   "allowRejection": true
+  },
+  {
+   "at": 439.99,
+   "videoTime": 448.5,
+   "kind": "draw",
+   "x": 30,
+   "y": 20,
+   "toX": 31,
+   "toY": 20,
+   "allowRejection": true
+  },
+  {
+   "at": 439.99,
+   "videoTime": 448.5,
+   "kind": "draw",
+   "x": 16,
+   "y": 21,
+   "toX": 17,
+   "toY": 22,
+   "allowRejection": true
+  },
+  {
+   "at": 445.99,
+   "videoTime": 454.5,
+   "kind": "erase",
+   "x": 30,
+   "y": 7,
+   "toX": 31,
+   "toY": 7,
+   "allowRejection": true
+  },
+  {
+   "at": 445.99,
+   "videoTime": 454.5,
+   "kind": "erase",
+   "x": 31,
+   "y": 7,
+   "toX": 32,
+   "toY": 7,
+   "allowRejection": true
+  },
+  {
+   "at": 447.99,
+   "videoTime": 456.5,
+   "kind": "erase",
+   "x": 18,
+   "y": 19,
+   "toX": 18,
+   "toY": 20,
+   "allowRejection": true,
+   "post": true
+  },
+  {
+   "at": 451.99,
+   "videoTime": 460.5,
+   "kind": "erase",
+   "x": 19,
+   "y": 18,
+   "toX": 20,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 483.49,
+   "videoTime": 492,
+   "kind": "shared",
+   "id": "shared:charcoal:28,9",
+   "x": 28,
+   "y": 9,
+   "color": 2,
+   "layout": 0,
+   "scheduledAt": 407.0
+  },
+  {
+   "at": 484.99,
+   "videoTime": 493.5,
+   "kind": "house",
+   "id": "house:charcoal:31,21",
+   "x": 31,
+   "y": 21,
+   "color": 2,
+   "direction": 6
+  },
+  {
+   "at": 486.99,
+   "videoTime": 495.5,
+   "kind": "draw",
+   "x": 34,
+   "y": 8,
+   "toX": 35,
+   "toY": 8,
+   "allowRejection": true
+  },
+  {
+   "at": 486.99,
+   "videoTime": 495.5,
+   "kind": "draw",
+   "x": 34,
+   "y": 9,
+   "toX": 35,
+   "toY": 9,
+   "allowRejection": true
+  },
+  {
+   "at": 490.99,
+   "videoTime": 499.5,
+   "kind": "draw",
+   "x": 32,
+   "y": 6,
+   "toX": 33,
+   "toY": 6,
+   "allowRejection": true
+  },
+  {
+   "at": 490.99,
+   "videoTime": 499.5,
+   "kind": "draw",
+   "x": 33,
+   "y": 6,
+   "toX": 34,
+   "toY": 6,
+   "allowRejection": true
+  },
+  {
+   "at": 492.99,
+   "videoTime": 501.5,
+   "kind": "erase",
+   "x": 34,
+   "y": 8,
+   "toX": 35,
+   "toY": 8,
+   "allowRejection": true
+  },
+  {
+   "at": 492.99,
+   "videoTime": 501.5,
+   "kind": "erase",
+   "x": 34,
+   "y": 9,
+   "toX": 35,
+   "toY": 9,
+   "allowRejection": true
+  },
+  {
+   "at": 497.99,
+   "videoTime": 506.5,
+   "kind": "draw",
+   "x": 27,
+   "y": 11,
+   "toX": 26,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 497.99,
+   "videoTime": 506.5,
+   "kind": "draw",
+   "x": 26,
+   "y": 12,
+   "toX": 26,
+   "toY": 13,
+   "allowRejection": true
+  },
+  {
+   "at": 502.99,
+   "videoTime": 511.5,
+   "kind": "draw",
+   "x": 21,
+   "y": 10,
+   "toX": 22,
+   "toY": 10,
+   "allowRejection": true
+  },
+  {
+   "at": 502.99,
+   "videoTime": 511.5,
+   "kind": "draw",
+   "x": 22,
+   "y": 10,
+   "toX": 23,
+   "toY": 10,
+   "allowRejection": true
+  },
+  {
+   "at": 503.99,
+   "videoTime": 512.5,
+   "kind": "draw",
+   "x": 23,
+   "y": 10,
+   "toX": 24,
+   "toY": 10,
+   "allowRejection": true
+  },
+  {
+   "at": 504.99,
+   "videoTime": 513.5,
+   "kind": "draw",
+   "x": 24,
+   "y": 10,
+   "toX": 25,
+   "toY": 10,
+   "allowRejection": true
+  },
+  {
+   "at": 511.99,
+   "videoTime": 520.5,
+   "kind": "erase",
+   "x": 32,
+   "y": 6,
+   "toX": 33,
+   "toY": 6,
+   "allowRejection": true
+  },
+  {
+   "at": 511.99,
+   "videoTime": 520.5,
+   "kind": "erase",
+   "x": 33,
+   "y": 6,
+   "toX": 34,
+   "toY": 6,
+   "allowRejection": true
+  },
+  {
+   "at": 511.99,
+   "videoTime": 520.5,
+   "kind": "draw",
+   "x": 25,
+   "y": 10,
+   "toX": 26,
+   "toY": 11,
+   "allowRejection": true
+  },
+  {
+   "at": 511.99,
+   "videoTime": 520.5,
+   "kind": "draw",
+   "x": 26,
+   "y": 11,
+   "toX": 27,
+   "toY": 11,
+   "allowRejection": true
+  },
+  {
+   "at": 515.99,
+   "videoTime": 524.5,
+   "kind": "draw",
+   "x": 19,
+   "y": 12,
+   "toX": 19,
+   "toY": 13,
+   "allowRejection": true
+  },
+  {
+   "at": 516.99,
+   "videoTime": 525.5,
+   "kind": "draw",
+   "x": 20,
+   "y": 10,
+   "toX": 19,
+   "toY": 11,
+   "allowRejection": true
+  },
+  {
+   "at": 516.99,
+   "videoTime": 525.5,
+   "kind": "draw",
+   "x": 19,
+   "y": 11,
+   "toX": 19,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 517.99,
+   "videoTime": 526.5,
+   "kind": "erase",
+   "x": 26,
+   "y": 12,
+   "toX": 26,
+   "toY": 13,
+   "allowRejection": true
+  },
+  {
+   "at": 517.99,
+   "videoTime": 526.5,
+   "kind": "draw",
+   "x": 20,
+   "y": 10,
+   "toX": 21,
+   "toY": 10,
+   "allowRejection": true
+  },
+  {
+   "at": 518.99,
+   "videoTime": 527.5,
+   "kind": "erase",
+   "x": 27,
+   "y": 11,
+   "toX": 26,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 524.99,
+   "videoTime": 533.5,
+   "kind": "erase",
+   "x": 20,
+   "y": 11,
+   "toX": 20,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 528.49,
+   "videoTime": 537,
+   "kind": "shop",
+   "id": "shop:magenta:10,9",
+   "x": 10,
+   "y": 9,
+   "color": 1,
+   "layout": 3
+  },
+  {
+   "at": 528.99,
+   "videoTime": 537.5,
+   "kind": "house",
+   "id": "house:magenta:34,13",
+   "x": 34,
+   "y": 13,
+   "color": 1,
+   "direction": 6
+  },
+  {
+   "at": 528.99,
+   "videoTime": 537.5,
+   "kind": "erase",
+   "x": 20,
+   "y": 12,
+   "toX": 19,
+   "toY": 13,
+   "allowRejection": true
+  },
+  {
+   "at": 529.99,
+   "videoTime": 538.5,
+   "kind": "draw",
+   "x": 29,
+   "y": 17,
+   "toX": 30,
+   "toY": 17,
+   "allowRejection": true
+  },
+  {
+   "at": 538.99,
+   "videoTime": 547.5,
+   "kind": "house",
+   "id": "house:magenta:35,13",
+   "x": 35,
+   "y": 13,
+   "color": 1,
+   "direction": 6
+  },
+  {
+   "at": 545.99,
+   "videoTime": 554.5,
+   "kind": "draw",
+   "x": 30,
+   "y": 17,
+   "toX": 30,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 554.99,
+   "videoTime": 563.5,
+   "kind": "draw",
+   "x": 10,
+   "y": 11,
+   "toX": 11,
+   "toY": 11,
+   "allowRejection": true
+  },
+  {
+   "at": 555.99,
+   "videoTime": 564.5,
+   "kind": "draw",
+   "x": 12,
+   "y": 11,
+   "toX": 13,
+   "toY": 11,
+   "manual": true,
+   "allowRejection": true
+  },
+  {
+   "at": 555.99,
+   "videoTime": 564.5,
+   "kind": "draw",
+   "x": 13,
+   "y": 11,
+   "toX": 14,
+   "toY": 11,
+   "manual": true,
+   "allowRejection": true
+  },
+  {
+   "at": 555.99,
+   "videoTime": 564.5,
+   "kind": "draw",
+   "x": 11,
+   "y": 11,
+   "toX": 12,
+   "toY": 11,
+   "allowRejection": true
+  },
+  {
+   "at": 555.99,
+   "videoTime": 564.5,
+   "kind": "draw",
+   "x": 14,
+   "y": 11,
+   "toX": 15,
+   "toY": 11,
+   "allowRejection": true
+  },
+  {
+   "at": 555.99,
+   "videoTime": 564.5,
+   "kind": "draw",
+   "x": 15,
+   "y": 11,
+   "toX": 16,
+   "toY": 11,
+   "allowRejection": true
+  },
+  {
+   "at": 555.99,
+   "videoTime": 564.5,
+   "kind": "draw",
+   "x": 16,
+   "y": 11,
+   "toX": 17,
+   "toY": 11,
+   "allowRejection": true
+  },
+  {
+   "at": 556.99,
+   "videoTime": 565.5,
+   "kind": "draw",
+   "x": 17,
+   "y": 11,
+   "toX": 18,
+   "toY": 11,
+   "allowRejection": true
+  },
+  {
+   "at": 556.99,
+   "videoTime": 565.5,
+   "kind": "draw",
+   "x": 18,
+   "y": 11,
+   "toX": 19,
+   "toY": 11,
+   "allowRejection": true
+  },
+  {
+   "at": 559.99,
+   "videoTime": 568.5,
+   "kind": "draw",
+   "x": 33,
+   "y": 5,
+   "toX": 34,
+   "toY": 5,
+   "allowRejection": true
+  },
+  {
+   "at": 559.99,
+   "videoTime": 568.5,
+   "kind": "draw",
+   "x": 34,
+   "y": 5,
+   "toX": 35,
+   "toY": 5,
+   "allowRejection": true
+  },
+  {
+   "at": 559.99,
+   "videoTime": 568.5,
+   "kind": "draw",
+   "x": 26,
+   "y": 21,
+   "toX": 27,
+   "toY": 21,
+   "allowRejection": true
+  },
+  {
+   "at": 559.99,
+   "videoTime": 568.5,
+   "kind": "draw",
+   "x": 27,
+   "y": 21,
+   "toX": 28,
+   "toY": 21,
+   "allowRejection": true
+  },
+  {
+   "at": 559.99,
+   "videoTime": 568.5,
+   "kind": "draw",
+   "x": 28,
+   "y": 21,
+   "toX": 29,
+   "toY": 21,
+   "allowRejection": true
+  },
+  {
+   "at": 560,
+   "kind": "offer",
+   "offers": [
+    {
+     "type": 1,
+     "amount": 1,
+     "roads": 20
+    },
+    {
+     "type": 0,
+     "amount": 30,
+     "roads": 0
+    }
+   ]
+  },
+  {
+   "at": 560.01,
+   "kind": "choose",
+   "choice": 0
+  },
+  {
+   "at": 562.64,
+   "videoTime": 575.5,
+   "kind": "draw",
+   "x": 30,
+   "y": 17,
+   "toX": 31,
+   "toY": 17,
+   "allowRejection": true
+  },
+  {
+   "at": 563.64,
+   "videoTime": 576.5,
+   "kind": "draw",
+   "x": 34,
+   "y": 12,
+   "toX": 35,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 564.64,
+   "videoTime": 577.5,
+   "kind": "draw",
+   "x": 33,
+   "y": 12,
+   "toX": 34,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 565.64,
+   "videoTime": 578.5,
+   "kind": "draw",
+   "x": 30,
+   "y": 16,
+   "toX": 30,
+   "toY": 17,
+   "allowRejection": true
+  },
+  {
+   "at": 567.14,
+   "videoTime": 580,
+   "kind": "draw",
+   "x": 30,
+   "y": 21,
+   "toX": 29,
+   "toY": 21,
+   "manual": true,
+   "allowRejection": true
+  },
+  {
+   "at": 571.64,
+   "videoTime": 584.5,
+   "kind": "draw",
+   "x": 32,
+   "y": 11,
+   "toX": 33,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 572.64,
+   "videoTime": 585.5,
+   "kind": "draw",
+   "x": 30,
+   "y": 17,
+   "toX": 31,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 580.64,
+   "videoTime": 593.5,
+   "kind": "erase",
+   "x": 33,
+   "y": 5,
+   "toX": 34,
+   "toY": 5,
+   "allowRejection": true
+  },
+  {
+   "at": 580.64,
+   "videoTime": 593.5,
+   "kind": "erase",
+   "x": 34,
+   "y": 5,
+   "toX": 35,
+   "toY": 5,
+   "allowRejection": true
+  },
+  {
+   "at": 591.14,
+   "videoTime": 604,
+   "kind": "driveway",
+   "target": "house:yellow:20,17",
+   "direction": 0,
+   "allowRejection": true
+  },
+  {
+   "at": 591.64,
+   "videoTime": 604.5,
+   "kind": "erase",
+   "x": 20,
+   "y": 16,
+   "toX": 21,
+   "toY": 16,
+   "allowRejection": true
+  },
+  {
+   "at": 621.64,
+   "videoTime": 634.5,
+   "kind": "draw",
+   "x": 34,
+   "y": 4,
+   "toX": 35,
+   "toY": 4,
+   "allowRejection": true
+  },
+  {
+   "at": 621.64,
+   "videoTime": 634.5,
+   "kind": "draw",
+   "x": 35,
+   "y": 4,
+   "toX": 36,
+   "toY": 4,
+   "allowRejection": true
+  },
+  {
+   "at": 621.64,
+   "videoTime": 634.5,
+   "kind": "draw",
+   "x": 36,
+   "y": 4,
+   "toX": 37,
+   "toY": 4,
+   "allowRejection": true
+  },
+  {
+   "at": 642.64,
+   "videoTime": 655.5,
+   "kind": "erase",
+   "x": 14,
+   "y": 17,
+   "toX": 14,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 653.64,
+   "videoTime": 666.5,
+   "kind": "house",
+   "id": "house:yellow:31,13",
+   "x": 31,
+   "y": 13,
+   "color": 0,
+   "direction": 6
+  },
+  {
+   "at": 654.64,
+   "videoTime": 667.5,
+   "kind": "house",
+   "id": "house:magenta:36,11",
+   "x": 36,
+   "y": 11,
+   "color": 1,
+   "direction": 4
+  },
+  {
+   "at": 655.64,
+   "videoTime": 668.5,
+   "kind": "erase",
+   "x": 26,
+   "y": 19,
+   "toX": 27,
+   "toY": 20,
+   "allowRejection": true
+  },
+  {
+   "at": 658.14,
+   "videoTime": 671,
+   "kind": "circle",
+   "target": "shop:yellow:12,15"
+  },
+  {
+   "at": 658.14,
+   "videoTime": 671,
+   "kind": "circle",
+   "target": "shop:magenta:27,18"
+  },
+  {
+   "at": 661.64,
+   "videoTime": 674.5,
+   "kind": "house",
+   "id": "house:magenta:36,13",
+   "x": 36,
+   "y": 13,
+   "color": 1,
+   "direction": 5
+  },
+  {
+   "at": 663.64,
+   "videoTime": 676.5,
+   "kind": "erase",
+   "x": 34,
+   "y": 4,
+   "toX": 35,
+   "toY": 4,
+   "allowRejection": true
+  },
+  {
+   "at": 664.64,
+   "videoTime": 677.5,
+   "kind": "erase",
+   "x": 35,
+   "y": 4,
+   "toX": 36,
+   "toY": 4,
+   "allowRejection": true
+  },
+  {
+   "at": 664.64,
+   "videoTime": 677.5,
+   "kind": "erase",
+   "x": 36,
+   "y": 4,
+   "toX": 37,
+   "toY": 4,
+   "allowRejection": true
+  },
+  {
+   "at": 665.64,
+   "videoTime": 678.5,
+   "kind": "draw",
+   "x": 35,
+   "y": 11,
+   "toX": 34,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 671.64,
+   "videoTime": 684.5,
+   "kind": "house",
+   "id": "house:magenta:36,12",
+   "x": 36,
+   "y": 12,
+   "color": 1,
+   "direction": 4
+  },
+  {
+   "at": 671.64,
+   "videoTime": 684.5,
+   "kind": "draw",
+   "x": 31,
+   "y": 16,
+   "toX": 30,
+   "toY": 17,
+   "allowRejection": true
+  },
+  {
+   "at": 685.64,
+   "videoTime": 698.5,
+   "kind": "erase",
+   "x": 25,
+   "y": 18,
+   "toX": 26,
+   "toY": 19,
+   "allowRejection": true
+  },
+  {
+   "at": 688.64,
+   "videoTime": 701.5,
+   "kind": "draw",
+   "x": 24,
+   "y": 17,
+   "toX": 25,
+   "toY": 17,
+   "allowRejection": true
+  },
+  {
+   "at": 700,
+   "kind": "offer",
+   "offers": [
+    {
+     "type": 2,
+     "amount": 1,
+     "roads": 10
+    },
+    {
+     "type": 1,
+     "amount": 1,
+     "roads": 20
+    }
+   ]
+  },
+  {
+   "at": 700.01,
+   "kind": "choose",
+   "choice": 1
+  },
+  {
+   "at": 704.84,
+   "videoTime": 723.5,
+   "kind": "draw",
+   "x": 25,
+   "y": 17,
+   "toX": 24,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 708.84,
+   "videoTime": 727.5,
+   "kind": "draw",
+   "x": 35,
+   "y": 3,
+   "toX": 36,
+   "toY": 3,
+   "allowRejection": true
+  },
+  {
+   "at": 708.84,
+   "videoTime": 727.5,
+   "kind": "draw",
+   "x": 36,
+   "y": 3,
+   "toX": 37,
+   "toY": 3,
+   "allowRejection": true
+  },
+  {
+   "at": 708.84,
+   "videoTime": 727.5,
+   "kind": "draw",
+   "x": 37,
+   "y": 3,
+   "toX": 38,
+   "toY": 3,
+   "allowRejection": true
+  },
+  {
+   "at": 711.34,
+   "videoTime": 730,
+   "kind": "draw",
+   "x": 26,
+   "y": 12,
+   "toX": 26,
+   "toY": 13,
+   "manual": true,
+   "allowRejection": true
+  },
+  {
+   "at": 711.34,
+   "videoTime": 730,
+   "kind": "draw",
+   "x": 31,
+   "y": 12,
+   "toX": 30,
+   "toY": 12,
+   "manual": true,
+   "allowRejection": true
+  },
+  {
+   "at": 711.34,
+   "videoTime": 730,
+   "kind": "draw",
+   "x": 32,
+   "y": 11,
+   "toX": 31,
+   "toY": 12,
+   "manual": true,
+   "allowRejection": true
+  },
+  {
+   "at": 719.84,
+   "videoTime": 738.5,
+   "kind": "draw",
+   "x": 26,
+   "y": 12,
+   "toX": 27,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 719.84,
+   "videoTime": 738.5,
+   "kind": "draw",
+   "x": 27,
+   "y": 12,
+   "toX": 28,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 719.84,
+   "videoTime": 738.5,
+   "kind": "draw",
+   "x": 28,
+   "y": 12,
+   "toX": 29,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 719.84,
+   "videoTime": 738.5,
+   "kind": "draw",
+   "x": 29,
+   "y": 12,
+   "toX": 30,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 725.84,
+   "videoTime": 744.5,
+   "kind": "erase",
+   "x": 32,
+   "y": 11,
+   "toX": 31,
+   "toY": 12,
+   "allowRejection": true,
+   "post": true
+  },
+  {
+   "at": 733.84,
+   "videoTime": 752.5,
+   "kind": "draw",
+   "x": 38,
+   "y": 3,
+   "toX": 39,
+   "toY": 3,
+   "allowRejection": true
+  },
+  {
+   "at": 735.84,
+   "videoTime": 754.5,
+   "kind": "draw",
+   "x": 25,
+   "y": 11,
+   "toX": 26,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 736.84,
+   "videoTime": 755.5,
+   "kind": "draw",
+   "x": 24,
+   "y": 11,
+   "toX": 25,
+   "toY": 11,
+   "allowRejection": true
+  },
+  {
+   "at": 739.84,
+   "videoTime": 758.5,
+   "kind": "draw",
+   "x": 24,
+   "y": 11,
+   "toX": 23,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 740.84,
+   "videoTime": 759.5,
+   "kind": "draw",
+   "x": 23,
+   "y": 12,
+   "toX": 23,
+   "toY": 13,
+   "allowRejection": true
+  },
+  {
+   "at": 745.84,
+   "videoTime": 764.5,
+   "kind": "erase",
+   "x": 24,
+   "y": 12,
+   "toX": 25,
+   "toY": 13,
+   "allowRejection": true
+  },
+  {
+   "at": 761.34,
+   "videoTime": 780,
+   "kind": "draw",
+   "x": 33,
+   "y": 13,
+   "toX": 34,
+   "toY": 12,
+   "manual": true,
+   "allowRejection": true
+  },
+  {
+   "at": 763.84,
+   "videoTime": 782.5,
+   "kind": "erase",
+   "x": 24,
+   "y": 12,
+   "toX": 23,
+   "toY": 13,
+   "allowRejection": true
+  },
+  {
+   "at": 768.84,
+   "videoTime": 787.5,
+   "kind": "draw",
+   "x": 27,
+   "y": 17,
+   "toX": 28,
+   "toY": 17,
+   "allowRejection": true
+  },
+  {
+   "at": 768.84,
+   "videoTime": 787.5,
+   "kind": "draw",
+   "x": 28,
+   "y": 17,
+   "toX": 29,
+   "toY": 17,
+   "allowRejection": true
+  },
+  {
+   "at": 770.84,
+   "videoTime": 789.5,
+   "kind": "erase",
+   "x": 35,
+   "y": 3,
+   "toX": 36,
+   "toY": 3,
+   "allowRejection": true
+  },
+  {
+   "at": 770.84,
+   "videoTime": 789.5,
+   "kind": "draw",
+   "x": 31,
+   "y": 18,
+   "toX": 31,
+   "toY": 19,
+   "allowRejection": true
+  },
+  {
+   "at": 771.84,
+   "videoTime": 790.5,
+   "kind": "draw",
+   "x": 31,
+   "y": 19,
+   "toX": 31,
+   "toY": 20,
+   "allowRejection": true
+  },
+  {
+   "at": 775.84,
+   "videoTime": 794.5,
+   "kind": "erase",
+   "x": 36,
+   "y": 3,
+   "toX": 37,
+   "toY": 3,
+   "allowRejection": true
+  },
+  {
+   "at": 775.84,
+   "videoTime": 794.5,
+   "kind": "erase",
+   "x": 37,
+   "y": 3,
+   "toX": 38,
+   "toY": 3,
+   "allowRejection": true
+  },
+  {
+   "at": 775.84,
+   "videoTime": 794.5,
+   "kind": "erase",
+   "x": 38,
+   "y": 3,
+   "toX": 39,
+   "toY": 3,
+   "allowRejection": true
+  },
+  {
+   "at": 775.84,
+   "videoTime": 794.5,
+   "kind": "erase",
+   "x": 27,
+   "y": 21,
+   "toX": 28,
+   "toY": 21,
+   "allowRejection": true
+  },
+  {
+   "at": 775.84,
+   "videoTime": 794.5,
+   "kind": "erase",
+   "x": 28,
+   "y": 21,
+   "toX": 29,
+   "toY": 21,
+   "allowRejection": true
+  },
+  {
+   "at": 775.84,
+   "videoTime": 794.5,
+   "kind": "erase",
+   "x": 30,
+   "y": 21,
+   "toX": 29,
+   "toY": 21,
+   "allowRejection": true,
+   "post": true
+  },
+  {
+   "at": 780.84,
+   "videoTime": 799.5,
+   "kind": "house",
+   "id": "house:magenta:33,14",
+   "x": 33,
+   "y": 14,
+   "color": 1,
+   "direction": 6
+  },
+  {
+   "at": 788.34,
+   "videoTime": 807,
+   "kind": "shop",
+   "id": "shop:green:38,15",
+   "x": 38,
+   "y": 15,
+   "color": 4,
+   "layout": 1
+  },
+  {
+   "at": 788.84,
+   "videoTime": 807.5,
+   "kind": "house",
+   "id": "house:green:38,23",
+   "x": 38,
+   "y": 23,
+   "color": 4,
+   "direction": 7
+  },
+  {
+   "at": 792.84,
+   "videoTime": 811.5,
+   "kind": "draw",
+   "x": 34,
+   "y": 12,
+   "toX": 33,
+   "toY": 13,
+   "allowRejection": true
+  },
+  {
+   "at": 806.84,
+   "videoTime": 825.5,
+   "kind": "draw",
+   "x": 41,
+   "y": 19,
+   "toX": 41,
+   "toY": 20,
+   "allowRejection": true
+  },
+  {
+   "at": 807.84,
+   "videoTime": 826.5,
+   "kind": "house",
+   "id": "house:green:40,23",
+   "x": 40,
+   "y": 23,
+   "color": 4,
+   "direction": 6
+  },
+  {
+   "at": 807.84,
+   "videoTime": 826.5,
+   "kind": "draw",
+   "x": 41,
+   "y": 18,
+   "toX": 41,
+   "toY": 19,
+   "allowRejection": true
+  },
+  {
+   "at": 809.84,
+   "videoTime": 828.5,
+   "kind": "draw",
+   "x": 41,
+   "y": 20,
+   "toX": 40,
+   "toY": 21,
+   "allowRejection": true
+  },
+  {
+   "at": 811.34,
+   "videoTime": 830,
+   "kind": "draw",
+   "x": 41,
+   "y": 18,
+   "toX": 40,
+   "toY": 17,
+   "manual": true,
+   "allowRejection": true
+  },
+  {
+   "at": 812.84,
+   "videoTime": 831.5,
+   "kind": "draw",
+   "x": 40,
+   "y": 21,
+   "toX": 40,
+   "toY": 22,
+   "allowRejection": true
+  },
+  {
+   "at": 812.84,
+   "videoTime": 831.5,
+   "kind": "draw",
+   "x": 40,
+   "y": 21,
+   "toX": 39,
+   "toY": 22,
+   "allowRejection": true
+  },
+  {
+   "at": 813.84,
+   "videoTime": 832.5,
+   "kind": "draw",
+   "x": 38,
+   "y": 22,
+   "toX": 39,
+   "toY": 22,
+   "allowRejection": true
+  },
+  {
+   "at": 815.84,
+   "videoTime": 834.5,
+   "kind": "draw",
+   "x": 38,
+   "y": 22,
+   "toX": 37,
+   "toY": 23,
+   "allowRejection": true
+  },
+  {
+   "at": 815.84,
+   "videoTime": 834.5,
+   "kind": "draw",
+   "x": 36,
+   "y": 23,
+   "toX": 37,
+   "toY": 23,
+   "allowRejection": true
+  },
+  {
+   "at": 815.84,
+   "videoTime": 834.5,
+   "kind": "draw",
+   "x": 27,
+   "y": 20,
+   "toX": 27,
+   "toY": 21,
+   "allowRejection": true
+  },
+  {
+   "at": 817.84,
+   "videoTime": 836.5,
+   "kind": "draw",
+   "x": 37,
+   "y": 2,
+   "toX": 38,
+   "toY": 2,
+   "allowRejection": true
+  },
+  {
+   "at": 817.84,
+   "videoTime": 836.5,
+   "kind": "draw",
+   "x": 38,
+   "y": 2,
+   "toX": 39,
+   "toY": 2,
+   "allowRejection": true
+  },
+  {
+   "at": 817.84,
+   "videoTime": 836.5,
+   "kind": "draw",
+   "x": 39,
+   "y": 2,
+   "toX": 40,
+   "toY": 2,
+   "allowRejection": true
+  },
+  {
+   "at": 820.84,
+   "videoTime": 839.5,
+   "kind": "house",
+   "id": "house:yellow:32,16",
+   "x": 32,
+   "y": 16,
+   "color": 0,
+   "direction": 5
+  },
+  {
+   "at": 821.34,
+   "videoTime": 840,
+   "kind": "circle",
+   "target": "shared:charcoal:28,9"
+  },
+  {
+   "at": 822.84,
+   "videoTime": 841.5,
+   "kind": "erase",
+   "x": 38,
+   "y": 22,
+   "toX": 37,
+   "toY": 23,
+   "allowRejection": true
+  },
+  {
+   "at": 822.84,
+   "videoTime": 841.5,
+   "kind": "erase",
+   "x": 36,
+   "y": 23,
+   "toX": 37,
+   "toY": 23,
+   "allowRejection": true
+  },
+  {
+   "at": 823.84,
+   "videoTime": 842.5,
+   "kind": "erase",
+   "x": 38,
+   "y": 22,
+   "toX": 39,
+   "toY": 22,
+   "allowRejection": true,
+   "post": true
+  },
+  {
+   "at": 826.84,
+   "videoTime": 845.5,
+   "kind": "house",
+   "id": "house:charcoal:32,21",
+   "x": 32,
+   "y": 21,
+   "color": 2,
+   "direction": 6
+  },
+  {
+   "at": 830.84,
+   "videoTime": 849.5,
+   "kind": "draw",
+   "x": 31,
+   "y": 19,
+   "toX": 32,
+   "toY": 20,
+   "allowRejection": true
+  },
+  {
+   "at": 835.84,
+   "videoTime": 854.5,
+   "kind": "draw",
+   "x": 36,
+   "y": 2,
+   "toX": 37,
+   "toY": 2,
+   "allowRejection": true
+  },
+  {
+   "at": 836.84,
+   "videoTime": 855.5,
+   "kind": "house",
+   "id": "house:charcoal:30,21",
+   "x": 30,
+   "y": 21,
+   "color": 2,
+   "direction": 7
+  },
+  {
+   "at": 840,
+   "kind": "offer",
+   "offers": [
+    {
+     "type": 2,
+     "amount": 1,
+     "roads": 10
+    },
+    {
+     "type": 0,
+     "amount": 30,
+     "roads": 0
+    }
+   ]
+  },
+  {
+   "at": 840.01,
+   "kind": "choose",
+   "choice": 1
+  },
+  {
+   "at": 842.15,
+   "videoTime": 865.5,
+   "kind": "draw",
+   "x": 29,
+   "y": 17,
+   "toX": 30,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 845.84,
+   "videoTime": 864.5,
+   "kind": "draw",
+   "x": 31,
+   "y": 18,
+   "toX": 30,
+   "toY": 19,
+   "allowRejection": true
+  },
+  {
+   "at": 852.15,
+   "videoTime": 875.5,
+   "kind": "house",
+   "id": "house:charcoal:8,11",
+   "x": 8,
+   "y": 11,
+   "color": 2,
+   "direction": 6
+  },
+  {
+   "at": 853.15,
+   "videoTime": 876.5,
+   "kind": "erase",
+   "x": 31,
+   "y": 18,
+   "toX": 30,
+   "toY": 19,
+   "allowRejection": true,
+   "post": true
+  },
+  {
+   "at": 853.15,
+   "videoTime": 876.5,
+   "kind": "draw",
+   "x": 28,
+   "y": 12,
+   "toX": 29,
+   "toY": 13,
+   "allowRejection": true
+  },
+  {
+   "at": 853.15,
+   "videoTime": 876.5,
+   "kind": "draw",
+   "x": 29,
+   "y": 13,
+   "toX": 30,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 853.15,
+   "videoTime": 876.5,
+   "kind": "draw",
+   "x": 30,
+   "y": 14,
+   "toX": 31,
+   "toY": 15,
+   "allowRejection": true
+  },
+  {
+   "at": 857.15,
+   "videoTime": 880.5,
+   "kind": "house",
+   "id": "house:charcoal:8,7",
+   "x": 8,
+   "y": 7,
+   "color": 2,
+   "direction": 2
+  },
+  {
+   "at": 858.15,
+   "videoTime": 881.5,
+   "kind": "draw",
+   "x": 9,
+   "y": 11,
+   "toX": 10,
+   "toY": 11,
+   "allowRejection": true
+  },
+  {
+   "at": 859.15,
+   "videoTime": 882.5,
+   "kind": "draw",
+   "x": 8,
+   "y": 9,
+   "toX": 9,
+   "toY": 10,
+   "allowRejection": true
+  },
+  {
+   "at": 859.15,
+   "videoTime": 882.5,
+   "kind": "draw",
+   "x": 9,
+   "y": 10,
+   "toX": 9,
+   "toY": 11,
+   "allowRejection": true
+  },
+  {
+   "at": 861.15,
+   "videoTime": 884.5,
+   "kind": "draw",
+   "x": 8,
+   "y": 8,
+   "toX": 8,
+   "toY": 9,
+   "allowRejection": true
+  },
+  {
+   "at": 869.15,
+   "videoTime": 892.5,
+   "kind": "draw",
+   "x": 8,
+   "y": 9,
+   "toX": 8,
+   "toY": 10,
+   "allowRejection": true
+  },
+  {
+   "at": 879.15,
+   "videoTime": 902.5,
+   "kind": "draw",
+   "x": 8,
+   "y": 10,
+   "toX": 9,
+   "toY": 10,
+   "allowRejection": true
+  },
+  {
+   "at": 883.15,
+   "videoTime": 906.5,
+   "kind": "erase",
+   "x": 38,
+   "y": 22,
+   "toX": 39,
+   "toY": 22,
+   "allowRejection": true
+  },
+  {
+   "at": 891.15,
+   "videoTime": 914.5,
+   "kind": "erase",
+   "x": 36,
+   "y": 2,
+   "toX": 37,
+   "toY": 2,
+   "allowRejection": true
+  },
+  {
+   "at": 905.65,
+   "videoTime": 929,
+   "kind": "circle",
+   "target": "shop:blue:11,12"
+  },
+  {
+   "at": 906.15,
+   "videoTime": 929.5,
+   "kind": "house",
+   "id": "house:blue:16,20",
+   "x": 16,
+   "y": 20,
+   "color": 3,
+   "direction": 2
+  },
+  {
+   "at": 912.15,
+   "videoTime": 935.5,
+   "kind": "erase",
+   "x": 37,
+   "y": 2,
+   "toX": 38,
+   "toY": 2,
+   "allowRejection": true
+  },
+  {
+   "at": 912.15,
+   "videoTime": 935.5,
+   "kind": "erase",
+   "x": 38,
+   "y": 2,
+   "toX": 39,
+   "toY": 2,
+   "allowRejection": true
+  },
+  {
+   "at": 912.15,
+   "videoTime": 935.5,
+   "kind": "erase",
+   "x": 39,
+   "y": 2,
+   "toX": 40,
+   "toY": 2,
+   "allowRejection": true
+  },
+  {
+   "at": 916.15,
+   "videoTime": 939.5,
+   "kind": "house",
+   "id": "house:blue:31,6",
+   "x": 31,
+   "y": 6,
+   "color": 3,
+   "direction": 4
+  },
+  {
+   "at": 926.15,
+   "videoTime": 949.5,
+   "kind": "house",
+   "id": "house:blue:33,11",
+   "x": 33,
+   "y": 11,
+   "color": 3,
+   "direction": 2
+  },
+  {
+   "at": 944.15,
+   "videoTime": 967.5,
+   "kind": "draw",
+   "x": 30,
+   "y": 6,
+   "toX": 29,
+   "toY": 7,
+   "allowRejection": true
+  },
+  {
+   "at": 946.15,
+   "videoTime": 969.5,
+   "kind": "draw",
+   "x": 29,
+   "y": 7,
+   "toX": 28,
+   "toY": 8,
+   "allowRejection": true
+  },
+  {
+   "at": 946.15,
+   "videoTime": 969.5,
+   "kind": "draw",
+   "x": 28,
+   "y": 8,
+   "toX": 27,
+   "toY": 9,
+   "allowRejection": true
+  },
+  {
+   "at": 947.15,
+   "videoTime": 970.5,
+   "kind": "draw",
+   "x": 27,
+   "y": 9,
+   "toX": 26,
+   "toY": 10,
+   "allowRejection": true
+  },
+  {
+   "at": 948.15,
+   "videoTime": 971.5,
+   "kind": "draw",
+   "x": 25,
+   "y": 10,
+   "toX": 26,
+   "toY": 10,
+   "allowRejection": true
+  },
+  {
+   "at": 961.15,
+   "videoTime": 984.5,
+   "kind": "house",
+   "id": "house:magenta:36,8",
+   "x": 36,
+   "y": 8,
+   "color": 1,
+   "direction": 3
+  },
+  {
+   "at": 976.15,
+   "videoTime": 999.5,
+   "kind": "draw",
+   "x": 22,
+   "y": 16,
+   "toX": 22,
+   "toY": 17,
+   "allowRejection": true
+  },
+  {
+   "at": 976.15,
+   "videoTime": 999.5,
+   "kind": "draw",
+   "x": 22,
+   "y": 17,
+   "toX": 21,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 977.15,
+   "videoTime": 1000.5,
+   "kind": "draw",
+   "x": 23,
+   "y": 15,
+   "toX": 22,
+   "toY": 16,
+   "allowRejection": true
+  },
+  {
+   "at": 980,
+   "kind": "offer",
+   "offers": [
+    {
+     "type": 2,
+     "amount": 1,
+     "roads": 10
+    },
+    {
+     "type": 1,
+     "amount": 1,
+     "roads": 20
+    }
+   ]
+  },
+  {
+   "at": 980.01,
+   "kind": "choose",
+   "choice": 1
+  },
+  {
+   "at": 985.15,
+   "videoTime": 1010.5,
+   "kind": "house",
+   "id": "house:yellow:32,15",
+   "x": 32,
+   "y": 15,
+   "color": 0,
+   "direction": 4
+  },
+  {
+   "at": 987.15,
+   "videoTime": 1012.5,
+   "kind": "house",
+   "id": "house:charcoal:8,5",
+   "x": 8,
+   "y": 5,
+   "color": 2,
+   "direction": 0
+  },
+  {
+   "at": 988.15,
+   "videoTime": 1013.5,
+   "kind": "draw",
+   "x": 35,
+   "y": 9,
+   "toX": 35,
+   "toY": 10,
+   "allowRejection": true
+  },
+  {
+   "at": 988.15,
+   "videoTime": 1013.5,
+   "kind": "draw",
+   "x": 35,
+   "y": 10,
+   "toX": 35,
+   "toY": 11,
+   "allowRejection": true
+  },
+  {
+   "at": 988.15,
+   "videoTime": 1013.5,
+   "kind": "draw",
+   "x": 35,
+   "y": 11,
+   "toX": 35,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 1001.15,
+   "videoTime": 1026.5,
+   "kind": "draw",
+   "x": 9,
+   "y": 6,
+   "toX": 9,
+   "toY": 7,
+   "allowRejection": true
+  },
+  {
+   "at": 1002.15,
+   "videoTime": 1027.5,
+   "kind": "draw",
+   "x": 37,
+   "y": 1,
+   "toX": 38,
+   "toY": 1,
+   "allowRejection": true
+  },
+  {
+   "at": 1002.15,
+   "videoTime": 1027.5,
+   "kind": "draw",
+   "x": 38,
+   "y": 1,
+   "toX": 39,
+   "toY": 1,
+   "allowRejection": true
+  },
+  {
+   "at": 1002.15,
+   "videoTime": 1027.5,
+   "kind": "draw",
+   "x": 39,
+   "y": 1,
+   "toX": 40,
+   "toY": 1,
+   "allowRejection": true
+  },
+  {
+   "at": 1002.15,
+   "videoTime": 1027.5,
+   "kind": "draw",
+   "x": 40,
+   "y": 1,
+   "toX": 41,
+   "toY": 1,
+   "allowRejection": true
+  },
+  {
+   "at": 1002.15,
+   "videoTime": 1027.5,
+   "kind": "draw",
+   "x": 9,
+   "y": 5,
+   "toX": 9,
+   "toY": 6,
+   "allowRejection": true
+  },
+  {
+   "at": 1004.65,
+   "videoTime": 1030,
+   "kind": "draw",
+   "x": 9,
+   "y": 7,
+   "toX": 8,
+   "toY": 8,
+   "manual": true,
+   "allowRejection": true
+  },
+  {
+   "at": 1007.15,
+   "videoTime": 1032.5,
+   "kind": "erase",
+   "x": 35,
+   "y": 11,
+   "toX": 34,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 1029.65,
+   "videoTime": 1055,
+   "kind": "circle",
+   "target": "shop:yellow:15,12"
+  },
+  {
+   "at": 1045.15,
+   "videoTime": 1070.5,
+   "kind": "draw",
+   "x": 21,
+   "y": 12,
+   "toX": 22,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 1045.15,
+   "videoTime": 1070.5,
+   "kind": "draw",
+   "x": 22,
+   "y": 12,
+   "toX": 23,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 1046.15,
+   "videoTime": 1071.5,
+   "kind": "draw",
+   "x": 19,
+   "y": 12,
+   "toX": 20,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 1046.15,
+   "videoTime": 1071.5,
+   "kind": "draw",
+   "x": 20,
+   "y": 12,
+   "toX": 21,
+   "toY": 12,
+   "allowRejection": true
+  },
+  {
+   "at": 1052.15,
+   "videoTime": 1077.5,
+   "kind": "draw",
+   "x": 19,
+   "y": 12,
+   "toX": 18,
+   "toY": 13,
+   "allowRejection": true
+  },
+  {
+   "at": 1080.15,
+   "videoTime": 1105.5,
+   "kind": "draw",
+   "x": 15,
+   "y": 14,
+   "toX": 15,
+   "toY": 15,
+   "allowRejection": true
+  },
+  {
+   "at": 1080.15,
+   "videoTime": 1105.5,
+   "kind": "draw",
+   "x": 15,
+   "y": 15,
+   "toX": 15,
+   "toY": 16,
+   "allowRejection": true
+  },
+  {
+   "at": 1090.15,
+   "videoTime": 1115.5,
+   "kind": "draw",
+   "x": 26,
+   "y": 18,
+   "toX": 26,
+   "toY": 19,
+   "allowRejection": true
+  },
+  {
+   "at": 1090.15,
+   "videoTime": 1115.5,
+   "kind": "draw",
+   "x": 26,
+   "y": 19,
+   "toX": 26,
+   "toY": 20,
+   "allowRejection": true
+  },
+  {
+   "at": 1091.15,
+   "videoTime": 1116.5,
+   "kind": "draw",
+   "x": 26,
+   "y": 20,
+   "toX": 27,
+   "toY": 20,
+   "allowRejection": true
+  },
+  {
+   "at": 1092.15,
+   "videoTime": 1117.5,
+   "kind": "draw",
+   "x": 25,
+   "y": 17,
+   "toX": 26,
+   "toY": 18,
+   "allowRejection": true
+  },
+  {
+   "at": 1101.15,
+   "videoTime": 1126.5,
+   "kind": "house",
+   "id": "house:charcoal:10,5",
+   "x": 10,
+   "y": 5,
+   "color": 2,
+   "direction": 3
+  },
+  {
+   "at": 1101.15,
+   "videoTime": 1126.5,
+   "kind": "house",
+   "id": "house:magenta:34,7",
+   "x": 34,
+   "y": 7,
+   "color": 1,
+   "direction": 4
+  },
+  {
+   "at": 1105.15,
+   "videoTime": 1130.5,
+   "kind": "draw",
+   "x": 21,
+   "y": 16,
+   "toX": 22,
+   "toY": 16,
+   "allowRejection": true
+  },
+  {
+   "at": 1105.15,
+   "videoTime": 1130.5,
+   "kind": "draw",
+   "x": 22,
+   "y": 16,
+   "toX": 23,
+   "toY": 16,
+   "allowRejection": true
+  },
+  {
+   "at": 1106.15,
+   "videoTime": 1131.5,
+   "kind": "draw",
+   "x": 15,
+   "y": 16,
+   "toX": 16,
+   "toY": 16,
+   "allowRejection": true
+  },
+  {
+   "at": 1120,
+   "kind": "offer",
+   "offers": [
+    {
+     "type": 1,
+     "amount": 1,
+     "roads": 20
+    },
+    {
+     "type": 2,
+     "amount": 1,
+     "roads": 10
+    }
+   ]
+  },
+  {
+   "at": 1120.01,
+   "kind": "choose",
+   "choice": 1
+  },
+  {
+   "at": 1127.39,
+   "videoTime": 1155.5,
+   "kind": "draw",
+   "x": 33,
+   "y": 13,
+   "toX": 32,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 1127.39,
+   "videoTime": 1155.5,
+   "kind": "draw",
+   "x": 31,
+   "y": 14,
+   "toX": 32,
+   "toY": 14,
+   "allowRejection": true
+  },
+  {
+   "at": 1129.39,
+   "videoTime": 1157.5,
+   "kind": "draw",
+   "x": 32,
+   "y": 14,
+   "toX": 31,
+   "toY": 15,
+   "allowRejection": true
+  }
+ ],
+ "notes": []
+}
