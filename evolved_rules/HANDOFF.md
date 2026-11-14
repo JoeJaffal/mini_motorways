@@ -30,6 +30,7 @@ You are an agent picking up the gp-7 / cma-7 work on a fresh machine. The old ma
 8. **Simulator files.** If any file under `simulation/` changes (none should), `evolved_rules/verify.py`'s `VERIFIER_COMMIT` must move to a pushed commit.
 9. **Honesty.** Say plainly when something failed or was skipped. Runs end with status `budget`.
 10. **Detached runs.** Launch long runs detached (§5). An agent session can die; the runs must not die with it.
+11. **Seed counters.** Keep every seed counter below 49999 (user, 2026-11-14). The gp-7 race-probe counter runs 10000-49999 (`evolve7.PROBE_LAST`); an epoch that would pass it skips its race.
 
 ## 2. State of the world at handoff
 
