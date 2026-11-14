@@ -687,8 +687,10 @@ Launched 2026-11-12 at 23:06.
 
 Average over the 5 learned arms: 1001.6 trips (best 1021.2).
 
+Corrected for 6 comparisons (Holm, paired t on 200 maps): only separated (−156.1) and hand (−475.8) differ significantly from cma-1 3-tree. cma-6 mean −8.2 (Holm p 1.0, BCa 95% CI [−45, 29]), cma-6 best −25.3 (Holm p 0.55, [−63, 10]), gp-6 `7fa4b2ec` −64.7 (raw p 0.020, Holm p 0.08, [−120, −12]).
+
 **What this says:**
 - **cma-1 is still the best rule.** The 3-tree and 5-tree forms play identical games here, so clean routes never changed a decision on these maps.
-- **Neither gp-6 nor cma-6 beat their seed.** cma-6's final mean (−8.2) and best sample (−25.3) are within noise of cma-1, but below it. cma-6's 1037.0 on validation was the winner's curse, as expected.
-- **gp-6's own best tree, `7fa4b2ec`, is clearly worse** (−64.7, t −2.34).
+- **Neither gp-6 nor cma-6 beat their seed.** cma-6's final mean (−8.2) and best sample (−25.3) are within noise of cma-1 (not significant after correction), but below it. cma-6's 1037.0 on validation was the winner's curse, as expected.
+- **gp-6's own best tree, `7fa4b2ec`, is probably worse** (−64.7, t −2.34, raw p 0.020). After the Holm correction p = 0.08, so it is not significant at 0.05, though its bootstrap interval [−120, −12] excludes 0.
 - **Previous-version best (L) = cma-1 3-tree, 1021.2.** gp-7/cma-7 must beat this (plan `plans/2026-11-14-gp7-cma7-plan.md` §2).

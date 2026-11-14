@@ -59,6 +59,8 @@ You are an agent picking up the gp-7 / cma-7 work on a fresh machine. The old ma
 
 Average over the 5 learned arms: 1001.6 trips (best 1021.2).
 
+Corrected for 6 comparisons (Holm, paired t on 200 maps): only separated (−156.1) and hand (−475.8) differ significantly from cma-1 3-tree. cma-6 mean −8.2 (Holm p 1.0, BCa 95% CI [−45, 29]), cma-6 best −25.3 (Holm p 0.55, [−63, 10]), gp-6 `7fa4b2ec` −64.7 (raw p 0.020, Holm p 0.08, [−120, −12]).
+
 **L = cma-1 3-tree** (rule text `evolved_rules/seeds/gp7/cma1_3tree.txt`, identical to `final/cma_final.txt`; close-out games `evolved_rules/closeout/gp6/c6-cma1-3tree/`). It has the highest mean of the learned arms, so the tie rule is not needed. L is played only by `gp6-final` code (plan §2.1).
 
 **Seed scan.** No local worktree on the old machine has games on 1550-1749, 3300-3599, 5300-5399, 6100-6999 or 10000+.
