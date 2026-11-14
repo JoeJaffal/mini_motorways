@@ -32,7 +32,7 @@ You are an agent picking up the gp-7 / cma-7 work on a fresh machine. The old ma
 9. **Honesty.** Say plainly when something failed or was skipped. Runs end with status `budget`.
 10. **Detached runs.** Launch long runs detached (§5). An agent session can die; the runs must not die with it.
 11. **Seed counters.** Keep every seed counter below 49999 (user, 2026-11-14). The gp-7 race-probe counter runs 10000-49999 (`evolve7.PROBE_LAST`); an epoch that would pass it skips its race.
-12. **Seed conflicts.** The user's other session StrokeQ (another model) reports seed conflicts. It was sent this project's seed blocks on 2026-11-14. Tell it about any new block. Check what it reports against plan §7 and tell the user before changing a run.
+12. **Seed conflicts.** The user's other session StrokeQ (another model) reports seed conflicts. It was sent this project's seed blocks on 2026-11-14. Tell it about any new block. Check what it reports against plan §7 and tell the user before changing a run. StrokeQ confirmed no overlap on 2026-11-14: it uses LA 50000-61399 only, and its avoid list covers all of gp-7's blocks. Promised to StrokeQ: (a) a message before any change to `simulation/` or the simulator version (f34); (b) after T_stop, the champion's spec (text hash, commit) and its test mean, median, best and n, compared with cma-1's 1021.2 (a possible DAgger teacher).
 
 ## 2. State of the world at handoff
 
