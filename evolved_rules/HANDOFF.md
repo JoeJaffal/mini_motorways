@@ -158,8 +158,8 @@ If no elevated shell is available, drop `$t2` and say so.
 
 | Item | Value |
 |---|---|
-| Machine (CPU, cores/threads, RAM, OS) | |
-| UTC offset | |
+| Machine (CPU, cores/threads, RAM, OS) | Mac mini, Apple M4 (10 cores: 4 performance + 6 efficiency, no SMT), 16 GB, macOS 15.6 (24G84), arm64. **Not the Windows x64 machine this handoff was written for**: see the setup note in §7. |
+| UTC offset | UTC+02:00 (EET), recorded 2026-11-14 15:39 local |
 | W (workers) and sweep results | |
 | R0 (games/h at W) | |
 | Ladder rung | |
@@ -173,7 +173,22 @@ If no elevated shell is available, drop `$t2` and say so.
 
 ## 7. Progress checklist (tick, add a note and commit at each milestone, so a fresh session can resume from git)
 
-- [ ] Setup steps 1–12 done
+- [ ] Setup steps 1–12 done (2026-11-14: all done on the Mac except step 11's update pause, pending the user; see note)
+
+  **Setup note, 2026-11-14 (macOS port of §3).** The user decided the runs happen on this Mac mini (Apple M4, macOS 15.6), not on Windows. What was done, per step:
+  1. .NET SDK 8.0.427 (runtime 8.0.33, the old machine's versions) from Microsoft's osx-arm64 tarball, sha512 checked against the 8.0 `releases.json`, unpacked to `~/.dotnet` (Homebrew's prefix is not writable by this user). It is not on the login PATH: every command sets `DOTNET_ROOT=$HOME/.dotnet` and puts it first on `PATH`. Python 3.12.11 from Homebrew (old machine: 3.12.5).
+  2.–3. The clone is on `dynamic-gp`, fast-forwarded to `848d644`. All five history checks pass (not shallow; `b96d98d` is a commit; `gp6-final` = `f7bf5f5`; `simulation/` unchanged since `b96d98d`; gp6-final code = `dfd8532`).
+  4. `upstream` added. On this clone `origin` is also JoeJaffal/mini_motorways; the aya007kh fork is not configured (matters only for pushing).
+  5. Repo-local `user.name` set to `Aya` (the email already matched the history).
+  6. `.venv` with the pinned requirements (numpy 2.5.4, scipy 1.18.1, deap 1.4.4, cma 4.5.0).
+  7. Host builds; `--version` prints `2026-11-10.f34`.
+  8. Carry-over zip unpacked into `output/` (its `CARRYOVER.md` readme left out).
+  9. Tests: 801 passed, 23 skipped. None names a missing DLL, verifier or remote. 16 = no fingerprints for f34 and 1 = `EVOLVED_RULES_SLOW` (both acceptable per step 9); 5 = Windows-only paths (taskkill tree kill ×3, the Windows power API, a Windows rename refusal); 1 = `output/evolved_rules/gp2-best-noclean.txt` is not in the zip.
+  10. `../mm-gp6-final` worktree at `gp6-final`, host built there, `--version` = f34.
+  11. On mains power; system sleep, disk sleep and display sleep are already 0. `evolved_rules/power.py` keeps the machine awake on Windows only, so on macOS long runs must be wrapped in `caffeinate`. **Open:** macOS automatic update install is on (`AutomaticallyInstallMacOSUpdates=1`) and can restart the machine; turning it off needs the user (admin).
+  12. UTC+02:00 (§6).
+
+  Consequences still to handle: the PowerShell/Task Scheduler/WMI parts of §4–§5 (queue launch, `watchdog7.ps1`) need macOS equivalents before any detached run. D1 compares an arm64 Mac with the old x64 Windows machine, so it may fail; per §4 that is recorded and cross-machine numbers are then never compared.
 - [ ] Worker sweep, R0; D1 (pass/fail: ____); D2 pass; budget table committed
 - [ ] L pre-play queue started; alive or finished? (check at every milestone and after any reboot)
 - [ ] Watchdog registered and tested
