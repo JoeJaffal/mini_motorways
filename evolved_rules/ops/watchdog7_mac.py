@@ -192,7 +192,7 @@ def install(main: Path, runs_file: Path) -> int:
         "StartInterval": INTERVAL_S,
         "RunAtLoad": True,
         "AbandonProcessGroup": True,  # never kill the jobs when a pass exits (they also run in their own session)
-        "ProcessType": "Background",
+        "ProcessType": "Interactive",  # never throttled: "Background" confines every child to background QoS (priority 4, efficiency cores)
         "StandardOutPath": str(ops / "watchdog7.launchd.log"),
         "StandardErrorPath": str(ops / "watchdog7.launchd.log"),
         "WorkingDirectory": str(main),
