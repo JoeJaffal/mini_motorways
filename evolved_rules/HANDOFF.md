@@ -183,7 +183,7 @@ Derived (2026-11-14): the L pre-play queue is n_s + n_val + 900 + 900 hand = 2,3
 
 ## 7. Progress checklist (tick, add a note and commit at each milestone, so a fresh session can resume from git)
 
-- [ ] Setup steps 1–12 done (2026-11-14: all done on the Mac except step 11's update pause, pending the user; see note)
+- [x] Setup steps 1–12 done (2026-11-14: all done on the Mac; step 11: automatic macOS updates off, confirmed by the user, `AutomaticallyInstallMacOSUpdates = 0`; see note)
 
   **Setup note, 2026-11-14 (macOS port of §3).** The user decided the runs happen on this Mac mini (Apple M4, macOS 15.6), not on Windows. What was done, per step:
   1. .NET SDK 8.0.427 (runtime 8.0.33, the old machine's versions) from Microsoft's osx-arm64 tarball, sha512 checked against the 8.0 `releases.json`, unpacked to `~/.dotnet` (Homebrew's prefix is not writable by this user). It is not on the login PATH: every command sets `DOTNET_ROOT=$HOME/.dotnet` and puts it first on `PATH`. Python 3.12.11 from Homebrew (old machine: 3.12.5).
@@ -200,14 +200,14 @@ Derived (2026-11-14): the L pre-play queue is n_s + n_val + 900 + 900 hand = 2,3
 
   Consequences still to handle: the PowerShell/Task Scheduler/WMI parts of §4–§5 (queue launch, `watchdog7.ps1`) need macOS equivalents before any detached run. D1 compares an arm64 Mac with the old x64 Windows machine, so it may fail; per §4 that is recorded and cross-machine numbers are then never compared.
 - [x] Worker sweep, R0; D1 (pass/fail: **pass**); D2 pass; budget table committed (2026-11-14: W = 10, R0 = 477.4; D1 = L on 5100-5159 from `../mm-gp6-final` identical to the old machine's close-out games on all 60 seeds (trips, seconds, commands), `config.commit` = gp6-final; the sweep's own 100 games on 5200-5299 were also identical. D2 = 5100-5109 replayed: identical to D1 on all 10 seeds, pass)
-- [ ] L pre-play queue started; alive or finished? (check at every milestone and after any reboot)
+- [x] L pre-play queue started; alive or finished? (check at every milestone and after any reboot) (2026-11-14 23:15: alive. L screen 3300-3599 done; L test 6100-6199 done; paused 19:07-23:13 so the screen ran on the whole machine, then resumed beside cma-7; still to play: L test 6200-6999, L val 1550-1749, hand test 6100-6999)
 - [x] Watchdog registered and tested (2026-11-14, macOS: `watchdog7_mac.py` LaunchAgent installed; 11 unit tests pass; end-to-end under launchd: a queue job started from `../mm-gp6-final` with `PYTHONHASHSEED=0` and `~/.dotnet/dotnet`, finished, and was not restarted on the next pass; runs7.json then reset to `[]`)
 - [x] C4-min + decision logging; identity tests (1), (3), edge-cost unit, text round trip: pass (2026-11-14, `4453544`: (1) and (3) 20/20 identical on 5100-5119, 0 rejected draws; `tests/test_gp7.py` 38 pass)
 - [x] x0 calibration (pair-open **9.8%**, evo-built **3.0%**) (3 rounds × 8 games on 5300-5323: b_t −0.5 / −0.54 / −0.5667, is_evo weight 0; pooled 9.6% / 3.1%; θ = 0 s, Bypass c = 0.266; `output/evolved_rules/gp7/calibration/calibration_final.json`)
-- [ ] Screen done (n_s ____); x0\* = ____; scales and θ frozen
+- [x] Screen done (n_s **300**); x0\* = **Fast** (as screened, lights off); scales and θ frozen (2026-11-14 23:06; eligible route points Fast and Bypass; scales from 233,029 logged decisions; θ = 0 s; space hash `fc79267c218669ba`, x0\* text hash `7bf3469481eb3fb9`. Bug gate: 1 rejected draw in 1,500 screen games (Fast, seed 3332), checked in about 40 min: a house spawned on a route between two of its draw commands (shared executor, also L's), no code change; `plans/gp7-launch/bug-check.md`)
 - [x] linear.py identity (4), evolve7, stats7, smoke: pass (or F2 at CL2a) (2026-11-14: (4) 20/20 identical with unit scales, to repeat with the frozen scales; smoke λ 6, m 6, forced cuts, cap 300 s: killed in a 4-map phase and in a phase B, both resumed by the watchdog, 3 generations identical, mean and sigma equal)
-- [ ] Pre-registration committed (hash ____)
-- [ ] cma-7 trunk launched from worktree `cma7-launch` (time ____, W ____, λ/m ____)
+- [x] Pre-registration committed (hash `6b80889`, tag `cma7-launch`; identity gate (4) with the frozen space: 20/20 identical, 0 rejected draws, run on a clean worktree of `fa7010c` = gp7-v1)
+- [x] cma-7 trunk launched from worktree `cma7-launch` (time **2026-11-14 23:10**, W **10**, λ/m **24/12**; `../mm-cma7`, σ0 0.3, seed 1, `--log-gen0`, stop-at 2026-11-19 01:22; config commit 6b80889, dirty false, gp7-v1)
 - [ ] gp-7-lite forked at gen ____ from `gp7-fork` (or dropped at CL3)
 - [ ] Runs stopped at T_stop (status budget; gens: cma-7 ____, gp-7 ____)
 - [ ] Challenger commit and text hashes frozen; validation played; C\* = ____

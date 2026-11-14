@@ -731,3 +731,46 @@ screen7.py, scales7.py. Identity gate (1) (L by gp7 code reproduces the gp6-fina
 **Calibration round 1** (Gentle, b_t −0.5, is_evo weight 0, seeds 5300-5307, 1,252 decisions, 0 rejected draws):
 pair opens in 11.2% of decisions, an evo route is built in 3.1% (the plan's 3-5% band already), θ (75th percentile
 of worst_overcrowded over decisions) = 0 s. Solve for 10% pair opens: b_t = −0.538.
+
+**Calibration rounds 2-3** (seeds 5308-5323): b_t −0.54, then −0.5667; pair opens 14.1% / 9.8%, evo built 3.2% /
+2.96%; pooled over the three rounds 9.6% / 3.1%. Final: b_t −0.5667, is_evo weight 0, θ = 0 s, Bypass c = 0.266.
+Smoke (λ 6, m 6, forced cuts, cap 300 s, killed twice and resumed by the watchdog): 3 generations identical, mean and
+σ equal. Identity gate (4) with unit scales: 20/20 identical.
+
+**Screen** (plan section 5; n_s = 300 maps 3300-3599, decision logging on, frozen worktree `4453544`; L pre-played
+on the same maps from `../mm-gp6-final`). Paired difference vs L in trips per game (point − L):
+
+| Point | n | Paired diff vs L | SE | z | Pair opens | Evo built | Meets rate minimums | Rejected draws |
+|---|---|---|---|---|---|---|---|---|
+| Gentle | 300 | +102.3 | 22.0 | +4.64 | 5.6% | 2.8% | no (evo < 3%) | 0 |
+| Fast | 300 | (x0\*: selection-biased, not quoted) | | | 5.2% | 7.1% | yes | 1 |
+| Bypass | 300 | −31.1 | 30.7 | −1.01 | 88.9% | 10.9% | yes | 0 |
+| Jam-avoid | 300 | +103.5 | 22.2 | +4.65 | 5.7% | 2.8% | no (evo < 3%) | 0 |
+| Lights (planner off) | 300 | −9.2 | 14.3 | −0.65 | 0 | 0 | n/a | 0 |
+
+There is no population here (fixed points), so no average column. The rates on 300 maps are lower than calibration's
+24 games suggested (pair opens 5-6% vs 9.6%). Gentle and Jam-avoid built evo routes in 2.8% of decisions, missing
+the pre-registered 3% minimum, so only Fast and Bypass were eligible.
+
+**x0\* rule as pre-registered:** Fast (largest difference among the eligible points, and ≥ 0), as screened; lights
+off (Lights' difference < 0). x0\* text hash `7bf3469481eb3fb9`, identical to the Fast policy the screen played; the
+v1 decoder in a clean worktree reproduces it exactly. Validation re-measures x0\*, and its screen number is not a
+result. Scales: 84, from 233,029 logged decisions (calibration + screen); θ = 0 s; space hash `fc79267c218669ba`.
+
+**Bug gate: 1 rejected draw in 1,500 screen games** (Fast, seed 3332, 1 of 1,651 commands; L: 0 in 400). Replayed
+exactly (1,394 trips, 1 rejection):
+- A pair route planned at t = 522 had a house spawn on one of its cells at t = 524, between two of its draw
+  commands.
+- The next segment started from the new house, and the simulator refused to turn that house's driveway.
+- The same cells were connected by the next decision.
+- This is a race in the shared multi-command executor, which L uses as well, so it is not a C4-min defect. It cost
+  one wasted step and no tiles.
+- No code change: a fix would change L's executor and invalidate the screen. Full note: `plans/gp7-launch/bug-check.md`.
+
+**Launch.**
+- Pre-registration and launch files committed as `6b80889`, tag `cma7-launch`.
+- Identity gate (4) with the frozen space on gp7-v1: 20/20 identical, 0 rejected draws. It ran in a clean worktree,
+  because the main clone carries the uncommitted gp7-v2 fork code.
+- cma-7 started 2026-11-14 23:10 under the watchdog from `../mm-cma7`: W 10, λ 24, m 12, σ0 0.3, seed 1,
+  generation 0 logged, stop-at 2026-11-19 01:22. Config commit 6b80889, clean tree.
+- The L / hand pre-play queue (paused 19:07-23:13 for the screen) resumed beside it.
