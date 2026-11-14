@@ -167,16 +167,18 @@ If no elevated shell is available, drop `$t2` and say so.
 |---|---|
 | Machine (CPU, cores/threads, RAM, OS) | Mac mini, Apple M4 (10 cores: 4 performance + 6 efficiency, no SMT), 16 GB, macOS 15.6 (24G84), arm64. **Not the Windows x64 machine this handoff was written for**: see the setup note in §7. |
 | UTC offset | UTC+02:00 (EET), recorded 2026-11-14 15:39 local |
-| W (workers) and sweep results | |
-| R0 (games/h at W) | |
-| Ladder rung | |
-| n_s (screen maps per point) | |
-| n_val | |
-| n_test (target) | |
-| (λ, m) | |
-| Launch (actual) | |
-| T_stop (initial) | |
+| W (workers) and sweep results | **W = 10.** L on 5200-5299 from `../mm-gp6-final`, 2026-11-14, each run under caffeinate, nothing else running: W=10 754 s → 477.4 games/h (min free RAM 60%); W=9 911 s → 395.1 (64%); W=8 881 s → 408.6 (64%); W=4 (performance cores only) 1344 s → 267.8 (65%; the last minutes overlapped light unit tests). The 9 < 8 inversion is likely tail noise (100 games; the last long games set the wall time). Peak RAM use ≤ 40%, far below the 80% cap. |
+| R0 (games/h at W) | 477.4 (W=10). Planning rate for new code R = 0.85·R0/1.25 = 324.6 games/h; re-measure each generation. |
+| Ladder rung | R0 > 250: **cma-7 trunk + gp-7 fork** |
+| n_s (screen maps per point) | 300 (5·300/R = 4.6 h ≤ 7 h) |
+| n_val | 200 (R ≥ 150) |
+| n_test (target) | 900 (k = 3 challengers: G_post = 3·200 + 900 = 1,500 games, G_post/R = 4.6 h ≤ 14 h) |
+| (λ, m) | (24, 12), the largest option: ≈ 277 games/gen for cma-7 (≈ 40.7 gens) and ≈ 301 for gp-7 (≈ 37.4 gens), both ≥ 25. Per arm ≈ 11,260 games = R × 14 h before the fork + R/2 × 41.4 h after, computed with launch at the latest allowed time (Nov 16 18:00); an earlier launch only adds generations. |
+| Launch (actual) | not yet launched |
+| T_stop (initial) | **2026-11-19 01:22 local (+02:00)** = T_freeze − G_post/R − 2 h = 08:00 − 4.62 h − 2 h. May only move earlier. |
 | T_freeze | 2026-11-19 08:00 local |
+
+Derived (2026-11-14): the L pre-play queue is n_s + n_val + 900 + 900 hand = 2,300 games, ≈ 4.8 h at R0 (old code, so no 1.25 factor); the screen is 5 points × 300 = 1,500 games ≈ 4.6 h at R. A 100-seed chunk of new code takes ≈ 18.5 min at R, so no chunk starts after T_freeze − 22 min (07:38 on Nov 19).
 
 ## 7. Progress checklist (tick, add a note and commit at each milestone, so a fresh session can resume from git)
 
@@ -196,7 +198,7 @@ If no elevated shell is available, drop `$t2` and say so.
   12. UTC+02:00 (§6).
 
   Consequences still to handle: the PowerShell/Task Scheduler/WMI parts of §4–§5 (queue launch, `watchdog7.ps1`) need macOS equivalents before any detached run. D1 compares an arm64 Mac with the old x64 Windows machine, so it may fail; per §4 that is recorded and cross-machine numbers are then never compared.
-- [ ] Worker sweep, R0; D1 (pass/fail: ____); D2 pass; budget table committed
+- [x] Worker sweep, R0; D1 (pass/fail: **pass**); D2 pass; budget table committed (2026-11-14: W = 10, R0 = 477.4; D1 = L on 5100-5159 from `../mm-gp6-final` identical to the old machine's close-out games on all 60 seeds (trips, seconds, commands), `config.commit` = gp6-final; the sweep's own 100 games on 5200-5299 were also identical. D2 = 5100-5109 replayed: identical to D1 on all 10 seeds, pass)
 - [ ] L pre-play queue started; alive or finished? (check at every milestone and after any reboot)
 - [x] Watchdog registered and tested (2026-11-14, macOS: `watchdog7_mac.py` LaunchAgent installed; 11 unit tests pass; end-to-end under launchd: a queue job started from `../mm-gp6-final` with `PYTHONHASHSEED=0` and `~/.dotnet/dotnet`, finished, and was not restarted on the next pass; runs7.json then reset to `[]`)
 - [ ] C4-min + decision logging; identity tests (1), (3), edge-cost unit, text round trip: pass

@@ -61,7 +61,8 @@ from .verify import build_verifier, verify_recording
 
 # Bump whenever agent behaviour changes (agent, candidates, executor, features, gp, session, state, the
 # simulator): it is part of every cache key, so results from older code are never reused.
-CODE_VERSION = "gp6-v1"  # gp-6: planner follows simulator f34 (road stock per paid link, bridge per crossing, water degree <= 2)
+CODE_VERSION = "gp7-v1"  # gp-7: flags/planner trailers, evolvable planner (moves=v7); v6 texts play as gp6-v1
+# gp6-v1: planner follows simulator f34 (road stock per paid link, bridge per crossing, water degree <= 2)
 DEFAULT_TIMEOUT_S = 3600.0  # seconds of awake wall clock per game (a suspend does not count); gp-6: was 900, a game on battery can take over 15 min
 KILL_TIMEOUT_S = 30.0
 POLL_S = 5.0  # the parent's longest single wait, so a suspend is seen within one poll of waking
@@ -126,6 +127,26 @@ def _play_job(text: str, seed: int, cap_s: float) -> dict:
     """
     try:
         result = play_game(ev._worker_host(), seed, TreePolicy(text), cap_s=cap_s, record=False)
+        return result.summary()
+    except BaseException:
+        ev._close_host()
+        raise
+
+
+def _log_job(text: str, seed: int, cap_s: float, path: str) -> dict:
+    """gp-7: play one unrecorded game with decision logging (agent._build_routes_v7) and write the records to
+    `path` as gzipped JSONL (one line per decision). Returns the game summary."""
+    import gzip
+    try:
+        policy = TreePolicy(text)
+        policy.decision_log = []
+        result = play_game(ev._worker_host(), seed, policy, cap_s=cap_s, record=False)
+        out = Path(path)
+        tmp = out.with_name(out.name + ".tmp")
+        with gzip.open(tmp, "wt", encoding="utf-8") as f:
+            for rec in policy.decision_log:
+                f.write(json.dumps(rec) + "\n")
+        os.replace(tmp, out)
         return result.summary()
     except BaseException:
         ev._close_host()
@@ -287,6 +308,39 @@ class Engine:
                 self._store(todo[i], result)
 
             tasks = [(f"seed {k[2]}", _play_job, (k[1], k[2], k[3]), self.timeout_s) for k in todo]
+            self._run(tasks, store)
+        return [json.loads(json.dumps(self._cache[key])) for key in keys]
+
+    def play_logged(self, jobs, out_dir: str | Path) -> list[dict]:
+        """gp-7: play (text, seed) jobs with decision logging, always (the records are the point), writing
+        <out_dir>/<text hash>_<seed>.jsonl.gz per game. Results are cached like play()'s; a game already cached
+        with a different summary raises EngineError (not deterministic). Returns the summaries in job order."""
+        from .evolve import text_hash
+        out_dir = Path(out_dir)
+        out_dir.mkdir(parents=True, exist_ok=True)
+        keys = []
+        for text, seed in jobs:
+            if isinstance(seed, bool) or not isinstance(seed, int):
+                raise ValueError(f"a seed is an int, got {seed!r}")
+            keys.append(cache_key(canonical_text(text), seed, self.cap_s))
+        todo = list(dict.fromkeys(keys))
+        got: dict[tuple, dict] = {}
+
+        def store(i: int, result: dict) -> None:
+            self.games_played += 1
+            key = todo[i]
+            check_simulator(result, f"seed {key[2]}")
+            if key in self._cache:
+                if json.loads(json.dumps(result)) != self._cache[key]:
+                    raise EngineError(f"logged game seed {key[2]} differs from its cached result: not deterministic")
+            else:
+                self._store(key, result)
+            got[key] = result
+
+        tasks = [(f"logged seed {k[2]}", _log_job,
+                  (k[1], k[2], k[3], str(out_dir / f"{text_hash(k[1])}_{k[2]}.jsonl.gz")), self.timeout_s)
+                 for k in todo]
+        if tasks:
             self._run(tasks, store)
         return [json.loads(json.dumps(self._cache[key])) for key in keys]
 

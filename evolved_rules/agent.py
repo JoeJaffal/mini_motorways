@@ -9,10 +9,12 @@ from __future__ import annotations
 import math
 from dataclasses import asdict, dataclass
 
-from .candidates import coverage_targets, house_reaches, removal_candidates, route_candidates, unserved_targets
+from .candidates import (coverage_targets, house_reaches, pair_candidate, removal_candidates, route_candidates,
+                         unserved_targets)
 from .executor import execute_route, place_item, remove_tile, take_offer
 from .features import (candidate_features, global_features, is_driving, offer_features, placement_features,
                        removal_features)
+from .gp import CANDIDATE_TERMS, GLOBAL_TERMS, V7_CANDIDATE_TERMS
 from .host import Host
 from .placement import placement_candidates
 from .rules import Policy
@@ -180,8 +182,108 @@ def _remove_one(session: GameSession, policy: Policy, memory, merge: bool) -> No
         remove_tile(session, best[1].cell)
 
 
+_LOG_CAND_TERMS = CANDIDATE_TERMS + V7_CANDIDATE_TERMS  # raw values logged per candidate (decision records)
+_LOG_GLOBAL_TERMS = GLOBAL_TERMS
+EVO_TARGETS = 8  # gp-7: the evo route is searched for the first EVO_TARGETS (non-excluded) targets of a pass
+
+
+def _build_routes_v7(session: GameSession, policy, memory, merge: bool) -> None:
+    """gp-7 (moves=v7, a text with a planner trailer): the v6 route loop plus the evolvable planner (plan 3.1).
+
+    Each pass offers, after the legacy candidates of each target, an evo route (EvoCost search) for the first
+    EVO_TARGETS targets, and after all targets one route per picked target-head pair (planner7.picked_pairs), each
+    pair tried at most once per decision (tried_pairs; excluded_pairs keeps its v6 meaning). Every candidate's
+    priority also reads the v7 terms. Ties keep the earliest candidate, as in v6. With a `decision_log` list on
+    the policy, one record per decision is appended (planner7 / decision logging, plan 3.1).
+    """
+    from . import planner7  # only v7 texts need it
+
+    coverage = bool(getattr(policy, "coverage", False))
+    clean = bool(getattr(policy, "clean_routes", False))
+    pl = policy.planner
+    log = getattr(policy, "decision_log", None)
+    rec = None
+    excluded: set[int] = set()
+    excluded_pairs: set[tuple[int, int]] = set()
+    tried_pairs: set[tuple[int, int]] = set()
+    built: list[str] = []
+    for pass_i in range(MAX_ROUTES_PER_DECISION):
+        if session.done:
+            break
+        state = session.state
+        g = global_features(state, memory) if merge else {}
+        evo = planner7.evo_cost(state, pl)
+        first = log is not None and pass_i == 0
+        rows: list | None = [] if first else None
+        best = None  # (priority, candidate, target shops, row index, source)
+        n_evo = 0
+
+        def consider(cand, shops, src):
+            nonlocal best
+            f = {**candidate_features(state, cand, memory), **planner7.v7_features(cand), **g}
+            p = float(policy.priority(f))
+            if rows is not None:
+                rows.append((src if src == "pair" else cand.kind, p, [round(float(f[k]), 4) for k in _LOG_CAND_TERMS]))
+            if not math.isfinite(p):
+                return
+            if best is None or p > best[0]:
+                best = (p, cand, shops, len(rows) - 1 if rows is not None else -1, src)
+
+        for house, shops in (coverage_targets(state) if coverage else unserved_targets(state)):
+            if coverage:
+                shops = tuple(s for s in shops if (house.id, s.id) not in excluded_pairs)
+                if not shops:
+                    continue
+            elif house.id in excluded:
+                continue
+            use_evo = n_evo < EVO_TARGETS
+            n_evo += 1
+            for cand in route_candidates(state, house, shops, clean=clean, evo=evo if use_evo else None):
+                consider(cand, shops, "target")
+        pair_rows = planner7.pair_rows(state, memory, pl) if (pl.m_eff > 0 or first) else []
+        for _, h, s, connected, _ in planner7.picked_pairs(pair_rows, pl, tried_pairs):
+            tried_pairs.add((h.id, s.id))
+            net_steps = planner7.shop_steps(state, memory, s).get(h.cell) if connected else None
+            cand = pair_candidate(state, h, s, connected, evo, net_steps)
+            if cand is not None:
+                consider(cand, (s,), "pair")
+        hold = float(policy.hold(g if merge else global_features(state, memory))) if best is not None else math.nan
+        if first:
+            b_t = pl.t("b_t")
+            top = sorted(pair_rows, key=lambda r: (-r[0], r[1].id, r[2].id))[:10]
+            rec = {"t": float(state.time), "g": [round(float(g[k]), 4) for k in _LOG_GLOBAL_TERMS] if g else [],
+                   "kind": [r[0] for r in rows], "p": [r[1] for r in rows], "rows": [r[2] for r in rows],
+                   "hold": hold, "best": best[3] if best is not None else -1,
+                   "pairs_n": len(pair_rows),
+                   "pair_tmax_nobias": max((r[0] - b_t for r in pair_rows), default=None),
+                   "pairs_top": [[r[1].id, r[2].id, r[0], *r[4]] for r in top],
+                   "cars": sum(1 for c in state.cars if is_driving(c)),
+                   "stopped": sum(1 for c in state.cars if is_driving(c) and c.speed < 0.05)}
+        if best is None:
+            break
+        if not math.isfinite(hold) or best[0] < hold:
+            break
+        _, cand, shops, _, src = best
+        ok = execute_route(session, cand)
+        built.append("pair" if src == "pair" else cand.kind)
+        if coverage:
+            if not house_reaches(session.state, cand.house_id, shops):
+                excluded_pairs.update((cand.house_id, s.id) for s in shops)
+            continue
+        if not ok or not any(session.state.shop_served(s) for s in shops):
+            excluded.add(cand.house_id)
+    if log is not None:
+        if rec is None:
+            rec = {"t": float(session.state.time), "kind": [], "p": [], "rows": [], "best": -1}
+        rec["built"] = built
+        rec["evo_built"] = any(k in ("evo", "pair") for k in built)
+        log.append(rec)
+
+
 def _build_routes(session: GameSession, policy: Policy, memory, merge: bool) -> None:
     """The route part of decide(): build routes while the best priority clears the hold threshold."""
+    if getattr(policy, "v7", False):
+        return _build_routes_v7(session, policy, memory, merge)
     coverage = bool(getattr(policy, "coverage", False))
     clean = bool(getattr(policy, "clean_routes", False))  # gp-3: also offer a clean (junction-averse) route
     excluded: set[int] = set()  # Phase 1: house ids whose route failed in this call

@@ -76,7 +76,12 @@ PLACEMENT_TERMS = ("pl_is_light", "pl_is_roundabout", "pl_degree", "pl_doorstep"
                    "pl_worst_colour_stuck", "pl_new_links", "pl_joins_separated", "pl_tiles_lost",
                    "pl_light_stock", "pl_round_stock")
 
+# gp-7 (plan 2026-11-14 section 3.1): three more priority terms, read only by texts with a `planner:` trailer
+# (moves=v7). The v6 term tuples and psets above stay unchanged, so tune_cmaes still imports with DIM 81.
+V7_CANDIDATE_TERMS = ("is_evo", "pair_connected", "tiles_saved")
+
 PRIORITY_TERMS = CANDIDATE_TERMS + GLOBAL_TERMS
+PRIORITY7_TERMS = PRIORITY_TERMS + V7_CANDIDATE_TERMS
 HOLD_TERMS = GLOBAL_TERMS
 UPGRADE_TERMS = OFFER_TERMS + GLOBAL_TERMS
 REMOVE_TERMS = REMOVAL_TERMS + GLOBAL_TERMS
@@ -114,6 +119,8 @@ _ALL_SCALES: dict[str, int] = {
     "pl_cars_near": COUNT, "pl_stopped_near": COUNT, "pl_max_wait_near": SHORT_S, "pl_mean_wait_near": SHORT_S,
     "pl_dist_worst_shop": TILES, "pl_worst_colour_stuck": COUNT, "pl_new_links": DEGREE,
     "pl_joins_separated": FLAG, "pl_tiles_lost": DEGREE, "pl_light_stock": COUNT, "pl_round_stock": COUNT,
+    # gp-7 priority terms (moves=v7)
+    "is_evo": FLAG, "pair_connected": FLAG, "tiles_saved": TILES,
 }
 SCALE: dict[str, int] = {k: v for k, v in _ALL_SCALES.items() if k not in DROPPED_TERMS}
 
@@ -192,6 +199,7 @@ HOLD_SET = _make_set("hold", HOLD_TERMS)
 UPGRADE_SET = _make_set("upgrade", UPGRADE_TERMS)
 REMOVE_SET = _make_set("remove", REMOVE_TERMS)
 PLACE_SET = _make_set("place", PLACE_TERMS)
+PRIORITY7_SET = _make_set("priority7", PRIORITY7_TERMS)  # gp-7: the priority tree of a text with a planner trailer
 TREE_NAMES = ("priority", "hold", "upgrade")  # a gp-1 / gp-2 individual
 PSETS = (PRIORITY_SET, HOLD_SET, UPGRADE_SET)
 TREE_TERMS = (PRIORITY_TERMS, HOLD_TERMS, UPGRADE_TERMS)
@@ -267,13 +275,18 @@ def _skeleton(expr: str) -> list[str]:
     return [t if t in _PUNCT else "x" for t in _TOKEN.findall(expr)]
 
 
-def _check_tokens(expr: str, index: int) -> None:
+def _pset(index: int, v7: bool = False) -> gp.PrimitiveSet:
+    """The primitive set of tree `index`; with v7 (a text with a planner trailer) the priority tree's is PRIORITY7_SET."""
+    return PRIORITY7_SET if (v7 and index == 0) else ALL_PSETS[index]
+
+
+def _check_tokens(expr: str, index: int, v7: bool = False) -> None:
     """Every token is a function or terminal of this tree's set, or a finite number float() accepts.
 
     Run before from_string, which eval()s every unknown token: '1/0' or '10**400' would otherwise raise
     ZeroDivisionError or OverflowError, and '0x10' would be read as 16.
     """
-    pset = ALL_PSETS[index]
+    pset = _pset(index, v7)
     eph = pset.mapping[f"const_{pset.name}"]
     for tok in _TOKEN.findall(expr):
         if tok in _PUNCT or (tok in pset.mapping and pset.mapping[tok] is not eph):
@@ -296,17 +309,17 @@ def _zero_dropped(expr: str) -> str:
     return re.sub(r"[^\s(),]+", lambda m: "0.0" if m.group(0) in DROPPED_TERMS else m.group(0), expr)
 
 
-def _parse_tree(expr: str, index: int) -> gp.PrimitiveTree:
+def _parse_tree(expr: str, index: int, v7: bool = False) -> gp.PrimitiveTree:
     """One tree from its expression; constants become this set's ephemerals (so mutEphemeral can tune them).
 
     The ephemeral node is built without calling its generator, so parsing never draws from `random`.
     ValueError for an unknown name, a non-numeric or non-finite constant, a wrong arity, an incomplete
     expression, extra nodes after a complete one, or parentheses and commas out of place.
     """
-    pset = ALL_PSETS[index]
+    pset = _pset(index, v7)
     name = ALL_TREE_NAMES[index]
     expr = _zero_dropped(expr)
-    _check_tokens(expr, index)
+    _check_tokens(expr, index, v7)
     try:
         tree = gp.PrimitiveTree.from_string(expr, pset)
     except (TypeError, SyntaxError, IndexError, ValueError, ArithmeticError) as e:
@@ -332,26 +345,161 @@ def _parse_tree(expr: str, index: int) -> gp.PrimitiveTree:
     return tree
 
 
+# --- gp-7 trailers (plan 2026-11-14 section 3.1, "Text format") ------------------------------------------------
+# Two optional lines after the trees, in this order:
+#   flags: clean=0 lights=0|1 roundabouts=0
+#   planner: cost=<10 floats>; target=<7 floats>; theta=<float>
+# A text without trailers canonicalises byte-identically to before gp-7. The planner line turns on moves=v7 (the
+# evolvable planner, agent._build_routes) and the v7 priority terms; its floats are written with repr.
+
+FLAG_NAMES = ("clean", "lights", "roundabouts")
+COST_FIELDS = ("w_paid", "w_reuse", "w_step", "w_jn", "w_jl", "w_ns", "w_for", "w_car", "w_stop", "w_qstop")
+TARGET_FIELDS = ("b_t", "w_con", "w_det", "w_dem", "w_over", "w_ttmpl", "n_t")
+MAX_TARGET_PAIRS = 6  # M_eff = clip(floor(n_t), 0, MAX_TARGET_PAIRS)
+
+
+class Flags(tuple):
+    """(clean, lights, roundabouts), each 0 or 1: what the policy may do, in place of the tree-count defaults."""
+
+    def __new__(cls, clean: int = 0, lights: int = 0, roundabouts: int = 0):
+        vals = (clean, lights, roundabouts)
+        if any(v not in (0, 1) or isinstance(v, bool) for v in vals):
+            raise ValueError(f"flags are 0 or 1, got {vals}")
+        return super().__new__(cls, vals)
+
+    def __getnewargs__(self):  # pickle / deepcopy rebuild through __new__(cls, *args)
+        return tuple(self)
+
+    clean = property(lambda self: self[0])
+    lights = property(lambda self: self[1])
+    roundabouts = property(lambda self: self[2])
+
+    def text(self) -> str:
+        return "flags: " + " ".join(f"{n}={v}" for n, v in zip(FLAG_NAMES, self))
+
+
+class Planner(tuple):
+    """The evolvable planner's weights: (cost tuple, target tuple, theta). See candidates.EvoCost and
+    candidates.target_pairs for their meaning."""
+
+    def __new__(cls, cost, target, theta):
+        cost = tuple(_finite(v, "cost") for v in cost)
+        target = tuple(_finite(v, "target") for v in target)
+        if len(cost) != len(COST_FIELDS) or len(target) != len(TARGET_FIELDS):
+            raise ValueError(f"planner needs {len(COST_FIELDS)} cost and {len(TARGET_FIELDS)} target weights, "
+                             f"got {len(cost)} and {len(target)}")
+        return super().__new__(cls, (cost, target, _finite(theta, "theta")))
+
+    def __getnewargs__(self):
+        return tuple(self)
+
+    cost = property(lambda self: self[0])
+    target = property(lambda self: self[1])
+    theta = property(lambda self: self[2])
+
+    def c(self, name: str) -> float:
+        return self[0][COST_FIELDS.index(name)]
+
+    def t(self, name: str) -> float:
+        return self[1][TARGET_FIELDS.index(name)]
+
+    @property
+    def m_eff(self) -> int:
+        """Target-head pairs per pass: clip(floor(n_t), 0, MAX_TARGET_PAIRS)."""
+        return int(min(MAX_TARGET_PAIRS, max(0, math.floor(self.t("n_t")))))
+
+    def text(self) -> str:
+        fmt = lambda vs: ",".join(repr(v) for v in vs)
+        return f"planner: cost={fmt(self.cost)}; target={fmt(self.target)}; theta={self.theta!r}"
+
+
+def _finite(v, what: str) -> float:
+    x = float(v)
+    if not math.isfinite(x):
+        raise ValueError(f"planner {what} weights must be finite, got {v!r}")
+    return x + 0.0  # never -0.0: one text per value
+
+
+_FLAGS_RE = re.compile(r"^flags:\s*clean=(\S+)\s+lights=(\S+)\s+roundabouts=(\S+)$")
+_PLANNER_RE = re.compile(r"^planner:\s*cost=([^;]*);\s*target=([^;]*);\s*theta=(\S+)$")
+
+
+def _parse_flags(line: str) -> Flags:
+    m = _FLAGS_RE.match(line)
+    if not m or any(g not in ("0", "1") for g in m.groups()):
+        raise ValueError(f"bad flags line {line!r} (expected 'flags: clean=0|1 lights=0|1 roundabouts=0|1')")
+    return Flags(*(int(g) for g in m.groups()))
+
+
+def _floats(s: str, what: str) -> tuple[float, ...]:
+    toks = [t.strip() for t in s.split(",")]
+    try:
+        return tuple(float(t) for t in toks)
+    except ValueError:
+        raise ValueError(f"bad planner {what} weights {s!r}") from None
+
+
+def _parse_planner(line: str) -> Planner:
+    m = _PLANNER_RE.match(line)
+    if not m:
+        raise ValueError(f"bad planner line {line!r} (expected 'planner: cost=...; target=...; theta=...')")
+    try:
+        theta = float(m.group(3))
+    except ValueError:
+        raise ValueError(f"bad planner theta {m.group(3)!r}") from None
+    return Planner(_floats(m.group(1), "cost"), _floats(m.group(2), "target"), theta)
+
+
+def _split_trailers(lines: list[str]) -> tuple[list[str], Flags | None, Planner | None]:
+    """Tree lines, then the optional flags and planner trailers (in that order; anything else is a tree line)."""
+    flags = planner = None
+    if lines and lines[-1].startswith("planner:"):
+        planner = _parse_planner(lines.pop())
+    if lines and lines[-1].startswith("flags:"):
+        flags = _parse_flags(lines.pop())
+    for ln in lines:
+        if ln.startswith(("flags:", "planner:")):
+            raise ValueError(f"trailer out of order or repeated: {ln!r} (flags, then planner, after the trees)")
+    return lines, flags, planner
+
+
 def individual_text(ind: Sequence[gp.PrimitiveTree]) -> str:
     """Canonical text, one line per tree: 'priority: ...\\nhold: ...\\nupgrade: ...[\\nremove: ...[\\nplace: ...]]'
-    (the cache key). 3 trees (gp-1, gp-2), 4 (gp-3) or 5 (gp-4)."""
+    (the cache key). 3 trees (gp-1, gp-2), 4 (gp-3) or 5 (gp-4); then gp-7's optional flags and planner lines."""
     if len(ind) not in TREE_COUNTS:
         raise ValueError(f"an individual has 3, 4 or 5 trees, got {len(ind)}")
-    return "\n".join(f"{name}: {tree}" for name, tree in zip(ALL_TREE_NAMES, ind))
+    lines = [f"{name}: {tree}" for name, tree in zip(ALL_TREE_NAMES, ind)]
+    flags, planner = getattr(ind, "flags", None), getattr(ind, "planner", None)
+    if flags is not None:
+        lines.append(flags.text())
+    if planner is not None:
+        lines.append(planner.text())
+    return "\n".join(lines)
 
 
 def individual_from_text(text: str) -> creator.RulesIndividual:
-    """Inverse of individual_text (fitness invalid). Blank lines and surrounding whitespace are ignored."""
+    """Inverse of individual_text (fitness invalid). Blank lines and surrounding whitespace are ignored.
+
+    gp-7: optional `flags:` and `planner:` trailers (in that order) become the individual's `flags` and `planner`
+    attributes (None when absent). A planner trailer makes the priority tree read the v7 terms (PRIORITY7_SET).
+    Flags lights=1 or roundabouts=1 need a place tree (5 trees). Unknown, repeated or out-of-order trailers raise.
+    """
     lines = [ln.strip() for ln in text.strip().splitlines() if ln.strip()]
+    lines, flags, planner = _split_trailers(lines)
     if len(lines) not in TREE_COUNTS:
         raise ValueError(f"expected 3, 4 or 5 lines ({', '.join(ALL_TREE_NAMES)}), got {len(lines)}")
+    if flags is not None and (flags.lights or flags.roundabouts) and len(lines) < 5:
+        raise ValueError("flags lights=1 or roundabouts=1 need a place tree (a 5-tree text)")
+    v7 = planner is not None
     trees = []
     for i, (line, name) in enumerate(zip(lines, ALL_TREE_NAMES)):
         label, sep, expr = line.partition(":")
         if not sep or label.strip() != name:
             raise ValueError(f"line {i + 1} must start with '{name}:', got {line!r}")
-        trees.append(_parse_tree(expr.strip(), i))
-    return creator.RulesIndividual(trees)
+        trees.append(_parse_tree(expr.strip(), i, v7))
+    ind = creator.RulesIndividual(trees)
+    ind.flags, ind.planner = flags, planner
+    return ind
 
 
 def _tree_exprs(texts: str | Sequence[str]) -> tuple[str, ...]:
@@ -383,9 +531,9 @@ def random_individual(min_depth: int = INIT_MIN_DEPTH, max_depth: int = INIT_MAX
 # --- the policy ----------------------------------------------------------------------------------------------
 
 @lru_cache(maxsize=8192)
-def _compile(index: int, expr: str):
+def _compile(index: int, expr: str, v7: bool = False):
     """The tree's lambda, taking the tree's terminals positionally (cached per process)."""
-    return gp.compile(expr, ALL_PSETS[index])
+    return gp.compile(expr, _pset(index, v7))
 
 
 def _scaled_reader(terms: tuple[str, ...]):
@@ -394,6 +542,7 @@ def _scaled_reader(terms: tuple[str, ...]):
 
 
 _READERS = tuple(_scaled_reader(terms) for terms in ALL_TREE_TERMS)
+_PRIORITY7_READER = _scaled_reader(PRIORITY7_TERMS)
 
 
 def _call(fn, args) -> float:
@@ -432,21 +581,41 @@ class TreePolicy:
 
     def __init__(self, texts: str | Sequence[str], coverage: bool = True, name: str = "tree",
                  clean_routes: bool | None = None) -> None:
-        exprs = _tree_exprs(texts)
-        self.text = "\n".join(f"{n}: {e}" for n, e in zip(ALL_TREE_NAMES, exprs))
+        flags = planner = None
+        if isinstance(texts, str):
+            ind = individual_from_text(texts)
+            exprs = tuple(str(t) for t in ind)
+            flags, planner = ind.flags, ind.planner
+            self.text = individual_text(ind)
+        else:
+            exprs = _tree_exprs(texts)
+            self.text = "\n".join(f"{n}: {e}" for n, e in zip(ALL_TREE_NAMES, exprs))
         self.trees = len(exprs)
         self.coverage = bool(coverage)
+        self.flags, self.planner = flags, planner
+        # gp-7: a planner trailer turns on the evolvable planner (agent._build_routes) and the v7 priority terms
+        self.v7 = planner is not None
+        self.moves = "v7" if self.v7 else "v6"
         # a remove tree that is one constant <= 0 can never remove: skip the removal step (and its cost) then
         self.removes = self.trees >= 4 and not _never_positive(exprs[3])
-        # gp-3: also offer clean routes; default on for a 4- or 5-tree text, off (plays exactly as before) for 3 trees
-        self.clean_routes = (self.trees >= 4) if clean_routes is None else bool(clean_routes)
-        # gp-4: a place tree that is one constant <= 0 can never place: skip the placement step then
-        self.places_lights = self.places_roundabouts = self.trees == 5 and not _never_positive(exprs[4])
+        # gp-3: also offer clean routes; default on for a 4- or 5-tree text, off (plays exactly as before) for 3 trees.
+        # gp-7: a flags trailer says it instead (clean=0|1).
+        default_clean = bool(flags.clean) if flags is not None else self.trees >= 4
+        self.clean_routes = default_clean if clean_routes is None else bool(clean_routes)
+        # gp-4: a place tree that is one constant <= 0 can never place: skip the placement step then.
+        # gp-7: with a flags trailer, lights and roundabouts are placed only if their flag is 1.
+        can_place = self.trees == 5 and not _never_positive(exprs[4])
+        if flags is not None:
+            self.places_lights = can_place and bool(flags.lights)
+            self.places_roundabouts = can_place and bool(flags.roundabouts)
+        else:
+            self.places_lights = self.places_roundabouts = can_place
         self.name = name
-        self._fns = tuple(_compile(i, e) for i, e in enumerate(exprs))
+        self._fns = tuple(_compile(i, e, self.v7) for i, e in enumerate(exprs))
+        self._priority_reader = _PRIORITY7_READER if self.v7 else _READERS[0]
 
     def priority(self, f: dict[str, float]) -> float:
-        x = _call(self._fns[0], _READERS[0](f))
+        x = _call(self._fns[0], self._priority_reader(f))
         return x if math.isfinite(x) else -math.inf
 
     def hold(self, g: dict[str, float]) -> float:

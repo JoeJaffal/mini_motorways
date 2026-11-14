@@ -11,7 +11,7 @@ from dataclasses import dataclass
 
 from .state import DIRS, Building, Cell, CityState, _in_grid
 
-KIND_ORDER = {"attach": 0, "direct": 1, "separated": 2, "clean": 3}
+KIND_ORDER = {"attach": 0, "direct": 1, "separated": 2, "clean": 3, "evo": 4}
 MAX_CANDIDATES = 3  # of the Phase 1 kinds; a clean route (gp-3, opt-in) is offered on top of these
 
 # gp-3 "clean" routes (EXPERIMENTS.md): the separated cost model plus heavy charges for junction links, above all
@@ -60,6 +60,37 @@ class RouteCandidate:
     strokes: tuple[Stroke, ...]
     near_shop_junctions: int = 0  # path cells near a doorstep that gain a link and end with >= 3 (gp-3 input)
     ends_near_shop: bool = False  # the route ends within DOORSTEP_RADIUS of a shop's doorstep (gp-3 input)
+    pair_connected: bool = False  # gp-7: a target-head route for a (house, shop) pair that is already connected
+    tiles_saved: int = 0  # gp-7: for such a route, network path length minus the new path length, in cells
+
+
+@dataclass(frozen=True)
+class EvoCost:
+    """gp-7 cost head ("evo", plan section 3.1) for one route pass.
+
+    c(u->n) = max(floor(l), l*(w_paid*paid + w_reuse*(1-paid)) + w_step + w_jn*[becomes_junction(u) + (n target)
+              becomes_junction(n)] + w_for*foreign(n) + w_jl*[junction_link u, n] + w_ns*[... near a doorstep] + M[n])
+    Terms are added in the legacy order (base, u-junction, n-junction, foreign, then the new terms), so at the
+    separated vector (SEPARATED_EVO with M empty) every step costs bit-identically what the legacy separated
+    search charges. The floors are the legacy heuristic's minimum step costs, so A* stays admissible.
+    M maps a cell to its extra cost (cars and stopped cars on it); empty cells are left out.
+    """
+
+    w_paid: float
+    w_reuse: float
+    w_step: float
+    w_jn: float
+    w_jl: float
+    w_ns: float
+    w_for: float
+    M: dict = None  # Cell -> float, or None for no cell term
+
+    def m_at(self, c: Cell) -> float | None:
+        return self.M.get(c) if self.M else None
+
+
+SEPARATED_EVO = EvoCost(w_paid=1.0, w_reuse=ROAD_FACTOR, w_step=STEP_EXTRA, w_jn=JUNCTION_PENALTY, w_jl=0.0,
+                        w_ns=0.0, w_for=FOREIGN_PENALTY)
 
 
 def _direction(a: Cell, b: Cell) -> int:
@@ -286,6 +317,30 @@ def unserved_targets(state: CityState) -> list[tuple[Building, tuple[Building, .
     return out
 
 
+def _evo_step(state: CityState, evo: EvoCost, color: int, served, targets, near_shop, prev, u: Cell, n: Cell,
+              diagonal: bool, paid: bool) -> float:
+    """gp-7 step cost u -> n (EvoCost). Legacy order: base, u-junction, n-junction, foreign, then the new terms."""
+    ell = DIAG_BASE if diagonal else 1.0
+    cost = ell * (evo.w_paid if paid else evo.w_reuse) + evo.w_step
+    if prev is not None and _becomes_junction(state, u, (prev, n)):
+        cost += evo.w_jn
+    n_target = n in targets
+    if n_target and _becomes_junction(state, n, (u,)):
+        cost += evo.w_jn
+    if _foreign(served, n, color):
+        cost += evo.w_for
+    if evo.w_jl or evo.w_ns:
+        if prev is not None and _junction_link(state, u, (prev, n)):
+            cost += evo.w_jl + (evo.w_ns if u in near_shop else 0.0)
+        if n_target and _junction_link(state, n, (u,)):
+            cost += evo.w_jl + (evo.w_ns if n in near_shop else 0.0)
+    m = evo.m_at(n)
+    if m:
+        cost += m
+    floor = _MIN_DIAG if diagonal else _MIN_ORTH
+    return cost if cost >= floor else floor
+
+
 def _astar(
     state: CityState,
     house: Building,
@@ -296,11 +351,13 @@ def _astar(
     separated: bool,
     clean: bool = False,
     near_shop: frozenset[Cell] = frozenset(),
+    evo: EvoCost | None = None,
 ) -> tuple[tuple[Cell, ...], int] | None:
     """Cheapest path from the house cell to any target. Returns (path, spans_used) or None.
 
     clean (gp-3): junction links (_junction_link) cost CLEAN_JUNCTION_PENALTY, plus CLEAN_NEAR_SHOP_PENALTY in
     `near_shop`, instead of the plain new-junction term. With clean False the costs are exactly Phase 1's.
+    evo (gp-7): the step cost is EvoCost's (separated and clean are then ignored); the heuristic is unchanged.
     """
     if not targets:
         return None
@@ -378,6 +435,13 @@ def _astar(
                 continue
             # gp-6, f34: road stock is spent per new link, so only an existing (or planned, or free) link is cheap.
             paid = paid_link(state, u, n, planned_links)
+            if evo is not None:
+                ng = g + _evo_step(state, evo, house.color, served, targets, near_shop, prev, u, n, diagonal, paid)
+                if ng < best_g.get(n_key, float("inf")):
+                    best_g[n_key] = ng
+                    parent[n_key] = key
+                    heapq.heappush(heap, (ng + heuristic(n), ng, n[1], n[0], n_spans))
+                continue
             cost = (DIAG_BASE if diagonal else 1.0) * (1.0 if paid else ROAD_FACTOR) + STEP_EXTRA
             # Junction term, an approximation that keeps the state at (cell, spans): u is charged on its
             # outgoing edge using its fixed parent (u is closed, so its in-link is known), and a target n
@@ -426,8 +490,10 @@ def route_candidates(
     *,
     planned_links: frozenset[Link] = frozenset(),
     clean: bool = False,
+    evo: EvoCost | None = None,
 ) -> list[RouteCandidate]:
-    """Up to 3 routes from `house` to `shops`, plus with `clean` (gp-3) one clean route if it is new.
+    """Up to 3 routes from `house` to `shops`, plus with `clean` (gp-3) one clean route if it is new, plus with
+    `evo` (gp-7) one evo route (EvoCost search to the attach targets) if it is new and adds at least one link.
 
     `planned` holds cells of routes already chosen in this decision (treated as road); `planned_links`
     holds their steps (see path_links), so that no diagonal crosses a planned diagonal.
@@ -509,10 +575,76 @@ def route_candidates(
         found = _astar(state, house, targets, planned, planned_links, served, separated=True, clean=True,
                        near_shop=near_shop)
         if found is not None and found[0] not in seen:
+            seen.add(found[0])
             cand = make("clean", found)
             if cand is not None:
                 out.append(cand)
+    if evo is not None and reachable:
+        found = _astar(state, house, attach_targets, planned, planned_links, served, separated=False,
+                       near_shop=near_shop, evo=evo)
+        if found is not None and found[0] not in seen and new_links(state, found[0], planned_links) >= 1:
+            cand = make("evo", found)
+            if cand is not None:
+                out.append(cand)
     return out
+
+
+def new_links(state: CityState, path: tuple[Cell, ...], planned_links: frozenset[Link] = frozenset()) -> int:
+    """gp-7 no-op guard: steps of the path that are not existing (or planned) links."""
+    return sum(1 for a, b in zip(path, path[1:]) if not _linked(state, a, b) and _link_key(a, b) not in planned_links)
+
+
+def pair_candidate(state: CityState, house: Building, shop: Building, connected: bool, evo: EvoCost,
+                   net_steps: int | None, planned: frozenset[Cell] = frozenset(), *,
+                   planned_links: frozenset[Link] = frozenset()) -> RouteCandidate | None:
+    """gp-7 target-head route for one (house, same-colour shop) pair, or None.
+
+    An unconnected pair searches the shop's attach targets (its doorstep cells and the road cells of its access
+    components); a connected pair searches toward the doorstep cells (`shop.outside`) only, and needs
+    tiles_saved = net_steps - len(path) >= 1, where net_steps is the house's current network path length to the
+    shop in steps and len(path) counts the new path's steps to the doorstep plus the step into the access cell.
+    Every route must add at least one link. Kind "evo", with pair_connected and tiles_saved set.
+    """
+    served = _served_colours(state)
+    road_stock = state.inventory[0] if len(state.inventory) > 0 else 0
+    reaches: dict[Cell, set[int]] = {}
+    for o in shop.outside:
+        reaches.setdefault(o, set()).add(shop.id)
+    if not connected:
+        for a in shop.access:
+            for c in state.component(a):
+                if _is_road(state, c):
+                    reaches.setdefault(c, set()).add(shop.id)
+    targets = frozenset(c for c in reaches if _in_grid(c))
+    steps = doorsteps(state)
+    near_shop = near_cells(steps, NEAR_SHOP_RADIUS)
+    found = _astar(state, house, targets, planned, planned_links, served, separated=False, near_shop=near_shop,
+                   evo=evo)
+    if found is None:
+        return None
+    path, spans = found
+    if new_links(state, path, planned_links) < 1:
+        return None
+    saved = 0
+    if connected:
+        if net_steps is None:
+            return None
+        saved = net_steps - len(path)
+        if saved < 1:
+            return None
+    tiles = road_cost(state, path, planned_links)
+    if tiles > road_stock:
+        return None
+    strokes = split_strokes(path)
+    return RouteCandidate(
+        kind="evo", house_id=house.id, shop_ids=tuple(sorted(reaches.get(path[-1], ()))), path=path,
+        tiles_needed=tiles, bridges_needed=spans, turns=max(0, len(strokes) - 1),
+        new_junctions=_new_junctions(state, path),
+        shared_cells=sum(1 for c in path if _foreign(served, c, house.color)), strokes=strokes,
+        near_shop_junctions=_near_shop_junctions(state, path, near_shop),
+        ends_near_shop=any(max(abs(path[-1][0] - d[0]), abs(path[-1][1] - d[1])) <= DOORSTEP_RADIUS for d in steps),
+        pair_connected=connected, tiles_saved=saved if connected else 0,
+    )
 
 
 # --- Coverage targets (Phase 2, decision P2-6) ---------------------------------------------------------------

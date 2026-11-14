@@ -694,3 +694,40 @@ Corrected for 6 comparisons (Holm, paired t on 200 maps): only separated (−156
 - **Neither gp-6 nor cma-6 beat their seed.** cma-6's final mean (−8.2) and best sample (−25.3) are within noise of cma-1 (not significant after correction), but below it. cma-6's 1037.0 on validation was the winner's curse, as expected.
 - **gp-6's own best tree, `7fa4b2ec`, is probably worse** (−64.7, t −2.34, raw p 0.020). After the Holm correction p = 0.08, so it is not significant at 0.05, though its bootstrap interval [−120, −12] excludes 0.
 - **Previous-version best (L) = cma-1 3-tree, 1021.2.** gp-7/cma-7 must beat this (plan `plans/2026-11-14-gp7-cma7-plan.md` §2).
+## 2026-11-14: gp-7 / cma-7 setup on the Mac mini (plan `plans/2026-11-14-gp7-cma7-plan.md`)
+
+**User decisions (2026-11-14):** the runs happen on this Mac mini (Apple M4, 10 cores, 16 GB, macOS 15.6), not on
+Windows; launch as soon as everything is ready instead of waiting for Nov 16; push `dynamic-gp` at milestones;
+automatic macOS updates turned off by the user.
+
+**Setup** (HANDOFF.md section 7 setup note): .NET SDK 8.0.427 / runtime 8.0.33 (the old machine's), Python 3.12.11,
+pinned packages; the five history checks pass; host `2026-11-10.f34`; tests 801 passed, 23 skipped (none for a
+missing DLL, verifier or remote). macOS port of the operations: `ops/watchdog7_mac.py` (launchd + caffeinate; also
+supervises queue scripts), `ops/compare_games.py`.
+
+**Worker sweep** (L on 5200-5299 from `../mm-gp6-final`, 100 games per run, nothing else running):
+
+| Workers | Wall s | Games/h | Min free RAM |
+|---|---|---|---|
+| 10 | 754 | **477.4** | 60% |
+| 9 | 911 | 395.1 | 64% |
+| 8 | 881 | 408.6 | 64% |
+| 4 (performance cores) | 1344 | 267.8 | 65% |
+
+W = 10, R0 = 477.4 games/h (old machine: 207-292 on 12 workers). Ladder rung: cma-7 + gp-7 fork. Budget table in
+HANDOFF.md section 6: n_s 300, n_val 200, n_test 900, (λ, m) = (24, 12), T_stop 2026-11-19 01:22.
+
+**Determinism.** D1: L on 5100-5159 on the Mac is identical to the old Windows x64 machine's close-out games on all
+60 seeds (trips, seconds, commands); the sweep's 100 games on 5200-5299 were identical too. So arm64 macOS and
+x64 Windows play the same games, and numbers from both machines are comparable.
+
+**gp7-v1 code (C4-min).** `CODE_VERSION` gp7-v1. gp.py: `flags:` / `planner:` trailers, v7 priority terms
+(is_evo, pair_connected, tiles_saved) and PRIORITY7_SET; texts without trailers canonicalise byte-identically.
+candidates.py: EvoCost step cost (legacy order, legacy floors), evo candidates, target-head pair routes, no-op
+guards. planner7.py: cell maps, target head, detour BFS. agent.py: the v7 route loop and decision records.
+linear.py (84 coordinates), evolve7.py (sep-CMA), stats7.py (decide_headline), ops/identity7.py, calibrate7.py,
+screen7.py, scales7.py. Identity gate (1) (L by gp7 code reproduces the gp6-final close-out games, 20 maps): pass.
+
+**Calibration round 1** (Gentle, b_t −0.5, is_evo weight 0, seeds 5300-5307, 1,252 decisions, 0 rejected draws):
+pair opens in 11.2% of decisions, an evo route is built in 3.1% (the plan's 3-5% band already), θ (75th percentile
+of worst_overcrowded over decisions) = 0 s. Solve for 10% pair opens: b_t = −0.538.
