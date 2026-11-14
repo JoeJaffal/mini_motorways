@@ -28,6 +28,9 @@ OFF_TRAILERS = ("flags: clean=0 lights=0 roundabouts=0\n"
                 "theta=600.0")
 
 
+SPACE = ""  # --space: a frozen space.json for gate (4); default unit scales
+
+
 def gate_texts(L: str, gates: list[int]) -> dict[str, str]:
     out = {}
     if 1 in gates:
@@ -40,7 +43,9 @@ def gate_texts(L: str, gates: list[int]) -> dict[str, str]:
         except ImportError:
             print("(4) skipped: linear.py not present yet")
         else:
-            out["(4) linear round trip"] = linear.text_from_x(linear.x_from_l_text(L), planner_off=True)
+            sp = linear.Space.load(Path(SPACE)) if SPACE else linear.Space(l_text=L)
+            out["(4) linear round trip" + (" (frozen space)" if SPACE else "")] = linear.text_from_x(
+                linear.x_from_l(sp), sp)
     return out
 
 
@@ -49,7 +54,10 @@ def main() -> int:
     p.add_argument("--seeds", default="5100-5119")
     p.add_argument("--workers", type=int, default=4)
     p.add_argument("--gates", default="1,3,4")
+    p.add_argument("--space", default="", help="frozen space.json for gate (4)")
     a = p.parse_args()
+    global SPACE
+    SPACE = a.space
     from evolved_rules.engine import CODE_VERSION, Engine
     lo, hi = (int(x) for x in a.seeds.split("-"))
     seeds = list(range(lo, hi + 1))

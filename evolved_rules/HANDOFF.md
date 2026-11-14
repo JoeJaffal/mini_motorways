@@ -201,10 +201,10 @@ Derived (2026-11-14): the L pre-play queue is n_s + n_val + 900 + 900 hand = 2,3
 - [x] Worker sweep, R0; D1 (pass/fail: **pass**); D2 pass; budget table committed (2026-11-14: W = 10, R0 = 477.4; D1 = L on 5100-5159 from `../mm-gp6-final` identical to the old machine's close-out games on all 60 seeds (trips, seconds, commands), `config.commit` = gp6-final; the sweep's own 100 games on 5200-5299 were also identical. D2 = 5100-5109 replayed: identical to D1 on all 10 seeds, pass)
 - [ ] L pre-play queue started; alive or finished? (check at every milestone and after any reboot)
 - [x] Watchdog registered and tested (2026-11-14, macOS: `watchdog7_mac.py` LaunchAgent installed; 11 unit tests pass; end-to-end under launchd: a queue job started from `../mm-gp6-final` with `PYTHONHASHSEED=0` and `~/.dotnet/dotnet`, finished, and was not restarted on the next pass; runs7.json then reset to `[]`)
-- [ ] C4-min + decision logging; identity tests (1), (3), edge-cost unit, text round trip: pass
-- [ ] x0 calibration (pair-open ____%, evo-built ____%)
+- [x] C4-min + decision logging; identity tests (1), (3), edge-cost unit, text round trip: pass (2026-11-14, `4453544`: (1) and (3) 20/20 identical on 5100-5119, 0 rejected draws; `tests/test_gp7.py` 38 pass)
+- [x] x0 calibration (pair-open **9.8%**, evo-built **3.0%**) (3 rounds × 8 games on 5300-5323: b_t −0.5 / −0.54 / −0.5667, is_evo weight 0; pooled 9.6% / 3.1%; θ = 0 s, Bypass c = 0.266; `output/evolved_rules/gp7/calibration/calibration_final.json`)
 - [ ] Screen done (n_s ____); x0\* = ____; scales and θ frozen
-- [ ] linear.py identity (4), evolve7, stats7, smoke: pass (or F2 at CL2a)
+- [x] linear.py identity (4), evolve7, stats7, smoke: pass (or F2 at CL2a) (2026-11-14: (4) 20/20 identical with unit scales, to repeat with the frozen scales; smoke λ 6, m 6, forced cuts, cap 300 s: killed in a 4-map phase and in a phase B, both resumed by the watchdog, 3 generations identical, mean and sigma equal)
 - [ ] Pre-registration committed (hash ____)
 - [ ] cma-7 trunk launched from worktree `cma7-launch` (time ____, W ____, λ/m ____)
 - [ ] gp-7-lite forked at gen ____ from `gp7-fork` (or dropped at CL3)

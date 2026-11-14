@@ -282,6 +282,10 @@ def run(cfg: dict, state: dict, run_dir: Path, space: linear.Space, engine=None,
         engine = Engine(workers=cfg["workers"], cap_s=cfg.get("cap_s", ev.DEFAULT_CAP_S), cache_path=run_dir / CACHE)
     try:
         while True:
+            if cfg.get("max_gens") and state["generation"] >= cfg["max_gens"]:
+                _status(run_dir, "budget", f"max_gens {cfg['max_gens']} reached (smoke only)", state)
+                log(f"budget: max_gens {cfg['max_gens']}")
+                return state
             stop = effective_stop(cfg, run_dir)
             last = state.get("last_wall_s", 0.0)
             if now() + dt.timedelta(seconds=last) >= stop:
@@ -312,6 +316,7 @@ def main(argv=None) -> int:
     p.add_argument("--seed", type=int, default=1)
     p.add_argument("--log-gen0", action="store_true")
     p.add_argument("--force-cut", action="store_true", help="test only: always cut the worst sample")
+    p.add_argument("--max-gens", type=int, default=0, help="test only: stop after this many generations")
     p.add_argument("--cap", type=float, default=ev.DEFAULT_CAP_S, help="episode cap in simulated seconds (smoke only)")
     a = p.parse_args(argv)
     ev._check_run_name(a.run)
@@ -330,7 +335,7 @@ def main(argv=None) -> int:
             space = linear.Space.from_json(x0doc["space"])
             cfg = {"popsize": a.popsize, "maps": a.maps, "sigma0": a.sigma0, "seed": a.seed, "workers": a.workers,
                    "stop_at": a.stop_at, "log_gen0": a.log_gen0, "force_cut": a.force_cut,
-                   "cap_s": float(a.cap), "x0_file": str(a.x0)}
+                   "cap_s": float(a.cap), "x0_file": str(a.x0), "max_gens": a.max_gens}
             state = start(cfg, run_dir, x0doc["x"], space)
     except evo.RunExistsError as e:
         print(str(e), file=sys.stderr)
