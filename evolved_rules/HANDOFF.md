@@ -35,7 +35,7 @@ You are an agent picking up the gp-7 / cma-7 work on a fresh machine. The old ma
 
 **Code and simulator.**
 - Simulator f34 (`2026-11-10.f34`), from upstream main 938b9f8 via commit `b96d98d` (= `VERIFIER_COMMIT`).
-- **Tag `gp6-final` = commit `<!-- GP6FINAL-HASH -->`.** That is gp6's tip `dfd8532` plus documents and data only. **Its code is identical to `dfd8532`.**
+- **Tag `gp6-final` = commit `f7bf5f5efaee57e8cb68341952fa18dd531160bc` (`f7bf5f5`).** That is gp6's tip `dfd8532` plus documents and data only. **Its code is identical to `dfd8532`.**
 - Branch **`dynamic-gp`** continues from it, merged with upstream main `938b9f8` (identical simulator; adds Mohammad's `training/` and `docs/training/`, untouched by this work). `simulation/` is unchanged since `b96d98d`.
 
 **The previous version (gp-6 / cma-6).**
@@ -78,7 +78,7 @@ Average over the 5 learned arms: 1001.6 trips (best 1021.2).
    - `git cat-file -t b96d98d` prints `commit`;
    - `git rev-parse gp6-final^{commit}` prints the hash in §2. If the tag is missing, run `git tag gp6-final <hash>`;
    - `git diff --quiet b96d98d HEAD -- simulation; $LASTEXITCODE` prints 0;
-   - `git diff --quiet dfd8532 gp6-final -- simulation evolved_rules ':!evolved_rules/ops' ':!evolved_rules/closeout' ':!evolved_rules/seeds/gp7' ':!evolved_rules/plans' ':!evolved_rules/analysis/gp7' ':!evolved_rules/HANDOFF.md'; $LASTEXITCODE` prints 0.
+   - `git diff --quiet dfd8532 gp6-final -- simulation evolved_rules ':!evolved_rules/ops' ':!evolved_rules/closeout' ':!evolved_rules/seeds/gp7' ':!evolved_rules/plans' ':!evolved_rules/analysis/gp7' ':!evolved_rules/HANDOFF.md' ':!evolved_rules/EXPERIMENTS.md'; $LASTEXITCODE` prints 0.
 4. **Add the upstream remote.** `git remote add upstream https://github.com/JoeJaffal/mini_motorways.git; git fetch upstream`. Some tests need `upstream/mohammad`.
 5. **Git identity.** `git config user.name "Aya"; git config user.email (git log -1 --format=%ae)`.
 6. **Python.** `py -3.12 -m venv .venv; .\.venv\Scripts\pip install -r evolved_rules\requirements.txt`.
