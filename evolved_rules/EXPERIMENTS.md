@@ -883,6 +883,6 @@ Trend guard at gens 11-15: pass each time (rolling means 1167.0, 1222.0, 1272.0,
 - gp-7 gen 18 is again identical to cma-7 gen 18 (empty slots; final mean hash 460104c3db4c3bb3).
 - Throughput differs between the arms on the same 5 workers each: cma-7 takes 71-86 min per generation,
   gp-7 about 125 min. The 12 logged trend-monitor replays do not explain the gap alone. No code change is made
-  mid-run. Ledgers at 23:00: cma-7 6,268, gp-7 5,676 (10.4% apart). Per plan §2.3 both ledgers are reported next
+  mid-run. Ledgers at 23:00: cma-7 6,268, gp-7 5,676 (10.4% apart). Per plan §2.4 both ledgers are reported next
   to the final comparison, the gap is flagged if it stays above 10%, and the curves against charged games give
   the equal-games view.
