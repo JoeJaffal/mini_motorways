@@ -827,3 +827,18 @@ Trend guard at gens 11-15: pass each time (rolling means 1167.0, 1222.0, 1272.0,
 - G_post = 2 · 200 + 900 = 1,300 games; G_post / R = 4.2 h.
 - T_stop = T_freeze − 4.2 h − 2 h = 2026-11-19 01:48. That is later than the pre-registered 01:22, so T_stop stays at
   01:22 (it may only move earlier). No stop_at.txt.
+
+**Gen 16:** population average 1209.3, best 1444.4, trend-monitor mean 1214.8, σ 0.213, cut 1; trend guard pass (rolling 1241.0 ≥ 997.9).
+
+**gp-7 fork, 2026-11-15 17:26 (gate: pass).**
+- Code gp7-v2 (`0000650`, tag `gp7-fork`): slot trees, gate primitive, epochs (screen + race on probe maps
+  10000-49999), `--fork-from`. Full suite 866 passed, 23 skipped.
+- Fork gate on the real trunk snapshot at generation 17, copied right after the generation's checkpoint:
+  - the 24 ask() draws, the 12 map seeds and the mean text are byte-identical between the trunk code (v1) and
+    the arm's start through `evolve7.fork()` (v2);
+  - 8 trunk games replayed by v2 without a cache are identical on trips, seconds and commands, with 0 rejected draws.
+  - Records: `plans/gp7-fork/draws.json`, `plans/gp7-fork/games8.json`.
+- From gen 17, both arms run concurrently on 5 workers each:
+  - cma-7 resumed from its own checkpoint in `../mm-cma7` (gp7-v1, 6b80889);
+  - gp-7 runs in `../mm-gp7arm` (gp7-v2), stop-at 2026-11-19 01:22.
+  - Both keep the trunk's ledger (5,076 games at the fork).
