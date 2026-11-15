@@ -870,3 +870,19 @@ Trend guard at gens 11-15: pass each time (rolling means 1167.0, 1222.0, 1272.0,
 - cma-7 reused 39 games cached by the trunk's interrupted gen 17. gp-7 starts with no cache and also replays the
   12 trend-monitor games with decision logging for the slot screen (12 uncharged games per generation, by design).
 - Ledger 5,376 in each arm.
+
+**Gens 18-20 after the fork: per-arm trend guards, 2026-11-15 23:00.**
+
+| Arm | Gen | Pop avg | Pop best | TM mean | σ | Cut | Charged | Played | Minutes | Rolling 3 TM | Guard (≥ 997.9) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| cma-7 | 18 | 1213.7 | 1358.9 | 1429.8 | 0.213 | 0 | 300 | 300 | 86 | 1339.4 | pass |
+| cma-7 | 19 | 1074.5 | 1207.1 | 1100.3 | 0.215 | 0 | 300 | 300 | 71 | 1301.2 | pass |
+| cma-7 | 20 | 1140.0 | 1295.6 | 1224.2 | 0.218 | 1 | 292 | 292 | 71 | 1251.4 | pass |
+| gp-7 | 18 | 1213.7 | 1358.9 | 1429.8 | 0.213 | 0 | 300 | 312 | 124 | 1339.4 | pass |
+
+- gp-7 gen 18 is again identical to cma-7 gen 18 (empty slots; final mean hash 460104c3db4c3bb3).
+- Throughput differs between the arms on the same 5 workers each: cma-7 takes 71-86 min per generation,
+  gp-7 about 125 min. The 12 logged trend-monitor replays do not explain the gap alone. No code change is made
+  mid-run. Ledgers at 23:00: cma-7 6,268, gp-7 5,676 (10.4% apart). Per plan §2.3 both ledgers are reported next
+  to the final comparison, the gap is flagged if it stays above 10%, and the curves against charged games give
+  the equal-games view.
