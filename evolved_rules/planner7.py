@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import math
 from collections import deque
+from functools import lru_cache
 
 from .candidates import EvoCost
 from .features import GameMemory, is_driving, is_stuck
@@ -50,6 +51,39 @@ def worst_overcrowded(state: CityState) -> float:
     return max((float(s.overcrowded_for) for s in state.shops()), default=0.0)
 
 
+@lru_cache(maxsize=256)
+def _slot_fn(expr: str, kind: str):
+    from deap import gp as dgp
+    from .gp import COST_SLOT_SET, TARGET_SLOT_SET
+    return dgp.compile(expr, COST_SLOT_SET if kind == "cost" else TARGET_SLOT_SET)
+
+
+def _slot_value(fn, *args) -> float:
+    try:
+        v = float(fn(*args))
+    except (OverflowError, ZeroDivisionError, ValueError):
+        return 0.0
+    return v if math.isfinite(v) else 0.0
+
+
+def _cost_slot(state: CityState, expr: str, cars, stopped, M: dict) -> None:
+    """gp-7-lite cost slot: M[c] += tree(cars_on, stopped_on, near_shop, worst_overcrowded/1024) on every playable
+    cell (non-finite values count 0)."""
+    from .candidates import NEAR_SHOP_RADIUS, doorsteps, near_cells
+    fn = _slot_fn(expr, "cost")
+    near = near_cells(doorsteps(state), NEAR_SHOP_RADIUS)
+    wo = worst_overcrowded(state) / 1024.0
+    H, W = state.conn.shape
+    for y in range(H):
+        for x in range(W):
+            c = (x, y)
+            if not state.playable(c):
+                continue
+            v = _slot_value(fn, float(cars.get(c, 0)), float(stopped.get(c, 0)), 1.0 if c in near else 0.0, wo)
+            if v:
+                M[c] = M.get(c, 0.0) + v
+
+
 def evo_cost(state: CityState, planner: Planner) -> EvoCost:
     """The pass's EvoCost: the planner's cost weights plus the cell map M (None when every entry is 0)."""
     c = planner.c
@@ -63,6 +97,9 @@ def evo_cost(state: CityState, planner: Planner) -> EvoCost:
             v = w_car * n + w_stop * s + w_q * gate * s
             if v:
                 M[cell] = v
+    if planner.cslot is not None:
+        cars, stopped = cell_maps(state)
+        _cost_slot(state, planner.cslot, cars, stopped, M)
     return EvoCost(w_paid=c("w_paid"), w_reuse=c("w_reuse"), w_step=c("w_step"), w_jn=c("w_jn"), w_jl=c("w_jl"),
                    w_ns=c("w_ns"), w_for=c("w_for"), M=M or None)
 
@@ -113,6 +150,7 @@ def pair_rows(state: CityState, memory: GameMemory, planner: Planner) -> list[tu
     t = planner.t
     b_t, w_con, w_det, w_dem, w_over, w_tt = (t("b_t"), t("w_con"), t("w_det"), t("w_dem"), t("w_over"),
                                               t("w_ttmpl"))
+    tfn = _slot_fn(planner.tslot, "target") if planner.tslot is not None else None
     rows = []
     for s in shops:
         dem, over = s.demand / 64.0, s.overcrowded_for / 1024.0
@@ -123,6 +161,11 @@ def pair_rows(state: CityState, memory: GameMemory, planner: Planner) -> list[tu
             det = detour_ratio(state, memory, h, s) if connected and s.id in detour_ids else 0.0
             con = 1.0 if connected else 0.0
             score = b_t + w_con * con + w_det * det + w_dem * dem + w_over * over + w_tt * (over * det)
+            if tfn is not None:
+                dx = min(abs(h.cell[0] - acc[0]) for acc in s.access) if s.access else 0
+                dy = min(abs(h.cell[1] - acc[1]) for acc in s.access) if s.access else 0
+                octile = (max(dx, dy) - min(dx, dy) + 1.414 * min(dx, dy)) / 64.0
+                score += _slot_value(tfn, con, det, over, dem, octile)
             rows.append((score, h, s, connected, (con, det, dem, over)))
     return rows
 

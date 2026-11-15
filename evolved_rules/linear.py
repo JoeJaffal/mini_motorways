@@ -76,6 +76,9 @@ class Space:
     theta: float = 600.0
     lights: bool = False
     masks: tuple[float, ...] = tuple([0.0] * N_SLOTS)
+    # gp-7-lite (gp7-v2): slot trees (priority over PRIORITY7 terms, hold over HOLD terms, cost over
+    # gp.COST_SLOT_TERMS, target over gp.TARGET_SLOT_TERMS); a slot acts only with its tree set and mask 1
+    slot_trees: tuple = (None,) * N_SLOTS
     l_weights: dict = field(default=None, compare=False)
 
     def __post_init__(self):
@@ -87,14 +90,15 @@ class Space:
 
     def to_json(self) -> dict:
         return {"l_text": self.l_text, "scales": list(self.scales), "theta": self.theta, "lights": self.lights,
-                "masks": list(self.masks), "layout": [list(x) for x in LAYOUT]}
+                "masks": list(self.masks), "slot_trees": list(self.slot_trees), "layout": [list(x) for x in LAYOUT]}
 
     @classmethod
     def from_json(cls, d: dict) -> "Space":
         if [tuple(x) for x in d.get("layout", LAYOUT)] != list(LAYOUT):
             raise ValueError("space.json layout differs from linear.LAYOUT")
         return cls(l_text=d["l_text"], scales=tuple(d["scales"]), theta=float(d["theta"]), lights=bool(d["lights"]),
-                   masks=tuple(d.get("masks", [0.0] * N_SLOTS)))
+                   masks=tuple(d.get("masks", [0.0] * N_SLOTS)),
+                   slot_trees=tuple(d.get("slot_trees", [None] * N_SLOTS)))
 
     @classmethod
     def load(cls, path: Path) -> "Space":
@@ -124,6 +128,10 @@ def text_from_x(x, space: Space) -> str:
         pri.append(f"mul({v!r}, {t})")
     extras = [f"mul({w[t]!r}, {t})" for t in gp.V7_CANDIDATE_TERMS]
     extras += [f"mul({w[f'priority.{a}*{b}']!r}, mul({a}, {b}))" for a, b in PRIORITY_TEMPLATES]
+    sw = [snap(float(x[INDEX[f"slot{k}"]]) * space.scales[INDEX[f"slot{k}"]] * space.masks[k]) for k in range(N_SLOTS)]
+    live = [space.masks[k] != 0 and space.slot_trees[k] is not None for k in range(N_SLOTS)]
+    if live[0]:
+        extras.append(f"mul({sw[0]!r}, {space.slot_trees[0]})")
     priority = f"add({_balanced(pri)}, {_balanced(extras)})"
     hold = [repr(w["hold.bias"])]
     for t in gp.HOLD_TERMS:
@@ -133,7 +141,10 @@ def text_from_x(x, space: Space) -> str:
     for t in gp.UPGRADE_TERMS:
         v = w[f"upgrade.{t}"] if f"upgrade.{t}" in w else snap(L["upgrade"][t])
         upg.append(f"mul({v!r}, {t})")
-    lines = [f"priority: {priority}", f"hold: {_balanced(hold)}", f"upgrade: {_balanced(upg)}"]
+    hold_text = _balanced(hold)
+    if live[1]:
+        hold_text = f"add({hold_text}, mul({sw[1]!r}, {space.slot_trees[1]}))"
+    lines = [f"priority: {priority}", f"hold: {hold_text}", f"upgrade: {_balanced(upg)}"]
     if space.lights:
         a, b = PLACE_TEMPLATE
         items = [repr(w["bias"])] + [f"mul({w[t]!r}, {t})" for t in LIGHT_TERMS]
@@ -142,7 +153,9 @@ def text_from_x(x, space: Space) -> str:
     lines.append(f"flags: clean=0 lights={int(space.lights)} roundabouts=0")
     cost = [w[f] for f in gp.COST_FIELDS if f != "w_qstop"] + [w["cost.w_qstop"]]
     target = [w[f] for f in ("b_t", "w_con", "w_det", "w_dem", "w_over")] + [w["target.w_ttmpl"], w["n_t"]]
-    lines.append(gp.Planner(cost, target, space.theta).text())
+    cslot = f"mul({sw[2]!r}, {space.slot_trees[2]})" if live[2] else None
+    tslot = f"mul({sw[3]!r}, {space.slot_trees[3]})" if live[3] else None
+    lines.append(gp.Planner(cost, target, space.theta, cslot, tslot).text())
     return gp.individual_text(gp.individual_from_text("\n".join(lines)))
 
 
@@ -174,6 +187,12 @@ def x_from_l(space: Space, planner: dict[str, float] | None = None) -> list[floa
 def x_from_l_text(l_text: str) -> list[float]:
     """Gate (4) helper with unit scales."""
     return x_from_l(Space(l_text=l_text))
+
+
+def scale_norm(spreads: dict[int, float]) -> float:
+    """The median of 1/spread over the spread-scaled coordinates (the normaliser of scales_for_x0)."""
+    raw = sorted(1.0 / s for i, s in spreads.items() if i not in UNIT_SCALE and s > 0 and math.isfinite(s))
+    return raw[len(raw) // 2] if raw else 1.0
 
 
 def scales_for_x0(spreads: dict[int, float], x0_weights: dict[str, float], floor: float = 0.1,

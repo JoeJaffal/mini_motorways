@@ -168,3 +168,114 @@ def test_holm_and_bca():
     assert h == {"a": 0.03, "c": 0.06, "b": 0.06}
     lo, hi = stats7.bca_interval([1.0, 2.0, 3.0, 4.0, 5.0] * 20, 0.90)
     assert lo < 3.0 < hi
+
+
+# --- gp-7 arm (fork, epochs, insertion) ----------------------------------------------------------------------
+
+def _trunk(tmp_path, gens=1):
+    sp = _space()
+    cfg = _cfg(force_cut=False)
+    t = tmp_path / "trunk"
+    st = E.start(cfg, t, linear.x_from_l(sp), sp)
+    eng = FakeEngine()
+    for _ in range(gens):
+        st = E.generation(cfg, st, eng, t, sp)
+    E.evo.write_checkpoint(t, st)
+    return t, eng
+
+
+def test_fork_with_empty_slots_decodes_like_the_trunk(tmp_path):
+    t, eng = _trunk(tmp_path)
+    cfg, st, sp = E.fork(t, tmp_path / "arm", workers=1, stop_at=None)
+    assert cfg["arm"] == "gp7" and cfg["fork_gen"] == 1 and st["ledger"] == json.loads(
+        (t / E.GENERATIONS).read_text().splitlines()[-1])["ledger"]
+    import pickle
+    es = pickle.loads(st["es"])
+    xs = es.ask()
+    space = linear.Space.from_json(st["space"])
+    assert [linear.text_from_x(x, space) for x in xs] == [linear.text_from_x(x, _space()) for x in xs]
+
+
+def test_epoch_runs_every_fifth_generation_and_charges_the_race(tmp_path):
+    t, _ = _trunk(tmp_path)
+    cfg, st, sp = E.fork(t, tmp_path / "arm", workers=1, stop_at=None)
+    eng = FakeEngine()
+    for _ in range(5):
+        st = E.generation(cfg, st, eng, tmp_path / "arm", sp)
+    recs = [json.loads(x) for x in (tmp_path / "arm" / "slots.jsonl").read_text().splitlines()]
+    assert len(recs) == 1 and recs[0]["gen"] == 5 and st["probe_next"] == 10000 + 24
+    assert recs[0]["charged"] == 24 * (1 + 2 * len(recs[0]["kept"]))
+
+
+def test_probe_seeds_never_pass_49999(tmp_path):
+    t, _ = _trunk(tmp_path)
+    cfg, st, sp = E.fork(t, tmp_path / "arm", workers=1, stop_at=None)
+    st = {**st, "probe_next": E.PROBE_LAST - 24 + 1}  # the last full race fits exactly: 49976-49999
+    eng = FakeEngine()
+    for _ in range(10):  # epochs at gens 5 and 10
+        st = E.generation(cfg, st, eng, tmp_path / "arm", sp)
+    recs = [json.loads(x) for x in (tmp_path / "arm" / "slots.jsonl").read_text().splitlines()]
+    assert recs[0]["probes"] == [49976, 49999] and st["probe_next"] == 50000
+    assert recs[1]["skipped"] == "probe seeds exhausted" and recs[1]["charged"] == 0
+    assert max(s for _, s in eng.cache) <= 49999
+
+
+def test_accepted_slot_is_inserted(tmp_path, monkeypatch):
+    t, _ = _trunk(tmp_path)
+    cfg, st, sp = E.fork(t, tmp_path / "arm", workers=1, stop_at=None)
+    from evolved_rules import slots, stats7
+    monkeypatch.setattr(slots, "screen", lambda props, recs: [
+        {"slot": 2, "tree": "mul(stopped_on, near_shop)", "w0": 0.5, "key": (1, 0.0)}])
+    monkeypatch.setattr(slots, "slot_spread", lambda k, tree, recs: 0.25)
+    monkeypatch.setattr(stats7, "paired_t_one_sided", lambda d: {"p": 0.01, "mean": 5.0})
+    eng = FakeEngine()
+    for _ in range(5):
+        st = E.generation(cfg, st, eng, tmp_path / "arm", sp)
+    space = linear.Space.from_json(st["space"])
+    assert space.masks[2] == 1.0 and space.slot_trees[2] == "mul(stopped_on, near_shop)"
+    import pickle
+    es = pickle.loads(st["es"])
+    k = linear.INDEX["slot2"]
+    assert es.mean[k] == pytest.approx(0.5 / space.scales[k])
+    assert "cslot=mul(" in (tmp_path / "arm" / "final_mean.txt").read_text()
+
+
+def test_resume_across_an_epoch_is_exact(tmp_path):
+    t, _ = _trunk(tmp_path)
+    a_dir, b_dir = tmp_path / "a", tmp_path / "b"
+    cfg, sa, sp = E.fork(t, a_dir, workers=1, stop_at=None)
+    ea = FakeEngine()
+    for _ in range(6):
+        sa = E.generation(cfg, sa, ea, a_dir, sp)
+    cfg_b, sb, _ = E.fork(t, b_dir, workers=1, stop_at=None)
+    eb = FakeEngine()
+    for _ in range(4):
+        sb = E.generation(cfg_b, sb, eb, b_dir, sp)
+    E.evo.write_checkpoint(b_dir, sb)
+    E.generation(cfg_b, sb, eb, b_dir, sp)  # the epoch generation, then "killed"
+    cfg_b, sb, _ = E.load(b_dir, {})
+    for _ in range(2):
+        sb = E.generation(cfg_b, sb, eb, b_dir, sp)
+    strip = lambda p: [_strip(json.loads(x)) for x in p.read_text().splitlines()]
+    assert strip(a_dir / E.GENERATIONS) == strip(b_dir / E.GENERATIONS)
+    import pickle
+    assert np.array_equal(pickle.loads(sa["es"]).mean, pickle.loads(sb["es"]).mean)
+
+
+def test_slot_proposals_deterministic_bounded_and_no_templates():
+    import random
+    from evolved_rules import slots
+    a = slots.propose([0, 2], 0.0, random.Random("1:5"))
+    b = slots.propose([0, 2], 0.0, random.Random("1:5"))
+    assert a == b and len(a) == slots.PROPOSALS and {k for k, _ in a} == {0, 2}
+    banned = slots.templates(0.0)
+    for k, t in a:
+        tree = gp._parse_tree(t, 0, pset=slots.SLOT_PSETS[k], name="slot")
+        assert len(tree) <= slots.MAX_NODES and tree.height <= slots.MAX_DEPTH
+        assert t not in banned and not slots._is_num(t)
+    assert slots.propose([], 0.0, random.Random(1)) == []
+
+
+def test_slot_screen_rejects_without_records():
+    from evolved_rules import slots
+    assert slots.screen([(0, "mul(is_evo, worst_overcrowded)"), (2, "mul(stopped_on, near_shop)")], []) == []

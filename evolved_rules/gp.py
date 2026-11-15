@@ -199,7 +199,31 @@ HOLD_SET = _make_set("hold", HOLD_TERMS)
 UPGRADE_SET = _make_set("upgrade", UPGRADE_TERMS)
 REMOVE_SET = _make_set("remove", REMOVE_TERMS)
 PLACE_SET = _make_set("place", PLACE_TERMS)
-PRIORITY7_SET = _make_set("priority7", PRIORITY7_TERMS)  # gp-7: the priority tree of a text with a planner trailer
+def gate(a, b):
+    """gp-7 slot primitive: 1.0 if a > b else 0.0 (nan compares false)."""
+    return 1.0 if a > b else 0.0
+
+
+V7_FUNCTIONS = FUNCTIONS + ((gate, 2, "gate"),)
+# gp-7-lite slot terminals (plan 3.4): the cost slot is evaluated per cell (colour-neutral), the target slot per pair
+COST_SLOT_TERMS = ("cars_on", "stopped_on", "near_shop", "worst_overcrowded")
+TARGET_SLOT_TERMS = ("pair_connected", "detour_ratio", "shop_overcrowded", "shop_demand", "octile")
+
+
+def _make_set7(name: str, terms: tuple[str, ...]) -> gp.PrimitiveSet:
+    pset = gp.PrimitiveSet(name, len(terms))
+    pset.renameArguments(**{f"ARG{i}": t for i, t in enumerate(terms)})
+    for fn, arity, fname in V7_FUNCTIONS:
+        pset.addPrimitive(fn, arity, name=fname)
+    pset.addEphemeralConstant(f"const_{name}", ephemeral_constant)
+    return pset
+
+
+# gp-7: the priority and hold trees of a text with a planner trailer (v6 sets above unchanged), and the slot sets
+PRIORITY7_SET = _make_set7("priority7", PRIORITY7_TERMS)
+HOLD7_SET = _make_set7("hold7", HOLD_TERMS)
+COST_SLOT_SET = _make_set7("cost_slot", COST_SLOT_TERMS)
+TARGET_SLOT_SET = _make_set7("target_slot", TARGET_SLOT_TERMS)
 TREE_NAMES = ("priority", "hold", "upgrade")  # a gp-1 / gp-2 individual
 PSETS = (PRIORITY_SET, HOLD_SET, UPGRADE_SET)
 TREE_TERMS = (PRIORITY_TERMS, HOLD_TERMS, UPGRADE_TERMS)
@@ -276,17 +300,22 @@ def _skeleton(expr: str) -> list[str]:
 
 
 def _pset(index: int, v7: bool = False) -> gp.PrimitiveSet:
-    """The primitive set of tree `index`; with v7 (a text with a planner trailer) the priority tree's is PRIORITY7_SET."""
-    return PRIORITY7_SET if (v7 and index == 0) else ALL_PSETS[index]
+    """The primitive set of tree `index`; with v7 (a text with a planner trailer) the priority and hold trees use
+    PRIORITY7_SET and HOLD7_SET (the same terminals plus gp-7's terms and the gate primitive)."""
+    if v7 and index == 0:
+        return PRIORITY7_SET
+    if v7 and index == 1:
+        return HOLD7_SET
+    return ALL_PSETS[index]
 
 
-def _check_tokens(expr: str, index: int, v7: bool = False) -> None:
+def _check_tokens(expr: str, index: int, v7: bool = False, pset=None, name=None) -> None:
     """Every token is a function or terminal of this tree's set, or a finite number float() accepts.
 
     Run before from_string, which eval()s every unknown token: '1/0' or '10**400' would otherwise raise
     ZeroDivisionError or OverflowError, and '0x10' would be read as 16.
     """
-    pset = _pset(index, v7)
+    pset = pset or _pset(index, v7)
     eph = pset.mapping[f"const_{pset.name}"]
     for tok in _TOKEN.findall(expr):
         if tok in _PUNCT or (tok in pset.mapping and pset.mapping[tok] is not eph):
@@ -294,10 +323,10 @@ def _check_tokens(expr: str, index: int, v7: bool = False) -> None:
         try:
             v = float(tok)
         except ValueError:
-            raise ValueError(f"bad {ALL_TREE_NAMES[index]} tree {expr!r}: {tok!r} is not a name of this tree "
-                             "or a number") from None
+            raise ValueError(f"bad {name or ALL_TREE_NAMES[index]} tree {expr!r}: {tok!r} is not a name of this "
+                             "tree or a number") from None
         if not math.isfinite(v):
-            raise ValueError(f"bad {ALL_TREE_NAMES[index]} tree {expr!r}: {tok!r} is not a finite number")
+            raise ValueError(f"bad {name or ALL_TREE_NAMES[index]} tree {expr!r}: {tok!r} is not a finite number")
 
 
 def _zero_dropped(expr: str) -> str:
@@ -309,17 +338,17 @@ def _zero_dropped(expr: str) -> str:
     return re.sub(r"[^\s(),]+", lambda m: "0.0" if m.group(0) in DROPPED_TERMS else m.group(0), expr)
 
 
-def _parse_tree(expr: str, index: int, v7: bool = False) -> gp.PrimitiveTree:
+def _parse_tree(expr: str, index: int, v7: bool = False, pset=None, name=None) -> gp.PrimitiveTree:
     """One tree from its expression; constants become this set's ephemerals (so mutEphemeral can tune them).
 
     The ephemeral node is built without calling its generator, so parsing never draws from `random`.
     ValueError for an unknown name, a non-numeric or non-finite constant, a wrong arity, an incomplete
     expression, extra nodes after a complete one, or parentheses and commas out of place.
     """
-    pset = _pset(index, v7)
-    name = ALL_TREE_NAMES[index]
+    pset = pset or _pset(index, v7)
+    name = name or ALL_TREE_NAMES[index]
     expr = _zero_dropped(expr)
-    _check_tokens(expr, index, v7)
+    _check_tokens(expr, index, v7, pset, name)
     try:
         tree = gp.PrimitiveTree.from_string(expr, pset)
     except (TypeError, SyntaxError, IndexError, ValueError, ArithmeticError) as e:
@@ -382,13 +411,19 @@ class Planner(tuple):
     """The evolvable planner's weights: (cost tuple, target tuple, theta). See candidates.EvoCost and
     candidates.target_pairs for their meaning."""
 
-    def __new__(cls, cost, target, theta):
+    def __new__(cls, cost, target, theta, cslot=None, tslot=None):
         cost = tuple(_finite(v, "cost") for v in cost)
         target = tuple(_finite(v, "target") for v in target)
         if len(cost) != len(COST_FIELDS) or len(target) != len(TARGET_FIELDS):
             raise ValueError(f"planner needs {len(COST_FIELDS)} cost and {len(TARGET_FIELDS)} target weights, "
                              f"got {len(cost)} and {len(target)}")
-        return super().__new__(cls, (cost, target, _finite(theta, "theta")))
+        # gp-7-lite (gp7-v2): optional cost-slot (per cell) and target-slot (per pair) trees, canonical text
+        cslot = None if cslot is None else str(_parse_tree(cslot, 0, pset=COST_SLOT_SET, name="cost slot"))
+        tslot = None if tslot is None else str(_parse_tree(tslot, 0, pset=TARGET_SLOT_SET, name="target slot"))
+        return super().__new__(cls, (cost, target, _finite(theta, "theta"), cslot, tslot))
+
+    cslot = property(lambda self: self[3])
+    tslot = property(lambda self: self[4])
 
     def __getnewargs__(self):
         return tuple(self)
@@ -410,7 +445,12 @@ class Planner(tuple):
 
     def text(self) -> str:
         fmt = lambda vs: ",".join(repr(v) for v in vs)
-        return f"planner: cost={fmt(self.cost)}; target={fmt(self.target)}; theta={self.theta!r}"
+        out = f"planner: cost={fmt(self.cost)}; target={fmt(self.target)}; theta={self.theta!r}"
+        if self.cslot is not None:
+            out += f"; cslot={self.cslot}"
+        if self.tslot is not None:
+            out += f"; tslot={self.tslot}"
+        return out
 
 
 def _finite(v, what: str) -> float:
@@ -421,7 +461,8 @@ def _finite(v, what: str) -> float:
 
 
 _FLAGS_RE = re.compile(r"^flags:\s*clean=(\S+)\s+lights=(\S+)\s+roundabouts=(\S+)$")
-_PLANNER_RE = re.compile(r"^planner:\s*cost=([^;]*);\s*target=([^;]*);\s*theta=(\S+)$")
+_PLANNER_RE = re.compile(r"^planner:\s*cost=([^;]*);\s*target=([^;]*);\s*theta=([^;\s]+)"
+                         r"(?:;\s*cslot=([^;]+?))?(?:;\s*tslot=([^;]+?))?\s*$")
 
 
 def _parse_flags(line: str) -> Flags:
@@ -447,7 +488,7 @@ def _parse_planner(line: str) -> Planner:
         theta = float(m.group(3))
     except ValueError:
         raise ValueError(f"bad planner theta {m.group(3)!r}") from None
-    return Planner(_floats(m.group(1), "cost"), _floats(m.group(2), "target"), theta)
+    return Planner(_floats(m.group(1), "cost"), _floats(m.group(2), "target"), theta, m.group(4), m.group(5))
 
 
 def _split_trailers(lines: list[str]) -> tuple[list[str], Flags | None, Planner | None]:

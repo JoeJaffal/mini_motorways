@@ -57,7 +57,7 @@ with warnings.catch_warnings():
 
 from . import evaluate as ev
 from . import evolve as evo
-from . import linear
+from . import linear, slots
 from .engine import CODE_VERSION, Engine
 from .host import ROOT
 
@@ -158,6 +158,44 @@ def load(run_dir: Path, overrides: dict) -> tuple[dict, dict, linear.Space]:
     return cfg, state, linear.Space.from_json(config["space"])
 
 
+def _scale_norm(tconf: dict) -> float:
+    """The scale normaliser frozen at launch (x0.json's scale_norm; 1.0 if absent)."""
+    try:
+        return float(json.loads(Path(tconf["params"]["x0_file"]).read_text(encoding="utf-8")).get("scale_norm", 1.0))
+    except (KeyError, OSError, ValueError):
+        return 1.0
+
+
+def fork(trunk_dir: Path, run_dir: Path, workers: int, stop_at: str | None) -> tuple[dict, dict, linear.Space]:
+    """gp-7 arm (plan 3.4 fork procedure): a new run folder that starts from the trunk's checkpoint at a generation
+    boundary, under this code's CODE_VERSION and commit. Both arms keep the trunk's ledger."""
+    trunk_dir, run_dir = Path(trunk_dir), Path(run_dir)
+    if (run_dir / CHECKPOINT).exists() or (run_dir / CONFIG).exists():
+        raise evo.RunExistsError(f"run folder {run_dir} already holds a run")
+    tconf = json.loads((trunk_dir / CONFIG).read_text(encoding="utf-8"))
+    with open(trunk_dir / CHECKPOINT, "rb") as f:
+        tstate = pickle.load(f)
+    run_dir.mkdir(parents=True, exist_ok=True)
+    cfg = {**tconf["params"], "workers": workers, "arm": "gp7", "fork_gen": tstate["generation"],
+           "forked_from": str(trunk_dir), "log_gen0": False}
+    if stop_at:
+        cfg["stop_at"] = stop_at
+    status = ev._git("status", "--porcelain")
+    config = {**tconf, "params": cfg, "code_version": CODE_VERSION, "commit": _git_head(),
+              "dirty": bool(status.strip()) if status is not None else None, "forked_from": {
+                  "run": str(trunk_dir), "generation": tstate["generation"], "commit": tconf["commit"],
+                  "code_version": tconf["code_version"]}}
+    evo._write_json(run_dir / CONFIG, config)
+    space = linear.Space.from_json(tconf["space"])
+    state = {**tstate, "space": space.to_json(), "probe_next": PROBE_FIRST,
+             "scale_norm": _scale_norm(tconf)}
+    import shutil
+    shutil.copyfile(trunk_dir / GENERATIONS, run_dir / GENERATIONS)
+    evo.write_checkpoint(run_dir, state)
+    _status(run_dir, "running", f"forked from {trunk_dir} at generation {tstate['generation']}", state)
+    return cfg, state, space
+
+
 def _status(run_dir: Path, status: str, reason: str, state: dict) -> None:
     evo._write_json(run_dir / STATUS, {"status": status, "reason": reason, "generations": state["generation"],
                                        "ledger": state["ledger"], "elapsed_s": state["elapsed_s"],
@@ -192,6 +230,8 @@ def generation(cfg: dict, state: dict, engine, run_dir: Path, space: linear.Spac
     t0 = clock()
     played0, hits0 = engine.games_played, engine.cache_hits
     gen = state["generation"]
+    if state.get("space") is not None:  # gp-7 arm: scales, masks and slot trees change at insertions
+        space = linear.Space.from_json(state["space"])
     random.setstate(state["rng"])
     np.random.set_state(state["np_rng"])
     es = pickle.loads(state["es"])
@@ -207,6 +247,8 @@ def generation(cfg: dict, state: dict, engine, run_dir: Path, space: linear.Spac
     a_seeds, b_seeds = seeds[:CUT_MAPS], seeds[CUT_MAPS:]
     jobs_a = [(t, s) for t in distinct for s in a_seeds] + [(mean_text, s) for s in seeds]
     res_a = play(jobs_a)
+    if cfg.get("arm") == "gp7":  # the trend monitor's decision records feed the slot screen
+        engine.play_logged([(mean_text, s) for s in seeds], run_dir / "decisions_tm" / f"gen{gen}")
     k = len(distinct) * len(a_seeds)
     four = {t: _mean(res_a[i * len(a_seeds):(i + 1) * len(a_seeds)]) for i, t in enumerate(distinct)}
     trend_games = res_a[k:]
@@ -258,11 +300,82 @@ def generation(cfg: dict, state: dict, engine, run_dir: Path, space: linear.Spac
         es2 = cma.CMAEvolutionStrategy(list(state["x0"]), state["sigma0"] / 2, cma_opts(cfg))
         return {**state, **common, "es": pickle.dumps(es2, protocol=pickle.HIGHEST_PROTOCOL), "generation": 0,
                 "sigma0": state["sigma0"] / 2, "sigma0_halved": True}
+    nxt = {**state, **common, "es": pickle.dumps(es, protocol=pickle.HIGHEST_PROTOCOL), "generation": gen + 1}
+    if cfg.get("arm") == "gp7" and (gen + 1 - cfg["fork_gen"]) % slots.EPOCH_EVERY == 0 and gen + 1 > cfg["fork_gen"]:
+        nxt = slot_epoch(cfg, nxt, engine, run_dir, space, gen)
+        es = pickle.loads(nxt["es"])
+        if nxt.get("space") is not None:
+            space = linear.Space.from_json(nxt["space"])
+        final_x = es.boundary_handler.repair(np.asarray(es.mean))
     final_text = linear.text_from_x(final_x, space)
     evo._atomic_write(run_dir / "final_mean.txt", (final_text + "\n").encode("utf-8"))
     evo._write_json(run_dir / "final_mean.json", {"gen": gen, "x": [float(v) for v in final_x],
                                                   "hash": evo.text_hash(final_text)})
-    return {**state, **common, "es": pickle.dumps(es, protocol=pickle.HIGHEST_PROTOCOL), "generation": gen + 1}
+    return nxt
+
+
+PROBE_FIRST, PROBE_LAST = 10000, 49999  # gp-7 race probes: 10000+ by counter, never above 49999
+
+
+def slot_epoch(cfg: dict, state: dict, engine, run_dir: Path, space: linear.Space, gen: int) -> dict:
+    """gp-7-lite epoch (slots.py): propose, zero-game screen on the last EPOCH_EVERY generations' trend-monitor
+    records, race on RACE_MAPS fresh probe maps, insert accepted trees. Appends one record to slots.jsonl."""
+    import gzip
+    from . import stats7
+    rng = random.Random(f"{cfg['seed']}:{gen}")
+    empty = [k for k in range(linear.N_SLOTS) if space.masks[k] == 0]
+    recs = []
+    for g in range(gen - slots.EPOCH_EVERY + 1, gen + 1):
+        for f in sorted((run_dir / "decisions_tm" / f"gen{g}").glob("*.jsonl.gz")):
+            with gzip.open(f, "rt", encoding="utf-8") as fh:
+                recs += [json.loads(line) for line in fh if line.strip()]
+    props = slots.propose(empty, space.theta, rng)
+    kept = slots.screen(props, recs)
+    es = pickle.loads(state["es"])
+    mean_x = np.asarray(es.boundary_handler.repair(np.asarray(es.mean)), dtype=float)
+    probe0 = state.get("probe_next", PROBE_FIRST)
+    if probe0 + slots.RACE_MAPS - 1 > PROBE_LAST:  # the probe block ends at 49999: no race, nothing inserted
+        evo._append_jsonl(run_dir / "slots.jsonl", {"gen": gen, "empty": empty, "skipped": "probe seeds exhausted",
+                                                     "probe_next": probe0, "charged": 0})
+        return state
+    probes = list(range(probe0, probe0 + slots.RACE_MAPS))
+    texts = {"mean": linear.text_from_x(mean_x, space)}
+    cand_spaces = {}
+    for j, d in enumerate(kept):
+        k = d["slot"]
+        scale = slots.slot_scale(slots.slot_spread(k, d["tree"], recs), state.get("scale_norm", 1.0))
+        sp_k = slots.inserted_space(space, k, d["tree"], scale)
+        for sign in (1.0, -1.0):
+            x = mean_x.copy()
+            x[linear.INDEX[f"slot{k}"]] = float(np.clip(sign * d["w0"] / scale, -4.5, 4.5))
+            texts[f"{j}{'+' if sign > 0 else '-'}"] = linear.text_from_x(x, sp_k)
+            cand_spaces[f"{j}{'+' if sign > 0 else '-'}"] = (sp_k, x[linear.INDEX[f"slot{k}"]], k)
+    names = list(texts)
+    res = engine.play([(texts[n], s) for n in names for s in probes])
+    trips = {n: {s: res[i * len(probes) + q]["trips"] for q, s in enumerate(probes)} for i, n in enumerate(names)}
+    tested = []
+    for n in names[1:]:
+        t = stats7.paired_t_one_sided(stats7.paired_diffs(trips[n], trips["mean"], probes))
+        tested.append((t["p"], n, t["mean"]))
+    best_per_slot: dict[int, tuple] = {}
+    for p, n, m in sorted(tested):
+        k = cand_spaces[n][2]
+        if p < slots.RACE_P and k not in best_per_slot:
+            best_per_slot[k] = (p, n, m)
+    new_space = space
+    accepted = []
+    for k, (p, n, m) in sorted(best_per_slot.items()):
+        sp_k, xk, _ = cand_spaces[n]
+        new_space = slots.inserted_space(new_space, k, sp_k.slot_trees[k], sp_k.scales[linear.INDEX[f"slot{k}"]])
+        es.mean[linear.INDEX[f"slot{k}"]] = xk
+        accepted.append({"slot": k, "tree": sp_k.slot_trees[k], "name": n, "p": p, "diff": m, "x": xk})
+    charged = len(names) * len(probes)
+    evo._append_jsonl(run_dir / "slots.jsonl", {
+        "gen": gen, "empty": empty, "records": len(recs), "proposals": len(props), "kept": kept,
+        "probes": [probes[0], probes[-1]], "tested": [{"name": n, "p": p, "diff": m} for p, n, m in tested],
+        "accepted": accepted, "charged": charged})
+    return {**state, "es": pickle.dumps(es, protocol=pickle.HIGHEST_PROTOCOL), "space": new_space.to_json(),
+            "probe_next": probe0 + slots.RACE_MAPS, "ledger": state["ledger"] + charged}
 
 
 def format_record(rec: dict) -> str:
@@ -307,6 +420,7 @@ def main(argv=None) -> int:
     p = argparse.ArgumentParser(prog="python -m evolved_rules.evolve7", description=__doc__.splitlines()[0])
     p.add_argument("--run", required=True)
     p.add_argument("--resume", action="store_true")
+    p.add_argument("--fork-from", dest="fork_from", help="gp-7 arm: the trunk run folder to fork from")
     p.add_argument("--x0", help="X0.json (x and space)")
     p.add_argument("--stop-at", dest="stop_at")
     p.add_argument("--workers", type=int)
@@ -322,7 +436,11 @@ def main(argv=None) -> int:
     ev._check_run_name(a.run)
     run_dir = EVOLVE7_DIR / a.run
     try:
-        if a.resume:
+        if a.fork_from and not a.resume:
+            if not a.workers:
+                p.error("--fork-from needs --workers")
+            cfg, state, space = fork(Path(a.fork_from), run_dir, a.workers, a.stop_at)
+        elif a.resume:
             overrides = {k: v for k, v in (("workers", a.workers), ("stop_at", a.stop_at)) if v is not None}
             if "stop_at" in overrides:
                 parse_time(overrides["stop_at"])

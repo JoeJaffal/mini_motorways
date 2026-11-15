@@ -184,6 +184,31 @@ def _remove_one(session: GameSession, policy: Policy, memory, merge: bool) -> No
 
 _LOG_CAND_TERMS = CANDIDATE_TERMS + V7_CANDIDATE_TERMS  # raw values logged per candidate (decision records)
 _LOG_GLOBAL_TERMS = GLOBAL_TERMS
+def _octile64(h, s) -> float:
+    """Octile distance from the house cell to the shop's nearest access cell, / 64 (gp-7-lite target-slot input)."""
+    if not s.access:
+        return 0.0
+    dx = min(abs(h.cell[0] - a[0]) for a in s.access)
+    dy = min(abs(h.cell[1] - a[1]) for a in s.access)
+    return round((max(dx, dy) - min(dx, dy) + 1.414 * min(dx, dy)) / 64.0, 6)
+
+
+def _cell_summary(state) -> dict:
+    """gp-7-lite cost-slot inputs of one decision: [cars_on, stopped_on, near_shop] per cell with cars, the counts of
+    playable cells without cars near / not near a doorstep, and worst_overcrowded/1024."""
+    from . import planner7
+    from .candidates import NEAR_SHOP_RADIUS, doorsteps, near_cells
+    cars, stopped = planner7.cell_maps(state)
+    near = near_cells(doorsteps(state), NEAR_SHOP_RADIUS)
+    playable_near = sum(1 for c in near if state.playable(c))
+    cars_near = sum(1 for c in cars if c in near)
+    H, W = state.conn.shape
+    playable = sum(1 for y in range(H) for x in range(W) if state.playable((x, y)))
+    return {"cars": [[n, stopped.get(c, 0), 1 if c in near else 0] for c, n in sorted(cars.items())],
+            "empty_near": playable_near - cars_near, "empty_far": playable - playable_near - (len(cars) - cars_near),
+            "wo": planner7.worst_overcrowded(state) / 1024.0}
+
+
 EVO_TARGETS = 8  # gp-7: the evo route is searched for the first EVO_TARGETS (non-excluded) targets of a pass
 
 
@@ -256,7 +281,8 @@ def _build_routes_v7(session: GameSession, policy, memory, merge: bool) -> None:
                    "hold": hold, "best": best[3] if best is not None else -1,
                    "pairs_n": len(pair_rows),
                    "pair_tmax_nobias": max((r[0] - b_t for r in pair_rows), default=None),
-                   "pairs_top": [[r[1].id, r[2].id, r[0], *r[4]] for r in top],
+                   "pairs_top": [[r[1].id, r[2].id, r[0], *r[4], _octile64(r[1], r[2])] for r in top],
+                   "cells": _cell_summary(state),
                    "cars": sum(1 for c in state.cars if is_driving(c)),
                    "stopped": sum(1 for c in state.cars if is_driving(c) and c.speed < 0.05)}
         if best is None:
