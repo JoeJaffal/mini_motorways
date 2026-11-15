@@ -1,0 +1,64 @@
+{
+ "records": 2133,
+ "empty": [
+  0,
+  1,
+  2,
+  3
+ ],
+ "proposals": 60,
+ "kept": [
+  {
+   "slot": 3,
+   "tree": "sub(octile, shop_demand)",
+   "w0": 0.1068193931132555,
+   "spread": 0.05473470457296723,
+   "change_at_w0": 0.10042432814710042
+  },
+  {
+   "slot": 3,
+   "tree": "add(neg(min(shop_overcrowded, octile)), neg(mul(octile, detour_ratio)))",
+   "w0": 0.07298351265490055,
+   "spread": 0.08170020530631998,
+   "change_at_w0": 0.10278170674210278
+  }
+ ],
+ "games": [
+  {
+   "name": "mean",
+   "trips": 2167,
+   "seconds": 1965.8500000000001,
+   "rejected": 0,
+   "terminated": true
+  },
+  {
+   "name": "0+",
+   "trips": 1463,
+   "seconds": 1681.45,
+   "rejected": 0,
+   "terminated": true
+  },
+  {
+   "name": "0-",
+   "trips": 2020,
+   "seconds": 1912.9,
+   "rejected": 0,
+   "terminated": true
+  },
+  {
+   "name": "1+",
+   "trips": 1489,
+   "seconds": 1691.3000000000002,
+   "rejected": 0,
+   "terminated": true
+  },
+  {
+   "name": "1-",
+   "trips": 1593,
+   "seconds": 1741.25,
+   "rejected": 0,
+   "terminated": true
+  }
+ ],
+ "seed": 964
+}

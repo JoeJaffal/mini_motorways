@@ -842,3 +842,18 @@ Trend guard at gens 11-15: pass each time (rolling means 1167.0, 1222.0, 1272.0,
   - cma-7 resumed from its own checkpoint in `../mm-cma7` (gp7-v1, 6b80889);
   - gp-7 runs in `../mm-gp7arm` (gp7-v2), stop-at 2026-11-19 01:22.
   - Both keep the trunk's ledger (5,076 games at the fork).
+
+**gp-7 epoch dry run, 2026-11-15 18:45 (before the first real epoch at the end of the arm's gen 21).**
+- Why: every earlier check ran with empty slots.
+- Setup: the arm's code (gp7-v2), its live state (read only), its real gen-17 trend-monitor records (12 games,
+  2,133 decisions), run from a scratch folder.
+- Proposals and screen:
+  - 60 proposals; 2 survived the zero-game screen, both target-slot trees: `sub(octile, shop_demand)` (w0 0.107) and
+    `add(neg(min(shop_overcrowded, octile)), neg(mul(octile, detour_ratio)))` (w0 0.073).
+  - Their scales come from the real spreads (0.867, 0.581).
+  - The inserted spaces round-trip through the checkpoint JSON, and the `tslot=` trailers parse.
+- One real game per text (mean and each proposal at ±w0) on training seed 964, not a probe seed:
+  - all 5 games completed, with 0 rejected draws;
+  - the mean's game is identical to the arm's own cached game on that seed (2,167 trips, 1,965.85 s).
+- Record: `plans/gp7-fork/epoch_dry.json`. The probe counter was not touched.
+- Decision records take about 300 KB per generation (about 12 MB to T_stop).
