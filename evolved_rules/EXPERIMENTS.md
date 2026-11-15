@@ -857,3 +857,16 @@ Trend guard at gens 11-15: pass each time (rolling means 1167.0, 1222.0, 1272.0,
   - the mean's game is identical to the arm's own cached game on that seed (2,167 trips, 1,965.85 s).
 - Record: `plans/gp7-fork/epoch_dry.json`. The probe counter was not touched.
 - Decision records take about 300 KB per generation (about 12 MB to T_stop).
+
+**Gen 17, first generation after the fork: per-arm trend guard, 2026-11-15 19:32.**
+
+| Arm | Gen | Pop avg | Pop best | TM mean | σ | Cut | Charged | Played | Minutes | Rolling 3 TM | Guard (≥ 997.9) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| cma-7 | 17 | 1218.0 | 1453.8 | 1373.6 | 0.213 | 0 | 300 | 261 (+39 cache) | 75 | 1320.1 | pass |
+| gp-7 | 17 | 1218.0 | 1453.8 | 1373.6 | 0.213 | 0 | 300 | 312 | 126 | 1320.1 | pass |
+
+- The two arms are identical on gen 17, as expected: gp-7's slots are empty until its first epoch (end of gen 21),
+  and the final mean hash matches (2e8cec27b803841f).
+- cma-7 reused 39 games cached by the trunk's interrupted gen 17. gp-7 starts with no cache and also replays the
+  12 trend-monitor games with decision logging for the slot screen (12 uncharged games per generation, by design).
+- Ledger 5,376 in each arm.
