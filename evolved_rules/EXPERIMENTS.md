@@ -803,3 +803,27 @@ Gen 0 σ check: no candidates cut, and every sample built evo routes on at least
 - Rolling 3-generation trend-monitor mean (gens 8-10): 1178.4.
 - Bound: gen 0-2 mean 1115.9 − 2 · SD 354.1 / √36 = 997.9.
 - Checked again at every generation from now on.
+
+**Generations 11-15:**
+
+| Gen | Population average | Population best | Trend-monitor mean | σ | Cut |
+|---|---|---|---|---|---|
+| 11 | 1165.5 | 1387.1 | 1261.3 | 0.213 | 0 |
+| 12 | 1175.1 | 1429.9 | 1349.8 | 0.212 | 0 |
+| 13 | 1137.8 | 1330.7 | 1204.9 | 0.213 | 0 |
+| 14 | 1181.3 | 1415.2 | 1136.2 | 0.212 | 0 |
+| 15 | 1110.3 | 1359.1 | 1371.9 | 0.211 | 1 |
+
+Trend guard at gens 11-15: pass each time (rolling means 1167.0, 1222.0, 1272.0, 1230.3, 1237.7; bound 997.9).
+
+**Cut-lines CL1 (Nov 16 02:00), CL1b (06:00), CL2a (12:00), CL2 (18:00): all met before launch.**
+- The target head and the cost-head identity passed (gates (1), (3), (4)).
+- The smoke passed.
+- The trunk launched 2026-11-14 23:10.
+- No F1, no F2.
+
+**T_stop re-estimate (plan Block F), 2026-11-15 after gen 15:**
+- R = 309.4 games/h, measured on gens 6-15 with cma-7 alone on 10 workers.
+- G_post = 2 · 200 + 900 = 1,300 games; G_post / R = 4.2 h.
+- T_stop = T_freeze − 4.2 h − 2 h = 2026-11-19 01:48. That is later than the pre-registered 01:22, so T_stop stays at
+  01:22 (it may only move earlier). No stop_at.txt.
