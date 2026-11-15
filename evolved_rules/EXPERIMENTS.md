@@ -774,3 +774,32 @@ exactly (1,394 trips, 1 rejection):
 - cma-7 started 2026-11-14 23:10 under the watchdog from `../mm-cma7`: W 10, λ 24, m 12, σ0 0.3, seed 1,
   generation 0 logged, stop-at 2026-11-19 01:22. Config commit 6b80889, clean tree.
 - The L / hand pre-play queue (paused 19:07-23:13 for the screen) resumed beside it.
+
+### cma-7 gates (2026-11-15)
+
+**Pre-plays done** 2026-11-15 04:51 (all 23 chunks: L screen, L test 6100-6999, L val 1550-1749, hand test
+6100-6999). Since then cma-7 has had the whole machine.
+
+**Generations 0-10** (λ 24, m 12, 300 games per generation, about 55-60 min each on 10 workers; training maps
+1-999, fresh each generation, so generations are not comparable with each other or with test numbers):
+
+| Gen | Population average | Population best | Trend-monitor mean | σ | Cut |
+|---|---|---|---|---|---|
+| 0 | 970.5 | 1108.3 | 976.9 | 0.272 | 0 |
+| 1 | 1035.6 | 1292.0 | 1234.6 | 0.255 | 0 |
+| 2 | 1035.3 | 1267.3 | 1136.3 | 0.244 | 0 |
+| 3 | 962.2 | 1244.7 | 1279.2 | 0.235 | 0 |
+| 4 | 1013.7 | 1276.3 | 1279.0 | 0.230 | 1 |
+| 5 | 1076.3 | 1322.8 | 1261.7 | 0.224 | 0 |
+| 6 | 1079.0 | 1322.7 | 1086.2 | 0.220 | 0 |
+| 7 | 1111.8 | 1336.8 | 1219.8 | 0.217 | 0 |
+| 8 | 1245.9 | 1462.6 | 1295.7 | 0.216 | 0 |
+| 9 | 1119.3 | 1342.8 | 1184.7 | 0.215 | 0 |
+| 10 | 1170.6 | 1352.8 | 1054.9 | 0.215 | 0 |
+
+Gen 0 σ check: no candidates cut, and every sample built evo routes on at least 2% of decisions, so σ0 was not halved.
+
+**Trend guard, gen 10: pass.**
+- Rolling 3-generation trend-monitor mean (gens 8-10): 1178.4.
+- Bound: gen 0-2 mean 1115.9 − 2 · SD 354.1 / √36 = 997.9.
+- Checked again at every generation from now on.
