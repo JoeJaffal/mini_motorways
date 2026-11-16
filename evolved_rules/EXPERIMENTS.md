@@ -944,3 +944,24 @@ Trend guard at gens 11-15: pass each time (rolling means 1167.0, 1222.0, 1272.0,
 | gp-7 | 24 | 1156.6 | 1340.3 | 1437.9 | 0.227 | 0 | 120 | 1345.6 | 7,588 |
 | gp-7 | 25 | 1102.0 | 1391.9 | 1034.2 | 0.230 | 1 | 102 | 1267.2 | 7,880 |
 | gp-7 | 26 | 1175.2 | 1303.4 | 1174.0 | 0.232 | 0 | 115 | 1215.4 | 8,180 (+120 epoch) |
+
+**Diagnostics (zero games, read-only), 2026-11-16 20:30: why gp-7 equals cma-7 and why the scores plateau.**
+Nothing in the running arms was changed. Scripts ran from a scratch folder against the arms' records and caches.
+- **Selection signal (cma-7, gens 0-35).** The split-half rank correlation of candidates (6 maps vs the other 6,
+  same generation) averages 0.18. The SD of candidates' 12-map means is about 110, against about 93 of map noise,
+  so the true candidate spread is about 60 and a 12-map ranking has a reliability near 0.3. The trend-monitor mean
+  has not moved since about gen 10, and σ is rising (0.21 to 0.26). Read: a weak-signal plateau, not convergence.
+- **The screen only ever races the target slot.** Epoch 2 re-run offline (deterministic, same 2 kept): 26 of the 60
+  proposals pass (target 8, priority 7, hold 6, cost 5), but the key `w0 × spread` puts all target trees first and
+  cost is ranked last by construction, so with KEEP = 2 priority, hold and cost never race.
+- **The raced trees are one idea.** Regressed within decision on the target head's terms, the 4 raced trees have
+  R² 0.08-0.27 (not redundant with the head). Adding `octile` raises R² to 1.0, 0.46, 0.98 and 0.88: three of four
+  are essentially "add pair distance". Both signs of the same tree gained (+62.7/+23.7, +5.6/+23.6), which fits a
+  near-zero effect. The target head does have leverage: pair routes are 36% of built routes (9.9% of decisions).
+- **The race cannot detect realistic gains.** On the probe maps, the paired SD of candidate minus mean is 160-380
+  trips, close to the map SD (about 300): a small weight change gives a nearly independent game, so pairing helps
+  little. SE on 24 maps is 33-78; detecting +30 at one-sided p < 0.1 with 80% power needs about 350 maps.
+- **The speed gap is not code.** Empty slots run the same code as v1 on unlogged games (the v2 diff only adds work
+  when a slot is filled or logging is on), and Python CPU per game is equal (0.22-0.23 min). gp-7's simulator hosts
+  use about 38% more CPU time per game (1.52 vs 1.10 min) for identical games. Likely cause: core placement on the
+  M4 (4 performance and 6 efficiency cores, load about 11). Unverified. The screen itself takes 91 s per epoch.
