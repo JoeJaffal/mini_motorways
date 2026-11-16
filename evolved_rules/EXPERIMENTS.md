@@ -913,3 +913,34 @@ Trend guard at gens 11-15: pass each time (rolling means 1167.0, 1222.0, 1272.0,
 | gp-7 | 21 | 1132.9 | 1270.8 | 1159.8 | 0.223 | 0 | 101 | 1161.4 | 6,568 (+120 epoch) |
 
 - gp-7 gens 19-21 are identical to cma-7's (slots still empty). The arms stay identical until an insertion.
+
+**gp-7 second epoch (end of the arm's gen 26), 2026-11-16 13:44: nothing inserted.**
+- Screen on 10,506 trend-monitor decisions (gens 22-26), empty slots [0, 1, 2, 3]: 60 proposals, 2 kept, both
+  target-slot (3) trees: `max(0.107, octile)` (w0 0.042) and
+  `min(add(pair_connected, shop_demand), max(octile, shop_overcrowded))` (w0 0.132).
+- Race on probe maps 10024-10047, insertion only if p < 0.1:
+
+| Candidate | Diff vs mean (trips) | p | Inserted |
+|---|---|---|---|
+| tree 0, +w0 | +5.6 | 0.436 | no |
+| tree 0, −w0 | +23.6 | 0.379 | no |
+| tree 1, +w0 | +24.5 | 0.361 | no |
+| tree 1, −w0 | −35.0 | 0.671 | no |
+
+- Charged 120 games (ledger 8,300). Probe counter now 10048. Next epoch at the end of the arm's gen 31.
+- Per-arm trend guards since the last entry (all pass, threshold 997.9). gp-7 gens 24-26 are identical to cma-7's
+  (slots still empty), so only the minutes and ledger differ:
+
+| Arm | Gen | Pop avg | Pop best | TM mean | σ | Cut | Minutes | Rolling 3 TM | Ledger |
+|---|---|---|---|---|---|---|---|---|---|
+| cma-7 | 24 | 1156.6 | 1340.3 | 1437.9 | 0.227 | 0 | 81 | 1345.6 | 7,468 |
+| cma-7 | 25 | 1102.0 | 1391.9 | 1034.2 | 0.230 | 1 | 72 | 1267.2 | 7,760 |
+| cma-7 | 26 | 1175.2 | 1303.4 | 1174.0 | 0.232 | 0 | 80 | 1215.4 | 8,060 |
+| cma-7 | 27 | 1133.6 | 1362.0 | 1246.9 | 0.236 | 0 | 79 | 1151.7 | 8,360 |
+| cma-7 | 28 | 1058.8 | 1433.8 | 1238.8 | 0.238 | 0 | 71 | 1219.9 | 8,660 |
+| cma-7 | 29 | 1078.4 | 1296.6 | 1216.8 | 0.242 | 1 | 68 | 1234.2 | 8,952 |
+| cma-7 | 30 | 1136.9 | 1338.3 | 1249.1 | 0.246 | 0 | 78 | 1234.9 | 9,252 |
+| cma-7 | 31 | 1265.1 | 1515.4 | 1364.7 | 0.252 | 0 | 86 | 1276.9 | 9,552 |
+| gp-7 | 24 | 1156.6 | 1340.3 | 1437.9 | 0.227 | 0 | 120 | 1345.6 | 7,588 |
+| gp-7 | 25 | 1102.0 | 1391.9 | 1034.2 | 0.230 | 1 | 102 | 1267.2 | 7,880 |
+| gp-7 | 26 | 1175.2 | 1303.4 | 1174.0 | 0.232 | 0 | 115 | 1215.4 | 8,180 (+120 epoch) |
