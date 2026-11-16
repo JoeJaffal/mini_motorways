@@ -886,3 +886,30 @@ Trend guard at gens 11-15: pass each time (rolling means 1167.0, 1222.0, 1272.0,
   mid-run. Ledgers at 23:00: cma-7 6,268, gp-7 5,676 (10.4% apart). Per plan §2.4 both ledgers are reported next
   to the final comparison, the gap is flagged if it stays above 10%, and the curves against charged games give
   the equal-games view.
+
+**gp-7 first epoch (end of the arm's gen 21), 2026-11-16 03:27: nothing inserted.**
+- Screen on 10,126 trend-monitor decisions (gens 17-21), empty slots [0, 1, 2, 3]: 60 proposals, 2 kept, both
+  target-slot (3) trees: `sub(octile, shop_demand)` (w0 0.106) and a longer `min(sub(gate(octile, 0.25), ...), ...)`
+  tree (w0 0.029).
+- Race on probe maps 10000-10023 (24 maps, the mean policy vs each tree at ±w0), insertion only if p < 0.1:
+
+| Candidate | Diff vs mean (trips) | p | Inserted |
+|---|---|---|---|
+| tree 0, +w0 | +62.7 | 0.150 | no |
+| tree 0, −w0 | +23.7 | 0.251 | no |
+| tree 1, +w0 | −17.9 | 0.703 | no |
+| tree 1, −w0 | +45.2 | 0.188 | no |
+
+- Charged 120 games (ledger 6,688). Probe counter now 10024. Next epoch at the end of the arm's gen 26.
+- Per-arm trend guards since the last entry (all pass, threshold 997.9):
+
+| Arm | Gen | Pop avg | Pop best | TM mean | σ | Cut | Minutes | Rolling 3 TM | Ledger |
+|---|---|---|---|---|---|---|---|---|---|
+| cma-7 | 21 | 1132.9 | 1270.8 | 1159.8 | 0.223 | 0 | 71 | 1161.4 | 6,568 |
+| cma-7 | 22 | 1195.1 | 1348.8 | 1269.5 | 0.224 | 0 | 83 | 1217.8 | 6,868 |
+| cma-7 | 23 | 1241.8 | 1419.0 | 1329.4 | 0.226 | 0 | 83 | 1252.9 | 7,168 |
+| gp-7 | 19 | 1074.5 | 1207.1 | 1100.3 | 0.215 | 0 | 103 | 1301.2 | 5,976 |
+| gp-7 | 20 | 1140.0 | 1295.6 | 1224.2 | 0.218 | 1 | 104 | 1251.4 | 6,268 |
+| gp-7 | 21 | 1132.9 | 1270.8 | 1159.8 | 0.223 | 0 | 101 | 1161.4 | 6,568 (+120 epoch) |
+
+- gp-7 gens 19-21 are identical to cma-7's (slots still empty). The arms stay identical until an insertion.
