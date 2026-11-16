@@ -8011,3 +8011,8 @@ User says clone is done and wants to continue in a new chat. Added training/HAND
 ## 16 November 2026 — Detailed decision publication authorized
 
 User explicitly asks to push detailed decisions for the other computer. Selected50restart-specific ledger/spec/config/JSON/workbook/review-mapping/hardware/time-planning files migrated byte-identically from separate original checkout, total501151bytes. New docs/training/DECISIONS.md indexes full rationale and marks original flat/no-curriculum/old-device assumptions superseded by latest approvals. Existing hierarchy/curriculum,Stage1gate,inventory/storage calculation,shortplan and handoff included. Original snapshots and workbook review cells unchanged; new approval records remain separate. No model weights, game footage/private research, generated binaries, virtual environment or unrelated simulation changes included. Publication only, no newtrainer or training authorization. Checks: migration SHA256matches, staged file scope/credential scan, JSON/XLSX validity and current-entry-point links. Linux needs a manual fast-forward pull after push.
+
+
+### Publication outcome
+
+Detailed decisions committed as4c0700d508636c8e3930bbc26beb71b1ee5dcb38 (84files) and successfully pushed toorigin/Maskable-PPO. Verified remote head equals local commit; worktree clean immediately after publication. GitHub entry point: https://github.com/JoeJaffal/mini_motorways/blob/Maskable-PPO/docs/training/DECISIONS.md . Linux clone must pull to receive it. No source simulator/trainer change or training run.

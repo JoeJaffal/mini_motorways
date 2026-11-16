@@ -30,5 +30,13 @@
     "Format and scope checks are not training/runtime tests",
     "Historical snapshots are preserved and superseded by docs/training/DECISIONS.md",
     "No optimizer/model/simulator execution performed"
-  ]
+  ],
+  "publication": {
+    "decision_commit": "4c0700d508636c8e3930bbc26beb71b1ee5dcb38",
+    "remote_branch": "origin/Maskable-PPO",
+    "push": "succeeded",
+    "remote_head_equals_decision_commit": "verified with git ls-remote",
+    "worktree_after_decision_commit": "clean",
+    "linux_clone_update": "manual pull still needed"
+  }
 }
