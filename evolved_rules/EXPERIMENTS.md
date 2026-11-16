@@ -965,3 +965,26 @@ Nothing in the running arms was changed. Scripts ran from a scratch folder again
   when a slot is filled or logging is on), and Python CPU per game is equal (0.22-0.23 min). gp-7's simulator hosts
   use about 38% more CPU time per game (1.52 vs 1.10 min) for identical games. Likely cause: core placement on the
   M4 (4 performance and 6 efficiency cores, load about 11). Unverified. The screen itself takes 91 s per epoch.
+
+**gp-7 third epoch (end of the arm's gen 31), 2026-11-16 23:42: nothing inserted.**
+- 10,560 records, empty slots [0, 1, 2, 3], 60 proposals. The 2 kept are again target-slot trees built on `octile`:
+  `add(pair_connected, add(pair_connected, octile))` (w0 0.031) and `pdiv(shop_demand, add(pair_connected, octile))`
+  (w0 0.440).
+- Race on probe maps 10048-10071: tree 0 +15.4 (p 0.412) and −84.4 (p 0.961); tree 1 −16.2 (p 0.601) and +20.3
+  (p 0.313). Charged 120 games (ledger 9,912). Probe counter now 10072. Next epoch at the end of gen 36.
+- Per-arm trend guards since the last entry (all pass, threshold 997.9):
+
+| Arm | Gen | Pop avg | Pop best | TM mean | σ | Cut | Minutes | Rolling 3 TM | Ledger |
+|---|---|---|---|---|---|---|---|---|---|
+| cma-7 | 32 | 1194.6 | 1479.4 | 1268.2 | 0.256 | 0 | 88 | 1294.0 | 9,852 |
+| cma-7 | 33 | 1271.8 | 1432.0 | 1320.2 | 0.259 | 0 | 92 | 1317.7 | 10,152 |
+| cma-7 | 34 | 1180.8 | 1364.7 | 1352.3 | 0.262 | 0 | 82 | 1313.6 | 10,452 |
+| cma-7 | 35 | 1169.8 | 1450.3 | 1109.4 | 0.264 | 0 | 81 | 1260.7 | 10,752 |
+| cma-7 | 36 | 1232.9 | 1372.2 | 1361.8 | 0.269 | 0 | 83 | 1274.5 | 11,052 |
+| cma-7 | 37 | 1238.1 | 1393.1 | 1202.6 | 0.273 | 0 | 81 | 1224.6 | 11,352 |
+| cma-7 | 38 | 1235.1 | 1493.0 | 1320.1 | 0.274 | 1 | 84 | 1294.8 | 11,644 |
+| gp-7 | 27 | 1133.6 | 1362.0 | 1246.9 | 0.236 | 0 | 112 | 1151.7 | 8,600 |
+| gp-7 | 28 | 1058.8 | 1433.8 | 1238.8 | 0.238 | 0 | 104 | 1219.9 | 8,900 |
+| gp-7 | 29 | 1078.4 | 1296.6 | 1216.8 | 0.242 | 1 | 97 | 1234.2 | 9,192 |
+| gp-7 | 30 | 1136.9 | 1338.3 | 1249.1 | 0.246 | 0 | 114 | 1234.9 | 9,492 |
+| gp-7 | 31 | 1265.1 | 1515.4 | 1364.7 | 0.252 | 0 | 124 | 1276.9 | 9,792 (+120 epoch) |
