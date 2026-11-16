@@ -1,0 +1,39 @@
+{
+  "checks": [
+    "ZIP integrity",
+    "Only review cells and cached summary changed",
+    "All51review states match user row list",
+    "Full detail sheet values/formulas unchanged",
+    "Original summary formula and freeze panes preserved",
+    "Both source views visually checked; unchanged detail view checked previously",
+    "Archive/output bytes identical"
+  ],
+  "reviewed": 38,
+  "notReviewed": 13,
+  "changed_cells": [
+    "A4",
+    "E10",
+    "E13",
+    "E21",
+    "E22",
+    "E23",
+    "E26",
+    "E27",
+    "E31",
+    "E32",
+    "E34",
+    "E35",
+    "E36",
+    "E37",
+    "E38",
+    "E39",
+    "E40",
+    "E42",
+    "E43",
+    "E44",
+    "E45"
+  ],
+  "sha256": "52bcfa73df83a7dc73b58c5d694d272097c7bc834b6ec0a14572afad61d815cb",
+  "nativeExcelTested": false,
+  "runtimeNote": "Artifact Node returned1 after completed export without error text; independent exported-file checks pass."
+}

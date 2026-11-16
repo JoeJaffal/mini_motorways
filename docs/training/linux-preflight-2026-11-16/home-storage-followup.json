@@ -1,0 +1,17 @@
+{
+  "evidence": "User-pasted home-directory du summary and reported mount authentication prompt",
+  "home_total_reported": "389M",
+  "largest_reported_children": {
+    "snap": "311M",
+    "Desktop": "51M",
+    ".cache": "27M"
+  },
+  "mount_outcome": "User reports read-only sda2 mount requests IT-user password; no successful mount reported",
+  "finding": "Home usage is small relative to 443G filesystem usage; this summary does not identify ownership or source of remaining usage. User-account cleanup is not a meaningful storage solution on this evidence.",
+  "next_step": "Ask IT for writable project storage on the second disk or adequate space on the Linux filesystem; continue local implementation planning independently. No package install on near-full root.",
+  "limits": [
+    "du/df figures have different accounting semantics; do not infer an exact subtraction or other users footprint",
+    "No IT contact sent by agent; user may relay suggested wording",
+    "No password requested or shared, no deletion, no privilege escalation, no mount success, no training"
+  ]
+}

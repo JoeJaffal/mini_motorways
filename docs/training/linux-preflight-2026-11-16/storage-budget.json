@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-16",
+  "method": "Resolve public metadata for Linux CPython3.12 x86_64, inspect wheel ZIP central directories via bounded HTTP Range; no wheel binaries downloaded/installed",
+  "roots": [
+    "torch==2.14.1+cpu OR torch==2.14.1+cu126",
+    "gymnasium==1.4.0",
+    "stable-baselines3==2.9.2",
+    "sb3-contrib==2.9.2",
+    "numpy==2.5.4"
+  ],
+  "profiles": {
+    "cpu": {
+      "packages": 16,
+      "download_GiB": 0.20885941945016384,
+      "unpacked_GiB": 0.7601593527942896
+    },
+    "cu126": {
+      "packages": 34,
+      "download_GiB": 3.4211167925968766,
+      "unpacked_GiB": 6.159112180583179
+    }
+  },
+  "sdk": {
+    "version": "8.0.427",
+    "linux_x64_archive_bytes": 217060685,
+    "gzip_uncompressed_tar_bytes": 597166080,
+    "allocation_GiB": 1,
+    "allocation_includes": "SDK download/extraction plus modest build allowance",
+    "source_url": "https://builds.dotnet.microsoft.com/dotnet/Sdk/8.0.427/dotnet-sdk-8.0.427-linux-x64.tar.gz",
+    "note": "gzip ISIZE is tar stream length modulo2^32, not extracted-file allocated usage; SDK fits below4GiB by known distribution scale, budget remains allowance"
+  },
+  "budget_assumptions_GiB": {
+    "fresh_source_and_git": 0.1,
+    "sdk_and_builds": 1,
+    "initial_models_logs_replays": 5,
+    "system_free_space_reserve": 5
+  },
+  "limits": [
+    "ZIP uncompressed payload is not installed allocated size: bytecode,file block rounding,metadata and temporary installer behavior add overhead",
+    "Pure metadata fixed-point resolver is not pip; final constraints validated by script, runtime/import compatibility not executed",
+    "Ubuntu24.04 default glibc2.39 assumed for compatible tags; actual libc not independently probed",
+    "CUDA12.6 chosen for a sizing scenario only, not a changed approved dependency/device setup or runtime validation on RTX2080Ti",
+    "Includes core requirements only, not optional SB3 extras, Unity Editor, full CUDA developer toolkit, video collection or unlimited run retention",
+    "Output5GiB and reserve5GiB are engineering budget assumptions, not measured usage or adopted retention cap",
+    "No package installation, learner run, full wheel download or target modification",
+    "Original 50GB request remains a comfortable allowance, not measured minimum; sizing scenario reduces justified initial request to about25GiB"
+  ],
+  "calculated_gpu_budget_GiB": 20.680228973180057,
+  "rounded_initial_free_space_target_GiB": 25
+}

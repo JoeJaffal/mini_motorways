@@ -1,3 +1,27 @@
+Decision publication update,16November: user explicitly requests pushing detailed decisions toMaskable-PPO. [CURRENT DECISIONS](../docs/training/DECISIONS.md) is the primary entry point. Selected prior ledgers/specification/workbook/review/hardware/time records migrated byte-identically (50files); latest hierarchy/curriculum/Stage1approvals take precedence. UpdateLinuxclone with `git pull --ff-only origin Maskable-PPO`. Simulator source unchanged; no newtrainer or training. Earlier local-only/migration-pending statements below are historical.
+
+New-chat continuation: read [HANDOFF.md](HANDOFF.md). User reports Linux30GBfree and successful clone ofMaskable-PPO into~/mini_motorways. Next is verify checkout/workspace and isolated environment setup; no dependencies installed or new trainer implemented in this chat. Planning records here remain local/uncommitted, not in Linux clone.
+
+Storage update: user now reports30GBfree, meeting the initial rounded budget if writable by theLinuxaccount. Older8.1Gavailability is historical. Verifyworkspacepath/access during setup; no installation/training yet. [Record](../docs/training/linux-preflight-2026-11-16/storage-update.json).
+
+Storage calculation: [25GiBinitial available target](../docs/training/linux-preflight-2026-11-16/STORAGE_BUDGET.md), from GPU6.159GiBwheelpayload+3.421GiBdownloads plus explicit allowances (20.680GiBtotal). Not an installed/runtime measurement or a new dependency adoption;8.1GiBcurrentfree below planned budget.
+
+Linux setup update: second-disk mount requires IT authentication; user home totals only389M, so account cleanup will not resolve root99%usage. Need IT-provided writable storage/free space before substantial installation. Local preparation can continue. [Evidence](../docs/training/linux-preflight-2026-11-16/home-storage-followup.json).
+
+Storage update: roughly 3TB nominal across two disks is accounted for; root/home still99%used. Unmounted1.8TNTFS free space unknown; read-only mount/df inspection proposed before installing dependencies. [Source](../docs/training/linux-preflight-2026-11-16/storage.json).
+
+Linux inventory received, 16 November: user output confirms Ubuntu 24.04.4, Ryzen9 3950X/16cores/32threads, nominal32GiB RAM and RTX2080Ti/11264MiB. Root/home filesystem is 99% full with 8.1G available; inspect other storage before package installs. Python3.12.3/Git present; dotnet not on PATH; active Python lacks training packages except NumPy. [Evidence and limits](../docs/training/linux-inventory-2026-11-16/README.md). No installation or training.
+
+Stage 1 evaluation update, 16 November: user approves 180 simulated seconds per episode and at least 90/100 held-out layouts each completing at least 3 scored trips. Native timing feasibility must be checked before applying this initial gate. No implementation or training yet. [Current overview](PLAN.md) · [Approval and limits](../docs/training/curriculum-design-2026-11-16/README.md).
+
+Main progress tracker: [training checklist](PLAN.md). Stage 1 concept now explicitly approved; next define its scenario settings, horizon and passing rule. No new implementation or training.
+
+# Maskable PPO restart — current planning, 16 November 2026
+
+Work branch: `Maskable-PPO`; checkout `C:/Users/moham/mini_motorways-maskable-ppo`; base 938b9f8, simulator f34. User explicitly requires this branch for this restart, superseding the older mohammad preference. Other dirty checkout is untouched.
+
+[Hierarchy proposal](../docs/training/hierarchy-proposal-2026-11-16/README.md): persistent primary/optional secondary focus, unrestricted global executor, provisional 8-edit/one-wait reviews, score-only learning and custom two-level credit. User now adopts this initial hierarchy and delegates evidence-based justification and revision to the agent. Not implemented or measured; detailed PPO/encoding choices remain open. Curriculum discussion resumed: broad staged progression accepted; exact scenarios and advancement gates remain open. See [curriculum record](../docs/training/curriculum-design-2026-11-16/README.md). Roundabout follow-up belongs to another person. No training authorized or run; no new trainer command exists. Older planning records remain in the previous checkout and are not yet published on this branch. Earlier status below is historical and does not authorize resuming old training.
+
 # Carpark gate ignores red-light cars — 9 November 2026
 
 [Report section 13](../docs/training/simulator-repairs-2026-11-08/README.md#13-map-3101-a-red-light-car-held-the-carpark-gate-simulator-2026-11-087), [handoff](../simulation/Docs/HANDOFF-2026-11-sim-fix.md). A car waiting at a red light can no longer take or keep the engineered carpark gate (simulator `2026-11-08.7`); this fixes LA 3101's late collapse. 85 core/7 environment/6 reward/10 map PASS. Deterministic lights comparison: 580.3 with lights vs 535.5 without (6 better, 4 worse). `main` carries the same simulator, as a simulator-only copy. No training.

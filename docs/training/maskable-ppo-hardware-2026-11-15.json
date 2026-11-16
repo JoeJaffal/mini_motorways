@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-15",
+  "source": "Local Windows CIM and Get-PhysicalDisk inventory; not benchmark results",
+  "current_machine": {
+    "manufacturer": "LENOVO",
+    "model": "20Y0X10800",
+    "cpu": "11th Gen Intel(R) Core(TM) i7-1185G7 @ 3.00GHz",
+    "physical_cores": 4,
+    "logical_processors": 8,
+    "ram_gib_rounded": 31.7,
+    "gpu": "Intel(R) Iris(R) Xe Graphics",
+    "graphics_driver": "32.0.101.7026",
+    "os": "Microsoft Windows 11 Pro",
+    "os_version": "10.0.26300",
+    "disk": "KBG5AZNV512G LA KIOXIA",
+    "disk_type": "SSD",
+    "disk_size_gib_rounded": 476.9,
+    "nvidia_smi": "command unavailable"
+  },
+  "second_machine": {
+    "source": "User-reported tentative identification, not inspected",
+    "model": "Alienware Aurora R11 AWAUR11-7088BLK-PUS",
+    "cpu": "Intel i7-10700KF",
+    "gpu": "NVIDIA GeForce RTX 2080 Super",
+    "vram_gb_reported": 8,
+    "ram_gb_reported": 16,
+    "storage_reported": "512 GB SSD + 1 TB SATA HDD",
+    "os_reported": "Windows 10 Home"
+  },
+  "throughput": null,
+  "training_duration_estimate": null
+}

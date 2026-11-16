@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-16",
+  "checks": [
+    "all51design records selected",
+    "33new decisions remain Not reviewed;18prior approvals preserved by selection script",
+    "schema channel arithmetic",
+    "disjoint city/seed splits checked by selection script",
+    "batch/rollout/pilot divisibility",
+    "one-second tick arithmetic",
+    "architecture forward shapes",
+    "empty pair masking",
+    "one-valid-action normalization",
+    "finite logits/values"
+  ],
+  "parameter_counts": {
+    "grid": 537792,
+    "global": 3520,
+    "pairs": 1280,
+    "shared": 98560,
+    "actor": 226525,
+    "critic": 33025
+  },
+  "total_parameters": 900702,
+  "rollout_tokens": 2048,
+  "minibatches_per_epoch": 16,
+  "optimizer_steps_per_full_rollout": 64,
+  "pilot_max_full_rollouts": 16,
+  "estimated_float32_rollout_bytes": {
+    "grid": 995328000,
+    "motorway_table": 73728000,
+    "global": 442368
+  },
+  "limits": [
+    "Random synthetic forward only; no optimizer step, training or saved weights",
+    "No simulator episodes, new masks or adapter implemented",
+    "Memory figures are source arithmetic, not peak measurement",
+    "User review remains outstanding"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "date": "2026-11-16",
+  "evidence": "User-supplied terminal output; not directly inspected remotely",
+  "attachment_sha256": "4c92e2d3c816dc72be61137f4016add313959f1050d2ef3fce6d99d003517006",
+  "os": "Ubuntu 24.04.4 LTS",
+  "kernel": "6.8.0-149-generic",
+  "architecture": "x86_64",
+  "cpu": {
+    "model": "AMD Ryzen 9 3950X",
+    "physical_cores": 16,
+    "logical_processors": 32
+  },
+  "ram": {
+    "reported_total": "31 GiB",
+    "reported_available": "25 GiB",
+    "note": "Consistent with nominal 32 GiB; point-in-time availability"
+  },
+  "root_and_home_filesystem": {
+    "device": "/dev/nvme0n1p4",
+    "size_reported": "476G",
+    "used_reported": "443G",
+    "available_reported": "8.1G",
+    "use_percent": 99
+  },
+  "gpu": {
+    "name": "NVIDIA GeForce RTX 2080 Ti",
+    "memory_total_mib": 11264,
+    "memory_used_mib": 565,
+    "driver_reported": "595.84",
+    "nvidia_smi_cuda_label": "13.2",
+    "note": "Driver-reported CUDA label does not establish an installed toolkit or PyTorch compatibility"
+  },
+  "tools": {
+    "python3": "3.12.3",
+    "git": "2.43.0",
+    "dotnet": "not on PATH"
+  },
+  "active_python_packages": {
+    "numpy": "1.26.4",
+    "torch": "not installed",
+    "gymnasium": "not installed",
+    "stable-baselines3": "not installed",
+    "sb3-contrib": "not installed"
+  },
+  "limits": [
+    "Other disks/partitions/mounts not inventoried; earlier 3TB claim not verified or disproved by root filesystem output",
+    "Packages checked only in active python3 environment",
+    "Pasted command echo is visually mangled, but resulting inventory sections are readable; preserve uncertainty about exact transcription",
+    "No workload benchmark, training run, package install or deletion performed"
+  ],
+  "next_step": "Read-only lsblk and df inventory to identify suitable storage before environment installation"
+}

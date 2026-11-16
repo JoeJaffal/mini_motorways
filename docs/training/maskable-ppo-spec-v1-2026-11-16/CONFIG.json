@@ -1,0 +1,90 @@
+{
+  "protocol": "maskable-direct-v1",
+  "source": "938b9f80e67ca5341920a10e9e671164a474fc38",
+  "simulator": "2026-11-10.f34",
+  "rules": "OriginalReference",
+  "variation": "SameMap",
+  "review": "NOT USER-REVIEWED: engineering-selected",
+  "training_authorized": false,
+  "action_tokens": 1501,
+  "root_actions": [
+    "wait",
+    "road_or_bridge",
+    "roundabout",
+    "new_motorway",
+    "edit_motorway",
+    "erase_connection",
+    "remove_tile",
+    "remove_roundabout",
+    "remove_motorway",
+    "weekly_choice"
+  ],
+  "stages": [
+    "ROOT",
+    "CELL_FIRST",
+    "DIRECTION",
+    "OBJECT_CELL",
+    "CELL_SECOND",
+    "OFFER"
+  ],
+  "grid": [
+    81,
+    30,
+    50
+  ],
+  "global_features": 54,
+  "motorway_table": [
+    1500,
+    6
+  ],
+  "history_frames": 4,
+  "wait_ticks": 20,
+  "tick_seconds": 0.05,
+  "horizon_seconds": 3600,
+  "stall_tokens": 4096,
+  "device": "cpu",
+  "workers": 2,
+  "torch_threads": 2,
+  "torch_interop_threads": 1,
+  "ppo": {
+    "n_steps": 1024,
+    "batch_size": 128,
+    "n_epochs": 4,
+    "learning_rate": 0.0003,
+    "gamma": 1.0,
+    "gae_lambda": 0.95,
+    "clip_range": 0.2,
+    "target_kl": 0.02,
+    "ent_coef": 0.01,
+    "vf_coef": 0.5,
+    "max_grad_norm": 0.5,
+    "normalize_advantage": true,
+    "clip_range_vf": null
+  },
+  "pilot": {
+    "tokens": 32768,
+    "learner_wall_minutes": 15,
+    "overall_wall_minutes": 30
+  },
+  "follow_on_if_authorized": {
+    "tokens_per_seed": 1048576,
+    "learner_wall_hours_per_seed": 4,
+    "overall_wall_hours_per_seed": 5,
+    "learner_seeds": [
+      42,
+      43,
+      44
+    ]
+  },
+  "checkpoint_tokens": 2048,
+  "evaluation_tokens": 16384,
+  "dependency_pins": {
+    "python": "3.12.14",
+    "torch": "2.14.1+cpu",
+    "gymnasium": "1.4.0",
+    "stable-baselines3": "2.9.2",
+    "sb3-contrib": "2.9.2",
+    "numpy": "2.5.4",
+    "dotnet_sdk": "8.0.427"
+  }
+}

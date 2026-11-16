@@ -1,0 +1,257 @@
+[
+  {
+    "id": "D01",
+    "choice": "Compete with you, then see how far the model can go.",
+    "why": "Your goal is human-level play, starting with your own performance."
+  },
+  {
+    "id": "D02",
+    "choice": "Explain choices and keep your approval history.",
+    "why": "You want to understand and control the design. See D44 for the delegated choices."
+  },
+  {
+    "id": "D03",
+    "choice": "Start with new weights, optimizer and learning statistics.",
+    "why": "Make a genuinely fresh start without inheriting old training."
+  },
+  {
+    "id": "D04",
+    "choice": "Use Maskable PPO.",
+    "why": "Your selected approach; the detailed settings are separate choices."
+  },
+  {
+    "id": "D05",
+    "choice": "Use the accepted simulator: version f34.",
+    "why": "You said its accuracy is sufficient for this project."
+  },
+  {
+    "id": "D06",
+    "choice": "Freeze the source and build in a separate branch workspace.",
+    "why": "Keep results reproducible and protect existing work."
+  },
+  {
+    "id": "D07",
+    "choice": "Build, delete, choose weekly items and wait.",
+    "why": "These are the tools you specified."
+  },
+  {
+    "id": "D08",
+    "choice": "No generated routes or automatic path completion.",
+    "why": "Your strict rule: construction choices belong to the model."
+  },
+  {
+    "id": "D09",
+    "choice": "Mask only physically impossible actions.",
+    "why": "Keep legal choices available, even when they are poor moves."
+  },
+  {
+    "id": "D10",
+    "choice": "Build one neighboring road connection at a time.",
+    "why": "Give the model direct control of bends, branches and repairs."
+  },
+  {
+    "id": "D11",
+    "choice": "Allow all eight neighboring directions when legal.",
+    "why": "You explicitly included diagonal connections."
+  },
+  {
+    "id": "D12",
+    "choice": "Build bridges incrementally, like roads on water.",
+    "why": "Your reasoning: a bridge is a road on water."
+  },
+  {
+    "id": "D13",
+    "choice": "Place a roundabout by choosing its center.",
+    "why": "Use the simulator’s native placement and connection rules."
+  },
+  {
+    "id": "D14",
+    "choice": "Choose motorway endpoints; allow native editing and removal.",
+    "why": "Keep ordinary motorway control and stock behavior."
+  },
+  {
+    "id": "D15",
+    "choice": "Allow erasing a connection, tile or entire structure.",
+    "why": "Support precise repairs as well as full removal."
+  },
+  {
+    "id": "D16",
+    "choice": "Choose from the actual weekly offers while paused.",
+    "why": "Do not hide packages or choose an item for the model."
+  },
+  {
+    "id": "D17",
+    "choice": "Allow several construction edits during one pause.",
+    "why": "You pause to build; each edit returns an updated observation."
+  },
+  {
+    "id": "D18",
+    "choice": "Wait one game second, stopping early for a choice or game-over.",
+    "why": "Simple timing with frequent chances to react."
+  },
+  {
+    "id": "D19",
+    "choice": "Stop a stalled episode after 4,096 decisions without time passing.",
+    "why": "Bound endless editing without forced waits or extra penalties."
+  },
+  {
+    "id": "D20",
+    "choice": "Select the tool, then its tile and direction or endpoint.",
+    "why": "Keep conditional choices manageable without generating routes."
+  },
+  {
+    "id": "D21",
+    "choice": "Use one direct policy, without a separate goal selector.",
+    "why": "Start with fewer learning components and explicit local control."
+  },
+  {
+    "id": "D22",
+    "choice": "Observe structured, visible game information.",
+    "why": "Learn gameplay without first needing to recognize screen pixels."
+  },
+  {
+    "id": "D23",
+    "choice": "Exclude future spawns, random state and route answers.",
+    "why": "Use visible information and leave planning to the model."
+  },
+  {
+    "id": "D24",
+    "choice": "Use fixed map channels, global values and motorway pairs.",
+    "why": "Represent geography and connections consistently."
+  },
+  {
+    "id": "D25",
+    "choice": "Keep four recent traffic observations from different game times.",
+    "why": "Distinguish flowing traffic from queues; paused edits add no fake history."
+  },
+  {
+    "id": "D26",
+    "choice": "Use game score only.",
+    "why": "Your preference. No additional rationale was supplied."
+  },
+  {
+    "id": "D27",
+    "choice": "Reward each increase in the game score.",
+    "why": "Match the score-only objective without invented bonuses."
+  },
+  {
+    "id": "D28",
+    "choice": "Use undiscounted score (gamma 1) and GAE 0.95.",
+    "why": "Paused edits should not make later trips worth less."
+  },
+  {
+    "id": "D29",
+    "choice": "Train on four cities; reserve London for the final transfer test.",
+    "why": "Test new seeds separately and make unseen-city transfer a clear test."
+  },
+  {
+    "id": "D30",
+    "choice": "Balance cities and shuffle seeds; no initial curriculum.",
+    "why": "Provide variety without adding a second training strategy."
+  },
+  {
+    "id": "D31",
+    "choice": "Compare you and the model on 20 matched, first-attempt games.",
+    "why": "Measure competition under comparable rules and conditions."
+  },
+  {
+    "id": "D32",
+    "choice": "Report score distributions, completion rates and uncertainty.",
+    "why": "Avoid judging progress by one lucky game."
+  },
+  {
+    "id": "D33",
+    "choice": "Evaluate periodically; choose using a fixed validation cohort.",
+    "why": "Make checkpoint selection consistent rather than cherry-picked."
+  },
+  {
+    "id": "D34",
+    "choice": "Let you watch the best, worst and an average-scoring game.",
+    "why": "You requested direct personal review of the model’s play."
+  },
+  {
+    "id": "D35",
+    "choice": "Choose those replays from one frozen model’s evaluation games.",
+    "why": "Compare the same policy; select a real game nearest the mean."
+  },
+  {
+    "id": "D36",
+    "choice": "Use a small spatial network with separate action and value outputs.",
+    "why": "Represent the map while keeping the initial model manageable."
+  },
+  {
+    "id": "D37",
+    "choice": "Use the fixed initial PPO settings in the specification.",
+    "why": "Start with one interpretable baseline before tuning."
+  },
+  {
+    "id": "D38",
+    "choice": "Use pinned software versions and the verified CPU stack.",
+    "why": "Make setup and comparisons reproducible."
+  },
+  {
+    "id": "D39",
+    "choice": "Use this laptop and the reported Alienware desktop.",
+    "why": "These are the machines you said are available."
+  },
+  {
+    "id": "D40",
+    "choice": "Start on CPU with two simulator workers; keep runs independent.",
+    "why": "Avoid assuming GPU speed gains before measuring the workload."
+  },
+  {
+    "id": "D41",
+    "choice": "End at game-over or the one-hour benchmark horizon.",
+    "why": "Define a bounded, comparable task with correct ending semantics."
+  },
+  {
+    "id": "D42",
+    "choice": "Plan a short pilot; do not launch training automatically.",
+    "why": "Check integration before spending time on a longer run."
+  },
+  {
+    "id": "D43",
+    "choice": "Keep a durable history, sources and report archive.",
+    "why": "You require every material choice and finding to be documented."
+  },
+  {
+    "id": "D44",
+    "choice": "Complete the remaining choices, marking them not reviewed.",
+    "why": "You delegated the decisions while sleeping, without reviewing them."
+  },
+  {
+    "id": "D45",
+    "choice": "Set a defined score-ratio and win-count milestone.",
+    "why": "Make “competes with me” measurable; no result is claimed yet."
+  },
+  {
+    "id": "D46",
+    "choice": "Add the missing connection-erase, mask and replay integration.",
+    "why": "The native core supports erasure, but the adapter needs to expose it."
+  },
+  {
+    "id": "D47",
+    "choice": "Freeze development before running final tests.",
+    "why": "Keep final-test outcomes from influencing development choices."
+  },
+  {
+    "id": "D48",
+    "choice": "Save regular checkpoints and label resumed runs honestly.",
+    "why": "Recover from interruptions without claiming exact continuation."
+  },
+  {
+    "id": "D49",
+    "choice": "Require integration checks; stop on invalid or nonfinite behavior.",
+    "why": "A broken interface must not be interpreted as poor learning."
+  },
+  {
+    "id": "D50",
+    "choice": "Measure simulator, input, mask and network costs separately.",
+    "why": "Estimate performance from the actual workload, not hardware names."
+  },
+  {
+    "id": "D51",
+    "choice": "Keep curriculum, GPU experiments and automatic tuning outside v1.",
+    "why": "Make the first experiment interpretable and preserve your strict rules."
+  }
+]

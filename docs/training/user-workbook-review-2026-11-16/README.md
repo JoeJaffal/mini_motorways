@@ -1,0 +1,5 @@
+# User workbook inspection — 16 November 2026
+
+User attached Downloads/Maskable_PPO_Decisions_Clean.xlsx and said it was updated. Exact attachment preserved as USER_SOURCE.xlsx; hash identity checked in QA.json. comparison.json compares every nonempty cell value/formula on both sheets against the delivered clean workbook. Result: **zero content/formula changes**, no commentXML records. Main-list review statuses remain18Reviewed/33Not reviewed. Binary/format save differences are not ruled out; they do not provide confirmed decision changes.
+
+Both sheets imported/inspected with artifact tool, main list rendered across all51records and visually checked. No edits/export/recalculation performed on the attachment; no decisions or new approvals inferred. Ask user to save/resend intended edits or identify changed cells. Older no-hierarchy statements in this workbook do not supersede the more recent explicit chat correction requiring hierarchy. Previews and read-only comparison script remain local in tmp/decision-workbook-2026-11-16; small comparison evidence archived here. No training.

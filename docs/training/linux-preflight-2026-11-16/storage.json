@@ -1,0 +1,52 @@
+{
+  "evidence": "User-pasted lsblk and df output, 16 November 2026; not direct remote access",
+  "disks": [
+    {
+      "device": "/dev/sda",
+      "reported_size": "1.8T",
+      "partition": "/dev/sda2",
+      "filesystem": "ntfs",
+      "partition_size": "1.8T",
+      "mounted": false,
+      "free_space": null
+    },
+    {
+      "device": "/dev/nvme0n1",
+      "reported_size": "953.9G",
+      "partitions": [
+        {
+          "device": "/dev/nvme0n1p2",
+          "size": "100M",
+          "filesystem": "vfat",
+          "mount": "/boot/efi"
+        },
+        {
+          "device": "/dev/nvme0n1p3",
+          "size": "469.8G",
+          "filesystem": "ntfs",
+          "mounted": false
+        },
+        {
+          "device": "/dev/nvme0n1p4",
+          "size": "483.9G",
+          "filesystem": "ext4",
+          "mount": "/",
+          "df_size": "476G",
+          "df_available": "8.1G",
+          "df_use_percent": 99
+        }
+      ]
+    }
+  ],
+  "finding": "Two disks account for roughly nominal 3TB; total capacity is not available Linux space. Root/home remain near full. Other filesystem free space unknown. Disk technology beyond reported device naming is not measured.",
+  "next_commands": [
+    "udisksctl mount --block-device /dev/sda2 --options ro",
+    "df -h -x tmpfs -x devtmpfs"
+  ],
+  "limits": [
+    "Mount command proposed, not yet run",
+    "No data deletion, partitioning, filesystem repair, formatting, environment install or training",
+    "Do not infer NTFS disk is empty or suitable for a Linux environment from size alone"
+  ],
+  "command_reference": "https://manpages.ubuntu.com/manpages/noble/man1/udisksctl.1.html"
+}

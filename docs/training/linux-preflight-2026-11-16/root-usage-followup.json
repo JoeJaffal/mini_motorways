@@ -1,0 +1,20 @@
+{
+  "source": "User-pasted unprivileged du -xhd1 / summary",
+  "readable_total_reported": "36G",
+  "directory_totals": {
+    "/usr": "19G",
+    "/var": "13G",
+    "/opt": "2.8G",
+    "/home": "398M",
+    "/boot": "293M"
+  },
+  "prior_df_used": "443G",
+  "prior_df_available": "8.1G",
+  "interpretation": "Visible du summary does not explain df usage; difference is not free space. Permission errors were suppressed and some directories may not be counted. Deleted-open files, hidden mount contents or other accounting differences are possible, not established.",
+  "outcome": "No safely reclaimable user-owned capacity identified; no deletion recommended. IT-level storage inspection is needed for definitive accounting or access to second drive.",
+  "limits": [
+    "No claim exact discrepancy equals other users data",
+    "No command can be assumed to bypass mount authorization",
+    "No new direct inspection, storage changes, environment installation or training"
+  ]
+}

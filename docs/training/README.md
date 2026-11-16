@@ -1,3 +1,21 @@
+# Start here: Maskable PPO restart
+
+[Current decisions and complete detail index](DECISIONS.md) → [handoff](../../training/HANDOFF.md) → [short checklist](../../training/PLAN.md).
+
+User requests publishing detailed decisions onMaskable-PPO. Historical specs/JSON/workbooks have been migrated byte-for-byte; the current index identifies superseding approvals. Below entries retain the chronology; older "not migrated" or "unapproved" wording is historical and must not override later explicit decisions.
+
+[Calculated initial storage budget](linux-preflight-2026-11-16/STORAGE_BUDGET.md): recommend25GiBfree under explicit allowances; actual wheel size data and reproduction script retained. No installation/training.
+
+[Linux hardware inventory](linux-inventory-2026-11-16/README.md): RTX2080Ti confirmed; root/home99%full,8.1G available. Read-only storage inventory next; no installation or training.
+
+Start here: [Maskable PPO training checklist](../../training/PLAN.md) — approved decisions, current position, remaining work and phase gates.
+
+[Curriculum direction and first-stage proposal](curriculum-design-2026-11-16/README.md): broad progression accepted; exact scenarios and promotion criteria unresolved. No implementation or training.
+
+# Maskable PPO restart planning — 16 November 2026
+
+[Hierarchy proposal and rationale](hierarchy-proposal-2026-11-16/README.md): engineering recommendation for user review, alternatives, primary references, validation plan and limits. On `Maskable-PPO`; now user-adopted as the initial design, not implemented or trained. Agent responsible for justified, documented revision when evidence warrants it. Earlier index below is historical; previous local restart documents have not yet been migrated from the other checkout.
+
 # Training documentation and evidence
 
 

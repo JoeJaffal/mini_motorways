@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-16",
+  "branch": "Maskable-PPO",
+  "user_authorization": "Push detailed decisions for other computer",
+  "migration": {
+    "files": 50,
+    "bytes": 501151,
+    "sha256_copy_comparison": "all match"
+  },
+  "publication_checks_before_this_QA_file": {
+    "explicitly_selected_files": 83,
+    "bytes_including_full_existing_tracked_document_sizes": 1188610,
+    "json_parse_checks": 37,
+    "xlsx_zip_and_all_XML_validations": 5,
+    "allowed_extensions": "md,json,py,mjs,xlsx,sh,txt",
+    "max_individual_file_bytes": 2097152,
+    "private_key_and_common_credential_token_patterns": "no matches",
+    "primary_entrypoint_relative_links": "all resolve",
+    "git_diff_cached_check": "passed"
+  },
+  "exclusions": [
+    "weights",
+    "compiled binaries",
+    "venv",
+    "scratch outputs",
+    "game video/frames/private game research",
+    "unrelated old simulation edits"
+  ],
+  "limits": [
+    "Format and scope checks are not training/runtime tests",
+    "Historical snapshots are preserved and superseded by docs/training/DECISIONS.md",
+    "No optimizer/model/simulator execution performed"
+  ]
+}

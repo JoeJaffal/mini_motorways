@@ -1,0 +1,21 @@
+{
+  "kind": "hypothetical arithmetic, not measured throughput",
+  "assumption": "rate includes collection and optimizer work; evaluation/setup excluded",
+  "cases": [
+    {
+      "assumed_policy_decisions_per_second": 25,
+      "one_million_hours": 11.11111111111111,
+      "ten_million_hours": 111.11111111111111
+    },
+    {
+      "assumed_policy_decisions_per_second": 100,
+      "one_million_hours": 2.7777777777777777,
+      "ten_million_hours": 27.77777777777778
+    },
+    {
+      "assumed_policy_decisions_per_second": 250,
+      "one_million_hours": 1.1111111111111112,
+      "ten_million_hours": 11.11111111111111
+    }
+  ]
+}

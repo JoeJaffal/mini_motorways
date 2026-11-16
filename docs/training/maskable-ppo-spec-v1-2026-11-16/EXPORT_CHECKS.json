@@ -1,0 +1,17 @@
+{
+  "checks": [
+    "ZIP integrity",
+    "Both original sheetViews/freeze panes preserved",
+    "All51IDs/statuses match record source",
+    "All18previous reviewed choices/reasons/review flags unchanged; execution next steps refreshed",
+    "Saved cached count values 51done,0open,18reviewed,33unreviewed",
+    "Native table ranges extended to A11:H62/A7:G58",
+    "Archive/output byte identity"
+  ],
+  "native_tables": [
+    "A11:H62",
+    "A7:G58"
+  ],
+  "sha256": "6f5202e4d78dd4122cf21c17f9abebe61a35c73bb730ef6f11b14a41add59b96",
+  "native_excel_ui_tested": false
+}

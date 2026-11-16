@@ -1,0 +1,75 @@
+{
+  "method": "Local logical byte sizes; excludes directory junction/symlink traversal, not filesystem allocated bytes",
+  "root": "C:/Users/moham/mini_motorways",
+  "bytes_total": 7819448923,
+  "errors": 0,
+  "largest_entries": [
+    {
+      "name": "tmp",
+      "bytes": 5369442705,
+      "GiB": 5.001
+    },
+    {
+      "name": "output",
+      "bytes": 1115363950,
+      "GiB": 1.039
+    },
+    {
+      "name": ".venv",
+      "bytes": 706034824,
+      "GiB": 0.658
+    },
+    {
+      "name": "simulation",
+      "bytes": 423070617,
+      "GiB": 0.394
+    },
+    {
+      "name": "docs",
+      "bytes": 154915021,
+      "GiB": 0.144
+    },
+    {
+      "name": ".git",
+      "bytes": 25282699,
+      "GiB": 0.024
+    },
+    {
+      "name": "build-economy",
+      "bytes": 13870659,
+      "GiB": 0.013
+    },
+    {
+      "name": "build-windows",
+      "bytes": 3153827,
+      "GiB": 0.003
+    },
+    {
+      "name": "outputs",
+      "bytes": 3135414,
+      "GiB": 0.003
+    },
+    {
+      "name": "training",
+      "bytes": 2307082,
+      "GiB": 0.002
+    },
+    {
+      "name": "build",
+      "bytes": 2246103,
+      "GiB": 0.002
+    },
+    {
+      "name": "scripts",
+      "bytes": 452544,
+      "GiB": 0.0
+    }
+  ],
+  "user_screenshot": {
+    "size_bytes": 7819448923,
+    "allocated_bytes": 7923859456,
+    "files": 54993,
+    "folders": 6554
+  },
+  "limits": "Live local folder may differ from screenshot due timing and link traversal; not target Linux install footprint"
+}

@@ -7885,3 +7885,129 @@ From Mohammad's answer (`e58b1fd`), implemented in `470784a` (simulator `2026-11
 ## 9 November 2026 — Map 3101 gate lock fixed; lights now help, no learning
 
 Investigation of LA 3101 (lights −189 on .6): a car held at the red light outside shop 9 owned the engineered carpark gate, locking the lot for the green-side queue. `ad8e2ca` (simulator `2026-11-08.7`): red-blocked cars may not take or keep the gate. The new check fails on .6 and passes; 85 core/7 environment/6 reward/10 map PASS. Deterministic lights comparison (20 games): 580.3 vs 535.5 without (6 better, 4 worse; 3101 752 vs 684). `main` redone as simulator-only (`d4c8099`, full merge kept as `main-full-merge`) and pushed to Aya's fork; updated to .7 the same way.
+
+
+## 16 November 2026 — Focus hierarchy proposed; not approved
+
+User requested a supported hierarchy plan and reasons, and assigned roundabout follow-up to another person. Engineering proposal: manager selects a persistent primary tile and optional secondary tile; executor retains global observation and every physically legal primitive action. No generated routes, goal bonuses or strategic masks. Provisional review after 8 completed edits or one wait, with early handoff and native-event interruption; cadence unmeasured. Shared encoder/separate heads and custom duration-aware PPO credit are proposals, not implemented defaults. Score-only delayed learning and ignored-focus/manager-cycle risks remain explicit; curriculum is deferred.
+
+Full rationale, alternatives, literature, checks to perform and limits: [proposal](../docs/training/hierarchy-proposal-2026-11-16/README.md). No model, run, game episode, measured performance result or user approval. Literature inspected: Option-Critic, HIRO and official SB3-Contrib documentation; none establish this hierarchy as best for this game.
+
+Branch correction: per explicit user instruction, fetched existing remote Maskable-PPO at 938b9f8/f34 and created its local tracking branch in C:/Users/moham/mini_motorways-maskable-ppo. Dirty codex/driveway-physics checkout preserved separately. This supersedes the older mohammad preference for this restart. Current proposal documentation lives only on Maskable-PPO; prior planning records still require migration from the older checkout. No commit/push this turn. Checks: branch/base identity and documentation links inspected; no trainer tests appropriate to proposal-only edits.
+
+
+## 16 November 2026 — User adopts focus hierarchy; agent accountable for revision
+
+After explicitly confirming no planner-generated construction routes or route menu, user instructs us to follow the agent's hierarchy recommendation and be able to justify, fix and change it. Adopt manager primary/optional-secondary focus plus unrestricted primitive executor, with provisional eight-edit/one-wait reviews. See [decision and preserved proposal](../docs/training/hierarchy-proposal-2026-11-16/README.md). Engineering accountability includes held-out/replay evidence, focus-response and stall diagnostics, recorded revisions and honest uncertainty; initial adoption is not measured success. No changes to score-only/physical masks/no-generated-routes constraints authorized. Architecture/credit details and curriculum remain unresolved. Checks: documentation and status consistency inspected. No code, training, measurement, commit or push.
+
+
+## 16 November 2026 — Curriculum discussion resumed; broad direction accepted
+
+User agrees to staged practice progressing from basic connections through construction challenges/shared networks/growing cities to full games. This resumes the deferred curriculum topic; brief assent does not settle numerical gates or scenario details. [Record and first-stage proposal](../docs/training/curriculum-design-2026-11-16/README.md). Proposed first stage: one matching house/destination, varied short clear land layouts, explicit waits and actual scored service, held-out validation layouts. Score-only reward, native physical legality and no generated routes preserved. Scenario distribution simplifications must be disclosed. No measured result, implementation or training; checks limited to documentation links/status.
+
+
+## 16 November 2026 — Stage 1 concept approved; main checklist created
+
+User approves the preceding Stage 1 decisions and requests a clear pipeline/checklist. [Main checklist](PLAN.md) now separates approved design, unresolved decisions, implementation, correctness/speed checks, bounded pilot, curriculum expansion and human evaluation. Stage 1 concept adopted; no unmentioned numerical thresholds, horizon or budget inferred. [Curriculum approval](../docs/training/curriculum-design-2026-11-16/README.md) preserves earlier discussion. Current position: define concrete Stage 1 scenario and passing rule, then resolve remaining implementation contracts. Earlier local planning/workbook migration remains explicit unfinished work. Checks: local links resolved, branch Maskable-PPO confirmed, statuses checked for approval versus implementation distinction. Documentation only; no model, training, measurement, simulator change, commit or push.
+
+
+## 16 November 2026 — Progress overview simplified after user feedback
+
+User reports the detailed checklist is unclear and overwhelming. Replaced training/PLAN.md with a short overview: agreed design, current first-practice-game decision, and later build/check/pilot/expand/compare steps. Preserved the previous checklist at docs/training/pipeline-checklist-2026-11-16/DETAILED_CHECKLIST.md, adjusting relative links for its archive location. No design choices, approval states or execution gates changed. No implementation/training/commit/push. Documentation links checked.
+
+
+## 16 November 2026 — Correction: do not reopen previously discussed decisions wholesale
+
+User challenges the statement that model information, architecture, optimization and evaluation still need to be decided. Checked the earlier current_decisions.json in the separate original checkout: observation contents D22 and replay requirement D34 are recorded settled; observation encoding D24, architecture D36, PPO D37 and credit D28 already have concrete prior settings and review evidence, with dependent design states reopened when hierarchy was previously unspecified. Pilot D42 has an existing concrete proposal but is explicitly Not reviewed in that record. Thus prior settings are not missing and should not be presented as a blank-slate approval queue. New manager/executor and curriculum adoption requires targeted reconciliation, not repeating every topic. Stage 1 horizon and promotion threshold were explicitly unspecified in the recent approval; earlier full-game horizon/evaluation are not automatically transferable. Approval, review and implementation remain distinct. Updated overview accordingly. No new setting, implementation, training, commit or push; future record migration/reconciliation remains an agent task.
+
+
+## 16 November 2026 — Stage 1 horizon and passing rule approved
+
+User explicitly approves the agent proposal: 180 simulated seconds per practice episode, excluding paused edit time; at least 90 of 100 held-out practice layouts must each produce at least 3 scored trips. Reason: repeated service rather than connectivity alone and varied-layout reliability rather than one memorized arrangement. Initial engineering targets, not measured optimal values. Timing feasibility must be verified against native trip generation before applying this gate; failure requires documented revision, not a hidden physics/reward change. Cohort uses a frozen checkpoint; operationally truncated episodes cannot count as successful complete episodes. [Full record](../docs/training/curriculum-design-2026-11-16/README.md). Updated overview/status. No scenario implementation, game episode, feasibility measurement, training, commit or push. Existing design reconciliation remains next.
+
+
+## 16 November 2026 — Linux inventory commands supplied
+
+User requests the commands to run on the training computer. Archived read-only shell inventory and scope at docs/training/linux-preflight-2026-11-16/. Requests OS/CPU/RAM/disk/GPU/tool versions and current Python package versions/CUDA availability, without installation or training. No results received and no throughput benchmark possible until the new workload exists. No new hardware conclusion, implementation, commit or push.
+
+
+## 16 November 2026 — Linux hardware evidence received; root disk nearly full
+
+User-supplied inventory confirms Ubuntu24.04.4/kernel6.8.0-149, Ryzen9 3950X/16cores/32threads, nominal32GiB RAM, RTX2080Ti/11264MiB (supersedes GPU unknown/earlier uncertain2080Super). Root and home share /dev/nvme0n1p4:476G size,443G used,8.1G available,99% utilization. This does not inventory other drives or verify the prior3TB total. Python3.12.3/Git2.43.0 present; dotnet not on PATH; active interpreter has NumPy1.26.4 but no torch/gymnasium/SB3/contrib. [Sanitized measurement source and limits](../docs/training/linux-inventory-2026-11-16/README.md). Next: read-only lsblk/df to find storage before installation. No performance benchmark, training, dependency installation, deletion, commit or push. Checks: parsed reported values against attachment; SHA-256 retained, raw hostname/process details left local-only.
+
+
+## 16 November 2026 — Disk layout clarified; read-only mount proposed
+
+User-pasted lsblk/df accounts for roughly 3TB nominal across NVMe and SATA-named disks; root/home remain 99% full. 1.8T /dev/sda2 NTFS and 469.8G NVMe NTFS are unmounted; their free space is unknown. Archived small numeric source at docs/training/linux-preflight-2026-11-16/storage.json. Proposed read-only udisksctl mount of sda2 then df, checked against official Ubuntu Noble manual. No mount result yet; no installation, deletion, partitioning, training or new performance finding.
+
+
+## 16 November 2026 — User home small; storage setup needs IT assistance
+
+User reports mounting sda2 prompts for IT credentials, then home du totals389M (snap311M, Desktop51M, cache27M). Existing df root443Gused cannot be explained by user home; other usage ownership/source unknown. Archived numeric summary and limits in docs/training/linux-preflight-2026-11-16/home-storage-followup.json. Engineering recommendation: ask IT for writable project storage or adequate Linux free space rather than delete small user folders. No IT message sent, password requested, mount success, installation, deletion or training. Remote setup is pending storage; local implementation preparation remains possible.
+
+
+## 16 November 2026 — Initial storage allowance explained
+
+In response to user capacity question, clarified only Linux root/home is measured nearly full (8.1Gfree/476G,99%used); second disk free space unknown. Recommend asking IT for50GB writable initial workspace as an engineering allowance for environment/project/builds/bounded artifacts, not measured minimum or unlimited-run capacity. Need actual footprint and retention measurements later. No new measurement, installation or training.
+
+
+## 16 November 2026 — Disks screenshots distinguish unallocated from file free space
+
+User supplies3Disks screenshots: DATA /dev/sda2 is2TB NTFS Not Mounted; selected1.1MB trailing region is Unallocated Space. This does not measure filesystem free space. DATA usage remains unknown; root99%usage finding unchanged. Recorded own observations in docs/training/linux-preflight-2026-11-16/disks-ui-observations.json, without publishing screenshots/device identifiers beyond needed paths. Prior mounting requires IT credentials; advise IT-authorized access then graphical file Properties. No storage change, installation, training, commit or push.
+
+
+## 16 November 2026 — Additional unprivileged disk diagnostic proposed
+
+User has no external drive and requests another terminal command. Proposed read-only `du -xhd1 / 2>/dev/null | sort -h`, with explicit incomplete-count limitation for inaccessible folders. No claim it unlocks unmounted NTFS, guarantees recoverable space or authorizes deleting data. No output received, install, storage modification or training.
+
+
+## 16 November 2026 — Unprivileged root accounting incomplete; no cleanup target found
+
+User's du output totals36G versus earlier df443Gused; /usr19G,/var13G,/opt2.8G,/home398M. This is not evidence of hundreds of GB free: command suppresses errors and may omit inaccessible directories. Exact cause unresolved; no deletion or recovered capacity. Archived own numeric source at docs/training/linux-preflight-2026-11-16/root-usage-followup.json. Recommend IT-level accounting/access assistance; local preparation can continue, remote sizeable installation remains pending storage. No new benchmark or training.
+
+
+## 16 November 2026 — Exact storage request: measurable source separated from allocation
+
+User asks exact required storage. Inspected baseline requirements and hierarchy record: full Linux environment/torch device build and retention footprint are not pinned/measured. Calculated1354tracked files at938b9f8 total38,368,424bytes (36.59MiB), excluding git/dependencies/builds/checkpoints/logs/replays; this is not clone/install disk usage. Recorded docs/training/linux-preflight-2026-11-16/storage-requirement-status.json. Official PyTorch selector and pip install stages checked; neither supplies this project's disk total.50GB remains proposed allocation, not measured minimum;8.1GB sufficiency unestablished. Exact peak installation and bounded run storage need resolved dependency closure and retention measurement. No large download, install, training, commit or push.
+
+
+## 16 November 2026 — Full Windows workspace size reconciled with screenshot
+
+User supplies folder Properties7.28GBlogical/7.37GBallocated. Direct scan matches screenshot logical7,819,448,923bytes exactly,0errors. Breakdown: tmp5.001GiB,output1.039GiB,.venv.658GiB,simulation.394GiB,docs.144GiB; own aggregate source archived at docs/training/linux-preflight-2026-11-16/local-workspace-size.json. Earlier36.59MiB was tracked source only and not a useful standalone full-space estimate. Large scratch/output is accumulated existing work, not a requirement to copy it all to new Linux training. Linux GPU environment peak/retained-artifact footprint still unmeasured; Windows CPU venv size not transferable. No cleanup, upload, install, training, commit or push.
+
+
+## 16 November 2026 — Initial storage budget calculated from Linux archives
+
+User requests an actual calculation. Inspected official CPU/cu126 PyTorch2.14.1 distributions, existing four requirement pins and LinuxCPython3.12wheel metadata. Own metadata/ZIP-range script resolves applicable dependency scenarios without full wheel downloads: CPU16packages0.209GiBcompressed/0.760GiBpayload;GPU34packages3.421GiBcompressed/6.159GiBpayload. Sum/count/positive-size checks pass; metadata resolver checks version constraints, not a pip/runtime install. SDK8.0.427 archive217,060,685bytes/gzip tar-size597,166,080bytes inspected via range. Microsoft now marks .NET8 out of support; note for later dependency reconciliation, no source upgrade adopted. Current source remainsf34.
+
+[Full calculation and limits](../docs/training/linux-preflight-2026-11-16/STORAGE_BUDGET.md), script, per-package public source URLs/hash/size data, version snapshots and storage-budget.json archived. Engineering allowances1GiBSDK/builds+0.1GiBfreshsource/git+5GiBrunartifacts+5GiBsystemreserve produce20.680GiBplanned peak/capacity budget; recommend25GiBavailableinitially.50GBpriorrequest remains comfortable, not required minimum. Run-artifact allowance is not a silent deletion policy. No guarantee candidateGPUbinary compatibility, exactinstalledfootprint or unlimited retention; must verify later. Windows7.37GBfolder mostly accumulatedscratch/output is not copied wholesale. No target mutation, package installation, simulation, training, commit or push.
+
+
+## 16 November 2026 — Alternative laptop inventory requested
+
+User reports another laptop with20cores and asks for Bash commands to assess it. Archived simple read-only OS/CPU/RAM/free-space/disk/GPU/tool checks at docs/training/alternative-laptop-2026-11-16/. No hardware conclusions or comparison until output arrives; physical cores versus threads unresolved. No install, training, storage modification, commit or push.
+
+
+## 16 November 2026 — Alternative Windows laptop partial inventory received
+
+Three user screenshots show RTX5060prefix/fullname truncated with8151MiBtotal VRAM; Python command not found/storealias, Git not recognized, .NEThost available but noSDKsfound. CPU20cores unverified, RAM/storageunknown. Recorded small own observation source in docs/training/alternative-laptop-2026-11-16/windows-observations.json; original screenshots local-only, processlist not copied. Request graphical CPU/RAM/disk views rather than more complex terminal commands. No installation, device-selection adoption, benchmark, training or commit/push.
+
+
+## 16 November 2026 — User reports30GBfree; initial storage target met provisionally
+
+User says storage issue resolved and30GBisfree. This supersedes treating older8.1Gfree as the current availability; no new df/path evidence supplied.30GBmeets rounded initialrequest/25GiBbudget if accessible to currentLinuxaccount. Filesystem/path and writeaccess still need verification as part of setup, not assumed from report. Record at docs/training/linux-preflight-2026-11-16/storage-update.json. No deletion by agent, installation, GPUvalidation, training, commit or push.
+
+
+## 16 November 2026 — Linux setup begins with branch clone command
+
+User asks next step after reporting30GBfree. Verified remoteMaskable-PPO still938b9f8f34. Supply single-branch clone into userhome/mini_motorways, with instruction to return output and not overwrite existing paths. No credentials requested. Local restart planning documents are not yet pushed/newtrainer notimplemented; clone obtains baseline only. No clone result, dependency install, training, commit or push performed by agent.
+
+
+## 16 November 2026 — New-chat handoff saved after reported successful clone
+
+User says clone is done and wants to continue in a new chat. Added training/HANDOFF.md with exact stopping point, approved hierarchy/curriculum and Stage1gate, branch/worktree constraints, local-only documentation status, Linux inventory/storage allowance, pending setup, and older decision-source paths. No clone output received; successful clone and30GBfree are user-reported, not agent verification. No new dependencies, trainer, training, commit/push. Current status points to handoff. Checked local handoff links and branch. Consulted OpenAI docs skill/product glossary; do not promise full automatic chat recall, use explicit handoff file instead.
+
+
+## 16 November 2026 — Detailed decision publication authorized
+
+User explicitly asks to push detailed decisions for the other computer. Selected50restart-specific ledger/spec/config/JSON/workbook/review-mapping/hardware/time-planning files migrated byte-identically from separate original checkout, total501151bytes. New docs/training/DECISIONS.md indexes full rationale and marks original flat/no-curriculum/old-device assumptions superseded by latest approvals. Existing hierarchy/curriculum,Stage1gate,inventory/storage calculation,shortplan and handoff included. Original snapshots and workbook review cells unchanged; new approval records remain separate. No model weights, game footage/private research, generated binaries, virtual environment or unrelated simulation changes included. Publication only, no newtrainer or training authorization. Checks: migration SHA256matches, staged file scope/credential scan, JSON/XLSX validity and current-entry-point links. Linux needs a manual fast-forward pull after push.

@@ -1,0 +1,29 @@
+{
+  "question": "Exact storage needed for this restart",
+  "measured_component": {
+    "baseline_revision": "938b9f80e67ca5341920a10e9e671164a474fc38",
+    "method": "sum git ls-tree -r -l HEAD blob sizes",
+    "tracked_file_bytes": 38368424,
+    "tracked_file_MiB": 36.59,
+    "exclusions": [
+      "git history",
+      "untracked planning files",
+      "dependencies",
+      "compiled outputs",
+      "checkpoints/logs/replays"
+    ]
+  },
+  "unresolved_components": [
+    "Exact Linux Python dependency closure, including chosen CPU/CUDA torch distribution; current requirements.txt pins four packages but not the full environment",
+    "Installed .NET/runtime/build footprint and peak download/extraction space",
+    "Actual new hierarchical checkpoint and replay footprint and retention count",
+    "System free-space reserve, distinct from project files"
+  ],
+  "existing_50GB": "Initial engineering allocation request, not measured minimum, not guaranteed sufficient for unlimited output retention",
+  "available_8_1G": "Reported current Linux availability; sufficiency for complete installation/training not established",
+  "sources": [
+    "https://pytorch.org/get-started/locally/",
+    "https://pip.pypa.io/en/stable/cli/pip_install/"
+  ],
+  "outcome": "Cannot supply an exact full requirement yet; resolve and measure chosen install/retention before claiming one. No large downloads or install on nearly full target."
+}

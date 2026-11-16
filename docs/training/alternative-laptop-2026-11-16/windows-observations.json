@@ -1,0 +1,28 @@
+{
+  "source": "Three user-supplied Windows PowerShell screenshots, 16 November 2026",
+  "os": "Windows, exact edition/build not shown",
+  "gpu": {
+    "visible_name_prefix": "NVIDIA GeForce RTX 5060",
+    "full_name_truncated": true,
+    "reported_total_memory_MiB": 8151,
+    "reported_used_memory_MiB": 1055,
+    "driver_label": "617.42",
+    "cuda_umd_label": "13.4",
+    "limits": "Exact suffix not visible; no inference of PyTorch compatibility from driver label"
+  },
+  "tools": {
+    "python_command": "Windows Python-not-found/store-alias message; other interpreter installations not excluded",
+    "git": "not recognized in this shell",
+    "dotnet": "host callable, but no SDKs found; runtime presence/version not measured"
+  },
+  "cpu": "User described20cores; not verified by screenshots",
+  "ram": "unknown",
+  "available_disk_space": "unknown",
+  "outcome": "Promising alternative to inspect, no training-speed comparison possible yet",
+  "next_step": "Use Task Manager Performance/CPU/Memory and File Explorer This PC screenshots to establish CPU/RAM/free disk space without more terminal complexity",
+  "limits": [
+    "Not directly inspected remotely",
+    "No installation, benchmark, training, new device adoption or IT permission assumption",
+    "Original screenshots remain local-only; no process listing or username copied"
+  ]
+}

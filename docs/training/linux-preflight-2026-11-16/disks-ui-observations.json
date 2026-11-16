@@ -1,0 +1,15 @@
+{
+  "source": "Three user-supplied GNOME Disks screenshots, 16 November 2026; images remain local-only",
+  "observations": [
+    "2TB physical disk /dev/sda",
+    "Partition /dev/sda2 labeled DATA, 2TB NTFS, Not Mounted",
+    "Selected trailing Free Space region is 1.1MB, Contents Unallocated Space",
+    "Small leading /dev/sda1 partition is Microsoft Reserved"
+  ],
+  "interpretation": "1.1MB is outside the allocated partitions, not available capacity inside DATA. Used/free file capacity of DATA remains unknown.",
+  "next_step": "IT-authorized access to DATA, then inspect file free space; previous mount attempt required IT credentials",
+  "limits": [
+    "No claim DATA is empty or full",
+    "No mount, write, deletion, format, partition change or training performed"
+  ]
+}

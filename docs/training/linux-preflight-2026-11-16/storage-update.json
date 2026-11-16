@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-16",
+  "source": "User reports: we have30GBfree now",
+  "available_space_reported": "30GB",
+  "status": "User-reported, no new df output or path provided",
+  "assessment": "Meets rounded initial30GBrequest if available on a writable workspace; earlier25GiB(~27GB) target was a planning budget, not installed measurement",
+  "unknowns": [
+    "Filesystem/path and current account write access",
+    "Whether newly freed space is root/home or another accessible filesystem",
+    "Actual installed dependency footprint and subsequent run retention"
+  ],
+  "outcome": "Storage need no longer presumed unresolved from old8.1Gmeasurement; verify intended workspace during setup. No training/install performed"
+}

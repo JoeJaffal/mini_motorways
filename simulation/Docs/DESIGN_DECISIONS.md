@@ -1735,3 +1735,28 @@ Ours asked every lane in the lookahead (only within it, at most six lanes), brak
 **Engineering choice** (OriginalReference). Each car keeps its registered lanes in path order (`RegisteredPath`). `RegisterRoute` with `keepExisting` keeps the common prefix with the new route and re-registers the rest: new stamp, new sequence number, and the 45 s commitment time cleared.
 
 **Measured.** Replay v21d, v21e sets: 752.7 against f33's 754.1 (paired -1.4 +/- 0.9, 8 of 60 runs change; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f34-replay-v21d-p21e.txt)). 99 suites, five-map checks and training readiness pass on `2026-11-10.f34`.
+
+
+## 16 November 2026 — Restart hierarchy proposal; simulator unchanged
+
+User assigns roundabout follow-up to another person and requires restart work on Maskable-PPO. [Proposed focus hierarchy](../../docs/training/hierarchy-proposal-2026-11-16/README.md) preserves model-chosen neighboring road/bridge connections, paused editing, one-second waits, score-only reward and physical legality masks. Focus does not restrict construction locations or generate routes. Cadence, heads and credit design are engineering proposals awaiting user review; no simulator semantics changed, no training, no new roundabout control approval. See training/EXPERIMENT_HISTORY.md for chronological context; previous local planning records remain in the separate older checkout pending migration.
+
+
+## 16 November 2026 — Focus hierarchy accepted; direct construction rule reaffirmed
+
+User adopts the agent's manager/executor recommendation and requires justified revision as needed. [Record](../../docs/training/hierarchy-proposal-2026-11-16/README.md). Manager selects focus only; executor chooses each neighboring road/bridge connection. No generated routes, route menus or automatic completion. Focus does not change physical legality or simulator physics. Initial design accepted, not implemented or proven; future user-constraint changes need explicit agreement. No engine edit or training.
+
+
+## 16 November 2026 — Curriculum direction accepted, physics unchanged
+
+User resumes curriculum discussion and accepts broad staged progression. [Curriculum record](../../docs/training/curriculum-design-2026-11-16/README.md). First-stage controlled house/destination scenarios remain engineering proposals pending exact setup and evaluation rules; they change scenario distribution, not native physics. Preserve score-only rewards, physical legality masks and direct model construction without generated routes. No engine edits, scenario implementation or training.
+
+
+## 16 November 2026 — Stage 1 concept approved; planning checklist
+
+User approves one matching house/destination on varied short clear land layouts, actual scored service, model-chosen construction/waits and separate validation layouts. Exact spawn/inventory settings, horizon and passing thresholds remain open; physics and rewards unchanged. [Approval record](../../docs/training/curriculum-design-2026-11-16/README.md); [main checklist](../../training/PLAN.md). No scenario implementation or training.
+
+
+## 16 November 2026 — Stage 1 evaluation gate approved
+
+User approves 180 simulated seconds and a passing cohort of at least 90/100 held-out layouts, each with at least 3 scored trips. Paused editing consumes no game time; native score-only reward and physics remain unchanged. Verify native trip timing feasibility before using this initial gate; it is evaluation bookkeeping, not a completion bonus. [Approval and limits](../../docs/training/curriculum-design-2026-11-16/README.md). No implementation, episode or training this turn.
