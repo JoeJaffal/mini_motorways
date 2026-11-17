@@ -1,3 +1,5 @@
+New cloud chat: [start here](../../training/CLOUD_START_HERE.md). RootAGENTS.md points to this portable context guide; inspect currentcloudwork before assuming older setup state.
+
 # Start here: Maskable PPO restart
 
 [Current decisions and complete detail index](DECISIONS.md) → [handoff](../../training/HANDOFF.md) → [short checklist](../../training/PLAN.md).

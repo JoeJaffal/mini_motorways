@@ -8016,3 +8016,8 @@ User explicitly asks to push detailed decisions for the other computer. Selected
 ### Publication outcome
 
 Detailed decisions committed as4c0700d508636c8e3930bbc26beb71b1ee5dcb38 (84files) and successfully pushed toorigin/Maskable-PPO. Verified remote head equals local commit; worktree clean immediately after publication. GitHub entry point: https://github.com/JoeJaffal/mini_motorways/blob/Maskable-PPO/docs/training/DECISIONS.md . Linux clone must pull to receive it. No source simulator/trainer change or training run.
+
+
+## 17 November 2026 — Cloud continuity guide and stale branch guidance corrected
+
+User reports new cloud chat seems to lack accumulated context. Verified remoteMaskable-PPO still6bd7f71 before changes. Found concrete instruction conflict: rootAGENTS.md still said training stays onmohammad, while explicit user instruction/handoff selectedMaskable-PPO. Corrected root guidance toread portablecloudstart/currentdecisions/handoff and useMaskable-PPO as source branch. Added training/CLOUD_START_HERE.md with approved rules, hierarchy/curriculum/gate, detailed-source precedence, device distinction and known stopping point. No automatic chat-history inheritance claim; no access to new cloud chat or verification of its code/state. Existing local16Novstate is not assumed to override newcloudprogress. Documentation publication follows prior request to make detailed decisions available to the other environment. No simulator/trainer edit or training. Checks: primary guide links, branch instruction consistency, no altered userconstraints; existingwork preserved.
