@@ -1012,3 +1012,31 @@ Nothing in the running arms was changed. Scripts ran from a scratch folder again
 | gp-7 | 34 | 1180.8 | 1364.7 | 1352.3 | 0.262 | 0 | 120 | 1313.6 | 10,812 |
 | gp-7 | 35 | 1169.8 | 1450.3 | 1109.4 | 0.264 | 0 | 116 | 1260.7 | 11,112 |
 | gp-7 | 36 | 1232.9 | 1372.2 | 1361.8 | 0.269 | 0 | 121 | 1274.5 | 11,412 (+120 epoch) |
+
+**gp-7 fifth epoch (end of the arm's gen 41), 2026-11-17 21:41: nothing inserted.**
+- 10,714 records, empty slots [0, 1, 2, 3], 60 proposals. The 2 kept are target-slot trees again, this time on
+  `detour_ratio` rather than `octile`: `mul(min(sub(shop_overcrowded, shop_overcrowded), mul(-0.45, detour_ratio)),
+  neg(neg(pair_connected)))` (w0 0.210; `sub(x, x)` is 0, so this is about `-0.45·detour_ratio·pair_connected`) and
+  `mul(detour_ratio, max(shop_demand, 0.085))` (w0 1.097).
+- Race on probe maps 10096-10119: tree 0 −9.9 (p 0.564) and −25.7 (p 0.612); tree 1 −43.5 (p 0.688) and +10.7
+  (p 0.438). Charged 120 games (ledger 13,144). Probe counter now 10120. Next epoch at the end of gen 46.
+- gp-7 still has every slot empty, so its generations reproduce cma-7's exactly (gp-7 37-41 = cma-7 37-41).
+- Per-generation CSV of every training game: `evolved_rules/ops/games_csv7.py` → `output/evolved_rules/games/games7.csv`
+  (self-check against generations.jsonl passes).
+- Per-arm trend guards since the last entry (all pass, threshold 997.9):
+
+| Arm | Gen | Pop avg | Pop best | TM mean | σ | Cut | Minutes | Rolling 3 TM | Ledger |
+|---|---|---|---|---|---|---|---|---|---|
+| cma-7 | 47 | 1289.9 | 1556.2 | 1482.4 | 0.286 | 0 | 95 | 1344.6 | 14,336 |
+| cma-7 | 48 | 1184.1 | 1335.2 | 1264.6 | 0.281 | 0 | 83 | 1319.1 | 14,636 |
+| cma-7 | 49 | 1213.1 | 1366.4 | 1349.6 | 0.280 | 0 | 82 | 1365.5 | 14,936 |
+| cma-7 | 50 | 1269.6 | 1476.2 | 1122.1 | 0.281 | 0 | 91 | 1245.4 | 15,236 |
+| cma-7 | 51 | 1222.3 | 1444.0 | 1348.5 | 0.280 | 0 | 82 | 1273.4 | 15,536 |
+| cma-7 | 52 | 1311.3 | 1547.8 | 1282.7 | 0.283 | 0 | 93 | 1251.1 | 15,836 |
+| cma-7 | 53 | 1264.7 | 1422.8 | 1192.7 | 0.288 | 0 | 88 | 1274.6 | 16,136 |
+| cma-7 | 54 | 1184.7 | 1372.0 | 1143.2 | 0.293 | 1 | 84 | 1206.2 | 16,428 |
+| gp-7 | 37 | 1238.1 | 1393.1 | 1202.6 | 0.273 | 0 | 118 | 1224.6 | 11,832 |
+| gp-7 | 38 | 1235.1 | 1493.0 | 1320.1 | 0.274 | 1 | 119 | 1294.8 | 12,124 |
+| gp-7 | 39 | 1120.4 | 1418.7 | 1284.1 | 0.274 | 0 | 118 | 1268.9 | 12,424 |
+| gp-7 | 40 | 1166.7 | 1382.9 | 1209.2 | 0.276 | 0 | 116 | 1271.1 | 12,724 |
+| gp-7 | 41 | 1252.6 | 1433.9 | 1295.2 | 0.281 | 0 | 130 | 1262.9 | 13,024 (+120 epoch) |
