@@ -988,3 +988,27 @@ Nothing in the running arms was changed. Scripts ran from a scratch folder again
 | gp-7 | 29 | 1078.4 | 1296.6 | 1216.8 | 0.242 | 1 | 97 | 1234.2 | 9,192 |
 | gp-7 | 30 | 1136.9 | 1338.3 | 1249.1 | 0.246 | 0 | 114 | 1234.9 | 9,492 |
 | gp-7 | 31 | 1265.1 | 1515.4 | 1364.7 | 0.252 | 0 | 124 | 1276.9 | 9,792 (+120 epoch) |
+
+**gp-7 fourth epoch (end of the arm's gen 36), 2026-11-17 10:49: nothing inserted.**
+- 10,522 records, empty slots [0, 1, 2, 3], 60 proposals. The 2 kept are target-slot trees built on `octile` for the
+  fourth epoch running: `if_gt(0.4, pair_connected, 2.0, octile)` (w0 0.043) and
+  `sub(sub(octile, detour_ratio), neg(detour_ratio))` (w0 0.061).
+- Race on probe maps 10072-10095: tree 0 +64.9 (p 0.148) and +22.5 (p 0.388); tree 1 −18.1 (p 0.620) and −54.4
+  (p 0.807). Charged 120 games (ledger 11,532). Probe counter now 10096. Next epoch at the end of gen 41.
+- Per-arm trend guards since the last entry (all pass, threshold 997.9):
+
+| Arm | Gen | Pop avg | Pop best | TM mean | σ | Cut | Minutes | Rolling 3 TM | Ledger |
+|---|---|---|---|---|---|---|---|---|---|
+| cma-7 | 39 | 1120.4 | 1418.7 | 1284.1 | 0.274 | 0 | 78 | 1268.9 | 11,944 |
+| cma-7 | 40 | 1166.7 | 1382.9 | 1209.2 | 0.276 | 0 | 79 | 1271.1 | 12,244 |
+| cma-7 | 41 | 1252.6 | 1433.9 | 1295.2 | 0.281 | 0 | 89 | 1262.9 | 12,544 |
+| cma-7 | 42 | 1283.3 | 1432.4 | 1388.2 | 0.284 | 1 | 88 | 1297.6 | 12,836 |
+| cma-7 | 43 | 1286.5 | 1471.3 | 1114.3 | 0.288 | 0 | 89 | 1265.9 | 13,136 |
+| cma-7 | 44 | 1205.1 | 1415.2 | 1306.1 | 0.290 | 0 | 84 | 1269.5 | 13,436 |
+| cma-7 | 45 | 1245.4 | 1451.9 | 1341.2 | 0.291 | 0 | 89 | 1253.9 | 13,736 |
+| cma-7 | 46 | 1163.4 | 1378.4 | 1210.2 | 0.289 | 0 | 81 | 1285.9 | 14,036 |
+| gp-7 | 32 | 1194.6 | 1479.4 | 1268.2 | 0.256 | 0 | 128 | 1294.0 | 10,212 |
+| gp-7 | 33 | 1271.8 | 1432.0 | 1320.2 | 0.259 | 0 | 133 | 1317.7 | 10,512 |
+| gp-7 | 34 | 1180.8 | 1364.7 | 1352.3 | 0.262 | 0 | 120 | 1313.6 | 10,812 |
+| gp-7 | 35 | 1169.8 | 1450.3 | 1109.4 | 0.264 | 0 | 116 | 1260.7 | 11,112 |
+| gp-7 | 36 | 1232.9 | 1372.2 | 1361.8 | 0.269 | 0 | 121 | 1274.5 | 11,412 (+120 epoch) |
