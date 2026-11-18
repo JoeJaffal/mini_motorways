@@ -212,8 +212,8 @@ Derived (2026-11-14): the L pre-play queue is n_s + n_val + 900 + 900 hand = 2,3
 - [x] Pre-registration committed (hash `6b80889`, tag `cma7-launch`; identity gate (4) with the frozen space: 20/20 identical, 0 rejected draws, run on a clean worktree of `fa7010c` = gp7-v1)
 - [x] cma-7 trunk launched from worktree `cma7-launch` (time **2026-11-14 23:10**, W **10**, λ/m **24/12**; `../mm-cma7`, σ0 0.3, seed 1, `--log-gen0`, stop-at 2026-11-19 01:22; config commit 6b80889, dirty false, gp7-v1)
 - [x] gp-7-lite forked at gen **17** from `gp7-fork` (or dropped at CL3) (2026-11-15 17:26, well before CL3: code gp7-v2 `0000650`, worktree `../mm-gp7arm`; full suite 866 passed, 23 skipped. Fork gate on the real trunk snapshot (`trunk-gen17`): the 24 ask() draws, the 12 seeds and the mean text are byte-identical between v1 and v2 through `fork()`, and 8 trunk games replayed by v2 are identical on trips/seconds/commands with 0 rejected draws (`plans/gp7-fork/`). The trunk was stopped by SIGTERM to its process group and resumed with `--workers 5`; gp-7 started with `--fork-from` on 5 workers; both arms are under the watchdog, with 5 hosts each)
-- [ ] Runs stopped at T_stop (status budget; gens: cma-7 ____, gp-7 ____)
-- [ ] Challenger commit and text hashes frozen; validation played; C\* = ____
+- [x] Runs stopped at T_stop (status budget; gens: cma-7 **74** (0-73), gp-7 **54** (0-53)) (2026-11-19 00:06 and 00:07, before 01:22: no further generation could finish. Ledgers 22,128 and 16,976, 23% apart)
+- [ ] Challenger commit and text hashes frozen (**done** 00:12, 4982e73: commit 6b80889, `final/gp7/FREEZE.md`); validation played (started 00:13); C\* = ____
 - [ ] Test played once (n = ____); result ____; headline = ____
 - [ ] EXPERIMENTS.md entry (average next to best); results copied to `evolved_rules/final/gp7/`; committed
 - [ ] Scheduled tasks removed

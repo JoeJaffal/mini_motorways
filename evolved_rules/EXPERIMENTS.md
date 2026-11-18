@@ -1099,3 +1099,20 @@ Nothing in the running arms was changed. Scripts ran from a scratch folder again
 | gp-7 | 49 | 1213.1 | 1366.4 | 1349.6 | 0.280 | 0 | 118 | 1365.5 | 15,656 |
 | gp-7 | 50 | 1269.6 | 1476.2 | 1122.1 | 0.281 | 0 | 132 | 1245.4 | 15,956 |
 | gp-7 | 51 | 1222.3 | 1444.0 | 1348.5 | 0.280 | 0 | 119 | 1273.4 | 16,256 (+120 epoch) |
+
+**T_stop: both runs ended `budget`, 2026-11-19 00:06-00:07 (stop_at 01:22; no further generation could finish).**
+- cma-7: 74 generations (0-73), ledger 22,128 games. gp-7: 54 generations (0-53), ledger 16,976 games, including
+  the 17 shared trunk generations and 840 race games. **The ledgers differ by 23% (more than 10%, plan 2.4):** gp-7
+  had about 38% more CPU per game on the same 5 workers, so it played fewer generations in the same time.
+- Final in-bounds means: cma-7 `8b38684b600cb458` (after gen 73), gp-7 `e8b8b4cad3d5b71c` (after gen 53). gp-7 never
+  inserted a tree, so its final mean is cma-7's own gen-53 mean.
+- Frozen for validation and test: commit 6b80889 (`cma7-launch`), see `final/gp7/FREEZE.md`.
+- Last trend guards (all pass, threshold 997.9):
+
+| Arm | Gen | Pop avg | Pop best | TM mean | σ | Cut | Minutes | Rolling 3 TM | Ledger |
+|---|---|---|---|---|---|---|---|---|---|
+| cma-7 | 71 | 1202.5 | 1374.0 | 1174.4 | 0.297 | 0 | 81 | 1213.4 | 21,528 |
+| cma-7 | 72 | 1305.6 | 1508.4 | 1353.8 | 0.299 | 0 | 89 | 1229.6 | 21,828 |
+| cma-7 | 73 | 1292.0 | 1477.0 | 1289.9 | 0.299 | 0 | 90 | 1272.7 | 22,128 |
+| gp-7 | 52 | 1311.3 | 1547.8 | 1282.7 | 0.283 | 0 | 131 | 1251.1 | 16,676 |
+| gp-7 | 53 | 1264.7 | 1422.8 | 1192.7 | 0.288 | 0 | 123 | 1274.6 | 16,976 |

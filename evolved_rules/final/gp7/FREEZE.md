@@ -1,4 +1,4 @@
-# gp-7 / cma-7 challenger freeze (plan 2.2), 2026-11-19 ~00:50, before any validation game
+# gp-7 / cma-7 challenger freeze (plan 2.2), 2026-11-19 00:12 (commit 4982e73), before any validation game (first one started 00:13)
 
 Both runs ended with status **budget** ("stop time 2026-11-19T01:22 reached"): cma-7 at 00:06:43 after 74
 generations (0-73), gp-7 at 00:07:43 after 54 (0-53). Each stopped early because no further generation could finish
