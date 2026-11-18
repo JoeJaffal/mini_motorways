@@ -1116,3 +1116,10 @@ Nothing in the running arms was changed. Scripts ran from a scratch folder again
 | cma-7 | 73 | 1292.0 | 1477.0 | 1289.9 | 0.299 | 0 | 90 | 1272.7 | 22,128 |
 | gp-7 | 52 | 1311.3 | 1547.8 | 1282.7 | 0.283 | 0 | 131 | 1251.1 | 16,676 |
 | gp-7 | 53 | 1264.7 | 1422.8 | 1192.7 | 0.288 | 0 | 123 | 1274.6 | 16,976 |
+
+**Validation pick (plan 2.2), 2026-11-19 01:55: C\* = gp-7 final (`e8b8b4cad3d5b71c`).**
+- 200 validation maps 1550-1749, each challenger paired with L's pre-played games. Paired mean difference vs L:
+  x0\* +147.5, cma-7 final +329.2, gp-7 final +352.8. This is the selection only; validation is not the result.
+- gp-7 final is cma-7's own gen-53 mean, so the pick is between two points of one search path. Gen 53 beat gen 73
+  by 23.6 on these maps (the plan 2.4 secondary, not yet tested).
+- The test (C\* on 6100-6999, one look, one-sided paired t at 0.05) started at 01:55 automatically.

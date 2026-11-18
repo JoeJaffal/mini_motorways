@@ -1,0 +1,10 @@
+{
+ "c_star": "gp7_final",
+ "validation_seeds": 200,
+ "validation_mean_diff": {
+  "x0star": 147.495,
+  "cma7_final": 329.18,
+  "gp7_final": 352.845
+ },
+ "reason": "test n = 0 < 400 complete seeds at T_freeze"
+}
