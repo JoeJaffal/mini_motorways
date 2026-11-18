@@ -1040,3 +1040,32 @@ Nothing in the running arms was changed. Scripts ran from a scratch folder again
 | gp-7 | 39 | 1120.4 | 1418.7 | 1284.1 | 0.274 | 0 | 118 | 1268.9 | 12,424 |
 | gp-7 | 40 | 1166.7 | 1382.9 | 1209.2 | 0.276 | 0 | 116 | 1271.1 | 12,724 |
 | gp-7 | 41 | 1252.6 | 1433.9 | 1295.2 | 0.281 | 0 | 130 | 1262.9 | 13,024 (+120 epoch) |
+
+**gp-7 sixth epoch (end of the arm's gen 46), 2026-11-18 08:46: nothing inserted.**
+- 10,942 records, empty slots [0, 1, 2, 3], 60 proposals. The 2 kept are target-slot trees on `octile` again:
+  `sub(shop_overcrowded, octile)` (w0 4.7e-8) and `pdiv(octile, shop_demand)` (w0 0.0027).
+- Race on probe maps 10120-10143: tree 0 0.0 (p 1.0) and 0.0 (p 1.0); tree 1 −32.0 (p 0.664) and +27.4
+  (p 0.312). Charged 120 games (ledger 14,756). Probe counter now 10144. Next (last before T_stop) epoch at the end
+  of gen 51.
+- **Wasted race:** tree 0's two arms played games identical to the baseline (difference exactly 0). Its w0 of
+  4.7e-8 passed the screen (10% of logged decisions change at that weight, most likely by breaking exact ties), but a
+  weight that small has no effect in play, very likely because policy texts carry 4 decimals and it rounds to 0. So
+  48 of the 120 race games could not have found anything. Not fixed in the running arm (frozen); noted for after
+  Nov 19 (screen should require w0 to survive text rounding).
+- Per-arm trend guards since the last entry (all pass, threshold 997.9):
+
+| Arm | Gen | Pop avg | Pop best | TM mean | σ | Cut | Minutes | Rolling 3 TM | Ledger |
+|---|---|---|---|---|---|---|---|---|---|
+| cma-7 | 55 | 1242.3 | 1430.6 | 1358.0 | 0.295 | 0 | 81 | 1231.3 | 16,728 |
+| cma-7 | 56 | 1311.1 | 1631.2 | 1302.2 | 0.296 | 0 | 94 | 1267.8 | 17,028 |
+| cma-7 | 57 | 1188.3 | 1346.0 | 1142.2 | 0.300 | 0 | 78 | 1267.5 | 17,328 |
+| cma-7 | 58 | 1274.2 | 1447.2 | 1249.8 | 0.303 | 0 | 81 | 1231.4 | 17,628 |
+| cma-7 | 59 | 1156.4 | 1309.0 | 1151.0 | 0.304 | 0 | 81 | 1181.0 | 17,928 |
+| cma-7 | 60 | 1213.1 | 1590.9 | 1409.2 | 0.306 | 0 | 85 | 1270.0 | 18,228 |
+| cma-7 | 61 | 1210.8 | 1421.2 | 1256.3 | 0.307 | 0 | 79 | 1272.2 | 18,528 |
+| cma-7 | 62 | 1147.1 | 1346.6 | 1195.9 | 0.306 | 0 | 78 | 1287.1 | 18,828 |
+| gp-7 | 42 | 1283.3 | 1432.4 | 1388.2 | 0.284 | 1 | 128 | 1297.6 | 13,436 |
+| gp-7 | 43 | 1286.5 | 1471.3 | 1114.3 | 0.288 | 0 | 131 | 1265.9 | 13,736 |
+| gp-7 | 44 | 1205.1 | 1415.2 | 1306.1 | 0.290 | 0 | 122 | 1269.5 | 14,036 |
+| gp-7 | 45 | 1245.4 | 1451.9 | 1341.2 | 0.291 | 0 | 129 | 1253.9 | 14,336 |
+| gp-7 | 46 | 1163.4 | 1378.4 | 1210.2 | 0.289 | 0 | 115 | 1285.9 | 14,636 (+120 epoch) |

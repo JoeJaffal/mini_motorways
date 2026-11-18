@@ -38,3 +38,9 @@ depends on how the final policy does against cma-1's 1,021.2. Nothing here is ap
 
 - The powered post-T_stop test of the final policy: optional and not approved.
 - The final test result and the write-up (due Nov 19 20:00) feed all of the above.
+
+## Found during the run (to fold into section 2)
+
+- 2026-11-18, gp-7 epoch 6: the screen kept a tree with w0 = 4.7e-8. Its race games were identical to the
+  baseline (diff 0), very likely because the 4-decimal policy text rounds that weight to 0. The screen should only
+  keep trees whose w0 survives text rounding, and the race should skip no-op arms.
