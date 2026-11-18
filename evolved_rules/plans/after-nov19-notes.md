@@ -44,3 +44,5 @@ depends on how the final policy does against cma-1's 1,021.2. Nothing here is ap
 - 2026-11-18, gp-7 epoch 6: the screen kept a tree with w0 = 4.7e-8. Its race games were identical to the
   baseline (diff 0), very likely because the 4-decimal policy text rounds that weight to 0. The screen should only
   keep trees whose w0 survives text rounding, and the race should skip no-op arms.
+- 2026-11-18, gp-7 epoch 7: the same thing again (w0 = 4.66e-8). That value is W_MAX / 2^30, the floor of the w0
+  bisection, so these are trees that only break exact ties. Two of the last two epochs' four raced trees were no-ops.
