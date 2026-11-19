@@ -1,8 +1,8 @@
 # gp-7 / cma-7: final result (2026-11-19)
 
 The pre-registered plan is [`../../plans/2026-11-14-gp7-cma7-plan.md`](../../plans/2026-11-14-gp7-cma7-plan.md).
-Run-by-run notes are in [`../../EXPERIMENTS.md`](../../EXPERIMENTS.md). Every number below can be recomputed
-from the files in this folder.
+Run-by-run notes are in [`../../EXPERIMENTS.md`](../../EXPERIMENTS.md). The headline and secondary differences
+recompute exactly from the two CSVs in `games/`. The p-values and intervals come from `stats7` (see `headline7.json`).
 
 ## Headline
 
@@ -39,9 +39,10 @@ features, plus the planner's learned cost and target weights, with lights and ro
 
 | Step | What happened |
 |---|---|
+| Start | x0\* = L's (cma-1's) rule weights plus the screened "Fast" planner start (lights off), chosen on 300 screen games before launch. |
 | Training | cma-7: sep-CMA-ES, 24 candidates per generation, each on 12 maps. 17 shared trunk generations, then cma-7 and gp-7 side by side until the time budget ran out. |
 | Stop | Both runs ended `budget` (not converged) on 2026-11-19 at 00:06-00:07. cma-7 reached gen 73, gp-7 gen 53. |
-| Validation | 3 frozen challengers on maps 1550-1749 (n = 200), paired with L. Mean gain over L: x0\* +147.5, cma-7 final +329.2, **gp-7 final +352.8** → C\* = gp-7 final (`pick7.json`). |
+| Validation | 3 frozen challengers on maps 1550-1749 (n = 200), paired with L (mean 943.5). Means: x0\* 1091.0 (+147.5), cma-7 final 1272.7 (+329.2), **gp-7 final 1296.4 (+352.8)** → C\* = gp-7 final (`pick7.json`). |
 | Test | C\* on 6100-6999, one look → headline (`headline7.json`). |
 
 ![Training curve](curve.svg)
@@ -70,7 +71,8 @@ Last generations (population average next to the best):
   measurably help.
 - **The two runs' charged-game ledgers differ by 23%** (16,976 vs 22,128), more than the plan's 10% flag. gp-7's
   generations took about 45% more wall time on the same 5 workers, so it finished fewer of them.
-- The Holm pair mixes a one-sided p (vs hand) and a two-sided p (gp-7 vs cma-7), as the plan specifies.
+- The plan makes gp-7 vs cma-7 two-sided and does not state a side for headline vs hand. I used one-sided there, like
+  the headline; doubling that p changes nothing.
 
 ## Dynamic GP (gp-7 epochs)
 
@@ -115,14 +117,15 @@ comes from building and using more road, not from using each tile better. This i
 |---|---|---|
 | Generations | 74 (0-73) | 37 (17-53), after the shared trunk 0-16 |
 | Charged games | 22,128 | 11,060 in generations + 840 race games (ledger 16,976 incl. trunk) |
-| Games played | 22,089 | 11,504 (444 uncharged: each generation's 12 trend-monitor games replayed with decision logging for the screen) |
+| Games played | 22,089 | 12,344: 11,504 in generations (444 of them uncharged: each generation's 12 trend-monitor games replayed with decision logging for the screen) + 840 race games |
 | Cache hits | 39 (gen 17, right after the fork) | 0 |
-| Worker-hours | 181 (trunk, 10 workers) + 393 (gens 17-73, 5 workers) = 574 | 367 (5 workers) |
-| Restarts | 1 planned (at the fork) | none |
+| Worker-hours | 181 (trunk, 10 workers) + 393 (gens 17-73, 5 workers) = 574 | 393 (5 workers): 367 in generations + 26 in the 7 epochs |
+| Restarts and downtime | 1 planned restart at the fork, about 13 min lost | none; the 5.2 h outside generations is the epochs |
 
-- Worker-hours = workers × generation wall time.
-- Validation and test took 1,500 more games (00:13-05:07, 10 workers). No chunk failed, and no game hit the
-  3600 s cap.
+- Worker-hours = workers × wall time. For gp-7, the epoch time is its wall-clock time from fork to stop (78.7 h)
+  minus its generation time (73.5 h).
+- Validation and test took 1,500 more games (00:13-05:07, 10 workers). No chunk failed, and no validation or test
+  game hit the 3600 s cap.
 - Rejected actions on test: gp-7 final 4, L 1, hand 2, over 900 games each.
 - L and hand were pre-played by the gp6-final code (f7bf5f5) on the same simulator (f34) and cap.
 
