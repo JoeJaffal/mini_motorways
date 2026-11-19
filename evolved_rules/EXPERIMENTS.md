@@ -1123,3 +1123,26 @@ Nothing in the running arms was changed. Scripts ran from a scratch folder again
 - gp-7 final is cma-7's own gen-53 mean, so the pick is between two points of one search path. Gen 53 beat gen 73
   by 23.6 on these maps (the plan 2.4 secondary, not yet tested).
 - The test (C\* on 6100-6999, one look, one-sided paired t at 0.05) started at 01:55 automatically.
+
+**Test (plan 2.3), 2026-11-19 01:55-05:07, looked at once: headline = gp-7 final (`e8b8b4cad3d5b71c`), adopted over L.**
+- C\* played all 900 test maps 6100-6999 (9 chunks of 100, 0 failed), so n = 900. Paired with L's pre-played games
+  on the same maps; decided by `stats7.decide_headline`, unchanged since 4453544. Record: `final/gp7/headline7.json`.
+- **Paired mean difference vs L: +256.5 trips** (SD 438.0, SE 14.6), one-sided t = 17.57, p = 6.4e-60.
+  BCa 90% [232.2, 280.5] (one-sided 95% lower bound 232.2); Wilcoxon one-sided p = 4.3e-58. gp-7 final beat L on
+  682 of 900 maps (1 tie).
+
+| Policy (test 6100-6999, n = 900) | Mean (average) | Median | Best | Worst | SD |
+|---|---|---|---|---|---|
+| gp-7 final (headline) | 1243.2 | 1245.5 | 2503 | 151 | 352.5 |
+| L = cma-1 3-tree | 986.7 | 995.5 | 1967 | - | - |
+| hand | 569.6 | - | - | - | - |
+
+- L's 1021.2 was its mean on the 200-map L-selection screen (plan 1). On these 900 test maps L averages 986.7, so
+  the paired +256.5 is the comparison to quote (+26.0% over L on the same maps).
+- **Secondaries (plan 2.4, Holm over 2):**
+  - Headline vs hand on test: +673.6 (BCa 90% [652.5, 694.9]), Holm-adjusted p = 5.6e-276.
+  - gp-7 final vs cma-7 final on validation, two-sided: +23.7 (SD 450.5, BCa 95% [-38.1, 85.9]), p = 0.458
+    (Holm 0.458); gp-7 ahead on 109 of 200 maps. **No detectable difference.** gp-7 final is cma-7's own gen-53
+    mean (gp-7 inserted no tree), so this compares two points of one search path, not two methods. The ledgers
+    differ by 23% (16,976 vs 22,128 charged games), more than the 10% the plan flags.
+- Both training runs ended `budget`, not converged.
