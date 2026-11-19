@@ -1146,3 +1146,12 @@ Nothing in the running arms was changed. Scripts ran from a scratch folder again
     mean (gp-7 inserted no tree), so this compares two points of one search path, not two methods. The ledgers
     differ by 23% (16,976 vs 22,128 charged games), more than the 10% the plan flags.
 - Both training runs ended `budget`, not converged.
+
+**Write-up and final records, 2026-11-19: [`final/gp7/README.md`](final/gp7/README.md).**
+- `final/gp7/` now holds the per-map test and validation games, both runs' generations/config/status/final means,
+  gp-7's epoch records, the headline script's output, and `GENERATIONS.md`. That file has one row for every
+  generation of both runs, with the population average next to the best. It also fills gp-7 gens 22-23, which
+  had no rows above. Their values are identical to cma-7's.
+- Check: gp-7 gens 0-53 match cma-7 row by row (maps, trend-monitor hash, population average and best).
+- Test descriptive: gp-7 final builds 257.7 road tiles per game against L's 169.1, at 4.76 vs 5.78 trips per tile.
+  Its gain comes from building and using more road.
