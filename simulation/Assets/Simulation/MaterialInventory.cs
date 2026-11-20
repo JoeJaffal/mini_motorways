@@ -34,7 +34,7 @@ namespace MotorwaysSim {
    // original weight positions and total, falling back to the last package when the draw is not used up.
    var packages=available.Select(v=>v.offer).ToList();var weights=available.Select(v=>v.weight).ToList();double total=weights.Sum();
    for(int i=0;i<2&&packages.Count>0;i++){
-    double value=random.NextDouble()*total;int pick=packages.Count-1;
+    double value=RandDouble(RandomUse.Offer,upgradeWeeksGranted,i)*total;int pick=packages.Count-1;
     for(int j=0;j<packages.Count;j++){value-=weights[j];if(value<=0){pick=j;break;}}
     UpgradeChoices.Add(packages[pick]);packages.RemoveAt(pick);
    }
@@ -42,7 +42,7 @@ namespace MotorwaysSim {
    foreach(var left in packages)weeksNotOffered[left.Type]++;
    foreach(var shown in UpgradeChoices)weeksNotOffered[shown.Type]=0;
    if(UpgradeChoices.Count==0)return; // the original grants an empty concrete package: nothing to choose
-   Shuffle(UpgradeChoices);
+   Shuffle(UpgradeChoices,-1,upgradeWeeksGranted);
   }
   public bool ChooseUpgrade(int index){
    if(Rules.UnlimitedConstruction||index<0||index>=UpgradeChoices.Count)return Reject("No such original upgrade choice");

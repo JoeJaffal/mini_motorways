@@ -73,6 +73,8 @@ def main() -> int:
     p.add_argument("--workers", type=int, required=True)
     p.add_argument("--main", required=True, help="the main clone (for the ops folder: pause flag and runs.log)")
     p.add_argument("--not-after", default="", help="ISO timestamp with UTC offset (T_freeze); optional")
+    p.add_argument("--city", default="LosAngeles", help="city map passed to evaluate (exact case)")
+    p.add_argument("--randomness", default="stream", choices=("stream", "keyed"), help="simulator randomness (f35+)")
     a = p.parse_args()
 
     lo, hi = (int(x) for x in a.seeds.split("-"))
@@ -107,9 +109,10 @@ def main() -> int:
                 _log(main_dir, f"{name}: not started (would cross --not-after {a.not_after})")
                 return 2
         t = time.time()
-        _log(main_dir, f"{name}: start seeds {start}-{end} policy {a.policy} cwd {Path.cwd()}")
+        _log(main_dir, f"{name}: start seeds {start}-{end} city {a.city} randomness {a.randomness} policy {a.policy} cwd {Path.cwd()}")
         rc = subprocess.run([sys.executable, "-m", "evolved_rules.evaluate", "--policy", a.policy,
-                             "--seeds", f"{start}-{end}", "--workers", str(a.workers), "--run", name],
+                             "--seeds", f"{start}-{end}", "--workers", str(a.workers), "--run", name,
+                             "--city", a.city, "--randomness", a.randomness],
                             env=env, cwd=Path.cwd(), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode
         last_wall = time.time() - t
         ok = (run / "summary.json").exists()

@@ -189,12 +189,14 @@ namespace MotorwaysSim
             PlacementWeights(color,kind,grouping,relaxed,out var weight,out var driveable,out int x0,out int y0,out int x1,out int y1);
             var layouts=kind==PlacementKind.House?HouseLayouts:kind==PlacementKind.Destination?SingleLayouts:kind==PlacementKind.DoubleDestination?DoubleLayouts:StationLayouts;
             var candidates=new List<PlacementCandidate>();
+            int nth=Rules.KeyedRandom?Buildings.Count(b=>b.Color==color&&b.IsHouse==(kind==PlacementKind.House)):0;
             // The original scans rows from its minimum y (our bottom row) and columns from the left.
             for(int y=y1;y>=y0;y--)for(int x=x0;x<=x1;x++)
             {
                 if(weight[x,y]<0)continue;
-                foreach(var layout in layouts)
+                for(int li=0;li<layouts.Length;li++)
                 {
+                    var layout=layouts[li];
                     if(!AverageFootprintWeight(layout,x,y,weight,x0,y0,x1,y1,out double average))continue;
                     bool ok=true;
                     for(int i=0;i<layout.Driveways.Length&&ok;i++)
@@ -202,7 +204,7 @@ namespace MotorwaysSim
                         var from=new Cell(x+layout.Driveways[i].X,y+layout.Driveways[i].Y);var to=from+Directions[layout.DrivewayDirections[i]];
                         ok=to.X>=x0&&to.X<=x1&&to.Y>=y0&&to.Y<=y1&&driveable[to.X,to.Y]&&!Rails[to.X,to.Y]&&!Rails[from.X,from.Y];
                     }
-                    if(ok)candidates.Add(new PlacementCandidate{Origin=new Cell(x,y),Layout=layout,Weight=random.NextDouble()*average});
+                    if(ok)candidates.Add(new PlacementCandidate{Origin=new Cell(x,y),Layout=layout,Weight=RandDouble(RandomUse.Placement,(long)kind,color,nth,y*1000+x,li)*average});
                 }
             }
             return candidates.OrderByDescending(c=>c.Weight).ToList();
@@ -313,8 +315,8 @@ namespace MotorwaysSim
             var profile=PlacementProfile;
             double minimum=ReferenceCurves.Evaluate(profile.MinimumSuburbs[color],days)*scale,maximum=ReferenceCurves.Evaluate(profile.MaximumSuburbs[color],days)*scale;
             int grouping=GroupingNear;
-            if(count<minimum){if(random.NextDouble()<Math.Pow((minimum-count)*MinimumSuburbScale,MinimumSuburbExponent))grouping=GroupingFar;}
-            else if(count<maximum){if(random.NextDouble()<Math.Pow((maximum-count)*MaximumSuburbScale,MaximumSuburbExponent))grouping=GroupingFar;}
+            if(count<minimum){if(RandDouble(RandomUse.Suburb,color,count,Buildings.Count(b=>b.IsHouse&&b.Color==color))<Math.Pow((minimum-count)*MinimumSuburbScale,MinimumSuburbExponent))grouping=GroupingFar;}
+            else if(count<maximum){if(RandDouble(RandomUse.Suburb,color,count,Buildings.Count(b=>b.IsHouse&&b.Color==color))<Math.Pow((maximum-count)*MaximumSuburbScale,MaximumSuburbExponent))grouping=GroupingFar;}
             if(grouping==GroupingFar)suburbCount[color]=count+1;
             return grouping;
         }
@@ -345,9 +347,9 @@ namespace MotorwaysSim
         internal bool TrySpawnPlannedDestination(ScheduledSpawn plan)
         {
             if(!UsesOriginalPlacement)return false;
-            int color=plan.Color<0?random.Next(Map.BaseDemand.Length):plan.Color;
+            int color=plan.Color<0?RandNext(Map.BaseDemand.Length,RandomUse.Colour,plan.Order):plan.Color;
             // The double-lot roll happens once per entry; its result is kept for retries.
-            if(plan.Preference==0){if(random.NextDouble()<=doubleLotProbability){plan.Preference=3;doubleLotProbability=.3;}else{plan.Preference=1;doubleLotProbability+=.05;}}
+            if(plan.Preference==0){if(RandDouble(RandomUse.DoubleLot,plan.Order)<=doubleLotProbability){plan.Preference=3;doubleLotProbability=.3;}else{plan.Preference=1;doubleLotProbability+=.05;}}
             int preference=plan.Preference;bool station=StationPreference(preference);
             bool join=preference==2||preference==3||preference==4||preference==5||preference==6;
             if(join)
@@ -376,7 +378,7 @@ namespace MotorwaysSim
         int RandomActiveColor()
         {
             var colors=new List<int>();foreach(var b in Buildings)if(!b.IsHouse&&!colors.Contains(b.Color))colors.Add(b.Color);
-            return colors.Count==0?0:colors[random.Next(colors.Count)];
+            return colors.Count==0?0:colors[RandNext(colors.Count,RandomUse.ActiveColour,Buildings.Count)];
         }
     }
 }

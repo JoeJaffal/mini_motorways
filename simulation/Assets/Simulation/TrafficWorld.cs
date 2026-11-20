@@ -40,6 +40,15 @@ namespace MotorwaysSim
         public int ActiveCars=>Cars.Count(c=>c.Stage!=TripStage.Home);
         public int NetworkVersion {get;private set;}
         SimulationRandom random;
+        // f35 keyed randomness. With Rules.KeyedRandom false every helper below makes exactly the draw f34 made, in
+        // the same order, so f34 games are unchanged. With it true, in-game draws are keyed by purpose and cars draw
+        // from their own stream, so a different road no longer shifts later spawns, offers or phases.
+        SimulationRandom carRandom;
+        double RandDouble(RandomUse use,long a=0,long b=0,long c=0,long d=0,long e=0)
+            =>Rules.KeyedRandom?KeyedRandom.Double(Seed,use,a,b,c,d,e):random.NextDouble();
+        int RandNext(int upper,RandomUse use,long a=0,long b=0,long c=0,long d=0,long e=0)
+            =>Rules.KeyedRandom?KeyedRandom.Next(upper,Seed,use,a,b,c,d,e):random.Next(upper);
+        int CarNext(int upper)=>Rules.KeyedRandom?carRandom.Next(upper):random.Next(upper);
         readonly Dictionary<int,double> demandGroupPhases=new Dictionary<int,double>();
         bool autoConnectReference;
         readonly List<(double time,int color)> spawnSchedule=new List<(double,int)>();
@@ -73,7 +82,7 @@ namespace MotorwaysSim
             Map=CityCatalog.Get(scenario);ScenarioRejected=false;RejectionReason="";ResetInventory();
             if(Rules.TickSeconds<=0||Rules.CarsPerHouse!=2)throw new ArgumentException("Positive tick duration and two cars per house are required");
             if(!Rules.UseOriginalIntersectionRules)throw new NotSupportedException("The Lebanese legal alternative remains undecided and is not implemented");
-            Seed=seed;Scenario=scenario;random=new SimulationRandom(seed,Rules.Version);Time=0;TickCount=0;ConstructionSpent=0;TripsCompleted=0;Failed=false;
+            Seed=seed;Scenario=scenario;random=new SimulationRandom(seed,Rules.Version);carRandom=new SimulationRandom(unchecked(seed^0x5bd1e995),Rules.Version);Time=0;TickCount=0;ConstructionSpent=0;TripsCompleted=0;Failed=false;
             CustomScenarioId=null;customScenarioBounds=null;
             Buildings.Clear();Cars.Clear();Events.Clear();Roundabouts.Clear();plannedRoundaboutCells.Clear();Signals.Clear();Motorways.Clear();carparkThroats.Clear();nextMotorwayId=0;demandGroupPhases.Clear();spawnSchedule.Clear();nextScheduledShop=0;
             retiredConnectionConcrete.Clear();

@@ -7,6 +7,8 @@ namespace MotorwaysSim
     /// simulation/Docs/VERSIONS.md. Hosts built before this field existed report nothing.
     public static class SimulatorVersion
     {
-        public const string Value="2026-11-10.f34";
+        public const string Value="2026-11-21.f35";
+        /// f35 games reset with randomness "keyed" report Value + "-keyed"; "stream" games (the default) are f34's games.
+        public static string For(bool keyedRandom)=>keyedRandom?Value+"-keyed":Value;
     }
 }

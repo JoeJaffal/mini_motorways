@@ -41,7 +41,7 @@ namespace MotorwaysSim
             }
             else
             {
-                int slot=free.Count==1?free[0]:free[random.Next(free.Count)];
+                int slot=free.Count==1?free[0]:free[CarNext(free.Count)];
                 car.ParkingSlot=slot;shop.Parking[slot]=car.Id;
                 car.Lanes.AddRange(ParkingRoute(shop,car.DestinationAccess,slot).Skip(1));
             }

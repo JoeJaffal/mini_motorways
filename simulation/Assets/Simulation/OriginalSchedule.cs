@@ -93,7 +93,7 @@ namespace MotorwaysSim
             var eligible=Buildings.Where(b=>!b.IsHouse&&!b.IsStation&&!b.Upgraded&&double.IsPositiveInfinity(b.UpgradeAt)&&
                 (color<0||b.Color==color)&&SupportsCircle(b)).ToList();
             if(eligible.Count==0)return Reject("No eligible destination for this scheduled upgrade");
-            double total=eligible.Sum(b=>Math.Max(0,Time-b.SpawnTime)),pick=random.NextDouble()*total;
+            double total=eligible.Sum(b=>Math.Max(0,Time-b.SpawnTime)),pick=RandDouble(RandomUse.DestinationUpgrade,Buildings.Count(b=>!b.IsHouse&&b.Upgraded),(long)(Time*10))*total;
             var chosen=eligible[eligible.Count-1];
             foreach(var b in eligible){pick-=Math.Max(0,Time-b.SpawnTime);if(pick<0){chosen=b;break;}}
             chosen.UpgradeAt=Math.Max(Time,chosen.SpawnTime+10);chosen.PlannedDemandMultiplier=demandMultiplier;

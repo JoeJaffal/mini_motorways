@@ -66,7 +66,7 @@ namespace MotorwaysSim
             var b=new Building{Id=Buildings.Count,Cell=cell,Entrance=entrance,Layout=house?0:layout,Color=color,IsHouse=house,
                 Width=width,Height=height,DrivewayDirection=accessDirection,SpawnTime=Time,
                 NextDemand=Time+Rules.FirstDemandDelay,SpawnGraceUntil=Time+Rules.ConstructionGraceSeconds,
-                DemandCountdown=Rules.FirstDemandDelay,DemandPhase=Rules.Version==GameVersion.Custom?random.NextDouble()*Map.PeriodDays[color]:0,Parking=house?null:Enumerable.Repeat(-1,Rules.Version==GameVersion.OriginalReference?3:Rules.ParkingSpaces).ToArray()};
+                DemandCountdown=Rules.FirstDemandDelay,DemandPhase=Rules.Version==GameVersion.Custom?RandDouble(RandomUse.CustomPhase,Buildings.Count,color)*Map.PeriodDays[color]:0,Parking=house?null:Enumerable.Repeat(-1,Rules.Version==GameVersion.OriginalReference?3:Rules.ParkingSpaces).ToArray()};
             var outside=b.Access+Directions[b.DrivewayDirection];if(!InBounds(outside)||!IsPlayable(outside)||Blocked[outside.X,outside.Y]||Water[outside.X,outside.Y]||BuildingAt(outside)!=null||Roundabouts.Any(r=>r.Center==outside))return null;
             if(!house){b.CarparkId=b.Id;b.Entrances=new[]{b.Entrance};b.EntranceDirections=new[]{b.DrivewayDirection};}
             Buildings.Add(b);
@@ -85,12 +85,12 @@ namespace MotorwaysSim
         bool TrySpawnShop(int color)
         {
             var candidates=Map.ShopZones[color].Select(k=>new Cell(k%Width,k/Width)).ToList();
-            Shuffle(candidates);
+            Shuffle(candidates,1000+color,Buildings.Count(x=>!x.IsHouse&&x.Color==color));
             foreach(var candidate in candidates.Take(250))
             {
                 // Keep an initial neighborhood compact; expansion of the map itself is deferred.
                 if(Rules.Version==GameVersion.Custom&&Time<40&&(candidate.X<10||candidate.X>32||candidate.Y<4||candidate.Y>21))continue;
-                Building shop=null;int firstLayout=Rules.Version==GameVersion.OriginalReference?random.Next(4):0;
+                Building shop=null;int firstLayout=Rules.Version==GameVersion.OriginalReference?RandNext(4,RandomUse.ShopLayout,color,candidate.Y*1000+candidate.X,Buildings.Count(b=>!b.IsHouse)):0;
                 for(int l=0;l<(Rules.Version==GameVersion.OriginalReference?4:1)&&shop==null;l++)shop=SpawnBuilding(candidate,color,false,0,(firstLayout+l)%4);
                 if(shop==null)continue;
                 bool supply=Buildings.Any(b=>b.IsHouse&&b.Color==color&&BestPotentialRoute(b.Access,shop).Count>1);
@@ -108,7 +108,7 @@ namespace MotorwaysSim
         bool TrySpawnHouse(Building shop)
         {
             var candidates=Map.HouseZones[shop.Color].Select(k=>new Cell(k%Width,k/Width)).ToList();
-            Shuffle(candidates);
+            Shuffle(candidates,2000000+shop.Id,Buildings.Count(x=>x.IsHouse&&x.Color==shop.Color));
             // Original spawn regions are preferred. A feasible fallback is our explicitly provisional safeguard.
             if(Rules.Version==GameVersion.Custom)candidates=candidates.OrderBy(c=>Distance(c,shop.Access)<3?100:Math.Abs(Distance(c,shop.Access)-6)).ToList();
             foreach(var candidate in candidates.Take(300))
@@ -126,7 +126,7 @@ namespace MotorwaysSim
         }
 
         static void Swap<T>(IList<T> values,int a,int b){T temp=values[a];values[a]=values[b];values[b]=temp;}
-        void Shuffle<T>(IList<T> values){for(int i=values.Count-1;i>0;i--)Swap(values,i,random.Next(i+1));}
+        void Shuffle<T>(IList<T> values,long k1=0,long k2=0){for(int i=values.Count-1;i>0;i--)Swap(values,i,RandNext(i+1,RandomUse.Shuffle,k1,k2,i,values.Count));}
         public static string ColorName(int color)=>new[]{"red","blue","green","yellow","purple","orange"}[Math.Max(0,Math.Min(5,color))];
 
         void UpdateCity()
@@ -212,7 +212,7 @@ namespace MotorwaysSim
             double phase=shop.DemandPhase;
             if(Rules.Version==GameVersion.OriginalReference)
             {
-                if(!demandGroupPhases.TryGetValue(color,out phase)){phase=random.NextDouble()*Map.PeriodDays[color];demandGroupPhases[color]=phase;}
+                if(!demandGroupPhases.TryGetValue(color,out phase)){phase=RandDouble(RandomUse.DemandPhase,color)*Map.PeriodDays[color];demandGroupPhases[color]=phase;}
             }
             double days=Time/Rules.SecondsPerDay+phase,period=Map.PeriodDays[color];
             double wave=Math.Pow(Math.Abs(Math.Sin((days%period)*Math.PI/period)),2+Map.Eccentricity[color]);

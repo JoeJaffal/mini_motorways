@@ -48,6 +48,8 @@ namespace MotorwaysSim
     {
         public GameVersion Version=GameVersion.Custom;
         public bool RejectInfeasibleScenarios=true;
+        /// f35: draw every in-game random number by key (KeyedRandom) and give cars their own stream. False = f34 behaviour.
+        public bool KeyedRandom=false;
         public bool UnlimitedConstruction=true;
         public static Rules ForVersion(GameVersion version)
         {

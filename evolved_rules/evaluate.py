@@ -46,7 +46,7 @@ from pathlib import Path
 
 from .agent import play_game, trips_per_tile
 from .gp import TreePolicy, individual_from_text, individual_text
-from .host import ROOT, Host, default_host_dll
+from .host import CITY_SCENARIOS, RANDOMNESS, RANDOMNESS_ENV, ROOT, Host, check_randomness, check_scenario, default_host_dll
 from .rules import (
     CleanHand, CleanRemoveHand, DoNothing, GPHand, HandRule, LightHand, LightRoundHand, RoundHand, SeparatedPreference,
     SeparatedRemoveHand,
@@ -165,7 +165,7 @@ def parse_seeds(spec: list[str]) -> list[int]:
 # The privileged reference baseline
 # ---------------------------------------------------------------------------------------------------------
 
-def run_reference(host: Host, seed: int, cap_s: float = DEFAULT_CAP_S) -> dict:
+def run_reference(host: Host, seed: int, cap_s: float = DEFAULT_CAP_S, city: str = DEFAULT_SCENARIO) -> dict:
     """Privileged diagnostic baseline: the host's debug network builder, played under the normal finite road stock.
 
     It is not an upper bound (it usually scores below HandRule): `reference` (world.BuildReferenceNetwork) tries
@@ -181,7 +181,7 @@ def run_reference(host: Host, seed: int, cap_s: float = DEFAULT_CAP_S) -> dict:
     reference may still have built roads); trips_per_tile as play_game.
     Returns the keys of GameResult.summary() plus "privileged": True and "verified": None.
     """
-    reply = host.reset(seed, DEFAULT_SCENARIO)
+    reply = host.reset(seed, city)
     state = parse_observation(reply["observation"])
     terminated = bool(reply["terminated"])
     commands = rejected = 0
@@ -202,10 +202,10 @@ def run_reference(host: Host, seed: int, cap_s: float = DEFAULT_CAP_S) -> dict:
             accepted = True
         else:  # a truncated reply (scenario rejected mid-game) raises: time would stop and this loop never end
             reply = host.call(**request)
-            raise_if_rejected(reply, request["command"], seed, DEFAULT_SCENARIO)
+            raise_if_rejected(reply, request["command"], seed, city)
             accepted = bool(reply["accepted"])
         step = host.call(command="step", ticks=TICKS)
-        raise_if_rejected(step, "step", seed, DEFAULT_SCENARIO)
+        raise_if_rejected(step, "step", seed, city)
         before, state = state, parse_observation(step["observation"])
         terminated = bool(step["terminated"])
         if request is not None and request["command"] == "reference":
@@ -238,7 +238,7 @@ def run_reference(host: Host, seed: int, cap_s: float = DEFAULT_CAP_S) -> dict:
         "terminated": terminated,
         "truncated": not terminated and state.time >= cap_s,
         "scenario_seed": seed,
-        "city": DEFAULT_SCENARIO,
+        "city": city,
         "deterministic": True,
         "failed_shop": failed_shop,
         "road_tiles_at_failure": road_tiles_at_failure,
@@ -296,7 +296,8 @@ def _init_worker(abort=None) -> None:
         _ATEXIT_REGISTERED = True
 
 
-def _run_seed(policy_name: str, seed: int, cap_s: float, run_dir: str, verify: bool) -> dict | None:
+def _run_seed(policy_name: str, seed: int, cap_s: float, run_dir: str, verify: bool,
+              city: str = DEFAULT_SCENARIO) -> dict | None:
     """One job. Returns None at once, playing nothing, if the run is being aborted.
 
     Any exception fails the whole run, so it raises the abort flag itself: this worker takes its next queued
@@ -307,7 +308,7 @@ def _run_seed(policy_name: str, seed: int, cap_s: float, run_dir: str, verify: b
     if _ABORT is not None and _ABORT.value:
         return None
     try:
-        return _play_seed(policy_name, seed, cap_s, run_dir, verify)
+        return _play_seed(policy_name, seed, cap_s, run_dir, verify, city)
     except BaseException:
         if _ABORT is not None:
             _ABORT.value = 1
@@ -315,12 +316,13 @@ def _run_seed(policy_name: str, seed: int, cap_s: float, run_dir: str, verify: b
         raise
 
 
-def _play_seed(policy_name: str, seed: int, cap_s: float, run_dir: str, verify: bool) -> dict:
+def _play_seed(policy_name: str, seed: int, cap_s: float, run_dir: str, verify: bool,
+               city: str = DEFAULT_SCENARIO) -> dict:
     """Play one seed on this worker's host; save and (if asked) verify its replay. Returns its summary."""
     host = _worker_host()
     if policy_name == REFERENCE:
-        return run_reference(host, seed, cap_s)
-    result = play_game(host, seed, make_policy(policy_name), cap_s=cap_s, record=True)
+        return run_reference(host, seed, cap_s, city)
+    result = play_game(host, seed, make_policy(policy_name), cap_s=cap_s, record=True, scenario=city)
     summary = result.summary()
     summary["privileged"] = False
     path = Path(run_dir) / "replays" / f"{seed}.json"
@@ -385,7 +387,7 @@ def _simulator_version() -> str:
 
 
 def _config(policy_name: str, seeds: list[int], cap_s: float, workers: int, verify: bool,
-            policy_text: str | None = None) -> dict:
+            policy_text: str | None = None, city: str = DEFAULT_SCENARIO) -> dict:
     commit = _git("rev-parse", "HEAD")
     status = _git("status", "--porcelain")
     return {
@@ -398,6 +400,8 @@ def _config(policy_name: str, seeds: list[int], cap_s: float, workers: int, veri
         "policy_text": policy_text,  # the individual text of a tree:<file> or gp*:<file> policy, else None
         "seeds": list(seeds),
         "cap_s": cap_s,
+        "city": city,
+        "randomness": os.environ.get(RANDOMNESS_ENV) or "stream",
         "host_dll": str(default_host_dll()),
         "simulator_version": _simulator_version(),
         "workers": workers,
@@ -461,7 +465,7 @@ def _check_cap(cap_s) -> None:
 
 
 def evaluate(policy_name: str, seeds: list[int], workers: int, run: str, verify: bool,
-             cap_s: float = DEFAULT_CAP_S) -> dict:
+             cap_s: float = DEFAULT_CAP_S, city: str = DEFAULT_SCENARIO) -> dict:
     """Play every seed (one job per seed on a pool of `workers` processes) and write the run folder.
 
     Raises RunExistsError (a FileExistsError), before any game, if output/evolved_rules/runs/<run> exists. If any game, worker
@@ -478,6 +482,7 @@ def evaluate(policy_name: str, seeds: list[int], workers: int, run: str, verify:
         raise ValueError(f"duplicate seeds: {seeds}")
     _check_run_name(run)
     _check_cap(cap_s)
+    check_scenario(city)
     workers = max(1, min(int(workers), len(seeds)))
     recorded = policy_name != REFERENCE
     verify = bool(verify)
@@ -498,13 +503,13 @@ def evaluate(policy_name: str, seeds: list[int], workers: int, run: str, verify:
         if verify and recorded:
             build_verifier()  # once, before the pool: no first-build race between workers
         os.environ["PYTHONHASHSEED"] = "0"  # inherited by the spawned workers
-        config = _config(policy_name, seeds, cap_s, workers, verify, policy_text)
+        config = _config(policy_name, seeds, cap_s, workers, verify, policy_text, city)
 
         by_seed: dict[int, dict] = {}
         abort = _new_abort_flag()
         pool = _make_pool(workers, abort)
         try:
-            futures = {pool.submit(_run_seed, worker_policy, seed, cap_s, str(run_dir), verify and recorded): seed
+            futures = {pool.submit(_run_seed, worker_policy, seed, cap_s, str(run_dir), verify and recorded, city): seed
                        for seed in seeds}
             for future in as_completed(futures):
                 by_seed[futures[future]] = future.result()
@@ -550,16 +555,23 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--run", required=True, help="run folder name under output/evolved_rules/runs")
     parser.add_argument("--verify", action="store_true", help="verify every replay with the pinned verifier")
     parser.add_argument("--cap", type=float, default=DEFAULT_CAP_S, help="episode cap in simulated seconds")
+    parser.add_argument("--randomness", default="stream", choices=RANDOMNESS,
+                        help="simulator randomness (f35+): stream = f34's games (default), keyed = draws keyed by purpose")
+    parser.add_argument("--city", default=DEFAULT_SCENARIO,
+                        help=f"city map, exact case (default {DEFAULT_SCENARIO}): one of {', '.join(CITY_SCENARIOS)}")
     args = parser.parse_args(argv)
     try:
         check_policy(args.policy)
         seeds = parse_seeds(args.seeds)
         _check_run_name(args.run)
         _check_cap(args.cap)
+        check_scenario(args.city)
+        check_randomness(args.randomness)
     except ValueError as e:
         parser.error(str(e))
+    os.environ[RANDOMNESS_ENV] = args.randomness  # read by every host reset, here and in the spawned workers
     try:
-        summary = evaluate(args.policy, seeds, args.workers, args.run, args.verify, cap_s=args.cap)
+        summary = evaluate(args.policy, seeds, args.workers, args.run, args.verify, cap_s=args.cap, city=args.city)
     except RunExistsError:
         print(f"run folder {RUNS_DIR / args.run} already exists; choose another --run name", file=sys.stderr)
         return EXISTING_RUN_EXIT_CODE

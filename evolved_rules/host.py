@@ -33,6 +33,18 @@ VERSION_TIMEOUT_S = 60.0
 _VERSION_LINE = re.compile(r"^\d{4}-\d{2}-\d{2}\.[a-z]*\d+$")  # gp-6: also "2026-11-10.f34" (fidelity line)
 
 
+# gp-8 / simulator f35: "stream" (default; f34's games) or "keyed" (draws keyed by purpose; see simulation VERSIONS.md).
+# Set by evaluate --randomness through the environment so that spawned workers' hosts inherit it.
+RANDOMNESS_ENV = "EVOLVED_RULES_RANDOMNESS"
+RANDOMNESS = ("stream", "keyed")
+
+
+def check_randomness(value) -> str:
+    if value not in RANDOMNESS:
+        raise ValueError(f"randomness must be one of {', '.join(RANDOMNESS)}, got {value!r}")
+    return value
+
+
 def check_scenario(scenario) -> str:
     """Return scenario if it is one of CITY_SCENARIOS (exact match); ValueError otherwise."""
     if not isinstance(scenario, str) or scenario not in CITY_SCENARIOS:
@@ -163,7 +175,13 @@ class Host:
 
     def reset(self, seed: int, scenario: str = "LosAngeles") -> dict:
         check_scenario(scenario)  # ValueError before anything is sent
-        reply = self.call(command="reset", version="OriginalReference", scenario=scenario, seed=seed)
+        randomness = check_randomness(os.environ.get(RANDOMNESS_ENV) or "stream")
+        extra = {} if randomness == "stream" else {"randomness": randomness}  # stream: the f34 request bytes
+        reply = self.call(command="reset", version="OriginalReference", scenario=scenario, seed=seed, **extra)
+        if randomness == "keyed" and not str(reply.get("simulatorVersion", "")).endswith("-keyed"):
+            # A host before f35 ignores the unknown field and would silently play stream games.
+            raise HostError(f"{RANDOMNESS_ENV}=keyed but the host replied simulatorVersion "
+                            f"{reply.get('simulatorVersion')!r}: it does not support keyed randomness (needs f35+)")
         if reply.get("truncated"):
             raise ScenarioRejected(f"simulator rejected scenario {scenario!r} seed {seed}: {reply.get('message')}")
         obs = reply["observation"]

@@ -61,7 +61,7 @@ from .verify import build_verifier, verify_recording
 
 # Bump whenever agent behaviour changes (agent, candidates, executor, features, gp, session, state, the
 # simulator): it is part of every cache key, so results from older code are never reused.
-CODE_VERSION = "gp7-v2"  # gp-7-lite slots (cslot/tslot trailers, gate primitive, slot epochs); gp7-v1: flags/planner trailers, evolvable planner (moves=v7)
+CODE_VERSION = "gp8-v0"  # gp8-v0: --city in evaluate/battery7 (LosAngeles default, games unchanged); gp7-v2: gp-7-lite slots (cslot/tslot trailers, gate primitive, slot epochs); gp7-v1: flags/planner trailers, evolvable planner (moves=v7)
 # gp6-v1: planner follows simulator f34 (road stock per paid link, bridge per crossing, water degree <= 2)
 DEFAULT_TIMEOUT_S = 3600.0  # seconds of awake wall clock per game (a suspend does not count); gp-6: was 900, a game on battery can take over 15 min
 KILL_TIMEOUT_S = 30.0

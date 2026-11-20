@@ -18,7 +18,7 @@ from .gp import CANDIDATE_TERMS, GLOBAL_TERMS, V7_CANDIDATE_TERMS
 from .host import Host
 from .placement import placement_candidates
 from .rules import Policy
-from .session import GameSession
+from .session import DEFAULT_SCENARIO, GameSession
 from .state import CityState
 
 FALLBACK_S = 10.0
@@ -389,12 +389,13 @@ def trips_per_tile(trips: int, tiles_built: int) -> float:
     return trips / tiles_built if tiles_built > 0 else 0.0
 
 
-def play_game(host: Host, seed: int, policy: Policy, cap_s: float = 3600.0, record: bool = True) -> GameResult:
+def play_game(host: Host, seed: int, policy: Policy, cap_s: float = 3600.0, record: bool = True,
+              scenario: str = DEFAULT_SCENARIO) -> GameResult:
     """Reset, then decide when the event tracker says so and wait otherwise, until terminated or at cap_s.
 
     The session's GameMemory (and so its DemandTracker) is created fresh by reset(): one per game.
     """
-    session = GameSession(host, seed, cap_s=cap_s, record=record)
+    session = GameSession(host, seed, cap_s=cap_s, record=record, scenario=scenario)
     session.reset()
     tracker = EventTracker(kinds=places(policy))
     acts = getattr(policy, "acts", True)

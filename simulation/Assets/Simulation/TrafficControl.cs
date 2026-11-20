@@ -645,7 +645,7 @@ namespace MotorwaysSim
                 {car.Stage=TripStage.EnteringParking;car.Lanes=ParkingDriveThrough(shop,car.DestinationAccess);car.RouteIndex=0;car.DistanceAlongLane=0;RegisterRoute(car,false);return;}
                 Deliver(car);car.Stage=TripStage.Returning;SetJourney(car,car.ReturnRoute);return;
             }
-            int slot=available.Count==1?available[0]:available[random.Next(available.Count)];
+            int slot=available.Count==1?available[0]:available[CarNext(available.Count)];
             car.ParkingSlot=slot;shop.Parking[slot]=car.Id;car.Stage=TripStage.EnteringParking;
             if(Rules.Version==GameVersion.OriginalReference)
             {car.Lanes=ParkingRoute(shop,car.DestinationAccess,slot);car.RouteIndex=0;car.DistanceAlongLane=0;RegisterRoute(car,false);return;}

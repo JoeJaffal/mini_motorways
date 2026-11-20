@@ -50,7 +50,7 @@ def fake_runs(tmp_path, monkeypatch):
     """RUNS_DIR in tmp_path, an in-process pool, a fake game (trips = seed % 100) and a fake verifier build."""
     calls = []
 
-    def job(policy_name, seed, cap_s, run_dir, verify):
+    def job(policy_name, seed, cap_s, run_dir, verify, city="LosAngeles"):
         calls.append((policy_name, seed, cap_s, verify))
         g = _fake_game(seed, seed % 100)
         g["verified"] = True if verify else None
@@ -126,7 +126,7 @@ def test_one_game_has_sd_zero_and_verify_counts(fake_runs):
 def test_failed_verification_counts_in_total_not_pass(fake_runs, monkeypatch):
     tmp_path, _ = fake_runs
 
-    def job(policy_name, seed, cap_s, run_dir, verify):
+    def job(policy_name, seed, cap_s, run_dir, verify, city="LosAngeles"):
         g = _fake_game(seed, 1)
         g["verified"] = seed != 2001
         return g
@@ -139,7 +139,7 @@ def test_failed_verification_counts_in_total_not_pass(fake_runs, monkeypatch):
 def test_failing_job_writes_error_and_no_summary(fake_runs, monkeypatch):
     tmp_path, _ = fake_runs
 
-    def job(policy_name, seed, cap_s, run_dir, verify):
+    def job(policy_name, seed, cap_s, run_dir, verify, city="LosAngeles"):
         if seed == 2001:
             raise RuntimeError("verifier fault on purpose")
         return {**_fake_game(seed, 1), "verified": None}
@@ -264,7 +264,7 @@ def test_a_claim_error_other_than_exists_is_not_reported_as_existing(fake_runs, 
 
 
 def test_cli_reports_only_a_claimed_folder_as_existing(fake_runs, monkeypatch):
-    def job(policy_name, seed, cap_s, run_dir, verify):
+    def job(policy_name, seed, cap_s, run_dir, verify, city="LosAngeles"):
         raise FileExistsError("some other file")
 
     monkeypatch.setattr(ev, "_play_seed", job)
@@ -281,7 +281,7 @@ def test_games_in_input_order_when_completion_order_differs(fake_runs, monkeypat
     tmp_path, _ = fake_runs
     done, lock = [], threading.Lock()
 
-    def job(policy_name, seed, cap_s, run_dir, verify):
+    def job(policy_name, seed, cap_s, run_dir, verify, city="LosAngeles"):
         # finish in reverse input order: 2003, then 2002, then 2001
         while True:
             with lock:
@@ -397,7 +397,7 @@ def test_verifier_build_fault_writes_error_and_no_summary(fake_runs, monkeypatch
 def test_failure_leaves_no_partial_games_file(fake_runs, monkeypatch):
     tmp_path, _ = fake_runs
 
-    def job(policy_name, seed, cap_s, run_dir, verify):
+    def job(policy_name, seed, cap_s, run_dir, verify, city="LosAngeles"):
         if seed == 2002:
             time.sleep(0.2)
             raise RuntimeError("late fault")
@@ -421,7 +421,7 @@ def test_failure_skips_the_jobs_already_handed_out(fake_runs, monkeypatch, inter
     tmp_path, _ = fake_runs
     played = []
 
-    def job(policy_name, seed, cap_s, run_dir, verify):
+    def job(policy_name, seed, cap_s, run_dir, verify, city="LosAngeles"):
         played.append(seed)
         if seed == 0:
             raise interrupt
@@ -445,7 +445,7 @@ def test_parent_interrupt_skips_the_jobs_already_handed_out(fake_runs, monkeypat
     tmp_path, _ = fake_runs
     played = []
 
-    def job(policy_name, seed, cap_s, run_dir, verify):
+    def job(policy_name, seed, cap_s, run_dir, verify, city="LosAngeles"):
         played.append(seed)
         time.sleep(0.2)
         return {**_fake_game(seed, 1), "verified": None}
@@ -512,7 +512,7 @@ def in_process(tmp_path, monkeypatch):
     calls = {"play": [], "verify": []}
     recording = {"source": "x", "actions": [{"command": "wait", "n": 1}]}
 
-    def play(host, seed, policy, cap_s=3600.0, record=True):
+    def play(host, seed, policy, cap_s=3600.0, record=True, scenario="LosAngeles"):
         calls["play"].append((host, seed, type(policy), cap_s, record))
         return _result(seed, recording)
 
@@ -580,7 +580,7 @@ def test_run_seed_interrupt_closes_the_host_and_the_next_job_gets_a_fresh_one(in
     assert host.closed and ev._HOST is None
     fresh = _DummyHost()
     monkeypatch.setattr(ev, "Host", lambda: fresh)
-    monkeypatch.setattr(ev, "play_game", lambda h, seed, policy, cap_s, record: _result(seed, {"a": h is fresh}))
+    monkeypatch.setattr(ev, "play_game", lambda h, seed, policy, cap_s, record, scenario="LosAngeles": _result(seed, {"a": h is fresh}))
     ev._run_seed("hand", 2011, 60.0, str(tmp_path), False)
     assert ev._HOST is fresh and json.loads((tmp_path / "replays" / "2011.json").read_text()) == {"a": True}
 
@@ -600,7 +600,7 @@ def test_run_seed_no_verify_is_none(in_process, monkeypatch):
 def test_run_seed_reference_dispatch(in_process, monkeypatch):
     tmp_path, calls, _, host = in_process
     seen = []
-    monkeypatch.setattr(ev, "run_reference", lambda h, seed, cap_s: seen.append((h, seed, cap_s)) or {"x": 1})
+    monkeypatch.setattr(ev, "run_reference", lambda h, seed, cap_s, city="LosAngeles": seen.append((h, seed, cap_s)) or {"x": 1})
     assert ev._run_seed("reference", 2009, 55.0, str(tmp_path), False) == {"x": 1}
     assert seen == [(host, 2009, 55.0)] and calls["play"] == []
     assert list((tmp_path / "replays").iterdir()) == []
@@ -795,7 +795,7 @@ def test_failure_returns_only_after_running_jobs_finished(fake_runs, monkeypatch
     """evaluate() re-raises only once the running games are done (no replay can land after error.txt)."""
     running, played = [], []
 
-    def job(policy_name, seed, cap_s, run_dir, verify):
+    def job(policy_name, seed, cap_s, run_dir, verify, city="LosAngeles"):
         if seed == 1:
             time.sleep(0.1)  # seed 2 is running by now
             raise RuntimeError("fail")

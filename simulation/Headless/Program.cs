@@ -23,6 +23,8 @@ sealed class Request
     public bool RequireExact {get;set;}
     public bool IncludeConnectivity {get;set;}
     public string Variation { get; set; } = "SameMap";
+    /// f35: "stream" (default, f34 behaviour) or "keyed" (Rules.KeyedRandom).
+    public string Randomness { get; set; }
 }
 
 static class Program
@@ -126,7 +128,7 @@ static class Program
                 int trips=world.TripsCompleted,spending=world.ConstructionSpent;bool accepted=true;
                 if(request.Command=="drawchoices")
                 {
-                    Console.WriteLine(JsonSerializer.Serialize(new {accepted=true,simulatorVersion=SimulatorVersion.Value,terminated=world.Failed,truncated=world.ScenarioRejected,
+                    Console.WriteLine(JsonSerializer.Serialize(new {accepted=true,simulatorVersion=SimulatorVersion.For(world.Rules.KeyedRandom),terminated=world.Failed,truncated=world.ScenarioRejected,
                         possibleChanges=world.DrawChangeChoices(new Cell(request.X,request.Y))},Json));continue;
                 }
                 switch(request.Command)
@@ -136,7 +138,9 @@ static class Program
                         var scenario=request.Scenario==null?(request.Connected?ScenarioKind.ReferenceLab:ScenarioKind.LosAngeles):Enum.Parse<ScenarioKind>(request.Scenario,true);
                         if(!Enum.IsDefined(typeof(GameVersion),version)||!Enum.IsDefined(typeof(ScenarioKind),scenario))throw new Exception("Unknown version or scenario");
                         if(request.RequireExact)throw new Exception("Exact-original parity is not yet validated. OriginalReference remains under development.");
-                        world=new TrafficWorld(request.Seed,false,Rules.ForVersion(version));
+                        if(request.Randomness!=null&&request.Randomness!="stream"&&request.Randomness!="keyed")throw new Exception("randomness must be stream or keyed");
+                        var rules=Rules.ForVersion(version);rules.KeyedRandom=request.Randomness=="keyed";
+                        world=new TrafficWorld(request.Seed,false,rules);
                         world.Reset(request.Seed,scenario,Enum.Parse<MapVariation>(request.Variation,true));
                         includeConnectivity=request.IncludeConnectivity;
                         trips=0;spending=0;break;
@@ -158,7 +162,7 @@ static class Program
                     case "observe":break;
                     default:throw new Exception("Commands: reset, build, connect, draw, motorway, editMotorway, removeMotorway, upgrade, reference (debug), step, observe, quit");
                 }
-                Console.WriteLine(JsonSerializer.Serialize(new {accepted,simulatorVersion=SimulatorVersion.Value,message=world.LastAction,
+                Console.WriteLine(JsonSerializer.Serialize(new {accepted,simulatorVersion=SimulatorVersion.For(world.Rules.KeyedRandom),message=world.LastAction,
                     networkVersion=world.NetworkVersion,
                     tripsDelta=world.TripsCompleted-trips,spendingDelta=world.ConstructionSpent-spending,
                     terminated=world.Failed,truncated=world.ScenarioRejected,

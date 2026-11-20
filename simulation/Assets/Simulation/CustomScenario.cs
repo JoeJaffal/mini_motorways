@@ -52,7 +52,7 @@ namespace MotorwaysSim
             Reset(definition.seed,ScenarioKind.EmptyLab);
             Scenario=city;Map=CityCatalog.Get(city);CustomScenarioId=definition.id;customScenarioBounds=(double[])bounds.Clone();
             boundsTime=double.NaN;
-            growthBeforeCustomScenario=Rules.EnableCityGrowth;Rules.EnableCityGrowth=false;random=new SimulationRandom(definition.seed,GameVersion.OriginalReference);
+            growthBeforeCustomScenario=Rules.EnableCityGrowth;Rules.EnableCityGrowth=false;random=new SimulationRandom(definition.seed,GameVersion.OriginalReference);carRandom=new SimulationRandom(unchecked(definition.seed^0x5bd1e995),GameVersion.OriginalReference);
             ResetInventory();if(definition.startingInventory!=null)Array.Copy(definition.startingInventory,Inventory,6);
             Array.Copy(Inventory,totalUpgrades,6);
             for(int y=0;y<Height;y++)for(int x=0;x<Width;x++)
