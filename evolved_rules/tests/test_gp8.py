@@ -54,3 +54,11 @@ def test_roundabout_head_text_parses_and_flags_both_tools():
     assert pol.place({**base, "pl_is_roundabout": 1.0}) == -4.0
     only_r = linear.text_from_x(x, linear.Space(l_text=sp.l_text, roundabouts=True))
     assert gp.TreePolicy(only_r).place({**base, "pl_is_light": 1.0}) == -1.0
+
+
+def test_tool_offer_std_only_changes_the_two_offer_coordinates():
+    base, tools = evolve7.cma_opts({"popsize": 24, "seed": 1}), evolve7.cma_opts({"popsize": 24, "seed": 1,
+                                                                                   "tool_offer_std": True})
+    diff = [i for i, (a, b) in enumerate(zip(base["CMA_stds"], tools["CMA_stds"])) if a != b]
+    assert sorted(linear.LAYOUT[i][1] for i in diff) == ["upgrade.type_3", "upgrade.type_4"]
+    assert all(tools["CMA_stds"][i] == 1.0 and base["CMA_stds"][i] == evolve7.RULE_STD_FACTOR for i in diff)

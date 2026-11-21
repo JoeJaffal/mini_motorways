@@ -18,7 +18,8 @@ Run list: JSON, default <main clone>/output/evolved_rules/ops/runs7.json (gitign
   queue (a restartable shell script, e.g. the L pre-play battery queue):
     {"Name": "pre-queue", "Kind": "queue", "RepoDir": "/abs/mm-gp6-final",
      "Script": "/abs/main/output/evolved_rules/ops/prequeue.sh", "DoneFile": "/abs/.../prequeue.done"}
-Optional on both: "Env": {"NAME": "value"} added to the job's environment.
+Optional on both: "Env": {"NAME": "value"} added to the job's environment; "Nice": N runs the job under nice -n N
+(gp-8, while the M4 is shared).
 
 Every job gets PYTHONHASHSEED=0, DOTNET_ROOT=~/.dotnet with ~/.dotnet first on PATH, and no
 EVOLVED_RULES_HOST_DLL unless its Env sets one. Python is always the main clone's .venv. A job's stdout and
@@ -145,7 +146,8 @@ def start(main: Path, entry: dict) -> int:
     argv, mode = job_argv(main, entry)
     ops = ops_dir(main)
     with open(ops / f"{entry['Name']}.log", "ab") as out, open(ops / f"{entry['Name']}.err", "ab") as err:
-        p = subprocess.Popen(["/usr/bin/caffeinate", "-ims", *argv], cwd=entry["RepoDir"], env=job_env(entry),
+        nice = ["/usr/bin/nice", "-n", str(int(entry["Nice"]))] if entry.get("Nice") else []  # gp-8
+        p = subprocess.Popen(["/usr/bin/caffeinate", "-ims", *nice, *argv], cwd=entry["RepoDir"], env=job_env(entry),
                              stdin=subprocess.DEVNULL, stdout=out, stderr=err, start_new_session=True)
     (ops / f"{entry['Name']}.pid").write_text(str(p.pid))
     return p.pid

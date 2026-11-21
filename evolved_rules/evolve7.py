@@ -94,8 +94,14 @@ def effective_stop(cfg: dict, run_dir: Path) -> dt.datetime:
     return t
 
 
+TOOL_OFFERS = ("upgrade.type_3", "upgrade.type_4")  # gp-8: the light and roundabout offer weights
+
+
 def cma_opts(cfg: dict) -> dict:
-    stds = [RULE_STD_FACTOR if g == "rule" else 1.0 for g in linear.GROUPS]
+    """gp-8 (cfg tool_offer_std): the two tool-offer weights start at the full std, not RULE_STD_FACTOR, so the
+    search can learn to stock tools (B7 never takes a light offer)."""
+    full = set(TOOL_OFFERS) if cfg.get("tool_offer_std") else set()
+    stds = [RULE_STD_FACTOR if g == "rule" and n not in full else 1.0 for g, n in linear.LAYOUT]
     return {"popsize": cfg["popsize"], "bounds": [-linear.BOUND, linear.BOUND], "seed": cfg["seed"],
             "CMA_diagonal": True, "CMA_mirrors": True, "CMA_stds": stds,
             "verbose": -9, "verb_log": 0, "verb_disp": 0}
@@ -446,6 +452,8 @@ def main(argv=None) -> int:
     p.add_argument("--max-gens", type=int, default=0, help="test only: stop after this many generations")
     p.add_argument("--cities", default="LosAngeles",
                    help="gp-8: comma-separated training cities (CITY_SCENARIOS spelling); maps must be a multiple")
+    p.add_argument("--tool-offer-std", dest="tool_offer_std", action="store_true",
+                   help="gp-8: the light and roundabout offer weights start at the full std")
     p.add_argument("--randomness", default="stream", choices=("stream", "keyed"), help="gp-8: simulator randomness")
     p.add_argument("--cap", type=float, default=ev.DEFAULT_CAP_S, help="episode cap in simulated seconds (smoke only)")
     a = p.parse_args(argv)
@@ -470,7 +478,8 @@ def main(argv=None) -> int:
             cfg = {"popsize": a.popsize, "maps": a.maps, "sigma0": a.sigma0, "seed": a.seed, "workers": a.workers,
                    "stop_at": a.stop_at, "log_gen0": a.log_gen0, "force_cut": a.force_cut,
                    "cap_s": float(a.cap), "x0_file": str(a.x0), "max_gens": a.max_gens,
-                   "cities": [check_scenario(c) for c in a.cities.split(",")], "randomness": a.randomness}
+                   "cities": [check_scenario(c) for c in a.cities.split(",")], "randomness": a.randomness,
+                   "tool_offer_std": a.tool_offer_std}
             if a.maps % len(cfg["cities"]):
                 p.error("--maps must be a multiple of the number of cities")
             state = start(cfg, run_dir, x0doc["x"], space)
