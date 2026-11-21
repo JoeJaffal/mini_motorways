@@ -58,8 +58,8 @@ with warnings.catch_warnings():
 from . import evaluate as ev
 from . import evolve as evo
 from . import linear, slots
-from .engine import CODE_VERSION, Engine
-from .host import ROOT
+from .engine import CODE_VERSION, Engine, map_id
+from .host import ROOT, check_scenario
 
 EVOLVE7_DIR = ROOT / "output" / "evolved_rules" / "evolve7"
 FORMAT = "evolve7-1"
@@ -104,7 +104,7 @@ def cma_opts(cfg: dict) -> dict:
 def std_ratio(es) -> float:
     s = np.asarray(es.stds)
     rule = [s[i] for i, g in enumerate(linear.GROUPS) if g == "rule"]
-    other = [s[i] for i, g in enumerate(linear.GROUPS) if g in ("light", "cost", "target", "newterm", "template")]
+    other = [s[i] for i, g in enumerate(linear.GROUPS) if g in ("light", "round", "cost", "target", "newterm", "template")]
     return float(np.mean(rule) / np.mean(other))
 
 
@@ -226,6 +226,19 @@ def _evo_rate(decision_dir: Path, text: str, seeds: list[int]) -> float:
     return hit / n if n else 0.0
 
 
+def draw_maps(cfg: dict) -> list[int]:
+    """The generation's map ids (engine.map_id). One city (the default, Los Angeles): m seeds from 1-999, exactly
+    gp-7's draw. gp-8, several cities: m / k seeds from 1-999 per city (drawn in cfg order), interleaved one per
+    city at a time, so the first CUT_MAPS maps hold one of each city when k = CUT_MAPS."""
+    m, cities = cfg["maps"], cfg.get("cities") or ["LosAngeles"]
+    if cities == ["LosAngeles"]:
+        return random.sample(range(1, 1000), m)
+    if m % len(cities):
+        raise ValueError(f"maps ({m}) must be a multiple of the number of cities ({len(cities)})")
+    per = {c: random.sample(range(1, 1000), m // len(cities)) for c in cities}
+    return [map_id(c, per[c][j]) for j in range(m // len(cities)) for c in cities]
+
+
 def generation(cfg: dict, state: dict, engine, run_dir: Path, space: linear.Space, clock=time.monotonic) -> dict:
     t0 = clock()
     played0, hits0 = engine.games_played, engine.cache_hits
@@ -235,8 +248,7 @@ def generation(cfg: dict, state: dict, engine, run_dir: Path, space: linear.Spac
     random.setstate(state["rng"])
     np.random.set_state(state["np_rng"])
     es = pickle.loads(state["es"])
-    m = cfg["maps"]
-    seeds = random.sample(range(1, 1000), m)
+    seeds = draw_maps(cfg)
     xs = es.ask()
     texts = [linear.text_from_x(x, space) for x in xs]
     distinct = list(dict.fromkeys(texts))
@@ -392,7 +404,8 @@ def run(cfg: dict, state: dict, run_dir: Path, space: linear.Space, engine=None,
     now = now or (lambda: dt.datetime.now().astimezone())
     own = engine is None
     if own:
-        engine = Engine(workers=cfg["workers"], cap_s=cfg.get("cap_s", ev.DEFAULT_CAP_S), cache_path=run_dir / CACHE)
+        engine = Engine(workers=cfg["workers"], cap_s=cfg.get("cap_s", ev.DEFAULT_CAP_S), cache_path=run_dir / CACHE,
+                        randomness=cfg.get("randomness", "stream"))
     try:
         while True:
             if cfg.get("max_gens") and state["generation"] >= cfg["max_gens"]:
@@ -431,6 +444,9 @@ def main(argv=None) -> int:
     p.add_argument("--log-gen0", action="store_true")
     p.add_argument("--force-cut", action="store_true", help="test only: always cut the worst sample")
     p.add_argument("--max-gens", type=int, default=0, help="test only: stop after this many generations")
+    p.add_argument("--cities", default="LosAngeles",
+                   help="gp-8: comma-separated training cities (CITY_SCENARIOS spelling); maps must be a multiple")
+    p.add_argument("--randomness", default="stream", choices=("stream", "keyed"), help="gp-8: simulator randomness")
     p.add_argument("--cap", type=float, default=ev.DEFAULT_CAP_S, help="episode cap in simulated seconds (smoke only)")
     a = p.parse_args(argv)
     ev._check_run_name(a.run)
@@ -453,7 +469,10 @@ def main(argv=None) -> int:
             space = linear.Space.from_json(x0doc["space"])
             cfg = {"popsize": a.popsize, "maps": a.maps, "sigma0": a.sigma0, "seed": a.seed, "workers": a.workers,
                    "stop_at": a.stop_at, "log_gen0": a.log_gen0, "force_cut": a.force_cut,
-                   "cap_s": float(a.cap), "x0_file": str(a.x0), "max_gens": a.max_gens}
+                   "cap_s": float(a.cap), "x0_file": str(a.x0), "max_gens": a.max_gens,
+                   "cities": [check_scenario(c) for c in a.cities.split(",")], "randomness": a.randomness}
+            if a.maps % len(cfg["cities"]):
+                p.error("--maps must be a multiple of the number of cities")
             state = start(cfg, run_dir, x0doc["x"], space)
     except evo.RunExistsError as e:
         print(str(e), file=sys.stderr)

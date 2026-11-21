@@ -74,7 +74,7 @@ REMOVAL_TERMS = ("rm_degree", "rm_dist", "rm_links_doorstep", "rm_doorstep_degre
 PLACEMENT_TERMS = ("pl_is_light", "pl_is_roundabout", "pl_degree", "pl_doorstep", "pl_cars_near",
                    "pl_stopped_near", "pl_max_wait_near", "pl_mean_wait_near", "pl_dist_worst_shop",
                    "pl_worst_colour_stuck", "pl_new_links", "pl_joins_separated", "pl_tiles_lost",
-                   "pl_light_stock", "pl_round_stock")
+                   "pl_light_stock", "pl_round_stock", "pl_placed")
 
 # gp-7 (plan 2026-11-14 section 3.1): three more priority terms, read only by texts with a `planner:` trailer
 # (moves=v7). The v6 term tuples and psets above stay unchanged, so tune_cmaes still imports with DIM 81.
@@ -119,6 +119,7 @@ _ALL_SCALES: dict[str, int] = {
     "pl_cars_near": COUNT, "pl_stopped_near": COUNT, "pl_max_wait_near": SHORT_S, "pl_mean_wait_near": SHORT_S,
     "pl_dist_worst_shop": TILES, "pl_worst_colour_stuck": COUNT, "pl_new_links": DEGREE,
     "pl_joins_separated": FLAG, "pl_tiles_lost": DEGREE, "pl_light_stock": COUNT, "pl_round_stock": COUNT,
+    "pl_placed": COUNT,  # gp-8: this kind's placements so far in the game
     # gp-7 priority terms (moves=v7)
     "is_evo": FLAG, "pair_connected": FLAG, "tiles_saved": TILES,
 }

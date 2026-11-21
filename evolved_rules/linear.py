@@ -33,7 +33,8 @@ from .tune_cmaes import _balanced, text_to_weights, weights_by_tree
 BOUND = 5.0
 DECIMALS = 4
 LIGHT_TERMS = ("pl_degree", "pl_doorstep", "pl_cars_near", "pl_stopped_near", "pl_max_wait_near",
-               "pl_mean_wait_near", "pl_dist_worst_shop", "pl_worst_colour_stuck")
+               "pl_mean_wait_near", "pl_dist_worst_shop", "pl_worst_colour_stuck",
+               "pl_placed", "time")  # gp-8: how many of this kind are down, and when in the game
 PRIORITY_TEMPLATES = (("worst_overcrowded", "path_cost_s"), ("shop_overcrowded", "tiles_saved"),
                       ("worst_overcrowded", "road_stock"))
 PLACE_TEMPLATE = ("pl_stopped_near", "worst_overcrowded")
@@ -44,6 +45,7 @@ LAYOUT: tuple[tuple[str, str], ...] = (
     + (("rule", "hold.bias"),) + tuple(("rule", f"hold.{t}") for t in gp.GLOBAL_TERMS if t != "pending_refunds")
     + tuple(("rule", f"upgrade.{t}") for t in gp.OFFER_TERMS)
     + (("light", "bias"),) + tuple(("light", t) for t in LIGHT_TERMS)
+    + (("round", "round.bias"),) + tuple(("round", f"round.{t}") for t in LIGHT_TERMS)
     + tuple(("cost", f) for f in gp.COST_FIELDS if f != "w_qstop")
     + tuple(("target", f) for f in gp.TARGET_FIELDS if f != "w_ttmpl")
     + tuple(("newterm", t) for t in gp.V7_CANDIDATE_TERMS)
@@ -57,7 +59,7 @@ INDEX = {name: i for i, (_, name) in enumerate(LAYOUT)}
 GROUPS = tuple(g for g, _ in LAYOUT)
 # coordinates whose scale is always 1 (plan 3.3): biases, n_t, the cost-head weights and the slots
 UNIT_SCALE = frozenset(i for i, (g, n) in enumerate(LAYOUT)
-                       if g in ("cost", "slot") or n in ("hold.bias", "bias", "b_t", "n_t"))
+                       if g in ("cost", "slot") or n in ("hold.bias", "bias", "round.bias", "b_t", "n_t"))
 
 SEPARATED_COST = {"w_paid": 1.0, "w_reuse": 0.15, "w_step": 0.05, "w_jn": 0.5, "w_jl": 0.0, "w_ns": 0.0,
                   "w_for": 3.0, "w_car": 0.0, "w_stop": 0.0}
@@ -75,6 +77,7 @@ class Space:
     scales: tuple[float, ...] = tuple([1.0] * DIM)
     theta: float = 600.0
     lights: bool = False
+    roundabouts: bool = False  # gp-8: the roundabout head (round group)
     masks: tuple[float, ...] = tuple([0.0] * N_SLOTS)
     # gp-7-lite (gp7-v2): slot trees (priority over PRIORITY7 terms, hold over HOLD terms, cost over
     # gp.COST_SLOT_TERMS, target over gp.TARGET_SLOT_TERMS); a slot acts only with its tree set and mask 1
@@ -90,14 +93,14 @@ class Space:
 
     def to_json(self) -> dict:
         return {"l_text": self.l_text, "scales": list(self.scales), "theta": self.theta, "lights": self.lights,
-                "masks": list(self.masks), "slot_trees": list(self.slot_trees), "layout": [list(x) for x in LAYOUT]}
+                "roundabouts": self.roundabouts, "masks": list(self.masks), "slot_trees": list(self.slot_trees), "layout": [list(x) for x in LAYOUT]}
 
     @classmethod
     def from_json(cls, d: dict) -> "Space":
         if [tuple(x) for x in d.get("layout", LAYOUT)] != list(LAYOUT):
             raise ValueError("space.json layout differs from linear.LAYOUT")
         return cls(l_text=d["l_text"], scales=tuple(d["scales"]), theta=float(d["theta"]), lights=bool(d["lights"]),
-                   masks=tuple(d.get("masks", [0.0] * N_SLOTS)),
+                   roundabouts=bool(d.get("roundabouts", False)), masks=tuple(d.get("masks", [0.0] * N_SLOTS)),
                    slot_trees=tuple(d.get("slot_trees", [None] * N_SLOTS)))
 
     @classmethod
@@ -145,12 +148,15 @@ def text_from_x(x, space: Space) -> str:
     if live[1]:
         hold_text = f"add({hold_text}, mul({sw[1]!r}, {space.slot_trees[1]}))"
     lines = [f"priority: {priority}", f"hold: {hold_text}", f"upgrade: {_balanced(upg)}"]
-    if space.lights:
+    if space.lights or space.roundabouts:
         a, b = PLACE_TEMPLATE
         items = [repr(w["bias"])] + [f"mul({w[t]!r}, {t})" for t in LIGHT_TERMS]
         items.append(f"mul({w[f'place.{a}*{b}']!r}, mul({a}, {b}))")
-        lines += [f"remove: {gp.NEVER_REMOVE}", f"place: if_gt(pl_is_light, 0.5, {_balanced(items)}, -1.0)"]
-    lines.append(f"flags: clean=0 lights={int(space.lights)} roundabouts=0")
+        ritems = [repr(w["round.bias"])] + [f"mul({w[f'round.{t}']!r}, {t})" for t in LIGHT_TERMS]
+        rnd = f"if_gt(pl_is_roundabout, 0.5, {_balanced(ritems)}, -1.0)" if space.roundabouts else "-1.0"
+        place = f"if_gt(pl_is_light, 0.5, {_balanced(items)}, {rnd})" if space.lights else rnd
+        lines += [f"remove: {gp.NEVER_REMOVE}", f"place: {place}"]
+    lines.append(f"flags: clean=0 lights={int(space.lights)} roundabouts={int(space.roundabouts)}")
     cost = [w[f] for f in gp.COST_FIELDS if f != "w_qstop"] + [w["cost.w_qstop"]]
     target = [w[f] for f in ("b_t", "w_con", "w_det", "w_dem", "w_over")] + [w["target.w_ttmpl"], w["n_t"]]
     cslot = f"mul({sw[2]!r}, {space.slot_trees[2]})" if live[2] else None

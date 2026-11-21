@@ -55,13 +55,13 @@ from pathlib import Path
 from . import evaluate as ev
 from .agent import play_game
 from .gp import TreePolicy, individual_from_text, individual_text
-from .host import default_host_dll, simulator_version
+from .host import CITY_SCENARIOS, RANDOMNESS_ENV, check_randomness, check_scenario, default_host_dll, simulator_version
 from .power import SUSPEND_MARGIN_S, suspend_excess  # noqa: F401  (SUSPEND_MARGIN_S re-exported)
 from .verify import build_verifier, verify_recording
 
 # Bump whenever agent behaviour changes (agent, candidates, executor, features, gp, session, state, the
 # simulator): it is part of every cache key, so results from older code are never reused.
-CODE_VERSION = "gp8-v0"  # gp8-v0: --city in evaluate/battery7 (LosAngeles default, games unchanged); gp7-v2: gp-7-lite slots (cslot/tslot trailers, gate primitive, slot epochs); gp7-v1: flags/planner trailers, evolvable planner (moves=v7)
+CODE_VERSION = "gp8-v1"  # gp8-v1: multi-city map ids and keyed randomness in the engine, placement-only checks (no decision), pl_placed, roundabout head; gp8-v0: --city in evaluate/battery7 (LosAngeles default, games unchanged); gp7-v2: gp-7-lite slots (cslot/tslot trailers, gate primitive, slot epochs); gp7-v1: flags/planner trailers, evolvable planner (moves=v7)
 # gp6-v1: planner follows simulator f34 (road stock per paid link, bridge per crossing, water degree <= 2)
 DEFAULT_TIMEOUT_S = 3600.0  # seconds of awake wall clock per game (a suspend does not count); gp-6: was 900, a game on battery can take over 15 min
 KILL_TIMEOUT_S = 30.0
@@ -89,8 +89,30 @@ def _host_simulator_version(dll: str) -> str:
 
 
 def _simulator_version() -> str:
-    """The simulatorVersion of the host DLL the workers will load (asked once per DLL path and process)."""
-    return _host_simulator_version(str(default_host_dll()))
+    """The simulatorVersion every game of this process reports: the host DLL's (asked once per DLL path and
+    process), plus "-keyed" when RANDOMNESS_ENV is keyed (gp-8; the host then replies f35's keyed version)."""
+    base = _host_simulator_version(str(default_host_dll()))
+    keyed = check_randomness(os.environ.get(RANDOMNESS_ENV) or "stream") == "keyed"
+    return base + "-keyed" if keyed else base
+
+
+# gp-8: a job's "seed" is a map id, city index (CITY_SCENARIOS order) * MAP_STRIDE + scenario seed. Los Angeles is
+# index 0, so an LA map id is its plain seed and every pre-gp-8 job and cache key is unchanged.
+MAP_STRIDE = 1_000_000
+
+
+def map_id(city: str, seed: int) -> int:
+    if isinstance(seed, bool) or not isinstance(seed, int) or not 0 <= seed < MAP_STRIDE:
+        raise ValueError(f"a scenario seed is an int in [0, {MAP_STRIDE}), got {seed!r}")
+    return CITY_SCENARIOS.index(check_scenario(city)) * MAP_STRIDE + seed
+
+
+def split_map(mid: int) -> tuple[str, int]:
+    """(city, scenario seed) of a map id; ValueError outside the known cities."""
+    k, seed = divmod(int(mid), MAP_STRIDE)
+    if not 0 <= k < len(CITY_SCENARIOS):
+        raise ValueError(f"map id {mid} names no city")
+    return CITY_SCENARIOS[k], seed
 
 
 def cache_version() -> str:
@@ -102,8 +124,14 @@ def cache_version() -> str:
     return f"{CODE_VERSION}@{_simulator_version()}"
 
 
-def check_simulator(result: dict, what: str) -> None:
-    """EngineError unless the game was played on the simulator version the cache key names."""
+def check_simulator(result: dict, what: str, mid: int | None = None) -> None:
+    """EngineError unless the game was played on the simulator version the cache key names and, given its map id,
+    on that map's city and seed."""
+    if mid is not None:
+        city, seed = split_map(mid)
+        if result.get("city", "LosAngeles") != city or result.get("scenario_seed", seed) != seed:
+            raise EngineError(f"{what} should be {city} seed {seed}, but the game reports "
+                              f"{result.get('city')!r} seed {result.get('scenario_seed')!r}")
     expected, got = _simulator_version(), result.get("simulator_version")
     if got != expected:
         raise EngineError(f"{what} was played on simulator {got!r}, but this engine keys results on {expected!r} "
@@ -126,7 +154,8 @@ def _play_job(text: str, seed: int, cap_s: float) -> dict:
     on this worker, the retry included, starts on a fresh host.
     """
     try:
-        result = play_game(ev._worker_host(), seed, TreePolicy(text), cap_s=cap_s, record=False)
+        city, s = split_map(seed)
+        result = play_game(ev._worker_host(), s, TreePolicy(text), cap_s=cap_s, record=False, scenario=city)
         return result.summary()
     except BaseException:
         ev._close_host()
@@ -140,7 +169,8 @@ def _log_job(text: str, seed: int, cap_s: float, path: str) -> dict:
     try:
         policy = TreePolicy(text)
         policy.decision_log = []
-        result = play_game(ev._worker_host(), seed, policy, cap_s=cap_s, record=False)
+        city, s = split_map(seed)
+        result = play_game(ev._worker_host(), s, policy, cap_s=cap_s, record=False, scenario=city)
         out = Path(path)
         tmp = out.with_name(out.name + ".tmp")
         with gzip.open(tmp, "wt", encoding="utf-8") as f:
@@ -160,7 +190,8 @@ def _record_job(text: str, seed: int, cap_s: float, path: str, verify: bool) -> 
     <path stem>.verify.txt with the verifier's output, as evaluate.py; a verifier fault raises.
     """
     try:
-        result = play_game(ev._worker_host(), seed, TreePolicy(text), cap_s=cap_s, record=True)
+        city, s = split_map(seed)
+        result = play_game(ev._worker_host(), s, TreePolicy(text), cap_s=cap_s, record=True, scenario=city)
         out = Path(path)
         out.write_text(json.dumps(result.recording), encoding="utf-8")
         summary = result.summary()
@@ -220,8 +251,10 @@ class Engine:
     """
 
     def __init__(self, workers: int = 10, cap_s: float = ev.DEFAULT_CAP_S, cache_path: str | Path | None = None,
-                 *, timeout_s: float = DEFAULT_TIMEOUT_S, clock=None) -> None:
+                 *, timeout_s: float = DEFAULT_TIMEOUT_S, clock=None, randomness: str | None = None) -> None:
         ev._check_cap(cap_s)
+        if randomness is not None:  # gp-8: inherited by the spawned workers' hosts; part of every cache key
+            os.environ[RANDOMNESS_ENV] = check_randomness(randomness)
         if not (isinstance(timeout_s, (int, float)) and math.isfinite(timeout_s) and timeout_s > 0):
             raise ValueError(f"timeout_s must be a finite number of seconds > 0, got {timeout_s!r}")
         self.workers = max(1, int(workers))
@@ -304,7 +337,7 @@ class Engine:
         if todo:
             def store(i: int, result: dict) -> None:
                 self.games_played += 1
-                check_simulator(result, f"seed {todo[i][2]}")
+                check_simulator(result, f"seed {todo[i][2]}", todo[i][2])
                 self._store(todo[i], result)
 
             tasks = [(f"seed {k[2]}", _play_job, (k[1], k[2], k[3]), self.timeout_s) for k in todo]
@@ -329,7 +362,7 @@ class Engine:
         def store(i: int, result: dict) -> None:
             self.games_played += 1
             key = todo[i]
-            check_simulator(result, f"seed {key[2]}")
+            check_simulator(result, f"seed {key[2]}", key[2])
             if key in self._cache:
                 if json.loads(json.dumps(result)) != self._cache[key]:
                     raise EngineError(f"logged game seed {key[2]} differs from its cached result: not deterministic")
@@ -364,7 +397,7 @@ class Engine:
         summary = out[0]
         self.games_played += 1  # a recorded game is always played, cached or not
         game = {k: v for k, v in summary.items() if k != "verified"}
-        check_simulator(game, f"recorded seed {seed}")
+        check_simulator(game, f"recorded seed {seed}", seed)
         if key in self._cache:
             if json.loads(json.dumps(game)) != self._cache[key]:
                 raise EngineError(f"recorded game seed {seed} differs from its cached result: not deterministic "

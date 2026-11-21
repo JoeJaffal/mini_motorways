@@ -325,7 +325,7 @@ def test_the_list_is_cut_to_the_cap_after_sorting():
 PLACEMENT_KEYS = {
     "pl_is_light", "pl_is_roundabout", "pl_degree", "pl_doorstep", "pl_cars_near", "pl_stopped_near",
     "pl_max_wait_near", "pl_mean_wait_near", "pl_dist_worst_shop", "pl_worst_colour_stuck", "pl_new_links",
-    "pl_joins_separated", "pl_tiles_lost", "pl_light_stock", "pl_round_stock",
+    "pl_joins_separated", "pl_tiles_lost", "pl_light_stock", "pl_round_stock", "pl_placed",
 }
 STOCK = (25, 1, 0, 2, 1, 0)  # roads, bridges, motorways, lights, roundabouts, unused
 
@@ -355,6 +355,9 @@ def test_placement_features_have_the_named_keys_and_values():
     assert (f["pl_new_links"], f["pl_joins_separated"], f["pl_tiles_lost"]) == (0, 0, 0)
     assert (f["pl_light_stock"], f["pl_round_stock"]) == (2, 1)
     assert placement_features(s, pc, GameMemory()) == f
+    m = GameMemory()
+    m.placed[LIGHT] = 2
+    assert placement_features(s, pc, m)["pl_placed"] == 2.0 and f["pl_placed"] == 0.0
 
 
 def test_a_roundabout_spot_reports_the_candidate_and_its_footprint():
@@ -589,6 +592,11 @@ def test_the_tracker_is_unchanged_without_places():
 LIGHTS, ROUNDABOUTS, BOTH = (True, False), (False, True), (True, True)
 
 
+def _fires(t: EventTracker, s) -> bool:
+    """play_game's order (gp-8): a decision, else a placement-only check."""
+    return t.should_decide(s) or t.placement_due(s)
+
+
 @pytest.mark.parametrize("kinds, time, inventory, wait, expected", [
     (LIGHTS, 4.9, (25, 1, 0, 1, 0, 0), 4.0, False),  # not 5 s since the last decision
     (LIGHTS, 5.0, (25, 1, 0, 1, 0, 0), 4.0, True),
@@ -608,7 +616,9 @@ def test_with_places_a_waiting_car_and_stock_trigger_a_decision(kinds, time, inv
     for tracker_kinds, want in ((kinds, expected), ((False, False), False)):  # no kinds: 5 s is no event at all
         t = EventTracker(kinds=tracker_kinds)
         assert t.should_decide(_tick(0.0, inventory)) is True  # the first call always decides
-        assert t.should_decide(_tick(time, inventory, wait)) is want
+        s = _tick(time, inventory, wait)
+        assert t.should_decide(s) is False  # gp-8: placement is never a full decision...
+        assert t.placement_due(s) is want  # ...but a placement-only check
 
 
 @pytest.mark.parametrize("kinds, stock", [(LIGHTS, (25, 1, 0, 0, 2, 0)), (ROUNDABOUTS, (25, 1, 0, 2, 0, 0))])
@@ -631,14 +641,23 @@ def test_only_a_driving_car_waiting_triggers_placement(stage, expected):
     car = _waiting(_car(stage, 29.5, 11.5, 0.0), 9.0)
     state = parse_observation(make_obs(buildings=[house(1, 0, 19, 11, E)], roads=ROADS, time=5.0,
                                        inventory=lights, vehicles=[car]))
-    assert t.should_decide(state) is expected
+    assert _fires(t, state) is expected
 
 
 def test_the_placement_trigger_counts_from_the_last_decision():
     t = EventTracker(kinds=LIGHTS)
     lights = (25, 1, 0, 1, 0, 0)
-    assert [t.should_decide(_tick(s, lights, 4.0)) for s in (0.0, 4.0, 5.0, 9.0, 10.0, 14.9)] == [
+    assert [_fires(t, _tick(s, lights, 4.0)) for s in (0.0, 4.0, 5.0, 9.0, 10.0, 14.9)] == [
         True, False, True, False, True, False]
+
+
+def test_placement_checks_do_not_move_the_decision_clock():
+    # gp-8: checks at 5 s and 10.1 s leave the 10 s fallback where a non-placing policy has it
+    t, plain = EventTracker(kinds=LIGHTS), EventTracker()
+    lights = (25, 1, 0, 1, 0, 0)
+    times = (0.0, 5.0, 9.9, 10.0, 10.1, 15.1, 20.0)
+    assert [t.should_decide(_tick(s, lights, 4.0)) or (t.placement_due(_tick(s, lights, 4.0)) and False)
+            for s in times] == [plain.should_decide(_tick(s, lights, 4.0)) for s in times]
 
 
 @pytest.mark.parametrize("module", [agent, autopsy], ids=["play_game", "autopsy"])

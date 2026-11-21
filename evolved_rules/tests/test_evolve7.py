@@ -66,7 +66,7 @@ def test_linear_l_point_keeps_l_trees_and_round_trips():
     assert lines[1] == L.splitlines()[1] and lines[2] == L.splitlines()[2]
     assert lines[0].startswith("priority: add(" + L.splitlines()[0][len("priority: "):])
     assert gp.individual_text(gp.individual_from_text(t)) == t
-    assert linear.DIM == 84 and len(linear.UNIT_SCALE) == 9 + 4 + 4
+    assert linear.DIM == 97 and len(linear.UNIT_SCALE) == 9 + 4 + 4 + 1  # gp-8: +2 light terms, +11 round head
 
 
 def test_linear_scales_keep_x0_in_bounds():

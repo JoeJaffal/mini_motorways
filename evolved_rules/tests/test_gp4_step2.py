@@ -106,7 +106,7 @@ def test_place_terminals_and_scales():
     assert gp.PLACEMENT_TERMS == (
         "pl_is_light", "pl_is_roundabout", "pl_degree", "pl_doorstep", "pl_cars_near", "pl_stopped_near",
         "pl_max_wait_near", "pl_mean_wait_near", "pl_dist_worst_shop", "pl_worst_colour_stuck", "pl_new_links",
-        "pl_joins_separated", "pl_tiles_lost", "pl_light_stock", "pl_round_stock")
+        "pl_joins_separated", "pl_tiles_lost", "pl_light_stock", "pl_round_stock", "pl_placed")
     assert gp.PLACE_TERMS == gp.PLACEMENT_TERMS + gp.GLOBAL_TERMS
     assert gp.ALL_TREE_NAMES == ("priority", "hold", "upgrade", "remove", "place")
     assert gp.ALL_TREE_TERMS[4] == gp.PLACE_TERMS and gp.ALL_PSETS[4] is gp.PLACE_SET
@@ -116,7 +116,7 @@ def test_place_terminals_and_scales():
                 "pl_joins_separated": gp.FLAG, "pl_degree": gp.DEGREE, "pl_new_links": gp.DEGREE,
                 "pl_tiles_lost": gp.DEGREE, "pl_cars_near": gp.COUNT, "pl_stopped_near": gp.COUNT,
                 "pl_worst_colour_stuck": gp.COUNT, "pl_light_stock": gp.COUNT, "pl_round_stock": gp.COUNT,
-                "pl_max_wait_near": gp.SHORT_S, "pl_mean_wait_near": gp.SHORT_S, "pl_dist_worst_shop": gp.TILES}
+                "pl_placed": gp.COUNT, "pl_max_wait_near": gp.SHORT_S, "pl_mean_wait_near": gp.SHORT_S, "pl_dist_worst_shop": gp.TILES}
     assert set(expected) == set(gp.PLACEMENT_TERMS)
     assert {k: gp.SCALE[k] for k in expected} == expected
     assert (gp.FLAG, gp.DEGREE, gp.COUNT, gp.SHORT_S, gp.TILES) == (1, 8, 64, 1024, 64)

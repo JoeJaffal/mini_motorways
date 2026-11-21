@@ -110,6 +110,7 @@ class GameMemory:
     def __init__(self) -> None:
         self.demand = DemandTracker()
         self.offers_taken = 0
+        self.placed: dict[int, int] = {}  # gp-8: placement commands sent, by tool
         self._net_key: tuple | None = None
         self._net: _Network | None = None
         self._state: CityState | None = None
@@ -543,6 +544,7 @@ def placement_features(state: CityState, pc: PlacementCandidate, memory: GameMem
         "pl_tiles_lost": float(pc.tiles_lost),
         "pl_light_stock": float(inv[3] if len(inv) > 3 else 0),
         "pl_round_stock": float(inv[4] if len(inv) > 4 else 0),
+        "pl_placed": float(memory.placed.get(pc.tool, 0)) if memory is not None else 0.0,
     }
 
 

@@ -43,15 +43,18 @@ def _stock(state: CityState, item: int) -> int:
 class EventTracker:
     """Decides when to decide (PLAN.md section 3.2). Its memory is updated on every call.
 
-    `kinds` (gp-4) is (places lights, places roundabouts), as agent.places(policy) gives it. For each kind the
-    policy places, the tracker also decides when that kind is in stock, some car has waited PLACE_WAIT_S, and
-    PLACE_EVERY_S have passed since the last decision; stock of a kind the policy does not place is no event.
-    With (False, False), the default, the trigger is exactly the Phase 1 one.
+    `kinds` (gp-4) is (places lights, places roundabouts), as agent.places(policy) gives it. gp-8: should_decide
+    is always the Phase 1 trigger. For each kind the policy places, placement_due (asked only when should_decide
+    said no) is true when that kind is in stock, some driving car has waited PLACE_WAIT_S, and PLACE_EVERY_S have
+    passed since the last decision or placement check; play_game then runs a placement only (no offers, routes or
+    removals) and does not move the decision clock. So a placing policy that never places plays exactly the
+    games of the same policy without placement (gp-4 to gp-7 made these checks full decisions).
     """
 
     def __init__(self, kinds: tuple[bool, bool] = (False, False)) -> None:
         self._lights, self._roundabouts = bool(kinds[0]), bool(kinds[1])
         self._last_decision: float | None = None  # time of the last call that returned True
+        self._last_check: float | None = None  # gp-8: time of the last decision or placement check
         self._ids: frozenset[int] = frozenset()
         self._overcrowded: dict[int, bool] = {}  # shop id -> overcrowded_for >= OVERCROWD_EVENT_S
         self._upgraded: dict[int, bool] = {}  # building id -> upgraded
@@ -72,21 +75,26 @@ class EventTracker:
             or any(i in self._upgraded and self._upgraded[i] != now for i, now in upgraded.items())
             or (self._road_stock is not None and road_stock > self._road_stock)
             or state.time - self._last_decision >= FALLBACK_S
-            or ((self._lights or self._roundabouts) and self._placement_due(state))
         )
 
         self._ids, self._overcrowded, self._upgraded, self._road_stock = ids, overcrowded, upgraded, road_stock
         if decide:
-            self._last_decision = state.time
+            self._last_decision = self._last_check = state.time
         return decide
 
-    def _placement_due(self, state: CityState) -> bool:
-        """Stock of a kind the policy places, PLACE_EVERY_S since the last decision, and a car that has waited
-        PLACE_WAIT_S. Only driving cars count: the host never resets a car's Waiting once it parks or is home.
-        Only reached after the first decision (the first call always decides)."""
-        return (((self._lights and _stock(state, 3) > 0) or (self._roundabouts and _stock(state, 4) > 0))
-                and state.time - self._last_decision >= PLACE_EVERY_S
-                and any(is_driving(car) and car.waiting >= PLACE_WAIT_S for car in state.cars))
+    def placement_due(self, state: CityState) -> bool:
+        """Stock of a kind the policy places, PLACE_EVERY_S since the last decision or placement check, and a car
+        that has waited PLACE_WAIT_S. Only driving cars count: the host never resets a car's Waiting once it parks
+        or is home. Only asked after should_decide said no (so after the first decision). A true answer starts
+        the next PLACE_EVERY_S."""
+        if not (self._lights or self._roundabouts) or self._last_check is None:
+            return False
+        due = (((self._lights and _stock(state, 3) > 0) or (self._roundabouts and _stock(state, 4) > 0))
+               and state.time - self._last_check >= PLACE_EVERY_S
+               and any(is_driving(car) and car.waiting >= PLACE_WAIT_S for car in state.cars))
+        if due:
+            self._last_check = state.time
+        return due
 
 
 def _finite_or(x: float, default: float) -> float:
@@ -131,7 +139,7 @@ def decide(session: GameSession, policy: Policy) -> None:
         _remove_one(session, policy, memory, merge)
 
 
-def _place_one(session: GameSession, policy: Policy, memory, merge: bool) -> None:
+def _place_one(session: GameSession, policy: Policy, memory, merge: bool) -> bool:
     """gp-4 (policies with `places_lights` / `places_roundabouts`): place the best placement candidate if its score
     is above 0.
 
@@ -141,14 +149,15 @@ def _place_one(session: GameSession, policy: Policy, memory, merge: bool) -> Non
     order; a non-finite score never places anything.
     """
     want_lights, want_roundabouts = places(policy)
+    placed = False
     for _ in range(MAX_PLACEMENTS_PER_DECISION):
         if session.done:
-            return
+            return placed
         state = session.state
         lights = want_lights and _stock(state, 3) > 0
         roundabouts = want_roundabouts and _stock(state, 4) > 0
         if not (lights or roundabouts):
-            return
+            return placed
         g = global_features(state, memory) if merge else {}
         best = None
         for pc in placement_candidates(state, lights, roundabouts):
@@ -156,8 +165,12 @@ def _place_one(session: GameSession, policy: Policy, memory, merge: bool) -> Non
             if math.isfinite(score) and score > 0 and (best is None or score > best[0]):
                 best = (score, pc)
         if best is None:
-            return
+            return placed
         place_item(session, best[1])
+        placed = True  # a sent command (accepted or not) changes the state
+        if memory is not None:  # gp-8: pl_placed counts commands sent per tool
+            memory.placed[best[1].tool] = memory.placed.get(best[1].tool, 0) + 1
+    return placed
 
 
 def _remove_one(session: GameSession, policy: Policy, memory, merge: bool) -> None:
@@ -404,6 +417,10 @@ def play_game(host: Host, seed: int, policy: Policy, cap_s: float = 3600.0, reco
     while not session.done:
         if acts and tracker.should_decide(session.state):
             decide(session, policy)
+        elif acts and tracker.placement_due(session.state):
+            # gp-8: a placement-only step; with nothing placed it is an ordinary wait
+            if not _place_one(session, policy, session.memory, bool(getattr(policy, "wants_globals", False))):
+                session.wait()
         else:
             session.wait()
 
