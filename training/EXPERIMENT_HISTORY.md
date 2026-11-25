@@ -10190,3 +10190,8 @@ User requested push of the current project. Local Maskable-PPO starts at6bd7f71 
 ## Publication reconciliation — 2026-11-26T00:37:10.962442+02:00
 
 Committed local work as74820ad, preserving all existing source and archived evidence. In an isolated temporary worktree, merged remote84d209b without force or reset. Four documentation overlaps resolved by retaining both histories and adding current precedence to the cloud entry point; no simulator/trainer source changed during reconciliation. Training syntax checks and the task-reporting unit test pass. Credential-pattern scan found no hits among pending files; weights/binaries/private reference directories remain excluded. Git author identity was absent locally, so commit commands used the existing branch publication author identity without changing global configuration. Push and remote-head verification follow.
+
+
+## Publication blocked by local Git authentication — 2026-11-26T00:38:41.902895+02:00
+
+Local source/evidence commit74820ad and reconciliation merge574fa6a are preserved on Maskable-PPO. Normal git push failed before upload: HTTPS Git could not obtain a username. No credential helper, standard GitHub token environment, SSH-agent identity or default SSH key is configured; gh CLI is absent. The connected GitHub app is signed in but does not provide local Git transport credentials; its file/object APIs do not push the existing local commit graph. Remote remains84d209b. No force push, reset, discarded files or training launch occurred. After authenticating Git on this PC, resume with git -C /home/mohammadjaffal/mini_motorways push origin Maskable-PPO, then verify remote HEAD. All publication changes are committed locally; weights/private/runtime artifacts remain excluded.
