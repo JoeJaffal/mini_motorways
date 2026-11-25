@@ -10195,3 +10195,8 @@ Committed local work as74820ad, preserving all existing source and archived evid
 ## Publication blocked by local Git authentication — 2026-11-26T00:38:41.902895+02:00
 
 Local source/evidence commit74820ad and reconciliation merge574fa6a are preserved on Maskable-PPO. Normal git push failed before upload: HTTPS Git could not obtain a username. No credential helper, standard GitHub token environment, SSH-agent identity or default SSH key is configured; gh CLI is absent. The connected GitHub app is signed in but does not provide local Git transport credentials; its file/object APIs do not push the existing local commit graph. Remote remains84d209b. No force push, reset, discarded files or training launch occurred. After authenticating Git on this PC, resume with git -C /home/mohammadjaffal/mini_motorways push origin Maskable-PPO, then verify remote HEAD. All publication changes are committed locally; weights/private/runtime artifacts remain excluded.
+
+
+## GitHub browser authentication restored — 2026-11-26T00:59:28.617218+02:00
+
+After user-reported PAT authentication/403 failures, installed official GitHub CLI v2.106.0 locally under ignored output/tools and verified the release archive SHA256 a476449fa9625413c54a3734eded62e9e480e49f421ff08e7f3b3879c059a033. User completed browser device authorization; CLI confirms JoeJaffal. Configured only this repository to use the CLI credential helper by absolute path. No token values were requested in chat or recorded in project files. Normal non-force push and remote verification follow; no training launched.
