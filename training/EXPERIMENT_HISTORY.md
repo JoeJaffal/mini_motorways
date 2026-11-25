@@ -10200,3 +10200,8 @@ Local source/evidence commit74820ad and reconciliation merge574fa6a are preserve
 ## GitHub browser authentication restored — 2026-11-26T00:59:28.617218+02:00
 
 After user-reported PAT authentication/403 failures, installed official GitHub CLI v2.106.0 locally under ignored output/tools and verified the release archive SHA256 a476449fa9625413c54a3734eded62e9e480e49f421ff08e7f3b3879c059a033. User completed browser device authorization; CLI confirms JoeJaffal. Configured only this repository to use the CLI credential helper by absolute path. No token values were requested in chat or recorded in project files. Normal non-force push and remote verification follow; no training launched.
+
+
+## Publication verified — 2026-11-26T01:00:13.634103+02:00
+
+Normal push succeeded, advancing origin/Maskable-PPO from84d209b tob926dbbceb8da66dc4ae46461d7fb7efe69e5f4f. Verified remote branch SHA equals local HEAD. Accumulated implementation, experiment reports, figures and small measurement/source archives are published; earlier cloud documentation is preserved and reconciled. Checkpoints, generated runtimes and private reference material remain local-only. No force push or training. This outcome record is published in a follow-up documentation commit.
