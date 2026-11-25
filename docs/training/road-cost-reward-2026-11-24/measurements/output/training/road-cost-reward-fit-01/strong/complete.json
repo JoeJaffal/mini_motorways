@@ -1,0 +1,21 @@
+{
+  "checkpoints": [
+    {
+      "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/road-cost-reward-fit-01/strong/midpoint.zip",
+      "sha256": "ecba1895ffe5743c4b3dff2bd9ec5252315029adf92e0fddb9aa6788f6b4d459",
+      "added_decisions": 8192,
+      "optimizer_steps": 256,
+      "episodes": 220,
+      "seconds": 125.25124175206292
+    },
+    {
+      "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/road-cost-reward-fit-01/strong/final.zip",
+      "sha256": "65129744d8788a7a65676801a008ded2c3bdebc4382460a633adea0dd88cf8b6",
+      "added_decisions": 16384,
+      "optimizer_steps": 512,
+      "episodes": 434,
+      "seconds": 246.53857188508846
+    }
+  ],
+  "seconds": 246.5409282890614
+}

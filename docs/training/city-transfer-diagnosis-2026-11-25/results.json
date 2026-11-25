@@ -1,0 +1,830 @@
+{
+  "initial_city_mean": 126.09375,
+  "curves": [
+    {
+      "arm": "city-only",
+      "added_decisions": 65536,
+      "city_mean": 137.03125,
+      "city_scoring": 30,
+      "city_games": 32,
+      "city_delta_vs_initial": {
+        "trips": {
+          "mean": 10.9375,
+          "ci95": [
+            -7.907812499999999,
+            31.0
+          ]
+        },
+        "paid_units": {
+          "mean": 5.875,
+          "ci95": [
+            -3.1578124999999986,
+            15.1875
+          ]
+        },
+        "outside_routes": {
+          "mean": 3.5625,
+          "ci95": [
+            -0.96875,
+            8.25
+          ]
+        }
+      },
+      "practice": {
+        "small-city-offset-pairs": {
+          "games": 64,
+          "score": 2.65625,
+          "first_served": 0.671875,
+          "later_exists": 0.96875,
+          "later_served": 0.1875,
+          "both_served": 0.1875,
+          "paid_units": 14.25,
+          "delta_vs_initial": {
+            "score": {
+              "mean": -0.109375,
+              "ci95": [
+                -0.53125,
+                0.328125
+              ]
+            },
+            "first_served": {
+              "mean": 0.0625,
+              "ci95": [
+                -0.03125,
+                0.171875
+              ]
+            },
+            "later_served": {
+              "mean": -0.125,
+              "ci95": [
+                -0.234375,
+                -0.03125
+              ]
+            },
+            "both_served": {
+              "mean": -0.125,
+              "ci95": [
+                -0.234375,
+                -0.03125
+              ]
+            },
+            "paid_units": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "small-city-offset-single": {
+          "games": 64,
+          "score": 1.890625,
+          "first_served": 0.515625,
+          "later_exists": 0.0,
+          "later_served": 0.0,
+          "both_served": 0.0,
+          "paid_units": 6.984375,
+          "delta_vs_initial": {
+            "score": {
+              "mean": 0.03125,
+              "ci95": [
+                -0.125,
+                0.1875
+              ]
+            },
+            "first_served": {
+              "mean": 0.015625,
+              "ci95": [
+                -0.03125,
+                0.0625
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid_units": {
+              "mean": 0.03125,
+              "ci95": [
+                0.0,
+                0.078125
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "arm": "expansion",
+      "added_decisions": 65536,
+      "city_mean": 116.03125,
+      "city_scoring": 28,
+      "city_games": 32,
+      "city_delta_vs_initial": {
+        "trips": {
+          "mean": -10.0625,
+          "ci95": [
+            -37.34453125,
+            17.03125
+          ]
+        },
+        "paid_units": {
+          "mean": -2.84375,
+          "ci95": [
+            -14.375,
+            8.844531249999989
+          ]
+        },
+        "outside_routes": {
+          "mean": 2.0625,
+          "ci95": [
+            -2.96875,
+            7.15625
+          ]
+        }
+      },
+      "practice": {
+        "small-city-offset-pairs": {
+          "games": 64,
+          "score": 2.78125,
+          "first_served": 0.671875,
+          "later_exists": 0.953125,
+          "later_served": 0.234375,
+          "both_served": 0.234375,
+          "paid_units": 14.25,
+          "delta_vs_initial": {
+            "score": {
+              "mean": 0.015625,
+              "ci95": [
+                -0.34375,
+                0.359375
+              ]
+            },
+            "first_served": {
+              "mean": 0.0625,
+              "ci95": [
+                -0.015625,
+                0.140625
+              ]
+            },
+            "later_served": {
+              "mean": -0.078125,
+              "ci95": [
+                -0.1875,
+                0.015625
+              ]
+            },
+            "both_served": {
+              "mean": -0.078125,
+              "ci95": [
+                -0.1875,
+                0.015625
+              ]
+            },
+            "paid_units": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "small-city-offset-single": {
+          "games": 64,
+          "score": 1.90625,
+          "first_served": 0.515625,
+          "later_exists": 0.0,
+          "later_served": 0.0,
+          "both_served": 0.0,
+          "paid_units": 6.984375,
+          "delta_vs_initial": {
+            "score": {
+              "mean": 0.046875,
+              "ci95": [
+                0.0,
+                0.140625
+              ]
+            },
+            "first_served": {
+              "mean": 0.015625,
+              "ci95": [
+                0.0,
+                0.046875
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid_units": {
+              "mean": 0.03125,
+              "ci95": [
+                0.0,
+                0.078125
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "arm": "city-only",
+      "added_decisions": 131072,
+      "city_mean": 116.5625,
+      "city_scoring": 29,
+      "city_games": 32,
+      "city_delta_vs_initial": {
+        "trips": {
+          "mean": -9.53125,
+          "ci95": [
+            -32.65625,
+            14.25
+          ]
+        },
+        "paid_units": {
+          "mean": 0.0,
+          "ci95": [
+            -9.9375,
+            10.65625
+          ]
+        },
+        "outside_routes": {
+          "mean": 1.375,
+          "ci95": [
+            -3.25,
+            6.063281249999989
+          ]
+        }
+      },
+      "practice": {
+        "small-city-offset-pairs": {
+          "games": 64,
+          "score": 2.5625,
+          "first_served": 0.625,
+          "later_exists": 0.9375,
+          "later_served": 0.21875,
+          "both_served": 0.21875,
+          "paid_units": 14.25,
+          "delta_vs_initial": {
+            "score": {
+              "mean": -0.203125,
+              "ci95": [
+                -0.5625,
+                0.1875
+              ]
+            },
+            "first_served": {
+              "mean": 0.015625,
+              "ci95": [
+                -0.078125,
+                0.125
+              ]
+            },
+            "later_served": {
+              "mean": -0.09375,
+              "ci95": [
+                -0.1875,
+                -0.015625
+              ]
+            },
+            "both_served": {
+              "mean": -0.09375,
+              "ci95": [
+                -0.1875,
+                -0.015625
+              ]
+            },
+            "paid_units": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "small-city-offset-single": {
+          "games": 64,
+          "score": 1.890625,
+          "first_served": 0.515625,
+          "later_exists": 0.0,
+          "later_served": 0.0,
+          "both_served": 0.0,
+          "paid_units": 6.984375,
+          "delta_vs_initial": {
+            "score": {
+              "mean": 0.03125,
+              "ci95": [
+                -0.125,
+                0.1875
+              ]
+            },
+            "first_served": {
+              "mean": 0.015625,
+              "ci95": [
+                -0.03125,
+                0.0625
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid_units": {
+              "mean": 0.03125,
+              "ci95": [
+                0.0,
+                0.078125
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "arm": "expansion",
+      "added_decisions": 131072,
+      "city_mean": 126.46875,
+      "city_scoring": 31,
+      "city_games": 32,
+      "city_delta_vs_initial": {
+        "trips": {
+          "mean": 0.375,
+          "ci95": [
+            -22.125,
+            22.31328124999999
+          ]
+        },
+        "paid_units": {
+          "mean": -0.53125,
+          "ci95": [
+            -11.8125,
+            11.063281249999989
+          ]
+        },
+        "outside_routes": {
+          "mean": 0.125,
+          "ci95": [
+            -3.9382812499999993,
+            4.4375
+          ]
+        }
+      },
+      "practice": {
+        "small-city-offset-pairs": {
+          "games": 64,
+          "score": 2.671875,
+          "first_served": 0.65625,
+          "later_exists": 0.9375,
+          "later_served": 0.203125,
+          "both_served": 0.203125,
+          "paid_units": 14.25,
+          "delta_vs_initial": {
+            "score": {
+              "mean": -0.09375,
+              "ci95": [
+                -0.375,
+                0.203125
+              ]
+            },
+            "first_served": {
+              "mean": 0.046875,
+              "ci95": [
+                -0.03125,
+                0.125
+              ]
+            },
+            "later_served": {
+              "mean": -0.109375,
+              "ci95": [
+                -0.1875,
+                -0.046875
+              ]
+            },
+            "both_served": {
+              "mean": -0.109375,
+              "ci95": [
+                -0.1875,
+                -0.046875
+              ]
+            },
+            "paid_units": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "small-city-offset-single": {
+          "games": 64,
+          "score": 1.890625,
+          "first_served": 0.515625,
+          "later_exists": 0.0,
+          "later_served": 0.0,
+          "both_served": 0.0,
+          "paid_units": 6.984375,
+          "delta_vs_initial": {
+            "score": {
+              "mean": 0.03125,
+              "ci95": [
+                -0.046875,
+                0.140625
+              ]
+            },
+            "first_served": {
+              "mean": 0.015625,
+              "ci95": [
+                0.0,
+                0.046875
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid_units": {
+              "mean": 0.03125,
+              "ci95": [
+                0.0,
+                0.078125
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "arm": "city-only",
+      "added_decisions": 262144,
+      "city_mean": 88.5625,
+      "city_scoring": 27,
+      "city_games": 32,
+      "city_delta_vs_initial": {
+        "trips": {
+          "mean": -37.53125,
+          "ci95": [
+            -63.90703125,
+            -10.21875
+          ]
+        },
+        "paid_units": {
+          "mean": -10.5625,
+          "ci95": [
+            -21.125,
+            0.25
+          ]
+        },
+        "outside_routes": {
+          "mean": 2.1875,
+          "ci95": [
+            -1.53125,
+            5.71875
+          ]
+        }
+      },
+      "practice": {
+        "small-city-offset-pairs": {
+          "games": 64,
+          "score": 2.5,
+          "first_served": 0.609375,
+          "later_exists": 0.953125,
+          "later_served": 0.21875,
+          "both_served": 0.21875,
+          "paid_units": 14.25,
+          "delta_vs_initial": {
+            "score": {
+              "mean": -0.265625,
+              "ci95": [
+                -0.6875,
+                0.15625
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                -0.109375,
+                0.109375
+              ]
+            },
+            "later_served": {
+              "mean": -0.09375,
+              "ci95": [
+                -0.21875,
+                0.03125
+              ]
+            },
+            "both_served": {
+              "mean": -0.09375,
+              "ci95": [
+                -0.21875,
+                0.03125
+              ]
+            },
+            "paid_units": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "small-city-offset-single": {
+          "games": 64,
+          "score": 1.875,
+          "first_served": 0.515625,
+          "later_exists": 0.0,
+          "later_served": 0.0,
+          "both_served": 0.0,
+          "paid_units": 7.15625,
+          "delta_vs_initial": {
+            "score": {
+              "mean": 0.015625,
+              "ci95": [
+                -0.15625,
+                0.1875
+              ]
+            },
+            "first_served": {
+              "mean": 0.015625,
+              "ci95": [
+                -0.03125,
+                0.0625
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid_units": {
+              "mean": 0.203125,
+              "ci95": [
+                0.09375,
+                0.34375
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "arm": "expansion",
+      "added_decisions": 262144,
+      "city_mean": 117.5,
+      "city_scoring": 27,
+      "city_games": 32,
+      "city_delta_vs_initial": {
+        "trips": {
+          "mean": -8.59375,
+          "ci95": [
+            -29.59375,
+            13.28125
+          ]
+        },
+        "paid_units": {
+          "mean": -2.46875,
+          "ci95": [
+            -11.375,
+            5.75
+          ]
+        },
+        "outside_routes": {
+          "mean": 0.90625,
+          "ci95": [
+            -3.21875,
+            5.438281249999989
+          ]
+        }
+      },
+      "practice": {
+        "small-city-offset-pairs": {
+          "games": 64,
+          "score": 2.984375,
+          "first_served": 0.75,
+          "later_exists": 0.96875,
+          "later_served": 0.25,
+          "both_served": 0.25,
+          "paid_units": 14.25,
+          "delta_vs_initial": {
+            "score": {
+              "mean": 0.21875,
+              "ci95": [
+                -0.296875,
+                0.734375
+              ]
+            },
+            "first_served": {
+              "mean": 0.140625,
+              "ci95": [
+                0.0,
+                0.28125
+              ]
+            },
+            "later_served": {
+              "mean": -0.0625,
+              "ci95": [
+                -0.171875,
+                0.046875
+              ]
+            },
+            "both_served": {
+              "mean": -0.0625,
+              "ci95": [
+                -0.171875,
+                0.046875
+              ]
+            },
+            "paid_units": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "small-city-offset-single": {
+          "games": 64,
+          "score": 1.9375,
+          "first_served": 0.53125,
+          "later_exists": 0.0,
+          "later_served": 0.0,
+          "both_served": 0.0,
+          "paid_units": 6.96875,
+          "delta_vs_initial": {
+            "score": {
+              "mean": 0.078125,
+              "ci95": [
+                -0.171875,
+                0.328125
+              ]
+            },
+            "first_served": {
+              "mean": 0.03125,
+              "ci95": [
+                -0.046875,
+                0.109375
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid_units": {
+              "mean": 0.015625,
+              "ci95": [
+                0.0,
+                0.046875
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "city_contrasts": [
+    {
+      "added_decisions": 65536,
+      "expansion_minus_city_only": {
+        "trips": {
+          "mean": -21.0,
+          "ci95": [
+            -47.12578125,
+            3.125
+          ]
+        },
+        "paid_units": {
+          "mean": -8.71875,
+          "ci95": [
+            -19.6875,
+            1.96875
+          ]
+        },
+        "outside_routes": {
+          "mean": -1.5,
+          "ci95": [
+            -8.375,
+            4.78125
+          ]
+        }
+      }
+    },
+    {
+      "added_decisions": 131072,
+      "expansion_minus_city_only": {
+        "trips": {
+          "mean": 9.90625,
+          "ci95": [
+            -15.21875,
+            34.15625
+          ]
+        },
+        "paid_units": {
+          "mean": -0.53125,
+          "ci95": [
+            -14.5,
+            13.0
+          ]
+        },
+        "outside_routes": {
+          "mean": -1.25,
+          "ci95": [
+            -5.3125,
+            2.78125
+          ]
+        }
+      }
+    },
+    {
+      "added_decisions": 262144,
+      "expansion_minus_city_only": {
+        "trips": {
+          "mean": 28.9375,
+          "ci95": [
+            3.6554687500000007,
+            53.21875
+          ]
+        },
+        "paid_units": {
+          "mean": 8.09375,
+          "ci95": [
+            -4.125,
+            19.59375
+          ]
+        },
+        "outside_routes": {
+          "mean": -1.28125,
+          "ci95": [
+            -5.625,
+            3.25
+          ]
+        }
+      }
+    }
+  ],
+  "limits": "One training seed per arm; city development suite reused; practice suite becomes development after repeated checkpoints. No independent confirmation, promotion or convergence claim."
+}

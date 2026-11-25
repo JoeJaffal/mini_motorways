@@ -1,0 +1,44 @@
+{
+  "hours": 1.0,
+  "save_minutes": 30.0,
+  "workers": 32,
+  "dll": "/home/mohammadjaffal/mini_motorways/output/city-road-preflight-build/bin/TrafficHost/release/TrafficHost.dll",
+  "start": "/home/mohammadjaffal/mini_motorways/output/training/city-route-repair-calibration-01/calibrated-with-counters.zip",
+  "start_sha256": "6ed31e8c655acb71b781652c36814045c979597ced464fbf12d6dafef07acd62",
+  "host_sha256": "2da58a5aeefa0e7d3416302d4532724b253e9ede05a998fccf40a324aeb5fe23",
+  "critic": "/home/mohammadjaffal/mini_motorways/output/training/city-overnight-01/checkpoints/city-006234112-96926793.zip",
+  "critic_sha256": "a65357dea3e889525bfdc18743dbbeb02141ad244934b270217afad7a472df29",
+  "initial_model_state": [
+    61440,
+    0,
+    60
+  ],
+  "pilot": {
+    "workers": 16,
+    "rollout_steps": 128,
+    "batch_size": 64,
+    "epochs": 4,
+    "seed": 946753,
+    "rollouts_per_save": 6,
+    "saves": 2,
+    "requested_decisions": 24576,
+    "learning_rate": 5e-05,
+    "scenario_seed_range": [
+      78000000,
+      79000000
+    ],
+    "parent": "output/training/city-road-start-01/city-start.zip",
+    "parent_sha256": "e66dbd377a81208092a6c242e446e898729969c53258b4dcdf372a072dd313e8",
+    "host": "output/city-road-preflight-build/bin/TrafficHost/release/TrafficHost.dll",
+    "host_sha256": "2da58a5aeefa0e7d3416302d4532724b253e9ede05a998fccf40a324aeb5fe23",
+    "device": "cuda",
+    "gamma": 1.0,
+    "gae_lambda": 0.95,
+    "entropy_coefficient": 0.01,
+    "target_kl": 0.03
+  },
+  "training_seed_start": 92000000,
+  "training_seed_end": 92500000,
+  "review_seed": 661207,
+  "review_games": 24
+}

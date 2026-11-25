@@ -1,0 +1,23 @@
+{
+  "models": [
+    "output/training/city-five-stage-cold-initial-01/candidate.zip",
+    "output/training/city-strategy-original-delay-01/segment-001/final.zip"
+  ],
+  "hashes": {
+    "output/training/city-five-stage-cold-initial-01/candidate.zip": "9202d62be8d237f6fe495ee1ec29eed1747849a1fd747006ea8903de7f0b19f1",
+    "output/training/city-strategy-original-delay-01/segment-001/final.zip": "e72ec5ada055dd474f65ec0d032e6333128e241f8154ea2f3fc382c73dbf34e2"
+  },
+  "dll": "output/city-road-reserve-build-01/bin/TrafficHost/release/TrafficHost.dll",
+  "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+  "seed_start": 170100000,
+  "count": 64,
+  "lessons": [
+    "midgame-network-reserve",
+    "traffic-priority-established",
+    "traffic-priority-established-swap"
+  ],
+  "split": "validation",
+  "reserve_warmup_seconds": 0,
+  "reserve_delay_seconds": null,
+  "forced_action_inference_skipped": true
+}

@@ -1,0 +1,18 @@
+{
+  "models": [
+    "output/training/city-strategy-balanced-extension-01/segment-001/midpoint.zip"
+  ],
+  "hashes": {
+    "output/training/city-strategy-balanced-extension-01/segment-001/midpoint.zip": "17e8dd3b018f9e9ccec58ea72181f2f05c07b2f6b0e236ed6536ac10dd67803d"
+  },
+  "dll": "output/city-road-reserve-build-01/bin/TrafficHost/release/TrafficHost.dll",
+  "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+  "seed_start": 152010000,
+  "count": 16,
+  "lessons": [
+    "midgame-network-reserve"
+  ],
+  "split": "validation",
+  "reserve_warmup_seconds": 6,
+  "forced_action_inference_skipped": true
+}

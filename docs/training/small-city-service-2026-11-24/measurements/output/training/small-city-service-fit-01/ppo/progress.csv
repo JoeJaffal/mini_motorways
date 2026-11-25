@@ -1,0 +1,3 @@
+time/iterations,pilot/peak_allocated_mib,pilot/completed_games,pilot/peak_reserved_mib,rollout/ep_rew_mean,rollout/ep_len_mean,time/total_timesteps,time/fps,time/time_elapsed,train/approx_kl,train/value_loss,train/n_updates,pilot/optimizer_steps_possible,train/loss,train/policy_gradient_loss,train/clip_range,train/clip_fraction,train/learning_rate,train/entropy_loss,pilot/optimizer_steps_this_rollout,train/explained_variance
+1,140.259765625,212,202.0,5.09,37.0,434176,103,78,,,,,,,,,,,,
+,,,,,,,,,0.00013930761,426.585047185421,752,256,0.00010022660717368126,-0.00014311356426333077,0.2,0.0,0.0003,-0.2358945716987364,256,-0.5512815713882446

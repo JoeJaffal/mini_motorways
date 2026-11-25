@@ -1,0 +1,9 @@
+{
+  "source": "output/training/city-five-stage-relations-mixed-01/final.zip",
+  "source_sha256": "fd8a80823cb9c377400ddac808c19486f20e5a292ba9d9257111de05d64db80e",
+  "candidate_sha256": "faddae850d03ea979406f0643237b490d49c713b88dbbea1c22607e770a9bc4c",
+  "relation_scale": 20.0,
+  "generic_temperature": 1,
+  "prior_parity_without_relations": true,
+  "optimizer": "reset after parameter rescaling; evaluation candidate"
+}

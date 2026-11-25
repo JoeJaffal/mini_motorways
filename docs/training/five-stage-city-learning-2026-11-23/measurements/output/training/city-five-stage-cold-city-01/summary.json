@@ -1,0 +1,79 @@
+{
+  "models": [
+    "output/training/city-five-stage-cold-initial-01/candidate.zip",
+    "output/training/city-five-stage-cold-final-01/candidate.zip"
+  ],
+  "sha256": {
+    "output/training/city-five-stage-cold-initial-01/candidate.zip": "9202d62be8d237f6fe495ee1ec29eed1747849a1fd747006ea8903de7f0b19f1",
+    "output/training/city-five-stage-cold-final-01/candidate.zip": "c49214e02bc803b9154919d75607f487f61a677acd83576eb1d370050c02cd86"
+  },
+  "host_sha256": "3cdfa9ceaf8d938bdc94173b71c5ef0035c54f038f66133d12c6f0e0ad1278ec",
+  "results": {
+    "0": {
+      "games": 32,
+      "scoring_games": 31,
+      "mean_score": 97.5625,
+      "new_targets": 151,
+      "new_targets_served": 121,
+      "new_target_stockouts": 22,
+      "median_new_service_delay": 24.0,
+      "mean_paid_units": 81.96875,
+      "mean_outside_observed_routes": 32.4375,
+      "outside_route_share": 0.39573008006099886,
+      "paired_score_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "1": {
+      "games": 32,
+      "scoring_games": 30,
+      "mean_score": 93.53125,
+      "new_targets": 151,
+      "new_targets_served": 117,
+      "new_target_stockouts": 30,
+      "median_new_service_delay": 28.0,
+      "mean_paid_units": 85.34375,
+      "mean_outside_observed_routes": 33.5625,
+      "outside_route_share": 0.39326254119370196,
+      "paired_score_delta_and_interval": [
+        -4.03125,
+        [
+          -23.0,
+          15.375
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        -0.125,
+        [
+          -0.84375,
+          0.625
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        1.125,
+        [
+          -3.1875,
+          5.3125
+        ]
+      ]
+    }
+  }
+}

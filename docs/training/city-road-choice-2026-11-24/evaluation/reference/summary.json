@@ -1,0 +1,23 @@
+{
+  "checkpoint": "output/training/city-strategy-wide-initial-01/start.zip",
+  "sha256": "9d9c9c95e4955a14461358f3203143be5f70331f8cbbb4bc26d0951b3674447a",
+  "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+  "horizon": 600,
+  "allow_bridges": true,
+  "results": {
+    "repeated": {
+      "games": 16,
+      "mean": 126.25,
+      "scoring": 15,
+      "new_targets_served": 69,
+      "stockouts": 24
+    },
+    "heldout": {
+      "games": 16,
+      "mean": 125.9375,
+      "scoring": 15,
+      "new_targets_served": 76,
+      "stockouts": 20
+    }
+  }
+}

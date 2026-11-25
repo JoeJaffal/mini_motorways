@@ -1,0 +1,23 @@
+--- a/simulation/Assets/Simulation/ConstructionCurriculum.cs
++++ b/simulation/Assets/Simulation/ConstructionCurriculum.cs
+@@ -15,6 +15,9 @@
+         {
+             if (split != "train" && split != "validation")
+                 throw new ArgumentException("Unknown curriculum split");
++            // Isolated exploration fixture. Its geometry matches the original clear exercise.
++            int surplus = exercise == "clear-spare-two" ? 2 : exercise == "clear-spare-one" ? 1 : 0;
++            if (surplus != 0) exercise = "clear";
+             if (exercise != "adjacent" && exercise != "bend" && exercise != "driveway" &&
+                 exercise != "clear" && exercise != "obstacle")
+                 throw new ArgumentException("Unknown construction exercise");
+@@ -127,8 +130,8 @@
+                     ConstructionReference.Add(("draw", path[i], path[i+1]));
+             }
+             Array.Clear(Inventory, 0, Inventory.Length);
+-            Inventory[0] = supply;
+-            ConstructionEditLimit = rotation ? 1 : empty ? supply + 1 : supply;
++            Inventory[0] = supply + surplus;
++            ConstructionEditLimit = rotation ? 1 : empty ? supply + surplus + 1 : supply;
+             LastAction = "Construction curriculum reset";
+         }
+ 

@@ -1,0 +1,13 @@
+[
+  "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+  "-u",
+  "/home/mohammadjaffal/mini_motorways/output/training/mini-reset-comparison-01/runtime/training/audit_mini_behavior.py",
+  "--output",
+  "/home/mohammadjaffal/mini_motorways/output/training/mini-reset-comparison-01/evaluation/practice-reset-curriculum-131072",
+  "--dll",
+  "/home/mohammadjaffal/mini_motorways/output/training/mini-reset-comparison-01/runtime/host/TrafficHost.dll",
+  "--checkpoints",
+  "/home/mohammadjaffal/mini_motorways/output/training/mini-reset-comparison-01/reset-curriculum/midpoint.zip",
+  "--labels",
+  "candidate"
+]

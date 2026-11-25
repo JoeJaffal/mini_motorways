@@ -1,0 +1,20 @@
+{
+  "pid": 166141,
+  "command": [
+    "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+    "-u",
+    "training/evaluate_city_curriculum.py",
+    "--dll",
+    "output/city-road-reserve-build-01/bin/TrafficHost/release/TrafficHost.dll",
+    "--checkpoints",
+    "output/training/city-strategy-wide-pilot-03/final.zip",
+    "--output",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-wide-skill-review-03",
+    "--count",
+    "16",
+    "--seed-start",
+    "141000000",
+    "--workers",
+    "8"
+  ]
+}

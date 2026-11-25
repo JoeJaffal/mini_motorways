@@ -1,0 +1,33 @@
+{
+  "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/road-cost-continuation-01/strong/checkpoint-000065536.zip",
+  "sha256": "b0e6052b0dab89db6c8824f691e0d054eb9e808d69c221feccf5fdcbf48a4141",
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+  "results": {
+    "validation/small-city-offset-single": {
+      "score": 2.0,
+      "first_served": 0.5625,
+      "later_exists": 0.0,
+      "later_served": 0.0,
+      "both_served": 0.0,
+      "initial_stock": 7.4375,
+      "remaining_stock": 0.4375,
+      "paid_units": 7.0,
+      "outside_routes": 3.8125,
+      "no_build": 0.0,
+      "games": 64
+    },
+    "validation/small-city-offset-stock": {
+      "score": 2.453125,
+      "first_served": 0.703125,
+      "later_exists": 0.0,
+      "later_served": 0.0,
+      "both_served": 0.0,
+      "initial_stock": 13.96875,
+      "remaining_stock": 3.65625,
+      "paid_units": 10.3125,
+      "outside_routes": 5.9375,
+      "no_build": 0.0,
+      "games": 64
+    }
+  }
+}

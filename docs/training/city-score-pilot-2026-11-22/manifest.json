@@ -1,0 +1,53 @@
+{
+  "branch": "Maskable-PPO",
+  "base_revision": "6bd7f71",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "404f245c5fd78ca63cf207480e46e129021106dc06b3251b4cc95d8341f527ff"
+    },
+    {
+      "path": "config.json",
+      "sha256": "b5b7c680e2da544787ce88fab2636faf38faa5c958f37075aa473a9f670e2583"
+    },
+    {
+      "path": "development-episodes.jsonl",
+      "sha256": "0ffcc613b30740a1f85b769fc3ff773ba978b58b2034e4b8363c203a87631e54"
+    },
+    {
+      "path": "development-seeds.json",
+      "sha256": "0406626f5c3b68318e137237b20fdcb1676905aa603c97762749998e25a98b0b"
+    },
+    {
+      "path": "development-summary.json",
+      "sha256": "ec2cde126401045612565951db4d8f4d447638d8e116eb4dfee3fc7bded70d07"
+    },
+    {
+      "path": "hardware-samples.csv",
+      "sha256": "d72e7abc8692629dd9677e6097b9b1736515a43e4c4bcd2b55c3dd8e6a61ed19"
+    },
+    {
+      "path": "opening-diagnostics.json",
+      "sha256": "cf16ae38e1df4f20fe3af4b38013dabba73dd5dadfffed8addf00fee1c84f134"
+    },
+    {
+      "path": "progress.csv",
+      "sha256": "eff75fbd8c9728366bdbce758a1943fb25d341ff1712d906d8a1dd55bfdef182"
+    },
+    {
+      "path": "status.json",
+      "sha256": "7c1054880b9d3b2f14447538b222fcbe4bb129b2d506e8b169aecf9217a480fe"
+    },
+    {
+      "path": "training-episodes.jsonl",
+      "sha256": "dfb7b95be8945b950d90188bc975c584db2fa7d6c31c4a998199927222c1d7ca"
+    }
+  ],
+  "source_hashes": {
+    "training/train_city_score_pilot.py": "498ae7a9d8304b37e65beb24686b593dfc47b24c3fbf136e4f897ea8cdea3a58",
+    "training/evaluate_city_checkpoints.py": "110f0c60222e609fc8a6846f0bcea9b33ca258d17b3a48a93bba348f845f2345",
+    "training/prepare_city_policy.py": "2005bcc6f19d9f9caecd754a8ee4f574014e287e4556bfe333ce4367770e9f29",
+    "training/city_road_policy.py": "4059beba8899b1293daa7056a830ce88ba8a2fb88b4eef30e46f5755f0e0cff6",
+    "training/city_road_pilot.py": "90ca72a9048241da628f343ccac9c43b61c63d9b1f7c98142c9f753b19c199f5"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "source_sha256": "d3b34c1b5407cec3ef754e6a086440dcdf0fdbe68673f2dce92d24f28d4d022b",
+  "native_sha256": "d8b371ac154f8e368a97d2e17f565e9447768569a05ed19e93807f05fa0c3787",
+  "results": {
+    "pair-triad-left-uneven/greedy": {
+      "nearer": {
+        "played": 49,
+        "passed": 49,
+        "trips": 391
+      },
+      "farther": {
+        "played": 51,
+        "passed": 51,
+        "trips": 344
+      }
+    },
+    "pair-triad-left-uneven/sampled": {
+      "nearer": {
+        "played": 49,
+        "passed": 49,
+        "trips": 381
+      },
+      "farther": {
+        "played": 51,
+        "passed": 51,
+        "trips": 343
+      }
+    },
+    "pair-triad-right-uneven/greedy": {
+      "nearer": {
+        "played": 51,
+        "passed": 51,
+        "trips": 423
+      },
+      "farther": {
+        "played": 49,
+        "passed": 49,
+        "trips": 324
+      }
+    },
+    "pair-triad-right-uneven/sampled": {
+      "nearer": {
+        "played": 51,
+        "passed": 50,
+        "trips": 404
+      },
+      "farther": {
+        "played": 49,
+        "passed": 48,
+        "trips": 314
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+--- a/simulation/Assets/Simulation/TrafficPractice.cs
++++ b/simulation/Assets/Simulation/TrafficPractice.cs
+@@ -173,7 +173,7 @@
+                 if (live && high)
+                 {
+                     trafficSurgeShop=aShop;
+-                    trafficSurgeTime=16+rng.Next(5);
++                    trafficSurgeTime=(exercise.Contains("-latepulse",StringComparison.Ordinal) ? 24 : 16)+rng.Next(5);
+                     trafficSurgeLoad=rush ? surgeLoad : 4.0;
+                 }
+             }

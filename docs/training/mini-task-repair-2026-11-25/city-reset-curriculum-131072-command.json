@@ -1,0 +1,11 @@
+[
+  "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+  "-u",
+  "/home/mohammadjaffal/mini_motorways/output/training/mini-reset-comparison-01/runtime/training/evaluate_overnight_city.py",
+  "--output",
+  "/home/mohammadjaffal/mini_motorways/output/training/mini-reset-comparison-01/evaluation/city-reset-curriculum-131072",
+  "--dll",
+  "/home/mohammadjaffal/mini_motorways/output/training/mini-reset-comparison-01/runtime/host/TrafficHost.dll",
+  "--checkpoint",
+  "/home/mohammadjaffal/mini_motorways/output/training/mini-reset-comparison-01/reset-curriculum/midpoint.zip"
+]

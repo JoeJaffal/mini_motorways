@@ -1,0 +1,37 @@
+{
+  "checkpoints": [
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-critic-rate-01/segment-001/checkpoint-000008192.zip",
+      "sha256": "c5597df24d387881c08e9d071acbd7f621c8ace67a0e045ad898025b908853d9",
+      "added_decisions": 8192,
+      "optimizer_steps_added": 256,
+      "episodes": 10,
+      "seconds": 103.09321905393153
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-critic-rate-01/segment-001/midpoint.zip",
+      "sha256": "3efde72498b852203e1a5b1b31a0c5be32b6c5ea96b9a02a5846082e5b2d136e",
+      "added_decisions": 16384,
+      "optimizer_steps_added": 512,
+      "episodes": 19,
+      "seconds": 241.1193080699304
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-critic-rate-01/segment-001/checkpoint-000024576.zip",
+      "sha256": "a3c62273ebedbbc82351b6cb44b54842bdd33499528bcae3f1da0cdd15d9e11d",
+      "added_decisions": 24576,
+      "optimizer_steps_added": 768,
+      "episodes": 31,
+      "seconds": 396.3842229889706
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-critic-rate-01/segment-001/final.zip",
+      "sha256": "4e51f8c6368802d8bc7c3b7cb36909ccc1910a4f0bba369fae53697b4a336140",
+      "added_decisions": 32768,
+      "optimizer_steps_added": 1024,
+      "episodes": 45,
+      "seconds": 545.8788411889691
+    }
+  ],
+  "seconds": 545.8819946179865
+}

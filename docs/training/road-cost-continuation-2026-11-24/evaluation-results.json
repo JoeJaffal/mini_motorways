@@ -1,0 +1,212 @@
+[
+  {
+    "arm": "control",
+    "budget": 65536,
+    "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/road-cost-continuation-01/control/checkpoint-000065536.zip",
+    "sha256": "956086e2564763a2a6df8f9bb26a062d68e76ed4af8a04e3ff98b358e367531e",
+    "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+    "results": {
+      "validation/small-city-offset-single": {
+        "score": 1.953125,
+        "first_served": 0.546875,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 7.4375,
+        "remaining_stock": 0.4375,
+        "paid_units": 7.0,
+        "outside_routes": 3.9375,
+        "no_build": 0.0,
+        "games": 64
+      },
+      "validation/small-city-offset-stock": {
+        "score": 2.421875,
+        "first_served": 0.703125,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 13.96875,
+        "remaining_stock": 3.640625,
+        "paid_units": 10.328125,
+        "outside_routes": 5.90625,
+        "no_build": 0.0,
+        "games": 64
+      }
+    }
+  },
+  {
+    "arm": "control",
+    "budget": 131072,
+    "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/road-cost-continuation-01/control/checkpoint-000131072.zip",
+    "sha256": "c6a522581698634d27b0d3eb025357501f502e001a50f54ee52add9ae8ede774",
+    "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+    "results": {
+      "validation/small-city-offset-single": {
+        "score": 1.953125,
+        "first_served": 0.546875,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 7.4375,
+        "remaining_stock": 0.390625,
+        "paid_units": 7.046875,
+        "outside_routes": 3.984375,
+        "no_build": 0.0,
+        "games": 64
+      },
+      "validation/small-city-offset-stock": {
+        "score": 2.34375,
+        "first_served": 0.671875,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 13.96875,
+        "remaining_stock": 3.609375,
+        "paid_units": 10.359375,
+        "outside_routes": 6.25,
+        "no_build": 0.0,
+        "games": 64
+      }
+    }
+  },
+  {
+    "arm": "control",
+    "budget": 262144,
+    "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/road-cost-continuation-01/control/checkpoint-000262144.zip",
+    "sha256": "d34dab0451a577b3abddbae5a6678fa297be963b512f399dcf7ad4c81abe6fcd",
+    "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+    "results": {
+      "validation/small-city-offset-single": {
+        "score": 1.953125,
+        "first_served": 0.546875,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 7.4375,
+        "remaining_stock": 0.375,
+        "paid_units": 7.0625,
+        "outside_routes": 4.0,
+        "no_build": 0.0,
+        "games": 64
+      },
+      "validation/small-city-offset-stock": {
+        "score": 2.484375,
+        "first_served": 0.71875,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 13.96875,
+        "remaining_stock": 3.59375,
+        "paid_units": 10.375,
+        "outside_routes": 6.03125,
+        "no_build": 0.0,
+        "games": 64
+      }
+    }
+  },
+  {
+    "arm": "strong",
+    "budget": 65536,
+    "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/road-cost-continuation-01/strong/checkpoint-000065536.zip",
+    "sha256": "b0e6052b0dab89db6c8824f691e0d054eb9e808d69c221feccf5fdcbf48a4141",
+    "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+    "results": {
+      "validation/small-city-offset-single": {
+        "score": 2.0,
+        "first_served": 0.5625,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 7.4375,
+        "remaining_stock": 0.4375,
+        "paid_units": 7.0,
+        "outside_routes": 3.8125,
+        "no_build": 0.0,
+        "games": 64
+      },
+      "validation/small-city-offset-stock": {
+        "score": 2.453125,
+        "first_served": 0.703125,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 13.96875,
+        "remaining_stock": 3.65625,
+        "paid_units": 10.3125,
+        "outside_routes": 5.9375,
+        "no_build": 0.0,
+        "games": 64
+      }
+    }
+  },
+  {
+    "arm": "strong",
+    "budget": 131072,
+    "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/road-cost-continuation-01/strong/checkpoint-000131072.zip",
+    "sha256": "4d04be70fa21f21f97ad63996d3eb3173aa3b51e91cc9f3061e613a592669b69",
+    "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+    "results": {
+      "validation/small-city-offset-single": {
+        "score": 1.9375,
+        "first_served": 0.546875,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 7.4375,
+        "remaining_stock": 0.390625,
+        "paid_units": 7.046875,
+        "outside_routes": 3.9375,
+        "no_build": 0.0,
+        "games": 64
+      },
+      "validation/small-city-offset-stock": {
+        "score": 2.59375,
+        "first_served": 0.765625,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 13.96875,
+        "remaining_stock": 3.609375,
+        "paid_units": 10.359375,
+        "outside_routes": 5.5625,
+        "no_build": 0.0,
+        "games": 64
+      }
+    }
+  },
+  {
+    "arm": "strong",
+    "budget": 262144,
+    "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/road-cost-continuation-01/strong/checkpoint-000262144.zip",
+    "sha256": "b40194ad5c83fdedc7ba1e534fbc6cedeb91e452a3b873c06ee6c92d23a17355",
+    "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+    "results": {
+      "validation/small-city-offset-single": {
+        "score": 2.046875,
+        "first_served": 0.578125,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 7.4375,
+        "remaining_stock": 0.34375,
+        "paid_units": 7.09375,
+        "outside_routes": 3.734375,
+        "no_build": 0.0,
+        "games": 64
+      },
+      "validation/small-city-offset-stock": {
+        "score": 2.875,
+        "first_served": 0.859375,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 13.96875,
+        "remaining_stock": 3.53125,
+        "paid_units": 10.4375,
+        "outside_routes": 4.828125,
+        "no_build": 0.0,
+        "games": 64
+      }
+    }
+  }
+]

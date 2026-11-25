@@ -1,0 +1,333 @@
+{
+  "checkpoints": [
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/build-wait-02/training/checkpoint-000008192.zip",
+      "sha256": "206c716a248f140a40382b1ff2e2e1c3fe7c1e45a0a128c8ddcaebcec54f667d",
+      "added_decisions": 8192,
+      "seconds": 140.4941400649259,
+      "cases": {
+        "destinations": {
+          "games": 512,
+          "correct": 298
+        },
+        "homes": {
+          "games": 512,
+          "correct": 340
+        },
+        "join": {
+          "games": 1024,
+          "correct": 965
+        },
+        "match": {
+          "games": 2048,
+          "correct": 1857
+        },
+        "mismatch": {
+          "games": 1024,
+          "correct": 630
+        },
+        "quiet": {
+          "games": 2048,
+          "correct": 1925
+        },
+        "route": {
+          "games": 1024,
+          "correct": 972
+        }
+      },
+      "wait_adam_steps": [
+        1163
+      ],
+      "old_weights_and_adam_exact": true,
+      "binary_returns_no_bootstrap": true
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/build-wait-02/training/checkpoint-000016384.zip",
+      "sha256": "12a488fb30add06b96d9bee5737c633e32b8635f81a2a40f058d9274e190a6e8",
+      "added_decisions": 16384,
+      "seconds": 258.4968728199601,
+      "cases": {
+        "destinations": {
+          "games": 512,
+          "correct": 373
+        },
+        "homes": {
+          "games": 512,
+          "correct": 394
+        },
+        "join": {
+          "games": 1024,
+          "correct": 992
+        },
+        "match": {
+          "games": 2048,
+          "correct": 1886
+        },
+        "mismatch": {
+          "games": 1024,
+          "correct": 758
+        },
+        "quiet": {
+          "games": 2048,
+          "correct": 1994
+        },
+        "route": {
+          "games": 1024,
+          "correct": 989
+        }
+      },
+      "wait_adam_steps": [
+        1419
+      ],
+      "old_weights_and_adam_exact": true,
+      "binary_returns_no_bootstrap": true
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/build-wait-02/training/checkpoint-000024576.zip",
+      "sha256": "dc2ab974dc2d52b58e22af3001cb82a9acb890a526638c320c7d314fe844aa63",
+      "added_decisions": 24576,
+      "seconds": 377.1897351889638,
+      "cases": {
+        "destinations": {
+          "games": 512,
+          "correct": 445
+        },
+        "homes": {
+          "games": 512,
+          "correct": 464
+        },
+        "join": {
+          "games": 1024,
+          "correct": 1002
+        },
+        "match": {
+          "games": 2048,
+          "correct": 1906
+        },
+        "mismatch": {
+          "games": 1024,
+          "correct": 899
+        },
+        "quiet": {
+          "games": 2048,
+          "correct": 2023
+        },
+        "route": {
+          "games": 1024,
+          "correct": 1014
+        }
+      },
+      "wait_adam_steps": [
+        1675
+      ],
+      "old_weights_and_adam_exact": true,
+      "binary_returns_no_bootstrap": true
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/build-wait-02/training/checkpoint-000032768.zip",
+      "sha256": "53cfb2a0b6ef7ce31fc4cf7aef84293d3976d2b27a96f1e8d4750f661ad5d7d8",
+      "added_decisions": 32768,
+      "seconds": 494.89873465092387,
+      "cases": {
+        "destinations": {
+          "games": 512,
+          "correct": 479
+        },
+        "homes": {
+          "games": 512,
+          "correct": 487
+        },
+        "join": {
+          "games": 1024,
+          "correct": 1017
+        },
+        "match": {
+          "games": 2048,
+          "correct": 1938
+        },
+        "mismatch": {
+          "games": 1024,
+          "correct": 953
+        },
+        "quiet": {
+          "games": 2048,
+          "correct": 2034
+        },
+        "route": {
+          "games": 1024,
+          "correct": 1016
+        }
+      },
+      "wait_adam_steps": [
+        1931
+      ],
+      "old_weights_and_adam_exact": true,
+      "binary_returns_no_bootstrap": true
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/build-wait-02/training/checkpoint-000040960.zip",
+      "sha256": "5f1a2c6eabad7d8cd73ea583cdb66a58b6e0574d7a8c097e681ee35e38d37252",
+      "added_decisions": 40960,
+      "seconds": 620.3162102109054,
+      "cases": {
+        "destinations": {
+          "games": 512,
+          "correct": 481
+        },
+        "homes": {
+          "games": 512,
+          "correct": 500
+        },
+        "join": {
+          "games": 1024,
+          "correct": 1021
+        },
+        "match": {
+          "games": 2048,
+          "correct": 1973
+        },
+        "mismatch": {
+          "games": 1024,
+          "correct": 975
+        },
+        "quiet": {
+          "games": 2048,
+          "correct": 2045
+        },
+        "route": {
+          "games": 1024,
+          "correct": 1017
+        }
+      },
+      "wait_adam_steps": [
+        2187
+      ],
+      "old_weights_and_adam_exact": true,
+      "binary_returns_no_bootstrap": true
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/build-wait-02/training/checkpoint-000049152.zip",
+      "sha256": "c950bfc3275344d4c533e8b97c8a59fbd0495bc03c7512970aa7d4cfafbea171",
+      "added_decisions": 49152,
+      "seconds": 749.3485082649859,
+      "cases": {
+        "destinations": {
+          "games": 512,
+          "correct": 496
+        },
+        "homes": {
+          "games": 512,
+          "correct": 494
+        },
+        "join": {
+          "games": 1024,
+          "correct": 1021
+        },
+        "match": {
+          "games": 2048,
+          "correct": 1975
+        },
+        "mismatch": {
+          "games": 1024,
+          "correct": 996
+        },
+        "quiet": {
+          "games": 2048,
+          "correct": 2044
+        },
+        "route": {
+          "games": 1024,
+          "correct": 1021
+        }
+      },
+      "wait_adam_steps": [
+        2443
+      ],
+      "old_weights_and_adam_exact": true,
+      "binary_returns_no_bootstrap": true
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/build-wait-02/training/checkpoint-000057344.zip",
+      "sha256": "e727a7ae7e8788798116a0749fe1c4512b170874cba99d34963944c30d570e38",
+      "added_decisions": 57344,
+      "seconds": 879.4640705499332,
+      "cases": {
+        "destinations": {
+          "games": 512,
+          "correct": 505
+        },
+        "homes": {
+          "games": 512,
+          "correct": 495
+        },
+        "join": {
+          "games": 1024,
+          "correct": 1023
+        },
+        "match": {
+          "games": 2048,
+          "correct": 1993
+        },
+        "mismatch": {
+          "games": 1024,
+          "correct": 1007
+        },
+        "quiet": {
+          "games": 2048,
+          "correct": 2044
+        },
+        "route": {
+          "games": 1024,
+          "correct": 1021
+        }
+      },
+      "wait_adam_steps": [
+        2699
+      ],
+      "old_weights_and_adam_exact": true,
+      "binary_returns_no_bootstrap": true
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/build-wait-02/training/final.zip",
+      "sha256": "1b92bd35e3124b156a9a25ab5e139fe5e12e6035784a11e69cee558d810524b5",
+      "added_decisions": 65536,
+      "seconds": 1028.0840499579208,
+      "cases": {
+        "destinations": {
+          "games": 512,
+          "correct": 503
+        },
+        "homes": {
+          "games": 512,
+          "correct": 506
+        },
+        "join": {
+          "games": 1024,
+          "correct": 1022
+        },
+        "match": {
+          "games": 2048,
+          "correct": 2015
+        },
+        "mismatch": {
+          "games": 1024,
+          "correct": 1008
+        },
+        "quiet": {
+          "games": 2048,
+          "correct": 2048
+        },
+        "route": {
+          "games": 1024,
+          "correct": 1023
+        }
+      },
+      "wait_adam_steps": [
+        2955
+      ],
+      "old_weights_and_adam_exact": true,
+      "binary_returns_no_bootstrap": true
+    }
+  ],
+  "elapsed_seconds": 1028.0947275769431
+}

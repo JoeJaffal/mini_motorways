@@ -1,0 +1,25 @@
+{
+  "source_sha256": "4405fddffbca23b66b2f332063193a51d33a229161be26c809e20333a3fd8aa6",
+  "native_sha256": "d4207df2276a3d4935f0d479f9d5480663a43a894e5646424d4691a784a8d8fa",
+  "checkpoint": null,
+  "stages": [
+    "traffic-junction-low-stockrush",
+    "traffic-junction-high-stockrush"
+  ],
+  "start": 0,
+  "horizon": 100,
+  "wait_ticks": 200,
+  "warm_seconds": 18,
+  "decisions": 36864,
+  "workers": 12,
+  "seed": 42,
+  "seed_start": 2550000,
+  "learning_rate": 0.0012,
+  "entropy": 0.025,
+  "roots": true,
+  "flow": true,
+  "demand_relation": false,
+  "reward": "native tripsDelta only",
+  "teacher_actions": false,
+  "forced_wait_compaction": true
+}

@@ -1,0 +1,84 @@
+{
+  "tests_passed": 10,
+  "dry_run": {
+    "result": "DRY_RUN_PASS",
+    "mode": "dry-run-no-training",
+    "optimizer_steps": 0,
+    "weights_unchanged": true,
+    "losses": [
+      {
+        "role": "executor",
+        "loss": 0.057762227952480316
+      },
+      {
+        "role": "executor",
+        "loss": -0.13569384813308716
+      }
+    ],
+    "collection_seconds": 1.8782949770102277,
+    "counters": {
+      "tokens": 128,
+      "updates": 0,
+      "version": 0,
+      "episodes": 128
+    },
+    "session_tokens": 128,
+    "elapsed_seconds": 3.649023290956393
+  },
+  "wall_seconds": 1800,
+  "attempt_cap": 131072,
+  "started_asia_beirut": "2026-11-19T23:13:00+02:00",
+  "service": "mini-motorways-shared-edge-pilot-01.service",
+  "log": "output/training/shared-edge-pilot-01-launch/training.log",
+  "first_rollout": {
+    "tokens": 2048,
+    "updates": 4,
+    "version": 1,
+    "episodes": 2048,
+    "collection_seconds": 19.67280672607012,
+    "update_seconds": 2.1575859169242904,
+    "score": 0.0,
+    "worker_tokens": {
+      "1": 128,
+      "2": 128,
+      "3": 128,
+      "4": 128,
+      "5": 128,
+      "6": 128,
+      "7": 128,
+      "8": 128,
+      "9": 128,
+      "10": 128,
+      "11": 128,
+      "12": 128,
+      "13": 128,
+      "14": 128,
+      "15": 128,
+      "16": 128
+    },
+    "update_diagnostics": [
+      {
+        "epoch": 0,
+        "approximate_kl": 0.0,
+        "gradient_norm": 0.9913192391395569
+      },
+      {
+        "epoch": 1,
+        "approximate_kl": 2.7619535103440285e-08,
+        "gradient_norm": 0.7297413945198059
+      },
+      {
+        "epoch": 2,
+        "approximate_kl": 1.0125222615897655e-07,
+        "gradient_norm": 0.47232961654663086
+      },
+      {
+        "epoch": 3,
+        "approximate_kl": 2.230517566204071e-07,
+        "gradient_norm": 0.22004768252372742
+      }
+    ],
+    "successful_builds": 2,
+    "build_attempts": 2048
+  }
+}

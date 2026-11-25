@@ -1,0 +1,95 @@
+{
+  "branch": "Maskable-PPO",
+  "base_revision": "6bd7f71",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "f9e7062dcc14b804665a394d82e851272e6bff4b11789d50ed9126af2c0ec496"
+    },
+    {
+      "path": "calibration.json",
+      "sha256": "c9f44aa3b2462efec18daba9f54128165fd76cab39aff0d67917c93cd4f6db5a"
+    },
+    {
+      "path": "city-route-frontier-01-config.json",
+      "sha256": "b7879f34fdfc2e977d9e75031e5f5bea54aa294bd2fa3d248df69c7cf30110ca"
+    },
+    {
+      "path": "city-route-frontier-01-launch-source-hashes.txt",
+      "sha256": "2aa1a775831b9d056c675b7168b213d2a54bb71897748c9d39c233cf75bfc7b3"
+    },
+    {
+      "path": "city-route-repair-02-config.json",
+      "sha256": "4ec338156e9dd56abe75b15dcb28fe93ca5d80232359164c6ff2970290652e24"
+    },
+    {
+      "path": "city-route-repair-02-launch-source-hashes.txt",
+      "sha256": "d570b60f7b763bf3638b452122c40ee21cd9d043b1d6ec25b92e2689afa1b818"
+    },
+    {
+      "path": "confirmation-games.jsonl",
+      "sha256": "b25f1bae16a493be2544878be36fb9bdbb7674bb2c666b48ab119b9434d77fb8"
+    },
+    {
+      "path": "confirmation-suite.json",
+      "sha256": "1c0699d1b5279b80513b06c0591318de8cc1bceb697fe68ca0942a36cf3699be"
+    },
+    {
+      "path": "confirmation-summary.json",
+      "sha256": "cec959b64671d04c93e828401ca1404bc64063e3748779a0c78a43e167a453e5"
+    },
+    {
+      "path": "development-games.jsonl",
+      "sha256": "7ddf737394c75059ece8aae54b03e118bf2c1a5f3c5d76fb759d666af394fe51"
+    },
+    {
+      "path": "development-suite.json",
+      "sha256": "55575078b4c01978febb2eab3ac7ca17c5ae88ae19dcad996dd0d4e2fb0c3672"
+    },
+    {
+      "path": "development-summary.json",
+      "sha256": "46ada72c99eddd2b9e73c892442ce16b07e0521f7cb075051c110674ad9dd57e"
+    },
+    {
+      "path": "initial-smoke-summary.json",
+      "sha256": "712c39e249cffc4a5f6ed4d413a48698be25e51b3770fb6fa5c1501affc3b2d8"
+    },
+    {
+      "path": "policy-check.json",
+      "sha256": "c938ca4f0ad1eae31c757f9ad5d2fa18836cc43005c92131a92b78d9d57d8c15"
+    },
+    {
+      "path": "progress-config.json",
+      "sha256": "95f12ef0a92dda3d93ec35a7178dc91d3889eb1dad0554ddff6a7950a0074431"
+    },
+    {
+      "path": "progress-evaluated-source-hashes.txt",
+      "sha256": "8a345f8a9db154d401f433cbf2fa23bd35c3d52deeaac891f773f878efd0138c"
+    },
+    {
+      "path": "progress-status.json",
+      "sha256": "3b714e71d369e490b340365e0c0400cf9850e91939c82fe40305f10a36e39d73"
+    },
+    {
+      "path": "redirected-attempts.json",
+      "sha256": "8c6b3bb12ca2eabdaa7508a70d7ae3fb834ba74996708d81d7129bd08903b5e5"
+    },
+    {
+      "path": "selected-checkpoint.json",
+      "sha256": "1107a46439239fab136b33d6a1bec1b05f3100a4779f46ca154e879c989d1ac5"
+    },
+    {
+      "path": "training-summary.json",
+      "sha256": "c2360576e3b92878e758335598c1c34ad9c8abde4bdd937864a398f27a1153ab"
+    }
+  ],
+  "source_hashes": {
+    "training/city_route_repair_policy.py": "8371da9e5544c8af0cc338a0b17cbf3292c98f62bb8e7d20e50ddad7f58995ae",
+    "training/train_city_route_repair.py": "df73c73de53992525bd10a5101d9e716950b235726d0ed0ea81d0f6fb082cdd8",
+    "training/evaluate_city_route_repair.py": "944d623c6c77256b6efd40eb1405af2322edb57b62079ba5b7074fc1a61d71ac",
+    "training/calibrate_city_route_repair.py": "514e42935d1588247d7894dd41e8ec1d050a9ddfe716b0c9855ba9ab2c62d87c",
+    "training/train_limited_route_ppo.py": "8dbff32ee253f236fb635918875d41e9697e92f9e6c446347102e2238b981bc5",
+    "simulation/Assets/Simulation/LimitedRoutePractice.cs": "c8aabc6998e852123a0dc37cffdaf271d70a149b73add2c85bfaf19801d1898a",
+    "simulation/Assets/Simulation/ConstructionCurriculum.cs": "ebe8e28a0d8721e098d49f011bb9e3e2dccf55ef50f3a696dba6282f4d65c120"
+  }
+}

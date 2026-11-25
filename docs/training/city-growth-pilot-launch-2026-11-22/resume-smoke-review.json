@@ -1,0 +1,61 @@
+{
+  "folder": "/home/mohammadjaffal/mini_motorways/output/training/city-growth-resume-smoke-01/evaluation-54b59e20",
+  "models": [
+    "/home/mohammadjaffal/mini_motorways/output/training/city-route-repair-calibration-01/calibrated-with-counters.zip",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-growth-resume-smoke-01/checkpoints/city-000061696-50562c55.zip",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-growth-resume-smoke-01/checkpoints/city-000061952-a5efdaf3.zip"
+  ],
+  "measurements": {
+    "0": {
+      "city": {
+        "games": 2,
+        "scoring": 1,
+        "mean_score": 37.0,
+        "wins": 0,
+        "losses": 0,
+        "paired_mean_delta": 0.0,
+        "paired_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "mean_paid_roads": 61.5,
+        "mean_outside_observed_routes": 26.5,
+        "early_stockouts": 1
+      }
+    },
+    "1": {
+      "city": {
+        "games": 2,
+        "scoring": 1,
+        "mean_score": 82.5,
+        "wins": 1,
+        "losses": 0,
+        "paired_mean_delta": 45.5,
+        "paired_bootstrap_95": [
+          0.0,
+          91.0
+        ],
+        "mean_paid_roads": 74.0,
+        "mean_outside_observed_routes": 37.5,
+        "early_stockouts": 1
+      }
+    },
+    "2": {
+      "city": {
+        "games": 2,
+        "scoring": 1,
+        "mean_score": 45.5,
+        "wins": 1,
+        "losses": 0,
+        "paired_mean_delta": 8.5,
+        "paired_bootstrap_95": [
+          0.0,
+          17.0
+        ],
+        "mean_paid_roads": 56.5,
+        "mean_outside_observed_routes": 32.0,
+        "early_stockouts": 1
+      }
+    }
+  }
+}

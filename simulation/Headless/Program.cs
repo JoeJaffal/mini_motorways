@@ -11,6 +11,8 @@ sealed class Request
     public int Seed { get; set; } = 42;
     public bool Connected { get; set; }
     public int Ticks { get; set; } = 1;
+    public int? ReserveDelaySeconds { get; set; }
+    public double HorizonSeconds { get; set; } = double.MaxValue;
     public string Tool { get; set; } = "Road";
     public int X { get; set; }
     public int Y { get; set; }
@@ -22,11 +24,15 @@ sealed class Request
     public string Version { get; set; }
     public bool RequireExact {get;set;}
     public bool IncludeConnectivity {get;set;}
+    public bool Practice {get;set;}
+    public string PracticeStage {get;set;}="clear";
+    public string PracticeSplit {get;set;}="train";
     public string Variation { get; set; } = "SameMap";
 }
 
 static class Program
 {
+    const string DirectProtocol="maskable-direct-hierarchy-v1";
     static readonly JsonSerializerOptions Json = new JsonSerializerOptions {
         IncludeFields=true,PropertyNamingPolicy=JsonNamingPolicy.CamelCase,
         PropertyNameCaseInsensitive=true,
@@ -36,6 +42,11 @@ static class Program
     public static void Main(string[] args)
     {
         if(Array.IndexOf(args,"--version")>=0){Console.WriteLine(SimulatorVersion.Value);return;}
+        if(Array.IndexOf(args,"--protocol-version")>=0){Console.WriteLine(DirectProtocol);return;}
+        if(Array.IndexOf(args,"--practice-self-test")>=0)
+        {
+            Console.WriteLine("PASS: "+PracticeLegalityChecks.Run()+" differential Stage 1 legality actions; no learning");return;
+        }
         int scenarioArg=Array.IndexOf(args,"--run-scenario");
         if(scenarioArg>=0)
         {
@@ -123,21 +134,77 @@ static class Program
             {
                 var request=JsonSerializer.Deserialize<Request>(line,Json)??throw new Exception("Missing request");
                 if(request.Command=="quit")break;
+                if(request.Command=="hello")
+                {
+                    Console.WriteLine(JsonSerializer.Serialize(new{accepted=true,terminated=false,truncated=false,
+                        simulatorVersion=SimulatorVersion.Value,protocolVersion=DirectProtocol,
+                        capabilities=new[]{"connection-practice-v1","practice-pure-mask-v1","displayed-state-flags-v1","bounded-native-wait-v1","practice-one-gap-v1","practice-new-connections-v1","practice-single-build-v1","construction-curriculum-v1","city-road-pilot-v1","city-bridge-connections-v1"}},Json));
+                    continue;
+                }
                 int trips=world.TripsCompleted,spending=world.ConstructionSpent;bool accepted=true;
+                if(request.Command=="cityRoadMask"||request.Command=="cityConnectionMask")
+                {
+                    Console.WriteLine(JsonSerializer.Serialize(new {accepted=true,truncated=world.ScenarioRejected,
+                        connections=request.Command=="cityRoadMask"?world.CityRoadMask():world.CityConnectionMask()},Json));continue;
+                }
                 if(request.Command=="drawchoices")
                 {
                     Console.WriteLine(JsonSerializer.Serialize(new {accepted=true,simulatorVersion=SimulatorVersion.Value,terminated=world.Failed,truncated=world.ScenarioRejected,
                         possibleChanges=world.DrawChangeChoices(new Cell(request.X,request.Y))},Json));continue;
                 }
+                if(request.Command=="curriculumMask"||request.Command=="curriculumReference")
+                {
+                    if(world.CustomScenarioId!=TrafficWorld.ConstructionCurriculumId)
+                        throw new InvalidOperationException("Expected construction curriculum");
+                    if(request.Command=="curriculumMask")
+                        Console.WriteLine(JsonSerializer.Serialize(new {accepted=true,truncated=false,
+                            editLimit=world.ConstructionEditLimit,
+                            connections=world.PracticeNewConnections(constructionCurriculum:true),
+                            rotations=world.ConstructionDriveways()},Json));
+                    else
+                        Console.WriteLine(JsonSerializer.Serialize(new {accepted=true,truncated=false,
+                            edits=world.ConstructionReference.ConvertAll(e=>new {kind=e.Kind,x=e.From.X,y=e.From.Y,toX=e.To.X,toY=e.To.Y})},Json));
+                    continue;
+                }
+                if(request.Command=="practiceMask")
+                {
+                    if(request.Tool=="newConnections")
+                        Console.WriteLine(JsonSerializer.Serialize(new{accepted=true,simulatorVersion=SimulatorVersion.Value,
+                            terminated=world.Failed,truncated=world.ScenarioRejected,
+                            connections=world.PracticeNewConnections()},Json));
+                    else if(request.Tool=="sources")
+                    {
+                        var masks=world.PracticeSources();
+                        Console.WriteLine(JsonSerializer.Serialize(new{accepted=true,simulatorVersion=SimulatorVersion.Value,
+                            terminated=world.Failed,truncated=world.ScenarioRejected,
+                            drawSources=masks.draw,eraseSources=masks.erase,removeCells=masks.remove},Json));
+                    }
+                    else Console.WriteLine(JsonSerializer.Serialize(new{accepted=true,simulatorVersion=SimulatorVersion.Value,
+                        terminated=world.Failed,truncated=world.ScenarioRejected,
+                        directions=world.PracticeDirections(request.Tool,new Cell(request.X,request.Y))},Json));
+                    continue;
+                }
                 switch(request.Command)
                 {
+                    case "resetReserveDelay":
                     case "reset":
+                        if(request.Command=="resetReserveDelay" && (!request.Practice || request.PracticeStage!="curriculum-midgame-network-reserve" || !request.ReserveDelaySeconds.HasValue))
+                            throw new Exception("Short delay reset requires the reserve practice fixture and explicit delay");
+                        if(request.Command=="reset" && request.ReserveDelaySeconds.HasValue)
+                            throw new Exception("Use resetReserveDelay for an explicit practice delay");
                         var version=request.Version==null?world.Rules.Version:Enum.Parse<GameVersion>(request.Version,true);
                         var scenario=request.Scenario==null?(request.Connected?ScenarioKind.ReferenceLab:ScenarioKind.LosAngeles):Enum.Parse<ScenarioKind>(request.Scenario,true);
                         if(!Enum.IsDefined(typeof(GameVersion),version)||!Enum.IsDefined(typeof(ScenarioKind),scenario))throw new Exception("Unknown version or scenario");
                         if(request.RequireExact)throw new Exception("Exact-original parity is not yet validated. OriginalReference remains under development.");
                         world=new TrafficWorld(request.Seed,false,Rules.ForVersion(version));
-                        world.Reset(request.Seed,scenario,Enum.Parse<MapVariation>(request.Variation,true));
+                        if(request.Practice)
+                        {
+                            if(version!=GameVersion.OriginalReference)throw new Exception("Practice requires OriginalReference");
+                            if(request.PracticeStage.StartsWith("curriculum-",StringComparison.Ordinal))
+                                world.LoadConstructionCurriculum(request.Seed,request.PracticeSplit,request.PracticeStage.Substring(11),request.ReserveDelaySeconds);
+                            else world.LoadConnectionPractice(request.Seed,request.PracticeSplit,request.PracticeStage);
+                        }
+                        else world.Reset(request.Seed,scenario,Enum.Parse<MapVariation>(request.Variation,true));
                         includeConnectivity=request.IncludeConnectivity;
                         trips=0;spending=0;break;
                     case "upgrade":accepted=world.ChooseUpgrade(request.Choice);break;
@@ -147,10 +214,22 @@ static class Program
                     case "connect":accepted=world.Connect(new Cell(request.X,request.Y),new Cell(request.ToX,request.ToY));break;
                     case "driveway":accepted=world.SetHouseDriveway(request.Id,TrafficWorld.Direction(new Cell(request.X,request.Y),new Cell(request.ToX,request.ToY)));break;
                     case "draw":accepted=world.DrawRoad(new Cell(request.X,request.Y),new Cell(request.ToX,request.ToY));break;
+                    case "cityRoad":accepted=world.DrawCityRoad(new Cell(request.X,request.Y),new Cell(request.ToX,request.ToY));break;
+                    case "cityConnection":accepted=world.DrawCityConnection(new Cell(request.X,request.Y),new Cell(request.ToX,request.ToY));break;
+                    case "erase":accepted=world.RemoveRoadConnection(new Cell(request.X,request.Y),new Cell(request.ToX,request.ToY));break;
                     case "reference":accepted=world.BuildReferenceNetwork();break;
                     case "step":
                         if(request.Ticks<0||request.Ticks>100000)throw new Exception("ticks must be 0..100000");
                         world.Step(request.Ticks);break;
+                    case "wait":
+                        // A single IPC round trip, with native event interruption.
+                        if(request.HorizonSeconds<world.Time)throw new Exception("Wait horizon precedes current game time");
+                        for(int tick=0;tick<20&&!world.Failed&&!world.ScenarioRejected&&world.UpgradeChoices.Count==0;tick++)
+                        {
+                            if(world.Time+world.Rules.TickSeconds>request.HorizonSeconds+1e-9)break;
+                            world.Step();
+                        }
+                        break;
                     case "build":
                         if(!Enum.TryParse<BuildTool>(request.Tool,true,out var tool)||!Enum.IsDefined(typeof(BuildTool),tool))
                             throw new Exception("Unknown construction tool");

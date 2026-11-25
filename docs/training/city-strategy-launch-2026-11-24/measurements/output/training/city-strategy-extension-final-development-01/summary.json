@@ -1,0 +1,46 @@
+{
+  "models": [
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-extension-01/segment-001/final.zip"
+  ],
+  "sha256": {
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-extension-01/segment-001/final.zip": "5832f2ae226eebc920f3f5e34b3fdb5b7202b5db8e9616542a1caf8e11fe10cb"
+  },
+  "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+  "horizon": 600,
+  "forced_action_inference_skipped": true,
+  "results": {
+    "0": {
+      "games": 32,
+      "scoring_games": 27,
+      "mean_score": 80.0,
+      "new_targets": 127,
+      "new_targets_served": 100,
+      "new_target_stockouts": 36,
+      "median_new_service_delay": 26.5,
+      "mean_paid_units": 78.71875,
+      "mean_outside_observed_routes": 35.40625,
+      "outside_route_share": 0.4497816593886463,
+      "paired_score_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    }
+  }
+}

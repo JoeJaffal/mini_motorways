@@ -1,0 +1,27 @@
+{
+  "models": [
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-value-balance-01/segment-001/final.zip"
+  ],
+  "hashes": {
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-value-balance-01/segment-001/final.zip": "94b12ae0a180e0a61e126b7327506399fe2b02c05c15549e2fa2c759349ceff7"
+  },
+  "dll": "output/city-road-reserve-build-01/bin/TrafficHost/release/TrafficHost.dll",
+  "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+  "seed_start": 141000000,
+  "count": 16,
+  "lessons": [
+    "midgame-network-join",
+    "midgame-network-route",
+    "midgame-network-delay",
+    "midgame-network-quiet",
+    "traffic-priority-established",
+    "traffic-priority-established-swap",
+    "traffic-junction-low-live",
+    "traffic-junction-high-live",
+    "midgame-network-reserve"
+  ],
+  "split": "validation",
+  "reserve_warmup_seconds": 0,
+  "reserve_delay_seconds": null,
+  "forced_action_inference_skipped": true
+}

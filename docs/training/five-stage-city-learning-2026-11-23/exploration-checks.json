@@ -1,0 +1,22 @@
+{
+  "junctions": [
+    {
+      "exercise": "traffic-junction-low-live",
+      "before_feeder": 5.3276908709362636e-14,
+      "after_feeder": 0.003983104135841131,
+      "before_wait": 0.7112525105476379,
+      "after_wait": 0.7112525105476379
+    },
+    {
+      "exercise": "traffic-junction-high-live",
+      "before_feeder": 2.5822141598358037e-14,
+      "after_feeder": 0.0018785898573696613,
+      "before_wait": 0.8643854260444641,
+      "after_wait": 0.8643854856491089
+    }
+  ],
+  "opening_initial_parity_seeds": [
+    2004,
+    99161630
+  ]
+}

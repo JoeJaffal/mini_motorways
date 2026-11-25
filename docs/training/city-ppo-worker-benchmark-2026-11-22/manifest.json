@@ -1,0 +1,121 @@
+{
+  "branch": "Maskable-PPO",
+  "base_revision": "6bd7f71",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "c07b6def56656aa17bef83143f716c44bcf67e471f1a3f22ab15095609b2eb4f"
+    },
+    {
+      "path": "console.log",
+      "sha256": "1e0309ff1a1d506e57e6542defae0e468e045a9991fb41b94b44f2427e4b4c59"
+    },
+    {
+      "path": "summary.json",
+      "sha256": "24f2ecd38583dae534d9009eee209d78ca3d6cec7219792bf4a884d715bfb2cb"
+    },
+    {
+      "path": "trial-1-w16/episodes.jsonl",
+      "sha256": "74f100a14fc68111fc89cc777c5e33f21ebd9cffd9d9d4564fafebccad22a19e"
+    },
+    {
+      "path": "trial-1-w16/hardware.csv",
+      "sha256": "fb6fcae8bdd57750bfdce9d6f532df6a1b54fea8bea65e31e31e676c4ea29d70"
+    },
+    {
+      "path": "trial-1-w16/progress.csv",
+      "sha256": "988a2addb110b9079b37fa0a2d66ade3ed9924046b4785750c69660b682912a2"
+    },
+    {
+      "path": "trial-1-w16/summary.json",
+      "sha256": "4928a2731ec67709bbf120b4956f6fd2cac874df95479a765ae3d5fac1770e9e"
+    },
+    {
+      "path": "trial-2-w24/episodes.jsonl",
+      "sha256": "b5c581c95dc6a3aef756fadb3fe8223447051baeea5788fcc9d82e0720107bfc"
+    },
+    {
+      "path": "trial-2-w24/hardware.csv",
+      "sha256": "bcb0c0bacfb508b22c15ecdd551f0cfe473eff93883fa8659dbdc95f35a29b40"
+    },
+    {
+      "path": "trial-2-w24/progress.csv",
+      "sha256": "2fa1880581c36e0aa7831fe26b622f97ea52d5d41afc167afff2ee643b2afe91"
+    },
+    {
+      "path": "trial-2-w24/summary.json",
+      "sha256": "188c99973f070459e807539efe984933641d85adf2aa797407caa1590f49f74d"
+    },
+    {
+      "path": "trial-3-w32/episodes.jsonl",
+      "sha256": "0940b74674a456129b804a183d24887f10116c841c5dd535e8dc2ed41b3fcd8c"
+    },
+    {
+      "path": "trial-3-w32/hardware.csv",
+      "sha256": "4ec2fce12dedb9cc8cd7f06cacb1341336bf71cb476b2ed76b1cff257602d7b7"
+    },
+    {
+      "path": "trial-3-w32/progress.csv",
+      "sha256": "d09fc1e5fa51b4d38234d4479ba014247df25f7dbd65b555f6c58cfd56fde198"
+    },
+    {
+      "path": "trial-3-w32/summary.json",
+      "sha256": "e45d0d1093c316126f56e13e8903a9db4d0fffafa9de963ed0953dfcb9ec0ee6"
+    },
+    {
+      "path": "trial-4-w32/episodes.jsonl",
+      "sha256": "c2ca6388bf363168768f04679cfac5beaf7222ddf808bbdd8b7cab7583e6600f"
+    },
+    {
+      "path": "trial-4-w32/hardware.csv",
+      "sha256": "a7119802302777aa6c5e6c8a757c260966a39c04df5d3a3ba56a9a237d95f6f9"
+    },
+    {
+      "path": "trial-4-w32/progress.csv",
+      "sha256": "abae3e1995211c3a837599e5a2c86ffd80a61f44d10f095bae2300ef6b568249"
+    },
+    {
+      "path": "trial-4-w32/summary.json",
+      "sha256": "25e8e5eeaebb07e96d09a90b42171dc7e51edf9fe3ed7b847d8ac79963e7becd"
+    },
+    {
+      "path": "trial-5-w24/episodes.jsonl",
+      "sha256": "10b2cdcc8102ac37ce7cfed3c8562ad537d2b22ba8b29bb60a1cd6a6efa9587d"
+    },
+    {
+      "path": "trial-5-w24/hardware.csv",
+      "sha256": "1dec22fa55c22ea2a0559066d993eb77c045237ce40fb0d3233b3cabaf456b46"
+    },
+    {
+      "path": "trial-5-w24/progress.csv",
+      "sha256": "c6ca61be52d55fb6f9a8f42ad2be9948c8e28d01e83cc3ab19efa59aaecad92d"
+    },
+    {
+      "path": "trial-5-w24/summary.json",
+      "sha256": "6294dbd8ce24c39fca40360fdca0cf0b954145dfb119e66abd185c90dd231be4"
+    },
+    {
+      "path": "trial-6-w16/episodes.jsonl",
+      "sha256": "1e98103e70c6f5b8900f02f3dceb1963fbf71c39b8bbf91d36795470bc4aa674"
+    },
+    {
+      "path": "trial-6-w16/hardware.csv",
+      "sha256": "93f4a3ebd4594fc4d019b9ab0d2f53e3177b14fbc2d2b1963d9b40237ed5be71"
+    },
+    {
+      "path": "trial-6-w16/progress.csv",
+      "sha256": "2188fa76877fa17b21820c9eb066c55fc13006a4dea97f192f9b51a59bfc7ec9"
+    },
+    {
+      "path": "trial-6-w16/summary.json",
+      "sha256": "69adaf5023d852a11fc26862009b9f6170354a1af5bc60319c9a2ff666215e41"
+    }
+  ],
+  "source_hashes": {
+    "training/benchmark_city_ppo.py": "a393e343998358597d70c6dd5bb4982c0e6e3640a3267efd6d4afd7f4b1337e0",
+    "training/train_city_score_pilot.py": "498ae7a9d8304b37e65beb24686b593dfc47b24c3fbf136e4f897ea8cdea3a58",
+    "training/city_road_policy.py": "4059beba8899b1293daa7056a830ce88ba8a2fb88b4eef30e46f5755f0e0cff6",
+    "training/city_road_pilot.py": "90ca72a9048241da628f343ccac9c43b61c63d9b1f7c98142c9f753b19c199f5",
+    "docs/training/city-score-pilot-2026-11-22/config.json": "b5b7c680e2da544787ce88fab2636faf38faa5c958f37075aa473a9f670e2583"
+  }
+}

@@ -1,0 +1,1917 @@
+{
+  "note": "Wait-only counterfactuals for10 consumed zero-score seeds. Diagnostic legal-edge cost estimates only; no routes/actions given to learner. Individually legal edges can overestimate joint feasibility. Waiting changes later spawns relative to the failed actor trajectory.",
+  "rows": [
+    {
+      "seed": 99005063,
+      "end_seconds": 143.20000000000002,
+      "initial_estimate": {
+        "time": 0,
+        "cost": null,
+        "stock": 25,
+        "affordable": false
+      },
+      "first_affordable": null,
+      "checks": [
+        {
+          "time": 0,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 5,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 10,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 15,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 20,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 25,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 30,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 35,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 40,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 45,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 50,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 55,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 60,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 65,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 70,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 75,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 80,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 85,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 90,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 95,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 100,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 105,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 110,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 115,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 120,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 125,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 130,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 135,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 140,
+          "cost": null,
+          "stock": 45,
+          "affordable": false
+        }
+      ]
+    },
+    {
+      "seed": 99008267,
+      "end_seconds": 146.35,
+      "initial_estimate": {
+        "time": 0,
+        "cost": null,
+        "stock": 25,
+        "affordable": false
+      },
+      "first_affordable": null,
+      "checks": [
+        {
+          "time": 0,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 5,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 10,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 15,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 20,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 25,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 30,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 35,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 40,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 45,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 50,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 55,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 60,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 65,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 70,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 75,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 80,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 85,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 90,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 95,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 100,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 105,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 110,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 115,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 120,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 125,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 130,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 135,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 140,
+          "cost": null,
+          "stock": 45,
+          "affordable": false
+        },
+        {
+          "time": 145,
+          "cost": null,
+          "stock": 45,
+          "affordable": false
+        }
+      ]
+    },
+    {
+      "seed": 99065825,
+      "end_seconds": 141.20000000000002,
+      "initial_estimate": {
+        "time": 0,
+        "cost": null,
+        "stock": 25,
+        "affordable": false
+      },
+      "first_affordable": null,
+      "checks": [
+        {
+          "time": 0,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 5,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 10,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 15,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 20,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 25,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 30,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 35,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 40,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 45,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 50,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 55,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 60,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 65,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 70,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 75,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 80,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 85,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 90,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 95,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 100,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 105,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 110,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 115,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 120,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 125,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 130,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 135,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 140,
+          "cost": null,
+          "stock": 45,
+          "affordable": false
+        }
+      ]
+    },
+    {
+      "seed": 99096723,
+      "end_seconds": 146,
+      "initial_estimate": {
+        "time": 0,
+        "cost": null,
+        "stock": 25,
+        "affordable": false
+      },
+      "first_affordable": null,
+      "checks": [
+        {
+          "time": 0,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 5,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 10,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 15,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 20,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 25,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 30,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 35,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 40,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 45,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 50,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 55,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 60,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 65,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 70,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 75,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 80,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 85,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 90,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 95,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 100,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 105,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 110,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 115,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 120,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 125,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 130,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 135,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 140,
+          "cost": null,
+          "stock": 45,
+          "affordable": false
+        },
+        {
+          "time": 145,
+          "cost": null,
+          "stock": 45,
+          "affordable": false
+        }
+      ]
+    },
+    {
+      "seed": 99147471,
+      "end_seconds": 140.4,
+      "initial_estimate": {
+        "time": 0,
+        "cost": null,
+        "stock": 25,
+        "affordable": false
+      },
+      "first_affordable": null,
+      "checks": [
+        {
+          "time": 0,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 5,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 10,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 15,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 20,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 25,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 30,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 35,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 40,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 45,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 50,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 55,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 60,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 65,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 70,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 75,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 80,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 85,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 90,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 95,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 100,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 105,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 110,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 115,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 120,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 125,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 130,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 135,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 140,
+          "cost": null,
+          "stock": 45,
+          "affordable": false
+        }
+      ]
+    },
+    {
+      "seed": 99226312,
+      "end_seconds": 148.05,
+      "initial_estimate": {
+        "time": 0,
+        "cost": null,
+        "stock": 25,
+        "affordable": false
+      },
+      "first_affordable": null,
+      "checks": [
+        {
+          "time": 0,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 5,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 10,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 15,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 20,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 25,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 30,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 35,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 40,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 45,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 50,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 55,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 60,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 65,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 70,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 75,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 80,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 85,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 90,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 95,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 100,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 105,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 110,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 115,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 120,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 125,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 130,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 135,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 140,
+          "cost": null,
+          "stock": 45,
+          "affordable": false
+        },
+        {
+          "time": 145,
+          "cost": null,
+          "stock": 45,
+          "affordable": false
+        }
+      ]
+    },
+    {
+      "seed": 99265651,
+      "end_seconds": 146.3,
+      "initial_estimate": {
+        "time": 0,
+        "cost": null,
+        "stock": 25,
+        "affordable": false
+      },
+      "first_affordable": null,
+      "checks": [
+        {
+          "time": 0,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 5,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 10,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 15,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 20,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 25,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 30,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 35,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 40,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 45,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 50,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 55,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 60,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 65,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 70,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 75,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 80,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 85,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 90,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 95,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 100,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 105,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 110,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 115,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 120,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 125,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 130,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 135,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 140,
+          "cost": null,
+          "stock": 45,
+          "affordable": false
+        },
+        {
+          "time": 145,
+          "cost": null,
+          "stock": 45,
+          "affordable": false
+        }
+      ]
+    },
+    {
+      "seed": 99323274,
+      "end_seconds": 139.70000000000002,
+      "initial_estimate": {
+        "time": 0,
+        "cost": null,
+        "stock": 25,
+        "affordable": false
+      },
+      "first_affordable": null,
+      "checks": [
+        {
+          "time": 0,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 5,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 10,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 15,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 20,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 25,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 30,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 35,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 40,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 45,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 50,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 55,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 60,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 65,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 70,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 75,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 80,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 85,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 90,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 95,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 100,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 105,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 110,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 115,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 120,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 125,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 130,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 135,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        }
+      ]
+    },
+    {
+      "seed": 99480639,
+      "end_seconds": 154.20000000000002,
+      "initial_estimate": {
+        "time": 0,
+        "cost": null,
+        "stock": 25,
+        "affordable": false
+      },
+      "first_affordable": null,
+      "checks": [
+        {
+          "time": 0,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 5,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 10,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 15,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 20,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 25,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 30,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 35,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 40,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 45,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 50,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 55,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 60,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 65,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 70,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 75,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 80,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 85,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 90,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 95,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 100,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 105,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 110,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 115,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 120,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 125,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 130,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 135,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 140,
+          "cost": null,
+          "stock": 45,
+          "affordable": false
+        },
+        {
+          "time": 145,
+          "cost": null,
+          "stock": 45,
+          "affordable": false
+        },
+        {
+          "time": 150,
+          "cost": null,
+          "stock": 45,
+          "affordable": false
+        }
+      ]
+    },
+    {
+      "seed": 99480904,
+      "end_seconds": 150.65,
+      "initial_estimate": {
+        "time": 0,
+        "cost": null,
+        "stock": 25,
+        "affordable": false
+      },
+      "first_affordable": null,
+      "checks": [
+        {
+          "time": 0,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 5,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 10,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 15,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 20,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 25,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 30,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 35,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 40,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 45,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 50,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 55,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 60,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 65,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 70,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 75,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 80,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 85,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 90,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 95,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 100,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 105,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 110,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 115,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 120,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 125,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 130,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 135,
+          "cost": null,
+          "stock": 25,
+          "affordable": false
+        },
+        {
+          "time": 140,
+          "cost": null,
+          "stock": 45,
+          "affordable": false
+        },
+        {
+          "time": 145,
+          "cost": null,
+          "stock": 45,
+          "affordable": false
+        },
+        {
+          "time": 150,
+          "cost": null,
+          "stock": 45,
+          "affordable": false
+        }
+      ]
+    }
+  ]
+}

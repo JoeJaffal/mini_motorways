@@ -1,0 +1,1240 @@
+{
+  "source_sha256": "46a1357bea384979f6d64bb0b04b14fb4b96d94ba17f76ca10f13d5d6392f9b8",
+  "native_sha256": "d8b371ac154f8e368a97d2e17f565e9447768569a05ed19e93807f05fa0c3787",
+  "results": {
+    "pair-triad-left-uneven/greedy": {
+      "layouts": 100,
+      "policy_mean": 6.98,
+      "witness_mean": 8.71,
+      "ties_or_exceeds_witness": 0,
+      "connections_before_wait": 96,
+      "edits_after_connection": 1
+    },
+    "pair-triad-left-uneven/sampled": {
+      "layouts": 100,
+      "policy_mean": 6.65,
+      "witness_mean": 8.71,
+      "ties_or_exceeds_witness": 0,
+      "connections_before_wait": 76,
+      "edits_after_connection": 20
+    },
+    "pair-triad-right-uneven/greedy": {
+      "layouts": 100,
+      "policy_mean": 7.47,
+      "witness_mean": 8.73,
+      "ties_or_exceeds_witness": 0,
+      "connections_before_wait": 100,
+      "edits_after_connection": 0
+    },
+    "pair-triad-right-uneven/sampled": {
+      "layouts": 100,
+      "policy_mean": 6.58,
+      "witness_mean": 8.73,
+      "ties_or_exceeds_witness": 0,
+      "connections_before_wait": 70,
+      "edits_after_connection": 22
+    }
+  },
+  "witnesses": {
+    "pair-triad-left-uneven/68000": {
+      "seed": 68000,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68001": {
+      "seed": 68001,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68002": {
+      "seed": 68002,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68003": {
+      "seed": 68003,
+      "trips": 10.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-left-uneven/68004": {
+      "seed": 68004,
+      "trips": 11.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-left-uneven/68005": {
+      "seed": 68005,
+      "trips": 8.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68006": {
+      "seed": 68006,
+      "trips": 9.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68007": {
+      "seed": 68007,
+      "trips": 8.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-left-uneven/68008": {
+      "seed": 68008,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68009": {
+      "seed": 68009,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68010": {
+      "seed": 68010,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68011": {
+      "seed": 68011,
+      "trips": 11.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-left-uneven/68012": {
+      "seed": 68012,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-left-uneven/68013": {
+      "seed": 68013,
+      "trips": 9.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68014": {
+      "seed": 68014,
+      "trips": 9.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68015": {
+      "seed": 68015,
+      "trips": 7.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-left-uneven/68016": {
+      "seed": 68016,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68017": {
+      "seed": 68017,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68018": {
+      "seed": 68018,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68019": {
+      "seed": 68019,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-left-uneven/68020": {
+      "seed": 68020,
+      "trips": 10.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-left-uneven/68021": {
+      "seed": 68021,
+      "trips": 9.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68022": {
+      "seed": 68022,
+      "trips": 8.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68023": {
+      "seed": 68023,
+      "trips": 7.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-left-uneven/68024": {
+      "seed": 68024,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68025": {
+      "seed": 68025,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68026": {
+      "seed": 68026,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68027": {
+      "seed": 68027,
+      "trips": 10.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-left-uneven/68028": {
+      "seed": 68028,
+      "trips": 11.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-left-uneven/68029": {
+      "seed": 68029,
+      "trips": 8.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68030": {
+      "seed": 68030,
+      "trips": 9.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68031": {
+      "seed": 68031,
+      "trips": 8.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-left-uneven/68032": {
+      "seed": 68032,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68033": {
+      "seed": 68033,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68034": {
+      "seed": 68034,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68035": {
+      "seed": 68035,
+      "trips": 11.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-left-uneven/68036": {
+      "seed": 68036,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-left-uneven/68037": {
+      "seed": 68037,
+      "trips": 9.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68038": {
+      "seed": 68038,
+      "trips": 9.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68039": {
+      "seed": 68039,
+      "trips": 7.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-left-uneven/68040": {
+      "seed": 68040,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68041": {
+      "seed": 68041,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68042": {
+      "seed": 68042,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68043": {
+      "seed": 68043,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-left-uneven/68044": {
+      "seed": 68044,
+      "trips": 10.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-left-uneven/68045": {
+      "seed": 68045,
+      "trips": 9.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68046": {
+      "seed": 68046,
+      "trips": 8.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68047": {
+      "seed": 68047,
+      "trips": 7.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-left-uneven/68048": {
+      "seed": 68048,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68049": {
+      "seed": 68049,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68050": {
+      "seed": 68050,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68051": {
+      "seed": 68051,
+      "trips": 10.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-left-uneven/68052": {
+      "seed": 68052,
+      "trips": 11.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-left-uneven/68053": {
+      "seed": 68053,
+      "trips": 8.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68054": {
+      "seed": 68054,
+      "trips": 9.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68055": {
+      "seed": 68055,
+      "trips": 8.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-left-uneven/68056": {
+      "seed": 68056,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68057": {
+      "seed": 68057,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68058": {
+      "seed": 68058,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68059": {
+      "seed": 68059,
+      "trips": 11.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-left-uneven/68060": {
+      "seed": 68060,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-left-uneven/68061": {
+      "seed": 68061,
+      "trips": 9.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68062": {
+      "seed": 68062,
+      "trips": 9.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68063": {
+      "seed": 68063,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68064": {
+      "seed": 68064,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68065": {
+      "seed": 68065,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68066": {
+      "seed": 68066,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68067": {
+      "seed": 68067,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-left-uneven/68068": {
+      "seed": 68068,
+      "trips": 10.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-left-uneven/68069": {
+      "seed": 68069,
+      "trips": 9.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68070": {
+      "seed": 68070,
+      "trips": 8.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68071": {
+      "seed": 68071,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-left-uneven/68072": {
+      "seed": 68072,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68073": {
+      "seed": 68073,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68074": {
+      "seed": 68074,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68075": {
+      "seed": 68075,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68076": {
+      "seed": 68076,
+      "trips": 11.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-left-uneven/68077": {
+      "seed": 68077,
+      "trips": 8.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68078": {
+      "seed": 68078,
+      "trips": 9.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68079": {
+      "seed": 68079,
+      "trips": 10.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-left-uneven/68080": {
+      "seed": 68080,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68081": {
+      "seed": 68081,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68082": {
+      "seed": 68082,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68083": {
+      "seed": 68083,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68084": {
+      "seed": 68084,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-left-uneven/68085": {
+      "seed": 68085,
+      "trips": 9.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68086": {
+      "seed": 68086,
+      "trips": 9.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68087": {
+      "seed": 68087,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-left-uneven/68088": {
+      "seed": 68088,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68089": {
+      "seed": 68089,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68090": {
+      "seed": 68090,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68091": {
+      "seed": 68091,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68092": {
+      "seed": 68092,
+      "trips": 10.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-left-uneven/68093": {
+      "seed": 68093,
+      "trips": 9.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68094": {
+      "seed": 68094,
+      "trips": 8.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68095": {
+      "seed": 68095,
+      "trips": 10.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-left-uneven/68096": {
+      "seed": 68096,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68097": {
+      "seed": 68097,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left-uneven/68098": {
+      "seed": 68098,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left-uneven/68099": {
+      "seed": 68099,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68000": {
+      "seed": 68000,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68001": {
+      "seed": 68001,
+      "trips": 10.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68002": {
+      "seed": 68002,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68003": {
+      "seed": 68003,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68004": {
+      "seed": 68004,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68005": {
+      "seed": 68005,
+      "trips": 7.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68006": {
+      "seed": 68006,
+      "trips": 7.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68007": {
+      "seed": 68007,
+      "trips": 9.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68008": {
+      "seed": 68008,
+      "trips": 10.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68009": {
+      "seed": 68009,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68010": {
+      "seed": 68010,
+      "trips": 10.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68011": {
+      "seed": 68011,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68012": {
+      "seed": 68012,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68013": {
+      "seed": 68013,
+      "trips": 7.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68014": {
+      "seed": 68014,
+      "trips": 8.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68015": {
+      "seed": 68015,
+      "trips": 8.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68016": {
+      "seed": 68016,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68017": {
+      "seed": 68017,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68018": {
+      "seed": 68018,
+      "trips": 10.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68019": {
+      "seed": 68019,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68020": {
+      "seed": 68020,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68021": {
+      "seed": 68021,
+      "trips": 8.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68022": {
+      "seed": 68022,
+      "trips": 7.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68023": {
+      "seed": 68023,
+      "trips": 9.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68024": {
+      "seed": 68024,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68025": {
+      "seed": 68025,
+      "trips": 10.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68026": {
+      "seed": 68026,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-right-uneven/68027": {
+      "seed": 68027,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68028": {
+      "seed": 68028,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68029": {
+      "seed": 68029,
+      "trips": 7.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68030": {
+      "seed": 68030,
+      "trips": 7.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68031": {
+      "seed": 68031,
+      "trips": 9.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68032": {
+      "seed": 68032,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68033": {
+      "seed": 68033,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68034": {
+      "seed": 68034,
+      "trips": 10.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-right-uneven/68035": {
+      "seed": 68035,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68036": {
+      "seed": 68036,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68037": {
+      "seed": 68037,
+      "trips": 7.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68038": {
+      "seed": 68038,
+      "trips": 8.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68039": {
+      "seed": 68039,
+      "trips": 8.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68040": {
+      "seed": 68040,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68041": {
+      "seed": 68041,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68042": {
+      "seed": 68042,
+      "trips": 11.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-right-uneven/68043": {
+      "seed": 68043,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68044": {
+      "seed": 68044,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68045": {
+      "seed": 68045,
+      "trips": 8.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68046": {
+      "seed": 68046,
+      "trips": 7.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68047": {
+      "seed": 68047,
+      "trips": 9.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68048": {
+      "seed": 68048,
+      "trips": 10.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68049": {
+      "seed": 68049,
+      "trips": 10.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68050": {
+      "seed": 68050,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-right-uneven/68051": {
+      "seed": 68051,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68052": {
+      "seed": 68052,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68053": {
+      "seed": 68053,
+      "trips": 7.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68054": {
+      "seed": 68054,
+      "trips": 7.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68055": {
+      "seed": 68055,
+      "trips": 9.0,
+      "stock": 6,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68056": {
+      "seed": 68056,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68057": {
+      "seed": 68057,
+      "trips": 10.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68058": {
+      "seed": 68058,
+      "trips": 10.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-right-uneven/68059": {
+      "seed": 68059,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68060": {
+      "seed": 68060,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68061": {
+      "seed": 68061,
+      "trips": 7.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68062": {
+      "seed": 68062,
+      "trips": 8.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68063": {
+      "seed": 68063,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68064": {
+      "seed": 68064,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68065": {
+      "seed": 68065,
+      "trips": 10.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68066": {
+      "seed": 68066,
+      "trips": 11.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-right-uneven/68067": {
+      "seed": 68067,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68068": {
+      "seed": 68068,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68069": {
+      "seed": 68069,
+      "trips": 8.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68070": {
+      "seed": 68070,
+      "trips": 7.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68071": {
+      "seed": 68071,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right-uneven/68072": {
+      "seed": 68072,
+      "trips": 10.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68073": {
+      "seed": 68073,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68074": {
+      "seed": 68074,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-right-uneven/68075": {
+      "seed": 68075,
+      "trips": 10.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-right-uneven/68076": {
+      "seed": 68076,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68077": {
+      "seed": 68077,
+      "trips": 7.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68078": {
+      "seed": 68078,
+      "trips": 7.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68079": {
+      "seed": 68079,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right-uneven/68080": {
+      "seed": 68080,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68081": {
+      "seed": 68081,
+      "trips": 10.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68082": {
+      "seed": 68082,
+      "trips": 11.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-right-uneven/68083": {
+      "seed": 68083,
+      "trips": 11.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-right-uneven/68084": {
+      "seed": 68084,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68085": {
+      "seed": 68085,
+      "trips": 7.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68086": {
+      "seed": 68086,
+      "trips": 8.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68087": {
+      "seed": 68087,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right-uneven/68088": {
+      "seed": 68088,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68089": {
+      "seed": 68089,
+      "trips": 10.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68090": {
+      "seed": 68090,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-right-uneven/68091": {
+      "seed": 68091,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-right-uneven/68092": {
+      "seed": 68092,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right-uneven/68093": {
+      "seed": 68093,
+      "trips": 8.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68094": {
+      "seed": 68094,
+      "trips": 7.0,
+      "stock": 6,
+      "spent": 6
+    },
+    "pair-triad-right-uneven/68095": {
+      "seed": 68095,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right-uneven/68096": {
+      "seed": 68096,
+      "trips": 10.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68097": {
+      "seed": 68097,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 3
+    },
+    "pair-triad-right-uneven/68098": {
+      "seed": 68098,
+      "trips": 10.0,
+      "stock": 4,
+      "spent": 2
+    },
+    "pair-triad-right-uneven/68099": {
+      "seed": 68099,
+      "trips": 10.0,
+      "stock": 4,
+      "spent": 2
+    }
+  }
+}

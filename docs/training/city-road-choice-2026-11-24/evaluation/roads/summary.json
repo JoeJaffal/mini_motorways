@@ -1,0 +1,33 @@
+{
+  "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-road-choice-fit-02/roads/final.zip",
+  "sha256": "4adfead05746e25456933231b3e6fd46ed9f04141f8963e71da3d4177727bf58",
+  "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+  "horizon": 600,
+  "allow_bridges": true,
+  "results": {
+    "repeated": {
+      "games": 16,
+      "mean": 128.8125,
+      "scoring": 14,
+      "new_targets_served": 71,
+      "stockouts": 22,
+      "delta": 2.5625,
+      "interval95": [
+        -11.064062499999999,
+        18.3125
+      ]
+    },
+    "heldout": {
+      "games": 16,
+      "mean": 122.25,
+      "scoring": 16,
+      "new_targets_served": 77,
+      "stockouts": 21,
+      "delta": -3.6875,
+      "interval95": [
+        -51.503125,
+        46.4375
+      ]
+    }
+  }
+}

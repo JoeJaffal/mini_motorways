@@ -1,0 +1,19 @@
+{
+  "pid": 807935,
+  "started": "2026-11-25T15:52:04.090076+02:00",
+  "command": [
+    "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+    "-u",
+    "/home/mohammadjaffal/mini_motorways/training/run_mini_horizon_comparison.py",
+    "--output",
+    "/home/mohammadjaffal/mini_motorways/output/training/mini-horizon-comparison-01",
+    "--archive",
+    "/home/mohammadjaffal/mini_motorways/docs/training/mini-task-horizon-2026-11-25",
+    "--bank",
+    "/home/mohammadjaffal/mini_motorways/docs/training/mini-task-repair-2026-11-25/start-bank/starts.json",
+    "--parent",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-whole-initial-01/start.zip",
+    "--rollouts",
+    "32"
+  ]
+}

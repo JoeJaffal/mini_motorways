@@ -1,0 +1,15 @@
+[
+  "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+  "-u",
+  "/home/mohammadjaffal/mini_motorways/output/training/mini-fixed-route-01/runtime/training/evaluate_fixed_mini.py",
+  "--dll",
+  "/home/mohammadjaffal/mini_motorways/output/training/mini-fixed-route-01/runtime/host/TrafficHost.dll",
+  "--output",
+  "/home/mohammadjaffal/mini_motorways/output/training/mini-fixed-route-01/evaluation/fixed-32768",
+  "--workers",
+  "2",
+  "--checkpoint",
+  "/home/mohammadjaffal/mini_motorways/output/training/mini-fixed-route-01/training/midpoint.zip",
+  "--seed",
+  "232000001"
+]

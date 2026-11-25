@@ -1,3 +1,216 @@
+25 November 2026, 23:49 Beirut: all bounded mini-task studies and reviews complete; no training active. Spatial PPO improved first-delivery practice20→27/32 tight and25→31/32 generous, but native obstacles regressed, tight routes9/16, both pairs6/16, and city128.25/28scoring versus parent141.09/31. Development readiness fails; no overnight run or fresh confirmation. Checkpoints preserved. [Session review](../docs/training/mini-task-repair-2026-11-25/SESSION_REVIEW.md); [final findings](../docs/training/route-spatial-run-2026-11-25/INTERPRETATION.md); [current handoff](../docs/training/route-spatial-ppo-2026-11-25/ACTIVE_WORK.md). Entries below are historical.
+
+25 November 2026 22:25 EET: duration comparison complete; neither arm promoted (final city106.19 short,98.47 long, original126.09). Only spatial road study PID947374 remains training toward262144decisions. No overnight readiness or launch. [Active work](../docs/training/route-spatial-ppo-2026-11-25/ACTIVE_WORK.md); [duration findings](../docs/training/mini-task-horizon-2026-11-25/INTERPRETATION.md). Earlier entries historical.
+
+25 November 2026 21:54 EET: route-head study rejected (city122.50,27/32scoring vs parent141.09,31/32). Broader road-encoder PPO launched PID947374 from retained Wait01,262144boundeddecisions; separate frozen Wait representation, same practice reward. Duration short control continues. No overnight launch. [Active work and monitor](../docs/training/route-spatial-ppo-2026-11-25/ACTIVE_WORK.md). Older entries historical.
+
+25 November 2026 21:06 EET: bounded varied-route PPO study launched, PID927046,65536decisions from Wait01. Freeze learned Wait/shared encoder; actual delivery plus bounded efficiency bonus; no planner. Native city reward unchanged. Duration comparison short control continues. No overnight launch. [Active work and commands](../docs/training/route-outcome-ppo-2026-11-25/ACTIVE_WORK.md). Earlier entries historical.
+
+25 November2026,21:01Beirut: Wait02 completed98k total practice; mini restraint improves but city141.09→120.84, paired CI excludes zero. Not promoted; diagnosing exact city failure. Wait01 retained. Duration long arm final98.47 regressed from midpoint146.69; matched short control continues. Route-outcome lesson is preparation only; no overnight launch. [Evidence and current work](../docs/training/build-wait-continuation-2026-11-25/INTERPRETATION.md). Older entries historical.
+
+25 November2026,20:15Beirut: first32kWait-only PPO repair complete. CorrectfirstWait improves but repeatedstopping stillfails; nativepositive/shortconnectionsretained. City141.09vs129.25parent,31/32scoringboth; gainuncertain, outside-routeunitslower. Unchanged65,536decisioncontinuation PID905893 launched from verifiedfinal, output/training/build-wait-02. Longer-lessoncomparison PID807935 continues. No overnightpromotion. [Current work and monitor](../docs/training/build-wait-continuation-2026-11-25/ACTIVE_WORK.md). Older entries below historical.
+
+25 November2026,19:52Beirut: focused continuation completed; fixed-board32/32familiar,29/32fresh action draws, but city107.47/27scoring fails retention versus preceding129.25/31. Preserved final, selected earlier run01final for bounded build-or-Wait PPO. New run PID896687,32,768decisions, output/training/build-wait-01; only8Wait parameters learn binary action-group reward, road/critic weights and Adam retained. Native city reward unchanged. Longer-lesson comparison PID807935 continues. No overnight launch or promotion. [Current work and criteria](../docs/training/build-wait-ppo-2026-11-25/ACTIVE_WORK.md). Older entries below are historical.
+
+25 November 2026, 18:59 Beirut: first focused connection run complete, success5→24/32 but no clear full-city gain. Another65,536 unchanged practice decisions launched from its verified final weights/Adam, PID877049, output/training/mini-fixed-route-02. Separate lesson-duration comparison continues. No overnight run or promotion. [Current work, evidence and monitor commands](../docs/training/mini-task-repair-2026-11-25/ACTIVE_WORK.md). Older entries below are historical.
+
+25 November 2026, 18:34 Beirut: focused difficult-connection practice has progressed from 5/32 to 12/32 to 15/32 successes at initial/16k/32k checks. Full 65,536-decision budget and transfer reviews continue; fixed-layout mastery not reached. Longer-lesson study continues unchanged; its selected city replay shows a functioning opening but continued excess construction. No promotion or overnight run. [Current work and monitor commands](../docs/training/mini-task-repair-2026-11-25/ACTIVE_WORK.md). Older entries below are historical.
+
+25 November2026,18:12Beirut: reset/cold comparison completed and explicitly recovered its known export error; neither candidate promoted. Longer-lesson comparison remains active with a positive131k city development gain (~16percent) but unresolved hard tasks. Focused one-board PPO practice launched18:09,PID859857,65536decisions, retained road/Adam progress, frozen Wait and detached critic input; no overnight run. [Current work, commands and next checks](../docs/training/mini-task-repair-2026-11-25/ACTIVE_WORK.md). Older entries below historical.
+
+25 November2026,17:49Beirut: two original comparisons continue; cold-control nearing completion and longer lessons nearing midpoint. Wait-restored checkpoint review completed: city135.78 versus original126.09 (gain uncertain), tight8/16, bothpairs5/16; short skills retained, readiness screen failed. A further candidate preserves these outputs/Adam while preventing critic-loss updates to road features; migration, gradient-isolation and GPU resume checks passed. It is prepared, not training. Next: review fixed comparison results, recover known reset-study export error after all work ends, then decide bounded road continuation. No overnight run or promotion. [Live handoff](../docs/training/mini-task-repair-2026-11-25/ACTIVE_WORK.md). Older entries below historical.
+
+25 November2026,17:20Beirut: reset-curriculum arm completed and failed city retention; its matched cold control continues. Longer300-second lesson study continues (early city improvement uncertain; task gates unmet). A separately saved Wait-restored checkpoint preserves learned roads/Adam and passed migration checks; frozen mini evaluation running, no new learner or promotion. No overnight run launched. [Current work and recovery instructions](../docs/training/mini-task-repair-2026-11-25/ACTIVE_WORK.md). Older entries below historical.
+
+25 November2026,15:52Beirut: two bounded studies active on Maskable-PPO. Reset curriculum vs cold control PID776266 continues unchanged. Separate60/300-second lesson comparison PID807935 starts from retained original,262144decisions/arm, native reward only; long-window runs first. No overnight session or promotion. [Duration design and monitor](../docs/training/mini-task-horizon-2026-11-25/README.md); [active work/recovery details](../docs/training/mini-task-repair-2026-11-25/ACTIVE_WORK.md). Older entries below historical.
+
+25 November 2026, afternoon: reset-curriculum comparison remains active on Maskable-PPO, PID776266. The131072-decision midpoint has not improved city transfer (100.06 versus retained original126.09). The declared262144decisions/arm and cold control are still running; no promotion or overnight launch. Optional300-second lessons passed exact-native/default-parity and disposable PPO/cache reload checks; production duration comparison is prepared but unlaunched. See [active work](../docs/training/mini-task-repair-2026-11-25/ACTIVE_WORK.md). Older entries below remain historical.
+
+Mini-task reset comparison launched25November2026 after exact replay and PPO smoke checks. Eight city workers retained; four of eight lesson workers use policy-generated initial states, no action targets.262144decisions/arm with fixed empty-board/city reviews. PID776266. Monitor: tail -F /home/mohammadjaffal/mini_motorways/output/training/mini-reset-comparison-01/run.log. Archive: docs/training/mini-task-repair-2026-11-25/. No promotion or overnight continuation yet. Older entries below historical.
+
+Mini-task behavioral audit and repair approved25November2026; flexible timing, target overnight launch by midnight conditional on readiness. Prior expansion comparison complete, no city gain over original and no promotion. Current audit uses frozen original/expansion policies on7task families with native Wait. See docs/training/mini-task-repair-2026-11-25/README.md. Older entries below are historical.
+
+Native-score expansion comparison launched25November2026 on Maskable-PPO. Twelve exact replays show opening failures and rapid post-award stock exhaustion; reward accounting is correct, so native delivery rewards are retained. From the preserved original, compare city-only versus8city+4later-pair+4single workers with within-task advantage normalization;262144added decisions per arm. Four tests/two smoke reload checks passed; no planner/imitation/simulator change. Live status: output/training/expansion-comparison-01/status.json. Monitor: tail -F /home/mohammadjaffal/mini_motorways/output/training/expansion-comparison-01/run.log. Fixed practice/city evaluations run automatically; no promotion/extension. See docs/training/city-transfer-diagnosis-2026-11-25/README.md. Launch status only; consult live status for results. Older entries below are historical.
+
+Overnight comparison completed25November2026 at05:26Beirut. No training remains active. Practice-only and mixed-city continuations each reached524288cumulative decisions. City development means: original126.09, starting practice candidate86.97, lesson-only107.44, mixed-city99.16. Both continuations score in30/32games versus27/32at their start, but all paired score-gain intervals include zero; neither demonstrates an improvement over the original. Mixed training also loses some single-connection practice success. Preserve all saves and retain original as reference; no promotion or new run. See docs/training/overnight-learning-2026-11-25/RESULTS.md. Older launch entries below are historical.
+
+Overnight transfer comparison launched25November2026 after the requested half-hour follow-up. Previous road-cost run improved generous-stock practice but regressed in city development play; original model retained. New bounded run compares lesson-only with8city+8practice workers from the same saved262144policy, reaching524288each; optimizer settings unchanged, road cost confined to practice. Mixed resume smoke passed after fixing missing stock_initial reporting. Live status: output/training/overnight-transfer-comparison-01/status.json; monitor: tail -F /home/mohammadjaffal/mini_motorways/output/training/overnight-transfer-comparison-01/run.log. Automatic fixed-checkpoint evaluation/reporting, no automatic promotion or further extension. See docs/training/overnight-learning-2026-11-25/README.md. This records launch, not completed results; consult live status. Older entries below are historical.
+
+Matched road-cost continuation launched25November2026 on Maskable-PPO. Two original16384-decision checkpoints continue with Adam preserved toward262144decisions/arm; no reward/architecture change. Frozen diagnostics and two resume smoke checks passed. Live status: output/training/road-cost-continuation-01/status.json; monitor: tail -F /home/mohammadjaffal/mini_motorways/output/training/road-cost-continuation-01/run.log. Six fixed development evaluations and archival summary run automatically; no promotion or automatic extension. See docs/training/road-cost-continuation-2026-11-24/README.md. This is launch status, not a result; consult live status for completion. Older entries below are historical.
+
+Research review complete (24 November 2026): keep PPO; latest16k reward trial remains inconclusive, while historical overnight learning and later regressions are both documented. Next recommendation: audit joint-action entropy, effective actor updates and critic calibration, then a stable matched control/.04 continuation with checkpoint curves. Proposed262144decisions/arm; not launched or implemented. No policy/simulator changes. See docs/training/ppo-research-review-2026-11-24/REPORT.md. Older recommendations below are historical.
+
+Road-cost short pilot complete; effectiveness INCONCLUSIVE at16,384decisions/arm. User correctly challenged premature judgment; no convergence shown. Costs0/.01/.04 pass reward/native checks; generous success44/44/45 per64 versus parent46, with no spending decrease or no-build collapse. Preserve checkpoints/Adam for longer matched control/.04 comparison; proposed100k–250k cumulative/arm, duration not selected and no extended run started. See docs/training/road-cost-reward-2026-11-24/RESULTS.md. Older entries below are historical.
+
+Small-city service experiment complete on Maskable-PPO. Easy pairs already64/64; easy pilot stopped with8192-decision checkpoint preserved. Offset trial completed32768 decisions/1024 updates/882episodes; separate-layout both9/32 unchanged, first20→17/32, outside-route units8.34→9.25. Fresh city means121.53→123.53,29/32scoring both, paired95%CI delta[-16.84,20.72]: no reliable gain. No promotion, no long run; all jobs ended. Next proposed test: one longer offset connection with tight versus generous stock, before restoring second arrivals. See docs/training/small-city-service-2026-11-24/RESULTS.md. Older entries below are historical.
+
+Road-choice-only diagnostic complete on Maskable-PPO: 32,768 decisions, 1,024 Adam updates, 64 episodes. Frozen Wait verified; conditional-road changes increased but no reliable score gain. Repeated mean128.81 vs reference126.25; separate122.25 vs125.94. Opening probe26/32 scoring vs27/32. No promotion, no joint continuation, no long run; all jobs completed. Next proposed test: bounded road-head learning-rate comparison with frozen Wait and native rewards. See docs/training/city-road-choice-2026-11-24/RESULTS.md. Older entries below are historical.
+
+Whole-city observation/training diagnostic complete:3 bounded32k trials (98,304 decisions,3,072 optimizer updates,195 episodes). Reference repeated/separate600s means126.25/125.94;gated101.88/115.38;whole129.50/133.75;finite121.50/116.44. No reliable reference gain,no promotion,no long session. Selected replay0→175 does not improve32-RNG opening reliability (27/32 both). All jobs ended;checkpoints preserved. See docs/training/city-whole-policy-2026-11-24/RESULTS.md and compare-play.html. Older entries below are historical.
+
+The [road reserve experiment](../docs/training/road-reserve-learning-2026-11-23/README.md) is complete on Maskable-PPO. One 8,192-decision PPO pilot improves held-out future-connection success from 2/16 to 13/16 and stock at arrival from 1.06 to 3.0 roads. A separately saved feature repair fixes excessive waiting when local progress is absent. Nevertheless, final fresh city means are 54.97 versus calibrated parent 81.88, both 23/32 scoring (paired difference −26.91, 95% interval [−43.50, −11.81]). Reject both new city candidates and retain prior checkpoints. No training/evaluation is active; no overnight run is recommended. Next proposed work is mixed-city conservation versus prompt expansion, with wider stock and route conditions. All older status/launch paragraphs below are historical.
+
+The [five-stage city learning program](../docs/training/five-stage-city-learning-2026-11-23/README.md) completed all eleven bounded PPO runs and independent checks on the user-confirmed `Maskable-PPO` checkout. Best city candidate is inference calibration only: independent mean82.13 versus original63.53, both26/32 scoring. The calibrated PPO demand candidate scores67.44; it passes32/32 urgent-demand cases but does not establish better city retention (and loses one scoring development city). Longer-route completion improves5/16 to16/16 from calibration; quiet stock conservation remains unsolved. Keep the original protected425984 checkpoint as rollback and both candidates separate; no automatic promotion or overnight run. No jobs remain active. Next: a bounded waiting/stock lesson with later native delivery consequences and fresh city retention. All older status/launch paragraphs below are historical and superseded where they conflict with this report; the branch question is resolved.
+
+The [opening regression repair](../docs/training/city-regression-repair-2026-11-23/README.md) completed a 12,288-decision bounded pilot. It preserves the retained opening actor until visible service is established. Three selected regressions now score 14, 4 and 156; the paired 16-city mean is 96.56 versus 90.19 at start, with 15/16 scoring each and an uncertain gain. Final is a repair candidate, not a proven high-score promotion. No training is active. Next: reconcile the supplied `mohammad` instruction with this existing `Maskable-PPO` checkout, then bounded stability and a larger predeclared comparison before another long run. Older launch instructions below are historical and are not the current recommendation.
+
+The [guarded continuation](../docs/training/city-learning-long-status-2026-11-23/README.md) stopped automatically after two half-hour segments because both later saves scored in fewer evaluation cities. The first segment final is retained. No training is active.
+
+The [learning audit and guarded long-run preparation](../docs/training/city-learning-readiness-2026-11-23/README.md) enabled the spatial road actor and tested three learning rates. The 0.000001 midpoint retained performance on 24 fresh cities, averaging 111.29 versus 110.46 with 23/24 scoring cities each. A guarded eight-active-hour command is ready for the user. The long run has not started.
+
+The [network service repair and bounded pilot](../docs/training/city-network-service-pilot-2026-11-23/README.md) completed. Three feature defects are corrected in a separately loadable policy. All 69 tests pass. The final improved the small city mean, while controlled route success matched initialization. Keep the final as an experimental candidate. The next hypothesis is a richer trainable destination-to-edge interaction. No training is active.
+
+The [city policy gap audit](../docs/training/city-policy-gap-audit-2026-11-23/README.md) verified a failure to rank affordable connections, three narrow service-feature issues, and weak demand and congestion choices. On 24 new paired cities, the four-hour candidate averaged 75.29 versus 73.75 for the warm start with a wide interval. No candidate was promoted. No training is active.
+
+The [eight-hour growing-city service run](../docs/training/city-service-long-results-2026-11-23/README.md) completed on `Maskable-PPO`. In 24 paired cities the four-hour save averaged 101.00 deliveries versus 98.54 for the warm start and 77.13 for the final save. The four-hour save is a development candidate. The repaired reference remains available and the independent comparison is open. No training is active.
+
+The [midgame service pilot](../docs/training/city-midgame-service-2026-11-22/README.md) is complete on `Maskable-PPO`. The seeded Wait correction served 24/24 delayed targets versus 1/24 for the repaired parent, with equal existing service and identical full-city audit outcomes in 20 games. The plain continuation did not pass the delayed task. No training is active.
+
+The [one-hour growing-city PPO pilot](../docs/training/city-growth-pilot-results-2026-11-22/README.md) completed on `Maskable-PPO`. Paired means were 84.04, 76.46 and 73.88 deliveries for the start, midpoint and final. The repaired start stays the city reference. Both pilot saves are preserved. No training is active.
+
+The [one-hour growing-city command](../docs/training/city-growth-pilot-launch-2026-11-22/README.md) is ready on `Maskable-PPO`. It starts from the repaired opening, trains a later-city correction with native deliveries, and measures score and road use on fresh paired cities. The short launch and resume checks passed. The full run has yet to start.
+
+The [route repair](../docs/training/city-route-repair-2026-11-22/README.md) finished on `Maskable-PPO`. The selected calibrated opening policy scored on all 32 short, long, delayed and delayed two-gap confirmation fixtures. Fresh full-city mean rose from 81.63 to 99.97, with unused construction across the full city roughly flat. The saved repair is the current candidate for ordinary city play. No training is active.
+
+The [limited-stock route PPO pilot](../docs/training/limited-route-ppo-2026-11-22/README.md) completed 81,920 added decisions on `Maskable-PPO`. The final checkpoint scored on 12/32 short routes versus 6/32 for the overnight parent, scored on 1/32 long routes and on zero delayed routes. Stock survived the delayed gate in 26/32 cases, but fresh-city mean score fell from 72.13 to 39.69. The overnight checkpoint remains the city reference. No training is active.
+
+The [road spending audit](../docs/training/city-road-spending-audit-2026-11-22/README.md) reproduced the three replays and confirmed that 24, 32 and 25 paid units fell outside observed assigned trip routes. Uniformly raising Wait odds reduced early stockouts and mean score on fresh cities. The selected overnight checkpoint is unchanged.
+
+The [hard-opening PPO continuation](../docs/training/city-opening-pilot-2026-11-22/README.md) finished on `Maskable-PPO` after 65,536 added decisions. Hard-opening success was 2/16, 3/16 and 2/16 for the overnight parent, midpoint and final. Ordinary means fell from 133.63 to 91.63 and 86.38. The overnight checkpoint remains the reference. No training is active.
+
+The [frozen road-only diagnostic](../docs/training/city-road-diagnostic-2026-11-22/README.md) found early stock exhaustion in 19 of 20 scoreless opening replays and unserved destinations at the end of all five fresh games that passed ten minutes. The overnight 6,234,112-decision checkpoint remains the reference. No training is active.
+
+The [eight-hour city PPO run](../docs/training/city-overnight-results-2026-11-22/README.md) finished on `Maskable-PPO`. The development-selected 6.23-million-decision checkpoint scored 95.44 sampled and 21.50 greedy on the 32 reserved cities versus 32.19 and zero at the start. This is the road-only reference. No training is active.
+
+The [eight-hour city launcher](../docs/training/city-overnight-launch-2026-11-22/README.md) is ready on `Maskable-PPO`. The stopped-and-resumed smoke restored the optimizer and seed cursors, the 32-worker smoke saved successfully, and disposable seed suites verified the automated review. The actual overnight run has yet to start.
+
+The [end-to-end city PPO worker benchmark](../docs/training/city-ppo-worker-benchmark-2026-11-22/README.md) is complete. Use 32 native workers as the initial overnight setting on this PC. The two trials reached 255.4 and 258.4 decisions/s with at least 12.9 GiB RAM available. The starting construction-transfer checkpoint remains the reference. No training is active.
+
+The [score-only city PPO pilot](../docs/training/city-score-pilot-2026-11-22/README.md) is complete on `Maskable-PPO`. It ran 24,576 decisions and compared three checkpoints in 144 development games. Halfway sampled score rose from 35.46 to 38.58 on average with an uncertain paired gain, while the final checkpoint averaged 34.83. All greedy runs scored zero. The starting transfer remains the reference. No training is active.
+
+The [frozen growing-city baseline](../docs/training/city-frozen-baseline-2026-11-22/README.md) is complete on `Maskable-PPO`. Sampled transfer scored on 24/32 fresh seeds, averaged 32.19 deliveries and peaked at 94. Greedy transfer and all fresh or random controls scored zero. This frozen reference preceded the completed pilot above.
+
+Active training checkout is `/home/mohammadjaffal/mini_motorways` on `Maskable-PPO`. The existing city starting checkpoint is available there.
+
+The first overnight milestone is complete. The [growing-city starting policy](../docs/training/city-policy-start-2026-11-22/README.md) selected the timed triad construction transfer as one Maskable PPO checkpoint. Frozen sampled games scored 22 and 15 trips against two fresh-initialization zeros and passed the weekly award. Greedy play still waited throughout its check. The fresh-seed baseline is reported above.
+
+The [growing-city road preflight](../docs/training/city-road-preflight-2026-11-21/README.md) is runnable and passed one full seed-2004 game. Road actions, growth, weekly award, reward and game-over are verified. This scripted preflight preceded frozen checkpoint selection.
+
+The [one-hour pre-surge timing study](../docs/training/wait-before-surge-2026-11-21/README.md) saved 180,224 added PPO decisions across seven runs. The selected coarse policy delayed before a normal surge and improved over fixed immediate controls. The five-second policy delayed longer with a later heavy pulse. Greedy play still spends immediately from second zero. All training runs have ended.
+
+The [road-end transfer study](../docs/training/road-end-transfer-2026-11-21/README.md) finished. The selected mixed-pressure PPO opened 297/300 heavy bypasses in greedy play on changed geometry and chose 400/400 light feeders. An independent check added 123/128 heavy bypasses and 128/128 light feeders greedily. The next timing lesson remains open. No training is active.
+
+The 21 November [frozen bypass transfer check](../docs/training/junction-transfer-2026-11-21/README.md) preserved original-junction delivery score and found weak heavy-traffic bypass transfer. The saved continuation chose the bypass on 7/100 moved and 0/100 mirrored-and-moved heavy boards greedily. The original checkpoint remains the reference on its own geometry. No training is active.
+
+On 21 November 2026 the [demand priority and congestion session](../docs/training/traffic-milestones-2026-11-21/README.md) saved 297,472 added PPO decisions on `mohammad`. The three-destination policy served the two higher-demand shops on 200/200 greedy and 192/200 sampled held-out boards. The live-junction checkpoint chose the feeder on 100/100 light and the bypass on 100/100 heavy boards greedily. The two-unit allocation checkpoint also passed both conditions. Geometry transfer, voluntary waiting before the surge and integrated play remain open. Five continuations or pilots have interrupted records. The post-window check found no training active.
+
+Current (20 November 2026): The [competing-home continuation](../docs/training/competing-homes-2026-11-20/README.md) completed nine bounded PPO runs and 1,146,880 added decisions on `mohammad`. The best isolated route policy passes both fresh mirrored and unequal-distance boards at 100/100 greedy and 99–100/100 sampled. The selected native score-only timed policy passed 2,000/2,000 greedy and 1,983/2,000 sampled in larger frozen testing. It chose Wait with builds still available after service was established. Timing efficiency remains below the native witness because the actor explicitly attaches driveways. Earlier checkpoint specialists remain available. All training and evaluation have ended.
+
+Earlier (20 November 2026): The [bounded reward-only PPO session](../docs/training/reward-only-construction-hour-2026-11-20/README.md) completed 12 runs and 1,441,792 new decisions on the Linux training branch `mohammad`. Driveway rotation, isolated pair selection, three-gap branch selection and controlled score-only Build-or-Wait have held-out passes. Full builds between competing homes remain reliable only on part of the sampled suite, with a deterministic build-selection failure. The original-stock hard-detour checkpoint reached 93/100 greedy and 85/100 sampled on each shifted-start cohort. Use the report's checkpoint table to select the best checkpoint per exercise. All training has ended.
+
+Earlier (20 November 2026): Independent stock-only verification scored 100/100 highest-probability and 100/100 sampled at original stock for the [preserved spare-stock checkpoint](../docs/training/reward-only-spare-stock-2026-11-20/README.md#independent-verification).
+
+Latest (20 November 2026): The [spare-stock PPO experiment](../docs/training/reward-only-spare-stock-2026-11-20/README.md#outcome-and-the-edit-limit-finding) found a harness cutoff before the second paid edge. The preserved early checkpoint passed 98/100 sampled and 100/100 highest-probability at original road stock once both free attachments fit. The strict edit-cap benchmark remains separate. No training is active.
+
+Latest (20 November 2026): A [temporary spare-stock PPO test](../docs/training/reward-only-spare-stock-2026-11-20/README.md) is running from the 66/100 clear-land checkpoint, with original-budget held-out evaluation planned.
+
+Latest (20 November 2026): The [two-offset PPO pilot](../docs/training/reward-only-offset-ppo-2026-11-20/README.md#final-result-and-early-stop) passed the one-build warm-up but failed transfer to the standard task and regressed to 33/100. The prior 66/100 model remains the clear-land reference. No training is running.
+
+Latest (20 November 2026): [Targeted reward-only offset PPO](../docs/training/reward-only-offset-ppo-2026-11-20/README.md) is running from the clear-land parent with two-direction shortest-route warm-up and rehearsal.
+
+Latest (20 November 2026): The [reward-only clear-road pilot](../docs/training/reward-only-clear-roads-2026-11-20/README.md#completed-pilot) reached 66/100 on empty boards and retained 100/100 on adjacent gaps and bends. All failures were at two-tile lateral offsets. No training is active.
+
+Latest (20 November 2026): The [reward-only clear-road PPO pilot](../docs/training/reward-only-clear-roads-2026-11-20/README.md) is running. Frozen bend weights passed the older tasks but fell short on roads with no supplied tiles.
+
+Latest (20 November 2026): The [reward-only bend PPO pilot](../docs/training/reward-only-bend-ppo-2026-11-20/README.md#completed-run-and-held-out-results) passed 100/100 bends and 100/100 adjacent gaps in sampled and highest-probability modes. No training remains active.
+
+Latest (20 November 2026): A [reward-only unfinished-bend pilot](../docs/training/reward-only-bend-ppo-2026-11-20/README.md) is running from the preserved shared-edge PPO parent. It uses no imitation data.
+
+Latest (20 November 2026): The [incompatible-pair diagnostic](../docs/training/construction-pair-compatibility-2026-11-20/README.md) found the five-stage checkpoint built on all cases even with Finish offered. Only compatible pairs delivered. The checkpoint omits color and the multi-parcel skill remains untrained.
+
+Latest (20 November 2026): The [five-stage construction curriculum](../docs/training/construction-five-stage-2026-11-20/README.md) passed all five held-out gates in both modes using one demonstration-trained checkpoint. No training is active.
+
+Latest (20 November 2026): The [frozen two-gap evaluation](../docs/training/shared-edge-two-gap-evaluation-2026-11-20/README.md) placed both missing edges on 200/200 layouts and then delivered 10–13 native trips with automatic advance. No two-gap training has run.
+
+Latest (20 November 2026): The [frozen delivery evaluation](../docs/training/shared-edge-delivery-evaluation-2026-11-20/README.md) found 200/200 exact one-build repairs followed by 10–13 native deliveries per layout with automatic simulation advance. Autonomous Build-or-Wait and multiple builds remain untested.
+
+Latest (20 November 2026): The [frozen diagonal-gap evaluation](../docs/training/shared-edge-diagonal-evaluation-2026-11-20/README.md) scored 100/100 with sampled and highest-probability choices. The same checkpoint previously solved all 100 horizontal and vertical layouts. No training is running.
+
+Latest (20 November 2026): The [shared-edge continuation](../docs/training/shared-edge-results-2026-11-19/README.md#continuation-results) completed 32,768 additional attempts. Final frozen accuracy was 100/100 for sampled and highest-probability actions, including both orientations. No further training is active.
+
+Latest (19 November 2026): The [first shared-edge pilot](../docs/training/shared-edge-results-2026-11-19/README.md) achieved 84/100 sampled and 100/100 highest-probability held-out repairs, including every horizontal and vertical gap in highest-probability mode. A short continuation was started to improve sampled accuracy and was active at verification.
+
+Latest (19 November 2026): The [shared-edge pilot](../docs/training/shared-edge-policy-2026-11-19/README.md#pilot-started) is running. It uses the same single-build layouts and reward, with fresh weights for the new architecture.
+
+Latest (19 November 2026): The [same-layout continuation](../docs/training/one-gap-single-build-continuation-2026-11-19/README.md) finished at 50/100 sampled and 50/100 highest-probability. It solved vertical gaps and missed horizontal gaps on every held-out layout. No training is running.
+
+Latest (19 November 2026): [The second one-build pilot](../docs/training/one-gap-single-build-results-2026-11-19/README.md#second-pilot-started) resumed the previous checkpoint using the same layouts and immediate reward. Training was active at verification.
+
+Latest (19 November 2026): The [one-build pilot and frozen comparison](../docs/training/one-gap-single-build-results-2026-11-19/README.md) finished. Trained repair rate was 46/100 sampled and 50/100 highest-probability. Board swapping left the exact-gap ranking unchanged in aggregate. No training is active.
+
+Latest (19 November 2026): [The one-build pilot switched to the faster collector](../docs/training/one-gap-single-build-2026-11-19/README.md#pilot-switched-to-the-faster-collector) with its saved learning state intact. The active continuation is output/training/single-build-pilot-01-fast.
+
+Latest (19 November 2026): [Faster single-build collection](../docs/training/one-gap-single-build-2026-11-19/README.md#collection-speed-changes) is available for future runs. The current pilot kept its original collector and was still active after verification. Use its archived source for strict checkpoint evaluation.
+
+Latest (19 November 2026): The first [one-build training pilot](../docs/training/one-gap-single-build-2026-11-19/README.md#first-training-pilot-launched) is running on CUDA and completed its first PPO update. This is a launch snapshot. Check the run status file for its terminal result.
+
+Latest (19 November 2026): The [one-build binary reward diagnostic](../docs/training/one-gap-single-build-2026-11-19/README.md) is implemented and verified without training. The previous direct score-only pilot remains the latest training run.
+
+Latest (19 November 2026): [Direct score-only held-out results](../docs/training/linux-direct-score-pilot-2026-11-19/README.md#frozen-held-out-comparison) show 10/100 trained successes versus 5/100 initial and 4/100 uniform. All 300 games completed naturally. The 90/100 gate remains unmet. The 30-minute pilot is still the latest training run.
+
+Latest (19 November 2026): [Direct one-gap practice](../docs/training/one-gap-direct-2026-11-19/README.md) is implemented for score-only practice. The last training run is still [the connection-economy pilot](../docs/training/linux-compact-reward-results-2026-11-19/README.md). The direct pilot awaits execution approval. Older planning and setup entries below are historical.
+
+Latest: [Stage1 launch preparation](../docs/training/stage1-launch-preparation/README.md). Batch/update/checkpoint and bounded default-dry runner now implemented. Real-host forward checks pass with0updates; actual update path and target Linux validation remain untested. No training authorized/run. Earlier no-updater statements below are historical.
+
+# Stage1 implementation check-in — 16 November 2026
+
+The one-hour implementation session replaced the legacy input encoder with the
+published visible schema, restored context-dependent1501tokens, added exact
+clear-land Stage1native masks, separate manager/executor heads, replay and frozen
+evaluation/review selection, frozen collection and explicit credit/loss helpers.
+[Report](../docs/training/check-in-2026-11-16/README.md).55combined Python checks PASS plus seven additional
+new checks (62distinct);99native core suites and1116native differential actions
+PASS.100scripted layouts remain feasible. No learned result, training session or
+optimizer step. The actual PPO updater and explicit hierarchy settings remain
+unfinished; full-game tools and target-PC speed tuning remain later work. All
+changes are cloud-local/uncommitted/unpushed. Older status entries are historical.
+
+# Published decisions reconciled — 16 November 2026
+
+Fetched and integrated Maskable-PPO publication `6bd7f71`; detailed-record access is resolved. [Reconciliation](../docs/training/connection-practice-2026-11-16/RECONCILIATION.md) maps the draft to exact earlier choices and later hierarchy approvals. Existing legacy observations/shared heads and conservative masks are not training-ready. Restored paused-token guard4096 and finite-horizon termination; target-PC tuning/collector/replay remain pending. No training. Earlier setup/planning status below is historical.
+
+# Maskable-PPO preparation — 16 November 2026
+
+User prohibits training sessions. Linux environment setup verified from user outputs. New cloud-only Stage 1/hierarchy prototype and no-training benchmark passed 99 core, 7 legacy and 7 new checks (including 100 scripted timing layouts); not a finished PPO trainer. [Report](../docs/training/connection-practice-2026-11-16/README.md) and [handoff](HANDOFF.md). No commit/push or transfer to target PC. Historical entries below remain historical.
+
+# Carpark gate ignores red-light cars — 9 November 2026
+
+[Report section 13](../docs/training/simulator-repairs-2026-11-08/README.md#13-map-3101-a-red-light-car-held-the-carpark-gate-simulator-2026-11-087), [handoff](../simulation/Docs/HANDOFF-2026-11-sim-fix.md). A car waiting at a red light can no longer take or keep the engineered carpark gate (simulator `2026-11-08.7`); this fixes LA 3101's late collapse. 85 core/7 environment/6 reward/10 map PASS. Deterministic lights comparison: 580.3 with lights vs 535.5 without (6 better, 4 worse). `main` carries the same simulator, as a simulator-only copy. No training.
+
+# Carpark chunk arbitration — 8 November 2026
+
+[Report section 12](../docs/training/simulator-repairs-2026-11-08/README.md#12-carpark-lanes-as-original-chunks-gate-kept-simulator-2026-11-086), [handoff](../simulation/Docs/HANDOFF-2026-11-sim-fix.md). Carpark lanes arbitrated as the original's chunks and registered as inbound lanes (simulator `2026-11-08.6`); removing the engineered gate deadlocks our entrance geometry, so it stays. 84 core/7 environment/6 reward/10 map PASS. Lights comparison 529.7 vs 535.5 without. Ready for the Evolved Rules re-evaluation and gp-5. No training here.
+
+# Original traffic lights replicated — 8 November 2026
+
+[Report section 11](../docs/training/simulator-repairs-2026-11-08/README.md#11-original-traffic-lights-replicated-simulator-2026-11-085). Original traffic-light phases and permissions replicated from Mohammad's inspected rules (simulator `2026-11-08.5`). Three new checks fail on .4 and pass; 83 core/7 environment/6 reward/10 map PASS. Deterministic lights on/off (LA 3100-3109): stuck time up to 237 s → ≤4.7 s; lights 408.4→510.5 vs 513.2 without. Carpark chunk arbitration is next. No training.
+
+# Original signal/carpark follow-up documented — 8 November2026
+
+[Read-only response](../docs/training/simulator-repairs-2026-11-08/ORIGINAL_SIGNALS_CARPARKS_ANSWER.md). Signal blocked-count/weights/amber semantics and carpark chunk arbitration documented with numeric evidence. No engine edits, model evaluations, training or deployment; runtime merge-toggle/other overrides remain uncertain.
+
+# Carpark gate measures every car at one point — 8 November 2026
+
+[Report section 9](../docs/training/simulator-repairs-2026-11-08/README.md#9-carpark-gate-cars-passing-through-measured-at-the-same-point-simulator-2026-11-084), [note to Mohammad](../docs/training/simulator-repairs-2026-11-08/NOTE_CARPARK_GATE_CHANGE.md). Carpark approach gate: cars passing through a shared lot are now gated at the same outside-approach point as arriving cars, and gate waits are visible to cycle recovery (simulator `2026-11-08.4`). The v20 lock reconstruction fails on .3 and passes; 82 core/7 environment/6 reward/10 map PASS. v20 replay: 620 trips, no deadlock. New finding: a signal phase that never switches in v21; question sent to Mohammad with a note on the gate change. No training.
+
+# Original junction arbitration replicated — 8 November 2026
+
+[Report section 8](../docs/training/simulator-repairs-2026-11-08/README.md#8-original-junction-arbitration-replicated-simulator-2026-11-083), [handoff](../simulation/Docs/HANDOFF-2026-11-sim-fix.md). The original's junction entry arbitration is replicated from Mohammad's rule description (simulator `2026-11-08.3`): lane-count gate, red light, blocking-cycle shove, shared-exit space test, committed-candidate eligibility and route-time registration. Three new checks fail on the previous engine; 81 core/7 environment/6 reward/10 map PASS. Replays v20 and v21 have no deadlock (490 and 488 trips). A carpark gate lock at shared lot 20 now ends them; not fixed, awaiting the user. No training.
+
+# Original junction-rule answer documented — 8 November 2026
+
+[Six-question response](../docs/training/simulator-repairs-2026-11-08/ORIGINAL_SPACE_CHECK_RULE_ANSWER.md). Conditional gap checking plus eligible-prefix arbitration/blocking-cycle recovery confirmed; no blanket box rule or guarantee ofv21fix. Read-only source/config audit only; no engine/fixture/run changes. Runtime45sfeature and stopped-connection geometry remain unresolved.
+
 Decision publication update,16November: user explicitly requests pushing detailed decisions toMaskable-PPO. [CURRENT DECISIONS](../docs/training/DECISIONS.md) is the primary entry point. Selected prior ledgers/specification/workbook/review/hardware/time records migrated byte-identically (50files); latest hierarchy/curriculum/Stage1approvals take precedence. UpdateLinuxclone with `git pull --ff-only origin Maskable-PPO`. Simulator source unchanged; no newtrainer or training. Earlier local-only/migration-pending statements below are historical.
 
 New-chat continuation: read [HANDOFF.md](HANDOFF.md). User reports Linux30GBfree and successful clone ofMaskable-PPO into~/mini_motorways. Next is verify checkout/workspace and isolated environment setup; no dependencies installed or new trainer implemented in this chat. Planning records here remain local/uncommitted, not in Linux clone.
@@ -1556,3 +1769,7 @@ Roundabout fidelity follow-up: [priority/topology findings](../docs/training/gam
 
 First fidelity repair (8 November): [roundabout concrete conservation](../docs/training/roundabout-concrete-fix-2026-11-08/README.md),44 suites PASS; source/headless fixed, running player remains old build. No training/promotion; other fidelity fixes open. Future video comparison must distinguish reconstructed layout/actions from validated same-seed parity.
 
+
+## Latest Linux status — 19 November 2026
+
+The patched implementation is present in the uncommitted `Maskable-PPO` worktree at `~/mini_motorways`. The 30-minute [connection-economy pilot](../docs/training/linux-compact-reward-results-2026-11-19/README.md) is finished. Older setup and pre-training status entries above are historical. The Stage 1 gate remains unmet. The proposed introductory action simplification and penalty deferral await authorization.

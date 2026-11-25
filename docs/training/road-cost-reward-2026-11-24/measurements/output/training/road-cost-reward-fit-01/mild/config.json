@@ -1,0 +1,18 @@
+{
+  "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-whole-initial-01/start.zip",
+  "parent_sha256": "7eb605e4e465b9143e095e367abe0a01285b8ace05843aaac80bd48b5f049027",
+  "dll": "/home/mohammadjaffal/mini_motorways/output/training/road-cost-reward-fit-01/runtime/host/TrafficHost.dll",
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+  "road_cost": 0.01,
+  "seed_start": 198000000,
+  "workers": 16,
+  "rollout_steps": 512,
+  "rollouts": 2,
+  "decision_budget": 16384,
+  "learning_rate": 0.0003,
+  "vf_coef": 1e-05,
+  "gamma": 1,
+  "gae_lambda": 1,
+  "n_epochs": 4,
+  "batch_size": 128
+}

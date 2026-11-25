@@ -1,0 +1,1792 @@
+{
+  "fingerprint": "1028d04775a0d754f60f2f535120003b1ec332761c873283b1938e8e47ed9d55",
+  "sampled": false,
+  "optimizer_updates": 0,
+  "summary": {
+    "clear-spare-two": {
+      "delivered": 100,
+      "layouts": 100,
+      "mean_trips": 11.44,
+      "mean_road_units": 4.43
+    }
+  },
+  "layouts": [
+    {
+      "stage": "clear-spare-two",
+      "seed": 36000,
+      "actions": [
+        321,
+        317,
+        313,
+        309,
+        305,
+        301,
+        297,
+        348,
+        304
+      ],
+      "distance": 7,
+      "offset": -2,
+      "connected": true,
+      "used": 7,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36001,
+      "actions": [
+        407,
+        359,
+        311,
+        263,
+        215,
+        167
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 5,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36002,
+      "actions": [
+        369,
+        365,
+        361,
+        357,
+        353,
+        349,
+        250,
+        302
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 6,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36003,
+      "actions": [
+        359,
+        311,
+        263,
+        215,
+        167
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 4,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36004,
+      "actions": [
+        317,
+        313,
+        309,
+        305,
+        356,
+        312
+      ],
+      "distance": 4,
+      "offset": -2,
+      "connected": true,
+      "used": 4,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36005,
+      "actions": [
+        359,
+        311,
+        263,
+        215
+      ],
+      "distance": 4,
+      "offset": 0,
+      "connected": true,
+      "used": 3,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36006,
+      "actions": [
+        361,
+        357,
+        353
+      ],
+      "distance": 3,
+      "offset": 1,
+      "connected": true,
+      "used": 2,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36007,
+      "actions": [
+        407,
+        359,
+        311,
+        263,
+        215,
+        167,
+        119
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 6,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36008,
+      "actions": [
+        369,
+        365,
+        361,
+        357,
+        353,
+        349,
+        345
+      ],
+      "distance": 7,
+      "offset": 1,
+      "connected": true,
+      "used": 6,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36009,
+      "actions": [
+        407,
+        359,
+        311,
+        263,
+        215,
+        167,
+        128,
+        172
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 6,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36010,
+      "actions": [
+        349,
+        353,
+        357,
+        361,
+        365,
+        369
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 5,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36011,
+      "actions": [
+        167,
+        215,
+        263,
+        311,
+        359,
+        410,
+        358
+      ],
+      "distance": 5,
+      "offset": -2,
+      "connected": true,
+      "used": 5,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36012,
+      "actions": [
+        353,
+        357,
+        361,
+        365
+      ],
+      "distance": 4,
+      "offset": 0,
+      "connected": true,
+      "used": 3,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36013,
+      "actions": [
+        215,
+        263,
+        311,
+        359,
+        410,
+        358
+      ],
+      "distance": 4,
+      "offset": -2,
+      "connected": true,
+      "used": 4,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36014,
+      "actions": [
+        353,
+        357,
+        361
+      ],
+      "distance": 3,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36015,
+      "actions": [
+        123,
+        171,
+        219,
+        267,
+        315,
+        363,
+        411,
+        456,
+        412
+      ],
+      "distance": 7,
+      "offset": 2,
+      "connected": true,
+      "used": 7,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36016,
+      "actions": [
+        345,
+        349,
+        353,
+        357,
+        361,
+        365,
+        369
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 6,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36017,
+      "actions": [
+        167,
+        215,
+        263,
+        311,
+        359,
+        407
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 5,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36018,
+      "actions": [
+        349,
+        353,
+        357,
+        361,
+        365,
+        369
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 5,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36019,
+      "actions": [
+        167,
+        215,
+        263,
+        311,
+        359
+      ],
+      "distance": 5,
+      "offset": 1,
+      "connected": true,
+      "used": 4,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36020,
+      "actions": [
+        353,
+        357,
+        361,
+        365,
+        280,
+        324
+      ],
+      "distance": 4,
+      "offset": -2,
+      "connected": true,
+      "used": 4,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36021,
+      "actions": [
+        317,
+        313,
+        309,
+        305
+      ],
+      "distance": 4,
+      "offset": -1,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36022,
+      "actions": [
+        311,
+        263,
+        215,
+        176,
+        220
+      ],
+      "distance": 3,
+      "offset": 2,
+      "connected": true,
+      "used": 3,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36023,
+      "actions": [
+        369,
+        365,
+        361,
+        357,
+        353,
+        349,
+        345
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 6,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36024,
+      "actions": [
+        411,
+        363,
+        315,
+        267,
+        219,
+        171,
+        123,
+        66,
+        118
+      ],
+      "distance": 7,
+      "offset": -2,
+      "connected": true,
+      "used": 7,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36025,
+      "actions": [
+        369,
+        365,
+        361,
+        357,
+        353,
+        349
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 5,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36026,
+      "actions": [
+        407,
+        359,
+        311,
+        263,
+        215,
+        167
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 5,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36027,
+      "actions": [
+        365,
+        361,
+        357,
+        353,
+        349
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 4,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36028,
+      "actions": [
+        359,
+        311,
+        263,
+        215
+      ],
+      "distance": 4,
+      "offset": 1,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36029,
+      "actions": [
+        365,
+        361,
+        357,
+        353,
+        254,
+        306
+      ],
+      "distance": 4,
+      "offset": 2,
+      "connected": true,
+      "used": 4,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36030,
+      "actions": [
+        311,
+        263,
+        215
+      ],
+      "distance": 3,
+      "offset": -1,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36031,
+      "actions": [
+        321,
+        317,
+        313,
+        309,
+        305,
+        301,
+        297,
+        348,
+        304
+      ],
+      "distance": 7,
+      "offset": -2,
+      "connected": true,
+      "used": 7,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36032,
+      "actions": [
+        119,
+        167,
+        215,
+        263,
+        311,
+        359,
+        407
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 6,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36033,
+      "actions": [
+        349,
+        353,
+        357,
+        361,
+        365,
+        369,
+        284,
+        328
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 6,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36034,
+      "actions": [
+        167,
+        215,
+        263,
+        311,
+        359
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 4,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36035,
+      "actions": [
+        301,
+        305,
+        309,
+        313,
+        317
+      ],
+      "distance": 5,
+      "offset": 1,
+      "connected": true,
+      "used": 4,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36036,
+      "actions": [
+        215,
+        263,
+        311,
+        359
+      ],
+      "distance": 4,
+      "offset": 0,
+      "connected": true,
+      "used": 3,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36037,
+      "actions": [
+        353,
+        357,
+        361,
+        365
+      ],
+      "distance": 4,
+      "offset": -1,
+      "connected": true,
+      "used": 3,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36038,
+      "actions": [
+        219,
+        267,
+        315,
+        360,
+        316
+      ],
+      "distance": 3,
+      "offset": 2,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36039,
+      "actions": [
+        297,
+        301,
+        305,
+        309,
+        313,
+        317,
+        321
+      ],
+      "distance": 7,
+      "offset": 1,
+      "connected": true,
+      "used": 6,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36040,
+      "actions": [
+        119,
+        167,
+        215,
+        263,
+        311,
+        359,
+        407,
+        458,
+        406
+      ],
+      "distance": 7,
+      "offset": -2,
+      "connected": true,
+      "used": 7,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36041,
+      "actions": [
+        349,
+        353,
+        357,
+        361,
+        365,
+        369
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 5,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36042,
+      "actions": [
+        171,
+        219,
+        267,
+        315,
+        363,
+        408,
+        364
+      ],
+      "distance": 5,
+      "offset": 2,
+      "connected": true,
+      "used": 5,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36043,
+      "actions": [
+        359,
+        311,
+        263,
+        215,
+        167
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 4,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36044,
+      "actions": [
+        317,
+        313,
+        309,
+        305
+      ],
+      "distance": 4,
+      "offset": -1,
+      "connected": true,
+      "used": 3,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36045,
+      "actions": [
+        359,
+        311,
+        263,
+        215
+      ],
+      "distance": 4,
+      "offset": 0,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36046,
+      "actions": [
+        313,
+        309,
+        305
+      ],
+      "distance": 3,
+      "offset": -1,
+      "connected": true,
+      "used": 2,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36047,
+      "actions": [
+        407,
+        359,
+        311,
+        263,
+        215,
+        167,
+        119
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 6,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36048,
+      "actions": [
+        369,
+        365,
+        361,
+        357,
+        353,
+        349,
+        345
+      ],
+      "distance": 7,
+      "offset": 1,
+      "connected": true,
+      "used": 6,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36049,
+      "actions": [
+        407,
+        359,
+        311,
+        263,
+        215,
+        167,
+        128,
+        172
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 6,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36050,
+      "actions": [
+        317,
+        313,
+        309,
+        305,
+        301
+      ],
+      "distance": 5,
+      "offset": -1,
+      "connected": true,
+      "used": 4,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36051,
+      "actions": [
+        359,
+        311,
+        263,
+        215,
+        167,
+        128,
+        172
+      ],
+      "distance": 5,
+      "offset": 2,
+      "connected": true,
+      "used": 5,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36052,
+      "actions": [
+        365,
+        361,
+        357,
+        353
+      ],
+      "distance": 4,
+      "offset": 0,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36053,
+      "actions": [
+        315,
+        267,
+        219,
+        162,
+        214
+      ],
+      "distance": 3,
+      "offset": -2,
+      "connected": true,
+      "used": 3,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36054,
+      "actions": [
+        361,
+        357,
+        353
+      ],
+      "distance": 3,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36055,
+      "actions": [
+        119,
+        167,
+        215,
+        263,
+        311,
+        359,
+        407
+      ],
+      "distance": 7,
+      "offset": 1,
+      "connected": true,
+      "used": 6,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36056,
+      "actions": [
+        345,
+        349,
+        353,
+        357,
+        361,
+        365,
+        369
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 6,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36057,
+      "actions": [
+        167,
+        215,
+        263,
+        311,
+        359,
+        407
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 5,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36058,
+      "actions": [
+        301,
+        305,
+        309,
+        313,
+        317,
+        370,
+        318
+      ],
+      "distance": 5,
+      "offset": 2,
+      "connected": true,
+      "used": 5,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36059,
+      "actions": [
+        167,
+        215,
+        263,
+        311,
+        359
+      ],
+      "distance": 5,
+      "offset": 1,
+      "connected": true,
+      "used": 4,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36060,
+      "actions": [
+        353,
+        357,
+        361,
+        365,
+        280,
+        324
+      ],
+      "distance": 4,
+      "offset": -2,
+      "connected": true,
+      "used": 4,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36061,
+      "actions": [
+        215,
+        263,
+        311
+      ],
+      "distance": 3,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36062,
+      "actions": [
+        305,
+        309,
+        313,
+        366,
+        314
+      ],
+      "distance": 3,
+      "offset": 2,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36063,
+      "actions": [
+        119,
+        167,
+        215,
+        263,
+        311,
+        359,
+        407
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 6,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36064,
+      "actions": [
+        345,
+        349,
+        353,
+        357,
+        361,
+        365,
+        369
+      ],
+      "distance": 7,
+      "offset": -1,
+      "connected": true,
+      "used": 6,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36065,
+      "actions": [
+        167,
+        215,
+        263,
+        311,
+        359,
+        407
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 5,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36066,
+      "actions": [
+        359,
+        311,
+        263,
+        215,
+        167
+      ],
+      "distance": 5,
+      "offset": -1,
+      "connected": true,
+      "used": 4,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36067,
+      "actions": [
+        317,
+        313,
+        309,
+        305,
+        301,
+        352,
+        308
+      ],
+      "distance": 5,
+      "offset": -2,
+      "connected": true,
+      "used": 5,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36068,
+      "actions": [
+        359,
+        311,
+        263,
+        215
+      ],
+      "distance": 4,
+      "offset": 1,
+      "connected": true,
+      "used": 3,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36069,
+      "actions": [
+        361,
+        357,
+        353,
+        254,
+        306
+      ],
+      "distance": 3,
+      "offset": 2,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36070,
+      "actions": [
+        311,
+        263,
+        215
+      ],
+      "distance": 3,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36071,
+      "actions": [
+        369,
+        365,
+        361,
+        357,
+        353,
+        349,
+        345,
+        246,
+        298
+      ],
+      "distance": 7,
+      "offset": 2,
+      "connected": true,
+      "used": 7,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36072,
+      "actions": [
+        407,
+        359,
+        311,
+        263,
+        215,
+        167,
+        119
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 6,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36073,
+      "actions": [
+        321,
+        317,
+        313,
+        309,
+        305,
+        301
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 5,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36074,
+      "actions": [
+        359,
+        311,
+        263,
+        215,
+        167
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 4,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36075,
+      "actions": [
+        365,
+        361,
+        357,
+        353,
+        349
+      ],
+      "distance": 5,
+      "offset": 1,
+      "connected": true,
+      "used": 4,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36076,
+      "actions": [
+        363,
+        315,
+        267,
+        219,
+        162,
+        214
+      ],
+      "distance": 4,
+      "offset": -2,
+      "connected": true,
+      "used": 4,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36077,
+      "actions": [
+        353,
+        357,
+        361
+      ],
+      "distance": 3,
+      "offset": -1,
+      "connected": true,
+      "used": 2,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36078,
+      "actions": [
+        219,
+        267,
+        315,
+        360,
+        316
+      ],
+      "distance": 3,
+      "offset": 2,
+      "connected": true,
+      "used": 3,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36079,
+      "actions": [
+        297,
+        301,
+        305,
+        309,
+        313,
+        317,
+        321
+      ],
+      "distance": 7,
+      "offset": 1,
+      "connected": true,
+      "used": 6,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36080,
+      "actions": [
+        167,
+        215,
+        263,
+        311,
+        359,
+        407,
+        458,
+        406
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 6,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36081,
+      "actions": [
+        349,
+        353,
+        357,
+        361,
+        365,
+        369
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 5,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36082,
+      "actions": [
+        171,
+        219,
+        267,
+        315,
+        363,
+        408,
+        364
+      ],
+      "distance": 5,
+      "offset": 2,
+      "connected": true,
+      "used": 5,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36083,
+      "actions": [
+        349,
+        353,
+        357,
+        361,
+        365
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 4,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36084,
+      "actions": [
+        215,
+        263,
+        311,
+        359
+      ],
+      "distance": 4,
+      "offset": -1,
+      "connected": true,
+      "used": 3,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36085,
+      "actions": [
+        353,
+        357,
+        361
+      ],
+      "distance": 3,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36086,
+      "actions": [
+        215,
+        263,
+        311
+      ],
+      "distance": 3,
+      "offset": -1,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36087,
+      "actions": [
+        345,
+        349,
+        353,
+        357,
+        361,
+        365,
+        369,
+        284,
+        328
+      ],
+      "distance": 7,
+      "offset": -2,
+      "connected": true,
+      "used": 7,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36088,
+      "actions": [
+        369,
+        365,
+        361,
+        357,
+        353,
+        349
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 5,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36089,
+      "actions": [
+        407,
+        359,
+        311,
+        263,
+        215,
+        167,
+        128,
+        172
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 6,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36090,
+      "actions": [
+        365,
+        361,
+        357,
+        353,
+        349
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 4,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36091,
+      "actions": [
+        359,
+        311,
+        263,
+        215,
+        167,
+        128,
+        172
+      ],
+      "distance": 5,
+      "offset": 2,
+      "connected": true,
+      "used": 5,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36092,
+      "actions": [
+        365,
+        361,
+        357,
+        353
+      ],
+      "distance": 4,
+      "offset": 0,
+      "connected": true,
+      "used": 3,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36093,
+      "actions": [
+        311,
+        263,
+        215
+      ],
+      "distance": 3,
+      "offset": -1,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36094,
+      "actions": [
+        361,
+        357,
+        353
+      ],
+      "distance": 3,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36095,
+      "actions": [
+        407,
+        359,
+        311,
+        263,
+        215,
+        167,
+        119
+      ],
+      "distance": 7,
+      "offset": 1,
+      "connected": true,
+      "used": 6,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36096,
+      "actions": [
+        321,
+        317,
+        313,
+        309,
+        305,
+        301,
+        352,
+        308
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 6,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36097,
+      "actions": [
+        407,
+        359,
+        311,
+        263,
+        215,
+        167
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 5,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36098,
+      "actions": [
+        365,
+        361,
+        357,
+        353,
+        349,
+        250,
+        302
+      ],
+      "distance": 5,
+      "offset": 2,
+      "connected": true,
+      "used": 5,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear-spare-two",
+      "seed": 36099,
+      "actions": [
+        215,
+        263,
+        311,
+        359
+      ],
+      "distance": 4,
+      "offset": 0,
+      "connected": true,
+      "used": 3,
+      "trips": 11,
+      "seconds": 180
+    }
+  ]
+}

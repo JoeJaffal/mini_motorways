@@ -1,0 +1,76 @@
+{
+  "branch": "Maskable-PPO",
+  "base_revision": "6bd7f71",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "df684c099431a8222f4cf5fa990dcb448595d9b23517922a96b87ce0522a7074"
+    },
+    {
+      "path": "config.json",
+      "sha256": "ab5188615a737181f2de621437f39c4b67186f0b52aec39e17e446051c7ecdd5"
+    },
+    {
+      "path": "evaluation-games.jsonl",
+      "sha256": "11563355118842a491cdbd600ebf7381dbf1260eee6620a00060065d051e5299"
+    },
+    {
+      "path": "evaluation-suite.json",
+      "sha256": "90ab10e9734f0dea7cc2e10a58430dcaae565a2116d0ad1beb29fdec4f331038"
+    },
+    {
+      "path": "evaluation-summary.json",
+      "sha256": "49fcc400723dbf756c89cf70c99694e05cdb0fa226b49e11b8185d1c85793cd1"
+    },
+    {
+      "path": "fixture-verification.json",
+      "sha256": "7f74ca436aee84eb51ac1a3c9ffbd6275c124a749502a66c6171f19c60ae4fe4"
+    },
+    {
+      "path": "progress.csv",
+      "sha256": "2d783fb998fb5172534db2fec2e5a7f38743f2f50315de146619683c751f75f1"
+    },
+    {
+      "path": "status.json",
+      "sha256": "9cff836e9490580ca9ab7cc523428c1b1df64fe6159230c88a57eb20da5d6240"
+    },
+    {
+      "path": "timing-config.json",
+      "sha256": "816d28fd7961bcd8b1a1d4066c8dec82612369d38ed5380d3f07d7451c25edaf"
+    },
+    {
+      "path": "timing-control.json",
+      "sha256": "a9a6b98dfacc0e4b3b4df57af86c35026e491b91e3516b0540c57715cd468780"
+    },
+    {
+      "path": "timing-progress.csv",
+      "sha256": "8a68d9624ffb9e63ac5d0921841b27d71f51b728e102329957e77b47baf48e1e"
+    },
+    {
+      "path": "timing-status.json",
+      "sha256": "78666a013b1c4d475dab942bd0fe8985398bc929824533f7fa7c4ad9cf779f34"
+    },
+    {
+      "path": "timing-training-episodes.jsonl",
+      "sha256": "8c3ae225692a560605529fd7f93ddbfa6ef7c5b95787e69702e2186f358805d3"
+    },
+    {
+      "path": "training-checks.json",
+      "sha256": "56f9e23a69ae176e6eb0e653cb04f6c38635c8c2e472beab1908f8fe1ccd2520"
+    },
+    {
+      "path": "training-episodes.jsonl",
+      "sha256": "8e04d705fa0cc68a856a7a01ac76f27bcc29f7583978a6096819175fb7417e18"
+    }
+  ],
+  "source_hashes": {
+    "simulation/Assets/Simulation/MidgameServicePractice.cs": "53730e59dd0301c44a3381d7722fd641e78e3e4de1577b2d20b906e538c359e5",
+    "simulation/Assets/Simulation/TrafficTypes.cs": "976889dc5f5278761f66ceebbc868cdb37d392292111e18f92b74b186fc63d86",
+    "simulation/Assets/Simulation/TrafficWorld.cs": "b3e1ac81c649042631555c0b1689afbaa3014b281229d34ac03f5f7b2dbc957c",
+    "simulation/Assets/Simulation/ConstructionCurriculum.cs": "b7f4a6652446bc778ed18a9a9ea2ebb35e65c3255f5f7aadb029e8dc279d8b66",
+    "training/train_midgame_service.py": "6d862d4ce23f69d3b5ee030779ebbe3dc96bdc81d52a0b576d1d76af9ec73abc",
+    "training/evaluate_midgame_service.py": "05e1b6b8cecd6aa83cf05a4ab48ed59534fefc4675de1f3ab3ee98f448704507",
+    "training/midgame_timing_policy.py": "4119939bbf1e36f5ff1ab9ffa122c6cfb7a268b9469fcd4586be9ce870e60d45",
+    "training/run_city_growth_pilot.py": "95f0613f1086a75f0acc3d303cf63b6a89a5ead67a9e401d700f7b87b7ace78b"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "pid": 311635,
+  "command": [
+    "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+    "-u",
+    "training/evaluate_city_service.py",
+    "--dll",
+    "output/city-bridge-connection-build-01/bin/TrafficHost/release/TrafficHost.dll",
+    "--checkpoints",
+    "output/training/city-five-stage-cold-initial-01/candidate.zip",
+    "output/training/city-strategy-original-delay-01/segment-001/final.zip",
+    "output/training/city-strategy-opening-01/segment-001/final.zip",
+    "--output",
+    "output/training/city-strategy-bridge-initial-development-01",
+    "--games",
+    "32",
+    "--seed",
+    "950241",
+    "--workers",
+    "16",
+    "--allow-bridges"
+  ],
+  "note": "Frozen existing weights on new optional bridge action profile. Consumed development cities,not fresh confirmation. No trainer running; no long launch."
+}

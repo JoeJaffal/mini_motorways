@@ -1,0 +1,27 @@
+{
+  "parent": "output/training/mini-fixed-route-01/training/final.zip",
+  "parent_sha256": "c86c0db95e28951c3e9ed36d5a29eb94d7faa4cbddbfddaed18700dc70121eb3",
+  "checkpoint_sha256": "5086f5a95025af78362869ab5ae7cd4014498cca9c841cdf82e97d705b801c96",
+  "host_sha256": "3077ce7593b062d8c756116435346ce956ff1961a073aa74ffda55282903ee1e",
+  "preserved_timesteps": 753664,
+  "retained_adam_parameters": 22,
+  "retained_adam_steps": [
+    10240
+  ],
+  "trainable": [
+    "features_extractor.growth_strategy_wait.0.weight",
+    "features_extractor.growth_strategy_wait.0.bias",
+    "features_extractor.growth_strategy_wait.2.weight",
+    "features_extractor.growth_strategy_wait.2.bias",
+    "features_extractor.growth_strategy_visual_wait.0.weight",
+    "features_extractor.growth_strategy_visual_wait.0.bias",
+    "features_extractor.growth_strategy_visual_wait.2.weight",
+    "features_extractor.growth_strategy_visual_wait.2.bias"
+  ],
+  "initial_actor_max_error": 0.0,
+  "shared_states": 16,
+  "all_weights_exact": true,
+  "original_city_critic_and_adam_preserved": true,
+  "bandit_values_zero": true,
+  "limits": "Preparation only. One-step binary objective; not city promotion. Parent remains unchanged."
+}

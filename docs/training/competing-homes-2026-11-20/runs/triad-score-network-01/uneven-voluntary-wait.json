@@ -1,0 +1,3240 @@
+{
+  "source_sha256": "d3b34c1b5407cec3ef754e6a086440dcdf0fdbe68673f2dce92d24f28d4d022b",
+  "native_sha256": "d8b371ac154f8e368a97d2e17f565e9447768569a05ed19e93807f05fa0c3787",
+  "summary": {
+    "pair-triad-left-uneven/greedy": {
+      "boards_with_paid_stock_after_first_connection": 49,
+      "boards_with_legal_draws_after_connection": 100,
+      "opportunities_with_legal_draws": 1202,
+      "chose_wait": 1202
+    },
+    "pair-triad-left-uneven/sampled": {
+      "boards_with_paid_stock_after_first_connection": 49,
+      "boards_with_legal_draws_after_connection": 100,
+      "opportunities_with_legal_draws": 1167,
+      "chose_wait": 1152
+    },
+    "pair-triad-right-uneven/greedy": {
+      "boards_with_paid_stock_after_first_connection": 51,
+      "boards_with_legal_draws_after_connection": 100,
+      "opportunities_with_legal_draws": 1206,
+      "chose_wait": 1206
+    },
+    "pair-triad-right-uneven/sampled": {
+      "boards_with_paid_stock_after_first_connection": 50,
+      "boards_with_legal_draws_after_connection": 98,
+      "opportunities_with_legal_draws": 1137,
+      "chose_wait": 1122
+    }
+  },
+  "results": {
+    "pair-triad-left-uneven/greedy": [
+      {
+        "seed": 68000,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68001,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68002,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68003,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68004,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68005,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68006,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68007,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68008,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68009,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68010,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68011,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68012,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68013,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68014,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68015,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68016,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68017,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68018,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68019,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68020,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68021,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68022,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68023,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68024,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68025,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68026,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68027,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68028,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68029,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68030,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68031,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68032,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68033,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68034,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68035,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68036,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68037,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68038,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68039,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68040,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68041,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68042,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68043,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68044,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68045,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68046,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68047,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68048,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68049,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68050,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68051,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68052,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68053,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68054,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68055,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68056,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68057,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68058,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68059,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68060,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68061,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68062,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68063,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68064,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68065,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68066,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68067,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68068,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68069,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68070,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68071,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68072,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68073,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68074,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68075,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68076,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68077,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68078,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68079,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68080,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68081,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68082,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68083,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68084,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68085,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68086,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68087,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68088,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68089,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68090,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68091,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68092,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68093,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68094,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68095,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68096,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68097,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68098,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68099,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      }
+    ],
+    "pair-triad-left-uneven/sampled": [
+      {
+        "seed": 68000,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68001,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68002,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68003,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68004,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68005,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68006,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68007,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68008,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68009,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68010,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68011,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68012,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68013,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68014,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68015,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68016,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 7,
+        "chose_wait": 7,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68017,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68018,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68019,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68020,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68021,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68022,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68023,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 9,
+        "chose_wait": 9,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68024,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68025,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 9,
+        "chose_wait": 9,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68026,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68027,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 1,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68028,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68029,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68030,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 9,
+        "chose_wait": 9,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68031,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 8,
+        "chose_wait": 8,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68032,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68033,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68034,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68035,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68036,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68037,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68038,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68039,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68040,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68041,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68042,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68043,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68044,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68045,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68046,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68047,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68048,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68049,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68050,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68051,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68052,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68053,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68054,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68055,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 9,
+        "chose_wait": 9,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68056,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68057,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68058,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68059,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68060,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68061,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68062,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68063,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68064,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68065,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68066,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68067,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68068,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68069,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68070,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68071,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68072,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68073,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68074,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68075,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68076,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68077,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68078,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68079,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68080,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68081,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68082,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68083,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68084,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68085,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68086,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68087,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68088,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 9,
+        "chose_wait": 9,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68089,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68090,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68091,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68092,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68093,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68094,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68095,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68096,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68097,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68098,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68099,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      }
+    ],
+    "pair-triad-right-uneven/greedy": [
+      {
+        "seed": 68000,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68001,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68002,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68003,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68004,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68005,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68006,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68007,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68008,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68009,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68010,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68011,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68012,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68013,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68014,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68015,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68016,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68017,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68018,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68019,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68020,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68021,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68022,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68023,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68024,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68025,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68026,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68027,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68028,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68029,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68030,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68031,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68032,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68033,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68034,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68035,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68036,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68037,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68038,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68039,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68040,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68041,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68042,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68043,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68044,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68045,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68046,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68047,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68048,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68049,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68050,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68051,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68052,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68053,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68054,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68055,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68056,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68057,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68058,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68059,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68060,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68061,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68062,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68063,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68064,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68065,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68066,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68067,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68068,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68069,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68070,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68071,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68072,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68073,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68074,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68075,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68076,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68077,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68078,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68079,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68080,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68081,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68082,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68083,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68084,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68085,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68086,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68087,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68088,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68089,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68090,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68091,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68092,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68093,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68094,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68095,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68096,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68097,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68098,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68099,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      }
+    ],
+    "pair-triad-right-uneven/sampled": [
+      {
+        "seed": 68000,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68001,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68002,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68003,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68004,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68005,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68006,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68007,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68008,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68009,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68010,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68011,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68012,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68013,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 7,
+        "chose_wait": 7,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68014,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 9,
+        "chose_wait": 9,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68015,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68016,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68017,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68018,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68019,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68020,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68021,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 9,
+        "chose_wait": 9,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68022,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 9,
+        "chose_wait": 9,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68023,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68024,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68025,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68026,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68027,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68028,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68029,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 9,
+        "chose_wait": 9,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68030,
+        "trips": 4.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 5,
+        "chose_wait": 5,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68031,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68032,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68033,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68034,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68035,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68036,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68037,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68038,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68039,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68040,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68041,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68042,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68043,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68044,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68045,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 7,
+        "chose_wait": 7,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68046,
+        "trips": 4.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 5,
+        "chose_wait": 5,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68047,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68048,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68049,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68050,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68051,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68052,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68053,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 9,
+        "chose_wait": 9,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68054,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68055,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 450
+      },
+      {
+        "seed": 68056,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68057,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68058,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68059,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68060,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68061,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 8,
+        "chose_wait": 8,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68062,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68063,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68064,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68065,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68066,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68067,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68068,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68069,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68070,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68071,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68072,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68073,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68074,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68075,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68076,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68077,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68078,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68079,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68080,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68081,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68082,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68083,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68084,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 12,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68085,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 9,
+        "chose_wait": 9,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68086,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68087,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 10,
+        "chose_wait": 10,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68088,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 12,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68089,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68090,
+        "trips": 0.0,
+        "stock_remaining_at_connection": null,
+        "decisions_with_draw_alternative": 0,
+        "chose_wait": 0,
+        "maximum_draw_alternatives": 0
+      },
+      {
+        "seed": 68091,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 14,
+        "chose_wait": 14,
+        "maximum_draw_alternatives": 452
+      },
+      {
+        "seed": 68092,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68093,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 9,
+        "chose_wait": 9,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68094,
+        "trips": 0.0,
+        "stock_remaining_at_connection": null,
+        "decisions_with_draw_alternative": 0,
+        "chose_wait": 0,
+        "maximum_draw_alternatives": 0
+      },
+      {
+        "seed": 68095,
+        "trips": 6.0,
+        "stock_remaining_at_connection": 0,
+        "decisions_with_draw_alternative": 11,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 1
+      },
+      {
+        "seed": 68096,
+        "trips": 7.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 11,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68097,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68098,
+        "trips": 8.0,
+        "stock_remaining_at_connection": 1,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 451
+      },
+      {
+        "seed": 68099,
+        "trips": 9.0,
+        "stock_remaining_at_connection": 2,
+        "decisions_with_draw_alternative": 13,
+        "chose_wait": 13,
+        "maximum_draw_alternatives": 452
+      }
+    ]
+  }
+}

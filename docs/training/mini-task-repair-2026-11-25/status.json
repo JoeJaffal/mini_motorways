@@ -1,0 +1,15 @@
+{
+  "status": "complete-recovered",
+  "pid": 776266,
+  "started": "2026-11-25T14:33:32.758571+02:00",
+  "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-whole-initial-01/start.zip",
+  "parent_sha256": "7eb605e4e465b9143e095e367abe0a01285b8ace05843aaac80bd48b5f049027",
+  "added_decisions_per_arm": 262144,
+  "bank_sha256": "33285c68b49cdb50c714e3790735f617f7f946d3472bbaeff3bfdf3f514c1579",
+  "intervention": "Same8city+4two-arrival+4single mix; four lesson workers optionally use self-generated native reset prefixes. No imitation or reward change.",
+  "phase": "finished",
+  "arm": "both",
+  "error": "CalledProcessError(1, ['/home/mohammadjaffal/mini_motorways/.venv/bin/python', '-u', '/home/mohammadjaffal/mini_motorways/output/training/mini-reset-comparison-01/runtime/training/audit_mini_behavior.py', '--output', '/home/mohammadjaffal/mini_motorways/output/training/mini-reset-comparison-01/evaluation/practice-reset-curriculum-65536', '--dll', '/home/mohammadjaffal/mini_motorways/output/training/mini-reset-comparison-01/runtime/host/TrafficHost.dll', '--checkpoints', '/home/mohammadjaffal/mini_motorways/output/training/mini-reset-comparison-01/reset-curriculum/checkpoint-000065536.zip', '--labels', 'candidate'])",
+  "finished": "2026-11-25T18:01:22.705740+02:00",
+  "recovery_note": "Training completed unchanged. Replay-template failure preserved; same evaluation rerun and all twelve evaluations/checkpoints verified. No promotion."
+}

@@ -1,0 +1,45 @@
+--- a/simulation/Assets/Simulation/PracticeScenario.cs
++++ b/simulation/Assets/Simulation/PracticeScenario.cs
+@@ -9,7 +9,8 @@
+         public void LoadConnectionPractice(int seed,string split="train",string stage="clear")
+         {
+             if(split!="train"&&split!="validation")throw new ArgumentException("Unknown practice split");
+-            if(stage!="clear"&&stage!="one-gap"&&stage!="one-gap-single-build")throw new ArgumentException("Unknown practice stage");
++            bool diagonal=stage=="diagonal-single-build";
++            if(stage!="clear"&&stage!="one-gap"&&stage!="one-gap-single-build"&&!diagonal)throw new ArgumentException("Unknown practice stage");
+             Reset(seed,ScenarioKind.EmptyLab);
+             CustomScenarioId="connection-practice-v1"; // No weekly inventory or scripted city events.
+             var rng=new Random(seed);
+@@ -20,11 +21,21 @@
+             if(shop==null)throw new InvalidOperationException("Practice destination placement failed");
+             var direction=Directions[shop.DrivewayDirection];
+             var outside=shop.Access+direction;
++            // For evaluation, extend a straight diagonal road outward from
++            // the same designated destination entrance. Balance both slopes.
++            var pathDirection=direction;
++            if(diagonal)
++            {
++                var clockwise=Directions[(shop.DrivewayDirection+1)%8];
++                bool positiveSlope=clockwise.X==clockwise.Y;
++                pathDirection=positiveSlope==(seed%2==0)
++                    ?clockwise:Directions[(shop.DrivewayDirection+7)%8];
++            }
+             var home=outside;
+-            for(int i=0;i<gap+1;i++)home+=direction;
++            for(int i=0;i<gap+1;i++)home+=pathDirection;
+             var perpendicular=new Cell(-direction.Y,direction.X);
+             int offset=rng.Next(-1,2);
+-            home=new Cell(home.X+offset*perpendicular.X,home.Y+offset*perpendicular.Y);
++            if(!diagonal)home=new Cell(home.X+offset*perpendicular.X,home.Y+offset*perpendicular.Y);
+             if(SpawnBuilding(home,color,true,rng.Next(8))==null)
+                 throw new InvalidOperationException("Practice house placement failed");
+             Array.Clear(Inventory,0,Inventory.Length);Inventory[0]=20;
+@@ -43,7 +54,7 @@
+                 int missing=rng.Next(1,path.Count-2);
+                 if(!RemoveRoadConnection(path[missing],path[missing+1]))
+                     throw new InvalidOperationException("Practice gap setup failed");
+-                Array.Clear(Inventory,0,Inventory.Length);Inventory[0]=stage=="one-gap-single-build"?1:20;
++                Array.Clear(Inventory,0,Inventory.Length);Inventory[0]=stage=="one-gap-single-build"||diagonal?1:20;
+             }
+             LastAction="Connection practice v1: one house and destination; paused construction";
+         }

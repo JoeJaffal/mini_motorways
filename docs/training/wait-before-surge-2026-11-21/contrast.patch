@@ -1,0 +1,30 @@
+--- a/simulation/Assets/Simulation/TrafficPractice.cs
++++ b/simulation/Assets/Simulation/TrafficPractice.cs
+@@ -34,6 +34,9 @@
+             bool mirror=exercise.Contains("-mirror",StringComparison.Ordinal);
+             bool shift=exercise.Contains("-shift",StringComparison.Ordinal);
+             bool rush=exercise.Contains("-rush",StringComparison.Ordinal);
++            double secondLoad=exercise.Contains("-b345",StringComparison.Ordinal) ? 3.45 :
++                              exercise.Contains("-b310",StringComparison.Ordinal) ? 3.10 : 2.75;
++            double surgeLoad=exercise.Contains("-surge600",StringComparison.Ordinal) ? 6.0 : 5.2;
+             int bypassGap=exercise.Contains("-gap3",StringComparison.Ordinal) ? 3 :
+                           exercise.Contains("-gap4",StringComparison.Ordinal) ? 4 :
+                           exercise.Contains("-gap5",StringComparison.Ordinal) ? 5 : -1;
+@@ -87,7 +90,7 @@
+             if (exercise=="traffic-priority-swap") upperBusy=!upperBusy;
+             var aShop=Shop(priority ? 3 : 5,c0,priority ? (upperBusy ? 1.65 : .35) : high&&!live ? highLoad : .22,
+                            priority ? (upperBusy ? 4 : 0) : high&&!live ? 4 : 0);
+-            var bShop=Shop(priority ? 9 : 8,c1,priority ? (upperBusy ? .35 : 1.65) : economy ? 2.75 : 2.25,
++            var bShop=Shop(priority ? 9 : 8,c1,priority ? (upperBusy ? .35 : 1.65) : economy ? secondLoad : 2.25,
+                            priority ? (upperBusy ? 0 : 4) : 0);
+             Array.Clear(Inventory,0,Inventory.Length);
+             Inventory[0]=100;
+@@ -171,7 +174,7 @@
+                 {
+                     trafficSurgeShop=aShop;
+                     trafficSurgeTime=16+rng.Next(5);
+-                    trafficSurgeLoad=rush ? 5.2 : 4.0;
++                    trafficSurgeLoad=rush ? surgeLoad : 4.0;
+                 }
+             }
+             // Declared building sites and corridors are the available dry land.

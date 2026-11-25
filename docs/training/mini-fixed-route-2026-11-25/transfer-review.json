@@ -1,0 +1,111 @@
+{
+  "city_mean": 129.25,
+  "scoring": 31,
+  "city_deltas": {
+    "forward_equivalent_parent": {
+      "trips": {
+        "mean": -6.53125,
+        "ci95": [
+          -27.34375,
+          15.21875
+        ]
+      },
+      "paid_units": {
+        "mean": 0.6875,
+        "ci95": [
+          -9.125,
+          10.40625
+        ]
+      },
+      "outside_routes": {
+        "mean": 1.90625,
+        "ci95": [
+          -3.1875,
+          7.09375
+        ]
+      }
+    },
+    "retained_original": {
+      "trips": {
+        "mean": 3.15625,
+        "ci95": [
+          -21.0625,
+          27.06328124999999
+        ]
+      },
+      "paid_units": {
+        "mean": 3.03125,
+        "ci95": [
+          -5.28125,
+          12.3125
+        ]
+      },
+      "outside_routes": {
+        "mean": 0.96875,
+        "ci95": [
+          -4.5625,
+          6.21875
+        ]
+      }
+    }
+  },
+  "mini": {
+    "adjacent": {
+      "games": 16,
+      "successes": 16,
+      "first_served": 16,
+      "both_served": 0,
+      "parent_successes": 16,
+      "parent_both_served": 0
+    },
+    "bend": {
+      "games": 16,
+      "successes": 16,
+      "first_served": 16,
+      "both_served": 0,
+      "parent_successes": 16,
+      "parent_both_served": 0
+    },
+    "clear": {
+      "games": 16,
+      "successes": 16,
+      "first_served": 16,
+      "both_served": 0,
+      "parent_successes": 16,
+      "parent_both_served": 0
+    },
+    "obstacle": {
+      "games": 16,
+      "successes": 14,
+      "first_served": 14,
+      "both_served": 0,
+      "parent_successes": 14,
+      "parent_both_served": 0
+    },
+    "small-city-offset-pairs": {
+      "games": 16,
+      "successes": 12,
+      "first_served": 12,
+      "both_served": 3,
+      "parent_successes": 8,
+      "parent_both_served": 5
+    },
+    "small-city-offset-single": {
+      "games": 16,
+      "successes": 8,
+      "first_served": 8,
+      "both_served": 0,
+      "parent_successes": 8,
+      "parent_both_served": 0
+    },
+    "small-city-offset-stock": {
+      "games": 16,
+      "successes": 12,
+      "first_served": 12,
+      "both_served": 0,
+      "parent_successes": 8,
+      "parent_both_served": 0
+    }
+  },
+  "limits": "Consumed development layouts. Parent is the output-equivalent Wait-restored checkpoint: critic detachment changes backward flow only. Neither reference is new held-out evidence. Fixed training board learning does not establish strategy."
+}

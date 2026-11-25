@@ -1760,3 +1760,214 @@ User approves one matching house/destination on varied short clear land layouts,
 ## 16 November 2026 — Stage 1 evaluation gate approved
 
 User approves 180 simulated seconds and a passing cohort of at least 90/100 held-out layouts, each with at least 3 scored trips. Paused editing consumes no game time; native score-only reward and physics remain unchanged. Verify native trip timing feasibility before using this initial gate; it is evaluation bookkeeping, not a completion bonus. [Approval and limits](../../docs/training/curriculum-design-2026-11-16/README.md). No implementation, episode or training this turn.
+
+
+## 16 November 2026 — Maskable-PPO practice preparation (separate from original-game fidelity)
+
+**Previously approved user direction:** one house/matching destination practice, no road planner, model chooses individual neighboring edits while paused, native scored-trip-only reward, explicit one-second wait; manager primary/optional-secondary focus with executor free to edit outside it. User now requests implementation preparation without any training sessions.
+
+**Provisional engineering choices, not additional user answers about original game behavior:** isolated EmptyLab clear-land practice using native OriginalReference demand/vehicles/score;20concrete and nootherinventory; no growth/weekly packages; position-disjoint practice splits; operational decision cap. Native wait batches up to20ticks with native event interruption. No ordinary scenario mechanics changed. Reasons, distribution, checks, and unresolved reconciliation are in [practice report](../../docs/training/connection-practice-2026-11-16/README.md). This entry does not supersede original-game fidelity decisions.
+
+
+## 16 November 2026 — Stage1 interface reconciliation; no simulator rule change
+
+Existing user approvals remain the authority: no planner, neighboring edits, visible inputs, score-only reward, paused construction and explicit waits, focus without strategic masks. During the authorized one-hour implementation, added exact clear-land practice acceptance queries, published visible-state projection, and protocol capabilities. Queries do not change gameplay state/RNG; unsupported later-stage geometry/resources fail explicitly. Native accepted no-ops and partial-effect drawing are preserved rather than strategically filtered. No traffic physics, demand, stock accounting or original-game fidelity patch.
+
+Engineering clarification:90/100episodes each scoring>=3is the approved score gate, not a newly added survival requirement. Native game-over remains a natural completed episode using its real score; external stalls/errors cannot count as completed successes. Full rationale, tests and remaining boundaries: [check-in](../../docs/training/check-in-2026-11-16/README.md). Existing workbook review status/approval history is not changed by implementation.
+
+
+19 November 2026, introductory practice: The user approved an opt-in compact stage exposing one distinct new legal connection or Wait per decision. The native simulator checks physical placement and inventory. The introductory interface preserves existing edges and does not rotate driveways. Native simulation timing, traffic, demand and scoring are unchanged. [Training design and verification](../../docs/training/one-gap-direct-2026-11-19/README.md).
+
+19 November 2026, diagnostic practice: The user approved one native road unit and one build per episode, with reward 1 for connecting the house and destination and 0 otherwise. The separate stage reuses the same seeded one-gap scenarios and native draw rules. The Python wrapper ends the episode at the build and measures visible-road connectivity. [Design and verification](../../docs/training/one-gap-single-build-2026-11-19/README.md).
+
+20 November 2026, construction curriculum: The user approved verifying adjacent repairs, unfinished bends, house rotation, full clear routes and obstacle detours with minimum three deliveries on 90/100 layouts as the proposed gate. The opt-in host exposes exact new-edge masks over dry land, with blocked tiles excluded. Driveway tests expose native rotation or Finish, with already-correct cases included. Teacher actions are a separate fixture query used for feasibility and demonstrations. Frozen play uses only visible state and legal masks. Native drawing, driveway effects, stock accounting, traffic and scoring are reused. The harness advances the world automatically after construction. [Runs and evidence](../../docs/training/construction-five-stage-2026-11-20/README.md).
+
+20 November 2026, bounded construction PPO session: Isolated Release hosts extend scenario setup for compatible and incompatible pairs, competing homes, longer barriers and a timed Build-or-Wait pilot. These are engineering experiment choices within the user-delegated hour. Pair masks retain all physically legal draws, including on incompatible boards. Counterfactual competing-home fixtures swap colors on identical geometry; native stock only covers one branch. The timed pilot uses one legal edge while paused or one ten-second native advance, within a visible ten-decision cap, and rewards actual native trip increments. These fixtures do not change native traffic rules or the regular game's controls. [Fixture patches and evidence](../../docs/training/reward-only-construction-hour-2026-11-20/README.md).
+
+20 November 2026, competing-home route progression: The user approved a progression from partly built networks to empty boards with original paid stock. The isolated fixture first supplies stubs at the shop and both homes, then the shop only, before returning to the original empty fixture. The prebuilt paid links for one branch are deducted from the remaining allowance. Native physics, road costing and masks are shared with the prior setup. Fixture witnesses and a remaining-stock lower bound are used solely for validation and diagnosis. A timed score-only mixed test is conditional on the full-board routing gate. [Fixture rationale and evidence](../../docs/training/competing-homes-2026-11-20/README.md).
+
+20 November 2026, timed competing-home practice: After the original-stock route gate passed, the isolated scored exercise paired a paused native draw with a ten-second Wait and an 18-decision cap. Native delivery increments are the entire reward. A second held-out fixture places competing homes at unequal distances and reserves the same stock for both color assignments, enough for either serviceable home. The timed practice cap makes explicit free parcel attachments consume a choice, while the engine can also attach a driveway automatically when a paid road reaches its approach. These are controlled training and evaluation conditions. [Timed runs and native feasibility controls](../../docs/training/competing-homes-2026-11-20/README.md).
+
+### Curriculum and traffic
+
+21 November 2026, user requirement: The policy should learn traffic and congestion. Proposed engineering test: use two serviceable flows with a shared junction and vary demand or change it during play. Expose visible vehicle movement and demand. Give the policy room to wait, build a separate route, or extend the network using legal edits. Use native deliveries as reward, and measure throughput and queues on held-out light and heavy traffic. The shared-road tradeoff and the ability to react to developing jams remain open. This is a curriculum proposal.
+
+21 November 2026, isolated priority and junction practice: The two-hour user authorization covered progress on priority and congestion. Engineering fixtures now supply two or three matching service groups with less road stock than needed to serve them all. Pair demand roles can rotate on unchanged geometry. Additional native fixtures offer a two-unit cost tradeoff between attaching more homes to a shared road and opening a bypass. A one-unit fixture starts both flows in service and optionally raises one destination's native demand during play. Movements, waiting, deliveries, and game-over use the native simulation. The isolated surge changes scenario demand and the isolated host reports per-destination deliveries for verification. All actor choices are a physically legal new edge or Wait. Actor features use visible parcel pins, road components, observed movement and stopped vehicles. Paired pre-surge observations hide the future demand change by construction. Native controls measure deliveries and queue proxies outside the optimizer. See [patches, snapshots, and native comparisons](../../docs/training/traffic-milestones-2026-11-21/README.md).
+
+The 21 November geometry control reflected visible coordinates and inverted action indices together to test orientation sensitivity. A separate trainable scorer observes how many endpoints of each candidate currently have one built link. The interaction with vehicle density initializes to zero and learns from native score. The control and experimental scorer use the complete legal set. This gives a way to test transfer across gap positions. The reflection control helped on unchanged gap geometry and the learned road-end pilot has initialization evidence only. [Geometry and timing results](../../docs/training/traffic-milestones-2026-11-21/README.md#what-the-geometry-and-timing-probes-found).
+
+The 21 November bypass transfer study adds fixture-only missing-link positions along the same legal bypass. Native physics, deliveries and stock provide the outcome for each position. One learned actor uses existing road-end counts, currently reachable shop components and vehicle traffic with a shared edge scorer across the board. Board position and absolute heading are excluded from that actor. All native legal choices remain available. Initial reflected input and action-mask checks agree to floating-point tolerance. A central gap and its mirror are reserved for testing. [Fixture patch and training study](../../docs/training/road-end-transfer-2026-11-21/README.md).
+
+The road-end study rehearsed a stronger native demand surge alongside the standard regime. The stronger fixture connected eight homes to the first flow and used a higher post-surge demand multiplier. The controlled change gave the bypass a measured advantage of about four trips in the stronger setup while keeping the light feeder advantageous. The final actor transferred to unseen gap positions at standard demand. This supports using visible road topology and traffic together on the supplied junction. [Simulation controls and frozen checks](../../docs/training/road-end-transfer-2026-11-21/README.md#selected-checkpoint).
+
+The 21 November timing study starts the live bypass exercise at second 15, before the demand surge becomes visible. Spending the one road unit is irreversible within the fixture. A voluntary 20-second Wait exposes the two outcomes through normal traffic. Additional isolated calibration stages increase demand at the second shop. The measurements compare actual score to immediate and delayed commitments, with the same legal stock. [Timing study](../../docs/training/wait-before-surge-2026-11-21/README.md).
+
+Changing the fixture surge from seconds 16–20 to seconds 24–28 left paired light boards unchanged. A five-second Wait curriculum learned to move the median heavy build from second 35 to second 40 on this comparison. The native traffic and legal draw rules supply the cue and outcome. Waiting from second zero remains unreliable. [Matched timing, scoring, and limits](../../docs/training/wait-before-surge-2026-11-21/README.md#five-second-decisions-adapt-to-a-later-pulse).
+
+The growing-city road preflight uses ordinary Los Angeles spawns, native movement and delivery scoring, and one dry-land neighboring road link per build. Weekly regeneration uses the native offer with the greatest concrete award, with the selection held fixed as an adapter rule during the first road-only phase. The test route is a seed-specific verification fixture. [Runnable game replay](../../docs/training/city-road-preflight-2026-11-21/README.md).
+
+### 22 November 2026 — Limited-stock route practice
+
+The user approved a native practice exercise for finishing a matching house-to-destination route under a small road budget. The construction curriculum supplies a visible arena, one matching pair, competing road stubs, and a fixed stock budget derived from route length with zero or one spare unit. The delayed variant blocks a strip across the arena and opens one passage after 6, 9, or 12 simulated seconds. This is an exercise-only terrain event. Native legal edges and Wait remain the policy choices. Native deliveries remain the objective, and the episode stops at the first delivery or the exercise time limit. Fixture reference actions verify feasibility and stay outside observations and rewards. [Exercise and training record](../../docs/training/limited-route-ppo-2026-11-22/README.md).
+
+### 22 November 2026 — Fading supplied road sections
+
+The limited-route curriculum now supplies road sections for one-, two- and three-gap variants. The delayed partial variant places the two missing paid edges at the crossing. An intermediate lesson can begin after the gate opens, and later lessons begin before the gate with normal stock. These are opt-in practice fixtures and use native road legality and deliveries. [Route repair evaluation](../../docs/training/city-route-repair-2026-11-22/README.md).
+
+### 22 November 2026 — New destination on an established network
+
+The user approved a focused exercise for serving a new destination while protecting existing service. The native fixture warms a real existing supply route until its first delivery. It then reveals a newly placed matching pair on a second-color branch with limited road stock. The delayed setup blocks the new driveway approach and releases it through the native tick loop. The fixed 60-second evaluation measures service to both destinations. The simulator exposes per-destination delivery counts as diagnostics. The actor uses the existing visible features and controls. [Training and evaluation record](../../docs/training/city-midgame-service-2026-11-22/README.md).
+
+## 23 November 2026 — Network service practice variants
+
+The user authorized a bounded PPO lesson for affordable city connections. Three opt-in midgame-network exercises extend the existing two-destination native fixture with ordinary distractor road ends, one through four paid missing edges, occasional same-color destinations, detours and a delayed approach. The fixture first verifies service on an existing road. Reference edits are available to feasibility checks. Policy reward remains native deliveries and the policy chooses individual legal road edges or Wait. A separate binary preserves earlier fixtures and city artifacts. All 96 train/validation witness replays served both destinations. See [pilot record](../../docs/training/city-network-service-pilot-2026-11-23/README.md).
+
+## 23 November 2026 — Opt-in city curriculum integration
+
+User decision: execute the five-stage PPO improvement program in the existing
+Maskable-PPO checkout. Engineering change: integrate the previously local
+`traffic-live-junction-host-01` TrafficPractice source into the current native
+host, behind the `traffic-` curriculum dispatcher. The surge updater is guarded
+by curriculum identity and exercise name and is inactive in ordinary cities.
+Add an opt-in established-priority variant with an independent third-color
+working route so the protected city policy's growing-network branch can learn.
+Add a supplied-network quiet variant by completing the fixture roads during
+reset. Reference edits remain evaluation-only; the policy receives ordinary
+visible observations and native legal single-edge-or-Wait actions. Reward is
+native deliveries. No planner, teacher actions or simulator gameplay rule change
+is introduced. The quiet fixture alone cannot reward avoidance of harmless,
+paused construction; delayed service provides the stock-retention consequence.
+
+Checks: Release build succeeded; 99 simulation suites passed; ordinary-city raw
+observations matched the previous DLL exactly over 364 transitions on seeds
+2004 and 99161630, including a built route and Wait. All eight lessons exposed
+the trainable established-state branch in both train and validation layouts.
+The prior fixture source, current source hashes, native controls and training
+outcomes are archived with the [five-stage record](../../docs/training/five-stage-city-learning-2026-11-23/PLAN.md).
+
+### 2026-11-23 — Opt-in later-service road reservation lesson
+
+User requested teaching stock conservation and testing city transfer. Engineering
+choice: `midgame-network-reserve` starts with two homes serving an existing shop,
+a limited stock and ordinary legal distractions. A new matching pair is scheduled
+8–16 seconds later; future timing/locations are not observation fields. Existing
+road stubs and limited missing edges bound construction difficulty. An edit that
+obstructs a future parcel can prevent its spawn; no hidden repair or substitute
+reward is applied. The event is reset/guarded by curriculum identity and does not
+change ordinary cities. Reward remains completed native deliveries.
+
+Measured validation controls: Wait-then-connect serves the new target8/8, waste
+then attempt the same connection0/8, permanent Wait0/8. The parent serves2/8 and
+holds1.125 roads at arrival versus3.625 for the saving control. All99 native suites
+pass and ordinary city parity is checked against the prior host. This establishes
+a learning consequence, not successful learning or generalization. See
+[road reserve record](../../docs/training/road-reserve-learning-2026-11-23/PLAN.md).
+
+### 2026-11-24 — practice-only delay option (engineering choice, not promotion)
+
+Reservation warmup shifts initial time and traffic, while original-state waiting
+is still weak. Prepare an optional1..16s future-pair delay for reservation practice
+only, default null preserving original random8..16s. Unlike six-second warmup,
+this retains the original starting state and movement history. Always consume the
+original RNG delay draw to preserve subsequent layout RNG. Actor receives no
+future-event timing. Native delivery rewards and every ordinary city rule remain
+unchanged. New resetReserveDelay command rejects use outside the named practice
+fixture; old hosts reject it rather than silently ignoring the option. Explicit
+delay and warmup cannot be combined. Old native files/binaries remain intact;
+pre-change native source is archived. New isolated build has zero warnings/errors
+and passes99 simulation suites; native/state parity check is running. No training
+has yet used this option. Existing trainer uses frozen original sources/host.
+
+This is a proposed easier curriculum, not evidence that reservation transfers
+or that scores will increase. Validate original8..16s and full cities separately.
+
+See [strategy readiness record](../../docs/training/city-strategy-launch-2026-11-24/README.md).
+
+Short-delay validation complete: isolated native build99 suites;18 Python tests;
+1,600 exact default native transitions across nine lessons plus city (160 city,
+1,440 practice), including rewards,flags,info,raw observations,actor observations
+and masks. Sixteen train/validation short-delay cases preserve exact reset and
+first-second state, then reveal the future pair at2s. Reset isolation checks
+preserve ordinary states after a short-delay fixture. Old host explicitly rejects
+the new reset command. Host sha256bc4f243fddabdeeefbb16e178ab06a25149378f36aa2a1492ffcc39b70d9aed8.
+No training yet uses the option; default8..16s evaluation remains unchanged.
+
+## 24 November 2026 — Optional native bridge connections for city PPO
+
+
+Material finding,24Nov~15:45–15:55 Beirut:all10 already-seen zero-score seeds in
+confirmation02 have no affordable ordinary-road path to the initial destination
+throughout a Wait-only control before native game over (139.7–154.2s). This is a
+diagnostic legal-edge graph,not a teacher/planner. At least seed99005063 is
+physically solvable with its starting bridge:manual fixed native control uses
+7road units and1bridge,then delivers3 trips by60s. Current CityRoadEnd explicitly
+rejects every water endpoint,including existing bridge tiles;the actor cannot
+issue the necessary crossing despite visible starting inventory[25,1,0,0,0,0].
+Thus the earlier interpretation of all zero games as a learnable opening fault
+was too broad. This action-coverage limitation must be fixed before more road-only
+training. Other missing tools/weekly policy choices remain separate limitations.
+
+Engineering change:optional cityConnectionMask/cityConnection native commands add
+legal neighboring bridge edges using native stock,span degree,water direction,
+parcel and diagonal-crossing rules. Same undirected edge action space;native
+stroke orientation is resolved only for the requested edge. No route search or
+strategic mask filtering. Legacy cityRoadMask/cityRoad behavior unchanged.
+Python --allow-bridges is explicit and defaults off;observation dimensions unchanged,
+existing visible global inventory includes bridge stock. Records identify action
+profile and summarize native bridge tiles/stock. Comparison/pooling tools now
+reject mismatched profiles. Tests:104 native suites pass (99 prior+5new),including
+144 sampled requested-edge transitions against ordinary native DrawRoad controls.
+Old/new default-protocol parity and Python bridge-mode checks still pending.
+Native build isolated in output/city-bridge-connection-build-01;prior DLLs retained.
+Opening final96-city result84.28125vs78.21875,paired+6.0625[-4.02135,16.55260],
+81/96scoringvs79. Own conserved parent85.72917 was higher. No long launch.
+Sources:opening-wait-opportunities.json,zero-opening-native-snapshot.json,
+bridge-capability-control.json,bridge-native-tests.txt. Controls are never trainer inputs.
+
+See `../../docs/training/city-strategy-launch-2026-11-24/README.md` for the complete experiment record.
+
+## 2026-11-24 — Small native city service lessons
+
+User requested learning simpler construction with stock for later connections. Added opt-in `small-city-single` and `small-city-pairs` construction-curriculum fixtures. They begin with an unconnected home/destination and no road network or reference route. Geometry, color and stock vary; pairs add a different-color home/destination after18–30seconds. Native placement may be obstructed by player construction, with no hidden repair. Scheduled geometry/time is not added to observations. Reuse the existing reset-cleared practice event; ordinary city generation is unchanged. Rewards remain native deliveries. Fixed-budget feasibility controls are evaluation-only, never teacher trajectories. See `training/EXPERIMENT_HISTORY.md` and `docs/training/small-city-service-2026-11-24/PLAN.md` for training/evidence and limitations. This is a curriculum fixture, not a change to production city rules.
+
+Small-city follow-up on24November: the parent already served both pairs in64/64 straight-layout tests. Added opt-in `small-city-offset-pairs` with6–9forward/2–4lateral-cell geometry to expose the observed failures before more training. Original small fixtures retain their original RNG draws and behavior; each host is separately archived locally. No obstacle, route hint, reference action or reward term was added. See the small-city experiment's superseding plan and baseline evidence.
+
+Small-city outcome: the opt-in fixtures and native feasibility/compatibility checks pass, but the offset PPO trial fails its practice gates and fresh city improvement remains uncertain. Do not interpret fixture acceptance as a trained-strategy milestone. See `docs/training/small-city-service-2026-11-24/RESULTS.md` and the chronological experiment history. No further simulator change follows from these results.
+
+## 2026-11-24 — Single offset connection and optional training reward cost
+
+User approved testing road costs. Added opt-in tight/generous-stock single-offset fixtures, identical geometry per seed and no delayed pair. Earlier small-city fixtures remain unchanged. Costs live in a Python training wrapper, not native traffic/reward rules: deliveries minus0/.01/.04 per paid road unit. Native inventory bound18 keeps every successful finite episode above permanent Wait. The wrapper guards against unexpected replenishment and retains the native ledger. New-name dispatch was corrected before testing/training; unused build01 is retained, corrected build02 used. See training history and `docs/training/road-cost-reward-2026-11-24/PLAN.md` for matched experiment/gates. No planner/teacher labels.
+
+Road-cost pilot outcome: native fixtures/reward ordering and compatibility checks pass;16k/arm is inconclusive for learning effectiveness. User challenged premature judgment, accepted. No native city reward change or model promotion. See road-cost report and training history for measurements and proposed longer comparison.
+
+
+### 2026-11-25 — Training-only mini-task reset curriculum
+User approved mini-task behavioral repairs with no planner or new imitation. Engineering choice: reconstruct partial single-connection and first-served/two-arrival states from the original policy's own native game trajectories; these are environment initial states, not action labels. Keep native physics, stock, future events and60-second lesson horizon unchanged; exclude prefix rewards. Existing empty-board training/evaluation remains necessary for transfer. No native simulator edits. Rationale and chronological results: ../../docs/training/mini-task-repair-2026-11-25/README.md and ../../training/EXPERIMENT_HISTORY.md.
+
+
+### 2026-11-25 — Optional longer small-city training windows
+Native frozen continuation measurements show60-second lessons end before ignored second destinations cause failure, compressing the reward advantage of sustained two-pair service. Added Python-only configurable small-city horizon, default60, proposed300seconds. Native demand,traffic,stock,scoring,termination unchanged; no newplanner or artificialreward. City and traffic lesson horizons unchanged. Prefix-reset deadline stays absolute fromtime0. MoreWait samples/credit-assignment changes are experimentalrisks. Evidence and progression: ../../docs/training/mini-task-repair-2026-11-25/README.md and ../../training/EXPERIMENT_HISTORY.md.
+
+
+### 25 November2026 — native lesson duration comparison launched
+Engineering choice under approved mini-task repair:60versus300-second small-city lesson deadlines, with native score/stock/failure unchanged. Recorded starts retain the deadline measured from original episode time. Native simulator/action interface unchanged. Frozen continuations reveal consequences hidden by60seconds;128-game value probe strengthens motivation but does not prove training benefit. Both arms start from retained original; preserve old reports and run. [Design](../../docs/training/mini-task-horizon-2026-11-25/README.md).
+
+
+### 25 November2026 — opt-in finite small-city terminal-tail acceleration
+After all native fixture spawns have passed and no legal construction/stock remains, batch only forced native ticks to finite termination. No skipped action opportunity, reward change or simulator change.88pairedgames/4267transitions and240default transitions passed. Terminal encoder motion history may differ but is never bootstrapped; next reset exact. Flag remains off in both live studies. [Evidence and contract](../../docs/training/mini-task-repair-2026-11-25/README.md#optional-small-city-terminal-tail-acceleration).
+
+
+## 2026-11-25 — Isolated current-policy compatibility diagnostic
+Engineeringchoice under approvedmini-task audit: adapt the archived20Novemberpair fixture loader into a separate build copy, notproduction source ortraining host. Preserve matching-vs-wrongcolor geometry/inventory/masks andusecurrentcity observations withnativepractice connection/Wait semantics. No automaticFinish, teacher route or reference edits; fixtureeditcap1000 so inventory/legality govern. Negativecaseshave nofuturearrivals; these do not imply same-type/different-color roads areforbidden inlivecities. Ordinarynativeparity180transitions/9families and16fixturechecks passed; initialadapter/check failures preserved. See ../../docs/training/city-negative-pair-audit-2026-11-25/README.md and training/EXPERIMENT_HISTORY.md for rationale/results. No production simulator change.
+
+
+## 2026-11-25 — Explicit build-or-Wait teaching objective, prepared
+Approvedmini-taskrepair motivates anisolateddecisionfixturebuild withnativepalette colors,train/validationpositions,matched/mismatched/same-typepairs andexistingquiet/partialnetworkstates. One nativelegalconnectionorWait endsapracticeepisode; reward1forappropriateactiongroup,0otherwise. This is anexplicitmini-taskreward change, notnativecityscoring orsupervisedroadtargets. Conditionalroadweights stayfrozen; no newplanner orreferenceactions. Waitingprefix0..30seconds suppliesinitialtime/demandvariation, excludedfromlearningreturn. NativecounterfactualWaitchecks validatefixturelabels. Productionordinarysimulatorunchanged; oldhostusedforcityretention. v1palette/boardboundsfixandallpreflightdetails in ../../docs/training/build-wait-ppo-2026-11-25/PLAN.md; productiontrainingnotyetlaunched.
+
+
+## 25 November2026 — isolated build-or-Wait practice fixtures
+Engineering choice within the user-approved mini-task repair, not a change to the live city rules. A separate native build adds randomized matching home/destination, mismatched colors, two-home and two-destination practice scenes. Native legal connections and Wait remain available in every scene. Placement, orientation and colors vary; the five-color native palette is used, distinct from the encoder's eight available color channels. Existing partial-network and working-network fixtures supply build and Wait controls. The first isolated fixture revision used the wrong palette bound and was rejected before training; its evidence is retained. Production TrafficHost remains unchanged (SHA a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0).
+
+The Python one-decision lesson explicitly rewards the appropriate action group with1, otherwise0. It supplies no target road or planner action. This objective is limited to deciding whether to act; it does not reward route quality or imply that buildings of different colors must never share roads in a real city. Actual native60-second play and unchanged city-score evaluations are separate. All road-placement weights and the native critic/Adam are preserved during the Wait-only lesson. Native export and disposable PPO checks validate return to ordinary learning; no promotion inferred.
+
+Validation:180unchanged ordinary native transitions,1024new fixture resets,64binary action contracts and56Wait-only continuations. Sources, rejected revision, native hashes and full checks are archived in [build-or-Wait study](../../docs/training/build-wait-ppo-2026-11-25/PLAN.md), with chronological outcomes in [experiment history](../../training/EXPERIMENT_HISTORY.md). Native binaries/checkpoints remain local-only output artifacts.

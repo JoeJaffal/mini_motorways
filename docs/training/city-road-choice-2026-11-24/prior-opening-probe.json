@@ -1,0 +1,617 @@
+{
+  "seed": 184000000,
+  "horizon": 180,
+  "scope": "One training-layout opening reliability; not cross-city generalization",
+  "checkpoints": {
+    "reference": {
+      "path": "output/training/city-strategy-wide-initial-01/start.zip",
+      "sha256": "9d9c9c95e4955a14461358f3203143be5f70331f8cbbb4bc26d0951b3674447a"
+    },
+    "midpoint": {
+      "path": "output/training/city-whole-fit-01/whole/midpoint.zip",
+      "sha256": "a2e1bde960b8bb2516c4f55d96ca2d5ee6bf833fcea12250b528125517b146d4"
+    },
+    "final": {
+      "path": "output/training/city-whole-fit-01/whole/final.zip",
+      "sha256": "d3496eb2d47ec14162e987ef213e5314dcea261d48faaaf25750b79c2af66c7d"
+    }
+  },
+  "results": {
+    "reference": {
+      "games": 32,
+      "scoring": 27,
+      "mean_score": 13.25,
+      "delivery_by60": 25
+    },
+    "midpoint": {
+      "games": 32,
+      "scoring": 28,
+      "mean_score": 13.40625,
+      "delivery_by60": 26
+    },
+    "final": {
+      "games": 32,
+      "scoring": 27,
+      "mean_score": 13.3125,
+      "delivery_by60": 26
+    }
+  },
+  "rows": [
+    {
+      "model": "reference",
+      "action_seed": 194000,
+      "score": 0,
+      "first_delivery": null
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194000,
+      "score": 2,
+      "first_delivery": 149
+    },
+    {
+      "model": "final",
+      "action_seed": 194000,
+      "score": 16,
+      "first_delivery": 14
+    },
+    {
+      "model": "reference",
+      "action_seed": 194008,
+      "score": 19,
+      "first_delivery": 27
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194008,
+      "score": 15,
+      "first_delivery": 30
+    },
+    {
+      "model": "final",
+      "action_seed": 194008,
+      "score": 18,
+      "first_delivery": 21
+    },
+    {
+      "model": "reference",
+      "action_seed": 194016,
+      "score": 16,
+      "first_delivery": 19
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194016,
+      "score": 0,
+      "first_delivery": null
+    },
+    {
+      "model": "final",
+      "action_seed": 194016,
+      "score": 18,
+      "first_delivery": 16
+    },
+    {
+      "model": "reference",
+      "action_seed": 194024,
+      "score": 16,
+      "first_delivery": 36
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194024,
+      "score": 19,
+      "first_delivery": 38
+    },
+    {
+      "model": "final",
+      "action_seed": 194024,
+      "score": 16,
+      "first_delivery": 39
+    },
+    {
+      "model": "reference",
+      "action_seed": 194001,
+      "score": 17,
+      "first_delivery": 16
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194001,
+      "score": 15,
+      "first_delivery": 18
+    },
+    {
+      "model": "final",
+      "action_seed": 194001,
+      "score": 16,
+      "first_delivery": 25
+    },
+    {
+      "model": "reference",
+      "action_seed": 194009,
+      "score": 17,
+      "first_delivery": 18
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194009,
+      "score": 14,
+      "first_delivery": 19
+    },
+    {
+      "model": "final",
+      "action_seed": 194009,
+      "score": 17,
+      "first_delivery": 15
+    },
+    {
+      "model": "reference",
+      "action_seed": 194017,
+      "score": 14,
+      "first_delivery": 19
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194017,
+      "score": 15,
+      "first_delivery": 18
+    },
+    {
+      "model": "final",
+      "action_seed": 194017,
+      "score": 15,
+      "first_delivery": 18
+    },
+    {
+      "model": "reference",
+      "action_seed": 194025,
+      "score": 15,
+      "first_delivery": 19
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194025,
+      "score": 17,
+      "first_delivery": 19
+    },
+    {
+      "model": "final",
+      "action_seed": 194025,
+      "score": 15,
+      "first_delivery": 19
+    },
+    {
+      "model": "reference",
+      "action_seed": 194002,
+      "score": 14,
+      "first_delivery": 33
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194002,
+      "score": 20,
+      "first_delivery": 18
+    },
+    {
+      "model": "final",
+      "action_seed": 194002,
+      "score": 15,
+      "first_delivery": 44
+    },
+    {
+      "model": "reference",
+      "action_seed": 194010,
+      "score": 18,
+      "first_delivery": 20
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194010,
+      "score": 16,
+      "first_delivery": 16
+    },
+    {
+      "model": "final",
+      "action_seed": 194010,
+      "score": 0,
+      "first_delivery": null
+    },
+    {
+      "model": "reference",
+      "action_seed": 194018,
+      "score": 19,
+      "first_delivery": 27
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194018,
+      "score": 14,
+      "first_delivery": 25
+    },
+    {
+      "model": "final",
+      "action_seed": 194018,
+      "score": 13,
+      "first_delivery": 24
+    },
+    {
+      "model": "reference",
+      "action_seed": 194026,
+      "score": 14,
+      "first_delivery": 31
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194026,
+      "score": 17,
+      "first_delivery": 19
+    },
+    {
+      "model": "final",
+      "action_seed": 194026,
+      "score": 17,
+      "first_delivery": 20
+    },
+    {
+      "model": "reference",
+      "action_seed": 194003,
+      "score": 19,
+      "first_delivery": 16
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194003,
+      "score": 15,
+      "first_delivery": 28
+    },
+    {
+      "model": "final",
+      "action_seed": 194003,
+      "score": 17,
+      "first_delivery": 23
+    },
+    {
+      "model": "reference",
+      "action_seed": 194011,
+      "score": 18,
+      "first_delivery": 19
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194011,
+      "score": 19,
+      "first_delivery": 18
+    },
+    {
+      "model": "final",
+      "action_seed": 194011,
+      "score": 0,
+      "first_delivery": null
+    },
+    {
+      "model": "reference",
+      "action_seed": 194019,
+      "score": 18,
+      "first_delivery": 21
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194019,
+      "score": 16,
+      "first_delivery": 25
+    },
+    {
+      "model": "final",
+      "action_seed": 194019,
+      "score": 0,
+      "first_delivery": null
+    },
+    {
+      "model": "reference",
+      "action_seed": 194027,
+      "score": 17,
+      "first_delivery": 23
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194027,
+      "score": 16,
+      "first_delivery": 44
+    },
+    {
+      "model": "final",
+      "action_seed": 194027,
+      "score": 0,
+      "first_delivery": null
+    },
+    {
+      "model": "reference",
+      "action_seed": 194004,
+      "score": 0,
+      "first_delivery": null
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194004,
+      "score": 16,
+      "first_delivery": 28
+    },
+    {
+      "model": "final",
+      "action_seed": 194004,
+      "score": 4,
+      "first_delivery": 79
+    },
+    {
+      "model": "reference",
+      "action_seed": 194012,
+      "score": 0,
+      "first_delivery": null
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194012,
+      "score": 0,
+      "first_delivery": null
+    },
+    {
+      "model": "final",
+      "action_seed": 194012,
+      "score": 16,
+      "first_delivery": 34
+    },
+    {
+      "model": "reference",
+      "action_seed": 194020,
+      "score": 17,
+      "first_delivery": 22
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194020,
+      "score": 14,
+      "first_delivery": 28
+    },
+    {
+      "model": "final",
+      "action_seed": 194020,
+      "score": 14,
+      "first_delivery": 24
+    },
+    {
+      "model": "reference",
+      "action_seed": 194028,
+      "score": 18,
+      "first_delivery": 15
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194028,
+      "score": 16,
+      "first_delivery": 16
+    },
+    {
+      "model": "final",
+      "action_seed": 194028,
+      "score": 19,
+      "first_delivery": 17
+    },
+    {
+      "model": "reference",
+      "action_seed": 194005,
+      "score": 18,
+      "first_delivery": 22
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194005,
+      "score": 5,
+      "first_delivery": 81
+    },
+    {
+      "model": "final",
+      "action_seed": 194005,
+      "score": 14,
+      "first_delivery": 16
+    },
+    {
+      "model": "reference",
+      "action_seed": 194013,
+      "score": 18,
+      "first_delivery": 22
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194013,
+      "score": 20,
+      "first_delivery": 41
+    },
+    {
+      "model": "final",
+      "action_seed": 194013,
+      "score": 18,
+      "first_delivery": 31
+    },
+    {
+      "model": "reference",
+      "action_seed": 194021,
+      "score": 15,
+      "first_delivery": 26
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194021,
+      "score": 0,
+      "first_delivery": null
+    },
+    {
+      "model": "final",
+      "action_seed": 194021,
+      "score": 15,
+      "first_delivery": 15
+    },
+    {
+      "model": "reference",
+      "action_seed": 194029,
+      "score": 0,
+      "first_delivery": null
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194029,
+      "score": 18,
+      "first_delivery": 39
+    },
+    {
+      "model": "final",
+      "action_seed": 194029,
+      "score": 15,
+      "first_delivery": 16
+    },
+    {
+      "model": "reference",
+      "action_seed": 194006,
+      "score": 21,
+      "first_delivery": 28
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194006,
+      "score": 15,
+      "first_delivery": 21
+    },
+    {
+      "model": "final",
+      "action_seed": 194006,
+      "score": 21,
+      "first_delivery": 20
+    },
+    {
+      "model": "reference",
+      "action_seed": 194014,
+      "score": 15,
+      "first_delivery": 18
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194014,
+      "score": 19,
+      "first_delivery": 24
+    },
+    {
+      "model": "final",
+      "action_seed": 194014,
+      "score": 15,
+      "first_delivery": 32
+    },
+    {
+      "model": "reference",
+      "action_seed": 194022,
+      "score": 16,
+      "first_delivery": 25
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194022,
+      "score": 16,
+      "first_delivery": 30
+    },
+    {
+      "model": "final",
+      "action_seed": 194022,
+      "score": 17,
+      "first_delivery": 23
+    },
+    {
+      "model": "reference",
+      "action_seed": 194030,
+      "score": 15,
+      "first_delivery": 17
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194030,
+      "score": 15,
+      "first_delivery": 17
+    },
+    {
+      "model": "final",
+      "action_seed": 194030,
+      "score": 14,
+      "first_delivery": 27
+    },
+    {
+      "model": "reference",
+      "action_seed": 194007,
+      "score": 2,
+      "first_delivery": 150
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194007,
+      "score": 15,
+      "first_delivery": 31
+    },
+    {
+      "model": "final",
+      "action_seed": 194007,
+      "score": 20,
+      "first_delivery": 24
+    },
+    {
+      "model": "reference",
+      "action_seed": 194015,
+      "score": 0,
+      "first_delivery": null
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194015,
+      "score": 16,
+      "first_delivery": 17
+    },
+    {
+      "model": "final",
+      "action_seed": 194015,
+      "score": 15,
+      "first_delivery": 19
+    },
+    {
+      "model": "reference",
+      "action_seed": 194023,
+      "score": 17,
+      "first_delivery": 33
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194023,
+      "score": 0,
+      "first_delivery": null
+    },
+    {
+      "model": "final",
+      "action_seed": 194023,
+      "score": 16,
+      "first_delivery": 39
+    },
+    {
+      "model": "reference",
+      "action_seed": 194031,
+      "score": 1,
+      "first_delivery": 151
+    },
+    {
+      "model": "midpoint",
+      "action_seed": 194031,
+      "score": 14,
+      "first_delivery": 22
+    },
+    {
+      "model": "final",
+      "action_seed": 194031,
+      "score": 0,
+      "first_delivery": null
+    }
+  ]
+}

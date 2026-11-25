@@ -1,0 +1,188 @@
+{
+  "note": "Manual fixed native capability test only; no model or training data. The agent road mask forbids the water edges, but ordinary native draw accepts the supplied bridge connection. This is an engineering legality/control test,not policy performance.",
+  "seed": 99005063,
+  "edits": [
+    {
+      "start": [
+        23,
+        15
+      ],
+      "end": [
+        23,
+        16
+      ],
+      "inventory": [
+        25,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "trips": 0
+    },
+    {
+      "start": [
+        23,
+        16
+      ],
+      "end": [
+        22,
+        16
+      ],
+      "inventory": [
+        24,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "trips": 0
+    },
+    {
+      "start": [
+        22,
+        16
+      ],
+      "end": [
+        21,
+        16
+      ],
+      "inventory": [
+        23,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "trips": 0
+    },
+    {
+      "start": [
+        21,
+        16
+      ],
+      "end": [
+        20,
+        17
+      ],
+      "inventory": [
+        22,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "trips": 0
+    },
+    {
+      "start": [
+        20,
+        17
+      ],
+      "end": [
+        19,
+        17
+      ],
+      "inventory": [
+        21,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "trips": 0
+    },
+    {
+      "start": [
+        19,
+        17
+      ],
+      "end": [
+        18,
+        17
+      ],
+      "inventory": [
+        20,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "trips": 0
+    },
+    {
+      "start": [
+        18,
+        17
+      ],
+      "end": [
+        17,
+        17
+      ],
+      "inventory": [
+        19,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "trips": 0
+    },
+    {
+      "start": [
+        17,
+        17
+      ],
+      "end": [
+        16,
+        17
+      ],
+      "inventory": [
+        18,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "trips": 0
+    },
+    {
+      "start": [
+        16,
+        17
+      ],
+      "end": [
+        15,
+        17
+      ],
+      "inventory": [
+        18,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "trips": 0
+    }
+  ],
+  "seconds": 60,
+  "trips": 3,
+  "inventory": [
+    18,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "terminated": false
+}

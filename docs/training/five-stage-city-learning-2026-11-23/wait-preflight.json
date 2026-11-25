@@ -1,0 +1,390 @@
+[
+  {
+    "stage": "midgame-network-join",
+    "split": "train",
+    "gate": true,
+    "wait": {
+      "seed": 118100001,
+      "seconds": 60,
+      "trips": 4,
+      "road_stock": 1,
+      "buildings": 4,
+      "weekly_awards": 0,
+      "road_actions": 0,
+      "wait_actions": 60,
+      "exercise": "midgame-network-join",
+      "stock_initial": 1,
+      "new_deliveries": 0,
+      "urgent_deliveries": 4,
+      "served": {
+        "0": 4,
+        "2": 0
+      },
+      "first_action": null
+    }
+  },
+  {
+    "stage": "midgame-network-join",
+    "split": "validation",
+    "gate": true,
+    "wait": {
+      "seed": 118100001,
+      "seconds": 60,
+      "trips": 4,
+      "road_stock": 1,
+      "buildings": 4,
+      "weekly_awards": 0,
+      "road_actions": 0,
+      "wait_actions": 60,
+      "exercise": "midgame-network-join",
+      "stock_initial": 1,
+      "new_deliveries": 0,
+      "urgent_deliveries": 4,
+      "served": {
+        "0": 4,
+        "2": 0
+      },
+      "first_action": null
+    }
+  },
+  {
+    "stage": "midgame-network-route",
+    "split": "train",
+    "gate": true,
+    "wait": {
+      "seed": 118100001,
+      "seconds": 60,
+      "trips": 4,
+      "road_stock": 3,
+      "buildings": 4,
+      "weekly_awards": 0,
+      "road_actions": 0,
+      "wait_actions": 60,
+      "exercise": "midgame-network-route",
+      "stock_initial": 3,
+      "new_deliveries": 0,
+      "urgent_deliveries": 4,
+      "served": {
+        "0": 4,
+        "2": 0
+      },
+      "first_action": null
+    }
+  },
+  {
+    "stage": "midgame-network-route",
+    "split": "validation",
+    "gate": true,
+    "wait": {
+      "seed": 118100001,
+      "seconds": 60,
+      "trips": 4,
+      "road_stock": 3,
+      "buildings": 4,
+      "weekly_awards": 0,
+      "road_actions": 0,
+      "wait_actions": 60,
+      "exercise": "midgame-network-route",
+      "stock_initial": 3,
+      "new_deliveries": 0,
+      "urgent_deliveries": 4,
+      "served": {
+        "0": 4,
+        "2": 0
+      },
+      "first_action": null
+    }
+  },
+  {
+    "stage": "midgame-network-delay",
+    "split": "train",
+    "gate": true,
+    "wait": {
+      "seed": 118100001,
+      "seconds": 60,
+      "trips": 4,
+      "road_stock": 2,
+      "buildings": 4,
+      "weekly_awards": 0,
+      "road_actions": 0,
+      "wait_actions": 60,
+      "exercise": "midgame-network-delay",
+      "stock_initial": 2,
+      "new_deliveries": 0,
+      "urgent_deliveries": 4,
+      "served": {
+        "0": 4,
+        "2": 0
+      },
+      "first_action": null
+    }
+  },
+  {
+    "stage": "midgame-network-delay",
+    "split": "validation",
+    "gate": true,
+    "wait": {
+      "seed": 118100001,
+      "seconds": 60,
+      "trips": 4,
+      "road_stock": 2,
+      "buildings": 4,
+      "weekly_awards": 0,
+      "road_actions": 0,
+      "wait_actions": 60,
+      "exercise": "midgame-network-delay",
+      "stock_initial": 2,
+      "new_deliveries": 0,
+      "urgent_deliveries": 4,
+      "served": {
+        "0": 4,
+        "2": 0
+      },
+      "first_action": null
+    }
+  },
+  {
+    "stage": "midgame-network-quiet",
+    "split": "train",
+    "gate": true,
+    "wait": {
+      "seed": 118100001,
+      "seconds": 60,
+      "trips": 6,
+      "road_stock": 2,
+      "buildings": 4,
+      "weekly_awards": 0,
+      "road_actions": 0,
+      "wait_actions": 60,
+      "exercise": "midgame-network-quiet",
+      "stock_initial": 2,
+      "new_deliveries": 3,
+      "urgent_deliveries": 3,
+      "served": {
+        "0": 3,
+        "2": 3
+      },
+      "first_action": null
+    }
+  },
+  {
+    "stage": "midgame-network-quiet",
+    "split": "validation",
+    "gate": true,
+    "wait": {
+      "seed": 118100001,
+      "seconds": 60,
+      "trips": 6,
+      "road_stock": 2,
+      "buildings": 4,
+      "weekly_awards": 0,
+      "road_actions": 0,
+      "wait_actions": 60,
+      "exercise": "midgame-network-quiet",
+      "stock_initial": 2,
+      "new_deliveries": 3,
+      "urgent_deliveries": 3,
+      "served": {
+        "0": 3,
+        "2": 3
+      },
+      "first_action": null
+    }
+  },
+  {
+    "stage": "traffic-priority-established",
+    "split": "train",
+    "gate": true,
+    "wait": {
+      "seed": 118100001,
+      "seconds": 67.75,
+      "trips": 2,
+      "road_stock": 1,
+      "buildings": 10,
+      "weekly_awards": 0,
+      "road_actions": 0,
+      "wait_actions": 68,
+      "exercise": "traffic-priority-established",
+      "stock_initial": 1,
+      "new_deliveries": 2,
+      "urgent_deliveries": 0,
+      "served": {
+        "0": 0,
+        "1": 0,
+        "2": 2
+      },
+      "first_action": null
+    }
+  },
+  {
+    "stage": "traffic-priority-established",
+    "split": "validation",
+    "gate": true,
+    "wait": {
+      "seed": 118100001,
+      "seconds": 67.75,
+      "trips": 2,
+      "road_stock": 1,
+      "buildings": 10,
+      "weekly_awards": 0,
+      "road_actions": 0,
+      "wait_actions": 68,
+      "exercise": "traffic-priority-established",
+      "stock_initial": 1,
+      "new_deliveries": 2,
+      "urgent_deliveries": 0,
+      "served": {
+        "0": 0,
+        "1": 0,
+        "2": 2
+      },
+      "first_action": null
+    }
+  },
+  {
+    "stage": "traffic-priority-established-swap",
+    "split": "train",
+    "gate": true,
+    "wait": {
+      "seed": 118100001,
+      "seconds": 79.85000000000001,
+      "trips": 1,
+      "road_stock": 1,
+      "buildings": 10,
+      "weekly_awards": 0,
+      "road_actions": 0,
+      "wait_actions": 80,
+      "exercise": "traffic-priority-established-swap",
+      "stock_initial": 1,
+      "new_deliveries": 1,
+      "urgent_deliveries": 0,
+      "served": {
+        "0": 0,
+        "1": 0,
+        "2": 1
+      },
+      "first_action": null
+    }
+  },
+  {
+    "stage": "traffic-priority-established-swap",
+    "split": "validation",
+    "gate": true,
+    "wait": {
+      "seed": 118100001,
+      "seconds": 79.85000000000001,
+      "trips": 1,
+      "road_stock": 1,
+      "buildings": 10,
+      "weekly_awards": 0,
+      "road_actions": 0,
+      "wait_actions": 80,
+      "exercise": "traffic-priority-established-swap",
+      "stock_initial": 1,
+      "new_deliveries": 1,
+      "urgent_deliveries": 0,
+      "served": {
+        "0": 0,
+        "1": 0,
+        "2": 1
+      },
+      "first_action": null
+    }
+  },
+  {
+    "stage": "traffic-junction-low-live",
+    "split": "train",
+    "gate": true,
+    "wait": {
+      "seed": 118100001,
+      "seconds": 84,
+      "trips": 12,
+      "road_stock": 1,
+      "buildings": 13,
+      "weekly_awards": 0,
+      "road_actions": 0,
+      "wait_actions": 84,
+      "exercise": "traffic-junction-low-live",
+      "stock_initial": 1,
+      "new_deliveries": 0,
+      "urgent_deliveries": 10,
+      "served": {
+        "0": 2,
+        "1": 10
+      },
+      "first_action": null
+    }
+  },
+  {
+    "stage": "traffic-junction-low-live",
+    "split": "validation",
+    "gate": true,
+    "wait": {
+      "seed": 118100001,
+      "seconds": 84,
+      "trips": 12,
+      "road_stock": 1,
+      "buildings": 13,
+      "weekly_awards": 0,
+      "road_actions": 0,
+      "wait_actions": 84,
+      "exercise": "traffic-junction-low-live",
+      "stock_initial": 1,
+      "new_deliveries": 0,
+      "urgent_deliveries": 10,
+      "served": {
+        "0": 2,
+        "1": 10
+      },
+      "first_action": null
+    }
+  },
+  {
+    "stage": "traffic-junction-high-live",
+    "split": "train",
+    "gate": true,
+    "wait": {
+      "seed": 118100001,
+      "seconds": 84,
+      "trips": 27,
+      "road_stock": 1,
+      "buildings": 13,
+      "weekly_awards": 0,
+      "road_actions": 0,
+      "wait_actions": 84,
+      "exercise": "traffic-junction-high-live",
+      "stock_initial": 1,
+      "new_deliveries": 0,
+      "urgent_deliveries": 18,
+      "served": {
+        "0": 18,
+        "1": 9
+      },
+      "first_action": null
+    }
+  },
+  {
+    "stage": "traffic-junction-high-live",
+    "split": "validation",
+    "gate": true,
+    "wait": {
+      "seed": 118100001,
+      "seconds": 84,
+      "trips": 27,
+      "road_stock": 1,
+      "buildings": 13,
+      "weekly_awards": 0,
+      "road_actions": 0,
+      "wait_actions": 84,
+      "exercise": "traffic-junction-high-live",
+      "stock_initial": 1,
+      "new_deliveries": 0,
+      "urgent_deliveries": 18,
+      "served": {
+        "0": 18,
+        "1": 9
+      },
+      "first_action": null
+    }
+  }
+]

@@ -1,0 +1,762 @@
+[
+  {
+    "case": "destinations",
+    "seed": 244020000,
+    "initial_time": 28,
+    "final_time": 88,
+    "initial_served": {
+      "0": 0,
+      "1": 0
+    },
+    "final_served": {
+      "0": 0,
+      "1": 0
+    },
+    "stock": 3
+  },
+  {
+    "case": "destinations",
+    "seed": 244020001,
+    "initial_time": 29,
+    "final_time": 89,
+    "initial_served": {
+      "0": 0,
+      "1": 0
+    },
+    "final_served": {
+      "0": 0,
+      "1": 0
+    },
+    "stock": 4
+  },
+  {
+    "case": "destinations",
+    "seed": 244020002,
+    "initial_time": 30,
+    "final_time": 90,
+    "initial_served": {
+      "0": 0,
+      "1": 0
+    },
+    "final_served": {
+      "0": 0,
+      "1": 0
+    },
+    "stock": 4
+  },
+  {
+    "case": "destinations",
+    "seed": 244020003,
+    "initial_time": 0,
+    "final_time": 60,
+    "initial_served": {
+      "0": 0,
+      "1": 0
+    },
+    "final_served": {
+      "0": 0,
+      "1": 0
+    },
+    "stock": 2
+  },
+  {
+    "case": "destinations",
+    "seed": 244020004,
+    "initial_time": 1,
+    "final_time": 61,
+    "initial_served": {
+      "0": 0,
+      "1": 0
+    },
+    "final_served": {
+      "0": 0,
+      "1": 0
+    },
+    "stock": 3
+  },
+  {
+    "case": "destinations",
+    "seed": 244020005,
+    "initial_time": 2,
+    "final_time": 62,
+    "initial_served": {
+      "0": 0,
+      "1": 0
+    },
+    "final_served": {
+      "0": 0,
+      "1": 0
+    },
+    "stock": 3
+  },
+  {
+    "case": "destinations",
+    "seed": 244020006,
+    "initial_time": 3,
+    "final_time": 63,
+    "initial_served": {
+      "0": 0,
+      "1": 0
+    },
+    "final_served": {
+      "0": 0,
+      "1": 0
+    },
+    "stock": 4
+  },
+  {
+    "case": "destinations",
+    "seed": 244020007,
+    "initial_time": 4,
+    "final_time": 64,
+    "initial_served": {
+      "0": 0,
+      "1": 0
+    },
+    "final_served": {
+      "0": 0,
+      "1": 0
+    },
+    "stock": 4
+  },
+  {
+    "case": "homes",
+    "seed": 244020000,
+    "initial_time": 28,
+    "final_time": 88,
+    "initial_served": {},
+    "final_served": {},
+    "stock": 3
+  },
+  {
+    "case": "homes",
+    "seed": 244020001,
+    "initial_time": 29,
+    "final_time": 89,
+    "initial_served": {},
+    "final_served": {},
+    "stock": 4
+  },
+  {
+    "case": "homes",
+    "seed": 244020002,
+    "initial_time": 30,
+    "final_time": 90,
+    "initial_served": {},
+    "final_served": {},
+    "stock": 4
+  },
+  {
+    "case": "homes",
+    "seed": 244020003,
+    "initial_time": 0,
+    "final_time": 60,
+    "initial_served": {},
+    "final_served": {},
+    "stock": 2
+  },
+  {
+    "case": "homes",
+    "seed": 244020004,
+    "initial_time": 1,
+    "final_time": 61,
+    "initial_served": {},
+    "final_served": {},
+    "stock": 3
+  },
+  {
+    "case": "homes",
+    "seed": 244020005,
+    "initial_time": 2,
+    "final_time": 62,
+    "initial_served": {},
+    "final_served": {},
+    "stock": 3
+  },
+  {
+    "case": "homes",
+    "seed": 244020006,
+    "initial_time": 3,
+    "final_time": 63,
+    "initial_served": {},
+    "final_served": {},
+    "stock": 4
+  },
+  {
+    "case": "homes",
+    "seed": 244020007,
+    "initial_time": 4,
+    "final_time": 64,
+    "initial_served": {},
+    "final_served": {},
+    "stock": 4
+  },
+  {
+    "case": "join",
+    "seed": 244020000,
+    "initial_time": 42,
+    "final_time": 102,
+    "initial_served": {
+      "0": 2,
+      "2": 0
+    },
+    "final_served": {
+      "0": 6,
+      "2": 0
+    },
+    "stock": 1
+  },
+  {
+    "case": "join",
+    "seed": 244020001,
+    "initial_time": 42,
+    "final_time": 102,
+    "initial_served": {
+      "0": 2,
+      "2": 0
+    },
+    "final_served": {
+      "0": 6,
+      "2": 0
+    },
+    "stock": 1
+  },
+  {
+    "case": "join",
+    "seed": 244020002,
+    "initial_time": 44,
+    "final_time": 104,
+    "initial_served": {
+      "0": 2,
+      "2": 0
+    },
+    "final_served": {
+      "0": 6,
+      "2": 0
+    },
+    "stock": 2
+  },
+  {
+    "case": "join",
+    "seed": 244020003,
+    "initial_time": 14,
+    "final_time": 74,
+    "initial_served": {
+      "0": 1,
+      "2": 0
+    },
+    "final_served": {
+      "0": 5,
+      "2": 0
+    },
+    "stock": 1
+  },
+  {
+    "case": "join",
+    "seed": 244020004,
+    "initial_time": 14,
+    "final_time": 74,
+    "initial_served": {
+      "0": 1,
+      "2": 0
+    },
+    "final_served": {
+      "0": 4,
+      "2": 0
+    },
+    "stock": 2
+  },
+  {
+    "case": "join",
+    "seed": 244020005,
+    "initial_time": 16,
+    "final_time": 76,
+    "initial_served": {
+      "0": 1,
+      "2": 0
+    },
+    "final_served": {
+      "0": 4,
+      "2": 0
+    },
+    "stock": 2
+  },
+  {
+    "case": "join",
+    "seed": 244020006,
+    "initial_time": 17,
+    "final_time": 77,
+    "initial_served": {
+      "0": 1,
+      "2": 0
+    },
+    "final_served": {
+      "0": 4,
+      "2": 0
+    },
+    "stock": 1
+  },
+  {
+    "case": "join",
+    "seed": 244020007,
+    "initial_time": 17,
+    "final_time": 77,
+    "initial_served": {
+      "0": 1,
+      "2": 0
+    },
+    "final_served": {
+      "0": 5,
+      "2": 0
+    },
+    "stock": 2
+  },
+  {
+    "case": "match",
+    "seed": 244020000,
+    "initial_time": 28,
+    "final_time": 88,
+    "initial_served": {
+      "0": 0
+    },
+    "final_served": {
+      "0": 0
+    },
+    "stock": 3
+  },
+  {
+    "case": "match",
+    "seed": 244020001,
+    "initial_time": 29,
+    "final_time": 89,
+    "initial_served": {
+      "0": 0
+    },
+    "final_served": {
+      "0": 0
+    },
+    "stock": 4
+  },
+  {
+    "case": "match",
+    "seed": 244020002,
+    "initial_time": 30,
+    "final_time": 90,
+    "initial_served": {
+      "0": 0
+    },
+    "final_served": {
+      "0": 0
+    },
+    "stock": 4
+  },
+  {
+    "case": "match",
+    "seed": 244020003,
+    "initial_time": 0,
+    "final_time": 60,
+    "initial_served": {
+      "0": 0
+    },
+    "final_served": {
+      "0": 0
+    },
+    "stock": 2
+  },
+  {
+    "case": "match",
+    "seed": 244020004,
+    "initial_time": 1,
+    "final_time": 61,
+    "initial_served": {
+      "0": 0
+    },
+    "final_served": {
+      "0": 0
+    },
+    "stock": 3
+  },
+  {
+    "case": "match",
+    "seed": 244020005,
+    "initial_time": 2,
+    "final_time": 62,
+    "initial_served": {
+      "0": 0
+    },
+    "final_served": {
+      "0": 0
+    },
+    "stock": 3
+  },
+  {
+    "case": "match",
+    "seed": 244020006,
+    "initial_time": 3,
+    "final_time": 63,
+    "initial_served": {
+      "0": 0
+    },
+    "final_served": {
+      "0": 0
+    },
+    "stock": 4
+  },
+  {
+    "case": "match",
+    "seed": 244020007,
+    "initial_time": 4,
+    "final_time": 64,
+    "initial_served": {
+      "0": 0
+    },
+    "final_served": {
+      "0": 0
+    },
+    "stock": 4
+  },
+  {
+    "case": "mismatch",
+    "seed": 244020000,
+    "initial_time": 28,
+    "final_time": 88,
+    "initial_served": {
+      "0": 0
+    },
+    "final_served": {
+      "0": 0
+    },
+    "stock": 3
+  },
+  {
+    "case": "mismatch",
+    "seed": 244020001,
+    "initial_time": 29,
+    "final_time": 89,
+    "initial_served": {
+      "0": 0
+    },
+    "final_served": {
+      "0": 0
+    },
+    "stock": 4
+  },
+  {
+    "case": "mismatch",
+    "seed": 244020002,
+    "initial_time": 30,
+    "final_time": 90,
+    "initial_served": {
+      "0": 0
+    },
+    "final_served": {
+      "0": 0
+    },
+    "stock": 4
+  },
+  {
+    "case": "mismatch",
+    "seed": 244020003,
+    "initial_time": 0,
+    "final_time": 60,
+    "initial_served": {
+      "0": 0
+    },
+    "final_served": {
+      "0": 0
+    },
+    "stock": 2
+  },
+  {
+    "case": "mismatch",
+    "seed": 244020004,
+    "initial_time": 1,
+    "final_time": 61,
+    "initial_served": {
+      "0": 0
+    },
+    "final_served": {
+      "0": 0
+    },
+    "stock": 3
+  },
+  {
+    "case": "mismatch",
+    "seed": 244020005,
+    "initial_time": 2,
+    "final_time": 62,
+    "initial_served": {
+      "0": 0
+    },
+    "final_served": {
+      "0": 0
+    },
+    "stock": 3
+  },
+  {
+    "case": "mismatch",
+    "seed": 244020006,
+    "initial_time": 3,
+    "final_time": 63,
+    "initial_served": {
+      "0": 0
+    },
+    "final_served": {
+      "0": 0
+    },
+    "stock": 4
+  },
+  {
+    "case": "mismatch",
+    "seed": 244020007,
+    "initial_time": 4,
+    "final_time": 64,
+    "initial_served": {
+      "0": 0
+    },
+    "final_served": {
+      "0": 0
+    },
+    "stock": 4
+  },
+  {
+    "case": "quiet",
+    "seed": 244020000,
+    "initial_time": 42,
+    "final_time": 102,
+    "initial_served": {
+      "0": 3,
+      "2": 1
+    },
+    "final_served": {
+      "0": 6,
+      "2": 5
+    },
+    "stock": 2
+  },
+  {
+    "case": "quiet",
+    "seed": 244020001,
+    "initial_time": 42,
+    "final_time": 102,
+    "initial_served": {
+      "0": 2,
+      "2": 2
+    },
+    "final_served": {
+      "0": 6,
+      "2": 5
+    },
+    "stock": 2
+  },
+  {
+    "case": "quiet",
+    "seed": 244020002,
+    "initial_time": 44,
+    "final_time": 104,
+    "initial_served": {
+      "0": 2,
+      "2": 2
+    },
+    "final_served": {
+      "0": 6,
+      "2": 6
+    },
+    "stock": 2
+  },
+  {
+    "case": "quiet",
+    "seed": 244020003,
+    "initial_time": 14,
+    "final_time": 74,
+    "initial_served": {
+      "0": 1,
+      "2": 0
+    },
+    "final_served": {
+      "0": 4,
+      "2": 3
+    },
+    "stock": 2
+  },
+  {
+    "case": "quiet",
+    "seed": 244020004,
+    "initial_time": 14,
+    "final_time": 74,
+    "initial_served": {
+      "0": 1,
+      "2": 0
+    },
+    "final_served": {
+      "0": 4,
+      "2": 3
+    },
+    "stock": 2
+  },
+  {
+    "case": "quiet",
+    "seed": 244020005,
+    "initial_time": 16,
+    "final_time": 76,
+    "initial_served": {
+      "0": 1,
+      "2": 0
+    },
+    "final_served": {
+      "0": 4,
+      "2": 3
+    },
+    "stock": 2
+  },
+  {
+    "case": "quiet",
+    "seed": 244020006,
+    "initial_time": 17,
+    "final_time": 77,
+    "initial_served": {
+      "0": 1,
+      "2": 0
+    },
+    "final_served": {
+      "0": 4,
+      "2": 4
+    },
+    "stock": 2
+  },
+  {
+    "case": "quiet",
+    "seed": 244020007,
+    "initial_time": 17,
+    "final_time": 77,
+    "initial_served": {
+      "0": 1,
+      "2": 0
+    },
+    "final_served": {
+      "0": 5,
+      "2": 4
+    },
+    "stock": 2
+  },
+  {
+    "case": "route",
+    "seed": 244020000,
+    "initial_time": 42,
+    "final_time": 102,
+    "initial_served": {
+      "0": 2,
+      "2": 0
+    },
+    "final_served": {
+      "0": 6,
+      "2": 0
+    },
+    "stock": 2
+  },
+  {
+    "case": "route",
+    "seed": 244020001,
+    "initial_time": 42,
+    "final_time": 102,
+    "initial_served": {
+      "0": 2,
+      "2": 0
+    },
+    "final_served": {
+      "0": 6,
+      "2": 0
+    },
+    "stock": 3
+  },
+  {
+    "case": "route",
+    "seed": 244020002,
+    "initial_time": 44,
+    "final_time": 104,
+    "initial_served": {
+      "0": 2,
+      "2": 0
+    },
+    "final_served": {
+      "0": 6,
+      "2": 0
+    },
+    "stock": 4
+  },
+  {
+    "case": "route",
+    "seed": 244020003,
+    "initial_time": 14,
+    "final_time": 74,
+    "initial_served": {
+      "0": 1,
+      "2": 0
+    },
+    "final_served": {
+      "0": 5,
+      "2": 0
+    },
+    "stock": 4
+  },
+  {
+    "case": "route",
+    "seed": 244020004,
+    "initial_time": 14,
+    "final_time": 74,
+    "initial_served": {
+      "0": 1,
+      "2": 0
+    },
+    "final_served": {
+      "0": 4,
+      "2": 0
+    },
+    "stock": 5
+  },
+  {
+    "case": "route",
+    "seed": 244020005,
+    "initial_time": 16,
+    "final_time": 76,
+    "initial_served": {
+      "0": 1,
+      "2": 0
+    },
+    "final_served": {
+      "0": 4,
+      "2": 0
+    },
+    "stock": 4
+  },
+  {
+    "case": "route",
+    "seed": 244020006,
+    "initial_time": 17,
+    "final_time": 77,
+    "initial_served": {
+      "0": 1,
+      "2": 0
+    },
+    "final_served": {
+      "0": 4,
+      "2": 0
+    },
+    "stock": 4
+  },
+  {
+    "case": "route",
+    "seed": 244020007,
+    "initial_time": 17,
+    "final_time": 77,
+    "initial_served": {
+      "0": 1,
+      "2": 0
+    },
+    "final_served": {
+      "0": 5,
+      "2": 0
+    },
+    "stock": 3
+  }
+]

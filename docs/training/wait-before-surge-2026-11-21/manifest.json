@@ -1,0 +1,546 @@
+{
+  "created_utc": "2026-11-21T17:42:21.237927+00:00",
+  "run_window_start_utc": "2026-11-21T16:44:32Z",
+  "run_window_end_utc": "2026-11-21T17:44:32Z",
+  "branch": "mohammad",
+  "git_base": "6bd7f7193b26ae0f5aa12563f3dd89769115df6e",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 19562,
+      "sha256": "be98d68d66d557e7282aed69520d193c38394892c8a5c3b1ad601e6797cb0bd9"
+    },
+    {
+      "path": "check_frozen_heads.py",
+      "bytes": 1463,
+      "sha256": "1269bd340899e8a697e17a61417895009395c923efecf582da77ae66ddd7ed5e"
+    },
+    {
+      "path": "contrast.patch",
+      "bytes": 1947,
+      "sha256": "703fdd8d5a598f88edbe10f9534eaa773e0e59a68fa35de5463aebc47ebef349"
+    },
+    {
+      "path": "diagnose_timing.py",
+      "bytes": 3161,
+      "sha256": "40abbae09c6f78c268ba810ca1373071dfdd02845aa8592ddb448f84e7a67e32"
+    },
+    {
+      "path": "latepulse.patch",
+      "bytes": 497,
+      "sha256": "b2a297b30ffc059fcf99e2a9e45aad38437523e79ef4147296438db9ccf5662b"
+    },
+    {
+      "path": "matched-summary.json",
+      "bytes": 143802,
+      "sha256": "828a0e0bbb4c286a9ae2cf31cc2d41e46eca67330fb7d653173451e0529309cc"
+    },
+    {
+      "path": "measurements/contrast-probe.txt",
+      "bytes": 584,
+      "sha256": "5be91b0440433aaac325e4111920985245c4985f434852f36288366363ad3b0d"
+    },
+    {
+      "path": "measurements/head-audit.json",
+      "bytes": 2267,
+      "sha256": "8e48a0a6fc2de026df6852bcf64f35a9cdcd94da765ad156db1928d7ee81cf41"
+    },
+    {
+      "path": "measurements/parent-probe.txt",
+      "bytes": 280,
+      "sha256": "f186f798a829df9778ca25ea3e0bd07cd11f1ef411d3a58c41953a96fb12b88f"
+    },
+    {
+      "path": "measurements/timing-clock-dev-probe-01.json",
+      "bytes": 48280,
+      "sha256": "c493d3d536071f6cd57c5b29f3aa29cb5fa8ca3afba6a133bed23531e90c4bd5"
+    },
+    {
+      "path": "measurements/timing-clock-dev-probe-02.json",
+      "bytes": 48285,
+      "sha256": "26f34a03de64dc7f95be695532b3539d012466a13ef01e983561c5ebe71888dc"
+    },
+    {
+      "path": "measurements/timing-clock-final-01.json",
+      "bytes": 437658,
+      "sha256": "5dee9046901b1c903a175379dcf783ba2c7d6b131252b298476eb59c0e136252"
+    },
+    {
+      "path": "measurements/timing-clock-final-snapshot-01.json",
+      "bytes": 48359,
+      "sha256": "a63f9f3882dd224d6b4561ab34f67fdb9a06ae46c0881ba6c84e61d70bc4c50e"
+    },
+    {
+      "path": "measurements/timing-clock-initial-holdout-01.json",
+      "bytes": 420833,
+      "sha256": "08f0993f5ccb06244fbb2601e31ca486e51d9bc4d355a0f730a01404c21c6473"
+    },
+    {
+      "path": "measurements/timing-clock-initial-probe-01.json",
+      "bytes": 48031,
+      "sha256": "61833ac70d9e9644e2b52a0a72b9f0b2798e814d01042265d3a4f4bad1080453"
+    },
+    {
+      "path": "measurements/timing-clock-late-transfer-01.json",
+      "bytes": 138139,
+      "sha256": "eb2b46523662ac92050c2513d0d05f1c12e362645a626a7f22ac889e0517ff8a"
+    },
+    {
+      "path": "measurements/timing-clock-post-surge-retention-01.json",
+      "bytes": 647162,
+      "sha256": "ce1d6b024d6a77cafd4c4a6868f49b2a580a9756c0c3748888dc5963d20ea128"
+    },
+    {
+      "path": "measurements/timing-clock-reproduction-01.json",
+      "bytes": 44708,
+      "sha256": "1216e1c19be3a0afd01885b751de1c519d0618ebeae9cd55f4f69a5711292cb9"
+    },
+    {
+      "path": "measurements/timing-clock-standard-transfer-01.json",
+      "bytes": 434601,
+      "sha256": "8658c0c547801ef3f24ecc5336b4392c586c901dfb110fea3dc108bd4963921e"
+    },
+    {
+      "path": "measurements/timing-contrast-development-01.json",
+      "bytes": 625311,
+      "sha256": "93059af000173d0324229b89d7bfe30b748265a7851e47a894f977318892bc3e"
+    },
+    {
+      "path": "measurements/timing-contrast-holdout-controls-01.json",
+      "bytes": 1041110,
+      "sha256": "a853c39e81848b804cc3a35c5d23b9339cb519b0c59115fc97a4845a4cca5d50"
+    },
+    {
+      "path": "measurements/timing-contrast-initial-holdout-01.json",
+      "bytes": 420517,
+      "sha256": "e63e9e614709b006f67a1b41bc45df08493db8d442f8a4b92cef52e7949119dc"
+    },
+    {
+      "path": "measurements/timing-contrast-wait-final-01.json",
+      "bytes": 437477,
+      "sha256": "d6de22f0ea23c46c67063fe43cb3a4ab839208088e3ae501389efd48f2aba172"
+    },
+    {
+      "path": "measurements/timing-earlier-clock-final-01.json",
+      "bytes": 217803,
+      "sha256": "c0ca07e2fee2a51b68e32825e54972f9e582a746e3929fa674436639dd78022d"
+    },
+    {
+      "path": "measurements/timing-earlier-clock-initial-01.json",
+      "bytes": 218067,
+      "sha256": "25e30b65be63db6087691b2ecffbc09d641dd0cff0fabf1805f6818f1c04e95d"
+    },
+    {
+      "path": "measurements/timing-earlier-controls-01.json",
+      "bytes": 538880,
+      "sha256": "edc7222e9507be66ef7b0f7c5eaffcbe29787f89b6cca05fb274a81e09bffcb5"
+    },
+    {
+      "path": "measurements/timing-exploration-baseline-03.json",
+      "bytes": 417386,
+      "sha256": "b68337ab80db6850083f8b65fc82dd5bad2968e4dd56c2d1ac4eae6154f6a3e2"
+    },
+    {
+      "path": "measurements/timing-fine-cue-substitution-01.json",
+      "bytes": 104229,
+      "sha256": "94bf11ecb5be01f296aad0eb4239cc2c6da28d913e52e5c67bf5697f636d26b9"
+    },
+    {
+      "path": "measurements/timing-fine-final-01.json",
+      "bytes": 929905,
+      "sha256": "014e438e68ec519c7960b9e363be4c650696faa226d656dd589998eb9ca85906"
+    },
+    {
+      "path": "measurements/timing-fine-independent-controls-01.json",
+      "bytes": 2561352,
+      "sha256": "db38983d3f37f40c9c3962b98e89211fdfe399687c9a3bec7a407e8726266e60"
+    },
+    {
+      "path": "measurements/timing-fine-independent-final-01.json",
+      "bytes": 471577,
+      "sha256": "9f945e81a5b47649fd8f1d68ffe6a0f6605f5b34b8a4f872627ac281a01d51a8"
+    },
+    {
+      "path": "measurements/timing-fine-initial-01.json",
+      "bytes": 930595,
+      "sha256": "99914a8a7c7bb416f3f8f25d1d122ab5d0d249669c8023add6a78a413a275f9f"
+    },
+    {
+      "path": "measurements/timing-fine-late-controls-01.json",
+      "bytes": 2555802,
+      "sha256": "c967cc24dbbfe49faf812cd02c07d56e69d3f65eadb5d2ec3a71ecae7d588777"
+    },
+    {
+      "path": "measurements/timing-fine-late-snapshot-01.json",
+      "bytes": 69192,
+      "sha256": "328a8dc31e1f0176e31e013cd8e8adaa7e46c4584f89cfb8976e81d991f9855f"
+    },
+    {
+      "path": "measurements/timing-fine-normal-controls-01.json",
+      "bytes": 2524558,
+      "sha256": "4052a9dfb89c721afd2e568868af190a8473ccdb1225402057c5abbc86798aca"
+    },
+    {
+      "path": "measurements/timing-fine-normal-snapshot-01.json",
+      "bytes": 69408,
+      "sha256": "c662920442d908b553fb58d93e9eff5f93f2414ac6d816460463a8329195709d"
+    },
+    {
+      "path": "measurements/timing-fine-post-surge-retention-01.json",
+      "bytes": 647080,
+      "sha256": "0f6daa5d2c238e8a6f2486dd7014433185e84ba5d687b388574708ce9606cd29"
+    },
+    {
+      "path": "measurements/timing-fine-reproduction-01.json",
+      "bytes": 117153,
+      "sha256": "22a6c43665bf5b6c9c7dc2ff8905d0f862e70f01fe475fbb924dff650ad4b2ff"
+    },
+    {
+      "path": "measurements/timing-fine-standard-transfer-01.json",
+      "bytes": 577673,
+      "sha256": "c3cf9f7c3751dd124717f17fa6d6ac6c343a991c5193f645f7d3037f055b9204"
+    },
+    {
+      "path": "measurements/timing-fine-zero-late-transfer-01.json",
+      "bytes": 246021,
+      "sha256": "5fb1c1d9ed5a9623536c51df02f6a46b361ea17b8a17cddce59619652d401a78"
+    },
+    {
+      "path": "measurements/timing-fine-zero-transfer-01.json",
+      "bytes": 488339,
+      "sha256": "1d9f28197598c531d10dd561a7b9872110cd18d8f5b9aefa0e14a258a0858ef4"
+    },
+    {
+      "path": "measurements/timing-holdout-cadence-controls-03.json",
+      "bytes": 1035622,
+      "sha256": "daddc87ace02e72c9e3903d25a69c1ad41257238f5f80fd2d0aec96b7cbdba2a"
+    },
+    {
+      "path": "measurements/timing-holdout-controls-02.json",
+      "bytes": 2510794,
+      "sha256": "44bb089012dcc0d87dcb24ae62f180a743b6c7ea05797744e5e14aa3ed5db9ef"
+    },
+    {
+      "path": "measurements/timing-joint-final-02.json",
+      "bytes": 434570,
+      "sha256": "f8198f3aa99c434e8077acc4e32a319651bf4929655d5a0fc4471b801c8c31f7"
+    },
+    {
+      "path": "measurements/timing-late-road-final-late-01.json",
+      "bytes": 138132,
+      "sha256": "f1a75edd0f645f658dfae0d73e88d705404a887556418aa53e9ba5679a3ffc63"
+    },
+    {
+      "path": "measurements/timing-late-road-final-normal-01.json",
+      "bytes": 437299,
+      "sha256": "c163dcb6bc917451bf7c9d6ec6b6841b6aecc2cd4ae1e01c5321a05beab34ded"
+    },
+    {
+      "path": "measurements/timing-late-road-final-snapshot-01.json",
+      "bytes": 48440,
+      "sha256": "411ea53961a2eac61607ab58efb22e6c172234572e01cb3d35d3a4d0950c4fee"
+    },
+    {
+      "path": "measurements/timing-latepulse-controls-01.json",
+      "bytes": 786255,
+      "sha256": "04dc63bdb736a5abbcece2bbe2ee82ca5b7cd355faf20cb698854ee5fcac12d1"
+    },
+    {
+      "path": "measurements/timing-latepulse-development-01.json",
+      "bytes": 592556,
+      "sha256": "c07b4561d5d01a9344c6b395b83463654e160cd36883aaad86a723eda40e76e7"
+    },
+    {
+      "path": "measurements/timing-training-controls-02.json",
+      "bytes": 1257501,
+      "sha256": "a2ee082a6f9061828e7735e37b93e2ed8db7f0ed5a8fafb62d8f3404f7b6163d"
+    },
+    {
+      "path": "measurements/timing-unmodified-parent-02.json",
+      "bytes": 418103,
+      "sha256": "007e236145546081615c75819e607d73f0be293b6c0dce442cfa991788b6d165"
+    },
+    {
+      "path": "measurements/timing-variable-dev-01.json",
+      "bytes": 200232,
+      "sha256": "9117d5e853cb794662168b63e7a1b36388bdb3ba5992a9977a0d4f7143e79d83"
+    },
+    {
+      "path": "measurements/timing-variable-final-late-01.json",
+      "bytes": 200758,
+      "sha256": "513add68c11323686cc70749115fc2b1b195e5c01483c42fd8e4b4d63eab33f5"
+    },
+    {
+      "path": "measurements/timing-variable-final-normal-paired-02.json",
+      "bytes": 197819,
+      "sha256": "05669101a447120d8db7ce0d7b94c88cafdfe7c676c2b8bb930865f9a8f86562"
+    },
+    {
+      "path": "measurements/timing-variable-final-zero-01.json",
+      "bytes": 396794,
+      "sha256": "008f9beea150795398b433de0f9b8c95a0a10624862dbf53082ae47b620622ce"
+    },
+    {
+      "path": "measurements/timing-wait-only-final-03.json",
+      "bytes": 433803,
+      "sha256": "b0df8e7c8b26f3b0c26f0d4f58207fe3826a2fd3b2f43e6aba5fe14c775bf31e"
+    },
+    {
+      "path": "measurements/timing-zero-controls-01.json",
+      "bytes": 3531269,
+      "sha256": "086321ad6614f6ef84ad85a35d719c122ab64733edf9ca18ab2c89cb53b91346"
+    },
+    {
+      "path": "measurements/timing-zero-initial-01.json",
+      "bytes": 396782,
+      "sha256": "06c0e3574f510ad6cb8e9d96054644f7d0aab222c20e08a917dbfe122479c914"
+    },
+    {
+      "path": "measurements/timing-zero-late-controls-01.json",
+      "bytes": 1095699,
+      "sha256": "7c090a73d3fa595cb7c214454a8cd92d3d464a6a50a6f1cbc61920bb63431029"
+    },
+    {
+      "path": "measurements/timing-zero-late-initial-01.json",
+      "bytes": 200750,
+      "sha256": "a6a8264ecf0f28e82e159d085079b590ec759bebb92885b6939c432cd2ac8207"
+    },
+    {
+      "path": "measurements/timing-zero-scheduled-normal-controls-02.json",
+      "bytes": 1079903,
+      "sha256": "d219ad3141c7227c149eaa6765e4978609947b58e5d85183e1082c44e070b7e0"
+    },
+    {
+      "path": "paired-gains.json",
+      "bytes": 1777,
+      "sha256": "886695fe5ce2c6652df343372bbfb32073a6d9f1513e82c5d128aa898900ee3c"
+    },
+    {
+      "path": "plot_timing.py",
+      "bytes": 1881,
+      "sha256": "de978e358d59c594ede416b0f3c299c0b066d767d5d59c90b26e854ad635d98e"
+    },
+    {
+      "path": "reproduction-check.json",
+      "bytes": 151,
+      "sha256": "c70792097dd20a5dc06d40e67ce159294d7e23e9c8d356a018f8a143d556824a"
+    },
+    {
+      "path": "runs/initial-wait-only-load-error.log",
+      "bytes": 515,
+      "sha256": "cd1a76f5d2ae94c4bf0844a174fbc63909fa78c0b836eee7cd0bdd8122c0c434"
+    },
+    {
+      "path": "runs/paired-control-path-error.log",
+      "bytes": 1495,
+      "sha256": "a072e2c35b24a0615b8642377cdff0ca155ffa51dff0202964cde30caf587906"
+    },
+    {
+      "path": "runs/timing-clock-wait-01/config.json",
+      "bytes": 1171,
+      "sha256": "b754011b0f1b8a8b4cb2f9416ac2b0e588af16dd715c8a2f2bdad42ff912ec3b"
+    },
+    {
+      "path": "runs/timing-clock-wait-01/progress.jsonl",
+      "bytes": 24581,
+      "sha256": "53b479c3c3cd3c62b4bcf5dadfcdbcc25155bc6f645d3b6923fa73d4e7368224"
+    },
+    {
+      "path": "runs/timing-clock-wait-01/status.json",
+      "bytes": 131,
+      "sha256": "a6928ef231236943e1aa5ecedc82d3b14cf40d257a2fc69131dc7149e510d229"
+    },
+    {
+      "path": "runs/timing-contrast-wait-01/config.json",
+      "bytes": 1119,
+      "sha256": "1298cce79002a753f071f1ba1ed67de31b3a1e9c173fded3621f69753726eaee"
+    },
+    {
+      "path": "runs/timing-contrast-wait-01/progress.jsonl",
+      "bytes": 24787,
+      "sha256": "d233504fdb4078391ca4b72889293dd3501d85b219af40fa74063da3853538e4"
+    },
+    {
+      "path": "runs/timing-contrast-wait-01/status.json",
+      "bytes": 131,
+      "sha256": "c2d67cb4b91d9e51b188717de7b69e2b9aaff9ccbaae3f508603fa7a3bd902ac"
+    },
+    {
+      "path": "runs/timing-fine-wait-01/config.json",
+      "bytes": 1218,
+      "sha256": "e6715486f06b93714e1e1bf550bdc383a95d3444783ac096141b1e6cfa28fee0"
+    },
+    {
+      "path": "runs/timing-fine-wait-01/progress.jsonl",
+      "bytes": 28439,
+      "sha256": "8d4b36451115cf645ff331efc83d8891930eab45fd3c1966cc727758f4eaf664"
+    },
+    {
+      "path": "runs/timing-fine-wait-01/status.json",
+      "bytes": 134,
+      "sha256": "dbc96b7311eb7a80f76069f3707f3ce20442028a17d35ca5e2bccf460184b0ce"
+    },
+    {
+      "path": "runs/timing-joint-02/config.json",
+      "bytes": 1100,
+      "sha256": "da74c11669b6c71c83133a5657e8200b42538b1bb78f73a9f084ddccbf2f2ab9"
+    },
+    {
+      "path": "runs/timing-joint-02/progress.jsonl",
+      "bytes": 21953,
+      "sha256": "b3b6d05f7592b12359ff6ac51b520fede707dd1d4f83b98e03c2b610679337c2"
+    },
+    {
+      "path": "runs/timing-joint-02/status.json",
+      "bytes": 131,
+      "sha256": "6802fc32922e3de2c24f86975f88c29c20df2e4fcbcbb09dc864baf6f24edff4"
+    },
+    {
+      "path": "runs/timing-late-road-01/config.json",
+      "bytes": 1458,
+      "sha256": "73e0f6ef6ec8d78c1f8a715109d21a9d70296237f903155bcb4d5f0d1fec40b5"
+    },
+    {
+      "path": "runs/timing-late-road-01/progress.jsonl",
+      "bytes": 27555,
+      "sha256": "23401460ff8838d268ba605946a44e1a4541afa4de226c04b8099a3a3ec710dd"
+    },
+    {
+      "path": "runs/timing-late-road-01/status.json",
+      "bytes": 135,
+      "sha256": "da1d43e6426eb16de1947e19dbfb8a4bc707082679e56bd2f7e5395466fe907d"
+    },
+    {
+      "path": "runs/timing-variable-start-01/config.json",
+      "bytes": 1219,
+      "sha256": "44eda995556784ce8e094e251d622f4096e887527a045fc17660a37f81354eac"
+    },
+    {
+      "path": "runs/timing-variable-start-01/progress.jsonl",
+      "bytes": 34262,
+      "sha256": "f36cffd16e335b846659e288a44572236267e69d1c2c0796f7b06ca2addc443c"
+    },
+    {
+      "path": "runs/timing-variable-start-01/status.json",
+      "bytes": 135,
+      "sha256": "38e1949ef76a1edfb5eeee485af37f21e39eb17c28b1899456546fb437441cf7"
+    },
+    {
+      "path": "runs/timing-wait-only-03/config.json",
+      "bytes": 1099,
+      "sha256": "4eaf8c29564943d155a9c25df68e42d0fbac4b1544c7ab3321f0b2dabfa9f3a8"
+    },
+    {
+      "path": "runs/timing-wait-only-03/progress.jsonl",
+      "bytes": 21743,
+      "sha256": "9a425cf022f5ed35711c6976f30a9eb1a21d6c6ed19d3e8352aca9dce5dd0d09"
+    },
+    {
+      "path": "runs/timing-wait-only-03/status.json",
+      "bytes": 131,
+      "sha256": "a704f038cbee5b5d75f9100ab44464b1b6b349eb3586f614e63705b7bab456d1"
+    },
+    {
+      "path": "summarize_timing.py",
+      "bytes": 3630,
+      "sha256": "1264aa25f0f437713666900bd64449f7af5d45b172c659286db8fa8dc992b8c4"
+    },
+    {
+      "path": "wait-learning.png",
+      "bytes": 118289,
+      "sha256": "46aa5bfc922351b9c6772817468ade0f03b41d8a38b70371df94047504fa108b"
+    }
+  ],
+  "local_only_artifacts": [
+    {
+      "path": "output/training/timing-clock-wait-01/initial.zip",
+      "sha256": "d2a22bfdc134b670686af0fe4fe28e87154406ab3c4157269d1b8cf65cd769a7"
+    },
+    {
+      "path": "output/training/timing-clock-wait-01/latest.zip",
+      "sha256": "2b8a0cc9323597885fda7c9ebc3eeeae6aa20e8910fa15c7c2ab1c7c9291d32a"
+    },
+    {
+      "path": "output/training/timing-contrast-wait-01/initial.zip",
+      "sha256": "04ebdb90c6fd4a7fdfdd809d98b2a883e713a2170375b5e69bccb04d37f54f73"
+    },
+    {
+      "path": "output/training/timing-contrast-wait-01/latest.zip",
+      "sha256": "f51773285b38f50ccacd1c8913ead3b14134c58ae578f133cf3968ee6f8d325f"
+    },
+    {
+      "path": "output/training/timing-fine-wait-01/initial.zip",
+      "sha256": "610901242bcd2cb6358ec245d58b2483ab6ecf03e9248bfaf33d74490cfa2141"
+    },
+    {
+      "path": "output/training/timing-fine-wait-01/latest.zip",
+      "sha256": "4e97cb1fd95002a8ebb8c32af8c4627952867a9545bb83906e24105e5e7fb6b2"
+    },
+    {
+      "path": "output/training/timing-joint-02/initial.zip",
+      "sha256": "fbae63a234ce426bfd802bda7e112f16dd229472ab39f151cda3f08fa399675c"
+    },
+    {
+      "path": "output/training/timing-joint-02/latest.zip",
+      "sha256": "38f08c4d85dda30376dca05bc0074d80a77d03ea84d7b977082a560b9b94c110"
+    },
+    {
+      "path": "output/training/timing-late-road-01/initial.zip",
+      "sha256": "8dc4e879408a604a4409eb6a4c39ab1afa6acf82588297081fe599b50f209c48"
+    },
+    {
+      "path": "output/training/timing-late-road-01/latest.zip",
+      "sha256": "fbe0c3b48a88e58c779571fd7bf30e9a4e2d607cdcf34af9fde7d84666da59fc"
+    },
+    {
+      "path": "output/training/timing-variable-start-01/initial.zip",
+      "sha256": "c074b7851cf89288c6cd62c611c4599d43fbf7cf4570709b6612926b837fef9b"
+    },
+    {
+      "path": "output/training/timing-variable-start-01/latest.zip",
+      "sha256": "f83e1de02fb557ec69a998167107ded45e86ab13d69100f8b67a3fe34eb30dba"
+    },
+    {
+      "path": "output/training/timing-wait-only-03/initial.zip",
+      "sha256": "764a9223deb3542118440bb9a88a4827727a1eccf57844e62fcf7b0a8eb8b723"
+    },
+    {
+      "path": "output/training/timing-wait-only-03/latest.zip",
+      "sha256": "971b3db142cb5b18fe73738d2ff0ea061cf6b625779b3eee409e48fc28a1cfee"
+    },
+    {
+      "path": "output/training/traffic-road-topology-rush-01/latest.zip",
+      "sha256": "fba4bafb79e15048df4a37b5b08b3815bb173d2d7995855d5961f8e43f523824"
+    },
+    {
+      "path": "output/training/timing-study-2026-11-21/clock-fine-parent.zip",
+      "sha256": "dfedf5a0311d07adcb2284a1505091cd7e335d2e698d8bf07ca6540ec8b76103"
+    },
+    {
+      "path": "output/training/timing-study-2026-11-21/clock-variable-parent.zip",
+      "sha256": "14849238241b4006e1385573c68450222ccc1dbae53c5eb58af7d232f3c2a788"
+    },
+    {
+      "path": "output/training/traffic-gap-positions-rush-host-01/build/bin/TrafficHost/release/TrafficHost.dll",
+      "sha256": "47b107b88c3d0e52f84d091594de29e60c5c483e13dbea559edad473fa7990fd"
+    },
+    {
+      "path": "output/training/traffic-timing-contrast-host-01/build/bin/TrafficHost/release/TrafficHost.dll",
+      "sha256": "b388e3e102a3f035a64b4e7da007f7fdc4b197097274f782045fba027f7f377f"
+    },
+    {
+      "path": "output/training/traffic-timing-latepulse-host-01/build/bin/TrafficHost/release/TrafficHost.dll",
+      "sha256": "fe35be763255e9a446b3ee669bf395cdc2eda16113be8cf78434a1dd68618ca3"
+    }
+  ],
+  "checkout_sources": [
+    {
+      "path": "training/traffic_ppo.py",
+      "sha256": "783a7774b45594e7f637b956c10ccf27b8b280ad97678c8e884c5993a6129797"
+    },
+    {
+      "path": "training/traffic_practice.py",
+      "sha256": "6ce9a5168934ccd745e68f828e922502f168b526ed65da7decec3432b8484362"
+    }
+  ]
+}

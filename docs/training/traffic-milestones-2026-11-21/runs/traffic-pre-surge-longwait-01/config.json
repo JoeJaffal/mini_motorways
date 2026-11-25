@@ -1,0 +1,30 @@
+{
+  "source_sha256": "301b061ca6cef6f22113a8ed4bb3305385337beb6c95c5954f512b756fb60aaa",
+  "observation_sha256": "baa4dad6f235a3ca6e57e6151e598f14c68457650fa544c96fe878876d04b7ee",
+  "native_sha256": "c17176f02f73c8e82a9c258a107a5c5d0bbb4430b1ec6b8126ae5703eaef62dd",
+  "checkpoint": "output/training/traffic-pre-surge-parent-01/checkpoint.zip",
+  "stages": [
+    "traffic-junction-low-live-rush",
+    "traffic-junction-high-live-rush"
+  ],
+  "start": 24576,
+  "horizon": 140,
+  "wait_ticks": 400,
+  "warm_seconds": 15,
+  "decisions": 46080,
+  "wall_seconds": 2250,
+  "device": "cuda",
+  "workers": 12,
+  "seed": 42,
+  "seed_start": 2720000,
+  "learning_rate": 0.00065,
+  "entropy": 0.018,
+  "wait_logit_offset": 3.6,
+  "roots": true,
+  "flow": true,
+  "flow_relation": false,
+  "demand_relation": false,
+  "reward": "native tripsDelta only",
+  "teacher_actions": false,
+  "forced_wait_compaction": true
+}

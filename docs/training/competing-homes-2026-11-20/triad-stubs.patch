@@ -1,0 +1,50 @@
+--- a/simulation/Assets/Simulation/ConstructionTriad.cs
++++ b/simulation/Assets/Simulation/ConstructionTriad.cs
+@@ -7,8 +7,9 @@
+         void LoadTriad(int seed, string split, string swap)
+         {
+             var parts = swap.Split('-');
++            int stubs = parts.Length != 2 ? 0 : parts[1] == "stub1" ? 1 : parts[1] == "stub2" ? 2 : 0;
+             int gaps = parts.Length != 2 ? 0 :
+-                parts[1] == "gap" ? 1 : parts[1] == "double" ? 2 : parts[1] == "triple" ? 3 : -1;
++                parts[1] == "gap" ? 1 : parts[1] == "double" ? 2 : parts[1] == "triple" ? 3 : stubs > 0 ? 0 : -1;
+             swap = parts[0];
+             if (gaps < 0 || swap != "left" && swap != "right")
+                 throw new ArgumentException("Unknown triad color assignment");
+@@ -22,7 +23,7 @@
+             int otherColor = (color+rng.Next(1,3))%3;
+             bool training = split == "train";
+             var origin = new Cell(training ? rng.Next(11,20) : rng.Next(30,38), rng.Next(10,19));
+-            int span = rng.Next(gaps == 0 ? 4 : gaps + 4, Math.Max(7, gaps + 5));
++            int span = rng.Next(gaps == 0 ? stubs == 2 ? 5 : 4 : gaps + 4, Math.Max(7, gaps + 5));
+             int lane = rng.Next(1, 3);
+             var destination = SpawnBuilding(origin, color, false, 0, orientation);
+             if (destination == null) throw new InvalidOperationException("Triad destination placement failed");
+@@ -40,7 +41,26 @@
+                     throw new InvalidOperationException("Triad house placement failed");
+             }
+             Array.Clear(Inventory, 0, Inventory.Length);
+-            if (gaps > 0)
++            if (stubs > 0)
++            {
++                Inventory[0] = 20;
++                if (!DrawRoad(At(0,0), At(1,0)))
++                    throw new InvalidOperationException("Triad destination stub placement failed");
++                if (stubs == 2)
++                    foreach (int side in new[] {-1, 1})
++                        if (!DrawRoad(At(span-1,side*lane), At(span-2,side*lane)))
++                            throw new InvalidOperationException("Triad house stub placement failed");
++                int lateral = swap == "left" ? -lane : lane;
++                for (int x = span-stubs; x > 1; x--)
++                {
++                    int next = lateral - Math.Sign(lateral);
++                    ConstructionReference.Add(("draw", At(x,lateral), At(x-1,next)));
++                    lateral = next;
++                }
++                Inventory[0] = span-1-stubs;
++                ConstructionEditLimit = span-stubs;
++            }
++            else if (gaps > 0)
+             {
+                 Inventory[0] = 20;
+                 int missing = rng.Next(2, span - gaps);

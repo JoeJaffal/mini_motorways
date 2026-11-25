@@ -1,0 +1,23 @@
+{
+  "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-whole-initial-01/start.zip",
+  "sha256": "7eb605e4e465b9143e095e367abe0a01285b8ace05843aaac80bd48b5f049027",
+  "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+  "horizon": 600,
+  "allow_bridges": true,
+  "results": {
+    "fresh_a": {
+      "games": 16,
+      "mean": 95.125,
+      "scoring": 14,
+      "new_targets_served": 54,
+      "stockouts": 13
+    },
+    "fresh_b": {
+      "games": 16,
+      "mean": 147.9375,
+      "scoring": 15,
+      "new_targets_served": 89,
+      "stockouts": 12
+    }
+  }
+}

@@ -1,0 +1,362 @@
+{
+  "midgame-network-join": {
+    "0": {
+      "games": 8,
+      "mean_score": 5.875,
+      "successes": 7,
+      "mean_builds": 2.5,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.125
+    },
+    "1": {
+      "games": 8,
+      "mean_score": 5.875,
+      "successes": 7,
+      "mean_builds": 2.5,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.125
+    },
+    "2": {
+      "games": 8,
+      "mean_score": 3.625,
+      "successes": 1,
+      "mean_builds": 2.375,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.25
+    },
+    "route": {
+      "games": 8,
+      "mean_score": 6.375,
+      "successes": 8,
+      "mean_builds": 1.0,
+      "mean_stock": 0.5,
+      "mean_urgent_deliveries": 3.125
+    },
+    "wait": {
+      "games": 8,
+      "mean_score": 3.25,
+      "successes": 0,
+      "mean_builds": 0.0,
+      "mean_stock": 1.5,
+      "mean_urgent_deliveries": 3.25
+    }
+  },
+  "midgame-network-route": {
+    "0": {
+      "games": 8,
+      "mean_score": 4.0,
+      "successes": 2,
+      "mean_builds": 4.25,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.25
+    },
+    "1": {
+      "games": 8,
+      "mean_score": 4.0,
+      "successes": 2,
+      "mean_builds": 4.25,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.25
+    },
+    "2": {
+      "games": 8,
+      "mean_score": 3.25,
+      "successes": 0,
+      "mean_builds": 4.25,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.25
+    },
+    "route": {
+      "games": 8,
+      "mean_score": 6.25,
+      "successes": 8,
+      "mean_builds": 2.875,
+      "mean_stock": 0.375,
+      "mean_urgent_deliveries": 3.25
+    },
+    "wait": {
+      "games": 8,
+      "mean_score": 3.25,
+      "successes": 0,
+      "mean_builds": 0.0,
+      "mean_stock": 3.25,
+      "mean_urgent_deliveries": 3.25
+    }
+  },
+  "midgame-network-delay": {
+    "0": {
+      "games": 8,
+      "mean_score": 4.75,
+      "successes": 4,
+      "mean_builds": 3.375,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.25
+    },
+    "1": {
+      "games": 8,
+      "mean_score": 5.0,
+      "successes": 5,
+      "mean_builds": 3.25,
+      "mean_stock": 0.125,
+      "mean_urgent_deliveries": 3.25
+    },
+    "2": {
+      "games": 8,
+      "mean_score": 3.25,
+      "successes": 0,
+      "mean_builds": 3.375,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.25
+    },
+    "route": {
+      "games": 8,
+      "mean_score": 6.25,
+      "successes": 8,
+      "mean_builds": 1.875,
+      "mean_stock": 0.5,
+      "mean_urgent_deliveries": 3.25
+    },
+    "wait": {
+      "games": 8,
+      "mean_score": 3.25,
+      "successes": 0,
+      "mean_builds": 0.0,
+      "mean_stock": 2.375,
+      "mean_urgent_deliveries": 3.25
+    }
+  },
+  "midgame-network-quiet": {
+    "0": {
+      "games": 8,
+      "mean_score": 6.25,
+      "successes": 8,
+      "mean_builds": 2.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.25
+    },
+    "1": {
+      "games": 8,
+      "mean_score": 6.25,
+      "successes": 8,
+      "mean_builds": 1.625,
+      "mean_stock": 0.375,
+      "mean_urgent_deliveries": 3.25
+    },
+    "2": {
+      "games": 8,
+      "mean_score": 6.25,
+      "successes": 8,
+      "mean_builds": 2.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.25
+    },
+    "wait": {
+      "games": 8,
+      "mean_score": 6.25,
+      "successes": 8,
+      "mean_builds": 0.0,
+      "mean_stock": 2.0,
+      "mean_urgent_deliveries": 3.25
+    }
+  },
+  "traffic-priority-established": {
+    "0": {
+      "games": 8,
+      "mean_score": 12.625,
+      "successes": 5,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 9.875
+    },
+    "1": {
+      "games": 8,
+      "mean_score": 12.625,
+      "successes": 5,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 9.875
+    },
+    "2": {
+      "games": 8,
+      "mean_score": 12.625,
+      "successes": 5,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 9.875
+    },
+    "lower": {
+      "games": 8,
+      "mean_score": 11.125,
+      "successes": 4,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 8.25
+    },
+    "upper": {
+      "games": 8,
+      "mean_score": 10.875,
+      "successes": 4,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 7.75
+    },
+    "wait": {
+      "games": 8,
+      "mean_score": 1.5,
+      "successes": 0,
+      "mean_builds": 0.0,
+      "mean_stock": 1.0,
+      "mean_urgent_deliveries": 0.0
+    }
+  },
+  "traffic-priority-established-swap": {
+    "0": {
+      "games": 8,
+      "mean_score": 9.5,
+      "successes": 3,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 5.75
+    },
+    "1": {
+      "games": 8,
+      "mean_score": 9.5,
+      "successes": 3,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 5.75
+    },
+    "2": {
+      "games": 8,
+      "mean_score": 9.5,
+      "successes": 3,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 5.75
+    },
+    "lower": {
+      "games": 8,
+      "mean_score": 11.5,
+      "successes": 4,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 8.5
+    },
+    "upper": {
+      "games": 8,
+      "mean_score": 10.875,
+      "successes": 4,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 7.75
+    },
+    "wait": {
+      "games": 8,
+      "mean_score": 1.75,
+      "successes": 0,
+      "mean_builds": 0.0,
+      "mean_stock": 1.0,
+      "mean_urgent_deliveries": 0.0
+    }
+  },
+  "traffic-junction-low-live": {
+    "0": {
+      "games": 8,
+      "mean_score": 12.0,
+      "successes": 0,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 11.0
+    },
+    "1": {
+      "games": 8,
+      "mean_score": 11.75,
+      "successes": 0,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 10.625
+    },
+    "2": {
+      "games": 8,
+      "mean_score": 10.875,
+      "successes": 0,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 9.5
+    },
+    "feeder": {
+      "games": 8,
+      "mean_score": 17.25,
+      "successes": 0,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 16.5
+    },
+    "separate-exit": {
+      "games": 8,
+      "mean_score": 12.25,
+      "successes": 0,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 11.25
+    },
+    "wait": {
+      "games": 8,
+      "mean_score": 10.625,
+      "successes": 0,
+      "mean_builds": 0.0,
+      "mean_stock": 1.0,
+      "mean_urgent_deliveries": 9.0
+    }
+  },
+  "traffic-junction-high-live": {
+    "0": {
+      "games": 8,
+      "mean_score": 31.25,
+      "successes": 0,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 15.125
+    },
+    "1": {
+      "games": 8,
+      "mean_score": 31.0,
+      "successes": 0,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 15.125
+    },
+    "2": {
+      "games": 8,
+      "mean_score": 27.625,
+      "successes": 0,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 13.375
+    },
+    "feeder": {
+      "games": 8,
+      "mean_score": 29.875,
+      "successes": 0,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 15.125
+    },
+    "separate-exit": {
+      "games": 8,
+      "mean_score": 31.5,
+      "successes": 0,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 15.625
+    },
+    "wait": {
+      "games": 8,
+      "mean_score": 26.75,
+      "successes": 0,
+      "mean_builds": 0.0,
+      "mean_stock": 1.0,
+      "mean_urgent_deliveries": 13.25
+    }
+  }
+}

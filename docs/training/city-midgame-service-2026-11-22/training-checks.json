@@ -1,0 +1,43 @@
+{
+  "runs": [
+    {
+      "run": "city-midgame-service-02",
+      "episode_counts": [
+        {
+          "exercise": "midgame-delay",
+          "scoring": false,
+          "episodes": 249
+        },
+        {
+          "exercise": "midgame-delay",
+          "scoring": true,
+          "episodes": 7
+        },
+        {
+          "exercise": "midgame-open",
+          "scoring": true,
+          "episodes": 768
+        }
+      ]
+    },
+    {
+      "run": "city-midgame-timing-01",
+      "episode_counts": [
+        {
+          "exercise": "midgame-delay",
+          "scoring": false,
+          "episodes": 1
+        },
+        {
+          "exercise": "midgame-delay",
+          "scoring": true,
+          "episodes": 255
+        }
+      ]
+    }
+  ],
+  "wait_coefficient_before": 8.0,
+  "wait_coefficient_after": 8.000028610229492,
+  "outside_weight_tensors_unchanged": true,
+  "initial_checkpoint_sha256": "98fc473f7dc8041b6273264626d8aab64dd370242327281c5f870c248559435e"
+}

@@ -1,0 +1,9 @@
+[
+  "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+  "-u",
+  "/home/mohammadjaffal/mini_motorways/output/training/road-cost-continuation-01/runtime/training/evaluate_road_cost_frozen.py",
+  "--checkpoint",
+  "/home/mohammadjaffal/mini_motorways/output/training/road-cost-continuation-01/control/checkpoint-000065536.zip",
+  "--output",
+  "/home/mohammadjaffal/mini_motorways/output/training/road-cost-continuation-01/evaluation/control-65536"
+]

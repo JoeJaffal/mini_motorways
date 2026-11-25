@@ -1,0 +1,149 @@
+{
+  "models": [
+    "/home/mohammadjaffal/mini_motorways/output/training/city-route-repair-calibration-01/calibrated-with-counters.zip",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-service-reserve-readiness-01/initial.zip",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-service-reserve-readiness-01/checkpoints/city-000073728-d8b96ce6.zip",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-service-reserve-readiness-01/checkpoints/city-000086016-db6c8742.zip"
+  ],
+  "sha256": {
+    "/home/mohammadjaffal/mini_motorways/output/training/city-route-repair-calibration-01/calibrated-with-counters.zip": "6ed31e8c655acb71b781652c36814045c979597ced464fbf12d6dafef07acd62",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-service-reserve-readiness-01/initial.zip": "4efd9dd273fd4a53a759316e4fffd8b4042afb994a73002296632900f88192f8",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-service-reserve-readiness-01/checkpoints/city-000073728-d8b96ce6.zip": "b7906e4256a551ce400c70d9cccbf77731f14585d1b054874ef7a09cc99d9629",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-service-reserve-readiness-01/checkpoints/city-000086016-db6c8742.zip": "3631b5d13a1d3012134de3dbba51fc8c5e0a10af6b07bd790c5271d405bf15f7"
+  },
+  "host_sha256": "a45b9c443bbcb83b4385f38529cc01ef291e8b26d10dd314650581d258afe3d8",
+  "results": {
+    "0": {
+      "games": 24,
+      "scoring_games": 23,
+      "mean_score": 81.70833333333333,
+      "new_targets": 101,
+      "new_targets_served": 75,
+      "new_target_stockouts": 52,
+      "median_new_service_delay": 39.0,
+      "mean_paid_units": 80.625,
+      "mean_outside_observed_routes": 33.75,
+      "outside_route_share": 0.4186046511627907,
+      "paired_score_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "1": {
+      "games": 24,
+      "scoring_games": 23,
+      "mean_score": 76.58333333333333,
+      "new_targets": 93,
+      "new_targets_served": 74,
+      "new_target_stockouts": 23,
+      "median_new_service_delay": 34.5,
+      "mean_paid_units": 77.83333333333333,
+      "mean_outside_observed_routes": 31.541666666666668,
+      "outside_route_share": 0.40524625267665954,
+      "paired_score_delta_and_interval": [
+        -5.125,
+        [
+          -25.709374999999998,
+          13.166666666666666
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        -0.041666666666666664,
+        [
+          -0.7916666666666666,
+          0.6666666666666666
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        -2.2083333333333335,
+        [
+          -6.126041666666666,
+          1.625
+        ]
+      ]
+    },
+    "2": {
+      "games": 24,
+      "scoring_games": 23,
+      "mean_score": 92.45833333333333,
+      "new_targets": 114,
+      "new_targets_served": 81,
+      "new_target_stockouts": 40,
+      "median_new_service_delay": 35.0,
+      "mean_paid_units": 86.58333333333333,
+      "mean_outside_observed_routes": 36.666666666666664,
+      "outside_route_share": 0.42348411934552455,
+      "paired_score_delta_and_interval": [
+        10.75,
+        [
+          -8.126041666666666,
+          30.708333333333332
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.25,
+        [
+          -0.6666666666666666,
+          1.1666666666666667
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        2.9166666666666665,
+        [
+          -3.375,
+          9.208333333333334
+        ]
+      ]
+    },
+    "3": {
+      "games": 24,
+      "scoring_games": 22,
+      "mean_score": 89.625,
+      "new_targets": 115,
+      "new_targets_served": 80,
+      "new_target_stockouts": 35,
+      "median_new_service_delay": 35.0,
+      "mean_paid_units": 88.95833333333333,
+      "mean_outside_observed_routes": 35.75,
+      "outside_route_share": 0.4018735362997658,
+      "paired_score_delta_and_interval": [
+        7.916666666666667,
+        [
+          -15.542708333333332,
+          30.502083333333303
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.20833333333333334,
+        [
+          -0.7916666666666666,
+          1.1666666666666667
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        2.0,
+        [
+          -3.5,
+          7.333333333333333
+        ]
+      ]
+    }
+  }
+}

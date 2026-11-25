@@ -1,0 +1,49 @@
+{
+  "models": [
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-critic-rate-01/segment-001/final.zip"
+  ],
+  "sha256": {
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-critic-rate-01/segment-001/final.zip": "4e51f8c6368802d8bc7c3b7cb36909ccc1910a4f0bba369fae53697b4a336140"
+  },
+  "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+  "horizon": 1200,
+  "allow_bridges": true,
+  "forced_action_inference_skipped": true,
+  "results": {
+    "0": {
+      "games": 32,
+      "scoring_games": 29,
+      "mean_score": 220.53125,
+      "new_targets": 198,
+      "new_targets_served": 166,
+      "new_target_stockouts": 48,
+      "median_new_service_delay": 30.0,
+      "mean_paid_units": 123.875,
+      "mean_outside_observed_routes": 36.5625,
+      "outside_route_share": 0.2951564076690212,
+      "paired_score_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "mean_bridge_tiles": 2.15625,
+      "mean_bridge_stock": 0.0625
+    }
+  }
+}

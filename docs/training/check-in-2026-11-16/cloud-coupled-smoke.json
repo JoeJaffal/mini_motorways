@@ -1,0 +1,68 @@
+{
+  "kind": "no-training-infrastructure-benchmark",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "torch": "2.9.1+cpu",
+  "threads": 1,
+  "workers": [
+    {
+      "workers": 1,
+      "waits": 5,
+      "wall_seconds": 1.1225360039989027,
+      "waits_per_second": 4.454200116689431,
+      "includes_process_startup": true
+    },
+    {
+      "workers": 2,
+      "waits": 10,
+      "wall_seconds": 1.359094303999882,
+      "waits_per_second": 7.357841152427395,
+      "includes_process_startup": true
+    }
+  ],
+  "inference": [
+    {
+      "device": "cpu",
+      "batch_size": 1,
+      "decisions_per_second": 196.9342613364789,
+      "seconds_per_batch": 0.005077836599957664,
+      "includes_numpy_transfers": true
+    },
+    {
+      "device": "cpu",
+      "batch_size": 8,
+      "decisions_per_second": 149.26702446293203,
+      "seconds_per_batch": 0.05359522660000948,
+      "includes_numpy_transfers": true
+    }
+  ],
+  "coupled": [
+    {
+      "workers": 1,
+      "rounds": 10,
+      "tokens": 10,
+      "wall_seconds": 0.2924295840002742,
+      "tokens_per_second": 34.19626654460044,
+      "completed_commands": 3,
+      "simulated_seconds": 3.0,
+      "resets": 0,
+      "includes_process_startup": false,
+      "untrained_policy": true,
+      "policy_sha256": "3f414685dc498723e32eec17e545c112d88630df6c3ffa3d9b68618dc7a0fbda",
+      "device": "cpu"
+    },
+    {
+      "workers": 2,
+      "rounds": 10,
+      "tokens": 20,
+      "wall_seconds": 0.8020301690012275,
+      "tokens_per_second": 24.936717810635614,
+      "completed_commands": 6,
+      "simulated_seconds": 6.0,
+      "resets": 0,
+      "includes_process_startup": false,
+      "untrained_policy": true,
+      "policy_sha256": "3f414685dc498723e32eec17e545c112d88630df6c3ffa3d9b68618dc7a0fbda",
+      "device": "cpu"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "midgame-network-join": {
+    "0": {
+      "games": 16,
+      "mean_score": 6.5625,
+      "successes": 16,
+      "mean_builds": 1.5,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.25
+    }
+  },
+  "midgame-network-route": {
+    "0": {
+      "games": 16,
+      "mean_score": 6.625,
+      "successes": 16,
+      "mean_builds": 3.5625,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.1875
+    }
+  },
+  "midgame-network-delay": {
+    "0": {
+      "games": 16,
+      "mean_score": 6.0,
+      "successes": 13,
+      "mean_builds": 2.8125,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.1875
+    }
+  },
+  "midgame-network-quiet": {
+    "0": {
+      "games": 16,
+      "mean_score": 6.4375,
+      "successes": 16,
+      "mean_builds": 2.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.1875
+    }
+  },
+  "traffic-priority-established": {
+    "0": {
+      "games": 16,
+      "mean_score": 13.8125,
+      "successes": 12,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 11.3125
+    }
+  },
+  "traffic-priority-established-swap": {
+    "0": {
+      "games": 16,
+      "mean_score": 17.0,
+      "successes": 15,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 14.875
+    }
+  },
+  "traffic-junction-low-live": {
+    "0": {
+      "games": 16,
+      "mean_score": 12.375,
+      "successes": 0,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 10.9375
+    }
+  },
+  "traffic-junction-high-live": {
+    "0": {
+      "games": 16,
+      "mean_score": 31.375,
+      "successes": 0,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 17.4375
+    }
+  },
+  "midgame-network-reserve": {
+    "0": {
+      "games": 16,
+      "mean_score": 3.3125,
+      "successes": 0,
+      "mean_builds": 4.3125,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.3125,
+      "mean_stock_at_arrival": 0.6875,
+      "future_pairs_visible": 16
+    }
+  }
+}

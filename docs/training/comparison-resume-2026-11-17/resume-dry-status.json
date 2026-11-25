@@ -1,0 +1,29 @@
+{
+  "result": "DRY_RUN_PASS",
+  "mode": "dry-run-no-training",
+  "optimizer_steps": 8,
+  "weights_unchanged": true,
+  "losses": [
+    {
+      "role": "executor",
+      "loss": 0.6097604036331177
+    },
+    {
+      "role": "executor",
+      "loss": -0.8551278114318848
+    },
+    {
+      "role": "manager",
+      "loss": -0.09493760019540787
+    }
+  ],
+  "collection_seconds": 0.8878262159996666,
+  "counters": {
+    "tokens": 4144,
+    "updates": 8,
+    "version": 2,
+    "episodes": 3
+  },
+  "session_tokens": 48,
+  "elapsed_seconds": 3.5072309209936066
+}

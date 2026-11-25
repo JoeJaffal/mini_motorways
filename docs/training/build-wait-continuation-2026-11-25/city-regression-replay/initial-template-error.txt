@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/home/mohammadjaffal/mini_motorways/docs/training/build-wait-continuation-2026-11-25/replay_city_regression.py", line 54, in <module>
+    replay(dll,path,out/label,label,records[label],600,paths)
+  File "/home/mohammadjaffal/mini_motorways/docs/training/build-wait-continuation-2026-11-25/replay_city_regression.py", line 37, in replay
+    template=(Path(__file__).resolve().parent/'stage1_replay.html').read_text()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1029, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/mohammadjaffal/mini_motorways/docs/training/build-wait-continuation-2026-11-25/stage1_replay.html'

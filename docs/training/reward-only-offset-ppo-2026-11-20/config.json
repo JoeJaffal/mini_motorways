@@ -1,0 +1,87 @@
+{
+  "kind": "offset-ppo",
+  "parent": "output/training/clear-road-ppo-pilot-01/latest.zip",
+  "parent_fingerprint": "8c6c434a9a26644fc61df7c224fca6cba2450be3b28412f0dff6ba844a0518ea",
+  "parent_decisions": 131072,
+  "native_sha256": "0de65d8155de189cbbbb6e5e4fdf35d70a76b54ddee500b60a7000340af1818f",
+  "source_sha256": "2ea560ee24650524d8625e46fd369a65c6d3443d8bb298207b475dd05a00fa04",
+  "workers": [
+    [
+      "clear",
+      -1
+    ],
+    [
+      "clear",
+      -1
+    ],
+    [
+      "clear",
+      -1
+    ],
+    [
+      "clear",
+      -1
+    ],
+    [
+      "clear",
+      -1
+    ],
+    [
+      "clear",
+      -1
+    ],
+    [
+      "clear",
+      1
+    ],
+    [
+      "clear",
+      1
+    ],
+    [
+      "clear",
+      1
+    ],
+    [
+      "clear",
+      1
+    ],
+    [
+      "clear",
+      1
+    ],
+    [
+      "clear",
+      1
+    ],
+    [
+      "clear",
+      0
+    ],
+    [
+      "clear",
+      0
+    ],
+    [
+      "bend",
+      0
+    ],
+    [
+      "adjacent",
+      0
+    ]
+  ],
+  "temperatures": {
+    "2": 4.0,
+    "3": 4.0,
+    "4": 3.5,
+    "5": 3.0,
+    "6": 2.5,
+    "7": 2.0
+  },
+  "teacher_actions": false,
+  "decision_budget": 131072,
+  "wall_seconds": 1800,
+  "advance_rule": "Both offset directions at least 85% over 3 rollouts at the current distance",
+  "terminal_reward": "1 for any legal route that connects, otherwise 0"
+}

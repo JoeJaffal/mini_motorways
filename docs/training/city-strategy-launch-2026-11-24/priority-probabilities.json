@@ -1,0 +1,2075 @@
+{
+  "note": "Frozen initial-state distributions on reused native validation cohort; control labels used for evaluation only, never training.",
+  "results": [
+    {
+      "model": "parent",
+      "mean_conditional_urgent_probability": 0.5151319006000162,
+      "cases": [
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000000,
+          "urgent": "upper",
+          "wait": 0.030866344792879346,
+          "conditional_urgent_probability": 0.5719459260522122
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000001,
+          "urgent": "upper",
+          "wait": 0.04630123503097782,
+          "conditional_urgent_probability": 0.5071711287398261
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000002,
+          "urgent": "upper",
+          "wait": 0.09180489182472229,
+          "conditional_urgent_probability": 0.5374093517382424
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000003,
+          "urgent": "lower",
+          "wait": 0.03180513336165622,
+          "conditional_urgent_probability": 0.5594856095289389
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000004,
+          "urgent": "lower",
+          "wait": 0.0765782571858687,
+          "conditional_urgent_probability": 0.5552882819379108
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000005,
+          "urgent": "lower",
+          "wait": 0.07484840211317827,
+          "conditional_urgent_probability": 0.5261259420741684
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000006,
+          "urgent": "lower",
+          "wait": 0.08070918677123824,
+          "conditional_urgent_probability": 0.45967488075224106
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000007,
+          "urgent": "upper",
+          "wait": 0.0268782151723041,
+          "conditional_urgent_probability": 0.5390893678775277
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000008,
+          "urgent": "upper",
+          "wait": 0.07193390226413382,
+          "conditional_urgent_probability": 0.5553071313579633
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000009,
+          "urgent": "upper",
+          "wait": 0.055643639013469325,
+          "conditional_urgent_probability": 0.4231265230846136
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000010,
+          "urgent": "upper",
+          "wait": 0.0405196547992206,
+          "conditional_urgent_probability": 0.5854530302472619
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000011,
+          "urgent": "lower",
+          "wait": 0.09002245009079278,
+          "conditional_urgent_probability": 0.559030526782503
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000012,
+          "urgent": "lower",
+          "wait": 0.054349759229096205,
+          "conditional_urgent_probability": 0.47606202789104507
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000013,
+          "urgent": "lower",
+          "wait": 0.022002511400593762,
+          "conditional_urgent_probability": 0.6202155572658244
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000014,
+          "urgent": "lower",
+          "wait": 0.0845005214214325,
+          "conditional_urgent_probability": 0.49349630270322353
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000015,
+          "urgent": "upper",
+          "wait": 0.061026259207906414,
+          "conditional_urgent_probability": 0.5047300842013674
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000000,
+          "urgent": "lower",
+          "wait": 0.05928246762353152,
+          "conditional_urgent_probability": 0.46119877926494085
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000001,
+          "urgent": "lower",
+          "wait": 0.08307262324379482,
+          "conditional_urgent_probability": 0.5231767318844249
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000002,
+          "urgent": "lower",
+          "wait": 0.09567270071533693,
+          "conditional_urgent_probability": 0.4917724282638621
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000003,
+          "urgent": "upper",
+          "wait": 0.07538756488627257,
+          "conditional_urgent_probability": 0.47254276194080974
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000004,
+          "urgent": "upper",
+          "wait": 0.08560758318855863,
+          "conditional_urgent_probability": 0.4720483594247035
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000005,
+          "urgent": "upper",
+          "wait": 0.06368746655946572,
+          "conditional_urgent_probability": 0.5018310374478375
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000006,
+          "urgent": "upper",
+          "wait": 0.06904661861200984,
+          "conditional_urgent_probability": 0.5692092138544141
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000007,
+          "urgent": "lower",
+          "wait": 0.032122009699121476,
+          "conditional_urgent_probability": 0.49066652461565013
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000008,
+          "urgent": "lower",
+          "wait": 0.0672062536482702,
+          "conditional_urgent_probability": 0.47361537273507365
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000009,
+          "urgent": "lower",
+          "wait": 0.061684173568300596,
+          "conditional_urgent_probability": 0.6043478448676715
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000010,
+          "urgent": "lower",
+          "wait": 0.06580054956080167,
+          "conditional_urgent_probability": 0.4451639321748234
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000011,
+          "urgent": "upper",
+          "wait": 0.05452751083901095,
+          "conditional_urgent_probability": 0.470584552889453
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000012,
+          "urgent": "upper",
+          "wait": 0.07839746642141047,
+          "conditional_urgent_probability": 0.5558910786440486
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000013,
+          "urgent": "upper",
+          "wait": 0.0501000547785314,
+          "conditional_urgent_probability": 0.4157065935297112
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000014,
+          "urgent": "upper",
+          "wait": 0.053196272555076946,
+          "conditional_urgent_probability": 0.5361307660797026
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000015,
+          "urgent": "lower",
+          "wait": 0.04907849931549093,
+          "conditional_urgent_probability": 0.5267231693485226
+        }
+      ]
+    },
+    {
+      "model": "summary",
+      "mean_conditional_urgent_probability": 0.5279237621848628,
+      "cases": [
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000000,
+          "urgent": "upper",
+          "wait": 0.018031120517244738,
+          "conditional_urgent_probability": 0.5845750626619699
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000001,
+          "urgent": "upper",
+          "wait": 0.027228147602920163,
+          "conditional_urgent_probability": 0.520107867434401
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000002,
+          "urgent": "upper",
+          "wait": 0.055069236306272855,
+          "conditional_urgent_probability": 0.5502561988955238
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000003,
+          "urgent": "lower",
+          "wait": 0.018587324699061644,
+          "conditional_urgent_probability": 0.5722074007132241
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000004,
+          "urgent": "lower",
+          "wait": 0.04562973892579064,
+          "conditional_urgent_probability": 0.5680376974926109
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000005,
+          "urgent": "lower",
+          "wait": 0.04456571589184662,
+          "conditional_urgent_probability": 0.5390173396881892
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000006,
+          "urgent": "lower",
+          "wait": 0.048178488320800975,
+          "conditional_urgent_probability": 0.47256176993119975
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000007,
+          "urgent": "upper",
+          "wait": 0.015674595198490345,
+          "conditional_urgent_probability": 0.5519284736060659
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000008,
+          "urgent": "upper",
+          "wait": 0.0427759778809843,
+          "conditional_urgent_probability": 0.568056435440237
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000009,
+          "urgent": "upper",
+          "wait": 0.03285499424265674,
+          "conditional_urgent_probability": 0.43581523480833234
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000010,
+          "urgent": "upper",
+          "wait": 0.023768836765189674,
+          "conditional_urgent_probability": 0.5979637500296884
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000011,
+          "urgent": "lower",
+          "wait": 0.053958314089103676,
+          "conditional_urgent_probability": 0.5717553834769462
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000012,
+          "urgent": "lower",
+          "wait": 0.03207299473854529,
+          "conditional_urgent_probability": 0.48899255350682325
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000013,
+          "urgent": "lower",
+          "wait": 0.012804460938353798,
+          "conditional_urgent_probability": 0.6323360589359297
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000014,
+          "urgent": "lower",
+          "wait": 0.050525764775874865,
+          "conditional_urgent_probability": 0.5064426714065418
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000015,
+          "urgent": "upper",
+          "wait": 0.03611728656641503,
+          "conditional_urgent_probability": 0.5176699501857245
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000000,
+          "urgent": "lower",
+          "wait": 0.035058599618423725,
+          "conditional_urgent_probability": 0.47409091217942023
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000001,
+          "urgent": "lower",
+          "wait": 0.04964034127192362,
+          "conditional_urgent_probability": 0.5360776300702909
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000002,
+          "urgent": "lower",
+          "wait": 0.057488771006130306,
+          "conditional_urgent_probability": 0.5047186396971449
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000003,
+          "urgent": "upper",
+          "wait": 0.04489657371028605,
+          "conditional_urgent_probability": 0.48546629574336336
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000004,
+          "urgent": "upper",
+          "wait": 0.0512124704061545,
+          "conditional_urgent_probability": 0.48497081623909916
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000005,
+          "urgent": "upper",
+          "wait": 0.03773581848110599,
+          "conditional_urgent_probability": 0.5147738373734129
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000006,
+          "urgent": "upper",
+          "wait": 0.04100673563453547,
+          "conditional_urgent_probability": 0.5818600709194645
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000007,
+          "urgent": "lower",
+          "wait": 0.018774845125708994,
+          "conditional_urgent_probability": 0.5036124519247883
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000008,
+          "urgent": "lower",
+          "wait": 0.03988171577938321,
+          "conditional_urgent_probability": 0.48654117606889075
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000009,
+          "urgent": "lower",
+          "wait": 0.03651706243371894,
+          "conditional_urgent_probability": 0.6166617253018757
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000010,
+          "urgent": "lower",
+          "wait": 0.03902407406669938,
+          "conditional_urgent_probability": 0.457988852287522
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000011,
+          "urgent": "upper",
+          "wait": 0.03218018191650103,
+          "conditional_urgent_probability": 0.4835036071987854
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000012,
+          "urgent": "upper",
+          "wait": 0.04675090173629219,
+          "conditional_urgent_probability": 0.5686366480955743
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000013,
+          "urgent": "upper",
+          "wait": 0.02951050342119318,
+          "conditional_urgent_probability": 0.42833800850516246
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000014,
+          "urgent": "upper",
+          "wait": 0.03137625172461392,
+          "conditional_urgent_probability": 0.5489833152306448
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000015,
+          "urgent": "lower",
+          "wait": 0.02889588742226048,
+          "conditional_urgent_probability": 0.5396125548667623
+        }
+      ]
+    },
+    {
+      "model": "wide",
+      "mean_conditional_urgent_probability": 0.5193647753430738,
+      "cases": [
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000000,
+          "urgent": "upper",
+          "wait": 0.023423963865754564,
+          "conditional_urgent_probability": 0.800835633004574
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000001,
+          "urgent": "upper",
+          "wait": 0.03528488506268453,
+          "conditional_urgent_probability": 0.2984051172323217
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000002,
+          "urgent": "upper",
+          "wait": 0.0707752912318269,
+          "conditional_urgent_probability": 0.4796788657509742
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000003,
+          "urgent": "lower",
+          "wait": 0.024153947110356476,
+          "conditional_urgent_probability": 0.7009299821728959
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000004,
+          "urgent": "lower",
+          "wait": 0.058783301534875515,
+          "conditional_urgent_probability": 0.7220985529379703
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000005,
+          "urgent": "lower",
+          "wait": 0.05744859053887377,
+          "conditional_urgent_probability": 0.4953652882377079
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000006,
+          "urgent": "lower",
+          "wait": 0.062043311060765716,
+          "conditional_urgent_probability": 0.5492024285376077
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000007,
+          "urgent": "upper",
+          "wait": 0.020379739147905584,
+          "conditional_urgent_probability": 0.49848939482426863
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000008,
+          "urgent": "upper",
+          "wait": 0.055136156130565085,
+          "conditional_urgent_probability": 0.4545478230175673
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000009,
+          "urgent": "upper",
+          "wait": 0.04250386840673938,
+          "conditional_urgent_probability": 0.40344198147436533
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000010,
+          "urgent": "upper",
+          "wait": 0.030810237817887137,
+          "conditional_urgent_probability": 0.7252687395529721
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000011,
+          "urgent": "lower",
+          "wait": 0.0693532367147023,
+          "conditional_urgent_probability": 0.7768663751014976
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000012,
+          "urgent": "lower",
+          "wait": 0.04150398370802433,
+          "conditional_urgent_probability": 0.49253138584637235
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000013,
+          "urgent": "lower",
+          "wait": 0.016667317412786365,
+          "conditional_urgent_probability": 0.7561128492442986
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000014,
+          "urgent": "lower",
+          "wait": 0.06497654512454704,
+          "conditional_urgent_probability": 0.6289274811325746
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000015,
+          "urgent": "upper",
+          "wait": 0.0466732134175021,
+          "conditional_urgent_probability": 0.558951515392891
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000000,
+          "urgent": "lower",
+          "wait": 0.04530856098888242,
+          "conditional_urgent_probability": 0.23015916991786042
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000001,
+          "urgent": "lower",
+          "wait": 0.0638923841634679,
+          "conditional_urgent_probability": 0.7363976385391702
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000002,
+          "urgent": "lower",
+          "wait": 0.07383015751838684,
+          "conditional_urgent_probability": 0.5622966851189444
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000003,
+          "urgent": "upper",
+          "wait": 0.057878192729794206,
+          "conditional_urgent_probability": 0.338080526852122
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000004,
+          "urgent": "upper",
+          "wait": 0.06586377724225491,
+          "conditional_urgent_probability": 0.31098857429515664
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000005,
+          "urgent": "upper",
+          "wait": 0.04874465578239667,
+          "conditional_urgent_probability": 0.5453575949972858
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000006,
+          "urgent": "upper",
+          "wait": 0.05292450165516694,
+          "conditional_urgent_probability": 0.49240552937212645
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000007,
+          "urgent": "lower",
+          "wait": 0.024387098667121687,
+          "conditional_urgent_probability": 0.5437984329061184
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000008,
+          "urgent": "lower",
+          "wait": 0.05145031413788785,
+          "conditional_urgent_probability": 0.5866375652895071
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000009,
+          "urgent": "lower",
+          "wait": 0.047187959143205414,
+          "conditional_urgent_probability": 0.6355193786782086
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000010,
+          "urgent": "lower",
+          "wait": 0.050351128732429876,
+          "conditional_urgent_probability": 0.31111283226499054
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000011,
+          "urgent": "upper",
+          "wait": 0.04163601233671711,
+          "conditional_urgent_probability": 0.25398532059064
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000012,
+          "urgent": "upper",
+          "wait": 0.06022974839841678,
+          "conditional_urgent_probability": 0.5523208855711008
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000013,
+          "urgent": "upper",
+          "wait": 0.03821772206463395,
+          "conditional_urgent_probability": 0.2827776451553009
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000014,
+          "urgent": "upper",
+          "wait": 0.04058398839765848,
+          "conditional_urgent_probability": 0.4110850295972737
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000015,
+          "urgent": "lower",
+          "wait": 0.03742349060261552,
+          "conditional_urgent_probability": 0.4850965883716973
+        }
+      ]
+    },
+    {
+      "model": "mixed-midpoint",
+      "mean_conditional_urgent_probability": 0.5176806178421007,
+      "cases": [
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000000,
+          "urgent": "upper",
+          "wait": 0.023711487297542584,
+          "conditional_urgent_probability": 0.633013345083049
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000001,
+          "urgent": "upper",
+          "wait": 0.035700404483840036,
+          "conditional_urgent_probability": 0.3005691217017007
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000002,
+          "urgent": "upper",
+          "wait": 0.07156732891700653,
+          "conditional_urgent_probability": 0.6027450299376979
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000003,
+          "urgent": "lower",
+          "wait": 0.02443838773524807,
+          "conditional_urgent_probability": 0.5506526662747653
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000004,
+          "urgent": "lower",
+          "wait": 0.05947764656854026,
+          "conditional_urgent_probability": 0.7219760336716099
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000005,
+          "urgent": "lower",
+          "wait": 0.0581100477812072,
+          "conditional_urgent_probability": 0.35249078756997954
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000006,
+          "urgent": "lower",
+          "wait": 0.06274931924603372,
+          "conditional_urgent_probability": 0.3724837684379181
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000007,
+          "urgent": "upper",
+          "wait": 0.02062819867390098,
+          "conditional_urgent_probability": 0.46053529785606684
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000008,
+          "urgent": "upper",
+          "wait": 0.05580875648350411,
+          "conditional_urgent_probability": 0.4955140337183462
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000009,
+          "urgent": "upper",
+          "wait": 0.04300094363837731,
+          "conditional_urgent_probability": 0.5956542752827954
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000010,
+          "urgent": "upper",
+          "wait": 0.03119929449261549,
+          "conditional_urgent_probability": 0.5924234604149595
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000011,
+          "urgent": "lower",
+          "wait": 0.07014745473861694,
+          "conditional_urgent_probability": 0.7722409458205934
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000012,
+          "urgent": "lower",
+          "wait": 0.04198752049333454,
+          "conditional_urgent_probability": 0.31452737926763397
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000013,
+          "urgent": "lower",
+          "wait": 0.016866536779577775,
+          "conditional_urgent_probability": 0.6256561342541193
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000014,
+          "urgent": "lower",
+          "wait": 0.06575750804534213,
+          "conditional_urgent_probability": 0.581678146674546
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000015,
+          "urgent": "upper",
+          "wait": 0.04722112986366712,
+          "conditional_urgent_probability": 0.6819684294206857
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000000,
+          "urgent": "lower",
+          "wait": 0.0458529897797822,
+          "conditional_urgent_probability": 0.4057871874326799
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000001,
+          "urgent": "lower",
+          "wait": 0.06462341547012329,
+          "conditional_urgent_probability": 0.7311695681167705
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000002,
+          "urgent": "lower",
+          "wait": 0.07465445061433693,
+          "conditional_urgent_probability": 0.43246033213736984
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000003,
+          "urgent": "upper",
+          "wait": 0.05853637527765845,
+          "conditional_urgent_probability": 0.4892785368966997
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000004,
+          "urgent": "upper",
+          "wait": 0.06663665175437927,
+          "conditional_urgent_probability": 0.30627412054551695
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000005,
+          "urgent": "upper",
+          "wait": 0.04931183673713888,
+          "conditional_urgent_probability": 0.6800392278346088
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000006,
+          "urgent": "upper",
+          "wait": 0.05353074560709853,
+          "conditional_urgent_probability": 0.6613319038669588
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000007,
+          "urgent": "lower",
+          "wait": 0.02468377788657861,
+          "conditional_urgent_probability": 0.5771341911236144
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000008,
+          "urgent": "lower",
+          "wait": 0.05208102687397457,
+          "conditional_urgent_probability": 0.5402114259556423
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000009,
+          "urgent": "lower",
+          "wait": 0.047738459139088016,
+          "conditional_urgent_probability": 0.44004810876863054
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000010,
+          "urgent": "lower",
+          "wait": 0.0509744776521751,
+          "conditional_urgent_probability": 0.44573686255362543
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000011,
+          "urgent": "upper",
+          "wait": 0.04212638547451561,
+          "conditional_urgent_probability": 0.2559476192745217
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000012,
+          "urgent": "upper",
+          "wait": 0.060917202023753385,
+          "conditional_urgent_probability": 0.7192912103410202
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000013,
+          "urgent": "upper",
+          "wait": 0.03866515152147886,
+          "conditional_urgent_probability": 0.4178132818931977
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000014,
+          "urgent": "upper",
+          "wait": 0.041084966736340406,
+          "conditional_urgent_probability": 0.45544457617541506
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000015,
+          "urgent": "lower",
+          "wait": 0.0378671407302309,
+          "conditional_urgent_probability": 0.35368276264448373
+        }
+      ]
+    },
+    {
+      "model": "balanced-first",
+      "mean_conditional_urgent_probability": 0.5301188837600874,
+      "cases": [
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000000,
+          "urgent": "upper",
+          "wait": 0.02422633294072063,
+          "conditional_urgent_probability": 0.6594839642496854
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000001,
+          "urgent": "upper",
+          "wait": 0.036466104813141234,
+          "conditional_urgent_probability": 0.2681950550544154
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000002,
+          "urgent": "upper",
+          "wait": 0.07304451304939467,
+          "conditional_urgent_probability": 0.4965973403025894
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000003,
+          "urgent": "lower",
+          "wait": 0.024968648796790345,
+          "conditional_urgent_probability": 0.5811247951156332
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000004,
+          "urgent": "lower",
+          "wait": 0.060720889735450284,
+          "conditional_urgent_probability": 0.8001167116918675
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000005,
+          "urgent": "lower",
+          "wait": 0.05932665048023017,
+          "conditional_urgent_probability": 0.3370944189505439
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000006,
+          "urgent": "lower",
+          "wait": 0.06405632799737912,
+          "conditional_urgent_probability": 0.3661717368529701
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000007,
+          "urgent": "upper",
+          "wait": 0.021077693136861714,
+          "conditional_urgent_probability": 0.5078194990309823
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000008,
+          "urgent": "upper",
+          "wait": 0.05698014710873146,
+          "conditional_urgent_probability": 0.5480915285570392
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000009,
+          "urgent": "upper",
+          "wait": 0.04391581401542522,
+          "conditional_urgent_probability": 0.6381555259283394
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000010,
+          "urgent": "upper",
+          "wait": 0.0318718651287611,
+          "conditional_urgent_probability": 0.6274519823631781
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000011,
+          "urgent": "lower",
+          "wait": 0.0715971716762432,
+          "conditional_urgent_probability": 0.8175221194650538
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000012,
+          "urgent": "lower",
+          "wait": 0.042882351789404395,
+          "conditional_urgent_probability": 0.29817832737671546
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000013,
+          "urgent": "lower",
+          "wait": 0.01723555462631915,
+          "conditional_urgent_probability": 0.662393915982128
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000014,
+          "urgent": "lower",
+          "wait": 0.06712271173115504,
+          "conditional_urgent_probability": 0.5709669055510788
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000015,
+          "urgent": "upper",
+          "wait": 0.04822151147329011,
+          "conditional_urgent_probability": 0.7207000992097164
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000000,
+          "urgent": "lower",
+          "wait": 0.046825755910863236,
+          "conditional_urgent_probability": 0.40610363809522615
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000001,
+          "urgent": "lower",
+          "wait": 0.06596707798417949,
+          "conditional_urgent_probability": 0.7821039079774976
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000002,
+          "urgent": "lower",
+          "wait": 0.07618932078276013,
+          "conditional_urgent_probability": 0.5681200567482853
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000003,
+          "urgent": "upper",
+          "wait": 0.05976106843863335,
+          "conditional_urgent_probability": 0.48755520824596976
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000004,
+          "urgent": "upper",
+          "wait": 0.06801883486011508,
+          "conditional_urgent_probability": 0.24330517393828757
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000005,
+          "urgent": "upper",
+          "wait": 0.05035373418469029,
+          "conditional_urgent_probability": 0.7190939782472482
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000006,
+          "urgent": "upper",
+          "wait": 0.05465739261103714,
+          "conditional_urgent_probability": 0.6928108865093081
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000007,
+          "urgent": "lower",
+          "wait": 0.025219089343432734,
+          "conditional_urgent_probability": 0.5591772172506723
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000008,
+          "urgent": "lower",
+          "wait": 0.0531783837501667,
+          "conditional_urgent_probability": 0.5168583880546653
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000009,
+          "urgent": "lower",
+          "wait": 0.048749124677884406,
+          "conditional_urgent_probability": 0.424911565902905
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000010,
+          "urgent": "lower",
+          "wait": 0.05204966707213096,
+          "conditional_urgent_probability": 0.4384094762260124
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000011,
+          "urgent": "upper",
+          "wait": 0.043023664985116554,
+          "conditional_urgent_probability": 0.22663651107756685
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000012,
+          "urgent": "upper",
+          "wait": 0.06218892799235344,
+          "conditional_urgent_probability": 0.7569728409423303
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000013,
+          "urgent": "upper",
+          "wait": 0.03949117900646995,
+          "conditional_urgent_probability": 0.4073702248036253
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000014,
+          "urgent": "upper",
+          "wait": 0.0419609129063615,
+          "conditional_urgent_probability": 0.4957696116940784
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000015,
+          "urgent": "lower",
+          "wait": 0.038677604159045344,
+          "conditional_urgent_probability": 0.3385416689271841
+        }
+      ]
+    },
+    {
+      "model": "balanced-fast-midpoint",
+      "mean_conditional_urgent_probability": 0.5672933529134219,
+      "cases": [
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000000,
+          "urgent": "upper",
+          "wait": 0.024164038094036777,
+          "conditional_urgent_probability": 0.7278666583637772
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000001,
+          "urgent": "upper",
+          "wait": 0.03637651794360053,
+          "conditional_urgent_probability": 0.32666063335877416
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000002,
+          "urgent": "upper",
+          "wait": 0.0728748855199716,
+          "conditional_urgent_probability": 0.5361079846648373
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000003,
+          "urgent": "lower",
+          "wait": 0.0249069177036601,
+          "conditional_urgent_probability": 0.6453085396779144
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000004,
+          "urgent": "lower",
+          "wait": 0.06057634758051973,
+          "conditional_urgent_probability": 0.6854496074625109
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000005,
+          "urgent": "lower",
+          "wait": 0.05918794870376587,
+          "conditional_urgent_probability": 0.381233976467744
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000006,
+          "urgent": "lower",
+          "wait": 0.06390368050552128,
+          "conditional_urgent_probability": 0.41572141847893207
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000007,
+          "urgent": "upper",
+          "wait": 0.021024486245815516,
+          "conditional_urgent_probability": 0.6803810908269963
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000008,
+          "urgent": "upper",
+          "wait": 0.05684163645695353,
+          "conditional_urgent_probability": 0.7256820394282656
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000009,
+          "urgent": "upper",
+          "wait": 0.04380925290641835,
+          "conditional_urgent_probability": 0.6858804258936996
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000010,
+          "urgent": "upper",
+          "wait": 0.031790066865720605,
+          "conditional_urgent_probability": 0.6913997141197967
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000011,
+          "urgent": "lower",
+          "wait": 0.07142790247288565,
+          "conditional_urgent_probability": 0.8256226789452754
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000012,
+          "urgent": "lower",
+          "wait": 0.042780753125481026,
+          "conditional_urgent_probability": 0.3278464791705059
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000013,
+          "urgent": "lower",
+          "wait": 0.017192133961180574,
+          "conditional_urgent_probability": 0.7193374306850648
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000014,
+          "urgent": "lower",
+          "wait": 0.06696254710135946,
+          "conditional_urgent_probability": 0.48363697795246907
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000015,
+          "urgent": "upper",
+          "wait": 0.04810667962233274,
+          "conditional_urgent_probability": 0.7455807820595954
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000000,
+          "urgent": "lower",
+          "wait": 0.0467073299749418,
+          "conditional_urgent_probability": 0.40901791538882454
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000001,
+          "urgent": "lower",
+          "wait": 0.06580931840410795,
+          "conditional_urgent_probability": 0.7913175670814969
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000002,
+          "urgent": "lower",
+          "wait": 0.0760129942004753,
+          "conditional_urgent_probability": 0.6100687856330653
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000003,
+          "urgent": "upper",
+          "wait": 0.05961801896143599,
+          "conditional_urgent_probability": 0.5034789425170861
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000004,
+          "urgent": "upper",
+          "wait": 0.06785799954082074,
+          "conditional_urgent_probability": 0.45178375366801243
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000005,
+          "urgent": "upper",
+          "wait": 0.05023511257635723,
+          "conditional_urgent_probability": 0.7471377235313745
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000006,
+          "urgent": "upper",
+          "wait": 0.05452541546283594,
+          "conditional_urgent_probability": 0.7191309679812309
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000007,
+          "urgent": "lower",
+          "wait": 0.025155751397862948,
+          "conditional_urgent_probability": 0.4628144421702405
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000008,
+          "urgent": "lower",
+          "wait": 0.053048756171199515,
+          "conditional_urgent_probability": 0.4063944096398829
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000009,
+          "urgent": "lower",
+          "wait": 0.04863105641855216,
+          "conditional_urgent_probability": 0.4548996801486844
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000010,
+          "urgent": "lower",
+          "wait": 0.05191942541511365,
+          "conditional_urgent_probability": 0.45048780808282174
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000011,
+          "urgent": "upper",
+          "wait": 0.042918931213182236,
+          "conditional_urgent_probability": 0.2794504207345311
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000012,
+          "urgent": "upper",
+          "wait": 0.062045358379630836,
+          "conditional_urgent_probability": 0.7914485571976609
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000013,
+          "urgent": "upper",
+          "wait": 0.03939414024353027,
+          "conditional_urgent_probability": 0.42379332665355035
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000014,
+          "urgent": "upper",
+          "wait": 0.04185791608210809,
+          "conditional_urgent_probability": 0.6618170113923166
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000015,
+          "urgent": "lower",
+          "wait": 0.03858403445872626,
+          "conditional_urgent_probability": 0.3866295438525641
+        }
+      ]
+    },
+    {
+      "model": "balanced-fast-final",
+      "mean_conditional_urgent_probability": 0.7832843049289151,
+      "cases": [
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000000,
+          "urgent": "upper",
+          "wait": 0.023490867039966962,
+          "conditional_urgent_probability": 0.8983631955894195
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000001,
+          "urgent": "upper",
+          "wait": 0.03537228746597772,
+          "conditional_urgent_probability": 0.6703217278991068
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000002,
+          "urgent": "upper",
+          "wait": 0.07093453888093908,
+          "conditional_urgent_probability": 0.7684536588112021
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000003,
+          "urgent": "lower",
+          "wait": 0.024211286055369017,
+          "conditional_urgent_probability": 0.8433475643758034
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000004,
+          "urgent": "lower",
+          "wait": 0.05894438659668689,
+          "conditional_urgent_probability": 0.7425909184735804
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000005,
+          "urgent": "lower",
+          "wait": 0.05758881919984214,
+          "conditional_urgent_probability": 0.6975091322289064
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000006,
+          "urgent": "lower",
+          "wait": 0.06218826093367099,
+          "conditional_urgent_probability": 0.6408466347342793
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000007,
+          "urgent": "upper",
+          "wait": 0.020435656060529578,
+          "conditional_urgent_probability": 0.9160380479324506
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000008,
+          "urgent": "upper",
+          "wait": 0.055305807323619276,
+          "conditional_urgent_probability": 0.9575688978111333
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000009,
+          "urgent": "upper",
+          "wait": 0.042608409485095596,
+          "conditional_urgent_probability": 0.8649623110468644
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000010,
+          "urgent": "upper",
+          "wait": 0.030911508371839144,
+          "conditional_urgent_probability": 0.8689797214949023
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000011,
+          "urgent": "lower",
+          "wait": 0.06952613540346819,
+          "conditional_urgent_probability": 0.9185384931063058
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000012,
+          "urgent": "lower",
+          "wait": 0.04160441024257434,
+          "conditional_urgent_probability": 0.6291553537933126
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000013,
+          "urgent": "lower",
+          "wait": 0.016708575900239296,
+          "conditional_urgent_probability": 0.884382976643709
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000014,
+          "urgent": "lower",
+          "wait": 0.0651713927141247,
+          "conditional_urgent_probability": 0.6865210971229523
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000015,
+          "urgent": "upper",
+          "wait": 0.04679232626591654,
+          "conditional_urgent_probability": 0.8817947443567195
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000000,
+          "urgent": "lower",
+          "wait": 0.045435778628949416,
+          "conditional_urgent_probability": 0.6718205444712642
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000001,
+          "urgent": "lower",
+          "wait": 0.06404678284947637,
+          "conditional_urgent_probability": 0.8984035927793549
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000002,
+          "urgent": "lower",
+          "wait": 0.07399558882379142,
+          "conditional_urgent_probability": 0.8415369178804553
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000003,
+          "urgent": "upper",
+          "wait": 0.058010721013189576,
+          "conditional_urgent_probability": 0.77018672016466
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000004,
+          "urgent": "upper",
+          "wait": 0.06604420745109275,
+          "conditional_urgent_probability": 0.8587907509385144
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000005,
+          "urgent": "upper",
+          "wait": 0.04886455615470307,
+          "conditional_urgent_probability": 0.8853498772090488
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000006,
+          "urgent": "upper",
+          "wait": 0.053048147565540354,
+          "conditional_urgent_probability": 0.9090174695410962
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000007,
+          "urgent": "lower",
+          "wait": 0.024454411569821168,
+          "conditional_urgent_probability": 0.6223122953954741
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000008,
+          "urgent": "lower",
+          "wait": 0.051610185927000854,
+          "conditional_urgent_probability": 0.4382028516641055
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000009,
+          "urgent": "lower",
+          "wait": 0.04730498221907698,
+          "conditional_urgent_probability": 0.7357158236775584
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000010,
+          "urgent": "lower",
+          "wait": 0.050512793690728766,
+          "conditional_urgent_probability": 0.7303499596446925
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000011,
+          "urgent": "upper",
+          "wait": 0.0417418110500411,
+          "conditional_urgent_probability": 0.614166240771039
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000012,
+          "urgent": "upper",
+          "wait": 0.06037178365714325,
+          "conditional_urgent_probability": 0.9141243646560986
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000013,
+          "urgent": "upper",
+          "wait": 0.03831087125640997,
+          "conditional_urgent_probability": 0.7067884328999392
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000014,
+          "urgent": "upper",
+          "wait": 0.040709546181949,
+          "conditional_urgent_probability": 0.8911896729408898
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000015,
+          "urgent": "lower",
+          "wait": 0.03752002478569737,
+          "conditional_urgent_probability": 0.7077677676704431
+        }
+      ]
+    },
+    {
+      "model": "extension-midpoint",
+      "mean_conditional_urgent_probability": 0.8704457617752899,
+      "cases": [
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000000,
+          "urgent": "upper",
+          "wait": 0.0246179144598708,
+          "conditional_urgent_probability": 0.938339782798156
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000001,
+          "urgent": "upper",
+          "wait": 0.03704756194814224,
+          "conditional_urgent_probability": 0.762371542123401
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000002,
+          "urgent": "upper",
+          "wait": 0.07416411352012492,
+          "conditional_urgent_probability": 0.9488195410821059
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000003,
+          "urgent": "lower",
+          "wait": 0.02537163547447865,
+          "conditional_urgent_probability": 0.9167779532589279
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000004,
+          "urgent": "lower",
+          "wait": 0.061665014531334134,
+          "conditional_urgent_probability": 0.7006964362252284
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000005,
+          "urgent": "lower",
+          "wait": 0.0602507363241111,
+          "conditional_urgent_probability": 0.7077709326553251
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000006,
+          "urgent": "lower",
+          "wait": 0.06504811831177162,
+          "conditional_urgent_probability": 0.6804640361940607
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000007,
+          "urgent": "upper",
+          "wait": 0.021419247559972324,
+          "conditional_urgent_probability": 0.9502792069524705
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000008,
+          "urgent": "upper",
+          "wait": 0.05786876320502559,
+          "conditional_urgent_probability": 0.9859661737874542
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000009,
+          "urgent": "upper",
+          "wait": 0.04461059593290881,
+          "conditional_urgent_probability": 0.958435118208241
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000010,
+          "urgent": "upper",
+          "wait": 0.03238220873332691,
+          "conditional_urgent_probability": 0.9278244669333129
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000011,
+          "urgent": "lower",
+          "wait": 0.07269668362135191,
+          "conditional_urgent_probability": 0.9763715040748229
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000012,
+          "urgent": "lower",
+          "wait": 0.04356124640837776,
+          "conditional_urgent_probability": 0.6951537572696694
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000013,
+          "urgent": "lower",
+          "wait": 0.01751611610742452,
+          "conditional_urgent_probability": 0.9469174096031042
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000014,
+          "urgent": "lower",
+          "wait": 0.06815820238112064,
+          "conditional_urgent_probability": 0.8376324085816861
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000015,
+          "urgent": "upper",
+          "wait": 0.048981098146510624,
+          "conditional_urgent_probability": 0.975716131179315
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000000,
+          "urgent": "lower",
+          "wait": 0.047564227306891235,
+          "conditional_urgent_probability": 0.8762460587972245
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000001,
+          "urgent": "lower",
+          "wait": 0.06698614642305781,
+          "conditional_urgent_probability": 0.9709806989659517
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000002,
+          "urgent": "lower",
+          "wait": 0.07735275073744911,
+          "conditional_urgent_probability": 0.8499419843840735
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000003,
+          "urgent": "upper",
+          "wait": 0.06069041133955734,
+          "conditional_urgent_probability": 0.9070526899006763
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000004,
+          "urgent": "upper",
+          "wait": 0.06906750335091702,
+          "conditional_urgent_probability": 0.978084478305487
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000005,
+          "urgent": "upper",
+          "wait": 0.05114522785915995,
+          "conditional_urgent_probability": 0.9776528886395263
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000006,
+          "urgent": "upper",
+          "wait": 0.05551183379115814,
+          "conditional_urgent_probability": 0.9803397764746233
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000007,
+          "urgent": "lower",
+          "wait": 0.025626156001795904,
+          "conditional_urgent_probability": 0.8482861591521881
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000008,
+          "urgent": "lower",
+          "wait": 0.05401129426760883,
+          "conditional_urgent_probability": 0.5989501329700305
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000009,
+          "urgent": "lower",
+          "wait": 0.04951656794237226,
+          "conditional_urgent_probability": 0.8210284094150583
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000010,
+          "urgent": "lower",
+          "wait": 0.05286656044374464,
+          "conditional_urgent_probability": 0.8927686652136543
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000011,
+          "urgent": "upper",
+          "wait": 0.04370522855332036,
+          "conditional_urgent_probability": 0.721758537977273
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000012,
+          "urgent": "upper",
+          "wait": 0.06315358241904306,
+          "conditional_urgent_probability": 0.9792318468240281
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000013,
+          "urgent": "upper",
+          "wait": 0.04011924326819624,
+          "conditional_urgent_probability": 0.8603049792906337
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000014,
+          "urgent": "upper",
+          "wait": 0.04262600371332458,
+          "conditional_urgent_probability": 0.9538231587987462
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000015,
+          "urgent": "lower",
+          "wait": 0.03929296259589358,
+          "conditional_urgent_probability": 0.7282775107728224
+        }
+      ]
+    },
+    {
+      "model": "extension-final",
+      "mean_conditional_urgent_probability": 0.8701872189991912,
+      "cases": [
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000000,
+          "urgent": "upper",
+          "wait": 0.024651000413956122,
+          "conditional_urgent_probability": 0.8904178613185455
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000001,
+          "urgent": "upper",
+          "wait": 0.03709732851069703,
+          "conditional_urgent_probability": 0.8387416832327934
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000002,
+          "urgent": "upper",
+          "wait": 0.07425914282928434,
+          "conditional_urgent_probability": 0.9878352403474112
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000003,
+          "urgent": "lower",
+          "wait": 0.025406200645087244,
+          "conditional_urgent_probability": 0.8664506438279425
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000004,
+          "urgent": "lower",
+          "wait": 0.06174519731593294,
+          "conditional_urgent_probability": 0.7979408694803672
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000005,
+          "urgent": "lower",
+          "wait": 0.06032881831285526,
+          "conditional_urgent_probability": 0.5882203168492618
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000006,
+          "urgent": "lower",
+          "wait": 0.06513259899562741,
+          "conditional_urgent_probability": 0.377081784362323
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000007,
+          "urgent": "upper",
+          "wait": 0.021448528194348067,
+          "conditional_urgent_probability": 0.9570569718969862
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000008,
+          "urgent": "upper",
+          "wait": 0.057944088594150775,
+          "conditional_urgent_probability": 0.9971740301086145
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000009,
+          "urgent": "upper",
+          "wait": 0.04466945074771497,
+          "conditional_urgent_probability": 0.9929069979878357
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000010,
+          "urgent": "upper",
+          "wait": 0.032425741992411355,
+          "conditional_urgent_probability": 0.8843408372104885
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000011,
+          "urgent": "lower",
+          "wait": 0.07278987792428537,
+          "conditional_urgent_probability": 0.9908521215668367
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000012,
+          "urgent": "lower",
+          "wait": 0.04361887471164203,
+          "conditional_urgent_probability": 0.5649649881224614
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000013,
+          "urgent": "lower",
+          "wait": 0.01753976313707414,
+          "conditional_urgent_probability": 0.9199745561295444
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000014,
+          "urgent": "lower",
+          "wait": 0.06824653239752555,
+          "conditional_urgent_probability": 0.9037690080046161
+        },
+        {
+          "exercise": "traffic-priority-established",
+          "seed": 141000015,
+          "urgent": "upper",
+          "wait": 0.049045408719467366,
+          "conditional_urgent_probability": 0.9959584611681707
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000000,
+          "urgent": "lower",
+          "wait": 0.04762678309579907,
+          "conditional_urgent_probability": 0.9798934510393387
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000001,
+          "urgent": "lower",
+          "wait": 0.06707277180195215,
+          "conditional_urgent_probability": 0.9869799023548206
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000002,
+          "urgent": "lower",
+          "wait": 0.07745235701845427,
+          "conditional_urgent_probability": 0.8262303500169162
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000003,
+          "urgent": "upper",
+          "wait": 0.06077007091101127,
+          "conditional_urgent_probability": 0.9838575887552556
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000004,
+          "urgent": "upper",
+          "wait": 0.06915652204462851,
+          "conditional_urgent_probability": 0.9898095855909199
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000005,
+          "urgent": "upper",
+          "wait": 0.051212507349037206,
+          "conditional_urgent_probability": 0.9963435149444722
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000006,
+          "urgent": "upper",
+          "wait": 0.05558431980103844,
+          "conditional_urgent_probability": 0.9984525596982909
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000007,
+          "urgent": "lower",
+          "wait": 0.02566069154241974,
+          "conditional_urgent_probability": 0.9461708328191177
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000008,
+          "urgent": "lower",
+          "wait": 0.05408260035046713,
+          "conditional_urgent_probability": 0.5222516770784367
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000009,
+          "urgent": "lower",
+          "wait": 0.049581105459229134,
+          "conditional_urgent_probability": 0.7354160531792792
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000010,
+          "urgent": "lower",
+          "wait": 0.05293591988846212,
+          "conditional_urgent_probability": 0.980948524909163
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000011,
+          "urgent": "upper",
+          "wait": 0.043762942706765125,
+          "conditional_urgent_probability": 0.7845229023633056
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000012,
+          "urgent": "upper",
+          "wait": 0.06323605163344241,
+          "conditional_urgent_probability": 0.9967274327204759
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000013,
+          "urgent": "upper",
+          "wait": 0.040172533756115514,
+          "conditional_urgent_probability": 0.9723413567121783
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000014,
+          "urgent": "upper",
+          "wait": 0.04268301214750093,
+          "conditional_urgent_probability": 0.9766173677568585
+        },
+        {
+          "exercise": "traffic-priority-established-swap",
+          "seed": 141000015,
+          "urgent": "lower",
+          "wait": 0.03934494259413546,
+          "conditional_urgent_probability": 0.6157415364210896
+        }
+      ]
+    }
+  ]
+}

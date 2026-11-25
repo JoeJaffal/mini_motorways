@@ -1,0 +1,123 @@
+{
+  "curve": [
+    {
+      "added_decisions": 0,
+      "cases": {
+        "small-city-offset-single": {
+          "games": 32,
+          "successes": 20,
+          "successes_with_remaining_stock": 6,
+          "failures_with_remaining_stock": 0,
+          "all_mean_paid_units": 7.34375,
+          "all_mean_builds": 8.34375,
+          "retained_successes": 20,
+          "retained_success_mean_paid_change": 0,
+          "retained_success_mean_build_change": 0
+        },
+        "small-city-offset-stock": {
+          "games": 32,
+          "successes": 25,
+          "successes_with_remaining_stock": 21,
+          "failures_with_remaining_stock": 0,
+          "all_mean_paid_units": 10.09375,
+          "all_mean_builds": 11.09375,
+          "retained_successes": 25,
+          "retained_success_mean_paid_change": 0,
+          "retained_success_mean_build_change": 0
+        }
+      }
+    },
+    {
+      "added_decisions": 65536,
+      "cases": {
+        "small-city-offset-single": {
+          "games": 32,
+          "successes": 23,
+          "successes_with_remaining_stock": 6,
+          "failures_with_remaining_stock": 0,
+          "all_mean_paid_units": 7.34375,
+          "all_mean_builds": 8.34375,
+          "retained_successes": 19,
+          "retained_success_mean_paid_change": 0,
+          "retained_success_mean_build_change": 0
+        },
+        "small-city-offset-stock": {
+          "games": 32,
+          "successes": 26,
+          "successes_with_remaining_stock": 21,
+          "failures_with_remaining_stock": 0,
+          "all_mean_paid_units": 10.125,
+          "all_mean_builds": 11.125,
+          "retained_successes": 24,
+          "retained_success_mean_paid_change": -0.125,
+          "retained_success_mean_build_change": -0.125
+        }
+      }
+    },
+    {
+      "added_decisions": 131072,
+      "cases": {
+        "small-city-offset-single": {
+          "games": 32,
+          "successes": 21,
+          "successes_with_remaining_stock": 6,
+          "failures_with_remaining_stock": 0,
+          "all_mean_paid_units": 7.34375,
+          "all_mean_builds": 8.34375,
+          "retained_successes": 19,
+          "retained_success_mean_paid_change": 0,
+          "retained_success_mean_build_change": 0
+        },
+        "small-city-offset-stock": {
+          "games": 32,
+          "successes": 29,
+          "successes_with_remaining_stock": 22,
+          "failures_with_remaining_stock": 0,
+          "all_mean_paid_units": 9.90625,
+          "all_mean_builds": 10.90625,
+          "retained_successes": 25,
+          "retained_success_mean_paid_change": 0,
+          "retained_success_mean_build_change": 0
+        }
+      }
+    },
+    {
+      "added_decisions": 262144,
+      "cases": {
+        "small-city-offset-single": {
+          "games": 32,
+          "successes": 27,
+          "successes_with_remaining_stock": 6,
+          "failures_with_remaining_stock": 0,
+          "all_mean_paid_units": 7.34375,
+          "all_mean_builds": 8.34375,
+          "retained_successes": 20,
+          "retained_success_mean_paid_change": 0,
+          "retained_success_mean_build_change": 0
+        },
+        "small-city-offset-stock": {
+          "games": 32,
+          "successes": 31,
+          "successes_with_remaining_stock": 23,
+          "failures_with_remaining_stock": 0,
+          "all_mean_paid_units": 9.9375,
+          "all_mean_builds": 10.9375,
+          "retained_successes": 25,
+          "retained_success_mean_paid_change": -0.04,
+          "retained_success_mean_build_change": -0.04
+        }
+      }
+    }
+  ],
+  "planned_review_repeats": {
+    "65536": {
+      "exact_game_rows": true,
+      "independent_evidence": false
+    },
+    "131072": {
+      "exact_game_rows": true,
+      "independent_evidence": false
+    }
+  },
+  "limits": "Consumed development games. Lower construction after failure is not successful economy. Common-success changes are conditional on both models succeeding and do not measure population-wide causal efficiency. No optimal route length is estimated or supplied."
+}

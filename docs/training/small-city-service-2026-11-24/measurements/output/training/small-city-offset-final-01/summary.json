@@ -1,0 +1,55 @@
+{
+  "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/small-city-offset-fit-01/ppo/final.zip",
+  "sha256": "8bfe05d67d7b9a0738ea97e23d45aefd6cdbefe64b15882076951a197901ab77",
+  "host_sha256": "9912997740156003e53e1e45b12567cd4a42eeabd7a912180967a6e2e58de95f",
+  "results": {
+    "train/small-city-single": {
+      "score": 3.625,
+      "first_served": 1.0,
+      "later_exists": 0.0,
+      "later_served": 0.0,
+      "both_served": 0.0,
+      "initial_stock": 4.0,
+      "remaining_stock": 0.9375,
+      "paid_units": 3.0625,
+      "outside_routes": 0.0,
+      "games": 32
+    },
+    "train/small-city-offset-pairs": {
+      "score": 2.5,
+      "first_served": 0.59375,
+      "later_exists": 1.0,
+      "later_served": 0.25,
+      "both_served": 0.25,
+      "initial_stock": 14.125,
+      "remaining_stock": 0.0,
+      "paid_units": 14.125,
+      "outside_routes": 9.03125,
+      "games": 32
+    },
+    "validation/small-city-single": {
+      "score": 3.625,
+      "first_served": 1.0,
+      "later_exists": 0.0,
+      "later_served": 0.0,
+      "both_served": 0.0,
+      "initial_stock": 4.0625,
+      "remaining_stock": 0.9375,
+      "paid_units": 3.125,
+      "outside_routes": 0.0,
+      "games": 32
+    },
+    "validation/small-city-offset-pairs": {
+      "score": 2.46875,
+      "first_served": 0.53125,
+      "later_exists": 0.90625,
+      "later_served": 0.28125,
+      "both_served": 0.28125,
+      "initial_stock": 14.125,
+      "remaining_stock": 0.0,
+      "paid_units": 14.125,
+      "outside_routes": 9.25,
+      "games": 32
+    }
+  }
+}

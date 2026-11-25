@@ -1,0 +1,61 @@
+{
+  "schema": "parallel-hierarchy-stage1-v1",
+  "stage": "one-gap-single-build",
+  "reward_mode": "single-build",
+  "reward_spec": {
+    "name": "single-build",
+    "gamma": 1,
+    "connected": 1,
+    "disconnected": 0
+  },
+  "workers": 16,
+  "device": "cuda",
+  "threads": 2,
+  "seed": 42,
+  "rollout_tokens_global": 2048,
+  "minibatch_size": 128,
+  "gamma": 1,
+  "trace_lambda": 1,
+  "level_weight": "single policy, global normalization, sample weighted",
+  "update": {
+    "epochs": 4,
+    "clip_range": 0.2,
+    "entropy_coefficient": 0.01,
+    "value_coefficient": 0.5,
+    "max_gradient_norm": 0.5,
+    "target_kl": 0.02
+  },
+  "environment": {
+    "environment_schema": "connection-practice-single-build-v1",
+    "protocol": "maskable-direct-hierarchy-v1",
+    "simulator": "2026-11-10.f34",
+    "dll_sha256": "e49913cd02c24c03760c0d20c0d317b8ee70adfc2693476c9c18f024f36ec5ac",
+    "source_hashes": {
+      "training/connection_practice.py": "11663479eb97904b125f3ce217547fe0c8c5ff34d6fe2d35fbd93261c8d1196b",
+      "training/visible_observation.py": "76ea6a0ee1b3c1b44bc8d0ca2a16a9c349432d2172ab83cc5dc14fbdf4417cb9",
+      "training/environment.py": "eeb3bde8d9e547299deb1a08e6afd3a77a8d6ca5da18b156c91e05c2e792897f",
+      "training/practice_replay.py": "2760018e513cb6dff022d88c727d900ac27faf7ff34dc261d7f8984fffd81e73",
+      "training/practice_reward.py": "cd1e54f5c499b3418022aa15b164bd25ade61e0304876766da386b45d88093f1",
+      "simulation/Headless/Program.cs": "6c7f190069c056def3c07e8e09e348c0bd6b4c276a26e1e6562e3cd06c64dca9",
+      "simulation/Assets/Simulation/PracticeScenario.cs": "f9ad6f6f3e225a27025b28b8cfb58c4aa7f41346c1d90bc68804ab825954276d",
+      "simulation/Assets/Simulation/PracticeLegality.cs": "ffa0635149594bf5bcd11667d80a6fff50980d8cc2cffc70f6e267ad03cda664"
+    }
+  },
+  "runtime": {
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "torch": "2.9.1+cu126",
+    "numpy": "2.5.4"
+  },
+  "source_hashes": {
+    "practice_reward.py": "cd1e54f5c499b3418022aa15b164bd25ade61e0304876766da386b45d88093f1",
+    "checkpoint_tools.py": "2d22cfe8a6e8161ba53e2f04eecd8091730d8ff977fdc11dc82b4bc5e57199dd",
+    "parallel_stage1.py": "8193f5e3c7e6e40b6147f1750a5f5a379abbe781a0b7c581920e5c7fcb8e4359",
+    "train_parallel_stage1.py": "0dd4e8834f1087d36aaef0636b6d461d8418bb6a0427676665123f3f376e8641",
+    "hierarchy_policy.py": "8cff3933e10c9fcdd10911dacd3c323eeff92ea85132cbc0e72d20c40915f5f5",
+    "hierarchy_batches.py": "199b47fd5404f581dbe29f744c1a02c7d96e99a2740f819d887875fe85273a52",
+    "hierarchy_rollout.py": "8e400ce67ec13b1ea8d3e3accaa2954ef4414dad60a94182879ffd698ba7ae74",
+    "hierarchy_updater.py": "cd6424efb489405555c0bc7c86c5cbce0b2e29aabc48e79eab7c53110be86fc9",
+    "hierarchy_objective.py": "c072cee2b4cb826e31ce9ef7dc0716dcca8dfc420d340e7830cac1242d56ce38",
+    "hierarchy_checkpoint.py": "f614f5e0af58901f58abc6e3890fd5e15066ee6c9c7944d25b4fad51291051c6"
+  }
+}

@@ -1,0 +1,634 @@
+{
+  "controls": {
+    "traffic-junction-low-live/feeder": {
+      "boards": 100,
+      "trips": 15.28,
+      "stopped": 0.24176470588235294,
+      "failures": 0,
+      "committed_after_start": 0,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "other_action_or_time": 100
+      },
+      "delta_to_controls": {}
+    },
+    "traffic-junction-low-live/separate-exit": {
+      "boards": 100,
+      "trips": 11.96,
+      "stopped": 0.05320833333333333,
+      "failures": 4,
+      "committed_after_start": 0,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "other_action_or_time": 100
+      },
+      "delta_to_controls": {}
+    },
+    "traffic-junction-low-live/wait": {
+      "boards": 100,
+      "trips": 10.23,
+      "stopped": 0.08410994397759104,
+      "failures": 7,
+      "committed_after_start": 0,
+      "median_build_time": null,
+      "witnesses": {
+        "other_action_or_time": 100
+      },
+      "delta_to_controls": {}
+    },
+    "traffic-junction-high-live/feeder": {
+      "boards": 100,
+      "trips": 29.31,
+      "stopped": 4.203019607843137,
+      "failures": 2,
+      "committed_after_start": 0,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "other_action_or_time": 100
+      },
+      "delta_to_controls": {}
+    },
+    "traffic-junction-high-live/separate-exit": {
+      "boards": 100,
+      "trips": 31.88,
+      "stopped": 0.4137401960784314,
+      "failures": 5,
+      "committed_after_start": 0,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "other_action_or_time": 100
+      },
+      "delta_to_controls": {}
+    },
+    "traffic-junction-high-live/wait": {
+      "boards": 100,
+      "trips": 26.38,
+      "stopped": 1.7507511850894204,
+      "failures": 29,
+      "committed_after_start": 0,
+      "median_build_time": null,
+      "witnesses": {
+        "other_action_or_time": 100
+      },
+      "delta_to_controls": {}
+    },
+    "traffic-junction-low-live-shift/feeder": {
+      "boards": 100,
+      "trips": 15.28,
+      "stopped": 0.24176470588235294,
+      "failures": 0,
+      "committed_after_start": 0,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "other_action_or_time": 100
+      },
+      "delta_to_controls": {}
+    },
+    "traffic-junction-low-live-shift/separate-exit": {
+      "boards": 100,
+      "trips": 11.96,
+      "stopped": 0.05320833333333333,
+      "failures": 4,
+      "committed_after_start": 0,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "other_action_or_time": 100
+      },
+      "delta_to_controls": {}
+    },
+    "traffic-junction-low-live-shift/wait": {
+      "boards": 100,
+      "trips": 10.23,
+      "stopped": 0.08410994397759104,
+      "failures": 7,
+      "committed_after_start": 0,
+      "median_build_time": null,
+      "witnesses": {
+        "other_action_or_time": 100
+      },
+      "delta_to_controls": {}
+    },
+    "traffic-junction-high-live-shift/feeder": {
+      "boards": 100,
+      "trips": 29.31,
+      "stopped": 4.203019607843137,
+      "failures": 2,
+      "committed_after_start": 0,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "other_action_or_time": 100
+      },
+      "delta_to_controls": {}
+    },
+    "traffic-junction-high-live-shift/separate-exit": {
+      "boards": 100,
+      "trips": 31.88,
+      "stopped": 0.4137401960784314,
+      "failures": 5,
+      "committed_after_start": 0,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "other_action_or_time": 100
+      },
+      "delta_to_controls": {}
+    },
+    "traffic-junction-high-live-shift/wait": {
+      "boards": 100,
+      "trips": 26.38,
+      "stopped": 1.7507511850894204,
+      "failures": 29,
+      "committed_after_start": 0,
+      "median_build_time": null,
+      "witnesses": {
+        "other_action_or_time": 100
+      },
+      "delta_to_controls": {}
+    },
+    "traffic-junction-low-live-mirror-shift/feeder": {
+      "boards": 100,
+      "trips": 15.3,
+      "stopped": 0.24,
+      "failures": 0,
+      "committed_after_start": 0,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "other_action_or_time": 100
+      },
+      "delta_to_controls": {}
+    },
+    "traffic-junction-low-live-mirror-shift/separate-exit": {
+      "boards": 100,
+      "trips": 11.91,
+      "stopped": 0.06846078431372549,
+      "failures": 5,
+      "committed_after_start": 0,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "other_action_or_time": 100
+      },
+      "delta_to_controls": {}
+    },
+    "traffic-junction-low-live-mirror-shift/wait": {
+      "boards": 100,
+      "trips": 10.17,
+      "stopped": 0.08683508403361345,
+      "failures": 8,
+      "committed_after_start": 0,
+      "median_build_time": null,
+      "witnesses": {
+        "other_action_or_time": 100
+      },
+      "delta_to_controls": {}
+    },
+    "traffic-junction-high-live-mirror-shift/feeder": {
+      "boards": 100,
+      "trips": 29.26,
+      "stopped": 4.137764705882353,
+      "failures": 3,
+      "committed_after_start": 0,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "other_action_or_time": 100
+      },
+      "delta_to_controls": {}
+    },
+    "traffic-junction-high-live-mirror-shift/separate-exit": {
+      "boards": 100,
+      "trips": 31.73,
+      "stopped": 0.41507352941176473,
+      "failures": 5,
+      "committed_after_start": 0,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "other_action_or_time": 100
+      },
+      "delta_to_controls": {}
+    },
+    "traffic-junction-high-live-mirror-shift/wait": {
+      "boards": 100,
+      "trips": 26.42,
+      "stopped": 1.814972608274079,
+      "failures": 25,
+      "committed_after_start": 0,
+      "median_build_time": null,
+      "witnesses": {
+        "other_action_or_time": 100
+      },
+      "delta_to_controls": {}
+    }
+  },
+  "original": {
+    "traffic-junction-low-live/greedy": {
+      "boards": 100,
+      "trips": 15.28,
+      "stopped": 0.24176470588235294,
+      "failures": 0,
+      "committed_after_start": 0,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "feeder": 100
+      },
+      "delta_to_controls": {
+        "feeder": 0,
+        "separate-exit": 3.32,
+        "wait": 5.05
+      }
+    },
+    "traffic-junction-low-live/sampled": {
+      "boards": 100,
+      "trips": 15.02,
+      "stopped": 0.22647058823529412,
+      "failures": 0,
+      "committed_after_start": 7,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "feeder": 91,
+        "separate-exit": 9
+      },
+      "delta_to_controls": {
+        "feeder": -0.26,
+        "separate-exit": 3.06,
+        "wait": 4.79
+      }
+    },
+    "traffic-junction-high-live/greedy": {
+      "boards": 100,
+      "trips": 31.85,
+      "stopped": 0.454328431372549,
+      "failures": 5,
+      "committed_after_start": 6,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "separate-exit": 99,
+        "feeder": 1
+      },
+      "delta_to_controls": {
+        "feeder": 2.54,
+        "separate-exit": -0.03,
+        "wait": 5.47
+      }
+    },
+    "traffic-junction-high-live/sampled": {
+      "boards": 100,
+      "trips": 31.8,
+      "stopped": 0.5155049019607844,
+      "failures": 5,
+      "committed_after_start": 19,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "separate-exit": 98,
+        "feeder": 2
+      },
+      "delta_to_controls": {
+        "feeder": 2.49,
+        "separate-exit": -0.08,
+        "wait": 5.42
+      }
+    },
+    "traffic-junction-low-live-shift/greedy": {
+      "boards": 100,
+      "trips": 15.28,
+      "stopped": 0.24176470588235294,
+      "failures": 0,
+      "committed_after_start": 0,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "feeder": 100
+      },
+      "delta_to_controls": {
+        "feeder": 0,
+        "separate-exit": 3.32,
+        "wait": 5.05
+      }
+    },
+    "traffic-junction-low-live-shift/sampled": {
+      "boards": 100,
+      "trips": 15.1,
+      "stopped": 0.2307450980392157,
+      "failures": 1,
+      "committed_after_start": 8,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "feeder": 95,
+        "separate-exit": 5
+      },
+      "delta_to_controls": {
+        "feeder": -0.18,
+        "separate-exit": 3.14,
+        "wait": 4.87
+      }
+    },
+    "traffic-junction-high-live-shift/greedy": {
+      "boards": 100,
+      "trips": 27.39,
+      "stopped": 2.432313025210084,
+      "failures": 19,
+      "committed_after_start": 44,
+      "median_build_time": 51,
+      "witnesses": {
+        "feeder": 38,
+        "wait": 53,
+        "other_action_or_time": 9
+      },
+      "delta_to_controls": {
+        "feeder": -1.92,
+        "separate-exit": -4.49,
+        "wait": 1.01
+      }
+    },
+    "traffic-junction-high-live-shift/sampled": {
+      "boards": 100,
+      "trips": 28.61,
+      "stopped": 3.0143250915750914,
+      "failures": 7,
+      "committed_after_start": 74,
+      "median_build_time": 46,
+      "witnesses": {
+        "feeder": 62,
+        "other_action_or_time": 13,
+        "separate-exit": 16,
+        "wait": 9
+      },
+      "delta_to_controls": {
+        "feeder": -0.7,
+        "separate-exit": -3.27,
+        "wait": 2.23
+      }
+    },
+    "traffic-junction-low-live-mirror-shift/greedy": {
+      "boards": 100,
+      "trips": 15.29,
+      "stopped": 0.23941176470588235,
+      "failures": 0,
+      "committed_after_start": 8,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "feeder": 100
+      },
+      "delta_to_controls": {
+        "feeder": -0.01,
+        "separate-exit": 3.38,
+        "wait": 5.12
+      }
+    },
+    "traffic-junction-low-live-mirror-shift/sampled": {
+      "boards": 100,
+      "trips": 14.3,
+      "stopped": 0.20128676470588236,
+      "failures": 1,
+      "committed_after_start": 21,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "feeder": 72,
+        "other_action_or_time": 8,
+        "separate-exit": 20
+      },
+      "delta_to_controls": {
+        "feeder": -1,
+        "separate-exit": 2.39,
+        "wait": 4.13
+      }
+    },
+    "traffic-junction-high-live-mirror-shift/greedy": {
+      "boards": 100,
+      "trips": 29.01,
+      "stopped": 3.956,
+      "failures": 4,
+      "committed_after_start": 51,
+      "median_build_time": 41,
+      "witnesses": {
+        "feeder": 96,
+        "wait": 1,
+        "separate-exit": 2,
+        "other_action_or_time": 1
+      },
+      "delta_to_controls": {
+        "feeder": -0.25,
+        "separate-exit": -2.72,
+        "wait": 2.59
+      }
+    },
+    "traffic-junction-high-live-mirror-shift/sampled": {
+      "boards": 100,
+      "trips": 29.03,
+      "stopped": 2.5465150290885585,
+      "failures": 10,
+      "committed_after_start": 44,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "feeder": 47,
+        "separate-exit": 37,
+        "other_action_or_time": 16
+      },
+      "delta_to_controls": {
+        "feeder": -0.23,
+        "separate-exit": -2.7,
+        "wait": 2.61
+      }
+    }
+  },
+  "continuation": {
+    "traffic-junction-low-live/greedy": {
+      "boards": 100,
+      "trips": 15.28,
+      "stopped": 0.24176470588235294,
+      "failures": 0,
+      "committed_after_start": 0,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "feeder": 100
+      },
+      "delta_to_controls": {
+        "feeder": 0,
+        "separate-exit": 3.32,
+        "wait": 5.05
+      }
+    },
+    "traffic-junction-low-live/sampled": {
+      "boards": 100,
+      "trips": 15.2,
+      "stopped": 0.23705882352941177,
+      "failures": 0,
+      "committed_after_start": 1,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "feeder": 97,
+        "separate-exit": 3
+      },
+      "delta_to_controls": {
+        "feeder": -0.08,
+        "separate-exit": 3.24,
+        "wait": 4.97
+      }
+    },
+    "traffic-junction-high-live/greedy": {
+      "boards": 100,
+      "trips": 31.83,
+      "stopped": 0.7425637254901961,
+      "failures": 5,
+      "committed_after_start": 0,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "separate-exit": 86,
+        "feeder": 14
+      },
+      "delta_to_controls": {
+        "feeder": 2.52,
+        "separate-exit": -0.05,
+        "wait": 5.45
+      }
+    },
+    "traffic-junction-high-live/sampled": {
+      "boards": 100,
+      "trips": 31.8,
+      "stopped": 0.766093137254902,
+      "failures": 5,
+      "committed_after_start": 3,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "separate-exit": 86,
+        "feeder": 14
+      },
+      "delta_to_controls": {
+        "feeder": 2.49,
+        "separate-exit": -0.08,
+        "wait": 5.42
+      }
+    },
+    "traffic-junction-low-live-shift/greedy": {
+      "boards": 100,
+      "trips": 15.28,
+      "stopped": 0.24176470588235294,
+      "failures": 0,
+      "committed_after_start": 0,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "feeder": 100
+      },
+      "delta_to_controls": {
+        "feeder": 0,
+        "separate-exit": 3.32,
+        "wait": 5.05
+      }
+    },
+    "traffic-junction-low-live-shift/sampled": {
+      "boards": 100,
+      "trips": 15.16,
+      "stopped": 0.2307450980392157,
+      "failures": 1,
+      "committed_after_start": 1,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "feeder": 96,
+        "separate-exit": 4
+      },
+      "delta_to_controls": {
+        "feeder": -0.12,
+        "separate-exit": 3.2,
+        "wait": 4.93
+      }
+    },
+    "traffic-junction-high-live-shift/greedy": {
+      "boards": 100,
+      "trips": 29.73,
+      "stopped": 3.863019607843137,
+      "failures": 2,
+      "committed_after_start": 0,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "feeder": 93,
+        "separate-exit": 7
+      },
+      "delta_to_controls": {
+        "feeder": 0.42,
+        "separate-exit": -2.15,
+        "wait": 3.35
+      }
+    },
+    "traffic-junction-high-live-shift/sampled": {
+      "boards": 100,
+      "trips": 29.79,
+      "stopped": 3.6192549019607845,
+      "failures": 2,
+      "committed_after_start": 13,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "feeder": 85,
+        "separate-exit": 15
+      },
+      "delta_to_controls": {
+        "feeder": 0.48,
+        "separate-exit": -2.09,
+        "wait": 3.41
+      }
+    },
+    "traffic-junction-low-live-mirror-shift/greedy": {
+      "boards": 100,
+      "trips": 15.27,
+      "stopped": 0.2388235294117647,
+      "failures": 0,
+      "committed_after_start": 0,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "feeder": 98,
+        "separate-exit": 2
+      },
+      "delta_to_controls": {
+        "feeder": -0.03,
+        "separate-exit": 3.36,
+        "wait": 5.1
+      }
+    },
+    "traffic-junction-low-live-mirror-shift/sampled": {
+      "boards": 100,
+      "trips": 15.13,
+      "stopped": 0.2206985294117647,
+      "failures": 1,
+      "committed_after_start": 1,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "feeder": 90,
+        "separate-exit": 10
+      },
+      "delta_to_controls": {
+        "feeder": -0.17,
+        "separate-exit": 3.22,
+        "wait": 4.96
+      }
+    },
+    "traffic-junction-high-live-mirror-shift/greedy": {
+      "boards": 100,
+      "trips": 29.26,
+      "stopped": 4.137764705882353,
+      "failures": 3,
+      "committed_after_start": 0,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "feeder": 100
+      },
+      "delta_to_controls": {
+        "feeder": 0,
+        "separate-exit": -2.47,
+        "wait": 2.84
+      }
+    },
+    "traffic-junction-high-live-mirror-shift/sampled": {
+      "boards": 100,
+      "trips": 29.68,
+      "stopped": 3.594436974789916,
+      "failures": 2,
+      "committed_after_start": 1,
+      "median_build_time": 36.0,
+      "witnesses": {
+        "feeder": 86,
+        "separate-exit": 13,
+        "other_action_or_time": 1
+      },
+      "delta_to_controls": {
+        "feeder": 0.42,
+        "separate-exit": -2.05,
+        "wait": 3.26
+      }
+    }
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "horizontal": {
+    "sampled": {
+      "layouts": 50,
+      "total_deliveries": 591,
+      "mean_trips": 11.82,
+      "min_trips": 10,
+      "max_trips": 13,
+      "at_least_three": 50,
+      "exact_repairs": 50,
+      "natural_horizon": 50
+    },
+    "greedy": {
+      "layouts": 50,
+      "total_deliveries": 591,
+      "mean_trips": 11.82,
+      "min_trips": 10,
+      "max_trips": 13,
+      "at_least_three": 50,
+      "exact_repairs": 50,
+      "natural_horizon": 50
+    },
+    "no_build": {
+      "layouts": 50,
+      "total_deliveries": 0,
+      "mean_trips": 0,
+      "min_trips": 0,
+      "max_trips": 0,
+      "at_least_three": 0,
+      "exact_repairs": 0,
+      "natural_horizon": 0
+    }
+  },
+  "vertical": {
+    "sampled": {
+      "layouts": 50,
+      "total_deliveries": 582,
+      "mean_trips": 11.64,
+      "min_trips": 10,
+      "max_trips": 13,
+      "at_least_three": 50,
+      "exact_repairs": 50,
+      "natural_horizon": 50
+    },
+    "greedy": {
+      "layouts": 50,
+      "total_deliveries": 582,
+      "mean_trips": 11.64,
+      "min_trips": 10,
+      "max_trips": 13,
+      "at_least_three": 50,
+      "exact_repairs": 50,
+      "natural_horizon": 50
+    },
+    "no_build": {
+      "layouts": 50,
+      "total_deliveries": 0,
+      "mean_trips": 0,
+      "min_trips": 0,
+      "max_trips": 0,
+      "at_least_three": 0,
+      "exact_repairs": 0,
+      "natural_horizon": 0
+    }
+  },
+  "down-right": {
+    "sampled": {
+      "layouts": 50,
+      "total_deliveries": 568,
+      "mean_trips": 11.36,
+      "min_trips": 10,
+      "max_trips": 13,
+      "at_least_three": 50,
+      "exact_repairs": 50,
+      "natural_horizon": 50
+    },
+    "greedy": {
+      "layouts": 50,
+      "total_deliveries": 568,
+      "mean_trips": 11.36,
+      "min_trips": 10,
+      "max_trips": 13,
+      "at_least_three": 50,
+      "exact_repairs": 50,
+      "natural_horizon": 50
+    },
+    "no_build": {
+      "layouts": 50,
+      "total_deliveries": 0,
+      "mean_trips": 0,
+      "min_trips": 0,
+      "max_trips": 0,
+      "at_least_three": 0,
+      "exact_repairs": 0,
+      "natural_horizon": 0
+    }
+  },
+  "down-left": {
+    "sampled": {
+      "layouts": 50,
+      "total_deliveries": 566,
+      "mean_trips": 11.32,
+      "min_trips": 10,
+      "max_trips": 13,
+      "at_least_three": 50,
+      "exact_repairs": 50,
+      "natural_horizon": 50
+    },
+    "greedy": {
+      "layouts": 50,
+      "total_deliveries": 566,
+      "mean_trips": 11.32,
+      "min_trips": 10,
+      "max_trips": 13,
+      "at_least_three": 50,
+      "exact_repairs": 50,
+      "natural_horizon": 50
+    },
+    "no_build": {
+      "layouts": 50,
+      "total_deliveries": 0,
+      "mean_trips": 0,
+      "min_trips": 0,
+      "max_trips": 0,
+      "at_least_three": 0,
+      "exact_repairs": 0,
+      "natural_horizon": 0
+    }
+  },
+  "all": {
+    "sampled": {
+      "layouts": 200,
+      "total_deliveries": 2307,
+      "mean_trips": 11.535,
+      "min_trips": 10,
+      "max_trips": 13,
+      "at_least_three": 200,
+      "exact_repairs": 200,
+      "natural_horizon": 200
+    },
+    "greedy": {
+      "layouts": 200,
+      "total_deliveries": 2307,
+      "mean_trips": 11.535,
+      "min_trips": 10,
+      "max_trips": 13,
+      "at_least_three": 200,
+      "exact_repairs": 200,
+      "natural_horizon": 200
+    },
+    "no_build": {
+      "layouts": 200,
+      "total_deliveries": 0,
+      "mean_trips": 0,
+      "min_trips": 0,
+      "max_trips": 0,
+      "at_least_three": 0,
+      "exact_repairs": 0,
+      "natural_horizon": 0
+    }
+  }
+}

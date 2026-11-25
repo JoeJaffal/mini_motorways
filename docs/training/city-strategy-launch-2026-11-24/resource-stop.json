@@ -1,0 +1,6 @@
+{
+  "pid": 150629,
+  "run": "city-strategy-wide-pilot-02",
+  "reason": "Two 16-worker trainers plus eight paired evaluation workers exhausted RAM/swap; serialize training. No completed checkpoint yet.",
+  "signal": "SIGINT process group"
+}

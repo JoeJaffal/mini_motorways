@@ -1,0 +1,53 @@
+{
+  "parent": "output/training/city-five-stage-cold-initial-01/candidate.zip",
+  "parent_sha256": "9202d62be8d237f6fe495ee1ec29eed1747849a1fd747006ea8903de7f0b19f1",
+  "start_sha256": "bb4f41fda45cb7a35e9435177567abca1b1cd1b1cc6c0e2b0d5e6da5681a2235",
+  "optimizer": "fresh; changed parameter set",
+  "checks": [
+    {
+      "lesson": "midgame-network-join",
+      "initial_wait": 0.14887264370918274,
+      "zero_init_exact": true
+    },
+    {
+      "lesson": "midgame-network-route",
+      "initial_wait": 0.14537093043327332,
+      "zero_init_exact": true
+    },
+    {
+      "lesson": "midgame-network-delay",
+      "initial_wait": 0.9713308215141296,
+      "zero_init_exact": true
+    },
+    {
+      "lesson": "midgame-network-quiet",
+      "initial_wait": 0.527873158454895,
+      "zero_init_exact": true
+    },
+    {
+      "lesson": "traffic-priority-established",
+      "initial_wait": 0.05920223146677017,
+      "zero_init_exact": true
+    },
+    {
+      "lesson": "traffic-priority-established-swap",
+      "initial_wait": 0.026967165991663933,
+      "zero_init_exact": true
+    },
+    {
+      "lesson": "traffic-junction-low-live",
+      "initial_wait": 0.6498549580574036,
+      "zero_init_exact": true
+    },
+    {
+      "lesson": "traffic-junction-high-live",
+      "initial_wait": 0.7186622619628906,
+      "zero_init_exact": true
+    },
+    {
+      "lesson": "midgame-network-reserve",
+      "initial_wait": 0.5337483286857605,
+      "zero_init_exact": true
+    }
+  ]
+}

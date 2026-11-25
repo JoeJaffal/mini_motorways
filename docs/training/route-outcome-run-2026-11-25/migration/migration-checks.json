@@ -1,0 +1,34 @@
+{
+  "direction": "lesson",
+  "native_mode": "road-heads",
+  "source_hashes": {
+    "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01/training/final.zip": "907e1a083b58780bd140d4e258285878ed3534a4c0be6cf9b75070eae7f04826",
+    "/home/mohammadjaffal/mini_motorways/output/training/mini-fixed-route-01/training/final.zip": "c86c0db95e28951c3e9ed36d5a29eb94d7faa4cbddbfddaed18700dc70121eb3",
+    "/home/mohammadjaffal/mini_motorways/output/training/route-outcome-01/runtime/host/TrafficHost.dll": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0"
+  },
+  "checkpoint_sha256": "f5b1156df8f7181695ee71297d3c0b14e7f99e4901d74b88154cd8b782e7743d",
+  "actor_weights_and_adam_exact": true,
+  "actor_max_error": 0.0,
+  "shared_states": 16,
+  "fresh_task_critic": true,
+  "native_critic_retained_in_template": true,
+  "native_critic_restored": false,
+  "timesteps": 786432,
+  "retained_actor_adam_parameters": 26,
+  "critic_adam_parameters": 0,
+  "gamma": 1.0,
+  "vf_coef": 0.5,
+  "trainable": [
+    "features_extractor.growth_strategy_roads.0.weight",
+    "features_extractor.growth_strategy_roads.0.bias",
+    "features_extractor.growth_strategy_roads.2.weight",
+    "features_extractor.growth_strategy_roads.2.bias",
+    "features_extractor.growth_strategy_spatial_roads.weight",
+    "features_extractor.growth_strategy_spatial_roads.bias",
+    "value_net.0.weight",
+    "value_net.0.bias",
+    "value_net.2.weight",
+    "value_net.2.bias"
+  ],
+  "limits": "Migration only. Practice critic differs from native critic; original parent/template and lesson checkpoints remain intact. No production launch or promotion."
+}

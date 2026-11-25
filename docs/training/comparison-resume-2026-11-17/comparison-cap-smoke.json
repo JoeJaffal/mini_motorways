@@ -1,0 +1,83 @@
+{
+  "result": "COMPLETE",
+  "learning": false,
+  "protocol": "same validation layouts and per-layout CPU sampling RNG; default sampled actions",
+  "deterministic": false,
+  "seeds": [
+    20000,
+    20001
+  ],
+  "models": {
+    "initial": {
+      "checkpoint": "/workspace/mini_motorways-maskable-ppo/output/training/compare-test-initial.pt",
+      "policy_sha256": "a1960724ec37a8a10eb334d966b3918f068579f9d3ba53ce6af283a93e775c3f",
+      "games": [
+        {
+          "seed": 20000,
+          "score": 0,
+          "seconds": 0,
+          "decisions": 1,
+          "natural": false,
+          "ending": "external_decision_limit"
+        },
+        {
+          "seed": 20001,
+          "score": 0,
+          "seconds": 0,
+          "decisions": 1,
+          "natural": false,
+          "ending": "external_decision_limit"
+        }
+      ],
+      "summary": {
+        "games": 2,
+        "natural_games": 0,
+        "scored_games": 0,
+        "at_least3": 0,
+        "mean_score": 0.0
+      }
+    },
+    "trained": {
+      "checkpoint": "/workspace/mini_motorways-maskable-ppo/output/training/resume-test-parent.pt",
+      "policy_sha256": "a1960724ec37a8a10eb334d966b3918f068579f9d3ba53ce6af283a93e775c3f",
+      "games": [
+        {
+          "seed": 20000,
+          "score": 0,
+          "seconds": 0,
+          "decisions": 1,
+          "natural": false,
+          "ending": "external_decision_limit"
+        },
+        {
+          "seed": 20001,
+          "score": 0,
+          "seconds": 0,
+          "decisions": 1,
+          "natural": false,
+          "ending": "external_decision_limit"
+        }
+      ],
+      "summary": {
+        "games": 2,
+        "natural_games": 0,
+        "scored_games": 0,
+        "at_least3": 0,
+        "mean_score": 0.0
+      }
+    }
+  },
+  "valid": false,
+  "paired": {
+    "layouts": 2,
+    "trained_higher_score": 0,
+    "initial_higher_score": 0,
+    "ties": 2,
+    "mean_score_difference": 0.0,
+    "bootstrap95_mean_difference": [
+      0.0,
+      0.0
+    ]
+  },
+  "elapsed_seconds": 2.782680143005564
+}

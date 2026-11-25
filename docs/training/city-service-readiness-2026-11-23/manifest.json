@@ -1,0 +1,44 @@
+{
+  "base_revision": "6bd7f7193b26ae0f5aa12563f3dd89769115df6e",
+  "branch": "Maskable-PPO",
+  "launch": "2026-11-23T03:12:21+02:00",
+  "archive_sha256": {
+    "README.md": "79b472029b9a3d655c96f99457568f3f6f1b6496a4ab141ffc6cb212e79b9cbd",
+    "broad-games.jsonl": "8b38a59db7cf687f7eea22969b29e3eba407e06c49fd355e9b4c2a286482d281",
+    "broad-smoke-games.jsonl": "26bebf9af8b610a2c30ca6e1272f0196d71a43f42fad405b12142e6be9ba6137",
+    "broad-smoke-suite.json": "8d6e6fab55c298a0e7579f83eadc4c525ed580a75c070d3788cac35b2eba8a32",
+    "broad-smoke-summary.json": "62fa202579ad93b694dbbf43e4b46661c4d5aadb171f0bfc4b3a6916b5d478f3",
+    "broad-suite.json": "bf4efd265a2a15f5f30cd82b5d2be1a53f0d73e8f9eaeebaecb370311f3c3bf8",
+    "broad-summary.json": "76f70bc5a74e872ce824d75bcd531db1c64bf29788418be64610643c181c0aee",
+    "city-service-readiness-02-config.json": "fa9ca6edb7cf2b7f058e7e296c3dfef0b14593ea5f8e6e5045fa5026674b41ae",
+    "city-service-readiness-02-state.json": "2c0a59499501a00b9ef5b4bd133b25fd5e5878a69a034df5f849efe69fa3b0ea",
+    "city-service-reserve-readiness-01-config.json": "bc826d51fafffd832ad4a8364ac174aebb1caeaee720796ad56080b151f051b7",
+    "city-service-reserve-readiness-01-state.json": "fcf16d95ce7bd43f6aca7d6d3847d68b1d9590b0de8ab77d68eb4336bcbbbffc",
+    "confirmation-games.jsonl": "918ed5f399d31c240a5fb0a9d6789407eef58d527c3956bfb5821d028695fa18",
+    "confirmation-suite.json": "db2c4124eeed23981e682ccc3faea68b20f3337f9a0a13330390b25d22f87e12",
+    "confirmation-summary.json": "15dac7b02850fb15024d02b351416b0c9ca8f1a7de242d073c82188dd4d77064",
+    "failed-first-launch.txt": "884e2b453f4964d5d034ee5fedbfd8d4db218d9fb88bc347d4553a1691fe2c0f",
+    "long-config.json": "6ace6fc2b755ce9b111ff3593142eadba8eca2aec40b0d6e21784d384cf9f1ef",
+    "long-launch.txt": "420bf172b459ae287a7f9e5d4b07f5b81fda2dfe06f36c713113c9f110c94f95",
+    "long-start.json": "755d94cc13623196ae13cefa4faf81004184d204054b500ac557429c205cae06",
+    "narrow-games.jsonl": "97b49fab97413245f3a086ff7249def46c1791d1d66198b6c4c40d56d383f276",
+    "narrow-suite.json": "3c191c9da9d276dd43b18b5da76a6139acbfb1ae310b6d45e02cfa4e316b1d3f",
+    "narrow-summary.json": "d8d4a7647407407b0031e70ddefd96d15aa0359ff981fd9a6fc9d7d932e8b287",
+    "native-audit.json": "9883746a1400a23499e683a9bb1e7208f672e018f3091e5f716dc14069015477",
+    "policy-checks.json": "e2b3881c65ed5ebcc60ada8be4c37d586e8e9e66d951000550a071fd6f5989f2"
+  },
+  "source_sha256": {
+    "training/audit_city_service.py": "b773939950a98de3a407026abdc5b0a78d4e8e86bd631d69af35a993c4ca3a1a",
+    "training/city_service_policy.py": "33778b66de1b5a60a3f97dafeab7a6f6941818c0e32ffb5c5446fc7cbe01ffe6",
+    "training/evaluate_city_service.py": "7369db1fe8744e082410f6917a8d66b4dee8cdb6f728543a8b6dbab19c334cca",
+    "training/run_city_service_training.py": "8b3e457ccc5ec4ebf3b1cc35550088c7e9fb6ce58be069064942bc9ff7c1d584",
+    "training/run_city_growth_pilot.py": "c5f91acf6215edfcca74d3491cdb5e7656070457136ec77d2c2f76a086669ee1",
+    "training/run_city_overnight.py": "778a47721ea65b4d1d59efcbe5aea2496c083000a4da0bfbc051c0e5ac38a8b4"
+  },
+  "local_only": [
+    "model checkpoints",
+    "native simulator binary",
+    "learning curves and state for the active run"
+  ],
+  "worktree": "includes local source changes"
+}

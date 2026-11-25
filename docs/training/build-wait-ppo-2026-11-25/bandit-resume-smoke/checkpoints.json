@@ -1,0 +1,43 @@
+[
+  {
+    "path": "/home/mohammadjaffal/mini_motorways/output/training/build-wait-bandit-resume-ppo-smoke-01/final.zip",
+    "sha256": "62bcea21e64758cacced7de0e00bd9eb89e571ed173643e65434b6e55e96b324",
+    "added_decisions": 128,
+    "seconds": 10.02366142498795,
+    "cases": {
+      "destinations": {
+        "games": 8,
+        "correct": 0
+      },
+      "homes": {
+        "games": 8,
+        "correct": 0
+      },
+      "join": {
+        "games": 16,
+        "correct": 11
+      },
+      "match": {
+        "games": 32,
+        "correct": 32
+      },
+      "mismatch": {
+        "games": 16,
+        "correct": 0
+      },
+      "quiet": {
+        "games": 32,
+        "correct": 26
+      },
+      "route": {
+        "games": 16,
+        "correct": 9
+      }
+    },
+    "wait_adam_steps": [
+      8
+    ],
+    "old_weights_and_adam_exact": true,
+    "binary_returns_no_bootstrap": true
+  }
+]

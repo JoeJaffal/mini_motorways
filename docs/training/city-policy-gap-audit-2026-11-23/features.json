@@ -1,0 +1,85 @@
+{
+  "seed": 99387707,
+  "second": 277,
+  "stock": 4,
+  "n_buildings": 16,
+  "road_chain": {
+    "graph_edges": 16,
+    "production_reach": 11,
+    "true_reach": 17,
+    "production_reaches_tail": false
+  },
+  "competing_destinations": {
+    "proposed_edge": [
+      [
+        11,
+        10
+      ],
+      [
+        12,
+        11
+      ]
+    ],
+    "shorter_same_color_target_progress": 0.0,
+    "shorter_other_color_target_progress": 1.0,
+    "bare_cell_between_matching_driveways_counts_established": true
+  },
+  "reserve_eligible_stock": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "original": {
+    "active": true,
+    "established": true,
+    "quiet": false,
+    "joins": [
+      true,
+      true,
+      true
+    ],
+    "progress": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "direct_join_probability": 0.0006842479847112704,
+    "best_join_rank": 2,
+    "wait_probability": 0.5717571263866209,
+    "legal_roads": 343,
+    "masked_progress_best": 1.0
+  },
+  "scalar_weights": {
+    "growth_service_progress": 0.25797292590141296,
+    "growth_service_join": 0.9000613689422607,
+    "growth_service_coupling": 0.24758201837539673,
+    "growth_service_blocked": 5.0,
+    "growth_service_reserve": 2.039804458618164
+  },
+  "fixed_point_comparison": {
+    "active": true,
+    "established": true,
+    "quiet": false,
+    "joins": [
+      true,
+      true,
+      true
+    ],
+    "progress": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "direct_join_probability": 0.0006842479847112704,
+    "best_join_rank": 2,
+    "wait_probability": 0.5717571263866209,
+    "legal_roads": 343,
+    "masked_progress_best": 1.0
+  }
+}

@@ -1,0 +1,613 @@
+{
+  "policy_sha256": "2e775c63fc6234bf27e118f19c70497e860f0b114f2a767d23ec89f38ab14833",
+  "target": "scripted gap edge",
+  "boards": 100,
+  "mismatches": 9900,
+  "matched_mean_probability": 0.786387026309967,
+  "mismatched_mean_probability": 0.21057811379432678,
+  "matched_top1": 100,
+  "mismatched_top1_fraction": 0.35383838383838384,
+  "mismatched_same_selected_action": 0.35383838383838384,
+  "layouts": [
+    {
+      "seed": 20000,
+      "repair_action": 215,
+      "probability": 0.8173323273658752,
+      "greedy_action": 215
+    },
+    {
+      "seed": 20001,
+      "repair_action": 353,
+      "probability": 0.8470205068588257,
+      "greedy_action": 353
+    },
+    {
+      "seed": 20002,
+      "repair_action": 407,
+      "probability": 0.6769489645957947,
+      "greedy_action": 407
+    },
+    {
+      "seed": 20003,
+      "repair_action": 215,
+      "probability": 0.6856629848480225,
+      "greedy_action": 215
+    },
+    {
+      "seed": 20004,
+      "repair_action": 365,
+      "probability": 0.6820048093795776,
+      "greedy_action": 365
+    },
+    {
+      "seed": 20005,
+      "repair_action": 357,
+      "probability": 0.8226794600486755,
+      "greedy_action": 357
+    },
+    {
+      "seed": 20006,
+      "repair_action": 167,
+      "probability": 0.7614050507545471,
+      "greedy_action": 167
+    },
+    {
+      "seed": 20007,
+      "repair_action": 361,
+      "probability": 0.8447653651237488,
+      "greedy_action": 361
+    },
+    {
+      "seed": 20008,
+      "repair_action": 353,
+      "probability": 0.819180428981781,
+      "greedy_action": 353
+    },
+    {
+      "seed": 20009,
+      "repair_action": 311,
+      "probability": 0.8479200005531311,
+      "greedy_action": 311
+    },
+    {
+      "seed": 20010,
+      "repair_action": 167,
+      "probability": 0.6805574297904968,
+      "greedy_action": 167
+    },
+    {
+      "seed": 20011,
+      "repair_action": 309,
+      "probability": 0.8299676775932312,
+      "greedy_action": 309
+    },
+    {
+      "seed": 20012,
+      "repair_action": 407,
+      "probability": 0.6769489645957947,
+      "greedy_action": 407
+    },
+    {
+      "seed": 20013,
+      "repair_action": 215,
+      "probability": 0.7656306028366089,
+      "greedy_action": 215
+    },
+    {
+      "seed": 20014,
+      "repair_action": 317,
+      "probability": 0.7626047730445862,
+      "greedy_action": 317
+    },
+    {
+      "seed": 20015,
+      "repair_action": 353,
+      "probability": 0.8470205068588257,
+      "greedy_action": 353
+    },
+    {
+      "seed": 20016,
+      "repair_action": 167,
+      "probability": 0.813654363155365,
+      "greedy_action": 167
+    },
+    {
+      "seed": 20017,
+      "repair_action": 361,
+      "probability": 0.8183825016021729,
+      "greedy_action": 361
+    },
+    {
+      "seed": 20018,
+      "repair_action": 305,
+      "probability": 0.6831028461456299,
+      "greedy_action": 305
+    },
+    {
+      "seed": 20019,
+      "repair_action": 311,
+      "probability": 0.8323543071746826,
+      "greedy_action": 311
+    },
+    {
+      "seed": 20020,
+      "repair_action": 167,
+      "probability": 0.7614050507545471,
+      "greedy_action": 167
+    },
+    {
+      "seed": 20021,
+      "repair_action": 357,
+      "probability": 0.8197095394134521,
+      "greedy_action": 357
+    },
+    {
+      "seed": 20022,
+      "repair_action": 311,
+      "probability": 0.7647167444229126,
+      "greedy_action": 311
+    },
+    {
+      "seed": 20023,
+      "repair_action": 263,
+      "probability": 0.8486032485961914,
+      "greedy_action": 263
+    },
+    {
+      "seed": 20024,
+      "repair_action": 365,
+      "probability": 0.8146986365318298,
+      "greedy_action": 365
+    },
+    {
+      "seed": 20025,
+      "repair_action": 357,
+      "probability": 0.8454436659812927,
+      "greedy_action": 357
+    },
+    {
+      "seed": 20026,
+      "repair_action": 167,
+      "probability": 0.678030788898468,
+      "greedy_action": 167
+    },
+    {
+      "seed": 20027,
+      "repair_action": 361,
+      "probability": 0.6845568418502808,
+      "greedy_action": 361
+    },
+    {
+      "seed": 20028,
+      "repair_action": 353,
+      "probability": 0.7635136246681213,
+      "greedy_action": 353
+    },
+    {
+      "seed": 20029,
+      "repair_action": 263,
+      "probability": 0.8205519914627075,
+      "greedy_action": 263
+    },
+    {
+      "seed": 20030,
+      "repair_action": 321,
+      "probability": 0.7584086656570435,
+      "greedy_action": 321
+    },
+    {
+      "seed": 20031,
+      "repair_action": 353,
+      "probability": 0.819180428981781,
+      "greedy_action": 353
+    },
+    {
+      "seed": 20032,
+      "repair_action": 311,
+      "probability": 0.8183824419975281,
+      "greedy_action": 311
+    },
+    {
+      "seed": 20033,
+      "repair_action": 263,
+      "probability": 0.8486032485961914,
+      "greedy_action": 263
+    },
+    {
+      "seed": 20034,
+      "repair_action": 365,
+      "probability": 0.6794676184654236,
+      "greedy_action": 365
+    },
+    {
+      "seed": 20035,
+      "repair_action": 311,
+      "probability": 0.8293141722679138,
+      "greedy_action": 311
+    },
+    {
+      "seed": 20036,
+      "repair_action": 215,
+      "probability": 0.7656306028366089,
+      "greedy_action": 215
+    },
+    {
+      "seed": 20037,
+      "repair_action": 313,
+      "probability": 0.8220371603965759,
+      "greedy_action": 313
+    },
+    {
+      "seed": 20038,
+      "repair_action": 349,
+      "probability": 0.7614050507545471,
+      "greedy_action": 349
+    },
+    {
+      "seed": 20039,
+      "repair_action": 263,
+      "probability": 0.8463398814201355,
+      "greedy_action": 263
+    },
+    {
+      "seed": 20040,
+      "repair_action": 369,
+      "probability": 0.8128674030303955,
+      "greedy_action": 369
+    },
+    {
+      "seed": 20041,
+      "repair_action": 353,
+      "probability": 0.819180428981781,
+      "greedy_action": 353
+    },
+    {
+      "seed": 20042,
+      "repair_action": 359,
+      "probability": 0.6820048689842224,
+      "greedy_action": 359
+    },
+    {
+      "seed": 20043,
+      "repair_action": 263,
+      "probability": 0.8314874768257141,
+      "greedy_action": 263
+    },
+    {
+      "seed": 20044,
+      "repair_action": 321,
+      "probability": 0.7584086656570435,
+      "greedy_action": 321
+    },
+    {
+      "seed": 20045,
+      "repair_action": 311,
+      "probability": 0.7647167444229126,
+      "greedy_action": 311
+    },
+    {
+      "seed": 20046,
+      "repair_action": 215,
+      "probability": 0.7656306028366089,
+      "greedy_action": 215
+    },
+    {
+      "seed": 20047,
+      "repair_action": 361,
+      "probability": 0.8479200601577759,
+      "greedy_action": 361
+    },
+    {
+      "seed": 20048,
+      "repair_action": 349,
+      "probability": 0.8154893517494202,
+      "greedy_action": 349
+    },
+    {
+      "seed": 20049,
+      "repair_action": 311,
+      "probability": 0.844765305519104,
+      "greedy_action": 311
+    },
+    {
+      "seed": 20050,
+      "repair_action": 361,
+      "probability": 0.6845568418502808,
+      "greedy_action": 361
+    },
+    {
+      "seed": 20051,
+      "repair_action": 309,
+      "probability": 0.8330128192901611,
+      "greedy_action": 309
+    },
+    {
+      "seed": 20052,
+      "repair_action": 359,
+      "probability": 0.7605009078979492,
+      "greedy_action": 359
+    },
+    {
+      "seed": 20053,
+      "repair_action": 263,
+      "probability": 0.8211916089057922,
+      "greedy_action": 263
+    },
+    {
+      "seed": 20054,
+      "repair_action": 321,
+      "probability": 0.7584086656570435,
+      "greedy_action": 321
+    },
+    {
+      "seed": 20055,
+      "repair_action": 311,
+      "probability": 0.8183824419975281,
+      "greedy_action": 311
+    },
+    {
+      "seed": 20056,
+      "repair_action": 215,
+      "probability": 0.8173323273658752,
+      "greedy_action": 215
+    },
+    {
+      "seed": 20057,
+      "repair_action": 357,
+      "probability": 0.8308317065238953,
+      "greedy_action": 357
+    },
+    {
+      "seed": 20058,
+      "repair_action": 301,
+      "probability": 0.6780306696891785,
+      "greedy_action": 301
+    },
+    {
+      "seed": 20059,
+      "repair_action": 311,
+      "probability": 0.6845568418502808,
+      "greedy_action": 311
+    },
+    {
+      "seed": 20060,
+      "repair_action": 313,
+      "probability": 0.764716625213623,
+      "greedy_action": 313
+    },
+    {
+      "seed": 20061,
+      "repair_action": 357,
+      "probability": 0.8226794600486755,
+      "greedy_action": 357
+    },
+    {
+      "seed": 20062,
+      "repair_action": 359,
+      "probability": 0.7605009078979492,
+      "greedy_action": 359
+    },
+    {
+      "seed": 20063,
+      "repair_action": 263,
+      "probability": 0.845443606376648,
+      "greedy_action": 263
+    },
+    {
+      "seed": 20064,
+      "repair_action": 361,
+      "probability": 0.8183825016021729,
+      "greedy_action": 361
+    },
+    {
+      "seed": 20065,
+      "repair_action": 311,
+      "probability": 0.8323543071746826,
+      "greedy_action": 311
+    },
+    {
+      "seed": 20066,
+      "repair_action": 167,
+      "probability": 0.6805574297904968,
+      "greedy_action": 167
+    },
+    {
+      "seed": 20067,
+      "repair_action": 357,
+      "probability": 0.8308317065238953,
+      "greedy_action": 357
+    },
+    {
+      "seed": 20068,
+      "repair_action": 349,
+      "probability": 0.7593076229095459,
+      "greedy_action": 349
+    },
+    {
+      "seed": 20069,
+      "repair_action": 311,
+      "probability": 0.7647167444229126,
+      "greedy_action": 311
+    },
+    {
+      "seed": 20070,
+      "repair_action": 317,
+      "probability": 0.7626047730445862,
+      "greedy_action": 317
+    },
+    {
+      "seed": 20071,
+      "repair_action": 357,
+      "probability": 0.8470203280448914,
+      "greedy_action": 357
+    },
+    {
+      "seed": 20072,
+      "repair_action": 359,
+      "probability": 0.8447628021240234,
+      "greedy_action": 359
+    },
+    {
+      "seed": 20073,
+      "repair_action": 311,
+      "probability": 0.8299651741981506,
+      "greedy_action": 311
+    },
+    {
+      "seed": 20074,
+      "repair_action": 361,
+      "probability": 0.6845568418502808,
+      "greedy_action": 361
+    },
+    {
+      "seed": 20075,
+      "repair_action": 311,
+      "probability": 0.8323543071746826,
+      "greedy_action": 311
+    },
+    {
+      "seed": 20076,
+      "repair_action": 167,
+      "probability": 0.7614050507545471,
+      "greedy_action": 167
+    },
+    {
+      "seed": 20077,
+      "repair_action": 309,
+      "probability": 0.8190694451332092,
+      "greedy_action": 309
+    },
+    {
+      "seed": 20078,
+      "repair_action": 353,
+      "probability": 0.7656306028366089,
+      "greedy_action": 353
+    },
+    {
+      "seed": 20079,
+      "repair_action": 263,
+      "probability": 0.8486032485961914,
+      "greedy_action": 263
+    },
+    {
+      "seed": 20080,
+      "repair_action": 365,
+      "probability": 0.8165380358695984,
+      "greedy_action": 365
+    },
+    {
+      "seed": 20081,
+      "repair_action": 309,
+      "probability": 0.8314874172210693,
+      "greedy_action": 309
+    },
+    {
+      "seed": 20082,
+      "repair_action": 359,
+      "probability": 0.8293117880821228,
+      "greedy_action": 359
+    },
+    {
+      "seed": 20083,
+      "repair_action": 215,
+      "probability": 0.6856629848480225,
+      "greedy_action": 215
+    },
+    {
+      "seed": 20084,
+      "repair_action": 353,
+      "probability": 0.7635136246681213,
+      "greedy_action": 353
+    },
+    {
+      "seed": 20085,
+      "repair_action": 263,
+      "probability": 0.8205519914627075,
+      "greedy_action": 263
+    },
+    {
+      "seed": 20086,
+      "repair_action": 215,
+      "probability": 0.8197068572044373,
+      "greedy_action": 215
+    },
+    {
+      "seed": 20087,
+      "repair_action": 357,
+      "probability": 0.844762921333313,
+      "greedy_action": 357
+    },
+    {
+      "seed": 20088,
+      "repair_action": 353,
+      "probability": 0.819180428981781,
+      "greedy_action": 353
+    },
+    {
+      "seed": 20089,
+      "repair_action": 263,
+      "probability": 0.8330127000808716,
+      "greedy_action": 263
+    },
+    {
+      "seed": 20090,
+      "repair_action": 365,
+      "probability": 0.6794676184654236,
+      "greedy_action": 365
+    },
+    {
+      "seed": 20091,
+      "repair_action": 313,
+      "probability": 0.8299652934074402,
+      "greedy_action": 313
+    },
+    {
+      "seed": 20092,
+      "repair_action": 311,
+      "probability": 0.7647167444229126,
+      "greedy_action": 311
+    },
+    {
+      "seed": 20093,
+      "repair_action": 263,
+      "probability": 0.822679340839386,
+      "greedy_action": 263
+    },
+    {
+      "seed": 20094,
+      "repair_action": 353,
+      "probability": 0.8173323273658752,
+      "greedy_action": 353
+    },
+    {
+      "seed": 20095,
+      "repair_action": 263,
+      "probability": 0.8463398814201355,
+      "greedy_action": 263
+    },
+    {
+      "seed": 20096,
+      "repair_action": 215,
+      "probability": 0.8454409241676331,
+      "greedy_action": 215
+    },
+    {
+      "seed": 20097,
+      "repair_action": 361,
+      "probability": 0.6845568418502808,
+      "greedy_action": 361
+    },
+    {
+      "seed": 20098,
+      "repair_action": 305,
+      "probability": 0.6831028461456299,
+      "greedy_action": 305
+    },
+    {
+      "seed": 20099,
+      "repair_action": 263,
+      "probability": 0.8314874768257141,
+      "greedy_action": 263
+    }
+  ]
+}

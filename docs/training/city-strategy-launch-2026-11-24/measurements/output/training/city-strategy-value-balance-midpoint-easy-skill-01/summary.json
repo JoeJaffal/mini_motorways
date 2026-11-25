@@ -1,0 +1,54 @@
+{
+  "midgame-network-reserve": {
+    "0": {
+      "games": 16,
+      "mean_score": 4.9375,
+      "successes": 7,
+      "mean_builds": 4.125,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.375,
+      "mean_stock_at_arrival": 2.3125,
+      "future_pairs_visible": 16
+    },
+    "1": {
+      "games": 16,
+      "mean_score": 5.3125,
+      "successes": 9,
+      "mean_builds": 3.875,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.375,
+      "mean_stock_at_arrival": 2.625,
+      "future_pairs_visible": 16
+    },
+    "route": {
+      "games": 16,
+      "mean_score": 6.875,
+      "successes": 16,
+      "mean_builds": 3.125,
+      "mean_stock": 0.4375,
+      "mean_urgent_deliveries": 3.375,
+      "mean_stock_at_arrival": 3.5625,
+      "future_pairs_visible": 16
+    },
+    "wait": {
+      "games": 16,
+      "mean_score": 3.375,
+      "successes": 0,
+      "mean_builds": 0.0,
+      "mean_stock": 3.5625,
+      "mean_urgent_deliveries": 3.375,
+      "mean_stock_at_arrival": 3.5625,
+      "future_pairs_visible": 16
+    },
+    "waste": {
+      "games": 16,
+      "mean_score": 3.375,
+      "successes": 0,
+      "mean_builds": 3.5625,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.375,
+      "mean_stock_at_arrival": 0.0,
+      "future_pairs_visible": 16
+    }
+  }
+}

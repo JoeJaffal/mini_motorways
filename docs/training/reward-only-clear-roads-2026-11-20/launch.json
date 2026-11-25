@@ -1,0 +1,26 @@
+{
+  "started_asia_beirut": "2026-11-20T11:48:19+02:00",
+  "service": "mini-motorways-clear-road-ppo-pilot-01.service",
+  "first_rollout": {
+    "decisions": 2048,
+    "games": 527,
+    "successes": 235,
+    "exercises": {
+      "adjacent": [
+        128,
+        128
+      ],
+      "bend": [
+        102,
+        102
+      ],
+      "clear": [
+        5,
+        297
+      ]
+    },
+    "ppo_epochs": 4,
+    "elapsed_seconds": 3.821925575961359,
+    "fingerprint": "fcff6fbbbb197310c29b3870d5b61e43944b475d2ebdef4d500f6635b0c06171"
+  }
+}

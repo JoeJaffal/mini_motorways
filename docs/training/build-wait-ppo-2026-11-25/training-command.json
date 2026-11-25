@@ -1,0 +1,23 @@
+[
+  "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+  "-u",
+  "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01/runtime/training/train_city_wait_decision.py",
+  "--parent",
+  "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01/initial/start.zip",
+  "--dll",
+  "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01/runtime/host/TrafficHost.dll",
+  "--output",
+  "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01/training",
+  "--workers",
+  "16",
+  "--rollout-steps",
+  "512",
+  "--rollouts",
+  "4",
+  "--batch-size",
+  "128",
+  "--epochs",
+  "4",
+  "--seed-start",
+  "245000000"
+]

@@ -1,0 +1,23 @@
+{
+  "native_sha256": "433044d1bd799bf02102103be110c05029f195082854c6882903db9a7fe73863",
+  "source_sha256": "1c34d5ab1bd590537c9afbb569d74caf7d4d66b36eba17fe6424bc5bcfc38ffe",
+  "checkpoint_sha256": "90f0c7230fe76e4de081364c2f6bf20219fd3a51704b07bd5057a0927bc0d5a4",
+  "wait_checkpoint_sha256": "a4f5d9dc241738bc85b5148b74dadf2fb7f14aee899bf0d53058e24bc0e8a310",
+  "seed": 42,
+  "seed_start": 1650000,
+  "decisions": 65536,
+  "learning_rate": 0.0003,
+  "decision_limit": 18,
+  "wait_ticks": 200,
+  "reward": "native tripsDelta only",
+  "teacher_actions": false,
+  "route_frozen": true,
+  "initial_wait_prob": null,
+  "starting_decisions": 0,
+  "restored_adam": false,
+  "training_stages": [
+    "pair-triad-left",
+    "pair-triad-right"
+  ],
+  "transferred_wait_initial_bias_adjustment": 0.0
+}

@@ -1,0 +1,37 @@
+{
+  "checkpoints": [
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-rate-01/segment-001/checkpoint-000008192.zip",
+      "sha256": "ef29ba19a923cb387b9c2f54291471ee5786883ae08adda13b419fa9c77451f9",
+      "added_decisions": 8192,
+      "optimizer_steps_added": 256,
+      "episodes": 10,
+      "seconds": 129.59860427607782
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-rate-01/segment-001/midpoint.zip",
+      "sha256": "92adb88c255578d338eb5a2e3db23c2bb914c20bbd4e58b3d1e9ca05fe55576c",
+      "added_decisions": 16384,
+      "optimizer_steps_added": 512,
+      "episodes": 21,
+      "seconds": 297.4388608910376
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-rate-01/segment-001/checkpoint-000024576.zip",
+      "sha256": "0aee57f2b711a542e22e4a5e9f6d34e26ee5987d519aa90c555f21c6ab01558a",
+      "added_decisions": 24576,
+      "optimizer_steps_added": 768,
+      "episodes": 38,
+      "seconds": 465.1772039880743
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-rate-01/segment-001/final.zip",
+      "sha256": "a5775b343c07bdd03bc08dddc6aca9a5223d509bf98c919575960792d47e0313",
+      "added_decisions": 32768,
+      "optimizer_steps_added": 1024,
+      "episodes": 47,
+      "seconds": 626.9269099570811
+    }
+  ],
+  "seconds": 626.929874713067
+}

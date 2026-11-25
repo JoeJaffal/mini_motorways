@@ -1,0 +1,64 @@
+{
+  "checkpoint": "city-strategy-balanced-extension-01/segment-001/midpoint.zip",
+  "seed_start": 152010000,
+  "count": 16,
+  "rows": [
+    {
+      "split": "train",
+      "warmup": 6,
+      "games": 16,
+      "mean_score": 5.5,
+      "successes": 9,
+      "mean_builds": 4.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.6875,
+      "mean_stock_at_arrival": 2.8125,
+      "future_pairs_visible": 16,
+      "initial_wait_probability": 0.8150760360574262,
+      "reference_successes": 16
+    },
+    {
+      "split": "train",
+      "warmup": 0,
+      "games": 16,
+      "mean_score": 4.25,
+      "successes": 5,
+      "mean_builds": 4.3125,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.375,
+      "mean_stock_at_arrival": 1.75,
+      "future_pairs_visible": 16,
+      "initial_wait_probability": 0.7058069769849821,
+      "reference_successes": 16
+    },
+    {
+      "split": "validation",
+      "warmup": 0,
+      "games": 16,
+      "mean_score": 3.875,
+      "successes": 3,
+      "mean_builds": 4.4375,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.375,
+      "mean_stock_at_arrival": 1.125,
+      "future_pairs_visible": 16,
+      "initial_wait_probability": 0.611453599095896,
+      "reference_successes": 16
+    },
+    {
+      "split": "validation",
+      "warmup": 6,
+      "games": 16,
+      "mean_score": 5.0625,
+      "successes": 7,
+      "mean_builds": 4.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.6875,
+      "mean_stock_at_arrival": 2.4375,
+      "future_pairs_visible": 16,
+      "initial_wait_probability": 0.7462323016247703,
+      "reference_successes": 16
+    }
+  ],
+  "note": "Matched diagnostic seed indices and action RNG. Train/validation change placement ranges; warmup changes time and movement observation. This is diagnostic selection data, not city confirmation."
+}

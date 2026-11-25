@@ -1,0 +1,14 @@
+{
+  "pid": 402227,
+  "command": [
+    "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+    "-u",
+    "/home/mohammadjaffal/mini_motorways/docs/training/city-whole-policy-2026-11-24/evaluate.py",
+    "--checkpoint",
+    "output/training/city-whole-fit-01/whole/midpoint.zip",
+    "--output",
+    "output/training/city-whole-midpoint-eval-01",
+    "--baseline",
+    "output/training/city-whole-baseline-01"
+  ]
+}

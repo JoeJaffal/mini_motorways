@@ -1,0 +1,37 @@
+{
+  "kind": "terrain-ppo",
+  "native_sha256": "7e7838e9f9300fe50877af7cb0c1309c99a8ca2ef0f2029002d21479588a012b",
+  "source_sha256": "e04c3320113fae9c86a9d1d5d9ee0d0a41bd48b0249a7ffdc52f87719027c8dd",
+  "parent": "output/training/pair-ppo-hour-03/terrain-parent.zip",
+  "parent_sha256": "d525d81db8a6bce76b13558a720c6fcbba5f431bfcffb6229d6dc7d9fb9b0805",
+  "parent_fingerprint": "ece9fabd7cc9681a82732e8fc131bec519907cc7a41ca52dfc84a978acc479d2",
+  "seed": 42,
+  "workers": [
+    "obstacle-wide",
+    "obstacle-wide",
+    "obstacle-wide",
+    "obstacle-wide",
+    "obstacle-wide",
+    "obstacle-wide",
+    "obstacle-wide",
+    "obstacle-offset",
+    "obstacle-offset",
+    "obstacle-offset",
+    "obstacle-offset",
+    "obstacle-offset",
+    "obstacle-offset",
+    "obstacle-offset",
+    "obstacle",
+    "obstacle"
+  ],
+  "decisions": 262144,
+  "wall_seconds": 900,
+  "teacher_actions": false,
+  "training_only_modifiers": [
+    "-warm-spare",
+    "-warm",
+    "-spare",
+    ""
+  ],
+  "temperature": 2.0
+}

@@ -1,0 +1,17 @@
+[
+  "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+  "-u",
+  "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01/runtime/training/audit_mini_behavior.py",
+  "--dll",
+  "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01/runtime/city-host/TrafficHost.dll",
+  "--output",
+  "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01/evaluation/practice-final",
+  "--workers",
+  "2",
+  "--checkpoints",
+  "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01/training/final.zip",
+  "--labels",
+  "candidate",
+  "--small-city-horizon",
+  "300"
+]

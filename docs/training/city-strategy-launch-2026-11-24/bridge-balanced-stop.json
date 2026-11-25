@@ -1,0 +1,17 @@
+{
+  "time": "2026-11-24T16:29:51.860116+02:00",
+  "checkpoint": {
+    "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-balanced-01/segment-001/checkpoint-000024576.zip",
+    "sha256": "63e3147f62a2524c31e8d6d9bd95d98d1033cb4b24115f9144e90d5e6d9f4c76",
+    "added_decisions": 24576,
+    "optimizer_steps_added": 768,
+    "episodes": 5996,
+    "seconds": 769.6364707580069
+  },
+  "reason": "Matched bridge-enabled 1200s baseline favors calibrated reference over conservation parent; preserve bounded checkpoint and compare city-only candidate before further training.",
+  "unsaved_tail": "Any decisions after this checkpoint are not counted as preserved progress.",
+  "stopped_pids": [
+    317238,
+    316553
+  ]
+}

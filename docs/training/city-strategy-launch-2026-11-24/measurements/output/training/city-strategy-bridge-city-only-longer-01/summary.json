@@ -1,0 +1,49 @@
+{
+  "models": [
+    "output/training/city-strategy-city-only-01/segment-001/final.zip"
+  ],
+  "sha256": {
+    "output/training/city-strategy-city-only-01/segment-001/final.zip": "efe6cf2118fe1e8682cf2cf8ca7616d495dbcf0d451281c2cacf55c87ab7a90a"
+  },
+  "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+  "horizon": 1200,
+  "allow_bridges": true,
+  "forced_action_inference_skipped": true,
+  "results": {
+    "0": {
+      "games": 32,
+      "scoring_games": 29,
+      "mean_score": 220.0,
+      "new_targets": 207,
+      "new_targets_served": 178,
+      "new_target_stockouts": 43,
+      "median_new_service_delay": 29.5,
+      "mean_paid_units": 130.09375,
+      "mean_outside_observed_routes": 47.46875,
+      "outside_route_share": 0.36488109536392027,
+      "paired_score_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "mean_bridge_tiles": 2.15625,
+      "mean_bridge_stock": 0.09375
+    }
+  }
+}

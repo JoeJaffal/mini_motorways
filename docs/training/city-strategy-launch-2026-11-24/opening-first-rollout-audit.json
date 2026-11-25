@@ -1,0 +1,113 @@
+{
+  "candidate": "output/training/city-strategy-opening-01/segment-001/checkpoint-000008192.zip",
+  "sha256": "183b95b38bb1d3fd7cba599bf226a5de6c6b745c8abcf35fb53474bdd1ea2877",
+  "changed_parameters": {
+    "features_extractor.opening_strategy_spatial.0.weight": 0.000606834888458252,
+    "features_extractor.opening_strategy_spatial.0.bias": 6.396323442459106e-05,
+    "features_extractor.opening_strategy_spatial.2.weight": 0.00011618435382843018,
+    "features_extractor.opening_strategy_spatial.2.bias": 6.280094385147095e-05,
+    "features_extractor.opening_strategy_spatial.4.weight": 0.00027156248688697815,
+    "features_extractor.opening_strategy_spatial.4.bias": 0.0001993626356124878,
+    "features_extractor.opening_strategy_spatial.6.weight": 0.0005219876766204834,
+    "features_extractor.opening_strategy_spatial.6.bias": 0.0004415065050125122,
+    "features_extractor.opening_strategy_spatial.8.weight": 0.0008545592427253723,
+    "features_extractor.opening_strategy_spatial.8.bias": 0.0005016997456550598,
+    "features_extractor.opening_strategy_spatial.10.weight": 0.0006106868386268616,
+    "features_extractor.opening_strategy_spatial.10.bias": 0.00029105693101882935,
+    "features_extractor.opening_strategy_roads.weight": 0.0015400920528918505,
+    "features_extractor.opening_strategy_roads.bias": 0.0009005253086797893,
+    "features_extractor.opening_strategy_wait.0.weight": 0.004940919578075409,
+    "features_extractor.opening_strategy_wait.0.bias": 0.001806408166885376,
+    "features_extractor.opening_strategy_wait.2.weight": 0.003187269903719425,
+    "features_extractor.opening_strategy_wait.2.bias": 0.001634604181163013,
+    "pi_features_extractor.opening_strategy_spatial.0.weight": 0.000606834888458252,
+    "pi_features_extractor.opening_strategy_spatial.0.bias": 6.396323442459106e-05,
+    "pi_features_extractor.opening_strategy_spatial.2.weight": 0.00011618435382843018,
+    "pi_features_extractor.opening_strategy_spatial.2.bias": 6.280094385147095e-05,
+    "pi_features_extractor.opening_strategy_spatial.4.weight": 0.00027156248688697815,
+    "pi_features_extractor.opening_strategy_spatial.4.bias": 0.0001993626356124878,
+    "pi_features_extractor.opening_strategy_spatial.6.weight": 0.0005219876766204834,
+    "pi_features_extractor.opening_strategy_spatial.6.bias": 0.0004415065050125122,
+    "pi_features_extractor.opening_strategy_spatial.8.weight": 0.0008545592427253723,
+    "pi_features_extractor.opening_strategy_spatial.8.bias": 0.0005016997456550598,
+    "pi_features_extractor.opening_strategy_spatial.10.weight": 0.0006106868386268616,
+    "pi_features_extractor.opening_strategy_spatial.10.bias": 0.00029105693101882935,
+    "pi_features_extractor.opening_strategy_roads.weight": 0.0015400920528918505,
+    "pi_features_extractor.opening_strategy_roads.bias": 0.0009005253086797893,
+    "pi_features_extractor.opening_strategy_wait.0.weight": 0.004940919578075409,
+    "pi_features_extractor.opening_strategy_wait.0.bias": 0.001806408166885376,
+    "pi_features_extractor.opening_strategy_wait.2.weight": 0.003187269903719425,
+    "pi_features_extractor.opening_strategy_wait.2.bias": 0.001634604181163013,
+    "vf_features_extractor.opening_strategy_spatial.0.weight": 0.000606834888458252,
+    "vf_features_extractor.opening_strategy_spatial.0.bias": 6.396323442459106e-05,
+    "vf_features_extractor.opening_strategy_spatial.2.weight": 0.00011618435382843018,
+    "vf_features_extractor.opening_strategy_spatial.2.bias": 6.280094385147095e-05,
+    "vf_features_extractor.opening_strategy_spatial.4.weight": 0.00027156248688697815,
+    "vf_features_extractor.opening_strategy_spatial.4.bias": 0.0001993626356124878,
+    "vf_features_extractor.opening_strategy_spatial.6.weight": 0.0005219876766204834,
+    "vf_features_extractor.opening_strategy_spatial.6.bias": 0.0004415065050125122,
+    "vf_features_extractor.opening_strategy_spatial.8.weight": 0.0008545592427253723,
+    "vf_features_extractor.opening_strategy_spatial.8.bias": 0.0005016997456550598,
+    "vf_features_extractor.opening_strategy_spatial.10.weight": 0.0006106868386268616,
+    "vf_features_extractor.opening_strategy_spatial.10.bias": 0.00029105693101882935,
+    "vf_features_extractor.opening_strategy_roads.weight": 0.0015400920528918505,
+    "vf_features_extractor.opening_strategy_roads.bias": 0.0009005253086797893,
+    "vf_features_extractor.opening_strategy_wait.0.weight": 0.004940919578075409,
+    "vf_features_extractor.opening_strategy_wait.0.bias": 0.001806408166885376,
+    "vf_features_extractor.opening_strategy_wait.2.weight": 0.003187269903719425,
+    "vf_features_extractor.opening_strategy_wait.2.bias": 0.001634604181163013,
+    "value_net.0.weight": 0.003772350028157234,
+    "value_net.0.bias": 0.0030683502554893494,
+    "value_net.2.weight": 0.003342866897583008,
+    "value_net.2.bias": 0.0005464553833007812
+  },
+  "established_initial_exact": [
+    "midgame-network-join",
+    "midgame-network-route",
+    "midgame-network-delay",
+    "midgame-network-quiet",
+    "traffic-priority-established",
+    "traffic-priority-established-swap",
+    "traffic-junction-low-live",
+    "traffic-junction-high-live",
+    "midgame-network-reserve"
+  ],
+  "opening_probes": [
+    {
+      "seed": 2004,
+      "wait_before": 0.2119002342224121,
+      "wait_after": 0.2544327676296234,
+      "total_variation": 0.12431549280881882
+    },
+    {
+      "seed": 99161630,
+      "wait_before": 0.2905113101005554,
+      "wait_after": 0.37473177909851074,
+      "total_variation": 0.08422049880027771
+    },
+    {
+      "seed": 99312933,
+      "wait_before": 0.04957345500588417,
+      "wait_after": 0.07086199522018433,
+      "total_variation": 0.06782526522874832
+    },
+    {
+      "seed": 99324387,
+      "wait_before": 0.3670724034309387,
+      "wait_after": 0.4196385145187378,
+      "total_variation": 0.05256607383489609
+    },
+    {
+      "seed": 99123141,
+      "wait_before": 0.12986794114112854,
+      "wait_after": 0.15772020816802979,
+      "total_variation": 0.14464594423770905
+    },
+    {
+      "seed": 99433969,
+      "wait_before": 0.6902481913566589,
+      "wait_after": 0.7392058968544006,
+      "total_variation": 0.04990445822477341
+    }
+  ]
+}

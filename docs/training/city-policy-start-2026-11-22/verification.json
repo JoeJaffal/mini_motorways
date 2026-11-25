@@ -1,0 +1,219 @@
+{
+  "result": "PASS",
+  "device": "cuda",
+  "parent": "output/training/triad-score-network-01/latest.zip",
+  "parent_sha256": "4fba6e72990439f2aad76b8c8fea38c100283ad5598cfea254cbbbfa0a49e084",
+  "host": "output/city-road-preflight-build/bin/TrafficHost/release/TrafficHost.dll",
+  "host_sha256": "2da58a5aeefa0e7d3416302d4532724b253e9ede05a998fccf40a324aeb5fe23",
+  "checkpoint_sha256": "e66dbd377a81208092a6c242e446e898729969c53258b4dcdf372a072dd313e8",
+  "policy_seed": 82217,
+  "training_timesteps": 0,
+  "optimizer_state_entries": 0,
+  "restored_masked_prediction": "identical",
+  "copied_tensors": [
+    "features_extractor.endpoint.0.weight",
+    "features_extractor.endpoint.0.bias",
+    "features_extractor.edge.0.weight",
+    "features_extractor.edge.0.bias",
+    "action_net.draw.base.score.weight",
+    "action_net.draw.base.score.bias"
+  ],
+  "crop_parity": {
+    "edges": 256,
+    "max_abs_difference": 1.9073486328125e-06
+  },
+  "ppo_paths": {
+    "parameter_tensors": 22,
+    "legal_roads": 330,
+    "build_available_wait_probability": 0.5000000596046448
+  },
+  "fixture_ranks": [
+    {
+      "gap": 1852,
+      "legal_roads": 326,
+      "transferred": {
+        "rank": 1,
+        "tied": 1,
+        "p_given_build": 0.9896594285964966
+      },
+      "scratch": {
+        "rank": 2,
+        "tied": 1,
+        "p_given_build": 0.0031874505802989006
+      }
+    },
+    {
+      "gap": 1656,
+      "legal_roads": 325,
+      "transferred": {
+        "rank": 1,
+        "tied": 1,
+        "p_given_build": 1.0
+      },
+      "scratch": {
+        "rank": 4,
+        "tied": 1,
+        "p_given_build": 0.0031752190552651882
+      }
+    },
+    {
+      "gap": 1653,
+      "legal_roads": 325,
+      "transferred": {
+        "rank": 1,
+        "tied": 1,
+        "p_given_build": 1.0
+      },
+      "scratch": {
+        "rank": 4,
+        "tied": 1,
+        "p_given_build": 0.0031817753333598375
+      }
+    },
+    {
+      "gap": 1657,
+      "legal_roads": 326,
+      "transferred": {
+        "rank": 2,
+        "tied": 1,
+        "p_given_build": 0.022737927734851837
+      },
+      "scratch": {
+        "rank": 2,
+        "tied": 1,
+        "p_given_build": 0.0031871532555669546
+      }
+    }
+  ],
+  "games": [
+    {
+      "initialization": "transferred",
+      "seed": 2004,
+      "seconds": 243.25,
+      "trips": 22,
+      "road_stock": 0,
+      "buildings": 13,
+      "weekly_awards": 1,
+      "road_actions": 56,
+      "wait_actions": 244,
+      "greedy": false,
+      "scripted_opening_roads": 0,
+      "policy_draws": 56,
+      "forced_waits": 188,
+      "peak_buildings": 13,
+      "first_score": 18,
+      "first_award": {
+        "seconds": 140,
+        "stock": 20
+      },
+      "native_game_over": true,
+      "truncated": false
+    },
+    {
+      "initialization": "scratch",
+      "seed": 2004,
+      "seconds": 128.55,
+      "trips": 0,
+      "road_stock": 0,
+      "buildings": 7,
+      "weekly_awards": 0,
+      "road_actions": 28,
+      "wait_actions": 129,
+      "greedy": false,
+      "scripted_opening_roads": 0,
+      "policy_draws": 28,
+      "forced_waits": 101,
+      "peak_buildings": 7,
+      "first_score": null,
+      "first_award": null,
+      "native_game_over": true,
+      "truncated": false
+    },
+    {
+      "initialization": "transferred",
+      "seed": 16005,
+      "seconds": 236.75,
+      "trips": 15,
+      "road_stock": 0,
+      "buildings": 9,
+      "weekly_awards": 1,
+      "road_actions": 53,
+      "wait_actions": 237,
+      "greedy": false,
+      "scripted_opening_roads": 0,
+      "policy_draws": 53,
+      "forced_waits": 178,
+      "peak_buildings": 9,
+      "first_score": 26,
+      "first_award": {
+        "seconds": 140,
+        "stock": 20
+      },
+      "native_game_over": true,
+      "truncated": false
+    },
+    {
+      "initialization": "scratch",
+      "seed": 16005,
+      "seconds": 136.65,
+      "trips": 0,
+      "road_stock": 0,
+      "buildings": 7,
+      "weekly_awards": 0,
+      "road_actions": 32,
+      "wait_actions": 137,
+      "greedy": false,
+      "scripted_opening_roads": 0,
+      "policy_draws": 32,
+      "forced_waits": 99,
+      "peak_buildings": 7,
+      "first_score": null,
+      "first_award": null,
+      "native_game_over": true,
+      "truncated": false
+    },
+    {
+      "initialization": "transferred",
+      "seed": 2004,
+      "seconds": 139.55,
+      "trips": 0,
+      "road_stock": 25,
+      "buildings": 6,
+      "weekly_awards": 0,
+      "road_actions": 0,
+      "wait_actions": 140,
+      "greedy": true,
+      "scripted_opening_roads": 0,
+      "policy_draws": 0,
+      "forced_waits": 0,
+      "peak_buildings": 6,
+      "first_score": null,
+      "first_award": null,
+      "native_game_over": true,
+      "truncated": false
+    },
+    {
+      "initialization": "transferred",
+      "seed": 2004,
+      "seconds": 205.70000000000002,
+      "trips": 18,
+      "road_stock": 0,
+      "buildings": 8,
+      "weekly_awards": 1,
+      "road_actions": 48,
+      "wait_actions": 206,
+      "greedy": false,
+      "scripted_opening_roads": 4,
+      "policy_draws": 44,
+      "forced_waits": 169,
+      "peak_buildings": 8,
+      "first_score": 15,
+      "first_award": {
+        "seconds": 140,
+        "stock": 20
+      },
+      "native_game_over": true,
+      "truncated": false
+    }
+  ]
+}

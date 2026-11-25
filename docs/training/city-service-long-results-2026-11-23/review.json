@@ -1,0 +1,220 @@
+{
+  "folder": "/home/mohammadjaffal/mini_motorways/output/training/city-service-long-01/review-7df1cc2a",
+  "models": [
+    "/home/mohammadjaffal/mini_motorways/output/training/city-route-repair-calibration-01/calibrated-with-counters.zip",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-service-reserve-readiness-01/checkpoints/city-000086016-db6c8742.zip",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-service-long-01/checkpoints/city-001429504-97875684.zip",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-service-long-01/checkpoints/city-002760704-bfd5f98e.zip",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-service-long-01/checkpoints/city-004067328-091dfcb6.zip",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-service-long-01/checkpoints/city-005316608-f47f325c.zip"
+  ],
+  "sha256": {
+    "/home/mohammadjaffal/mini_motorways/output/training/city-route-repair-calibration-01/calibrated-with-counters.zip": "6ed31e8c655acb71b781652c36814045c979597ced464fbf12d6dafef07acd62",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-service-reserve-readiness-01/checkpoints/city-000086016-db6c8742.zip": "3631b5d13a1d3012134de3dbba51fc8c5e0a10af6b07bd790c5271d405bf15f7",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-service-long-01/checkpoints/city-001429504-97875684.zip": "ce9026a5f264b986068a7bb6e2090c131f7593fa6e6f0f9579e1678fe750accf",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-service-long-01/checkpoints/city-002760704-bfd5f98e.zip": "8e90c34c1dbf12f1f8f10fe795f3b0c27118ea65ebe2769e4cbecbdc53ca227f",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-service-long-01/checkpoints/city-004067328-091dfcb6.zip": "522d3569f70f760c481bd7cfd0e5c22d8c6b006d20a1be81ed5c89bf784f29fa",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-service-long-01/checkpoints/city-005316608-f47f325c.zip": "3cebdd6e7aa15112133d26b789b8ce86d7fa66a39d74b19a8f84d519dc6d2720"
+  },
+  "host_sha256": "a45b9c443bbcb83b4385f38529cc01ef291e8b26d10dd314650581d258afe3d8",
+  "results": {
+    "0": {
+      "games": 24,
+      "scoring_games": 23,
+      "mean_score": 89.16666666666667,
+      "new_targets": 112,
+      "new_targets_served": 76,
+      "new_target_stockouts": 60,
+      "median_new_service_delay": 35.0,
+      "mean_paid_units": 85.54166666666667,
+      "mean_outside_observed_routes": 38.416666666666664,
+      "outside_route_share": 0.44909887968826107,
+      "paired_score_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "1": {
+      "games": 24,
+      "scoring_games": 22,
+      "mean_score": 98.54166666666667,
+      "new_targets": 108,
+      "new_targets_served": 89,
+      "new_target_stockouts": 31,
+      "median_new_service_delay": 34.0,
+      "mean_paid_units": 85.875,
+      "mean_outside_observed_routes": 35.041666666666664,
+      "outside_route_share": 0.40805434255215917,
+      "paired_score_delta_and_interval": [
+        9.375,
+        [
+          -14.5,
+          31.87604166666665
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.5416666666666666,
+        [
+          -0.2916666666666667,
+          1.375
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        -3.375,
+        [
+          -9.208333333333334,
+          2.5416666666666665
+        ]
+      ]
+    },
+    "2": {
+      "games": 24,
+      "scoring_games": 21,
+      "mean_score": 89.5,
+      "new_targets": 111,
+      "new_targets_served": 80,
+      "new_target_stockouts": 36,
+      "median_new_service_delay": 37.0,
+      "mean_paid_units": 82.66666666666667,
+      "mean_outside_observed_routes": 34.875,
+      "outside_route_share": 0.421875,
+      "paired_score_delta_and_interval": [
+        0.3333333333333333,
+        [
+          -21.625,
+          22.375
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.16666666666666666,
+        [
+          -0.625,
+          1.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        -3.5416666666666665,
+        [
+          -8.75,
+          1.625
+        ]
+      ]
+    },
+    "3": {
+      "games": 24,
+      "scoring_games": 24,
+      "mean_score": 101.0,
+      "new_targets": 110,
+      "new_targets_served": 88,
+      "new_target_stockouts": 24,
+      "median_new_service_delay": 36.5,
+      "mean_paid_units": 86.5,
+      "mean_outside_observed_routes": 35.291666666666664,
+      "outside_route_share": 0.4079961464354528,
+      "paired_score_delta_and_interval": [
+        11.833333333333334,
+        [
+          -8.666666666666666,
+          31.91770833333332
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.5,
+        [
+          -0.2916666666666667,
+          1.2916666666666667
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        -3.125,
+        [
+          -9.083333333333334,
+          2.75
+        ]
+      ]
+    },
+    "4": {
+      "games": 24,
+      "scoring_games": 20,
+      "mean_score": 84.45833333333333,
+      "new_targets": 104,
+      "new_targets_served": 74,
+      "new_target_stockouts": 25,
+      "median_new_service_delay": 31.0,
+      "mean_paid_units": 81.54166666666667,
+      "mean_outside_observed_routes": 36.916666666666664,
+      "outside_route_share": 0.45273377618804295,
+      "paired_score_delta_and_interval": [
+        -4.708333333333333,
+        [
+          -28.5,
+          18.5
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        -0.08333333333333333,
+        [
+          -0.9166666666666666,
+          0.75
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        -1.5,
+        [
+          -8.458333333333334,
+          5.583333333333333
+        ]
+      ]
+    },
+    "5": {
+      "games": 24,
+      "scoring_games": 21,
+      "mean_score": 77.125,
+      "new_targets": 96,
+      "new_targets_served": 74,
+      "new_target_stockouts": 13,
+      "median_new_service_delay": 37.5,
+      "mean_paid_units": 79.66666666666667,
+      "mean_outside_observed_routes": 36.791666666666664,
+      "outside_route_share": 0.4618200836820084,
+      "paired_score_delta_and_interval": [
+        -12.041666666666666,
+        [
+          -31.708333333333332,
+          5.416666666666667
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        -0.08333333333333333,
+        [
+          -0.7916666666666666,
+          0.5833333333333334
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        -1.625,
+        [
+          -8.291666666666666,
+          4.6260416666666515
+        ]
+      ]
+    }
+  }
+}

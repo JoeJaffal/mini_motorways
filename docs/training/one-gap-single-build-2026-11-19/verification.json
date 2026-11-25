@@ -1,0 +1,43 @@
+{
+  "native_build": {
+    "errors": 0,
+    "warnings": 0,
+    "sha256": "e49913cd02c24c03760c0d20c0d317b8ee70adfc2693476c9c18f024f36ec5ac"
+  },
+  "unit_tests_passed": 15,
+  "scripted_heldout_repair_ones": 100,
+  "scripted_heldout_layouts": 100,
+  "dry_run": {
+    "result": "DRY_RUN_PASS",
+    "mode": "dry-run-no-training",
+    "optimizer_steps": 0,
+    "weights_unchanged": true,
+    "losses": [
+      {
+        "role": "executor",
+        "loss": -0.005463004112243652
+      },
+      {
+        "role": "executor",
+        "loss": -0.11375575512647629
+      }
+    ],
+    "collection_seconds": 1.9906680299900472,
+    "counters": {
+      "tokens": 63,
+      "updates": 0,
+      "version": 0,
+      "episodes": 63
+    },
+    "session_tokens": 63,
+    "elapsed_seconds": 3.2698425579583272
+  },
+  "positive_credit": {
+    "scripted_episode_returns": [
+      1.0,
+      1.0
+    ],
+    "weights_unchanged": true,
+    "optimizer_steps": 0
+  }
+}

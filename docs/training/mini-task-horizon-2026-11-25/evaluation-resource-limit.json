@@ -1,0 +1,16 @@
+{
+  "time": "2026-11-25T15:57:08.856240+02:00",
+  "reason": "Concurrent learners and baseline evaluation left3.4GiB available RAM. Bound future duration-study evaluators to2CPUworkers to avoid overlapping8worker evaluator peaks. Current baseline process retains its loaded8worker source; learning/observations/actions/seeds/weights unchanged.",
+  "changes": [
+    {
+      "file": "audit_mini_behavior.py",
+      "before": "a1678cec4d718320930839dfe769631475e69b0916a24f43d4f1919fc6ce111f",
+      "after": "9c58892c62e3255671c03fad51f27a05d36947e81c5b461e6d9151544118cd0f"
+    },
+    {
+      "file": "evaluate_overnight_city.py",
+      "before": "99f349b2aacec9907beccb903ef68f4b7534c6e707b0903276dff1c89b487885",
+      "after": "a270389d04c2c96320ad41d9c76d10ad831ff52c07ff407d67bb65e1a15d4c70"
+    }
+  ]
+}

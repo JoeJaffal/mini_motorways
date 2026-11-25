@@ -1,0 +1,91 @@
+{
+  "config": {
+    "parent": "output/training/road-cost-continuation-01/strong/checkpoint-000262144.zip",
+    "parent_sha256": "b40194ad5c83fdedc7ba1e534fbc6cedeb91e452a3b873c06ee6c92d23a17355",
+    "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+    "road_cost": 0.04,
+    "seed_start": 213100000,
+    "rng_seed": 251125,
+    "initial_optimizer_steps": 8192,
+    "completed_decisions": 262144,
+    "model_start_timesteps": 688128,
+    "target_decisions": 270336,
+    "recipe": {
+      "n_steps": 512,
+      "batch_size": 128,
+      "n_epochs": 4,
+      "gamma": 1.0,
+      "gae_lambda": 1.0,
+      "vf_coef": 1e-05,
+      "ent_coef": 0.01,
+      "target_kl": 0.03,
+      "learning_rate": 0.0003
+    },
+    "loaded_optimizer_lr_scales": [
+      1.0,
+      0.3,
+      0.1,
+      0.1
+    ],
+    "optimizer_lr_scales": [
+      1.0,
+      0.3,
+      0.1,
+      0.1
+    ],
+    "mixed_city": true,
+    "continuation": "Weights and Adam restored; fresh nonoverlapping episodes and explicit RNG reseed. Not bitwise trajectory continuation."
+  },
+  "checkpoints": [
+    {
+      "checkpoint": "output/training/overnight-mixed-smoke-02/checkpoint-000270336.zip",
+      "sha256": "eefb2d17e0ebef545b1d486028438bf74e8484d41c137610501129f6b63c9840",
+      "cumulative_decisions": 270336,
+      "added_decisions": 8192,
+      "optimizer_steps": 8448,
+      "optimizer_steps_added": 256,
+      "episodes": 133,
+      "seconds": 181.70669803209603,
+      "next_seed_cursors": [
+        213100032,
+        213100049,
+        213100386,
+        213100211,
+        213100052,
+        213100069,
+        213100198,
+        213100215,
+        213100056,
+        213100073,
+        213100250,
+        213100203,
+        213100044,
+        213100061,
+        213100382,
+        213100223
+      ],
+      "next_episode_cursors": [
+        2,
+        4,
+        26,
+        16,
+        7,
+        9,
+        18,
+        20,
+        11,
+        13,
+        25,
+        23,
+        14,
+        16,
+        37,
+        28
+      ],
+      "recent_native_mean": 18.78,
+      "recent_paid_mean": 21.64,
+      "recent_success_rate": 0.72
+    }
+  ],
+  "seconds": 181.71716908807866
+}

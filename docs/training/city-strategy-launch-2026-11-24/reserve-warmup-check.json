@@ -1,0 +1,102 @@
+{
+  "cases": [
+    {
+      "seed": 149000000,
+      "validation": false,
+      "physical_state_and_actor_input_exact": true,
+      "warmup_rewards_excluded": true
+    },
+    {
+      "seed": 149000001,
+      "validation": false,
+      "physical_state_and_actor_input_exact": true,
+      "warmup_rewards_excluded": true
+    },
+    {
+      "seed": 149000002,
+      "validation": false,
+      "physical_state_and_actor_input_exact": true,
+      "warmup_rewards_excluded": true
+    },
+    {
+      "seed": 149000003,
+      "validation": false,
+      "physical_state_and_actor_input_exact": true,
+      "warmup_rewards_excluded": true
+    },
+    {
+      "seed": 149000004,
+      "validation": false,
+      "physical_state_and_actor_input_exact": true,
+      "warmup_rewards_excluded": true
+    },
+    {
+      "seed": 149000005,
+      "validation": false,
+      "physical_state_and_actor_input_exact": true,
+      "warmup_rewards_excluded": true
+    },
+    {
+      "seed": 149000006,
+      "validation": false,
+      "physical_state_and_actor_input_exact": true,
+      "warmup_rewards_excluded": true
+    },
+    {
+      "seed": 149000007,
+      "validation": false,
+      "physical_state_and_actor_input_exact": true,
+      "warmup_rewards_excluded": true
+    },
+    {
+      "seed": 149000000,
+      "validation": true,
+      "physical_state_and_actor_input_exact": true,
+      "warmup_rewards_excluded": true
+    },
+    {
+      "seed": 149000001,
+      "validation": true,
+      "physical_state_and_actor_input_exact": true,
+      "warmup_rewards_excluded": true
+    },
+    {
+      "seed": 149000002,
+      "validation": true,
+      "physical_state_and_actor_input_exact": true,
+      "warmup_rewards_excluded": true
+    },
+    {
+      "seed": 149000003,
+      "validation": true,
+      "physical_state_and_actor_input_exact": true,
+      "warmup_rewards_excluded": true
+    },
+    {
+      "seed": 149000004,
+      "validation": true,
+      "physical_state_and_actor_input_exact": true,
+      "warmup_rewards_excluded": true
+    },
+    {
+      "seed": 149000005,
+      "validation": true,
+      "physical_state_and_actor_input_exact": true,
+      "warmup_rewards_excluded": true
+    },
+    {
+      "seed": 149000006,
+      "validation": true,
+      "physical_state_and_actor_input_exact": true,
+      "warmup_rewards_excluded": true
+    },
+    {
+      "seed": 149000007,
+      "validation": true,
+      "physical_state_and_actor_input_exact": true,
+      "warmup_rewards_excluded": true
+    }
+  ],
+  "warmup_seconds": 6,
+  "note": "Fixed warmup before rated episode; original evaluation remains zero warmup."
+}

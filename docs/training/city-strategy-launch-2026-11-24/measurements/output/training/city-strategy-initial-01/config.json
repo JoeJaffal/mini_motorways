@@ -1,0 +1,53 @@
+{
+  "parent": "output/training/city-five-stage-cold-initial-01/candidate.zip",
+  "parent_sha256": "9202d62be8d237f6fe495ee1ec29eed1747849a1fd747006ea8903de7f0b19f1",
+  "initial_sha256": "38408379ea8a163cf912e8e22de0b975a21e2123ca88e1d298121cf4b6065925",
+  "optimizer": "fresh: new residual modules and expanded critic",
+  "checks": [
+    {
+      "lesson": "midgame-network-join",
+      "actor_exact": true,
+      "critic_max_difference": 0.0
+    },
+    {
+      "lesson": "midgame-network-route",
+      "actor_exact": true,
+      "critic_max_difference": 0.0
+    },
+    {
+      "lesson": "midgame-network-delay",
+      "actor_exact": true,
+      "critic_max_difference": 0.0
+    },
+    {
+      "lesson": "midgame-network-quiet",
+      "actor_exact": true,
+      "critic_max_difference": 0.0
+    },
+    {
+      "lesson": "traffic-priority-established",
+      "actor_exact": true,
+      "critic_max_difference": 0.0
+    },
+    {
+      "lesson": "traffic-priority-established-swap",
+      "actor_exact": true,
+      "critic_max_difference": 0.0
+    },
+    {
+      "lesson": "traffic-junction-low-live",
+      "actor_exact": true,
+      "critic_max_difference": 0.0
+    },
+    {
+      "lesson": "traffic-junction-high-live",
+      "actor_exact": true,
+      "critic_max_difference": 0.0
+    },
+    {
+      "lesson": "midgame-network-reserve",
+      "actor_exact": true,
+      "critic_max_difference": 0.0
+    }
+  ]
+}

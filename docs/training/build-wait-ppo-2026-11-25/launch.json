@@ -1,0 +1,27 @@
+{
+  "command": [
+    "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+    "-u",
+    "/home/mohammadjaffal/mini_motorways/training/run_city_wait_decision.py",
+    "--parent",
+    "/home/mohammadjaffal/mini_motorways/output/training/mini-fixed-route-01/training/final.zip",
+    "--host-directory",
+    "/home/mohammadjaffal/mini_motorways/output/wait-decision-build-02/artifacts/bin/TrafficHost/release",
+    "--city-host-directory",
+    "/home/mohammadjaffal/mini_motorways/output/road-cost-reward-build-02/bin/TrafficHost/release",
+    "--output",
+    "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01",
+    "--archive",
+    "/home/mohammadjaffal/mini_motorways/docs/training/build-wait-ppo-2026-11-25",
+    "--rollouts",
+    "4"
+  ],
+  "started": "2026-11-25T19:51:52.383563+02:00",
+  "revision": "6bd7f7193b26ae0f5aa12563f3dd89769115df6e",
+  "branch": "Maskable-PPO",
+  "budget": 32768,
+  "parent_reason": "C2 improved fixed layout but failed city retention:107.47/27scoring vs C1 129.25/31. Use retained C1; no destructive rollback.",
+  "remaining_study": "mini-horizon-comparison-01 continues unchanged",
+  "no_overnight": true,
+  "pid": 896687
+}

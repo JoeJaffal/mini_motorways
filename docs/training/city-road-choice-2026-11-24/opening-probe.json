@@ -1,0 +1,213 @@
+{
+  "seed": 184000000,
+  "horizon": 180,
+  "scope": "One training-layout opening reliability; not cross-city generalization",
+  "checkpoints": {
+    "roads": {
+      "path": "output/training/city-road-choice-fit-02/roads/final.zip",
+      "sha256": "4adfead05746e25456933231b3e6fd46ed9f04141f8963e71da3d4177727bf58"
+    }
+  },
+  "results": {
+    "roads": {
+      "games": 32,
+      "scoring": 26,
+      "mean_score": 13.5625,
+      "delivery_by60": 26
+    }
+  },
+  "rows": [
+    {
+      "model": "roads",
+      "action_seed": 194000,
+      "score": 0,
+      "first_delivery": null
+    },
+    {
+      "model": "roads",
+      "action_seed": 194008,
+      "score": 19,
+      "first_delivery": 27
+    },
+    {
+      "model": "roads",
+      "action_seed": 194016,
+      "score": 16,
+      "first_delivery": 19
+    },
+    {
+      "model": "roads",
+      "action_seed": 194024,
+      "score": 16,
+      "first_delivery": 36
+    },
+    {
+      "model": "roads",
+      "action_seed": 194001,
+      "score": 16,
+      "first_delivery": 20
+    },
+    {
+      "model": "roads",
+      "action_seed": 194009,
+      "score": 17,
+      "first_delivery": 18
+    },
+    {
+      "model": "roads",
+      "action_seed": 194017,
+      "score": 14,
+      "first_delivery": 19
+    },
+    {
+      "model": "roads",
+      "action_seed": 194025,
+      "score": 17,
+      "first_delivery": 19
+    },
+    {
+      "model": "roads",
+      "action_seed": 194002,
+      "score": 0,
+      "first_delivery": null
+    },
+    {
+      "model": "roads",
+      "action_seed": 194010,
+      "score": 20,
+      "first_delivery": 20
+    },
+    {
+      "model": "roads",
+      "action_seed": 194018,
+      "score": 19,
+      "first_delivery": 27
+    },
+    {
+      "model": "roads",
+      "action_seed": 194026,
+      "score": 14,
+      "first_delivery": 31
+    },
+    {
+      "model": "roads",
+      "action_seed": 194003,
+      "score": 17,
+      "first_delivery": 16
+    },
+    {
+      "model": "roads",
+      "action_seed": 194011,
+      "score": 15,
+      "first_delivery": 25
+    },
+    {
+      "model": "roads",
+      "action_seed": 194019,
+      "score": 18,
+      "first_delivery": 21
+    },
+    {
+      "model": "roads",
+      "action_seed": 194027,
+      "score": 17,
+      "first_delivery": 23
+    },
+    {
+      "model": "roads",
+      "action_seed": 194004,
+      "score": 0,
+      "first_delivery": null
+    },
+    {
+      "model": "roads",
+      "action_seed": 194012,
+      "score": 14,
+      "first_delivery": 28
+    },
+    {
+      "model": "roads",
+      "action_seed": 194020,
+      "score": 16,
+      "first_delivery": 20
+    },
+    {
+      "model": "roads",
+      "action_seed": 194028,
+      "score": 18,
+      "first_delivery": 15
+    },
+    {
+      "model": "roads",
+      "action_seed": 194005,
+      "score": 18,
+      "first_delivery": 22
+    },
+    {
+      "model": "roads",
+      "action_seed": 194013,
+      "score": 18,
+      "first_delivery": 22
+    },
+    {
+      "model": "roads",
+      "action_seed": 194021,
+      "score": 0,
+      "first_delivery": null
+    },
+    {
+      "model": "roads",
+      "action_seed": 194029,
+      "score": 0,
+      "first_delivery": null
+    },
+    {
+      "model": "roads",
+      "action_seed": 194006,
+      "score": 21,
+      "first_delivery": 28
+    },
+    {
+      "model": "roads",
+      "action_seed": 194014,
+      "score": 15,
+      "first_delivery": 18
+    },
+    {
+      "model": "roads",
+      "action_seed": 194022,
+      "score": 16,
+      "first_delivery": 25
+    },
+    {
+      "model": "roads",
+      "action_seed": 194030,
+      "score": 15,
+      "first_delivery": 17
+    },
+    {
+      "model": "roads",
+      "action_seed": 194007,
+      "score": 16,
+      "first_delivery": 35
+    },
+    {
+      "model": "roads",
+      "action_seed": 194015,
+      "score": 15,
+      "first_delivery": 28
+    },
+    {
+      "model": "roads",
+      "action_seed": 194023,
+      "score": 17,
+      "first_delivery": 33
+    },
+    {
+      "model": "roads",
+      "action_seed": 194031,
+      "score": 0,
+      "first_delivery": null
+    }
+  ]
+}

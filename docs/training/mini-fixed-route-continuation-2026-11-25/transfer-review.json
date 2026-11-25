@@ -1,0 +1,111 @@
+{
+  "city_mean": 107.46875,
+  "scoring": 27,
+  "city_deltas": {
+    "focused_run01_parent": {
+      "trips": {
+        "mean": -21.78125,
+        "ci95": [
+          -50.21953125,
+          8.875781249999989
+        ]
+      },
+      "paid_units": {
+        "mean": -10.53125,
+        "ci95": [
+          -21.75078125,
+          1.5320312499999886
+        ]
+      },
+      "outside_routes": {
+        "mean": 1.9375,
+        "ci95": [
+          -1.65625,
+          5.3125
+        ]
+      }
+    },
+    "retained_original": {
+      "trips": {
+        "mean": -18.625,
+        "ci95": [
+          -51.2515625,
+          16.84453124999999
+        ]
+      },
+      "paid_units": {
+        "mean": -7.5,
+        "ci95": [
+          -22.00078125,
+          7.875
+        ]
+      },
+      "outside_routes": {
+        "mean": 2.90625,
+        "ci95": [
+          -2.8125,
+          8.3125
+        ]
+      }
+    }
+  },
+  "mini": {
+    "adjacent": {
+      "games": 16,
+      "successes": 16,
+      "first_served": 16,
+      "both_served": 0,
+      "parent_successes": 16,
+      "parent_both_served": 0
+    },
+    "bend": {
+      "games": 16,
+      "successes": 16,
+      "first_served": 16,
+      "both_served": 0,
+      "parent_successes": 16,
+      "parent_both_served": 0
+    },
+    "clear": {
+      "games": 16,
+      "successes": 16,
+      "first_served": 16,
+      "both_served": 0,
+      "parent_successes": 16,
+      "parent_both_served": 0
+    },
+    "obstacle": {
+      "games": 16,
+      "successes": 14,
+      "first_served": 14,
+      "both_served": 0,
+      "parent_successes": 14,
+      "parent_both_served": 0
+    },
+    "small-city-offset-pairs": {
+      "games": 16,
+      "successes": 11,
+      "first_served": 11,
+      "both_served": 4,
+      "parent_successes": 12,
+      "parent_both_served": 3
+    },
+    "small-city-offset-single": {
+      "games": 16,
+      "successes": 8,
+      "first_served": 8,
+      "both_served": 0,
+      "parent_successes": 8,
+      "parent_both_served": 0
+    },
+    "small-city-offset-stock": {
+      "games": 16,
+      "successes": 11,
+      "first_served": 11,
+      "both_served": 0,
+      "parent_successes": 12,
+      "parent_both_served": 0
+    }
+  },
+  "limits": "Consumed development layouts. Parent is focused run01 final; this continues its unchanged fixed-board lesson. Neither reference is new held-out evidence. Fixed training board learning does not establish strategy."
+}

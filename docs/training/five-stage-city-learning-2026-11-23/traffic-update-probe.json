@@ -1,0 +1,264 @@
+{
+  "models": [
+    "output/training/city-five-stage-traffic-initial-01/start.zip",
+    "output/training/city-five-stage-traffic-01/midpoint.zip"
+  ],
+  "rows": [
+    {
+      "exercise": "traffic-priority-established",
+      "seed": 118200000,
+      "probabilities": [
+        {
+          "wait": 0.13052287697792053,
+          "upper": 0.43630656599998474,
+          "lower": 0.43317052721977234
+        },
+        {
+          "wait": 0.06584032624959946,
+          "upper": 0.4768317937850952,
+          "lower": 0.45732784271240234
+        }
+      ]
+    },
+    {
+      "exercise": "traffic-priority-established",
+      "seed": 118200001,
+      "probabilities": [
+        {
+          "wait": 0.23259712755680084,
+          "upper": 0.38404759764671326,
+          "lower": 0.3833552598953247
+        },
+        {
+          "wait": 0.12560723721981049,
+          "upper": 0.44515493512153625,
+          "lower": 0.42923781275749207
+        }
+      ]
+    },
+    {
+      "exercise": "traffic-priority-established",
+      "seed": 118200002,
+      "probabilities": [
+        {
+          "wait": 0.39198797941207886,
+          "upper": 0.30340585112571716,
+          "lower": 0.3046061396598816
+        },
+        {
+          "wait": 0.23086196184158325,
+          "upper": 0.3904542028903961,
+          "lower": 0.37868380546569824
+        }
+      ]
+    },
+    {
+      "exercise": "traffic-priority-established",
+      "seed": 118200003,
+      "probabilities": [
+        {
+          "wait": 0.2396017163991928,
+          "upper": 0.3807016611099243,
+          "lower": 0.3796965777873993
+        },
+        {
+          "wait": 0.12977798283100128,
+          "upper": 0.42816856503486633,
+          "lower": 0.4420534074306488
+        }
+      ]
+    },
+    {
+      "exercise": "traffic-priority-established-swap",
+      "seed": 118200000,
+      "probabilities": [
+        {
+          "wait": 0.22863800823688507,
+          "upper": 0.38470330834388733,
+          "lower": 0.38665860891342163
+        },
+        {
+          "wait": 0.12289119511842728,
+          "upper": 0.42986708879470825,
+          "lower": 0.44724178314208984
+        }
+      ]
+    },
+    {
+      "exercise": "traffic-priority-established-swap",
+      "seed": 118200001,
+      "probabilities": [
+        {
+          "wait": 0.27226370573043823,
+          "upper": 0.36209768056869507,
+          "lower": 0.3656385540962219
+        },
+        {
+          "wait": 0.15045149624347687,
+          "upper": 0.41537997126579285,
+          "lower": 0.4341685175895691
+        }
+      ]
+    },
+    {
+      "exercise": "traffic-priority-established-swap",
+      "seed": 118200002,
+      "probabilities": [
+        {
+          "wait": 0.22909367084503174,
+          "upper": 0.38227277994155884,
+          "lower": 0.38863351941108704
+        },
+        {
+          "wait": 0.12111484259366989,
+          "upper": 0.4282286465167999,
+          "lower": 0.45065656304359436
+        }
+      ]
+    },
+    {
+      "exercise": "traffic-priority-established-swap",
+      "seed": 118200003,
+      "probabilities": [
+        {
+          "wait": 0.252763569355011,
+          "upper": 0.3762669265270233,
+          "lower": 0.37096941471099854
+        },
+        {
+          "wait": 0.13830485939979553,
+          "upper": 0.4413420557975769,
+          "lower": 0.42035311460494995
+        }
+      ]
+    },
+    {
+      "exercise": "traffic-junction-low-live",
+      "seed": 118200000,
+      "probabilities": [
+        {
+          "wait": 0.9166309833526611,
+          "feeder": 0.00294176721945405,
+          "separate-exit": 0.0060596526600420475
+        },
+        {
+          "wait": 0.8285717368125916,
+          "feeder": 0.00720179034397006,
+          "separate-exit": 0.014189749956130981
+        }
+      ]
+    },
+    {
+      "exercise": "traffic-junction-low-live",
+      "seed": 118200001,
+      "probabilities": [
+        {
+          "wait": 0.9549568295478821,
+          "feeder": 0.0014920623507350683,
+          "separate-exit": 0.007583347149193287
+        },
+        {
+          "wait": 0.9047284722328186,
+          "feeder": 0.0035641619469970465,
+          "separate-exit": 0.018880002200603485
+        }
+      ]
+    },
+    {
+      "exercise": "traffic-junction-low-live",
+      "seed": 118200002,
+      "probabilities": [
+        {
+          "wait": 0.961983323097229,
+          "feeder": 0.0011717253364622593,
+          "separate-exit": 0.006149644963443279
+        },
+        {
+          "wait": 0.916408896446228,
+          "feeder": 0.0029305664356797934,
+          "separate-exit": 0.016074735671281815
+        }
+      ]
+    },
+    {
+      "exercise": "traffic-junction-low-live",
+      "seed": 118200003,
+      "probabilities": [
+        {
+          "wait": 0.9295194149017334,
+          "feeder": 0.0024945035111159086,
+          "separate-exit": 0.00513806426897645
+        },
+        {
+          "wait": 0.8530237078666687,
+          "feeder": 0.0061925118789076805,
+          "separate-exit": 0.012201730161905289
+        }
+      ]
+    },
+    {
+      "exercise": "traffic-junction-high-live",
+      "seed": 118200000,
+      "probabilities": [
+        {
+          "wait": 0.9693752527236938,
+          "feeder": 0.001035994035191834,
+          "separate-exit": 0.0020524265710264444
+        },
+        {
+          "wait": 0.9294838905334473,
+          "feeder": 0.002870633965358138,
+          "separate-exit": 0.005427878350019455
+        }
+      ]
+    },
+    {
+      "exercise": "traffic-junction-high-live",
+      "seed": 118200001,
+      "probabilities": [
+        {
+          "wait": 0.9782684445381165,
+          "feeder": 0.0006594736478291452,
+          "separate-exit": 0.00346130202524364
+        },
+        {
+          "wait": 0.9510434865951538,
+          "feeder": 0.001693179365247488,
+          "separate-exit": 0.009283359162509441
+        }
+      ]
+    },
+    {
+      "exercise": "traffic-junction-high-live",
+      "seed": 118200002,
+      "probabilities": [
+        {
+          "wait": 0.9651610851287842,
+          "feeder": 0.0009651687578298151,
+          "separate-exit": 0.005309117026627064
+        },
+        {
+          "wait": 0.9188827276229858,
+          "feeder": 0.002583624329417944,
+          "separate-exit": 0.0148988738656044
+        }
+      ]
+    },
+    {
+      "exercise": "traffic-junction-high-live",
+      "seed": 118200003,
+      "probabilities": [
+        {
+          "wait": 0.9599897265434265,
+          "feeder": 0.0013632022310048342,
+          "separate-exit": 0.00271912501193583
+        },
+        {
+          "wait": 0.910016655921936,
+          "feeder": 0.0036847975570708513,
+          "separate-exit": 0.007016003597527742
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,277 @@
+{
+  "practice": {
+    "parent": {
+      "train/small-city-single": {
+        "score": 3.625,
+        "first_served": 1.0,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 4.0,
+        "remaining_stock": 0.9375,
+        "paid_units": 3.0625,
+        "outside_routes": 0.0,
+        "games": 32
+      },
+      "train/small-city-offset-pairs": {
+        "score": 2.9375,
+        "first_served": 0.71875,
+        "later_exists": 0.96875,
+        "later_served": 0.25,
+        "both_served": 0.25,
+        "initial_stock": 14.125,
+        "remaining_stock": 0.0,
+        "paid_units": 14.125,
+        "outside_routes": 8.0,
+        "games": 32
+      },
+      "validation/small-city-single": {
+        "score": 3.625,
+        "first_served": 1.0,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 4.0625,
+        "remaining_stock": 0.9375,
+        "paid_units": 3.125,
+        "outside_routes": 0.0,
+        "games": 32
+      },
+      "validation/small-city-offset-pairs": {
+        "score": 2.8125,
+        "first_served": 0.625,
+        "later_exists": 0.90625,
+        "later_served": 0.28125,
+        "both_served": 0.28125,
+        "initial_stock": 14.125,
+        "remaining_stock": 0.0,
+        "paid_units": 14.125,
+        "outside_routes": 8.34375,
+        "games": 32
+      }
+    },
+    "final": {
+      "train/small-city-single": {
+        "score": 3.625,
+        "first_served": 1.0,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 4.0,
+        "remaining_stock": 0.9375,
+        "paid_units": 3.0625,
+        "outside_routes": 0.0,
+        "games": 32
+      },
+      "train/small-city-offset-pairs": {
+        "score": 2.5,
+        "first_served": 0.59375,
+        "later_exists": 1.0,
+        "later_served": 0.25,
+        "both_served": 0.25,
+        "initial_stock": 14.125,
+        "remaining_stock": 0.0,
+        "paid_units": 14.125,
+        "outside_routes": 9.03125,
+        "games": 32
+      },
+      "validation/small-city-single": {
+        "score": 3.625,
+        "first_served": 1.0,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 4.0625,
+        "remaining_stock": 0.9375,
+        "paid_units": 3.125,
+        "outside_routes": 0.0,
+        "games": 32
+      },
+      "validation/small-city-offset-pairs": {
+        "score": 2.46875,
+        "first_served": 0.53125,
+        "later_exists": 0.90625,
+        "later_served": 0.28125,
+        "both_served": 0.28125,
+        "initial_stock": 14.125,
+        "remaining_stock": 0.0,
+        "paid_units": 14.125,
+        "outside_routes": 9.25,
+        "games": 32
+      }
+    }
+  },
+  "paired": {
+    "train/small-city-single": {
+      "score": {
+        "delta": 0.0,
+        "interval95": [
+          0.0,
+          0.0
+        ]
+      },
+      "first_served": {
+        "delta": 0.0,
+        "interval95": [
+          0.0,
+          0.0
+        ]
+      },
+      "both_served": {
+        "delta": 0.0,
+        "interval95": [
+          0.0,
+          0.0
+        ]
+      },
+      "outside_routes": {
+        "delta": 0.0,
+        "interval95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "train/small-city-offset-pairs": {
+      "score": {
+        "delta": -0.4375,
+        "interval95": [
+          -0.8125,
+          -0.09375
+        ]
+      },
+      "first_served": {
+        "delta": -0.125,
+        "interval95": [
+          -0.25,
+          -0.03125
+        ]
+      },
+      "both_served": {
+        "delta": 0.0,
+        "interval95": [
+          0.0,
+          0.0
+        ]
+      },
+      "outside_routes": {
+        "delta": 1.03125,
+        "interval95": [
+          0.125,
+          2.0625
+        ]
+      }
+    },
+    "validation/small-city-single": {
+      "score": {
+        "delta": 0.0,
+        "interval95": [
+          0.0,
+          0.0
+        ]
+      },
+      "first_served": {
+        "delta": 0.0,
+        "interval95": [
+          0.0,
+          0.0
+        ]
+      },
+      "both_served": {
+        "delta": 0.0,
+        "interval95": [
+          0.0,
+          0.0
+        ]
+      },
+      "outside_routes": {
+        "delta": 0.0,
+        "interval95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "validation/small-city-offset-pairs": {
+      "score": {
+        "delta": -0.34375,
+        "interval95": [
+          -0.6875,
+          -0.0625
+        ]
+      },
+      "first_served": {
+        "delta": -0.09375,
+        "interval95": [
+          -0.1875,
+          0.0
+        ]
+      },
+      "both_served": {
+        "delta": 0.0,
+        "interval95": [
+          0.0,
+          0.0
+        ]
+      },
+      "outside_routes": {
+        "delta": 0.90625,
+        "interval95": [
+          0.21875,
+          1.71875
+        ]
+      }
+    }
+  },
+  "city": {
+    "repeated": {
+      "games": 16,
+      "mean": 131.1875,
+      "scoring": 14,
+      "new_targets_served": 72,
+      "stockouts": 26,
+      "delta": 4.9375,
+      "interval95": [
+        -19.4375,
+        35.125
+      ]
+    },
+    "heldout": {
+      "games": 16,
+      "mean": 154.9375,
+      "scoring": 16,
+      "new_targets_served": 93,
+      "stockouts": 27,
+      "delta": 29.0,
+      "interval95": [
+        6.5625,
+        54.9375
+      ]
+    }
+  },
+  "city_parent": {
+    "repeated": {
+      "games": 16,
+      "mean": 126.25,
+      "scoring": 15,
+      "new_targets_served": 69,
+      "stockouts": 24
+    },
+    "heldout": {
+      "games": 16,
+      "mean": 125.9375,
+      "scoring": 15,
+      "new_targets_served": 76,
+      "stockouts": 20
+    }
+  },
+  "gates": {
+    "practice_both_improves_10pp": false,
+    "practice_first_retained": false,
+    "practice_outside_routes_not_worse": false,
+    "city_mean_retained": true,
+    "city_scoring_retained": true
+  },
+  "all_gates_pass": false,
+  "limits": "One training RNG; paired bootstrap clusters both action RNGs by scenario. Practice validation translations excluded from training. City suite is previously used development data."
+}

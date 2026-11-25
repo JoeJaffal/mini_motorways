@@ -1,0 +1,24 @@
+{
+  "dll": "/home/mohammadjaffal/mini_motorways/output/training/mini-horizon-comparison-01/runtime/host/TrafficHost.dll",
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+  "models": {
+    "candidate": {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/mini-horizon-comparison-01/long-window/checkpoint-000065536.zip",
+      "sha256": "ad4b4083114868a710813820d8e027e609e162bc3c8fb0642b954c0c9e48c68e"
+    }
+  },
+  "exercises": [
+    "adjacent",
+    "bend",
+    "clear",
+    "obstacle",
+    "small-city-offset-single",
+    "small-city-offset-stock",
+    "small-city-offset-pairs"
+  ],
+  "count": 16,
+  "seed_start": 231000000,
+  "small_city_horizon": 300,
+  "reference_queries": false,
+  "old_geometry_uses_city_wait_60_seconds": true
+}

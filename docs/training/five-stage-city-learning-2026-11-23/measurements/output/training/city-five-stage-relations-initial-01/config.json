@@ -1,0 +1,9 @@
+{
+  "parent": "output/training/city-established-pilot-01/checkpoints/city-000425984-7ec13846.zip",
+  "parent_sha256": "637dcd6f1e05ac61869e7b7ecb9e0a31fb41e8305ae5c89b091218a8a3fd651a",
+  "initial_sha256": "6b07025fc84d0d2370b8ea23c15c49be00b0cbc17c2d2c8bad0bbd164f549b63",
+  "optimizer": "fresh: changed trainable parameters",
+  "actor_rate": 0.01,
+  "critic_rate": 0.0001,
+  "temperature": 20
+}

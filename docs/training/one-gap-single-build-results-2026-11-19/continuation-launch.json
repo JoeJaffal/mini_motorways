@@ -1,0 +1,105 @@
+{
+  "started_asia_beirut": "2026-11-19T21:20:58+02:00",
+  "service": "mini-motorways-single-build-pilot-02.service",
+  "log": "output/training/single-build-pilot-02-launch/training.log",
+  "attempt_limit": 131072,
+  "wall_seconds": 1800,
+  "resume": {
+    "parent_checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/single-build-pilot-01-fast/latest.pt",
+    "parent_sha256": "2c69b596c0f58687730acd47a483c8cb0bcbb4b95f61b58aa4daa51bb5286d14",
+    "parent_counters": {
+      "tokens": 122880,
+      "updates": 240,
+      "version": 60,
+      "episodes": 122880,
+      "worker_episodes": [
+        7680,
+        7680,
+        7680,
+        7680,
+        7680,
+        7680,
+        7680,
+        7680,
+        7680,
+        7680,
+        7680,
+        7680,
+        7680,
+        7680,
+        7680,
+        7680
+      ],
+      "worker_seed_indices": [
+        7679,
+        7679,
+        7679,
+        7679,
+        7679,
+        7679,
+        7679,
+        7679,
+        7679,
+        7679,
+        7679,
+        7679,
+        7679,
+        7679,
+        7679,
+        7679
+      ]
+    },
+    "game_state": "fresh games; unfinished parent games skipped, no bit-exact simulation continuation"
+  },
+  "first_rollout": {
+    "tokens": 124928,
+    "updates": 244,
+    "version": 61,
+    "episodes": 124928,
+    "collection_seconds": 20.365373236010782,
+    "update_seconds": 2.759258914971724,
+    "score": 0.0,
+    "worker_tokens": {
+      "1": 128,
+      "2": 128,
+      "3": 128,
+      "4": 128,
+      "5": 128,
+      "6": 128,
+      "7": 128,
+      "8": 128,
+      "9": 128,
+      "10": 128,
+      "11": 128,
+      "12": 128,
+      "13": 128,
+      "14": 128,
+      "15": 128,
+      "16": 128
+    },
+    "update_diagnostics": [
+      {
+        "epoch": 0,
+        "approximate_kl": -1.0477378964424133e-09,
+        "gradient_norm": 1.243888258934021
+      },
+      {
+        "epoch": 1,
+        "approximate_kl": 1.5069497749209404e-05,
+        "gradient_norm": 1.1009507179260254
+      },
+      {
+        "epoch": 2,
+        "approximate_kl": 7.05254205968231e-05,
+        "gradient_norm": 1.2965595722198486
+      },
+      {
+        "epoch": 3,
+        "approximate_kl": 0.00019151702872477472,
+        "gradient_norm": 1.2325634956359863
+      }
+    ],
+    "successful_builds": 978,
+    "build_attempts": 2048
+  }
+}

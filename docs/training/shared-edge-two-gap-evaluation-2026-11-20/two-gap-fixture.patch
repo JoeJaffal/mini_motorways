@@ -1,0 +1,59 @@
+--- a/simulation/Assets/Simulation/PracticeScenario.cs
++++ b/simulation/Assets/Simulation/PracticeScenario.cs
+@@ -9,22 +9,32 @@
+         public void LoadConnectionPractice(int seed,string split="train",string stage="clear")
+         {
+             if(split!="train"&&split!="validation")throw new ArgumentException("Unknown practice split");
+-            if(stage!="clear"&&stage!="one-gap"&&stage!="one-gap-single-build")throw new ArgumentException("Unknown practice stage");
++            bool diagonal=stage=="two-gap-diagonal";
++            bool twoGap=diagonal||stage=="two-gap-axis";
++            if(stage!="clear"&&stage!="one-gap"&&stage!="one-gap-single-build"&&!twoGap)throw new ArgumentException("Unknown practice stage");
+             Reset(seed,ScenarioKind.EmptyLab);
+             CustomScenarioId="connection-practice-v1"; // No weekly inventory or scripted city events.
+             var rng=new Random(seed);
+             // Disjoint destination positions prevent identical layouts crossing splits.
+             var origin=new Cell(split=="train"?rng.Next(12,22):rng.Next(30,38),rng.Next(10,19));
+-            int layout=rng.Next(4),gap=rng.Next(2,6),color=rng.Next(3);
++            int layout=rng.Next(4),gap=rng.Next(twoGap?4:2,6),color=rng.Next(3);
+             var shop=SpawnBuilding(origin,color,false,0,layout);
+             if(shop==null)throw new InvalidOperationException("Practice destination placement failed");
+             var direction=Directions[shop.DrivewayDirection];
+             var outside=shop.Access+direction;
++            var pathDirection=direction;
++            if(diagonal)
++            {
++                var clockwise=Directions[(shop.DrivewayDirection+1)%8];
++                bool positiveSlope=clockwise.X==clockwise.Y;
++                pathDirection=positiveSlope==(seed%2==0)
++                    ?clockwise:Directions[(shop.DrivewayDirection+7)%8];
++            }
+             var home=outside;
+-            for(int i=0;i<gap+1;i++)home+=direction;
++            for(int i=0;i<gap+1;i++)home+=pathDirection;
+             var perpendicular=new Cell(-direction.Y,direction.X);
+             int offset=rng.Next(-1,2);
+-            home=new Cell(home.X+offset*perpendicular.X,home.Y+offset*perpendicular.Y);
++            if(!twoGap)home=new Cell(home.X+offset*perpendicular.X,home.Y+offset*perpendicular.Y);
+             if(SpawnBuilding(home,color,true,rng.Next(8))==null)
+                 throw new InvalidOperationException("Practice house placement failed");
+             Array.Clear(Inventory,0,Inventory.Length);Inventory[0]=20;
+@@ -40,10 +50,17 @@
+                     path.Add(next);at=next;
+                 }
+                 // Interior edge only: both ends already belong to visible road stubs.
+-                int missing=rng.Next(1,path.Count-2);
++                int missing=rng.Next(1,twoGap?path.Count-4:path.Count-2);
+                 if(!RemoveRoadConnection(path[missing],path[missing+1]))
+                     throw new InvalidOperationException("Practice gap setup failed");
+-                Array.Clear(Inventory,0,Inventory.Length);Inventory[0]=stage=="one-gap-single-build"?1:20;
++                if(twoGap)
++                {
++                    int second=rng.Next(missing+2,path.Count-2);
++                    if(!RemoveRoadConnection(path[second],path[second+1]))
++                        throw new InvalidOperationException("Second practice gap setup failed");
++                }
++                Array.Clear(Inventory,0,Inventory.Length);
++                Inventory[0]=twoGap?2:stage=="one-gap-single-build"?1:20;
+             }
+             LastAction="Connection practice v1: one house and destination; paused construction";
+         }

@@ -1,0 +1,223 @@
+{
+  "parent": {
+    "games": 32,
+    "mean": 121.53125,
+    "scoring": 29,
+    "paid_units": 92.53125,
+    "outside_routes": 29.96875,
+    "stockout_arrivals": 25,
+    "new_targets_served": 143
+  },
+  "final": {
+    "games": 32,
+    "mean": 123.53125,
+    "scoring": 29,
+    "paid_units": 93.46875,
+    "outside_routes": 29.0625,
+    "stockout_arrivals": 38,
+    "new_targets_served": 148
+  },
+  "delta": 2.0,
+  "interval95": [
+    -16.84375,
+    20.71875
+  ],
+  "wins": 14,
+  "ties": 3,
+  "losses": 15,
+  "paired": [
+    {
+      "seed": 196000000,
+      "parent": 147,
+      "final": 151,
+      "delta": 4
+    },
+    {
+      "seed": 196000008,
+      "parent": 3,
+      "final": 1,
+      "delta": -2
+    },
+    {
+      "seed": 196000016,
+      "parent": 168,
+      "final": 169,
+      "delta": 1
+    },
+    {
+      "seed": 196000024,
+      "parent": 154,
+      "final": 165,
+      "delta": 11
+    },
+    {
+      "seed": 196000001,
+      "parent": 156,
+      "final": 160,
+      "delta": 4
+    },
+    {
+      "seed": 196000009,
+      "parent": 165,
+      "final": 170,
+      "delta": 5
+    },
+    {
+      "seed": 196000017,
+      "parent": 166,
+      "final": 167,
+      "delta": 1
+    },
+    {
+      "seed": 196000025,
+      "parent": 119,
+      "final": 79,
+      "delta": -40
+    },
+    {
+      "seed": 196000002,
+      "parent": 26,
+      "final": 172,
+      "delta": 146
+    },
+    {
+      "seed": 196000010,
+      "parent": 22,
+      "final": 164,
+      "delta": 142
+    },
+    {
+      "seed": 196000018,
+      "parent": 173,
+      "final": 165,
+      "delta": -8
+    },
+    {
+      "seed": 196000026,
+      "parent": 164,
+      "final": 167,
+      "delta": 3
+    },
+    {
+      "seed": 196000003,
+      "parent": 0,
+      "final": 0,
+      "delta": 0
+    },
+    {
+      "seed": 196000011,
+      "parent": 0,
+      "final": 0,
+      "delta": 0
+    },
+    {
+      "seed": 196000019,
+      "parent": 173,
+      "final": 171,
+      "delta": -2
+    },
+    {
+      "seed": 196000027,
+      "parent": 179,
+      "final": 177,
+      "delta": -2
+    },
+    {
+      "seed": 196000004,
+      "parent": 173,
+      "final": 162,
+      "delta": -11
+    },
+    {
+      "seed": 196000012,
+      "parent": 4,
+      "final": 0,
+      "delta": -4
+    },
+    {
+      "seed": 196000020,
+      "parent": 100,
+      "final": 167,
+      "delta": 67
+    },
+    {
+      "seed": 196000028,
+      "parent": 148,
+      "final": 87,
+      "delta": -61
+    },
+    {
+      "seed": 196000005,
+      "parent": 155,
+      "final": 175,
+      "delta": 20
+    },
+    {
+      "seed": 196000013,
+      "parent": 176,
+      "final": 171,
+      "delta": -5
+    },
+    {
+      "seed": 196000021,
+      "parent": 171,
+      "final": 170,
+      "delta": -1
+    },
+    {
+      "seed": 196000029,
+      "parent": 0,
+      "final": 4,
+      "delta": 4
+    },
+    {
+      "seed": 196000006,
+      "parent": 169,
+      "final": 121,
+      "delta": -48
+    },
+    {
+      "seed": 196000014,
+      "parent": 135,
+      "final": 96,
+      "delta": -39
+    },
+    {
+      "seed": 196000022,
+      "parent": 176,
+      "final": 176,
+      "delta": 0
+    },
+    {
+      "seed": 196000030,
+      "parent": 175,
+      "final": 4,
+      "delta": -171
+    },
+    {
+      "seed": 196000007,
+      "parent": 22,
+      "final": 107,
+      "delta": 85
+    },
+    {
+      "seed": 196000015,
+      "parent": 169,
+      "final": 163,
+      "delta": -6
+    },
+    {
+      "seed": 196000023,
+      "parent": 140,
+      "final": 158,
+      "delta": 18
+    },
+    {
+      "seed": 196000031,
+      "parent": 161,
+      "final": 114,
+      "delta": -47
+    }
+  ],
+  "scope": "32 previously unused city seeds; one action RNG per city, one training RNG. Frozen candidate selected before these results; no guarantee of generalization to other maps or leaderboard settings."
+}

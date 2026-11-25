@@ -1,0 +1,80 @@
+{
+  "models": [
+    "output/training/city-five-stage-cold-initial-01/candidate.zip",
+    "output/training/city-strategy-pilot-01/final.zip"
+  ],
+  "sha256": {
+    "output/training/city-five-stage-cold-initial-01/candidate.zip": "9202d62be8d237f6fe495ee1ec29eed1747849a1fd747006ea8903de7f0b19f1",
+    "output/training/city-strategy-pilot-01/final.zip": "55cc4a38d5949b1abbee9c27630f519bdc1be835f034be3f95e1c0c0aad43915"
+  },
+  "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+  "horizon": 600,
+  "results": {
+    "0": {
+      "games": 64,
+      "scoring_games": 54,
+      "mean_score": 82.734375,
+      "new_targets": 267,
+      "new_targets_served": 202,
+      "new_target_stockouts": 58,
+      "median_new_service_delay": 26.0,
+      "mean_paid_units": 76.53125,
+      "mean_outside_observed_routes": 33.203125,
+      "outside_route_share": 0.4338505512454063,
+      "paired_score_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "1": {
+      "games": 64,
+      "scoring_games": 54,
+      "mean_score": 88.140625,
+      "new_targets": 259,
+      "new_targets_served": 207,
+      "new_target_stockouts": 105,
+      "median_new_service_delay": 29.0,
+      "mean_paid_units": 82.515625,
+      "mean_outside_observed_routes": 34.375,
+      "outside_route_share": 0.4165877674682825,
+      "paired_score_delta_and_interval": [
+        5.40625,
+        [
+          -5.5,
+          16.234765624999994
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.078125,
+        [
+          -0.3125,
+          0.46875
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        1.171875,
+        [
+          -1.390625,
+          3.7503906249999943
+        ]
+      ]
+    }
+  }
+}

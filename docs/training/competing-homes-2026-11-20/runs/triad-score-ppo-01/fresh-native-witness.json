@@ -1,0 +1,1240 @@
+{
+  "source_sha256": "1fc7598b2339839482abea3a570e9f5cbe468282e4263856861c3b5243f6e7fe",
+  "native_sha256": "433044d1bd799bf02102103be110c05029f195082854c6882903db9a7fe73863",
+  "results": {
+    "pair-triad-left/greedy": {
+      "layouts": 100,
+      "policy_mean": 7.44,
+      "witness_mean": 8.69,
+      "ties_or_exceeds_witness": 0,
+      "connections_before_wait": 100,
+      "edits_after_connection": 0
+    },
+    "pair-triad-left/sampled": {
+      "layouts": 100,
+      "policy_mean": 6.85,
+      "witness_mean": 8.69,
+      "ties_or_exceeds_witness": 0,
+      "connections_before_wait": 57,
+      "edits_after_connection": 2
+    },
+    "pair-triad-right/greedy": {
+      "layouts": 100,
+      "policy_mean": 7.44,
+      "witness_mean": 8.69,
+      "ties_or_exceeds_witness": 0,
+      "connections_before_wait": 100,
+      "edits_after_connection": 0
+    },
+    "pair-triad-right/sampled": {
+      "layouts": 100,
+      "policy_mean": 7.39,
+      "witness_mean": 8.69,
+      "ties_or_exceeds_witness": 0,
+      "connections_before_wait": 67,
+      "edits_after_connection": 4
+    }
+  },
+  "witnesses": {
+    "pair-triad-left/63400": {
+      "seed": 63400,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63401": {
+      "seed": 63401,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63402": {
+      "seed": 63402,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63403": {
+      "seed": 63403,
+      "trips": 10.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63404": {
+      "seed": 63404,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63405": {
+      "seed": 63405,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63406": {
+      "seed": 63406,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63407": {
+      "seed": 63407,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63408": {
+      "seed": 63408,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63409": {
+      "seed": 63409,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63410": {
+      "seed": 63410,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63411": {
+      "seed": 63411,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63412": {
+      "seed": 63412,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63413": {
+      "seed": 63413,
+      "trips": 10.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63414": {
+      "seed": 63414,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63415": {
+      "seed": 63415,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63416": {
+      "seed": 63416,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63417": {
+      "seed": 63417,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63418": {
+      "seed": 63418,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63419": {
+      "seed": 63419,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63420": {
+      "seed": 63420,
+      "trips": 10.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63421": {
+      "seed": 63421,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63422": {
+      "seed": 63422,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63423": {
+      "seed": 63423,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63424": {
+      "seed": 63424,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63425": {
+      "seed": 63425,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63426": {
+      "seed": 63426,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63427": {
+      "seed": 63427,
+      "trips": 10.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63428": {
+      "seed": 63428,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63429": {
+      "seed": 63429,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63430": {
+      "seed": 63430,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63431": {
+      "seed": 63431,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63432": {
+      "seed": 63432,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63433": {
+      "seed": 63433,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63434": {
+      "seed": 63434,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63435": {
+      "seed": 63435,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63436": {
+      "seed": 63436,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63437": {
+      "seed": 63437,
+      "trips": 10.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63438": {
+      "seed": 63438,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63439": {
+      "seed": 63439,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63440": {
+      "seed": 63440,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63441": {
+      "seed": 63441,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63442": {
+      "seed": 63442,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63443": {
+      "seed": 63443,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63444": {
+      "seed": 63444,
+      "trips": 10.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63445": {
+      "seed": 63445,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63446": {
+      "seed": 63446,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63447": {
+      "seed": 63447,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63448": {
+      "seed": 63448,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63449": {
+      "seed": 63449,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63450": {
+      "seed": 63450,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63451": {
+      "seed": 63451,
+      "trips": 10.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63452": {
+      "seed": 63452,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63453": {
+      "seed": 63453,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63454": {
+      "seed": 63454,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63455": {
+      "seed": 63455,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63456": {
+      "seed": 63456,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63457": {
+      "seed": 63457,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63458": {
+      "seed": 63458,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63459": {
+      "seed": 63459,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63460": {
+      "seed": 63460,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63461": {
+      "seed": 63461,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63462": {
+      "seed": 63462,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63463": {
+      "seed": 63463,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63464": {
+      "seed": 63464,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63465": {
+      "seed": 63465,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63466": {
+      "seed": 63466,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63467": {
+      "seed": 63467,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63468": {
+      "seed": 63468,
+      "trips": 10.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63469": {
+      "seed": 63469,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63470": {
+      "seed": 63470,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63471": {
+      "seed": 63471,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63472": {
+      "seed": 63472,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63473": {
+      "seed": 63473,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63474": {
+      "seed": 63474,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63475": {
+      "seed": 63475,
+      "trips": 10.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63476": {
+      "seed": 63476,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63477": {
+      "seed": 63477,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63478": {
+      "seed": 63478,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63479": {
+      "seed": 63479,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63480": {
+      "seed": 63480,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63481": {
+      "seed": 63481,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63482": {
+      "seed": 63482,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63483": {
+      "seed": 63483,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63484": {
+      "seed": 63484,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63485": {
+      "seed": 63485,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63486": {
+      "seed": 63486,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63487": {
+      "seed": 63487,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63488": {
+      "seed": 63488,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63489": {
+      "seed": 63489,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63490": {
+      "seed": 63490,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63491": {
+      "seed": 63491,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63492": {
+      "seed": 63492,
+      "trips": 10.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63493": {
+      "seed": 63493,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63494": {
+      "seed": 63494,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63495": {
+      "seed": 63495,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-left/63496": {
+      "seed": 63496,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63497": {
+      "seed": 63497,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-left/63498": {
+      "seed": 63498,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-left/63499": {
+      "seed": 63499,
+      "trips": 10.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63400": {
+      "seed": 63400,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63401": {
+      "seed": 63401,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63402": {
+      "seed": 63402,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63403": {
+      "seed": 63403,
+      "trips": 10.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63404": {
+      "seed": 63404,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63405": {
+      "seed": 63405,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63406": {
+      "seed": 63406,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63407": {
+      "seed": 63407,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63408": {
+      "seed": 63408,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63409": {
+      "seed": 63409,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63410": {
+      "seed": 63410,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63411": {
+      "seed": 63411,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63412": {
+      "seed": 63412,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63413": {
+      "seed": 63413,
+      "trips": 10.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63414": {
+      "seed": 63414,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63415": {
+      "seed": 63415,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63416": {
+      "seed": 63416,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63417": {
+      "seed": 63417,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63418": {
+      "seed": 63418,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63419": {
+      "seed": 63419,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63420": {
+      "seed": 63420,
+      "trips": 10.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63421": {
+      "seed": 63421,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63422": {
+      "seed": 63422,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63423": {
+      "seed": 63423,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63424": {
+      "seed": 63424,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63425": {
+      "seed": 63425,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63426": {
+      "seed": 63426,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63427": {
+      "seed": 63427,
+      "trips": 10.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63428": {
+      "seed": 63428,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63429": {
+      "seed": 63429,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63430": {
+      "seed": 63430,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63431": {
+      "seed": 63431,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63432": {
+      "seed": 63432,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63433": {
+      "seed": 63433,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63434": {
+      "seed": 63434,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63435": {
+      "seed": 63435,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63436": {
+      "seed": 63436,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63437": {
+      "seed": 63437,
+      "trips": 10.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63438": {
+      "seed": 63438,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63439": {
+      "seed": 63439,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63440": {
+      "seed": 63440,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63441": {
+      "seed": 63441,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63442": {
+      "seed": 63442,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63443": {
+      "seed": 63443,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63444": {
+      "seed": 63444,
+      "trips": 10.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63445": {
+      "seed": 63445,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63446": {
+      "seed": 63446,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63447": {
+      "seed": 63447,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63448": {
+      "seed": 63448,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63449": {
+      "seed": 63449,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63450": {
+      "seed": 63450,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63451": {
+      "seed": 63451,
+      "trips": 10.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63452": {
+      "seed": 63452,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63453": {
+      "seed": 63453,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63454": {
+      "seed": 63454,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63455": {
+      "seed": 63455,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63456": {
+      "seed": 63456,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63457": {
+      "seed": 63457,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63458": {
+      "seed": 63458,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63459": {
+      "seed": 63459,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63460": {
+      "seed": 63460,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63461": {
+      "seed": 63461,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63462": {
+      "seed": 63462,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63463": {
+      "seed": 63463,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63464": {
+      "seed": 63464,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63465": {
+      "seed": 63465,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63466": {
+      "seed": 63466,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63467": {
+      "seed": 63467,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63468": {
+      "seed": 63468,
+      "trips": 10.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63469": {
+      "seed": 63469,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63470": {
+      "seed": 63470,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63471": {
+      "seed": 63471,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63472": {
+      "seed": 63472,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63473": {
+      "seed": 63473,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63474": {
+      "seed": 63474,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63475": {
+      "seed": 63475,
+      "trips": 10.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63476": {
+      "seed": 63476,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63477": {
+      "seed": 63477,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63478": {
+      "seed": 63478,
+      "trips": 9.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63479": {
+      "seed": 63479,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63480": {
+      "seed": 63480,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63481": {
+      "seed": 63481,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63482": {
+      "seed": 63482,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63483": {
+      "seed": 63483,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63484": {
+      "seed": 63484,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63485": {
+      "seed": 63485,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63486": {
+      "seed": 63486,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63487": {
+      "seed": 63487,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63488": {
+      "seed": 63488,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63489": {
+      "seed": 63489,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63490": {
+      "seed": 63490,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63491": {
+      "seed": 63491,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63492": {
+      "seed": 63492,
+      "trips": 10.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63493": {
+      "seed": 63493,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63494": {
+      "seed": 63494,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63495": {
+      "seed": 63495,
+      "trips": 8.0,
+      "stock": 5,
+      "spent": 5
+    },
+    "pair-triad-right/63496": {
+      "seed": 63496,
+      "trips": 8.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63497": {
+      "seed": 63497,
+      "trips": 9.0,
+      "stock": 4,
+      "spent": 4
+    },
+    "pair-triad-right/63498": {
+      "seed": 63498,
+      "trips": 9.0,
+      "stock": 3,
+      "spent": 3
+    },
+    "pair-triad-right/63499": {
+      "seed": 63499,
+      "trips": 10.0,
+      "stock": 3,
+      "spent": 3
+    }
+  }
+}

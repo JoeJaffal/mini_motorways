@@ -1,0 +1,37 @@
+{
+  "parent": "output/training/road-cost-continuation-01/strong/checkpoint-000262144.zip",
+  "parent_sha256": "b40194ad5c83fdedc7ba1e534fbc6cedeb91e452a3b873c06ee6c92d23a17355",
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+  "road_cost": 0.04,
+  "seed_start": 213000000,
+  "rng_seed": 251125,
+  "initial_optimizer_steps": 8192,
+  "completed_decisions": 262144,
+  "model_start_timesteps": 688128,
+  "target_decisions": 270336,
+  "recipe": {
+    "n_steps": 512,
+    "batch_size": 128,
+    "n_epochs": 4,
+    "gamma": 1.0,
+    "gae_lambda": 1.0,
+    "vf_coef": 1e-05,
+    "ent_coef": 0.01,
+    "target_kl": 0.03,
+    "learning_rate": 0.0003
+  },
+  "loaded_optimizer_lr_scales": [
+    1.0,
+    0.3,
+    0.1,
+    0.1
+  ],
+  "optimizer_lr_scales": [
+    1.0,
+    0.3,
+    0.1,
+    0.1
+  ],
+  "mixed_city": true,
+  "continuation": "Weights and Adam restored; fresh nonoverlapping episodes and explicit RNG reseed. Not bitwise trajectory continuation."
+}

@@ -1,0 +1,26 @@
+{
+  "pid": 283455,
+  "command": [
+    "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+    "-u",
+    "training/evaluate_city_curriculum.py",
+    "--dll",
+    "output/city-road-reserve-build-01/bin/TrafficHost/release/TrafficHost.dll",
+    "--checkpoints",
+    "output/training/city-five-stage-cold-initial-01/candidate.zip",
+    "output/training/city-strategy-original-delay-01/segment-001/final.zip",
+    "--output",
+    "output/training/city-strategy-additional-skills-01",
+    "--lessons",
+    "midgame-network-reserve",
+    "traffic-priority-established",
+    "traffic-priority-established-swap",
+    "--count",
+    "64",
+    "--seed-start",
+    "170100000",
+    "--workers",
+    "4"
+  ],
+  "note": "Additional unseen-in-available-evaluation-records native skill cohort. Original conservation candidate frozen. Not a city-score readiness test."
+}

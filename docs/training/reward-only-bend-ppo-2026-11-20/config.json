@@ -1,0 +1,22 @@
+{
+  "parent": "output/training/shared-edge-pilot-02/latest.pt",
+  "parent_fingerprint": "fe4e25e40f16dc533b29059b836c8474da3d556e4af438d53c2043bde40af1b0",
+  "native_sha256": "5462b8c145044fe4932dea377895df7e4548d0b3defd301c72a801154c9abbca",
+  "source_sha256": "3f4f84aa95df55efd2884540e71403e74b83a7e298a41ecbc7faa4a4e773b174",
+  "optimizer": "fresh Adam",
+  "seed": 42,
+  "workers": 16,
+  "rollout_steps_per_worker": 128,
+  "learning_rate": 0.0001,
+  "batch_size": 128,
+  "epochs": 4,
+  "gamma": 1.0,
+  "gae_lambda": 1.0,
+  "ent_coef": 0.01,
+  "target_kl": 0.02,
+  "decision_budget": 131072,
+  "wall_seconds": 1800,
+  "reward": "1 for native visible-road connectivity at termination, otherwise 0",
+  "teacher_actions": false,
+  "device": "cuda"
+}

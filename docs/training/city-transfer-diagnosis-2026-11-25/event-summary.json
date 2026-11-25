@@ -1,0 +1,272 @@
+{
+  "growth-loss-lesson-only": {
+    "score": 76,
+    "first_delivery": 15,
+    "paid_before_first": 25,
+    "paid": 75,
+    "weekly_awards": [
+      {
+        "time": 140,
+        "first_later_zero_stock_delay": 0
+      },
+      {
+        "time": 280,
+        "first_later_zero_stock_delay": 0
+      }
+    ],
+    "build_step_rewards": 0.0,
+    "native_reward_sum": 76.0,
+    "already_served_shop_delta": 72,
+    "shared_state_wait_delta": -0.2909918347034942
+  },
+  "growth-loss-mixed-city": {
+    "score": 20,
+    "first_delivery": 17,
+    "paid_before_first": 25,
+    "paid": 45,
+    "weekly_awards": [
+      {
+        "time": 140,
+        "first_later_zero_stock_delay": 3
+      }
+    ],
+    "build_step_rewards": 0.0,
+    "native_reward_sum": 20.0,
+    "already_served_shop_delta": 18,
+    "shared_state_wait_delta": -0.2891352432114737
+  },
+  "growth-loss-original": {
+    "score": 167,
+    "first_delivery": 21,
+    "paid_before_first": 21,
+    "paid": 127,
+    "weekly_awards": [
+      {
+        "time": 140,
+        "first_later_zero_stock_delay": 27
+      },
+      {
+        "time": 280,
+        "first_later_zero_stock_delay": 24
+      },
+      {
+        "time": 420,
+        "first_later_zero_stock_delay": 86
+      },
+      {
+        "time": 560,
+        "first_later_zero_stock_delay": null
+      }
+    ],
+    "build_step_rewards": 0.0,
+    "native_reward_sum": 167.0,
+    "already_served_shop_delta": 160,
+    "shared_state_wait_delta": 0.0
+  },
+  "largest-loss-lesson-only": {
+    "score": 177,
+    "first_delivery": 25,
+    "paid_before_first": 25,
+    "paid": 125,
+    "weekly_awards": [
+      {
+        "time": 140,
+        "first_later_zero_stock_delay": 1
+      },
+      {
+        "time": 280,
+        "first_later_zero_stock_delay": 0
+      },
+      {
+        "time": 420,
+        "first_later_zero_stock_delay": 0
+      },
+      {
+        "time": 560,
+        "first_later_zero_stock_delay": 0
+      }
+    ],
+    "build_step_rewards": 0.0,
+    "native_reward_sum": 177.0,
+    "already_served_shop_delta": 170,
+    "shared_state_wait_delta": -0.45836547820975904
+  },
+  "largest-loss-mixed-city": {
+    "score": 0,
+    "first_delivery": null,
+    "paid_before_first": 45,
+    "paid": 45,
+    "weekly_awards": [
+      {
+        "time": 140,
+        "first_later_zero_stock_delay": 0
+      }
+    ],
+    "build_step_rewards": 0.0,
+    "native_reward_sum": 0.0,
+    "already_served_shop_delta": 0,
+    "shared_state_wait_delta": -0.1010288858254041
+  },
+  "largest-loss-original": {
+    "score": 148,
+    "first_delivery": 26,
+    "paid_before_first": 25,
+    "paid": 105,
+    "weekly_awards": [
+      {
+        "time": 140,
+        "first_later_zero_stock_delay": 257
+      },
+      {
+        "time": 280,
+        "first_later_zero_stock_delay": 117
+      },
+      {
+        "time": 420,
+        "first_later_zero_stock_delay": 63
+      },
+      {
+        "time": 560,
+        "first_later_zero_stock_delay": 5
+      }
+    ],
+    "build_step_rewards": 0.0,
+    "native_reward_sum": 148.0,
+    "already_served_shop_delta": 142,
+    "shared_state_wait_delta": 0.0
+  },
+  "largest-win-lesson-only": {
+    "score": 0,
+    "first_delivery": null,
+    "paid_before_first": 25,
+    "paid": 25,
+    "weekly_awards": [],
+    "build_step_rewards": 0.0,
+    "native_reward_sum": 0.0,
+    "already_served_shop_delta": 0,
+    "shared_state_wait_delta": -0.3566049598157406
+  },
+  "largest-win-mixed-city": {
+    "score": 171,
+    "first_delivery": 22,
+    "paid_before_first": 23,
+    "paid": 135,
+    "weekly_awards": [
+      {
+        "time": 140,
+        "first_later_zero_stock_delay": 190
+      },
+      {
+        "time": 280,
+        "first_later_zero_stock_delay": 50
+      },
+      {
+        "time": 420,
+        "first_later_zero_stock_delay": 18
+      },
+      {
+        "time": 560,
+        "first_later_zero_stock_delay": 7
+      }
+    ],
+    "build_step_rewards": 0.0,
+    "native_reward_sum": 171.0,
+    "already_served_shop_delta": 164,
+    "shared_state_wait_delta": -0.2105853399809669
+  },
+  "largest-win-original": {
+    "score": 0,
+    "first_delivery": null,
+    "paid_before_first": 25,
+    "paid": 25,
+    "weekly_awards": [],
+    "build_step_rewards": 0.0,
+    "native_reward_sum": 0.0,
+    "already_served_shop_delta": 0,
+    "shared_state_wait_delta": 0.0
+  },
+  "middle-lesson-only": {
+    "score": 164,
+    "first_delivery": 25,
+    "paid_before_first": 25,
+    "paid": 115,
+    "weekly_awards": [
+      {
+        "time": 140,
+        "first_later_zero_stock_delay": 0
+      },
+      {
+        "time": 280,
+        "first_later_zero_stock_delay": 5
+      },
+      {
+        "time": 420,
+        "first_later_zero_stock_delay": 2
+      },
+      {
+        "time": 560,
+        "first_later_zero_stock_delay": 0
+      }
+    ],
+    "build_step_rewards": 0.0,
+    "native_reward_sum": 164.0,
+    "already_served_shop_delta": 157,
+    "shared_state_wait_delta": -0.625820181099698
+  },
+  "middle-mixed-city": {
+    "score": 156,
+    "first_delivery": 27,
+    "paid_before_first": 25,
+    "paid": 115,
+    "weekly_awards": [
+      {
+        "time": 140,
+        "first_later_zero_stock_delay": 21
+      },
+      {
+        "time": 280,
+        "first_later_zero_stock_delay": 14
+      },
+      {
+        "time": 420,
+        "first_later_zero_stock_delay": 19
+      },
+      {
+        "time": 560,
+        "first_later_zero_stock_delay": 4
+      }
+    ],
+    "build_step_rewards": 0.0,
+    "native_reward_sum": 156.0,
+    "already_served_shop_delta": 150,
+    "shared_state_wait_delta": -0.326916969452913
+  },
+  "middle-original": {
+    "score": 166,
+    "first_delivery": 31,
+    "paid_before_first": 21,
+    "paid": 111,
+    "weekly_awards": [
+      {
+        "time": 140,
+        "first_later_zero_stock_delay": 98
+      },
+      {
+        "time": 280,
+        "first_later_zero_stock_delay": 40
+      },
+      {
+        "time": 420,
+        "first_later_zero_stock_delay": 130
+      },
+      {
+        "time": 560,
+        "first_later_zero_stock_delay": null
+      }
+    ],
+    "build_step_rewards": 0.0,
+    "native_reward_sum": 166.0,
+    "already_served_shop_delta": 159,
+    "shared_state_wait_delta": 0.0
+  }
+}

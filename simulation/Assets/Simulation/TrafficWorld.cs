@@ -74,7 +74,7 @@ namespace MotorwaysSim
             if(Rules.TickSeconds<=0||Rules.CarsPerHouse!=2)throw new ArgumentException("Positive tick duration and two cars per house are required");
             if(!Rules.UseOriginalIntersectionRules)throw new NotSupportedException("The Lebanese legal alternative remains undecided and is not implemented");
             Seed=seed;Scenario=scenario;random=new SimulationRandom(seed,Rules.Version);Time=0;TickCount=0;ConstructionSpent=0;TripsCompleted=0;Failed=false;
-            CustomScenarioId=null;customScenarioBounds=null;
+            CustomScenarioId=null;customScenarioBounds=null;routePracticeGate=null;roadReserveSpawn=null;
             Buildings.Clear();Cars.Clear();Events.Clear();Roundabouts.Clear();plannedRoundaboutCells.Clear();Signals.Clear();Motorways.Clear();carparkThroats.Clear();nextMotorwayId=0;demandGroupPhases.Clear();spawnSchedule.Clear();nextScheduledShop=0;
             retiredConnectionConcrete.Clear();
             erasedEndpointCleanup.Clear();
@@ -348,7 +348,7 @@ namespace MotorwaysSim
             for(int i=0;i<ticks&&!Failed&&!ScenarioRejected;i++)
             {
                 TickCount++;Time=TickCount*Rules.TickSeconds;
-                UpdateOriginalInventory();UpdateCity();UpdateDestinationUpgrades();UpdateTrains();UpdateDemand();DispatchDemand();UpdateSignals();UpdateVehicles();UpdateOriginalOvercrowding();FinishRemovals();
+                UpdateOriginalInventory();UpdateCity();UpdateDestinationUpgrades();UpdateTrains();UpdateTrafficPracticeDemand();UpdateRoadReservePractice();UpdateDemand();DispatchDemand();UpdateSignals();UpdateVehicles();UpdateOriginalOvercrowding();FinishRemovals();
             }
         }
 
@@ -398,13 +398,13 @@ namespace MotorwaysSim
                 ProvisionalDefaults="Shared lane/parking/spawning approximations remain. OriginalReference is NOT an exact replica: motorway geometry/edits, inventory weighting, destination upgrades, trains, spawning and exact traffic parity remain incomplete.",
                 Infrastructure=new int[count],Terrain=new int[count],BuildingColors=Enumerable.Repeat(-1,count).ToArray(),
                 BuildingKinds=new int[count],Demand=new int[count],Reservations=new int[count],Connections=new int[count],PendingRemovals=new int[count],
-                Vehicles=Cars.Select(v=>new VehicleState{Id=v.Id,HomeId=v.HomeId,ShopId=v.ShopId,Color=v.Color,Stage=v.Stage,ParkingSlot=v.ParkingSlot,
+                Vehicles=Cars.Select(v=>new VehicleState{Visible=v.Stage!=TripStage.Home&&!(v.Stage==TripStage.Outbound&&v.RouteIndex==0&&v.DistanceAlongLane<.02),Id=v.Id,HomeId=v.HomeId,ShopId=v.ShopId,Color=v.Color,Stage=v.Stage,ParkingSlot=v.ParkingSlot,
                     At=v.At,Next=v.Next,X=v.Position.X,Y=v.Position.Y,HeadingX=v.Heading.X,HeadingY=v.Heading.Y,Speed=v.Speed,Acceleration=v.Acceleration,
                     Waiting=v.Waiting,Progress=v.Progress,Obstacle=v.Obstacle,Route=v.Route.ToArray(),ReturnRoute=v.ReturnRoute.ToArray()}).ToArray(),
                 RandomAlgorithm=random.Algorithm,RandomDraws=random.Draws,
                 ScheduledSpawns=originalPlan.Where(p=>p.Type==0).Select(p=>new ScheduledSpawnSnapshot{Time=p.Time,Color=p.Color,Grouping=p.Grouping,Preference=p.Preference,DemandMultiplier=p.DemandMultiplier,Attempts=p.Attempts}).ToArray(),
                 Buildings=Buildings.Select(b=>new BuildingState{CarparkId=b.CarparkId,DestinationSlot=b.DestinationSlot,SharedLot=b.SharedLot,IsStation=b.IsStation,Entrances=(Cell[])b.Entrances.Clone(),Platform=(Cell[])b.Platform.Clone(),EntranceDirections=(int[])b.EntranceDirections.Clone(),Layout=b.Layout,Upgraded=b.Upgraded,DemandCapacity=DestinationCapacity(b),UpgradeAt=double.IsPositiveInfinity(b.UpgradeAt)?(double?)null:b.UpgradeAt,PlannedDemandMultiplier=b.PlannedDemandMultiplier,Id=b.Id,Color=b.Color,Cell=b.Cell,Entrance=b.Entrance,Width=b.Width,Height=b.Height,
-                    IsHouse=b.IsHouse,Demand=b.Demand,Reserved=b.Reserved,DrivewayDirection=b.DrivewayDirection,OvercrowdedFor=b.OvercrowdedFor,FeasibilityVerified=b.FeasibilityVerified,
+                    IsHouse=b.IsHouse,Demand=b.Demand,Reserved=b.Reserved,Served=b.Served,DrivewayDirection=b.DrivewayDirection,WarningVisible=b.OvercrowdedFor>0,OvercrowdedFor=b.OvercrowdedFor,FeasibilityVerified=b.FeasibilityVerified,
                     FeasibleDemandInterval=double.IsInfinity(b.FeasibleDemandInterval)?(double?)null:b.FeasibleDemandInterval,OriginalDemandInterval=b.OriginalDemandInterval,Parking=b.Parking==null?new int[0]:(int[])b.Parking.Clone()}).ToArray(),
                 Signals=Signals.Values.Select(s=>new SignalSnapshot{Cell=s.Cell,ActivePair=s.ActivePair,Amber=s.Amber,Elapsed=s.Elapsed,Pairs=s.Pairs.ToArray()}).ToArray(),
                 PlayableXMin=PlayableBounds[0],PlayableYMin=PlayableBounds[1],PlayableXMax=PlayableBounds[2],PlayableYMax=PlayableBounds[3],

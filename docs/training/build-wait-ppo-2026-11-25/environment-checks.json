@@ -1,0 +1,539 @@
+{
+  "production_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+  "diagnostic_sha256": "3077ce7593b062d8c756116435346ce956ff1961a073aa74ffda55282903ee1e",
+  "ordinary_exact_transitions": 180,
+  "ordinary_families": [
+    "city",
+    "adjacent",
+    "bend",
+    "clear",
+    "obstacle",
+    "small-city-offset-single",
+    "small-city-offset-stock",
+    "small-city-offset-pairs",
+    "midgame-network-quiet"
+  ],
+  "pair_reset_checks": 1024,
+  "native_colors": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "binary_native_transitions": [
+    {
+      "validation": false,
+      "case": "match",
+      "build": false,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 0
+    },
+    {
+      "validation": false,
+      "case": "match",
+      "build": true,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 0
+    },
+    {
+      "validation": false,
+      "case": "join",
+      "build": false,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 1
+    },
+    {
+      "validation": false,
+      "case": "join",
+      "build": true,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 1
+    },
+    {
+      "validation": false,
+      "case": "match",
+      "build": false,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 2
+    },
+    {
+      "validation": false,
+      "case": "match",
+      "build": true,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 2
+    },
+    {
+      "validation": false,
+      "case": "route",
+      "build": false,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 3
+    },
+    {
+      "validation": false,
+      "case": "route",
+      "build": true,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 3
+    },
+    {
+      "validation": false,
+      "case": "match",
+      "build": false,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 4
+    },
+    {
+      "validation": false,
+      "case": "match",
+      "build": true,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 4
+    },
+    {
+      "validation": false,
+      "case": "join",
+      "build": false,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 5
+    },
+    {
+      "validation": false,
+      "case": "join",
+      "build": true,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 5
+    },
+    {
+      "validation": false,
+      "case": "match",
+      "build": false,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 6
+    },
+    {
+      "validation": false,
+      "case": "match",
+      "build": true,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 6
+    },
+    {
+      "validation": false,
+      "case": "route",
+      "build": false,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 7
+    },
+    {
+      "validation": false,
+      "case": "route",
+      "build": true,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 7
+    },
+    {
+      "validation": false,
+      "case": "mismatch",
+      "build": false,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 8
+    },
+    {
+      "validation": false,
+      "case": "mismatch",
+      "build": true,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 8
+    },
+    {
+      "validation": false,
+      "case": "mismatch",
+      "build": false,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 9
+    },
+    {
+      "validation": false,
+      "case": "mismatch",
+      "build": true,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 9
+    },
+    {
+      "validation": false,
+      "case": "homes",
+      "build": false,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 10
+    },
+    {
+      "validation": false,
+      "case": "homes",
+      "build": true,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 10
+    },
+    {
+      "validation": false,
+      "case": "destinations",
+      "build": false,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 11
+    },
+    {
+      "validation": false,
+      "case": "destinations",
+      "build": true,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 11
+    },
+    {
+      "validation": false,
+      "case": "quiet",
+      "build": false,
+      "reward": 1.0,
+      "native_reward": 1.0,
+      "warmup": 12
+    },
+    {
+      "validation": false,
+      "case": "quiet",
+      "build": true,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 12
+    },
+    {
+      "validation": false,
+      "case": "quiet",
+      "build": false,
+      "reward": 1.0,
+      "native_reward": 1.0,
+      "warmup": 13
+    },
+    {
+      "validation": false,
+      "case": "quiet",
+      "build": true,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 13
+    },
+    {
+      "validation": false,
+      "case": "quiet",
+      "build": false,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 14
+    },
+    {
+      "validation": false,
+      "case": "quiet",
+      "build": true,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 14
+    },
+    {
+      "validation": false,
+      "case": "quiet",
+      "build": false,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 15
+    },
+    {
+      "validation": false,
+      "case": "quiet",
+      "build": true,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 15
+    },
+    {
+      "validation": true,
+      "case": "match",
+      "build": false,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 0
+    },
+    {
+      "validation": true,
+      "case": "match",
+      "build": true,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 0
+    },
+    {
+      "validation": true,
+      "case": "join",
+      "build": false,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 1
+    },
+    {
+      "validation": true,
+      "case": "join",
+      "build": true,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 1
+    },
+    {
+      "validation": true,
+      "case": "match",
+      "build": false,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 2
+    },
+    {
+      "validation": true,
+      "case": "match",
+      "build": true,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 2
+    },
+    {
+      "validation": true,
+      "case": "route",
+      "build": false,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 3
+    },
+    {
+      "validation": true,
+      "case": "route",
+      "build": true,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 3
+    },
+    {
+      "validation": true,
+      "case": "match",
+      "build": false,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 4
+    },
+    {
+      "validation": true,
+      "case": "match",
+      "build": true,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 4
+    },
+    {
+      "validation": true,
+      "case": "join",
+      "build": false,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 5
+    },
+    {
+      "validation": true,
+      "case": "join",
+      "build": true,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 5
+    },
+    {
+      "validation": true,
+      "case": "match",
+      "build": false,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 6
+    },
+    {
+      "validation": true,
+      "case": "match",
+      "build": true,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 6
+    },
+    {
+      "validation": true,
+      "case": "route",
+      "build": false,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 7
+    },
+    {
+      "validation": true,
+      "case": "route",
+      "build": true,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 7
+    },
+    {
+      "validation": true,
+      "case": "mismatch",
+      "build": false,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 8
+    },
+    {
+      "validation": true,
+      "case": "mismatch",
+      "build": true,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 8
+    },
+    {
+      "validation": true,
+      "case": "mismatch",
+      "build": false,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 9
+    },
+    {
+      "validation": true,
+      "case": "mismatch",
+      "build": true,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 9
+    },
+    {
+      "validation": true,
+      "case": "homes",
+      "build": false,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 10
+    },
+    {
+      "validation": true,
+      "case": "homes",
+      "build": true,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 10
+    },
+    {
+      "validation": true,
+      "case": "destinations",
+      "build": false,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 11
+    },
+    {
+      "validation": true,
+      "case": "destinations",
+      "build": true,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 11
+    },
+    {
+      "validation": true,
+      "case": "quiet",
+      "build": false,
+      "reward": 1.0,
+      "native_reward": 1.0,
+      "warmup": 12
+    },
+    {
+      "validation": true,
+      "case": "quiet",
+      "build": true,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 12
+    },
+    {
+      "validation": true,
+      "case": "quiet",
+      "build": false,
+      "reward": 1.0,
+      "native_reward": 1.0,
+      "warmup": 13
+    },
+    {
+      "validation": true,
+      "case": "quiet",
+      "build": true,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 13
+    },
+    {
+      "validation": true,
+      "case": "quiet",
+      "build": false,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 14
+    },
+    {
+      "validation": true,
+      "case": "quiet",
+      "build": true,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 14
+    },
+    {
+      "validation": true,
+      "case": "quiet",
+      "build": false,
+      "reward": 1.0,
+      "native_reward": 0.0,
+      "warmup": 15
+    },
+    {
+      "validation": true,
+      "case": "quiet",
+      "build": true,
+      "reward": 0.0,
+      "native_reward": 0.0,
+      "warmup": 15
+    }
+  ],
+  "limits": "Initial-state and one-step contracts; no learning or promotion. Binary task rewards are separate from native trips. Failed v1 retained."
+}

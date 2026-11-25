@@ -1,0 +1,211 @@
+{
+  "criterion": "Closest paired score change to median across ALL32final-budget city plays, tie lowest seed/action RNG. One diagnostic illustration; later layouts can diverge.",
+  "median_change": -3.5,
+  "selected": {
+    "parent": {
+      "seed": 184000000,
+      "seconds": 600,
+      "trips": 176,
+      "road_stock": 43,
+      "buildings": 24,
+      "weekly_awards": 4,
+      "road_actions": 98,
+      "wait_actions": 600,
+      "bridge_stock": 0,
+      "bridge_tiles": 2,
+      "targets": [
+        {
+          "id": 3,
+          "color": 1,
+          "first_seen": 61,
+          "arrival_stock": 5,
+          "arrival_paid": 20,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": 86,
+          "served": 36,
+          "paid_after_arrival_to_first_delivery": 5
+        },
+        {
+          "id": 6,
+          "color": 0,
+          "first_seen": 162,
+          "arrival_stock": 16,
+          "arrival_paid": 29,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": 176,
+          "served": 30,
+          "paid_after_arrival_to_first_delivery": 3
+        },
+        {
+          "id": 12,
+          "color": 3,
+          "first_seen": 308,
+          "arrival_stock": 33,
+          "arrival_paid": 42,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": 330,
+          "served": 18,
+          "paid_after_arrival_to_first_delivery": 11
+        },
+        {
+          "id": 15,
+          "color": 2,
+          "first_seen": 322,
+          "arrival_stock": 29,
+          "arrival_paid": 46,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": 337,
+          "served": 19,
+          "paid_after_arrival_to_first_delivery": 8
+        },
+        {
+          "id": 18,
+          "color": 2,
+          "first_seen": 384,
+          "arrival_stock": 14,
+          "arrival_paid": 61,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": 410,
+          "served": 13,
+          "paid_after_arrival_to_first_delivery": 6
+        },
+        {
+          "id": 20,
+          "color": 1,
+          "first_seen": 394,
+          "arrival_stock": 8,
+          "arrival_paid": 67,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": 404,
+          "served": 14,
+          "paid_after_arrival_to_first_delivery": 0
+        }
+      ],
+      "action_seed": 193251,
+      "native_game_over": false,
+      "truncated": true,
+      "paid_units": 82,
+      "outside_routes": 17
+    },
+    "final": {
+      "seed": 184000000,
+      "seconds": 600,
+      "trips": 171,
+      "road_stock": 19,
+      "buildings": 25,
+      "weekly_awards": 4,
+      "road_actions": 112,
+      "wait_actions": 600,
+      "bridge_stock": 0,
+      "bridge_tiles": 2,
+      "targets": [
+        {
+          "id": 3,
+          "color": 1,
+          "first_seen": 61,
+          "arrival_stock": 5,
+          "arrival_paid": 20,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": 76,
+          "served": 45,
+          "paid_after_arrival_to_first_delivery": 2
+        },
+        {
+          "id": 6,
+          "color": 0,
+          "first_seen": 162,
+          "arrival_stock": 15,
+          "arrival_paid": 30,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": 178,
+          "served": 30,
+          "paid_after_arrival_to_first_delivery": 5
+        },
+        {
+          "id": 10,
+          "color": 2,
+          "first_seen": 302,
+          "arrival_stock": 20,
+          "arrival_paid": 45,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": 314,
+          "served": 30,
+          "paid_after_arrival_to_first_delivery": 12
+        },
+        {
+          "id": 12,
+          "color": 3,
+          "first_seen": 312,
+          "arrival_stock": 10,
+          "arrival_paid": 55,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": 338,
+          "served": 17,
+          "paid_after_arrival_to_first_delivery": 3
+        },
+        {
+          "id": 19,
+          "color": 2,
+          "first_seen": 504,
+          "arrival_stock": 0,
+          "arrival_paid": 85,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": 580,
+          "served": 4,
+          "paid_after_arrival_to_first_delivery": 7
+        },
+        {
+          "id": 22,
+          "color": 1,
+          "first_seen": 514,
+          "arrival_stock": 0,
+          "arrival_paid": 85,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": 600,
+          "served": 1,
+          "paid_after_arrival_to_first_delivery": 11
+        }
+      ],
+      "action_seed": 193251,
+      "native_game_over": false,
+      "truncated": true,
+      "paid_units": 96,
+      "outside_routes": 11
+    }
+  },
+  "models": {
+    "parent": {
+      "path": "output/training/build-wait-01/training/final.zip",
+      "sha256": "907e1a083b58780bd140d4e258285878ed3534a4c0be6cf9b75070eae7f04826"
+    },
+    "final": {
+      "path": "output/training/route-spatial-01/training/final.zip",
+      "sha256": "f8333fd9ff4ae46325bd675edbfc141288901740d28e654a94191c793fc97256"
+    }
+  },
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0"
+}

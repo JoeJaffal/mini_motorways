@@ -1,0 +1,38 @@
+{
+  "initial": {
+    "seed": 170000000,
+    "seconds": 280,
+    "trips": 0,
+    "road_stock": 20,
+    "buildings": 12,
+    "weekly_awards": 0,
+    "road_actions": 0,
+    "wait_actions": 0,
+    "bridge_stock": 1,
+    "bridge_tiles": 0,
+    "exercise": "city-recorded-start",
+    "initial_seconds": 280,
+    "initial_trips": 40,
+    "prefix_id": 170000000
+  },
+  "episode": {
+    "r": 56.0,
+    "l": 191,
+    "t": 5.788632,
+    "seed": 170000000,
+    "seconds": 470.70000000000005,
+    "trips": 56,
+    "road_stock": 40,
+    "buildings": 20,
+    "weekly_awards": 1,
+    "road_actions": 0,
+    "wait_actions": 191,
+    "exercise": "city-recorded-start",
+    "initial_seconds": 280,
+    "initial_trips": 40,
+    "prefix_id": 170000000
+  },
+  "total_reward": 56.0,
+  "steps": 191,
+  "check": "Monitor terminal fields and reward exclude prefix deliveries; Wait-only instrumentation control, not training."
+}

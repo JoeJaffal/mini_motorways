@@ -1,0 +1,60 @@
+{
+  "city_mean": 141.09375,
+  "city_games": 32,
+  "city_zeros": 1,
+  "parent_zeros": 1,
+  "city_comparisons": {
+    "parent": {
+      "trips": {
+        "mean": 11.84375,
+        "ci95": [
+          -10.59375,
+          34.25
+        ]
+      },
+      "paid_units": {
+        "mean": -6.03125,
+        "ci95": [
+          -14.15625,
+          2.84375
+        ]
+      },
+      "outside_routes": {
+        "mean": -6.8125,
+        "ci95": [
+          -11.875,
+          -1.53125
+        ]
+      }
+    },
+    "original": {
+      "trips": {
+        "mean": 15.0,
+        "ci95": [
+          -11.65625,
+          41.15703124999999
+        ]
+      },
+      "paid_units": {
+        "mean": -3.0,
+        "ci95": [
+          -12.875,
+          7.3125
+        ]
+      },
+      "outside_routes": {
+        "mean": -5.84375,
+        "ci95": [
+          -11.40625,
+          -0.21875
+        ]
+      }
+    }
+  },
+  "first_decision_target": false,
+  "repeated_no_build_target": false,
+  "native_service_retained": true,
+  "city_zero_screen": true,
+  "clear_paired_city_regression": false,
+  "limits": "Consumed development scenarios. A passed retention screen is not proof of equivalence or readiness. No automatic promotion/continuation."
+}

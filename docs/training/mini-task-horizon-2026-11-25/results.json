@@ -1,0 +1,2979 @@
+{
+  "curves": [
+    {
+      "arm": "short-control",
+      "added_decisions": 65536,
+      "city_mean": 110.1875,
+      "city_games": 32,
+      "city_scoring": 28,
+      "city_delta_parent": {
+        "trips": {
+          "mean": -15.90625,
+          "ci95": [
+            -41.09453125,
+            7.84375
+          ]
+        },
+        "paid_units": {
+          "mean": -7.125,
+          "ci95": [
+            -16.90625,
+            1.6875
+          ]
+        },
+        "outside_routes": {
+          "mean": 2.1875,
+          "ci95": [
+            -0.90625,
+            5.4375
+          ]
+        }
+      },
+      "city_delta_retained": {
+        "trips": {
+          "mean": -15.90625,
+          "ci95": [
+            -41.09453125,
+            7.84375
+          ]
+        },
+        "paid_units": {
+          "mean": -7.125,
+          "ci95": [
+            -16.90625,
+            1.6875
+          ]
+        },
+        "outside_routes": {
+          "mean": 2.1875,
+          "ci95": [
+            -0.90625,
+            5.4375
+          ]
+        }
+      },
+      "practice": {
+        "adjacent": {
+          "games": 16,
+          "score": 3.5625,
+          "first_served": 1.0,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 2.0,
+          "outside_routes": 0.0,
+          "delta_parent": {
+            "score": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "bend": {
+          "games": 16,
+          "score": 3.625,
+          "first_served": 1.0,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 2.5,
+          "outside_routes": 0.0,
+          "delta_parent": {
+            "score": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "clear": {
+          "games": 16,
+          "score": 3.625,
+          "first_served": 1.0,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 3.75,
+          "outside_routes": 0.0,
+          "delta_parent": {
+            "score": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "obstacle": {
+          "games": 16,
+          "score": 2.9375,
+          "first_served": 0.8125,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 4.375,
+          "outside_routes": 0.8125,
+          "delta_parent": {
+            "score": {
+              "mean": -0.1875,
+              "ci95": [
+                -0.5625,
+                0.0
+              ]
+            },
+            "first_served": {
+              "mean": -0.0625,
+              "ci95": [
+                -0.1875,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0625,
+              "ci95": [
+                0.0,
+                0.1875
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.375,
+              "ci95": [
+                0.0,
+                1.0625
+              ]
+            }
+          }
+        },
+        "small-city-offset-pairs": {
+          "games": 16,
+          "score": 11.1875,
+          "first_served": 0.5625,
+          "both_served": 0.1875,
+          "later_served": 0.1875,
+          "native_game_over": 0.8125,
+          "paid": 14.0625,
+          "outside_routes": 9.1875,
+          "delta_parent": {
+            "score": {
+              "mean": 0.8125,
+              "ci95": [
+                -1.125,
+                3.0
+              ]
+            },
+            "first_served": {
+              "mean": 0.0625,
+              "ci95": [
+                -0.125,
+                0.25
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": -0.5625,
+              "ci95": [
+                -2.3140624999999986,
+                1.0625
+              ]
+            }
+          }
+        },
+        "small-city-offset-single": {
+          "games": 16,
+          "score": 8.25,
+          "first_served": 0.4375,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.5625,
+          "paid": 7.0625,
+          "outside_routes": 4.6875,
+          "delta_parent": {
+            "score": {
+              "mean": -1.1875,
+              "ci95": [
+                -3.5625,
+                0.0
+              ]
+            },
+            "first_served": {
+              "mean": -0.0625,
+              "ci95": [
+                -0.1875,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0625,
+              "ci95": [
+                0.0,
+                0.1875
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.5,
+              "ci95": [
+                0.0,
+                1.5
+              ]
+            }
+          }
+        },
+        "small-city-offset-stock": {
+          "games": 16,
+          "score": 10.5625,
+          "first_served": 0.5625,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.4375,
+          "paid": 10.9375,
+          "outside_routes": 7.5625,
+          "delta_parent": {
+            "score": {
+              "mean": 1.1875,
+              "ci95": [
+                -2.25,
+                4.75
+              ]
+            },
+            "first_served": {
+              "mean": 0.0625,
+              "ci95": [
+                -0.125,
+                0.25
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": -0.0625,
+              "ci95": [
+                -0.25,
+                0.125
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": -0.5,
+              "ci95": [
+                -2.0,
+                1.0
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "arm": "long-window",
+      "added_decisions": 65536,
+      "city_mean": 137.53125,
+      "city_games": 32,
+      "city_scoring": 31,
+      "city_delta_parent": {
+        "trips": {
+          "mean": 11.4375,
+          "ci95": [
+            -7.157031249999999,
+            31.470312499999977
+          ]
+        },
+        "paid_units": {
+          "mean": 5.0,
+          "ci95": [
+            -3.625,
+            13.90625
+          ]
+        },
+        "outside_routes": {
+          "mean": 1.59375,
+          "ci95": [
+            -2.9375,
+            6.3125
+          ]
+        }
+      },
+      "city_delta_retained": {
+        "trips": {
+          "mean": 11.4375,
+          "ci95": [
+            -7.157031249999999,
+            31.470312499999977
+          ]
+        },
+        "paid_units": {
+          "mean": 5.0,
+          "ci95": [
+            -3.625,
+            13.90625
+          ]
+        },
+        "outside_routes": {
+          "mean": 1.59375,
+          "ci95": [
+            -2.9375,
+            6.3125
+          ]
+        }
+      },
+      "practice": {
+        "adjacent": {
+          "games": 16,
+          "score": 3.5625,
+          "first_served": 1.0,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 2.0,
+          "outside_routes": 0.0,
+          "delta_parent": {
+            "score": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "bend": {
+          "games": 16,
+          "score": 3.625,
+          "first_served": 1.0,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 2.5,
+          "outside_routes": 0.0,
+          "delta_parent": {
+            "score": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "clear": {
+          "games": 16,
+          "score": 3.625,
+          "first_served": 1.0,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 3.75,
+          "outside_routes": 0.0,
+          "delta_parent": {
+            "score": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "obstacle": {
+          "games": 16,
+          "score": 3.375,
+          "first_served": 0.9375,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 4.4375,
+          "outside_routes": 0.1875,
+          "delta_parent": {
+            "score": {
+              "mean": 0.25,
+              "ci95": [
+                0.0,
+                0.75
+              ]
+            },
+            "first_served": {
+              "mean": 0.0625,
+              "ci95": [
+                0.0,
+                0.1875
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.125,
+              "ci95": [
+                0.0,
+                0.375
+              ]
+            },
+            "outside_routes": {
+              "mean": -0.25,
+              "ci95": [
+                -0.75,
+                0.0
+              ]
+            }
+          }
+        },
+        "small-city-offset-pairs": {
+          "games": 16,
+          "score": 13.125,
+          "first_served": 0.625,
+          "both_served": 0.25,
+          "later_served": 0.25,
+          "native_game_over": 0.75,
+          "paid": 14.0625,
+          "outside_routes": 8.1875,
+          "delta_parent": {
+            "score": {
+              "mean": 2.75,
+              "ci95": [
+                0.0,
+                6.4375
+              ]
+            },
+            "first_served": {
+              "mean": 0.125,
+              "ci95": [
+                0.0,
+                0.3125
+              ]
+            },
+            "both_served": {
+              "mean": 0.0625,
+              "ci95": [
+                0.0,
+                0.1875
+              ]
+            },
+            "later_served": {
+              "mean": 0.0625,
+              "ci95": [
+                0.0,
+                0.1875
+              ]
+            },
+            "native_game_over": {
+              "mean": -0.0625,
+              "ci95": [
+                -0.1875,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": -1.5625,
+              "ci95": [
+                -3.5,
+                0.0625
+              ]
+            }
+          }
+        },
+        "small-city-offset-single": {
+          "games": 16,
+          "score": 9.4375,
+          "first_served": 0.5,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.5,
+          "paid": 7.0625,
+          "outside_routes": 4.1875,
+          "delta_parent": {
+            "score": {
+              "mean": 0.0,
+              "ci95": [
+                -3.5625,
+                3.5625
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                -0.1875,
+                0.1875
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                -0.1875,
+                0.1875
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.0,
+              "ci95": [
+                -1.5,
+                1.5
+              ]
+            }
+          }
+        },
+        "small-city-offset-stock": {
+          "games": 16,
+          "score": 11.6875,
+          "first_served": 0.625,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.375,
+          "paid": 10.9375,
+          "outside_routes": 6.875,
+          "delta_parent": {
+            "score": {
+              "mean": 2.3125,
+              "ci95": [
+                0.0,
+                5.6875
+              ]
+            },
+            "first_served": {
+              "mean": 0.125,
+              "ci95": [
+                0.0,
+                0.3125
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": -0.125,
+              "ci95": [
+                -0.3125,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": -1.1875,
+              "ci95": [
+                -3.0,
+                0.0
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "arm": "short-control",
+      "added_decisions": 131072,
+      "city_mean": 116.75,
+      "city_games": 32,
+      "city_scoring": 29,
+      "city_delta_parent": {
+        "trips": {
+          "mean": -9.34375,
+          "ci95": [
+            -37.50078125,
+            17.56328124999999
+          ]
+        },
+        "paid_units": {
+          "mean": -2.84375,
+          "ci95": [
+            -15.6875,
+            9.469531249999989
+          ]
+        },
+        "outside_routes": {
+          "mean": 2.1875,
+          "ci95": [
+            -3.3125,
+            8.25
+          ]
+        }
+      },
+      "city_delta_retained": {
+        "trips": {
+          "mean": -9.34375,
+          "ci95": [
+            -37.50078125,
+            17.56328124999999
+          ]
+        },
+        "paid_units": {
+          "mean": -2.84375,
+          "ci95": [
+            -15.6875,
+            9.469531249999989
+          ]
+        },
+        "outside_routes": {
+          "mean": 2.1875,
+          "ci95": [
+            -3.3125,
+            8.25
+          ]
+        }
+      },
+      "practice": {
+        "adjacent": {
+          "games": 16,
+          "score": 3.5625,
+          "first_served": 1.0,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 2.0,
+          "outside_routes": 0.0,
+          "delta_parent": {
+            "score": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "bend": {
+          "games": 16,
+          "score": 3.625,
+          "first_served": 1.0,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 2.5,
+          "outside_routes": 0.0,
+          "delta_parent": {
+            "score": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "clear": {
+          "games": 16,
+          "score": 3.625,
+          "first_served": 1.0,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 3.75,
+          "outside_routes": 0.0,
+          "delta_parent": {
+            "score": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "obstacle": {
+          "games": 16,
+          "score": 3.625,
+          "first_served": 1.0,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 4.5,
+          "outside_routes": 0.0,
+          "delta_parent": {
+            "score": {
+              "mean": 0.5,
+              "ci95": [
+                0.0,
+                1.25
+              ]
+            },
+            "first_served": {
+              "mean": 0.125,
+              "ci95": [
+                0.0,
+                0.3125
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.1875,
+              "ci95": [
+                0.0,
+                0.5
+              ]
+            },
+            "outside_routes": {
+              "mean": -0.4375,
+              "ci95": [
+                -1.0625,
+                0.0
+              ]
+            }
+          }
+        },
+        "small-city-offset-pairs": {
+          "games": 16,
+          "score": 11.125,
+          "first_served": 0.5625,
+          "both_served": 0.1875,
+          "later_served": 0.1875,
+          "native_game_over": 0.8125,
+          "paid": 14.0625,
+          "outside_routes": 9.25,
+          "delta_parent": {
+            "score": {
+              "mean": 0.75,
+              "ci95": [
+                -4.0625,
+                5.501562499999977
+              ]
+            },
+            "first_served": {
+              "mean": 0.0625,
+              "ci95": [
+                -0.125,
+                0.25
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                -0.1875,
+                0.1875
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                -0.1875,
+                0.1875
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                -0.1875,
+                0.1875
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": -0.5,
+              "ci95": [
+                -2.8125,
+                1.6875
+              ]
+            }
+          }
+        },
+        "small-city-offset-single": {
+          "games": 16,
+          "score": 9.375,
+          "first_served": 0.5,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.5,
+          "paid": 7.0625,
+          "outside_routes": 4.0625,
+          "delta_parent": {
+            "score": {
+              "mean": -0.0625,
+              "ci95": [
+                -3.5625,
+                3.375
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                -0.1875,
+                0.1875
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                -0.1875,
+                0.1875
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": -0.125,
+              "ci95": [
+                -1.875,
+                1.5
+              ]
+            }
+          }
+        },
+        "small-city-offset-stock": {
+          "games": 16,
+          "score": 10.4375,
+          "first_served": 0.5625,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.4375,
+          "paid": 10.9375,
+          "outside_routes": 7.375,
+          "delta_parent": {
+            "score": {
+              "mean": 1.0625,
+              "ci95": [
+                -2.3125,
+                4.5
+              ]
+            },
+            "first_served": {
+              "mean": 0.0625,
+              "ci95": [
+                -0.125,
+                0.25
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": -0.0625,
+              "ci95": [
+                -0.25,
+                0.125
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": -0.6875,
+              "ci95": [
+                -2.75,
+                1.0
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "arm": "long-window",
+      "added_decisions": 131072,
+      "city_mean": 146.6875,
+      "city_games": 32,
+      "city_scoring": 31,
+      "city_delta_parent": {
+        "trips": {
+          "mean": 20.59375,
+          "ci95": [
+            2.4375,
+            40.375
+          ]
+        },
+        "paid_units": {
+          "mean": 12.8125,
+          "ci95": [
+            5.342968750000001,
+            20.40625
+          ]
+        },
+        "outside_routes": {
+          "mean": 2.84375,
+          "ci95": [
+            -2.0,
+            7.4375
+          ]
+        }
+      },
+      "city_delta_retained": {
+        "trips": {
+          "mean": 20.59375,
+          "ci95": [
+            2.4375,
+            40.375
+          ]
+        },
+        "paid_units": {
+          "mean": 12.8125,
+          "ci95": [
+            5.342968750000001,
+            20.40625
+          ]
+        },
+        "outside_routes": {
+          "mean": 2.84375,
+          "ci95": [
+            -2.0,
+            7.4375
+          ]
+        }
+      },
+      "practice": {
+        "adjacent": {
+          "games": 16,
+          "score": 3.5625,
+          "first_served": 1.0,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 2.0,
+          "outside_routes": 0.0,
+          "delta_parent": {
+            "score": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "bend": {
+          "games": 16,
+          "score": 3.625,
+          "first_served": 1.0,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 2.5,
+          "outside_routes": 0.0,
+          "delta_parent": {
+            "score": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "clear": {
+          "games": 16,
+          "score": 3.625,
+          "first_served": 1.0,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 3.75,
+          "outside_routes": 0.0,
+          "delta_parent": {
+            "score": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "obstacle": {
+          "games": 16,
+          "score": 3.1875,
+          "first_served": 0.875,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 4.375,
+          "outside_routes": 0.4375,
+          "delta_parent": {
+            "score": {
+              "mean": 0.0625,
+              "ci95": [
+                -0.5625,
+                0.75
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                -0.1875,
+                0.1875
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0625,
+              "ci95": [
+                -0.1875,
+                0.375
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.0,
+              "ci95": [
+                -0.75,
+                0.75
+              ]
+            }
+          }
+        },
+        "small-city-offset-pairs": {
+          "games": 16,
+          "score": 12.375,
+          "first_served": 0.6875,
+          "both_served": 0.1875,
+          "later_served": 0.1875,
+          "native_game_over": 0.8125,
+          "paid": 14.0625,
+          "outside_routes": 8.625,
+          "delta_parent": {
+            "score": {
+              "mean": 2.0,
+              "ci95": [
+                -4.625,
+                8.375
+              ]
+            },
+            "first_served": {
+              "mean": 0.1875,
+              "ci95": [
+                0.0,
+                0.375
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                -0.25,
+                0.25
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                -0.25,
+                0.25
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                -0.25,
+                0.25
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": -1.125,
+              "ci95": [
+                -3.3125,
+                1.125
+              ]
+            }
+          }
+        },
+        "small-city-offset-single": {
+          "games": 16,
+          "score": 10.625,
+          "first_served": 0.5625,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.4375,
+          "paid": 7.0625,
+          "outside_routes": 3.625,
+          "delta_parent": {
+            "score": {
+              "mean": 1.1875,
+              "ci95": [
+                -2.375,
+                4.75
+              ]
+            },
+            "first_served": {
+              "mean": 0.0625,
+              "ci95": [
+                -0.125,
+                0.25
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": -0.0625,
+              "ci95": [
+                -0.25,
+                0.125
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": -0.5625,
+              "ci95": [
+                -2.25,
+                1.0
+              ]
+            }
+          }
+        },
+        "small-city-offset-stock": {
+          "games": 16,
+          "score": 12.875,
+          "first_served": 0.6875,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.3125,
+          "paid": 10.9375,
+          "outside_routes": 6.625,
+          "delta_parent": {
+            "score": {
+              "mean": 3.5,
+              "ci95": [
+                0.125,
+                7.125
+              ]
+            },
+            "first_served": {
+              "mean": 0.1875,
+              "ci95": [
+                0.0,
+                0.375
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": -0.1875,
+              "ci95": [
+                -0.375,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": -1.4375,
+              "ci95": [
+                -2.9375,
+                0.0
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "arm": "short-control",
+      "added_decisions": 262144,
+      "city_mean": 106.1875,
+      "city_games": 32,
+      "city_scoring": 27,
+      "city_delta_parent": {
+        "trips": {
+          "mean": -19.90625,
+          "ci95": [
+            -42.90625,
+            4.46875
+          ]
+        },
+        "paid_units": {
+          "mean": -7.09375,
+          "ci95": [
+            -17.31328125,
+            3.5945312499999886
+          ]
+        },
+        "outside_routes": {
+          "mean": 1.25,
+          "ci95": [
+            -2.71875,
+            5.3125
+          ]
+        }
+      },
+      "city_delta_retained": {
+        "trips": {
+          "mean": -19.90625,
+          "ci95": [
+            -42.90625,
+            4.46875
+          ]
+        },
+        "paid_units": {
+          "mean": -7.09375,
+          "ci95": [
+            -17.31328125,
+            3.5945312499999886
+          ]
+        },
+        "outside_routes": {
+          "mean": 1.25,
+          "ci95": [
+            -2.71875,
+            5.3125
+          ]
+        }
+      },
+      "practice": {
+        "adjacent": {
+          "games": 16,
+          "score": 3.5625,
+          "first_served": 1.0,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 2.0,
+          "outside_routes": 0.0,
+          "delta_parent": {
+            "score": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "bend": {
+          "games": 16,
+          "score": 3.625,
+          "first_served": 1.0,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 2.5,
+          "outside_routes": 0.0,
+          "delta_parent": {
+            "score": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "clear": {
+          "games": 16,
+          "score": 3.625,
+          "first_served": 1.0,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 3.75,
+          "outside_routes": 0.0,
+          "delta_parent": {
+            "score": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "obstacle": {
+          "games": 16,
+          "score": 3.4375,
+          "first_served": 0.9375,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 4.5,
+          "outside_routes": 0.375,
+          "delta_parent": {
+            "score": {
+              "mean": 0.3125,
+              "ci95": [
+                -0.375,
+                1.0625
+              ]
+            },
+            "first_served": {
+              "mean": 0.0625,
+              "ci95": [
+                -0.125,
+                0.25
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.1875,
+              "ci95": [
+                0.0,
+                0.5
+              ]
+            },
+            "outside_routes": {
+              "mean": -0.0625,
+              "ci95": [
+                -0.9375,
+                0.9375
+              ]
+            }
+          }
+        },
+        "small-city-offset-pairs": {
+          "games": 16,
+          "score": 12.8125,
+          "first_served": 0.5625,
+          "both_served": 0.25,
+          "later_served": 0.25,
+          "native_game_over": 0.75,
+          "paid": 14.0625,
+          "outside_routes": 9.0,
+          "delta_parent": {
+            "score": {
+              "mean": 2.4375,
+              "ci95": [
+                -3.1875,
+                8.125
+              ]
+            },
+            "first_served": {
+              "mean": 0.0625,
+              "ci95": [
+                -0.125,
+                0.25
+              ]
+            },
+            "both_served": {
+              "mean": 0.0625,
+              "ci95": [
+                -0.125,
+                0.25
+              ]
+            },
+            "later_served": {
+              "mean": 0.0625,
+              "ci95": [
+                -0.125,
+                0.25
+              ]
+            },
+            "native_game_over": {
+              "mean": -0.0625,
+              "ci95": [
+                -0.25,
+                0.125
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": -0.75,
+              "ci95": [
+                -2.9375,
+                1.4375
+              ]
+            }
+          }
+        },
+        "small-city-offset-single": {
+          "games": 16,
+          "score": 8.25,
+          "first_served": 0.4375,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.5625,
+          "paid": 7.1875,
+          "outside_routes": 4.8125,
+          "delta_parent": {
+            "score": {
+              "mean": -1.1875,
+              "ci95": [
+                -3.5625,
+                0.0
+              ]
+            },
+            "first_served": {
+              "mean": -0.0625,
+              "ci95": [
+                -0.1875,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0625,
+              "ci95": [
+                0.0,
+                0.1875
+              ]
+            },
+            "paid": {
+              "mean": 0.125,
+              "ci95": [
+                0.0,
+                0.3125
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.625,
+              "ci95": [
+                0.0,
+                1.6875
+              ]
+            }
+          }
+        },
+        "small-city-offset-stock": {
+          "games": 16,
+          "score": 10.4375,
+          "first_served": 0.5625,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.4375,
+          "paid": 11.0625,
+          "outside_routes": 7.625,
+          "delta_parent": {
+            "score": {
+              "mean": 1.0625,
+              "ci95": [
+                -2.3125,
+                4.4375
+              ]
+            },
+            "first_served": {
+              "mean": 0.0625,
+              "ci95": [
+                -0.125,
+                0.25
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": -0.0625,
+              "ci95": [
+                -0.25,
+                0.125
+              ]
+            },
+            "paid": {
+              "mean": 0.125,
+              "ci95": [
+                0.0,
+                0.3125
+              ]
+            },
+            "outside_routes": {
+              "mean": -0.4375,
+              "ci95": [
+                -2.1875,
+                1.1875
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "arm": "long-window",
+      "added_decisions": 262144,
+      "city_mean": 98.46875,
+      "city_games": 32,
+      "city_scoring": 30,
+      "city_delta_parent": {
+        "trips": {
+          "mean": -27.625,
+          "ci95": [
+            -56.0625,
+            2.1257812499999886
+          ]
+        },
+        "paid_units": {
+          "mean": -5.375,
+          "ci95": [
+            -17.75,
+            7.563281249999989
+          ]
+        },
+        "outside_routes": {
+          "mean": 3.0,
+          "ci95": [
+            -2.0,
+            7.78125
+          ]
+        }
+      },
+      "city_delta_retained": {
+        "trips": {
+          "mean": -27.625,
+          "ci95": [
+            -56.0625,
+            2.1257812499999886
+          ]
+        },
+        "paid_units": {
+          "mean": -5.375,
+          "ci95": [
+            -17.75,
+            7.563281249999989
+          ]
+        },
+        "outside_routes": {
+          "mean": 3.0,
+          "ci95": [
+            -2.0,
+            7.78125
+          ]
+        }
+      },
+      "practice": {
+        "adjacent": {
+          "games": 16,
+          "score": 3.5625,
+          "first_served": 1.0,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 2.0,
+          "outside_routes": 0.0,
+          "delta_parent": {
+            "score": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "bend": {
+          "games": 16,
+          "score": 3.625,
+          "first_served": 1.0,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 2.5,
+          "outside_routes": 0.0,
+          "delta_parent": {
+            "score": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "clear": {
+          "games": 16,
+          "score": 3.625,
+          "first_served": 1.0,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 3.75,
+          "outside_routes": 0.0,
+          "delta_parent": {
+            "score": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "obstacle": {
+          "games": 16,
+          "score": 2.9375,
+          "first_served": 0.8125,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.0,
+          "paid": 4.4375,
+          "outside_routes": 0.8125,
+          "delta_parent": {
+            "score": {
+              "mean": -0.1875,
+              "ci95": [
+                -0.9375,
+                0.5625
+              ]
+            },
+            "first_served": {
+              "mean": -0.0625,
+              "ci95": [
+                -0.25,
+                0.125
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "paid": {
+              "mean": 0.125,
+              "ci95": [
+                0.0,
+                0.375
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.375,
+              "ci95": [
+                -0.5,
+                1.3125
+              ]
+            }
+          }
+        },
+        "small-city-offset-pairs": {
+          "games": 16,
+          "score": 9.75,
+          "first_served": 0.5625,
+          "both_served": 0.125,
+          "later_served": 0.125,
+          "native_game_over": 0.875,
+          "paid": 14.0625,
+          "outside_routes": 9.9375,
+          "delta_parent": {
+            "score": {
+              "mean": -0.625,
+              "ci95": [
+                -6.5,
+                5.064062499999977
+              ]
+            },
+            "first_served": {
+              "mean": 0.0625,
+              "ci95": [
+                -0.125,
+                0.25
+              ]
+            },
+            "both_served": {
+              "mean": -0.0625,
+              "ci95": [
+                -0.25,
+                0.125
+              ]
+            },
+            "later_served": {
+              "mean": -0.0625,
+              "ci95": [
+                -0.25,
+                0.125
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0625,
+              "ci95": [
+                -0.125,
+                0.25
+              ]
+            },
+            "paid": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.1875,
+              "ci95": [
+                -2.125,
+                2.5
+              ]
+            }
+          }
+        },
+        "small-city-offset-single": {
+          "games": 16,
+          "score": 9.4375,
+          "first_served": 0.5,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.5,
+          "paid": 7.1875,
+          "outside_routes": 4.3125,
+          "delta_parent": {
+            "score": {
+              "mean": 0.0,
+              "ci95": [
+                -3.5625,
+                3.5625
+              ]
+            },
+            "first_served": {
+              "mean": 0.0,
+              "ci95": [
+                -0.1875,
+                0.1875
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": 0.0,
+              "ci95": [
+                -0.1875,
+                0.1875
+              ]
+            },
+            "paid": {
+              "mean": 0.125,
+              "ci95": [
+                0.0,
+                0.3125
+              ]
+            },
+            "outside_routes": {
+              "mean": 0.125,
+              "ci95": [
+                -1.375,
+                1.5625
+              ]
+            }
+          }
+        },
+        "small-city-offset-stock": {
+          "games": 16,
+          "score": 10.625,
+          "first_served": 0.5625,
+          "both_served": 0.0,
+          "later_served": 0.0,
+          "native_game_over": 0.4375,
+          "paid": 11.25,
+          "outside_routes": 7.875,
+          "delta_parent": {
+            "score": {
+              "mean": 1.25,
+              "ci95": [
+                -2.25,
+                4.875
+              ]
+            },
+            "first_served": {
+              "mean": 0.0625,
+              "ci95": [
+                -0.125,
+                0.25
+              ]
+            },
+            "both_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "later_served": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            },
+            "native_game_over": {
+              "mean": -0.0625,
+              "ci95": [
+                -0.25,
+                0.125
+              ]
+            },
+            "paid": {
+              "mean": 0.3125,
+              "ci95": [
+                0.0,
+                0.6875
+              ]
+            },
+            "outside_routes": {
+              "mean": -0.1875,
+              "ci95": [
+                -2.0,
+                1.5
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "contrasts": [
+    {
+      "added_decisions": 65536,
+      "long_minus_short": {
+        "trips": {
+          "mean": 27.34375,
+          "ci95": [
+            9.09296875,
+            46.1875
+          ]
+        },
+        "paid_units": {
+          "mean": 12.125,
+          "ci95": [
+            5.1875,
+            19.15625
+          ]
+        },
+        "outside_routes": {
+          "mean": -0.59375,
+          "ci95": [
+            -4.625,
+            3.78125
+          ]
+        }
+      }
+    },
+    {
+      "added_decisions": 131072,
+      "long_minus_short": {
+        "trips": {
+          "mean": 29.9375,
+          "ci95": [
+            9.21796875,
+            50.09531249999998
+          ]
+        },
+        "paid_units": {
+          "mean": 15.65625,
+          "ci95": [
+            2.9992187500000007,
+            27.71875
+          ]
+        },
+        "outside_routes": {
+          "mean": 0.65625,
+          "ci95": [
+            -5.8125,
+            6.28125
+          ]
+        }
+      }
+    },
+    {
+      "added_decisions": 262144,
+      "long_minus_short": {
+        "trips": {
+          "mean": -7.71875,
+          "ci95": [
+            -30.65703125,
+            15.40625
+          ]
+        },
+        "paid_units": {
+          "mean": 1.71875,
+          "ci95": [
+            -9.0625,
+            12.96875
+          ]
+        },
+        "outside_routes": {
+          "mean": 1.75,
+          "ci95": [
+            -2.28125,
+            5.75
+          ]
+        }
+      }
+    }
+  ],
+  "parent_city_mean": 126.09375,
+  "retained_city_mean": 126.09375,
+  "limits": "One training seed per arm; repeated development evaluations. Both arms are evaluated on the same 300-second small-city lessons and 600-second cities. Longer lesson returns cannot be compared directly with historical 60-second returns. No automatic promotion or generalization claim."
+}

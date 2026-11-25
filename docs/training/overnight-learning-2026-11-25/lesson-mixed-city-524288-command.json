@@ -1,0 +1,9 @@
+[
+  "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+  "-u",
+  "/home/mohammadjaffal/mini_motorways/output/training/overnight-transfer-comparison-01/runtime/training/evaluate_road_cost_frozen.py",
+  "--checkpoint",
+  "/home/mohammadjaffal/mini_motorways/output/training/overnight-transfer-comparison-01/mixed-city/checkpoint-000524288.zip",
+  "--output",
+  "/home/mohammadjaffal/mini_motorways/output/training/overnight-transfer-comparison-01/evaluation/lesson-mixed-city-524288"
+]

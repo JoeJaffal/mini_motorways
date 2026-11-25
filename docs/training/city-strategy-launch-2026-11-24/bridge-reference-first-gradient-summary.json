@@ -1,0 +1,85 @@
+{
+  "updates": 64,
+  "first": {
+    "update": 1,
+    "task": "city",
+    "groups": [
+      {
+        "index": 0,
+        "lr_scale": 1.0,
+        "before_clip": 0.006992913782596588,
+        "after_clip": 0.006992913782596588
+      },
+      {
+        "index": 1,
+        "lr_scale": 0.3,
+        "before_clip": 0.020059270784258842,
+        "after_clip": 0.020059270784258842
+      },
+      {
+        "index": 2,
+        "lr_scale": 0.1,
+        "before_clip": 0.0,
+        "after_clip": 0.0
+      },
+      {
+        "index": 3,
+        "lr_scale": 0.1,
+        "before_clip": 0.053116023540496826,
+        "after_clip": 0.053116023540496826
+      }
+    ]
+  },
+  "last": {
+    "update": 64,
+    "task": "city",
+    "groups": [
+      {
+        "index": 0,
+        "lr_scale": 1.0,
+        "before_clip": 0.06446100026369095,
+        "after_clip": 0.06446100026369095
+      },
+      {
+        "index": 1,
+        "lr_scale": 0.3,
+        "before_clip": 0.011794054880738258,
+        "after_clip": 0.011794054880738258
+      },
+      {
+        "index": 2,
+        "lr_scale": 0.1,
+        "before_clip": 3.725065107573755e-05,
+        "after_clip": 3.725065107573755e-05
+      },
+      {
+        "index": 3,
+        "lr_scale": 0.1,
+        "before_clip": 0.05103607475757599,
+        "after_clip": 0.05103607475757599
+      }
+    ]
+  },
+  "groups": [
+    {
+      "index": 0,
+      "mean_before": 0.038192650325072464,
+      "mean_after": 0.038192650325072464
+    },
+    {
+      "index": 1,
+      "mean_before": 0.016756226563302334,
+      "mean_after": 0.016756226563302334
+    },
+    {
+      "index": 2,
+      "mean_before": 1.749743719248187e-05,
+      "mean_after": 1.749743719248187e-05
+    },
+    {
+      "index": 3,
+      "mean_before": 0.05633184587350115,
+      "mean_after": 0.05633184587350115
+    }
+  ]
+}

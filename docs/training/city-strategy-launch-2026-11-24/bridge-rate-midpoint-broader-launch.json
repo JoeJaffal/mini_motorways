@@ -1,0 +1,26 @@
+{
+  "pid": 341278,
+  "command": [
+    "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+    "-u",
+    "training/evaluate_city_service.py",
+    "--dll",
+    "output/city-bridge-connection-build-01/bin/TrafficHost/release/TrafficHost.dll",
+    "--checkpoints",
+    "output/training/city-five-stage-cold-initial-01/candidate.zip",
+    "output/training/city-strategy-bridge-reference-rate-01/segment-001/midpoint.zip",
+    "--output",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-rate-midpoint-broader-01",
+    "--games",
+    "64",
+    "--seed",
+    "950242",
+    "--workers",
+    "16",
+    "--horizon",
+    "1200",
+    "--allow-bridges"
+  ],
+  "time": "2026-11-24T17:17:22.595680+02:00",
+  "purpose": "Broader development check of frozen promising midpoint before more continuation; cohort950242 was previously consumed, not independent confirmation"
+}

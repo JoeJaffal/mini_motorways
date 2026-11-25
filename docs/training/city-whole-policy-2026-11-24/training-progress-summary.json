@@ -1,0 +1,128 @@
+{
+  "gated": {
+    "path": "output/training/city-whole-fit-01/gated",
+    "last_checkpoint": {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/city-whole-fit-01/gated/final.zip",
+      "sha256": "faf2869a9c6bf60a5e6d6f109f464538068aeb885f364a2b1836dac214f7d6a4",
+      "added_decisions": 32768,
+      "optimizer_steps_added": 1024,
+      "episodes": 65,
+      "seconds": 441.9947361209197
+    },
+    "completed_episodes": 65,
+    "time_limit_truncations": 35,
+    "explicit_finite_ends": 0,
+    "native_deaths": 30,
+    "training_score_mean": 113.46153846153847,
+    "rollout_metrics": [
+      {
+        "train/explained_variance": -0.012857317924499512,
+        "train/value_loss": 5791.871280670166,
+        "train/approx_kl": 1.6360242e-05,
+        "pilot/optimizer_steps_this_rollout": 256.0
+      },
+      {
+        "train/explained_variance": -0.0006183385848999023,
+        "train/value_loss": 5231.289969444275,
+        "train/approx_kl": 7.836273e-05,
+        "pilot/optimizer_steps_this_rollout": 256.0
+      },
+      {
+        "train/explained_variance": -0.003319382667541504,
+        "train/value_loss": 4449.281321525574,
+        "train/approx_kl": 0.000306278,
+        "pilot/optimizer_steps_this_rollout": 256.0
+      },
+      {
+        "train/explained_variance": 0.03675556182861328,
+        "train/value_loss": 3601.242607116699,
+        "train/approx_kl": 1.9692918e-05,
+        "pilot/optimizer_steps_this_rollout": 256.0
+      }
+    ]
+  },
+  "whole": {
+    "path": "output/training/city-whole-fit-01/whole",
+    "last_checkpoint": {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/city-whole-fit-01/whole/final.zip",
+      "sha256": "d3496eb2d47ec14162e987ef213e5314dcea261d48faaaf25750b79c2af66c7d",
+      "added_decisions": 32768,
+      "optimizer_steps_added": 1024,
+      "episodes": 67,
+      "seconds": 448.5930325760273
+    },
+    "completed_episodes": 67,
+    "time_limit_truncations": 35,
+    "explicit_finite_ends": 0,
+    "native_deaths": 32,
+    "training_score_mean": 113.40298507462687,
+    "rollout_metrics": [
+      {
+        "train/explained_variance": -0.012857317924499512,
+        "train/value_loss": 5791.880052566528,
+        "train/approx_kl": 8.469742e-06,
+        "pilot/optimizer_steps_this_rollout": 256.0
+      },
+      {
+        "train/explained_variance": -0.002475261688232422,
+        "train/value_loss": 4889.737802505493,
+        "train/approx_kl": 0.00027463818,
+        "pilot/optimizer_steps_this_rollout": 256.0
+      },
+      {
+        "train/explained_variance": 0.02684938907623291,
+        "train/value_loss": 3622.442825317383,
+        "train/approx_kl": 0.0003732923,
+        "pilot/optimizer_steps_this_rollout": 256.0
+      },
+      {
+        "train/explained_variance": 0.03001481294631958,
+        "train/value_loss": 5520.160230636597,
+        "train/approx_kl": 6.1399725e-05,
+        "pilot/optimizer_steps_this_rollout": 256.0
+      }
+    ]
+  },
+  "finite": {
+    "path": "output/training/city-whole-finite-01/finite",
+    "last_checkpoint": {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/city-whole-finite-01/finite/final.zip",
+      "sha256": "e3750c9cad7e51d6bc2b395d5444fa92c61206c0030895071b16e09159b30f6a",
+      "added_decisions": 32768,
+      "optimizer_steps_added": 1024,
+      "episodes": 63,
+      "seconds": 449.00181528297253
+    },
+    "completed_episodes": 63,
+    "time_limit_truncations": 0,
+    "explicit_finite_ends": 37,
+    "native_deaths": 26,
+    "training_score_mean": 123.0952380952381,
+    "rollout_metrics": [
+      {
+        "train/explained_variance": -0.018276095390319824,
+        "train/value_loss": 5049.395356178284,
+        "train/approx_kl": 7.625116e-06,
+        "pilot/optimizer_steps_this_rollout": 256.0
+      },
+      {
+        "train/explained_variance": -0.01817631721496582,
+        "train/value_loss": 3846.5991230010986,
+        "train/approx_kl": 0.00028789457,
+        "pilot/optimizer_steps_this_rollout": 256.0
+      },
+      {
+        "train/explained_variance": -0.03661036491394043,
+        "train/value_loss": 3496.527051925659,
+        "train/approx_kl": 0.0003821583,
+        "pilot/optimizer_steps_this_rollout": 256.0
+      },
+      {
+        "train/explained_variance": -0.009955644607543945,
+        "train/value_loss": 4151.817415237427,
+        "train/approx_kl": 3.0468973e-05,
+        "pilot/optimizer_steps_this_rollout": 256.0
+      }
+    ]
+  }
+}

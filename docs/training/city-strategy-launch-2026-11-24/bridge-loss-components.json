@@ -1,0 +1,632 @@
+{
+  "checkpoint": "output/training/city-strategy-bridge-reference-city-01/segment-001/final.zip",
+  "training_seed_start": 169000000,
+  "decisions": 2048,
+  "optimizer_updates": 0,
+  "weights_exact": true,
+  "groups": [
+    {
+      "index": 0,
+      "policy_norm": 0.6236451966688037,
+      "weighted_entropy_norm": 0.061815541004762053,
+      "weighted_value_norm": 0.0,
+      "policy_entropy_cosine": -0.12326007336378098
+    },
+    {
+      "index": 1,
+      "policy_norm": 0.6542407041415572,
+      "weighted_entropy_norm": 0.0031068918397068046,
+      "weighted_value_norm": 0.0,
+      "policy_entropy_cosine": -0.11598547885660082
+    },
+    {
+      "index": 2,
+      "policy_norm": 0.012830156134441495,
+      "weighted_entropy_norm": 0.0009490397860645317,
+      "weighted_value_norm": 0.0822406173683703,
+      "policy_entropy_cosine": -0.12275352948017826
+    },
+    {
+      "index": 3,
+      "policy_norm": 0.0,
+      "weighted_entropy_norm": 0.0,
+      "weighted_value_norm": 0.08630688348785043,
+      "policy_entropy_cosine": 0.0
+    }
+  ],
+  "batches": [
+    {
+      "losses": [
+        -7.078051567077637e-08,
+        -0.0061525325290858746,
+        0.07077381759881973
+      ],
+      "groups": [
+        {
+          "index": 0,
+          "policy_norm": 1.0007861852645874,
+          "weighted_entropy_norm": 0.05975472554564476,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": -0.9994158744812012
+        },
+        {
+          "index": 1,
+          "policy_norm": 1.0366486310958862,
+          "weighted_entropy_norm": 0.0021903773304075003,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": -0.8883631825447083
+        },
+        {
+          "index": 2,
+          "policy_norm": 0.01490032859146595,
+          "weighted_entropy_norm": 0.000860141939483583,
+          "weighted_value_norm": 0.09313283860683441,
+          "policy_entropy_cosine": -0.1342342346906662
+        },
+        {
+          "index": 3,
+          "policy_norm": 0.0,
+          "weighted_entropy_norm": 0.0,
+          "weighted_value_norm": 0.0956774577498436,
+          "policy_entropy_cosine": 0.0
+        }
+      ]
+    },
+    {
+      "losses": [
+        6.146728992462158e-08,
+        -0.0068139610812067986,
+        0.06357648223638535
+      ],
+      "groups": [
+        {
+          "index": 0,
+          "policy_norm": 0.3059740662574768,
+          "weighted_entropy_norm": 0.05937310680747032,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": -0.9967229962348938
+        },
+        {
+          "index": 1,
+          "policy_norm": 1.0549489259719849,
+          "weighted_entropy_norm": 0.00415659137070179,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": -0.7327161431312561
+        },
+        {
+          "index": 2,
+          "policy_norm": 0.01652444154024124,
+          "weighted_entropy_norm": 0.0009339498355984688,
+          "weighted_value_norm": 0.08183077722787857,
+          "policy_entropy_cosine": -0.7154005169868469
+        },
+        {
+          "index": 3,
+          "policy_norm": 0.0,
+          "weighted_entropy_norm": 0.0,
+          "weighted_value_norm": 0.0859232023358345,
+          "policy_entropy_cosine": 0.0
+        }
+      ]
+    },
+    {
+      "losses": [
+        -7.078051567077637e-08,
+        -0.006826851982623339,
+        0.082517609000206
+      ],
+      "groups": [
+        {
+          "index": 0,
+          "policy_norm": 0.361333966255188,
+          "weighted_entropy_norm": 0.06440476328134537,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": 0.9920945167541504
+        },
+        {
+          "index": 1,
+          "policy_norm": 0.9169396162033081,
+          "weighted_entropy_norm": 0.0035994555801153183,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": 0.8349377512931824
+        },
+        {
+          "index": 2,
+          "policy_norm": 0.008805787190794945,
+          "weighted_entropy_norm": 0.0009574029827490449,
+          "weighted_value_norm": 0.07398010790348053,
+          "policy_entropy_cosine": 0.5714490413665771
+        },
+        {
+          "index": 3,
+          "policy_norm": 0.0,
+          "weighted_entropy_norm": 0.0,
+          "weighted_value_norm": 0.07601900398731232,
+          "policy_entropy_cosine": 0.0
+        }
+      ]
+    },
+    {
+      "losses": [
+        -2.514570951461792e-08,
+        -0.006350246723741293,
+        0.07037775218486786
+      ],
+      "groups": [
+        {
+          "index": 0,
+          "policy_norm": 1.54295814037323,
+          "weighted_entropy_norm": 0.058295488357543945,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": -0.9996806979179382
+        },
+        {
+          "index": 1,
+          "policy_norm": 0.14856265485286713,
+          "weighted_entropy_norm": 0.004294585902243853,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": -0.7057890295982361
+        },
+        {
+          "index": 2,
+          "policy_norm": 0.02149343490600586,
+          "weighted_entropy_norm": 0.0008926380542106926,
+          "weighted_value_norm": 0.06518687307834625,
+          "policy_entropy_cosine": -0.9797610640525818
+        },
+        {
+          "index": 3,
+          "policy_norm": 0.0,
+          "weighted_entropy_norm": 0.0,
+          "weighted_value_norm": 0.06848070025444031,
+          "policy_entropy_cosine": 0.0
+        }
+      ]
+    },
+    {
+      "losses": [
+        2.7939677238464355e-08,
+        -0.0059659043326973915,
+        0.07193572074174881
+      ],
+      "groups": [
+        {
+          "index": 0,
+          "policy_norm": 0.2399633526802063,
+          "weighted_entropy_norm": 0.05785749852657318,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": -0.9827783107757568
+        },
+        {
+          "index": 1,
+          "policy_norm": 0.5631526112556458,
+          "weighted_entropy_norm": 0.0017999650444835424,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": 0.25631821155548096
+        },
+        {
+          "index": 2,
+          "policy_norm": 0.01153132040053606,
+          "weighted_entropy_norm": 0.0008609088836237788,
+          "weighted_value_norm": 0.11540413647890091,
+          "policy_entropy_cosine": -0.6439038515090942
+        },
+        {
+          "index": 3,
+          "policy_norm": 0.0,
+          "weighted_entropy_norm": 0.0,
+          "weighted_value_norm": 0.11981891095638275,
+          "policy_entropy_cosine": 0.0
+        }
+      ]
+    },
+    {
+      "losses": [
+        -6.51925802230835e-08,
+        -0.006801614537835121,
+        0.07315273582935333
+      ],
+      "groups": [
+        {
+          "index": 0,
+          "policy_norm": 0.6633332967758179,
+          "weighted_entropy_norm": 0.05973675474524498,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": -0.9914494752883911
+        },
+        {
+          "index": 1,
+          "policy_norm": 0.6687231063842773,
+          "weighted_entropy_norm": 0.004670471418648958,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": 0.977466881275177
+        },
+        {
+          "index": 2,
+          "policy_norm": 0.012745454907417297,
+          "weighted_entropy_norm": 0.0009558878373354673,
+          "weighted_value_norm": 0.07489950954914093,
+          "policy_entropy_cosine": 0.01065076608210802
+        },
+        {
+          "index": 3,
+          "policy_norm": 0.0,
+          "weighted_entropy_norm": 0.0,
+          "weighted_value_norm": 0.0794767364859581,
+          "policy_entropy_cosine": 0.0
+        }
+      ]
+    },
+    {
+      "losses": [
+        -4.0978193283081055e-08,
+        -0.005618100054562092,
+        0.0684904083609581
+      ],
+      "groups": [
+        {
+          "index": 0,
+          "policy_norm": 0.24341903626918793,
+          "weighted_entropy_norm": 0.059494730085134506,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": -0.9871559143066406
+        },
+        {
+          "index": 1,
+          "policy_norm": 0.831899106502533,
+          "weighted_entropy_norm": 0.0018704261165112257,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": 0.030366266146302223
+        },
+        {
+          "index": 2,
+          "policy_norm": 0.007704213727265596,
+          "weighted_entropy_norm": 0.0009068619110621512,
+          "weighted_value_norm": 0.09248296171426773,
+          "policy_entropy_cosine": -0.00026301233447156847
+        },
+        {
+          "index": 3,
+          "policy_norm": 0.0,
+          "weighted_entropy_norm": 0.0,
+          "weighted_value_norm": 0.09513433277606964,
+          "policy_entropy_cosine": 0.0
+        }
+      ]
+    },
+    {
+      "losses": [
+        1.4901161193847656e-08,
+        -0.007082626689225435,
+        0.07839084416627884
+      ],
+      "groups": [
+        {
+          "index": 0,
+          "policy_norm": 0.7754821181297302,
+          "weighted_entropy_norm": 0.06701283901929855,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": -0.9997111558914185
+        },
+        {
+          "index": 1,
+          "policy_norm": 0.4519243538379669,
+          "weighted_entropy_norm": 0.0014837427297607064,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": -0.24993838369846344
+        },
+        {
+          "index": 2,
+          "policy_norm": 0.013578471727669239,
+          "weighted_entropy_norm": 0.001014594454318285,
+          "weighted_value_norm": 0.1184358149766922,
+          "policy_entropy_cosine": -0.9027724266052246
+        },
+        {
+          "index": 3,
+          "policy_norm": 0.0,
+          "weighted_entropy_norm": 0.0,
+          "weighted_value_norm": 0.12396654486656189,
+          "policy_entropy_cosine": 0.0
+        }
+      ]
+    },
+    {
+      "losses": [
+        -5.587935447692871e-08,
+        -0.006799676455557346,
+        0.0672827884554863
+      ],
+      "groups": [
+        {
+          "index": 0,
+          "policy_norm": 0.5217511057853699,
+          "weighted_entropy_norm": 0.07050301134586334,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": -0.999315619468689
+        },
+        {
+          "index": 1,
+          "policy_norm": 0.4979178011417389,
+          "weighted_entropy_norm": 0.0044312505051493645,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": 0.30887550115585327
+        },
+        {
+          "index": 2,
+          "policy_norm": 0.007424050476402044,
+          "weighted_entropy_norm": 0.0010835558641701937,
+          "weighted_value_norm": 0.08943483978509903,
+          "policy_entropy_cosine": -0.4029991328716278
+        },
+        {
+          "index": 3,
+          "policy_norm": 0.0,
+          "weighted_entropy_norm": 0.0,
+          "weighted_value_norm": 0.09240797162055969,
+          "policy_entropy_cosine": 0.0
+        }
+      ]
+    },
+    {
+      "losses": [
+        7.450580596923828e-09,
+        -0.006377933081239462,
+        0.07277874648571014
+      ],
+      "groups": [
+        {
+          "index": 0,
+          "policy_norm": 0.5123588442802429,
+          "weighted_entropy_norm": 0.055770471692085266,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": 0.9959333539009094
+        },
+        {
+          "index": 1,
+          "policy_norm": 1.0728861093521118,
+          "weighted_entropy_norm": 0.00500846141949296,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": 0.11819276213645935
+        },
+        {
+          "index": 2,
+          "policy_norm": 0.010625400580465794,
+          "weighted_entropy_norm": 0.0009071763488464057,
+          "weighted_value_norm": 0.060500722378492355,
+          "policy_entropy_cosine": 0.12906092405319214
+        },
+        {
+          "index": 3,
+          "policy_norm": 0.0,
+          "weighted_entropy_norm": 0.0,
+          "weighted_value_norm": 0.0652555376291275,
+          "policy_entropy_cosine": 0.0
+        }
+      ]
+    },
+    {
+      "losses": [
+        -5.4016709327697754e-08,
+        -0.005926064215600491,
+        0.05699925497174263
+      ],
+      "groups": [
+        {
+          "index": 0,
+          "policy_norm": 0.3158988058567047,
+          "weighted_entropy_norm": 0.062193285673856735,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": 0.9993327260017395
+        },
+        {
+          "index": 1,
+          "policy_norm": 0.5943536162376404,
+          "weighted_entropy_norm": 0.0014525065198540688,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": -0.5996776819229126
+        },
+        {
+          "index": 2,
+          "policy_norm": 0.010428681038320065,
+          "weighted_entropy_norm": 0.0009534850833006203,
+          "weighted_value_norm": 0.053762950003147125,
+          "policy_entropy_cosine": -0.25915029644966125
+        },
+        {
+          "index": 3,
+          "policy_norm": 0.0,
+          "weighted_entropy_norm": 0.0,
+          "weighted_value_norm": 0.05593624338507652,
+          "policy_entropy_cosine": 0.0
+        }
+      ]
+    },
+    {
+      "losses": [
+        -5.21540641784668e-08,
+        -0.008102045394480228,
+        0.06659267097711563
+      ],
+      "groups": [
+        {
+          "index": 0,
+          "policy_norm": 0.30657392740249634,
+          "weighted_entropy_norm": 0.06727781146764755,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": 0.999115526676178
+        },
+        {
+          "index": 1,
+          "policy_norm": 0.5591190457344055,
+          "weighted_entropy_norm": 0.0032905172556638718,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": 0.139443501830101
+        },
+        {
+          "index": 2,
+          "policy_norm": 0.00989588163793087,
+          "weighted_entropy_norm": 0.0010266952449455857,
+          "weighted_value_norm": 0.10873957723379135,
+          "policy_entropy_cosine": -0.20561519265174866
+        },
+        {
+          "index": 3,
+          "policy_norm": 0.0,
+          "weighted_entropy_norm": 0.0,
+          "weighted_value_norm": 0.1155952736735344,
+          "policy_entropy_cosine": 0.0
+        }
+      ]
+    },
+    {
+      "losses": [
+        1.4901161193847656e-08,
+        -0.006749715656042099,
+        0.06393998116254807
+      ],
+      "groups": [
+        {
+          "index": 0,
+          "policy_norm": 0.7472646832466125,
+          "weighted_entropy_norm": 0.063999243080616,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": 0.9974057078361511
+        },
+        {
+          "index": 1,
+          "policy_norm": 0.21967622637748718,
+          "weighted_entropy_norm": 0.00228962698020041,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": 0.30550310015678406
+        },
+        {
+          "index": 2,
+          "policy_norm": 0.011052336543798447,
+          "weighted_entropy_norm": 0.0009880264988169074,
+          "weighted_value_norm": 0.0620541125535965,
+          "policy_entropy_cosine": 0.871786892414093
+        },
+        {
+          "index": 3,
+          "policy_norm": 0.0,
+          "weighted_entropy_norm": 0.0,
+          "weighted_value_norm": 0.06661739945411682,
+          "policy_entropy_cosine": 0.0
+        }
+      ]
+    },
+    {
+      "losses": [
+        4.0978193283081055e-08,
+        -0.0068363165482878685,
+        0.07554185390472412
+      ],
+      "groups": [
+        {
+          "index": 0,
+          "policy_norm": 1.281151533126831,
+          "weighted_entropy_norm": 0.0628805160522461,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": -0.9979467391967773
+        },
+        {
+          "index": 1,
+          "policy_norm": 0.7947250008583069,
+          "weighted_entropy_norm": 0.002997530158609152,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": -0.7645280361175537
+        },
+        {
+          "index": 2,
+          "policy_norm": 0.026771623641252518,
+          "weighted_entropy_norm": 0.0009670770959928632,
+          "weighted_value_norm": 0.06085506081581116,
+          "policy_entropy_cosine": -0.8623464107513428
+        },
+        {
+          "index": 3,
+          "policy_norm": 0.0,
+          "weighted_entropy_norm": 0.0,
+          "weighted_value_norm": 0.062338121235370636,
+          "policy_entropy_cosine": 0.0
+        }
+      ]
+    },
+    {
+      "losses": [
+        -1.30385160446167e-08,
+        -0.005943222902715206,
+        0.07915883511304855
+      ],
+      "groups": [
+        {
+          "index": 0,
+          "policy_norm": 0.7037513256072998,
+          "weighted_entropy_norm": 0.05840391293168068,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": 0.9985003471374512
+        },
+        {
+          "index": 1,
+          "policy_norm": 0.2069990336894989,
+          "weighted_entropy_norm": 0.0033869631588459015,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": -0.9454718828201294
+        },
+        {
+          "index": 2,
+          "policy_norm": 0.009248056448996067,
+          "weighted_entropy_norm": 0.0009108219528570771,
+          "weighted_value_norm": 0.11460571736097336,
+          "policy_entropy_cosine": 0.8149501085281372
+        },
+        {
+          "index": 3,
+          "policy_norm": 0.0,
+          "weighted_entropy_norm": 0.0,
+          "weighted_value_norm": 0.1243610680103302,
+          "policy_entropy_cosine": 0.0
+        }
+      ]
+    },
+    {
+      "losses": [
+        1.6205012798309326e-07,
+        -0.006747693754732609,
+        0.05850449204444885
+      ],
+      "groups": [
+        {
+          "index": 0,
+          "policy_norm": 0.4563227593898773,
+          "weighted_entropy_norm": 0.062090497463941574,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": 0.9996334314346313
+        },
+        {
+          "index": 1,
+          "policy_norm": 0.8493754267692566,
+          "weighted_entropy_norm": 0.0027877979446202517,
+          "weighted_value_norm": 0.0,
+          "policy_entropy_cosine": 0.0596127025783062
+        },
+        {
+          "index": 2,
+          "policy_norm": 0.012553014792501926,
+          "weighted_entropy_norm": 0.0009654125897213817,
+          "weighted_value_norm": 0.050543878227472305,
+          "policy_entropy_cosine": 0.7444919347763062
+        },
+        {
+          "index": 3,
+          "policy_norm": 0.0,
+          "weighted_entropy_norm": 0.0,
+          "weighted_value_norm": 0.05390163138508797,
+          "policy_entropy_cosine": 0.0
+        }
+      ]
+    }
+  ],
+  "limit": "One rollout and16 minibatches; gradient norms are diagnostic, not causal proof of score effects."
+}

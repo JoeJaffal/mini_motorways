@@ -1,0 +1,86 @@
+{
+  "models": [
+    "output/training/city-five-stage-cold-initial-01/candidate.zip",
+    "output/training/city-strategy-original-delay-01/segment-001/final.zip"
+  ],
+  "sha256": {
+    "output/training/city-five-stage-cold-initial-01/candidate.zip": "9202d62be8d237f6fe495ee1ec29eed1747849a1fd747006ea8903de7f0b19f1",
+    "output/training/city-strategy-original-delay-01/segment-001/final.zip": "e72ec5ada055dd474f65ec0d032e6333128e241f8154ea2f3fc382c73dbf34e2"
+  },
+  "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+  "horizon": 1200,
+  "allow_bridges": true,
+  "forced_action_inference_skipped": true,
+  "results": {
+    "0": {
+      "games": 32,
+      "scoring_games": 29,
+      "mean_score": 230.96875,
+      "new_targets": 198,
+      "new_targets_served": 175,
+      "new_target_stockouts": 44,
+      "median_new_service_delay": 34.0,
+      "mean_paid_units": 127.84375,
+      "mean_outside_observed_routes": 37.8125,
+      "outside_route_share": 0.29577120508433147,
+      "paired_score_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "mean_bridge_tiles": 1.875,
+      "mean_bridge_stock": 0.15625
+    },
+    "1": {
+      "games": 32,
+      "scoring_games": 29,
+      "mean_score": 185.53125,
+      "new_targets": 195,
+      "new_targets_served": 170,
+      "new_target_stockouts": 14,
+      "median_new_service_delay": 31.5,
+      "mean_paid_units": 108.125,
+      "mean_outside_observed_routes": 38.8125,
+      "outside_route_share": 0.35895953757225435,
+      "paired_score_delta_and_interval": [
+        -45.4375,
+        [
+          -92.5953125,
+          4.188281249999989
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        -0.15625,
+        [
+          -0.84375,
+          0.5625
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        1.0,
+        [
+          -5.09375,
+          7.15625
+        ]
+      ],
+      "mean_bridge_tiles": 2.1875,
+      "mean_bridge_stock": 0.15625
+    }
+  }
+}

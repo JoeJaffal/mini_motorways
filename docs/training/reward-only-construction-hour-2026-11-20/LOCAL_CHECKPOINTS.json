@@ -1,0 +1,217 @@
+{
+  "branch": "mohammad",
+  "starting_revision": "6bd7f71",
+  "completed_runs": 12,
+  "new_decisions": 1441792,
+  "records": [
+    {
+      "run": "driveway-ppo-hour-01",
+      "new_decisions": 65536,
+      "saved_decisions": 65536,
+      "elapsed_seconds": 102.5005176239647,
+      "checkpoint": {
+        "path": "output/training/driveway-ppo-hour-01/latest.zip",
+        "sha256": "ac4df47be2637cfc8f643bf731bc37baf481b607bcf71793eaa1511247d270ee",
+        "bytes": 433379
+      },
+      "host": {
+        "path": "output/training/spare-stock-host.SI7Hbh/build/bin/TrafficHost/release/TrafficHost.dll",
+        "sha256": "582e6e74c41a94b607f6323076d2e77231bdec82b6ba4265b93b92caaee16c3b",
+        "bytes": 681984
+      }
+    },
+    {
+      "run": "pair-ppo-hour-01",
+      "new_decisions": 98304,
+      "saved_decisions": 98304,
+      "elapsed_seconds": 150.4878475870937,
+      "checkpoint": {
+        "path": "output/training/pair-ppo-hour-01/latest.zip",
+        "sha256": "091d4172f7c3b62542fa06eb4db056ee47c15bcd02f2bb967492e6723d215389",
+        "bytes": 501738
+      },
+      "host": {
+        "path": "output/training/paired-ppo-host-hour-01/build/bin/TrafficHost/release/TrafficHost.dll",
+        "sha256": "c4fa332ae808d495b5d74b3da7eb187bc897f0aa535a74952838e07ef06cf418",
+        "bytes": 683008
+      }
+    },
+    {
+      "run": "pair-ppo-hour-02",
+      "new_decisions": 131072,
+      "saved_decisions": 131072,
+      "elapsed_seconds": 252.0744007229805,
+      "checkpoint": {
+        "path": "output/training/pair-ppo-hour-02/latest.zip",
+        "sha256": "871766a2f65941325160ddf3998ecae3a70611d49fdadfd2baaedc4690f0a583",
+        "bytes": 505388
+      },
+      "host": {
+        "path": "output/training/paired-ppo-host-hour-01/build/bin/TrafficHost/release/TrafficHost.dll",
+        "sha256": "c4fa332ae808d495b5d74b3da7eb187bc897f0aa535a74952838e07ef06cf418",
+        "bytes": 683008
+      }
+    },
+    {
+      "run": "pair-ppo-hour-03",
+      "new_decisions": 163840,
+      "saved_decisions": 163840,
+      "elapsed_seconds": 314.2113475030055,
+      "checkpoint": {
+        "path": "output/training/pair-ppo-hour-03/latest.zip",
+        "sha256": "00b19dbe7dcd10c504a18717f8b2692b80ede35ca802f4b2d1ca0b3d0f2dd1a9",
+        "bytes": 506287
+      },
+      "host": {
+        "path": "output/training/paired-ppo-host-hour-01/build/bin/TrafficHost/release/TrafficHost.dll",
+        "sha256": "c4fa332ae808d495b5d74b3da7eb187bc897f0aa535a74952838e07ef06cf418",
+        "bytes": 683008
+      }
+    },
+    {
+      "run": "terrain-ppo-hour-01",
+      "new_decisions": 262144,
+      "saved_decisions": 262144,
+      "elapsed_seconds": 597.649152938975,
+      "checkpoint": {
+        "path": "output/training/terrain-ppo-hour-01/latest.zip",
+        "sha256": "0608e90bc56acfa0ab2391ba2d1c414cd289c8042ab4279458147fee76346ad3",
+        "bytes": 543403
+      },
+      "host": {
+        "path": "output/training/construction-mixed-host-hour-01/build/bin/TrafficHost/release/TrafficHost.dll",
+        "sha256": "7e7838e9f9300fe50877af7cb0c1309c99a8ca2ef0f2029002d21479588a012b",
+        "bytes": 685056
+      }
+    },
+    {
+      "run": "terrain-ppo-hour-02",
+      "new_decisions": 131072,
+      "saved_decisions": 393216,
+      "elapsed_seconds": 288.70557936897967,
+      "checkpoint": {
+        "path": "output/training/terrain-ppo-hour-02/latest.zip",
+        "sha256": "8421fd5b954978b09608469f562053b939463a9ca90e978847919ffafadf3640",
+        "bytes": 543583
+      },
+      "host": {
+        "path": "output/training/construction-mixed-host-hour-01/build/bin/TrafficHost/release/TrafficHost.dll",
+        "sha256": "7e7838e9f9300fe50877af7cb0c1309c99a8ca2ef0f2029002d21479588a012b",
+        "bytes": 685056
+      }
+    },
+    {
+      "run": "terrain-ppo-hour-03",
+      "new_decisions": 98304,
+      "saved_decisions": 491520,
+      "elapsed_seconds": 254.2124782979954,
+      "checkpoint": {
+        "path": "output/training/terrain-ppo-hour-03/latest.zip",
+        "sha256": "11a77ce050d1a4379ad9316baf11d24ce7340fdf3662fccae7e64880be8d9d83",
+        "bytes": 544295
+      },
+      "host": {
+        "path": "output/training/construction-mixed-host-hour-01/build/bin/TrafficHost/release/TrafficHost.dll",
+        "sha256": "7e7838e9f9300fe50877af7cb0c1309c99a8ca2ef0f2029002d21479588a012b",
+        "bytes": 685056
+      }
+    },
+    {
+      "run": "triad-gap-ppo-hour-01",
+      "new_decisions": 131072,
+      "saved_decisions": 131072,
+      "elapsed_seconds": 355.01294245000463,
+      "checkpoint": {
+        "path": "output/training/triad-gap-ppo-hour-01/latest.zip",
+        "sha256": "b8fcf49062c86c45038ccdd5e718957fd69f1e6632dbff1248eb42bf49c42a5a",
+        "bytes": 532964
+      },
+      "host": {
+        "path": "output/training/triad-gap-host-hour-01/build/bin/TrafficHost/release/TrafficHost.dll",
+        "sha256": "5733f2e3b44f4b5765193323616717798b912e95be193bd9cf86b98578b85e74",
+        "bytes": 686592
+      }
+    },
+    {
+      "run": "triad-gap-ppo-hour-02",
+      "new_decisions": 98304,
+      "saved_decisions": 229376,
+      "elapsed_seconds": 231.20551097299904,
+      "checkpoint": {
+        "path": "output/training/triad-gap-ppo-hour-02/latest.zip",
+        "sha256": "3e6f82ae84c2a0ef8cec35815501486ff487c0a1f8de643cf82c3b3b2ae2b59d",
+        "bytes": 533081
+      },
+      "host": {
+        "path": "output/training/triad-multigap-host-hour-01/build/bin/TrafficHost/release/TrafficHost.dll",
+        "sha256": "953834785ce1acf4126366d10d2c0a1a571a4e4832501c5e15416fd8ff0cf82a",
+        "bytes": 686592
+      }
+    },
+    {
+      "run": "triad-full-ppo-hour-01",
+      "new_decisions": 131072,
+      "saved_decisions": 360448,
+      "elapsed_seconds": 315.422713237931,
+      "checkpoint": {
+        "path": "output/training/triad-full-ppo-hour-01/latest.zip",
+        "sha256": "e4747b96fcb5099f5f5dae4f5a893822422a6e92124da9d853449cbccc12f8ae",
+        "bytes": 533081
+      },
+      "host": {
+        "path": "output/training/triad-multigap-host-hour-01/build/bin/TrafficHost/release/TrafficHost.dll",
+        "sha256": "953834785ce1acf4126366d10d2c0a1a571a4e4832501c5e15416fd8ff0cf82a",
+        "bytes": 686592
+      }
+    },
+    {
+      "run": "score-wait-ppo-hour-01",
+      "new_decisions": 65536,
+      "saved_decisions": 65536,
+      "elapsed_seconds": 301.2927393979626,
+      "checkpoint": {
+        "path": "output/training/score-wait-ppo-hour-01/latest.zip",
+        "sha256": "b1e93b258afa661b97d6e6c95b3f489166a82615881b5b03b2f9ed5278e8ad9e",
+        "bytes": 507580
+      },
+      "host": {
+        "path": "output/training/score-wait-host-hour-01/build/bin/TrafficHost/release/TrafficHost.dll",
+        "sha256": "c75f51b5e043fe74baac8495d0267b6fd7c3faa9284636588df84ef19bac08ba",
+        "bytes": 685568
+      }
+    },
+    {
+      "run": "score-wait-ppo-hour-02",
+      "new_decisions": 65536,
+      "saved_decisions": 65536,
+      "elapsed_seconds": 327.0987263120478,
+      "checkpoint": {
+        "path": "output/training/score-wait-ppo-hour-02/latest.zip",
+        "sha256": "031f4c21ecbd8d40b215ec3bcab5c8aad55feb0f0373a78b473e1e95209d26e9",
+        "bytes": 507640
+      },
+      "host": {
+        "path": "output/training/score-wait-host-hour-01/build/bin/TrafficHost/release/TrafficHost.dll",
+        "sha256": "c75f51b5e043fe74baac8495d0267b6fd7c3faa9284636588df84ef19bac08ba",
+        "bytes": 685568
+      }
+    }
+  ],
+  "additional_preserved_checkpoints": [
+    {
+      "path": "output/training/spare-road-ppo-pilot-01/zero-stock-transition.zip",
+      "sha256": "eecb3ee1071b5e4f7d324813a99ef7d6e14f1c344e8aeec4bf08ca69790f5747",
+      "bytes": 463905
+    },
+    {
+      "path": "output/training/pair-ppo-hour-03/terrain-parent.zip",
+      "sha256": "d525d81db8a6bce76b13558a720c6fcbba5f431bfcffb6229d6dc7d9fb9b0805",
+      "bytes": 506302
+    },
+    {
+      "path": "output/training/terrain-ppo-hour-02/three-block-specialist.zip",
+      "sha256": "19d96a1c4ca7f552652cbb624120c88cb6b74ee08dfbc428c84803e771716d81",
+      "bytes": 543351
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "dll": "/home/mohammadjaffal/mini_motorways/output/training/mini-reset-comparison-01/runtime/host/TrafficHost.dll",
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+  "models": {
+    "candidate": {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/mini-reset-comparison-01/cold-control/final.zip",
+      "sha256": "d2109dbff1fc38ce650313a14cd199727c8e87f8f6ccc445f22dfc6d24950f7a"
+    }
+  },
+  "exercises": [
+    "adjacent",
+    "bend",
+    "clear",
+    "obstacle",
+    "small-city-offset-single",
+    "small-city-offset-stock",
+    "small-city-offset-pairs"
+  ],
+  "count": 16,
+  "seed_start": 231000000,
+  "reference_queries": false,
+  "old_geometry_uses_city_wait_60_seconds": true
+}

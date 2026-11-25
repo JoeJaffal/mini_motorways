@@ -1,0 +1,14 @@
+{
+  "result": "BUDGET_EXHAUSTED",
+  "mode": "training",
+  "optimizer_steps": 240,
+  "detail": "Collection wall budget exhausted; incomplete rollout discarded",
+  "counters": {
+    "tokens": 124288,
+    "updates": 240,
+    "version": 60,
+    "episodes": 124288
+  },
+  "session_tokens": 73088,
+  "elapsed_seconds": 806.055531993974
+}

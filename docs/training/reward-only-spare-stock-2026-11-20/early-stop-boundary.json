@@ -1,0 +1,35 @@
+{
+  "reason": "strict harness cap cut off zero-cost driveway attachments",
+  "decisions": 212992,
+  "games": 610,
+  "successes": 263,
+  "surplus": 0,
+  "widen": false,
+  "targeted": {
+    "-2": [
+      0,
+      171
+    ],
+    "2": [
+      0,
+      172
+    ]
+  },
+  "rehearsal": {
+    "clear": [
+      147,
+      151
+    ],
+    "bend": [
+      52,
+      52
+    ],
+    "adjacent": [
+      64,
+      64
+    ]
+  },
+  "ppo_epochs": 416,
+  "elapsed_seconds": 625.9217253479874,
+  "fingerprint": "1028d04775a0d754f60f2f535120003b1ec332761c873283b1938e8e47ed9d55"
+}

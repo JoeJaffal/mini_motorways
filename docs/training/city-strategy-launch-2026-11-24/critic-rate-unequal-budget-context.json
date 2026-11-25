@@ -1,0 +1,117 @@
+{
+  "parent_run": "output/training/city-strategy-bridge-reference-midpoint-longer-01",
+  "candidate_run": "output/training/city-strategy-critic-rate-midpoint-longer-01",
+  "parent": {
+    "games": 32,
+    "scoring_games": 29,
+    "mean_score": 231.0,
+    "new_targets": 201,
+    "new_targets_served": 170,
+    "new_target_stockouts": 54,
+    "median_new_service_delay": 32.0,
+    "mean_paid_units": 129.1875,
+    "mean_outside_observed_routes": 39.90625,
+    "outside_route_share": 0.30890179003386553,
+    "paired_score_delta_and_interval": [
+      0.0,
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "paired_new_targets_served_delta_and_interval": [
+      0.0,
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "paired_outside_observed_routes_delta_and_interval": [
+      0.0,
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "mean_bridge_tiles": 2.0,
+    "mean_bridge_stock": 0.09375
+  },
+  "candidate": {
+    "games": 32,
+    "scoring_games": 29,
+    "mean_score": 205.625,
+    "new_targets": 190,
+    "new_targets_served": 168,
+    "new_target_stockouts": 37,
+    "median_new_service_delay": 30.0,
+    "mean_paid_units": 119.03125,
+    "mean_outside_observed_routes": 36.3125,
+    "outside_route_share": 0.305066946705172,
+    "paired_score_delta_and_interval": [
+      0.0,
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "paired_new_targets_served_delta_and_interval": [
+      0.0,
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "paired_outside_observed_routes_delta_and_interval": [
+      0.0,
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "mean_bridge_tiles": 2.125,
+    "mean_bridge_stock": 0.09375
+  },
+  "paired": {
+    "score": {
+      "mean_delta": -25.375,
+      "interval95": [
+        -86.12578125,
+        36.47031249999998
+      ]
+    },
+    "new_targets_served": {
+      "mean_delta": -0.0625,
+      "interval95": [
+        -0.9375,
+        0.8125
+      ]
+    },
+    "stockouts": {
+      "mean_delta": -0.53125,
+      "interval95": [
+        -0.96875,
+        -0.0625
+      ]
+    },
+    "paid_units": {
+      "mean_delta": -10.15625,
+      "interval95": [
+        -28.125,
+        7.625
+      ]
+    },
+    "outside_observed_routes": {
+      "mean_delta": -3.59375,
+      "interval95": [
+        -9.21875,
+        2.21875
+      ]
+    }
+  },
+  "relative_mean": 0.8901515151515151,
+  "lost_scoring_seeds": [],
+  "gained_scoring_seeds": [],
+  "retention_pass": false,
+  "strong_gain_pass": false,
+  "interpretation_note": "Context only: parent32,768 decisions versus candidate16,384. Not the equal-budget test; that compares critic final32,768 with low-rate midpoint32,768."
+}

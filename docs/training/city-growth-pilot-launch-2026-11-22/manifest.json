@@ -1,0 +1,28 @@
+{
+  "branch": "Maskable-PPO",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "83f781f51868503e9f3cec2e6389c2efaeaf8190bf5a0acac5b424c6e4ffec23"
+    },
+    {
+      "path": "resume-smoke-review.json",
+      "sha256": "23726838ce7766a4133ddac3f6ac445582e5ab4f0a82c5e1b84b3b824f1d875d"
+    },
+    {
+      "path": "smoke-review.json",
+      "sha256": "121ce439d0ced906d99b9a1c1cee8a32de7d633f146283deb22d699c608384e3"
+    },
+    {
+      "path": "smoke-verification.json",
+      "sha256": "2882d37af974168995624eae3274e1454d1f24b72fbb198d90191f8285a16934"
+    }
+  ],
+  "source_hashes": {
+    "training/run_city_growth_pilot.py": "93dc629aeb8f39ce5ed3bd4f70531660f814e82025e26de9011b0af66e5b328c",
+    "training/city_growth_policy.py": "0e5a604554b9c8bbc2d98f5d96cebb9785b2fe2d2ff5eadf0da200e3da9cad38",
+    "training/run_city_overnight.py": "778a47721ea65b4d1d59efcbe5aea2496c083000a4da0bfbc051c0e5ac38a8b4",
+    "training/train_city_score_pilot.py": "1a47e6d7fb42cd0a1904c93bd20dd45227f610d174ba68c0af79ea883fafe3ed",
+    "training/evaluate_city_route_repair.py": "944d623c6c77256b6efd40eb1405af2322edb57b62079ba5b7074fc1a61d71ac"
+  }
+}

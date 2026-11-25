@@ -1,0 +1,17 @@
+{
+  "pid": 551324,
+  "command": [
+    "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+    "-u",
+    "/home/mohammadjaffal/mini_motorways/training/run_overnight_transfer_comparison.py",
+    "--parent",
+    "/home/mohammadjaffal/mini_motorways/output/training/road-cost-continuation-01/strong/checkpoint-000262144.zip",
+    "--output",
+    "/home/mohammadjaffal/mini_motorways/output/training/overnight-transfer-comparison-01",
+    "--archive",
+    "/home/mohammadjaffal/mini_motorways/docs/training/overnight-learning-2026-11-25"
+  ],
+  "started": "2026-11-25T02:36:55.192889+02:00",
+  "output": "/home/mohammadjaffal/mini_motorways/output/training/overnight-transfer-comparison-01",
+  "bounded": true
+}

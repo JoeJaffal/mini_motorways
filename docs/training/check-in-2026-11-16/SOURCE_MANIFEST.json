@@ -1,0 +1,33 @@
+{
+  "base": "6bd7f71",
+  "branch": "Maskable-PPO",
+  "purpose": "source identity for the no-training preparation package",
+  "files": {
+    "simulation/Assets/Simulation/PracticeLegality.cs": "d4164c6d3d4f7ace7c7c5b4620a8d104187e27cc258e9b4fcbc94744cdd1de26",
+    "simulation/Assets/Simulation/PracticeLegalityChecks.cs": "459c0e3ab3c4368f800a21a964716601c0fe7af7d9875b3e2948ef39826ed8aa",
+    "simulation/Assets/Simulation/PracticeScenario.cs": "d93ad4e05fe27e5a845a3af77ed3d5a40ca448602b41cb8912c9af0c52fb318d",
+    "simulation/Assets/Simulation/TrafficTypes.cs": "7e75190dc5cce03d98030ed72e09877621a2a69427161cf0377728961dd0f1de",
+    "simulation/Assets/Simulation/TrafficWorld.cs": "136487d37bc308f9ee7deee5e14a421b2ffc865155fd7a628cfb8ec3b96d9eae",
+    "simulation/Headless/Program.cs": "41a9ea596c60211db097d2628efc614e1e2da1fc2d030bfe1cd1fa6a2c902b0e",
+    "simulation/Headless/TrafficHost.csproj": "ff91cc1230439f5887e666b8909c900fa3c780b7419196e062909da9f5116672",
+    "training/benchmark_practice.py": "dcc547c9f1400497eac32fe75c99892402237d456f11684a75b90015958bb90a",
+    "training/connection_practice.py": "5c17ece8bbe1938def3980ce4cbc76e7c7b33d7d29ac71b0a24679fae3dd41cb",
+    "training/environment.py": "eeb3bde8d9e547299deb1a08e6afd3a77a8d6ca5da18b156c91e05c2e792897f",
+    "training/evaluate_practice.py": "db54a9d3f61547d46c6c96e25f1ba67de1ef0f7351a3a54c2135f960f4b705c7",
+    "training/hierarchy_objective.py": "c072cee2b4cb826e31ce9ef7dc0716dcca8dfc420d340e7830cac1242d56ce38",
+    "training/hierarchy_policy.py": "0dd6786d92dd6fdc585cc2c59c2c5f7ca6c5eaa6e5f362cad89482651203d8e4",
+    "training/hierarchy_rollout.py": "7b8d1e2cea2aef98b973748778644cd10bae5684d050459b4c94cd118c1d9d7a",
+    "training/practice_replay.py": "f341d36ca97e8b933ff8ab7edd119eac3caef61afb0920b83ad3a8a384962571",
+    "training/test_connection_practice.py": "2a05fd39f86ad6248efe1c92791ff777cded90907b92135458877c40617e4042",
+    "training/test_evaluate_practice.py": "1b346e018dc20128b2784432d459f353bb0728fdf5b42eaff313930bbea55b6c",
+    "training/test_hierarchy_credit.py": "7615cd6401162f4196c43b1645a849a3f082b5dc8794607afcda82b80c766626",
+    "training/test_hierarchy_objective.py": "ba94ecd9f19548e8241aea36d4e9368e330999a67f0c2060b2518c4a9f15a4d3",
+    "training/test_hierarchy_policy.py": "ec75be638d27a2c5c8851069c66eef39d7c543423b4ce033737e2f741208afa4",
+    "training/test_inference_collector.py": "35d3577988520370c35629c0bff25718ccbd2e656a6766253903c79f64415925",
+    "training/test_practice_protocol.py": "b7249f95305467550b1c85b2c63739a8cb9dabe9628ac931abddc53cac630b6e",
+    "training/test_practice_replay.py": "4c2757cb1851fbd5a653f27eb8cd29f7f960eeadc32fb14c8fe9448939b2940c",
+    "training/test_visible_observation.py": "3b11741066f649abe8e314971e2a333c2df517ee31a692eb5c857b3edc8df59c",
+    "training/verify_practice.sh": "c8e3df48000406973e287c1f6e3fe528f7f6c7f68853c95ecb6d870344036fdc",
+    "training/visible_observation.py": "76ea6a0ee1b3c1b44bc8d0ca2a16a9c349432d2172ab83cc5dc14fbdf4417cb9"
+  }
+}

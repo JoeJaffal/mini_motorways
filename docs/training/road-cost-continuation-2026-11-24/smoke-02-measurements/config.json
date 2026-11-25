@@ -1,0 +1,23 @@
+{
+  "parent": "output/training/road-cost-continuation-smoke-01/checkpoint-000024576.zip",
+  "parent_sha256": "897b027f79f3d7d3f03c66c9ef6dd525e6b315090bf63949fa07c9ced11e97c5",
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+  "road_cost": 0.0,
+  "seed_start": 209100000,
+  "rng_seed": 241124,
+  "initial_optimizer_steps": 768,
+  "completed_decisions": 24576,
+  "target_decisions": 32768,
+  "recipe": {
+    "n_steps": 512,
+    "batch_size": 128,
+    "n_epochs": 4,
+    "gamma": 1.0,
+    "gae_lambda": 1.0,
+    "vf_coef": 1e-05,
+    "ent_coef": 0.01,
+    "target_kl": 0.03,
+    "learning_rate": 0.0003
+  },
+  "continuation": "Weights and Adam restored; fresh nonoverlapping episodes and explicit RNG reseed. Not bitwise trajectory continuation."
+}

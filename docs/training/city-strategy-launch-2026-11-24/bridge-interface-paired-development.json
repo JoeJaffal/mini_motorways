@@ -1,0 +1,22 @@
+{
+  "note": "Engineering action-interface comparison,not PPO learning:checkpoint hash identical,city/action seeds matched. Native host differs;1,600 legacy transitions were exact and old mode remains supported. Bridge enabled only in candidate profile.",
+  "old": "output/training/city-strategy-development-parent-01",
+  "new": "output/training/city-strategy-bridge-initial-development-01",
+  "checkpoint_sha256": "9202d62be8d237f6fe495ee1ec29eed1747849a1fd747006ea8903de7f0b19f1",
+  "old_mean": 69.1875,
+  "new_mean": 124.40625,
+  "paired_mean_delta": 55.21875,
+  "interval95": [
+    34.03125,
+    76.15625
+  ],
+  "old_survived600": 5,
+  "new_survived600": 21,
+  "rescued_scoring_seeds": [
+    99235418,
+    99295601,
+    99393603,
+    99443669
+  ],
+  "lost_scoring_seeds": []
+}

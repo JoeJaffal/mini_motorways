@@ -1,0 +1,37 @@
+{
+  "selection": "Lowest-seed newly both-served pair and lowest-seed tight failure; illustrative, not representative sampling.",
+  "checks": [
+    {
+      "model": "original",
+      "exercise": "small-city-offset-pairs",
+      "seed": 231000003,
+      "score": 11.0,
+      "checkpoint_sha256": "7eb605e4e465b9143e095e367abe0a01285b8ace05843aaac80bd48b5f049027",
+      "all_existing_fields_exact": true
+    },
+    {
+      "model": "original",
+      "exercise": "small-city-offset-single",
+      "seed": 231000000,
+      "score": 0.0,
+      "checkpoint_sha256": "7eb605e4e465b9143e095e367abe0a01285b8ace05843aaac80bd48b5f049027",
+      "all_existing_fields_exact": true
+    },
+    {
+      "model": "wait_restored",
+      "exercise": "small-city-offset-pairs",
+      "seed": 231000003,
+      "score": 36.0,
+      "checkpoint_sha256": "edb2a26da557f6d3d41a51ca64d62d0bdde8423572e84e78039a80cc43083aa5",
+      "all_existing_fields_exact": true
+    },
+    {
+      "model": "wait_restored",
+      "exercise": "small-city-offset-single",
+      "seed": 231000000,
+      "score": 0.0,
+      "checkpoint_sha256": "edb2a26da557f6d3d41a51ca64d62d0bdde8423572e84e78039a80cc43083aa5",
+      "all_existing_fields_exact": true
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "models": [
+    "output/training/city-route-repair-calibration-01/calibrated-with-counters.zip",
+    "output/training/city-service-reserve-readiness-01/checkpoints/city-000086016-db6c8742.zip",
+    "output/training/city-service-long-01/checkpoints/city-002760704-bfd5f98e.zip",
+    "output/training/city-service-long-01/checkpoints/city-005316608-f47f325c.zip"
+  ],
+  "sha256": {
+    "output/training/city-route-repair-calibration-01/calibrated-with-counters.zip": "6ed31e8c655acb71b781652c36814045c979597ced464fbf12d6dafef07acd62",
+    "output/training/city-service-reserve-readiness-01/checkpoints/city-000086016-db6c8742.zip": "3631b5d13a1d3012134de3dbba51fc8c5e0a10af6b07bd790c5271d405bf15f7",
+    "output/training/city-service-long-01/checkpoints/city-002760704-bfd5f98e.zip": "8e90c34c1dbf12f1f8f10fe795f3b0c27118ea65ebe2769e4cbecbdc53ca227f",
+    "output/training/city-service-long-01/checkpoints/city-005316608-f47f325c.zip": "3cebdd6e7aa15112133d26b789b8ce86d7fa66a39d74b19a8f84d519dc6d2720"
+  },
+  "host_sha256": "a45b9c443bbcb83b4385f38529cc01ef291e8b26d10dd314650581d258afe3d8",
+  "results": {
+    "0": {
+      "games": 24,
+      "scoring_games": 18,
+      "mean_score": 61.875,
+      "new_targets": 80,
+      "new_targets_served": 52,
+      "new_target_stockouts": 40,
+      "median_new_service_delay": 38.5,
+      "mean_paid_units": 71.70833333333333,
+      "mean_outside_observed_routes": 34.833333333333336,
+      "outside_route_share": 0.48576409064497383,
+      "paired_score_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "1": {
+      "games": 24,
+      "scoring_games": 19,
+      "mean_score": 73.75,
+      "new_targets": 84,
+      "new_targets_served": 64,
+      "new_target_stockouts": 25,
+      "median_new_service_delay": 39.0,
+      "mean_paid_units": 74.91666666666667,
+      "mean_outside_observed_routes": 34.041666666666664,
+      "outside_route_share": 0.45439377085650723,
+      "paired_score_delta_and_interval": [
+        11.875,
+        [
+          -3.3333333333333335,
+          29.291666666666668
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.5,
+        [
+          -0.08333333333333333,
+          1.125
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        -0.7916666666666666,
+        [
+          -7.209374999999999,
+          5.916666666666667
+        ]
+      ]
+    },
+    "2": {
+      "games": 24,
+      "scoring_games": 19,
+      "mean_score": 75.29166666666667,
+      "new_targets": 94,
+      "new_targets_served": 73,
+      "new_target_stockouts": 24,
+      "median_new_service_delay": 38.0,
+      "mean_paid_units": 77.0,
+      "mean_outside_observed_routes": 32.625,
+      "outside_route_share": 0.4237012987012987,
+      "paired_score_delta_and_interval": [
+        13.416666666666666,
+        [
+          -8.791666666666666,
+          35.791666666666664
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.875,
+        [
+          0.041666666666666664,
+          1.7083333333333333
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        -2.2083333333333335,
+        [
+          -8.0,
+          3.5
+        ]
+      ]
+    },
+    "3": {
+      "games": 24,
+      "scoring_games": 18,
+      "mean_score": 64.70833333333333,
+      "new_targets": 81,
+      "new_targets_served": 60,
+      "new_target_stockouts": 13,
+      "median_new_service_delay": 31.5,
+      "mean_paid_units": 70.70833333333333,
+      "mean_outside_observed_routes": 33.25,
+      "outside_route_share": 0.4702416028285209,
+      "paired_score_delta_and_interval": [
+        2.8333333333333335,
+        [
+          -21.25,
+          26.208333333333332
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.3333333333333333,
+        [
+          -0.4583333333333333,
+          1.0833333333333333
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        -1.5833333333333333,
+        [
+          -7.625,
+          4.458333333333333
+        ]
+      ]
+    }
+  }
+}

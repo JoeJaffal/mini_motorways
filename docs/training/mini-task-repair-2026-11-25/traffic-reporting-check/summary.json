@@ -1,0 +1,86 @@
+{
+  "traffic-priority-established": {
+    "lower": {
+      "games": 1,
+      "mean_score": 3.0,
+      "successes": 0,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 0.0
+    },
+    "upper": {
+      "games": 1,
+      "mean_score": 18.0,
+      "successes": 1,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 16.0
+    },
+    "wait": {
+      "games": 1,
+      "mean_score": 2.0,
+      "successes": 0,
+      "mean_builds": 0.0,
+      "mean_stock": 1.0,
+      "mean_urgent_deliveries": 0.0
+    }
+  },
+  "traffic-junction-low-live": {
+    "feeder": {
+      "games": 1,
+      "mean_score": 12.0,
+      "successes": null,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 11.0,
+      "success_note": "Not a new-destination task; compare native deliveries against matched Wait/feeder/separate-exit controls."
+    },
+    "separate-exit": {
+      "games": 1,
+      "mean_score": 12.0,
+      "successes": null,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 11.0,
+      "success_note": "Not a new-destination task; compare native deliveries against matched Wait/feeder/separate-exit controls."
+    },
+    "wait": {
+      "games": 1,
+      "mean_score": 10.0,
+      "successes": null,
+      "mean_builds": 0.0,
+      "mean_stock": 1.0,
+      "mean_urgent_deliveries": 9.0,
+      "success_note": "Not a new-destination task; compare native deliveries against matched Wait/feeder/separate-exit controls."
+    }
+  },
+  "traffic-junction-high-live": {
+    "feeder": {
+      "games": 1,
+      "mean_score": 27.0,
+      "successes": null,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 18.0,
+      "success_note": "Not a new-destination task; compare native deliveries against matched Wait/feeder/separate-exit controls."
+    },
+    "separate-exit": {
+      "games": 1,
+      "mean_score": 30.0,
+      "successes": null,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 19.0,
+      "success_note": "Not a new-destination task; compare native deliveries against matched Wait/feeder/separate-exit controls."
+    },
+    "wait": {
+      "games": 1,
+      "mean_score": 26.0,
+      "successes": null,
+      "mean_builds": 0.0,
+      "mean_stock": 1.0,
+      "mean_urgent_deliveries": 18.0,
+      "success_note": "Not a new-destination task; compare native deliveries against matched Wait/feeder/separate-exit controls."
+    }
+  }
+}

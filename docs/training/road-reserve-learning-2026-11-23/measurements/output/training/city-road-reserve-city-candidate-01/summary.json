@@ -1,0 +1,44 @@
+{
+  "models": [
+    "output/training/city-road-reserve-pilot-01/final.zip"
+  ],
+  "sha256": {
+    "output/training/city-road-reserve-pilot-01/final.zip": "391b1447c53735f6fbd5d0e242f89fe884fec6d7fafb6c62018ec44225f9ead7"
+  },
+  "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+  "results": {
+    "0": {
+      "games": 32,
+      "scoring_games": 30,
+      "mean_score": 37.4375,
+      "new_targets": 104,
+      "new_targets_served": 62,
+      "new_target_stockouts": 0,
+      "median_new_service_delay": 31.5,
+      "mean_paid_units": 26.53125,
+      "mean_outside_observed_routes": 9.0625,
+      "outside_route_share": 0.3415783274440518,
+      "paired_score_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    }
+  }
+}

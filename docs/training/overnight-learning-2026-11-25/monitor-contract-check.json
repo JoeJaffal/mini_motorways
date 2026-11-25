@@ -1,0 +1,54 @@
+{
+  "all_monitor_fields_present": true,
+  "all_ledgers_match": true,
+  "episodes": [
+    {
+      "r": 0.0,
+      "l": 155,
+      "t": 1.677529,
+      "seed": 214000000,
+      "exercise": "city",
+      "trips": 0,
+      "road_stock": 45,
+      "stock_initial": 25,
+      "paid_units": 0,
+      "road_cost": 0.0,
+      "native_return": 0.0,
+      "shaped_return": 0.0,
+      "road_actions": 0,
+      "wait_actions": 155
+    },
+    {
+      "r": 0.0,
+      "l": 60,
+      "t": 0.933169,
+      "seed": 214000002,
+      "exercise": "small-city-offset-single",
+      "trips": 0,
+      "road_stock": 5,
+      "stock_initial": 5,
+      "paid_units": 0,
+      "road_cost": 0.04,
+      "native_return": 0.0,
+      "shaped_return": 0.0,
+      "road_actions": 0,
+      "wait_actions": 60
+    },
+    {
+      "r": 0.0,
+      "l": 60,
+      "t": 0.91466,
+      "seed": 214000003,
+      "exercise": "small-city-offset-stock",
+      "trips": 0,
+      "road_stock": 14,
+      "stock_initial": 14,
+      "paid_units": 0,
+      "road_cost": 0.04,
+      "native_return": 0.0,
+      "shaped_return": 0.0,
+      "road_actions": 0,
+      "wait_actions": 60
+    }
+  ]
+}

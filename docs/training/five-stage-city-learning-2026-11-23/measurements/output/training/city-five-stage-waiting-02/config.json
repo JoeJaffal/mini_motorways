@@ -1,0 +1,13 @@
+{
+  "dll": "/home/mohammadjaffal/mini_motorways/output/city-five-stage-build-01/bin/TrafficHost/release/TrafficHost.dll",
+  "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-five-stage-connections-02/final.zip",
+  "output": "/home/mohammadjaffal/mini_motorways/output/training/city-five-stage-waiting-02",
+  "stage": "waiting",
+  "workers": 16,
+  "rollouts": 8,
+  "seed_start": 115000000,
+  "learning_rate": 0.0003,
+  "parent_sha256": "25a43a4b6b64491329631c7b22121c8ed19a52eb54bb50e614e066bf3ddc47fe",
+  "host_sha256": "3cdfa9ceaf8d938bdc94173b71c5ef0035c54f038f66133d12c6f0e0ad1278ec",
+  "decision_budget": 16384
+}

@@ -1,0 +1,35 @@
+{
+  "scope": "JavaScript VM with stub DOM/canvas; not browser rendering",
+  "checks": [
+    {
+      "city": "184000000",
+      "policy": "reference",
+      "stats": "Frame 62/62 · 151.2 game seconds · 0 trips · 0 road units left"
+    },
+    {
+      "city": "184000000",
+      "policy": "candidate",
+      "stats": "Frame 169/169 · 600.0 game seconds · 175 trips · 0 road units left"
+    },
+    {
+      "city": "184000000",
+      "policy": "finite",
+      "stats": "Frame 64/64 · 223.7 game seconds · 20 trips · 0 road units left"
+    },
+    {
+      "city": "184000003",
+      "policy": "reference",
+      "stats": "Frame 160/160 · 600.0 game seconds · 158 trips · 0 road units left"
+    },
+    {
+      "city": "184000003",
+      "policy": "candidate",
+      "stats": "Frame 164/164 · 600.0 game seconds · 172 trips · 0 road units left"
+    },
+    {
+      "city": "184000003",
+      "policy": "finite",
+      "stats": "Frame 180/180 · 600.0 game seconds · 168 trips · 0 road units left"
+    }
+  ]
+}

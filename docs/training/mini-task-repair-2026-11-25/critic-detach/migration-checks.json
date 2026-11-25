@@ -1,0 +1,26 @@
+{
+  "parent": "output/training/mini-reset-wait-repair-01/start.zip",
+  "wait_reference": "output/training/city-whole-initial-01/start.zip",
+  "hashes": {
+    "parent": "edb2a26da557f6d3d41a51ca64d62d0bdde8423572e84e78039a80cc43083aa5",
+    "wait_reference": "7eb605e4e465b9143e095e367abe0a01285b8ace05843aaac80bd48b5f049027",
+    "dll": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0"
+  },
+  "checkpoint": "output/training/mini-road-detached-initial-01/start.zip",
+  "checkpoint_sha256": "7582e285e3f6b2b44487cf3fe86156169aa80d79272dccbe21dc408fed0bf324",
+  "policy_class": "CityRoadChoiceDetachedCriticPolicy",
+  "critic_features_detached": true,
+  "preserved_timesteps": 688128,
+  "preserved_ppo_update_counter": 876,
+  "retained_adam_parameters": 22,
+  "omitted_wait_adam_parameters": 0,
+  "retained_adam_steps": [
+    8192
+  ],
+  "shared_states": 384,
+  "max_component_probability_error": 5.346702637853973e-07,
+  "max_wait_probability_error": 5.346702637853973e-07,
+  "non_wait_weights_exact": true,
+  "retained_adam_exact_after_reload": true,
+  "limits": "Explicit Wait restoration, not a PPO improvement. No new training, promotion or overnight authorization inferred from this check."
+}

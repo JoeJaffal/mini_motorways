@@ -1,0 +1,93 @@
+{
+  "criterion": "Closest gain to median among positive paired gains, tie lowest seed/action RNG. Selected illustration, not representative of losses or all games.",
+  "positive_count": 17,
+  "median_positive_gain": 28,
+  "selected": {
+    "original": {
+      "seed": 184000000,
+      "seconds": 151.15,
+      "trips": 0,
+      "road_stock": 0,
+      "buildings": 6,
+      "weekly_awards": 1,
+      "road_actions": 50,
+      "wait_actions": 152,
+      "bridge_stock": 0,
+      "bridge_tiles": 1,
+      "targets": [],
+      "action_seed": 193251,
+      "native_game_over": true,
+      "truncated": false,
+      "paid_units": 45,
+      "outside_routes": 24
+    },
+    "midpoint": {
+      "seed": 184000000,
+      "seconds": 270.40000000000003,
+      "trips": 28,
+      "road_stock": 0,
+      "buildings": 13,
+      "weekly_awards": 1,
+      "road_actions": 52,
+      "wait_actions": 271,
+      "bridge_stock": 0,
+      "bridge_tiles": 2,
+      "targets": [
+        {
+          "id": 3,
+          "color": 1,
+          "first_seen": 61,
+          "arrival_stock": 0,
+          "arrival_paid": 25,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": 160,
+          "served": 8,
+          "paid_after_arrival_to_first_delivery": 20
+        },
+        {
+          "id": 7,
+          "color": 0,
+          "first_seen": 182,
+          "arrival_stock": 0,
+          "arrival_paid": 45,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": null,
+          "served": 0
+        },
+        {
+          "id": 10,
+          "color": 3,
+          "first_seen": 248,
+          "arrival_stock": 0,
+          "arrival_paid": 45,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": 270,
+          "served": 1,
+          "paid_after_arrival_to_first_delivery": 0
+        }
+      ],
+      "action_seed": 193251,
+      "native_game_over": true,
+      "truncated": false,
+      "paid_units": 45,
+      "outside_routes": 16
+    }
+  },
+  "models": {
+    "original": {
+      "path": "output/training/city-whole-initial-01/start.zip",
+      "sha256": "7eb605e4e465b9143e095e367abe0a01285b8ace05843aaac80bd48b5f049027"
+    },
+    "midpoint": {
+      "path": "output/training/mini-horizon-comparison-01/long-window/midpoint.zip",
+      "sha256": "d3f40b0b68a6d45a1459fcae285fa095726d3f4831362aa384a0772d1f830f42"
+    }
+  },
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0"
+}

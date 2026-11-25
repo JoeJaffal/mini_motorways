@@ -1,0 +1,25 @@
+{
+  "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-whole-initial-01/start.zip",
+  "parent_sha256": "7eb605e4e465b9143e095e367abe0a01285b8ace05843aaac80bd48b5f049027",
+  "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-road-choice-initial-01/start.zip",
+  "sha256": "81470b70541d0fb2030886c85b8209c4ec0333eb22bd5f30a63f2764f9197a9f",
+  "exact_shared_states": 16,
+  "disposable_optimizer_step": 1,
+  "max_wait_probability_error": 1.7881393432617188e-07,
+  "max_conditional_road_tv": 1.292391971219331e-05,
+  "changed_test_tensors": [
+    "features_extractor.growth_strategy_roads.2.weight",
+    "features_extractor.growth_strategy_roads.2.bias",
+    "features_extractor.growth_strategy_spatial_roads.weight",
+    "features_extractor.growth_strategy_spatial_roads.bias",
+    "pi_features_extractor.growth_strategy_roads.2.weight",
+    "pi_features_extractor.growth_strategy_roads.2.bias",
+    "pi_features_extractor.growth_strategy_spatial_roads.weight",
+    "pi_features_extractor.growth_strategy_spatial_roads.bias",
+    "vf_features_extractor.growth_strategy_roads.2.weight",
+    "vf_features_extractor.growth_strategy_roads.2.bias",
+    "vf_features_extractor.growth_strategy_spatial_roads.weight",
+    "vf_features_extractor.growth_strategy_spatial_roads.bias"
+  ],
+  "optimizer_groups": 3
+}

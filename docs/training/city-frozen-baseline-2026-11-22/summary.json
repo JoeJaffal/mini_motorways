@@ -1,0 +1,118 @@
+{
+  "games": 160,
+  "device": "cpu",
+  "workers": 8,
+  "elapsed_seconds": 65.26627460098825,
+  "checkpoint_sha256": "e66dbd377a81208092a6c242e446e898729969c53258b4dcdf372a072dd313e8",
+  "host_sha256": "2da58a5aeefa0e7d3416302d4532724b253e9ede05a998fccf40a324aeb5fe23",
+  "suite_sha256": "d54199c279ae6307702137e4aae454b1796694281d053e4b1a67d746d4b9113d",
+  "groups": {
+    "scratch_sampled": {
+      "games": 32,
+      "scoring_games": 0,
+      "mean_score": 0.0,
+      "median_score": 0.0,
+      "best_score": 0,
+      "median_survival_seconds": 135.2,
+      "mean_road_units": 29.09375,
+      "median_peak_buildings": 5.0,
+      "games_with_weekly_award": 7,
+      "native_game_overs": 32,
+      "horizon_truncations": 0
+    },
+    "transfer_greedy": {
+      "games": 32,
+      "scoring_games": 0,
+      "mean_score": 0.0,
+      "median_score": 0.0,
+      "best_score": 0,
+      "median_survival_seconds": 144.9,
+      "mean_road_units": 0.0,
+      "median_peak_buildings": 6.0,
+      "games_with_weekly_award": 27,
+      "native_game_overs": 32,
+      "horizon_truncations": 0
+    },
+    "transfer_sampled": {
+      "games": 32,
+      "scoring_games": 24,
+      "mean_score": 32.1875,
+      "median_score": 26.5,
+      "best_score": 94,
+      "median_survival_seconds": 259.75,
+      "mean_road_units": 65.03125,
+      "median_peak_buildings": 10.0,
+      "games_with_weekly_award": 30,
+      "native_game_overs": 32,
+      "horizon_truncations": 0
+    },
+    "uniform_edges_matched_wait": {
+      "games": 32,
+      "scoring_games": 0,
+      "mean_score": 0.0,
+      "median_score": 0.0,
+      "best_score": 0,
+      "median_survival_seconds": 135.2,
+      "mean_road_units": 29.09375,
+      "median_peak_buildings": 5.0,
+      "games_with_weekly_award": 7,
+      "native_game_overs": 32,
+      "horizon_truncations": 0
+    },
+    "uniform_legal_actions": {
+      "games": 32,
+      "scoring_games": 0,
+      "mean_score": 0.0,
+      "median_score": 0.0,
+      "best_score": 0,
+      "median_survival_seconds": 134.9,
+      "mean_road_units": 32.78125,
+      "median_peak_buildings": 5.0,
+      "games_with_weekly_award": 8,
+      "native_game_overs": 32,
+      "horizon_truncations": 0
+    }
+  },
+  "transfer_sampled_paired_comparisons": {
+    "scratch_sampled": {
+      "wins": 24,
+      "ties": 8,
+      "losses": 0,
+      "mean_score_delta": 32.1875,
+      "paired_bootstrap_95_percent": [
+        22.875,
+        42.09375
+      ]
+    },
+    "transfer_greedy": {
+      "wins": 24,
+      "ties": 8,
+      "losses": 0,
+      "mean_score_delta": 32.1875,
+      "paired_bootstrap_95_percent": [
+        22.875,
+        42.09375
+      ]
+    },
+    "uniform_edges_matched_wait": {
+      "wins": 24,
+      "ties": 8,
+      "losses": 0,
+      "mean_score_delta": 32.1875,
+      "paired_bootstrap_95_percent": [
+        22.875,
+        42.09375
+      ]
+    },
+    "uniform_legal_actions": {
+      "wins": 24,
+      "ties": 8,
+      "losses": 0,
+      "mean_score_delta": 32.1875,
+      "paired_bootstrap_95_percent": [
+        22.875,
+        42.09375
+      ]
+    }
+  }
+}

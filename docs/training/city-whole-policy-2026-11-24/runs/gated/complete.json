@@ -1,0 +1,37 @@
+{
+  "checkpoints": [
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/city-whole-fit-01/gated/checkpoint-000008192.zip",
+      "sha256": "7d474103acb4f35298039d5410b15d547488d30e310fd78705bf7622f9f1d6d5",
+      "added_decisions": 8192,
+      "optimizer_steps_added": 256,
+      "episodes": 8,
+      "seconds": 105.73411257495172
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/city-whole-fit-01/gated/midpoint.zip",
+      "sha256": "818b1bf6f2c94a7d52895a50017137fd2046ba1eac025e7168573766c0cd1307",
+      "added_decisions": 16384,
+      "optimizer_steps_added": 512,
+      "episodes": 26,
+      "seconds": 221.2399587018881
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/city-whole-fit-01/gated/checkpoint-000024576.zip",
+      "sha256": "5bfc4f5acfb0b3c1878b127455ec9a065e682668f1a1922905e6826612788a65",
+      "added_decisions": 24576,
+      "optimizer_steps_added": 768,
+      "episodes": 46,
+      "seconds": 331.1988566269865
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/city-whole-fit-01/gated/final.zip",
+      "sha256": "faf2869a9c6bf60a5e6d6f109f464538068aeb885f364a2b1836dac214f7d6a4",
+      "added_decisions": 32768,
+      "optimizer_steps_added": 1024,
+      "episodes": 65,
+      "seconds": 441.9947361209197
+    }
+  ],
+  "seconds": 441.99779173894785
+}

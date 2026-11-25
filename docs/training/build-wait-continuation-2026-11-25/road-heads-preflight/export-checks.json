@@ -1,0 +1,30 @@
+{
+  "source_hashes": {
+    "output/training/build-wait-smoke-01/final.zip": "cec1d2249a781487b31d0fee2a03e0e5bbbb6cbdecc1422677e98b06044dcf3c",
+    "output/training/mini-fixed-route-01/training/final.zip": "c86c0db95e28951c3e9ed36d5a29eb94d7faa4cbddbfddaed18700dc70121eb3",
+    "output/wait-decision-build-02/artifacts/bin/TrafficHost/release/TrafficHost.dll": "3077ce7593b062d8c756116435346ce956ff1961a073aa74ffda55282903ee1e"
+  },
+  "checkpoint_sha256": "76ec2579aea9ea48781d6bcb32820356055dc0b9d619c8505678f4fe9f159675",
+  "mode": "road-heads",
+  "timesteps": 753792,
+  "gamma": 1.0,
+  "vf_coef": 1e-05,
+  "actor_max_error": 0.0,
+  "shared_states": 16,
+  "weights_and_adam_exact": true,
+  "restored_native_values_exact": true,
+  "retained_adam_parameters": 30,
+  "trainable": [
+    "features_extractor.growth_strategy_roads.0.weight",
+    "features_extractor.growth_strategy_roads.0.bias",
+    "features_extractor.growth_strategy_roads.2.weight",
+    "features_extractor.growth_strategy_roads.2.bias",
+    "features_extractor.growth_strategy_spatial_roads.weight",
+    "features_extractor.growth_strategy_spatial_roads.bias",
+    "value_net.0.weight",
+    "value_net.0.bias",
+    "value_net.2.weight",
+    "value_net.2.bias"
+  ],
+  "limits": "Export only; no learning, city promotion or readiness claim. Native PPO smoke required before use."
+}

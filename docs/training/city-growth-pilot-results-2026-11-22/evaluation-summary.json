@@ -1,0 +1,68 @@
+{
+  "games": 72,
+  "models": [
+    "/home/mohammadjaffal/mini_motorways/output/training/city-route-repair-calibration-01/calibrated-with-counters.zip",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-growth-pilot-01/checkpoints/city-000458752-53cb386c.zip",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-growth-pilot-01/checkpoints/city-000860160-2820d45b.zip"
+  ],
+  "sha256": {
+    "/home/mohammadjaffal/mini_motorways/output/training/city-route-repair-calibration-01/calibrated-with-counters.zip": "6ed31e8c655acb71b781652c36814045c979597ced464fbf12d6dafef07acd62",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-growth-pilot-01/checkpoints/city-000458752-53cb386c.zip": "9b379639c0ad5a4515ba5a03b45880fbb76c472134e30752da528c8e00ab6b47",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-growth-pilot-01/checkpoints/city-000860160-2820d45b.zip": "73be8f4a3430b213fdbd2bca8d8c4398170f4760ccbfec8df6c10d42995f8418"
+  },
+  "results": {
+    "0": {
+      "city": {
+        "games": 24,
+        "scoring": 20,
+        "mean_score": 84.04166666666667,
+        "wins": 0,
+        "losses": 0,
+        "paired_mean_delta": 0.0,
+        "paired_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "mean_paid_roads": 82.45833333333333,
+        "mean_outside_observed_routes": 35.583333333333336,
+        "early_stockouts": 2
+      }
+    },
+    "1": {
+      "city": {
+        "games": 24,
+        "scoring": 21,
+        "mean_score": 76.45833333333333,
+        "wins": 8,
+        "losses": 13,
+        "paired_mean_delta": -7.583333333333333,
+        "paired_bootstrap_95": [
+          -35.541666666666664,
+          20.958333333333332
+        ],
+        "mean_paid_roads": 76.75,
+        "mean_outside_observed_routes": 33.25,
+        "early_stockouts": 3
+      }
+    },
+    "2": {
+      "city": {
+        "games": 24,
+        "scoring": 22,
+        "mean_score": 73.875,
+        "wins": 9,
+        "losses": 13,
+        "paired_mean_delta": -10.166666666666666,
+        "paired_bootstrap_95": [
+          -30.209374999999998,
+          8.709374999999985
+        ],
+        "mean_paid_roads": 78.41666666666667,
+        "mean_outside_observed_routes": 38.666666666666664,
+        "early_stockouts": 1
+      }
+    }
+  },
+  "host_sha256": "2da58a5aeefa0e7d3416302d4532724b253e9ede05a998fccf40a324aeb5fe23",
+  "city_host_sha256": "2da58a5aeefa0e7d3416302d4532724b253e9ede05a998fccf40a324aeb5fe23"
+}

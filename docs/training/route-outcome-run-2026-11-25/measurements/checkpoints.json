@@ -1,0 +1,266 @@
+[
+  {
+    "path": "/home/mohammadjaffal/mini_motorways/output/training/route-outcome-01/training/checkpoint-000008192.zip",
+    "sha256": "765fd734fc6317fafaf7ecbb7829b4c4c89d0379ae4f8ad7d87483e6a1df92aa",
+    "added_decisions": 8192,
+    "seconds": 183.44517807499506,
+    "cases": {
+      "small-city-offset-single": {
+        "games": 402,
+        "successes": 255,
+        "mean_paid": 6.985074626865671,
+        "mean_builds": 7.990049751243781
+      },
+      "small-city-offset-stock": {
+        "games": 87,
+        "successes": 67,
+        "mean_paid": 9.471264367816092,
+        "mean_builds": 10.482758620689655
+      }
+    },
+    "frozen_weights_and_adam_exact": true,
+    "trainable_adam_steps": {
+      "features_extractor.growth_strategy_roads.0.weight": 10496,
+      "features_extractor.growth_strategy_roads.0.bias": 10496,
+      "features_extractor.growth_strategy_roads.2.weight": 10496,
+      "features_extractor.growth_strategy_roads.2.bias": 10496,
+      "features_extractor.growth_strategy_spatial_roads.weight": 10496,
+      "features_extractor.growth_strategy_spatial_roads.bias": 10496,
+      "value_net.0.weight": 256,
+      "value_net.0.bias": 256,
+      "value_net.2.weight": 256,
+      "value_net.2.bias": 256
+    }
+  },
+  {
+    "path": "/home/mohammadjaffal/mini_motorways/output/training/route-outcome-01/training/checkpoint-000016384.zip",
+    "sha256": "ba008a1bc2a8ebf095596fd2bd20e0af35b536b0495910a057b3b4cf7a3d361d",
+    "added_decisions": 16384,
+    "seconds": 360.56700209598057,
+    "cases": {
+      "small-city-offset-single": {
+        "games": 404,
+        "successes": 249,
+        "mean_paid": 6.962871287128713,
+        "mean_builds": 7.948019801980198
+      },
+      "small-city-offset-stock": {
+        "games": 91,
+        "successes": 63,
+        "mean_paid": 9.725274725274724,
+        "mean_builds": 10.758241758241759
+      }
+    },
+    "frozen_weights_and_adam_exact": true,
+    "trainable_adam_steps": {
+      "features_extractor.growth_strategy_roads.0.weight": 10752,
+      "features_extractor.growth_strategy_roads.0.bias": 10752,
+      "features_extractor.growth_strategy_roads.2.weight": 10752,
+      "features_extractor.growth_strategy_roads.2.bias": 10752,
+      "features_extractor.growth_strategy_spatial_roads.weight": 10752,
+      "features_extractor.growth_strategy_spatial_roads.bias": 10752,
+      "value_net.0.weight": 512,
+      "value_net.0.bias": 512,
+      "value_net.2.weight": 512,
+      "value_net.2.bias": 512
+    }
+  },
+  {
+    "path": "/home/mohammadjaffal/mini_motorways/output/training/route-outcome-01/training/checkpoint-000024576.zip",
+    "sha256": "aea29a55d86ecf3948f1b3da0ea0c20f2e4a6727b9f359c0e21e28939f3ce484",
+    "added_decisions": 24576,
+    "seconds": 548.0614721169695,
+    "cases": {
+      "small-city-offset-single": {
+        "games": 419,
+        "successes": 273,
+        "mean_paid": 6.973747016706444,
+        "mean_builds": 7.971360381861575
+      },
+      "small-city-offset-stock": {
+        "games": 85,
+        "successes": 69,
+        "mean_paid": 9.588235294117647,
+        "mean_builds": 10.552941176470588
+      }
+    },
+    "frozen_weights_and_adam_exact": true,
+    "trainable_adam_steps": {
+      "features_extractor.growth_strategy_roads.0.weight": 11008,
+      "features_extractor.growth_strategy_roads.0.bias": 11008,
+      "features_extractor.growth_strategy_roads.2.weight": 11008,
+      "features_extractor.growth_strategy_roads.2.bias": 11008,
+      "features_extractor.growth_strategy_spatial_roads.weight": 11008,
+      "features_extractor.growth_strategy_spatial_roads.bias": 11008,
+      "value_net.0.weight": 768,
+      "value_net.0.bias": 768,
+      "value_net.2.weight": 768,
+      "value_net.2.bias": 768
+    }
+  },
+  {
+    "path": "/home/mohammadjaffal/mini_motorways/output/training/route-outcome-01/training/checkpoint-000032768.zip",
+    "sha256": "8fd10641b52d1d9c6b017e0a1d78f80baa02f5aa2b122b480d3ba90b41e1b5cf",
+    "added_decisions": 32768,
+    "seconds": 739.1363581479527,
+    "cases": {
+      "small-city-offset-single": {
+        "games": 413,
+        "successes": 269,
+        "mean_paid": 6.966101694915254,
+        "mean_builds": 7.953995157384988
+      },
+      "small-city-offset-stock": {
+        "games": 91,
+        "successes": 65,
+        "mean_paid": 9.923076923076923,
+        "mean_builds": 10.956043956043956
+      }
+    },
+    "frozen_weights_and_adam_exact": true,
+    "trainable_adam_steps": {
+      "features_extractor.growth_strategy_roads.0.weight": 11264,
+      "features_extractor.growth_strategy_roads.0.bias": 11264,
+      "features_extractor.growth_strategy_roads.2.weight": 11264,
+      "features_extractor.growth_strategy_roads.2.bias": 11264,
+      "features_extractor.growth_strategy_spatial_roads.weight": 11264,
+      "features_extractor.growth_strategy_spatial_roads.bias": 11264,
+      "value_net.0.weight": 1024,
+      "value_net.0.bias": 1024,
+      "value_net.2.weight": 1024,
+      "value_net.2.bias": 1024
+    }
+  },
+  {
+    "path": "/home/mohammadjaffal/mini_motorways/output/training/route-outcome-01/training/checkpoint-000040960.zip",
+    "sha256": "37943f714be85f769cc563abf4d037034d17df2b16f788849d43bf7f588c0e48",
+    "added_decisions": 40960,
+    "seconds": 928.2231674029026,
+    "cases": {
+      "small-city-offset-single": {
+        "games": 413,
+        "successes": 266,
+        "mean_paid": 7.014527845036319,
+        "mean_builds": 8.021791767554479
+      },
+      "small-city-offset-stock": {
+        "games": 88,
+        "successes": 65,
+        "mean_paid": 9.670454545454545,
+        "mean_builds": 10.693181818181818
+      }
+    },
+    "frozen_weights_and_adam_exact": true,
+    "trainable_adam_steps": {
+      "features_extractor.growth_strategy_roads.0.weight": 11520,
+      "features_extractor.growth_strategy_roads.0.bias": 11520,
+      "features_extractor.growth_strategy_roads.2.weight": 11520,
+      "features_extractor.growth_strategy_roads.2.bias": 11520,
+      "features_extractor.growth_strategy_spatial_roads.weight": 11520,
+      "features_extractor.growth_strategy_spatial_roads.bias": 11520,
+      "value_net.0.weight": 1280,
+      "value_net.0.bias": 1280,
+      "value_net.2.weight": 1280,
+      "value_net.2.bias": 1280
+    }
+  },
+  {
+    "path": "/home/mohammadjaffal/mini_motorways/output/training/route-outcome-01/training/checkpoint-000049152.zip",
+    "sha256": "c7e7f620837709c83cddb4a8c1cf3bcded35a3f9caa6c1daec2ec6409fb565c4",
+    "added_decisions": 49152,
+    "seconds": 1115.97790221998,
+    "cases": {
+      "small-city-offset-single": {
+        "games": 411,
+        "successes": 274,
+        "mean_paid": 6.97323600973236,
+        "mean_builds": 7.965936739659368
+      },
+      "small-city-offset-stock": {
+        "games": 92,
+        "successes": 69,
+        "mean_paid": 9.5,
+        "mean_builds": 10.478260869565217
+      }
+    },
+    "frozen_weights_and_adam_exact": true,
+    "trainable_adam_steps": {
+      "features_extractor.growth_strategy_roads.0.weight": 11776,
+      "features_extractor.growth_strategy_roads.0.bias": 11776,
+      "features_extractor.growth_strategy_roads.2.weight": 11776,
+      "features_extractor.growth_strategy_roads.2.bias": 11776,
+      "features_extractor.growth_strategy_spatial_roads.weight": 11776,
+      "features_extractor.growth_strategy_spatial_roads.bias": 11776,
+      "value_net.0.weight": 1536,
+      "value_net.0.bias": 1536,
+      "value_net.2.weight": 1536,
+      "value_net.2.bias": 1536
+    }
+  },
+  {
+    "path": "/home/mohammadjaffal/mini_motorways/output/training/route-outcome-01/training/checkpoint-000057344.zip",
+    "sha256": "d40b22dcc824c43f78effaae4574a1d5b41f3c58245bef553714dfe3aa71c9b0",
+    "added_decisions": 57344,
+    "seconds": 1312.9637618180132,
+    "cases": {
+      "small-city-offset-single": {
+        "games": 411,
+        "successes": 257,
+        "mean_paid": 6.970802919708029,
+        "mean_builds": 7.97323600973236
+      },
+      "small-city-offset-stock": {
+        "games": 87,
+        "successes": 63,
+        "mean_paid": 10.0,
+        "mean_builds": 11.03448275862069
+      }
+    },
+    "frozen_weights_and_adam_exact": true,
+    "trainable_adam_steps": {
+      "features_extractor.growth_strategy_roads.0.weight": 12032,
+      "features_extractor.growth_strategy_roads.0.bias": 12032,
+      "features_extractor.growth_strategy_roads.2.weight": 12032,
+      "features_extractor.growth_strategy_roads.2.bias": 12032,
+      "features_extractor.growth_strategy_spatial_roads.weight": 12032,
+      "features_extractor.growth_strategy_spatial_roads.bias": 12032,
+      "value_net.0.weight": 1792,
+      "value_net.0.bias": 1792,
+      "value_net.2.weight": 1792,
+      "value_net.2.bias": 1792
+    }
+  },
+  {
+    "path": "/home/mohammadjaffal/mini_motorways/output/training/route-outcome-01/training/final.zip",
+    "sha256": "52de08460ce18e905cbb26acbef38f12053c369f7a47fa5d085b5d6b77e3dfa9",
+    "added_decisions": 65536,
+    "seconds": 1494.5759550149087,
+    "cases": {
+      "small-city-offset-single": {
+        "games": 410,
+        "successes": 275,
+        "mean_paid": 6.9731707317073175,
+        "mean_builds": 7.96829268292683
+      },
+      "small-city-offset-stock": {
+        "games": 93,
+        "successes": 69,
+        "mean_paid": 9.64516129032258,
+        "mean_builds": 10.655913978494624
+      }
+    },
+    "frozen_weights_and_adam_exact": true,
+    "trainable_adam_steps": {
+      "features_extractor.growth_strategy_roads.0.weight": 12288,
+      "features_extractor.growth_strategy_roads.0.bias": 12288,
+      "features_extractor.growth_strategy_roads.2.weight": 12288,
+      "features_extractor.growth_strategy_roads.2.bias": 12288,
+      "features_extractor.growth_strategy_spatial_roads.weight": 12288,
+      "features_extractor.growth_strategy_spatial_roads.bias": 12288,
+      "value_net.0.weight": 2048,
+      "value_net.0.bias": 2048,
+      "value_net.2.weight": 2048,
+      "value_net.2.bias": 2048
+    }
+  }
+]

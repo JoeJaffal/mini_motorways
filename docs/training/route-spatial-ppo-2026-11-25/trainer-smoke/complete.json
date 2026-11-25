@@ -1,0 +1,44 @@
+{
+  "checkpoints": [
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/route-spatial-trainer-smoke-01/final.zip",
+      "sha256": "a6c65e73571b890e6e1e4b73c976d3e847922e083d28088b0204c87249eced1d",
+      "added_decisions": 128,
+      "seconds": 6.907801670953631,
+      "cases": {
+        "small-city-offset-single": {
+          "games": 8,
+          "successes": 4,
+          "mean_paid": 7.0,
+          "mean_builds": 8.0
+        }
+      },
+      "frozen_weights_and_adam_exact": true,
+      "trainable_adam_steps": {
+        "features_extractor.growth_strategy_roads.0.weight": 10248,
+        "features_extractor.growth_strategy_roads.0.bias": 10248,
+        "features_extractor.growth_strategy_roads.2.weight": 10248,
+        "features_extractor.growth_strategy_roads.2.bias": 10248,
+        "features_extractor.growth_strategy_spatial_roads.weight": 10248,
+        "features_extractor.growth_strategy_spatial_roads.bias": 10248,
+        "features_extractor.growth_strategy_spatial.0.weight": 10244,
+        "features_extractor.growth_strategy_spatial.0.bias": 10244,
+        "features_extractor.growth_strategy_spatial.2.weight": 10244,
+        "features_extractor.growth_strategy_spatial.2.bias": 10244,
+        "features_extractor.growth_strategy_spatial.4.weight": 10244,
+        "features_extractor.growth_strategy_spatial.4.bias": 10244,
+        "features_extractor.growth_strategy_spatial.6.weight": 10244,
+        "features_extractor.growth_strategy_spatial.6.bias": 10244,
+        "features_extractor.growth_strategy_spatial.8.weight": 10244,
+        "features_extractor.growth_strategy_spatial.8.bias": 10244,
+        "features_extractor.growth_strategy_spatial.10.weight": 10244,
+        "features_extractor.growth_strategy_spatial.10.bias": 10244,
+        "value_net.0.weight": 8,
+        "value_net.0.bias": 8,
+        "value_net.2.weight": 8,
+        "value_net.2.bias": 8
+      }
+    }
+  ],
+  "elapsed_seconds": 6.9102416259702295
+}

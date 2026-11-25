@@ -1,0 +1,87 @@
+{
+  "cause": "Frozen source snapshot copied Python files but omitted stage1_replay.html required by behavioral replay export.",
+  "template_sha256": "868600363666b53207abd6e499bc0dad3b6263d82c711e20da325b0b25809244",
+  "failed_output_preserved": "/home/mohammadjaffal/mini_motorways/output/training/mini-reset-comparison-01/evaluation/practice-reset-curriculum-65536-failed-template",
+  "training_untouched": true,
+  "controller_future_still_records_initial_failure": true,
+  "finalization_requires_recovery_review": false,
+  "recovered_evaluation_complete": true,
+  "recovered_rows": 112,
+  "archived_recovered_output": "docs/training/mini-task-repair-2026-11-25/evaluation/practice-reset-curriculum-65536",
+  "finalization_complete": true,
+  "evaluation_checks": [
+    {
+      "evaluation": "practice-reset-curriculum-65536",
+      "games": 112,
+      "checkpoint_sha256": "b6b1f6664864855fcee36b5903bee937a99bf1d73ad49b79152ec1f136730272",
+      "measurement_sha256": "6ca698dd132de51e011baa494dd7d3eb2c7896e66cce6b4805b0405acee698b0"
+    },
+    {
+      "evaluation": "city-reset-curriculum-65536",
+      "games": 32,
+      "checkpoint_sha256": "b6b1f6664864855fcee36b5903bee937a99bf1d73ad49b79152ec1f136730272",
+      "measurement_sha256": "167f42b1a87527ad542c36af9b64f67ca2778bbd814d7d7af1b5b0ecc4c371af"
+    },
+    {
+      "evaluation": "practice-reset-curriculum-131072",
+      "games": 112,
+      "checkpoint_sha256": "6af99421ef2a5bb716a4e50f185da967aa13e94588b31540eacfe1d005afb209",
+      "measurement_sha256": "7a1a6850fb077917bd3dd438170aba44ea4113dd31aa9cacacbf2851c98f8a13"
+    },
+    {
+      "evaluation": "city-reset-curriculum-131072",
+      "games": 32,
+      "checkpoint_sha256": "6af99421ef2a5bb716a4e50f185da967aa13e94588b31540eacfe1d005afb209",
+      "measurement_sha256": "7fe838ef3116549e94d0e58d79b977dc752c0306690f20ecdb2f080c92b27d28"
+    },
+    {
+      "evaluation": "practice-reset-curriculum-262144",
+      "games": 112,
+      "checkpoint_sha256": "0a7b4e5371d73b8c161303d27e7c61ebfea71e87c7bb60ed4e3223922dbe452f",
+      "measurement_sha256": "cbed08d43c00f79023e54ae64cd20273d54bc59e2a8ba06e398dfe37e1020dcf"
+    },
+    {
+      "evaluation": "city-reset-curriculum-262144",
+      "games": 32,
+      "checkpoint_sha256": "0a7b4e5371d73b8c161303d27e7c61ebfea71e87c7bb60ed4e3223922dbe452f",
+      "measurement_sha256": "57040b58980342abebad0d55440127eab4da08b483b4823d174b58aa6f68ddd5"
+    },
+    {
+      "evaluation": "practice-cold-control-65536",
+      "games": 112,
+      "checkpoint_sha256": "f6f676cecc146193952d6311903a9d159650cb72018eedcd2c87b160184f0d87",
+      "measurement_sha256": "3e57dcf35d90fedbb523444759444b0b0f684f6d6800ec96ea990a0849c41cc9"
+    },
+    {
+      "evaluation": "city-cold-control-65536",
+      "games": 32,
+      "checkpoint_sha256": "f6f676cecc146193952d6311903a9d159650cb72018eedcd2c87b160184f0d87",
+      "measurement_sha256": "77b028b2138a1d0cdd50c8aa17900ed360b5abc6d7691737c758ecb5e39d61fb"
+    },
+    {
+      "evaluation": "practice-cold-control-131072",
+      "games": 112,
+      "checkpoint_sha256": "f71411b070c34342c897405c3a3717ffc31cd6de8f28d1fef50d00e9626c0fa1",
+      "measurement_sha256": "6a907edc5997b91624fd54dc4cbc85713ab0fe099cf0d36473e003654c4d6933"
+    },
+    {
+      "evaluation": "city-cold-control-131072",
+      "games": 32,
+      "checkpoint_sha256": "f71411b070c34342c897405c3a3717ffc31cd6de8f28d1fef50d00e9626c0fa1",
+      "measurement_sha256": "db5231cfd693fd70cf597b4a7b8ae636a7c77c7a26555554d6838c76cd7989c2"
+    },
+    {
+      "evaluation": "practice-cold-control-262144",
+      "games": 112,
+      "checkpoint_sha256": "d2109dbff1fc38ce650313a14cd199727c8e87f8f6ccc445f22dfc6d24950f7a",
+      "measurement_sha256": "9f216c8ccdbc1b8b4f9ffc55629fcf656fd2498d5c1172f8ed5fbf6efec1463c"
+    },
+    {
+      "evaluation": "city-cold-control-262144",
+      "games": 32,
+      "checkpoint_sha256": "d2109dbff1fc38ce650313a14cd199727c8e87f8f6ccc445f22dfc6d24950f7a",
+      "measurement_sha256": "a269e971f1eb7c25aa18530b7ac61f4edf6ca29e7bfabdd07bc2835f1fe9d5b6"
+    }
+  ],
+  "original_error_preserved": "controller-final-error.json"
+}

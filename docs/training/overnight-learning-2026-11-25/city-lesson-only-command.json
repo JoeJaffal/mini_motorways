@@ -1,0 +1,11 @@
+[
+  "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+  "-u",
+  "/home/mohammadjaffal/mini_motorways/output/training/overnight-transfer-comparison-01/runtime/training/evaluate_overnight_city.py",
+  "--checkpoint",
+  "/home/mohammadjaffal/mini_motorways/output/training/overnight-transfer-comparison-01/lesson-only/checkpoint-000524288.zip",
+  "--output",
+  "/home/mohammadjaffal/mini_motorways/output/training/overnight-transfer-comparison-01/evaluation/city-lesson-only",
+  "--dll",
+  "/home/mohammadjaffal/mini_motorways/output/training/overnight-transfer-comparison-01/runtime/host/TrafficHost.dll"
+]

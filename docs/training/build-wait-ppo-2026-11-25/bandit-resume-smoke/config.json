@@ -1,0 +1,29 @@
+{
+  "parent": "output/training/build-wait-bandit-resume-smoke-01/start.zip",
+  "dll": "output/wait-decision-build-02/artifacts/bin/TrafficHost/release/TrafficHost.dll",
+  "output": "output/training/build-wait-bandit-resume-ppo-smoke-01",
+  "workers": 2,
+  "rollout_steps": 64,
+  "rollouts": 1,
+  "batch_size": 32,
+  "epochs": 1,
+  "seed_start": 244005000,
+  "device": "cuda",
+  "parent_sha256": "b3fae4c2da4d6a74a3983f11b445fcbff31ffef61874e97db21da52f3238359a",
+  "host_sha256": "3077ce7593b062d8c756116435346ce956ff1961a073aa74ffda55282903ee1e",
+  "start_timesteps": 753792,
+  "gamma": 0.0,
+  "vf_coef": 0.0,
+  "zero_baseline": true,
+  "conditional_roads_frozen": true,
+  "retained_old_adam_states": 22,
+  "retained_old_adam_steps": [
+    10240
+  ],
+  "ent_coef": 0.01,
+  "target_kl": 0.03,
+  "learning_rate": 0.0003,
+  "normalize_advantage": true,
+  "sampling_seed": 11424,
+  "reward": "One-decision binary task correctness; native trips separately recorded. Not city score."
+}

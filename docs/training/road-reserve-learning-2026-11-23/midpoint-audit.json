@@ -1,0 +1,80 @@
+{
+  "candidate": "output/training/city-road-reserve-pilot-01/midpoint.zip",
+  "sha256": "83c5ac63b104cdd026851bae2a135b5dc9b93c3b17739b366d003f04b341db40",
+  "changed_parameters": {
+    "features_extractor.growth_reserve_wait.weight": 3.2079505920410156,
+    "pi_features_extractor.growth_reserve_wait.weight": 3.2079505920410156,
+    "vf_features_extractor.growth_reserve_wait.weight": 3.2079505920410156,
+    "value_net.0.weight": 0.05968090891838074,
+    "value_net.0.bias": 0.025321893393993378,
+    "value_net.2.weight": 0.02781832218170166,
+    "value_net.2.bias": 0.011591002345085144
+  },
+  "coefficients": [
+    [
+      1.0231928825378418,
+      0.5364824533462524,
+      0.5687759518623352,
+      0.17531436681747437,
+      3.162797689437866,
+      3.2079505920410156
+    ]
+  ],
+  "opening_exact": true,
+  "probes": [
+    {
+      "lesson": "midgame-network-join",
+      "wait_before": 0.14887264370918274,
+      "wait_after": 0.23998160660266876,
+      "conditional_roads_unchanged": true
+    },
+    {
+      "lesson": "midgame-network-route",
+      "wait_before": 0.14537093043327332,
+      "wait_after": 0.25104787945747375,
+      "conditional_roads_unchanged": true
+    },
+    {
+      "lesson": "midgame-network-delay",
+      "wait_before": 0.9713308215141296,
+      "wait_after": 0.9996250867843628,
+      "conditional_roads_unchanged": true
+    },
+    {
+      "lesson": "midgame-network-quiet",
+      "wait_before": 0.527873158454895,
+      "wait_after": 0.7805582284927368,
+      "conditional_roads_unchanged": true
+    },
+    {
+      "lesson": "traffic-priority-established",
+      "wait_before": 0.05920223146677017,
+      "wait_after": 0.10201084613800049,
+      "conditional_roads_unchanged": true
+    },
+    {
+      "lesson": "traffic-priority-established-swap",
+      "wait_before": 0.026967165991663933,
+      "wait_after": 0.04764740169048309,
+      "conditional_roads_unchanged": true
+    },
+    {
+      "lesson": "traffic-junction-low-live",
+      "wait_before": 0.6498549580574036,
+      "wait_after": 0.8466616868972778,
+      "conditional_roads_unchanged": true
+    },
+    {
+      "lesson": "traffic-junction-high-live",
+      "wait_before": 0.7186622619628906,
+      "wait_after": 0.8837149143218994,
+      "conditional_roads_unchanged": true
+    },
+    {
+      "lesson": "midgame-network-reserve",
+      "wait_before": 0.5337483286857605,
+      "wait_after": 0.8166319131851196,
+      "conditional_roads_unchanged": true
+    }
+  ]
+}

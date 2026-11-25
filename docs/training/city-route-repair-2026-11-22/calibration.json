@@ -1,0 +1,93 @@
+{
+  "source": "output/training/city-route-progress-01/route-level-3.zip",
+  "source_sha256": "23a3a7026e0967df9bc7c2a67e5fa4550857600e2d86735b2cf450f527c9c786",
+  "checkpoint_sha256": "1aa99de1bd509ebce97a21ce9986652dd2325eefbeb7a24fc4d1ce3cfbd8fa02",
+  "alignment": 8.0,
+  "hold": 3.25,
+  "diagnostic_replays": [
+    {
+      "job": {
+        "exercise": "route-delay",
+        "seed": 87673970,
+        "action_seed": 619617890
+      },
+      "result": {
+        "seed": 87673970,
+        "seconds": 55,
+        "trips": 0,
+        "road_stock": 0,
+        "buildings": 2,
+        "weekly_awards": 0,
+        "road_actions": 5,
+        "wait_actions": 55,
+        "exercise": "route-delay",
+        "spent": 5,
+        "gate_time": 12,
+        "gate_stock": 1
+      }
+    },
+    {
+      "job": {
+        "exercise": "route-delay",
+        "seed": 87677348,
+        "action_seed": 994074467
+      },
+      "result": {
+        "seed": 87677348,
+        "seconds": 18,
+        "trips": 1,
+        "road_stock": 1,
+        "buildings": 2,
+        "weekly_awards": 0,
+        "road_actions": 5,
+        "wait_actions": 18,
+        "exercise": "route-delay",
+        "spent": 5,
+        "gate_time": 9,
+        "gate_stock": 3
+      }
+    },
+    {
+      "job": {
+        "exercise": "route-delay",
+        "seed": 87680139,
+        "action_seed": 407436367
+      },
+      "result": {
+        "seed": 87680139,
+        "seconds": 18,
+        "trips": 1,
+        "road_stock": 0,
+        "buildings": 2,
+        "weekly_awards": 0,
+        "road_actions": 4,
+        "wait_actions": 18,
+        "exercise": "route-delay",
+        "spent": 4,
+        "gate_time": 9,
+        "gate_stock": 2
+      }
+    },
+    {
+      "job": {
+        "exercise": "route-delay",
+        "seed": 87600017,
+        "action_seed": 1709780115
+      },
+      "result": {
+        "seed": 87600017,
+        "seconds": 18,
+        "trips": 1,
+        "road_stock": 0,
+        "buildings": 2,
+        "weekly_awards": 0,
+        "road_actions": 5,
+        "wait_actions": 18,
+        "exercise": "route-delay",
+        "spent": 5,
+        "gate_time": 9,
+        "gate_stock": 2
+      }
+    }
+  ]
+}

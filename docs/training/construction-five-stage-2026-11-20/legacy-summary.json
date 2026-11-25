@@ -1,0 +1,42 @@
+{
+  "adjacent": {
+    "games": 100,
+    "connected": 100,
+    "three_deliveries": 100,
+    "mean_trips": 11.24,
+    "capital_edits_max": 2,
+    "gate_passed": true
+  },
+  "bend": {
+    "games": 100,
+    "connected": 51,
+    "three_deliveries": 51,
+    "mean_trips": 5.76,
+    "capital_edits_max": 3,
+    "gate_passed": false
+  },
+  "driveway": {
+    "games": 100,
+    "connected": 25,
+    "three_deliveries": 25,
+    "mean_trips": 2.87,
+    "capital_edits_max": 0,
+    "gate_passed": false
+  },
+  "clear": {
+    "games": 100,
+    "connected": 33,
+    "three_deliveries": 33,
+    "mean_trips": 3.79,
+    "capital_edits_max": 7,
+    "gate_passed": false
+  },
+  "obstacle": {
+    "games": 100,
+    "connected": 0,
+    "three_deliveries": 0,
+    "mean_trips": 0.0,
+    "capital_edits_max": 7,
+    "gate_passed": false
+  }
+}

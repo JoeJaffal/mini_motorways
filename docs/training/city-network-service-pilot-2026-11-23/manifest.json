@@ -1,0 +1,33 @@
+{
+  "files": {
+    "policy-initial-check.json": "401cdda0a925f6e8cd068ab514550eb19a15356cbb68d2914571d93c86a5dba0",
+    "verify_policy.py": "9b8c3647dea2abb83a31111f91ad5f2b1da0ae937202ee7fb12939ee04604b48",
+    "city-suite.json": "e2518ef972dabcae6b877b3c4d57a5d84c35f977555d73d4ab9cdf4efdb9804c",
+    "progress.csv": "46aeab23a3b0d7bfe22720a12de9d5163a4e3274f0327224b1bded1f27afed4a",
+    "python-tests.log": "ed52d3425f25b7f37b5077e09d1218d3d9a9e3fab89f542ff6be0c8b97f0aec0",
+    "evaluate-games.jsonl": "da33299a7b6474607506137ca968edf787192bbef75e7b109a14c0af05804999",
+    "checkpoints.json": "fd6bfbf2ea6af895ab9db6c34ff15e6562b7c53d0ea8f1a0534a9229d661d3a3",
+    "training-episodes.jsonl": "ef355d87cb0e0bab89545a82684710aec32d5c0ddf37cb60085eac41397f24be",
+    "evaluate-summary.json": "40da520ddf774d1224c48db4cfa1ace7205c616fce3091d52a122a610da211f5",
+    "policy-final-check.json": "4ec1e9a8d3967e1b412a6484e0155efb9df085651b8ca38438339490f827757b",
+    "native-witnesses.json": "faae47e3a63ad532ffaaf37b97da7d63b020bdd47aa351bfec36304497ba9d40",
+    "city-summary.json": "00607d539f7abbd956a100e746eb72ab440d820e9dec7ff69c7ef5c4cb1d4189",
+    "config.json": "803b68ec2b489bdc24d8ecbbfae8046651a65f3613b2265d89716478d4cddd7b",
+    "evaluate-suite.json": "455709e1fec523d21a60f4bd5abdccde49a8b146f1a567d4ebbb944c4e6a5f92",
+    "city-games.jsonl": "2e870b6fe9ca0170e80140a9cc0e5f74951c8325998c32ec7ecd03222275b271",
+    "README.md": "feb697c4d6d4846e9ac2ddb31b2fc6c99b6169c37089af36cf73f759c13cc09f"
+  },
+  "sources": {
+    "training/city_network_service_policy.py": "477d1e462751f9f67f412696f1fbc12d058f8c55e91ecda1cadba97b7479eb3d",
+    "training/train_city_network_service.py": "63f3b6855c9cfad0490eaf77075aa2afde9b279c1fb8f6088f887c12dd5fb9ca",
+    "training/test_city_network_service.py": "76f7b5acf73d169dcce1d7b3de1e24a41d4b21325c8e742964f67a56bac0fb2c",
+    "training/test_connection_practice.py": "7070e2f7d9c7d578bd105d039d14c337f76ffa953cbbdbdb96e51777cb38c41a",
+    "training/train_midgame_service.py": "8a356a4524e495e08bb9d6d7f7cf71824d8ebf1f0a815b21e4366c3734a5a655",
+    "simulation/Assets/Simulation/ConstructionCurriculum.cs": "15f541fd418231c3d7e76ed89ff82197798f5f3e24e334134272729f44447952",
+    "simulation/Assets/Simulation/MidgameServicePractice.cs": "f988b0e83f2f9aa8466f003f04c395fd21a594d61912babaabefc547e1ba5c26"
+  },
+  "local_only": [
+    "model weights",
+    "native binaries"
+  ]
+}

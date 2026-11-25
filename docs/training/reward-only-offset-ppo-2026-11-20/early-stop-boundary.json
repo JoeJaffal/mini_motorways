@@ -1,0 +1,35 @@
+{
+  "reason": "stalled three-tile exploration",
+  "decisions": 198656,
+  "games": 736,
+  "successes": 285,
+  "max_span": 3,
+  "temperature": 4.0,
+  "targeted": {
+    "-2": [
+      0,
+      210
+    ],
+    "2": [
+      0,
+      210
+    ]
+  },
+  "rehearsal": {
+    "clear": [
+      27,
+      57
+    ],
+    "bend": [
+      51,
+      51
+    ],
+    "adjacent": [
+      64,
+      64
+    ]
+  },
+  "ppo_epochs": 388,
+  "elapsed_seconds": 358.6596877349075,
+  "fingerprint": "af9ddfc6a24610d5e25920f3c89a408b4bf64073751a8e7870f8ade731a71073"
+}

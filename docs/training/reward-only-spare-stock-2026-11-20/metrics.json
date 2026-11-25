@@ -1,0 +1,132 @@
+{
+  "evaluations": {
+    "stock-only-parent": {
+      "checkpoint_decisions": 131072,
+      "counts": {
+        "0": {
+          "delivered": 66,
+          "hard_delivered": 0,
+          "hard_total": 34,
+          "mean_deliveries": 7.59,
+          "passes_needing_extra_edit": 0,
+          "paid_budget_violations": 0
+        },
+        "1": {
+          "delivered": 66,
+          "hard_delivered": 0,
+          "hard_total": 34,
+          "mean_deliveries": 7.59,
+          "passes_needing_extra_edit": 0,
+          "paid_budget_violations": 0
+        }
+      }
+    },
+    "stock-only-greedy": {
+      "checkpoint_decisions": 186368,
+      "counts": {
+        "0": {
+          "delivered": 33,
+          "hard_delivered": 0,
+          "hard_total": 34,
+          "mean_deliveries": 3.8,
+          "passes_needing_extra_edit": 0,
+          "paid_budget_violations": 0
+        },
+        "1": {
+          "delivered": 100,
+          "hard_delivered": 34,
+          "hard_total": 34,
+          "mean_deliveries": 11.52,
+          "passes_needing_extra_edit": 67,
+          "paid_budget_violations": 0
+        }
+      }
+    },
+    "stock-only-sampled": {
+      "checkpoint_decisions": 186368,
+      "counts": {
+        "0": {
+          "delivered": 34,
+          "hard_delivered": 0,
+          "hard_total": 34,
+          "mean_deliveries": 3.94,
+          "passes_needing_extra_edit": 0,
+          "paid_budget_violations": 0
+        },
+        "1": {
+          "delivered": 98,
+          "hard_delivered": 33,
+          "hard_total": 34,
+          "mean_deliveries": 11.29,
+          "passes_needing_extra_edit": 64,
+          "paid_budget_violations": 0
+        }
+      }
+    },
+    "final-stock-only-greedy": {
+      "checkpoint_decisions": 212992,
+      "counts": {
+        "0": {
+          "delivered": 66,
+          "hard_delivered": 0,
+          "hard_total": 34,
+          "mean_deliveries": 7.59,
+          "passes_needing_extra_edit": 0,
+          "paid_budget_violations": 0
+        },
+        "1": {
+          "delivered": 66,
+          "hard_delivered": 0,
+          "hard_total": 34,
+          "mean_deliveries": 7.59,
+          "passes_needing_extra_edit": 0,
+          "paid_budget_violations": 0
+        }
+      }
+    },
+    "final-stock-only-sampled": {
+      "checkpoint_decisions": 212992,
+      "counts": {
+        "0": {
+          "delivered": 64,
+          "hard_delivered": 0,
+          "hard_total": 34,
+          "mean_deliveries": 7.35,
+          "passes_needing_extra_edit": 0,
+          "paid_budget_violations": 0
+        },
+        "1": {
+          "delivered": 68,
+          "hard_delivered": 2,
+          "hard_total": 34,
+          "mean_deliveries": 7.82,
+          "passes_needing_extra_edit": 4,
+          "paid_budget_violations": 0
+        }
+      }
+    }
+  },
+  "phases": {
+    "2": {
+      "rollouts": 18,
+      "left": 816,
+      "left_games": 1957,
+      "right": 835,
+      "right_games": 1966
+    },
+    "1": {
+      "rollouts": 6,
+      "left": 606,
+      "left_games": 764,
+      "right": 607,
+      "right_games": 764
+    },
+    "0": {
+      "rollouts": 16,
+      "left": 0,
+      "left_games": 2727,
+      "right": 0,
+      "right_games": 2726
+    }
+  }
+}

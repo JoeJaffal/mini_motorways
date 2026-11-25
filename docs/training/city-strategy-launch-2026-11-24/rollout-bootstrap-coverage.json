@@ -1,0 +1,16 @@
+{
+  "source": "output/training/city-strategy-bridge-reference-city-01/segment-001",
+  "measurements": {
+    "512": {
+      "direct_terminal_return_samples": 20988,
+      "total_samples": 65536,
+      "direct_terminal_return_fraction": 0.32025146484375
+    },
+    "1024": {
+      "direct_terminal_return_samples": 36280,
+      "total_samples": 65536,
+      "direct_terminal_return_fraction": 0.5535888671875
+    }
+  },
+  "note": "Same recorded trajectories regrouped retrospectively. Time-limit terminations retain bootstrap. Unfinished tails require bootstrap. This estimates return-target coverage only, not score improvement or trajectories of the new policy."
+}

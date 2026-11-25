@@ -1,0 +1,208 @@
+--- a/simulation/Assets/Simulation/ConstructionCurriculum.cs
++++ b/simulation/Assets/Simulation/ConstructionCurriculum.cs
+@@ -15,6 +15,25 @@
+         {
+             if (split != "train" && split != "validation")
+                 throw new ArgumentException("Unknown curriculum split");
++            if (exercise == "wait-zero" || exercise == "wait-one" || exercise == "wait-two")
++            {
++                LoadScoreWaitFixture(seed, split, exercise);
++                return;
++            }
++            if (exercise.StartsWith("pair-", StringComparison.Ordinal))
++            {
++                LoadPairCurriculum(seed, split, exercise.Substring(5));
++                return;
++            }
++            if (exercise.StartsWith("obstacle-wide", StringComparison.Ordinal) ||
++                exercise.StartsWith("obstacle-offset", StringComparison.Ordinal))
++            {
++                LoadObstacleVariety(seed, split, exercise);
++                return;
++            }
++            // Isolated exploration fixture. Its geometry matches the original clear exercise.
++            int surplus = exercise == "clear-spare-two" ? 2 : exercise == "clear-spare-one" ? 1 : 0;
++            if (surplus != 0) exercise = "clear";
+             if (exercise != "adjacent" && exercise != "bend" && exercise != "driveway" &&
+                 exercise != "clear" && exercise != "obstacle")
+                 throw new ArgumentException("Unknown construction exercise");
+@@ -127,8 +146,8 @@
+                     ConstructionReference.Add(("draw", path[i], path[i+1]));
+             }
+             Array.Clear(Inventory, 0, Inventory.Length);
+-            Inventory[0] = supply;
+-            ConstructionEditLimit = rotation ? 1 : empty ? supply + 1 : supply;
++            Inventory[0] = supply + surplus;
++            ConstructionEditLimit = rotation ? 1 : empty ? supply + surplus + 1 : supply;
+             LastAction = "Construction curriculum reset";
+         }
+ 
+--- /dev/null
++++ b/simulation/Assets/Simulation/PairCurriculum.cs
+@@ -0,0 +1,58 @@
++using System;
++
++namespace MotorwaysSim
++{
++    public sealed partial class TrafficWorld
++    {
++        void LoadPairCurriculum(int seed, string split, string kind)
++        {
++            if (kind != "match" && kind != "mismatch" && kind != "homes" &&
++                kind != "destinations" && kind != "blue-red")
++                throw new ArgumentException("Unknown pair curriculum exercise");
++            Reset(seed, ScenarioKind.EmptyLab);
++            CustomScenarioId = ConstructionCurriculumId;
++            ConstructionExercise = "clear";
++            ConstructionReference.Clear();
++            var rng = new Random(seed);
++            bool training = split == "train";
++            var origin = new Cell(training ? rng.Next(11, 20) : rng.Next(30, 38), rng.Next(10, 19));
++            int layout = rng.Next(4);
++            int span = rng.Next(3, 7);
++            int paletteStart = training ? 0 : 3;
++            int paletteSize = training ? 3 : 2;
++            int first = rng.Next(paletteSize);
++            int difference = rng.Next(1, paletteSize);
++            int second = (first + difference) % paletteSize;
++            bool different = kind == "mismatch" || rng.Next(2) == 0 && (kind == "homes" || kind == "destinations");
++            int nearColor = kind == "blue-red" ? 0 : paletteStart + first;
++            int farColor = kind == "blue-red" ? 1 : paletteStart + (different ? second : first);
++
++            Cell AccessOffset(int orientation) => orientation == 0 ? new Cell(0,2) : orientation == 1
++                ? new Cell(1,2) : orientation == 2 ? new Cell(0,0) : new Cell(0,1);
++            int[] directions = {4, 0, 6, 2};
++            var entry = origin + AccessOffset(layout);
++            int outwardDirection = directions[layout];
++            var outward = Directions[outwardDirection];
++            var end = entry;
++            for (int i = 0; i <= span; i++) end += outward;
++            var near = kind == "homes"
++                ? SpawnBuilding(entry, nearColor, true, outwardDirection)
++                : SpawnBuilding(origin, nearColor, false, 0, layout);
++            int facingBack = (outwardDirection + 4) % 8;
++            Building far;
++            if (kind == "destinations")
++            {
++                int farLayout = Array.IndexOf(directions, facingBack);
++                var offset = AccessOffset(farLayout);
++                far = SpawnBuilding(new Cell(end.X-offset.X, end.Y-offset.Y), farColor, false, 0, farLayout);
++            }
++            else far = SpawnBuilding(end, farColor, true, facingBack);
++            if (near == null || far == null)
++                throw new InvalidOperationException("Pair curriculum building placement failed");
++            Array.Clear(Inventory, 0, Inventory.Length);
++            Inventory[0] = span - 1;
++            ConstructionEditLimit = span;
++            LastAction = "Pair curriculum reset";
++        }
++    }
++}
+--- /dev/null
++++ b/simulation/Assets/Simulation/ObstacleVariety.cs
+@@ -0,0 +1,76 @@
++using System;
++using System.Collections.Generic;
++
++namespace MotorwaysSim
++{
++    public sealed partial class TrafficWorld
++    {
++        void LoadObstacleVariety(int seed, string split, string exercise)
++        {
++            Reset(seed, ScenarioKind.EmptyLab);
++            CustomScenarioId = ConstructionCurriculumId;
++            ConstructionExercise = exercise;
++            ConstructionReference.Clear();
++            var rng = new Random(seed);
++            int orientation = rng.Next(4);
++            int color = rng.Next(3);
++            int side = rng.Next(2) == 0 ? -1 : 1;
++            var origin = new Cell(split == "train" ? rng.Next(11, 20) : rng.Next(30, 38), rng.Next(10, 19));
++            var shop = SpawnBuilding(origin, color, false, 0, orientation);
++            if (shop == null) throw new InvalidOperationException("Obstacle destination placement failed");
++            var outward = Directions[shop.DrivewayDirection];
++            var across = new Cell(-outward.Y, outward.X);
++            var start = shop.Access + outward;
++            Cell At(int x, int y) => new Cell(start.X + x*outward.X + y*across.X,
++                                             start.Y + x*outward.Y + y*across.Y);
++            void Block(int x, int y)
++            {
++                var c = At(x, y);
++                Blocked[c.X, c.Y] = true;
++                Unzoneable[c.X, c.Y] = true;
++            }
++
++            string[] parts = exercise.Split('-');
++            bool wide = parts[1] == "wide";
++            bool warm = parts.Length >= 3 && parts[2] == "warm";
++            int surplus = parts[parts.Length - 1] == "spare" ? 2 : 0;
++            int distance = wide ? rng.Next(6, 9) : rng.Next(7, 9);
++            int center = wide ? rng.Next(3, distance-2) : rng.Next(2, distance-3);
++            int offset = wide ? 0 : rng.Next(1, 3);
++            foreach (int lane in wide ? new[] {-1, 0, 1} : new[] {0, side}) Block(center, lane);
++            if (!wide)
++                Block(center-1, 2*side);
++            var witness = new List<Cell>();
++            for (int x = distance; x >= 0; x--)
++            {
++                int lateral = wide
++                    ? Math.Max(2-Math.Abs(x-center), 0)*side
++                    : (x >= center ? Math.Min(offset, x-center-1)*side : (x == center-1 ? -side : 0));
++                witness.Add(At(x, lateral));
++            }
++            var home = SpawnBuilding(witness[0], color, true, Direction(witness[0], witness[1]));
++            if (home == null) throw new InvalidOperationException("Obstacle house placement failed");
++            Array.Clear(Inventory, 0, Inventory.Length);
++            Inventory[0] = 20;
++            int left = distance - center - 2;
++            int right = distance - center + 2;
++            int stock = 0;
++            for (int i=0; i < witness.Count-1; i++)
++            {
++                if (warm && (i < left || i >= right))
++                {
++                    if (!DrawRoad(witness[i], witness[i+1]))
++                        throw new InvalidOperationException("Obstacle warm-up stub placement failed");
++                }
++                else if (i != 0)
++                {
++                    ConstructionReference.Add(("draw", witness[i], witness[i+1]));
++                    stock++;
++                }
++            }
++            Inventory[0] = stock + surplus;
++            ConstructionEditLimit = stock + 1 + surplus;
++            LastAction = "Obstacle variety reset";
++        }
++    }
++}
+--- /dev/null
++++ b/simulation/Assets/Simulation/ScoreWaitFixture.cs
+@@ -0,0 +1,26 @@
++using System;
++
++namespace MotorwaysSim
++{
++    public sealed partial class TrafficWorld
++    {
++        void LoadScoreWaitFixture(int seed, string split, string exercise)
++        {
++            LoadConstructionCurriculum(seed, split, "adjacent");
++            int prefill = exercise == "wait-zero" ? 2 : exercise == "wait-one" ? 1 : 0;
++            if (ConstructionReference.Count != 2)
++                throw new InvalidOperationException("Expected two adjacent gaps");
++            for (int i = 0; i < prefill; i++)
++            {
++                var edit = ConstructionReference[i];
++                if (!DrawRoad(edit.From, edit.To))
++                    throw new InvalidOperationException("Wait fixture prefill failed");
++            }
++            ConstructionReference.Clear();
++            ConstructionExercise = exercise;
++            Inventory[0] = 2;
++            ConstructionEditLimit = 10;
++            LastAction = "Score-only wait fixture reset";
++        }
++    }
++}

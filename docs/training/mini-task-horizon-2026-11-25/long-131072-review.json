@@ -1,0 +1,32 @@
+{
+  "city_mean": 146.6875,
+  "city_scoring": 31,
+  "city_delta": {
+    "trips": {
+      "mean": 20.59375,
+      "ci95": [
+        2.4375,
+        40.375
+      ]
+    },
+    "paid_units": {
+      "mean": 12.8125,
+      "ci95": [
+        5.342968750000001,
+        20.40625
+      ]
+    },
+    "outside_routes": {
+      "mean": 2.84375,
+      "ci95": [
+        -2.0,
+        7.4375
+      ]
+    }
+  },
+  "tight_successes": 9,
+  "generous_successes": 11,
+  "first_pair_served": 11,
+  "both_pairs": 3,
+  "limits": "Consumed development data; full budget/control pending. Mini gates unmet; no promotion."
+}

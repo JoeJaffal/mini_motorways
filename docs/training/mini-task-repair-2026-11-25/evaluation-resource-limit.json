@@ -1,0 +1,16 @@
+{
+  "time": "2026-11-25T16:34:41.890196+02:00",
+  "reason": "At reset-final city review, two learners plus evaluation left5.4GiB available physical RAM and swap was full. Bound future reset-study evaluation pools to2CPUworkers as already done in duration study. Current loaded evaluator finishes unchanged. No training source/weights/actions/seeds/reward modified.",
+  "changes": [
+    {
+      "file": "audit_mini_behavior.py",
+      "before": "11e281dab31a99260f5cf2712822551387d8d81ed3bb2118351b1c9e9381bd25",
+      "after": "b5ce82cb8533f5ed881c3c386a4dde80dd996023940b8c73e8ac42f2144bdcba"
+    },
+    {
+      "file": "evaluate_overnight_city.py",
+      "before": "99f349b2aacec9907beccb903ef68f4b7534c6e707b0903276dff1c89b487885",
+      "after": "9be35e015d7bf50c7aa782a307a9d761c0c602d5688c72a45a9127bfe864f1ad"
+    }
+  ]
+}

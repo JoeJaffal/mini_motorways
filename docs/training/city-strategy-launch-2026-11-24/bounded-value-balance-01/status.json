@@ -1,0 +1,23 @@
+{
+  "status": "complete",
+  "pid": 235726,
+  "started": "2026-11-24T13:37:39.235356+02:00",
+  "training_seconds": 959.2923257169314,
+  "segments": 1,
+  "current_checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-value-balance-01/segment-001/final.zip",
+  "best_checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-short-delay-01/segment-001/midpoint.zip",
+  "failed_reviews": 0,
+  "updated": "2026-11-24T13:55:18.660922+02:00",
+  "active_segment": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-value-balance-01/segment-001",
+  "phase": "finished",
+  "current_sha256": "94b12ae0a180e0a61e126b7327506399fe2b02c05c15549e2fa2c759349ceff7",
+  "active_review": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-value-balance-01/review-001",
+  "last_review": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-value-balance-01/review-001",
+  "last_decision": {
+    "retained": true,
+    "promote": false,
+    "failures": 0,
+    "stop": false
+  },
+  "best_sha256": "fea5d80883b619804db542098ac514be31af0f6fdcad2c1ed4b819d3efaf5132"
+}

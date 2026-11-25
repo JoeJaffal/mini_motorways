@@ -1,0 +1,35 @@
+{
+  "mode": "train",
+  "elapsed_seconds": 33.50302091089543,
+  "arguments": {
+    "mode": "train",
+    "dll": "output/training/five-stage-host.xrTqaW/bin/TrafficHost/release/TrafficHost.dll",
+    "output": "output/training/construction-five-stage.MasJ47/imitation-01",
+    "checkpoint": null,
+    "source_archive": null,
+    "original_dll": null,
+    "start_from": null,
+    "device": "cuda",
+    "stages": [
+      "adjacent",
+      "bend",
+      "driveway",
+      "clear",
+      "obstacle"
+    ],
+    "layouts": 100,
+    "examples": 512,
+    "epochs": 36,
+    "learning_rate": 0.0015,
+    "seed": 42,
+    "workers": 14
+  },
+  "native_sha256": "5462b8c145044fe4932dea377895df7e4548d0b3defd301c72a801154c9abbca",
+  "source_hashes": {
+    "training/construction_curriculum.py": "4cc1e131fa5c1bd66ab7166a0623a11e44e4a915ede86d1227135fd353663d14",
+    "training/construction_practice.py": "eebd5bcf6ff9ba16586f8d8f33a3eb07228b0da5f495042957e814ea606c8c92",
+    "simulation/Headless/Program.cs": "47dee658de9b78a4c6c40328b765588079e78c291afb421aacf4e0c84c0249f0",
+    "simulation/Assets/Simulation/ConstructionCurriculum.cs": "14f73588c5c5b181bfe683d70de0e7e7e2e2c1248d7c168de79281c11b6c7883",
+    "simulation/Assets/Simulation/PracticeLegality.cs": "d367280a7b07c1f27d72bd01b51d35a081a47e288a0282f90bcf0a3c71680797"
+  }
+}

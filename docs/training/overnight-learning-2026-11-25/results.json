@@ -1,0 +1,343 @@
+{
+  "city": {
+    "original": {
+      "checkpoint": "output/training/city-whole-initial-01/start.zip",
+      "sha256": "7eb605e4e465b9143e095e367abe0a01285b8ace05843aaac80bd48b5f049027",
+      "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+      "suite": "Consumed development suite; sampled inference,600s,bridges enabled",
+      "games": 32,
+      "scoring": 30,
+      "trips": 126.09375,
+      "paid_units": 99.125,
+      "outside_routes": 32.28125
+    },
+    "parent": {
+      "checkpoint": "output/training/road-cost-continuation-01/strong/checkpoint-000262144.zip",
+      "sha256": "b40194ad5c83fdedc7ba1e534fbc6cedeb91e452a3b873c06ee6c92d23a17355",
+      "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+      "suite": "Consumed development suite; sampled inference,600s,bridges enabled",
+      "games": 32,
+      "scoring": 27,
+      "trips": 86.96875,
+      "paid_units": 86.21875,
+      "outside_routes": 33.375
+    },
+    "lesson-only": {
+      "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/overnight-transfer-comparison-01/lesson-only/checkpoint-000524288.zip",
+      "sha256": "9f8705cee637e01739f407f74979aa2f3388ce651a584c98f95c97b14f07a7fc",
+      "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+      "suite": "Consumed development suite; sampled inference,600s,bridges enabled",
+      "games": 32,
+      "scoring": 30,
+      "trips": 107.4375,
+      "paid_units": 96.25,
+      "outside_routes": 40.8125
+    },
+    "mixed-city": {
+      "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/overnight-transfer-comparison-01/mixed-city/checkpoint-000524288.zip",
+      "sha256": "98b87aaf1195602ee651af9a615530b698b4dbfe71929ceb7436b14baf850885",
+      "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+      "suite": "Consumed development suite; sampled inference,600s,bridges enabled",
+      "games": 32,
+      "scoring": 30,
+      "trips": 99.15625,
+      "paid_units": 91.25,
+      "outside_routes": 33.25
+    }
+  },
+  "lesson": {
+    "lesson-only-393216": {
+      "validation/small-city-offset-single": {
+        "score": 2.21875,
+        "first_served": 0.640625,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 7.4375,
+        "remaining_stock": 0.1875,
+        "paid_units": 7.25,
+        "outside_routes": 3.484375,
+        "no_build": 0.0,
+        "games": 64
+      },
+      "validation/small-city-offset-stock": {
+        "score": 2.921875,
+        "first_served": 0.875,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 13.96875,
+        "remaining_stock": 3.25,
+        "paid_units": 10.71875,
+        "outside_routes": 4.828125,
+        "no_build": 0.0,
+        "games": 64
+      }
+    },
+    "lesson-only-524288": {
+      "validation/small-city-offset-single": {
+        "score": 2.15625,
+        "first_served": 0.609375,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 7.4375,
+        "remaining_stock": 0.015625,
+        "paid_units": 7.421875,
+        "outside_routes": 3.875,
+        "no_build": 0.0,
+        "games": 64
+      },
+      "validation/small-city-offset-stock": {
+        "score": 2.796875,
+        "first_served": 0.84375,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 13.96875,
+        "remaining_stock": 2.0,
+        "paid_units": 11.96875,
+        "outside_routes": 6.515625,
+        "no_build": 0.0,
+        "games": 64
+      }
+    },
+    "mixed-city-393216": {
+      "validation/small-city-offset-single": {
+        "score": 2.046875,
+        "first_served": 0.59375,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 7.4375,
+        "remaining_stock": 0.203125,
+        "paid_units": 7.234375,
+        "outside_routes": 3.8125,
+        "no_build": 0.0,
+        "games": 64
+      },
+      "validation/small-city-offset-stock": {
+        "score": 2.453125,
+        "first_served": 0.734375,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 13.96875,
+        "remaining_stock": 3.171875,
+        "paid_units": 10.796875,
+        "outside_routes": 6.21875,
+        "no_build": 0.0,
+        "games": 64
+      }
+    },
+    "mixed-city-524288": {
+      "validation/small-city-offset-single": {
+        "score": 2.03125,
+        "first_served": 0.578125,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 7.4375,
+        "remaining_stock": 0.109375,
+        "paid_units": 7.328125,
+        "outside_routes": 4.015625,
+        "no_build": 0.0,
+        "games": 64
+      },
+      "validation/small-city-offset-stock": {
+        "score": 2.4375,
+        "first_served": 0.71875,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 13.96875,
+        "remaining_stock": 2.53125,
+        "paid_units": 11.4375,
+        "outside_routes": 7.046875,
+        "no_build": 0.0,
+        "games": 64
+      }
+    }
+  },
+  "city_comparisons": [
+    {
+      "candidate": "lesson-only",
+      "baseline": "parent",
+      "clusters": 16,
+      "metrics": {
+        "trips": {
+          "mean": 20.46875,
+          "ci95": [
+            -11.56328125,
+            51.62578124999999
+          ]
+        },
+        "paid_units": {
+          "mean": 10.03125,
+          "ci95": [
+            -4.0625,
+            23.15625
+          ]
+        },
+        "outside_routes": {
+          "mean": 7.4375,
+          "ci95": [
+            2.21875,
+            12.15625
+          ]
+        }
+      }
+    },
+    {
+      "candidate": "mixed-city",
+      "baseline": "parent",
+      "clusters": 16,
+      "metrics": {
+        "trips": {
+          "mean": 12.1875,
+          "ci95": [
+            -25.93828125,
+            49.47031249999998
+          ]
+        },
+        "paid_units": {
+          "mean": 5.03125,
+          "ci95": [
+            -14.0625,
+            25.06328124999999
+          ]
+        },
+        "outside_routes": {
+          "mean": -0.125,
+          "ci95": [
+            -5.15625,
+            5.125781249999989
+          ]
+        }
+      }
+    },
+    {
+      "candidate": "mixed-city",
+      "baseline": "lesson-only",
+      "clusters": 16,
+      "metrics": {
+        "trips": {
+          "mean": -8.28125,
+          "ci95": [
+            -44.09375,
+            31.4375
+          ]
+        },
+        "paid_units": {
+          "mean": -5.0,
+          "ci95": [
+            -21.5625,
+            15.3125
+          ]
+        },
+        "outside_routes": {
+          "mean": -7.5625,
+          "ci95": [
+            -13.59375,
+            -1.15625
+          ]
+        }
+      }
+    },
+    {
+      "candidate": "mixed-city",
+      "baseline": "original",
+      "clusters": 16,
+      "metrics": {
+        "trips": {
+          "mean": -26.9375,
+          "ci95": [
+            -57.40625,
+            6.03125
+          ]
+        },
+        "paid_units": {
+          "mean": -7.875,
+          "ci95": [
+            -22.1875,
+            8.1875
+          ]
+        },
+        "outside_routes": {
+          "mean": 0.96875,
+          "ci95": [
+            -4.1875,
+            6.53125
+          ]
+        }
+      }
+    },
+    {
+      "candidate": "lesson-only",
+      "baseline": "original",
+      "clusters": 16,
+      "metrics": {
+        "trips": {
+          "mean": -18.65625,
+          "ci95": [
+            -40.34453125,
+            1.75
+          ]
+        },
+        "paid_units": {
+          "mean": -2.875,
+          "ci95": [
+            -10.9375,
+            4.1875
+          ]
+        },
+        "outside_routes": {
+          "mean": 8.53125,
+          "ci95": [
+            5.280468750000001,
+            11.6875
+          ]
+        }
+      }
+    }
+  ],
+  "final_learner_metrics": {
+    "lesson-only": {
+      "time/total_timesteps": "",
+      "time/time_elapsed": "",
+      "rollout/ep_rew_mean": "",
+      "time/iterations": "",
+      "time/fps": "",
+      "rollout/ep_len_mean": "",
+      "train/explained_variance": "0.00044655799865722656",
+      "train/n_updates": "1004",
+      "train/policy_gradient_loss": "-0.0005080911596451188",
+      "train/value_loss": "1.7617538482882082",
+      "train/approx_kl": "0.0009758021",
+      "train/learning_rate": "0.0003",
+      "train/clip_fraction": "0.004638671875",
+      "train/loss": "-0.013497409410774708",
+      "train/entropy_loss": "-0.8002247349359095",
+      "train/clip_range": "0.2"
+    },
+    "mixed-city": {
+      "time/time_elapsed": "",
+      "rollout/ep_rew_mean": "",
+      "time/fps": "",
+      "rollout/ep_len_mean": "",
+      "time/total_timesteps": "",
+      "time/iterations": "",
+      "train/value_loss": "1632.69735455513",
+      "train/explained_variance": "0.8306612372398376",
+      "train/n_updates": "1004",
+      "train/entropy_loss": "-0.8010249373037368",
+      "train/approx_kl": "0.0009876837",
+      "train/clip_fraction": "0.00830078125",
+      "train/loss": "-0.007381183095276356",
+      "train/policy_gradient_loss": "-4.0175389585783705e-05",
+      "train/learning_rate": "0.0003",
+      "train/clip_range": "0.2"
+    }
+  },
+  "limitations": "One training seed; reused development maps; fixed final checkpoints; no promotion, fresh confirmation or commercial-game leaderboard claim."
+}

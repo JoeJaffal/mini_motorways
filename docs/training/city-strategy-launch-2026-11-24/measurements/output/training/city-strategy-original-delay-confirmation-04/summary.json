@@ -1,0 +1,81 @@
+{
+  "models": [
+    "output/training/city-five-stage-cold-initial-01/candidate.zip",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-original-delay-01/segment-001/final.zip"
+  ],
+  "sha256": {
+    "output/training/city-five-stage-cold-initial-01/candidate.zip": "9202d62be8d237f6fe495ee1ec29eed1747849a1fd747006ea8903de7f0b19f1",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-original-delay-01/segment-001/final.zip": "e72ec5ada055dd474f65ec0d032e6333128e241f8154ea2f3fc382c73dbf34e2"
+  },
+  "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+  "horizon": 600,
+  "forced_action_inference_skipped": true,
+  "results": {
+    "0": {
+      "games": 64,
+      "scoring_games": 53,
+      "mean_score": 85.953125,
+      "new_targets": 271,
+      "new_targets_served": 210,
+      "new_target_stockouts": 53,
+      "median_new_service_delay": 27.0,
+      "mean_paid_units": 78.375,
+      "mean_outside_observed_routes": 31.390625,
+      "outside_route_share": 0.400518341307815,
+      "paired_score_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "1": {
+      "games": 64,
+      "scoring_games": 53,
+      "mean_score": 86.1875,
+      "new_targets": 275,
+      "new_targets_served": 217,
+      "new_target_stockouts": 26,
+      "median_new_service_delay": 28.0,
+      "mean_paid_units": 70.71875,
+      "mean_outside_observed_routes": 29.21875,
+      "outside_route_share": 0.41316836058329653,
+      "paired_score_delta_and_interval": [
+        0.234375,
+        [
+          -12.65625,
+          12.96875
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.109375,
+        [
+          -0.375,
+          0.578125
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        -2.171875,
+        [
+          -5.375390625,
+          0.921875
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/expansion-comparison-01/city-only/final.zip",
+  "sha256": "934289605d7a1b4382b5f40aaa3518e2e96673be6b22f756f9b9c8805a6edeb5",
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+  "results": {
+    "validation/small-city-offset-single": {
+      "score": 1.875,
+      "first_served": 0.515625,
+      "later_exists": 0.0,
+      "later_served": 0.0,
+      "both_served": 0.0,
+      "initial_stock": 7.65625,
+      "remaining_stock": 0.5,
+      "paid_units": 7.15625,
+      "outside_routes": 4.21875,
+      "no_build": 0.0,
+      "games": 64
+    },
+    "validation/small-city-offset-pairs": {
+      "score": 2.5,
+      "first_served": 0.609375,
+      "later_exists": 0.953125,
+      "later_served": 0.21875,
+      "both_served": 0.21875,
+      "initial_stock": 14.25,
+      "remaining_stock": 0.0,
+      "paid_units": 14.25,
+      "outside_routes": 9.109375,
+      "no_build": 0.0,
+      "games": 64
+    }
+  }
+}

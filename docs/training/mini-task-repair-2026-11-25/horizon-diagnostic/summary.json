@@ -1,0 +1,94 @@
+{
+  "original/small-city-offset-single": {
+    "mean_score60": 1.75,
+    "mean_score300": 9.4375,
+    "native_failures": 8,
+    "surviving_to300": 8,
+    "groups": {
+      "no_service60": {
+        "games": 8,
+        "score60": 0.0,
+        "score300": 0,
+        "native_failures": 8
+      },
+      "one_served60": {
+        "games": 8,
+        "score60": 3.5,
+        "score300": 18.875,
+        "native_failures": 0
+      }
+    }
+  },
+  "original/small-city-offset-pairs": {
+    "mean_score60": 2.125,
+    "mean_score300": 10.375,
+    "native_failures": 13,
+    "surviving_to300": 3,
+    "groups": {
+      "no_service60": {
+        "games": 8,
+        "score60": 0.0,
+        "score300": 0,
+        "native_failures": 8
+      },
+      "one_served60": {
+        "games": 5,
+        "score60": 3.4,
+        "score300": 10.8,
+        "native_failures": 5
+      },
+      "both_served60": {
+        "games": 3,
+        "score60": 5.666666666666667,
+        "score300": 37.333333333333336,
+        "native_failures": 0
+      }
+    }
+  },
+  "reset65/small-city-offset-single": {
+    "mean_score60": 1.5625,
+    "mean_score300": 8.25,
+    "native_failures": 9,
+    "surviving_to300": 7,
+    "groups": {
+      "no_service60": {
+        "games": 9,
+        "score60": 0.0,
+        "score300": 0,
+        "native_failures": 9
+      },
+      "one_served60": {
+        "games": 7,
+        "score60": 3.5714285714285716,
+        "score300": 18.857142857142858,
+        "native_failures": 0
+      }
+    }
+  },
+  "reset65/small-city-offset-pairs": {
+    "mean_score60": 2.3125,
+    "mean_score300": 10.0625,
+    "native_failures": 14,
+    "surviving_to300": 2,
+    "groups": {
+      "no_service60": {
+        "games": 6,
+        "score60": 0.0,
+        "score300": 0,
+        "native_failures": 6
+      },
+      "one_served60": {
+        "games": 8,
+        "score60": 3.25,
+        "score300": 10.75,
+        "native_failures": 8
+      },
+      "both_served60": {
+        "games": 2,
+        "score60": 5.5,
+        "score300": 37.5,
+        "native_failures": 0
+      }
+    }
+  }
+}

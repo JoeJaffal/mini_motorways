@@ -1,0 +1,598 @@
+{
+  "method": "Native initial observations and action masks from the development suite on CPU.",
+  "groups": [
+    {
+      "checkpoint_decisions": 0,
+      "mean_wait_probability": 0.5000000596046448,
+      "greedy_road_openings": 0
+    },
+    {
+      "checkpoint_decisions": 12288,
+      "mean_wait_probability": 0.5022209187348684,
+      "greedy_road_openings": 0
+    },
+    {
+      "checkpoint_decisions": 24576,
+      "mean_wait_probability": 0.49648411323626834,
+      "greedy_road_openings": 0
+    }
+  ],
+  "states": [
+    {
+      "seed": 80337986,
+      "checkpoint_decisions": 0,
+      "legal_roads": 344,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80337986,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 344,
+      "wait_probability": 0.5022956728935242,
+      "strongest_road_probability": 0.45455819368362427,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80337986,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 344,
+      "wait_probability": 0.49645334482192993,
+      "strongest_road_probability": 0.4458155632019043,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80410503,
+      "checkpoint_decisions": 0,
+      "legal_roads": 321,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80410503,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 321,
+      "wait_probability": 0.5022329092025757,
+      "strongest_road_probability": 0.4545435607433319,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80410503,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 321,
+      "wait_probability": 0.49646738171577454,
+      "strongest_road_probability": 0.4449741840362549,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80795864,
+      "checkpoint_decisions": 0,
+      "legal_roads": 341,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80795864,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 341,
+      "wait_probability": 0.5021478533744812,
+      "strongest_road_probability": 0.4547460675239563,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80795864,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 341,
+      "wait_probability": 0.49654367566108704,
+      "strongest_road_probability": 0.44507914781570435,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80205185,
+      "checkpoint_decisions": 0,
+      "legal_roads": 322,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80205185,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 322,
+      "wait_probability": 0.5021729469299316,
+      "strongest_road_probability": 0.4544229805469513,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80205185,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 322,
+      "wait_probability": 0.49654820561408997,
+      "strongest_road_probability": 0.44169244170188904,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80626054,
+      "checkpoint_decisions": 0,
+      "legal_roads": 341,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80626054,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 341,
+      "wait_probability": 0.502147912979126,
+      "strongest_road_probability": 0.4544280767440796,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80626054,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 341,
+      "wait_probability": 0.4965510368347168,
+      "strongest_road_probability": 0.441712886095047,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80809549,
+      "checkpoint_decisions": 0,
+      "legal_roads": 261,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80809549,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 261,
+      "wait_probability": 0.5022107362747192,
+      "strongest_road_probability": 0.4546387493610382,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80809549,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 261,
+      "wait_probability": 0.4965327978134155,
+      "strongest_road_probability": 0.44507041573524475,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80677404,
+      "checkpoint_decisions": 0,
+      "legal_roads": 260,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80677404,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 260,
+      "wait_probability": 0.502243161201477,
+      "strongest_road_probability": 0.4545660614967346,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80677404,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 260,
+      "wait_probability": 0.49654561281204224,
+      "strongest_road_probability": 0.44492143392562866,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80463931,
+      "checkpoint_decisions": 0,
+      "legal_roads": 280,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80463931,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 280,
+      "wait_probability": 0.5022056102752686,
+      "strongest_road_probability": 0.4545033872127533,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80463931,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 280,
+      "wait_probability": 0.4964693486690521,
+      "strongest_road_probability": 0.441973477602005,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80083865,
+      "checkpoint_decisions": 0,
+      "legal_roads": 330,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80083865,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 330,
+      "wait_probability": 0.5021683573722839,
+      "strongest_road_probability": 0.45442622900009155,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80083865,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 330,
+      "wait_probability": 0.49655067920684814,
+      "strongest_road_probability": 0.44169577956199646,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80554262,
+      "checkpoint_decisions": 0,
+      "legal_roads": 335,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80554262,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 335,
+      "wait_probability": 0.5022364258766174,
+      "strongest_road_probability": 0.45468950271606445,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80554262,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 335,
+      "wait_probability": 0.49646520614624023,
+      "strongest_road_probability": 0.44513124227523804,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80491213,
+      "checkpoint_decisions": 0,
+      "legal_roads": 326,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80491213,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 326,
+      "wait_probability": 0.5021694302558899,
+      "strongest_road_probability": 0.4547301232814789,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80491213,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 326,
+      "wait_probability": 0.49641573429107666,
+      "strongest_road_probability": 0.44519561529159546,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80887509,
+      "checkpoint_decisions": 0,
+      "legal_roads": 349,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80887509,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 349,
+      "wait_probability": 0.5022631883621216,
+      "strongest_road_probability": 0.4545557200908661,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80887509,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 349,
+      "wait_probability": 0.49634748697280884,
+      "strongest_road_probability": 0.44039368629455566,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80702337,
+      "checkpoint_decisions": 0,
+      "legal_roads": 261,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80702337,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 261,
+      "wait_probability": 0.502223789691925,
+      "strongest_road_probability": 0.45457789301872253,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80702337,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 261,
+      "wait_probability": 0.49644383788108826,
+      "strongest_road_probability": 0.44622689485549927,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80226902,
+      "checkpoint_decisions": 0,
+      "legal_roads": 280,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80226902,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 280,
+      "wait_probability": 0.5022346377372742,
+      "strongest_road_probability": 0.4546775817871094,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80226902,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 280,
+      "wait_probability": 0.4965343475341797,
+      "strongest_road_probability": 0.44510284066200256,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80339012,
+      "checkpoint_decisions": 0,
+      "legal_roads": 345,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80339012,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 345,
+      "wait_probability": 0.5022315382957458,
+      "strongest_road_probability": 0.4546939730644226,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80339012,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 345,
+      "wait_probability": 0.4964612126350403,
+      "strongest_road_probability": 0.44513481855392456,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80407451,
+      "checkpoint_decisions": 0,
+      "legal_roads": 338,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80407451,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 338,
+      "wait_probability": 0.5022256970405579,
+      "strongest_road_probability": 0.4546743333339691,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80407451,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 338,
+      "wait_probability": 0.4964587688446045,
+      "strongest_road_probability": 0.44511792063713074,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80409123,
+      "checkpoint_decisions": 0,
+      "legal_roads": 331,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80409123,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 331,
+      "wait_probability": 0.5022203922271729,
+      "strongest_road_probability": 0.4545672535896301,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80409123,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 331,
+      "wait_probability": 0.4964773952960968,
+      "strongest_road_probability": 0.44495949149131775,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80436646,
+      "checkpoint_decisions": 0,
+      "legal_roads": 280,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80436646,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 280,
+      "wait_probability": 0.5023366212844849,
+      "strongest_road_probability": 0.45465490221977234,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80436646,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 280,
+      "wait_probability": 0.4964373707771301,
+      "strongest_road_probability": 0.4499894380569458,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80273418,
+      "checkpoint_decisions": 0,
+      "legal_roads": 326,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80273418,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 326,
+      "wait_probability": 0.5021716356277466,
+      "strongest_road_probability": 0.45479604601860046,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80273418,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 326,
+      "wait_probability": 0.49649059772491455,
+      "strongest_road_probability": 0.4495847523212433,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80825121,
+      "checkpoint_decisions": 0,
+      "legal_roads": 280,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80825121,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 280,
+      "wait_probability": 0.5022370219230652,
+      "strongest_road_probability": 0.4545583128929138,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80825121,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 280,
+      "wait_probability": 0.49656030535697937,
+      "strongest_road_probability": 0.44492000341415405,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80717501,
+      "checkpoint_decisions": 0,
+      "legal_roads": 258,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80717501,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 258,
+      "wait_probability": 0.5022347569465637,
+      "strongest_road_probability": 0.4545098841190338,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80717501,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 258,
+      "wait_probability": 0.4964565336704254,
+      "strongest_road_probability": 0.44159743189811707,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80393253,
+      "checkpoint_decisions": 0,
+      "legal_roads": 331,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80393253,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 331,
+      "wait_probability": 0.5022354125976562,
+      "strongest_road_probability": 0.4544669985771179,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80393253,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 331,
+      "wait_probability": 0.4964524209499359,
+      "strongest_road_probability": 0.44113171100616455,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80765997,
+      "checkpoint_decisions": 0,
+      "legal_roads": 288,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80765997,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 288,
+      "wait_probability": 0.5023078322410583,
+      "strongest_road_probability": 0.45436838269233704,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80765997,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 288,
+      "wait_probability": 0.49641862511634827,
+      "strongest_road_probability": 0.4468097388744354,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80694106,
+      "checkpoint_decisions": 0,
+      "legal_roads": 329,
+      "wait_probability": 0.5000000596046448,
+      "strongest_road_probability": 0.4441421627998352,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80694106,
+      "checkpoint_decisions": 12288,
+      "legal_roads": 329,
+      "wait_probability": 0.5021485090255737,
+      "strongest_road_probability": 0.45474523305892944,
+      "greedy_action": 0
+    },
+    {
+      "seed": 80694106,
+      "checkpoint_decisions": 24576,
+      "legal_roads": 329,
+      "wait_probability": 0.4965367913246155,
+      "strongest_road_probability": 0.4450850486755371,
+      "greedy_action": 0
+    }
+  ]
+}

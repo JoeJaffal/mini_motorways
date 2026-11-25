@@ -1,0 +1,37 @@
+{
+  "start_utc": "2026-11-16T17:11:03Z",
+  "deadline_utc": "2026-11-16T18:11:03Z",
+  "user_scope": "one hour of implementation and non-training checks; simple final check-in",
+  "training_authorized": false,
+  "branch": "Maskable-PPO",
+  "base": "6bd7f71",
+  "implementation_status": "implementation/checks complete for the requested work window",
+  "completed": [
+    "visible observation schema and privacy tests",
+    "contextual direct controls and pure Stage1 masks",
+    "separate manager/executor heads",
+    "frozen collection and explicit return/loss helpers",
+    "headless replay and evaluation review artifacts",
+    "batched parallel non-training benchmark",
+    "explicit non-training verification runner"
+  ],
+  "training_sessions": 0,
+  "optimizer_steps": 0,
+  "python_tests_distinct": 62,
+  "native_core_suites": 99,
+  "native_differential_cases": 1116,
+  "target_pc_updated": false,
+  "committed": false,
+  "pushed": false,
+  "remaining": [
+    "PPO updater integration and explicit remaining hierarchy choices",
+    "target Linux PC speed selection",
+    "full-game tool/weekly support and graphical replay viewer"
+  ],
+  "transfer_validation": "PASS: clean published base apply-check, applied copy Release build and 9 privacy checks; temporary checkout cleaned",
+  "no_training_attestation": "Only explicitly selected tests, scripted fixtures, frozen inference and arithmetic checks executed; no learning/backward/optimizer calls.",
+  "plain_language_checkin": "docs/training/check-in-2026-11-16/CHECK_IN.md",
+  "checkin_recorded_utc": "2026-11-16T18:11:13Z",
+  "requested_work_window_seconds": 3600,
+  "checkin_timestamp_offset_after_deadline_seconds": 10
+}

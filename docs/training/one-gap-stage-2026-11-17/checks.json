@@ -1,0 +1,24 @@
+{
+  "native_build": "PASS, 0 warnings/errors",
+  "native_suites": 99,
+  "feasibility": {
+    "train_layouts": 100,
+    "validation_layouts": 100,
+    "each_completed_trips_at_least": 3,
+    "missing_connections_before_repair": 1,
+    "draws_to_complete": 1
+  },
+  "unsolved_controls": {
+    "layouts": 10,
+    "scored_trips": 0
+  },
+  "environment_reward_and_strict_replay": "PASS",
+  "clear_stage_compatibility": "PASS",
+  "parallel_dry": {
+    "workers": 4,
+    "tokens": 76,
+    "optimizer_steps": 0,
+    "weights_unchanged": true
+  },
+  "training_performed": false
+}

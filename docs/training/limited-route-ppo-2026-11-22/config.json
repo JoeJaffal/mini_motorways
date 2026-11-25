@@ -1,0 +1,26 @@
+{
+  "parent": "output/training/city-overnight-01/checkpoints/city-006234112-96926793.zip",
+  "parent_sha256": "a65357dea3e889525bfdc18743dbbeb02141ad244934b270217afad7a472df29",
+  "host": "output/city-limited-route-build.cm4Ifa/bin/TrafficHost/release/TrafficHost.dll",
+  "host_sha256": "018d12b962b2141b1f34f5a37bab8dd0286989ad369fed6b0181ce3091a289c7",
+  "workers": 32,
+  "seed": 247631,
+  "horizon": 55,
+  "observation_horizon": 600,
+  "learning_rate": 0.0001,
+  "batch_size": 64,
+  "epochs": 4,
+  "gamma": 1.0,
+  "gae_lambda": 0.95,
+  "entropy": 0.01,
+  "target_kl": 0.03,
+  "rollout_steps": 128,
+  "rollouts_per_stage": 10,
+  "added_decisions": 81920,
+  "training_seed_range": [
+    84000000,
+    84500000
+  ],
+  "exercise_seed_split": "train",
+  "validation_seed_split": "validation"
+}

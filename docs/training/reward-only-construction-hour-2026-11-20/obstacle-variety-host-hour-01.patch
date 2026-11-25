@@ -1,0 +1,89 @@
+--- a/simulation/Assets/Simulation/ConstructionCurriculum.cs
++++ b/simulation/Assets/Simulation/ConstructionCurriculum.cs
+@@ -15,6 +15,14 @@
+         {
+             if (split != "train" && split != "validation")
+                 throw new ArgumentException("Unknown curriculum split");
++            if (exercise == "obstacle-wide" || exercise == "obstacle-offset")
++            {
++                LoadObstacleVariety(seed, split, exercise);
++                return;
++            }
++            // Isolated exploration fixture. Its geometry matches the original clear exercise.
++            int surplus = exercise == "clear-spare-two" ? 2 : exercise == "clear-spare-one" ? 1 : 0;
++            if (surplus != 0) exercise = "clear";
+             if (exercise != "adjacent" && exercise != "bend" && exercise != "driveway" &&
+                 exercise != "clear" && exercise != "obstacle")
+                 throw new ArgumentException("Unknown construction exercise");
+@@ -127,8 +135,8 @@
+                     ConstructionReference.Add(("draw", path[i], path[i+1]));
+             }
+             Array.Clear(Inventory, 0, Inventory.Length);
+-            Inventory[0] = supply;
+-            ConstructionEditLimit = rotation ? 1 : empty ? supply + 1 : supply;
++            Inventory[0] = supply + surplus;
++            ConstructionEditLimit = rotation ? 1 : empty ? supply + surplus + 1 : supply;
+             LastAction = "Construction curriculum reset";
+         }
+ 
+--- /dev/null
++++ b/simulation/Assets/Simulation/ObstacleVariety.cs
+@@ -0,0 +1,58 @@
++using System;
++using System.Collections.Generic;
++
++namespace MotorwaysSim
++{
++    public sealed partial class TrafficWorld
++    {
++        void LoadObstacleVariety(int seed, string split, string exercise)
++        {
++            Reset(seed, ScenarioKind.EmptyLab);
++            CustomScenarioId = ConstructionCurriculumId;
++            ConstructionExercise = exercise;
++            ConstructionReference.Clear();
++            var rng = new Random(seed);
++            int orientation = rng.Next(4);
++            int color = rng.Next(3);
++            int side = rng.Next(2) == 0 ? -1 : 1;
++            var origin = new Cell(split == "train" ? rng.Next(11, 20) : rng.Next(30, 38), rng.Next(10, 19));
++            var shop = SpawnBuilding(origin, color, false, 0, orientation);
++            if (shop == null) throw new InvalidOperationException("Obstacle destination placement failed");
++            var outward = Directions[shop.DrivewayDirection];
++            var across = new Cell(-outward.Y, outward.X);
++            var start = shop.Access + outward;
++            Cell At(int x, int y) => new Cell(start.X + x*outward.X + y*across.X,
++                                             start.Y + x*outward.Y + y*across.Y);
++            void Block(int x, int y)
++            {
++                var c = At(x, y);
++                Blocked[c.X, c.Y] = true;
++                Unzoneable[c.X, c.Y] = true;
++            }
++
++            bool wide = exercise == "obstacle-wide";
++            int distance = wide ? rng.Next(6, 9) : rng.Next(7, 9);
++            int center = wide ? rng.Next(3, distance-2) : rng.Next(2, distance-3);
++            int offset = wide ? 0 : rng.Next(1, 3);
++            foreach (int lane in wide ? new[] {-1, 0, 1} : new[] {0, side}) Block(center, lane);
++            if (!wide)
++                Block(center-1, 2*side);
++            var witness = new List<Cell>();
++            for (int x = distance; x >= 0; x--)
++            {
++                int lateral = wide
++                    ? Math.Max(2-Math.Abs(x-center), 0)*side
++                    : (x >= center ? Math.Min(offset, x-center-1)*side : (x == center-1 ? -side : 0));
++                witness.Add(At(x, lateral));
++            }
++            var home = SpawnBuilding(witness[0], color, true, Direction(witness[0], witness[1]));
++            if (home == null) throw new InvalidOperationException("Obstacle house placement failed");
++            for (int i=1; i < witness.Count-1; i++)
++                ConstructionReference.Add(("draw", witness[i], witness[i+1]));
++            Array.Clear(Inventory, 0, Inventory.Length);
++            Inventory[0] = distance-1;
++            ConstructionEditLimit = distance;
++            LastAction = "Obstacle variety reset";
++        }
++    }
++}

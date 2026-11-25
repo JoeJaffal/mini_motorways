@@ -1,0 +1,17 @@
+{
+  "models": [],
+  "hashes": {},
+  "dll": "output/road-cost-reward-build-02/bin/TrafficHost/release/TrafficHost.dll",
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+  "seed_start": 239000008,
+  "count": 1,
+  "lessons": [
+    "traffic-priority-established",
+    "traffic-junction-low-live",
+    "traffic-junction-high-live"
+  ],
+  "split": "validation",
+  "reserve_warmup_seconds": 0,
+  "reserve_delay_seconds": null,
+  "forced_action_inference_skipped": true
+}

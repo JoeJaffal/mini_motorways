@@ -1,0 +1,47 @@
+{
+  "parent_checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/shared-edge-pilot-01/latest.pt",
+  "parent_sha256": "2e775c63fc6234bf27e118f19c70497e860f0b114f2a767d23ec89f38ab14833",
+  "parent_counters": {
+    "tokens": 131072,
+    "updates": 256,
+    "version": 64,
+    "episodes": 131072,
+    "worker_episodes": [
+      8192,
+      8192,
+      8192,
+      8192,
+      8192,
+      8192,
+      8192,
+      8192,
+      8192,
+      8192,
+      8192,
+      8192,
+      8192,
+      8192,
+      8192,
+      8192
+    ],
+    "worker_seed_indices": [
+      8191,
+      8191,
+      8191,
+      8191,
+      8191,
+      8191,
+      8191,
+      8191,
+      8191,
+      8191,
+      8191,
+      8191,
+      8191,
+      8191,
+      8191,
+      8191
+    ]
+  },
+  "game_state": "fresh games; unfinished parent games skipped, no bit-exact simulation continuation"
+}

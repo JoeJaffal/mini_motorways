@@ -1,0 +1,132 @@
+{
+  "greedy": {
+    "adjacent": {
+      "before": 100,
+      "after": 100,
+      "gains": 0,
+      "regressions": 0
+    },
+    "bend": {
+      "before": 100,
+      "after": 100,
+      "gains": 0,
+      "regressions": 0
+    },
+    "clear": {
+      "before": 0,
+      "after": 66,
+      "gains": 66,
+      "regressions": 0,
+      "distance": {
+        "3": [
+          12,
+          18
+        ],
+        "4": [
+          13,
+          19
+        ],
+        "5": [
+          13,
+          21
+        ],
+        "6": [
+          13,
+          20
+        ],
+        "7": [
+          15,
+          22
+        ]
+      },
+      "offset": {
+        "-2": [
+          0,
+          16
+        ],
+        "-1": [
+          18,
+          18
+        ],
+        "0": [
+          33,
+          33
+        ],
+        "1": [
+          15,
+          15
+        ],
+        "2": [
+          0,
+          18
+        ]
+      },
+      "different_edge_set_than_script": 66
+    }
+  },
+  "sampled": {
+    "adjacent": {
+      "before": 100,
+      "after": 100,
+      "gains": 0,
+      "regressions": 0
+    },
+    "bend": {
+      "before": 100,
+      "after": 100,
+      "gains": 0,
+      "regressions": 0
+    },
+    "clear": {
+      "before": 3,
+      "after": 66,
+      "gains": 63,
+      "regressions": 0,
+      "distance": {
+        "3": [
+          12,
+          18
+        ],
+        "4": [
+          13,
+          19
+        ],
+        "5": [
+          13,
+          21
+        ],
+        "6": [
+          13,
+          20
+        ],
+        "7": [
+          15,
+          22
+        ]
+      },
+      "offset": {
+        "-2": [
+          0,
+          16
+        ],
+        "-1": [
+          18,
+          18
+        ],
+        "0": [
+          33,
+          33
+        ],
+        "1": [
+          15,
+          15
+        ],
+        "2": [
+          0,
+          18
+        ]
+      },
+      "different_edge_set_than_script": 66
+    }
+  }
+}

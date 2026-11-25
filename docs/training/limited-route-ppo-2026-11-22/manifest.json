@@ -1,0 +1,50 @@
+{
+  "branch": "Maskable-PPO",
+  "base_revision": "6bd7f71",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "80e1f109a2dfc429dc6d8c87947b5e829cde5080c1251a2e5a274240736eb6a9"
+    },
+    {
+      "path": "config.json",
+      "sha256": "e643cc8c55db1b9edb9cce750c036eb2b9c5e79f455f89821275ae306fbd90f8"
+    },
+    {
+      "path": "evaluation-games.jsonl",
+      "sha256": "8c58886894444e2452ef8a05bf7f9fab9425b6ed0d3b134473c1ea82d228b343"
+    },
+    {
+      "path": "evaluation-suite.json",
+      "sha256": "8e7b3c1c6d4d431de737b9f9cbb6b6e32969614101d53fdd4491b977fdc170e2"
+    },
+    {
+      "path": "evaluation-summary.json",
+      "sha256": "0c17aebca14e8739e937373c357401aebd672fd4ca9bdd6689c1dc0708ae643d"
+    },
+    {
+      "path": "fixture-verification.json",
+      "sha256": "04512335e395a76666527813f10ec1de8847c60a5e6104be4de51da145542e68"
+    },
+    {
+      "path": "progress.csv",
+      "sha256": "6fd587d2562285c5a92bd31bb7aa3115b5c7af62db996cebfa742a75a6bbe93e"
+    },
+    {
+      "path": "status.json",
+      "sha256": "cabe5f62a7bc454aa1e20a7347c0bb00989ffe372907ad9e8819dad4f51268ff"
+    },
+    {
+      "path": "training-episodes.jsonl",
+      "sha256": "f7f29a28ae8442b4c646aa171558ef518212ff21adfc8c2c8a76f42f0c73b3df"
+    }
+  ],
+  "source_hashes": {
+    "training/train_limited_route_ppo.py": "021abe855b294378134f94e53d0e96d928ab287bb0cc3cae387d84445fa062e7",
+    "training/evaluate_limited_route_ppo.py": "b65c3d22489b70be8654ab858743673f8e9cfd534710747fb824cbd06ab8c93e",
+    "simulation/Assets/Simulation/ConstructionCurriculum.cs": "5f0efa83ec7484ea9047b2c0a8faf21ecf9042e4272f94907ca388cb70aea4f5",
+    "simulation/Assets/Simulation/LimitedRoutePractice.cs": "41ae361c9223ee6f9901f2cd48d307a16a73b607d78712bab484cffbf61530d2",
+    "simulation/Assets/Simulation/CityDemand.cs": "ef539dcd87a313ef94fd8386a230d45861ea7b365201d8f281a567ddb16b86d6",
+    "simulation/Assets/Simulation/TrafficWorld.cs": "f090ca3879e52688051dccdb0c2015060c069ce56a02280336a96b0068b554e0"
+  }
+}

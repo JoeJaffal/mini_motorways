@@ -1,0 +1,23 @@
+{
+  "result": "COMPLETE",
+  "saved": [
+    {
+      "stage": "openings",
+      "added_decisions": 40960,
+      "path": "openings.zip",
+      "sha256": "67b279d69370c50494ef16b9088e4b9adf9f9583b0482c98b6b1f6c97f19d453",
+      "games": 698,
+      "elapsed_seconds": 148.45093193801586
+    },
+    {
+      "stage": "mixed-delay",
+      "added_decisions": 81920,
+      "path": "mixed-delay.zip",
+      "sha256": "f4de847d102d442e9758d5bedc3ed54c3114d2fc8b5f6ad10b47a73546d6592b",
+      "games": 1400,
+      "elapsed_seconds": 294.1180022080662
+    }
+  ],
+  "added_epochs": 80,
+  "elapsed_seconds": 294.119267483009
+}

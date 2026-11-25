@@ -1,0 +1,1286 @@
+{
+  "controls": [
+    {
+      "split": "train",
+      "seed": 190900000,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 4,
+      "remaining_stock": 2
+    },
+    {
+      "split": "train",
+      "seed": 190900000,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 4,
+      "remaining_stock": 4
+    },
+    {
+      "split": "train",
+      "seed": 190900000,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 6.0,
+      "initial_stock": 13,
+      "remaining_stock": 0
+    },
+    {
+      "split": "train",
+      "seed": 190900000,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 13,
+      "remaining_stock": 13
+    },
+    {
+      "split": "train",
+      "seed": 190900001,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 2,
+      "remaining_stock": 0
+    },
+    {
+      "split": "train",
+      "seed": 190900001,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 2,
+      "remaining_stock": 2
+    },
+    {
+      "split": "train",
+      "seed": 190900001,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 6.0,
+      "initial_stock": 13,
+      "remaining_stock": 2
+    },
+    {
+      "split": "train",
+      "seed": 190900001,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 13,
+      "remaining_stock": 13
+    },
+    {
+      "split": "train",
+      "seed": 190900002,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 3.0,
+      "initial_stock": 4,
+      "remaining_stock": 1
+    },
+    {
+      "split": "train",
+      "seed": 190900002,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 4,
+      "remaining_stock": 4
+    },
+    {
+      "split": "train",
+      "seed": 190900002,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 5.0,
+      "initial_stock": 15,
+      "remaining_stock": 1
+    },
+    {
+      "split": "train",
+      "seed": 190900002,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 15,
+      "remaining_stock": 15
+    },
+    {
+      "split": "train",
+      "seed": 190900003,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 5,
+      "remaining_stock": 2
+    },
+    {
+      "split": "train",
+      "seed": 190900003,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 5,
+      "remaining_stock": 5
+    },
+    {
+      "split": "train",
+      "seed": 190900003,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 6.0,
+      "initial_stock": 14,
+      "remaining_stock": 1
+    },
+    {
+      "split": "train",
+      "seed": 190900003,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 14,
+      "remaining_stock": 14
+    },
+    {
+      "split": "train",
+      "seed": 190900004,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 4,
+      "remaining_stock": 0
+    },
+    {
+      "split": "train",
+      "seed": 190900004,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 4,
+      "remaining_stock": 4
+    },
+    {
+      "split": "train",
+      "seed": 190900004,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 5.0,
+      "initial_stock": 15,
+      "remaining_stock": 0
+    },
+    {
+      "split": "train",
+      "seed": 190900004,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 15,
+      "remaining_stock": 15
+    },
+    {
+      "split": "train",
+      "seed": 190900005,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 3.0,
+      "initial_stock": 3,
+      "remaining_stock": 1
+    },
+    {
+      "split": "train",
+      "seed": 190900005,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 3,
+      "remaining_stock": 3
+    },
+    {
+      "split": "train",
+      "seed": 190900005,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 5.0,
+      "initial_stock": 12,
+      "remaining_stock": 2
+    },
+    {
+      "split": "train",
+      "seed": 190900005,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 12,
+      "remaining_stock": 12
+    },
+    {
+      "split": "train",
+      "seed": 190900006,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 2,
+      "remaining_stock": 0
+    },
+    {
+      "split": "train",
+      "seed": 190900006,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 2,
+      "remaining_stock": 2
+    },
+    {
+      "split": "train",
+      "seed": 190900006,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 5.0,
+      "initial_stock": 15,
+      "remaining_stock": 2
+    },
+    {
+      "split": "train",
+      "seed": 190900006,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 15,
+      "remaining_stock": 15
+    },
+    {
+      "split": "train",
+      "seed": 190900007,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 4,
+      "remaining_stock": 1
+    },
+    {
+      "split": "train",
+      "seed": 190900007,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 4,
+      "remaining_stock": 4
+    },
+    {
+      "split": "train",
+      "seed": 190900007,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 6.0,
+      "initial_stock": 13,
+      "remaining_stock": 1
+    },
+    {
+      "split": "train",
+      "seed": 190900007,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 13,
+      "remaining_stock": 13
+    },
+    {
+      "split": "train",
+      "seed": 190900008,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 6,
+      "remaining_stock": 2
+    },
+    {
+      "split": "train",
+      "seed": 190900008,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 6,
+      "remaining_stock": 6
+    },
+    {
+      "split": "train",
+      "seed": 190900008,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 6.0,
+      "initial_stock": 14,
+      "remaining_stock": 0
+    },
+    {
+      "split": "train",
+      "seed": 190900008,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 14,
+      "remaining_stock": 14
+    },
+    {
+      "split": "train",
+      "seed": 190900009,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 3.0,
+      "initial_stock": 4,
+      "remaining_stock": 0
+    },
+    {
+      "split": "train",
+      "seed": 190900009,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 4,
+      "remaining_stock": 4
+    },
+    {
+      "split": "train",
+      "seed": 190900009,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 4.0,
+      "initial_stock": 16,
+      "remaining_stock": 0
+    },
+    {
+      "split": "train",
+      "seed": 190900009,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 16,
+      "remaining_stock": 16
+    },
+    {
+      "split": "train",
+      "seed": 190900010,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 3,
+      "remaining_stock": 1
+    },
+    {
+      "split": "train",
+      "seed": 190900010,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 3,
+      "remaining_stock": 3
+    },
+    {
+      "split": "train",
+      "seed": 190900010,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 6.0,
+      "initial_stock": 13,
+      "remaining_stock": 2
+    },
+    {
+      "split": "train",
+      "seed": 190900010,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 13,
+      "remaining_stock": 13
+    },
+    {
+      "split": "train",
+      "seed": 190900011,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 5,
+      "remaining_stock": 2
+    },
+    {
+      "split": "train",
+      "seed": 190900011,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 5,
+      "remaining_stock": 5
+    },
+    {
+      "split": "train",
+      "seed": 190900011,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 6.0,
+      "initial_stock": 15,
+      "remaining_stock": 1
+    },
+    {
+      "split": "train",
+      "seed": 190900011,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 15,
+      "remaining_stock": 15
+    },
+    {
+      "split": "train",
+      "seed": 190900012,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 3.0,
+      "initial_stock": 3,
+      "remaining_stock": 0
+    },
+    {
+      "split": "train",
+      "seed": 190900012,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 3,
+      "remaining_stock": 3
+    },
+    {
+      "split": "train",
+      "seed": 190900012,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 5.0,
+      "initial_stock": 14,
+      "remaining_stock": 1
+    },
+    {
+      "split": "train",
+      "seed": 190900012,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 14,
+      "remaining_stock": 14
+    },
+    {
+      "split": "train",
+      "seed": 190900013,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 5,
+      "remaining_stock": 1
+    },
+    {
+      "split": "train",
+      "seed": 190900013,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 5,
+      "remaining_stock": 5
+    },
+    {
+      "split": "train",
+      "seed": 190900013,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 6.0,
+      "initial_stock": 16,
+      "remaining_stock": 0
+    },
+    {
+      "split": "train",
+      "seed": 190900013,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 16,
+      "remaining_stock": 16
+    },
+    {
+      "split": "train",
+      "seed": 190900014,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 6,
+      "remaining_stock": 2
+    },
+    {
+      "split": "train",
+      "seed": 190900014,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 6,
+      "remaining_stock": 6
+    },
+    {
+      "split": "train",
+      "seed": 190900014,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 6.0,
+      "initial_stock": 15,
+      "remaining_stock": 2
+    },
+    {
+      "split": "train",
+      "seed": 190900014,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 15,
+      "remaining_stock": 15
+    },
+    {
+      "split": "train",
+      "seed": 190900015,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 3,
+      "remaining_stock": 1
+    },
+    {
+      "split": "train",
+      "seed": 190900015,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 3,
+      "remaining_stock": 3
+    },
+    {
+      "split": "train",
+      "seed": 190900015,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 6.0,
+      "initial_stock": 14,
+      "remaining_stock": 2
+    },
+    {
+      "split": "train",
+      "seed": 190900015,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 14,
+      "remaining_stock": 14
+    },
+    {
+      "split": "validation",
+      "seed": 190900000,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 4,
+      "remaining_stock": 2
+    },
+    {
+      "split": "validation",
+      "seed": 190900000,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 4,
+      "remaining_stock": 4
+    },
+    {
+      "split": "validation",
+      "seed": 190900000,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 6.0,
+      "initial_stock": 13,
+      "remaining_stock": 0
+    },
+    {
+      "split": "validation",
+      "seed": 190900000,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 13,
+      "remaining_stock": 13
+    },
+    {
+      "split": "validation",
+      "seed": 190900001,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 2,
+      "remaining_stock": 0
+    },
+    {
+      "split": "validation",
+      "seed": 190900001,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 2,
+      "remaining_stock": 2
+    },
+    {
+      "split": "validation",
+      "seed": 190900001,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 6.0,
+      "initial_stock": 13,
+      "remaining_stock": 2
+    },
+    {
+      "split": "validation",
+      "seed": 190900001,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 13,
+      "remaining_stock": 13
+    },
+    {
+      "split": "validation",
+      "seed": 190900002,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 3.0,
+      "initial_stock": 4,
+      "remaining_stock": 1
+    },
+    {
+      "split": "validation",
+      "seed": 190900002,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 4,
+      "remaining_stock": 4
+    },
+    {
+      "split": "validation",
+      "seed": 190900002,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 5.0,
+      "initial_stock": 15,
+      "remaining_stock": 1
+    },
+    {
+      "split": "validation",
+      "seed": 190900002,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 15,
+      "remaining_stock": 15
+    },
+    {
+      "split": "validation",
+      "seed": 190900003,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 5,
+      "remaining_stock": 2
+    },
+    {
+      "split": "validation",
+      "seed": 190900003,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 5,
+      "remaining_stock": 5
+    },
+    {
+      "split": "validation",
+      "seed": 190900003,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 6.0,
+      "initial_stock": 14,
+      "remaining_stock": 1
+    },
+    {
+      "split": "validation",
+      "seed": 190900003,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 14,
+      "remaining_stock": 14
+    },
+    {
+      "split": "validation",
+      "seed": 190900004,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 4,
+      "remaining_stock": 0
+    },
+    {
+      "split": "validation",
+      "seed": 190900004,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 4,
+      "remaining_stock": 4
+    },
+    {
+      "split": "validation",
+      "seed": 190900004,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 5.0,
+      "initial_stock": 15,
+      "remaining_stock": 0
+    },
+    {
+      "split": "validation",
+      "seed": 190900004,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 15,
+      "remaining_stock": 15
+    },
+    {
+      "split": "validation",
+      "seed": 190900005,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 3.0,
+      "initial_stock": 3,
+      "remaining_stock": 1
+    },
+    {
+      "split": "validation",
+      "seed": 190900005,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 3,
+      "remaining_stock": 3
+    },
+    {
+      "split": "validation",
+      "seed": 190900005,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 5.0,
+      "initial_stock": 12,
+      "remaining_stock": 2
+    },
+    {
+      "split": "validation",
+      "seed": 190900005,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 12,
+      "remaining_stock": 12
+    },
+    {
+      "split": "validation",
+      "seed": 190900006,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 2,
+      "remaining_stock": 0
+    },
+    {
+      "split": "validation",
+      "seed": 190900006,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 2,
+      "remaining_stock": 2
+    },
+    {
+      "split": "validation",
+      "seed": 190900006,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 5.0,
+      "initial_stock": 15,
+      "remaining_stock": 2
+    },
+    {
+      "split": "validation",
+      "seed": 190900006,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 15,
+      "remaining_stock": 15
+    },
+    {
+      "split": "validation",
+      "seed": 190900007,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 4,
+      "remaining_stock": 1
+    },
+    {
+      "split": "validation",
+      "seed": 190900007,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 4,
+      "remaining_stock": 4
+    },
+    {
+      "split": "validation",
+      "seed": 190900007,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 6.0,
+      "initial_stock": 13,
+      "remaining_stock": 1
+    },
+    {
+      "split": "validation",
+      "seed": 190900007,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 13,
+      "remaining_stock": 13
+    },
+    {
+      "split": "validation",
+      "seed": 190900008,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 6,
+      "remaining_stock": 2
+    },
+    {
+      "split": "validation",
+      "seed": 190900008,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 6,
+      "remaining_stock": 6
+    },
+    {
+      "split": "validation",
+      "seed": 190900008,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 6.0,
+      "initial_stock": 14,
+      "remaining_stock": 0
+    },
+    {
+      "split": "validation",
+      "seed": 190900008,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 14,
+      "remaining_stock": 14
+    },
+    {
+      "split": "validation",
+      "seed": 190900009,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 3.0,
+      "initial_stock": 4,
+      "remaining_stock": 0
+    },
+    {
+      "split": "validation",
+      "seed": 190900009,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 4,
+      "remaining_stock": 4
+    },
+    {
+      "split": "validation",
+      "seed": 190900009,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 4.0,
+      "initial_stock": 16,
+      "remaining_stock": 0
+    },
+    {
+      "split": "validation",
+      "seed": 190900009,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 16,
+      "remaining_stock": 16
+    },
+    {
+      "split": "validation",
+      "seed": 190900010,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 3,
+      "remaining_stock": 1
+    },
+    {
+      "split": "validation",
+      "seed": 190900010,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 3,
+      "remaining_stock": 3
+    },
+    {
+      "split": "validation",
+      "seed": 190900010,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 6.0,
+      "initial_stock": 13,
+      "remaining_stock": 2
+    },
+    {
+      "split": "validation",
+      "seed": 190900010,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 13,
+      "remaining_stock": 13
+    },
+    {
+      "split": "validation",
+      "seed": 190900011,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 5,
+      "remaining_stock": 2
+    },
+    {
+      "split": "validation",
+      "seed": 190900011,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 5,
+      "remaining_stock": 5
+    },
+    {
+      "split": "validation",
+      "seed": 190900011,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 6.0,
+      "initial_stock": 15,
+      "remaining_stock": 1
+    },
+    {
+      "split": "validation",
+      "seed": 190900011,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 15,
+      "remaining_stock": 15
+    },
+    {
+      "split": "validation",
+      "seed": 190900012,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 3.0,
+      "initial_stock": 3,
+      "remaining_stock": 0
+    },
+    {
+      "split": "validation",
+      "seed": 190900012,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 3,
+      "remaining_stock": 3
+    },
+    {
+      "split": "validation",
+      "seed": 190900012,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 5.0,
+      "initial_stock": 14,
+      "remaining_stock": 1
+    },
+    {
+      "split": "validation",
+      "seed": 190900012,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 14,
+      "remaining_stock": 14
+    },
+    {
+      "split": "validation",
+      "seed": 190900013,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 5,
+      "remaining_stock": 1
+    },
+    {
+      "split": "validation",
+      "seed": 190900013,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 5,
+      "remaining_stock": 5
+    },
+    {
+      "split": "validation",
+      "seed": 190900013,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 6.0,
+      "initial_stock": 16,
+      "remaining_stock": 0
+    },
+    {
+      "split": "validation",
+      "seed": 190900013,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 16,
+      "remaining_stock": 16
+    },
+    {
+      "split": "validation",
+      "seed": 190900014,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 6,
+      "remaining_stock": 2
+    },
+    {
+      "split": "validation",
+      "seed": 190900014,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 6,
+      "remaining_stock": 6
+    },
+    {
+      "split": "validation",
+      "seed": 190900014,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 6.0,
+      "initial_stock": 15,
+      "remaining_stock": 2
+    },
+    {
+      "split": "validation",
+      "seed": 190900014,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 15,
+      "remaining_stock": 15
+    },
+    {
+      "split": "validation",
+      "seed": 190900015,
+      "exercise": "small-city-single",
+      "mode": "connect",
+      "served": 1,
+      "score": 4.0,
+      "initial_stock": 3,
+      "remaining_stock": 1
+    },
+    {
+      "split": "validation",
+      "seed": 190900015,
+      "exercise": "small-city-single",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 3,
+      "remaining_stock": 3
+    },
+    {
+      "split": "validation",
+      "seed": 190900015,
+      "exercise": "small-city-offset-pairs",
+      "mode": "connect",
+      "served": 2,
+      "score": 6.0,
+      "initial_stock": 14,
+      "remaining_stock": 2
+    },
+    {
+      "split": "validation",
+      "seed": 190900015,
+      "exercise": "small-city-offset-pairs",
+      "mode": "wait",
+      "served": 0,
+      "score": 0.0,
+      "initial_stock": 14,
+      "remaining_stock": 14
+    }
+  ],
+  "ordinary_city_exact_transitions": 160,
+  "notes": "No policy training or reference labels. Empty initial connection arrays; no curriculumReference edits. Reset alternating pair/single also checks pending spawn isolation."
+}

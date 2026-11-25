@@ -1,0 +1,49 @@
+{
+  "models": [
+    "output/training/city-strategy-bridge-balanced-01/segment-001/checkpoint-000024576.zip"
+  ],
+  "sha256": {
+    "output/training/city-strategy-bridge-balanced-01/segment-001/checkpoint-000024576.zip": "63e3147f62a2524c31e8d6d9bd95d98d1033cb4b24115f9144e90d5e6d9f4c76"
+  },
+  "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+  "horizon": 1200,
+  "allow_bridges": true,
+  "forced_action_inference_skipped": true,
+  "results": {
+    "0": {
+      "games": 32,
+      "scoring_games": 29,
+      "mean_score": 183.6875,
+      "new_targets": 196,
+      "new_targets_served": 172,
+      "new_target_stockouts": 8,
+      "median_new_service_delay": 30.0,
+      "mean_paid_units": 107.84375,
+      "mean_outside_observed_routes": 39.09375,
+      "outside_route_share": 0.36250362213851056,
+      "paired_score_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "mean_bridge_tiles": 1.96875,
+      "mean_bridge_stock": 0.21875
+    }
+  }
+}

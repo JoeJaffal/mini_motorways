@@ -1,0 +1,3709 @@
+{
+  "checkpoint_policy_sha256": "fe4e25e40f16dc533b29059b836c8474da3d556e4af438d53c2043bde40af1b0",
+  "fixture_host_sha256": "46b3e4c271eb7f2e685c95a6469e3b3c454ff52b8e81a253ff0905b491761f7d",
+  "original_host_sha256": "e49913cd02c24c03760c0d20c0d317b8ee70adfc2693476c9c18f024f36ec5ac",
+  "evaluation_source_sha256": "ca684527184d4830a0c16ef7afa0c8446dd875f5b81eb5241918b06aa5c88b64",
+  "changed_weights": false,
+  "trials": [
+    {
+      "seed": 20100,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          39,
+          20
+        ],
+        [
+          38,
+          19
+        ]
+      ],
+      "target": 366,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.9994526505470276,
+      "scripted": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 199,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20101,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          34,
+          21
+        ],
+        [
+          35,
+          20
+        ]
+      ],
+      "target": 272,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.9994799494743347,
+      "scripted": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 407,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20102,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          36,
+          15
+        ],
+        [
+          35,
+          14
+        ]
+      ],
+      "target": 310,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.996820330619812,
+      "scripted": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 432,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20103,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          32,
+          10
+        ],
+        [
+          31,
+          11
+        ]
+      ],
+      "target": 268,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9989277720451355,
+      "scripted": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 297,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20104,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          29,
+          14
+        ],
+        [
+          30,
+          15
+        ]
+      ],
+      "target": 206,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9980555772781372,
+      "scripted": {
+        "action": 206,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 206,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 206,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 146,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20105,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          28,
+          22
+        ],
+        [
+          29,
+          21
+        ]
+      ],
+      "target": 272,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.9994524121284485,
+      "scripted": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 454,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20106,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          32,
+          9
+        ],
+        [
+          33,
+          10
+        ]
+      ],
+      "target": 210,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.9991069436073303,
+      "scripted": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 345,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20107,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          35,
+          15
+        ],
+        [
+          34,
+          16
+        ]
+      ],
+      "target": 320,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9982182383537292,
+      "scripted": {
+        "action": 320,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 320,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 320,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 415,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20108,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          31,
+          16
+        ],
+        [
+          32,
+          17
+        ]
+      ],
+      "target": 258,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9980717897415161,
+      "scripted": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 1,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20109,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          33,
+          8
+        ],
+        [
+          32,
+          9
+        ]
+      ],
+      "target": 264,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9989187717437744,
+      "scripted": {
+        "action": 264,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 264,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 264,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 36,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20110,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          41,
+          20
+        ],
+        [
+          40,
+          19
+        ]
+      ],
+      "target": 366,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.9994526505470276,
+      "scripted": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 75,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20111,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          28,
+          20
+        ],
+        [
+          29,
+          19
+        ]
+      ],
+      "target": 312,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.9991065859794617,
+      "scripted": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 35,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20112,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          38,
+          15
+        ],
+        [
+          37,
+          14
+        ]
+      ],
+      "target": 362,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9968044757843018,
+      "scripted": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 222,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20113,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          34,
+          10
+        ],
+        [
+          33,
+          11
+        ]
+      ],
+      "target": 264,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9989187717437744,
+      "scripted": {
+        "action": 264,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 264,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 264,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 396,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20114,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          31,
+          13
+        ],
+        [
+          32,
+          14
+        ]
+      ],
+      "target": 206,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9980555772781372,
+      "scripted": {
+        "action": 206,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 206,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 206,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 257,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20115,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          30,
+          22
+        ],
+        [
+          31,
+          21
+        ]
+      ],
+      "target": 272,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.9994524121284485,
+      "scripted": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 19,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20116,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          34,
+          9
+        ],
+        [
+          35,
+          10
+        ]
+      ],
+      "target": 210,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.9991069436073303,
+      "scripted": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 73,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20117,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          36,
+          14
+        ],
+        [
+          35,
+          15
+        ]
+      ],
+      "target": 320,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9982182383537292,
+      "scripted": {
+        "action": 320,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 320,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 320,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 330,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20118,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          32,
+          15
+        ],
+        [
+          33,
+          16
+        ]
+      ],
+      "target": 206,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9980555772781372,
+      "scripted": {
+        "action": 206,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 206,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 206,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 133,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20119,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          35,
+          7
+        ],
+        [
+          34,
+          8
+        ]
+      ],
+      "target": 312,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.9989099502563477,
+      "scripted": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 476,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20120,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          41,
+          17
+        ],
+        [
+          40,
+          16
+        ]
+      ],
+      "target": 314,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.9990574717521667,
+      "scripted": {
+        "action": 314,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 314,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 314,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 282,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20121,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          30,
+          20
+        ],
+        [
+          31,
+          19
+        ]
+      ],
+      "target": 312,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.9991065859794617,
+      "scripted": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 152,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20122,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          40,
+          23
+        ],
+        [
+          39,
+          22
+        ]
+      ],
+      "target": 362,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9968044757843018,
+      "scripted": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 482,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20123,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          35,
+          9
+        ],
+        [
+          34,
+          10
+        ]
+      ],
+      "target": 264,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9989187717437744,
+      "scripted": {
+        "action": 264,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 264,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 264,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 213,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20124,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          25,
+          13
+        ],
+        [
+          26,
+          14
+        ]
+      ],
+      "target": 258,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.9989098310470581,
+      "scripted": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 248,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20125,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          32,
+          21
+        ],
+        [
+          33,
+          20
+        ]
+      ],
+      "target": 312,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.9990573525428772,
+      "scripted": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 247,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20126,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          27,
+          7
+        ],
+        [
+          28,
+          8
+        ]
+      ],
+      "target": 210,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9990909099578857,
+      "scripted": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 426,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20127,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          38,
+          14
+        ],
+        [
+          37,
+          15
+        ]
+      ],
+      "target": 316,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9982092380523682,
+      "scripted": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 404,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20128,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          33,
+          21
+        ],
+        [
+          32,
+          20
+        ]
+      ],
+      "target": 310,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9982093572616577,
+      "scripted": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 458,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20129,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          37,
+          7
+        ],
+        [
+          36,
+          8
+        ]
+      ],
+      "target": 312,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.9989099502563477,
+      "scripted": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 272,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20130,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          35,
+          17
+        ],
+        [
+          34,
+          16
+        ]
+      ],
+      "target": 314,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.9990574717521667,
+      "scripted": {
+        "action": 314,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 314,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 314,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 492,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20131,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          32,
+          19
+        ],
+        [
+          33,
+          18
+        ]
+      ],
+      "target": 316,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9994978904724121,
+      "scripted": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 306,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20132,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          34,
+          23
+        ],
+        [
+          33,
+          22
+        ]
+      ],
+      "target": 310,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9982093572616577,
+      "scripted": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 528,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20133,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          39,
+          11
+        ],
+        [
+          38,
+          12
+        ]
+      ],
+      "target": 364,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.998200535774231,
+      "scripted": {
+        "action": 364,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 364,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 364,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 35,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20134,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          28,
+          14
+        ],
+        [
+          29,
+          15
+        ]
+      ],
+      "target": 258,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.998087465763092,
+      "scripted": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 114,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20135,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          34,
+          21
+        ],
+        [
+          35,
+          20
+        ]
+      ],
+      "target": 312,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.9990573525428772,
+      "scripted": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 497,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20136,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          29,
+          6
+        ],
+        [
+          30,
+          7
+        ]
+      ],
+      "target": 210,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9990909099578857,
+      "scripted": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 18,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20137,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          40,
+          13
+        ],
+        [
+          39,
+          14
+        ]
+      ],
+      "target": 316,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9982092380523682,
+      "scripted": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 431,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20138,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          36,
+          22
+        ],
+        [
+          35,
+          21
+        ]
+      ],
+      "target": 362,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.9982006549835205,
+      "scripted": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 306,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20139,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          38,
+          15
+        ],
+        [
+          37,
+          16
+        ]
+      ],
+      "target": 220,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.9980875849723816,
+      "scripted": {
+        "action": 220,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 220,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 220,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 153,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20140,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          37,
+          17
+        ],
+        [
+          36,
+          16
+        ]
+      ],
+      "target": 366,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9990410208702087,
+      "scripted": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 146,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20141,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          34,
+          19
+        ],
+        [
+          35,
+          18
+        ]
+      ],
+      "target": 268,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9994889497756958,
+      "scripted": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 120,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20142,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          36,
+          22
+        ],
+        [
+          35,
+          21
+        ]
+      ],
+      "target": 310,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9982093572616577,
+      "scripted": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 528,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20143,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          41,
+          11
+        ],
+        [
+          40,
+          12
+        ]
+      ],
+      "target": 364,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.998200535774231,
+      "scripted": {
+        "action": 364,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 364,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 364,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 169,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20144,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          30,
+          13
+        ],
+        [
+          31,
+          14
+        ]
+      ],
+      "target": 258,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.998087465763092,
+      "scripted": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 457,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20145,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          35,
+          20
+        ],
+        [
+          36,
+          19
+        ]
+      ],
+      "target": 316,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9994704127311707,
+      "scripted": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 287,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20146,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          31,
+          6
+        ],
+        [
+          32,
+          7
+        ]
+      ],
+      "target": 210,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9994888305664062,
+      "scripted": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 113,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20147,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          34,
+          12
+        ],
+        [
+          33,
+          13
+        ]
+      ],
+      "target": 364,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.998200535774231,
+      "scripted": {
+        "action": 364,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 364,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 364,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 358,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20148,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          36,
+          19
+        ],
+        [
+          35,
+          18
+        ]
+      ],
+      "target": 310,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.996820330619812,
+      "scripted": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 271,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20149,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          32,
+          15
+        ],
+        [
+          31,
+          16
+        ]
+      ],
+      "target": 220,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.9980875849723816,
+      "scripted": {
+        "action": 220,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 220,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 220,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 111,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20150,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          39,
+          16
+        ],
+        [
+          38,
+          15
+        ]
+      ],
+      "target": 366,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9990410208702087,
+      "scripted": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 133,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20151,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          27,
+          18
+        ],
+        [
+          28,
+          17
+        ]
+      ],
+      "target": 268,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9994889497756958,
+      "scripted": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 37,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20152,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          39,
+          23
+        ],
+        [
+          38,
+          22
+        ]
+      ],
+      "target": 362,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.9982006549835205,
+      "scripted": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 408,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20153,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          35,
+          10
+        ],
+        [
+          34,
+          11
+        ]
+      ],
+      "target": 272,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.9968205690383911,
+      "scripted": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 209,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20154,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          31,
+          12
+        ],
+        [
+          32,
+          13
+        ]
+      ],
+      "target": 258,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9980717897415161,
+      "scripted": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 449,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20155,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          29,
+          20
+        ],
+        [
+          30,
+          19
+        ]
+      ],
+      "target": 268,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9994613528251648,
+      "scripted": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 353,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20156,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          32,
+          14
+        ],
+        [
+          33,
+          15
+        ]
+      ],
+      "target": 210,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9994888305664062,
+      "scripted": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 323,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20157,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          36,
+          12
+        ],
+        [
+          35,
+          13
+        ]
+      ],
+      "target": 364,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.998200535774231,
+      "scripted": {
+        "action": 364,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 364,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 364,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 73,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20158,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          38,
+          18
+        ],
+        [
+          37,
+          17
+        ]
+      ],
+      "target": 310,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.996820330619812,
+      "scripted": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 151,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20159,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          34,
+          14
+        ],
+        [
+          33,
+          15
+        ]
+      ],
+      "target": 268,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9989277720451355,
+      "scripted": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 130,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20160,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          41,
+          16
+        ],
+        [
+          40,
+          15
+        ]
+      ],
+      "target": 314,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9994614720344543,
+      "scripted": {
+        "action": 314,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 314,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 314,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 515,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20161,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          29,
+          17
+        ],
+        [
+          30,
+          16
+        ]
+      ],
+      "target": 272,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.9994799494743347,
+      "scripted": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 109,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20162,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          40,
+          22
+        ],
+        [
+          39,
+          21
+        ]
+      ],
+      "target": 362,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.9982006549835205,
+      "scripted": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 82,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20163,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          37,
+          10
+        ],
+        [
+          36,
+          11
+        ]
+      ],
+      "target": 272,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.9968205690383911,
+      "scripted": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 74,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20164,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          33,
+          11
+        ],
+        [
+          34,
+          12
+        ]
+      ],
+      "target": 258,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9980717897415161,
+      "scripted": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 249,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20165,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          31,
+          19
+        ],
+        [
+          32,
+          18
+        ]
+      ],
+      "target": 268,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9994613528251648,
+      "scripted": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 464,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20166,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          33,
+          13
+        ],
+        [
+          34,
+          14
+        ]
+      ],
+      "target": 210,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.9994799494743347,
+      "scripted": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 194,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20167,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          37,
+          11
+        ],
+        [
+          36,
+          12
+        ]
+      ],
+      "target": 272,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.9968205690383911,
+      "scripted": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 493,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20168,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          40,
+          19
+        ],
+        [
+          39,
+          18
+        ]
+      ],
+      "target": 362,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9968044757843018,
+      "scripted": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 235,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20169,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          36,
+          13
+        ],
+        [
+          35,
+          14
+        ]
+      ],
+      "target": 268,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9989277720451355,
+      "scripted": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 116,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20170,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          35,
+          15
+        ],
+        [
+          34,
+          14
+        ]
+      ],
+      "target": 314,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9994614720344543,
+      "scripted": {
+        "action": 314,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 314,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 314,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 29,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20171,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          31,
+          17
+        ],
+        [
+          32,
+          16
+        ]
+      ],
+      "target": 272,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.9994799494743347,
+      "scripted": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 406,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20172,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          32,
+          19
+        ],
+        [
+          31,
+          18
+        ]
+      ],
+      "target": 310,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.996820330619812,
+      "scripted": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 180,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20173,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          38,
+          18
+        ],
+        [
+          37,
+          19
+        ]
+      ],
+      "target": 320,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9982182383537292,
+      "scripted": {
+        "action": 320,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 320,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 320,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 291,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20174,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          27,
+          11
+        ],
+        [
+          28,
+          12
+        ]
+      ],
+      "target": 258,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9989186525344849,
+      "scripted": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 503,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20175,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          33,
+          18
+        ],
+        [
+          34,
+          17
+        ]
+      ],
+      "target": 272,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.9994524121284485,
+      "scripted": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 202,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20176,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          27,
+          12
+        ],
+        [
+          28,
+          13
+        ]
+      ],
+      "target": 210,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.9994799494743347,
+      "scripted": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 345,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20177,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          32,
+          15
+        ],
+        [
+          33,
+          14
+        ]
+      ],
+      "target": 312,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.9991065859794617,
+      "scripted": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 64,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20178,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          34,
+          18
+        ],
+        [
+          33,
+          17
+        ]
+      ],
+      "target": 362,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9968044757843018,
+      "scripted": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 131,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20179,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          37,
+          13
+        ],
+        [
+          36,
+          14
+        ]
+      ],
+      "target": 264,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9989187717437744,
+      "scripted": {
+        "action": 264,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 264,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 264,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 553,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20180,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          38,
+          16
+        ],
+        [
+          37,
+          15
+        ]
+      ],
+      "target": 366,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.9994526505470276,
+      "scripted": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 126,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20181,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          33,
+          16
+        ],
+        [
+          34,
+          15
+        ]
+      ],
+      "target": 312,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.9991065859794617,
+      "scripted": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 287,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20182,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          29,
+          11
+        ],
+        [
+          30,
+          12
+        ]
+      ],
+      "target": 210,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9990909099578857,
+      "scripted": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 353,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20183,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          40,
+          17
+        ],
+        [
+          39,
+          18
+        ]
+      ],
+      "target": 320,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9982182383537292,
+      "scripted": {
+        "action": 320,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 320,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 320,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 448,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20184,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          28,
+          10
+        ],
+        [
+          29,
+          11
+        ]
+      ],
+      "target": 258,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9989186525344849,
+      "scripted": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 69,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20185,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          35,
+          18
+        ],
+        [
+          36,
+          17
+        ]
+      ],
+      "target": 272,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.9994524121284485,
+      "scripted": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 428,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20186,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          31,
+          13
+        ],
+        [
+          32,
+          14
+        ]
+      ],
+      "target": 210,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.9991069436073303,
+      "scripted": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 267,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20187,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          34,
+          14
+        ],
+        [
+          35,
+          13
+        ]
+      ],
+      "target": 316,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9994978904724121,
+      "scripted": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 370,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20188,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          36,
+          18
+        ],
+        [
+          35,
+          17
+        ]
+      ],
+      "target": 310,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9982093572616577,
+      "scripted": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 186,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20189,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          39,
+          12
+        ],
+        [
+          38,
+          13
+        ]
+      ],
+      "target": 312,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.9989099502563477,
+      "scripted": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 341,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20190,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          39,
+          24
+        ],
+        [
+          38,
+          23
+        ]
+      ],
+      "target": 366,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.9994526505470276,
+      "scripted": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 404,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20191,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          27,
+          16
+        ],
+        [
+          28,
+          15
+        ]
+      ],
+      "target": 312,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.9991065859794617,
+      "scripted": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 357,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20192,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          31,
+          10
+        ],
+        [
+          32,
+          11
+        ]
+      ],
+      "target": 210,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9990909099578857,
+      "scripted": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 289,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20193,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          34,
+          17
+        ],
+        [
+          33,
+          18
+        ]
+      ],
+      "target": 316,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9982092380523682,
+      "scripted": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 474,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20194,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          29,
+          9
+        ],
+        [
+          30,
+          10
+        ]
+      ],
+      "target": 258,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.9989098310470581,
+      "scripted": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 159,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20195,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          28,
+          17
+        ],
+        [
+          29,
+          16
+        ]
+      ],
+      "target": 312,
+      "legal_builds": 460,
+      "exact_gap_probability": 0.9990573525428772,
+      "scripted": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 72,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20196,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          32,
+          12
+        ],
+        [
+          33,
+          13
+        ]
+      ],
+      "target": 210,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9990909099578857,
+      "scripted": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 270,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20197,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          28,
+          22
+        ],
+        [
+          29,
+          21
+        ]
+      ],
+      "target": 316,
+      "legal_builds": 459,
+      "exact_gap_probability": 0.9994978904724121,
+      "scripted": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 314,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20198,
+      "slope": 1,
+      "missing_endpoints": [
+        [
+          38,
+          17
+        ],
+        [
+          37,
+          16
+        ]
+      ],
+      "target": 310,
+      "legal_builds": 458,
+      "exact_gap_probability": 0.9982093572616577,
+      "scripted": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 233,
+        "exact_gap": false,
+        "connected": 0
+      }
+    },
+    {
+      "seed": 20199,
+      "slope": -1,
+      "missing_endpoints": [
+        [
+          33,
+          12
+        ],
+        [
+          32,
+          13
+        ]
+      ],
+      "target": 312,
+      "legal_builds": 457,
+      "exact_gap_probability": 0.9989099502563477,
+      "scripted": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": 1
+      },
+      "uniform": {
+        "action": 405,
+        "exact_gap": false,
+        "connected": 0
+      }
+    }
+  ]
+}

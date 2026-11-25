@@ -1,0 +1,81 @@
+{
+  "candidate": {
+    "adjacent": {
+      "score": 3.5625,
+      "success": 1.0,
+      "paid": 2.0,
+      "before_first": 2.0,
+      "after_first": 0.0,
+      "remaining_stock": 0.0,
+      "outside_routes": 0.0,
+      "later_exists": 0.0,
+      "later_served": 0.0
+    },
+    "bend": {
+      "score": 3.625,
+      "success": 1.0,
+      "paid": 2.5,
+      "before_first": 2.5,
+      "after_first": 0.0,
+      "remaining_stock": 0.0,
+      "outside_routes": 0.0,
+      "later_exists": 0.0,
+      "later_served": 0.0
+    },
+    "clear": {
+      "score": 3.625,
+      "success": 1.0,
+      "paid": 3.75,
+      "before_first": 3.75,
+      "after_first": 0.0,
+      "remaining_stock": 0.0,
+      "outside_routes": 0.0,
+      "later_exists": 0.0,
+      "later_served": 0.0
+    },
+    "obstacle": {
+      "score": 3.375,
+      "success": 0.9375,
+      "paid": 4.4375,
+      "before_first": 4.4375,
+      "after_first": 0.0,
+      "remaining_stock": 0.0625,
+      "outside_routes": 0.1875,
+      "later_exists": 0.0,
+      "later_served": 0.0
+    },
+    "small-city-offset-single": {
+      "score": 1.8125,
+      "success": 0.5,
+      "paid": 7.0,
+      "before_first": 6.875,
+      "after_first": 0.125,
+      "remaining_stock": 0.375,
+      "outside_routes": 4.125,
+      "later_exists": 0.0,
+      "later_served": 0.0
+    },
+    "small-city-offset-stock": {
+      "score": 1.9375,
+      "success": 0.5625,
+      "paid": 10.8125,
+      "before_first": 10.625,
+      "after_first": 0.1875,
+      "remaining_stock": 3.25,
+      "outside_routes": 7.4375,
+      "later_exists": 0.0,
+      "later_served": 0.0
+    },
+    "small-city-offset-pairs": {
+      "score": 2.0625,
+      "success": 0.5625,
+      "paid": 14.0625,
+      "before_first": 10.625,
+      "after_first": 3.4375,
+      "remaining_stock": 0.0,
+      "outside_routes": 9.75,
+      "later_exists": 1.0,
+      "later_served": 0.125
+    }
+  }
+}

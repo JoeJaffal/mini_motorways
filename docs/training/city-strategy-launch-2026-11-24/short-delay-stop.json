@@ -1,0 +1,11 @@
+{
+  "reason": "New measured critic/actor gradient imbalance; stop bounded pilot at saved midpoint for controlled loss-balance continuation.",
+  "pid": 228648,
+  "children": [
+    "228653"
+  ],
+  "saved_checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-short-delay-01/segment-001/midpoint.zip",
+  "sha256": "fea5d80883b619804db542098ac514be31af0f6fdcad2c1ed4b819d3efaf5132",
+  "time": "2026-11-24T13:36:30.556504+02:00",
+  "note": "Only the saved16384-decision checkpoint is guaranteed; any subsequent unsaved transitions are not carried forward."
+}

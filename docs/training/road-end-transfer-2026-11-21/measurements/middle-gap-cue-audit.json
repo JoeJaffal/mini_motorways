@@ -1,0 +1,4299 @@
+{
+  "checkpoint_sha256": "6a6a72161f014e47acb9d47f2ad2d5f4325b3f43845ee3a61fe1b6b6cbf5a029",
+  "fingerprint": "7470500e6a6b7f8800fc67629fab994ef854df9616e4050570c9d219708a9d03",
+  "native_sha256": "557c9e4d359254c577e298860d021f9c64139f728febda4493e302e74f393915",
+  "cues": {
+    "87600": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.01597440242767334,
+          "feeder": 0.8647622466087341,
+          "separate-exit": 0.11814381927251816,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.01886044070124626,
+          "feeder": 0.6879838705062866,
+          "separate-exit": 0.29133763909339905,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.01801484264433384,
+          "feeder": 0.6452400088310242,
+          "separate-exit": 0.33449146151542664,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.016652142629027367,
+          "feeder": 0.39658674597740173,
+          "separate-exit": 0.5841111540794373,
+          "top_action": 169
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.016652142629027367,
+          "feeder": 0.39658674597740173,
+          "separate-exit": 0.5841111540794373,
+          "top_action": 169
+        },
+        "traffic": {
+          "wait": 0.01801484264433384,
+          "feeder": 0.6452400088310242,
+          "separate-exit": 0.33449146151542664,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.01886044070124626,
+          "feeder": 0.6879838705062866,
+          "separate-exit": 0.29133763909339905,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.01597440242767334,
+          "feeder": 0.8647622466087341,
+          "separate-exit": 0.11814381927251816,
+          "top_action": 252
+        }
+      }
+    },
+    "87601": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.01106369961053133,
+          "feeder": 0.9673865437507629,
+          "separate-exit": 0.02124354988336563,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.021295979619026184,
+          "feeder": 0.6171156167984009,
+          "separate-exit": 0.35978564620018005,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.012851518578827381,
+          "feeder": 0.9441044926643372,
+          "separate-exit": 0.04253462329506874,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.01994222216308117,
+          "feeder": 0.4677318334579468,
+          "separate-exit": 0.5101480484008789,
+          "top_action": 457
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.01994222216308117,
+          "feeder": 0.4677318334579468,
+          "separate-exit": 0.5101480484008789,
+          "top_action": 457
+        },
+        "traffic": {
+          "wait": 0.012851518578827381,
+          "feeder": 0.9441044926643372,
+          "separate-exit": 0.04253462329506874,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.021295979619026184,
+          "feeder": 0.6171156167984009,
+          "separate-exit": 0.35978564620018005,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.01106369961053133,
+          "feeder": 0.9673865437507629,
+          "separate-exit": 0.02124354988336563,
+          "top_action": 294
+        }
+      }
+    },
+    "87602": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.019503381103277206,
+          "feeder": 0.6477075815200806,
+          "separate-exit": 0.33073320984840393,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.01831740513443947,
+          "feeder": 0.4331662654876709,
+          "separate-exit": 0.5459351539611816,
+          "top_action": 457
+        },
+        "demand": {
+          "wait": 0.01763904094696045,
+          "feeder": 0.4260152578353882,
+          "separate-exit": 0.5536335110664368,
+          "top_action": 457
+        },
+        "traffic_and_demand": {
+          "wait": 0.014393167570233345,
+          "feeder": 0.2470104694366455,
+          "separate-exit": 0.735805869102478,
+          "top_action": 457
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.014393167570233345,
+          "feeder": 0.2470104694366455,
+          "separate-exit": 0.735805869102478,
+          "top_action": 457
+        },
+        "traffic": {
+          "wait": 0.01763904094696045,
+          "feeder": 0.4260152578353882,
+          "separate-exit": 0.5536335110664368,
+          "top_action": 457
+        },
+        "demand": {
+          "wait": 0.01831740513443947,
+          "feeder": 0.4331662654876709,
+          "separate-exit": 0.5459351539611816,
+          "top_action": 457
+        },
+        "traffic_and_demand": {
+          "wait": 0.019503381103277206,
+          "feeder": 0.6477075815200806,
+          "separate-exit": 0.33073320984840393,
+          "top_action": 294
+        }
+      }
+    },
+    "87603": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.012341362424194813,
+          "feeder": 0.9442394375801086,
+          "separate-exit": 0.042912788689136505,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.014462594874203205,
+          "feeder": 0.24000690877437592,
+          "separate-exit": 0.7432851791381836,
+          "top_action": 169
+        },
+        "demand": {
+          "wait": 0.015119757503271103,
+          "feeder": 0.8702433705329895,
+          "separate-exit": 0.11361245810985565,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.010478293523192406,
+          "feeder": 0.12661704421043396,
+          "separate-exit": 0.8607824444770813,
+          "top_action": 169
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.010478293523192406,
+          "feeder": 0.12661704421043396,
+          "separate-exit": 0.8607824444770813,
+          "top_action": 169
+        },
+        "traffic": {
+          "wait": 0.015119757503271103,
+          "feeder": 0.8702433705329895,
+          "separate-exit": 0.11361245810985565,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.014462594874203205,
+          "feeder": 0.24000690877437592,
+          "separate-exit": 0.7432851791381836,
+          "top_action": 169
+        },
+        "traffic_and_demand": {
+          "wait": 0.012341362424194813,
+          "feeder": 0.9442394375801086,
+          "separate-exit": 0.042912788689136505,
+          "top_action": 252
+        }
+      }
+    },
+    "87604": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.011549320071935654,
+          "feeder": 0.9599069952964783,
+          "separate-exit": 0.028147229924798012,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.021076055243611336,
+          "feeder": 0.569563627243042,
+          "separate-exit": 0.4074319005012512,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.014385842718183994,
+          "feeder": 0.9074604511260986,
+          "separate-exit": 0.07732558995485306,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.01794125698506832,
+          "feeder": 0.3522452712059021,
+          "separate-exit": 0.6274623274803162,
+          "top_action": 457
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.01794125698506832,
+          "feeder": 0.3522452712059021,
+          "separate-exit": 0.6274623274803162,
+          "top_action": 457
+        },
+        "traffic": {
+          "wait": 0.014385842718183994,
+          "feeder": 0.9074604511260986,
+          "separate-exit": 0.07732558995485306,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.021076055243611336,
+          "feeder": 0.569563627243042,
+          "separate-exit": 0.4074319005012512,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.011549320071935654,
+          "feeder": 0.9599069952964783,
+          "separate-exit": 0.028147229924798012,
+          "top_action": 294
+        }
+      }
+    },
+    "87605": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.016377221792936325,
+          "feeder": 0.9129269123077393,
+          "separate-exit": 0.06998571753501892,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.020893780514597893,
+          "feeder": 0.4470607042312622,
+          "separate-exit": 0.5297744274139404,
+          "top_action": 457
+        },
+        "demand": {
+          "wait": 0.019383039325475693,
+          "feeder": 0.8051154613494873,
+          "separate-exit": 0.17414391040802002,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.016501324251294136,
+          "feeder": 0.2567730247974396,
+          "separate-exit": 0.7242349982261658,
+          "top_action": 457
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.016501324251294136,
+          "feeder": 0.2567730247974396,
+          "separate-exit": 0.7242349982261658,
+          "top_action": 457
+        },
+        "traffic": {
+          "wait": 0.019383039325475693,
+          "feeder": 0.8051154613494873,
+          "separate-exit": 0.17414391040802002,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.020893780514597893,
+          "feeder": 0.4470607042312622,
+          "separate-exit": 0.5297744274139404,
+          "top_action": 457
+        },
+        "traffic_and_demand": {
+          "wait": 0.016377221792936325,
+          "feeder": 0.9129269123077393,
+          "separate-exit": 0.06998571753501892,
+          "top_action": 294
+        }
+      }
+    },
+    "87606": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.014457829296588898,
+          "feeder": 0.9166165590286255,
+          "separate-exit": 0.06824056804180145,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.018748024478554726,
+          "feeder": 0.436423122882843,
+          "separate-exit": 0.5425539016723633,
+          "top_action": 169
+        },
+        "demand": {
+          "wait": 0.01638205349445343,
+          "feeder": 0.8547191023826599,
+          "separate-exit": 0.12782524526119232,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.01610945537686348,
+          "feeder": 0.3027093708515167,
+          "separate-exit": 0.6787371635437012,
+          "top_action": 169
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.01610945537686348,
+          "feeder": 0.3027093708515167,
+          "separate-exit": 0.6787371635437012,
+          "top_action": 169
+        },
+        "traffic": {
+          "wait": 0.01638205349445343,
+          "feeder": 0.8547191023826599,
+          "separate-exit": 0.12782524526119232,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.018748024478554726,
+          "feeder": 0.436423122882843,
+          "separate-exit": 0.5425539016723633,
+          "top_action": 169
+        },
+        "traffic_and_demand": {
+          "wait": 0.014457829296588898,
+          "feeder": 0.9166165590286255,
+          "separate-exit": 0.06824056804180145,
+          "top_action": 252
+        }
+      }
+    },
+    "87607": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.015069435350596905,
+          "feeder": 0.913784384727478,
+          "separate-exit": 0.07050462067127228,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.018243540078401566,
+          "feeder": 0.3747326731681824,
+          "separate-exit": 0.6048048734664917,
+          "top_action": 169
+        },
+        "demand": {
+          "wait": 0.017029203474521637,
+          "feeder": 0.8502605557441711,
+          "separate-exit": 0.13170605897903442,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.015322383493185043,
+          "feeder": 0.25415921211242676,
+          "separate-exit": 0.7282134294509888,
+          "top_action": 169
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.015322383493185043,
+          "feeder": 0.25415921211242676,
+          "separate-exit": 0.7282134294509888,
+          "top_action": 169
+        },
+        "traffic": {
+          "wait": 0.017029203474521637,
+          "feeder": 0.8502605557441711,
+          "separate-exit": 0.13170605897903442,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.018243540078401566,
+          "feeder": 0.3747326731681824,
+          "separate-exit": 0.6048048734664917,
+          "top_action": 169
+        },
+        "traffic_and_demand": {
+          "wait": 0.015069435350596905,
+          "feeder": 0.913784384727478,
+          "separate-exit": 0.07050462067127228,
+          "top_action": 252
+        }
+      }
+    },
+    "87608": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.016015656292438507,
+          "feeder": 0.8948116898536682,
+          "separate-exit": 0.08824692666530609,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.021673565730452538,
+          "feeder": 0.5092350840568542,
+          "separate-exit": 0.46670493483543396,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.019022757187485695,
+          "feeder": 0.708209216594696,
+          "separate-exit": 0.27075788378715515,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.01637149043381214,
+          "feeder": 0.2509670555591583,
+          "separate-exit": 0.7298840284347534,
+          "top_action": 457
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.01637149043381214,
+          "feeder": 0.2509670555591583,
+          "separate-exit": 0.7298840284347534,
+          "top_action": 457
+        },
+        "traffic": {
+          "wait": 0.019022757187485695,
+          "feeder": 0.708209216594696,
+          "separate-exit": 0.27075788378715515,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.021673565730452538,
+          "feeder": 0.5092350840568542,
+          "separate-exit": 0.46670493483543396,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.016015656292438507,
+          "feeder": 0.8948116898536682,
+          "separate-exit": 0.08824692666530609,
+          "top_action": 294
+        }
+      }
+    },
+    "87609": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.015272440388798714,
+          "feeder": 0.8887494802474976,
+          "separate-exit": 0.09503773599863052,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.018483368679881096,
+          "feeder": 0.71567302942276,
+          "separate-exit": 0.2641603946685791,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.017883451655507088,
+          "feeder": 0.6935678720474243,
+          "separate-exit": 0.2865392565727234,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.01676769182085991,
+          "feeder": 0.4254778325557709,
+          "separate-exit": 0.5551902651786804,
+          "top_action": 169
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.01676769182085991,
+          "feeder": 0.4254778325557709,
+          "separate-exit": 0.5551902651786804,
+          "top_action": 169
+        },
+        "traffic": {
+          "wait": 0.017883451655507088,
+          "feeder": 0.6935678720474243,
+          "separate-exit": 0.2865392565727234,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.018483368679881096,
+          "feeder": 0.71567302942276,
+          "separate-exit": 0.2641603946685791,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.015272440388798714,
+          "feeder": 0.8887494802474976,
+          "separate-exit": 0.09503773599863052,
+          "top_action": 252
+        }
+      }
+    },
+    "87610": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.014293801039457321,
+          "feeder": 0.9159560203552246,
+          "separate-exit": 0.06906308233737946,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.01637130230665207,
+          "feeder": 0.3157050907611847,
+          "separate-exit": 0.6655703186988831,
+          "top_action": 169
+        },
+        "demand": {
+          "wait": 0.016189925372600555,
+          "feeder": 0.853488564491272,
+          "separate-exit": 0.12924592196941376,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.013517932035028934,
+          "feeder": 0.2103707641363144,
+          "separate-exit": 0.7737426161766052,
+          "top_action": 169
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.013517932035028934,
+          "feeder": 0.2103707641363144,
+          "separate-exit": 0.7737426161766052,
+          "top_action": 169
+        },
+        "traffic": {
+          "wait": 0.016189925372600555,
+          "feeder": 0.853488564491272,
+          "separate-exit": 0.12924592196941376,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.01637130230665207,
+          "feeder": 0.3157050907611847,
+          "separate-exit": 0.6655703186988831,
+          "top_action": 169
+        },
+        "traffic_and_demand": {
+          "wait": 0.014293801039457321,
+          "feeder": 0.9159560203552246,
+          "separate-exit": 0.06906308233737946,
+          "top_action": 252
+        }
+      }
+    },
+    "87611": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.016377221792936325,
+          "feeder": 0.9129269123077393,
+          "separate-exit": 0.06998571753501892,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.019793447107076645,
+          "feeder": 0.3811674118041992,
+          "separate-exit": 0.5967094302177429,
+          "top_action": 457
+        },
+        "demand": {
+          "wait": 0.019383039325475693,
+          "feeder": 0.8051154613494873,
+          "separate-exit": 0.17414391040802002,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.015161784365773201,
+          "feeder": 0.21229836344718933,
+          "separate-exit": 0.7701122760772705,
+          "top_action": 457
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.015161784365773201,
+          "feeder": 0.21229836344718933,
+          "separate-exit": 0.7701122760772705,
+          "top_action": 457
+        },
+        "traffic": {
+          "wait": 0.019383039325475693,
+          "feeder": 0.8051154613494873,
+          "separate-exit": 0.17414391040802002,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.019793447107076645,
+          "feeder": 0.3811674118041992,
+          "separate-exit": 0.5967094302177429,
+          "top_action": 457
+        },
+        "traffic_and_demand": {
+          "wait": 0.016377221792936325,
+          "feeder": 0.9129269123077393,
+          "separate-exit": 0.06998571753501892,
+          "top_action": 294
+        }
+      }
+    },
+    "87612": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.011945950798690319,
+          "feeder": 0.958285391330719,
+          "separate-exit": 0.02936052344739437,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.012638489715754986,
+          "feeder": 0.119089774787426,
+          "separate-exit": 0.865995466709137,
+          "top_action": 457
+        },
+        "demand": {
+          "wait": 0.01580984704196453,
+          "feeder": 0.8730702996253967,
+          "separate-exit": 0.11005453020334244,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.008476016111671925,
+          "feeder": 0.053362298756837845,
+          "separate-exit": 0.9362055659294128,
+          "top_action": 457
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.008476016111671925,
+          "feeder": 0.053362298756837845,
+          "separate-exit": 0.9362055659294128,
+          "top_action": 457
+        },
+        "traffic": {
+          "wait": 0.01580984704196453,
+          "feeder": 0.8730702996253967,
+          "separate-exit": 0.11005453020334244,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.012638489715754986,
+          "feeder": 0.119089774787426,
+          "separate-exit": 0.865995466709137,
+          "top_action": 457
+        },
+        "traffic_and_demand": {
+          "wait": 0.011945950798690319,
+          "feeder": 0.958285391330719,
+          "separate-exit": 0.02936052344739437,
+          "top_action": 294
+        }
+      }
+    },
+    "87613": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.014325834810733795,
+          "feeder": 0.912760853767395,
+          "separate-exit": 0.07217799127101898,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.01573851890861988,
+          "feeder": 0.2955319285392761,
+          "separate-exit": 0.6862515211105347,
+          "top_action": 169
+        },
+        "demand": {
+          "wait": 0.016176925972104073,
+          "feeder": 0.848160982131958,
+          "separate-exit": 0.1345149725675583,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.012922176159918308,
+          "feeder": 0.19587945938110352,
+          "separate-exit": 0.7887290120124817,
+          "top_action": 169
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.012922176159918308,
+          "feeder": 0.19587945938110352,
+          "separate-exit": 0.7887290120124817,
+          "top_action": 169
+        },
+        "traffic": {
+          "wait": 0.016176925972104073,
+          "feeder": 0.848160982131958,
+          "separate-exit": 0.1345149725675583,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.01573851890861988,
+          "feeder": 0.2955319285392761,
+          "separate-exit": 0.6862515211105347,
+          "top_action": 169
+        },
+        "traffic_and_demand": {
+          "wait": 0.014325834810733795,
+          "feeder": 0.912760853767395,
+          "separate-exit": 0.07217799127101898,
+          "top_action": 252
+        }
+      }
+    },
+    "87614": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.01880694553256035,
+          "feeder": 0.6580173373222351,
+          "separate-exit": 0.32100367546081543,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.019079526886343956,
+          "feeder": 0.5849038362503052,
+          "separate-exit": 0.39387667179107666,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.018057918176054955,
+          "feeder": 0.5110197067260742,
+          "separate-exit": 0.4682266116142273,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.017578700557351112,
+          "feeder": 0.43582308292388916,
+          "separate-exit": 0.5440732836723328,
+          "top_action": 457
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.017578700557351112,
+          "feeder": 0.43582308292388916,
+          "separate-exit": 0.5440732836723328,
+          "top_action": 457
+        },
+        "traffic": {
+          "wait": 0.018057918176054955,
+          "feeder": 0.5110197067260742,
+          "separate-exit": 0.4682266116142273,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.019079526886343956,
+          "feeder": 0.5849038362503052,
+          "separate-exit": 0.39387667179107666,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.01880694553256035,
+          "feeder": 0.6580173373222351,
+          "separate-exit": 0.32100367546081543,
+          "top_action": 294
+        }
+      }
+    },
+    "87615": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.01553388126194477,
+          "feeder": 0.8869562745094299,
+          "separate-exit": 0.09654229879379272,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.01644107699394226,
+          "feeder": 0.28498876094818115,
+          "separate-exit": 0.6956191658973694,
+          "top_action": 457
+        },
+        "demand": {
+          "wait": 0.017846867442131042,
+          "feeder": 0.7529022097587585,
+          "separate-exit": 0.22749461233615875,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.012264415621757507,
+          "feeder": 0.15460596978664398,
+          "separate-exit": 0.8302658796310425,
+          "top_action": 457
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.012264415621757507,
+          "feeder": 0.15460596978664398,
+          "separate-exit": 0.8302658796310425,
+          "top_action": 457
+        },
+        "traffic": {
+          "wait": 0.017846867442131042,
+          "feeder": 0.7529022097587585,
+          "separate-exit": 0.22749461233615875,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.01644107699394226,
+          "feeder": 0.28498876094818115,
+          "separate-exit": 0.6956191658973694,
+          "top_action": 457
+        },
+        "traffic_and_demand": {
+          "wait": 0.01553388126194477,
+          "feeder": 0.8869562745094299,
+          "separate-exit": 0.09654229879379272,
+          "top_action": 294
+        }
+      }
+    },
+    "87616": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.01518391352146864,
+          "feeder": 0.9119619131088257,
+          "separate-exit": 0.07220155745744705,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.018155498430132866,
+          "feeder": 0.36876270174980164,
+          "separate-exit": 0.6108376383781433,
+          "top_action": 169
+        },
+        "demand": {
+          "wait": 0.017139418050646782,
+          "feeder": 0.8472821712493896,
+          "separate-exit": 0.13455937802791595,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.015221122652292252,
+          "feeder": 0.24966686964035034,
+          "separate-exit": 0.7327879071235657,
+          "top_action": 169
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.015221122652292252,
+          "feeder": 0.24966686964035034,
+          "separate-exit": 0.7327879071235657,
+          "top_action": 169
+        },
+        "traffic": {
+          "wait": 0.017139418050646782,
+          "feeder": 0.8472821712493896,
+          "separate-exit": 0.13455937802791595,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.018155498430132866,
+          "feeder": 0.36876270174980164,
+          "separate-exit": 0.6108376383781433,
+          "top_action": 169
+        },
+        "traffic_and_demand": {
+          "wait": 0.01518391352146864,
+          "feeder": 0.9119619131088257,
+          "separate-exit": 0.07220155745744705,
+          "top_action": 252
+        }
+      }
+    },
+    "87617": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.012446933425962925,
+          "feeder": 0.9459226727485657,
+          "separate-exit": 0.04112956300377846,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.013819522224366665,
+          "feeder": 0.16167764365673065,
+          "separate-exit": 0.8219913244247437,
+          "top_action": 457
+        },
+        "demand": {
+          "wait": 0.0152977230027318,
+          "feeder": 0.8744347095489502,
+          "separate-exit": 0.10925191640853882,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.01013376098126173,
+          "feeder": 0.08699727803468704,
+          "separate-exit": 0.9005815982818604,
+          "top_action": 457
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.01013376098126173,
+          "feeder": 0.08699727803468704,
+          "separate-exit": 0.9005815982818604,
+          "top_action": 457
+        },
+        "traffic": {
+          "wait": 0.0152977230027318,
+          "feeder": 0.8744347095489502,
+          "separate-exit": 0.10925191640853882,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.013819522224366665,
+          "feeder": 0.16167764365673065,
+          "separate-exit": 0.8219913244247437,
+          "top_action": 457
+        },
+        "traffic_and_demand": {
+          "wait": 0.012446933425962925,
+          "feeder": 0.9459226727485657,
+          "separate-exit": 0.04112956300377846,
+          "top_action": 294
+        }
+      }
+    },
+    "87618": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.011592610739171505,
+          "feeder": 0.9594539999961853,
+          "separate-exit": 0.02855314128100872,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.020603042095899582,
+          "feeder": 0.5391283631324768,
+          "separate-exit": 0.43795686960220337,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.014434616081416607,
+          "feeder": 0.906376302242279,
+          "separate-exit": 0.07835379242897034,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.01733274571597576,
+          "feeder": 0.3288997411727905,
+          "separate-exit": 0.6510357856750488,
+          "top_action": 457
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.01733274571597576,
+          "feeder": 0.3288997411727905,
+          "separate-exit": 0.6510357856750488,
+          "top_action": 457
+        },
+        "traffic": {
+          "wait": 0.014434616081416607,
+          "feeder": 0.906376302242279,
+          "separate-exit": 0.07835379242897034,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.020603042095899582,
+          "feeder": 0.5391283631324768,
+          "separate-exit": 0.43795686960220337,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.011592610739171505,
+          "feeder": 0.9594539999961853,
+          "separate-exit": 0.02855314128100872,
+          "top_action": 294
+        }
+      }
+    },
+    "87619": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.015149498358368874,
+          "feeder": 0.9110315442085266,
+          "separate-exit": 0.07316145300865173,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.018014973029494286,
+          "feeder": 0.35310056805610657,
+          "separate-exit": 0.6267006993293762,
+          "top_action": 169
+        },
+        "demand": {
+          "wait": 0.017087135463953018,
+          "feeder": 0.8457104563713074,
+          "separate-exit": 0.13617616891860962,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.015009431168437004,
+          "feeder": 0.2376329004764557,
+          "separate-exit": 0.7451133728027344,
+          "top_action": 169
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.015009431168437004,
+          "feeder": 0.2376329004764557,
+          "separate-exit": 0.7451133728027344,
+          "top_action": 169
+        },
+        "traffic": {
+          "wait": 0.017087135463953018,
+          "feeder": 0.8457104563713074,
+          "separate-exit": 0.13617616891860962,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.018014973029494286,
+          "feeder": 0.35310056805610657,
+          "separate-exit": 0.6267006993293762,
+          "top_action": 169
+        },
+        "traffic_and_demand": {
+          "wait": 0.015149498358368874,
+          "feeder": 0.9110315442085266,
+          "separate-exit": 0.07316145300865173,
+          "top_action": 252
+        }
+      }
+    },
+    "87620": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.015062169171869755,
+          "feeder": 0.9127720594406128,
+          "separate-exit": 0.07151759415864944,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.019051842391490936,
+          "feeder": 0.7741336822509766,
+          "separate-exit": 0.20558668673038483,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.017804179340600967,
+          "feeder": 0.8033655881881714,
+          "separate-exit": 0.17759214341640472,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.01926383376121521,
+          "feeder": 0.5728754997253418,
+          "separate-exit": 0.40596890449523926,
+          "top_action": 252
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.01926383376121521,
+          "feeder": 0.5728754997253418,
+          "separate-exit": 0.40596890449523926,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.017804179340600967,
+          "feeder": 0.8033655881881714,
+          "separate-exit": 0.17759214341640472,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.019051842391490936,
+          "feeder": 0.7741336822509766,
+          "separate-exit": 0.20558668673038483,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.015062169171869755,
+          "feeder": 0.9127720594406128,
+          "separate-exit": 0.07151759415864944,
+          "top_action": 252
+        }
+      }
+    },
+    "87621": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.01606821082532406,
+          "feeder": 0.8964860439300537,
+          "separate-exit": 0.08657823503017426,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.02154182642698288,
+          "feeder": 0.49767234921455383,
+          "separate-exit": 0.4786125123500824,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.018708525225520134,
+          "feeder": 0.7720462083816528,
+          "separate-exit": 0.20764286816120148,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.017596084624528885,
+          "feeder": 0.295164555311203,
+          "separate-exit": 0.6847542524337769,
+          "top_action": 457
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.017596084624528885,
+          "feeder": 0.295164555311203,
+          "separate-exit": 0.6847542524337769,
+          "top_action": 457
+        },
+        "traffic": {
+          "wait": 0.018708525225520134,
+          "feeder": 0.7720462083816528,
+          "separate-exit": 0.20764286816120148,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.02154182642698288,
+          "feeder": 0.49767234921455383,
+          "separate-exit": 0.4786125123500824,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.01606821082532406,
+          "feeder": 0.8964860439300537,
+          "separate-exit": 0.08657823503017426,
+          "top_action": 294
+        }
+      }
+    },
+    "87622": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.012318744324147701,
+          "feeder": 0.9441916942596436,
+          "separate-exit": 0.04298319295048714,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.01464142370969057,
+          "feeder": 0.250541627407074,
+          "separate-exit": 0.732416570186615,
+          "top_action": 169
+        },
+        "demand": {
+          "wait": 0.014185703359544277,
+          "feeder": 0.9017223119735718,
+          "separate-exit": 0.08327309042215347,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.011889049783349037,
+          "feeder": 0.16439497470855713,
+          "separate-exit": 0.8213731050491333,
+          "top_action": 169
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.011889049783349037,
+          "feeder": 0.16439497470855713,
+          "separate-exit": 0.8213731050491333,
+          "top_action": 169
+        },
+        "traffic": {
+          "wait": 0.014185703359544277,
+          "feeder": 0.9017223119735718,
+          "separate-exit": 0.08327309042215347,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.01464142370969057,
+          "feeder": 0.250541627407074,
+          "separate-exit": 0.732416570186615,
+          "top_action": 169
+        },
+        "traffic_and_demand": {
+          "wait": 0.012318744324147701,
+          "feeder": 0.9441916942596436,
+          "separate-exit": 0.04298319295048714,
+          "top_action": 252
+        }
+      }
+    },
+    "87623": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.015157143585383892,
+          "feeder": 0.911517322063446,
+          "separate-exit": 0.0726727768778801,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.020320327952504158,
+          "feeder": 0.6077934503555298,
+          "separate-exit": 0.370156854391098,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.017889149487018585,
+          "feeder": 0.8008148670196533,
+          "separate-exit": 0.18005184829235077,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.017737893387675285,
+          "feeder": 0.3858849108219147,
+          "separate-exit": 0.594184160232544,
+          "top_action": 169
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.017737893387675285,
+          "feeder": 0.3858849108219147,
+          "separate-exit": 0.594184160232544,
+          "top_action": 169
+        },
+        "traffic": {
+          "wait": 0.017889149487018585,
+          "feeder": 0.8008148670196533,
+          "separate-exit": 0.18005184829235077,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.020320327952504158,
+          "feeder": 0.6077934503555298,
+          "separate-exit": 0.370156854391098,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.015157143585383892,
+          "feeder": 0.911517322063446,
+          "separate-exit": 0.0726727768778801,
+          "top_action": 252
+        }
+      }
+    },
+    "87624": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.012342630885541439,
+          "feeder": 0.9498220682144165,
+          "separate-exit": 0.03733747825026512,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.02103789523243904,
+          "feeder": 0.4995199143886566,
+          "separate-exit": 0.4773029685020447,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.016190053895115852,
+          "feeder": 0.8471392393112183,
+          "separate-exit": 0.1354113221168518,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.015617415308952332,
+          "feeder": 0.24218305945396423,
+          "separate-exit": 0.7397392392158508,
+          "top_action": 457
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.015617415308952332,
+          "feeder": 0.24218305945396423,
+          "separate-exit": 0.7397392392158508,
+          "top_action": 457
+        },
+        "traffic": {
+          "wait": 0.016190053895115852,
+          "feeder": 0.8471392393112183,
+          "separate-exit": 0.1354113221168518,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.02103789523243904,
+          "feeder": 0.4995199143886566,
+          "separate-exit": 0.4773029685020447,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.012342630885541439,
+          "feeder": 0.9498220682144165,
+          "separate-exit": 0.03733747825026512,
+          "top_action": 294
+        }
+      }
+    },
+    "87625": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.016397343948483467,
+          "feeder": 0.8908767104148865,
+          "separate-exit": 0.09183863550424576,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.01906619593501091,
+          "feeder": 0.32431361079216003,
+          "separate-exit": 0.654233992099762,
+          "top_action": 457
+        },
+        "demand": {
+          "wait": 0.018933234736323357,
+          "feeder": 0.761003315448761,
+          "separate-exit": 0.2184368520975113,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.014261729083955288,
+          "feeder": 0.17655079066753387,
+          "separate-exit": 0.8068012595176697,
+          "top_action": 457
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.014261729083955288,
+          "feeder": 0.17655079066753387,
+          "separate-exit": 0.8068012595176697,
+          "top_action": 457
+        },
+        "traffic": {
+          "wait": 0.018933234736323357,
+          "feeder": 0.761003315448761,
+          "separate-exit": 0.2184368520975113,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.01906619593501091,
+          "feeder": 0.32431361079216003,
+          "separate-exit": 0.654233992099762,
+          "top_action": 457
+        },
+        "traffic_and_demand": {
+          "wait": 0.016397343948483467,
+          "feeder": 0.8908767104148865,
+          "separate-exit": 0.09183863550424576,
+          "top_action": 294
+        }
+      }
+    },
+    "87626": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.01214675884693861,
+          "feeder": 0.957378089427948,
+          "separate-exit": 0.03012595698237419,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.019481627270579338,
+          "feeder": 0.7305276393890381,
+          "separate-exit": 0.24869439005851746,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.015065815299749374,
+          "feeder": 0.9017916321754456,
+          "separate-exit": 0.08241383731365204,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.01889798231422901,
+          "feeder": 0.5168846249580383,
+          "separate-exit": 0.46232956647872925,
+          "top_action": 252
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.01889798231422901,
+          "feeder": 0.5168846249580383,
+          "separate-exit": 0.46232956647872925,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.015065815299749374,
+          "feeder": 0.9017916321754456,
+          "separate-exit": 0.08241383731365204,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.019481627270579338,
+          "feeder": 0.7305276393890381,
+          "separate-exit": 0.24869439005851746,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.01214675884693861,
+          "feeder": 0.957378089427948,
+          "separate-exit": 0.03012595698237419,
+          "top_action": 252
+        }
+      }
+    },
+    "87627": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.015435314737260342,
+          "feeder": 0.8911551237106323,
+          "separate-exit": 0.09245401620864868,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.016130169853568077,
+          "feeder": 0.2317911684513092,
+          "separate-exit": 0.7495669722557068,
+          "top_action": 457
+        },
+        "demand": {
+          "wait": 0.018187513574957848,
+          "feeder": 0.6995016932487488,
+          "separate-exit": 0.2802591919898987,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.010663830675184727,
+          "feeder": 0.10100419819355011,
+          "separate-exit": 0.8860427737236023,
+          "top_action": 457
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.010663830675184727,
+          "feeder": 0.10100419819355011,
+          "separate-exit": 0.8860427737236023,
+          "top_action": 457
+        },
+        "traffic": {
+          "wait": 0.018187513574957848,
+          "feeder": 0.6995016932487488,
+          "separate-exit": 0.2802591919898987,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.016130169853568077,
+          "feeder": 0.2317911684513092,
+          "separate-exit": 0.7495669722557068,
+          "top_action": 457
+        },
+        "traffic_and_demand": {
+          "wait": 0.015435314737260342,
+          "feeder": 0.8911551237106323,
+          "separate-exit": 0.09245401620864868,
+          "top_action": 294
+        }
+      }
+    },
+    "87628": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.01580696925520897,
+          "feeder": 0.917180597782135,
+          "separate-exit": 0.0663396343588829,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.022465676069259644,
+          "feeder": 0.544354259967804,
+          "separate-exit": 0.43145784735679626,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.019497599452733994,
+          "feeder": 0.7613919377326965,
+          "separate-exit": 0.21755532920360565,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.017188461497426033,
+          "feeder": 0.27262234687805176,
+          "separate-exit": 0.7080949544906616,
+          "top_action": 457
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.017188461497426033,
+          "feeder": 0.27262234687805176,
+          "separate-exit": 0.7080949544906616,
+          "top_action": 457
+        },
+        "traffic": {
+          "wait": 0.019497599452733994,
+          "feeder": 0.7613919377326965,
+          "separate-exit": 0.21755532920360565,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.022465676069259644,
+          "feeder": 0.544354259967804,
+          "separate-exit": 0.43145784735679626,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.01580696925520897,
+          "feeder": 0.917180597782135,
+          "separate-exit": 0.0663396343588829,
+          "top_action": 294
+        }
+      }
+    },
+    "87629": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.012359782122075558,
+          "feeder": 0.9461764097213745,
+          "separate-exit": 0.04098573327064514,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.018303293734788895,
+          "feeder": 0.4684474766254425,
+          "separate-exit": 0.5109449028968811,
+          "top_action": 169
+        },
+        "demand": {
+          "wait": 0.014261668547987938,
+          "feeder": 0.9053276777267456,
+          "separate-exit": 0.0796353742480278,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.015985099598765373,
+          "feeder": 0.3299981355667114,
+          "separate-exit": 0.6514933109283447,
+          "top_action": 169
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.015985099598765373,
+          "feeder": 0.3299981355667114,
+          "separate-exit": 0.6514933109283447,
+          "top_action": 169
+        },
+        "traffic": {
+          "wait": 0.014261668547987938,
+          "feeder": 0.9053276777267456,
+          "separate-exit": 0.0796353742480278,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.018303293734788895,
+          "feeder": 0.4684474766254425,
+          "separate-exit": 0.5109449028968811,
+          "top_action": 169
+        },
+        "traffic_and_demand": {
+          "wait": 0.012359782122075558,
+          "feeder": 0.9461764097213745,
+          "separate-exit": 0.04098573327064514,
+          "top_action": 252
+        }
+      }
+    },
+    "87630": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.014511293731629848,
+          "feeder": 0.913022518157959,
+          "separate-exit": 0.0717276856303215,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.01860284060239792,
+          "feeder": 0.47788217663764954,
+          "separate-exit": 0.5014162063598633,
+          "top_action": 169
+        },
+        "demand": {
+          "wait": 0.016388412564992905,
+          "feeder": 0.8487250208854675,
+          "separate-exit": 0.13373391330242157,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.016277596354484558,
+          "feeder": 0.33744388818740845,
+          "separate-exit": 0.6439661383628845,
+          "top_action": 169
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.016277596354484558,
+          "feeder": 0.33744388818740845,
+          "separate-exit": 0.6439661383628845,
+          "top_action": 169
+        },
+        "traffic": {
+          "wait": 0.016388412564992905,
+          "feeder": 0.8487250208854675,
+          "separate-exit": 0.13373391330242157,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.01860284060239792,
+          "feeder": 0.47788217663764954,
+          "separate-exit": 0.5014162063598633,
+          "top_action": 169
+        },
+        "traffic_and_demand": {
+          "wait": 0.014511293731629848,
+          "feeder": 0.913022518157959,
+          "separate-exit": 0.0717276856303215,
+          "top_action": 252
+        }
+      }
+    },
+    "87631": {
+      "traffic-junction-low-live-gap4": {
+        "native": {
+          "wait": 0.01666036993265152,
+          "feeder": 0.8913683891296387,
+          "separate-exit": 0.091133251786232,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.019462259486317635,
+          "feeder": 0.33865007758140564,
+          "separate-exit": 0.6396067142486572,
+          "top_action": 457
+        },
+        "demand": {
+          "wait": 0.018570970743894577,
+          "feeder": 0.8145610094070435,
+          "separate-exit": 0.16558921337127686,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.01622564159333706,
+          "feeder": 0.22838905453681946,
+          "separate-exit": 0.7530563473701477,
+          "top_action": 457
+        }
+      },
+      "traffic-junction-high-live-gap4": {
+        "native": {
+          "wait": 0.01622564159333706,
+          "feeder": 0.22838905453681946,
+          "separate-exit": 0.7530563473701477,
+          "top_action": 457
+        },
+        "traffic": {
+          "wait": 0.018570970743894577,
+          "feeder": 0.8145610094070435,
+          "separate-exit": 0.16558921337127686,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.019462259486317635,
+          "feeder": 0.33865007758140564,
+          "separate-exit": 0.6396067142486572,
+          "top_action": 457
+        },
+        "traffic_and_demand": {
+          "wait": 0.01666036993265152,
+          "feeder": 0.8913683891296387,
+          "separate-exit": 0.091133251786232,
+          "top_action": 294
+        }
+      }
+    }
+  },
+  "crossings": {
+    "87600": {
+      "feeder": {
+        "b_cars_seen": 9,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 6,
+          "1": 2
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 3,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      }
+    },
+    "87601": {
+      "feeder": {
+        "b_cars_seen": 8,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 5,
+          "1": 2
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 3,
+        "served": {
+          "0": 6,
+          "1": 2
+        }
+      }
+    },
+    "87602": {
+      "feeder": {
+        "b_cars_seen": 10,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 6,
+          "1": 1
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 2,
+        "served": {
+          "0": 6,
+          "1": 2
+        }
+      }
+    },
+    "87603": {
+      "feeder": {
+        "b_cars_seen": 10,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 3,
+        "served": {
+          "0": 7,
+          "1": 3
+        }
+      }
+    },
+    "87604": {
+      "feeder": {
+        "b_cars_seen": 9,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 5,
+          "1": 3
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 3,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      }
+    },
+    "87605": {
+      "feeder": {
+        "b_cars_seen": 8,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 6,
+          "1": 4
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 2,
+        "served": {
+          "0": 5,
+          "1": 4
+        }
+      }
+    },
+    "87606": {
+      "feeder": {
+        "b_cars_seen": 7,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 4,
+          "1": 2
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 3,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      }
+    },
+    "87607": {
+      "feeder": {
+        "b_cars_seen": 6,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 5,
+          "1": 2
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 3,
+        "served": {
+          "0": 6,
+          "1": 4
+        }
+      }
+    },
+    "87608": {
+      "feeder": {
+        "b_cars_seen": 9,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 4,
+        "served": {
+          "0": 7,
+          "1": 2
+        }
+      }
+    },
+    "87609": {
+      "feeder": {
+        "b_cars_seen": 10,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 5,
+          "1": 3
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 3,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      }
+    },
+    "87610": {
+      "feeder": {
+        "b_cars_seen": 7,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 4,
+        "served": {
+          "0": 6,
+          "1": 2
+        }
+      }
+    },
+    "87611": {
+      "feeder": {
+        "b_cars_seen": 8,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 6,
+          "1": 4
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 3,
+        "served": {
+          "0": 7,
+          "1": 4
+        }
+      }
+    },
+    "87612": {
+      "feeder": {
+        "b_cars_seen": 10,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 2,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      }
+    },
+    "87613": {
+      "feeder": {
+        "b_cars_seen": 7,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 5,
+          "1": 2
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 3,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      }
+    },
+    "87614": {
+      "feeder": {
+        "b_cars_seen": 10,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 5,
+          "1": 2
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 1,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      }
+    },
+    "87615": {
+      "feeder": {
+        "b_cars_seen": 9,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 6,
+          "1": 0
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 1,
+        "served": {
+          "0": 6,
+          "1": 1
+        }
+      }
+    },
+    "87616": {
+      "feeder": {
+        "b_cars_seen": 7,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 6,
+          "1": 2
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 4,
+        "served": {
+          "0": 6,
+          "1": 2
+        }
+      }
+    },
+    "87617": {
+      "feeder": {
+        "b_cars_seen": 10,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 5,
+          "1": 3
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 3,
+        "served": {
+          "0": 5,
+          "1": 3
+        }
+      }
+    },
+    "87618": {
+      "feeder": {
+        "b_cars_seen": 10,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 5,
+          "1": 2
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 3,
+        "served": {
+          "0": 6,
+          "1": 2
+        }
+      }
+    },
+    "87619": {
+      "feeder": {
+        "b_cars_seen": 8,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 5,
+          "1": 2
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 3,
+        "served": {
+          "0": 6,
+          "1": 2
+        }
+      }
+    },
+    "87620": {
+      "feeder": {
+        "b_cars_seen": 8,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 4,
+        "served": {
+          "0": 7,
+          "1": 4
+        }
+      }
+    },
+    "87621": {
+      "feeder": {
+        "b_cars_seen": 9,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 3,
+        "served": {
+          "0": 7,
+          "1": 2
+        }
+      }
+    },
+    "87622": {
+      "feeder": {
+        "b_cars_seen": 9,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 6,
+          "1": 2
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 4,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      }
+    },
+    "87623": {
+      "feeder": {
+        "b_cars_seen": 6,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 5,
+          "1": 3
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 3,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      }
+    },
+    "87624": {
+      "feeder": {
+        "b_cars_seen": 9,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 4,
+        "served": {
+          "0": 7,
+          "1": 3
+        }
+      }
+    },
+    "87625": {
+      "feeder": {
+        "b_cars_seen": 7,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 7,
+          "1": 3
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 2,
+        "served": {
+          "0": 7,
+          "1": 3
+        }
+      }
+    },
+    "87626": {
+      "feeder": {
+        "b_cars_seen": 7,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 5,
+          "1": 2
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 2,
+        "served": {
+          "0": 6,
+          "1": 2
+        }
+      }
+    },
+    "87627": {
+      "feeder": {
+        "b_cars_seen": 10,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 8,
+          "1": 1
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 4,
+        "served": {
+          "0": 8,
+          "1": 3
+        }
+      }
+    },
+    "87628": {
+      "feeder": {
+        "b_cars_seen": 7,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 5,
+          "1": 4
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 2,
+        "served": {
+          "0": 7,
+          "1": 3
+        }
+      }
+    },
+    "87629": {
+      "feeder": {
+        "b_cars_seen": 10,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 6,
+          "1": 2
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 3,
+        "served": {
+          "0": 6,
+          "1": 2
+        }
+      }
+    },
+    "87630": {
+      "feeder": {
+        "b_cars_seen": 7,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 4,
+          "1": 3
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 4,
+        "served": {
+          "0": 7,
+          "1": 2
+        }
+      }
+    },
+    "87631": {
+      "feeder": {
+        "b_cars_seen": 9,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 5,
+          "1": 3
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 2,
+        "served": {
+          "0": 5,
+          "1": 3
+        }
+      }
+    }
+  },
+  "visibility": {
+    "87600": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 4.0,
+            "stopped": 1.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          },
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 1.3333332538604736
+          }
+        ]
+      }
+    },
+    "87601": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          },
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 1.0
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 5.0,
+            "stopped": 1.0,
+            "pins": 0.6666666865348816
+          }
+        ]
+      }
+    },
+    "87602": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 5.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          },
+          {
+            "cars": 5.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.8333333134651184
+          },
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 1.1666666269302368
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 1.0
+          },
+          {
+            "cars": 5.0,
+            "stopped": 0.0,
+            "pins": 1.5
+          }
+        ]
+      }
+    },
+    "87603": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          },
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 1.1666667461395264
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          },
+          {
+            "cars": 6.0,
+            "stopped": 1.0,
+            "pins": 1.1666667461395264
+          }
+        ]
+      }
+    },
+    "87604": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          },
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 1.0
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 5.0,
+            "stopped": 0.0,
+            "pins": 1.0
+          }
+        ]
+      }
+    },
+    "87605": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 1.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 5.0,
+            "stopped": 1.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 6.0,
+            "stopped": 0.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      }
+    },
+    "87606": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 3.0,
+            "stopped": 1.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 6.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          }
+        ]
+      }
+    },
+    "87607": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 6.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          }
+        ]
+      }
+    },
+    "87608": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 6.0,
+            "stopped": 0.0,
+            "pins": 1.0
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 5.0,
+            "stopped": 0.0,
+            "pins": 1.1666667461395264
+          }
+        ]
+      }
+    },
+    "87609": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 4.0,
+            "stopped": 1.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          },
+          {
+            "cars": 4.0,
+            "stopped": 1.0,
+            "pins": 1.3333332538604736
+          }
+        ]
+      }
+    },
+    "87610": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 5.0,
+            "stopped": 1.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 6.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          }
+        ]
+      }
+    },
+    "87611": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 1.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 5.0,
+            "stopped": 1.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 6.0,
+            "stopped": 0.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      }
+    },
+    "87612": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          },
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 1.1666667461395264
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 8.0,
+            "stopped": 0.0,
+            "pins": 1.1666667461395264
+          }
+        ]
+      }
+    },
+    "87613": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 6.0,
+            "stopped": 0.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      }
+    },
+    "87614": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          },
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.8333333134651184
+          },
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 1.1666666269302368
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 1.0
+          },
+          {
+            "cars": 4.0,
+            "stopped": 1.0,
+            "pins": 1.3333333730697632
+          }
+        ]
+      }
+    },
+    "87615": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          },
+          {
+            "cars": 3.0,
+            "stopped": 1.0,
+            "pins": 1.0
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          },
+          {
+            "cars": 6.0,
+            "stopped": 1.0,
+            "pins": 1.1666667461395264
+          }
+        ]
+      }
+    },
+    "87616": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 6.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          }
+        ]
+      }
+    },
+    "87617": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 1.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 3.0,
+            "stopped": 1.0,
+            "pins": 0.5
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          },
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 1.1666667461395264
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          },
+          {
+            "cars": 7.0,
+            "stopped": 1.0,
+            "pins": 1.1666667461395264
+          }
+        ]
+      }
+    },
+    "87618": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          },
+          {
+            "cars": 4.0,
+            "stopped": 1.0,
+            "pins": 1.0
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 5.0,
+            "stopped": 0.0,
+            "pins": 1.0
+          }
+        ]
+      }
+    },
+    "87619": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 5.0,
+            "stopped": 0.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 6.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          }
+        ]
+      }
+    },
+    "87620": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 1.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 5.0,
+            "stopped": 1.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      }
+    },
+    "87621": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 5.0,
+            "stopped": 0.0,
+            "pins": 1.0
+          }
+        ]
+      }
+    },
+    "87622": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          },
+          {
+            "cars": 3.0,
+            "stopped": 1.0,
+            "pins": 1.0
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          },
+          {
+            "cars": 6.0,
+            "stopped": 0.0,
+            "pins": 1.0
+          }
+        ]
+      }
+    },
+    "87623": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 5.0,
+            "stopped": 0.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      }
+    },
+    "87624": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 5.0,
+            "stopped": 1.0,
+            "pins": 1.1666667461395264
+          }
+        ]
+      }
+    },
+    "87625": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 6.0,
+            "stopped": 0.0,
+            "pins": 1.0
+          }
+        ]
+      }
+    },
+    "87626": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 5.0,
+            "stopped": 0.0,
+            "pins": 1.0
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 4.0,
+            "stopped": 0.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      }
+    },
+    "87627": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          },
+          {
+            "cars": 4.0,
+            "stopped": 1.0,
+            "pins": 1.0
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.6666666865348816
+          },
+          {
+            "cars": 6.0,
+            "stopped": 2.0,
+            "pins": 1.3333333730697632
+          }
+        ]
+      }
+    },
+    "87628": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 5.0,
+            "stopped": 0.0,
+            "pins": 1.0
+          }
+        ]
+      }
+    },
+    "87629": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 5.0,
+            "stopped": 0.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 5.0,
+            "stopped": 0.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      }
+    },
+    "87630": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 2.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 4.0,
+            "stopped": 1.0,
+            "pins": 0.6666666865348816
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 5.0,
+            "stopped": 0.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      }
+    },
+    "87631": {
+      "0": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          },
+          {
+            "cars": 0.0,
+            "stopped": 0.0,
+            "pins": 0.0
+          }
+        ]
+      },
+      "15": {
+        "same_policy_input": true,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          },
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.3333333432674408
+          }
+        ]
+      },
+      "25": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 5.0,
+            "stopped": 0.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      },
+      "36": {
+        "same_policy_input": false,
+        "visible": [
+          {
+            "cars": 3.0,
+            "stopped": 0.0,
+            "pins": 0.5
+          },
+          {
+            "cars": 6.0,
+            "stopped": 0.0,
+            "pins": 0.8333333730697632
+          }
+        ]
+      }
+    }
+  }
+}

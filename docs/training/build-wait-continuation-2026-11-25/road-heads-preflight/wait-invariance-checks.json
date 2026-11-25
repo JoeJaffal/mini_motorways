@@ -1,0 +1,90 @@
+{
+  "parent_sha256": "76ec2579aea9ea48781d6bcb32820356055dc0b9d619c8505678f4fe9f159675",
+  "candidate_sha256": "6eea06bf4ba866fb2149c44601703aae1a8799ba1b4d44f24372e23f34f4aa1a",
+  "host_sha256": "3077ce7593b062d8c756116435346ce956ff1961a073aa74ffda55282903ee1e",
+  "shared_states": [
+    {
+      "case": "match",
+      "wait_error": 1.30385160446167e-08,
+      "conditional_road_change": 0.002315998077392578
+    },
+    {
+      "case": "join",
+      "wait_error": 0.0,
+      "conditional_road_change": 0.0
+    },
+    {
+      "case": "match",
+      "wait_error": 1.862645149230957e-09,
+      "conditional_road_change": 0.0003116130828857422
+    },
+    {
+      "case": "route",
+      "wait_error": 1.7881393432617188e-07,
+      "conditional_road_change": 0.0003012418746948242
+    },
+    {
+      "case": "match",
+      "wait_error": 1.6763806343078613e-08,
+      "conditional_road_change": 0.0009798407554626465
+    },
+    {
+      "case": "join",
+      "wait_error": 0.0,
+      "conditional_road_change": 0.0
+    },
+    {
+      "case": "match",
+      "wait_error": 1.862645149230957e-08,
+      "conditional_road_change": 0.0005622804164886475
+    },
+    {
+      "case": "route",
+      "wait_error": 2.2351741790771484e-07,
+      "conditional_road_change": 0.006640195846557617
+    },
+    {
+      "case": "mismatch",
+      "wait_error": 7.450580596923828e-09,
+      "conditional_road_change": 6.984919309616089e-08
+    },
+    {
+      "case": "mismatch",
+      "wait_error": 3.3527612686157227e-08,
+      "conditional_road_change": 4.0046870708465576e-07
+    },
+    {
+      "case": "homes",
+      "wait_error": 0.0,
+      "conditional_road_change": 0.0007001161575317383
+    },
+    {
+      "case": "destinations",
+      "wait_error": 8.195638656616211e-08,
+      "conditional_road_change": 0.0003833174705505371
+    },
+    {
+      "case": "quiet",
+      "wait_error": 0.0,
+      "conditional_road_change": 9.307865589391895e-11
+    },
+    {
+      "case": "quiet",
+      "wait_error": 0.0,
+      "conditional_road_change": 4.1380732174189916e-11
+    },
+    {
+      "case": "quiet",
+      "wait_error": 0.0,
+      "conditional_road_change": 1.5206182979454752e-09
+    },
+    {
+      "case": "quiet",
+      "wait_error": 0.0,
+      "conditional_road_change": 3.0341880119522102e-09
+    }
+  ],
+  "max_wait_error": 2.2351741790771484e-07,
+  "max_conditional_road_change": 0.006640195846557617,
+  "limits": "Disposable native PPO integration check. Shared-state invariance does not mean identical trajectories after different road actions."
+}

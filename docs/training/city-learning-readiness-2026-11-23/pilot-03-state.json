@@ -1,0 +1,59 @@
+{
+  "training_complete": true,
+  "checkpoints": [
+    {
+      "path": "checkpoints/city-000133120-20d5460d.zip",
+      "sha256": "04ced10a572d8121e2d1480101b6cc33631d3ba557eeb2dca480cb31615cf1d2",
+      "decisions": 133120,
+      "training_seconds": 91.16861984005664,
+      "next_seeds": [
+        98700032,
+        98700033,
+        98700034,
+        98700035,
+        98700036,
+        98700053,
+        98700054,
+        98700055,
+        98700056,
+        98700041,
+        98700042,
+        98700043,
+        98700044,
+        98700045,
+        98700062,
+        98700047
+      ],
+      "optimizer_entries": 22,
+      "epochs": 176,
+      "completed_games": 21
+    },
+    {
+      "path": "checkpoints/city-000147456-036cb6f7.zip",
+      "sha256": "8f076e027721e1de3bbcf3c337146dcc8cfceeb5fe9c2d7d52cb59ddafac865d",
+      "decisions": 147456,
+      "training_seconds": 187.80776151199825,
+      "next_seeds": [
+        98700048,
+        98700049,
+        98700082,
+        98700067,
+        98700068,
+        98700069,
+        98700086,
+        98700087,
+        98700072,
+        98700073,
+        98700058,
+        98700075,
+        98700092,
+        98700061,
+        98700078,
+        98700063
+      ],
+      "optimizer_entries": 22,
+      "epochs": 204,
+      "completed_games": 47
+    }
+  ]
+}

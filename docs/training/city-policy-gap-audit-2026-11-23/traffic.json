@@ -1,0 +1,2417 @@
+{
+  "models": [
+    "output/training/city-route-repair-calibration-01/calibrated-with-counters.zip",
+    "output/training/city-service-reserve-readiness-01/checkpoints/city-000086016-db6c8742.zip",
+    "output/training/city-service-long-01/checkpoints/city-002760704-bfd5f98e.zip",
+    "output/training/city-service-long-01/checkpoints/city-005316608-f47f325c.zip"
+  ],
+  "checkpoints_sha256": {
+    "output/training/city-route-repair-calibration-01/calibrated-with-counters.zip": "6ed31e8c655acb71b781652c36814045c979597ced464fbf12d6dafef07acd62",
+    "output/training/city-service-reserve-readiness-01/checkpoints/city-000086016-db6c8742.zip": "3631b5d13a1d3012134de3dbba51fc8c5e0a10af6b07bd790c5271d405bf15f7",
+    "output/training/city-service-long-01/checkpoints/city-002760704-bfd5f98e.zip": "8e90c34c1dbf12f1f8f10fe795f3b0c27118ea65ebe2769e4cbecbdc53ca227f",
+    "output/training/city-service-long-01/checkpoints/city-005316608-f47f325c.zip": "3cebdd6e7aa15112133d26b789b8ce86d7fa66a39d74b19a8f84d519dc6d2720"
+  },
+  "host_sha256": "d4207df2276a3d4935f0d479f9d5480663a43a894e5646424d4691a784a8d8fa",
+  "games": [
+    {
+      "stage": "traffic-priority",
+      "seed": 76530,
+      "results": {
+        "0": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.09339727600510829,
+            "upper": 0.4747465323619028,
+            "lower": 0.43185619163298894
+          },
+          "total_deliveries": 4,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 4,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.03076923076923077,
+          "ended_at": 65,
+          "native_game_over": true
+        },
+        "1": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.09315507928397565,
+            "upper": 0.47486991044036975,
+            "lower": 0.43197501027565455
+          },
+          "total_deliveries": 4,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 4,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.03076923076923077,
+          "ended_at": 65,
+          "native_game_over": true
+        },
+        "2": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.14174888394405466,
+            "upper": 0.44943190592086735,
+            "lower": 0.408819210135078
+          },
+          "total_deliveries": 4,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 4,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.03076923076923077,
+          "ended_at": 65,
+          "native_game_over": true
+        },
+        "3": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.20923063782544846,
+            "upper": 0.4141282562651711,
+            "lower": 0.3766411059093805
+          },
+          "total_deliveries": 4,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 4,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.03076923076923077,
+          "ended_at": 65,
+          "native_game_over": true
+        },
+        "upper": {
+          "first_road": "upper",
+          "first_probability": null,
+          "total_deliveries": 4,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 4,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.03076923076923077,
+          "ended_at": 65,
+          "native_game_over": true
+        },
+        "lower": {
+          "first_road": "lower",
+          "first_probability": null,
+          "total_deliveries": 16,
+          "urgent_deliveries": 16,
+          "served": {
+            "0": 0,
+            "1": 16
+          },
+          "mean_stopped_cars": 0.15,
+          "ended_at": 100,
+          "native_game_over": false
+        }
+      }
+    },
+    {
+      "stage": "traffic-priority",
+      "seed": 76531,
+      "results": {
+        "0": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.14299914667007765,
+            "upper": 0.3984804272198804,
+            "lower": 0.4585204261100419
+          },
+          "total_deliveries": 2,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 2,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.0,
+          "ended_at": 76.25,
+          "native_game_over": true
+        },
+        "1": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.14268473215951719,
+            "upper": 0.3986680924495486,
+            "lower": 0.4586471753909342
+          },
+          "total_deliveries": 2,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 2,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.0,
+          "ended_at": 76.25,
+          "native_game_over": true
+        },
+        "2": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.21367819186942055,
+            "upper": 0.3657294184807463,
+            "lower": 0.4205923896498332
+          },
+          "total_deliveries": 2,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 2,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.0,
+          "ended_at": 76.25,
+          "native_game_over": true
+        },
+        "3": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.3014906346797943,
+            "upper": 0.32473212480545044,
+            "lower": 0.37377724051475525
+          },
+          "total_deliveries": 2,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 2,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.0,
+          "ended_at": 76.25,
+          "native_game_over": true
+        },
+        "upper": {
+          "first_road": "upper",
+          "first_probability": null,
+          "total_deliveries": 2,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 2,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.0,
+          "ended_at": 76.25,
+          "native_game_over": true
+        },
+        "lower": {
+          "first_road": "lower",
+          "first_probability": null,
+          "total_deliveries": 14,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 0,
+            "1": 14
+          },
+          "mean_stopped_cars": 0.1,
+          "ended_at": 100,
+          "native_game_over": false
+        }
+      }
+    },
+    {
+      "stage": "traffic-priority",
+      "seed": 76532,
+      "results": {
+        "0": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.04441019892692566,
+            "upper": 0.49905383586883545,
+            "lower": 0.4565359652042389
+          },
+          "total_deliveries": 2,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 2,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.013157894736842105,
+          "ended_at": 75.60000000000001,
+          "native_game_over": true
+        },
+        "1": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.04430076479911804,
+            "upper": 0.4991128146648407,
+            "lower": 0.45658642053604126
+          },
+          "total_deliveries": 2,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 2,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.013157894736842105,
+          "ended_at": 75.60000000000001,
+          "native_game_over": true
+        },
+        "2": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.07392051346303945,
+            "upper": 0.4836368740959791,
+            "lower": 0.44244261244098143
+          },
+          "total_deliveries": 2,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 2,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.013157894736842105,
+          "ended_at": 75.60000000000001,
+          "native_game_over": true
+        },
+        "3": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.1213329703112308,
+            "upper": 0.45883934419003664,
+            "lower": 0.4198276854987325
+          },
+          "total_deliveries": 2,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 2,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.013157894736842105,
+          "ended_at": 75.60000000000001,
+          "native_game_over": true
+        },
+        "upper": {
+          "first_road": "upper",
+          "first_probability": null,
+          "total_deliveries": 2,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 2,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.013157894736842105,
+          "ended_at": 75.60000000000001,
+          "native_game_over": true
+        },
+        "lower": {
+          "first_road": "lower",
+          "first_probability": null,
+          "total_deliveries": 13,
+          "urgent_deliveries": 13,
+          "served": {
+            "0": 0,
+            "1": 13
+          },
+          "mean_stopped_cars": 0.15,
+          "ended_at": 100,
+          "native_game_over": false
+        }
+      }
+    },
+    {
+      "stage": "traffic-priority",
+      "seed": 76533,
+      "results": {
+        "0": {
+          "first_road": "lower",
+          "first_probability": {
+            "wait": 0.11765343301455478,
+            "upper": 0.39833475346370795,
+            "lower": 0.4840118135217373
+          },
+          "total_deliveries": 13,
+          "urgent_deliveries": 13,
+          "served": {
+            "0": 0,
+            "1": 13
+          },
+          "mean_stopped_cars": 0.13,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "1": {
+          "first_road": "lower",
+          "first_probability": {
+            "wait": 0.1173652278984372,
+            "upper": 0.3984890341533577,
+            "lower": 0.48414573794820515
+          },
+          "total_deliveries": 13,
+          "urgent_deliveries": 13,
+          "served": {
+            "0": 0,
+            "1": 13
+          },
+          "mean_stopped_cars": 0.13,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "2": {
+          "first_road": "lower",
+          "first_probability": {
+            "wait": 0.1697799164187958,
+            "upper": 0.37478110940568987,
+            "lower": 0.4554389741755143
+          },
+          "total_deliveries": 13,
+          "urgent_deliveries": 13,
+          "served": {
+            "0": 0,
+            "1": 13
+          },
+          "mean_stopped_cars": 0.13,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "3": {
+          "first_road": "lower",
+          "first_probability": {
+            "wait": 0.24173953719762878,
+            "upper": 0.34205903151895245,
+            "lower": 0.41620143128341874
+          },
+          "total_deliveries": 13,
+          "urgent_deliveries": 13,
+          "served": {
+            "0": 0,
+            "1": 13
+          },
+          "mean_stopped_cars": 0.14,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "upper": {
+          "first_road": "upper",
+          "first_probability": null,
+          "total_deliveries": 3,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 3,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.02857142857142857,
+          "ended_at": 70,
+          "native_game_over": true
+        },
+        "lower": {
+          "first_road": "lower",
+          "first_probability": null,
+          "total_deliveries": 13,
+          "urgent_deliveries": 13,
+          "served": {
+            "0": 0,
+            "1": 13
+          },
+          "mean_stopped_cars": 0.13,
+          "ended_at": 100,
+          "native_game_over": false
+        }
+      }
+    },
+    {
+      "stage": "traffic-priority",
+      "seed": 76534,
+      "results": {
+        "0": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.09487089231995069,
+            "upper": 0.46669741074152554,
+            "lower": 0.43843169693852374
+          },
+          "total_deliveries": 13,
+          "urgent_deliveries": 13,
+          "served": {
+            "0": 13,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.11,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "1": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.09465602322387764,
+            "upper": 0.4668056209923512,
+            "lower": 0.43853835578377115
+          },
+          "total_deliveries": 13,
+          "urgent_deliveries": 13,
+          "served": {
+            "0": 13,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.11,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "2": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.14596188471005225,
+            "upper": 0.4403590529889574,
+            "lower": 0.41367906230099033
+          },
+          "total_deliveries": 13,
+          "urgent_deliveries": 13,
+          "served": {
+            "0": 13,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.11,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "3": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.21719074249267578,
+            "upper": 0.40366560220718384,
+            "lower": 0.3791436553001404
+          },
+          "total_deliveries": 13,
+          "urgent_deliveries": 13,
+          "served": {
+            "0": 13,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.11,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "upper": {
+          "first_road": "upper",
+          "first_probability": null,
+          "total_deliveries": 13,
+          "urgent_deliveries": 13,
+          "served": {
+            "0": 13,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.11,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "lower": {
+          "first_road": "lower",
+          "first_probability": null,
+          "total_deliveries": 3,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 0,
+            "1": 3
+          },
+          "mean_stopped_cars": 0.013888888888888888,
+          "ended_at": 71.4,
+          "native_game_over": true
+        }
+      }
+    },
+    {
+      "stage": "traffic-priority",
+      "seed": 76535,
+      "results": {
+        "0": {
+          "first_road": "lower",
+          "first_probability": {
+            "wait": 0.10538278715551265,
+            "upper": 0.4163224181960752,
+            "lower": 0.4782947946484121
+          },
+          "total_deliveries": 3,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 0,
+            "1": 3
+          },
+          "mean_stopped_cars": 0.012345679012345678,
+          "ended_at": 80.7,
+          "native_game_over": true
+        },
+        "1": {
+          "first_road": "lower",
+          "first_probability": {
+            "wait": 0.10516495806094041,
+            "upper": 0.4164263525231515,
+            "lower": 0.47840868941590803
+          },
+          "total_deliveries": 3,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 0,
+            "1": 3
+          },
+          "mean_stopped_cars": 0.012345679012345678,
+          "ended_at": 80.7,
+          "native_game_over": true
+        },
+        "2": {
+          "first_road": "lower",
+          "first_probability": {
+            "wait": 0.16191424188145634,
+            "upper": 0.39000915899859134,
+            "lower": 0.44807659911995235
+          },
+          "total_deliveries": 3,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 0,
+            "1": 3
+          },
+          "mean_stopped_cars": 0.012345679012345678,
+          "ended_at": 80.7,
+          "native_game_over": true
+        },
+        "3": {
+          "first_road": "lower",
+          "first_probability": {
+            "wait": 0.2400155931699579,
+            "upper": 0.353632423756091,
+            "lower": 0.4063519830739511
+          },
+          "total_deliveries": 3,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 0,
+            "1": 3
+          },
+          "mean_stopped_cars": 0.012345679012345678,
+          "ended_at": 80.7,
+          "native_game_over": true
+        },
+        "upper": {
+          "first_road": "upper",
+          "first_probability": null,
+          "total_deliveries": 14,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 14,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.15,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "lower": {
+          "first_road": "lower",
+          "first_probability": null,
+          "total_deliveries": 3,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 0,
+            "1": 3
+          },
+          "mean_stopped_cars": 0.012345679012345678,
+          "ended_at": 80.7,
+          "native_game_over": true
+        }
+      }
+    },
+    {
+      "stage": "traffic-priority-swap",
+      "seed": 76530,
+      "results": {
+        "0": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.09674390573835935,
+            "upper": 0.4714390056467649,
+            "lower": 0.4318170886148758
+          },
+          "total_deliveries": 14,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 14,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.12,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "1": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.09651439996489883,
+            "upper": 0.4715553399754815,
+            "lower": 0.4319302600596197
+          },
+          "total_deliveries": 14,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 14,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.12,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "2": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.14651080529359564,
+            "upper": 0.44546888931188316,
+            "lower": 0.4080203053945212
+          },
+          "total_deliveries": 14,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 14,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.12,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "3": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.21364245990451486,
+            "upper": 0.410464727722634,
+            "lower": 0.3758928123728512
+          },
+          "total_deliveries": 14,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 14,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.12,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "upper": {
+          "first_road": "upper",
+          "first_probability": null,
+          "total_deliveries": 14,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 14,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.12,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "lower": {
+          "first_road": "lower",
+          "first_probability": null,
+          "total_deliveries": 4,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 0,
+            "1": 4
+          },
+          "mean_stopped_cars": 0.012345679012345678,
+          "ended_at": 80.7,
+          "native_game_over": true
+        }
+      }
+    },
+    {
+      "stage": "traffic-priority-swap",
+      "seed": 76531,
+      "results": {
+        "0": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.1563105378336035,
+            "upper": 0.3920708234352364,
+            "lower": 0.4516186387311601
+          },
+          "total_deliveries": 14,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 14,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.13,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "1": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.15596855479619406,
+            "upper": 0.3922706071017411,
+            "lower": 0.4517608381020648
+          },
+          "total_deliveries": 14,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 14,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.13,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "2": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.2324960713460456,
+            "upper": 0.3567759149786221,
+            "lower": 0.4107280136753323
+          },
+          "total_deliveries": 14,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 14,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.13,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "3": {
+          "first_road": "lower",
+          "first_probability": {
+            "wait": 0.32523764149062756,
+            "upper": 0.313515583083498,
+            "lower": 0.36124677542587447
+          },
+          "total_deliveries": 3,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 0,
+            "1": 3
+          },
+          "mean_stopped_cars": 0.012345679012345678,
+          "ended_at": 80.7,
+          "native_game_over": true
+        },
+        "upper": {
+          "first_road": "upper",
+          "first_probability": null,
+          "total_deliveries": 14,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 14,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.13,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "lower": {
+          "first_road": "lower",
+          "first_probability": null,
+          "total_deliveries": 3,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 0,
+            "1": 3
+          },
+          "mean_stopped_cars": 0.012345679012345678,
+          "ended_at": 80.7,
+          "native_game_over": true
+        }
+      }
+    },
+    {
+      "stage": "traffic-priority-swap",
+      "seed": 76532,
+      "results": {
+        "0": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.06431762081148013,
+            "upper": 0.48955574266943525,
+            "lower": 0.4461266365190846
+          },
+          "total_deliveries": 14,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 14,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.15,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "1": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.06415326415350556,
+            "upper": 0.4896444015469848,
+            "lower": 0.4462023342995097
+          },
+          "total_deliveries": 14,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 14,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.15,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "2": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.10315411253962424,
+            "upper": 0.4692310900642465,
+            "lower": 0.42761479739612923
+          },
+          "total_deliveries": 14,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 14,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.15,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "3": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.16202651205698418,
+            "upper": 0.4383946722506683,
+            "lower": 0.39957881569234754
+          },
+          "total_deliveries": 14,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 14,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.15,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "upper": {
+          "first_road": "upper",
+          "first_probability": null,
+          "total_deliveries": 14,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 14,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.15,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "lower": {
+          "first_road": "lower",
+          "first_probability": null,
+          "total_deliveries": 3,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 0,
+            "1": 3
+          },
+          "mean_stopped_cars": 0.0,
+          "ended_at": 67.8,
+          "native_game_over": true
+        }
+      }
+    },
+    {
+      "stage": "traffic-priority-swap",
+      "seed": 76533,
+      "results": {
+        "0": {
+          "first_road": "lower",
+          "first_probability": {
+            "wait": 0.07204800844192505,
+            "upper": 0.41999387741088867,
+            "lower": 0.5079581141471863
+          },
+          "total_deliveries": 3,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 0,
+            "1": 3
+          },
+          "mean_stopped_cars": 0.0,
+          "ended_at": 67.8,
+          "native_game_over": true
+        },
+        "1": {
+          "first_road": "lower",
+          "first_probability": {
+            "wait": 0.07184881449308937,
+            "upper": 0.42011035903877175,
+            "lower": 0.5080408264681389
+          },
+          "total_deliveries": 3,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 0,
+            "1": 3
+          },
+          "mean_stopped_cars": 0.0,
+          "ended_at": 67.8,
+          "native_game_over": true
+        },
+        "2": {
+          "first_road": "lower",
+          "first_probability": {
+            "wait": 0.10964426725042663,
+            "upper": 0.40295834550137355,
+            "lower": 0.4873973872481998
+          },
+          "total_deliveries": 3,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 0,
+            "1": 3
+          },
+          "mean_stopped_cars": 0.0,
+          "ended_at": 67.8,
+          "native_game_over": true
+        },
+        "3": {
+          "first_road": "lower",
+          "first_probability": {
+            "wait": 0.16534983619004975,
+            "upper": 0.3774820155655737,
+            "lower": 0.4571681482443765
+          },
+          "total_deliveries": 3,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 0,
+            "1": 3
+          },
+          "mean_stopped_cars": 0.0,
+          "ended_at": 67.8,
+          "native_game_over": true
+        },
+        "upper": {
+          "first_road": "upper",
+          "first_probability": null,
+          "total_deliveries": 14,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 14,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.09,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "lower": {
+          "first_road": "lower",
+          "first_probability": null,
+          "total_deliveries": 3,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 0,
+            "1": 3
+          },
+          "mean_stopped_cars": 0.0,
+          "ended_at": 67.8,
+          "native_game_over": true
+        }
+      }
+    },
+    {
+      "stage": "traffic-priority-swap",
+      "seed": 76534,
+      "results": {
+        "0": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.1667296215919981,
+            "upper": 0.42678745508733934,
+            "lower": 0.40648292332066255
+          },
+          "total_deliveries": 4,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 4,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.027777777777777776,
+          "ended_at": 71.95,
+          "native_game_over": true
+        },
+        "1": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.1663956120731408,
+            "upper": 0.4269553530087164,
+            "lower": 0.4066490349181428
+          },
+          "total_deliveries": 4,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 4,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.027777777777777776,
+          "ended_at": 71.95,
+          "native_game_over": true
+        },
+        "2": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.24186976302446347,
+            "upper": 0.38830623696409244,
+            "lower": 0.3698240000114441
+          },
+          "total_deliveries": 4,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 4,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.027777777777777776,
+          "ended_at": 71.95,
+          "native_game_over": true
+        },
+        "3": {
+          "first_road": "upper",
+          "first_probability": {
+            "wait": 0.3352945148944855,
+            "upper": 0.34048357605934143,
+            "lower": 0.3242219090461731
+          },
+          "total_deliveries": 4,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 4,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.027777777777777776,
+          "ended_at": 71.95,
+          "native_game_over": true
+        },
+        "upper": {
+          "first_road": "upper",
+          "first_probability": null,
+          "total_deliveries": 4,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 4,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.027777777777777776,
+          "ended_at": 71.95,
+          "native_game_over": true
+        },
+        "lower": {
+          "first_road": "lower",
+          "first_probability": null,
+          "total_deliveries": 16,
+          "urgent_deliveries": 16,
+          "served": {
+            "0": 0,
+            "1": 16
+          },
+          "mean_stopped_cars": 0.12,
+          "ended_at": 100,
+          "native_game_over": false
+        }
+      }
+    },
+    {
+      "stage": "traffic-priority-swap",
+      "seed": 76535,
+      "results": {
+        "0": {
+          "first_road": "lower",
+          "first_probability": {
+            "wait": 0.05085032168066314,
+            "upper": 0.4388706455223671,
+            "lower": 0.5102790327969698
+          },
+          "total_deliveries": 14,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 0,
+            "1": 14
+          },
+          "mean_stopped_cars": 0.16,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "1": {
+          "first_road": "lower",
+          "first_probability": {
+            "wait": 0.050734183548371864,
+            "upper": 0.4389279386640801,
+            "lower": 0.510337877787548
+          },
+          "total_deliveries": 14,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 0,
+            "1": 14
+          },
+          "mean_stopped_cars": 0.16,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "2": {
+          "first_road": "lower",
+          "first_probability": {
+            "wait": 0.08258733590739459,
+            "upper": 0.4241898795891598,
+            "lower": 0.4932227845034456
+          },
+          "total_deliveries": 14,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 0,
+            "1": 14
+          },
+          "mean_stopped_cars": 0.16,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "3": {
+          "first_road": "lower",
+          "first_probability": {
+            "wait": 0.13134731548052006,
+            "upper": 0.4016073704005386,
+            "lower": 0.46704531411894135
+          },
+          "total_deliveries": 14,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 0,
+            "1": 14
+          },
+          "mean_stopped_cars": 0.16,
+          "ended_at": 100,
+          "native_game_over": false
+        },
+        "upper": {
+          "first_road": "upper",
+          "first_probability": null,
+          "total_deliveries": 2,
+          "urgent_deliveries": 0,
+          "served": {
+            "0": 2,
+            "1": 0
+          },
+          "mean_stopped_cars": 0.012987012987012988,
+          "ended_at": 76.4,
+          "native_game_over": true
+        },
+        "lower": {
+          "first_road": "lower",
+          "first_probability": null,
+          "total_deliveries": 14,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 0,
+            "1": 14
+          },
+          "mean_stopped_cars": 0.16,
+          "ended_at": 100,
+          "native_game_over": false
+        }
+      }
+    },
+    {
+      "stage": "traffic-junction-low-live",
+      "seed": 78930,
+      "results": {
+        "0": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.3916377504806691,
+            "feeder": 8.622394761383883e-09,
+            "separate-exit": 0.6083137053750592
+          },
+          "total_deliveries": 11,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 0,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.047619047619047616,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "1": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.7610671441234574,
+            "feeder": 2.909486405176499e-09,
+            "separate-exit": 0.2389139844366041
+          },
+          "total_deliveries": 11,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 0,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.047619047619047616,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "2": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.8757780558302194,
+            "feeder": 2.2073848830174247e-09,
+            "separate-exit": 0.12420250146347166
+          },
+          "total_deliveries": 11,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 0,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.05952380952380952,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "3": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.9370450240551055,
+            "feeder": 2.325362507434758e-10,
+            "separate-exit": 0.06289345679179598
+          },
+          "total_deliveries": 11,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 0,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.05952380952380952,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "feeder": {
+          "first_road": "feeder",
+          "first_probability": null,
+          "total_deliveries": 16,
+          "urgent_deliveries": 16,
+          "served": {
+            "0": 0,
+            "1": 16
+          },
+          "mean_stopped_cars": 0.15476190476190477,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "separate-exit": {
+          "first_road": "separate-exit",
+          "first_probability": null,
+          "total_deliveries": 12,
+          "urgent_deliveries": 12,
+          "served": {
+            "0": 0,
+            "1": 12
+          },
+          "mean_stopped_cars": 0.047619047619047616,
+          "ended_at": 120,
+          "native_game_over": false
+        }
+      }
+    },
+    {
+      "stage": "traffic-junction-low-live",
+      "seed": 78931,
+      "results": {
+        "0": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.3607333869156331,
+            "feeder": 1.0059156092741754e-08,
+            "separate-exit": 0.6391990728756551
+          },
+          "total_deliveries": 12,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 1,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.023809523809523808,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "1": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.736286428856497,
+            "feeder": 3.5750099079724797e-09,
+            "separate-exit": 0.26368598966274287
+          },
+          "total_deliveries": 12,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 1,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.05952380952380952,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "2": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.8636252221487591,
+            "feeder": 2.6706643369834004e-09,
+            "separate-exit": 0.1363469948428164
+          },
+          "total_deliveries": 12,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 1,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.03571428571428571,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "3": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.932078858670985,
+            "feeder": 2.846046793673194e-10,
+            "separate-exit": 0.06783840953203715
+          },
+          "total_deliveries": 12,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 1,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.047619047619047616,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "feeder": {
+          "first_road": "feeder",
+          "first_probability": null,
+          "total_deliveries": 15,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 1,
+            "1": 14
+          },
+          "mean_stopped_cars": 0.23809523809523808,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "separate-exit": {
+          "first_road": "separate-exit",
+          "first_probability": null,
+          "total_deliveries": 12,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 1,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.023809523809523808,
+          "ended_at": 120,
+          "native_game_over": false
+        }
+      }
+    },
+    {
+      "stage": "traffic-junction-low-live",
+      "seed": 78932,
+      "results": {
+        "0": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.23472094780280353,
+            "feeder": 1.1923797362184026e-13,
+            "separate-exit": 0.7650853585477901
+          },
+          "total_deliveries": 16,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 5,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.047619047619047616,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "1": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.6026703812023678,
+            "feeder": 7.233969843434338e-14,
+            "separate-exit": 0.39721335566138205
+          },
+          "total_deliveries": 16,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 5,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.047619047619047616,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "2": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.7834193886307383,
+            "feeder": 2.692647631332462e-14,
+            "separate-exit": 0.21649465304689203
+          },
+          "total_deliveries": 16,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 5,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.03571428571428571,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "3": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.8913212070604108,
+            "feeder": 6.48431454089933e-14,
+            "separate-exit": 0.10741910637396954
+          },
+          "total_deliveries": 16,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 5,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.03571428571428571,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "feeder": {
+          "first_road": "feeder",
+          "first_probability": null,
+          "total_deliveries": 20,
+          "urgent_deliveries": 19,
+          "served": {
+            "0": 1,
+            "1": 19
+          },
+          "mean_stopped_cars": 0.19047619047619047,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "separate-exit": {
+          "first_road": "separate-exit",
+          "first_probability": null,
+          "total_deliveries": 16,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 5,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.047619047619047616,
+          "ended_at": 120,
+          "native_game_over": false
+        }
+      }
+    },
+    {
+      "stage": "traffic-junction-low-live",
+      "seed": 78933,
+      "results": {
+        "0": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.5027302081661646,
+            "feeder": 6.132965903269956e-09,
+            "separate-exit": 0.497235404785619
+          },
+          "total_deliveries": 13,
+          "urgent_deliveries": 10,
+          "served": {
+            "0": 3,
+            "1": 10
+          },
+          "mean_stopped_cars": 0.023809523809523808,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "1": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.8333972023517359,
+            "feeder": 1.7715471157111748e-09,
+            "separate-exit": 0.1665913895096232
+          },
+          "total_deliveries": 14,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 3,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.0,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "2": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.91455503919345,
+            "feeder": 1.3205500652007989e-09,
+            "separate-exit": 0.08543336822716184
+          },
+          "total_deliveries": 13,
+          "urgent_deliveries": 10,
+          "served": {
+            "0": 3,
+            "1": 10
+          },
+          "mean_stopped_cars": 0.03571428571428571,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "3": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.9547477475673567,
+            "feeder": 1.4588528254994054e-10,
+            "separate-exit": 0.04521409192518432
+          },
+          "total_deliveries": 13,
+          "urgent_deliveries": 10,
+          "served": {
+            "0": 3,
+            "1": 10
+          },
+          "mean_stopped_cars": 0.03571428571428571,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "feeder": {
+          "first_road": "feeder",
+          "first_probability": null,
+          "total_deliveries": 18,
+          "urgent_deliveries": 17,
+          "served": {
+            "0": 1,
+            "1": 17
+          },
+          "mean_stopped_cars": 0.5595238095238095,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "separate-exit": {
+          "first_road": "separate-exit",
+          "first_probability": null,
+          "total_deliveries": 14,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 3,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.023809523809523808,
+          "ended_at": 120,
+          "native_game_over": false
+        }
+      }
+    },
+    {
+      "stage": "traffic-junction-low-live",
+      "seed": 78934,
+      "results": {
+        "0": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.3436047287357738,
+            "feeder": 9.613919968266194e-09,
+            "separate-exit": 0.6563407523862026
+          },
+          "total_deliveries": 12,
+          "urgent_deliveries": 12,
+          "served": {
+            "0": 0,
+            "1": 12
+          },
+          "mean_stopped_cars": 0.03571428571428571,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "1": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.7214619272760118,
+            "feeder": 3.5108695440441372e-09,
+            "separate-exit": 0.2785151736524108
+          },
+          "total_deliveries": 11,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 0,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.03571428571428571,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "2": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.8535724891597101,
+            "feeder": 2.6711606301798177e-09,
+            "separate-exit": 0.1464039983643997
+          },
+          "total_deliveries": 11,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 0,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.03571428571428571,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "3": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.9261997312032101,
+            "feeder": 2.858404430874316e-10,
+            "separate-exit": 0.07372883953925677
+          },
+          "total_deliveries": 10,
+          "urgent_deliveries": 10,
+          "served": {
+            "0": 0,
+            "1": 10
+          },
+          "mean_stopped_cars": 0.047619047619047616,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "feeder": {
+          "first_road": "feeder",
+          "first_probability": null,
+          "total_deliveries": 15,
+          "urgent_deliveries": 15,
+          "served": {
+            "0": 0,
+            "1": 15
+          },
+          "mean_stopped_cars": 0.11904761904761904,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "separate-exit": {
+          "first_road": "separate-exit",
+          "first_probability": null,
+          "total_deliveries": 12,
+          "urgent_deliveries": 12,
+          "served": {
+            "0": 0,
+            "1": 12
+          },
+          "mean_stopped_cars": 0.03571428571428571,
+          "ended_at": 120,
+          "native_game_over": false
+        }
+      }
+    },
+    {
+      "stage": "traffic-junction-low-live",
+      "seed": 78935,
+      "results": {
+        "0": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.29903849379473085,
+            "feeder": 1.338164443691159e-13,
+            "separate-exit": 0.7007632119661039
+          },
+          "total_deliveries": 12,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 1,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.07142857142857142,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "1": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.6784900033231934,
+            "feeder": 7.132227015201324e-14,
+            "separate-exit": 0.3214053607504351
+          },
+          "total_deliveries": 12,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 1,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.07142857142857142,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "2": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.828441692459875,
+            "feeder": 2.6226393565616312e-14,
+            "separate-exit": 0.17148275942113309
+          },
+          "total_deliveries": 12,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 1,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.07142857142857142,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "3": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.9121184014147383,
+            "feeder": 6.264547027653205e-14,
+            "separate-exit": 0.08680404403962502
+          },
+          "total_deliveries": 12,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 1,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.07142857142857142,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "feeder": {
+          "first_road": "feeder",
+          "first_probability": null,
+          "total_deliveries": 15,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 1,
+            "1": 14
+          },
+          "mean_stopped_cars": 0.10714285714285714,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "separate-exit": {
+          "first_road": "separate-exit",
+          "first_probability": null,
+          "total_deliveries": 13,
+          "urgent_deliveries": 12,
+          "served": {
+            "0": 1,
+            "1": 12
+          },
+          "mean_stopped_cars": 0.03571428571428571,
+          "ended_at": 120,
+          "native_game_over": false
+        }
+      }
+    },
+    {
+      "stage": "traffic-junction-high-live",
+      "seed": 78930,
+      "results": {
+        "0": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.6298040503212023,
+            "feeder": 5.6528530771767664e-09,
+            "separate-exit": 0.37015198224674223
+          },
+          "total_deliveries": 35,
+          "urgent_deliveries": 25,
+          "served": {
+            "0": 25,
+            "1": 10
+          },
+          "mean_stopped_cars": 0.8690476190476191,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "1": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.8938603884980765,
+            "feeder": 1.3802974145741205e-09,
+            "separate-exit": 0.10612713412287833
+          },
+          "total_deliveries": 35,
+          "urgent_deliveries": 25,
+          "served": {
+            "0": 25,
+            "1": 10
+          },
+          "mean_stopped_cars": 0.6071428571428571,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "2": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.9453778813998974,
+            "feeder": 1.0764222359109302e-09,
+            "separate-exit": 0.054608527005879946
+          },
+          "total_deliveries": 35,
+          "urgent_deliveries": 25,
+          "served": {
+            "0": 25,
+            "1": 10
+          },
+          "mean_stopped_cars": 0.6071428571428571,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "3": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.9722881195843969,
+            "feeder": 1.0203637738917334e-10,
+            "separate-exit": 0.027660795906770497
+          },
+          "total_deliveries": 35,
+          "urgent_deliveries": 25,
+          "served": {
+            "0": 25,
+            "1": 10
+          },
+          "mean_stopped_cars": 0.6071428571428571,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "feeder": {
+          "first_road": "feeder",
+          "first_probability": null,
+          "total_deliveries": 29,
+          "urgent_deliveries": 18,
+          "served": {
+            "0": 18,
+            "1": 11
+          },
+          "mean_stopped_cars": 6.285714285714286,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "separate-exit": {
+          "first_road": "separate-exit",
+          "first_probability": null,
+          "total_deliveries": 35,
+          "urgent_deliveries": 25,
+          "served": {
+            "0": 25,
+            "1": 10
+          },
+          "mean_stopped_cars": 0.8690476190476191,
+          "ended_at": 120,
+          "native_game_over": false
+        }
+      }
+    },
+    {
+      "stage": "traffic-junction-high-live",
+      "seed": 78931,
+      "results": {
+        "0": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.37727312745448804,
+            "feeder": 9.84807851862777e-09,
+            "separate-exit": 0.6226336814600111
+          },
+          "total_deliveries": 30,
+          "urgent_deliveries": 19,
+          "served": {
+            "0": 19,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.27380952380952384,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "1": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.749794335154617,
+            "feeder": 3.3838568423352937e-09,
+            "separate-exit": 0.250168611923984
+          },
+          "total_deliveries": 30,
+          "urgent_deliveries": 19,
+          "served": {
+            "0": 19,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.20238095238095238,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "2": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.8719151420011271,
+            "feeder": 2.55631372250192e-09,
+            "separate-exit": 0.1280466227855886
+          },
+          "total_deliveries": 30,
+          "urgent_deliveries": 19,
+          "served": {
+            "0": 19,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.2261904761904762,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "3": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.9371760183352481,
+            "feeder": 2.511911590348872e-10,
+            "separate-exit": 0.06270202444546583
+          },
+          "total_deliveries": 30,
+          "urgent_deliveries": 19,
+          "served": {
+            "0": 19,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.2261904761904762,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "feeder": {
+          "first_road": "feeder",
+          "first_probability": null,
+          "total_deliveries": 31,
+          "urgent_deliveries": 18,
+          "served": {
+            "0": 18,
+            "1": 13
+          },
+          "mean_stopped_cars": 2.607142857142857,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "separate-exit": {
+          "first_road": "separate-exit",
+          "first_probability": null,
+          "total_deliveries": 30,
+          "urgent_deliveries": 19,
+          "served": {
+            "0": 19,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.27380952380952384,
+          "ended_at": 120,
+          "native_game_over": false
+        }
+      }
+    },
+    {
+      "stage": "traffic-junction-high-live",
+      "seed": 78932,
+      "results": {
+        "0": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.3236719175230029,
+            "feeder": 8.482538434112841e-14,
+            "separate-exit": 0.6761675666423019
+          },
+          "total_deliveries": 32,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 21,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.5952380952380952,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "1": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.7028694567952697,
+            "feeder": 4.3848458814194224e-14,
+            "separate-exit": 0.2970485266648792
+          },
+          "total_deliveries": 32,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 21,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.5952380952380952,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "2": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.85397142738793,
+            "feeder": 1.447759226266958e-14,
+            "separate-exit": 0.14597320653549095
+          },
+          "total_deliveries": 32,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 21,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.5952380952380952,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "3": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.9321686326638002,
+            "feeder": 3.4278805636456456e-14,
+            "separate-exit": 0.06696104043629403
+          },
+          "total_deliveries": 32,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 21,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.5952380952380952,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "feeder": {
+          "first_road": "feeder",
+          "first_probability": null,
+          "total_deliveries": 31,
+          "urgent_deliveries": 14,
+          "served": {
+            "0": 17,
+            "1": 14
+          },
+          "mean_stopped_cars": 4.380952380952381,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "separate-exit": {
+          "first_road": "separate-exit",
+          "first_probability": null,
+          "total_deliveries": 32,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 21,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.5952380952380952,
+          "ended_at": 120,
+          "native_game_over": false
+        }
+      }
+    },
+    {
+      "stage": "traffic-junction-high-live",
+      "seed": 78933,
+      "results": {
+        "0": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.6274314253712588,
+            "feeder": 4.7711157421903635e-09,
+            "separate-exit": 0.37254537534714666
+          },
+          "total_deliveries": 31,
+          "urgent_deliveries": 10,
+          "served": {
+            "0": 21,
+            "1": 10
+          },
+          "mean_stopped_cars": 0.6904761904761905,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "1": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.8928421692219879,
+            "feeder": 1.1774026465239417e-09,
+            "separate-exit": 0.10715122498400717
+          },
+          "total_deliveries": 31,
+          "urgent_deliveries": 9,
+          "served": {
+            "0": 22,
+            "1": 9
+          },
+          "mean_stopped_cars": 0.6190476190476191,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "2": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.9451057446086756,
+            "feeder": 8.963448441356374e-10,
+            "separate-exit": 0.05488729180602603
+          },
+          "total_deliveries": 31,
+          "urgent_deliveries": 9,
+          "served": {
+            "0": 22,
+            "1": 9
+          },
+          "mean_stopped_cars": 0.6190476190476191,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "3": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.9710431474104079,
+            "feeder": 9.299882628216551e-11,
+            "separate-exit": 0.028931659746035204
+          },
+          "total_deliveries": 29,
+          "urgent_deliveries": 9,
+          "served": {
+            "0": 20,
+            "1": 9
+          },
+          "mean_stopped_cars": 0.7380952380952381,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "feeder": {
+          "first_road": "feeder",
+          "first_probability": null,
+          "total_deliveries": 31,
+          "urgent_deliveries": 13,
+          "served": {
+            "0": 18,
+            "1": 13
+          },
+          "mean_stopped_cars": 4.404761904761905,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "separate-exit": {
+          "first_road": "separate-exit",
+          "first_probability": null,
+          "total_deliveries": 31,
+          "urgent_deliveries": 11,
+          "served": {
+            "0": 20,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.36904761904761907,
+          "ended_at": 120,
+          "native_game_over": false
+        }
+      }
+    },
+    {
+      "stage": "traffic-junction-high-live",
+      "seed": 78934,
+      "results": {
+        "0": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.45159407707442695,
+            "feeder": 7.782562396870852e-09,
+            "separate-exit": 0.5483473087297978
+          },
+          "total_deliveries": 35,
+          "urgent_deliveries": 24,
+          "served": {
+            "0": 24,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.7857142857142857,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "1": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.8029142187685215,
+            "feeder": 2.395809333911786e-09,
+            "separate-exit": 0.19706493995234012
+          },
+          "total_deliveries": 35,
+          "urgent_deliveries": 24,
+          "served": {
+            "0": 24,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.7857142857142857,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "2": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.9012853960271989,
+            "feeder": 1.7688824516917115e-09,
+            "separate-exit": 0.0986935341334414
+          },
+          "total_deliveries": 35,
+          "urgent_deliveries": 24,
+          "served": {
+            "0": 24,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.7857142857142857,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "3": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.9513384188437225,
+            "feeder": 1.764018725582317e-10,
+            "separate-exit": 0.048594960873974684
+          },
+          "total_deliveries": 33,
+          "urgent_deliveries": 24,
+          "served": {
+            "0": 24,
+            "1": 9
+          },
+          "mean_stopped_cars": 1.0833333333333333,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "feeder": {
+          "first_road": "feeder",
+          "first_probability": null,
+          "total_deliveries": 31,
+          "urgent_deliveries": 18,
+          "served": {
+            "0": 18,
+            "1": 13
+          },
+          "mean_stopped_cars": 5.523809523809524,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "separate-exit": {
+          "first_road": "separate-exit",
+          "first_probability": null,
+          "total_deliveries": 35,
+          "urgent_deliveries": 24,
+          "served": {
+            "0": 24,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.44047619047619047,
+          "ended_at": 120,
+          "native_game_over": false
+        }
+      }
+    },
+    {
+      "stage": "traffic-junction-high-live",
+      "seed": 78935,
+      "results": {
+        "0": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.4463643200319235,
+            "feeder": 1.0460309553527212e-13,
+            "separate-exit": 0.5535431956522291
+          },
+          "total_deliveries": 31,
+          "urgent_deliveries": 19,
+          "served": {
+            "0": 19,
+            "1": 12
+          },
+          "mean_stopped_cars": 0.16666666666666666,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "1": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.7994400567390427,
+            "feeder": 4.433039933149209e-14,
+            "separate-exit": 0.20052116383095792
+          },
+          "total_deliveries": 31,
+          "urgent_deliveries": 19,
+          "served": {
+            "0": 19,
+            "1": 12
+          },
+          "mean_stopped_cars": 0.16666666666666666,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "2": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.903969659054058,
+            "feeder": 1.437723253040179e-14,
+            "separate-exit": 0.09600491965713062
+          },
+          "total_deliveries": 30,
+          "urgent_deliveries": 19,
+          "served": {
+            "0": 19,
+            "1": 11
+          },
+          "mean_stopped_cars": 0.30952380952380953,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "3": {
+          "first_road": "separate-exit",
+          "first_probability": {
+            "wait": 0.9549317007129551,
+            "feeder": 3.341111381158026e-14,
+            "separate-exit": 0.044687290882943945
+          },
+          "total_deliveries": 29,
+          "urgent_deliveries": 19,
+          "served": {
+            "0": 19,
+            "1": 10
+          },
+          "mean_stopped_cars": 0.42857142857142855,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "feeder": {
+          "first_road": "feeder",
+          "first_probability": null,
+          "total_deliveries": 30,
+          "urgent_deliveries": 17,
+          "served": {
+            "0": 17,
+            "1": 13
+          },
+          "mean_stopped_cars": 2.3333333333333335,
+          "ended_at": 120,
+          "native_game_over": false
+        },
+        "separate-exit": {
+          "first_road": "separate-exit",
+          "first_probability": null,
+          "total_deliveries": 31,
+          "urgent_deliveries": 19,
+          "served": {
+            "0": 19,
+            "1": 12
+          },
+          "mean_stopped_cars": 0.16666666666666666,
+          "ended_at": 120,
+          "native_game_over": false
+        }
+      }
+    }
+  ]
+}

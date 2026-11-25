@@ -1,0 +1,23 @@
+{
+  "status": "complete",
+  "pid": 205466,
+  "started": "2026-11-24T12:46:07.259022+02:00",
+  "training_seconds": 958.7662694880273,
+  "segments": 1,
+  "current_checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-task-batch-01/segment-001/final.zip",
+  "best_checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-extension-01/segment-001/midpoint.zip",
+  "failed_reviews": 1,
+  "updated": "2026-11-24T13:03:34.276074+02:00",
+  "active_segment": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-task-batch-01/segment-001",
+  "phase": "finished",
+  "current_sha256": "1329095c5ca9eba18d3858b2b1441a376f8e731fd4a3266114f94b778c720790",
+  "active_review": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-task-batch-01/review-001",
+  "last_review": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-task-batch-01/review-001",
+  "last_decision": {
+    "retained": false,
+    "promote": false,
+    "failures": 1,
+    "stop": false
+  },
+  "best_sha256": "17e8dd3b018f9e9ccec58ea72181f2f05c07b2f6b0e236ed6536ac10dd67803d"
+}

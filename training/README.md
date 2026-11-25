@@ -1,3 +1,11 @@
+[Latest road-reservation results](../docs/training/road-reserve-learning-2026-11-23/README.md): native-score PPO learns the controlled task, but city scores regress; retain prior checkpoints. No run is active.
+
+[Current five-stage results and checkpoint selection](../docs/training/five-stage-city-learning-2026-11-23/README.md): bounded trials finished; calibration improves independent city scores, learned demand transfers incompletely, waiting remains open. No overnight run is active.
+
+> **Current PPO work.** Read the [completed growing-city service report](../docs/training/city-service-long-results-2026-11-23/README.md), [status](CURRENT_STATUS.md), and [plan](PLAN.md).
+
+> **Historical Maskable-PPO restart:** read [current plan](PLAN.md) and [implementation check-in](../docs/training/check-in-2026-11-16/README.md). No training is authorized. The new hierarchy has no finished updater/launch command; historical training commands below are not the restart pipeline.
+
 # Local reinforcement learning experiment
 
 For the new traffic-light v3 model, [overnight training guide](SIGNALS.md) contains

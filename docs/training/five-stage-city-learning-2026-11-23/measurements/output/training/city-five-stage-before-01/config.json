@@ -1,0 +1,22 @@
+{
+  "models": [
+    "output/training/city-established-pilot-01/checkpoints/city-000425984-7ec13846.zip"
+  ],
+  "hashes": {
+    "output/training/city-established-pilot-01/checkpoints/city-000425984-7ec13846.zip": "637dcd6f1e05ac61869e7b7ecb9e0a31fb41e8305ae5c89b091218a8a3fd651a"
+  },
+  "dll": "output/city-five-stage-build-01/bin/TrafficHost/release/TrafficHost.dll",
+  "host_sha256": "3cdfa9ceaf8d938bdc94173b71c5ef0035c54f038f66133d12c6f0e0ad1278ec",
+  "seed_start": 118200000,
+  "count": 8,
+  "lessons": [
+    "midgame-network-join",
+    "midgame-network-route",
+    "midgame-network-delay",
+    "midgame-network-quiet",
+    "traffic-priority-established",
+    "traffic-priority-established-swap",
+    "traffic-junction-low-live",
+    "traffic-junction-high-live"
+  ]
+}

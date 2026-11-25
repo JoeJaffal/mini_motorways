@@ -1,0 +1,26 @@
+{
+  "exact": true,
+  "expected": {
+    "case": "mismatch",
+    "seed": 246000000,
+    "action_seed": 246007000,
+    "first_action": 3721,
+    "first_correct": false,
+    "first_correct_probability": 0.6267274207208031,
+    "initial_stock": 3,
+    "initial_time": 27,
+    "final_time": 87,
+    "builds": 5,
+    "remaining_stock": 0,
+    "native_deliveries": 0,
+    "native_game_over": false,
+    "decisions": 65,
+    "all_targets_served": false,
+    "initially_unserved_targets": [
+      0
+    ],
+    "initially_unserved_now_served": false,
+    "no_build": false,
+    "mode": "native"
+  }
+}

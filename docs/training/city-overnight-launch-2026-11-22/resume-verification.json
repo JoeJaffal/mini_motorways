@@ -1,0 +1,277 @@
+[
+  {
+    "local_run": "city-overnight-resume-smoke-01",
+    "workers": 4,
+    "requested_seconds": 64.8,
+    "completed": true,
+    "starts": [
+      {
+        "decisions": 0,
+        "optimizer_entries": 0,
+        "epochs": 0,
+        "next_scenario_seeds": [
+          78100000,
+          78100001,
+          78100002,
+          78100003
+        ]
+      },
+      {
+        "decisions": 4096,
+        "optimizer_entries": 22,
+        "epochs": 32,
+        "next_scenario_seeds": [
+          78100024,
+          78100017,
+          78100018,
+          78100023
+        ]
+      },
+      {
+        "decisions": 5120,
+        "optimizer_entries": 22,
+        "epochs": 40,
+        "next_scenario_seeds": [
+          78100032,
+          78100025,
+          78100026,
+          78100027
+        ]
+      }
+    ],
+    "checkpoints": [
+      {
+        "path": "checkpoints/city-000001024-ae3b3e3b.zip",
+        "sha256": "6e64ec0c71a0859c8789384f74ec8c95ac8d3bcf50ff920c9e5d2ec4f379bf0b",
+        "decisions": 1024,
+        "training_seconds": 9.439710858976468,
+        "next_seeds": [
+          78100008,
+          78100009,
+          78100006,
+          78100011
+        ],
+        "optimizer_entries": 22,
+        "epochs": 8,
+        "completed_games": 3
+      },
+      {
+        "path": "checkpoints/city-000002048-1fdbf7f6.zip",
+        "sha256": "e82be4c3871f5a7e105217cbae428af46921a24954811f85267edf0fef399aec",
+        "decisions": 2048,
+        "training_seconds": 16.545732691069134,
+        "next_seeds": [
+          78100012,
+          78100013,
+          78100014,
+          78100015
+        ],
+        "optimizer_entries": 22,
+        "epochs": 16,
+        "completed_games": 8
+      },
+      {
+        "path": "checkpoints/city-000003072-c400211e.zip",
+        "sha256": "8c586add9e2d58299bb422b1b660eacd226b0fcd05ff43c6ce5c6bcf51751700",
+        "decisions": 3072,
+        "training_seconds": 23.965032087056898,
+        "next_seeds": [
+          78100020,
+          78100017,
+          78100018,
+          78100019
+        ],
+        "optimizer_entries": 22,
+        "epochs": 24,
+        "completed_games": 13
+      },
+      {
+        "path": "checkpoints/city-000004096-a770679d.zip",
+        "sha256": "b05cad68b0374f001f53d55760849706b046b7f31984b4df42d76b3e357baaaa",
+        "decisions": 4096,
+        "training_seconds": 31.457166283973493,
+        "next_seeds": [
+          78100024,
+          78100017,
+          78100018,
+          78100023
+        ],
+        "optimizer_entries": 22,
+        "epochs": 32,
+        "completed_games": 15
+      },
+      {
+        "path": "checkpoints/city-000005120-f5ac326e.zip",
+        "sha256": "20b997a0cd8fbfe08eff15df2927deb7cf1c129b7bf02277808c0423b3f2355e",
+        "decisions": 5120,
+        "training_seconds": 40.34880543197505,
+        "next_seeds": [
+          78100032,
+          78100025,
+          78100026,
+          78100027
+        ],
+        "optimizer_entries": 22,
+        "epochs": 40,
+        "completed_games": 18
+      },
+      {
+        "path": "checkpoints/city-000006144-5b8cd8f4.zip",
+        "sha256": "31dea1c14c379a2d6d1fa74afee36cfbbd689e079a17e5276528dd934dc5bfe2",
+        "decisions": 6144,
+        "training_seconds": 49.65882946597412,
+        "next_seeds": [
+          78100036,
+          78100033,
+          78100034,
+          78100035
+        ],
+        "optimizer_entries": 22,
+        "epochs": 48,
+        "completed_games": 21
+      },
+      {
+        "path": "checkpoints/city-000007168-3d1eff6e.zip",
+        "sha256": "c35e9d28a586c24fc90c26adff3c3cc19dfbfd579f2d933e19742d2966375326",
+        "decisions": 7168,
+        "training_seconds": 57.47650897188578,
+        "next_seeds": [
+          78100040,
+          78100037,
+          78100034,
+          78100035
+        ],
+        "optimizer_entries": 22,
+        "epochs": 56,
+        "completed_games": 23
+      },
+      {
+        "path": "checkpoints/city-000008192-1477b77a.zip",
+        "sha256": "f1970ccd4e69efb6445f13a06284f019806457c6040032a0ee08d9858e12d0bf",
+        "decisions": 8192,
+        "training_seconds": 64.93349241791293,
+        "next_seeds": [
+          78100044,
+          78100037,
+          78100038,
+          78100039
+        ],
+        "optimizer_entries": 22,
+        "epochs": 64,
+        "completed_games": 26
+      }
+    ],
+    "verified_adam_steps": [
+      {
+        "decisions": 4096,
+        "step": 256
+      },
+      {
+        "decisions": 5120,
+        "step": 320
+      },
+      {
+        "decisions": 8192,
+        "step": 512
+      }
+    ]
+  },
+  {
+    "local_run": "city-overnight-32w-smoke-01",
+    "workers": 32,
+    "requested_seconds": 0.36000000000000004,
+    "completed": true,
+    "starts": [
+      {
+        "decisions": 0,
+        "optimizer_entries": 0,
+        "epochs": 0,
+        "next_scenario_seeds": [
+          78100000,
+          78100001,
+          78100002,
+          78100003,
+          78100004,
+          78100005,
+          78100006,
+          78100007,
+          78100008,
+          78100009,
+          78100010,
+          78100011,
+          78100012,
+          78100013,
+          78100014,
+          78100015,
+          78100016,
+          78100017,
+          78100018,
+          78100019,
+          78100020,
+          78100021,
+          78100022,
+          78100023,
+          78100024,
+          78100025,
+          78100026,
+          78100027,
+          78100028,
+          78100029,
+          78100030,
+          78100031
+        ]
+      }
+    ],
+    "checkpoints": [
+      {
+        "path": "checkpoints/city-000004096-0b5680b8.zip",
+        "sha256": "0a451fae35045a2679bd6ec23c8f42eda6853e0f95fdc5935064e258aa673804",
+        "decisions": 4096,
+        "training_seconds": 16.33200803596992,
+        "next_seeds": [
+          78100032,
+          78100033,
+          78100034,
+          78100035,
+          78100036,
+          78100037,
+          78100038,
+          78100039,
+          78100040,
+          78100041,
+          78100042,
+          78100043,
+          78100044,
+          78100045,
+          78100046,
+          78100047,
+          78100048,
+          78100049,
+          78100050,
+          78100051,
+          78100052,
+          78100053,
+          78100054,
+          78100055,
+          78100056,
+          78100057,
+          78100058,
+          78100059,
+          78100060,
+          78100061,
+          78100062,
+          78100063
+        ],
+        "optimizer_entries": 22,
+        "epochs": 4,
+        "completed_games": 0
+      }
+    ],
+    "verified_adam_steps": [
+      {
+        "decisions": 4096,
+        "step": 256
+      }
+    ]
+  }
+]

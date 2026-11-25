@@ -1,0 +1,15 @@
+{
+  "status": "failed",
+  "phase": "practice-final",
+  "pid": 927046,
+  "started": "2026-11-25T21:05:27.569978+02:00",
+  "parent": "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01/training/final.zip",
+  "parent_sha256": "907e1a083b58780bd140d4e258285878ed3534a4c0be6cf9b75070eae7f04826",
+  "native_template_sha256": "c86c0db95e28951c3e9ed36d5a29eb94d7faa4cbddbfddaed18700dc70121eb3",
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+  "budget": 65536,
+  "train_seed_start": 248000000,
+  "validation_seed_start": 249000000,
+  "limits": "Bounded practice repair, no automatic promotion, extension or overnight training.",
+  "error": "CalledProcessError(1, ['/home/mohammadjaffal/mini_motorways/.venv/bin/python', '-u', '/home/mohammadjaffal/mini_motorways/output/training/route-outcome-01/runtime/training/audit_mini_behavior.py', '--dll', '/home/mohammadjaffal/mini_motorways/output/training/route-outcome-01/runtime/host/TrafficHost.dll', '--output', '/home/mohammadjaffal/mini_motorways/output/training/route-outcome-01/evaluation/practice-final', '--workers', '2', '--checkpoints', '/home/mohammadjaffal/mini_motorways/output/training/route-outcome-01/training/final.zip', '--labels', 'candidate', '--small-city-horizon', '300'])"
+}

@@ -1,0 +1,7 @@
+{
+  "old_pid": 281112,
+  "old_children": [],
+  "new_pid": 288251,
+  "workers": 16,
+  "note": "Replaced waiting controller before any review output existed. Waits for low-rate reviews and intermediate-rate trainer to finish, then uses16 evaluator workers. Same jobs/action seeds/models; runtime script before change retained."
+}

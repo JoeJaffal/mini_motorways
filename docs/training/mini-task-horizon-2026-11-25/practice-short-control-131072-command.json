@@ -1,0 +1,15 @@
+[
+  "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+  "-u",
+  "/home/mohammadjaffal/mini_motorways/output/training/mini-horizon-comparison-01/runtime/training/audit_mini_behavior.py",
+  "--output",
+  "/home/mohammadjaffal/mini_motorways/output/training/mini-horizon-comparison-01/evaluation/practice-short-control-131072",
+  "--dll",
+  "/home/mohammadjaffal/mini_motorways/output/training/mini-horizon-comparison-01/runtime/host/TrafficHost.dll",
+  "--checkpoints",
+  "/home/mohammadjaffal/mini_motorways/output/training/mini-horizon-comparison-01/short-control/midpoint.zip",
+  "--labels",
+  "candidate",
+  "--small-city-horizon",
+  "300"
+]

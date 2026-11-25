@@ -1,0 +1,45 @@
+{
+  "models": [
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-fast-01/final.zip"
+  ],
+  "sha256": {
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-fast-01/final.zip": "d9bb06324d1641f588e49c5cd95da0d0027f49f967eaef3b92d065ea8f199cd3"
+  },
+  "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+  "horizon": 600,
+  "results": {
+    "0": {
+      "games": 32,
+      "scoring_games": 25,
+      "mean_score": 74.65625,
+      "new_targets": 131,
+      "new_targets_served": 92,
+      "new_target_stockouts": 57,
+      "median_new_service_delay": 26.0,
+      "mean_paid_units": 78.46875,
+      "mean_outside_observed_routes": 35.6875,
+      "outside_route_share": 0.4547988849064118,
+      "paired_score_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    }
+  }
+}

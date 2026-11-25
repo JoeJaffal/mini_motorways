@@ -1,0 +1,58 @@
+[
+  {
+    "exercise": "midgame-network-join",
+    "reward": 7.0,
+    "ordinary_calls": 61,
+    "collapsed_calls": 1,
+    "forced": 60
+  },
+  {
+    "exercise": "midgame-network-route",
+    "reward": 6.0,
+    "ordinary_calls": 63,
+    "collapsed_calls": 3,
+    "forced": 60
+  },
+  {
+    "exercise": "midgame-network-delay",
+    "reward": 6.0,
+    "ordinary_calls": 62,
+    "collapsed_calls": 8,
+    "forced": 54
+  },
+  {
+    "exercise": "midgame-network-quiet",
+    "reward": 6.0,
+    "ordinary_calls": 60,
+    "collapsed_calls": 60,
+    "forced": 0
+  },
+  {
+    "exercise": "traffic-priority-established",
+    "reward": 17.0,
+    "ordinary_calls": 121,
+    "collapsed_calls": 1,
+    "forced": 120
+  },
+  {
+    "exercise": "traffic-priority-established-swap",
+    "reward": 5.0,
+    "ordinary_calls": 81,
+    "collapsed_calls": 1,
+    "forced": 80
+  },
+  {
+    "exercise": "traffic-junction-low-live",
+    "reward": 18.0,
+    "ordinary_calls": 85,
+    "collapsed_calls": 1,
+    "forced": 84
+  },
+  {
+    "exercise": "traffic-junction-high-live",
+    "reward": 29.0,
+    "ordinary_calls": 85,
+    "collapsed_calls": 1,
+    "forced": 84
+  }
+]

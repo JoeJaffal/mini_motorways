@@ -1,0 +1,79 @@
+--- a/simulation/Assets/Simulation/TrafficPractice.cs
++++ b/simulation/Assets/Simulation/TrafficPractice.cs
+@@ -70,6 +70,7 @@
+             }
+             int c0=rng.Next(3);
+             int c1=(c0+rng.Next(1,3))%3;
++            bool three=exercise=="traffic-priority-three"||exercise=="traffic-priority-three-shift";
+             bool priority=exercise=="traffic-priority"||exercise=="traffic-priority-swap";
+             var parts=exercise.Split('-');
+             bool high=parts.Length>2 && parts[2]=="high";
+@@ -78,19 +79,44 @@
+             bool shortBypass=live||profile=="stockshort"||profile=="stockrush";
+             bool economy=profile.StartsWith("stock",StringComparison.Ordinal)||live;
+             double highLoad=profile=="stockrush" ? 4.4 : 3.4;
+-            if (!priority && (parts.Length<3 || parts[1]!="junction" || (parts[2]!="low" && !high)))
++            if (!priority && !three && (parts.Length<3 || parts[1]!="junction" || (parts[2]!="low" && !high)))
+                 throw new ArgumentException("Unknown traffic practice exercise");
+             bool upperBusy=rng.Next(2)==0;
+             if (exercise=="traffic-priority-swap") upperBusy=!upperBusy;
+-            var aShop=Shop(priority ? 3 : 5,c0,priority ? (upperBusy ? 1.65 : .35) : high&&!live ? highLoad : .22,
+-                           priority ? (upperBusy ? 4 : 0) : high&&!live ? 4 : 0);
+-            var bShop=Shop(priority ? 9 : 8,c1,priority ? (upperBusy ? .35 : 1.65) : economy ? 2.75 : 2.25,
+-                           priority ? (upperBusy ? 0 : 4) : 0);
+             Array.Clear(Inventory,0,Inventory.Length);
+             Inventory[0]=100;
+-            if (priority)
++            if (three)
++            {
++                var colors=new[]{c0,c1,3-c0-c1};
++                var names=new[]{"upper","center","lower"};
++                var loads=new[]{1.65,1.0,.25};
++                var pins=new[]{4,2,0};
++                int tierStart=rng.Next(3);
++                int tierStep=rng.Next(2)==0 ? 1 : 2;
++                if (exercise.EndsWith("-shift",StringComparison.Ordinal)) tierStart=(tierStart+1)%3;
++                for (int group=0;group<3;group++)
++                {
++                    int row=2+4*group;
++                    int tier=(tierStart+group*tierStep)%3;
++                    int color=colors[group];
++                    Shop(row,color,loads[tier],pins[tier]);
++                    Home(1,row,2,row,color);
++                    Home(2,row-1,2,row,color);
++                    Home(3,row-1,3,row,color);
++                    var lane=new (int x,int y)[8];
++                    for (int x=2;x<=9;x++) lane[x-2]=(x,row);
++                    Path(names[group],rng.Next(2,6),lane);
++                }
++            }
++            else if (priority)
+             {
+                 int upperGap=rng.Next(2,6), lowerGap=rng.Next(2,6);
++                foreach (var row in new[] {3,9})
++                {
++                    int color=row==3 ? c0 : c1;
++                    bool busy=row==3 ? upperBusy : !upperBusy;
++                    Shop(row,color,busy ? 1.65 : .35,busy ? 4 : 0);
++                }
+                 foreach (var row in new[] {3,9})
+                 {
+                     int color=row==3 ? c0 : c1;
+@@ -104,6 +130,8 @@
+             }
+             else
+             {
++                var aShop=Shop(5,c0,high&&!live ? highLoad : .22,high&&!live ? 4 : 0);
++                var bShop=Shop(8,c1,economy ? 2.75 : 2.25,0);
+                 Home(1,5,2,5,c0);
+                 Home(2,4,2,5,c0);
+                 Home(3,4,3,5,c0);
+@@ -171,7 +199,7 @@
+             // The normal native legality checker remains responsible for every edit.
+             for (int y=0;y<Height;y++) for (int x=0;x<Width;x++)
+                 if (!clear.Contains(new Cell(x,y))) { Blocked[x,y]=true; Unzoneable[x,y]=true; }
+-            Inventory[0]=economy&&!live ? 2 : 1;
++            Inventory[0]=three||economy&&!live ? 2 : 1;
+             ConstructionEditLimit=Inventory[0];
+             LastAction="Traffic practice reset";
+         }

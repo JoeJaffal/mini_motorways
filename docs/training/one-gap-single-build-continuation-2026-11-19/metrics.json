@@ -1,0 +1,27 @@
+{
+  "first_five": {
+    "attempts": 10240,
+    "correct": 4908
+  },
+  "last_five": {
+    "attempts": 10240,
+    "correct": 5091
+  },
+  "all": {
+    "attempts": 131072,
+    "correct": 64387
+  },
+  "across_checkpoints": {
+    "sampled": {
+      "improved": 4,
+      "regressed": 0,
+      "ties": 96
+    },
+    "greedy": {
+      "improved": 0,
+      "regressed": 0,
+      "ties": 100
+    }
+  },
+  "median_collection_seconds": 19.029267945472384
+}

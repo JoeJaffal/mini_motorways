@@ -1,0 +1,10 @@
+{
+  "episodes": 8,
+  "native_episode_fields_exact": true,
+  "excluded_fields": [
+    "finite_horizon_end",
+    "native_game_over",
+    "t",
+    "truncated"
+  ]
+}

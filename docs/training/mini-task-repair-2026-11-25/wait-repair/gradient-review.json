@@ -1,0 +1,73 @@
+{
+  "summary": [
+    {
+      "task": "small-city-offset-pairs",
+      "batches": 4,
+      "nondegenerate_encoder_batches": 4,
+      "opposing_encoder_batches": 3,
+      "value_projection_relative_to_actor": [
+        0.8421228743537333,
+        -0.9449846919534145,
+        -0.33650704581018714,
+        -0.9404069945841816
+      ],
+      "mean_norms": {
+        "policy": [
+          5.299852967262268,
+          0.2566448450088501,
+          0.0
+        ],
+        "entropy": [
+          0.053917656652629375,
+          0.0024748503346927464,
+          0.0
+        ],
+        "value": [
+          0.0,
+          0.49517326802015305,
+          0.43945712596178055
+        ],
+        "return_policy": [
+          5.980945110321045,
+          0.3616190366446972,
+          0.0
+        ]
+      }
+    },
+    {
+      "task": "small-city-offset-single",
+      "batches": 4,
+      "nondegenerate_encoder_batches": 3,
+      "opposing_encoder_batches": 2,
+      "value_projection_relative_to_actor": [
+        0.4868079264595544,
+        -0.20298831842609863,
+        -0.13363014128787853
+      ],
+      "mean_norms": {
+        "policy": [
+          3.9299043429010303,
+          0.2291346192886621,
+          0.0
+        ],
+        "entropy": [
+          0.016090412638732232,
+          0.0006812427775457763,
+          0.0
+        ],
+        "value": [
+          0.0,
+          0.33570983074605465,
+          0.27863694354891777
+        ],
+        "return_policy": [
+          3.1177448045911538,
+          0.155566729661839,
+          0.0
+        ]
+      }
+    }
+  ],
+  "identical_episodes_and_sampled_states": true,
+  "limits": "Frozen finite on-policy MonteCarlo diagnostic,256choice states from16development games. Seven nondegenerate shared-encoder batches; one nearzero actor gradient excluded from cosine interpretation. Does not reconstruct actual PPO minibatch/Adam updates or isolate causal city effects."
+}

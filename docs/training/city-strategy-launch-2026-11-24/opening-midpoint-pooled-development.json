@@ -1,0 +1,88 @@
+{
+  "note": "Pooled disjoint consumed development cases; selection evidence only, not fresh confirmation.",
+  "reference_directories": [
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-development-parent-01",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-confirmation-02"
+  ],
+  "candidate_directories": [
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-opening-midpoint-development-01",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-opening-midpoint-broader-development-01"
+  ],
+  "sha256": {
+    "0": "9202d62be8d237f6fe495ee1ec29eed1747849a1fd747006ea8903de7f0b19f1",
+    "1": "3ee25a1f4cc26c945d40084295bb01767ec252d947a0adb5d676516e0b8b63b4"
+  },
+  "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+  "horizon": 600,
+  "results": {
+    "0": {
+      "games": 96,
+      "scoring_games": 79,
+      "mean_score": 78.21875,
+      "new_targets": 393,
+      "new_targets_served": 293,
+      "new_target_stockouts": 91,
+      "median_new_service_delay": 26.0,
+      "mean_paid_units": 75.96875,
+      "mean_outside_observed_routes": 33.5,
+      "outside_route_share": 0.44097079391197036,
+      "paired_score_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "1": {
+      "games": 96,
+      "scoring_games": 80,
+      "mean_score": 81.52083333333333,
+      "new_targets": 392,
+      "new_targets_served": 310,
+      "new_target_stockouts": 37,
+      "median_new_service_delay": 26.5,
+      "mean_paid_units": 72.4375,
+      "mean_outside_observed_routes": 33.541666666666664,
+      "outside_route_share": 0.46304285303422493,
+      "paired_score_delta_and_interval": [
+        3.3020833333333335,
+        [
+          -6.604427083333333,
+          13.041666666666666
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.17708333333333334,
+        [
+          -0.1875,
+          0.5416666666666666
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.041666666666666664,
+        [
+          -2.9895833333333335,
+          3.0731770833333294
+        ]
+      ]
+    }
+  },
+  "relative_mean": 1.0422160074577174,
+  "retention_pass": true,
+  "strong_gain_pass": false
+}

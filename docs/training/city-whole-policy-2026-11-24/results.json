@@ -1,0 +1,359 @@
+{
+  "status": "complete",
+  "long_run_launched": false,
+  "promotion": false,
+  "runs": {
+    "gated": {
+      "path": "output/training/city-whole-fit-01/gated",
+      "last_checkpoint": {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-whole-fit-01/gated/final.zip",
+        "sha256": "faf2869a9c6bf60a5e6d6f109f464538068aeb885f364a2b1836dac214f7d6a4",
+        "added_decisions": 32768,
+        "optimizer_steps_added": 1024,
+        "episodes": 65,
+        "seconds": 441.9947361209197
+      },
+      "completed_episodes": 65,
+      "time_limit_truncations": 35,
+      "explicit_finite_ends": 0,
+      "native_deaths": 30,
+      "training_score_mean": 113.46153846153847,
+      "rollout_metrics": [
+        {
+          "train/explained_variance": -0.012857317924499512,
+          "train/value_loss": 5791.871280670166,
+          "train/approx_kl": 1.6360242e-05,
+          "pilot/optimizer_steps_this_rollout": 256.0
+        },
+        {
+          "train/explained_variance": -0.0006183385848999023,
+          "train/value_loss": 5231.289969444275,
+          "train/approx_kl": 7.836273e-05,
+          "pilot/optimizer_steps_this_rollout": 256.0
+        },
+        {
+          "train/explained_variance": -0.003319382667541504,
+          "train/value_loss": 4449.281321525574,
+          "train/approx_kl": 0.000306278,
+          "pilot/optimizer_steps_this_rollout": 256.0
+        },
+        {
+          "train/explained_variance": 0.03675556182861328,
+          "train/value_loss": 3601.242607116699,
+          "train/approx_kl": 1.9692918e-05,
+          "pilot/optimizer_steps_this_rollout": 256.0
+        }
+      ]
+    },
+    "whole": {
+      "path": "output/training/city-whole-fit-01/whole",
+      "last_checkpoint": {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-whole-fit-01/whole/final.zip",
+        "sha256": "d3496eb2d47ec14162e987ef213e5314dcea261d48faaaf25750b79c2af66c7d",
+        "added_decisions": 32768,
+        "optimizer_steps_added": 1024,
+        "episodes": 67,
+        "seconds": 448.5930325760273
+      },
+      "completed_episodes": 67,
+      "time_limit_truncations": 35,
+      "explicit_finite_ends": 0,
+      "native_deaths": 32,
+      "training_score_mean": 113.40298507462687,
+      "rollout_metrics": [
+        {
+          "train/explained_variance": -0.012857317924499512,
+          "train/value_loss": 5791.880052566528,
+          "train/approx_kl": 8.469742e-06,
+          "pilot/optimizer_steps_this_rollout": 256.0
+        },
+        {
+          "train/explained_variance": -0.002475261688232422,
+          "train/value_loss": 4889.737802505493,
+          "train/approx_kl": 0.00027463818,
+          "pilot/optimizer_steps_this_rollout": 256.0
+        },
+        {
+          "train/explained_variance": 0.02684938907623291,
+          "train/value_loss": 3622.442825317383,
+          "train/approx_kl": 0.0003732923,
+          "pilot/optimizer_steps_this_rollout": 256.0
+        },
+        {
+          "train/explained_variance": 0.03001481294631958,
+          "train/value_loss": 5520.160230636597,
+          "train/approx_kl": 6.1399725e-05,
+          "pilot/optimizer_steps_this_rollout": 256.0
+        }
+      ]
+    },
+    "finite": {
+      "path": "output/training/city-whole-finite-01/finite",
+      "last_checkpoint": {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-whole-finite-01/finite/final.zip",
+        "sha256": "e3750c9cad7e51d6bc2b395d5444fa92c61206c0030895071b16e09159b30f6a",
+        "added_decisions": 32768,
+        "optimizer_steps_added": 1024,
+        "episodes": 63,
+        "seconds": 449.00181528297253
+      },
+      "completed_episodes": 63,
+      "time_limit_truncations": 0,
+      "explicit_finite_ends": 37,
+      "native_deaths": 26,
+      "training_score_mean": 123.0952380952381,
+      "rollout_metrics": [
+        {
+          "train/explained_variance": -0.018276095390319824,
+          "train/value_loss": 5049.395356178284,
+          "train/approx_kl": 7.625116e-06,
+          "pilot/optimizer_steps_this_rollout": 256.0
+        },
+        {
+          "train/explained_variance": -0.01817631721496582,
+          "train/value_loss": 3846.5991230010986,
+          "train/approx_kl": 0.00028789457,
+          "pilot/optimizer_steps_this_rollout": 256.0
+        },
+        {
+          "train/explained_variance": -0.03661036491394043,
+          "train/value_loss": 3496.527051925659,
+          "train/approx_kl": 0.0003821583,
+          "pilot/optimizer_steps_this_rollout": 256.0
+        },
+        {
+          "train/explained_variance": -0.009955644607543945,
+          "train/value_loss": 4151.817415237427,
+          "train/approx_kl": 3.0468973e-05,
+          "pilot/optimizer_steps_this_rollout": 256.0
+        }
+      ]
+    }
+  },
+  "evaluations": {
+    "gated": {
+      "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-whole-fit-01/gated/final.zip",
+      "sha256": "faf2869a9c6bf60a5e6d6f109f464538068aeb885f364a2b1836dac214f7d6a4",
+      "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+      "horizon": 600,
+      "allow_bridges": true,
+      "results": {
+        "repeated": {
+          "games": 16,
+          "mean": 101.875,
+          "scoring": 15,
+          "new_targets_served": 59,
+          "stockouts": 25,
+          "delta": -24.375,
+          "interval95": [
+            -47.5015625,
+            -1.6843750000000455
+          ]
+        },
+        "heldout": {
+          "games": 16,
+          "mean": 115.375,
+          "scoring": 15,
+          "new_targets_served": 71,
+          "stockouts": 22,
+          "delta": -10.5625,
+          "interval95": [
+            -35.0625,
+            20.876562499999977
+          ]
+        }
+      }
+    },
+    "whole": {
+      "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-whole-fit-01/whole/final.zip",
+      "sha256": "d3496eb2d47ec14162e987ef213e5314dcea261d48faaaf25750b79c2af66c7d",
+      "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+      "horizon": 600,
+      "allow_bridges": true,
+      "results": {
+        "repeated": {
+          "games": 16,
+          "mean": 129.5,
+          "scoring": 15,
+          "new_targets_served": 71,
+          "stockouts": 32,
+          "delta": 3.25,
+          "interval95": [
+            -26.1875,
+            26.0
+          ]
+        },
+        "heldout": {
+          "games": 16,
+          "mean": 133.75,
+          "scoring": 14,
+          "new_targets_served": 78,
+          "stockouts": 31,
+          "delta": 7.8125,
+          "interval95": [
+            -26.5015625,
+            44.06406249999998
+          ]
+        }
+      }
+    },
+    "finite": {
+      "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-whole-finite-01/finite/final.zip",
+      "sha256": "e3750c9cad7e51d6bc2b395d5444fa92c61206c0030895071b16e09159b30f6a",
+      "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+      "horizon": 600,
+      "allow_bridges": true,
+      "results": {
+        "repeated": {
+          "games": 16,
+          "mean": 121.5,
+          "scoring": 15,
+          "new_targets_served": 70,
+          "stockouts": 32,
+          "delta": -4.75,
+          "interval95": [
+            -21.3125,
+            7.625
+          ]
+        },
+        "heldout": {
+          "games": 16,
+          "mean": 116.4375,
+          "scoring": 14,
+          "new_targets_served": 68,
+          "stockouts": 35,
+          "delta": -9.5,
+          "interval95": [
+            -41.5625,
+            28.125
+          ]
+        }
+      }
+    },
+    "baseline": {
+      "checkpoint": "output/training/city-strategy-wide-initial-01/start.zip",
+      "sha256": "9d9c9c95e4955a14461358f3203143be5f70331f8cbbb4bc26d0951b3674447a",
+      "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+      "horizon": 600,
+      "allow_bridges": true,
+      "results": {
+        "repeated": {
+          "games": 16,
+          "mean": 126.25,
+          "scoring": 15,
+          "new_targets_served": 69,
+          "stockouts": 24
+        },
+        "heldout": {
+          "games": 16,
+          "mean": 125.9375,
+          "scoring": 15,
+          "new_targets_served": 76,
+          "stockouts": 20
+        }
+      }
+    },
+    "midpoint": {
+      "checkpoint": "output/training/city-whole-fit-01/whole/midpoint.zip",
+      "sha256": "a2e1bde960b8bb2516c4f55d96ca2d5ee6bf833fcea12250b528125517b146d4",
+      "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+      "horizon": 600,
+      "allow_bridges": true,
+      "results": {
+        "repeated": {
+          "games": 16,
+          "mean": 119.0,
+          "scoring": 15,
+          "new_targets_served": 68,
+          "stockouts": 25,
+          "delta": -7.25,
+          "interval95": [
+            -33.8125,
+            18.5625
+          ]
+        },
+        "heldout": {
+          "games": 16,
+          "mean": 95.0,
+          "scoring": 14,
+          "new_targets_served": 57,
+          "stockouts": 20,
+          "delta": -30.9375,
+          "interval95": [
+            -69.315625,
+            5.4375
+          ]
+        }
+      }
+    }
+  },
+  "replays": [
+    {
+      "name": "watched-reference",
+      "seed": 184000000,
+      "score": 0,
+      "first_delivery": null,
+      "seconds": 151.15,
+      "paid_units": 45,
+      "outside_observed_routes": 24
+    },
+    {
+      "name": "watched-reference-success",
+      "seed": 184000003,
+      "score": 158,
+      "first_delivery": 13,
+      "seconds": 600,
+      "paid_units": 115,
+      "outside_observed_routes": 51
+    },
+    {
+      "name": "watched-whole-midpoint",
+      "seed": 184000000,
+      "score": 123,
+      "first_delivery": 34,
+      "seconds": 532.1,
+      "paid_units": 95,
+      "outside_observed_routes": 28
+    },
+    {
+      "name": "watched-whole",
+      "seed": 184000000,
+      "score": 175,
+      "first_delivery": 32,
+      "seconds": 600,
+      "paid_units": 115,
+      "outside_observed_routes": 26
+    },
+    {
+      "name": "watched-whole-success",
+      "seed": 184000003,
+      "score": 172,
+      "first_delivery": 13,
+      "seconds": 600,
+      "paid_units": 115,
+      "outside_observed_routes": 54
+    },
+    {
+      "name": "watched-finite",
+      "seed": 184000000,
+      "score": 20,
+      "first_delivery": 34,
+      "seconds": 223.65,
+      "paid_units": 45,
+      "outside_observed_routes": 24
+    },
+    {
+      "name": "watched-finite-success",
+      "seed": 184000003,
+      "score": 168,
+      "first_delivery": 13,
+      "seconds": 600,
+      "paid_units": 125,
+      "outside_observed_routes": 24
+    }
+  ],
+  "total_training_decisions": 98304,
+  "total_optimizer_updates": 3072,
+  "completed_training_episodes": 195,
+  "scope": "Eight training layouts and eight separate validation layouts; two action RNGs each; one training RNG per arm; selection data,not independent confirmation."
+}

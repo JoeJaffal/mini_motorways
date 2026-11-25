@@ -1,0 +1,42 @@
+{
+  "added_decisions": 798720,
+  "elapsed_seconds": 3616.966427370091,
+  "training_games": 1707,
+  "throughput": 220.82593688345406,
+  "first_100_mean": 68.31,
+  "last_100_mean": 64.23,
+  "max_training_score": 186,
+  "road_use": [
+    {
+      "model": 0,
+      "outside_route_share": 0.4315310763011622,
+      "mean_outside_route_delta": 0.0,
+      "outside_route_delta_bootstrap_95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": 1,
+      "outside_route_share": 0.43322475570032576,
+      "mean_outside_route_delta": -2.3333333333333335,
+      "outside_route_delta_bootstrap_95": [
+        -7.125,
+        2.5416666666666665
+      ]
+    },
+    {
+      "model": 2,
+      "outside_route_share": 0.49309245483528164,
+      "mean_outside_route_delta": 3.0833333333333335,
+      "outside_route_delta_bootstrap_95": [
+        -1.7916666666666667,
+        7.958333333333333
+      ]
+    }
+  ],
+  "original_actor_tensors_unchanged": true,
+  "raw_training_episode_sha256": {
+    "output/training/city-growth-pilot-01/sessions/65479fbfc0b4/episodes.jsonl": "e21d914a4194e97e740a9e39e747ca60e8382e9547b208904b63330aa1a708c0"
+  }
+}

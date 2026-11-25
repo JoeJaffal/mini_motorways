@@ -1,0 +1,27 @@
+{
+  "parent": "output/training/city-route-repair-calibration-01/calibrated-with-counters.zip",
+  "parent_sha256": "6ed31e8c655acb71b781652c36814045c979597ced464fbf12d6dafef07acd62",
+  "host": "output/city-midgame-service-build.hSMk1r/bin/TrafficHost/release/TrafficHost.dll",
+  "host_sha256": "a45b9c443bbcb83b4385f38529cc01ef291e8b26d10dd314650581d258afe3d8",
+  "training_seed_range": [
+    94200000,
+    94400000
+  ],
+  "service_horizon_seconds": 60,
+  "workers": 32,
+  "added_decisions": 16384,
+  "settings": {
+    "device": "cuda",
+    "seed": 761051,
+    "n_steps": 128,
+    "batch_size": 64,
+    "n_epochs": 4,
+    "learning_rate": 0.0001,
+    "gamma": 1,
+    "gae_lambda": 0.97,
+    "ent_coef": 0.01,
+    "target_kl": 0.03
+  },
+  "timing": true,
+  "critic_sha256": "a65357dea3e889525bfdc18743dbbeb02141ad244934b270217afad7a472df29"
+}

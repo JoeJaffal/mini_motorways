@@ -1,0 +1,68 @@
+{
+  "training_batches": [
+    {
+      "through_decisions": 8192,
+      "episodes": 685,
+      "success_fraction": 0.19708029197080293
+    },
+    {
+      "through_decisions": 16384,
+      "episodes": 691,
+      "success_fraction": 0.2633863965267728
+    },
+    {
+      "through_decisions": 24576,
+      "episodes": 692,
+      "success_fraction": 0.36416184971098264
+    },
+    {
+      "through_decisions": 32768,
+      "episodes": 695,
+      "success_fraction": 0.40575539568345326
+    },
+    {
+      "through_decisions": 40960,
+      "episodes": 691,
+      "success_fraction": 0.5021707670043415
+    },
+    {
+      "through_decisions": 49152,
+      "episodes": 693,
+      "success_fraction": 0.5512265512265512
+    },
+    {
+      "through_decisions": 57344,
+      "episodes": 685,
+      "success_fraction": 0.6437956204379562
+    },
+    {
+      "through_decisions": 65536,
+      "episodes": 697,
+      "success_fraction": 0.7288378766140603
+    }
+  ],
+  "evaluation_points": [
+    {
+      "decisions": 0,
+      "successes": 5,
+      "games": 32
+    },
+    {
+      "decisions": 16384,
+      "successes": 12,
+      "games": 32
+    },
+    {
+      "decisions": 32768,
+      "successes": 15,
+      "games": 32
+    },
+    {
+      "decisions": 65536,
+      "successes": 24,
+      "games": 32
+    }
+  ],
+  "episode_source_sha256": "266ee7be4085e3477ed5ca6bf6455f11d214f8fbf667728e1366b6233aa7864d",
+  "limits": "One repeated training layout. Evaluation reuses32action draws. Training batches contain changing episode boundaries; no geometry generalization claim."
+}

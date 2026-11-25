@@ -1,0 +1,7 @@
+# Practice coverage limit
+
+Code inspection,25November2026. `SmallCityPractice.cs` selects the single-pair color with `rng.Next(3)`. It varies allfour destination layouts, longitudinal and lateral offsets, stock, and board placement. Training and validation use different placement regions. It has one matching pair and no competing incompatible pair in this single-connection lesson. The native city profile supports five color IDs. Only this count is relevant here; private map parameters are not copied into the report.
+
+Therefore, successful held-out practice would demonstrate connection behavior within this generator, not arbitrary color-choice strategy in a busy city. Existing visible observations encode eight color slots and the connectivity evidence handles colors generically, but that alone does not prove the learned spatial corrections generalize to all colors or choose the right pair among distractors. The prior negative-pair Wait checks are separate from selecting roads among several possible pairs.
+
+This is a scope limitation, not a proven cause of the city regressions. The current frozen study remains unchanged. Follow-up coverage should test color permutations, nonmatching distractors and multiple matching choices before claiming full-game strategy. Native city and longer-play confirmation remain required; a short isolated-pair pass cannot replace them. No new fixture, recoloring, planner or training label is implemented by this note.

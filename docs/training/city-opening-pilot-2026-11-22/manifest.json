@@ -1,0 +1,44 @@
+{
+  "branch": "Maskable-PPO",
+  "base_revision": "6bd7f71",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "5e4b95800618a75bde09a436bde14e5a2ac2db5f3b7968a94a38d3b66cac1b3c"
+    },
+    {
+      "path": "config.json",
+      "sha256": "977ebc344ec098752a5ddf5fcecf5e9d33972cf7d5f9e042d007e2ae034ae288"
+    },
+    {
+      "path": "development-games.jsonl",
+      "sha256": "57f6ff2edd1cd9c993a1de06c645cc60c89100e100a6c24db34d8989d2c0a8b3"
+    },
+    {
+      "path": "development-summary.json",
+      "sha256": "b765f1e871268b6dd88c62259370af8d6d741d437e149dac9008b603b2f931e6"
+    },
+    {
+      "path": "progress.csv",
+      "sha256": "c1f22089001eb679254e7ee20c52f822fbf62b9cb34a1f6a55f1061ce2b2c42c"
+    },
+    {
+      "path": "status.json",
+      "sha256": "bb0f00907cfde16368727216ad2768e84577f51588ff158e35a0d68ffbceaa61"
+    },
+    {
+      "path": "suite.json",
+      "sha256": "dc14079e43bf8f1757bd84d80df2bc59b3f9bd3e7d02419e95a3bb6cd9b391ac"
+    },
+    {
+      "path": "training-episodes.jsonl",
+      "sha256": "3eb028e7a3956e253372ffdbf4f8781ad5f4386b4bb09a08c262986ad15895ca"
+    }
+  ],
+  "source_hashes": {
+    "training/train_city_opening_pilot.py": "b139517d148caa7a755d4ce1b29aabf47d7b212a628fe4fa7915229d922c29b0",
+    "training/evaluate_city_opening_pilot.py": "2eec53c0d632fdb2744eced5f8ceae1f389c50214c4347da24bfd17610747355",
+    "training/city_road_pilot.py": "fee11a39a5d4c205d05e3110fad96e64bbcdfab2ab7d800b7de0cf6470993789",
+    "training/diagnose_city_policy.py": "077374535ada5c79f972f964de108c208071b40bca9a49b8788a26f5826e8870"
+  }
+}

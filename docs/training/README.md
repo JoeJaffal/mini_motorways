@@ -1,4 +1,106 @@
+[Completed session review, 25 November](mini-task-repair-2026-11-25/SESSION_REVIEW.md): all bounded studies reviewed; useful route learning but no city readiness or overnight launch. [Final spatial findings](route-spatial-run-2026-11-25/INTERPRETATION.md).
+
+[Completed duration comparison](mini-task-horizon-2026-11-25/INTERPRETATION.md): early longer-episode gain did not survive full budget; neither arm promoted. The spatial road study continues.
+
+[Current spatial route repair](route-spatial-ppo-2026-11-25/ACTIVE_WORK.md); [rejected road-head study](route-outcome-run-2026-11-25/INTERPRETATION.md). No overnight readiness yet.
+
+[Current route-repair study and prior regressions](route-outcome-ppo-2026-11-25/ACTIVE_WORK.md). No overnight readiness yet.
+
+- [Wait lesson continuation,25November](build-wait-continuation-2026-11-25/PLAN.md): additional65,536decisions, retainedprogress; noovernightpromotion.
+- [First Wait lesson interpretation](build-wait-ppo-2026-11-25/INTERPRETATION.md): firstdecisionlearning, repeatedstoppingunmastered, cityretentionheld.
+
+- [Build-or-Wait PPO repair,25November](build-wait-ppo-2026-11-25/PLAN.md): bounded32k launched19:52; native behavior/city reviews required.
+- [Fixed-board continuation interpretation](mini-fixed-route-continuation-2026-11-25/INTERPRETATION.md): one-board mastery, failed city retention.
+
+[Mini-task behavioral audit and repair](mini-task-repair-2026-11-25/README.md): approved flexible-duration work toward a justified overnight run; audit and readiness pending.
+
+[City-transfer diagnosis and expansion comparison](city-transfer-diagnosis-2026-11-25/README.md): matched replays and reward checks completed; targeted native-score experiment launched with fixed city-transfer evaluations.
+
+[Overnight comparison completed](overnight-learning-2026-11-25/RESULTS.md): both continuations finished; no demonstrated gain over the preserved original city policy. No active training.
+
+[Overnight transfer comparison](overnight-learning-2026-11-25/README.md): requested half-hour check completed; practice gains but city regression led to a bounded lesson-only/mixed-city comparison. Consult live status and archived checks.
+
+[Matched road-cost continuation](road-cost-continuation-2026-11-24/README.md): authorized longer comparison launched25November; diagnostics, resume checks and fixed evaluation curves. Consult live status.
+
+[PPO research and local reassessment](ppo-research-review-2026-11-24/REPORT.md): evidence, entropy/critic hypotheses, and a stable longer-comparison proposal; no training launched.
+
+[Road-cost reward pilot](road-cost-reward-2026-11-24/README.md): reward wiring passes; effectiveness inconclusive after16k/arm; longer matched comparison proposed following user feedback.
+
+[Small-city service experiment](small-city-service-2026-11-24/README.md): complete; easy tasks already mastered, offset-pair trial fails, fresh city gain uncertain; no long launch.
+
+[Road-choice-only diagnostic](city-road-choice-2026-11-24/README.md): complete; frozen Wait verified, no reliable score improvement, no long launch.
+
+[Whole-city learning: watched play and matched PPO trials](city-whole-policy-2026-11-24/README.md) records the opening learning restriction, repeated-city diagnostic, replay comparisons, and measured outcomes.
+
+[City strategy and evidence-gated long launch](city-strategy-launch-2026-11-24/PLAN.md) records the user-authorized readiness work and conditional long session.
+
+[Road reservation learning and fresh city comparison](road-reserve-learning-2026-11-23/README.md): lesson success 2/16→13/16, but repaired city scores 81.88→54.97; reject for continuation.
+
+[Five-stage city learning and pipeline repairs](five-stage-city-learning-2026-11-23/README.md) records stability, connection/waiting, demand/congestion and mixed-city experiments.
+
+[Opening regression repair and bounded retention checks](city-regression-repair-2026-11-23/README.md) records replayed failures, a frozen opening reference, and the 16-city review.
+
 # Start here: Maskable PPO restart
+
+[Learning audit and guarded long-run command](city-learning-readiness-2026-11-23/README.md) records spatial actor updates, three pilots and fresh retention evidence.
+
+[Network service feature repair and bounded pilot](city-network-service-pilot-2026-11-23/README.md) records the corrected components, native exercises, 32,768-decision run and five-way reviews.
+
+[City policy gaps and remaining training targets](city-policy-gap-audit-2026-11-23/README.md) records feature defects, native route witnesses, demand and congestion probes, and fresh paired cities.
+
+[Eight-hour growing-city service results](city-service-long-results-2026-11-23/README.md) records the paired review, four-hour candidate and final-checkpoint decline.
+
+[What the city policy can do and where it fails](city-service-capability-2026-11-23/README.md) reports frozen capability tests and a verified one-edge service opportunity missed in a real city.
+
+[Late-run service failure analysis](city-service-long-results-2026-11-23/SERVICE_FAILURE_ANALYSIS.md) breaks down lost deliveries and unserved destinations that arrived with roads available.
+
+[Growing-city service readiness and eight-hour launch](city-service-readiness-2026-11-23/README.md) records the native diagnosis, both PPO pilots, paired confirmation and the detached continuation.
+
+[Midgame new-destination service](city-midgame-service-2026-11-22/README.md) compares native-score PPO and a visible-blocker Wait correction on paired fixtures and full cities.
+
+[One-hour growing-city PPO result](city-growth-pilot-results-2026-11-22/README.md) compares the repaired start with both later-city checkpoints on score and road use.
+
+[One-hour growing-city launcher](city-growth-pilot-launch-2026-11-22/README.md) records the command from the repaired opening and the paired road-use review.
+
+[Verified opening route repair](city-route-repair-2026-11-22/README.md) records the PPO continuation, calibrated Wait and alignment preferences, and fresh route and full-city results.
+
+[Limited-stock route PPO pilot](limited-route-ppo-2026-11-22/README.md) records short-route gains, delayed stock retention and full-city regression.
+
+[Road spending and first-route audit](city-road-spending-audit-2026-11-22/README.md) verifies construction in three replays and measures a frozen Wait-odds change.
+
+[Three overnight city replays](city-overnight-replays-2026-11-22/README.md) identifies the best, near-average and worst frozen examples and records how to regenerate their browser players.
+
+[Hard-opening score-only PPO continuation](city-opening-pilot-2026-11-22/README.md) records 65,536 additional decisions and the regression on the ordinary-city development cohort.
+
+[Frozen road-only failure diagnosis](city-road-diagnostic-2026-11-22/README.md) traces opening road stock, native routes and longer-city endings after the first overnight run.
+
+[Eight-hour growing-city PPO result](city-overnight-results-2026-11-22/README.md) records the selected road-only checkpoint and the completed reserved comparison.
+
+[Eight-hour growing-city launcher](city-overnight-launch-2026-11-22/README.md) records the user-run command, resumable saves and development-to-reserved review.
+
+[End-to-end growing-city PPO worker benchmark](city-ppo-worker-benchmark-2026-11-22/README.md) measures 16, 24 and 32 workers with CUDA learning and selects 32 for the overnight setup.
+
+[First growing-city score-only PPO pilot](city-score-pilot-2026-11-22/README.md) records 24,576 training decisions, paired development results and measured CUDA throughput.
+
+[Growing-city frozen baseline](city-frozen-baseline-2026-11-22/README.md) records five frozen conditions on 32 fresh seeds before city PPO updates.
+
+[Growing-city starting policy](city-policy-start-2026-11-22/README.md) records construction transfer, frozen city play and the selected checkpoint.
+
+[Growing-city throughput on the Linux PC](city-throughput-2026-11-22/README.md) records the native collector scaling and the first hardware configuration to test.
+
+[Growing-city road preflight](city-road-preflight-2026-11-21/README.md) verifies a complete native city replay with single-edge actions and delivery reward.
+
+[Wait before the surge](wait-before-surge-2026-11-21/README.md) records score-only PPO timing, matched native controls and normal- and late-surge evidence.
+
+[Road-end transfer](road-end-transfer-2026-11-21/README.md) records the selected junction model, native queue measurements and frozen results on new bypass positions.
+
+[Frozen bypass transfer](junction-transfer-2026-11-21/README.md) compares the interrupted geometry continuation, its parent and native traffic controls on 600 held-out boards.
+
+[Demand priority and congestion](traffic-milestones-2026-11-21/README.md) records isolated native traffic fixtures, reward-only PPO, and paired measurements on light and heavy networks.
+
+[Competing-home routing and native score-only play](competing-homes-2026-11-20/README.md) records the latest original-stock and timed PPO work.
+
+[Reward-only construction work, 20 November](reward-only-construction-hour-2026-11-20/README.md) records the latest local PPO runs, checkpoints, scenario patches, and native delivery tests.
 
 [Current decisions and complete detail index](DECISIONS.md) → [handoff](../../training/HANDOFF.md) → [short checklist](../../training/PLAN.md).
 
@@ -31,6 +133,8 @@ players and scratch captures remain local and are not backed up by this archive.
 | Record | Purpose |
 
 | --- | --- |
+| [One-hour Maskable-PPO check-in](check-in-2026-11-16/README.md) | Visible inputs, exact Stage1masks, separate heads, non-learning collection/replay/evaluation and speed tools; no training |
+| [Maskable-PPO preparation, 16 November](connection-practice-2026-11-16/README.md) | Stage 1/hierarchy prototype, non-training checks; implementation reconciliation in progress |
 | [Simulator repairs after resume](simulator-repairs-2026-11-08/README.md) | Reward-v4 drift isolated (fixture v5); wait-on-arrival and roundabout deadlock fixes; `simulatorVersion` 2026-11-08.2; v21 corrections, topology 400/400; adjacent-junction gridlock open; no learning |
 | [Full replay emergency checkpoint](full-replay-review-2026-11-08/EMERGENCY_HANDOFF.md) |User stopped work; installed74/source77candidate; exact pending corrections/plan saved; no valid full comparison or learning |
 | [Replay input validation: opening](replay-input-validation-2026-11-08/README.md) |60video seconds reviewed,16events;7layout/stock checkpoints match vs2old; full parity unvalidated |
@@ -370,3 +474,51 @@ evidence unknown instead of reconstructing unsupported facts.
 
 - [Gameplay repairs verified and installed](gameplay-fidelity-repairs-2026-11-08/README.md):54 core/7 environment/6 reward/10 map checks,5 Original player smokes; source/failed diagnostics preserved, no training, full parity still open.
 - [Uploaded-game exact comparison audit](recorded-game-comparison-2026-11-08/README.md):835 final visible HUD, paused826 corrected; matching seed/event replay unavailable, simulation score not measured; further gameplay changes frozen.
+
+- [Linux compact connection-economy pilot results, verified 19 November 2026](linux-compact-reward-results-2026-11-19/README.md)
+
+- [Direct one-gap practice, 19 November 2026](one-gap-direct-2026-11-19/README.md)
+
+- [Linux direct score-only pilot results](linux-direct-score-pilot-2026-11-19/README.md)
+
+- [One-build diagnostic with binary reward](one-gap-single-build-2026-11-19/README.md)
+
+- [One-build pilot and held-out results](one-gap-single-build-results-2026-11-19/README.md)
+
+- [One-build same-layout continuation and orientation diagnosis](one-gap-single-build-continuation-2026-11-19/README.md)
+
+- [Shared local edge policy and first pilot](shared-edge-policy-2026-11-19/README.md)
+
+- [Shared-edge held-out results and continuation](shared-edge-results-2026-11-19/README.md)
+
+- [Frozen diagonal-gap evaluation](shared-edge-diagonal-evaluation-2026-11-20/README.md)
+
+- [Frozen repair followed by native deliveries](shared-edge-delivery-evaluation-2026-11-20/README.md)
+
+- [Frozen two-gap, two-build delivery evaluation](shared-edge-two-gap-evaluation-2026-11-20/README.md)
+
+- [Five completed construction exercises and run archive](construction-five-stage-2026-11-20/README.md)
+
+- [Frozen incompatible building-pair evaluation](construction-pair-compatibility-2026-11-20/README.md)
+
+- [Reward-only PPO on unfinished bends](reward-only-bend-ppo-2026-11-20/README.md)
+
+- [Reward-only PPO on clear-land roads](reward-only-clear-roads-2026-11-20/README.md)
+
+- [Reward-only PPO on two-tile offsets](reward-only-offset-ppo-2026-11-20/README.md)
+
+- [Reward-only PPO with temporary spare stock](reward-only-spare-stock-2026-11-20/README.md)
+
+- [25 November: longer native lesson comparison](mini-task-horizon-2026-11-25/README.md): separate bounded60/300study from retained original; launched, not a readiness claim.
+
+- [Wait restoration review](mini-task-repair-2026-11-25/wait-repair/RESULTS.md): preserved road/Adam progress; city regression recovered, hard single-connection gate still failed.
+- [Critic gradient intervention](mini-task-repair-2026-11-25/critic-detach/PLAN.md): measured gradient concern, validated preparation; now used in the separate focused one-board diagnostic.
+
+- [Focused hard-connection PPO practice](mini-fixed-route-2026-11-25/README.md): native repeated empty board,65536decision diagnostic with retained Adam, frozen Wait and detached critic inputs; launched18:09, no promotion.
+
+- [Focused connection continuation](mini-fixed-route-continuation-2026-11-25/README.md): first budget learned5→24/32 on one board; unchanged further65,536decisions from preserved weights/Adam, generalization not established, no overnight launch.
+
+- [Current city-policy negative-pair audit](city-negative-pair-audit-2026-11-25/README.md):128nativegames; compatiblecontrols pass, bothmodelsstillspendstock inallincompatiblecontrols; inputcolorspresent, Waitdecisionfrozen duringroadpractice.
+- [Build-or-Wait PPO repair preparation](build-wait-ppo-2026-11-25/PLAN.md): explicitone-decisionreward, conditionalroads/critic/Adam preserved; nativeandPPOpreflightpassed, productionnotyetlaunched.
+
+- [Varied first-delivery road repair preparation and checks](route-outcome-ppo-2026-11-25/PLAN.md); bounded production study archived separately underroute-outcome-run-2026-11-25/.

@@ -1,0 +1,14 @@
+--- ConstructionCurriculum.cs
++++ ConstructionCurriculum.cs
+@@ -22,6 +22,11 @@
+             }
+             if (split != "train" && split != "validation")
+                 throw new ArgumentException("Unknown curriculum split");
++            if (exercise.StartsWith("wait-decision-", StringComparison.Ordinal))
++            {
++                LoadWaitDecisionFixture(seed, split, exercise.Substring(14));
++                return;
++            }
+             if (exercise.StartsWith("pair-", StringComparison.Ordinal))
+             {
+                 LoadPairDiagnostic(seed, exercise);

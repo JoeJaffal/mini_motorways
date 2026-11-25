@@ -1,0 +1,25 @@
+{
+  "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-wide-initial-01/start.zip",
+  "parent_sha256": "9d9c9c95e4955a14461358f3203143be5f70331f8cbbb4bc26d0951b3674447a",
+  "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-whole-initial-01/start.zip",
+  "sha256": "7eb605e4e465b9143e095e367abe0a01285b8ace05843aaac80bd48b5f049027",
+  "exact_actor_value_states": 256,
+  "opening_actor_gradient_l1": {
+    "gated": 0.0,
+    "whole": 2.869158381637263
+  },
+  "repeated_reset_seeds": [
+    184000002,
+    184000003,
+    184000004,
+    184000005,
+    184000006,
+    184000007,
+    184000000,
+    184000001,
+    184000002,
+    184000003
+  ],
+  "explicit_reset_bypass": true,
+  "weights_initially_exact": true
+}

@@ -1,0 +1,113 @@
+{
+  "candidate": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-opening-01/segment-001/midpoint.zip",
+  "sha256": "3ee25a1f4cc26c945d40084295bb01767ec252d947a0adb5d676516e0b8b63b4",
+  "changed_parameters": {
+    "features_extractor.opening_strategy_spatial.0.weight": 0.001261681318283081,
+    "features_extractor.opening_strategy_spatial.0.bias": 8.150935173034668e-06,
+    "features_extractor.opening_strategy_spatial.2.weight": 0.00040271924808621407,
+    "features_extractor.opening_strategy_spatial.2.bias": 9.828247129917145e-06,
+    "features_extractor.opening_strategy_spatial.4.weight": 0.0005019064992666245,
+    "features_extractor.opening_strategy_spatial.4.bias": 0.00011324882507324219,
+    "features_extractor.opening_strategy_spatial.6.weight": 0.0008083079010248184,
+    "features_extractor.opening_strategy_spatial.6.bias": 0.0004082024097442627,
+    "features_extractor.opening_strategy_spatial.8.weight": 0.0028753429651260376,
+    "features_extractor.opening_strategy_spatial.8.bias": 0.0011472813785076141,
+    "features_extractor.opening_strategy_spatial.10.weight": 0.0016629695892333984,
+    "features_extractor.opening_strategy_spatial.10.bias": 0.0008598566055297852,
+    "features_extractor.opening_strategy_roads.weight": 0.002324442146345973,
+    "features_extractor.opening_strategy_roads.bias": 0.0013964817626401782,
+    "features_extractor.opening_strategy_wait.0.weight": 0.021182596683502197,
+    "features_extractor.opening_strategy_wait.0.bias": 0.006845023017376661,
+    "features_extractor.opening_strategy_wait.2.weight": 0.007418522145599127,
+    "features_extractor.opening_strategy_wait.2.bias": 0.001195163233205676,
+    "pi_features_extractor.opening_strategy_spatial.0.weight": 0.001261681318283081,
+    "pi_features_extractor.opening_strategy_spatial.0.bias": 8.150935173034668e-06,
+    "pi_features_extractor.opening_strategy_spatial.2.weight": 0.00040271924808621407,
+    "pi_features_extractor.opening_strategy_spatial.2.bias": 9.828247129917145e-06,
+    "pi_features_extractor.opening_strategy_spatial.4.weight": 0.0005019064992666245,
+    "pi_features_extractor.opening_strategy_spatial.4.bias": 0.00011324882507324219,
+    "pi_features_extractor.opening_strategy_spatial.6.weight": 0.0008083079010248184,
+    "pi_features_extractor.opening_strategy_spatial.6.bias": 0.0004082024097442627,
+    "pi_features_extractor.opening_strategy_spatial.8.weight": 0.0028753429651260376,
+    "pi_features_extractor.opening_strategy_spatial.8.bias": 0.0011472813785076141,
+    "pi_features_extractor.opening_strategy_spatial.10.weight": 0.0016629695892333984,
+    "pi_features_extractor.opening_strategy_spatial.10.bias": 0.0008598566055297852,
+    "pi_features_extractor.opening_strategy_roads.weight": 0.002324442146345973,
+    "pi_features_extractor.opening_strategy_roads.bias": 0.0013964817626401782,
+    "pi_features_extractor.opening_strategy_wait.0.weight": 0.021182596683502197,
+    "pi_features_extractor.opening_strategy_wait.0.bias": 0.006845023017376661,
+    "pi_features_extractor.opening_strategy_wait.2.weight": 0.007418522145599127,
+    "pi_features_extractor.opening_strategy_wait.2.bias": 0.001195163233205676,
+    "vf_features_extractor.opening_strategy_spatial.0.weight": 0.001261681318283081,
+    "vf_features_extractor.opening_strategy_spatial.0.bias": 8.150935173034668e-06,
+    "vf_features_extractor.opening_strategy_spatial.2.weight": 0.00040271924808621407,
+    "vf_features_extractor.opening_strategy_spatial.2.bias": 9.828247129917145e-06,
+    "vf_features_extractor.opening_strategy_spatial.4.weight": 0.0005019064992666245,
+    "vf_features_extractor.opening_strategy_spatial.4.bias": 0.00011324882507324219,
+    "vf_features_extractor.opening_strategy_spatial.6.weight": 0.0008083079010248184,
+    "vf_features_extractor.opening_strategy_spatial.6.bias": 0.0004082024097442627,
+    "vf_features_extractor.opening_strategy_spatial.8.weight": 0.0028753429651260376,
+    "vf_features_extractor.opening_strategy_spatial.8.bias": 0.0011472813785076141,
+    "vf_features_extractor.opening_strategy_spatial.10.weight": 0.0016629695892333984,
+    "vf_features_extractor.opening_strategy_spatial.10.bias": 0.0008598566055297852,
+    "vf_features_extractor.opening_strategy_roads.weight": 0.002324442146345973,
+    "vf_features_extractor.opening_strategy_roads.bias": 0.0013964817626401782,
+    "vf_features_extractor.opening_strategy_wait.0.weight": 0.021182596683502197,
+    "vf_features_extractor.opening_strategy_wait.0.bias": 0.006845023017376661,
+    "vf_features_extractor.opening_strategy_wait.2.weight": 0.007418522145599127,
+    "vf_features_extractor.opening_strategy_wait.2.bias": 0.001195163233205676,
+    "value_net.0.weight": 0.006801348179578781,
+    "value_net.0.bias": 0.0015780478715896606,
+    "value_net.2.weight": 0.0018258094787597656,
+    "value_net.2.bias": 0.00036072731018066406
+  },
+  "established_initial_exact": [
+    "midgame-network-join",
+    "midgame-network-route",
+    "midgame-network-delay",
+    "midgame-network-quiet",
+    "traffic-priority-established",
+    "traffic-priority-established-swap",
+    "traffic-junction-low-live",
+    "traffic-junction-high-live",
+    "midgame-network-reserve"
+  ],
+  "opening_probes": [
+    {
+      "seed": 2004,
+      "wait_before": 0.2119002342224121,
+      "wait_after": 0.13437820971012115,
+      "total_variation": 0.23125727474689484
+    },
+    {
+      "seed": 99161630,
+      "wait_before": 0.2905113101005554,
+      "wait_after": 0.3716380000114441,
+      "total_variation": 0.08112664520740509
+    },
+    {
+      "seed": 99312933,
+      "wait_before": 0.04957345500588417,
+      "wait_after": 0.06989900022745132,
+      "total_variation": 0.0822007805109024
+    },
+    {
+      "seed": 99324387,
+      "wait_before": 0.3670724034309387,
+      "wait_after": 0.26768389344215393,
+      "total_variation": 0.09953266382217407
+    },
+    {
+      "seed": 99123141,
+      "wait_before": 0.12986794114112854,
+      "wait_after": 0.08637261390686035,
+      "total_variation": 0.11449117958545685
+    },
+    {
+      "seed": 99433969,
+      "wait_before": 0.6902481913566589,
+      "wait_after": 0.5963226556777954,
+      "total_variation": 0.09392549097537994
+    }
+  ]
+}

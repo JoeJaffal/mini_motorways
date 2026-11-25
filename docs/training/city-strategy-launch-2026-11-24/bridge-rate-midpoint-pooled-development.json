@@ -1,0 +1,23 @@
+{
+  "games": 96,
+  "parent_mean": 252.16666666666666,
+  "candidate_mean": 235.84375,
+  "parent_scoring": 90,
+  "candidate_scoring": 90,
+  "delta": -16.322916666666668,
+  "interval95": [
+    -57.86484375,
+    23.396354166666658
+  ],
+  "candidate_sha256": "92adb88c255578d338eb5a2e3db23c2bb914c20bbd4e58b3d1e9ca05fe55576c",
+  "note": "Pooled consumed development cohorts, not independent confirmation.",
+  "bootstrap_draws": 12000,
+  "bootstrap_seed": 142915,
+  "horizon": 1200,
+  "allow_bridges": true,
+  "source_runs": [
+    "city-strategy-bridge-longer-baseline-01",
+    "city-strategy-bridge-rate-midpoint-longer-01",
+    "city-strategy-bridge-rate-midpoint-broader-01"
+  ]
+}

@@ -1,0 +1,170 @@
+[
+  {
+    "model": "original",
+    "group": 0,
+    "base_lr": 0.003,
+    "lr_scale": 1.0,
+    "eps": 1e-08,
+    "parameters": 2658,
+    "steps": [],
+    "weight_decay": 0
+  },
+  {
+    "model": "original",
+    "group": 1,
+    "base_lr": 0.003,
+    "lr_scale": 0.3,
+    "eps": 1e-08,
+    "parameters": 2501,
+    "steps": [],
+    "weight_decay": 0
+  },
+  {
+    "model": "original",
+    "group": 2,
+    "base_lr": 0.003,
+    "lr_scale": 0.1,
+    "eps": 1e-08,
+    "parameters": 12912,
+    "steps": [],
+    "weight_decay": 0
+  },
+  {
+    "model": "original",
+    "group": 3,
+    "base_lr": 0.003,
+    "lr_scale": 0.1,
+    "eps": 1e-08,
+    "parameters": 11777,
+    "steps": [],
+    "weight_decay": 0
+  },
+  {
+    "model": "previous-final",
+    "group": 0,
+    "base_lr": 0.0003,
+    "lr_scale": 1.0,
+    "eps": 1e-08,
+    "parameters": 2658,
+    "steps": [
+      8192
+    ],
+    "weight_decay": 0,
+    "median_gradient_rms": 8.880562631929934e-07,
+    "fraction_rms_below_epsilon": 0.4695259630680084,
+    "median_last_update_magnitude": 2.0715003046234415e-08,
+    "last_update_norm": 0.001300233881920576
+  },
+  {
+    "model": "previous-final",
+    "group": 1,
+    "base_lr": 0.0003,
+    "lr_scale": 0.3,
+    "eps": 1e-08,
+    "parameters": 2501,
+    "steps": [
+      8192
+    ],
+    "weight_decay": 0,
+    "median_gradient_rms": 1.7334929047763126e-09,
+    "fraction_rms_below_epsilon": 0.5125949382781982,
+    "median_last_update_magnitude": 7.807288149308533e-09,
+    "last_update_norm": 0.0006080095190554857
+  },
+  {
+    "model": "previous-final",
+    "group": 2,
+    "base_lr": 0.0003,
+    "lr_scale": 0.1,
+    "eps": 1e-08,
+    "parameters": 12912,
+    "steps": [
+      8192
+    ],
+    "weight_decay": 0,
+    "median_gradient_rms": 2.498609865142498e-05,
+    "fraction_rms_below_epsilon": 0.026022305712103844,
+    "median_last_update_magnitude": 3.256394620620995e-06,
+    "last_update_norm": 0.000633900286629796
+  },
+  {
+    "model": "previous-final",
+    "group": 3,
+    "base_lr": 0.0003,
+    "lr_scale": 0.1,
+    "eps": 1e-08,
+    "parameters": 11777,
+    "steps": [
+      8192
+    ],
+    "weight_decay": 0,
+    "median_gradient_rms": 2.7724411211238476e-07,
+    "fraction_rms_below_epsilon": 0.4287169873714447,
+    "median_last_update_magnitude": 2.6011648390777964e-10,
+    "last_update_norm": 0.0003372954670339823
+  },
+  {
+    "model": "reset-65536",
+    "group": 0,
+    "base_lr": 0.0003,
+    "lr_scale": 1.0,
+    "eps": 1e-08,
+    "parameters": 2658,
+    "steps": [
+      2048
+    ],
+    "weight_decay": 0,
+    "median_gradient_rms": 1.6601967445240007e-06,
+    "fraction_rms_below_epsilon": 0.4695259630680084,
+    "median_last_update_magnitude": 2.204681322837132e-06,
+    "last_update_norm": 0.001915599568746984
+  },
+  {
+    "model": "reset-65536",
+    "group": 1,
+    "base_lr": 0.0003,
+    "lr_scale": 0.3,
+    "eps": 1e-08,
+    "parameters": 2501,
+    "steps": [
+      2048
+    ],
+    "weight_decay": 0,
+    "median_gradient_rms": 6.156505971688375e-09,
+    "fraction_rms_below_epsilon": 0.5037984848022461,
+    "median_last_update_magnitude": 1.7594264933862291e-10,
+    "last_update_norm": 0.0009516741265542805
+  },
+  {
+    "model": "reset-65536",
+    "group": 2,
+    "base_lr": 0.0003,
+    "lr_scale": 0.1,
+    "eps": 1e-08,
+    "parameters": 12912,
+    "steps": [
+      2048
+    ],
+    "weight_decay": 0,
+    "median_gradient_rms": 2.4461502107442357e-05,
+    "fraction_rms_below_epsilon": 0.026022305712103844,
+    "median_last_update_magnitude": 5.186135695112171e-06,
+    "last_update_norm": 0.0012273089960217476
+  },
+  {
+    "model": "reset-65536",
+    "group": 3,
+    "base_lr": 0.0003,
+    "lr_scale": 0.1,
+    "eps": 1e-08,
+    "parameters": 11777,
+    "steps": [
+      2048
+    ],
+    "weight_decay": 0,
+    "median_gradient_rms": 2.6922598408418708e-06,
+    "fraction_rms_below_epsilon": 0.4198012948036194,
+    "median_last_update_magnitude": 9.976240562536987e-07,
+    "last_update_norm": 0.0009948054794222116
+  }
+]

@@ -1,0 +1,15 @@
+[
+  "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+  "-u",
+  "/home/mohammadjaffal/mini_motorways/output/training/road-cost-continuation-01/runtime/training/continue_road_cost_trial.py",
+  "--parent",
+  "/home/mohammadjaffal/mini_motorways/output/training/road-cost-reward-fit-01/control/final.zip",
+  "--dll",
+  "/home/mohammadjaffal/mini_motorways/output/training/road-cost-continuation-01/runtime/host/TrafficHost.dll",
+  "--output",
+  "/home/mohammadjaffal/mini_motorways/output/training/road-cost-continuation-01/control",
+  "--road-cost",
+  "0.0",
+  "--seed-start",
+  "208000000"
+]

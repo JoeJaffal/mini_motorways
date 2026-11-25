@@ -1,0 +1,29 @@
+{
+  "parent": "output/training/city-service-reserve-readiness-01/checkpoints/city-000086016-db6c8742.zip",
+  "parent_sha256": "3631b5d13a1d3012134de3dbba51fc8c5e0a10af6b07bd790c5271d405bf15f7",
+  "host": "output/city-network-service-build.NdaqGi/bin/TrafficHost/release/TrafficHost.dll",
+  "host_sha256": "78b7c6dccff3def0ed9da7cb1b9cfc857893525e7240ac8748d2714f5ffd6948",
+  "settings": {
+    "device": "cuda",
+    "seed": 641997,
+    "n_steps": 128,
+    "batch_size": 64,
+    "n_epochs": 4,
+    "learning_rate": 0.0003,
+    "gamma": 1.0,
+    "gae_lambda": 0.95,
+    "ent_coef": 0.01,
+    "target_kl": 0.03
+  },
+  "workers": 16,
+  "training_range": [
+    108000000,
+    108100000
+  ],
+  "decisions_requested": 32768,
+  "initial_prior": {
+    "progress": 1.5,
+    "join": 5.0,
+    "coupling": 1.0
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "dll": "output/training/mini-reset-comparison-01/runtime/host/TrafficHost.dll",
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+  "models": {
+    "candidate": {
+      "path": "output/training/mini-reset-comparison-01/reset-curriculum/checkpoint-000065536.zip",
+      "sha256": "b6b1f6664864855fcee36b5903bee937a99bf1d73ad49b79152ec1f136730272"
+    }
+  },
+  "exercises": [
+    "adjacent",
+    "bend",
+    "clear",
+    "obstacle",
+    "small-city-offset-single",
+    "small-city-offset-stock",
+    "small-city-offset-pairs"
+  ],
+  "count": 16,
+  "seed_start": 231000000,
+  "reference_queries": false,
+  "old_geometry_uses_city_wait_60_seconds": true
+}

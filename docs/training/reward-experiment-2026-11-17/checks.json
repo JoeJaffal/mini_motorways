@@ -1,0 +1,15 @@
+{
+  "reward_tests": 6,
+  "varied_connection_layouts": 20,
+  "complete_shaped_episode_native_trips_at_least": 3,
+  "terminal_balance_and_operational_cut": "PASS",
+  "strict_shaped_replay": "PASS",
+  "negative_return_two_head_loss": "PASS",
+  "prior_regression_tests": 23,
+  "parallel_dry_workers": 4,
+  "parallel_dry_tokens": 135,
+  "parallel_dry_optimizer_steps": 0,
+  "parallel_dry_weights_unchanged": true,
+  "training_performed": false,
+  "cuda_validation": "pending user Linux run"
+}

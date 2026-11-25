@@ -1,0 +1,28 @@
+{
+  "parent": "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01/training/final.zip",
+  "parent_sha256": "907e1a083b58780bd140d4e258285878ed3534a4c0be6cf9b75070eae7f04826",
+  "checkpoint_sha256": "ffcdea94a8bce01e68028a3b7f01ff6208599216a8a4f8cff056c3732fcd810c",
+  "host_sha256": "3077ce7593b062d8c756116435346ce956ff1961a073aa74ffda55282903ee1e",
+  "preserved_timesteps": 786432,
+  "retained_adam_parameters": 30,
+  "retained_adam_steps": [
+    907,
+    10240
+  ],
+  "trainable": [
+    "features_extractor.growth_strategy_wait.0.weight",
+    "features_extractor.growth_strategy_wait.0.bias",
+    "features_extractor.growth_strategy_wait.2.weight",
+    "features_extractor.growth_strategy_wait.2.bias",
+    "features_extractor.growth_strategy_visual_wait.0.weight",
+    "features_extractor.growth_strategy_visual_wait.0.bias",
+    "features_extractor.growth_strategy_visual_wait.2.weight",
+    "features_extractor.growth_strategy_visual_wait.2.bias"
+  ],
+  "initial_actor_max_error": 0.0,
+  "shared_states": 16,
+  "all_weights_exact": true,
+  "original_city_critic_and_adam_preserved": true,
+  "bandit_values_zero": true,
+  "limits": "Preparation only. One-step binary objective; not city promotion. Parent remains unchanged."
+}

@@ -1,0 +1,1377 @@
+[
+  {
+    "path": "PLAN.md",
+    "sha256": "fc9978166654bacad28fd5a156d796a44823bb15c8df253634d344ac7bc66baf",
+    "bytes": 4528
+  },
+  {
+    "path": "README.md",
+    "sha256": "f736b96b8395bcd606c800aaf5cf0dba0175605fae1d59f58ce46b598d6a9119",
+    "bytes": 10134
+  },
+  {
+    "path": "archive.py",
+    "sha256": "a5fbbea28732fc625ea2d66f42dc090ff9fb214e2612406565de3a8f88e86779",
+    "bytes": 2137
+  },
+  {
+    "path": "audit.py",
+    "sha256": "50e91ad5ffd3c2a38a74626bd62f916464682767a25bc09431318c6d9e8d7c32",
+    "bytes": 1916
+  },
+  {
+    "path": "check_native.py",
+    "sha256": "8ca4e06195daa60ffdd52b265bef7fa25c652e12f176582234408e1b65c7df20",
+    "bytes": 1877
+  },
+  {
+    "path": "city-comparison.json",
+    "sha256": "503ce54c6121a08688a0738a7e16952622e6f5d1967e4f32dd5df15b124b3898",
+    "bytes": 3348
+  },
+  {
+    "path": "compare.py",
+    "sha256": "0da296778991e2382293586c7ac1f867ddaaf1acab55121be421f6be7a5338b8",
+    "bytes": 1999
+  },
+  {
+    "path": "context-repair-native-check.json",
+    "sha256": "907a4f7b21815be243c87f5edd6e0d75a3520701574a9d8607dadb11ae32ce40",
+    "bytes": 732
+  },
+  {
+    "path": "diagnose_wait.py",
+    "sha256": "cfbcc2a02a764b554b12834fe1dbcf8e51ebda8553ebc154c71d64b16a709353",
+    "bytes": 1768
+  },
+  {
+    "path": "final-audit-01.json",
+    "sha256": "d02c7cdafb8474ce7f6c6c5e14de514c2a9ec45acf4dca992d9d8d6b6cc83c8e",
+    "bytes": 2452
+  },
+  {
+    "path": "final-results.json",
+    "sha256": "cce5c0aca5707040c55ec927577a7452b9021b3d4499842b74cbc9c1316869eb",
+    "bytes": 16792
+  },
+  {
+    "path": "host-parity.json",
+    "sha256": "8d9f30a18388808c0edd624dde205cd360e0bda6fb2097f2f1cfc6042ca31313",
+    "bytes": 11876
+  },
+  {
+    "path": "local-only-artifacts.json",
+    "sha256": "0810b54134999d0335072e37d4f20b6632be19555f6795b4a7a1c6ec137d1034",
+    "bytes": 1335
+  },
+  {
+    "path": "measurements/output/city-road-reserve-build-01.log",
+    "sha256": "f53079f512c136ab2e98b09c4c4d819cd9bb830048471103a3df88c297614c19",
+    "bytes": 384
+  },
+  {
+    "path": "measurements/output/city-road-reserve-context-repair-check.log",
+    "sha256": "e3e2fa3ee4bd868094104214dc13ff5c1adb96ef0f3382c7b9fd21b1987c05ea",
+    "bytes": 556
+  },
+  {
+    "path": "measurements/output/city-road-reserve-final-audit-01.log",
+    "sha256": "393edbdcfd10bcde3e8f3f3ca11e4062f5c543db719ef9e00d10c932cf3e56e9",
+    "bytes": 1323
+  },
+  {
+    "path": "measurements/output/city-road-reserve-midpoint-audit.log",
+    "sha256": "9d4c960b28655ca3837dcf195c8da178bd3eccc3b99611bdb4129066670ca229",
+    "bytes": 1325
+  },
+  {
+    "path": "measurements/output/city-road-reserve-native-checks-final.log",
+    "sha256": "a24e7a305783f6049d1f13175738d8a6420edba71a933a8df72d09476c21c567",
+    "bytes": 701
+  },
+  {
+    "path": "measurements/output/city-road-reserve-native-checks.log",
+    "sha256": "bb9efe1623c854068b023b889300ec67decf1d40b02ab64907907bb560d78bd2",
+    "bytes": 351
+  },
+  {
+    "path": "measurements/output/city-road-reserve-parity.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "measurements/output/city-road-reserve-repair-context.log",
+    "sha256": "b42b5030497cd5c73e693d9715c428be8e76ddc2f64de9ac741fd9d3fba2fbb3",
+    "bytes": 1006
+  },
+  {
+    "path": "measurements/output/city-road-reserve-repaired-audit.log",
+    "sha256": "393edbdcfd10bcde3e8f3f3ca11e4062f5c543db719ef9e00d10c932cf3e56e9",
+    "bytes": 1323
+  },
+  {
+    "path": "measurements/output/city-road-reserve-wait-diagnosis.log",
+    "sha256": "f157caaddbfb274dfa5b2ad0630afc216753390c9e469a28ad2cfc1b46061886",
+    "bytes": 1920
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-city-candidate-01/games.jsonl",
+    "sha256": "73ea3dfbf008cf378a2086658d4be8efcb270473575de6fd5c61265b4852f3c4",
+    "bytes": 32813
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-city-candidate-01/suite.json",
+    "sha256": "19829882fde482519f35449ae03fefafc4d7e0c79a96d4d883055d90413db9ad",
+    "bytes": 1208
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-city-candidate-01/summary.json",
+    "sha256": "ddf8ead01bf2b6a1d31b175b35b91abb26c3affac01521595f525e672d9fa12d",
+    "bytes": 1057
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-city-candidate-01.log",
+    "sha256": "004c0cd91407f3a4b7f1a29bca9a94fc862ddd0f07f16a18e7f73aa03ceef703",
+    "bytes": 3039
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-city-confirmation-01/games.jsonl",
+    "sha256": "55bf532cf59f2e804f8d57523ecba70f193a202bcc7906286c54d6a594c0e6f9",
+    "bytes": 74322
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-city-confirmation-01/suite.json",
+    "sha256": "0913c1cbca0771a0c21e49d38e743cd7198c2d996874dedc5d50b915489f68c4",
+    "bytes": 1205
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-city-confirmation-01/summary.json",
+    "sha256": "fb4cdbbe7f39d72b2effc52b59845e3b43e359dc6bd82db6f27d3b6d3e964458",
+    "bytes": 2045
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-city-confirmation-01.log",
+    "sha256": "74da42d06d1b85ea40e212ef24b0015d1a5cffeee87e292b1dda95a77bc3d9c4",
+    "bytes": 4320
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-city-references-01/games.jsonl",
+    "sha256": "47e22599aefa61fae9f03fb1b3e2b52ab41847b7cf01ddaa0ead31545b51c6cf",
+    "bytes": 90613
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-city-references-01/suite.json",
+    "sha256": "19829882fde482519f35449ae03fefafc4d7e0c79a96d4d883055d90413db9ad",
+    "bytes": 1208
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-city-references-01/summary.json",
+    "sha256": "1e00803dd8327254ccbd9cb101825c40d0160fe2f5da7f661dcfa4724e49020a",
+    "bytes": 2102
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-city-references-01.log",
+    "sha256": "b63d11fb9b475afeb5552bcbb2ec7110ff5239d58589fc3a1b8c8bed8a9f8725",
+    "bytes": 4400
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-controls-01/config.json",
+    "sha256": "271f9c7c08fe88e5354b14145d8c3901328349fe1ea2e3b14aeea9ba5b649e88",
+    "bytes": 493
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-controls-01/games.jsonl",
+    "sha256": "f4f3043b6d26d2c3628f57602054b682fc8a8a27cdf257e376834ca23c8d3bbe",
+    "bytes": 15172
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-controls-01/summary.json",
+    "sha256": "aeb721a9f3f968874d62e6a68517cd72e7e2814580dbef8e25b5965633ce695c",
+    "bytes": 1034
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-controls-01.log",
+    "sha256": "40932b01eecf83ff8c8a30e73ff86a1624f13dbec2b2259ab544103dd3733a40",
+    "bytes": 776
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-final-review-01/config.json",
+    "sha256": "ae0f3c69eb91cd058e096681146997977edd53ca7277f1de3bbf928c7f33a2c8",
+    "bytes": 576
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-final-review-01/games.jsonl",
+    "sha256": "fac972d7a9edd110e69da81ceab3522b0b642659b2a33a945e8b56a2d3714d55",
+    "bytes": 16008
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-final-review-01/summary.json",
+    "sha256": "9091d053c4a3d8dceec0977a2bb913e6791e6c7a559800de88c0adf6995ab5b1",
+    "bytes": 916
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-final-review-01.log",
+    "sha256": "f25721b11b01d3869e5a53dcc99a06f1338827e8528a33e82082c0f9f2250c9b",
+    "bytes": 1744
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-independent-practice-01/config.json",
+    "sha256": "86b80b323db25f4d87f51396edd19b5f7a7ce5fbaba1072c0c1f1dc81a2d1d04",
+    "bytes": 941
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-independent-practice-01/games.jsonl",
+    "sha256": "2c9619536fa516ba70fc26c982c937d1ae9daa5386416458f53f743bca5def7a",
+    "bytes": 319298
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-independent-practice-01/summary.json",
+    "sha256": "615613a712370b63356f93fd69dcc3e79078d8948b45e5c97938b5df0a1f4d0e",
+    "bytes": 7881
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-independent-practice-01.log",
+    "sha256": "ff3b2f935e24043a3b9fabccb43aa22a667221952a56899d6e049433ee1e2fae",
+    "bytes": 14972
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-initial-01/config.json",
+    "sha256": "806d49b8aaf4ffd302cdf55619ae2c27fb375239694b11b7eafa2addf27f5c9f",
+    "bytes": 1485
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-midpoint-review-01/config.json",
+    "sha256": "d7f71b8654d0c754d7b37e39cd5644a3d04a23ddd1045354c72f2b8e91e9c25d",
+    "bytes": 774
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-midpoint-review-01/games.jsonl",
+    "sha256": "2a703a283126a2fa913b0889cab5f12f54ade7ef088e12f7d21fcdf56ce1d4e9",
+    "bytes": 32029
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-midpoint-review-01/summary.json",
+    "sha256": "83af32f7795159277b97843f8f3a4c0da8574b7b249b19cb9bea71af41c978db",
+    "bytes": 1667
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-midpoint-review-01.log",
+    "sha256": "dc65f538d551de124593a5469dcb2851d310354198fd6f569346509a3b40f98b",
+    "bytes": 2064
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-pilot-01/checkpoints.json",
+    "sha256": "e30f54417ce2e8d1dc94103381b85972d47e068ea91f46f942920d7cd200c27a",
+    "bytes": 491
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-pilot-01/complete.json",
+    "sha256": "240dc8981f724e38a299b681a18becc2e1d87a3084f2b7f9de6ac57e8eb88353",
+    "bytes": 575
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-pilot-01/config.json",
+    "sha256": "c7348b6b4c2966502a07a233ea8702142ad7e0ed81c24ba6bf439fb3b5520d65",
+    "bytes": 556
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-pilot-01/episodes.jsonl",
+    "sha256": "0e53538386e3542bdfeee80ca9d70d0d9bfaa1136d266cd937499e6bc62485bd",
+    "bytes": 114798
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-pilot-01/progress.csv",
+    "sha256": "c87066456c98b54e471ce208455fefdaa37c1aa7675f0e8c6f42a0b5504a68b4",
+    "bytes": 1197
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-pilot-01.log",
+    "sha256": "b75f018c427c69f7f4ec7c3b5f1512d0f624ac3d0d6e2942c3dd3dd3d85b263d",
+    "bytes": 184
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-prepare-01.log",
+    "sha256": "ae32f8333397c6dc4471911be3067f68103ca727263ff19dcba39a8893988afe",
+    "bytes": 916
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-repaired-01/config.json",
+    "sha256": "284a03f989e9f7ffd8697c61f15ee8785a548922605494e467388902bc1dcf72",
+    "bytes": 1654
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-repaired-practice-01/config.json",
+    "sha256": "67af120b2f9cff95eea6c915bbcf380b143e0cd6e79575ad452c72185f8ab875",
+    "bytes": 763
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-repaired-practice-01/games.jsonl",
+    "sha256": "7dbdb1ecb6a08ea328877d042f0b65632721a426ec8d2795d8e571d4678c7d33",
+    "bytes": 76544
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-repaired-practice-01/summary.json",
+    "sha256": "3864f9420b2fe48b244686b35dba6406456d4fbf569f16f06ed88ef38f825b05",
+    "bytes": 2003
+  },
+  {
+    "path": "measurements/output/training/city-road-reserve-repaired-practice-01.log",
+    "sha256": "975be9dbd0ffa7e84ed0423f09e4c3bc1a352b4290b1712c57f685600bf6471f",
+    "bytes": 8289
+  },
+  {
+    "path": "midpoint-audit.json",
+    "sha256": "2f77f08bc813ae93aa7306d7624c510754cb6f4c2504ac3da2719eaff9a3c04f",
+    "bytes": 2463
+  },
+  {
+    "path": "native-checks.txt",
+    "sha256": "37b1df6c73d0b3aae427bcf007f4bd90165b7e1773159836c63e285cd0ec2947",
+    "bytes": 144
+  },
+  {
+    "path": "native-reserve-checks.json",
+    "sha256": "7ed16d224d17af979d1bd1a0d56a109ed323e3c2a0c09e378dfdbbaf415f4ed5",
+    "bytes": 911
+  },
+  {
+    "path": "prepare.py",
+    "sha256": "9bdcf5675d4cbe0525fe6ad396d8e76851ebb265f22d032c1001f622e98b185a",
+    "bytes": 2096
+  },
+  {
+    "path": "python-checks.txt",
+    "sha256": "c861160f0d3946a1fcebff684848cab9f3e97fb608bffded6d1d0f402f6f2e2b",
+    "bytes": 106
+  },
+  {
+    "path": "python-final-checks.txt",
+    "sha256": "3e6b759d28f59769b90752d7281b6868f002e1b7de2236d532e2fa1cd27d023d",
+    "bytes": 107
+  },
+  {
+    "path": "repair_context.py",
+    "sha256": "d7f768f204278960f969c6c475ceeb4d05e711cca2c4689e3dee06843f029624",
+    "bytes": 2255
+  },
+  {
+    "path": "repaired-audit.json",
+    "sha256": "7488e7dcbd0febbf2b962192b0d22010ff6e04fe07d798ef07c02f98df64d3fb",
+    "bytes": 2459
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/AiReplay.cs",
+    "sha256": "c4b42593a74f4e878e3c8cd674056873e9cacf121bfb8206e96b24e8dde62f46",
+    "bytes": 4561
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/CarparkArbitration.cs",
+    "sha256": "078517de8eb042c219a4e5c1a846dab015937bc32ad8a5a7bdab595fbb4bdb60",
+    "bytes": 5980
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/CityCatalog.cs",
+    "sha256": "03ee4a6ea5c7488ce0e3680d89bc8f5982cb0711a0f5997262528c978746ed0b",
+    "bytes": 100853
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/CityDemand.cs",
+    "sha256": "ef539dcd87a313ef94fd8386a230d45861ea7b365201d8f281a567ddb16b86d6",
+    "bytes": 24331
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/CityExpansion.cs",
+    "sha256": "7055b6fea2603f0d2c7785560b3dd05e83cec3210e81494ea1111457f3e22e10",
+    "bytes": 4412
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/CityRoadActions.cs",
+    "sha256": "4a258a7f875abe668f911ddcdcd26242494c8f9d0967471ed3e48dde7088d25b",
+    "bytes": 2586
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/ConnectionRetirement.cs",
+    "sha256": "11a45737a23128b320b557d3dda162813620ba753eebd78b221d0528b27f520c",
+    "bytes": 4160
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/ConstructionCurriculum.cs",
+    "sha256": "f5ae99efe1590d0ac8ae1250bc7d5625f6b88018576c4c72c3d26e43fd4efb02",
+    "bytes": 8139
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/ContinuousJourneys.cs",
+    "sha256": "d5196b704db96b58113f859edb317e3f347a0e0ea9b9848d7879f1633bd61a40",
+    "bytes": 4286
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/CustomScenario.cs",
+    "sha256": "fe5adc212fa0b7e88019a178a91b82810292d77fe5da32064d66b3f6718c1b29",
+    "bytes": 9915
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/CustomScenarioChecks.cs",
+    "sha256": "01cd19b0c7458cca86c2f8f14d2f257ee72e5bea2047abee17008c899d589e7a",
+    "bytes": 7509
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/DrawDiagnostics.cs",
+    "sha256": "f240eb40128e6e37bf23b6653319bf4b13cf967a09ed5a4c0f2acc0684250584",
+    "bytes": 2535
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/GameplayFidelityChecks.cs",
+    "sha256": "87a5079194bdd13e74c08e2471cb57e70d9cecbcedc1c3786b722b7b8b8ec396",
+    "bytes": 17621
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/JunctionArbitration.cs",
+    "sha256": "82c7645bedc6f24b204c48b74b3bcc69cdf830e56d564bf403248f114bfe5bfd",
+    "bytes": 17766
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/LimitedRoutePractice.cs",
+    "sha256": "c8aabc6998e852123a0dc37cffdaf271d70a149b73add2c85bfaf19801d1898a",
+    "bytes": 4283
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/MaterialInventory.cs",
+    "sha256": "53de56ba4206643daffb0d870193a5c2c4157d9014031c3c02e548d61278f540",
+    "bytes": 7971
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/MidgameServicePractice.cs",
+    "sha256": "32c1435217792c56da2d478e95c91f7d69215e3f3dd47144600377aee974e820",
+    "bytes": 7397
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/MotorwayNetwork.cs",
+    "sha256": "ecb5a0469c2ed34029a9a04ea09060cdc43ebe48e7bd174e8956b33771303bb0",
+    "bytes": 7166
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/NativeDriveways.cs",
+    "sha256": "23cf6fd51d172aac00be571c75caac02027b7aa0646fe8370de2ab4e8ac3de7a",
+    "bytes": 1289
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/OriginalGameplayTuning.cs",
+    "sha256": "511c59b0121f2966a1b49140d6ea095b4a899cbdb7e802b14c35a044920469d5",
+    "bytes": 9108
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/OriginalMapProfile.cs",
+    "sha256": "2a5135b265d583fd18174041adb8850755a98d28e0e9a9a1a94ec6984893067e",
+    "bytes": 14601
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/OriginalMovement.cs",
+    "sha256": "895a82c831cd2a65e9be2688e95ae9930507764b88b4bab7fabe892bdafa2a54",
+    "bytes": 14465
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/OriginalPlacement.cs",
+    "sha256": "0e7734869d68cf91368d9ec76831405867f85f297dbd74e678c336b122618f4c",
+    "bytes": 24513
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/OriginalPlacementChecks.cs",
+    "sha256": "163408eb6126e62d1d86ac42d1511e531416eaaffd641e051b156817a0ca9491",
+    "bytes": 10848
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/OriginalPlacementData.cs",
+    "sha256": "127f2dedfb8b5ca18f1d1e5128a0287943c6d0bdec0777f4fc4942883d132d5c",
+    "bytes": 119991
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/OriginalSchedule.cs",
+    "sha256": "9a6837ad094931b55743f27ae0002233dc54f8171c77091b2b56e8c8acae22b2",
+    "bytes": 7298
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/OriginalSignals.cs",
+    "sha256": "4d1be5116d4f8246f7ebc50d7e2b75a5960739f1cad2be6c472acb45057efc9b",
+    "bytes": 8187
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/OriginalUpgrades.cs",
+    "sha256": "98e02200106ed791a428962118ad2d56c2b01a9e0afbd40142dc05fa472a0bd1",
+    "bytes": 5123
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/ParkingFlowChecks.cs",
+    "sha256": "5bcdeafcde0675e52a122525cffacb5c349826c845d77079a6c40dc23ebeeb94",
+    "bytes": 3886
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/ParkingNetwork.cs",
+    "sha256": "e87bf6c51d48a14561a0826eb39af41dc6c8f4c65bdb25cde19becdda6c85d3c",
+    "bytes": 13504
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/PracticeLegality.cs",
+    "sha256": "d367280a7b07c1f27d72bd01b51d35a081a47e288a0282f90bcf0a3c71680797",
+    "bytes": 6457
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/PracticeLegalityChecks.cs",
+    "sha256": "459c0e3ab3c4368f800a21a964716601c0fe7af7d9875b3e2948ef39826ed8aa",
+    "bytes": 6374
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/PracticeScenario.cs",
+    "sha256": "f9ad6f6f3e225a27025b28b8cfb58c4aa7f41346c1d90bc68804ab825954276d",
+    "bytes": 2940
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/Railways.cs",
+    "sha256": "e3193c1555041ba100048ba5350d1609ea4d0f7aaa52333c84b63c0d5664cc47",
+    "bytes": 15331
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/RecordedCarparkChecks.cs",
+    "sha256": "995e93bea9a75d58363723fd9e6e61fcb850acdae044daeaf4403a4910769f18",
+    "bytes": 10453
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/ReferenceCurves.cs",
+    "sha256": "e96895312d4fb8a27854591d52f7921583d678d134197eeea2bba4614f49ec28",
+    "bytes": 1025
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/ReferenceRandom.cs",
+    "sha256": "7c78c495bf742a9db9ab3fdee2f78dc2fa810782ead0745c25e9fb6b6690e74d",
+    "bytes": 1797
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/RetiringRoads.cs",
+    "sha256": "e83e90d522208f0e7d901bff2247318f1b1307552f631e7a95d552a0e3ff28e8",
+    "bytes": 1544
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/RoadNetwork.cs",
+    "sha256": "afc70b973410ce578835eff52fd5ae52b0de3f687ee021607a0b6989b7289dad",
+    "bytes": 28795
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/RoundaboutActivation.cs",
+    "sha256": "b18ef83bbed82e4da1dacb9ed0d223a5b715fa11c8687d02d683dd73167d3854",
+    "bytes": 4107
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/SharedCarparkTransit.cs",
+    "sha256": "3bd49a5027d6d5bbe87bfa7e5a6b9336110b963fd16407870e4fcae1145a1c65",
+    "bytes": 2357
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/SharedCarparks.cs",
+    "sha256": "5497ad006d2a5f6d0feb68075a90beba76c9f306772b5d1d3655a0f786a03d76",
+    "bytes": 5465
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/SharedTransitChecks.cs",
+    "sha256": "da6661f044f7a47b421dcbb354f65280bb65f21009fc8c06cf8fc5f3cfc82d98",
+    "bytes": 2908
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/SimulationChecks.cs",
+    "sha256": "82b0fec96952e0f458fd576312fbdf9a25cfe52ce243d3fed902a8365249193f",
+    "bytes": 90809
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/SimulatorVersion.cs",
+    "sha256": "2dea3819563eb9eb2ac915c295f5a98a48b1420c8e30d9be0e6eefa8ee47268c",
+    "bytes": 620
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/TrafficControl.cs",
+    "sha256": "a8a93efe9688a329dd864c002d7823d4aade6f0a54e8e7dcfdd52abb049ba513",
+    "bytes": 50626
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/TrafficPractice.cs",
+    "sha256": "270be5f66b576f6fdd37a0df2b5e8a9710d1a7f7f95d33898b5c1fdd357f2f87",
+    "bytes": 8741
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/TrafficTypes.cs",
+    "sha256": "976889dc5f5278761f66ceebbc868cdb37d392292111e18f92b74b186fc63d86",
+    "bytes": 14345
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/TrafficWorld.cs",
+    "sha256": "10750e96f8ff7d850be536bc61223ccd26bec0220002b5891cf1648dba87a52a",
+    "bytes": 31949
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/TrainTuning.cs",
+    "sha256": "0cffe8c9089719458df24156ecccac5506b36e856cf61b32547c56e23ffb9258",
+    "bytes": 725
+  },
+  {
+    "path": "source/simulation/Assets/Simulation/UsefulConnectivity.cs",
+    "sha256": "46b38ae028e120d082a85f66b488734df14ff5a415bf12dc05a2ce5df58b4050",
+    "bytes": 1496
+  },
+  {
+    "path": "source/simulation/Headless/Program.cs",
+    "sha256": "69c80cb308b1542753ae0474da474f49d19946534ccc9f4c962bba520df2f2b0",
+    "bytes": 16936
+  },
+  {
+    "path": "source/simulation/Headless/TrafficHost.csproj",
+    "sha256": "ff91cc1230439f5887e666b8909c900fa3c780b7419196e062909da9f5116672",
+    "bytes": 362
+  },
+  {
+    "path": "source/training/archive_documentation.py",
+    "sha256": "614d747408572cee18fb5eef830561f6146c9793a27701191098f8b871770a82",
+    "bytes": 2440
+  },
+  {
+    "path": "source/training/archive_session.py",
+    "sha256": "0a26a631b01369c9c3cacf094b6c77a9301d84b35f2ab4eece74eb4dfc74f576",
+    "bytes": 5407
+  },
+  {
+    "path": "source/training/assess_investigation.py",
+    "sha256": "32e183896c9ec0c7eb70ab2b39cce0b91c5036c36befcf5de3a7283e9c1c05ef",
+    "bytes": 7316
+  },
+  {
+    "path": "source/training/assess_signals.py",
+    "sha256": "6cace050c0801933d8ebd196d709e1308cba9b421d2af2a12f2bb6d146dfe1c4",
+    "bytes": 4381
+  },
+  {
+    "path": "source/training/audit_city_roads.py",
+    "sha256": "a48790c3b5f4f691b6b6f148a3414e6d33419f0d04762ab5fb8f322d5630104f",
+    "bytes": 7721
+  },
+  {
+    "path": "source/training/audit_city_service.py",
+    "sha256": "b773939950a98de3a407026abdc5b0a78d4e8e86bd631d69af35a993c4ca3a1a",
+    "bytes": 7520
+  },
+  {
+    "path": "source/training/audit_goal_learning.py",
+    "sha256": "59a01ecb9ba47cc1e8e705157821c73519a37fd0f09a5ec36b2b9044de0ab4cd",
+    "bytes": 3830
+  },
+  {
+    "path": "source/training/audit_rewards.py",
+    "sha256": "a0572b6e9c42d285e042d1bf3439e95d1751d62626644fe0f6593cbb66285d82",
+    "bytes": 3876
+  },
+  {
+    "path": "source/training/benchmark_city_ppo.py",
+    "sha256": "a393e343998358597d70c6dd5bb4982c0e6e3640a3267efd6d4afd7f4b1337e0",
+    "bytes": 7167
+  },
+  {
+    "path": "source/training/benchmark_parallel.py",
+    "sha256": "966603d1be3b142457cbfebab1396a6a0b5aa7b746cddd3cf34a0124c87ecc4e",
+    "bytes": 2995
+  },
+  {
+    "path": "source/training/benchmark_practice.py",
+    "sha256": "dcc547c9f1400497eac32fe75c99892402237d456f11684a75b90015958bb90a",
+    "bytes": 7246
+  },
+  {
+    "path": "source/training/bend_ppo.py",
+    "sha256": "3f4f84aa95df55efd2884540e71403e74b83a7e298a41ecbc7faa4a4e773b174",
+    "bytes": 14070
+  },
+  {
+    "path": "source/training/calibrate_city_route_repair.py",
+    "sha256": "514e42935d1588247d7894dd41e8ec1d050a9ddfe716b0c9855ba9ab2c62d87c",
+    "bytes": 2225
+  },
+  {
+    "path": "source/training/checkpoint_tools.py",
+    "sha256": "f546179b86cc6338cf0e6e0986ff77598d16465863150a4570f53e3bcf31e5f3",
+    "bytes": 4862
+  },
+  {
+    "path": "source/training/city_curriculum.py",
+    "sha256": "132cca9d73c143d3d27bb352a09efbd28e2966d5ce31f6e66e8eb9b7bfa49b64",
+    "bytes": 7883
+  },
+  {
+    "path": "source/training/city_established_policy.py",
+    "sha256": "a18054aef9c9b2057b9d6d3a3a85f876d7cf6ba6b45c95e0a4603597184ee8ea",
+    "bytes": 1140
+  },
+  {
+    "path": "source/training/city_exploration_policy.py",
+    "sha256": "1fbe6b38bcdeab9aac4e1d8fcbc5b0436f20ed97bc73dd75edad0853dad2721b",
+    "bytes": 2025
+  },
+  {
+    "path": "source/training/city_growth_policy.py",
+    "sha256": "0e5a604554b9c8bbc2d98f5d96cebb9785b2fe2d2ff5eadf0da200e3da9cad38",
+    "bytes": 2321
+  },
+  {
+    "path": "source/training/city_learning_policy.py",
+    "sha256": "544f0a09ca64069b4af0394fdf74d0782d7eaeddd377832186d40f1234295d26",
+    "bytes": 264
+  },
+  {
+    "path": "source/training/city_network_service_policy.py",
+    "sha256": "477d1e462751f9f67f412696f1fbc12d058f8c55e91ecda1cadba97b7479eb3d",
+    "bytes": 9172
+  },
+  {
+    "path": "source/training/city_relational_policy.py",
+    "sha256": "1974f399444264cbf8f4b93f37024c1171218ec492a25ffe1a7cbcf5416c4602",
+    "bytes": 6613
+  },
+  {
+    "path": "source/training/city_reserve_policy.py",
+    "sha256": "95a9586417063dcfaaedb432852e716fb5954a363f56976092d9a45bd9947d3b",
+    "bytes": 2740
+  },
+  {
+    "path": "source/training/city_road_pilot.py",
+    "sha256": "fee11a39a5d4c205d05e3110fad96e64bbcdfab2ab7d800b7de0cf6470993789",
+    "bytes": 8546
+  },
+  {
+    "path": "source/training/city_road_policy.py",
+    "sha256": "4059beba8899b1293daa7056a830ce88ba8a2fb88b4eef30e46f5755f0e0cff6",
+    "bytes": 6872
+  },
+  {
+    "path": "source/training/city_route_repair_policy.py",
+    "sha256": "8371da9e5544c8af0cc338a0b17cbf3292c98f62bb8e7d20e50ddad7f58995ae",
+    "bytes": 11101
+  },
+  {
+    "path": "source/training/city_service_policy.py",
+    "sha256": "33778b66de1b5a60a3f97dafeab7a6f6941818c0e32ffb5c5446fc7cbe01ffe6",
+    "bytes": 6321
+  },
+  {
+    "path": "source/training/clear_road_ppo.py",
+    "sha256": "8934cb2d07f8c28232df81d9192d00280fd4805c3811492a3831386e97bec209",
+    "bytes": 14904
+  },
+  {
+    "path": "source/training/compare_congestion.py",
+    "sha256": "21fd893ad1892f1f6920efa2652837e2c14332ad89f3b9ca3a284337976c5f73",
+    "bytes": 3126
+  },
+  {
+    "path": "source/training/compare_stage1.py",
+    "sha256": "6e332ebecc38f6127d14ad49127c39196cfdab471f4a2e71293b4943e81f9d15",
+    "bytes": 11283
+  },
+  {
+    "path": "source/training/compare_traffic_lights.py",
+    "sha256": "e496090706963be7b3a962b1afb56ddd1fa36ef305913cbaafa7cdb34049105a",
+    "bytes": 4776
+  },
+  {
+    "path": "source/training/compare_upgrade_support.py",
+    "sha256": "ca47575c06293166fe6ebe4da065efb28df3a16233e5a595a98e4183419005ea",
+    "bytes": 5581
+  },
+  {
+    "path": "source/training/connection_practice.py",
+    "sha256": "927df9ba9f953c59b4d00e6fc9c27e8288c9f707a2c2353357e00bee25e741ad",
+    "bytes": 22229
+  },
+  {
+    "path": "source/training/construction_curriculum.py",
+    "sha256": "4cc1e131fa5c1bd66ab7166a0623a11e44e4a915ede86d1227135fd353663d14",
+    "bytes": 14268
+  },
+  {
+    "path": "source/training/construction_practice.py",
+    "sha256": "eebd5bcf6ff9ba16586f8d8f33a3eb07228b0da5f495042957e814ea606c8c92",
+    "bytes": 10562
+  },
+  {
+    "path": "source/training/diagnose_city_policy.py",
+    "sha256": "077374535ada5c79f972f964de108c208071b40bca9a49b8788a26f5826e8870",
+    "bytes": 6428
+  },
+  {
+    "path": "source/training/diagnose_light_failure.py",
+    "sha256": "427a69e5cf387365d444dd4f6456f3f980d9723fc2d2d25db09ce1f28db6bdc8",
+    "bytes": 7137
+  },
+  {
+    "path": "source/training/diagnose_policy_regression.py",
+    "sha256": "698247507e1b01071206e71aac681ad01d60cdacddf095d81ff29f0d4c79c673",
+    "bytes": 6528
+  },
+  {
+    "path": "source/training/driveway_ppo.py",
+    "sha256": "14a7a990d3f56fcc0514bd8090c1b561a4df44a4b5b9d104b76870ef9031bab5",
+    "bytes": 10922
+  },
+  {
+    "path": "source/training/edge_policy.py",
+    "sha256": "b0a77d9976dfe73bd3dce11bdb4b6e4146853b3d55b394d047045b64b4f0ab12",
+    "bytes": 6078
+  },
+  {
+    "path": "source/training/environment.py",
+    "sha256": "eeb3bde8d9e547299deb1a08e6afd3a77a8d6ca5da18b156c91e05c2e792897f",
+    "bytes": 25617
+  },
+  {
+    "path": "source/training/evaluate_checkpoint.py",
+    "sha256": "e550a4f81e014bfe276059752ccf1c91e91e555777062a8ebf03a054d6ea6f21",
+    "bytes": 4811
+  },
+  {
+    "path": "source/training/evaluate_city_checkpoints.py",
+    "sha256": "110f0c60222e609fc8a6846f0bcea9b33ca258d17b3a48a93bba348f845f2345",
+    "bytes": 4907
+  },
+  {
+    "path": "source/training/evaluate_city_curriculum.py",
+    "sha256": "dfeae27023a68487e12b35a4616b915c6ce965cf309dcee9a0903e48760895ab",
+    "bytes": 6102
+  },
+  {
+    "path": "source/training/evaluate_city_opening_pilot.py",
+    "sha256": "2eec53c0d632fdb2744eced5f8ceae1f389c50214c4347da24bfd17610747355",
+    "bytes": 6230
+  },
+  {
+    "path": "source/training/evaluate_city_policy.py",
+    "sha256": "f56294d25ec58a11dabff420dc799a114167d6d8624775fbcfdb50b5f36e1800",
+    "bytes": 6340
+  },
+  {
+    "path": "source/training/evaluate_city_route_repair.py",
+    "sha256": "944d623c6c77256b6efd40eb1405af2322edb57b62079ba5b7074fc1a61d71ac",
+    "bytes": 5987
+  },
+  {
+    "path": "source/training/evaluate_city_service.py",
+    "sha256": "7369db1fe8744e082410f6917a8d66b4dee8cdb6f728543a8b6dbab19c334cca",
+    "bytes": 4857
+  },
+  {
+    "path": "source/training/evaluate_construction_ppo.py",
+    "sha256": "cc8d56daaad0a960019d484c6c4c01d037fe81f549f11f0e22633b0a8e270ec6",
+    "bytes": 6319
+  },
+  {
+    "path": "source/training/evaluate_fresh_signals.py",
+    "sha256": "f0017933c5f3a05a79c5afcd10a71903e76df526f239e6ff15400a9a1f616993",
+    "bytes": 5776
+  },
+  {
+    "path": "source/training/evaluate_limited_route_ppo.py",
+    "sha256": "f893e8b2aba77bb3030a899ae6af97a84a9ba2c014cbf109a8d39fd4772e0e13",
+    "bytes": 6730
+  },
+  {
+    "path": "source/training/evaluate_midgame_service.py",
+    "sha256": "05e1b6b8cecd6aa83cf05a4ab48ed59534fefc4675de1f3ab3ee98f448704507",
+    "bytes": 6486
+  },
+  {
+    "path": "source/training/evaluate_practice.py",
+    "sha256": "db54a9d3f61547d46c6c96e25f1ba67de1ef0f7351a3a54c2135f960f4b705c7",
+    "bytes": 4589
+  },
+  {
+    "path": "source/training/evaluate_triad_ppo.py",
+    "sha256": "7e80cf68324715a27ceffc15a9e1a00dfd4ea87abdde7455445dd176cd5a8b38",
+    "bytes": 7209
+  },
+  {
+    "path": "source/training/export_city_replays.py",
+    "sha256": "407cfc407b9b07c4b7af0aee444bc5c2e80ebd6700950cb060ea2920981ffbc1",
+    "bytes": 5801
+  },
+  {
+    "path": "source/training/goal_agent.py",
+    "sha256": "70f7c367938c4594ce8ddbccaebac55efe5757e9899c8df29f69a733fd729b31",
+    "bytes": 18424
+  },
+  {
+    "path": "source/training/hierarchy_batches.py",
+    "sha256": "199b47fd5404f581dbe29f744c1a02c7d96e99a2740f819d887875fe85273a52",
+    "bytes": 5896
+  },
+  {
+    "path": "source/training/hierarchy_checkpoint.py",
+    "sha256": "f614f5e0af58901f58abc6e3890fd5e15066ee6c9c7944d25b4fad51291051c6",
+    "bytes": 2256
+  },
+  {
+    "path": "source/training/hierarchy_objective.py",
+    "sha256": "c072cee2b4cb826e31ce9ef7dc0716dcca8dfc420d340e7830cac1242d56ce38",
+    "bytes": 2608
+  },
+  {
+    "path": "source/training/hierarchy_policy.py",
+    "sha256": "8cff3933e10c9fcdd10911dacd3c323eeff92ea85132cbc0e72d20c40915f5f5",
+    "bytes": 3977
+  },
+  {
+    "path": "source/training/hierarchy_rollout.py",
+    "sha256": "e98479c49ac509aa4fffddb19f5dce1b9f4b9183f2ffe3bf892a4c1549d79a89",
+    "bytes": 10119
+  },
+  {
+    "path": "source/training/hierarchy_updater.py",
+    "sha256": "cd6424efb489405555c0bc7c86c5cbce0b2e29aabc48e79eab7c53110be86fc9",
+    "bytes": 5223
+  },
+  {
+    "path": "source/training/midgame_timing_policy.py",
+    "sha256": "4119939bbf1e36f5ff1ab9ffa122c6cfb7a268b9469fcd4586be9ce870e60d45",
+    "bytes": 2470
+  },
+  {
+    "path": "source/training/migration.py",
+    "sha256": "a0e62177e8e0bdcafcc4436ad4fde2bb9fbd88289e2e196e25412bfb819f89af",
+    "bytes": 2028
+  },
+  {
+    "path": "source/training/offset_ppo.py",
+    "sha256": "2ea560ee24650524d8625e46fd369a65c6d3443d8bb298207b475dd05a00fa04",
+    "bytes": 11302
+  },
+  {
+    "path": "source/training/pair_ppo.py",
+    "sha256": "fac6a17f62f06e8edfa39d84204d9e896d1ac3ddf6d0a8e51e64d45a36647e8b",
+    "bytes": 16782
+  },
+  {
+    "path": "source/training/parallel.py",
+    "sha256": "a6fd56d586e8392d3ba0cd8c9355e8a2cd7001d5b9fc5d29dd05dfc17735a9aa",
+    "bytes": 3499
+  },
+  {
+    "path": "source/training/parallel_stage1.py",
+    "sha256": "b7a1eeef0e5485bfc038116e0449f3ad49b33d1e266d1bf7369d65b1cb9c55f8",
+    "bytes": 10944
+  },
+  {
+    "path": "source/training/planner_diagnostic.py",
+    "sha256": "405c47dd2706f4b2da32ba43e0dbe5ce4f7d6a22a2688efa395bf7658290d756",
+    "bytes": 5858
+  },
+  {
+    "path": "source/training/practice_replay.py",
+    "sha256": "2760018e513cb6dff022d88c727d900ac27faf7ff34dc261d7f8984fffd81e73",
+    "bytes": 5778
+  },
+  {
+    "path": "source/training/practice_reward.py",
+    "sha256": "cd1e54f5c499b3418022aa15b164bd25ade61e0304876766da386b45d88093f1",
+    "bytes": 2196
+  },
+  {
+    "path": "source/training/prepare_city_policy.py",
+    "sha256": "2005bcc6f19d9f9caecd754a8ee4f574014e287e4556bfe333ce4367770e9f29",
+    "bytes": 9985
+  },
+  {
+    "path": "source/training/prepare_stage1.py",
+    "sha256": "37f7c1b1e80d5213116e38b35341152db4a3b500e2094636d4962502b834aaac",
+    "bytes": 7867
+  },
+  {
+    "path": "source/training/progress.py",
+    "sha256": "b71dc8acbb27b2a00dd37e750ad636394cb5c62f3f7bea632fb37654abc119cc",
+    "bytes": 13937
+  },
+  {
+    "path": "source/training/report_light_failure.py",
+    "sha256": "faf4c3244ee9b3f9d3d5ecfe123ef7c4451dc85f0cbb592c37b4fa32d8374ca8",
+    "bytes": 4088
+  },
+  {
+    "path": "source/training/rewards.py",
+    "sha256": "ea8cc85dad695962b88a860ca6178657cc0fbc877db310d535a9548803832a8d",
+    "bytes": 1196
+  },
+  {
+    "path": "source/training/run_city_growth_pilot.py",
+    "sha256": "c5f91acf6215edfcca74d3491cdb5e7656070457136ec77d2c2f76a086669ee1",
+    "bytes": 6674
+  },
+  {
+    "path": "source/training/run_city_learning_guarded.py",
+    "sha256": "34febdea1d8eb6d2f24325dc0232bf24ca04fe437f18431e4efc639c90cb2fae",
+    "bytes": 3781
+  },
+  {
+    "path": "source/training/run_city_overnight.py",
+    "sha256": "778a47721ea65b4d1d59efcbe5aea2496c083000a4da0bfbc051c0e5ac38a8b4",
+    "bytes": 13565
+  },
+  {
+    "path": "source/training/run_city_service_training.py",
+    "sha256": "a1124454697cda47d4c2230bee102328323666ffc066832cd5fe7fb946ce1e2e",
+    "bytes": 6612
+  },
+  {
+    "path": "source/training/run_final_evaluations.py",
+    "sha256": "780b46339fac1dc733860486f2147fc6092ecebc19958fc63c3eddd0df62e4ac",
+    "bytes": 3514
+  },
+  {
+    "path": "source/training/score_wait_ppo.py",
+    "sha256": "a57e790e5c43381cc7fb7eded15a8212e93629108cca021e52499d2f4a4116b6",
+    "bytes": 19146
+  },
+  {
+    "path": "source/training/select_investigation_candidates.py",
+    "sha256": "2ef85411db20633c3a704f3518fe8214c222ce8796ab8f4a7f94eecce66950a8",
+    "bytes": 3575
+  },
+  {
+    "path": "source/training/shutdown.py",
+    "sha256": "6163ef19e17b6ad7ac59e5020609384f5b40c7320810b16eb829824af3228191",
+    "bytes": 992
+  },
+  {
+    "path": "source/training/signal_agent.py",
+    "sha256": "6cda8d15aa798e5ec34bc0e3da6a6f1dcffa74c82e7e54a6ad3eb884a8ac544f",
+    "bytes": 7272
+  },
+  {
+    "path": "source/training/spare_road_eval.py",
+    "sha256": "c89470cc197eb6c5ae56a2c987d6e3e1968729536b8febacd6bf3308093b722c",
+    "bytes": 2139
+  },
+  {
+    "path": "source/training/spare_road_ppo.py",
+    "sha256": "dcda4f80a9aede3b3004f1af0e06212d03d7183b8cc5bcdfdfeedb0c3816de76",
+    "bytes": 12538
+  },
+  {
+    "path": "source/training/spatial_policy.py",
+    "sha256": "8252c57b518486576c4d27a2e0b9045519a446afcd811186bde24b93401ad540",
+    "bytes": 7614
+  },
+  {
+    "path": "source/training/stop_at_steps.py",
+    "sha256": "f332ab0a72ffc94a5c9eb7e18768cc7ca74b2fdaddfc8843b2733189545ead54",
+    "bytes": 1099
+  },
+  {
+    "path": "source/training/terrain_ppo.py",
+    "sha256": "90df7aadb9ec082b824ba7789b960dab7110fabc88f944a0a96c0c882a964a51",
+    "bytes": 19686
+  },
+  {
+    "path": "source/training/test_city_established_policy.py",
+    "sha256": "56fb368874b08185c5456db1d85774b95aa509c4b86532a677319e7141a312e2",
+    "bytes": 1999
+  },
+  {
+    "path": "source/training/test_city_exploration_policy.py",
+    "sha256": "ad3f96ab2b598e8aefdb746702bd0eba59b50e46358b44c5681af6a7b0d8342e",
+    "bytes": 2295
+  },
+  {
+    "path": "source/training/test_city_network_service.py",
+    "sha256": "76f7b5acf73d169dcce1d7b3de1e24a41d4b21325c8e742964f67a56bac0fb2c",
+    "bytes": 2942
+  },
+  {
+    "path": "source/training/test_city_relational_policy.py",
+    "sha256": "75cde4fc3ffbc467f03bf63825701eebd84ad4ac73a7e0fb07fe7e860407a2ef",
+    "bytes": 2357
+  },
+  {
+    "path": "source/training/test_city_reserve_policy.py",
+    "sha256": "fe4add0e3d63d40c4c01f6772d45dfc42df4e104b9a6b26e4d2affaa0aace8da",
+    "bytes": 2471
+  },
+  {
+    "path": "source/training/test_compact.py",
+    "sha256": "b74a27abc7093434d1b3dea6789d4cb5351f89a2333cb431c83d87bb8fccaeeb",
+    "bytes": 4315
+  },
+  {
+    "path": "source/training/test_comparison_resume.py",
+    "sha256": "de0967dcf1e44000ce3ca73f4e9432eedd3d897a52ce1024009ce14dfdc3e80a",
+    "bytes": 4608
+  },
+  {
+    "path": "source/training/test_connection_practice.py",
+    "sha256": "7070e2f7d9c7d578bd105d039d14c337f76ffa953cbbdbdb96e51777cb38c41a",
+    "bytes": 11249
+  },
+  {
+    "path": "source/training/test_construction_practice.py",
+    "sha256": "8ea98f6ab16273ba72339f3b86875ca476539ac86a88bcd70a8ca2ba9ccd4ec6",
+    "bytes": 2158
+  },
+  {
+    "path": "source/training/test_direct_practice.py",
+    "sha256": "4752d101fdf5ff8adf37cf883f7c674ac670af4eb8cd77656fcdab2e145fb7b6",
+    "bytes": 5057
+  },
+  {
+    "path": "source/training/test_draw_mask.py",
+    "sha256": "010ae1631e077d4ec11bbb321427ae3ebfe47ed99eb2f88654e7bf93e3ccaa08",
+    "bytes": 1977
+  },
+  {
+    "path": "source/training/test_draw_only.py",
+    "sha256": "8e5d3b2c4f791e032c25796e26c8474a815547b1bbabcd9a18e1196898042ca9",
+    "bytes": 3083
+  },
+  {
+    "path": "source/training/test_edge_policy.py",
+    "sha256": "e02849b608758f14b7d3c8fd255b96c6a92c450ee1202adb2f5036b6ea17d6bc",
+    "bytes": 3640
+  },
+  {
+    "path": "source/training/test_environment.py",
+    "sha256": "4259933f104e68796ca29e2c3c37bd831602476e2e6d9cfd30bf8ebe8b72de4a",
+    "bytes": 8984
+  },
+  {
+    "path": "source/training/test_evaluate_practice.py",
+    "sha256": "1b346e018dc20128b2784432d459f353bb0728fdf5b42eaff313930bbea55b6c",
+    "bytes": 4644
+  },
+  {
+    "path": "source/training/test_features.py",
+    "sha256": "6be79f9d5e4c0523d1fde439347ac2ca0ebd22d9c6f0ca9826d549779fcdfe0e",
+    "bytes": 7918
+  },
+  {
+    "path": "source/training/test_first_upgrade.py",
+    "sha256": "cae52e1c97826f8d5bbdaf7e9d1cd8b2bbcd740a03b4555231678a41c053d5f2",
+    "bytes": 6359
+  },
+  {
+    "path": "source/training/test_goal_agent.py",
+    "sha256": "fe9cc28ee36a55b97ce0ec0dd4e49a9cb8d54a3c9621bb47fc33fc2ee801a530",
+    "bytes": 11331
+  },
+  {
+    "path": "source/training/test_hierarchy_credit.py",
+    "sha256": "7615cd6401162f4196c43b1645a849a3f082b5dc8794607afcda82b80c766626",
+    "bytes": 4436
+  },
+  {
+    "path": "source/training/test_hierarchy_integration.py",
+    "sha256": "a246097d0b195fb175a1ba43d6683ad5cda031155bba02a43536c4d13ac70de9",
+    "bytes": 3303
+  },
+  {
+    "path": "source/training/test_hierarchy_objective.py",
+    "sha256": "ba94ecd9f19548e8241aea36d4e9368e330999a67f0c2060b2518c4a9f15a4d3",
+    "bytes": 2500
+  },
+  {
+    "path": "source/training/test_hierarchy_policy.py",
+    "sha256": "ec75be638d27a2c5c8851069c66eef39d7c543423b4ce033737e2f741208afa4",
+    "bytes": 3206
+  },
+  {
+    "path": "source/training/test_hierarchy_updater.py",
+    "sha256": "a7a8c6399597b7dec09b89c3a1d647b8ca330c581c08e81acc42e743cc23fb0e",
+    "bytes": 375
+  },
+  {
+    "path": "source/training/test_inference_collector.py",
+    "sha256": "35d3577988520370c35629c0bff25718ccbd2e656a6766253903c79f64415925",
+    "bytes": 4520
+  },
+  {
+    "path": "source/training/test_one_gap.py",
+    "sha256": "6bc2157662ae681b8da9e161f56b7e6b59ca721d75a4269ec6e2d787fc13aa3f",
+    "bytes": 3985
+  },
+  {
+    "path": "source/training/test_parallel.py",
+    "sha256": "137239c0291ee0e88b696b04d0badaed765783301af2e2ce67228f1798e02bae",
+    "bytes": 5157
+  },
+  {
+    "path": "source/training/test_parallel_stage1.py",
+    "sha256": "a1229dfcd912f1c458600277ed36633d9cd064dae97e7852413771f36bdea8f3",
+    "bytes": 4112
+  },
+  {
+    "path": "source/training/test_practice_protocol.py",
+    "sha256": "b7249f95305467550b1c85b2c63739a8cb9dabe9628ac931abddc53cac630b6e",
+    "bytes": 2128
+  },
+  {
+    "path": "source/training/test_practice_replay.py",
+    "sha256": "4c2757cb1851fbd5a653f27eb8cd29f7f960eeadc32fb14c8fe9448939b2940c",
+    "bytes": 2544
+  },
+  {
+    "path": "source/training/test_reward_experiment.py",
+    "sha256": "0f04719c8cef03a1915e62531d747cc449a607f09e60aa840410d634285ca516",
+    "bytes": 6469
+  },
+  {
+    "path": "source/training/test_rewards.py",
+    "sha256": "5b74cef1b4b12b28667f9e5712f13511bb6fa3b087792db7947e1178fe86eedb",
+    "bytes": 6750
+  },
+  {
+    "path": "source/training/test_shutdown.py",
+    "sha256": "cb633a1711f78e9b17116f2edcb2ec67d181e698d008dc74c127871920dbc45a",
+    "bytes": 1315
+  },
+  {
+    "path": "source/training/test_signal_agent.py",
+    "sha256": "02278573d903fa61ead2c4ec5fa8a52cc73cd11febd8d9915f360cc2ed619bb3",
+    "bytes": 6645
+  },
+  {
+    "path": "source/training/test_signal_context.py",
+    "sha256": "b8a93684b88dd6e71a75d353e8f35bcb28a15c7b3a7e3f44c677456f463f2f04",
+    "bytes": 4018
+  },
+  {
+    "path": "source/training/test_single_build.py",
+    "sha256": "7b891098d86352427f66e4b81604d8cc11466b63b67d5b4cc968a624aeed6f2f",
+    "bytes": 6666
+  },
+  {
+    "path": "source/training/test_visible_observation.py",
+    "sha256": "3b11741066f649abe8e314971e2a333c2df517ee31a692eb5c857b3edc8df59c",
+    "bytes": 7247
+  },
+  {
+    "path": "source/training/test_workflow.py",
+    "sha256": "1607760913039b7cdcf81d21349bcc33115be45516115acba38998dc66c4d62f",
+    "bytes": 7740
+  },
+  {
+    "path": "source/training/traffic_ppo.py",
+    "sha256": "783a7774b45594e7f637b956c10ccf27b8b280ad97678c8e884c5993a6129797",
+    "bytes": 33720
+  },
+  {
+    "path": "source/training/traffic_practice.py",
+    "sha256": "6ce9a5168934ccd745e68f828e922502f168b526ed65da7decec3432b8484362",
+    "bytes": 9907
+  },
+  {
+    "path": "source/training/train.py",
+    "sha256": "1faf9cb829c6ac78a51d98035521297f4abe1a1e1d958c271bc665e84746163d",
+    "bytes": 15325
+  },
+  {
+    "path": "source/training/train_city_curriculum.py",
+    "sha256": "e365e69b8f71b6bedf450dc67b71eb2d4eaa3e978b59161ffee7721048bd50f8",
+    "bytes": 3861
+  },
+  {
+    "path": "source/training/train_city_network_service.py",
+    "sha256": "63f3b6855c9cfad0490eaf77075aa2afde9b279c1fb8f6088f887c12dd5fb9ca",
+    "bytes": 12313
+  },
+  {
+    "path": "source/training/train_city_opening_pilot.py",
+    "sha256": "b139517d148caa7a755d4ce1b29aabf47d7b212a628fe4fa7915229d922c29b0",
+    "bytes": 6787
+  },
+  {
+    "path": "source/training/train_city_route_repair.py",
+    "sha256": "df73c73de53992525bd10a5101d9e716950b235726d0ed0ea81d0f6fb082cdd8",
+    "bytes": 10197
+  },
+  {
+    "path": "source/training/train_city_score_pilot.py",
+    "sha256": "1a47e6d7fb42cd0a1904c93bd20dd45227f610d174ba68c0af79ea883fafe3ed",
+    "bytes": 6467
+  },
+  {
+    "path": "source/training/train_goal.py",
+    "sha256": "b9fd08529634d426ed0a423e56440b28d953507921906c4468d388e0c1676306",
+    "bytes": 16466
+  },
+  {
+    "path": "source/training/train_limited_route_ppo.py",
+    "sha256": "8dbff32ee253f236fb635918875d41e9697e92f9e6c446347102e2238b981bc5",
+    "bytes": 10696
+  },
+  {
+    "path": "source/training/train_midgame_service.py",
+    "sha256": "8a356a4524e495e08bb9d6d7f7cf71824d8ebf1f0a815b21e4366c3734a5a655",
+    "bytes": 11503
+  },
+  {
+    "path": "source/training/train_parallel_stage1.py",
+    "sha256": "83e1b30bad0e09c374e3529801d6719ce61e84a599115b1e1c0207af3da256bf",
+    "bytes": 14113
+  },
+  {
+    "path": "source/training/triad_curriculum_ppo.py",
+    "sha256": "cdebdec5ab83266aa4add11fd8846631cdffa99df9c61fd898fd5fe52d6e785a",
+    "bytes": 21411
+  },
+  {
+    "path": "source/training/triad_ppo.py",
+    "sha256": "e694da208c662769a8b8d768916b5931d9e1c21f6c3d7783226c10a2edc3b8b2",
+    "bytes": 12957
+  },
+  {
+    "path": "source/training/triad_score_ppo.py",
+    "sha256": "86ea1bbad36871a4c6e65844b72a4b60293fd8d928dd19ca363e1584fe109929",
+    "bytes": 24418
+  },
+  {
+    "path": "source/training/upgrade_rules.py",
+    "sha256": "aa27d3de7b56f6bf5cf5e94b9e8ca446b2038d10711bf831c35980601d561c79",
+    "bytes": 840
+  },
+  {
+    "path": "source/training/visible_observation.py",
+    "sha256": "76ea6a0ee1b3c1b44bc8d0ca2a16a9c349432d2172ab83cc5dc14fbdf4417cb9",
+    "bytes": 10812
+  },
+  {
+    "path": "source/training/watch_best.py",
+    "sha256": "20b27160bd698afbbe3446f222961fefa89fb0cdd18a298d2543f2ef47d933c9",
+    "bytes": 1775
+  },
+  {
+    "path": "source/training/watch_live.py",
+    "sha256": "c3f944abd72ef26ade242d58af28f66161e825ba2903de87e88b4bc43ef3266a",
+    "bytes": 5204
+  },
+  {
+    "path": "source/training/watch_stage1.py",
+    "sha256": "c62c43bfc851e39270fa30ad78d5c3c17a7b4cfd5314c2a051ac5b7977e99b73",
+    "bytes": 4650
+  },
+  {
+    "path": "source-context.json",
+    "sha256": "5210b54aab7813217bba781dc81fc93ef0957c29d5a37a0bbf1d5b297975e6bf",
+    "bytes": 204
+  },
+  {
+    "path": "summarize_final.py",
+    "sha256": "5c75dec471d119019fcf8cea98417c6cc6a8f541e1bc9e7456f684c28b5b905e",
+    "bytes": 9135
+  },
+  {
+    "path": "verify_context_repair.py",
+    "sha256": "fb72df0d1197e362c9095a4791f9217e994384641634f3b49d26d8f83ed9d879",
+    "bytes": 1762
+  },
+  {
+    "path": "wait-context-diagnosis.json",
+    "sha256": "62cc00aa8ae8363c182d540180e2b4e94cfeed0544f83c8327ae3fdbfec17047",
+    "bytes": 2902
+  }
+]

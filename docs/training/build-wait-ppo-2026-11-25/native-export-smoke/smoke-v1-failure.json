@@ -1,0 +1,5 @@
+{
+  "stage": "pre-learning assertion",
+  "reason": "Copied road-only smoke assumed first optimizer group was roads; exported joint policy first group is Wait at4updates, roads/critic at10240. No update executed. Check all named states advancing4 instead.",
+  "retained_output": "output/training/build-wait-native-ppo-smoke-01"
+}

@@ -1,0 +1,13 @@
+77: 
+78:                 loss = policy_loss + self.ent_coef * entropy_loss + self.vf_coef * value_loss
+79: 
+88: 
+89:                 if self.target_kl is not None and approx_kl_div > 1.5 * self.target_kl:
+90:                     continue_training = False
+91:                     if self.verbose >= 1:
+98:                 # Clip grad norm
+99:                 th.nn.utils.clip_grad_norm_(self.policy.parameters(), self.max_grad_norm)
+100:                 self.policy.optimizer.step()
+101: 
+102:             self._n_updates += 1
+103:             if not continue_training:

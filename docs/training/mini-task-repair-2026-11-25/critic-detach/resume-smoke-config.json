@@ -1,0 +1,15 @@
+{
+  "dll": "/home/mohammadjaffal/mini_motorways/output/road-cost-reward-build-02/bin/TrafficHost/release/TrafficHost.dll",
+  "stage": "expansion-balanced",
+  "count": 16,
+  "seed": 235500000,
+  "collapse": true,
+  "horizon": 600,
+  "fast_priority_tail": false,
+  "reserve_warmup_seconds": 0,
+  "reserve_delay_seconds": null,
+  "allow_bridges": true,
+  "mini_starts": "/home/mohammadjaffal/mini_motorways/docs/training/mini-task-repair-2026-11-25/start-bank/starts.json",
+  "small_city_horizon": 300,
+  "fast_small_city_tail": true
+}

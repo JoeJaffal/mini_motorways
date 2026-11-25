@@ -1,0 +1,25 @@
+{
+  "pid": 323073,
+  "command": [
+    "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+    "-u",
+    "training/evaluate_city_service.py",
+    "--dll",
+    "output/city-bridge-connection-build-01/bin/TrafficHost/release/TrafficHost.dll",
+    "--checkpoints",
+    "output/training/city-strategy-city-only-01/segment-001/final.zip",
+    "--output",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-city-only-longer-01",
+    "--games",
+    "32",
+    "--seed",
+    "950241",
+    "--workers",
+    "16",
+    "--horizon",
+    "1200",
+    "--allow-bridges"
+  ],
+  "time": "2026-11-24T16:30:03.209169+02:00",
+  "purpose": "Matched development evaluation only; no training"
+}

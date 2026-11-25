@@ -1,0 +1,18 @@
+{
+  "branch": "Maskable-PPO",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "1f87ba5255081f7c1948dcde82dfc773f36b61c36e82ef29fa62345db7428b9a"
+    },
+    {
+      "path": "selection.json",
+      "sha256": "45d96b671337e1461a9c5e19ffcb61a0326c7898179f670a68074afeeb27a588"
+    }
+  ],
+  "source_hashes": {
+    "training/export_city_replays.py": "407cfc407b9b07c4b7af0aee444bc5c2e80ebd6700950cb060ea2920981ffbc1",
+    "training/stage1_replay.html": "868600363666b53207abd6e499bc0dad3b6263d82c711e20da325b0b25809244",
+    "training/city_road_pilot.py": "fee11a39a5d4c205d05e3110fad96e64bbcdfab2ab7d800b7de0cf6470993789"
+  }
+}

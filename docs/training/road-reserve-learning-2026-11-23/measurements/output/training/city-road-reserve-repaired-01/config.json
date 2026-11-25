@@ -1,0 +1,53 @@
+{
+  "source": "output/training/city-road-reserve-pilot-01/final.zip",
+  "source_sha256": "391b1447c53735f6fbd5d0e242f89fe884fec6d7fafb6c62018ec44225f9ead7",
+  "candidate_sha256": "e278fb338b626b580ad2598e17dd346994eb9dabbc3ed11ae8e3770d3f24cba7",
+  "note": "Feature repair only; identical trained weights, copied optimizer, no additional PPO. Resume needs bounded validation.",
+  "checks": [
+    {
+      "exercise": "midgame-network-join",
+      "wait_before": 0.30240556597709656,
+      "wait_after": 0.30240556597709656
+    },
+    {
+      "exercise": "midgame-network-route",
+      "wait_before": 0.425455778837204,
+      "wait_after": 0.425455778837204
+    },
+    {
+      "exercise": "midgame-network-delay",
+      "wait_before": 0.9999209642410278,
+      "wait_after": 0.9999209642410278
+    },
+    {
+      "exercise": "midgame-network-quiet",
+      "wait_before": 0.9148517847061157,
+      "wait_after": 0.9148517847061157
+    },
+    {
+      "exercise": "traffic-priority-established",
+      "wait_before": 0.13491679728031158,
+      "wait_after": 0.13491679728031158
+    },
+    {
+      "exercise": "traffic-priority-established-swap",
+      "wait_before": 0.06427228450775146,
+      "wait_after": 0.06427228450775146
+    },
+    {
+      "exercise": "traffic-junction-low-live",
+      "wait_before": 0.9380123615264893,
+      "wait_after": 0.9380123615264893
+    },
+    {
+      "exercise": "traffic-junction-high-live",
+      "wait_before": 0.9541856646537781,
+      "wait_after": 0.9541856646537781
+    },
+    {
+      "exercise": "midgame-network-reserve",
+      "wait_before": 0.9473975896835327,
+      "wait_after": 0.9473975896835327
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "output/training/build-wait-smoke-01/final.zip",
+  "parent_sha256": "cec1d2249a781487b31d0fee2a03e0e5bbbb6cbdecc1422677e98b06044dcf3c",
+  "checkpoint_sha256": "b3fae4c2da4d6a74a3983f11b445fcbff31ffef61874e97db21da52f3238359a",
+  "host_sha256": "3077ce7593b062d8c756116435346ce956ff1961a073aa74ffda55282903ee1e",
+  "preserved_timesteps": 753792,
+  "retained_adam_parameters": 30,
+  "retained_adam_steps": [
+    4,
+    10240
+  ],
+  "trainable": [
+    "features_extractor.growth_strategy_wait.0.weight",
+    "features_extractor.growth_strategy_wait.0.bias",
+    "features_extractor.growth_strategy_wait.2.weight",
+    "features_extractor.growth_strategy_wait.2.bias",
+    "features_extractor.growth_strategy_visual_wait.0.weight",
+    "features_extractor.growth_strategy_visual_wait.0.bias",
+    "features_extractor.growth_strategy_visual_wait.2.weight",
+    "features_extractor.growth_strategy_visual_wait.2.bias"
+  ],
+  "initial_actor_max_error": 0.0,
+  "shared_states": 16,
+  "all_weights_exact": true,
+  "original_city_critic_and_adam_preserved": true,
+  "bandit_values_zero": true,
+  "limits": "Preparation only. One-step binary objective; not city promotion. Parent remains unchanged."
+}

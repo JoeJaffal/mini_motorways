@@ -1,0 +1,16 @@
+{
+  "models": {
+    "original": {
+      "path": "output/training/city-whole-initial-01/start.zip",
+      "sha256": "7eb605e4e465b9143e095e367abe0a01285b8ace05843aaac80bd48b5f049027"
+    },
+    "reset65": {
+      "path": "output/training/mini-reset-comparison-01/reset-curriculum/checkpoint-000065536.zip",
+      "sha256": "b6b1f6664864855fcee36b5903bee937a99bf1d73ad49b79152ec1f136730272"
+    }
+  },
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+  "horizon": 300,
+  "observation_horizon": 600,
+  "first60_matches_archived": true
+}

@@ -1,0 +1,156 @@
+{
+  "device": "cpu",
+  "workers": 4,
+  "pytorch_threads": 2,
+  "seed": 42,
+  "attempts_per_trial": 256,
+  "rollout_order": [
+    "baseline-1",
+    "optimized-1",
+    "optimized-2",
+    "baseline-2"
+  ],
+  "checks_passed": 8,
+  "concurrent_cuda_pilot": true,
+  "measurements": {
+    "baseline-1": {
+      "result": "DRY_RUN_PASS",
+      "mode": "dry-run-no-training",
+      "optimizer_steps": 0,
+      "weights_unchanged": true,
+      "losses": [
+        {
+          "role": "executor",
+          "loss": -0.04084828495979309
+        },
+        {
+          "role": "executor",
+          "loss": -0.03655228763818741
+        },
+        {
+          "role": "executor",
+          "loss": -0.04868774861097336
+        },
+        {
+          "role": "executor",
+          "loss": -0.10977289080619812
+        }
+      ],
+      "collection_seconds": 6.744241469015833,
+      "counters": {
+        "tokens": 256,
+        "updates": 0,
+        "version": 0,
+        "episodes": 256
+      },
+      "session_tokens": 256,
+      "elapsed_seconds": 8.886109340994153
+    },
+    "optimized-1": {
+      "result": "DRY_RUN_PASS",
+      "mode": "dry-run-no-training",
+      "optimizer_steps": 0,
+      "weights_unchanged": true,
+      "losses": [
+        {
+          "role": "executor",
+          "loss": -0.04084828495979309
+        },
+        {
+          "role": "executor",
+          "loss": -0.03655228763818741
+        },
+        {
+          "role": "executor",
+          "loss": -0.04868774861097336
+        },
+        {
+          "role": "executor",
+          "loss": -0.10977289080619812
+        }
+      ],
+      "collection_seconds": 3.5731503250426613,
+      "counters": {
+        "tokens": 256,
+        "updates": 0,
+        "version": 0,
+        "episodes": 256
+      },
+      "session_tokens": 256,
+      "elapsed_seconds": 5.473136870947201
+    },
+    "optimized-2": {
+      "result": "DRY_RUN_PASS",
+      "mode": "dry-run-no-training",
+      "optimizer_steps": 0,
+      "weights_unchanged": true,
+      "losses": [
+        {
+          "role": "executor",
+          "loss": -0.04084828495979309
+        },
+        {
+          "role": "executor",
+          "loss": -0.03655228763818741
+        },
+        {
+          "role": "executor",
+          "loss": -0.04868774861097336
+        },
+        {
+          "role": "executor",
+          "loss": -0.10977289080619812
+        }
+      ],
+      "collection_seconds": 3.6940565070253797,
+      "counters": {
+        "tokens": 256,
+        "updates": 0,
+        "version": 0,
+        "episodes": 256
+      },
+      "session_tokens": 256,
+      "elapsed_seconds": 5.556179226958193
+    },
+    "baseline-2": {
+      "result": "DRY_RUN_PASS",
+      "mode": "dry-run-no-training",
+      "optimizer_steps": 0,
+      "weights_unchanged": true,
+      "losses": [
+        {
+          "role": "executor",
+          "loss": -0.04084828495979309
+        },
+        {
+          "role": "executor",
+          "loss": -0.03655228763818741
+        },
+        {
+          "role": "executor",
+          "loss": -0.04868774861097336
+        },
+        {
+          "role": "executor",
+          "loss": -0.10977289080619812
+        }
+      ],
+      "collection_seconds": 6.645646450051572,
+      "counters": {
+        "tokens": 256,
+        "updates": 0,
+        "version": 0,
+        "episodes": 256
+      },
+      "session_tokens": 256,
+      "elapsed_seconds": 8.779505860002246
+    }
+  },
+  "typical_collection_seconds": {
+    "baseline": 6.694943959533703,
+    "optimized": 3.6336034160340205
+  },
+  "collection_speedup": 1.8425081642071583,
+  "same_episode_results": true,
+  "same_forward_losses": true
+}

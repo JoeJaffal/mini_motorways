@@ -1,0 +1,37 @@
+{
+  "sha256": {
+    "output/training/city-service-reserve-readiness-01/checkpoints/city-000086016-db6c8742.zip": "3631b5d13a1d3012134de3dbba51fc8c5e0a10af6b07bd790c5271d405bf15f7",
+    "output/training/city-network-service-pilot-01/final.zip": "fb95c49068c18f5dccf05c9cae7a0458dc5b09fb812168bfd1f62725a6053490"
+  },
+  "host_sha256": "78b7c6dccff3def0ed9da7cb1b9cfc857893525e7240ac8748d2714f5ffd6948",
+  "opening": {
+    "layouts": 32,
+    "protected_states": 275,
+    "cohorts": [
+      "route-delay",
+      "route-gate-two",
+      "route-long",
+      "route-short"
+    ]
+  },
+  "city_witness": {
+    "seed": 99387707,
+    "decision": 326,
+    "rows": [
+      {
+        "model": "output/training/city-service-reserve-readiness-01/checkpoints/city-000086016-db6c8742.zip",
+        "joins_probability": 0.000880858866329385,
+        "wait_probability": 0.44888238868996183,
+        "comparison_edge_probability": 0.5502360908421786,
+        "best_join_road_rank": 2
+      },
+      {
+        "model": "output/training/city-network-service-pilot-01/final.zip",
+        "joins_probability": 0.0010544571506159903,
+        "wait_probability": 0.3494529541851946,
+        "comparison_edge_probability": 0.6494925875453054,
+        "best_join_road_rank": 2
+      }
+    ]
+  }
+}

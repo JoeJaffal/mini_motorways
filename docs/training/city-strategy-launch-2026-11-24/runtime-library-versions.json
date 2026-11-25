@@ -1,0 +1,11 @@
+{
+  "packages": {
+    "torch": "2.9.1+cu126",
+    "stable-baselines3": "2.9.2",
+    "sb3-contrib": "2.9.2",
+    "gymnasium": "1.4.0",
+    "numpy": "2.5.4"
+  },
+  "maskable_ppo_train_source": "/home/mohammadjaffal/mini_motorways/.venv/lib/python3.12/site-packages/sb3_contrib/ppo_mask/ppo_mask.py",
+  "train_method_sha256": "79500464b6a71d5adcfdf10028df56fbaf72b7754952e760f9e377610b9cf809"
+}

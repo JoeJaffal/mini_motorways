@@ -1,0 +1,276 @@
+{
+  "selected_workers": 32,
+  "total_decisions": 73728,
+  "groups": {
+    "16": {
+      "rates": [
+        218.903819866683,
+        221.58968844548247
+      ],
+      "mean_rate": 220.24675415608272,
+      "mean_collection_seconds": 29.814456396037713,
+      "mean_update_seconds": 25.809239563997835,
+      "min_available_ram_gib": 18.8640625,
+      "highest_cuda_reserved_mib": 846.0,
+      "highest_sampled_gpu_used_mib": 1388.0,
+      "highest_sampled_gpu_c": 72.0,
+      "highest_sampled_cpu_tctl_c": 75.375,
+      "completed_games": 82,
+      "scoring_games": 44
+    },
+    "24": {
+      "rates": [
+        236.52470126021032,
+        239.71439897958513
+      ],
+      "mean_rate": 238.11955011989772,
+      "mean_collection_seconds": 25.301993650035,
+      "mean_update_seconds": 26.12312133103842,
+      "min_available_ram_gib": 15.5376953125,
+      "highest_cuda_reserved_mib": 906.0,
+      "highest_sampled_gpu_used_mib": 1444.0,
+      "highest_sampled_gpu_c": 72.0,
+      "highest_sampled_cpu_tctl_c": 73.875,
+      "completed_games": 66,
+      "scoring_games": 32
+    },
+    "32": {
+      "rates": [
+        255.4152676701004,
+        258.3846494571791
+      ],
+      "mean_rate": 256.89995856363976,
+      "mean_collection_seconds": 21.5836530609522,
+      "mean_update_seconds": 26.033948716009036,
+      "min_available_ram_gib": 12.88798828125,
+      "highest_cuda_reserved_mib": 852.0,
+      "highest_sampled_gpu_used_mib": 1391.0,
+      "highest_sampled_gpu_c": 72.0,
+      "highest_sampled_cpu_tctl_c": 71.5,
+      "completed_games": 52,
+      "scoring_games": 26
+    }
+  },
+  "trials": [
+    {
+      "workers": 16,
+      "decisions": 12288,
+      "host_sha256": "2da58a5aeefa0e7d3416302d4532724b253e9ede05a998fccf40a324aeb5fe23",
+      "parent_sha256": "e66dbd377a81208092a6c242e446e898729969c53258b4dcdf372a072dd313e8",
+      "pilot_config_sha256": "b5b7c680e2da544787ce88fab2636faf38faa5c958f37075aa473a9f670e2583",
+      "startup_seconds": 2.479278197977692,
+      "elapsed_seconds": 56.134242004016414,
+      "decisions_per_second": 218.903819866683,
+      "collection_seconds": [
+        6.2790462269913405,
+        4.686760721029714,
+        5.074261047062464,
+        4.9167524529621005,
+        4.614883948001079,
+        4.731227469979785
+      ],
+      "update_seconds": [
+        4.381015709950589,
+        4.312772748991847,
+        4.2288509799400344,
+        4.354259488987736,
+        4.187611581059173,
+        4.197139845928177
+      ],
+      "ppo_epochs": 24,
+      "completed_games": 41,
+      "peak_cuda_allocated_mib": 681.6884765625,
+      "peak_cuda_reserved_mib": 846.0,
+      "hardware_samples": 28,
+      "min_available_ram_mib": 19316.8,
+      "sampled_peak_gpu_mib": 1388.0,
+      "sampled_peak_gpu_c": 65.0,
+      "sampled_mean_gpu_util_pct": 43.25,
+      "sampled_peak_cpu_tctl_c": 68.625,
+      "trial": "trial-1-w16",
+      "mean_score": 13.926829268292684,
+      "scoring_games": 22,
+      "terminal_games": 41
+    },
+    {
+      "workers": 24,
+      "decisions": 12288,
+      "host_sha256": "2da58a5aeefa0e7d3416302d4532724b253e9ede05a998fccf40a324aeb5fe23",
+      "parent_sha256": "e66dbd377a81208092a6c242e446e898729969c53258b4dcdf372a072dd313e8",
+      "pilot_config_sha256": "b5b7c680e2da544787ce88fab2636faf38faa5c958f37075aa473a9f670e2583",
+      "startup_seconds": 2.9732442820677534,
+      "elapsed_seconds": 51.95229054102674,
+      "decisions_per_second": 236.52470126021032,
+      "collection_seconds": [
+        7.054689388023689,
+        5.865745443035848,
+        6.455726364045404,
+        6.195497845066711
+      ],
+      "update_seconds": [
+        6.691343656042591,
+        6.490588422981091,
+        6.579472037032247,
+        6.440206355066039
+      ],
+      "ppo_epochs": 16,
+      "completed_games": 33,
+      "peak_cuda_allocated_mib": 684.6650390625,
+      "peak_cuda_reserved_mib": 906.0,
+      "hardware_samples": 26,
+      "min_available_ram_mib": 16492.4,
+      "sampled_peak_gpu_mib": 1444.0,
+      "sampled_peak_gpu_c": 71.0,
+      "sampled_mean_gpu_util_pct": 46.80769230769231,
+      "sampled_peak_cpu_tctl_c": 70.0,
+      "trial": "trial-2-w24",
+      "mean_score": 14.666666666666666,
+      "scoring_games": 16,
+      "terminal_games": 33
+    },
+    {
+      "workers": 32,
+      "decisions": 12288,
+      "host_sha256": "2da58a5aeefa0e7d3416302d4532724b253e9ede05a998fccf40a324aeb5fe23",
+      "parent_sha256": "e66dbd377a81208092a6c242e446e898729969c53258b4dcdf372a072dd313e8",
+      "pilot_config_sha256": "b5b7c680e2da544787ce88fab2636faf38faa5c958f37075aa473a9f670e2583",
+      "startup_seconds": 3.438113300013356,
+      "elapsed_seconds": 48.10988830891438,
+      "decisions_per_second": 255.4152676701004,
+      "collection_seconds": [
+        7.857332766987383,
+        6.832177727948874,
+        7.320744713069871
+      ],
+      "update_seconds": [
+        8.744592490023933,
+        8.571358865941875,
+        8.562393789063208
+      ],
+      "ppo_epochs": 12,
+      "completed_games": 26,
+      "peak_cuda_allocated_mib": 688.58349609375,
+      "peak_cuda_reserved_mib": 852.0,
+      "hardware_samples": 24,
+      "min_available_ram_mib": 13674.1,
+      "sampled_peak_gpu_mib": 1391.0,
+      "sampled_peak_gpu_c": 72.0,
+      "sampled_mean_gpu_util_pct": 48.166666666666664,
+      "sampled_peak_cpu_tctl_c": 70.25,
+      "trial": "trial-3-w32",
+      "mean_score": 9.76923076923077,
+      "scoring_games": 13,
+      "terminal_games": 26
+    },
+    {
+      "workers": 32,
+      "decisions": 12288,
+      "host_sha256": "2da58a5aeefa0e7d3416302d4532724b253e9ede05a998fccf40a324aeb5fe23",
+      "parent_sha256": "e66dbd377a81208092a6c242e446e898729969c53258b4dcdf372a072dd313e8",
+      "pilot_config_sha256": "b5b7c680e2da544787ce88fab2636faf38faa5c958f37075aa473a9f670e2583",
+      "startup_seconds": 3.4919380110222846,
+      "elapsed_seconds": 47.55700474395417,
+      "decisions_per_second": 258.3846494571791,
+      "collection_seconds": [
+        7.7580896959407255,
+        6.50309955899138,
+        6.895861658966169
+      ],
+      "update_seconds": [
+        8.871436240966432,
+        8.652211035019718,
+        8.665905011002906
+      ],
+      "ppo_epochs": 12,
+      "completed_games": 26,
+      "peak_cuda_allocated_mib": 688.58349609375,
+      "peak_cuda_reserved_mib": 852.0,
+      "hardware_samples": 24,
+      "min_available_ram_mib": 13197.3,
+      "sampled_peak_gpu_mib": 1390.0,
+      "sampled_peak_gpu_c": 72.0,
+      "sampled_mean_gpu_util_pct": 51.041666666666664,
+      "sampled_peak_cpu_tctl_c": 71.5,
+      "trial": "trial-4-w32",
+      "mean_score": 9.76923076923077,
+      "scoring_games": 13,
+      "terminal_games": 26
+    },
+    {
+      "workers": 24,
+      "decisions": 12288,
+      "host_sha256": "2da58a5aeefa0e7d3416302d4532724b253e9ede05a998fccf40a324aeb5fe23",
+      "parent_sha256": "e66dbd377a81208092a6c242e446e898729969c53258b4dcdf372a072dd313e8",
+      "pilot_config_sha256": "b5b7c680e2da544787ce88fab2636faf38faa5c958f37075aa473a9f670e2583",
+      "startup_seconds": 2.9463376100175083,
+      "elapsed_seconds": 51.26100080891047,
+      "decisions_per_second": 239.71439897958513,
+      "collection_seconds": [
+        7.120994605007581,
+        5.651732663041912,
+        6.201080240891315,
+        6.058520750957541
+      ],
+      "update_seconds": [
+        6.717521855025552,
+        6.479025142965838,
+        6.489143528975546,
+        6.358941663987935
+      ],
+      "ppo_epochs": 16,
+      "completed_games": 33,
+      "peak_cuda_allocated_mib": 684.6650390625,
+      "peak_cuda_reserved_mib": 906.0,
+      "hardware_samples": 26,
+      "min_available_ram_mib": 15910.6,
+      "sampled_peak_gpu_mib": 1437.0,
+      "sampled_peak_gpu_c": 72.0,
+      "sampled_mean_gpu_util_pct": 47.84615384615385,
+      "sampled_peak_cpu_tctl_c": 73.875,
+      "trial": "trial-5-w24",
+      "mean_score": 14.666666666666666,
+      "scoring_games": 16,
+      "terminal_games": 33
+    },
+    {
+      "workers": 16,
+      "decisions": 12288,
+      "host_sha256": "2da58a5aeefa0e7d3416302d4532724b253e9ede05a998fccf40a324aeb5fe23",
+      "parent_sha256": "e66dbd377a81208092a6c242e446e898729969c53258b4dcdf372a072dd313e8",
+      "pilot_config_sha256": "b5b7c680e2da544787ce88fab2636faf38faa5c958f37075aa473a9f670e2583",
+      "startup_seconds": 2.570537840947509,
+      "elapsed_seconds": 55.45384393201675,
+      "decisions_per_second": 221.58968844548247,
+      "collection_seconds": [
+        6.131961081060581,
+        4.576735652983189,
+        4.922269821981899,
+        4.515429434948601,
+        4.607642521033995,
+        4.571942414040677
+      ],
+      "update_seconds": [
+        4.47922425402794,
+        4.31465231499169,
+        4.29268098808825,
+        4.295347154024057,
+        4.325132142053917,
+        4.2497919199522585
+      ],
+      "ppo_epochs": 24,
+      "completed_games": 41,
+      "peak_cuda_allocated_mib": 681.6884765625,
+      "peak_cuda_reserved_mib": 846.0,
+      "hardware_samples": 28,
+      "min_available_ram_mib": 19363.4,
+      "sampled_peak_gpu_mib": 1370.0,
+      "sampled_peak_gpu_c": 72.0,
+      "sampled_mean_gpu_util_pct": 46.07142857142857,
+      "sampled_peak_cpu_tctl_c": 75.375,
+      "trial": "trial-6-w16",
+      "mean_score": 13.926829268292684,
+      "scoring_games": 22,
+      "terminal_games": 41
+    }
+  ]
+}

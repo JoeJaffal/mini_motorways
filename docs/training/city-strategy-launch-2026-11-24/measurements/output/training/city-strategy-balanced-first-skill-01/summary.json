@@ -1,0 +1,34 @@
+{
+  "traffic-priority-established": {
+    "0": {
+      "games": 16,
+      "mean_score": 10.4375,
+      "successes": 8,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 7.5625
+    }
+  },
+  "traffic-priority-established-swap": {
+    "0": {
+      "games": 16,
+      "mean_score": 11.625,
+      "successes": 9,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 8.9375
+    }
+  },
+  "midgame-network-reserve": {
+    "0": {
+      "games": 16,
+      "mean_score": 3.3125,
+      "successes": 0,
+      "mean_builds": 4.3125,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.3125,
+      "mean_stock_at_arrival": 0.5,
+      "future_pairs_visible": 16
+    }
+  }
+}

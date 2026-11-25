@@ -1,0 +1,65 @@
+[
+  {
+    "lesson": "midgame-network-join",
+    "legal_roads": 541,
+    "distinct_trainable_relation_inputs": 3,
+    "largest_indistinguishable_group": 532,
+    "note": "Global context is identical across roads. Learned residual cannot change relative preference inside each equal-input group. Inherited frozen scores can differ."
+  },
+  {
+    "lesson": "midgame-network-route",
+    "legal_roads": 544,
+    "distinct_trainable_relation_inputs": 3,
+    "largest_indistinguishable_group": 520,
+    "note": "Global context is identical across roads. Learned residual cannot change relative preference inside each equal-input group. Inherited frozen scores can differ."
+  },
+  {
+    "lesson": "midgame-network-delay",
+    "legal_roads": 536,
+    "distinct_trainable_relation_inputs": 2,
+    "largest_indistinguishable_group": 528,
+    "note": "Global context is identical across roads. Learned residual cannot change relative preference inside each equal-input group. Inherited frozen scores can differ."
+  },
+  {
+    "lesson": "midgame-network-quiet",
+    "legal_roads": 539,
+    "distinct_trainable_relation_inputs": 2,
+    "largest_indistinguishable_group": 531,
+    "note": "Global context is identical across roads. Learned residual cannot change relative preference inside each equal-input group. Inherited frozen scores can differ."
+  },
+  {
+    "lesson": "traffic-priority-established",
+    "legal_roads": 2,
+    "distinct_trainable_relation_inputs": 2,
+    "largest_indistinguishable_group": 1,
+    "note": "Global context is identical across roads. Learned residual cannot change relative preference inside each equal-input group. Inherited frozen scores can differ."
+  },
+  {
+    "lesson": "traffic-priority-established-swap",
+    "legal_roads": 2,
+    "distinct_trainable_relation_inputs": 2,
+    "largest_indistinguishable_group": 1,
+    "note": "Global context is identical across roads. Learned residual cannot change relative preference inside each equal-input group. Inherited frozen scores can differ."
+  },
+  {
+    "lesson": "traffic-junction-low-live",
+    "legal_roads": 6,
+    "distinct_trainable_relation_inputs": 2,
+    "largest_indistinguishable_group": 5,
+    "note": "Global context is identical across roads. Learned residual cannot change relative preference inside each equal-input group. Inherited frozen scores can differ."
+  },
+  {
+    "lesson": "traffic-junction-high-live",
+    "legal_roads": 6,
+    "distinct_trainable_relation_inputs": 2,
+    "largest_indistinguishable_group": 5,
+    "note": "Global context is identical across roads. Learned residual cannot change relative preference inside each equal-input group. Inherited frozen scores can differ."
+  },
+  {
+    "lesson": "midgame-network-reserve",
+    "legal_roads": 579,
+    "distinct_trainable_relation_inputs": 2,
+    "largest_indistinguishable_group": 570,
+    "note": "Global context is identical across roads. Learned residual cannot change relative preference inside each equal-input group. Inherited frozen scores can differ."
+  }
+]

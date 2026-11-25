@@ -1,0 +1,84 @@
+{
+  "inflight": {
+    "states": 62,
+    "scenarios": 37,
+    "models": {
+      "wait32k": {
+        "mean_wait": 0.999826707184504,
+        "below_half": 0
+      },
+      "wait98k": {
+        "mean_wait": 0.9999960758148755,
+        "below_half": 0
+      }
+    },
+    "largest_drop": {
+      "prefix_id": "small-city-offset-pairs-232000045-302045",
+      "seed": 232000045,
+      "phase": "inflight",
+      "seconds": 2,
+      "trips": 0,
+      "stock": 7,
+      "raw_sha256": "cdebe386e03739061b9c9730c70a6fbc2a7acb6fc95f78c082315204fddd2912",
+      "observation_sha256": "2b48ea523ddd05bbe165a1e2a51740b0849b9d5dbdc5704b94c95b021b93dcef",
+      "wait": {
+        "wait32k": 0.9999318203800055,
+        "wait98k": 0.9999992895497241
+      },
+      "conditional_road_error": 1.136223209876469e-08,
+      "context_summary": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.05000000074505806,
+        0.10000000149011612,
+        0.03999999910593033,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "working": {
+    "states": 62,
+    "scenarios": 37,
+    "models": {
+      "wait32k": {
+        "mean_wait": 0.9999243097866721,
+        "below_half": 0
+      },
+      "wait98k": {
+        "mean_wait": 0.9999993014682629,
+        "below_half": 0
+      }
+    },
+    "largest_drop": {
+      "prefix_id": "small-city-offset-pairs-232000089-302089",
+      "seed": 232000089,
+      "phase": "working",
+      "seconds": 14,
+      "trips": 1,
+      "stock": 5,
+      "raw_sha256": "a8cdd898e55ffd72e32e53518427a9f310a82d2c95df795f1b0a128186d63654",
+      "observation_sha256": "aefa334685f2ba793fb20b90f4b2934fafdfc7fafec8440e9cf268ae6b6f0645",
+      "wait": {
+        "wait32k": 0.9999671414241215,
+        "wait98k": 0.9999997066582352
+      },
+      "conditional_road_error": 1.5385456493891003e-08,
+      "context_summary": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.05000000074505806,
+        0.10000000149011612,
+        0.04500000178813934,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

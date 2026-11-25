@@ -1,0 +1,96 @@
+{
+  "status": "Reset arm complete; cold control still running",
+  "rows": [
+    {
+      "decisions": 65536,
+      "city_mean": 113.78125,
+      "scoring": 30,
+      "city_delta": {
+        "trips": {
+          "mean": -12.3125,
+          "ci95": [
+            -33.46953125,
+            9.1875
+          ]
+        },
+        "paid_units": {
+          "mean": -7.0,
+          "ci95": [
+            -14.87578125,
+            0.6257812499999886
+          ]
+        },
+        "outside_routes": {
+          "mean": -1.625,
+          "ci95": [
+            -6.625,
+            3.5625
+          ]
+        }
+      },
+      "tight": 0.4375,
+      "later": 0.125
+    },
+    {
+      "decisions": 131072,
+      "city_mean": 100.0625,
+      "scoring": 28,
+      "city_delta": {
+        "trips": {
+          "mean": -26.03125,
+          "ci95": [
+            -52.59375,
+            1.71875
+          ]
+        },
+        "paid_units": {
+          "mean": -5.46875,
+          "ci95": [
+            -15.15625,
+            4.907031249999989
+          ]
+        },
+        "outside_routes": {
+          "mean": 2.9375,
+          "ci95": [
+            -2.65625,
+            8.3125
+          ]
+        }
+      },
+      "tight": 0.4375,
+      "later": 0.125
+    },
+    {
+      "decisions": 262144,
+      "city_mean": 89.25,
+      "scoring": 24,
+      "city_delta": {
+        "trips": {
+          "mean": -36.84375,
+          "ci95": [
+            -61.65625,
+            -15.15625
+          ]
+        },
+        "paid_units": {
+          "mean": -11.46875,
+          "ci95": [
+            -23.25,
+            -0.9679687500000114
+          ]
+        },
+        "outside_routes": {
+          "mean": 3.53125,
+          "ci95": [
+            -1.46875,
+            8.5625
+          ]
+        }
+      },
+      "tight": 0.5,
+      "later": 0.125
+    }
+  ],
+  "decision": "Failed predeclared readiness screen; retained original. No promotion or overnight launch. Other study independently tests longer lessons from original."
+}

@@ -1,0 +1,142 @@
+{
+  "checkpoint": "output/training/road-cost-continuation-01/control/checkpoint-000262144.zip",
+  "sha256": "d34dab0451a577b3abddbae5a6678fa297be963b512f399dcf7ad4c81abe6fcd",
+  "weights_unchanged": true,
+  "episodes": [
+    {
+      "seed": 207000000,
+      "exercise": "small-city-offset-single",
+      "native_score": 3,
+      "paid_units": 5,
+      "shaped_return": 3.0,
+      "decisions": 65
+    },
+    {
+      "seed": 207000000,
+      "exercise": "small-city-offset-stock",
+      "native_score": 3,
+      "paid_units": 6,
+      "shaped_return": 3.0,
+      "decisions": 66
+    },
+    {
+      "seed": 207000001,
+      "exercise": "small-city-offset-single",
+      "native_score": 4,
+      "paid_units": 6,
+      "shaped_return": 4.0,
+      "decisions": 66
+    },
+    {
+      "seed": 207000001,
+      "exercise": "small-city-offset-stock",
+      "native_score": 4,
+      "paid_units": 6,
+      "shaped_return": 4.0,
+      "decisions": 66
+    },
+    {
+      "seed": 207000002,
+      "exercise": "small-city-offset-single",
+      "native_score": 0,
+      "paid_units": 7,
+      "shaped_return": 0.0,
+      "decisions": 9
+    },
+    {
+      "seed": 207000002,
+      "exercise": "small-city-offset-stock",
+      "native_score": 0,
+      "paid_units": 12,
+      "shaped_return": 0.0,
+      "decisions": 14
+    },
+    {
+      "seed": 207000003,
+      "exercise": "small-city-offset-single",
+      "native_score": 0,
+      "paid_units": 10,
+      "shaped_return": 0.0,
+      "decisions": 12
+    },
+    {
+      "seed": 207000003,
+      "exercise": "small-city-offset-stock",
+      "native_score": 0,
+      "paid_units": 17,
+      "shaped_return": 0.0,
+      "decisions": 19
+    },
+    {
+      "seed": 207000004,
+      "exercise": "small-city-offset-single",
+      "native_score": 4,
+      "paid_units": 5,
+      "shaped_return": 4.0,
+      "decisions": 65
+    },
+    {
+      "seed": 207000004,
+      "exercise": "small-city-offset-stock",
+      "native_score": 4,
+      "paid_units": 5,
+      "shaped_return": 4.0,
+      "decisions": 65
+    },
+    {
+      "seed": 207000005,
+      "exercise": "small-city-offset-single",
+      "native_score": 4,
+      "paid_units": 6,
+      "shaped_return": 4.0,
+      "decisions": 66
+    },
+    {
+      "seed": 207000005,
+      "exercise": "small-city-offset-stock",
+      "native_score": 4,
+      "paid_units": 6,
+      "shaped_return": 4.0,
+      "decisions": 66
+    },
+    {
+      "seed": 207000006,
+      "exercise": "small-city-offset-single",
+      "native_score": 3,
+      "paid_units": 6,
+      "shaped_return": 3.0,
+      "decisions": 7
+    },
+    {
+      "seed": 207000006,
+      "exercise": "small-city-offset-stock",
+      "native_score": 3,
+      "paid_units": 6,
+      "shaped_return": 3.0,
+      "decisions": 66
+    },
+    {
+      "seed": 207000007,
+      "exercise": "small-city-offset-single",
+      "native_score": 0,
+      "paid_units": 7,
+      "shaped_return": 0.0,
+      "decisions": 10
+    },
+    {
+      "seed": 207000007,
+      "exercise": "small-city-offset-stock",
+      "native_score": 0,
+      "paid_units": 13,
+      "shaped_return": 0.0,
+      "decisions": 17
+    }
+  ],
+  "sampled_states": 256,
+  "total_states": 679,
+  "value_mse": 5.141384258757894,
+  "explained_variance": -1.3866992160329268,
+  "value_mean": 1.1175201529404148,
+  "return_mean": 1.96875,
+  "note": "Frozen sampled trajectories; normalized Monte Carlo policy-gradient diagnostic, not causal attribution or exact training-minibatch gradients."
+}

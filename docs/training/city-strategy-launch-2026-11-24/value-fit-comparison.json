@@ -1,0 +1,154 @@
+{
+  "city-strategy-bridge-reference-city-01": [
+    {
+      "train/explained_variance": 0.006101012229919434,
+      "train/value_loss": 3679.605933189392,
+      "train/approx_kl": 4.614468e-06,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    },
+    {
+      "train/explained_variance": 0.019259214401245117,
+      "train/value_loss": 10276.857469558716,
+      "train/approx_kl": 3.2712465e-05,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    },
+    {
+      "train/explained_variance": 0.016380667686462402,
+      "train/value_loss": 6732.693391799927,
+      "train/approx_kl": 3.8699163e-06,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    },
+    {
+      "train/explained_variance": 0.0016396641731262207,
+      "train/value_loss": 9591.416177749634,
+      "train/approx_kl": 2.1534852e-05,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    },
+    {
+      "train/explained_variance": 0.04033029079437256,
+      "train/value_loss": 6234.083967208862,
+      "train/approx_kl": 6.0320945e-05,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    },
+    {
+      "train/explained_variance": -0.010024428367614746,
+      "train/value_loss": 12683.50037765503,
+      "train/approx_kl": 0.00052175927,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    },
+    {
+      "train/explained_variance": 0.015667617321014404,
+      "train/value_loss": 11288.58773612976,
+      "train/approx_kl": 0.0017497281,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    },
+    {
+      "train/explained_variance": -0.005147337913513184,
+      "train/value_loss": 10773.552585601807,
+      "train/approx_kl": 0.0014869564,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    }
+  ],
+  "city-strategy-bridge-reference-rate-01": [
+    {
+      "train/explained_variance": 0.006101012229919434,
+      "train/value_loss": 2628.2858142852783,
+      "train/approx_kl": 0.0014339404,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    },
+    {
+      "train/explained_variance": 0.07372903823852539,
+      "train/value_loss": 5647.185282707214,
+      "train/approx_kl": 0.0012414905,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    },
+    {
+      "train/explained_variance": 0.13603568077087402,
+      "train/value_loss": 5446.2944440841675,
+      "train/approx_kl": 0.0020393766,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    },
+    {
+      "train/explained_variance": 0.21230000257492065,
+      "train/value_loss": 4260.18514919281,
+      "train/approx_kl": 0.000969556,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    }
+  ],
+  "city-strategy-recorded-city-01": [
+    {
+      "train/explained_variance": 0.011639535427093506,
+      "train/value_loss": 11848.385259628296,
+      "train/approx_kl": 6.303288e-05,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    },
+    {
+      "train/explained_variance": -0.008087515830993652,
+      "train/value_loss": 16437.31343460083,
+      "train/approx_kl": 0.000115512055,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    },
+    {
+      "train/explained_variance": 0.004476368427276611,
+      "train/value_loss": 13544.105667114258,
+      "train/approx_kl": 6.800019e-05,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    },
+    {
+      "train/explained_variance": 0.022334694862365723,
+      "train/value_loss": 14684.303077697754,
+      "train/approx_kl": 0.0002002806,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    },
+    {
+      "train/explained_variance": -0.007994771003723145,
+      "train/value_loss": 10707.396839141846,
+      "train/approx_kl": 5.9187565e-05,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    },
+    {
+      "train/explained_variance": -0.015181660652160645,
+      "train/value_loss": 11307.54951286316,
+      "train/approx_kl": 0.00402984,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    },
+    {
+      "train/explained_variance": 0.02303171157836914,
+      "train/value_loss": 8777.282892227173,
+      "train/approx_kl": 0.004229185,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    },
+    {
+      "train/explained_variance": 0.041506290435791016,
+      "train/value_loss": 13457.310729980469,
+      "train/approx_kl": 0.0009476097,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    }
+  ],
+  "city-strategy-critic-rate-01": [
+    {
+      "train/explained_variance": 0.006101012229919434,
+      "train/value_loss": 2672.575213432312,
+      "train/approx_kl": 4.6180703e-06,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    },
+    {
+      "train/explained_variance": 0.025196850299835205,
+      "train/value_loss": 6270.500282287598,
+      "train/approx_kl": 2.8833983e-05,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    },
+    {
+      "train/explained_variance": 0.06573796272277832,
+      "train/value_loss": 5302.977458953857,
+      "train/approx_kl": 3.0444144e-06,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    },
+    {
+      "train/explained_variance": 0.09193235635757446,
+      "train/value_loss": 9890.965450286865,
+      "train/approx_kl": 2.3153061e-06,
+      "pilot/optimizer_steps_this_rollout": 256.0
+    }
+  ]
+}

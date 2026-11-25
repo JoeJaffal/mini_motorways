@@ -1,0 +1,17 @@
+{
+  "kind": "driveway-ppo",
+  "native_sha256": "582e6e74c41a94b607f6323076d2e77231bdec82b6ba4265b93b92caaee16c3b",
+  "source_sha256": "368201636bc40a12695e4daef31d0f638eb74aa6fb295466e9100fb50fb14e23",
+  "parent": "output/training/spare-road-ppo-pilot-01/zero-stock-transition.zip",
+  "parent_sha256": "eecb3ee1071b5e4f7d324813a99ef7d6e14f1c344e8aeec4bf08ca69790f5747",
+  "parent_fingerprint": "2fb38d47c1fdbffc8f82d3c2dcca1567bab2b2fa3935478d7ee483052f1c96f7",
+  "seed": 42,
+  "seed_start": 660000,
+  "workers": 16,
+  "decisions": 65536,
+  "learning_rate": 0.0004,
+  "entropy": 0.005,
+  "wall_seconds": 480,
+  "teacher_actions": false,
+  "optimizer": "fresh Adam; train rotation/Finish and critic only"
+}

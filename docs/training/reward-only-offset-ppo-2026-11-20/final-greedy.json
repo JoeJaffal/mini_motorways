@@ -1,0 +1,4586 @@
+{
+  "fingerprint": "af9ddfc6a24610d5e25920f3c89a408b4bf64073751a8e7870f8ade731a71073",
+  "sampled": false,
+  "optimizer_updates": 0,
+  "summary": {
+    "clear": {
+      "delivered": 33,
+      "layouts": 100,
+      "mean_trips": 3.79,
+      "mean_road_units": 4.09
+    },
+    "bend": {
+      "delivered": 100,
+      "layouts": 100,
+      "mean_trips": 11.18,
+      "mean_road_units": 2.5
+    },
+    "adjacent": {
+      "delivered": 100,
+      "layouts": 100,
+      "mean_trips": 11.24,
+      "mean_road_units": 2.0
+    }
+  },
+  "layouts": [
+    {
+      "stage": "clear",
+      "seed": 36000,
+      "actions": [
+        348,
+        304,
+        260,
+        216,
+        172,
+        128,
+        84
+      ],
+      "distance": 7,
+      "offset": -2,
+      "connected": false,
+      "used": 6,
+      "trips": 0,
+      "seconds": 147.85
+    },
+    {
+      "stage": "clear",
+      "seed": 36001,
+      "actions": [
+        114,
+        166,
+        218,
+        270,
+        322,
+        374
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": false,
+      "used": 5,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36002,
+      "actions": [
+        250,
+        302,
+        354,
+        406,
+        458,
+        510
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": false,
+      "used": 5,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36003,
+      "actions": [
+        119,
+        167,
+        215,
+        263,
+        311
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 4,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36004,
+      "actions": [
+        356,
+        312,
+        268,
+        224
+      ],
+      "distance": 4,
+      "offset": -2,
+      "connected": false,
+      "used": 3,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36005,
+      "actions": [
+        167,
+        215,
+        263,
+        311
+      ],
+      "distance": 4,
+      "offset": 0,
+      "connected": true,
+      "used": 3,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36006,
+      "actions": [
+        302,
+        354,
+        406
+      ],
+      "distance": 3,
+      "offset": 1,
+      "connected": false,
+      "used": 2,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36007,
+      "actions": [
+        71,
+        119,
+        167,
+        215,
+        263,
+        311,
+        359
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 6,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36008,
+      "actions": [
+        294,
+        346,
+        398,
+        450,
+        502,
+        553,
+        557
+      ],
+      "distance": 7,
+      "offset": 1,
+      "connected": false,
+      "used": 6,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36009,
+      "actions": [
+        128,
+        172,
+        216,
+        260,
+        304,
+        348
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": false,
+      "used": 5,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36010,
+      "actions": [
+        332,
+        376,
+        420,
+        464,
+        508,
+        545
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": false,
+      "used": 5,
+      "trips": 0,
+      "seconds": 147.85
+    },
+    {
+      "stage": "clear",
+      "seed": 36011,
+      "actions": [
+        410,
+        358,
+        306,
+        254,
+        202
+      ],
+      "distance": 5,
+      "offset": -2,
+      "connected": false,
+      "used": 4,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36012,
+      "actions": [
+        369,
+        365,
+        361,
+        357
+      ],
+      "distance": 4,
+      "offset": 0,
+      "connected": true,
+      "used": 3,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36013,
+      "actions": [
+        410,
+        358,
+        306,
+        254
+      ],
+      "distance": 4,
+      "offset": -2,
+      "connected": false,
+      "used": 3,
+      "trips": 0,
+      "seconds": 147.85
+    },
+    {
+      "stage": "clear",
+      "seed": 36014,
+      "actions": [
+        365,
+        361,
+        357
+      ],
+      "distance": 3,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36015,
+      "actions": [
+        456,
+        412,
+        368,
+        324,
+        280,
+        236,
+        192
+      ],
+      "distance": 7,
+      "offset": 2,
+      "connected": false,
+      "used": 6,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36016,
+      "actions": [
+        373,
+        369,
+        365,
+        361,
+        357,
+        353,
+        349
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 6,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36017,
+      "actions": [
+        454,
+        402,
+        350,
+        298,
+        246,
+        194
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": false,
+      "used": 5,
+      "trips": 0,
+      "seconds": 147.85
+    },
+    {
+      "stage": "clear",
+      "seed": 36018,
+      "actions": [
+        373,
+        369,
+        365,
+        361,
+        357,
+        353
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 5,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36019,
+      "actions": [
+        408,
+        364,
+        320,
+        276,
+        232
+      ],
+      "distance": 5,
+      "offset": 1,
+      "connected": false,
+      "used": 4,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36020,
+      "actions": [
+        280,
+        324,
+        368,
+        412
+      ],
+      "distance": 4,
+      "offset": -2,
+      "connected": false,
+      "used": 3,
+      "trips": 0,
+      "seconds": 147.85
+    },
+    {
+      "stage": "clear",
+      "seed": 36021,
+      "actions": [
+        308,
+        264,
+        220,
+        176
+      ],
+      "distance": 4,
+      "offset": -1,
+      "connected": false,
+      "used": 3,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36022,
+      "actions": [
+        176,
+        220,
+        264
+      ],
+      "distance": 3,
+      "offset": 2,
+      "connected": false,
+      "used": 2,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36023,
+      "actions": [
+        341,
+        345,
+        349,
+        353,
+        357,
+        361,
+        365
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 6,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36024,
+      "actions": [
+        66,
+        118,
+        170,
+        222,
+        274,
+        326,
+        378
+      ],
+      "distance": 7,
+      "offset": -2,
+      "connected": false,
+      "used": 6,
+      "trips": 0,
+      "seconds": 147.85
+    },
+    {
+      "stage": "clear",
+      "seed": 36025,
+      "actions": [
+        345,
+        349,
+        353,
+        357,
+        361,
+        365
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 5,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36026,
+      "actions": [
+        124,
+        168,
+        212,
+        256,
+        300,
+        344
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": false,
+      "used": 5,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36027,
+      "actions": [
+        345,
+        349,
+        353,
+        357,
+        361
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 4,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36028,
+      "actions": [
+        172,
+        216,
+        260,
+        304
+      ],
+      "distance": 4,
+      "offset": 1,
+      "connected": false,
+      "used": 3,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36029,
+      "actions": [
+        254,
+        306,
+        358,
+        410
+      ],
+      "distance": 4,
+      "offset": 2,
+      "connected": false,
+      "used": 3,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36030,
+      "actions": [
+        162,
+        214,
+        266
+      ],
+      "distance": 3,
+      "offset": -1,
+      "connected": false,
+      "used": 2,
+      "trips": 0,
+      "seconds": 147.85
+    },
+    {
+      "stage": "clear",
+      "seed": 36031,
+      "actions": [
+        348,
+        304,
+        260,
+        216,
+        172,
+        128,
+        84
+      ],
+      "distance": 7,
+      "offset": -2,
+      "connected": false,
+      "used": 6,
+      "trips": 0,
+      "seconds": 147.85
+    },
+    {
+      "stage": "clear",
+      "seed": 36032,
+      "actions": [
+        455,
+        407,
+        359,
+        311,
+        263,
+        215,
+        167
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 6,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36033,
+      "actions": [
+        284,
+        328,
+        372,
+        416,
+        460,
+        504
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": false,
+      "used": 5,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36034,
+      "actions": [
+        407,
+        359,
+        311,
+        263,
+        215
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 4,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36035,
+      "actions": [
+        322,
+        270,
+        218,
+        166,
+        114
+      ],
+      "distance": 5,
+      "offset": 1,
+      "connected": false,
+      "used": 4,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36036,
+      "actions": [
+        407,
+        359,
+        311,
+        263
+      ],
+      "distance": 4,
+      "offset": 0,
+      "connected": true,
+      "used": 3,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36037,
+      "actions": [
+        328,
+        372,
+        416,
+        460
+      ],
+      "distance": 4,
+      "offset": -1,
+      "connected": false,
+      "used": 3,
+      "trips": 0,
+      "seconds": 147.85
+    },
+    {
+      "stage": "clear",
+      "seed": 36038,
+      "actions": [
+        360,
+        316,
+        272
+      ],
+      "distance": 3,
+      "offset": 2,
+      "connected": false,
+      "used": 2,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36039,
+      "actions": [
+        326,
+        274,
+        222,
+        170,
+        118,
+        66,
+        14
+      ],
+      "distance": 7,
+      "offset": 1,
+      "connected": false,
+      "used": 6,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36040,
+      "actions": [
+        458,
+        406,
+        354,
+        302,
+        250,
+        198,
+        146
+      ],
+      "distance": 7,
+      "offset": -2,
+      "connected": false,
+      "used": 6,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36041,
+      "actions": [
+        373,
+        369,
+        365,
+        361,
+        357,
+        353
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 5,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36042,
+      "actions": [
+        408,
+        364,
+        320,
+        276,
+        232
+      ],
+      "distance": 5,
+      "offset": 2,
+      "connected": false,
+      "used": 4,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36043,
+      "actions": [
+        119,
+        167,
+        215,
+        263,
+        311
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 4,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36044,
+      "actions": [
+        308,
+        264,
+        220,
+        176
+      ],
+      "distance": 4,
+      "offset": -1,
+      "connected": false,
+      "used": 3,
+      "trips": 0,
+      "seconds": 147.85
+    },
+    {
+      "stage": "clear",
+      "seed": 36045,
+      "actions": [
+        167,
+        215,
+        263,
+        311
+      ],
+      "distance": 4,
+      "offset": 0,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36046,
+      "actions": [
+        308,
+        264,
+        220
+      ],
+      "distance": 3,
+      "offset": -1,
+      "connected": false,
+      "used": 2,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36047,
+      "actions": [
+        71,
+        119,
+        167,
+        215,
+        263,
+        311,
+        359
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 6,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36048,
+      "actions": [
+        294,
+        346,
+        398,
+        450,
+        502,
+        553,
+        557
+      ],
+      "distance": 7,
+      "offset": 1,
+      "connected": false,
+      "used": 6,
+      "trips": 0,
+      "seconds": 147.85
+    },
+    {
+      "stage": "clear",
+      "seed": 36049,
+      "actions": [
+        128,
+        172,
+        216,
+        260,
+        304,
+        348
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": false,
+      "used": 5,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36050,
+      "actions": [
+        304,
+        260,
+        216,
+        172,
+        128
+      ],
+      "distance": 5,
+      "offset": -1,
+      "connected": false,
+      "used": 4,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36051,
+      "actions": [
+        128,
+        172,
+        216,
+        260,
+        304
+      ],
+      "distance": 5,
+      "offset": 2,
+      "connected": false,
+      "used": 4,
+      "trips": 0,
+      "seconds": 147.85
+    },
+    {
+      "stage": "clear",
+      "seed": 36052,
+      "actions": [
+        349,
+        353,
+        357,
+        361
+      ],
+      "distance": 4,
+      "offset": 0,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36053,
+      "actions": [
+        162,
+        214,
+        266
+      ],
+      "distance": 3,
+      "offset": -2,
+      "connected": false,
+      "used": 2,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36054,
+      "actions": [
+        349,
+        353,
+        357
+      ],
+      "distance": 3,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36055,
+      "actions": [
+        456,
+        412,
+        368,
+        324,
+        280,
+        236,
+        192
+      ],
+      "distance": 7,
+      "offset": 1,
+      "connected": false,
+      "used": 6,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36056,
+      "actions": [
+        373,
+        369,
+        365,
+        361,
+        357,
+        353,
+        349
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 6,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36057,
+      "actions": [
+        454,
+        402,
+        350,
+        298,
+        246,
+        194
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": false,
+      "used": 5,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36058,
+      "actions": [
+        370,
+        318,
+        266,
+        214,
+        162
+      ],
+      "distance": 5,
+      "offset": 2,
+      "connected": false,
+      "used": 4,
+      "trips": 0,
+      "seconds": 147.85
+    },
+    {
+      "stage": "clear",
+      "seed": 36059,
+      "actions": [
+        408,
+        364,
+        320,
+        276,
+        232
+      ],
+      "distance": 5,
+      "offset": 1,
+      "connected": false,
+      "used": 4,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36060,
+      "actions": [
+        280,
+        324,
+        368,
+        412
+      ],
+      "distance": 4,
+      "offset": -2,
+      "connected": false,
+      "used": 3,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36061,
+      "actions": [
+        359,
+        311,
+        263
+      ],
+      "distance": 3,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36062,
+      "actions": [
+        366,
+        314,
+        262
+      ],
+      "distance": 3,
+      "offset": 2,
+      "connected": false,
+      "used": 2,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36063,
+      "actions": [
+        455,
+        407,
+        359,
+        311,
+        263,
+        215,
+        167
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 6,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36064,
+      "actions": [
+        332,
+        376,
+        420,
+        464,
+        508,
+        545,
+        541
+      ],
+      "distance": 7,
+      "offset": -1,
+      "connected": false,
+      "used": 6,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36065,
+      "actions": [
+        455,
+        407,
+        359,
+        311,
+        263,
+        215
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 5,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36066,
+      "actions": [
+        114,
+        166,
+        218,
+        270,
+        322
+      ],
+      "distance": 5,
+      "offset": -1,
+      "connected": false,
+      "used": 4,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36067,
+      "actions": [
+        352,
+        308,
+        264,
+        220,
+        176
+      ],
+      "distance": 5,
+      "offset": -2,
+      "connected": false,
+      "used": 4,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36068,
+      "actions": [
+        172,
+        216,
+        260,
+        304
+      ],
+      "distance": 4,
+      "offset": 1,
+      "connected": false,
+      "used": 3,
+      "trips": 0,
+      "seconds": 147.85
+    },
+    {
+      "stage": "clear",
+      "seed": 36069,
+      "actions": [
+        254,
+        306,
+        358
+      ],
+      "distance": 3,
+      "offset": 2,
+      "connected": false,
+      "used": 2,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36070,
+      "actions": [
+        167,
+        215,
+        263
+      ],
+      "distance": 3,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36071,
+      "actions": [
+        246,
+        298,
+        350,
+        402,
+        454,
+        506,
+        557
+      ],
+      "distance": 7,
+      "offset": 2,
+      "connected": false,
+      "used": 6,
+      "trips": 0,
+      "seconds": 147.85
+    },
+    {
+      "stage": "clear",
+      "seed": 36072,
+      "actions": [
+        71,
+        119,
+        167,
+        215,
+        263,
+        311,
+        359
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 6,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36073,
+      "actions": [
+        304,
+        260,
+        216,
+        172,
+        128,
+        84
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": false,
+      "used": 5,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36074,
+      "actions": [
+        119,
+        167,
+        215,
+        263,
+        311
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 4,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36075,
+      "actions": [
+        298,
+        350,
+        402,
+        454,
+        506
+      ],
+      "distance": 5,
+      "offset": 1,
+      "connected": false,
+      "used": 4,
+      "trips": 0,
+      "seconds": 147.85
+    },
+    {
+      "stage": "clear",
+      "seed": 36076,
+      "actions": [
+        162,
+        214,
+        266,
+        318
+      ],
+      "distance": 4,
+      "offset": -2,
+      "connected": false,
+      "used": 3,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36077,
+      "actions": [
+        324,
+        368,
+        412
+      ],
+      "distance": 3,
+      "offset": -1,
+      "connected": false,
+      "used": 2,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36078,
+      "actions": [
+        360,
+        316,
+        272
+      ],
+      "distance": 3,
+      "offset": 2,
+      "connected": false,
+      "used": 2,
+      "trips": 0,
+      "seconds": 147.85
+    },
+    {
+      "stage": "clear",
+      "seed": 36079,
+      "actions": [
+        326,
+        274,
+        222,
+        170,
+        118,
+        66,
+        14
+      ],
+      "distance": 7,
+      "offset": 1,
+      "connected": false,
+      "used": 6,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36080,
+      "actions": [
+        458,
+        406,
+        354,
+        302,
+        250,
+        198
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": false,
+      "used": 5,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36081,
+      "actions": [
+        373,
+        369,
+        365,
+        361,
+        357,
+        353
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 5,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36082,
+      "actions": [
+        408,
+        364,
+        320,
+        276,
+        232
+      ],
+      "distance": 5,
+      "offset": 2,
+      "connected": false,
+      "used": 4,
+      "trips": 0,
+      "seconds": 147.85
+    },
+    {
+      "stage": "clear",
+      "seed": 36083,
+      "actions": [
+        369,
+        365,
+        361,
+        357,
+        353
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 4,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36084,
+      "actions": [
+        406,
+        354,
+        302,
+        250
+      ],
+      "distance": 4,
+      "offset": -1,
+      "connected": false,
+      "used": 3,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36085,
+      "actions": [
+        365,
+        361,
+        357
+      ],
+      "distance": 3,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36086,
+      "actions": [
+        358,
+        306,
+        254
+      ],
+      "distance": 3,
+      "offset": -1,
+      "connected": false,
+      "used": 2,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36087,
+      "actions": [
+        284,
+        328,
+        372,
+        416,
+        460,
+        504,
+        541
+      ],
+      "distance": 7,
+      "offset": -2,
+      "connected": false,
+      "used": 6,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36088,
+      "actions": [
+        298,
+        350,
+        402,
+        454,
+        506,
+        557
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": false,
+      "used": 5,
+      "trips": 0,
+      "seconds": 147.85
+    },
+    {
+      "stage": "clear",
+      "seed": 36089,
+      "actions": [
+        128,
+        172,
+        216,
+        260,
+        304,
+        348
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": false,
+      "used": 5,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36090,
+      "actions": [
+        345,
+        349,
+        353,
+        357,
+        361
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 4,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36091,
+      "actions": [
+        128,
+        172,
+        216,
+        260,
+        304
+      ],
+      "distance": 5,
+      "offset": 2,
+      "connected": false,
+      "used": 4,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36092,
+      "actions": [
+        349,
+        353,
+        357,
+        361
+      ],
+      "distance": 4,
+      "offset": 0,
+      "connected": true,
+      "used": 3,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36093,
+      "actions": [
+        162,
+        214,
+        266
+      ],
+      "distance": 3,
+      "offset": -1,
+      "connected": false,
+      "used": 2,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36094,
+      "actions": [
+        349,
+        353,
+        357
+      ],
+      "distance": 3,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "clear",
+      "seed": 36095,
+      "actions": [
+        76,
+        120,
+        164,
+        208,
+        252,
+        296,
+        339
+      ],
+      "distance": 7,
+      "offset": 1,
+      "connected": false,
+      "used": 6,
+      "trips": 0,
+      "seconds": 147.85
+    },
+    {
+      "stage": "clear",
+      "seed": 36096,
+      "actions": [
+        352,
+        308,
+        264,
+        220,
+        176,
+        132
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": false,
+      "used": 5,
+      "trips": 0,
+      "seconds": 153.4
+    },
+    {
+      "stage": "clear",
+      "seed": 36097,
+      "actions": [
+        114,
+        166,
+        218,
+        270,
+        322,
+        374
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": false,
+      "used": 5,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36098,
+      "actions": [
+        250,
+        302,
+        354,
+        406,
+        458
+      ],
+      "distance": 5,
+      "offset": 2,
+      "connected": false,
+      "used": 4,
+      "trips": 0,
+      "seconds": 147
+    },
+    {
+      "stage": "clear",
+      "seed": 36099,
+      "actions": [
+        407,
+        359,
+        311,
+        263
+      ],
+      "distance": 4,
+      "offset": 0,
+      "connected": true,
+      "used": 3,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32000,
+      "actions": [
+        357,
+        361,
+        324
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32001,
+      "actions": [
+        311,
+        358
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32002,
+      "actions": [
+        309,
+        313,
+        318
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 3,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32003,
+      "actions": [
+        310,
+        362
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32004,
+      "actions": [
+        357,
+        320,
+        276
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32005,
+      "actions": [
+        267,
+        316,
+        360
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 3,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32006,
+      "actions": [
+        314,
+        366
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32007,
+      "actions": [
+        263,
+        311,
+        358
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32008,
+      "actions": [
+        263,
+        220
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32009,
+      "actions": [
+        361,
+        357,
+        306
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 3,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32010,
+      "actions": [
+        263,
+        210
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32011,
+      "actions": [
+        313,
+        316,
+        360
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32012,
+      "actions": [
+        268,
+        224
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32013,
+      "actions": [
+        313,
+        316,
+        360
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32014,
+      "actions": [
+        315,
+        262,
+        210
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 3,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32015,
+      "actions": [
+        357,
+        306
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32016,
+      "actions": [
+        311,
+        263,
+        220
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 3,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32017,
+      "actions": [
+        309,
+        312
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32018,
+      "actions": [
+        311,
+        263,
+        220
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32019,
+      "actions": [
+        314,
+        366
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32020,
+      "actions": [
+        263,
+        310,
+        362
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 3,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32021,
+      "actions": [
+        320,
+        276
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32022,
+      "actions": [
+        267,
+        316,
+        360
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 3,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32023,
+      "actions": [
+        361,
+        324
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32024,
+      "actions": [
+        311,
+        358
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32025,
+      "actions": [
+        309,
+        313,
+        318
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32026,
+      "actions": [
+        311,
+        360
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32027,
+      "actions": [
+        357,
+        320,
+        276
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 3,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32028,
+      "actions": [
+        316,
+        360
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32029,
+      "actions": [
+        309,
+        314,
+        366
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 3,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32030,
+      "actions": [
+        316,
+        360
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32031,
+      "actions": [
+        311,
+        263,
+        210
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32032,
+      "actions": [
+        357,
+        306
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32033,
+      "actions": [
+        311,
+        263,
+        210
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 3,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32034,
+      "actions": [
+        313,
+        309,
+        312
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32035,
+      "actions": [
+        268,
+        224
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32036,
+      "actions": [
+        361,
+        310,
+        258
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 3,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32037,
+      "actions": [
+        262,
+        210
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32038,
+      "actions": [
+        361,
+        357,
+        306
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32039,
+      "actions": [
+        263,
+        220
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32040,
+      "actions": [
+        313,
+        309,
+        312
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 3,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32041,
+      "actions": [
+        311,
+        358
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32042,
+      "actions": [
+        309,
+        314,
+        366
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32043,
+      "actions": [
+        263,
+        310,
+        362
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 3,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32044,
+      "actions": [
+        320,
+        276
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32045,
+      "actions": [
+        267,
+        316,
+        360
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32046,
+      "actions": [
+        313,
+        318
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32047,
+      "actions": [
+        263,
+        311,
+        358
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 3,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32048,
+      "actions": [
+        313,
+        318
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32049,
+      "actions": [
+        263,
+        311,
+        360
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32050,
+      "actions": [
+        320,
+        276
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32051,
+      "actions": [
+        263,
+        310,
+        362
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 3,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32052,
+      "actions": [
+        268,
+        224
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32053,
+      "actions": [
+        316,
+        360
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32054,
+      "actions": [
+        311,
+        263,
+        210
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32055,
+      "actions": [
+        357,
+        306
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32056,
+      "actions": [
+        311,
+        263,
+        220
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32057,
+      "actions": [
+        309,
+        312
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32058,
+      "actions": [
+        311,
+        268,
+        224
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 3,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32059,
+      "actions": [
+        310,
+        258
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32060,
+      "actions": [
+        315,
+        262,
+        210
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 3,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32061,
+      "actions": [
+        316,
+        360
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32062,
+      "actions": [
+        263,
+        220
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32063,
+      "actions": [
+        313,
+        309,
+        312
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 3,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32064,
+      "actions": [
+        311,
+        358
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32065,
+      "actions": [
+        309,
+        313,
+        318
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32066,
+      "actions": [
+        316,
+        360
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32067,
+      "actions": [
+        357,
+        320,
+        276
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 3,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32068,
+      "actions": [
+        316,
+        360
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32069,
+      "actions": [
+        309,
+        314,
+        366
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32070,
+      "actions": [
+        311,
+        358
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32071,
+      "actions": [
+        357,
+        361,
+        324
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32072,
+      "actions": [
+        263,
+        311,
+        360
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32073,
+      "actions": [
+        361,
+        324
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32074,
+      "actions": [
+        263,
+        310,
+        362
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 3,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32075,
+      "actions": [
+        268,
+        224
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32076,
+      "actions": [
+        361,
+        310,
+        258
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32077,
+      "actions": [
+        262,
+        210
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32078,
+      "actions": [
+        361,
+        357,
+        306
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32079,
+      "actions": [
+        263,
+        220
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32080,
+      "actions": [
+        313,
+        309,
+        312
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 3,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32081,
+      "actions": [
+        263,
+        210
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32082,
+      "actions": [
+        310,
+        258
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32083,
+      "actions": [
+        315,
+        262,
+        210
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32084,
+      "actions": [
+        316,
+        360
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32085,
+      "actions": [
+        311,
+        268,
+        224
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32086,
+      "actions": [
+        361,
+        324
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32087,
+      "actions": [
+        263,
+        311,
+        358
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 3,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32088,
+      "actions": [
+        313,
+        318
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32089,
+      "actions": [
+        263,
+        311,
+        360
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 3,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32090,
+      "actions": [
+        320,
+        276
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32091,
+      "actions": [
+        316,
+        360
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32092,
+      "actions": [
+        309,
+        314,
+        366
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 3,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32093,
+      "actions": [
+        310,
+        362
+      ],
+      "distance": 6,
+      "offset": -2,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32094,
+      "actions": [
+        357,
+        361,
+        324
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 3,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32095,
+      "actions": [
+        311,
+        360
+      ],
+      "distance": 6,
+      "offset": 1,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32096,
+      "actions": [
+        357,
+        361,
+        324
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 3,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32097,
+      "actions": [
+        309,
+        312
+      ],
+      "distance": 6,
+      "offset": -1,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32098,
+      "actions": [
+        311,
+        268,
+        224
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 3,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "bend",
+      "seed": 32099,
+      "actions": [
+        310,
+        258
+      ],
+      "distance": 6,
+      "offset": 2,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30000,
+      "actions": [
+        357,
+        361
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30001,
+      "actions": [
+        316,
+        360
+      ],
+      "distance": 6,
+      "offset": -6,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30002,
+      "actions": [
+        263,
+        215
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30003,
+      "actions": [
+        353,
+        349
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30004,
+      "actions": [
+        314,
+        262
+      ],
+      "distance": 7,
+      "offset": -7,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30005,
+      "actions": [
+        353,
+        349
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30006,
+      "actions": [
+        308,
+        264
+      ],
+      "distance": 7,
+      "offset": 7,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30007,
+      "actions": [
+        357,
+        353
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30008,
+      "actions": [
+        312,
+        268
+      ],
+      "distance": 6,
+      "offset": 6,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30009,
+      "actions": [
+        357,
+        353
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30010,
+      "actions": [
+        262,
+        210
+      ],
+      "distance": 5,
+      "offset": -5,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30011,
+      "actions": [
+        353,
+        349
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30012,
+      "actions": [
+        215,
+        263
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30013,
+      "actions": [
+        272,
+        228
+      ],
+      "distance": 7,
+      "offset": -7,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30014,
+      "actions": [
+        215,
+        263
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30015,
+      "actions": [
+        314,
+        366
+      ],
+      "distance": 6,
+      "offset": 6,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30016,
+      "actions": [
+        359,
+        407
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30017,
+      "actions": [
+        320,
+        276
+      ],
+      "distance": 6,
+      "offset": -6,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30018,
+      "actions": [
+        311,
+        359
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30019,
+      "actions": [
+        262,
+        314
+      ],
+      "distance": 5,
+      "offset": 5,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30020,
+      "actions": [
+        359,
+        407
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30021,
+      "actions": [
+        316,
+        272
+      ],
+      "distance": 7,
+      "offset": -7,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30022,
+      "actions": [
+        356,
+        400
+      ],
+      "distance": 7,
+      "offset": 7,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30023,
+      "actions": [
+        263,
+        215
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30024,
+      "actions": [
+        360,
+        404
+      ],
+      "distance": 6,
+      "offset": -6,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30025,
+      "actions": [
+        263,
+        215
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30026,
+      "actions": [
+        258,
+        206
+      ],
+      "distance": 5,
+      "offset": 5,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30027,
+      "actions": [
+        263,
+        215
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30028,
+      "actions": [
+        206,
+        154
+      ],
+      "distance": 7,
+      "offset": 7,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30029,
+      "actions": [
+        263,
+        215
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30030,
+      "actions": [
+        356,
+        400
+      ],
+      "distance": 7,
+      "offset": -7,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30031,
+      "actions": [
+        262,
+        210
+      ],
+      "distance": 6,
+      "offset": -6,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30032,
+      "actions": [
+        353,
+        349
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30033,
+      "actions": [
+        262,
+        210
+      ],
+      "distance": 5,
+      "offset": -5,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30034,
+      "actions": [
+        353,
+        349
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30035,
+      "actions": [
+        268,
+        312
+      ],
+      "distance": 5,
+      "offset": 5,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30036,
+      "actions": [
+        365,
+        369
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30037,
+      "actions": [
+        258,
+        310
+      ],
+      "distance": 7,
+      "offset": -7,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30038,
+      "actions": [
+        365,
+        369
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30039,
+      "actions": [
+        316,
+        360
+      ],
+      "distance": 6,
+      "offset": 6,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30040,
+      "actions": [
+        365,
+        369
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30041,
+      "actions": [
+        263,
+        311
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30042,
+      "actions": [
+        314,
+        366
+      ],
+      "distance": 5,
+      "offset": 5,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30043,
+      "actions": [
+        263,
+        311
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30044,
+      "actions": [
+        228,
+        184
+      ],
+      "distance": 7,
+      "offset": -7,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30045,
+      "actions": [
+        263,
+        311
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30046,
+      "actions": [
+        176,
+        132
+      ],
+      "distance": 7,
+      "offset": 7,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30047,
+      "actions": [
+        357,
+        353
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30048,
+      "actions": [
+        224,
+        180
+      ],
+      "distance": 6,
+      "offset": 6,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30049,
+      "actions": [
+        357,
+        353
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30050,
+      "actions": [
+        210,
+        158
+      ],
+      "distance": 5,
+      "offset": -5,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30051,
+      "actions": [
+        268,
+        312
+      ],
+      "distance": 5,
+      "offset": -5,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30052,
+      "actions": [
+        167,
+        119
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30053,
+      "actions": [
+        268,
+        312
+      ],
+      "distance": 7,
+      "offset": -7,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30054,
+      "actions": [
+        167,
+        119
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30055,
+      "actions": [
+        310,
+        258
+      ],
+      "distance": 6,
+      "offset": 6,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30056,
+      "actions": [
+        215,
+        167
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30057,
+      "actions": [
+        316,
+        272
+      ],
+      "distance": 5,
+      "offset": -5,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30058,
+      "actions": [
+        311,
+        359
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30059,
+      "actions": [
+        262,
+        314
+      ],
+      "distance": 5,
+      "offset": 5,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30060,
+      "actions": [
+        362,
+        414
+      ],
+      "distance": 7,
+      "offset": -7,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30061,
+      "actions": [
+        357,
+        361
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30062,
+      "actions": [
+        356,
+        400
+      ],
+      "distance": 7,
+      "offset": 7,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30063,
+      "actions": [
+        361,
+        365
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30064,
+      "actions": [
+        362,
+        414
+      ],
+      "distance": 6,
+      "offset": -6,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30065,
+      "actions": [
+        357,
+        361
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30066,
+      "actions": [
+        312,
+        356
+      ],
+      "distance": 5,
+      "offset": 5,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30067,
+      "actions": [
+        357,
+        361
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30068,
+      "actions": [
+        206,
+        154
+      ],
+      "distance": 7,
+      "offset": 7,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30069,
+      "actions": [
+        263,
+        215
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30070,
+      "actions": [
+        353,
+        349
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30071,
+      "actions": [
+        262,
+        210
+      ],
+      "distance": 6,
+      "offset": -6,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30072,
+      "actions": [
+        353,
+        349
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30073,
+      "actions": [
+        262,
+        210
+      ],
+      "distance": 5,
+      "offset": -5,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30074,
+      "actions": [
+        353,
+        349
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30075,
+      "actions": [
+        264,
+        220
+      ],
+      "distance": 5,
+      "offset": 5,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30076,
+      "actions": [
+        349,
+        345
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30077,
+      "actions": [
+        262,
+        210
+      ],
+      "distance": 7,
+      "offset": -7,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30078,
+      "actions": [
+        353,
+        349
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30079,
+      "actions": [
+        316,
+        360
+      ],
+      "distance": 6,
+      "offset": 6,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30080,
+      "actions": [
+        276,
+        232
+      ],
+      "distance": 6,
+      "offset": -6,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30081,
+      "actions": [
+        263,
+        311
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30082,
+      "actions": [
+        314,
+        366
+      ],
+      "distance": 5,
+      "offset": 5,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30083,
+      "actions": [
+        263,
+        311
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30084,
+      "actions": [
+        228,
+        184
+      ],
+      "distance": 7,
+      "offset": -7,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30085,
+      "actions": [
+        263,
+        311
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30086,
+      "actions": [
+        366,
+        418
+      ],
+      "distance": 6,
+      "offset": 6,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30087,
+      "actions": [
+        311,
+        359
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30088,
+      "actions": [
+        366,
+        418
+      ],
+      "distance": 6,
+      "offset": 6,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30089,
+      "actions": [
+        268,
+        312
+      ],
+      "distance": 5,
+      "offset": 5,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30090,
+      "actions": [
+        215,
+        167
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30091,
+      "actions": [
+        268,
+        312
+      ],
+      "distance": 5,
+      "offset": -5,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30092,
+      "actions": [
+        167,
+        119
+      ],
+      "distance": 7,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30093,
+      "actions": [
+        268,
+        312
+      ],
+      "distance": 7,
+      "offset": -7,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30094,
+      "actions": [
+        215,
+        167
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30095,
+      "actions": [
+        310,
+        258
+      ],
+      "distance": 6,
+      "offset": 6,
+      "connected": true,
+      "used": 2,
+      "trips": 11,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30096,
+      "actions": [
+        215,
+        167
+      ],
+      "distance": 6,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 13,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30097,
+      "actions": [
+        268,
+        312
+      ],
+      "distance": 5,
+      "offset": -5,
+      "connected": true,
+      "used": 2,
+      "trips": 10,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30098,
+      "actions": [
+        215,
+        167
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 12,
+      "seconds": 180
+    },
+    {
+      "stage": "adjacent",
+      "seed": 30099,
+      "actions": [
+        357,
+        353
+      ],
+      "distance": 5,
+      "offset": 0,
+      "connected": true,
+      "used": 2,
+      "trips": 13,
+      "seconds": 180
+    }
+  ]
+}

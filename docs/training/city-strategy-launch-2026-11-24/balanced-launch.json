@@ -1,0 +1,33 @@
+{
+  "pid": 173520,
+  "command": [
+    "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+    "-u",
+    "training/train_city_curriculum.py",
+    "--dll",
+    "output/city-road-reserve-build-01/bin/TrafficHost/release/TrafficHost.dll",
+    "--parent",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-mixed-pilot-01/midpoint.zip",
+    "--output",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-pilot-01",
+    "--stage",
+    "strategy-balanced",
+    "--rollouts",
+    "4",
+    "--rollout-steps",
+    "512",
+    "--batch-size",
+    "128",
+    "--gae-lambda",
+    "1",
+    "--seed-start",
+    "145000000",
+    "--learning-rate",
+    ".001",
+    "--collapse-forced-wait",
+    "--save-every-rollouts",
+    "1"
+  ],
+  "parent_sha256": "63896fa93084141c6d6d381417d5caeeef67da6f76266b2ace87ef47f92a9796",
+  "reason": "Correct decision allocation at saved mixed midpoint; unsaved work after that checkpoint is not reused."
+}

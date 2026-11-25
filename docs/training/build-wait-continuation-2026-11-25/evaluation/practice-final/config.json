@@ -1,0 +1,25 @@
+{
+  "dll": "/home/mohammadjaffal/mini_motorways/output/training/build-wait-02/runtime/city-host/TrafficHost.dll",
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+  "models": {
+    "candidate": {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/build-wait-02/training/final.zip",
+      "sha256": "1b92bd35e3124b156a9a25ab5e139fe5e12e6035784a11e69cee558d810524b5"
+    }
+  },
+  "exercises": [
+    "adjacent",
+    "bend",
+    "clear",
+    "obstacle",
+    "small-city-offset-single",
+    "small-city-offset-stock",
+    "small-city-offset-pairs"
+  ],
+  "count": 16,
+  "seed_start": 231000000,
+  "small_city_horizon": 300,
+  "replay_seeds": [],
+  "reference_queries": false,
+  "old_geometry_uses_city_wait_60_seconds": true
+}

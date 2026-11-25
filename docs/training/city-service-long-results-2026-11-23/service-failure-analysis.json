@@ -1,0 +1,100 @@
+{
+  "source": "games.jsonl",
+  "source_sha256": "3a18a4798b8fe65ce9fac718e806bf32ad060105ef5eae8847e96115afc918b6",
+  "endpoint": "native game-over or 600-second cap",
+  "models": {
+    "warm_start": {
+      "games": 24,
+      "total_deliveries": 2365,
+      "deliveries_to_post_score_arrivals": 1635,
+      "median_game_seconds": 476.57500000000005,
+      "new_destinations_observed": 108,
+      "at_least_0_seconds_observable_after_arrival": {
+        "positive_stock_served": 69,
+        "positive_stock_unserved": 8,
+        "zero_stock_served": 20,
+        "zero_stock_unserved": 11
+      },
+      "at_least_30_seconds_observable_after_arrival": {
+        "positive_stock_served": 68,
+        "positive_stock_unserved": 8,
+        "zero_stock_served": 20,
+        "zero_stock_unserved": 8
+      },
+      "at_least_60_seconds_observable_after_arrival": {
+        "positive_stock_served": 68,
+        "positive_stock_unserved": 8,
+        "zero_stock_served": 19,
+        "zero_stock_unserved": 6
+      },
+      "at_least_90_seconds_observable_after_arrival": {
+        "positive_stock_served": 64,
+        "positive_stock_unserved": 7,
+        "zero_stock_served": 16,
+        "zero_stock_unserved": 6
+      }
+    },
+    "four_hours": {
+      "games": 24,
+      "total_deliveries": 2424,
+      "deliveries_to_post_score_arrivals": 1681,
+      "median_game_seconds": 514.475,
+      "new_destinations_observed": 110,
+      "at_least_0_seconds_observable_after_arrival": {
+        "positive_stock_served": 75,
+        "positive_stock_unserved": 11,
+        "zero_stock_served": 13,
+        "zero_stock_unserved": 11
+      },
+      "at_least_30_seconds_observable_after_arrival": {
+        "positive_stock_served": 75,
+        "positive_stock_unserved": 11,
+        "zero_stock_served": 13,
+        "zero_stock_unserved": 10
+      },
+      "at_least_60_seconds_observable_after_arrival": {
+        "positive_stock_served": 74,
+        "positive_stock_unserved": 10,
+        "zero_stock_served": 12,
+        "zero_stock_unserved": 6
+      },
+      "at_least_90_seconds_observable_after_arrival": {
+        "positive_stock_served": 72,
+        "positive_stock_unserved": 9,
+        "zero_stock_served": 9,
+        "zero_stock_unserved": 4
+      }
+    },
+    "eight_hours": {
+      "games": 24,
+      "total_deliveries": 1851,
+      "deliveries_to_post_score_arrivals": 1206,
+      "median_game_seconds": 454.25,
+      "new_destinations_observed": 96,
+      "at_least_0_seconds_observable_after_arrival": {
+        "positive_stock_served": 66,
+        "positive_stock_unserved": 17,
+        "zero_stock_served": 8,
+        "zero_stock_unserved": 5
+      },
+      "at_least_30_seconds_observable_after_arrival": {
+        "positive_stock_served": 65,
+        "positive_stock_unserved": 16,
+        "zero_stock_served": 8,
+        "zero_stock_unserved": 3
+      },
+      "at_least_60_seconds_observable_after_arrival": {
+        "positive_stock_served": 63,
+        "positive_stock_unserved": 16,
+        "zero_stock_served": 6,
+        "zero_stock_unserved": 1
+      },
+      "at_least_90_seconds_observable_after_arrival": {
+        "positive_stock_served": 60,
+        "positive_stock_unserved": 14,
+        "zero_stock_served": 4,
+        "zero_stock_unserved": 1
+      }
+    }
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "cases": {
+    "match": {
+      "default_greedy": {
+        "laid_road": 100,
+        "abstained": 0,
+        "finish_selected": 0,
+        "physical_link": 100,
+        "service_link": 100,
+        "games_with_deliveries": 100,
+        "three_or_more": 100,
+        "mean_stock_used": 2.96,
+        "mean_trips": 13
+      },
+      "default_sampled": {
+        "laid_road": 100,
+        "abstained": 0,
+        "finish_selected": 0,
+        "physical_link": 100,
+        "service_link": 100,
+        "games_with_deliveries": 100,
+        "three_or_more": 100,
+        "mean_stock_used": 2.96,
+        "mean_trips": 13
+      },
+      "finish_greedy": {
+        "laid_road": 100,
+        "abstained": 0,
+        "finish_selected": 0,
+        "physical_link": 100,
+        "service_link": 100,
+        "games_with_deliveries": 100,
+        "three_or_more": 100,
+        "mean_stock_used": 2.96,
+        "mean_trips": 13
+      }
+    },
+    "mismatch": {
+      "default_greedy": {
+        "laid_road": 100,
+        "abstained": 0,
+        "finish_selected": 0,
+        "physical_link": 100,
+        "service_link": 0,
+        "games_with_deliveries": 0,
+        "three_or_more": 0,
+        "mean_stock_used": 2.96,
+        "mean_trips": 0
+      },
+      "default_sampled": {
+        "laid_road": 100,
+        "abstained": 0,
+        "finish_selected": 0,
+        "physical_link": 100,
+        "service_link": 0,
+        "games_with_deliveries": 0,
+        "three_or_more": 0,
+        "mean_stock_used": 2.96,
+        "mean_trips": 0
+      },
+      "finish_greedy": {
+        "laid_road": 100,
+        "abstained": 0,
+        "finish_selected": 100,
+        "physical_link": 100,
+        "service_link": 0,
+        "games_with_deliveries": 0,
+        "three_or_more": 0,
+        "mean_stock_used": 2.96,
+        "mean_trips": 0
+      }
+    },
+    "homes": {
+      "default_greedy": {
+        "laid_road": 100,
+        "abstained": 0,
+        "finish_selected": 0,
+        "physical_link": 0,
+        "service_link": 0,
+        "games_with_deliveries": 0,
+        "three_or_more": 0,
+        "mean_stock_used": 2.96,
+        "mean_trips": 0
+      },
+      "default_sampled": {
+        "laid_road": 100,
+        "abstained": 0,
+        "finish_selected": 0,
+        "physical_link": 0,
+        "service_link": 0,
+        "games_with_deliveries": 0,
+        "three_or_more": 0,
+        "mean_stock_used": 2.96,
+        "mean_trips": 0
+      },
+      "finish_greedy": {
+        "laid_road": 100,
+        "abstained": 0,
+        "finish_selected": 0,
+        "physical_link": 0,
+        "service_link": 0,
+        "games_with_deliveries": 0,
+        "three_or_more": 0,
+        "mean_stock_used": 2.96,
+        "mean_trips": 0
+      }
+    },
+    "destinations": {
+      "default_greedy": {
+        "laid_road": 100,
+        "abstained": 0,
+        "finish_selected": 0,
+        "physical_link": 23,
+        "service_link": 0,
+        "games_with_deliveries": 0,
+        "three_or_more": 0,
+        "mean_stock_used": 2.96,
+        "mean_trips": 0
+      },
+      "default_sampled": {
+        "laid_road": 100,
+        "abstained": 0,
+        "finish_selected": 0,
+        "physical_link": 26,
+        "service_link": 0,
+        "games_with_deliveries": 0,
+        "three_or_more": 0,
+        "mean_stock_used": 2.96,
+        "mean_trips": 0
+      },
+      "finish_greedy": {
+        "laid_road": 100,
+        "abstained": 0,
+        "finish_selected": 23,
+        "physical_link": 23,
+        "service_link": 0,
+        "games_with_deliveries": 0,
+        "three_or_more": 0,
+        "mean_stock_used": 2.96,
+        "mean_trips": 0
+      }
+    }
+  },
+  "color_only_checks": {
+    "default_greedy": {
+      "initial_inputs_and_mask_identical": 100,
+      "first_action_identical": 100
+    },
+    "default_sampled": {
+      "initial_inputs_and_mask_identical": 100,
+      "first_action_identical": 100
+    },
+    "finish_greedy": {
+      "initial_inputs_and_mask_identical": 100,
+      "first_action_identical": 100
+    }
+  }
+}

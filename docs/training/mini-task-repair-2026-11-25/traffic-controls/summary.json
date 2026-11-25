@@ -1,0 +1,106 @@
+{
+  "traffic-priority-established": {
+    "lower": {
+      "games": 8,
+      "mean_score": 11.125,
+      "successes": 4,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 8.25
+    },
+    "upper": {
+      "games": 8,
+      "mean_score": 11.25,
+      "successes": 4,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 8.0
+    },
+    "wait": {
+      "games": 8,
+      "mean_score": 1.5,
+      "successes": 0,
+      "mean_builds": 0.0,
+      "mean_stock": 1.0,
+      "mean_urgent_deliveries": 0.0
+    }
+  },
+  "traffic-priority-established-swap": {
+    "lower": {
+      "games": 8,
+      "mean_score": 10.875,
+      "successes": 4,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 8.0
+    },
+    "upper": {
+      "games": 8,
+      "mean_score": 10.75,
+      "successes": 4,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 7.875
+    },
+    "wait": {
+      "games": 8,
+      "mean_score": 1.375,
+      "successes": 0,
+      "mean_builds": 0.0,
+      "mean_stock": 1.0,
+      "mean_urgent_deliveries": 0.0
+    }
+  },
+  "traffic-junction-low-live": {
+    "feeder": {
+      "games": 8,
+      "mean_score": 15.5,
+      "successes": 0,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 14.625
+    },
+    "separate-exit": {
+      "games": 8,
+      "mean_score": 11.75,
+      "successes": 0,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 10.625
+    },
+    "wait": {
+      "games": 8,
+      "mean_score": 9.625,
+      "successes": 0,
+      "mean_builds": 0.0,
+      "mean_stock": 1.0,
+      "mean_urgent_deliveries": 8.0
+    }
+  },
+  "traffic-junction-high-live": {
+    "feeder": {
+      "games": 8,
+      "mean_score": 29.75,
+      "successes": 0,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 11.625
+    },
+    "separate-exit": {
+      "games": 8,
+      "mean_score": 32.625,
+      "successes": 0,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 10.875
+    },
+    "wait": {
+      "games": 8,
+      "mean_score": 27.0,
+      "successes": 0,
+      "mean_builds": 0.0,
+      "mean_stock": 1.0,
+      "mean_urgent_deliveries": 7.25
+    }
+  }
+}

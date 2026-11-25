@@ -1,0 +1,17 @@
+{
+  "decisions": 128,
+  "road_adam_updates": 4,
+  "wait_adam_updates": 0,
+  "episodes": 12,
+  "native_reward_ledger": true,
+  "no_terminal_bootstrap": true,
+  "frozen_prior_unchanged": true,
+  "road_and_critic_10_states_advanced_four_steps": true,
+  "frozen_wait_and_encoder_20_states_preserved": true,
+  "reload": true,
+  "finite": true,
+  "seconds": 14.527579298941419,
+  "checkpoint_sha256": "6eea06bf4ba866fb2149c44601703aae1a8799ba1b4d44f24372e23f34f4aa1a",
+  "parent_sha256": "76ec2579aea9ea48781d6bcb32820356055dc0b9d619c8505678f4fe9f159675",
+  "limits": "Disposable2-worker synchronous integration smoke through actual trainer worker factory. Native road-head-only configuration restored; no performance claim or production promotion."
+}

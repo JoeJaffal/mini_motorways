@@ -1,0 +1,38 @@
+{
+  "service": "mini-motorways-offset-ppo-pilot-01-retry.service",
+  "started_asia_beirut": "2026-11-20T12:04:01+02:00",
+  "first_rollout": {
+    "decisions": 133120,
+    "games": 936,
+    "successes": 126,
+    "max_span": 2,
+    "temperature": 4.0,
+    "targeted": {
+      "-2": [
+        7,
+        384
+      ],
+      "2": [
+        5,
+        384
+      ]
+    },
+    "rehearsal": {
+      "clear": [
+        7,
+        53
+      ],
+      "bend": [
+        43,
+        51
+      ],
+      "adjacent": [
+        64,
+        64
+      ]
+    },
+    "ppo_epochs": 260,
+    "elapsed_seconds": 4.7478642869973555,
+    "fingerprint": "b76a8b16931957cec1d6fa259de1a072db7c48004d1080ca82dff4de303087bb"
+  }
+}

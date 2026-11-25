@@ -1,0 +1,4964 @@
+{
+  "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-extension-01/segment-001/midpoint.zip",
+  "sha256": "17e8dd3b018f9e9ccec58ea72181f2f05c07b2f6b0e236ed6536ac10dd67803d",
+  "note": "Frozen Monte Carlo diagnostic; positive score-function gradient favors increasing additive Wait bias. Full-cohort centered estimate approximates, but is not identical to, task minibatch PPO updates. No gradient applied, no teacher actions, no fresh-city readiness evidence.",
+  "summary": {
+    "original": {
+      "games": 16,
+      "successes": 4,
+      "decisions": 261,
+      "return_mean": 3.67816091954023,
+      "return_std": 0.8904893769308766,
+      "mean_initial_wait": 0.7149145065470102,
+      "zero_baseline_wait_score_gradient": 0.09997003090165904,
+      "centered_scaled_wait_score_gradient": 0.027774183115806622
+    },
+    "warmup6": {
+      "games": 16,
+      "successes": 6,
+      "decisions": 211,
+      "return_mean": 4.327014218009479,
+      "return_std": 1.240004622673974,
+      "mean_initial_wait": 0.8109020489570955,
+      "zero_baseline_wait_score_gradient": 0.16405805240019264,
+      "centered_scaled_wait_score_gradient": 0.03486687553150896
+    },
+    "delay2": {
+      "games": 16,
+      "successes": 10,
+      "decisions": 163,
+      "return_mean": 5.110429447852761,
+      "return_std": 1.574357927238658,
+      "mean_initial_wait": 0.7149145065470102,
+      "zero_baseline_wait_score_gradient": 0.011014029246386494,
+      "centered_scaled_wait_score_gradient": -0.0019123089928162157
+    }
+  },
+  "rows": [
+    {
+      "case": "original",
+      "seed": 157100000,
+      "action_seed": 18411,
+      "score": 5.0,
+      "new_deliveries": 2,
+      "stock_at_arrival": 4,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.7547878573334582,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7778202050811273,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7888574153367406,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8086634125557784,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8016825385582778,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7803440090163567,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7829019212438946,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7984278024715444,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8152947765203022,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8245696420884121,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.3531650655699899,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.33633405712956216,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 1692,
+          "pwait": 0.2941756107131517,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.2979355949255164,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 2086,
+          "pwait": 0.2970119197974641,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 1887,
+          "pwait": 0.30109037763419016,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7664080238985114,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 1300,
+          "pwait": 0.6448376030990386,
+          "reward": 5.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        }
+      ]
+    },
+    {
+      "case": "original",
+      "seed": 157100001,
+      "action_seed": 18412,
+      "score": 4.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 1,
+      "steps": [
+        {
+          "action": 4860,
+          "pwait": 0.628038241070074,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6385189574446001,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6469522589445873,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 4887,
+          "pwait": 0.8175417032590929,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.815791283138156,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8316967247847293,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.847773418390861,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 5087,
+          "pwait": 0.7695525208349145,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.769738964600136,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7432007341196761,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7481432505687504,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7777011083296124,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7366949098126077,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 4687,
+          "pwait": 0.7926003989408756,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8022693683974003,
+          "reward": 1.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.690173887424201,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.731699451000591,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6840183205454707,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8233797911471746,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8173647404216999,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 4857,
+          "pwait": 0.30908393635483483,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 4673,
+          "pwait": 0.5629401803016663,
+          "reward": 3.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        }
+      ]
+    },
+    {
+      "case": "original",
+      "seed": 157100002,
+      "action_seed": 18413,
+      "score": 4.0,
+      "new_deliveries": 1,
+      "stock_at_arrival": 4,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.8867294931799714,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8939357804974518,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8983601426287195,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.9087910336072959,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.9132799115230886,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.900532863734908,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8887588390024198,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8993734096609353,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8978505448671865,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.892790895261375,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.888312679391785,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8973662407647252,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8960609015067023,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8748609952997944,
+          "reward": 1.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 1460,
+          "pwait": 0.5390597105118836,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5439047834948968,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5564697979253804,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5605314444058458,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 2058,
+          "pwait": 0.5534883076977489,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5575876857547163,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5608181791022946,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5813427261165133,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5364900518740867,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5608672790798486,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.591903438229184,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.635561080039731,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5838465396147853,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 1854,
+          "pwait": 0.5599119986647227,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5650904606255752,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 1655,
+          "pwait": 0.5344651182155276,
+          "reward": 3.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        }
+      ]
+    },
+    {
+      "case": "original",
+      "seed": 157100003,
+      "action_seed": 18414,
+      "score": 3.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 2,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.689535041633935,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 1850,
+          "pwait": 0.7030123455971942,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 3657,
+          "pwait": 0.7046830996294576,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7074900146658823,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7319471828989247,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7451717557746734,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7381297736402208,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7423753908969477,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7202187981231424,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.697606596047349,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7413822403884271,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7309539739121819,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7691164595310281,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.28100601078671733,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 2060,
+          "pwait": 0.29761285691042744,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 2057,
+          "pwait": 0.3025038817345785,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.556398868560791,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 2269,
+          "pwait": 0.3665667176246643,
+          "reward": 3.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        }
+      ]
+    },
+    {
+      "case": "original",
+      "seed": 157100004,
+      "action_seed": 18415,
+      "score": 4.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 0,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.6528566266827724,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6809776935292802,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7298871606790968,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.760999313898539,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 1328,
+          "pwait": 0.7276229364532947,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.730768676520502,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 1524,
+          "pwait": 0.7358582541134837,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 1922,
+          "pwait": 0.7581544213615913,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5611682963023097,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 2319,
+          "pwait": 0.5530710981211393,
+          "reward": 4.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        }
+      ]
+    },
+    {
+      "case": "original",
+      "seed": 157100005,
+      "action_seed": 18416,
+      "score": 3.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 0,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.800500629059219,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8069468233403088,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8209174010012964,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8387993333705315,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 4852,
+          "pwait": 0.8624557707319179,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8675447299612562,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8800945160728043,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8574229733909281,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 4656,
+          "pwait": 0.8183641106879381,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8204963083279357,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.831153019984239,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8345310183695521,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8453773524607282,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8504466089053263,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8635276932653545,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8635025283601833,
+          "reward": 1.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 4859,
+          "pwait": 0.8238800450128613,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 2.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5290224552154541,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 2.0
+        },
+        {
+          "action": 4665,
+          "pwait": 0.5316719691948909,
+          "reward": 2.0,
+          "gate": 1.0,
+          "return_to_go": 2.0
+        }
+      ]
+    },
+    {
+      "case": "original",
+      "seed": 157100006,
+      "action_seed": 18417,
+      "score": 3.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 2,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.7974682203367399,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8119477276913527,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8176370262887939,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8378006828616715,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8284562850635483,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8239819055454176,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 1250,
+          "pwait": 0.7846128196885207,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7854102205699641,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8511552743485139,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8609918895077214,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8591380148514403,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.869973643376804,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8531079541605836,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8722512904831221,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 1660,
+          "pwait": 0.23525831156678517,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.23941114590697665,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 2054,
+          "pwait": 0.24125688565959869,
+          "reward": 3.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        }
+      ]
+    },
+    {
+      "case": "original",
+      "seed": 157100007,
+      "action_seed": 18418,
+      "score": 4.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 0,
+      "steps": [
+        {
+          "action": 4848,
+          "pwait": 0.6570643145223378,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 4652,
+          "pwait": 0.6667938675612931,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 4871,
+          "pwait": 0.6702567484203646,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5482545168248107,
+          "reward": 1.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.414253992267072,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.34538769721984863,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5592707658248683,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 4661,
+          "pwait": 0.5233837054143128,
+          "reward": 3.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        }
+      ]
+    },
+    {
+      "case": "original",
+      "seed": 157100008,
+      "action_seed": 18419,
+      "score": 4.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 0,
+      "steps": [
+        {
+          "action": 3652,
+          "pwait": 0.6000646825079045,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 3287,
+          "pwait": 0.6081183459418661,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6289148536188048,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 3456,
+          "pwait": 0.6466708790100378,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6887134108330784,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6391806602478027,
+          "reward": 1.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6696908274385086,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6768982006968141,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.445440004358292,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5150954127311707,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 2655,
+          "pwait": 0.5469565065529045,
+          "reward": 3.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        }
+      ]
+    },
+    {
+      "case": "original",
+      "seed": 157100009,
+      "action_seed": 18420,
+      "score": 5.0,
+      "new_deliveries": 2,
+      "stock_at_arrival": 5,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.7851893572442565,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8016465410340076,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8068462580873983,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8248444925097123,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8567479244944822,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8730972992810355,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8655336294613517,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8444809548611517,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8611058642828594,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8677757961509077,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8550163010287009,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8694718590839212,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8692878768172758,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8113530450018802,
+          "reward": 1.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8119520274072033,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 5092,
+          "pwait": 0.3611016561031355,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.3845189943266655,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 5281,
+          "pwait": 0.38965588473259555,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.38300227546746596,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 5078,
+          "pwait": 0.4445478665503622,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 4874,
+          "pwait": 0.44583235519624814,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8655795302911817,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.882589117026449,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8701911226847812,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8892473300761491,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 5090,
+          "pwait": 0.894385439684321,
+          "reward": 4.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        }
+      ]
+    },
+    {
+      "case": "original",
+      "seed": 157100010,
+      "action_seed": 18421,
+      "score": 3.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 0,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.6550426390260581,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 3706,
+          "pwait": 0.7065994767223075,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 4103,
+          "pwait": 0.7091650130930701,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.71227741241454,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.746161937713613,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8151491174190632,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6767990580082667,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7387742620341158,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7531567959095858,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7295555472373857,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7588762671592535,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7294790962183101,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 3903,
+          "pwait": 0.7449750304222005,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 3275,
+          "pwait": 0.7475739558587976,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 3080,
+          "pwait": 0.749913035362157,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7124131493322164,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.61284698882243,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 2703,
+          "pwait": 0.6153063957484483,
+          "reward": 3.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        }
+      ]
+    },
+    {
+      "case": "original",
+      "seed": 157100011,
+      "action_seed": 18422,
+      "score": 4.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 0,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.6995977303465888,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 1692,
+          "pwait": 0.7276785942581239,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 3677,
+          "pwait": 0.724954594159603,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 3488,
+          "pwait": 0.727468691740917,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7318082996145908,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8070953322600406,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8387935365162075,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8326418760962985,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8675731102774978,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8938942748288295,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 3084,
+          "pwait": 0.8357811286865865,
+          "reward": 1.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6922026689173382,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 2065,
+          "pwait": 0.6884487867355347,
+          "reward": 3.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        }
+      ]
+    },
+    {
+      "case": "original",
+      "seed": 157100012,
+      "action_seed": 18423,
+      "score": 3.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 0,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.7840333852790743,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8007005375037817,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.817945591458217,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 3648,
+          "pwait": 0.8421280570003172,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 3452,
+          "pwait": 0.8487308583317789,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6783656680096884,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7139920421834017,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7371104735997178,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7179266642288366,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7294365981053292,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 2651,
+          "pwait": 0.694674175660263,
+          "reward": 3.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        }
+      ]
+    },
+    {
+      "case": "original",
+      "seed": 157100013,
+      "action_seed": 18424,
+      "score": 3.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 0,
+      "steps": [
+        {
+          "action": 5114,
+          "pwait": 0.6289733078703021,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 4910,
+          "pwait": 0.6499520555661493,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6587233657100989,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6993655148621132,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 3305,
+          "pwait": 0.7059024638029022,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 4893,
+          "pwait": 0.3713262898520404,
+          "reward": 3.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        }
+      ]
+    },
+    {
+      "case": "original",
+      "seed": 157100014,
+      "action_seed": 18425,
+      "score": 6.0,
+      "new_deliveries": 2,
+      "stock_at_arrival": 3,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.6226668944166839,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 3644,
+          "pwait": 0.6378225312151975,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6456511014424521,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6900838639679615,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7652952689752486,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8051232350604647,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.864084234688001,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8770980968792783,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8405638045749164,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8541291580320304,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8634166525283671,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.760973139491013,
+          "reward": 1.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7790649761889319,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 3247,
+          "pwait": 0.3397627074468751,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 3052,
+          "pwait": 0.346495946876143,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 2846,
+          "pwait": 0.35275502941742454,
+          "reward": 5.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        }
+      ]
+    },
+    {
+      "case": "original",
+      "seed": 157100015,
+      "action_seed": 18426,
+      "score": 3.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 1,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.7960836842427859,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8124734118939574,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8178286384548381,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 1716,
+          "pwait": 0.8335215896100313,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 1912,
+          "pwait": 0.8315059857878756,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8319212967524761,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8359936059084359,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8796735321781651,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8703846800570977,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 3701,
+          "pwait": 0.8637535410864856,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.864090858166224,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8384329060415459,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.83578932004894,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 2101,
+          "pwait": 0.5061433789683207,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7477861492506355,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7878107067290159,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7828081133543237,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 2089,
+          "pwait": 0.7523965239524841,
+          "reward": 3.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        }
+      ]
+    },
+    {
+      "case": "warmup6",
+      "seed": 157100000,
+      "action_seed": 18411,
+      "score": 6.0,
+      "new_deliveries": 3,
+      "stock_at_arrival": 4,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.7829019212438946,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7984278024715444,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8152947765203022,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8245696420884121,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.3531650655699899,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.33633405712956216,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 1692,
+          "pwait": 0.2941756107131517,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.2979355949255164,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 2086,
+          "pwait": 0.2970119197974641,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.30109037763419016,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.1924845576286316,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 1887,
+          "pwait": 0.19416979577378352,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 1300,
+          "pwait": 0.6473512332457504,
+          "reward": 6.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        }
+      ]
+    },
+    {
+      "case": "warmup6",
+      "seed": 157100001,
+      "action_seed": 18412,
+      "score": 4.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 2,
+      "steps": [
+        {
+          "action": 4860,
+          "pwait": 0.7371425991782536,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7451478260203915,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7500499408399468,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 5052,
+          "pwait": 0.779490141003502,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7821366684022412,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7416377117618164,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7968290717243248,
+          "reward": 1.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 4856,
+          "pwait": 0.6828104291298633,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6882307959898887,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7299270906108069,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6820552985087254,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.822085178694877,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8160350098224339,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 4857,
+          "pwait": 0.3036971800246429,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.308066522422093,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.22600722755488145,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 4862,
+          "pwait": 0.19924705338357823,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.4269741006783873,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.491148441502359,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 4673,
+          "pwait": 0.4153181736266069,
+          "reward": 3.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        }
+      ]
+    },
+    {
+      "case": "warmup6",
+      "seed": 157100002,
+      "action_seed": 18413,
+      "score": 6.0,
+      "new_deliveries": 2,
+      "stock_at_arrival": 4,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.8887588390024198,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8993734096609353,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8978505448671865,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.892790895261375,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.888312679391785,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8973662407647252,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8960609015067023,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8748609952997944,
+          "reward": 1.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 1460,
+          "pwait": 0.5390597105118836,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 1655,
+          "pwait": 0.5439047834948968,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5465769131779296,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 2058,
+          "pwait": 0.5591255315515178,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5633083749803417,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5671963433740344,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 1854,
+          "pwait": 0.560177521710918,
+          "reward": 5.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        }
+      ]
+    },
+    {
+      "case": "warmup6",
+      "seed": 157100003,
+      "action_seed": 18414,
+      "score": 3.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 2,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.715882729846997,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 1850,
+          "pwait": 0.693070794264746,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 3657,
+          "pwait": 0.6947768658560027,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6976301921816914,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7413771617716151,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7725340011371807,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7229344597949438,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 2060,
+          "pwait": 0.26058062204616056,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.2651027608928736,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 2057,
+          "pwait": 0.2735365285174826,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.518152117729187,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6107752141125437,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 2269,
+          "pwait": 0.3607755708925596,
+          "reward": 3.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        }
+      ]
+    },
+    {
+      "case": "warmup6",
+      "seed": 157100004,
+      "action_seed": 18415,
+      "score": 7.0,
+      "new_deliveries": 3,
+      "stock_at_arrival": 3,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.7570397161258962,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7047095952674463,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.730382316365343,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.2944712806277792,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 1920,
+          "pwait": 0.2876398209444329,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 2114,
+          "pwait": 0.291642564036999,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 1328,
+          "pwait": 0.7688550714409931,
+          "reward": 7.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        }
+      ]
+    },
+    {
+      "case": "warmup6",
+      "seed": 157100005,
+      "action_seed": 18416,
+      "score": 4.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 1,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.8519929754735188,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.811766097747159,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8228208032982455,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8263575167203108,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 4852,
+          "pwait": 0.8376337049183894,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8434896600714242,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8484545848769847,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8618358440100052,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 4656,
+          "pwait": 0.8618102638114558,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8635025283601833,
+          "reward": 1.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8238800450128613,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8237067339333297,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.27047109918335,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.2725806184641844,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.27205554797033776,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.3115577755590647,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 4661,
+          "pwait": 0.2814018414675536,
+          "reward": 3.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        }
+      ]
+    },
+    {
+      "case": "warmup6",
+      "seed": 157100006,
+      "action_seed": 18417,
+      "score": 3.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 2,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.7846128196885207,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8505571155437934,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8604278840158222,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8585679678962658,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.86944200183626,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8525172275497963,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 1250,
+          "pwait": 0.8717275738985792,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8722512904831221,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 1660,
+          "pwait": 0.23525831156678517,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 2054,
+          "pwait": 0.23941114590697665,
+          "reward": 3.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        }
+      ]
+    },
+    {
+      "case": "warmup6",
+      "seed": 157100007,
+      "action_seed": 18418,
+      "score": 4.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 1,
+      "steps": [
+        {
+          "action": 4848,
+          "pwait": 0.7595725024092751,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7668172418822281,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 4652,
+          "pwait": 0.7709983250919225,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7743245884930261,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8014010665058985,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7639735447403108,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8164206665462389,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 4649,
+          "pwait": 0.2888455652845575,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5285277209124648,
+          "reward": 1.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 4661,
+          "pwait": 0.39520301237097344,
+          "reward": 3.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        }
+      ]
+    },
+    {
+      "case": "warmup6",
+      "seed": 157100008,
+      "action_seed": 18419,
+      "score": 4.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 1,
+      "steps": [
+        {
+          "action": 3652,
+          "pwait": 0.8582292224836737,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8622693932391637,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8356205721589429,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 3287,
+          "pwait": 0.8403607826130931,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8400435222182739,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 2856,
+          "pwait": 0.43200313642077093,
+          "reward": 4.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        }
+      ]
+    },
+    {
+      "case": "warmup6",
+      "seed": 157100009,
+      "action_seed": 18420,
+      "score": 6.0,
+      "new_deliveries": 2,
+      "stock_at_arrival": 5,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.8655336294613517,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8444809548611517,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8611058642828594,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8677757961509077,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8550163010287009,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8694718590839212,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8692878768172758,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8113530450018802,
+          "reward": 1.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8119520274072033,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 5092,
+          "pwait": 0.3611016561031355,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.3845189943266655,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 5281,
+          "pwait": 0.38965588473259555,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.38300227546746596,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.4445478665503622,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.48303483456392227,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 5078,
+          "pwait": 0.4607567116793288,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.4549298720040879,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 4874,
+          "pwait": 0.46597057580947876,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8751699444233886,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8986655204247641,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8862713341193915,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8854540500835252,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.9022505582149593,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8884001262656525,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8864205841209574,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 5090,
+          "pwait": 0.8195117878554483,
+          "reward": 5.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        }
+      ]
+    },
+    {
+      "case": "warmup6",
+      "seed": 157100010,
+      "action_seed": 18421,
+      "score": 3.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 2,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.7430316823780082,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 3706,
+          "pwait": 0.7240454406346167,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 4082,
+          "pwait": 0.7265460583967576,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7335985209476561,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7626219277305477,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7335199125295393,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7488643518949528,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 3878,
+          "pwait": 0.7162314924595764,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.720560242468955,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7222953136483532,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.2450902775221515,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 3507,
+          "pwait": 0.20124245480213357,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 3312,
+          "pwait": 0.2276618709310874,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 2703,
+          "pwait": 0.4567755894892093,
+          "reward": 3.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        }
+      ]
+    },
+    {
+      "case": "warmup6",
+      "seed": 157100011,
+      "action_seed": 18422,
+      "score": 4.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 1,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.8605085411030917,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 1692,
+          "pwait": 0.8454334225657478,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 3100,
+          "pwait": 0.843645388406909,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 3296,
+          "pwait": 0.8491611697174024,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8525628021329059,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8475268309308794,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8388298678570277,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8443859628468814,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.45550991148611253,
+          "reward": 1.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 1881,
+          "pwait": 0.47697089701227285,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 2065,
+          "pwait": 0.7232732176780701,
+          "reward": 3.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        }
+      ]
+    },
+    {
+      "case": "warmup6",
+      "seed": 157100012,
+      "action_seed": 18423,
+      "score": 7.0,
+      "new_deliveries": 3,
+      "stock_at_arrival": 2,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.8422882624215994,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8410506627419089,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 3056,
+          "pwait": 0.41228004543268154,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 2850,
+          "pwait": 0.4189637476514653,
+          "reward": 7.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        }
+      ]
+    },
+    {
+      "case": "warmup6",
+      "seed": 157100013,
+      "action_seed": 18424,
+      "score": 3.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 0,
+      "steps": [
+        {
+          "action": 5114,
+          "pwait": 0.781329396731075,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7964174698546391,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7774956761378496,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7891028271920439,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 4910,
+          "pwait": 0.7774484253653775,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.784105411270534,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.792878837773819,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.803907978865018,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6983422670655973,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7749726613612151,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 3305,
+          "pwait": 0.5877491345429103,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 4893,
+          "pwait": 0.37144784246229656,
+          "reward": 3.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        }
+      ]
+    },
+    {
+      "case": "warmup6",
+      "seed": 157100014,
+      "action_seed": 18425,
+      "score": 6.0,
+      "new_deliveries": 2,
+      "stock_at_arrival": 4,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.873405410402047,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8359540672071087,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8498449075457026,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8593639088617844,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7547177145497775,
+          "reward": 1.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7731450218802955,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.33408804682309884,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.2277926408703563,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 3247,
+          "pwait": 0.2639207306758401,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.26853791260392007,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 3052,
+          "pwait": 0.3018363611642031,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.30764420903789375,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 2846,
+          "pwait": 0.489605753994331,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8825504055517042,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.873348208431832,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8870200571504072,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8467881043553505,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.854969729067481,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8472295118953825,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8699962982906818,
+          "reward": 1.0,
+          "gate": 1.0,
+          "return_to_go": 5.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8574389023782661,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8164171295411642,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 3644,
+          "pwait": 0.75754682213618,
+          "reward": 4.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        }
+      ]
+    },
+    {
+      "case": "warmup6",
+      "seed": 157100015,
+      "action_seed": 18426,
+      "score": 4.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 2,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.872202535363906,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8656599613317212,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8383530295223222,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 1716,
+          "pwait": 0.8272057961907553,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 1912,
+          "pwait": 0.8251586196766274,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8258463372516635,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.512708847957886,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5613635009223532,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 1900,
+          "pwait": 0.5562566649085019,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 2101,
+          "pwait": 0.5647847106686942,
+          "reward": 4.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        }
+      ]
+    },
+    {
+      "case": "delay2",
+      "seed": 157100000,
+      "action_seed": 18411,
+      "score": 6.0,
+      "new_deliveries": 3,
+      "stock_at_arrival": 4,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.7547878573334582,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7778202050811273,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 1692,
+          "pwait": 0.2807272848277863,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 1887,
+          "pwait": 0.2843364430260685,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.2912725806236267,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.3175803626304757,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 2086,
+          "pwait": 0.3083639351021071,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7707594408493648,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7466541768504396,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7313497883897423,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8491990045467035,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8585469660887541,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8383513156545978,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8543461968354986,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8133185750525973,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8561540151967489,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8398371984612211,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 1300,
+          "pwait": 0.7723836285092031,
+          "reward": 6.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        }
+      ]
+    },
+    {
+      "case": "delay2",
+      "seed": 157100001,
+      "action_seed": 18412,
+      "score": 7.0,
+      "new_deliveries": 3,
+      "stock_at_arrival": 4,
+      "steps": [
+        {
+          "action": 4860,
+          "pwait": 0.628038241070074,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6385189574446001,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6469522589445873,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 4858,
+          "pwait": 0.261188224301141,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 4669,
+          "pwait": 0.26606858876977085,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.286931735178127,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 4672,
+          "pwait": 0.31043706896578127,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 4868,
+          "pwait": 0.3493218421936035,
+          "reward": 7.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        }
+      ]
+    },
+    {
+      "case": "delay2",
+      "seed": 157100002,
+      "action_seed": 18413,
+      "score": 7.0,
+      "new_deliveries": 4,
+      "stock_at_arrival": 4,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.8867294931799714,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8939357804974518,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5417411642468564,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.569336062466593,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 1460,
+          "pwait": 0.5877929148751453,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5924884691662811,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.555512816236125,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 1655,
+          "pwait": 0.5226639020096221,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 2058,
+          "pwait": 0.5253594894577388,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 1854,
+          "pwait": 0.5293963709293714,
+          "reward": 7.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        }
+      ]
+    },
+    {
+      "case": "delay2",
+      "seed": 157100003,
+      "action_seed": 18414,
+      "score": 3.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 2,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.689535041633935,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 1850,
+          "pwait": 0.7030123455971942,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 3657,
+          "pwait": 0.7046830996294576,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7074900146658823,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 2060,
+          "pwait": 0.2530369111275872,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.2574697675257653,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.27177204449334547,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 2057,
+          "pwait": 0.2647270721855183,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5069561155723368,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.511238127277009,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.47467683180203535,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.44784889959838686,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 2269,
+          "pwait": 0.5020389556884766,
+          "reward": 3.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        }
+      ]
+    },
+    {
+      "case": "delay2",
+      "seed": 157100004,
+      "action_seed": 18415,
+      "score": 7.0,
+      "new_deliveries": 3,
+      "stock_at_arrival": 3,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.6528566266827724,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6809776935292802,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.23365005391914326,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.26305090910175166,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 1920,
+          "pwait": 0.23215233664534052,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 2114,
+          "pwait": 0.23842052049545107,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        },
+        {
+          "action": 1328,
+          "pwait": 0.708207429082005,
+          "reward": 7.0,
+          "gate": 1.0,
+          "return_to_go": 7.0
+        }
+      ]
+    },
+    {
+      "case": "delay2",
+      "seed": 157100005,
+      "action_seed": 18416,
+      "score": 6.0,
+      "new_deliveries": 3,
+      "stock_at_arrival": 3,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.800500629059219,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8069468233403088,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 4657,
+          "pwait": 0.2538265978372166,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 4661,
+          "pwait": 0.267897746923633,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 4852,
+          "pwait": 0.7734906632873134,
+          "reward": 6.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        }
+      ]
+    },
+    {
+      "case": "delay2",
+      "seed": 157100006,
+      "action_seed": 18417,
+      "score": 6.0,
+      "new_deliveries": 3,
+      "stock_at_arrival": 3,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.7974682203367399,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8119477276913527,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 1660,
+          "pwait": 0.3577522815385447,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.36387497499554633,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 2054,
+          "pwait": 0.3973561145749674,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 1855,
+          "pwait": 0.4015263736702911,
+          "reward": 6.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        }
+      ]
+    },
+    {
+      "case": "delay2",
+      "seed": 157100007,
+      "action_seed": 18418,
+      "score": 4.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 0,
+      "steps": [
+        {
+          "action": 4848,
+          "pwait": 0.6570643145223378,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 4652,
+          "pwait": 0.6667938675612931,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 4871,
+          "pwait": 0.6702567484203646,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5580729842185974,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5857733138934783,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6177855957874301,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.49629266571126385,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 4661,
+          "pwait": 0.4095699191093445,
+          "reward": 4.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        }
+      ]
+    },
+    {
+      "case": "delay2",
+      "seed": 157100008,
+      "action_seed": 18419,
+      "score": 4.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 0,
+      "steps": [
+        {
+          "action": 3652,
+          "pwait": 0.6000646825079045,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 3287,
+          "pwait": 0.6081183459418661,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6289148536188048,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 3456,
+          "pwait": 0.6466708790100378,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.4738412656235318,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5214154720306396,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5392926931381226,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6080846242829003,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6937716785805417,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6954733936629711,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6711081862449646,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 2655,
+          "pwait": 0.6901758313179016,
+          "reward": 4.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        }
+      ]
+    },
+    {
+      "case": "delay2",
+      "seed": 157100009,
+      "action_seed": 18420,
+      "score": 6.0,
+      "new_deliveries": 3,
+      "stock_at_arrival": 5,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.7851893572442565,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8016465410340076,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.362366364224295,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 5092,
+          "pwait": 0.39130657490100385,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.4153415199747132,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.4707216543796927,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5073348847224731,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 5281,
+          "pwait": 0.47190802795582143,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.4704656393942546,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 5078,
+          "pwait": 0.42972170470626136,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.42397093772888184,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 4874,
+          "pwait": 0.45582640171051025,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.870373218329601,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8828008300779293,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8735720913399517,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8793232216844273,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8844439262728485,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 5090,
+          "pwait": 0.8692573521748044,
+          "reward": 6.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        }
+      ]
+    },
+    {
+      "case": "delay2",
+      "seed": 157100010,
+      "action_seed": 18421,
+      "score": 3.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 3,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.6550426390260581,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 3706,
+          "pwait": 0.7065994767223075,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 4103,
+          "pwait": 0.7091650130930701,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.71227741241454,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7427326219057003,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8124492764151146,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6690423884812126,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7354782600149643,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7246202610103692,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6911837848188358,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7213957475330085,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6936577168719609,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 3903,
+          "pwait": 0.7068470505353797,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 2703,
+          "pwait": 0.7096881759351272,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 3275,
+          "pwait": 0.7373772979683745,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.739779446626327,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7063696543122913,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 4303,
+          "pwait": 0.7077780080863646,
+          "reward": 3.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        }
+      ]
+    },
+    {
+      "case": "delay2",
+      "seed": 157100011,
+      "action_seed": 18422,
+      "score": 4.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 1,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.6995977303465888,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 1692,
+          "pwait": 0.7276785942581239,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 3677,
+          "pwait": 0.724954594159603,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 3488,
+          "pwait": 0.727468691740917,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7318082996145908,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.450231407288664,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.4766844259028553,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 1881,
+          "pwait": 0.491377093594768,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.7346588154238816,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.719468891620636,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        },
+        {
+          "action": 2065,
+          "pwait": 0.7675831913948059,
+          "reward": 4.0,
+          "gate": 1.0,
+          "return_to_go": 4.0
+        }
+      ]
+    },
+    {
+      "case": "delay2",
+      "seed": 157100012,
+      "action_seed": 18423,
+      "score": 6.0,
+      "new_deliveries": 3,
+      "stock_at_arrival": 2,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.7840333852790743,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8007005375037817,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 3056,
+          "pwait": 0.3801752702588067,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 2850,
+          "pwait": 0.38666848023721695,
+          "reward": 6.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        }
+      ]
+    },
+    {
+      "case": "delay2",
+      "seed": 157100013,
+      "action_seed": 18424,
+      "score": 3.0,
+      "new_deliveries": 0,
+      "stock_at_arrival": 1,
+      "steps": [
+        {
+          "action": 5114,
+          "pwait": 0.6289733078703021,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 4910,
+          "pwait": 0.6499520555661493,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6587233657100989,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6993655148621132,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 4908,
+          "pwait": 0.21026377163285087,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.43561827221945476,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5330119729042053,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5529810621446054,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        },
+        {
+          "action": 4893,
+          "pwait": 0.5681781003422112,
+          "reward": 3.0,
+          "gate": 1.0,
+          "return_to_go": 3.0
+        }
+      ]
+    },
+    {
+      "case": "delay2",
+      "seed": 157100014,
+      "action_seed": 18425,
+      "score": 8.0,
+      "new_deliveries": 4,
+      "stock_at_arrival": 3,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.6226668944166839,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 8.0
+        },
+        {
+          "action": 3644,
+          "pwait": 0.6378225312151975,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 8.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.6456511014424521,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 8.0
+        },
+        {
+          "action": 3252,
+          "pwait": 0.2248868179579936,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 8.0
+        },
+        {
+          "action": 2846,
+          "pwait": 0.23175643366566487,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 8.0
+        },
+        {
+          "action": 3051,
+          "pwait": 0.2402925008491799,
+          "reward": 8.0,
+          "gate": 1.0,
+          "return_to_go": 8.0
+        }
+      ]
+    },
+    {
+      "case": "delay2",
+      "seed": 157100015,
+      "action_seed": 18426,
+      "score": 6.0,
+      "new_deliveries": 3,
+      "stock_at_arrival": 4,
+      "steps": [
+        {
+          "action": 0,
+          "pwait": 0.7960836842427859,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8124734118939574,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.5025155224861796,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 2101,
+          "pwait": 0.5297615719604476,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 2097,
+          "pwait": 0.5365073067350271,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 2093,
+          "pwait": 0.5363315024178325,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.8994597700191297,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.9027287391287255,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 0,
+          "pwait": 0.9301848827059218,
+          "reward": 0.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        },
+        {
+          "action": 1716,
+          "pwait": 0.9232081428211967,
+          "reward": 6.0,
+          "gate": 1.0,
+          "return_to_go": 6.0
+        }
+      ]
+    }
+  ]
+}

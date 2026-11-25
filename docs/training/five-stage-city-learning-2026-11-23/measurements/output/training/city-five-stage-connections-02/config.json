@@ -1,0 +1,13 @@
+{
+  "dll": "output/city-five-stage-build-01/bin/TrafficHost/release/TrafficHost.dll",
+  "parent": "output/training/city-five-stage-connections-01/final.zip",
+  "output": "output/training/city-five-stage-connections-02",
+  "stage": "connections",
+  "workers": 16,
+  "rollouts": 16,
+  "seed_start": 114000000,
+  "learning_rate": 0.0003,
+  "parent_sha256": "625cfe1d3bfb2efef0655c41ba33b6cff32fdf64194d0c90d7d6487ac1bdfa0d",
+  "host_sha256": "3cdfa9ceaf8d938bdc94173b71c5ef0035c54f038f66133d12c6f0e0ad1278ec",
+  "decision_budget": 32768
+}

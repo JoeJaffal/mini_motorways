@@ -1,0 +1,290 @@
+{
+  "models": [
+    "output/training/city-five-stage-cold-initial-01/candidate.zip",
+    "output/training/city-strategy-original-delay-01/segment-001/final.zip",
+    "output/training/city-strategy-opening-01/segment-001/final.zip"
+  ],
+  "sha256": {
+    "output/training/city-five-stage-cold-initial-01/candidate.zip": "9202d62be8d237f6fe495ee1ec29eed1747849a1fd747006ea8903de7f0b19f1",
+    "output/training/city-strategy-original-delay-01/segment-001/final.zip": "e72ec5ada055dd474f65ec0d032e6333128e241f8154ea2f3fc382c73dbf34e2",
+    "output/training/city-strategy-opening-01/segment-001/final.zip": "f04102599a7bfe862c2ca5edaa75084b1e264eb7d875df2b0c1fa91cfa7825b8"
+  },
+  "rows": [
+    {
+      "seed": 2004,
+      "legal_roads": 339,
+      "legal_water_connections": 9,
+      "models": [
+        {
+          "wait": 0.211900171632945,
+          "water_probability": 1.771989742234115e-08,
+          "conditional_water_probability": 2.24843310257494e-08,
+          "top_road_is_water": false
+        },
+        {
+          "wait": 0.211900171632945,
+          "water_probability": 1.771989742234115e-08,
+          "conditional_water_probability": 2.24843310257494e-08,
+          "top_road_is_water": false
+        },
+        {
+          "wait": 0.08469309275136001,
+          "water_probability": 1.4869557152408082e-08,
+          "conditional_water_probability": 1.624543312702088e-08,
+          "top_road_is_water": false
+        }
+      ]
+    },
+    {
+      "seed": 99005063,
+      "legal_roads": 349,
+      "legal_water_connections": 61,
+      "models": [
+        {
+          "wait": 0.14277928344702218,
+          "water_probability": 2.4532640947295e-09,
+          "conditional_water_probability": 2.861881482046385e-09,
+          "top_road_is_water": false
+        },
+        {
+          "wait": 0.14277928344702218,
+          "water_probability": 2.4532640947295e-09,
+          "conditional_water_probability": 2.861881482046385e-09,
+          "top_road_is_water": false
+        },
+        {
+          "wait": 0.24523321592101166,
+          "water_probability": 1.3169301852095408e-09,
+          "conditional_water_probability": 1.744817356816435e-09,
+          "top_road_is_water": false
+        }
+      ]
+    },
+    {
+      "seed": 99008267,
+      "legal_roads": 324,
+      "legal_water_connections": 44,
+      "models": [
+        {
+          "wait": 0.1281728917039093,
+          "water_probability": 1.1471776154942124e-08,
+          "conditional_water_probability": 1.3158315502901373e-08,
+          "top_road_is_water": false
+        },
+        {
+          "wait": 0.1281728917039093,
+          "water_probability": 1.1471776154942124e-08,
+          "conditional_water_probability": 1.3158315502901373e-08,
+          "top_road_is_water": false
+        },
+        {
+          "wait": 0.22003583926263418,
+          "water_probability": 1.906180475947873e-08,
+          "conditional_water_probability": 2.4439334163069753e-08,
+          "top_road_is_water": false
+        }
+      ]
+    },
+    {
+      "seed": 99065825,
+      "legal_roads": 324,
+      "legal_water_connections": 44,
+      "models": [
+        {
+          "wait": 0.12684525205551794,
+          "water_probability": 1.0874099384948908e-08,
+          "conditional_water_probability": 1.2453805480125865e-08,
+          "top_road_is_water": false
+        },
+        {
+          "wait": 0.12684525205551794,
+          "water_probability": 1.0874099384948908e-08,
+          "conditional_water_probability": 1.2453805480125865e-08,
+          "top_road_is_water": false
+        },
+        {
+          "wait": 0.21848352892763173,
+          "water_probability": 1.7419532574793368e-08,
+          "conditional_water_probability": 2.228939916121144e-08,
+          "top_road_is_water": false
+        }
+      ]
+    },
+    {
+      "seed": 99096723,
+      "legal_roads": 324,
+      "legal_water_connections": 44,
+      "models": [
+        {
+          "wait": 0.11439755916168165,
+          "water_probability": 1.3555354765988906e-09,
+          "conditional_water_probability": 1.530636563417474e-09,
+          "top_road_is_water": false
+        },
+        {
+          "wait": 0.11439755916168165,
+          "water_probability": 1.3555354765988906e-09,
+          "conditional_water_probability": 1.530636563417474e-09,
+          "top_road_is_water": false
+        },
+        {
+          "wait": 0.1990080639725194,
+          "water_probability": 7.604137170945928e-10,
+          "conditional_water_probability": 9.493400406324496e-10,
+          "top_road_is_water": false
+        }
+      ]
+    },
+    {
+      "seed": 99147471,
+      "legal_roads": 324,
+      "legal_water_connections": 44,
+      "models": [
+        {
+          "wait": 0.11607668505675,
+          "water_probability": 2.473539560635108e-08,
+          "conditional_water_probability": 2.798364426889131e-08,
+          "top_road_is_water": false
+        },
+        {
+          "wait": 0.11607668505675,
+          "water_probability": 2.473539560635108e-08,
+          "conditional_water_probability": 2.798364426889131e-08,
+          "top_road_is_water": false
+        },
+        {
+          "wait": 0.20120073889518492,
+          "water_probability": 7.520289101149117e-08,
+          "conditional_water_probability": 9.414491809554063e-08,
+          "top_road_is_water": false
+        }
+      ]
+    },
+    {
+      "seed": 99226312,
+      "legal_roads": 324,
+      "legal_water_connections": 44,
+      "models": [
+        {
+          "wait": 0.12906894349151615,
+          "water_probability": 1.1707660329895165e-08,
+          "conditional_water_probability": 1.3442694737320025e-08,
+          "top_road_is_water": false
+        },
+        {
+          "wait": 0.12906894349151615,
+          "water_probability": 1.1707660329895165e-08,
+          "conditional_water_probability": 1.3442694737320025e-08,
+          "top_road_is_water": false
+        },
+        {
+          "wait": 0.2212292284932094,
+          "water_probability": 1.953133073190959e-08,
+          "conditional_water_probability": 2.5079691542762633e-08,
+          "top_road_is_water": false
+        }
+      ]
+    },
+    {
+      "seed": 99265651,
+      "legal_roads": 349,
+      "legal_water_connections": 61,
+      "models": [
+        {
+          "wait": 0.12774791620807915,
+          "water_probability": 2.3066414737349045e-09,
+          "conditional_water_probability": 2.6444665671732148e-09,
+          "top_road_is_water": false
+        },
+        {
+          "wait": 0.12774791620807915,
+          "water_probability": 2.3066414737349045e-09,
+          "conditional_water_probability": 2.6444665671732148e-09,
+          "top_road_is_water": false
+        },
+        {
+          "wait": 0.22228989069934896,
+          "water_probability": 1.2328249716844618e-09,
+          "conditional_water_probability": 1.5851985938476085e-09,
+          "top_road_is_water": false
+        }
+      ]
+    },
+    {
+      "seed": 99323274,
+      "legal_roads": 349,
+      "legal_water_connections": 61,
+      "models": [
+        {
+          "wait": 0.13083958553359654,
+          "water_probability": 1.2476338816555298e-08,
+          "conditional_water_probability": 1.435447198111846e-08,
+          "top_road_is_water": false
+        },
+        {
+          "wait": 0.13083958553359654,
+          "water_probability": 1.2476338816555298e-08,
+          "conditional_water_probability": 1.435447198111846e-08,
+          "top_road_is_water": false
+        },
+        {
+          "wait": 0.2270086751363922,
+          "water_probability": 2.0490157056628646e-08,
+          "conditional_water_probability": 2.650761580053189e-08,
+          "top_road_is_water": false
+        }
+      ]
+    },
+    {
+      "seed": 99480639,
+      "legal_roads": 349,
+      "legal_water_connections": 61,
+      "models": [
+        {
+          "wait": 0.10613268317710506,
+          "water_probability": 1.205328663292968e-08,
+          "conditional_water_probability": 1.3484424820197155e-08,
+          "top_road_is_water": false
+        },
+        {
+          "wait": 0.10613268317710506,
+          "water_probability": 1.205328663292968e-08,
+          "conditional_water_probability": 1.3484424820197155e-08,
+          "top_road_is_water": false
+        },
+        {
+          "wait": 0.18798668331408402,
+          "water_probability": 2.0299185771466317e-08,
+          "conditional_water_probability": 2.4998587282181196e-08,
+          "top_road_is_water": false
+        }
+      ]
+    },
+    {
+      "seed": 99480904,
+      "legal_roads": 324,
+      "legal_water_connections": 44,
+      "models": [
+        {
+          "wait": 0.1423157124108271,
+          "water_probability": 1.9727615468361427e-09,
+          "conditional_water_probability": 2.3001022350325335e-09,
+          "top_road_is_water": false
+        },
+        {
+          "wait": 0.1423157124108271,
+          "water_probability": 1.9727615468361427e-09,
+          "conditional_water_probability": 2.3001022350325335e-09,
+          "top_road_is_water": false
+        },
+        {
+          "wait": 0.2413538776045249,
+          "water_probability": 1.0731353026151518e-09,
+          "conditional_water_probability": 1.414540021936257e-09,
+          "top_road_is_water": false
+        }
+      ]
+    }
+  ],
+  "note": "Frozen initial-observation probes only; not rollout success or training labels."
+}

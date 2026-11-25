@@ -1,0 +1,1631 @@
+{
+  "created": "2026-11-25T23:49:44.199194+02:00",
+  "files": [
+    {
+      "path": "INTERPRETATION.md",
+      "bytes": 7263,
+      "sha256": "222d5f2b60425ac1519bb147f8afd7aa15ceaf197bccedb4b9761eff5aeb92e3"
+    },
+    {
+      "path": "RESULTS.md",
+      "bytes": 723,
+      "sha256": "7d8fa09655adfadf6479c243c4d56fd45fce9d84b19a45b3c916a39c104b8a53"
+    },
+    {
+      "path": "city-final-command.json",
+      "bytes": 544,
+      "sha256": "8998dc74112891f181d757219c49164c33ab4fa226af0b1cc0b6eec66b33fa2f"
+    },
+    {
+      "path": "economy-review.json",
+      "bytes": 4061,
+      "sha256": "672797ce80ece5e124fa8a2175f6911756179108ba4c72eda9dd997b071b2694"
+    },
+    {
+      "path": "evaluation/city-final/games.jsonl",
+      "bytes": 49224,
+      "sha256": "104e95df75d0fdf2163fdf5457186d1ea2c7282a22cfe90ee4d14a892c650036"
+    },
+    {
+      "path": "evaluation/city-final/suite.json",
+      "bytes": 673,
+      "sha256": "fd6a0717eb1cb930ac4af5280007a022927edfc3f7ffd4d034f01c16fa6545bf"
+    },
+    {
+      "path": "evaluation/city-final/summary.json",
+      "bytes": 460,
+      "sha256": "06567f206e44b1cfd189f997072f6a1d4e94cb050e6b6cfc9d0b3437a7e91c07"
+    },
+    {
+      "path": "evaluation/outcome-131072/config.json",
+      "bytes": 422,
+      "sha256": "33f959ae5f6e6cea7124d894cf3625b3f3d0d33d2395ab0feb6577ec1fee015d"
+    },
+    {
+      "path": "evaluation/outcome-131072/games.jsonl",
+      "bytes": 53776,
+      "sha256": "b72e0130eb3808684c10bd011776fb02905420d3615c82eb5351018ee9fd40f6"
+    },
+    {
+      "path": "evaluation/outcome-131072/summary.json",
+      "bytes": 401,
+      "sha256": "edcfaac8fa56813373bc2612a067d3e126de4ff54bfd10ac727bfebcb26e12c2"
+    },
+    {
+      "path": "evaluation/outcome-262144/config.json",
+      "bytes": 407,
+      "sha256": "69370faa6d4af1ca10c3fc71bcf89ccf4c429e4f5c917603ef0c5b710b52e94a"
+    },
+    {
+      "path": "evaluation/outcome-262144/games.jsonl",
+      "bytes": 54008,
+      "sha256": "4694c75fa8e6a33c4d2ae4ec712c9b072efa4e9dd92bd668cec8704a471f84e0"
+    },
+    {
+      "path": "evaluation/outcome-262144/summary.json",
+      "bytes": 394,
+      "sha256": "5ad278e6119c0aeda983d0d3491bae765114973207302633d41d69eaabcbf447"
+    },
+    {
+      "path": "evaluation/outcome-65536/config.json",
+      "bytes": 422,
+      "sha256": "464be1e1f244f01064dd54a5a0dd29aaf0b497cb9c8c7ff44915c9d4868ba9ef"
+    },
+    {
+      "path": "evaluation/outcome-65536/games.jsonl",
+      "bytes": 53752,
+      "sha256": "985be1c9f15addb342172454679a85750ce1847e5530e062be8f172bc2bbea86"
+    },
+    {
+      "path": "evaluation/outcome-65536/summary.json",
+      "bytes": 394,
+      "sha256": "fbb56d64c6f07fea7ebddf8cacda50f692e7d9d6006af05b11173b567bca25d2"
+    },
+    {
+      "path": "evaluation/outcome-initial/config.json",
+      "bytes": 406,
+      "sha256": "beb9a1c2f145c11415aec65db7683992f0ce2a53a116c6e9b544b10df82eeae2"
+    },
+    {
+      "path": "evaluation/outcome-initial/games.jsonl",
+      "bytes": 53644,
+      "sha256": "2a02a92e8eb4b16030876124e7ca3905c22471ab7dda54efb389635cb105a90d"
+    },
+    {
+      "path": "evaluation/outcome-initial/summary.json",
+      "bytes": 402,
+      "sha256": "3c983cea8933ea817f6d9cad60e9aa85e776d5f4d12d4bb906847c0e1e4b4dd7"
+    },
+    {
+      "path": "evaluation/practice-final/config.json",
+      "bytes": 774,
+      "sha256": "36782cd0bf074e05e11d2b3ff848a1b6fe72aa86da830c13308b81eb61214f6d"
+    },
+    {
+      "path": "evaluation/practice-final/games.jsonl",
+      "bytes": 76749,
+      "sha256": "35752d7025a0621829663b259a19745d35a1e4672557faf34e00939a29c78f38"
+    },
+    {
+      "path": "evaluation/practice-final/replays/candidate-adjacent-231000000.html",
+      "bytes": 37850,
+      "sha256": "3a641b3f165dfa7ffdc6cb29968d1a95d7e21a91d044d857f643b135b356ccdb"
+    },
+    {
+      "path": "evaluation/practice-final/replays/candidate-adjacent-231000000.json",
+      "bytes": 38278,
+      "sha256": "ac0d49e9a03f7d951956fdc9da814661c29fe7f01d21d1708607f3bc12c73275"
+    },
+    {
+      "path": "evaluation/practice-final/replays/candidate-bend-231000000.html",
+      "bytes": 36561,
+      "sha256": "8a1a788373520630a923b49fb7e7b21d2518fae97286258cb5e38894fe531b75"
+    },
+    {
+      "path": "evaluation/practice-final/replays/candidate-bend-231000000.json",
+      "bytes": 36985,
+      "sha256": "53831a4e3dfe27fd9082681231b489b223bb50e8a78b71502de639ea0146a198"
+    },
+    {
+      "path": "evaluation/practice-final/replays/candidate-clear-231000000.html",
+      "bytes": 39618,
+      "sha256": "8746c8f7e6167601e614669d556cadafdf28fce40e66dbe0227e5612352dba6f"
+    },
+    {
+      "path": "evaluation/practice-final/replays/candidate-clear-231000000.json",
+      "bytes": 40311,
+      "sha256": "0d5710c24369698fe5c1719a651e5960ddc3755410f9181024a9d9f4cf780f42"
+    },
+    {
+      "path": "evaluation/practice-final/replays/candidate-obstacle-231000000.html",
+      "bytes": 39702,
+      "sha256": "77aa1d3b89d9a2a5ded75046c56a500e9da778293f4782ca3521ef296f16dc69"
+    },
+    {
+      "path": "evaluation/practice-final/replays/candidate-obstacle-231000000.json",
+      "bytes": 40398,
+      "sha256": "42fe402d3fe50de8cab295a37d9c8c37da08cf7acd76e6718267a69df46b5575"
+    },
+    {
+      "path": "evaluation/practice-final/replays/candidate-small-city-offset-pairs-231000000.html",
+      "bytes": 156614,
+      "sha256": "cc8837c99870d69fc7cd7512b887a5ff4d66d8c56402499b1ad514c0ff5b1d52"
+    },
+    {
+      "path": "evaluation/practice-final/replays/candidate-small-city-offset-pairs-231000000.json",
+      "bytes": 164968,
+      "sha256": "f6e98f3b8126a4f0672003e2e8ffa0b53a1dfc78bb40bba11500cddda7c6685b"
+    },
+    {
+      "path": "evaluation/practice-final/replays/candidate-small-city-offset-single-231000000.html",
+      "bytes": 178969,
+      "sha256": "008b4011b6a2edce5c1a03080c88ed5d08aac227280f9fea2318fa96a02f0095"
+    },
+    {
+      "path": "evaluation/practice-final/replays/candidate-small-city-offset-single-231000000.json",
+      "bytes": 195686,
+      "sha256": "10ef3cbaf2f4e5c71c24cf6be7319736be455cba1bfbec6e9690e3c4ac9f77d4"
+    },
+    {
+      "path": "evaluation/practice-final/replays/candidate-small-city-offset-stock-231000000.html",
+      "bytes": 205239,
+      "sha256": "a27a8a06775b3dfdade3ea57ebfed41d017429d918007d70a081f99946b51cdd"
+    },
+    {
+      "path": "evaluation/practice-final/replays/candidate-small-city-offset-stock-231000000.json",
+      "bytes": 222299,
+      "sha256": "833bbe742e450b5d36c4e087be832e49778c6dfd2ff33e01e1871159bb73e199"
+    },
+    {
+      "path": "evaluation/practice-final/summary.json",
+      "bytes": 4364,
+      "sha256": "52e5dbbed88fd56252e2121bd1e156e78a893b6fd19ddc3045d2acace0c2bbfe"
+    },
+    {
+      "path": "figure-source.json",
+      "bytes": 163,
+      "sha256": "3acf2ad71ef983e2c874aacfd510e89df29ed81cfc70061834f61624825d9bc8"
+    },
+    {
+      "path": "final-city-replay/behavior-summary.json",
+      "bytes": 256,
+      "sha256": "b776899013d7137d85819f9c26a751a18ebef54e3a2150b22a1549be2a2f8659"
+    },
+    {
+      "path": "final-city-replay/comparison.png",
+      "bytes": 164823,
+      "sha256": "fba514ba2db6662afff69117d98159b8b3b4884087677135b7793e6e399916f3"
+    },
+    {
+      "path": "final-city-replay/final/final-state.json",
+      "bytes": 89671,
+      "sha256": "a4c8355e8ea7547936a2b8652c13ccb5013dc54e0ef65325cae31229c102a468"
+    },
+    {
+      "path": "final-city-replay/final/replay.html",
+      "bytes": 914228,
+      "sha256": "100755ac102b6f04c4484c52514bbd58ede155262586b4f2127f454d9aa979a3"
+    },
+    {
+      "path": "final-city-replay/final/steps.jsonl",
+      "bytes": 38875,
+      "sha256": "849da0b64ab6e0e51f48881910db9fb240e9c18760985d2af18173ef031a34c8"
+    },
+    {
+      "path": "final-city-replay/final/trace.json",
+      "bytes": 909920,
+      "sha256": "64f2e451c6a71ac17ac737c98176c5ed183461d2452b2be2fd2f7e8ca9cb82cf"
+    },
+    {
+      "path": "final-city-replay/final/verification.json",
+      "bytes": 243,
+      "sha256": "f578e0685e9ce42e8ef3d370a7de0621a8e63c7bc2b9f8a5b914b03e655f2b09"
+    },
+    {
+      "path": "final-city-replay/parent/final-state.json",
+      "bytes": 78099,
+      "sha256": "a4170f36649844eea9979d168dc560ae2c611bc1e9eb0dd79fc05f4ccadd97a8"
+    },
+    {
+      "path": "final-city-replay/parent/replay.html",
+      "bytes": 863075,
+      "sha256": "fd5ebea7c7a94f2fbf94ef9383e2b2f3f53b30f0bc045b037b1d2a2081849c9b"
+    },
+    {
+      "path": "final-city-replay/parent/steps.jsonl",
+      "bytes": 38268,
+      "sha256": "a6e8b6d2e58f9c54eb4243186fba127c4d1cdf1527e3f1ff686e537d034c1d65"
+    },
+    {
+      "path": "final-city-replay/parent/trace.json",
+      "bytes": 858767,
+      "sha256": "8a6897ebff7969632e5c0bbe6132f2d60d5e8746e0caca33996b046ed614b405"
+    },
+    {
+      "path": "final-city-replay/parent/verification.json",
+      "bytes": 243,
+      "sha256": "e2f092ea14b9bccfd4cd4fa498e3d9c145cd22f1aad226da069f573d3b647226"
+    },
+    {
+      "path": "final-city-replay/selection.json",
+      "bytes": 6012,
+      "sha256": "b8fdef179097d1b9f125c6097348e2d3a700bc2637e0476378546cfed2adb83c"
+    },
+    {
+      "path": "final-integrity.json",
+      "bytes": 3902,
+      "sha256": "b22267ea7225a11e34d9d7d6b664f18382f1bdc6b42c3f42223c58bf478c39c6"
+    },
+    {
+      "path": "initial-repeat-check.json",
+      "bytes": 233,
+      "sha256": "610d96e5a35b98a7d35a38aec57e93c969a5407a668d5a74beb4e60b71a9aa06"
+    },
+    {
+      "path": "learning-and-transfer.png",
+      "bytes": 125635,
+      "sha256": "7bdeb05b2aaabf68c010149adf71a098901979a4564d9052749112c126442ac6"
+    },
+    {
+      "path": "live-midpoint-review.json",
+      "bytes": 709,
+      "sha256": "d5e8fdc85d6c2f05c112171f7596a6a258ac249130395724c7d1905f13d66c28"
+    },
+    {
+      "path": "live-outcome-131072/config.json",
+      "bytes": 386,
+      "sha256": "8aafc52ca15754f039ef8c318eb5c51cbd97f14304f19e067d90b01ea71ffcdc"
+    },
+    {
+      "path": "live-outcome-131072/games.jsonl",
+      "bytes": 53776,
+      "sha256": "b72e0130eb3808684c10bd011776fb02905420d3615c82eb5351018ee9fd40f6"
+    },
+    {
+      "path": "live-outcome-131072/summary.json",
+      "bytes": 401,
+      "sha256": "edcfaac8fa56813373bc2612a067d3e126de4ff54bfd10ac727bfebcb26e12c2"
+    },
+    {
+      "path": "live-outcome-65536/config.json",
+      "bytes": 386,
+      "sha256": "65b247c7f750f1f19ee48921e102b53633ee2e5637e7c80e9a0ee9d7c00bd318"
+    },
+    {
+      "path": "live-outcome-65536/games.jsonl",
+      "bytes": 53752,
+      "sha256": "985be1c9f15addb342172454679a85750ce1847e5530e062be8f172bc2bbea86"
+    },
+    {
+      "path": "live-outcome-65536/summary.json",
+      "bytes": 394,
+      "sha256": "fbb56d64c6f07fea7ebddf8cacda50f692e7d9d6006af05b11173b567bca25d2"
+    },
+    {
+      "path": "live-quarter-review.json",
+      "bytes": 721,
+      "sha256": "8299b813b60a2ababd4ef6df9b789c48c9bdfcd54d3bc1752c33f06ffe1be268"
+    },
+    {
+      "path": "measurements/checkpoints.json",
+      "bytes": 65809,
+      "sha256": "83a54b44dde3c7a272cae6518f7c9bed3c8efa2b35adc28674678024abd5eee6"
+    },
+    {
+      "path": "measurements/complete.json",
+      "bytes": 68752,
+      "sha256": "311bfff2ff03c4870f413356ceb0831a500fdf4e2ea8976def4159394fc7fa77"
+    },
+    {
+      "path": "measurements/config.json",
+      "bytes": 2132,
+      "sha256": "151aab75831c9328c51a8a70e5e7f536ba5994216588b1124c9c58c0bcaa5812"
+    },
+    {
+      "path": "measurements/episodes.jsonl",
+      "bytes": 5380070,
+      "sha256": "cdc0cda36f0b37f5e375e041425f0e13d668c4d3ed7e72605d1d0d53a355b8a6"
+    },
+    {
+      "path": "measurements/progress.csv",
+      "bytes": 6046,
+      "sha256": "f2332a8ed24a12cba380e6e0c778a787799aa0c10d610f1221bbe42d7581034d"
+    },
+    {
+      "path": "migration/migration-checks.json",
+      "bytes": 2374,
+      "sha256": "57faf19773e785b879bed5a5d1b2a3792c9dc348c03340892450082ea2079c72"
+    },
+    {
+      "path": "migration-command.json",
+      "bytes": 787,
+      "sha256": "4d9db1da03c84718be59f7dfc0813f25d2c5359adae9a888ba5f9181e4fa31d9"
+    },
+    {
+      "path": "native-export/migration-checks.json",
+      "bytes": 1682,
+      "sha256": "dab666791faff5dde14c3a1767f65bb29bfede67377c7543fd1ce2bca4de8773"
+    },
+    {
+      "path": "native-export-command.json",
+      "bytes": 774,
+      "sha256": "214f611cdef820d8b1fab6ea8144c0e18507e80adb0232e8eb7292bc1bbfd9f5"
+    },
+    {
+      "path": "outcome-131072-command.json",
+      "bytes": 567,
+      "sha256": "84bc057c7d6fca3b03d94a2b31f52db63c1aa18e7d3480c8b80954f44ac16f2a"
+    },
+    {
+      "path": "outcome-262144-command.json",
+      "bytes": 552,
+      "sha256": "256284153474c1d9c576a1a56df8910355a486faa370804760a1f3ea764b86fd"
+    },
+    {
+      "path": "outcome-65536-command.json",
+      "bytes": 566,
+      "sha256": "cef420f6e81beec06adeca564de803d1e2455338b0be5de0bfb77ba9168bba4b"
+    },
+    {
+      "path": "outcome-initial-command.json",
+      "bytes": 552,
+      "sha256": "985efc3d53a4aa2ed29f5de154647f574c83f5ec99dab7531ca9e17ef88b5d40"
+    },
+    {
+      "path": "outcome-replays/new-success/candidate/replay.html",
+      "bytes": 9177,
+      "sha256": "824fda75f456126cb4da407d524a8854d8bd2746ea43082e855fa27b1e7e2d36"
+    },
+    {
+      "path": "outcome-replays/new-success/candidate/steps.jsonl",
+      "bytes": 2034,
+      "sha256": "18e979cdff67dba766312e6bca05372aa333f7809336b7a55887bcbaa433bde3"
+    },
+    {
+      "path": "outcome-replays/new-success/candidate/trace.json",
+      "bytes": 4869,
+      "sha256": "96a02f51de855d3f9e23ecfbc11e51273110d379e5a2f051c4cf5eff95bf38f1"
+    },
+    {
+      "path": "outcome-replays/new-success/candidate/verification.json",
+      "bytes": 870,
+      "sha256": "e07ab16eb22158d2ba7040659b8c13901e6dbaf3bfe91bf2634bf3e0021c4fa6"
+    },
+    {
+      "path": "outcome-replays/new-success/parent/replay.html",
+      "bytes": 9085,
+      "sha256": "e6ac1f68a5e0de9f4e319b2a6ae5b98ab72ea736eb5d0254af7888f496d1bc7b"
+    },
+    {
+      "path": "outcome-replays/new-success/parent/steps.jsonl",
+      "bytes": 2031,
+      "sha256": "2903a58b775a1245081c3d3c439ae5a506ff7894c44e380468fcae2732629fe8"
+    },
+    {
+      "path": "outcome-replays/new-success/parent/trace.json",
+      "bytes": 4777,
+      "sha256": "0f115afdda31594f7c1cc7cf5466fc6ddcb5e885d9193771f4ea732773418c26"
+    },
+    {
+      "path": "outcome-replays/new-success/parent/verification.json",
+      "bytes": 865,
+      "sha256": "12dc7adc81d2b60f06d9bbf4e5d234b72fc60924337885fbdcf51280bd0415e1"
+    },
+    {
+      "path": "outcome-replays/paired-examples.png",
+      "bytes": 117130,
+      "sha256": "6a32b6edc4d8ef8063c6c456b50bfbf1e5c8e7959135c75a29fd46b37370d80f"
+    },
+    {
+      "path": "outcome-replays/selection.json",
+      "bytes": 2796,
+      "sha256": "d7919bb6ce7f07d90d4e7ed461c5316ad1dd08720ac4111855797ff3b25df8ef"
+    },
+    {
+      "path": "outcome-replays/typical-retained-success/candidate/replay.html",
+      "bytes": 15472,
+      "sha256": "e25d3159084068fc4ad82d7ca3c589950a6f1a5a83d8596f66b95490895858c9"
+    },
+    {
+      "path": "outcome-replays/typical-retained-success/candidate/steps.jsonl",
+      "bytes": 4714,
+      "sha256": "09386e7b03fbee2027e01cc14433e6cf19ecc902b7c0360e951de592d8f6ed92"
+    },
+    {
+      "path": "outcome-replays/typical-retained-success/candidate/trace.json",
+      "bytes": 11164,
+      "sha256": "f225a752b1a131e4c3a86f7f2af2a7e2c49fe8c6a2b5154fee16524e98c5934f"
+    },
+    {
+      "path": "outcome-replays/typical-retained-success/candidate/verification.json",
+      "bytes": 890,
+      "sha256": "ad42af4bc2515ff12e69c949220278eb97c280faab82428b787992ecadabe8c8"
+    },
+    {
+      "path": "outcome-replays/typical-retained-success/parent/replay.html",
+      "bytes": 15511,
+      "sha256": "fc5ba15a98e8bea4a38f0ee4c745ba18284886d4e3a5dc04036acb2f8f4e2b23"
+    },
+    {
+      "path": "outcome-replays/typical-retained-success/parent/steps.jsonl",
+      "bytes": 4707,
+      "sha256": "d28bf25b67c0e73407b5b2336ce59fc4b18721da59c4b973179887833e8feb9a"
+    },
+    {
+      "path": "outcome-replays/typical-retained-success/parent/trace.json",
+      "bytes": 11203,
+      "sha256": "26ca8137e19069f5d7d4761016d04471a33019691b2f019166f337cb52a44614"
+    },
+    {
+      "path": "outcome-replays/typical-retained-success/parent/verification.json",
+      "bytes": 890,
+      "sha256": "ad42af4bc2515ff12e69c949220278eb97c280faab82428b787992ecadabe8c8"
+    },
+    {
+      "path": "practice-final-command.json",
+      "bytes": 609,
+      "sha256": "ef9b204f413c39491b45b549921435ac42222ce0a1d31428c500edae971f9d23"
+    },
+    {
+      "path": "remaining-failure-replay/initial-render-clipped-title.png",
+      "bytes": 71709,
+      "sha256": "a19be4408ea5d5abdf442bd439652488f33360dea4f3062e25ad5a04a02af7d2"
+    },
+    {
+      "path": "remaining-failure-replay/paired-examples.png",
+      "bytes": 75823,
+      "sha256": "149cd3eacd03e3eb4c5587c5e14f30aa1b0aeae360aee4684a5d343ce2f2134f"
+    },
+    {
+      "path": "remaining-failure-replay/remaining-failure/candidate/replay.html",
+      "bytes": 13325,
+      "sha256": "dc2a3d5947feab0210571eeb019ed657a87e3f80ddae959757a364532a134c68"
+    },
+    {
+      "path": "remaining-failure-replay/remaining-failure/candidate/steps.jsonl",
+      "bytes": 4035,
+      "sha256": "c6d2176249c29aaf47b15d384e52d4b5b01adf1824a0609f7d4cf1374d2c4ee5"
+    },
+    {
+      "path": "remaining-failure-replay/remaining-failure/candidate/trace.json",
+      "bytes": 9017,
+      "sha256": "e260951bbb2f3c7e507a72fed84015e1be88e3f5ad8c17fb2fede323935d1141"
+    },
+    {
+      "path": "remaining-failure-replay/remaining-failure/candidate/verification.json",
+      "bytes": 866,
+      "sha256": "c1286b65b273b8b208128063e8d9ab1f2e63b11984d0ed9f9a8e25d3f8e27911"
+    },
+    {
+      "path": "remaining-failure-replay/remaining-failure/parent/replay.html",
+      "bytes": 13336,
+      "sha256": "ff6af08f50de2bccbe8a536df85c6257ca9892f9cb3f57d23e28ddde20a1d4cf"
+    },
+    {
+      "path": "remaining-failure-replay/remaining-failure/parent/steps.jsonl",
+      "bytes": 4030,
+      "sha256": "5d29cb54d726cb6e3ccf0dadd0e49f66bd942f53f4956ff56e6db7ca4f25bdb5"
+    },
+    {
+      "path": "remaining-failure-replay/remaining-failure/parent/trace.json",
+      "bytes": 9028,
+      "sha256": "5e1e92b919256ed934e1ae2a9a7ab26f79b7f62ab25215725aba7d3af5ab1fe2"
+    },
+    {
+      "path": "remaining-failure-replay/remaining-failure/parent/verification.json",
+      "bytes": 866,
+      "sha256": "c1286b65b273b8b208128063e8d9ab1f2e63b11984d0ed9f9a8e25d3f8e27911"
+    },
+    {
+      "path": "remaining-failure-replay/selection.json",
+      "bytes": 1704,
+      "sha256": "c1054bc4195423b43b89f7518655ccbca660c6cab06a89ec3055d8af2f413114"
+    },
+    {
+      "path": "review.json",
+      "bytes": 8074,
+      "sha256": "d4c148e99bb8e790b8c6a6aac2c86e76ca5bc1f81f49c26b59b560ceb13af2b4"
+    },
+    {
+      "path": "runtime-source/archive_documentation.py",
+      "bytes": 2440,
+      "sha256": "614d747408572cee18fb5eef830561f6146c9793a27701191098f8b871770a82"
+    },
+    {
+      "path": "runtime-source/archive_session.py",
+      "bytes": 5407,
+      "sha256": "0a26a631b01369c9c3cacf094b6c77a9301d84b35f2ab4eece74eb4dfc74f576"
+    },
+    {
+      "path": "runtime-source/assess_investigation.py",
+      "bytes": 7316,
+      "sha256": "32e183896c9ec0c7eb70ab2b39cce0b91c5036c36befcf5de3a7283e9c1c05ef"
+    },
+    {
+      "path": "runtime-source/assess_signals.py",
+      "bytes": 4381,
+      "sha256": "6cace050c0801933d8ebd196d709e1308cba9b421d2af2a12f2bb6d146dfe1c4"
+    },
+    {
+      "path": "runtime-source/audit_city_roads.py",
+      "bytes": 7721,
+      "sha256": "a48790c3b5f4f691b6b6f148a3414e6d33419f0d04762ab5fb8f322d5630104f"
+    },
+    {
+      "path": "runtime-source/audit_city_service.py",
+      "bytes": 7979,
+      "sha256": "000fc95ef1543e1814db45355c9aaba9d69812e17bbaeee8f5e5e67c25eb2be9"
+    },
+    {
+      "path": "runtime-source/audit_goal_learning.py",
+      "bytes": 3830,
+      "sha256": "59a01ecb9ba47cc1e8e705157821c73519a37fd0f09a5ec36b2b9044de0ab4cd"
+    },
+    {
+      "path": "runtime-source/audit_mini_behavior.py",
+      "bytes": 8491,
+      "sha256": "ea4fb178a7108d21edf51c0d3c12de928db849a9ce9e894b2f206eb8f4538e13"
+    },
+    {
+      "path": "runtime-source/audit_rewards.py",
+      "bytes": 3876,
+      "sha256": "a0572b6e9c42d285e042d1bf3439e95d1751d62626644fe0f6593cbb66285d82"
+    },
+    {
+      "path": "runtime-source/benchmark_city_ppo.py",
+      "bytes": 7167,
+      "sha256": "a393e343998358597d70c6dd5bb4982c0e6e3640a3267efd6d4afd7f4b1337e0"
+    },
+    {
+      "path": "runtime-source/benchmark_parallel.py",
+      "bytes": 2995,
+      "sha256": "966603d1be3b142457cbfebab1396a6a0b5aa7b746cddd3cf34a0124c87ecc4e"
+    },
+    {
+      "path": "runtime-source/benchmark_practice.py",
+      "bytes": 7246,
+      "sha256": "dcc547c9f1400497eac32fe75c99892402237d456f11684a75b90015958bb90a"
+    },
+    {
+      "path": "runtime-source/bend_ppo.py",
+      "bytes": 14070,
+      "sha256": "3f4f84aa95df55efd2884540e71403e74b83a7e298a41ecbc7faa4a4e773b174"
+    },
+    {
+      "path": "runtime-source/calibrate_city_route_repair.py",
+      "bytes": 2225,
+      "sha256": "514e42935d1588247d7894dd41e8ec1d050a9ddfe716b0c9855ba9ab2c62d87c"
+    },
+    {
+      "path": "runtime-source/check_mini_starts.py",
+      "bytes": 4194,
+      "sha256": "8db7dbcca1af4f1a5b0f36db4346afae68d5d15d7ebef04ac14a9088ce25ea64"
+    },
+    {
+      "path": "runtime-source/checkpoint_tools.py",
+      "bytes": 4862,
+      "sha256": "f546179b86cc6338cf0e6e0986ff77598d16465863150a4570f53e3bcf31e5f3"
+    },
+    {
+      "path": "runtime-source/city_bridge_strategy_policy.py",
+      "bytes": 5747,
+      "sha256": "36b29a71a7c4a6c6fa5742278941a48421980c42ef872a789a332b8bafeea98d"
+    },
+    {
+      "path": "runtime-source/city_curriculum.py",
+      "bytes": 15141,
+      "sha256": "f97cbf93973f3520fe2269a12a640d2ec5adf4cb3c03c048c4624fe19c099374"
+    },
+    {
+      "path": "runtime-source/city_established_policy.py",
+      "bytes": 1140,
+      "sha256": "a18054aef9c9b2057b9d6d3a3a85f876d7cf6ba6b45c95e0a4603597184ee8ea"
+    },
+    {
+      "path": "runtime-source/city_exploration_policy.py",
+      "bytes": 2025,
+      "sha256": "1fbe6b38bcdeab9aac4e1d8fcbc5b0436f20ed97bc73dd75edad0853dad2721b"
+    },
+    {
+      "path": "runtime-source/city_gradient_audit.py",
+      "bytes": 1835,
+      "sha256": "371f0b510ea27c214ecaea950a6c0b40863cf67ef72792f24bfa78dbfca6487f"
+    },
+    {
+      "path": "runtime-source/city_growth_policy.py",
+      "bytes": 2802,
+      "sha256": "97c604922501bb9177f4e7a168266471e3af12b1c3d7c23dac82725aa5aa0b04"
+    },
+    {
+      "path": "runtime-source/city_independent_road_policy.py",
+      "bytes": 2521,
+      "sha256": "da2a11d9178a1d416867d3c42db1c1c901cc409fb061b53b0c8c04b7ba1a80db"
+    },
+    {
+      "path": "runtime-source/city_learning_policy.py",
+      "bytes": 264,
+      "sha256": "544f0a09ca64069b4af0394fdf74d0782d7eaeddd377832186d40f1234295d26"
+    },
+    {
+      "path": "runtime-source/city_network_service_policy.py",
+      "bytes": 9172,
+      "sha256": "477d1e462751f9f67f412696f1fbc12d058f8c55e91ecda1cadba97b7479eb3d"
+    },
+    {
+      "path": "runtime-source/city_opening_strategy_policy.py",
+      "bytes": 2770,
+      "sha256": "1ec9a40b16bedc66d4d6316b72b7c66785cef4883234417e7238bc2857d519c5"
+    },
+    {
+      "path": "runtime-source/city_optimizer_settings.py",
+      "bytes": 795,
+      "sha256": "8e7cb236383a39d9478ada680da730f84ca78ea95b5e5a9a30b48d4d2dcbc0af"
+    },
+    {
+      "path": "runtime-source/city_recorded_starts.py",
+      "bytes": 3863,
+      "sha256": "040d151968e8c1168002f8fe87dc03ff3f42bb8bcb2cdeeb9a9fc86406a1b9ee"
+    },
+    {
+      "path": "runtime-source/city_relational_policy.py",
+      "bytes": 6613,
+      "sha256": "1974f399444264cbf8f4b93f37024c1171218ec492a25ffe1a7cbcf5416c4602"
+    },
+    {
+      "path": "runtime-source/city_repeated_mini.py",
+      "bytes": 560,
+      "sha256": "509cf8d7dfc1cb6728ed8676582a1a7c376b7eddb42b2959c94512dae21a006e"
+    },
+    {
+      "path": "runtime-source/city_repeated_seeds.py",
+      "bytes": 1321,
+      "sha256": "dcfe4335a0ddaf90feb827f3f916b76f9075ae3ba3850fda88917d450e992277"
+    },
+    {
+      "path": "runtime-source/city_reserve_policy.py",
+      "bytes": 2740,
+      "sha256": "95a9586417063dcfaaedb432852e716fb5954a363f56976092d9a45bd9947d3b"
+    },
+    {
+      "path": "runtime-source/city_road_choice_policy.py",
+      "bytes": 1361,
+      "sha256": "5bb62397f622ebfe4fd81e924a485ed12c49a58e8e16bc3591ca558ef9f44b93"
+    },
+    {
+      "path": "runtime-source/city_road_cost_env.py",
+      "bytes": 2082,
+      "sha256": "814f77c5d2f1c783d189a3986f79fac7ba84edc4feff318168ffd6a9b7ff5365"
+    },
+    {
+      "path": "runtime-source/city_road_detached_critic_policy.py",
+      "bytes": 871,
+      "sha256": "f7bd22798e2bcd1b1e78a62a9ce7bf1940f4cb3468ad301ecc4e0682d61d073c"
+    },
+    {
+      "path": "runtime-source/city_road_pilot.py",
+      "bytes": 8916,
+      "sha256": "08b90ea26764d9eea16ff869cf3080912aa361cde27c13c3659b5a1bdb560375"
+    },
+    {
+      "path": "runtime-source/city_road_policy.py",
+      "bytes": 6872,
+      "sha256": "4059beba8899b1293daa7056a830ce88ba8a2fb88b4eef30e46f5755f0e0cff6"
+    },
+    {
+      "path": "runtime-source/city_route_outcome.py",
+      "bytes": 3136,
+      "sha256": "7d58e599e35032d7250ce77470a32679f3dc1f7a68a74698001535c83ee6efc7"
+    },
+    {
+      "path": "runtime-source/city_route_repair_policy.py",
+      "bytes": 11101,
+      "sha256": "8371da9e5544c8af0cc338a0b17cbf3292c98f62bb8e7d20e50ddad7f58995ae"
+    },
+    {
+      "path": "runtime-source/city_service_policy.py",
+      "bytes": 6321,
+      "sha256": "33778b66de1b5a60a3f97dafeab7a6f6941818c0e32ffb5c5446fc7cbe01ffe6"
+    },
+    {
+      "path": "runtime-source/city_strategy_policy.py",
+      "bytes": 4043,
+      "sha256": "d201cea63cffbfe76ed2db7c849b257977c4c95c936a79178a57e3abccc92bd2"
+    },
+    {
+      "path": "runtime-source/city_task_rollout_buffer.py",
+      "bytes": 2939,
+      "sha256": "7162543f2c016ba0561ee550fa4d06f306259b88e142a401219bf826b00a182f"
+    },
+    {
+      "path": "runtime-source/city_wait_choice_policy.py",
+      "bytes": 2513,
+      "sha256": "d9bc04e8f969a6d43c67c953a21704ebb0f349ff0bae747bd837f795f9f34905"
+    },
+    {
+      "path": "runtime-source/city_wait_decision.py",
+      "bytes": 4805,
+      "sha256": "50a637a81a772c3f9ff35b79eccab4cbe254bd8e065b7f5dcb81716b48168158"
+    },
+    {
+      "path": "runtime-source/city_whole_strategy_policy.py",
+      "bytes": 387,
+      "sha256": "13e65ad34f83e2f358bf181a5b642965f4706ea223956b64b524d97a0984f5e1"
+    },
+    {
+      "path": "runtime-source/city_wide_strategy_policy.py",
+      "bytes": 5066,
+      "sha256": "acb0af2641a23b2168deb0c758435ff33634eb5d5b30c50f3bedff197e97b067"
+    },
+    {
+      "path": "runtime-source/clear_road_ppo.py",
+      "bytes": 14904,
+      "sha256": "8934cb2d07f8c28232df81d9192d00280fd4805c3811492a3831386e97bec209"
+    },
+    {
+      "path": "runtime-source/compare_congestion.py",
+      "bytes": 3126,
+      "sha256": "21fd893ad1892f1f6920efa2652837e2c14332ad89f3b9ca3a284337976c5f73"
+    },
+    {
+      "path": "runtime-source/compare_stage1.py",
+      "bytes": 11283,
+      "sha256": "6e332ebecc38f6127d14ad49127c39196cfdab471f4a2e71293b4943e81f9d15"
+    },
+    {
+      "path": "runtime-source/compare_traffic_lights.py",
+      "bytes": 4776,
+      "sha256": "e496090706963be7b3a962b1afb56ddd1fa36ef305913cbaafa7cdb34049105a"
+    },
+    {
+      "path": "runtime-source/compare_upgrade_support.py",
+      "bytes": 5581,
+      "sha256": "ca47575c06293166fe6ebe4da065efb28df3a16233e5a595a98e4183419005ea"
+    },
+    {
+      "path": "runtime-source/connection_practice.py",
+      "bytes": 22229,
+      "sha256": "927df9ba9f953c59b4d00e6fc9c27e8288c9f707a2c2353357e00bee25e741ad"
+    },
+    {
+      "path": "runtime-source/construction_curriculum.py",
+      "bytes": 14268,
+      "sha256": "4cc1e131fa5c1bd66ab7166a0623a11e44e4a915ede86d1227135fd353663d14"
+    },
+    {
+      "path": "runtime-source/construction_practice.py",
+      "bytes": 10562,
+      "sha256": "eebd5bcf6ff9ba16586f8d8f33a3eb07228b0da5f495042957e814ea606c8c92"
+    },
+    {
+      "path": "runtime-source/continue_road_cost_trial.py",
+      "bytes": 9018,
+      "sha256": "89fe7bda97d337f247b68dfc6b292b94a940359820b3d2d9a998935b2ef83c5e"
+    },
+    {
+      "path": "runtime-source/diagnose_city_policy.py",
+      "bytes": 6428,
+      "sha256": "077374535ada5c79f972f964de108c208071b40bca9a49b8788a26f5826e8870"
+    },
+    {
+      "path": "runtime-source/diagnose_light_failure.py",
+      "bytes": 7137,
+      "sha256": "427a69e5cf387365d444dd4f6456f3f980d9723fc2d2d25db09ce1f28db6bdc8"
+    },
+    {
+      "path": "runtime-source/diagnose_native_lessons.py",
+      "bytes": 7657,
+      "sha256": "fb60210e92d469fcc5e65e724989fd37ec4a93e5697fd6ab1c09aa38aff6aa4e"
+    },
+    {
+      "path": "runtime-source/diagnose_policy_regression.py",
+      "bytes": 6528,
+      "sha256": "698247507e1b01071206e71aac681ad01d60cdacddf095d81ff29f0d4c79c673"
+    },
+    {
+      "path": "runtime-source/diagnose_road_cost_learning.py",
+      "bytes": 6360,
+      "sha256": "b707938075b271059801441bacb9f18f18a3379bf77727c900b9ddbfa1a237d3"
+    },
+    {
+      "path": "runtime-source/driveway_ppo.py",
+      "bytes": 10922,
+      "sha256": "14a7a990d3f56fcc0514bd8090c1b561a4df44a4b5b9d104b76870ef9031bab5"
+    },
+    {
+      "path": "runtime-source/edge_policy.py",
+      "bytes": 6078,
+      "sha256": "b0a77d9976dfe73bd3dce11bdb4b6e4146853b3d55b394d047045b64b4f0ab12"
+    },
+    {
+      "path": "runtime-source/environment.py",
+      "bytes": 25617,
+      "sha256": "eeb3bde8d9e547299deb1a08e6afd3a77a8d6ca5da18b156c91e05c2e792897f"
+    },
+    {
+      "path": "runtime-source/evaluate_checkpoint.py",
+      "bytes": 4811,
+      "sha256": "e550a4f81e014bfe276059752ccf1c91e91e555777062a8ebf03a054d6ea6f21"
+    },
+    {
+      "path": "runtime-source/evaluate_city_checkpoints.py",
+      "bytes": 4907,
+      "sha256": "110f0c60222e609fc8a6846f0bcea9b33ca258d17b3a48a93bba348f845f2345"
+    },
+    {
+      "path": "runtime-source/evaluate_city_curriculum.py",
+      "bytes": 7270,
+      "sha256": "1c736e803c582dec37e9f9f0326d42c95ec3008ea96d10710004cf7e4d84d3ec"
+    },
+    {
+      "path": "runtime-source/evaluate_city_opening_pilot.py",
+      "bytes": 6230,
+      "sha256": "2eec53c0d632fdb2744eced5f8ceae1f389c50214c4347da24bfd17610747355"
+    },
+    {
+      "path": "runtime-source/evaluate_city_policy.py",
+      "bytes": 6340,
+      "sha256": "f56294d25ec58a11dabff420dc799a114167d6d8624775fbcfdb50b5f36e1800"
+    },
+    {
+      "path": "runtime-source/evaluate_city_route_outcome.py",
+      "bytes": 3491,
+      "sha256": "8993342b0daefce2c41ca559239bbda8afcdbcfbb4d3e6b794b4ac2b680dbadf"
+    },
+    {
+      "path": "runtime-source/evaluate_city_route_repair.py",
+      "bytes": 5987,
+      "sha256": "944d623c6c77256b6efd40eb1405af2322edb57b62079ba5b7074fc1a61d71ac"
+    },
+    {
+      "path": "runtime-source/evaluate_city_service.py",
+      "bytes": 5566,
+      "sha256": "2dc4448752edc91d66a259f44ae48a1a86901d5f9fab7504b9a1b6cdda514173"
+    },
+    {
+      "path": "runtime-source/evaluate_city_suite.py",
+      "bytes": 2339,
+      "sha256": "79565377e7b6768219794a2a0d5cd1481785dbe0c4972a120dc9abc978ef44a0"
+    },
+    {
+      "path": "runtime-source/evaluate_city_wait_decision.py",
+      "bytes": 5920,
+      "sha256": "71c2792e4f461748b1ffc76db1680d002c80b5b543dcbfba4af7eb10a56c61f0"
+    },
+    {
+      "path": "runtime-source/evaluate_construction_ppo.py",
+      "bytes": 6319,
+      "sha256": "cc8d56daaad0a960019d484c6c4c01d037fe81f549f11f0e22633b0a8e270ec6"
+    },
+    {
+      "path": "runtime-source/evaluate_fixed_mini.py",
+      "bytes": 3567,
+      "sha256": "61dc2d8d9d102fe5d93c18d15fdc530ceb292e5b2c2b38920e9ad82152659872"
+    },
+    {
+      "path": "runtime-source/evaluate_fresh_signals.py",
+      "bytes": 5776,
+      "sha256": "f0017933c5f3a05a79c5afcd10a71903e76df526f239e6ff15400a9a1f616993"
+    },
+    {
+      "path": "runtime-source/evaluate_limited_route_ppo.py",
+      "bytes": 6730,
+      "sha256": "f893e8b2aba77bb3030a899ae6af97a84a9ba2c014cbf109a8d39fd4772e0e13"
+    },
+    {
+      "path": "runtime-source/evaluate_midgame_service.py",
+      "bytes": 6486,
+      "sha256": "05e1b6b8cecd6aa83cf05a4ab48ed59534fefc4675de1f3ab3ee98f448704507"
+    },
+    {
+      "path": "runtime-source/evaluate_mini_starts.py",
+      "bytes": 2619,
+      "sha256": "3ad1086b577d233f3801e533b5cb0ecd9d64dd4d3832165c8c9a879a6bfa13e4"
+    },
+    {
+      "path": "runtime-source/evaluate_overnight_city.py",
+      "bytes": 2274,
+      "sha256": "bf8154e6cf4d147a8af10211c6c3d434842267bc97602f8184231e653f95fcc8"
+    },
+    {
+      "path": "runtime-source/evaluate_practice.py",
+      "bytes": 4589,
+      "sha256": "db54a9d3f61547d46c6c96e25f1ba67de1ef0f7351a3a54c2135f960f4b705c7"
+    },
+    {
+      "path": "runtime-source/evaluate_triad_ppo.py",
+      "bytes": 7209,
+      "sha256": "7e80cf68324715a27ceffc15a9e1a00dfd4ea87abdde7455445dd176cd5a8b38"
+    },
+    {
+      "path": "runtime-source/export_city_replays.py",
+      "bytes": 5801,
+      "sha256": "407cfc407b9b07c4b7af0aee444bc5c2e80ebd6700950cb060ea2920981ffbc1"
+    },
+    {
+      "path": "runtime-source/export_city_wait_learning.py",
+      "bytes": 4978,
+      "sha256": "14c9ab248bc7575d463635a8d374d36d1e76c40a770fd5f563c278e2c5429378"
+    },
+    {
+      "path": "runtime-source/goal_agent.py",
+      "bytes": 18424,
+      "sha256": "70f7c367938c4594ce8ddbccaebac55efe5757e9899c8df29f69a733fd729b31"
+    },
+    {
+      "path": "runtime-source/hierarchy_batches.py",
+      "bytes": 5896,
+      "sha256": "199b47fd5404f581dbe29f744c1a02c7d96e99a2740f819d887875fe85273a52"
+    },
+    {
+      "path": "runtime-source/hierarchy_checkpoint.py",
+      "bytes": 2256,
+      "sha256": "f614f5e0af58901f58abc6e3890fd5e15066ee6c9c7944d25b4fad51291051c6"
+    },
+    {
+      "path": "runtime-source/hierarchy_objective.py",
+      "bytes": 2608,
+      "sha256": "c072cee2b4cb826e31ce9ef7dc0716dcca8dfc420d340e7830cac1242d56ce38"
+    },
+    {
+      "path": "runtime-source/hierarchy_policy.py",
+      "bytes": 3977,
+      "sha256": "8cff3933e10c9fcdd10911dacd3c323eeff92ea85132cbc0e72d20c40915f5f5"
+    },
+    {
+      "path": "runtime-source/hierarchy_rollout.py",
+      "bytes": 10119,
+      "sha256": "e98479c49ac509aa4fffddb19f5dce1b9f4b9183f2ffe3bf892a4c1549d79a89"
+    },
+    {
+      "path": "runtime-source/hierarchy_updater.py",
+      "bytes": 5223,
+      "sha256": "cd6424efb489405555c0bc7c86c5cbce0b2e29aabc48e79eab7c53110be86fc9"
+    },
+    {
+      "path": "runtime-source/midgame_timing_policy.py",
+      "bytes": 2470,
+      "sha256": "4119939bbf1e36f5ff1ab9ffa122c6cfb7a268b9469fcd4586be9ce870e60d45"
+    },
+    {
+      "path": "runtime-source/migration.py",
+      "bytes": 2028,
+      "sha256": "a0e62177e8e0bdcafcc4436ad4fde2bb9fbd88289e2e196e25412bfb819f89af"
+    },
+    {
+      "path": "runtime-source/mini_recorded_starts.py",
+      "bytes": 2860,
+      "sha256": "76385ac108a84a36efd627197127bb6d39029f1d775b5a6faec5ba45b2fc937a"
+    },
+    {
+      "path": "runtime-source/mixed_city_road_cost_env.py",
+      "bytes": 2998,
+      "sha256": "1ab53469685decfe477fa8854ae07eed2a01f953e4692b312ae93921404b5a71"
+    },
+    {
+      "path": "runtime-source/offset_ppo.py",
+      "bytes": 11302,
+      "sha256": "2ea560ee24650524d8625e46fd369a65c6d3443d8bb298207b475dd05a00fa04"
+    },
+    {
+      "path": "runtime-source/pair_ppo.py",
+      "bytes": 16782,
+      "sha256": "fac6a17f62f06e8edfa39d84204d9e896d1ac3ddf6d0a8e51e64d45a36647e8b"
+    },
+    {
+      "path": "runtime-source/parallel.py",
+      "bytes": 3499,
+      "sha256": "a6fd56d586e8392d3ba0cd8c9355e8a2cd7001d5b9fc5d29dd05dfc17735a9aa"
+    },
+    {
+      "path": "runtime-source/parallel_stage1.py",
+      "bytes": 10944,
+      "sha256": "b7a1eeef0e5485bfc038116e0449f3ad49b33d1e266d1bf7369d65b1cb9c55f8"
+    },
+    {
+      "path": "runtime-source/planner_diagnostic.py",
+      "bytes": 5858,
+      "sha256": "405c47dd2706f4b2da32ba43e0dbe5ce4f7d6a22a2688efa395bf7658290d756"
+    },
+    {
+      "path": "runtime-source/practice_replay.py",
+      "bytes": 5778,
+      "sha256": "2760018e513cb6dff022d88c727d900ac27faf7ff34dc261d7f8984fffd81e73"
+    },
+    {
+      "path": "runtime-source/practice_reward.py",
+      "bytes": 2196,
+      "sha256": "cd1e54f5c499b3418022aa15b164bd25ade61e0304876766da386b45d88093f1"
+    },
+    {
+      "path": "runtime-source/prepare_city_policy.py",
+      "bytes": 9985,
+      "sha256": "2005bcc6f19d9f9caecd754a8ee4f574014e287e4556bfe333ce4367770e9f29"
+    },
+    {
+      "path": "runtime-source/prepare_city_recorded_starts.py",
+      "bytes": 3749,
+      "sha256": "35e02bf2445aa55dd5ea24f890a043c912ff5720e69a8cc267ed1ae43c2ddeeb"
+    },
+    {
+      "path": "runtime-source/prepare_city_route_outcome.py",
+      "bytes": 10575,
+      "sha256": "308ba11cc92869ddfe30aaa8fa1a88e6107c9fbabb7f84c163e0f7387cff142b"
+    },
+    {
+      "path": "runtime-source/prepare_city_wait_learning.py",
+      "bytes": 5055,
+      "sha256": "ae16a6ae790043984840faa94cd25ea368095e68a83cc313dd86f765ff809b9d"
+    },
+    {
+      "path": "runtime-source/prepare_city_wait_repair.py",
+      "bytes": 8466,
+      "sha256": "c3a9dd8d4d23fe68509bb1cacbaf75cad653240d0baa74f50627d10d4c593eb2"
+    },
+    {
+      "path": "runtime-source/prepare_mini_starts.py",
+      "bytes": 4736,
+      "sha256": "42ccfbc07f83e696fda49622e25493866004cddb58de4264c8509130f4638e58"
+    },
+    {
+      "path": "runtime-source/prepare_stage1.py",
+      "bytes": 7867,
+      "sha256": "37f7c1b1e80d5213116e38b35341152db4a3b500e2094636d4962502b834aaac"
+    },
+    {
+      "path": "runtime-source/progress.py",
+      "bytes": 13937,
+      "sha256": "b71dc8acbb27b2a00dd37e750ad636394cb5c62f3f7bea632fb37654abc119cc"
+    },
+    {
+      "path": "runtime-source/replay_city_suite.py",
+      "bytes": 4020,
+      "sha256": "84affc33f46b458010ce5a7622f6941204133da27b946810741aab404594b64e"
+    },
+    {
+      "path": "runtime-source/replay_city_wait_decision.py",
+      "bytes": 4084,
+      "sha256": "ee20dbec0f68fb3f80851e72ce5e25fefd1217d97b7a53c07545a0b1a824934e"
+    },
+    {
+      "path": "runtime-source/report_light_failure.py",
+      "bytes": 4088,
+      "sha256": "faf4c3244ee9b3f9d3d5ecfe123ef7c4451dc85f0cbb592c37b4fa32d8374ca8"
+    },
+    {
+      "path": "runtime-source/review_city_route_outcome.py",
+      "bytes": 4385,
+      "sha256": "08864c2b466cdcbcf81e81f37deed01cafeb4cd751a74b5acd9612f9a8a1d575"
+    },
+    {
+      "path": "runtime-source/review_city_wait_transfer.py",
+      "bytes": 2661,
+      "sha256": "68a663dbcb11a5d4251634cf90c75e5f734b155a3ca808845ec1c97368f16322"
+    },
+    {
+      "path": "runtime-source/rewards.py",
+      "bytes": 1196,
+      "sha256": "ea8cc85dad695962b88a860ca6178657cc0fbc877db310d535a9548803832a8d"
+    },
+    {
+      "path": "runtime-source/run_city_growth_pilot.py",
+      "bytes": 6674,
+      "sha256": "c5f91acf6215edfcca74d3491cdb5e7656070457136ec77d2c2f76a086669ee1"
+    },
+    {
+      "path": "runtime-source/run_city_learning_guarded.py",
+      "bytes": 3781,
+      "sha256": "34febdea1d8eb6d2f24325dc0232bf24ca04fe437f18431e4efc639c90cb2fae"
+    },
+    {
+      "path": "runtime-source/run_city_overnight.py",
+      "bytes": 13565,
+      "sha256": "778a47721ea65b4d1d59efcbe5aea2496c083000a4da0bfbc051c0e5ac38a8b4"
+    },
+    {
+      "path": "runtime-source/run_city_route_outcome.py",
+      "bytes": 5529,
+      "sha256": "1b875e5d9800f5de1268074c76e5c38db184a1f3cf41269a6b113a6483bd89da"
+    },
+    {
+      "path": "runtime-source/run_city_service_training.py",
+      "bytes": 6612,
+      "sha256": "a1124454697cda47d4c2230bee102328323666ffc066832cd5fe7fb946ce1e2e"
+    },
+    {
+      "path": "runtime-source/run_city_strategy_long.py",
+      "bytes": 11951,
+      "sha256": "950f5a86133ec08ba8faa55b813bcf7cf9a73df23acf849f2a8321f018dd6cc4"
+    },
+    {
+      "path": "runtime-source/run_city_wait_decision.py",
+      "bytes": 8971,
+      "sha256": "288ac4c7515448a9529f618acfbacba38c91ba8eb38bfe37b7d0337cf10e3266"
+    },
+    {
+      "path": "runtime-source/run_expansion_comparison.py",
+      "bytes": 7194,
+      "sha256": "46cb92fa7e8215a209309dbe59bce68830d2995f2920edcdcdfcf48ea041ee4a"
+    },
+    {
+      "path": "runtime-source/run_final_evaluations.py",
+      "bytes": 3514,
+      "sha256": "780b46339fac1dc733860486f2147fc6092ecebc19958fc63c3eddd0df62e4ac"
+    },
+    {
+      "path": "runtime-source/run_fixed_mini.py",
+      "bytes": 8266,
+      "sha256": "a5d4e6dd8e3f6920fc17fc67590ed71dde667b1dfbaa9f742e7fa6231d24bacf"
+    },
+    {
+      "path": "runtime-source/run_mini_comparison.py",
+      "bytes": 7413,
+      "sha256": "509ff699435831f03f5e51143fd89a597e7bfb282ce3bce62ae8531343112dc2"
+    },
+    {
+      "path": "runtime-source/run_mini_horizon_comparison.py",
+      "bytes": 7715,
+      "sha256": "36f5fa24e1dfdac280414865d6a5700a158feeda6f58f533bc2bebaba8a9768a"
+    },
+    {
+      "path": "runtime-source/run_mini_road_continuation.py",
+      "bytes": 8697,
+      "sha256": "61ff7e5fa3ad98873d0695611d9fca02e650a6e1d6a9de9cb9bc848c84c905f5"
+    },
+    {
+      "path": "runtime-source/run_overnight_critic_comparison.py",
+      "bytes": 6846,
+      "sha256": "ba10373ab8c31e229288fb6485c1589aca669e9d95928b7d12e11bf298d998a4"
+    },
+    {
+      "path": "runtime-source/run_overnight_transfer_comparison.py",
+      "bytes": 8303,
+      "sha256": "4df0f968c814cb5f9c1084389a6f9d18a06b3378dbda4ff7a3920122ab9aa0ed"
+    },
+    {
+      "path": "runtime-source/run_road_cost_continuation.py",
+      "bytes": 6141,
+      "sha256": "2a47ed0b4c5700b6b9253b19f02ca78405b97c2f99af3b802a58087b6048d38c"
+    },
+    {
+      "path": "runtime-source/score_wait_ppo.py",
+      "bytes": 19146,
+      "sha256": "a57e790e5c43381cc7fb7eded15a8212e93629108cca021e52499d2f4a4116b6"
+    },
+    {
+      "path": "runtime-source/select_investigation_candidates.py",
+      "bytes": 3575,
+      "sha256": "2ef85411db20633c3a704f3518fe8214c222ce8796ab8f4a7f94eecce66950a8"
+    },
+    {
+      "path": "runtime-source/shutdown.py",
+      "bytes": 992,
+      "sha256": "6163ef19e17b6ad7ac59e5020609384f5b40c7320810b16eb829824af3228191"
+    },
+    {
+      "path": "runtime-source/signal_agent.py",
+      "bytes": 7272,
+      "sha256": "6cda8d15aa798e5ec34bc0e3da6a6f1dcffa74c82e7e54a6ad3eb884a8ac544f"
+    },
+    {
+      "path": "runtime-source/spare_road_eval.py",
+      "bytes": 2139,
+      "sha256": "c89470cc197eb6c5ae56a2c987d6e3e1968729536b8febacd6bf3308093b722c"
+    },
+    {
+      "path": "runtime-source/spare_road_ppo.py",
+      "bytes": 12538,
+      "sha256": "dcda4f80a9aede3b3004f1af0e06212d03d7183b8cc5bcdfdfeedb0c3816de76"
+    },
+    {
+      "path": "runtime-source/spatial_policy.py",
+      "bytes": 7614,
+      "sha256": "8252c57b518486576c4d27a2e0b9045519a446afcd811186bde24b93401ad540"
+    },
+    {
+      "path": "runtime-source/stage1_replay.html",
+      "bytes": 4323,
+      "sha256": "868600363666b53207abd6e499bc0dad3b6263d82c711e20da325b0b25809244"
+    },
+    {
+      "path": "runtime-source/stop_at_steps.py",
+      "bytes": 1099,
+      "sha256": "f332ab0a72ffc94a5c9eb7e18768cc7ca74b2fdaddfc8843b2733189545ead54"
+    },
+    {
+      "path": "runtime-source/summarize_expansion_comparison.py",
+      "bytes": 5285,
+      "sha256": "cabedbab41ce2e21f9d81b20a17d499740567eec132f6a8814e1925d08ab7258"
+    },
+    {
+      "path": "runtime-source/summarize_mini_comparison.py",
+      "bytes": 3350,
+      "sha256": "134236a836e9be3412a9821dec9c607a73f26cd7c81beecf89d2d5e6d399bd7b"
+    },
+    {
+      "path": "runtime-source/summarize_mini_horizon.py",
+      "bytes": 4122,
+      "sha256": "7ed89ee6bccfde123c425365ee2142deb03db9fdb6654b73ac6f667267244fca"
+    },
+    {
+      "path": "runtime-source/summarize_mini_road_continuation.py",
+      "bytes": 3536,
+      "sha256": "a232b188fca6301a251bdedf0ea728af273489945ef0e477a7a181cf6b403622"
+    },
+    {
+      "path": "runtime-source/summarize_overnight_critic.py",
+      "bytes": 5074,
+      "sha256": "02cb80a8e69cd038ac90985cdaa7a3f89e7fa902f44a60fd4018119c62afa166"
+    },
+    {
+      "path": "runtime-source/summarize_overnight_transfer.py",
+      "bytes": 5171,
+      "sha256": "581fc72e52707054290b3a9e45ba0325225c4f3001dafa6f5aeb60511f8378f9"
+    },
+    {
+      "path": "runtime-source/summarize_road_cost_continuation.py",
+      "bytes": 3733,
+      "sha256": "3aad2a9785a478f40ac5bb458259ba57014861aaf3d1f6aaa06bcb09caa3467f"
+    },
+    {
+      "path": "runtime-source/terrain_ppo.py",
+      "bytes": 19686,
+      "sha256": "90df7aadb9ec082b824ba7789b960dab7110fabc88f944a0a96c0c882a964a51"
+    },
+    {
+      "path": "runtime-source/test_city_bridge_strategy_policy.py",
+      "bytes": 4478,
+      "sha256": "1985341900bab3608b7f5531dccc1793b6760d68c4c5dd5f2e8d59ca844a82bc"
+    },
+    {
+      "path": "runtime-source/test_city_established_policy.py",
+      "bytes": 1999,
+      "sha256": "56fb368874b08185c5456db1d85774b95aa509c4b86532a677319e7141a312e2"
+    },
+    {
+      "path": "runtime-source/test_city_exploration_policy.py",
+      "bytes": 2295,
+      "sha256": "ad3f96ab2b598e8aefdb746702bd0eba59b50e46358b44c5681af6a7b0d8342e"
+    },
+    {
+      "path": "runtime-source/test_city_gradient_audit.py",
+      "bytes": 1236,
+      "sha256": "8db506c685100a067ef291806c0922144c6d94a74aa99e6b1cdbe4ebff19cc93"
+    },
+    {
+      "path": "runtime-source/test_city_network_service.py",
+      "bytes": 2942,
+      "sha256": "76f7b5acf73d169dcce1d7b3de1e24a41d4b21325c8e742964f67a56bac0fb2c"
+    },
+    {
+      "path": "runtime-source/test_city_opening_strategy_policy.py",
+      "bytes": 2671,
+      "sha256": "f53e9337e9eb82e8e1dc2a39c204fc35815ceb87c7aabe695c6dd737cafafacf"
+    },
+    {
+      "path": "runtime-source/test_city_optimizer_settings.py",
+      "bytes": 2406,
+      "sha256": "45b66abb93974ff8a6ace07c98f861d021871d4f0364ed51ec6f5eb513372bde"
+    },
+    {
+      "path": "runtime-source/test_city_relational_policy.py",
+      "bytes": 2357,
+      "sha256": "75cde4fc3ffbc467f03bf63825701eebd84ad4ac73a7e0fb07fe7e860407a2ef"
+    },
+    {
+      "path": "runtime-source/test_city_reserve_policy.py",
+      "bytes": 2471,
+      "sha256": "fe4add0e3d63d40c4c01f6772d45dfc42df4e104b9a6b26e4d2affaa0aace8da"
+    },
+    {
+      "path": "runtime-source/test_city_strategy_long.py",
+      "bytes": 2670,
+      "sha256": "749a25345779a1b14617401a4d2b8ca779ba9e356be9b6439adbc498aa40f744"
+    },
+    {
+      "path": "runtime-source/test_city_strategy_policy.py",
+      "bytes": 1755,
+      "sha256": "0f23d2807f31435e0ed4811ad07cefbf20d65b3a3b901c40f80643dd674f4bd3"
+    },
+    {
+      "path": "runtime-source/test_city_task_reporting.py",
+      "bytes": 1153,
+      "sha256": "9450673883ccf6e1b9d7c86bd346bbfd137ca58a69e2a624f9efd5053522ece5"
+    },
+    {
+      "path": "runtime-source/test_city_task_rollout_buffer.py",
+      "bytes": 3289,
+      "sha256": "bca0bbd18606ea02cff845f66e41f9aa178c15d04e19287e7f50b56036a04744"
+    },
+    {
+      "path": "runtime-source/test_city_wide_strategy_policy.py",
+      "bytes": 1964,
+      "sha256": "9fa2bd7259ddbc6c5f5bd899caed78caeb98e0c656a4cd242eba8665328108e5"
+    },
+    {
+      "path": "runtime-source/test_compact.py",
+      "bytes": 4315,
+      "sha256": "b74a27abc7093434d1b3dea6789d4cb5351f89a2333cb431c83d87bb8fccaeeb"
+    },
+    {
+      "path": "runtime-source/test_comparison_resume.py",
+      "bytes": 4608,
+      "sha256": "de0967dcf1e44000ce3ca73f4e9432eedd3d897a52ce1024009ce14dfdc3e80a"
+    },
+    {
+      "path": "runtime-source/test_connection_practice.py",
+      "bytes": 11249,
+      "sha256": "7070e2f7d9c7d578bd105d039d14c337f76ffa953cbbdbdb96e51777cb38c41a"
+    },
+    {
+      "path": "runtime-source/test_construction_practice.py",
+      "bytes": 2158,
+      "sha256": "8ea98f6ab16273ba72339f3b86875ca476539ac86a88bcd70a8ca2ba9ccd4ec6"
+    },
+    {
+      "path": "runtime-source/test_direct_practice.py",
+      "bytes": 5057,
+      "sha256": "4752d101fdf5ff8adf37cf883f7c674ac670af4eb8cd77656fcdab2e145fb7b6"
+    },
+    {
+      "path": "runtime-source/test_draw_mask.py",
+      "bytes": 1977,
+      "sha256": "010ae1631e077d4ec11bbb321427ae3ebfe47ed99eb2f88654e7bf93e3ccaa08"
+    },
+    {
+      "path": "runtime-source/test_draw_only.py",
+      "bytes": 3083,
+      "sha256": "8e5d3b2c4f791e032c25796e26c8474a815547b1bbabcd9a18e1196898042ca9"
+    },
+    {
+      "path": "runtime-source/test_edge_policy.py",
+      "bytes": 3640,
+      "sha256": "e02849b608758f14b7d3c8fd255b96c6a92c450ee1202adb2f5036b6ea17d6bc"
+    },
+    {
+      "path": "runtime-source/test_environment.py",
+      "bytes": 8984,
+      "sha256": "4259933f104e68796ca29e2c3c37bd831602476e2e6d9cfd30bf8ebe8b72de4a"
+    },
+    {
+      "path": "runtime-source/test_evaluate_practice.py",
+      "bytes": 4644,
+      "sha256": "1b346e018dc20128b2784432d459f353bb0728fdf5b42eaff313930bbea55b6c"
+    },
+    {
+      "path": "runtime-source/test_features.py",
+      "bytes": 7918,
+      "sha256": "6be79f9d5e4c0523d1fde439347ac2ca0ebd22d9c6f0ca9826d549779fcdfe0e"
+    },
+    {
+      "path": "runtime-source/test_first_upgrade.py",
+      "bytes": 6359,
+      "sha256": "cae52e1c97826f8d5bbdaf7e9d1cd8b2bbcd740a03b4555231678a41c053d5f2"
+    },
+    {
+      "path": "runtime-source/test_goal_agent.py",
+      "bytes": 11331,
+      "sha256": "fe9cc28ee36a55b97ce0ec0dd4e49a9cb8d54a3c9621bb47fc33fc2ee801a530"
+    },
+    {
+      "path": "runtime-source/test_hierarchy_credit.py",
+      "bytes": 4436,
+      "sha256": "7615cd6401162f4196c43b1645a849a3f082b5dc8794607afcda82b80c766626"
+    },
+    {
+      "path": "runtime-source/test_hierarchy_integration.py",
+      "bytes": 3303,
+      "sha256": "a246097d0b195fb175a1ba43d6683ad5cda031155bba02a43536c4d13ac70de9"
+    },
+    {
+      "path": "runtime-source/test_hierarchy_objective.py",
+      "bytes": 2500,
+      "sha256": "ba94ecd9f19548e8241aea36d4e9368e330999a67f0c2060b2518c4a9f15a4d3"
+    },
+    {
+      "path": "runtime-source/test_hierarchy_policy.py",
+      "bytes": 3206,
+      "sha256": "ec75be638d27a2c5c8851069c66eef39d7c543423b4ce033737e2f741208afa4"
+    },
+    {
+      "path": "runtime-source/test_hierarchy_updater.py",
+      "bytes": 375,
+      "sha256": "a7a8c6399597b7dec09b89c3a1d647b8ca330c581c08e81acc42e743cc23fb0e"
+    },
+    {
+      "path": "runtime-source/test_inference_collector.py",
+      "bytes": 4520,
+      "sha256": "35d3577988520370c35629c0bff25718ccbd2e656a6766253903c79f64415925"
+    },
+    {
+      "path": "runtime-source/test_one_gap.py",
+      "bytes": 3985,
+      "sha256": "6bc2157662ae681b8da9e161f56b7e6b59ca721d75a4269ec6e2d787fc13aa3f"
+    },
+    {
+      "path": "runtime-source/test_parallel.py",
+      "bytes": 5157,
+      "sha256": "137239c0291ee0e88b696b04d0badaed765783301af2e2ce67228f1798e02bae"
+    },
+    {
+      "path": "runtime-source/test_parallel_stage1.py",
+      "bytes": 4112,
+      "sha256": "a1229dfcd912f1c458600277ed36633d9cd064dae97e7852413771f36bdea8f3"
+    },
+    {
+      "path": "runtime-source/test_practice_protocol.py",
+      "bytes": 2128,
+      "sha256": "b7249f95305467550b1c85b2c63739a8cb9dabe9628ac931abddc53cac630b6e"
+    },
+    {
+      "path": "runtime-source/test_practice_replay.py",
+      "bytes": 2544,
+      "sha256": "4c2757cb1851fbd5a653f27eb8cd29f7f960eeadc32fb14c8fe9448939b2940c"
+    },
+    {
+      "path": "runtime-source/test_reward_experiment.py",
+      "bytes": 6469,
+      "sha256": "0f04719c8cef03a1915e62531d747cc449a607f09e60aa840410d634285ca516"
+    },
+    {
+      "path": "runtime-source/test_rewards.py",
+      "bytes": 6750,
+      "sha256": "5b74cef1b4b12b28667f9e5712f13511bb6fa3b087792db7947e1178fe86eedb"
+    },
+    {
+      "path": "runtime-source/test_shutdown.py",
+      "bytes": 1315,
+      "sha256": "cb633a1711f78e9b17116f2edcb2ec67d181e698d008dc74c127871920dbc45a"
+    },
+    {
+      "path": "runtime-source/test_signal_agent.py",
+      "bytes": 6645,
+      "sha256": "02278573d903fa61ead2c4ec5fa8a52cc73cd11febd8d9915f360cc2ed619bb3"
+    },
+    {
+      "path": "runtime-source/test_signal_context.py",
+      "bytes": 4018,
+      "sha256": "b8a93684b88dd6e71a75d353e8f35bcb28a15c7b3a7e3f44c677456f463f2f04"
+    },
+    {
+      "path": "runtime-source/test_single_build.py",
+      "bytes": 6666,
+      "sha256": "7b891098d86352427f66e4b81604d8cc11466b63b67d5b4cc968a624aeed6f2f"
+    },
+    {
+      "path": "runtime-source/test_visible_observation.py",
+      "bytes": 7247,
+      "sha256": "3b11741066f649abe8e314971e2a333c2df517ee31a692eb5c857b3edc8df59c"
+    },
+    {
+      "path": "runtime-source/test_workflow.py",
+      "bytes": 7740,
+      "sha256": "1607760913039b7cdcf81d21349bcc33115be45516115acba38998dc66c4d62f"
+    },
+    {
+      "path": "runtime-source/traffic_ppo.py",
+      "bytes": 33720,
+      "sha256": "783a7774b45594e7f637b956c10ccf27b8b280ad97678c8e884c5993a6129797"
+    },
+    {
+      "path": "runtime-source/traffic_practice.py",
+      "bytes": 9907,
+      "sha256": "6ce9a5168934ccd745e68f828e922502f168b526ed65da7decec3432b8484362"
+    },
+    {
+      "path": "runtime-source/train.py",
+      "bytes": 15325,
+      "sha256": "1faf9cb829c6ac78a51d98035521297f4abe1a1e1d958c271bc665e84746163d"
+    },
+    {
+      "path": "runtime-source/train_city_curriculum.py",
+      "bytes": 20248,
+      "sha256": "f70ac9d3f20a5db6dc152e9a1c0bf6ad5007d7e96881092b4a5034044f30dc80"
+    },
+    {
+      "path": "runtime-source/train_city_network_service.py",
+      "bytes": 12313,
+      "sha256": "63f3b6855c9cfad0490eaf77075aa2afde9b279c1fb8f6088f887c12dd5fb9ca"
+    },
+    {
+      "path": "runtime-source/train_city_opening_pilot.py",
+      "bytes": 6787,
+      "sha256": "b139517d148caa7a755d4ce1b29aabf47d7b212a628fe4fa7915229d922c29b0"
+    },
+    {
+      "path": "runtime-source/train_city_route_outcome.py",
+      "bytes": 6883,
+      "sha256": "32bc418c2a7f0567a43389d36c8cdc737b3be674f97e37d0b813a62e78dca8e0"
+    },
+    {
+      "path": "runtime-source/train_city_route_repair.py",
+      "bytes": 10197,
+      "sha256": "df73c73de53992525bd10a5101d9e716950b235726d0ed0ea81d0f6fb082cdd8"
+    },
+    {
+      "path": "runtime-source/train_city_score_pilot.py",
+      "bytes": 6467,
+      "sha256": "1a47e6d7fb42cd0a1904c93bd20dd45227f610d174ba68c0af79ea883fafe3ed"
+    },
+    {
+      "path": "runtime-source/train_city_wait_decision.py",
+      "bytes": 6650,
+      "sha256": "6400c04efaa38f1d27e73aa82b1c7e7b1f3f4ddde795d9df0220c76772885dfa"
+    },
+    {
+      "path": "runtime-source/train_goal.py",
+      "bytes": 16466,
+      "sha256": "b9fd08529634d426ed0a423e56440b28d953507921906c4468d388e0c1676306"
+    },
+    {
+      "path": "runtime-source/train_limited_route_ppo.py",
+      "bytes": 10696,
+      "sha256": "8dbff32ee253f236fb635918875d41e9697e92f9e6c446347102e2238b981bc5"
+    },
+    {
+      "path": "runtime-source/train_midgame_service.py",
+      "bytes": 11503,
+      "sha256": "8a356a4524e495e08bb9d6d7f7cf71824d8ebf1f0a815b21e4366c3734a5a655"
+    },
+    {
+      "path": "runtime-source/train_parallel_stage1.py",
+      "bytes": 14113,
+      "sha256": "83e1b30bad0e09c374e3529801d6719ce61e84a599115b1e1c0207af3da256bf"
+    },
+    {
+      "path": "runtime-source/train_road_cost_trial.py",
+      "bytes": 4317,
+      "sha256": "a37a8d59b4e615d53b58a2bfadff06c03ad4aabadd053a9c24d20013f135f899"
+    },
+    {
+      "path": "runtime-source/triad_curriculum_ppo.py",
+      "bytes": 21411,
+      "sha256": "cdebdec5ab83266aa4add11fd8846631cdffa99df9c61fd898fd5fe52d6e785a"
+    },
+    {
+      "path": "runtime-source/triad_ppo.py",
+      "bytes": 12957,
+      "sha256": "e694da208c662769a8b8d768916b5931d9e1c21f6c3d7783226c10a2edc3b8b2"
+    },
+    {
+      "path": "runtime-source/triad_score_ppo.py",
+      "bytes": 24418,
+      "sha256": "86ea1bbad36871a4c6e65844b72a4b60293fd8d928dd19ca363e1584fe109929"
+    },
+    {
+      "path": "runtime-source/upgrade_rules.py",
+      "bytes": 840,
+      "sha256": "aa27d3de7b56f6bf5cf5e94b9e8ca446b2038d10711bf831c35980601d561c79"
+    },
+    {
+      "path": "runtime-source/visible_observation.py",
+      "bytes": 10812,
+      "sha256": "76ea6a0ee1b3c1b44bc8d0ca2a16a9c349432d2172ab83cc5dc14fbdf4417cb9"
+    },
+    {
+      "path": "runtime-source/watch_best.py",
+      "bytes": 1775,
+      "sha256": "20b27160bd698afbbe3446f222961fefa89fb0cdd18a298d2543f2ef47d933c9"
+    },
+    {
+      "path": "runtime-source/watch_live.py",
+      "bytes": 5204,
+      "sha256": "c3f944abd72ef26ade242d58af28f66161e825ba2903de87e88b4bc43ef3266a"
+    },
+    {
+      "path": "runtime-source/watch_stage1.py",
+      "bytes": 4650,
+      "sha256": "c62c43bfc851e39270fa30ad78d5c3c17a7b4cfd5314c2a051ac5b7977e99b73"
+    },
+    {
+      "path": "status.json",
+      "bytes": 848,
+      "sha256": "f9192dec7d3465d6c9bd3022a5b5741e0c7075e9e7f879744c531379c354334a"
+    },
+    {
+      "path": "training-command.json",
+      "bytes": 562,
+      "sha256": "e26ce7640d7bd7f305781da4d52ceeb40bd15f394b3fdb9544f45bd23f7188a5"
+    }
+  ],
+  "limits": "Reports, small measurements, source and inspected figures. Weights/native binaries remain local-only under output/. Manifest does not hash itself; no independent confirmation claimed."
+}

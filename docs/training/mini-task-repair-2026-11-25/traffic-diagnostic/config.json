@@ -1,0 +1,22 @@
+{
+  "models": [
+    "output/training/city-whole-initial-01/start.zip"
+  ],
+  "hashes": {
+    "output/training/city-whole-initial-01/start.zip": "7eb605e4e465b9143e095e367abe0a01285b8ace05843aaac80bd48b5f049027"
+  },
+  "dll": "output/road-cost-reward-build-02/bin/TrafficHost/release/TrafficHost.dll",
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+  "seed_start": 239000000,
+  "count": 8,
+  "lessons": [
+    "traffic-priority-established",
+    "traffic-priority-established-swap",
+    "traffic-junction-low-live",
+    "traffic-junction-high-live"
+  ],
+  "split": "validation",
+  "reserve_warmup_seconds": 0,
+  "reserve_delay_seconds": null,
+  "forced_action_inference_skipped": true
+}

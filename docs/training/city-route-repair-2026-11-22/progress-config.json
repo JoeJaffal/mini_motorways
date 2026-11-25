@@ -1,0 +1,49 @@
+{
+  "parent": "output/training/city-overnight-01/checkpoints/city-006234112-96926793.zip",
+  "parent_sha256": "a65357dea3e889525bfdc18743dbbeb02141ad244934b270217afad7a472df29",
+  "host_sha256": "be498a8ef6dde1bfe50bc96ed34bca92eb92c5c71c7ae819ad505c0957746b51",
+  "workers": 32,
+  "rollout_steps": 128,
+  "rollouts": 5,
+  "curriculum": [
+    [
+      "route-gap-one",
+      "route-gap-two",
+      "route-gap-three",
+      "gate-already-open"
+    ],
+    [
+      "route-short",
+      "route-gap-three",
+      "gate-already-open",
+      "route-gate-two"
+    ],
+    [
+      "route-long",
+      "route-gap-three",
+      "route-delay",
+      "route-gate-two"
+    ]
+  ],
+  "seed": 764921,
+  "seed_range": [
+    86600000,
+    87000000
+  ],
+  "added_decisions": 61440,
+  "gamma": 1,
+  "gae_lambda": 0.97,
+  "ent_coef": 0.018,
+  "learning_rate": 0.0006,
+  "frontier": true,
+  "progress": true,
+  "batch_size": 64,
+  "epochs": 4,
+  "target_kl": 0.035,
+  "potential": {
+    "distance_weight": 0.18,
+    "stock_deficit_weight": 0.1,
+    "terminal": 0
+  },
+  "architecture": "visible opening-only correction with frozen base actor"
+}

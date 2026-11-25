@@ -1,0 +1,5 @@
+time/fps,time/time_elapsed,pilot/completed_games,pilot/peak_reserved_mib,rollout/ep_rew_mean,pilot/advantage_std_city,time/total_timesteps,time/iterations,rollout/ep_len_mean,pilot/peak_allocated_mib,train/policy_gradient_loss,train/n_updates,train/clip_fraction,train/clip_range,train/value_loss,train/approx_kl,train/entropy_loss,train/loss,train/explained_variance,pilot/optimizer_steps_possible,train/learning_rate,pilot/optimizer_steps_this_rollout
+106,153,19,202.0,141.89473684210526,99.62644958496094,442368,1,479.36842105263156,140.259765625,,,,,,,,,,,,
+,,,,,,,,,,2.5196559363394044e-06,752,0.0,0.2,22178.50225830078,5.534625e-06,-0.6512734299758449,0.17546319961547852,0.01933079957962036,512,0.0001,512
+71,230,42,1598.0,212.54761904761904,109.00595092773438,458752,1,615.3809523809524,996.1572265625,,,,,,,,,,,,
+,,,,,,,,,,-5.704952582163969e-05,756,0.0,0.2,23278.27014732361,3.1499447e-05,-0.6852133530192077,0.28799787163734436,-0.004518628120422363,512,0.0001,512

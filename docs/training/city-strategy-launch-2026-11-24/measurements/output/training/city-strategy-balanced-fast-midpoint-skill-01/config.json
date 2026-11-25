@@ -1,0 +1,23 @@
+{
+  "models": [
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-fast-01/midpoint.zip"
+  ],
+  "hashes": {
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-fast-01/midpoint.zip": "9aa4e8ff3371aab875c947daa26a3ea3d3916449c0685263a0ad3bcbbf55bc76"
+  },
+  "dll": "output/city-road-reserve-build-01/bin/TrafficHost/release/TrafficHost.dll",
+  "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+  "seed_start": 141000000,
+  "count": 16,
+  "lessons": [
+    "midgame-network-join",
+    "midgame-network-route",
+    "midgame-network-delay",
+    "midgame-network-quiet",
+    "traffic-priority-established",
+    "traffic-priority-established-swap",
+    "traffic-junction-low-live",
+    "traffic-junction-high-live",
+    "midgame-network-reserve"
+  ]
+}

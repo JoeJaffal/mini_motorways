@@ -1,0 +1,8 @@
+{
+  "status": "error",
+  "pid": 427928,
+  "phase": "training",
+  "started": "2026-11-24T21:46:10.444244+02:00",
+  "arm": "roads",
+  "error": "CalledProcessError(1, ['/usr/bin/python3.12', '-c', 'import subprocess,sys; f=open(sys.argv[1],\"x\"); raise SystemExit(subprocess.call(sys.argv[2:],stdout=f,stderr=subprocess.STDOUT))', '/home/mohammadjaffal/mini_motorways/output/training/city-road-choice-fit-01/roads.log', '/usr/bin/python3.12', '-u', '/home/mohammadjaffal/mini_motorways/output/training/city-road-choice-fit-01/runtime/training/train_city_curriculum.py', '--dll', '/home/mohammadjaffal/mini_motorways/output/training/city-road-choice-fit-01/runtime/host/TrafficHost.dll', '--parent', '/home/mohammadjaffal/mini_motorways/output/training/city-road-choice-initial-01/start.zip', '--output', '/home/mohammadjaffal/mini_motorways/output/training/city-road-choice-fit-01/roads', '--record-dir', '/home/mohammadjaffal/mini_motorways/docs/training/city-road-choice-2026-11-24/runs/roads', '--stage', 'city', '--repeat-city-count', '8', '--workers', '16', '--seed-start', '184000000', '--rollouts', '4', '--rollout-steps', '512', '--batch-size', '128', '--gae-lambda', '1', '--horizon', '600', '--learning-rate', '.0001', '--value-coefficient', '.00001', '--gradient-audit-steps', '64', '--allow-bridges', '--collapse-forced-wait', '--save-every-rollouts', '1'])"
+}

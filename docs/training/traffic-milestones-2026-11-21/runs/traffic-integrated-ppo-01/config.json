@@ -1,0 +1,32 @@
+{
+  "source_sha256": "fa0b75bfec2fb058803b55b629d5ad29481121f23c15cfe555d6f130856f78b3",
+  "observation_sha256": "f22db69f16f16da939827a163978ebbe348301fd805a1548d2e9b7b6cd615d08",
+  "native_sha256": "18367277cc0a07704ff73c275413b8d11865b3e313f7c717474dd8db5653c58d",
+  "checkpoint": "output/training/traffic-live-ppo-01/latest.zip",
+  "stages": [
+    "traffic-priority",
+    "traffic-priority-swap",
+    "traffic-junction-low-live",
+    "traffic-junction-high-live"
+  ],
+  "start": 36864,
+  "horizon": 120,
+  "wait_ticks": 200,
+  "warm_seconds": 36,
+  "decisions": 43008,
+  "wall_seconds": 2050,
+  "device": "cuda",
+  "workers": 12,
+  "seed": 42,
+  "seed_start": 3230000,
+  "learning_rate": 0.001,
+  "entropy": 0.014,
+  "wait_logit_offset": 0.0,
+  "roots": true,
+  "flow": true,
+  "flow_relation": false,
+  "demand_relation": false,
+  "reward": "native tripsDelta only",
+  "teacher_actions": false,
+  "forced_wait_compaction": true
+}

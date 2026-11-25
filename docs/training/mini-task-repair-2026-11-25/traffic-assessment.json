@@ -1,0 +1,36 @@
+{
+  "traffic-junction-high-live": {
+    "policy_score": 31.875,
+    "controls": {
+      "feeder": 29.75,
+      "wait": 27,
+      "separate-exit": 32.625
+    },
+    "warning": "Legacy success field is not applicable: existing destinations, compare native scores."
+  },
+  "traffic-junction-low-live": {
+    "policy_score": 11.875,
+    "controls": {
+      "feeder": 15.5,
+      "wait": 9.625,
+      "separate-exit": 11.75
+    },
+    "warning": "Legacy success field is not applicable: existing destinations, compare native scores."
+  },
+  "traffic-priority-established": {
+    "policy_score": 9.5,
+    "controls": {
+      "upper": 11.25,
+      "lower": 11.125,
+      "wait": 1.5
+    }
+  },
+  "traffic-priority-established-swap": {
+    "policy_score": 12.625,
+    "controls": {
+      "upper": 10.75,
+      "lower": 10.875,
+      "wait": 1.375
+    }
+  }
+}

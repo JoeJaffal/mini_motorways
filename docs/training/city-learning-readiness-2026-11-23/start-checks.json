@@ -1,0 +1,31 @@
+{
+  "source": "output/training/city-network-service-pilot-01/final.zip",
+  "source_sha256": "fb95c49068c18f5dccf05c9cae7a0458dc5b09fb812168bfd1f62725a6053490",
+  "start_sha256": "cd033e4f4820f8edb540d82f8306eb91607defad778ded7aaa5f98b2ff72a631",
+  "parity": true,
+  "finite_gradients": true,
+  "trainable": [
+    "features_extractor.growth_service_progress",
+    "features_extractor.growth_service_join",
+    "features_extractor.growth_service_coupling",
+    "features_extractor.growth_service_blocked",
+    "features_extractor.growth_service_reserve",
+    "features_extractor.growth_service_urgency",
+    "features_extractor.growth_grid.0.weight",
+    "features_extractor.growth_grid.0.bias",
+    "features_extractor.growth_grid.2.weight",
+    "features_extractor.growth_grid.2.bias",
+    "features_extractor.growth_context.weight",
+    "features_extractor.growth_context.bias",
+    "features_extractor.growth_roads.weight",
+    "features_extractor.growth_roads.bias",
+    "features_extractor.growth_wait.0.weight",
+    "features_extractor.growth_wait.0.bias",
+    "features_extractor.growth_wait.2.weight",
+    "features_extractor.growth_wait.2.bias",
+    "value_net.0.weight",
+    "value_net.0.bias",
+    "value_net.2.weight",
+    "value_net.2.bias"
+  ]
+}

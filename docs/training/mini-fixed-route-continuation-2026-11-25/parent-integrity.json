@@ -1,0 +1,12 @@
+{
+  "checkpoint_sha256": "c86c0db95e28951c3e9ed36d5a29eb94d7faa4cbddbfddaed18700dc70121eb3",
+  "policy_class": "CityRoadChoiceDetachedCriticPolicy",
+  "num_timesteps": 753664,
+  "optimizer_state_count": 22,
+  "optimizer_steps": [
+    10240
+  ],
+  "wait_frozen": true,
+  "critic_features_detached": true,
+  "source_changes_since_first_launch": []
+}

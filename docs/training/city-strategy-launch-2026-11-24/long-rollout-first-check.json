@@ -1,0 +1,34 @@
+{
+  "config_checked": true,
+  "gradient_checks": 64,
+  "mean_gradient_norms": [
+    {
+      "group": 0,
+      "before": 0.038521801550814416,
+      "after": 0.038521801550814416
+    },
+    {
+      "group": 1,
+      "before": 0.0177993638717453,
+      "after": 0.0177993638717453
+    },
+    {
+      "group": 2,
+      "before": 3.429107457542102e-05,
+      "after": 3.429107457542102e-05
+    },
+    {
+      "group": 3,
+      "before": 0.15600641397759318,
+      "after": 0.15600641397759318
+    }
+  ],
+  "checkpoint": {
+    "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-long-rollout-01/segment-001/midpoint.zip",
+    "sha256": "34b4ccc7629312548ef8258098f9fc05c703eea85cda2f7a26ace2b981d72e06",
+    "added_decisions": 16384,
+    "optimizer_steps_added": 512,
+    "episodes": 19,
+    "seconds": 235.10910718992818
+  }
+}

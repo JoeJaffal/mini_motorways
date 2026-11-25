@@ -1,6 +1,14 @@
+Latest (19 November 2026): The user approved trying a [shared edge scorer](shared-edge-policy-2026-11-19/README.md) while keeping the current gap placements and one-build binary reward.
+
+Latest (19 November 2026): The user approved [one road unit and one build with reward 1 for connectivity and 0 otherwise](one-gap-single-build-2026-11-19/README.md) for an opt-in diagnostic.
+
+Latest (19 November 2026): The user approved [direct one-gap practice](one-gap-direct-2026-11-19/README.md) for the introductory compact stage, with one legal new connection or Wait, trip-only reward, and a uniform legal-action reference in frozen evaluation. The historical hierarchy and approval records below still describe their original scope.
+
 # Maskable PPO — current decisions and detailed records
 
 Updated 16 November 2026. **Start here on the other computer.**
+
+Latest implementation: [one-hour check-in](check-in-2026-11-16/README.md). Prior reconciliation: [report](connection-practice-2026-11-16/RECONCILIATION.md). Published records have been fetched in the cloud implementation checkout. Linux setup was subsequently verified from user outputs; a draft Stage 1 interface exists, but no complete hierarchical trainer or training run. Older setup-next wording below is superseded by this update.
 
 The user approved publishing these detailed records on `Maskable-PPO`. We are preparing a fresh model; no new hierarchical trainer or training run exists yet. Older specifications and spreadsheets below preserve the complete reasoning and review history. **Later explicit decisions on this page and linked approvals take precedence over older snapshots.**
 
@@ -24,7 +32,7 @@ The user approved publishing these detailed records on `Maskable-PPO`. We are pr
 | Evaluation | Separate train/validation seeds; reserved final city; frozen-checkpoint best/worst/near-average replays | Existing directions preserved; [earlier exact protocol](maskable-ppo-spec-v1-2026-11-16/SPECIFICATION.md) requires only necessary curriculum/hierarchy reconciliation |
 | Architecture/PPO | Existing observation, network, optimizer and credit topics were already discussed/reviewed; adapt their implementation to manager/executor rather than treating them as missing | [Historical exact specification](maskable-ppo-spec-v1-2026-11-16/SPECIFICATION.md); do not blindly adopt its flat-policy parameter count/config as a finished hierarchy |
 | Linux hardware | Ryzen9 3950X, 16 cores/32 threads, nominal32GiB RAM, RTX2080Ti11264MiB; Ubuntu24.04.4 | [User-provided inventory and limits](linux-inventory-2026-11-16/README.md); supersedes uncertain Intel/2080Super inventory |
-| Storage | User now reports30GBfree; calculated starting budget is20.680GiB plus rounding to25GiB(~27GB); request30GB,50GB comfortable | [Calculation and assumptions](linux-preflight-2026-11-16/STORAGE_BUDGET.md); package-payload measurement plus explicit allowances, not measured installed peak |
+| Storage | Latest user terminal output:87GiBavailable after cleanup. Earlier30GBreport and sizing budget are historical | [Calculation and assumptions](linux-preflight-2026-11-16/STORAGE_BUDGET.md); package-payload measurement plus explicit allowances, not measured installed peak |
 | Other Windows laptop | RTX5060-series prefix/about8GBVRAM; CPU/RAM/storage not verified; tools incomplete | [Separate partial inventory](alternative-laptop-2026-11-16/README.md); not selected as replacement |
 | Roundabouts | Another person handles fidelity follow-up; do not expand our current task into a physics repair | Published comparison remains on `codex/driveway-physics`, commit `c37ce9a6eee1a5621bc40c1b546281a9ebc9f482` |
 
@@ -40,6 +48,6 @@ Approval, review, implementation and measured performance are separate. Initial 
 
 ## Where we stopped / next
 
-User reports Linux now has30GBfree and the branch clone succeeded at `~/mini_motorways`. Software environment setup is next. No new hierarchy model/trainer has been built. Confirm branch/path and create an isolated environment; choose compatible device/dependency versions deliberately. Sizing version snapshots are not adopted installation locks. No need to repeat settled design discussions.
+Linux software setup/GPU access are verified from user terminal evidence. Stage1interface, visible inputs, separate heads, exact clear-land masks and non-learning collection/replay/evaluation checks are now implemented in the cloud checkout. Actual PPO update integration and remaining explicit hierarchy choices are next, followed by target-PC speed measurements. No training ran. See the current check-in; older numerical/approval snapshots remain historical.
 
 Read [handoff](../../training/HANDOFF.md), [short progress overview](../../training/PLAN.md) and [chronological experiment history](../../training/EXPERIMENT_HISTORY.md). The old `mohammad` branch guidance is superseded for this restart by the user's explicit `Maskable-PPO` instruction. Do not modify/clean the separate dirty checkout while setting up this branch.

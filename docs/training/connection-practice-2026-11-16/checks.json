@@ -1,0 +1,17 @@
+{
+  "baseline": "938b9f80e67ca5341920a10e9e671164a474fc38",
+  "location": "cloud CPU workspace, not target Linux PC",
+  "simulator_suites": 99,
+  "legacy_python_tests": 7,
+  "new_tests": 7,
+  "scripted_layouts": 100,
+  "scripted_trips_min": 10,
+  "scripted_trips_max": 13,
+  "simulated_duration": 180,
+  "release_build": "PASS",
+  "debug_build": "PASS",
+  "training_sessions": 0,
+  "optimizer_steps": 0,
+  "policy_checkpoint_written": false,
+  "note": "Scripted feasibility is not a learned gate pass. Changes uncommitted/unpushed."
+}

@@ -1,0 +1,35 @@
+{
+  "direction": "native",
+  "native_mode": "road-heads",
+  "source_hashes": {
+    "output/training/route-spatial-trainer-smoke-01/final.zip": "a6c65e73571b890e6e1e4b73c976d3e847922e083d28088b0204c87249eced1d",
+    "output/training/mini-fixed-route-01/training/final.zip": "c86c0db95e28951c3e9ed36d5a29eb94d7faa4cbddbfddaed18700dc70121eb3",
+    "output/road-cost-reward-build-02/bin/TrafficHost/release/TrafficHost.dll": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0"
+  },
+  "checkpoint_sha256": "f30e2d64fb337fd708fbfbcd5fc754256820447ee54d49a3b0d1bf00ad885d62",
+  "actor_weights_and_adam_exact": true,
+  "actor_max_error": 0.0,
+  "shared_states": 16,
+  "fresh_task_critic": false,
+  "separate_wait_encoder": true,
+  "native_critic_retained_in_template": true,
+  "native_critic_restored": true,
+  "timesteps": 754048,
+  "retained_actor_adam_parameters": 26,
+  "critic_adam_parameters": 4,
+  "gamma": 1.0,
+  "vf_coef": 1e-05,
+  "trainable": [
+    "features_extractor.growth_strategy_roads.0.weight",
+    "features_extractor.growth_strategy_roads.0.bias",
+    "features_extractor.growth_strategy_roads.2.weight",
+    "features_extractor.growth_strategy_roads.2.bias",
+    "features_extractor.growth_strategy_spatial_roads.weight",
+    "features_extractor.growth_strategy_spatial_roads.bias",
+    "value_net.0.weight",
+    "value_net.0.bias",
+    "value_net.2.weight",
+    "value_net.2.bias"
+  ],
+  "limits": "Migration only. Practice critic differs from native critic; original parent/template and lesson checkpoints remain intact. No production launch or promotion."
+}

@@ -1,0 +1,106 @@
+{
+  "service": "mini-motorways-shared-edge-pilot-02.service",
+  "started_asia_beirut": "2026-11-19T23:38:06+02:00",
+  "attempt_budget": 32768,
+  "wall_seconds": 600,
+  "run": "output/training/shared-edge-pilot-02",
+  "log": "output/training/shared-edge-pilot-02-launch/training.log",
+  "resume": {
+    "parent_checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/shared-edge-pilot-01/latest.pt",
+    "parent_sha256": "2e775c63fc6234bf27e118f19c70497e860f0b114f2a767d23ec89f38ab14833",
+    "parent_counters": {
+      "tokens": 131072,
+      "updates": 256,
+      "version": 64,
+      "episodes": 131072,
+      "worker_episodes": [
+        8192,
+        8192,
+        8192,
+        8192,
+        8192,
+        8192,
+        8192,
+        8192,
+        8192,
+        8192,
+        8192,
+        8192,
+        8192,
+        8192,
+        8192,
+        8192
+      ],
+      "worker_seed_indices": [
+        8191,
+        8191,
+        8191,
+        8191,
+        8191,
+        8191,
+        8191,
+        8191,
+        8191,
+        8191,
+        8191,
+        8191,
+        8191,
+        8191,
+        8191,
+        8191
+      ]
+    },
+    "game_state": "fresh games; unfinished parent games skipped, no bit-exact simulation continuation"
+  },
+  "first_rollout": {
+    "tokens": 133120,
+    "updates": 260,
+    "version": 65,
+    "episodes": 133120,
+    "collection_seconds": 20.270877853035927,
+    "update_seconds": 2.1710545979440212,
+    "score": 0.0,
+    "worker_tokens": {
+      "1": 128,
+      "2": 128,
+      "3": 128,
+      "4": 128,
+      "5": 128,
+      "6": 128,
+      "7": 128,
+      "8": 128,
+      "9": 128,
+      "10": 128,
+      "11": 128,
+      "12": 128,
+      "13": 128,
+      "14": 128,
+      "15": 128,
+      "16": 128
+    },
+    "update_diagnostics": [
+      {
+        "epoch": 0,
+        "approximate_kl": 0.0,
+        "gradient_norm": 4.941610336303711
+      },
+      {
+        "epoch": 1,
+        "approximate_kl": 0.0006197644688654691,
+        "gradient_norm": 4.684252738952637
+      },
+      {
+        "epoch": 2,
+        "approximate_kl": 0.0024490834766766056,
+        "gradient_norm": 4.438119888305664
+      },
+      {
+        "epoch": 3,
+        "approximate_kl": 0.005441958870505914,
+        "gradient_norm": 2.3751683235168457
+      }
+    ],
+    "successful_builds": 1622,
+    "build_attempts": 2048
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "source_sha256": "2f0c6c4a46be0e4131182782f89a9e0b7c1a8a5b03c448582fd698d3c06e78da",
+  "observation_sha256": "baa4dad6f235a3ca6e57e6151e598f14c68457650fa544c96fe878876d04b7ee",
+  "native_sha256": "1099635b52e65087a4510d1a58f98fbd2b9fc8fa5c247530312ea33646788ee0",
+  "checkpoint": null,
+  "stages": [
+    "traffic-priority-three",
+    "traffic-priority-three-shift"
+  ],
+  "start": 0,
+  "horizon": 60,
+  "wait_ticks": 200,
+  "warm_seconds": 18,
+  "decisions": 36864,
+  "wall_seconds": 1800,
+  "device": "cuda",
+  "workers": 12,
+  "seed": 42,
+  "seed_start": 2840000,
+  "learning_rate": 0.0012,
+  "entropy": 0.018,
+  "wait_logit_offset": 0.0,
+  "roots": true,
+  "flow": false,
+  "flow_relation": false,
+  "demand_relation": true,
+  "reward": "native tripsDelta only",
+  "teacher_actions": false,
+  "forced_wait_compaction": true
+}

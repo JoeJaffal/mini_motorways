@@ -216,13 +216,16 @@ namespace MotorwaysSim
     }
     public sealed class VehicleState
     {
+        public bool Visible;
         public int Id,HomeId,ShopId,Color,ParkingSlot;public TripStage Stage;
         public Cell At,Next;public double X,Y,HeadingX,HeadingY,Speed,Acceleration,Waiting,Progress;
         public string Obstacle;public Cell[] Route,ReturnRoute;
     }
     public sealed class BuildingState
     {
-        public int Id,Color,Width,Height,Demand,Reserved,DrivewayDirection,Layout,DemandCapacity;public Cell Cell,Entrance;public bool IsHouse,FeasibilityVerified,Upgraded,SharedLot,IsStation;
+        public bool WarningVisible;
+        public int Id,Color,Width,Height,Demand,Reserved,DrivewayDirection,Layout,DemandCapacity;
+        public double Served;public Cell Cell,Entrance;public bool IsHouse,FeasibilityVerified,Upgraded,SharedLot,IsStation;
         public int CarparkId,DestinationSlot;public Cell[] Entrances,Platform;public int[] EntranceDirections;
         public double? UpgradeAt;public double PlannedDemandMultiplier;
         public double OvercrowdedFor,OriginalDemandInterval;public double? FeasibleDemandInterval;public int[] Parking;

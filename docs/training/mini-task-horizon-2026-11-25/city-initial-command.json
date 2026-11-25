@@ -1,0 +1,11 @@
+[
+  "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+  "-u",
+  "/home/mohammadjaffal/mini_motorways/output/training/mini-horizon-comparison-01/runtime/training/evaluate_overnight_city.py",
+  "--output",
+  "/home/mohammadjaffal/mini_motorways/output/training/mini-horizon-comparison-01/evaluation/city-initial",
+  "--dll",
+  "/home/mohammadjaffal/mini_motorways/output/training/mini-horizon-comparison-01/runtime/host/TrafficHost.dll",
+  "--checkpoint",
+  "/home/mohammadjaffal/mini_motorways/output/training/city-whole-initial-01/start.zip"
+]

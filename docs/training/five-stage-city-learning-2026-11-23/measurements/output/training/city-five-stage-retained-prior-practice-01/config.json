@@ -1,0 +1,22 @@
+{
+  "models": [
+    "output/training/city-five-stage-retained-prior-01/candidate.zip"
+  ],
+  "hashes": {
+    "output/training/city-five-stage-retained-prior-01/candidate.zip": "faddae850d03ea979406f0643237b490d49c713b88dbbea1c22607e770a9bc4c"
+  },
+  "dll": "output/city-five-stage-build-01/bin/TrafficHost/release/TrafficHost.dll",
+  "host_sha256": "3cdfa9ceaf8d938bdc94173b71c5ef0035c54f038f66133d12c6f0e0ad1278ec",
+  "seed_start": 118200000,
+  "count": 8,
+  "lessons": [
+    "midgame-network-join",
+    "midgame-network-route",
+    "midgame-network-delay",
+    "midgame-network-quiet",
+    "traffic-priority-established",
+    "traffic-priority-established-swap",
+    "traffic-junction-low-live",
+    "traffic-junction-high-live"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "models": [
+    "/home/mohammadjaffal/mini_motorways/output/training/city-five-stage-traffic-initial-01/start.zip"
+  ],
+  "hashes": {
+    "/home/mohammadjaffal/mini_motorways/output/training/city-five-stage-traffic-initial-01/start.zip": "4033152b5b690a9f93c1a35dc4dff1e105844ee8f72f4e49c5f0c8809dadc839"
+  },
+  "dll": "/home/mohammadjaffal/mini_motorways/output/city-five-stage-build-01/bin/TrafficHost/release/TrafficHost.dll",
+  "host_sha256": "3cdfa9ceaf8d938bdc94173b71c5ef0035c54f038f66133d12c6f0e0ad1278ec",
+  "seed_start": 118200000,
+  "count": 8,
+  "lessons": [
+    "traffic-priority-established",
+    "traffic-priority-established-swap",
+    "traffic-junction-low-live",
+    "traffic-junction-high-live"
+  ]
+}

@@ -1,0 +1,46 @@
+--- a/simulation/Assets/Simulation/TrafficPractice.cs
++++ b/simulation/Assets/Simulation/TrafficPractice.cs
+@@ -53,14 +53,16 @@
+             int c0=rng.Next(3);
+             int c1=(c0+rng.Next(1,3))%3;
+             bool priority=exercise=="traffic-priority"||exercise=="traffic-priority-swap";
+-            bool high=exercise=="traffic-junction-high";
+-            if (!priority && !high && exercise!="traffic-junction-low")
++            var parts=exercise.Split('-');
++            bool high=parts.Length>2 && parts[2]=="high";
++            string profile=parts.Length>3 ? parts[3] : "standard";
++            if (!priority && (parts.Length<3 || parts[1]!="junction" || (parts[2]!="low" && !high)))
+                 throw new ArgumentException("Unknown traffic practice exercise");
+             bool upperBusy=rng.Next(2)==0;
+             if (exercise=="traffic-priority-swap") upperBusy=!upperBusy;
+-            var aShop=Shop(priority ? 3 : 5,c0,priority ? (upperBusy ? 1.65 : .35) : high ? 2.9 : .15,
++            var aShop=Shop(priority ? 3 : 5,c0,priority ? (upperBusy ? 1.65 : .35) : high ? 3.4 : .22,
+                            priority ? (upperBusy ? 4 : 0) : high ? 4 : 0);
+-            var bShop=Shop(priority ? 9 : 8,c1,priority ? (upperBusy ? .35 : 1.65) : high ? 2.3 : 1.1,
++            var bShop=Shop(priority ? 9 : 8,c1,priority ? (upperBusy ? .35 : 1.65) : 2.25,
+                            priority ? (upperBusy ? 0 : 4) : 0);
+             Array.Clear(Inventory,0,Inventory.Length);
+             Inventory[0]=100;
+@@ -94,10 +96,19 @@
+                 Path("",-1,(2,8),(3,8));
+                 Path("share",1,(3,8),(4,7),(4,6),(5,5));
+                 Path("",-1,(8,5),(9,6),(9,7),(9,8));
+-                Path("separate",1,(3,8),(3,9),(3,10),(3,11),(4,11),(5,11),
+-                    (6,11),(7,11),(8,11),(9,10),(9,9),(9,8));
++                if (profile=="standard")
++                    Path("separate",1,(3,8),(3,9),(3,10),(3,11),(4,11),(5,11),
++                        (6,11),(7,11),(8,11),(9,10),(9,9),(9,8));
++                else if (profile=="long")
++                    Path("separate",1,(3,8),(3,9),(3,10),(3,11),(4,12),(5,12),
++                        (6,12),(7,12),(8,12),(9,11),(9,10),(9,9),(9,8));
++                else if (profile=="extra")
++                    Path("separate",1,(3,8),(3,9),(3,10),(3,11),(3,12),(4,13),(5,13),
++                        (6,13),(7,13),(8,13),(9,12),(9,11),(9,10),(9,9),(9,8));
++                else
++                    throw new ArgumentException("Unknown bypass profile");
+                 aShop.DemandCountdown=.1;
+-                bShop.DemandCountdown=high ? 4 : 12;
++                bShop.DemandCountdown=4;
+             }
+             // Declared building sites and corridors are the available dry land.
+             // The normal native legality checker remains responsible for every edit.

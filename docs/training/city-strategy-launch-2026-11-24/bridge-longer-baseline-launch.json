@@ -1,0 +1,25 @@
+{
+  "pid": 316552,
+  "command": [
+    "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+    "-u",
+    "training/evaluate_city_service.py",
+    "--dll",
+    "output/city-bridge-connection-build-01/bin/TrafficHost/release/TrafficHost.dll",
+    "--checkpoints",
+    "output/training/city-five-stage-cold-initial-01/candidate.zip",
+    "output/training/city-strategy-original-delay-01/segment-001/final.zip",
+    "--output",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-longer-baseline-01",
+    "--games",
+    "32",
+    "--seed",
+    "950241",
+    "--workers",
+    "8",
+    "--horizon",
+    "1200",
+    "--allow-bridges"
+  ],
+  "note": "Frozen same-profile1200s baseline; no learner."
+}

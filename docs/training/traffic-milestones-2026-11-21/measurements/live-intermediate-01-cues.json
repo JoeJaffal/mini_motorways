@@ -1,0 +1,873 @@
+{
+  "checkpoint_sha256": "8e1f060894947d7e50821b2ed83f12e0a5fe3d3d5f6d3f6a4127f7e5ba3bfc72",
+  "fingerprint": "c98801571b7631f541c18feff769aca2bf2ba737892174a85261df122faefdd2",
+  "native_sha256": "d4207df2276a3d4935f0d479f9d5480663a43a894e5646424d4691a784a8d8fa",
+  "cues": {
+    "79200": {
+      "traffic-junction-low-live": {
+        "native": {
+          "wait": 0.020145675167441368,
+          "feeder": 0.23940184712409973,
+          "separate-exit": 0.159481942653656,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.017110472545027733,
+          "feeder": 0.24760757386684418,
+          "separate-exit": 0.15133565664291382,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.0193307027220726,
+          "feeder": 0.24014857411384583,
+          "separate-exit": 0.15909221768379211,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.01643519476056099,
+          "feeder": 0.24838031828403473,
+          "separate-exit": 0.15097691118717194,
+          "top_action": 294
+        }
+      },
+      "traffic-junction-high-live": {
+        "native": {
+          "wait": 0.01643519476056099,
+          "feeder": 0.24838031828403473,
+          "separate-exit": 0.15097691118717194,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.0193307027220726,
+          "feeder": 0.24014857411384583,
+          "separate-exit": 0.15909221768379211,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.017110472545027733,
+          "feeder": 0.24760757386684418,
+          "separate-exit": 0.15133565664291382,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.020145675167441368,
+          "feeder": 0.23940184712409973,
+          "separate-exit": 0.159481942653656,
+          "top_action": 294
+        }
+      }
+    },
+    "79201": {
+      "traffic-junction-low-live": {
+        "native": {
+          "wait": 0.019652731716632843,
+          "feeder": 0.281240314245224,
+          "separate-exit": 0.12193906307220459,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.017877308651804924,
+          "feeder": 0.2806859314441681,
+          "separate-exit": 0.12129407376050949,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.01823892630636692,
+          "feeder": 0.28086552023887634,
+          "separate-exit": 0.1205306276679039,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.01666238345205784,
+          "feeder": 0.280128538608551,
+          "separate-exit": 0.11985702812671661,
+          "top_action": 252
+        }
+      },
+      "traffic-junction-high-live": {
+        "native": {
+          "wait": 0.01666238345205784,
+          "feeder": 0.280128538608551,
+          "separate-exit": 0.11985702812671661,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.01823892630636692,
+          "feeder": 0.28086552023887634,
+          "separate-exit": 0.1205306276679039,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.017877308651804924,
+          "feeder": 0.2806859314441681,
+          "separate-exit": 0.12129407376050949,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.019652731716632843,
+          "feeder": 0.281240314245224,
+          "separate-exit": 0.12193906307220459,
+          "top_action": 252
+        }
+      }
+    },
+    "79202": {
+      "traffic-junction-low-live": {
+        "native": {
+          "wait": 0.020225252956151962,
+          "feeder": 0.27914029359817505,
+          "separate-exit": 0.11975189298391342,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.016641711816191673,
+          "feeder": 0.28112512826919556,
+          "separate-exit": 0.11117621511220932,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.01903134398162365,
+          "feeder": 0.2812981605529785,
+          "separate-exit": 0.11596453189849854,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.015653030946850777,
+          "feeder": 0.2826460301876068,
+          "separate-exit": 0.10882965475320816,
+          "top_action": 252
+        }
+      },
+      "traffic-junction-high-live": {
+        "native": {
+          "wait": 0.015653030946850777,
+          "feeder": 0.2826460301876068,
+          "separate-exit": 0.10882965475320816,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.01903134398162365,
+          "feeder": 0.2812981605529785,
+          "separate-exit": 0.11596453189849854,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.016641711816191673,
+          "feeder": 0.28112512826919556,
+          "separate-exit": 0.11117621511220932,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.020225252956151962,
+          "feeder": 0.27914029359817505,
+          "separate-exit": 0.11975189298391342,
+          "top_action": 252
+        }
+      }
+    },
+    "79203": {
+      "traffic-junction-low-live": {
+        "native": {
+          "wait": 0.02144911326467991,
+          "feeder": 0.23940028250217438,
+          "separate-exit": 0.15299460291862488,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.018002068623900414,
+          "feeder": 0.23863700032234192,
+          "separate-exit": 0.1488276571035385,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.019437642768025398,
+          "feeder": 0.2433488816022873,
+          "separate-exit": 0.1532973349094391,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.016273533925414085,
+          "feeder": 0.2415616512298584,
+          "separate-exit": 0.14850486814975739,
+          "top_action": 294
+        }
+      },
+      "traffic-junction-high-live": {
+        "native": {
+          "wait": 0.016273533925414085,
+          "feeder": 0.2415616512298584,
+          "separate-exit": 0.14850486814975739,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.019437642768025398,
+          "feeder": 0.2433488816022873,
+          "separate-exit": 0.1532973349094391,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.018002068623900414,
+          "feeder": 0.23863700032234192,
+          "separate-exit": 0.1488276571035385,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.02144911326467991,
+          "feeder": 0.23940028250217438,
+          "separate-exit": 0.15299460291862488,
+          "top_action": 294
+        }
+      }
+    },
+    "79204": {
+      "traffic-junction-low-live": {
+        "native": {
+          "wait": 0.020480308681726456,
+          "feeder": 0.27313029766082764,
+          "separate-exit": 0.12043622881174088,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.015751788392663002,
+          "feeder": 0.2702784240245819,
+          "separate-exit": 0.11833009868860245,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.019028516486287117,
+          "feeder": 0.2733285129070282,
+          "separate-exit": 0.11927124112844467,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.014666981995105743,
+          "feeder": 0.2696134150028229,
+          "separate-exit": 0.11687015742063522,
+          "top_action": 252
+        }
+      },
+      "traffic-junction-high-live": {
+        "native": {
+          "wait": 0.014666981995105743,
+          "feeder": 0.2696134150028229,
+          "separate-exit": 0.11687015742063522,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.019028516486287117,
+          "feeder": 0.2733285129070282,
+          "separate-exit": 0.11927124112844467,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.015751788392663002,
+          "feeder": 0.2702784240245819,
+          "separate-exit": 0.11833009868860245,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.020480308681726456,
+          "feeder": 0.27313029766082764,
+          "separate-exit": 0.12043622881174088,
+          "top_action": 252
+        }
+      }
+    },
+    "79205": {
+      "traffic-junction-low-live": {
+        "native": {
+          "wait": 0.02034412883222103,
+          "feeder": 0.2745544910430908,
+          "separate-exit": 0.106727235019207,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.01656210795044899,
+          "feeder": 0.27075719833374023,
+          "separate-exit": 0.10640225559473038,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.019364139065146446,
+          "feeder": 0.27434179186820984,
+          "separate-exit": 0.10591085255146027,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.015812432393431664,
+          "feeder": 0.2701874077320099,
+          "separate-exit": 0.1054934561252594,
+          "top_action": 252
+        }
+      },
+      "traffic-junction-high-live": {
+        "native": {
+          "wait": 0.015812432393431664,
+          "feeder": 0.2701874077320099,
+          "separate-exit": 0.1054934561252594,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.019364139065146446,
+          "feeder": 0.27434179186820984,
+          "separate-exit": 0.10591085255146027,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.01656210795044899,
+          "feeder": 0.27075719833374023,
+          "separate-exit": 0.10640225559473038,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.02034412883222103,
+          "feeder": 0.2745544910430908,
+          "separate-exit": 0.106727235019207,
+          "top_action": 252
+        }
+      }
+    },
+    "79206": {
+      "traffic-junction-low-live": {
+        "native": {
+          "wait": 0.02047237753868103,
+          "feeder": 0.23925061523914337,
+          "separate-exit": 0.1578550487756729,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.017369050532579422,
+          "feeder": 0.2378181666135788,
+          "separate-exit": 0.15627993643283844,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.019444100558757782,
+          "feeder": 0.2402918040752411,
+          "separate-exit": 0.15745148062705994,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.016489842906594276,
+          "feeder": 0.23827970027923584,
+          "separate-exit": 0.15552596747875214,
+          "top_action": 294
+        }
+      },
+      "traffic-junction-high-live": {
+        "native": {
+          "wait": 0.016489842906594276,
+          "feeder": 0.23827970027923584,
+          "separate-exit": 0.15552596747875214,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.019444100558757782,
+          "feeder": 0.2402918040752411,
+          "separate-exit": 0.15745148062705994,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.017369050532579422,
+          "feeder": 0.2378181666135788,
+          "separate-exit": 0.15627993643283844,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.02047237753868103,
+          "feeder": 0.23925061523914337,
+          "separate-exit": 0.1578550487756729,
+          "top_action": 294
+        }
+      }
+    },
+    "79207": {
+      "traffic-junction-low-live": {
+        "native": {
+          "wait": 0.021994927898049355,
+          "feeder": 0.2487708330154419,
+          "separate-exit": 0.14738130569458008,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.018028251826763153,
+          "feeder": 0.25072193145751953,
+          "separate-exit": 0.15034905076026917,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.02066534012556076,
+          "feeder": 0.2506595849990845,
+          "separate-exit": 0.14803971350193024,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.01707099750638008,
+          "feeder": 0.25286930799484253,
+          "separate-exit": 0.14797033369541168,
+          "top_action": 294
+        }
+      },
+      "traffic-junction-high-live": {
+        "native": {
+          "wait": 0.01707099750638008,
+          "feeder": 0.25286930799484253,
+          "separate-exit": 0.14797033369541168,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.02066534012556076,
+          "feeder": 0.2506595849990845,
+          "separate-exit": 0.14803971350193024,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.018028251826763153,
+          "feeder": 0.25072193145751953,
+          "separate-exit": 0.15034905076026917,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.021994927898049355,
+          "feeder": 0.2487708330154419,
+          "separate-exit": 0.14738130569458008,
+          "top_action": 294
+        }
+      }
+    },
+    "79208": {
+      "traffic-junction-low-live": {
+        "native": {
+          "wait": 0.02177301235496998,
+          "feeder": 0.27324143052101135,
+          "separate-exit": 0.11655037850141525,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.0180423054844141,
+          "feeder": 0.27497854828834534,
+          "separate-exit": 0.11407945305109024,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.020476404577493668,
+          "feeder": 0.2753302752971649,
+          "separate-exit": 0.1130894348025322,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.017011580988764763,
+          "feeder": 0.27677789330482483,
+          "separate-exit": 0.1109662726521492,
+          "top_action": 252
+        }
+      },
+      "traffic-junction-high-live": {
+        "native": {
+          "wait": 0.017011580988764763,
+          "feeder": 0.27677789330482483,
+          "separate-exit": 0.1109662726521492,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.020476404577493668,
+          "feeder": 0.2753302752971649,
+          "separate-exit": 0.1130894348025322,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.0180423054844141,
+          "feeder": 0.27497854828834534,
+          "separate-exit": 0.11407945305109024,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.02177301235496998,
+          "feeder": 0.27324143052101135,
+          "separate-exit": 0.11655037850141525,
+          "top_action": 252
+        }
+      }
+    },
+    "79209": {
+      "traffic-junction-low-live": {
+        "native": {
+          "wait": 0.019597405567765236,
+          "feeder": 0.24251781404018402,
+          "separate-exit": 0.14926184713840485,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.017587263137102127,
+          "feeder": 0.24112847447395325,
+          "separate-exit": 0.1453842669725418,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.018787216395139694,
+          "feeder": 0.2431120127439499,
+          "separate-exit": 0.1487993746995926,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.016860658302903175,
+          "feeder": 0.241795152425766,
+          "separate-exit": 0.1449916809797287,
+          "top_action": 294
+        }
+      },
+      "traffic-junction-high-live": {
+        "native": {
+          "wait": 0.016860658302903175,
+          "feeder": 0.241795152425766,
+          "separate-exit": 0.1449916809797287,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.018787216395139694,
+          "feeder": 0.2431120127439499,
+          "separate-exit": 0.1487993746995926,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.017587263137102127,
+          "feeder": 0.24112847447395325,
+          "separate-exit": 0.1453842669725418,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.019597405567765236,
+          "feeder": 0.24251781404018402,
+          "separate-exit": 0.14926184713840485,
+          "top_action": 294
+        }
+      }
+    },
+    "79210": {
+      "traffic-junction-low-live": {
+        "native": {
+          "wait": 0.018820589408278465,
+          "feeder": 0.23580557107925415,
+          "separate-exit": 0.1731078177690506,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.017479674890637398,
+          "feeder": 0.23329228162765503,
+          "separate-exit": 0.1803940087556839,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.01752578653395176,
+          "feeder": 0.2387865036725998,
+          "separate-exit": 0.16731366515159607,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.016253773123025894,
+          "feeder": 0.23627109825611115,
+          "separate-exit": 0.1743515133857727,
+          "top_action": 294
+        }
+      },
+      "traffic-junction-high-live": {
+        "native": {
+          "wait": 0.016253773123025894,
+          "feeder": 0.23627109825611115,
+          "separate-exit": 0.1743515133857727,
+          "top_action": 294
+        },
+        "traffic": {
+          "wait": 0.01752578653395176,
+          "feeder": 0.2387865036725998,
+          "separate-exit": 0.16731366515159607,
+          "top_action": 294
+        },
+        "demand": {
+          "wait": 0.017479674890637398,
+          "feeder": 0.23329228162765503,
+          "separate-exit": 0.1803940087556839,
+          "top_action": 294
+        },
+        "traffic_and_demand": {
+          "wait": 0.018820589408278465,
+          "feeder": 0.23580557107925415,
+          "separate-exit": 0.1731078177690506,
+          "top_action": 294
+        }
+      }
+    },
+    "79211": {
+      "traffic-junction-low-live": {
+        "native": {
+          "wait": 0.0220992099493742,
+          "feeder": 0.28919336199760437,
+          "separate-exit": 0.1126612052321434,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.017400437965989113,
+          "feeder": 0.2836078703403473,
+          "separate-exit": 0.1093021035194397,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.02090567909181118,
+          "feeder": 0.2906000316143036,
+          "separate-exit": 0.11211640387773514,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.016425859183073044,
+          "feeder": 0.2834870219230652,
+          "separate-exit": 0.10824666172266006,
+          "top_action": 252
+        }
+      },
+      "traffic-junction-high-live": {
+        "native": {
+          "wait": 0.016425859183073044,
+          "feeder": 0.2834870219230652,
+          "separate-exit": 0.10824666172266006,
+          "top_action": 252
+        },
+        "traffic": {
+          "wait": 0.02090567909181118,
+          "feeder": 0.2906000316143036,
+          "separate-exit": 0.11211640387773514,
+          "top_action": 252
+        },
+        "demand": {
+          "wait": 0.017400437965989113,
+          "feeder": 0.2836078703403473,
+          "separate-exit": 0.1093021035194397,
+          "top_action": 252
+        },
+        "traffic_and_demand": {
+          "wait": 0.0220992099493742,
+          "feeder": 0.28919336199760437,
+          "separate-exit": 0.1126612052321434,
+          "top_action": 252
+        }
+      }
+    }
+  },
+  "crossings": {
+    "79200": {
+      "feeder": {
+        "b_cars_seen": 7,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 5,
+          "1": 1
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 4,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      }
+    },
+    "79201": {
+      "feeder": {
+        "b_cars_seen": 10,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 7,
+          "1": 2
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 3,
+        "served": {
+          "0": 7,
+          "1": 2
+        }
+      }
+    },
+    "79202": {
+      "feeder": {
+        "b_cars_seen": 7,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 6,
+          "1": 2
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 4,
+        "served": {
+          "0": 7,
+          "1": 3
+        }
+      }
+    },
+    "79203": {
+      "feeder": {
+        "b_cars_seen": 7,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 3,
+        "served": {
+          "0": 8,
+          "1": 2
+        }
+      }
+    },
+    "79204": {
+      "feeder": {
+        "b_cars_seen": 10,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 5,
+          "1": 3
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 4,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      }
+    },
+    "79205": {
+      "feeder": {
+        "b_cars_seen": 9,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 4,
+          "1": 1
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 4,
+        "served": {
+          "0": 6,
+          "1": 2
+        }
+      }
+    },
+    "79206": {
+      "feeder": {
+        "b_cars_seen": 9,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 6,
+          "1": 2
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 4,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      }
+    },
+    "79207": {
+      "feeder": {
+        "b_cars_seen": 8,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 5,
+          "1": 3
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 3,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      }
+    },
+    "79208": {
+      "feeder": {
+        "b_cars_seen": 8,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 4,
+        "served": {
+          "0": 6,
+          "1": 4
+        }
+      }
+    },
+    "79209": {
+      "feeder": {
+        "b_cars_seen": 10,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 6,
+          "1": 1
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 3,
+        "served": {
+          "0": 6,
+          "1": 2
+        }
+      }
+    },
+    "79210": {
+      "feeder": {
+        "b_cars_seen": 7,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 4,
+        "served": {
+          "0": 6,
+          "1": 4
+        }
+      }
+    },
+    "79211": {
+      "feeder": {
+        "b_cars_seen": 8,
+        "b_cars_observed_crossing": 0,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      },
+      "separate-exit": {
+        "b_cars_seen": 4,
+        "b_cars_observed_crossing": 4,
+        "served": {
+          "0": 6,
+          "1": 3
+        }
+      }
+    }
+  }
+}

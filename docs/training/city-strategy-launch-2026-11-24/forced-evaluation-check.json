@@ -1,0 +1,46 @@
+{
+  "rows": [
+    {
+      "case": "traffic-priority-established",
+      "old_seconds": 8.644739098032005,
+      "new_seconds": 1.2474321550689638,
+      "exact": true
+    },
+    {
+      "case": "traffic-priority-established-swap",
+      "old_seconds": 5.127591258031316,
+      "new_seconds": 0.7374826510204002,
+      "exact": true
+    },
+    {
+      "case": "midgame-network-reserve",
+      "old_seconds": 5.085657567018643,
+      "new_seconds": 1.5537726449547336,
+      "exact": true
+    },
+    {
+      "case": "midgame-network-route",
+      "old_seconds": 4.691510352073237,
+      "new_seconds": 0.9098063879646361,
+      "exact": true
+    },
+    {
+      "case": "city",
+      "seed": 99005063,
+      "action_seed": 1419396886,
+      "old_seconds": 13.860964316991158,
+      "new_seconds": 5.533730815979652,
+      "exact": true
+    },
+    {
+      "case": "city",
+      "seed": 99265995,
+      "action_seed": 13757151,
+      "old_seconds": 36.44256535405293,
+      "new_seconds": 23.66194182401523,
+      "exact": true
+    }
+  ],
+  "checkpoint_sha256": "d9bb06324d1641f588e49c5cd95da0d0027f49f967eaef3b92d065ea8f199cd3",
+  "note": "Only singleton-mask neural inference skipped. All native steps, observation histories and action RNG draws remain unchanged."
+}

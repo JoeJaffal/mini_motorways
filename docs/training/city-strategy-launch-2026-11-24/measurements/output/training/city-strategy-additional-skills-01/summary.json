@@ -1,0 +1,60 @@
+{
+  "midgame-network-reserve": {
+    "0": {
+      "games": 64,
+      "mean_score": 3.625,
+      "successes": 7,
+      "mean_builds": 4.1875,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.34375,
+      "mean_stock_at_arrival": 0.9841269841269841,
+      "future_pairs_visible": 63
+    },
+    "1": {
+      "games": 64,
+      "mean_score": 4.640625,
+      "successes": 32,
+      "mean_builds": 3.84375,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 3.34375,
+      "mean_stock_at_arrival": 2.203125,
+      "future_pairs_visible": 64
+    }
+  },
+  "traffic-priority-established": {
+    "0": {
+      "games": 64,
+      "mean_score": 10.640625,
+      "successes": 32,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 7.734375
+    },
+    "1": {
+      "games": 64,
+      "mean_score": 17.59375,
+      "successes": 64,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 15.71875
+    }
+  },
+  "traffic-priority-established-swap": {
+    "0": {
+      "games": 64,
+      "mean_score": 11.265625,
+      "successes": 35,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 8.390625
+    },
+    "1": {
+      "games": 64,
+      "mean_score": 17.484375,
+      "successes": 64,
+      "mean_builds": 1.0,
+      "mean_stock": 0.0,
+      "mean_urgent_deliveries": 15.609375
+    }
+  }
+}

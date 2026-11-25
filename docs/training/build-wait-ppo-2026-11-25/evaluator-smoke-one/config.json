@@ -1,0 +1,40 @@
+{
+  "checkpoint": "output/training/build-wait-smoke-initial-01/start.zip",
+  "checkpoint_sha256": "5086f5a95025af78362869ab5ae7cd4014498cca9c841cdf82e97d705b801c96",
+  "host_sha256": "3077ce7593b062d8c756116435346ce956ff1961a073aa74ffda55282903ee1e",
+  "native": false,
+  "jobs": [
+    [
+      "destinations",
+      244030000
+    ],
+    [
+      "homes",
+      244030000
+    ],
+    [
+      "join",
+      244030000
+    ],
+    [
+      "match",
+      244030000
+    ],
+    [
+      "mismatch",
+      244030000
+    ],
+    [
+      "quiet",
+      244030000
+    ],
+    [
+      "route",
+      244030000
+    ]
+  ],
+  "workers": 1,
+  "split": "validation",
+  "observation_horizon": 600,
+  "limits": "First-group correctness and native60second behavior are different metrics. No native city promotion inferred."
+}

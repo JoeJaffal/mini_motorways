@@ -1,0 +1,15 @@
+[
+  "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+  "-u",
+  "/home/mohammadjaffal/mini_motorways/training/run_fixed_mini.py",
+  "--output",
+  "/home/mohammadjaffal/mini_motorways/output/training/mini-fixed-route-02",
+  "--archive",
+  "/home/mohammadjaffal/mini_motorways/docs/training/mini-fixed-route-continuation-2026-11-25",
+  "--parent",
+  "/home/mohammadjaffal/mini_motorways/output/training/mini-fixed-route-01/training/final.zip",
+  "--seed",
+  "232000001",
+  "--rollouts",
+  "8"
+]

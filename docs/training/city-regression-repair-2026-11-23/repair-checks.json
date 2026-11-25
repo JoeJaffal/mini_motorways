@@ -1,0 +1,29 @@
+{
+  "checkpoint": "output/training/city-established-pilot-01/checkpoints/city-000425984-7ec13846.zip",
+  "sha256": "637dcd6f1e05ac61869e7b7ecb9e0a31fb41e8305ae5c89b091218a8a3fd651a",
+  "cases": [
+    {
+      "seed": 99161630,
+      "prior_score": 14,
+      "score": 14,
+      "first_delivery": 23,
+      "protected_states": 32
+    },
+    {
+      "seed": 99312933,
+      "prior_score": 4,
+      "score": 4,
+      "first_delivery": 95,
+      "protected_states": 108
+    },
+    {
+      "seed": 99324387,
+      "prior_score": 158,
+      "score": 156,
+      "first_delivery": 32,
+      "protected_states": 35
+    }
+  ],
+  "opening_weights_exact": true,
+  "spatial_weights_updated": true
+}

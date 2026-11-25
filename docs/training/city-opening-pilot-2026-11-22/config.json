@@ -1,0 +1,29 @@
+{
+  "parent": "output/training/city-overnight-01/checkpoints/city-006234112-96926793.zip",
+  "parent_sha256": "a65357dea3e889525bfdc18743dbbeb02141ad244934b270217afad7a472df29",
+  "host": "output/city-road-preflight-build/bin/TrafficHost/release/TrafficHost.dll",
+  "host_sha256": "2da58a5aeefa0e7d3416302d4532724b253e9ede05a998fccf40a324aeb5fe23",
+  "workers": 32,
+  "rollouts_per_save": 8,
+  "total_added_decisions": 65536,
+  "initial_decisions": 6234112,
+  "optimizer_entries": 22,
+  "initial_epochs": 6088,
+  "lr": 5e-05,
+  "seed": 682979,
+  "rollout_steps": 128,
+  "batch_size": 64,
+  "epochs": 4,
+  "gamma": 1.0,
+  "gae_lambda": 0.95,
+  "target_kl": 0.03,
+  "entropy_coefficient": 0.01,
+  "horizons": {
+    "native": 1200,
+    "observation": 600
+  },
+  "training_seed_range": [
+    79100000,
+    79500000
+  ]
+}

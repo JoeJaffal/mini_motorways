@@ -1,0 +1,31 @@
+{
+  "pid": 169555,
+  "command": [
+    "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+    "-u",
+    "training/train_city_curriculum.py",
+    "--dll",
+    "output/city-road-reserve-build-01/bin/TrafficHost/release/TrafficHost.dll",
+    "--parent",
+    "output/training/city-strategy-wide-pilot-03/final.zip",
+    "--output",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-mixed-pilot-01",
+    "--stage",
+    "strategy-mixed",
+    "--rollouts",
+    "8",
+    "--rollout-steps",
+    "512",
+    "--batch-size",
+    "128",
+    "--gae-lambda",
+    "1",
+    "--seed-start",
+    "144000000",
+    "--learning-rate",
+    ".001",
+    "--collapse-forced-wait",
+    "--save-every-rollouts",
+    "1"
+  ]
+}

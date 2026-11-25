@@ -1,0 +1,76 @@
+{
+  "assignments": [
+    {
+      "worker": 0,
+      "exercise": "city"
+    },
+    {
+      "worker": 1,
+      "exercise": "city"
+    },
+    {
+      "worker": 2,
+      "exercise": "city"
+    },
+    {
+      "worker": 3,
+      "exercise": "city"
+    },
+    {
+      "worker": 4,
+      "exercise": "city"
+    },
+    {
+      "worker": 5,
+      "exercise": "city"
+    },
+    {
+      "worker": 6,
+      "exercise": "city"
+    },
+    {
+      "worker": 7,
+      "exercise": "city"
+    },
+    {
+      "worker": 8,
+      "exercise": "midgame-network-reserve"
+    },
+    {
+      "worker": 9,
+      "exercise": "midgame-network-reserve"
+    },
+    {
+      "worker": 10,
+      "exercise": "midgame-network-reserve"
+    },
+    {
+      "worker": 11,
+      "exercise": "midgame-network-reserve"
+    },
+    {
+      "worker": 12,
+      "exercise": "traffic-priority-established"
+    },
+    {
+      "worker": 13,
+      "exercise": "traffic-priority-established-swap"
+    },
+    {
+      "worker": 14,
+      "exercise": "traffic-priority-established"
+    },
+    {
+      "worker": 15,
+      "exercise": "traffic-priority-established-swap"
+    }
+  ],
+  "counts": {
+    "city": 8,
+    "midgame-network-reserve": 4,
+    "traffic-priority-established": 2,
+    "traffic-priority-established-swap": 2
+  },
+  "unique_reset_seeds": 32,
+  "native_observation_and_masks_valid": true
+}

@@ -1,0 +1,39 @@
+--- a/simulation/Assets/Simulation/TrafficPractice.cs
++++ b/simulation/Assets/Simulation/TrafficPractice.cs
+@@ -24,6 +24,7 @@
+             if (split != "train" && split != "validation")
+                 throw new ArgumentException("Unknown traffic practice split");
+             Reset(seed, ScenarioKind.EmptyLab);
++            trafficSurgeShop=null;
+             CustomScenarioId = ConstructionCurriculumId;
+             ConstructionExercise = exercise;
+             ConstructionReference.Clear();
+@@ -32,6 +33,7 @@
+             bool reflect = rng.Next(2)==0;
+             bool mirror=exercise.Contains("-mirror",StringComparison.Ordinal);
+             bool shift=exercise.Contains("-shift",StringComparison.Ordinal);
++            bool rush=exercise.Contains("-rush",StringComparison.Ordinal);
+             Cell At(int x,int y) => new Cell(origin.X+(mirror ? 11-x : x), origin.Y+(reflect ? 11-y : y));
+             var clear = new HashSet<Cell>();
+             void Clear(Cell cell) => clear.Add(cell);
+@@ -108,6 +110,11 @@
+                 Home(4,4,4,5,c0);
+                 Home(5,4,5,5,c0);
+                 Home(6,4,6,5,c0);
++                if (rush)
++                {
++                    Home(7,4,7,5,c0);
++                    Home(8,4,8,5,c0);
++                }
+                 Home(1,8,2,8,c1);
+                 Home(2,7,2,8,c1);
+                 if (economy)
+@@ -157,7 +164,7 @@
+                 {
+                     trafficSurgeShop=aShop;
+                     trafficSurgeTime=16+rng.Next(5);
+-                    trafficSurgeLoad=4.0;
++                    trafficSurgeLoad=rush ? 5.2 : 4.0;
+                 }
+             }
+             // Declared building sites and corridors are the available dry land.

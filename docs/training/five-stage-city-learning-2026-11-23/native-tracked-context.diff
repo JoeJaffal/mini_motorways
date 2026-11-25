@@ -1,0 +1,207 @@
+diff --git a/simulation/Assets/Simulation/CityDemand.cs b/simulation/Assets/Simulation/CityDemand.cs
+index 6c2b9b0..41308cc 100644
+--- a/simulation/Assets/Simulation/CityDemand.cs
++++ b/simulation/Assets/Simulation/CityDemand.cs
+@@ -131,6 +131,7 @@ namespace MotorwaysSim
+ 
+         void UpdateCity()
+         {
++            UpdateLimitedRouteGate();
+             if(!Rules.EnableCityGrowth||!CityCatalog.Maps.Contains(Scenario))return;
+             if(Rules.Version==GameVersion.OriginalReference){ScheduleOriginalHouses();ProcessOriginalPlan();return;}
+             else if(nextScheduledShop<spawnSchedule.Count&&Time>=spawnSchedule[nextScheduledShop].time)
+diff --git a/simulation/Assets/Simulation/TrafficTypes.cs b/simulation/Assets/Simulation/TrafficTypes.cs
+index 95306f4..a45d9ef 100644
+--- a/simulation/Assets/Simulation/TrafficTypes.cs
++++ b/simulation/Assets/Simulation/TrafficTypes.cs
+@@ -216,13 +216,16 @@ namespace MotorwaysSim
+     }
+     public sealed class VehicleState
+     {
++        public bool Visible;
+         public int Id,HomeId,ShopId,Color,ParkingSlot;public TripStage Stage;
+         public Cell At,Next;public double X,Y,HeadingX,HeadingY,Speed,Acceleration,Waiting,Progress;
+         public string Obstacle;public Cell[] Route,ReturnRoute;
+     }
+     public sealed class BuildingState
+     {
+-        public int Id,Color,Width,Height,Demand,Reserved,DrivewayDirection,Layout,DemandCapacity;public Cell Cell,Entrance;public bool IsHouse,FeasibilityVerified,Upgraded,SharedLot,IsStation;
++        public bool WarningVisible;
++        public int Id,Color,Width,Height,Demand,Reserved,DrivewayDirection,Layout,DemandCapacity;
++        public double Served;public Cell Cell,Entrance;public bool IsHouse,FeasibilityVerified,Upgraded,SharedLot,IsStation;
+         public int CarparkId,DestinationSlot;public Cell[] Entrances,Platform;public int[] EntranceDirections;
+         public double? UpgradeAt;public double PlannedDemandMultiplier;
+         public double OvercrowdedFor,OriginalDemandInterval;public double? FeasibleDemandInterval;public int[] Parking;
+diff --git a/simulation/Assets/Simulation/TrafficWorld.cs b/simulation/Assets/Simulation/TrafficWorld.cs
+index 16160ea..d7f61ca 100644
+--- a/simulation/Assets/Simulation/TrafficWorld.cs
++++ b/simulation/Assets/Simulation/TrafficWorld.cs
+@@ -74,7 +74,7 @@ namespace MotorwaysSim
+             if(Rules.TickSeconds<=0||Rules.CarsPerHouse!=2)throw new ArgumentException("Positive tick duration and two cars per house are required");
+             if(!Rules.UseOriginalIntersectionRules)throw new NotSupportedException("The Lebanese legal alternative remains undecided and is not implemented");
+             Seed=seed;Scenario=scenario;random=new SimulationRandom(seed,Rules.Version);Time=0;TickCount=0;ConstructionSpent=0;TripsCompleted=0;Failed=false;
+-            CustomScenarioId=null;customScenarioBounds=null;
++            CustomScenarioId=null;customScenarioBounds=null;routePracticeGate=null;
+             Buildings.Clear();Cars.Clear();Events.Clear();Roundabouts.Clear();plannedRoundaboutCells.Clear();Signals.Clear();Motorways.Clear();carparkThroats.Clear();nextMotorwayId=0;demandGroupPhases.Clear();spawnSchedule.Clear();nextScheduledShop=0;
+             retiredConnectionConcrete.Clear();
+             erasedEndpointCleanup.Clear();
+@@ -348,7 +348,7 @@ namespace MotorwaysSim
+             for(int i=0;i<ticks&&!Failed&&!ScenarioRejected;i++)
+             {
+                 TickCount++;Time=TickCount*Rules.TickSeconds;
+-                UpdateOriginalInventory();UpdateCity();UpdateDestinationUpgrades();UpdateTrains();UpdateDemand();DispatchDemand();UpdateSignals();UpdateVehicles();UpdateOriginalOvercrowding();FinishRemovals();
++                UpdateOriginalInventory();UpdateCity();UpdateDestinationUpgrades();UpdateTrains();UpdateTrafficPracticeDemand();UpdateDemand();DispatchDemand();UpdateSignals();UpdateVehicles();UpdateOriginalOvercrowding();FinishRemovals();
+             }
+         }
+ 
+@@ -398,13 +398,13 @@ namespace MotorwaysSim
+                 ProvisionalDefaults="Shared lane/parking/spawning approximations remain. OriginalReference is NOT an exact replica: motorway geometry/edits, inventory weighting, destination upgrades, trains, spawning and exact traffic parity remain incomplete.",
+                 Infrastructure=new int[count],Terrain=new int[count],BuildingColors=Enumerable.Repeat(-1,count).ToArray(),
+                 BuildingKinds=new int[count],Demand=new int[count],Reservations=new int[count],Connections=new int[count],PendingRemovals=new int[count],
+-                Vehicles=Cars.Select(v=>new VehicleState{Id=v.Id,HomeId=v.HomeId,ShopId=v.ShopId,Color=v.Color,Stage=v.Stage,ParkingSlot=v.ParkingSlot,
++                Vehicles=Cars.Select(v=>new VehicleState{Visible=v.Stage!=TripStage.Home&&!(v.Stage==TripStage.Outbound&&v.RouteIndex==0&&v.DistanceAlongLane<.02),Id=v.Id,HomeId=v.HomeId,ShopId=v.ShopId,Color=v.Color,Stage=v.Stage,ParkingSlot=v.ParkingSlot,
+                     At=v.At,Next=v.Next,X=v.Position.X,Y=v.Position.Y,HeadingX=v.Heading.X,HeadingY=v.Heading.Y,Speed=v.Speed,Acceleration=v.Acceleration,
+                     Waiting=v.Waiting,Progress=v.Progress,Obstacle=v.Obstacle,Route=v.Route.ToArray(),ReturnRoute=v.ReturnRoute.ToArray()}).ToArray(),
+                 RandomAlgorithm=random.Algorithm,RandomDraws=random.Draws,
+                 ScheduledSpawns=originalPlan.Where(p=>p.Type==0).Select(p=>new ScheduledSpawnSnapshot{Time=p.Time,Color=p.Color,Grouping=p.Grouping,Preference=p.Preference,DemandMultiplier=p.DemandMultiplier,Attempts=p.Attempts}).ToArray(),
+                 Buildings=Buildings.Select(b=>new BuildingState{CarparkId=b.CarparkId,DestinationSlot=b.DestinationSlot,SharedLot=b.SharedLot,IsStation=b.IsStation,Entrances=(Cell[])b.Entrances.Clone(),Platform=(Cell[])b.Platform.Clone(),EntranceDirections=(int[])b.EntranceDirections.Clone(),Layout=b.Layout,Upgraded=b.Upgraded,DemandCapacity=DestinationCapacity(b),UpgradeAt=double.IsPositiveInfinity(b.UpgradeAt)?(double?)null:b.UpgradeAt,PlannedDemandMultiplier=b.PlannedDemandMultiplier,Id=b.Id,Color=b.Color,Cell=b.Cell,Entrance=b.Entrance,Width=b.Width,Height=b.Height,
+-                    IsHouse=b.IsHouse,Demand=b.Demand,Reserved=b.Reserved,DrivewayDirection=b.DrivewayDirection,OvercrowdedFor=b.OvercrowdedFor,FeasibilityVerified=b.FeasibilityVerified,
++                    IsHouse=b.IsHouse,Demand=b.Demand,Reserved=b.Reserved,Served=b.Served,DrivewayDirection=b.DrivewayDirection,WarningVisible=b.OvercrowdedFor>0,OvercrowdedFor=b.OvercrowdedFor,FeasibilityVerified=b.FeasibilityVerified,
+                     FeasibleDemandInterval=double.IsInfinity(b.FeasibleDemandInterval)?(double?)null:b.FeasibleDemandInterval,OriginalDemandInterval=b.OriginalDemandInterval,Parking=b.Parking==null?new int[0]:(int[])b.Parking.Clone()}).ToArray(),
+                 Signals=Signals.Values.Select(s=>new SignalSnapshot{Cell=s.Cell,ActivePair=s.ActivePair,Amber=s.Amber,Elapsed=s.Elapsed,Pairs=s.Pairs.ToArray()}).ToArray(),
+                 PlayableXMin=PlayableBounds[0],PlayableYMin=PlayableBounds[1],PlayableXMax=PlayableBounds[2],PlayableYMax=PlayableBounds[3],
+diff --git a/simulation/Headless/Program.cs b/simulation/Headless/Program.cs
+index 04c017a..38980de 100644
+--- a/simulation/Headless/Program.cs
++++ b/simulation/Headless/Program.cs
+@@ -11,6 +11,7 @@ sealed class Request
+     public int Seed { get; set; } = 42;
+     public bool Connected { get; set; }
+     public int Ticks { get; set; } = 1;
++    public double HorizonSeconds { get; set; } = double.MaxValue;
+     public string Tool { get; set; } = "Road";
+     public int X { get; set; }
+     public int Y { get; set; }
+@@ -22,11 +23,15 @@ sealed class Request
+     public string Version { get; set; }
+     public bool RequireExact {get;set;}
+     public bool IncludeConnectivity {get;set;}
++    public bool Practice {get;set;}
++    public string PracticeStage {get;set;}="clear";
++    public string PracticeSplit {get;set;}="train";
+     public string Variation { get; set; } = "SameMap";
+ }
+ 
+ static class Program
+ {
++    const string DirectProtocol="maskable-direct-hierarchy-v1";
+     static readonly JsonSerializerOptions Json = new JsonSerializerOptions {
+         IncludeFields=true,PropertyNamingPolicy=JsonNamingPolicy.CamelCase,
+         PropertyNameCaseInsensitive=true,
+@@ -36,6 +41,11 @@ static class Program
+     public static void Main(string[] args)
+     {
+         if(Array.IndexOf(args,"--version")>=0){Console.WriteLine(SimulatorVersion.Value);return;}
++        if(Array.IndexOf(args,"--protocol-version")>=0){Console.WriteLine(DirectProtocol);return;}
++        if(Array.IndexOf(args,"--practice-self-test")>=0)
++        {
++            Console.WriteLine("PASS: "+PracticeLegalityChecks.Run()+" differential Stage 1 legality actions; no learning");return;
++        }
+         int scenarioArg=Array.IndexOf(args,"--run-scenario");
+         if(scenarioArg>=0)
+         {
+@@ -123,12 +133,56 @@ static class Program
+             {
+                 var request=JsonSerializer.Deserialize<Request>(line,Json)??throw new Exception("Missing request");
+                 if(request.Command=="quit")break;
++                if(request.Command=="hello")
++                {
++                    Console.WriteLine(JsonSerializer.Serialize(new{accepted=true,terminated=false,truncated=false,
++                        simulatorVersion=SimulatorVersion.Value,protocolVersion=DirectProtocol,
++                        capabilities=new[]{"connection-practice-v1","practice-pure-mask-v1","displayed-state-flags-v1","bounded-native-wait-v1","practice-one-gap-v1","practice-new-connections-v1","practice-single-build-v1","construction-curriculum-v1","city-road-pilot-v1"}},Json));
++                    continue;
++                }
+                 int trips=world.TripsCompleted,spending=world.ConstructionSpent;bool accepted=true;
++                if(request.Command=="cityRoadMask")
++                {
++                    Console.WriteLine(JsonSerializer.Serialize(new {accepted=true,truncated=world.ScenarioRejected,
++                        connections=world.CityRoadMask()},Json));continue;
++                }
+                 if(request.Command=="drawchoices")
+                 {
+                     Console.WriteLine(JsonSerializer.Serialize(new {accepted=true,simulatorVersion=SimulatorVersion.Value,terminated=world.Failed,truncated=world.ScenarioRejected,
+                         possibleChanges=world.DrawChangeChoices(new Cell(request.X,request.Y))},Json));continue;
+                 }
++                if(request.Command=="curriculumMask"||request.Command=="curriculumReference")
++                {
++                    if(world.CustomScenarioId!=TrafficWorld.ConstructionCurriculumId)
++                        throw new InvalidOperationException("Expected construction curriculum");
++                    if(request.Command=="curriculumMask")
++                        Console.WriteLine(JsonSerializer.Serialize(new {accepted=true,truncated=false,
++                            editLimit=world.ConstructionEditLimit,
++                            connections=world.PracticeNewConnections(constructionCurriculum:true),
++                            rotations=world.ConstructionDriveways()},Json));
++                    else
++                        Console.WriteLine(JsonSerializer.Serialize(new {accepted=true,truncated=false,
++                            edits=world.ConstructionReference.ConvertAll(e=>new {kind=e.Kind,x=e.From.X,y=e.From.Y,toX=e.To.X,toY=e.To.Y})},Json));
++                    continue;
++                }
++                if(request.Command=="practiceMask")
++                {
++                    if(request.Tool=="newConnections")
++                        Console.WriteLine(JsonSerializer.Serialize(new{accepted=true,simulatorVersion=SimulatorVersion.Value,
++                            terminated=world.Failed,truncated=world.ScenarioRejected,
++                            connections=world.PracticeNewConnections()},Json));
++                    else if(request.Tool=="sources")
++                    {
++                        var masks=world.PracticeSources();
++                        Console.WriteLine(JsonSerializer.Serialize(new{accepted=true,simulatorVersion=SimulatorVersion.Value,
++                            terminated=world.Failed,truncated=world.ScenarioRejected,
++                            drawSources=masks.draw,eraseSources=masks.erase,removeCells=masks.remove},Json));
++                    }
++                    else Console.WriteLine(JsonSerializer.Serialize(new{accepted=true,simulatorVersion=SimulatorVersion.Value,
++                        terminated=world.Failed,truncated=world.ScenarioRejected,
++                        directions=world.PracticeDirections(request.Tool,new Cell(request.X,request.Y))},Json));
++                    continue;
++                }
+                 switch(request.Command)
+                 {
+                     case "reset":
+@@ -137,7 +191,14 @@ static class Program
+                         if(!Enum.IsDefined(typeof(GameVersion),version)||!Enum.IsDefined(typeof(ScenarioKind),scenario))throw new Exception("Unknown version or scenario");
+                         if(request.RequireExact)throw new Exception("Exact-original parity is not yet validated. OriginalReference remains under development.");
+                         world=new TrafficWorld(request.Seed,false,Rules.ForVersion(version));
+-                        world.Reset(request.Seed,scenario,Enum.Parse<MapVariation>(request.Variation,true));
++                        if(request.Practice)
++                        {
++                            if(version!=GameVersion.OriginalReference)throw new Exception("Practice requires OriginalReference");
++                            if(request.PracticeStage.StartsWith("curriculum-",StringComparison.Ordinal))
++                                world.LoadConstructionCurriculum(request.Seed,request.PracticeSplit,request.PracticeStage.Substring(11));
++                            else world.LoadConnectionPractice(request.Seed,request.PracticeSplit,request.PracticeStage);
++                        }
++                        else world.Reset(request.Seed,scenario,Enum.Parse<MapVariation>(request.Variation,true));
+                         includeConnectivity=request.IncludeConnectivity;
+                         trips=0;spending=0;break;
+                     case "upgrade":accepted=world.ChooseUpgrade(request.Choice);break;
+@@ -147,10 +208,21 @@ static class Program
+                     case "connect":accepted=world.Connect(new Cell(request.X,request.Y),new Cell(request.ToX,request.ToY));break;
+                     case "driveway":accepted=world.SetHouseDriveway(request.Id,TrafficWorld.Direction(new Cell(request.X,request.Y),new Cell(request.ToX,request.ToY)));break;
+                     case "draw":accepted=world.DrawRoad(new Cell(request.X,request.Y),new Cell(request.ToX,request.ToY));break;
++                    case "cityRoad":accepted=world.DrawCityRoad(new Cell(request.X,request.Y),new Cell(request.ToX,request.ToY));break;
++                    case "erase":accepted=world.RemoveRoadConnection(new Cell(request.X,request.Y),new Cell(request.ToX,request.ToY));break;
+                     case "reference":accepted=world.BuildReferenceNetwork();break;
+                     case "step":
+                         if(request.Ticks<0||request.Ticks>100000)throw new Exception("ticks must be 0..100000");
+                         world.Step(request.Ticks);break;
++                    case "wait":
++                        // A single IPC round trip, with native event interruption.
++                        if(request.HorizonSeconds<world.Time)throw new Exception("Wait horizon precedes current game time");
++                        for(int tick=0;tick<20&&!world.Failed&&!world.ScenarioRejected&&world.UpgradeChoices.Count==0;tick++)
++                        {
++                            if(world.Time+world.Rules.TickSeconds>request.HorizonSeconds+1e-9)break;
++                            world.Step();
++                        }
++                        break;
+                     case "build":
+                         if(!Enum.TryParse<BuildTool>(request.Tool,true,out var tool)||!Enum.IsDefined(typeof(BuildTool),tool))
+                             throw new Exception("Unknown construction tool");

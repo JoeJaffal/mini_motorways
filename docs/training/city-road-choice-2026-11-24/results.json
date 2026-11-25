@@ -1,0 +1,155 @@
+{
+  "results": {
+    "reference": {
+      "repeated": {
+        "games": 16,
+        "mean": 126.25,
+        "scoring": 15,
+        "new_targets_served": 69,
+        "stockouts": 24
+      },
+      "heldout": {
+        "games": 16,
+        "mean": 125.9375,
+        "scoring": 15,
+        "new_targets_served": 76,
+        "stockouts": 20
+      }
+    },
+    "joint": {
+      "repeated": {
+        "games": 16,
+        "mean": 129.5,
+        "scoring": 15,
+        "new_targets_served": 71,
+        "stockouts": 32,
+        "delta": 3.25,
+        "interval95": [
+          -26.1875,
+          26.0
+        ]
+      },
+      "heldout": {
+        "games": 16,
+        "mean": 133.75,
+        "scoring": 14,
+        "new_targets_served": 78,
+        "stockouts": 31,
+        "delta": 7.8125,
+        "interval95": [
+          -26.5015625,
+          44.06406249999998
+        ]
+      }
+    },
+    "roads": {
+      "repeated": {
+        "games": 16,
+        "mean": 128.8125,
+        "scoring": 14,
+        "new_targets_served": 71,
+        "stockouts": 22,
+        "delta": 2.5625,
+        "interval95": [
+          -11.064062499999999,
+          18.3125
+        ]
+      },
+      "heldout": {
+        "games": 16,
+        "mean": 122.25,
+        "scoring": 16,
+        "new_targets_served": 77,
+        "stockouts": 21,
+        "delta": -3.6875,
+        "interval95": [
+          -51.503125,
+          46.4375
+        ]
+      }
+    }
+  },
+  "paired_roads_minus": {
+    "reference": {
+      "repeated": {
+        "delta": 2.5625,
+        "interval95": [
+          -11.064062499999999,
+          18.3125
+        ],
+        "city_differences": [
+          3.5,
+          -2.5,
+          12.0,
+          -6.5,
+          49.0,
+          -30.0,
+          -12.0,
+          7.0
+        ],
+        "wins": 6,
+        "losses": 7
+      },
+      "heldout": {
+        "delta": -3.6875,
+        "interval95": [
+          -51.503125,
+          46.4375
+        ],
+        "city_differences": [
+          -57.5,
+          -75.5,
+          62.5,
+          -56.5,
+          -84.0,
+          1.0,
+          90.5,
+          90.0
+        ],
+        "wins": 9,
+        "losses": 6
+      }
+    },
+    "joint": {
+      "repeated": {
+        "delta": -0.6875,
+        "interval95": [
+          -22.3125,
+          25.25
+        ],
+        "city_differences": [
+          -20.5,
+          3.0,
+          1.5,
+          -11.5,
+          -4.0,
+          -55.5,
+          73.5,
+          8.0
+        ],
+        "wins": 9,
+        "losses": 6
+      },
+      "heldout": {
+        "delta": -11.5,
+        "interval95": [
+          -67.75,
+          53.75
+        ],
+        "city_differences": [
+          -58.5,
+          -75.0,
+          -41.5,
+          -31.5,
+          -130.0,
+          1.0,
+          71.0,
+          172.5
+        ],
+        "wins": 6,
+        "losses": 10
+      }
+    }
+  },
+  "limits": "Eight city clusters per split, two action RNGs each, one training RNG. Previously used development cities, not independent confirmation."
+}

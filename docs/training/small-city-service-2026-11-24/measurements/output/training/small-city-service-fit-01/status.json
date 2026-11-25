@@ -1,0 +1,7 @@
+{
+  "status": "error",
+  "pid": 437180,
+  "phase": "training and baseline",
+  "started": "2026-11-24T22:07:33.741896+02:00",
+  "error": "CalledProcessError(-15, ['/home/mohammadjaffal/mini_motorways/.venv/bin/python', '-c', 'import subprocess,sys; f=open(sys.argv[1],\"x\"); raise SystemExit(subprocess.call(sys.argv[2:],stdout=f,stderr=subprocess.STDOUT))', '/home/mohammadjaffal/mini_motorways/output/training/small-city-service-fit-01/train.log', '/home/mohammadjaffal/mini_motorways/.venv/bin/python', '-u', '/home/mohammadjaffal/mini_motorways/output/training/small-city-service-fit-01/runtime/training/train_city_curriculum.py', '--dll', '/home/mohammadjaffal/mini_motorways/output/training/small-city-service-fit-01/runtime/host/TrafficHost.dll', '--parent', '/home/mohammadjaffal/mini_motorways/output/training/city-whole-initial-01/start.zip', '--output', '/home/mohammadjaffal/mini_motorways/output/training/small-city-service-fit-01/ppo', '--record-dir', '/home/mohammadjaffal/mini_motorways/docs/training/small-city-service-2026-11-24/run', '--stage', 'small-city', '--workers', '16', '--seed-start', '188000000', '--rollouts', '4', '--rollout-steps', '512', '--batch-size', '128', '--gae-lambda', '1', '--learning-rate', '.0003', '--value-coefficient', '.00001', '--gradient-audit-steps', '64', '--collapse-forced-wait', '--save-every-rollouts', '1'])"
+}

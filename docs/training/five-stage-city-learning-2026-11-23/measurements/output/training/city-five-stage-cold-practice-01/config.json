@@ -1,0 +1,24 @@
+{
+  "models": [
+    "output/training/city-five-stage-cold-initial-01/candidate.zip",
+    "output/training/city-five-stage-cold-final-01/candidate.zip"
+  ],
+  "hashes": {
+    "output/training/city-five-stage-cold-initial-01/candidate.zip": "9202d62be8d237f6fe495ee1ec29eed1747849a1fd747006ea8903de7f0b19f1",
+    "output/training/city-five-stage-cold-final-01/candidate.zip": "c49214e02bc803b9154919d75607f487f61a677acd83576eb1d370050c02cd86"
+  },
+  "dll": "output/city-five-stage-build-01/bin/TrafficHost/release/TrafficHost.dll",
+  "host_sha256": "3cdfa9ceaf8d938bdc94173b71c5ef0035c54f038f66133d12c6f0e0ad1278ec",
+  "seed_start": 118200000,
+  "count": 8,
+  "lessons": [
+    "midgame-network-join",
+    "midgame-network-route",
+    "midgame-network-delay",
+    "midgame-network-quiet",
+    "traffic-priority-established",
+    "traffic-priority-established-swap",
+    "traffic-junction-low-live",
+    "traffic-junction-high-live"
+  ]
+}

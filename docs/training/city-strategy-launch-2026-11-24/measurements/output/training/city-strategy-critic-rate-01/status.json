@@ -1,0 +1,23 @@
+{
+  "status": "regression_stop",
+  "pid": 361979,
+  "started": "2026-11-24T18:16:56.790484+02:00",
+  "training_seconds": 545.8819946179865,
+  "segments": 1,
+  "current_checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-critic-rate-01/segment-001/final.zip",
+  "best_checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-wide-initial-01/start.zip",
+  "failed_reviews": 1,
+  "updated": "2026-11-24T18:27:17.836598+02:00",
+  "active_segment": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-critic-rate-01/segment-001",
+  "phase": "finished",
+  "current_sha256": "4e51f8c6368802d8bc7c3b7cb36909ccc1910a4f0bba369fae53697b4a336140",
+  "active_review": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-critic-rate-01/review-001",
+  "last_review": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-critic-rate-01/review-001",
+  "last_decision": {
+    "retained": false,
+    "promote": false,
+    "failures": 1,
+    "stop": true
+  },
+  "best_sha256": "9d9c9c95e4955a14461358f3203143be5f70331f8cbbb4bc26d0951b3674447a"
+}

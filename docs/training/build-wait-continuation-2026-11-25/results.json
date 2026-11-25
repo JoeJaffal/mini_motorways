@@ -1,0 +1,615 @@
+{
+  "initial": {
+    "destinations": {
+      "games": 16,
+      "first_correct": 8,
+      "mean_correct_probability": 0.5975780038467695,
+      "no_build": 8,
+      "scoring": 0,
+      "all_targets_served": 0,
+      "mean_builds": 0.5,
+      "mean_native_deliveries": 0.0
+    },
+    "homes": {
+      "games": 16,
+      "first_correct": 11,
+      "mean_correct_probability": 0.670704321544412,
+      "no_build": 11,
+      "scoring": 0,
+      "all_targets_served": 0,
+      "mean_builds": 0.3125,
+      "mean_native_deliveries": 0.0
+    },
+    "join": {
+      "games": 16,
+      "first_correct": 15,
+      "mean_correct_probability": 0.9535665590525337,
+      "no_build": 1,
+      "scoring": 0,
+      "all_targets_served": 0,
+      "mean_builds": 0.9375,
+      "mean_native_deliveries": 0.0
+    },
+    "match": {
+      "games": 16,
+      "first_correct": 15,
+      "mean_correct_probability": 0.894696374066033,
+      "no_build": 1,
+      "scoring": 0,
+      "all_targets_served": 0,
+      "mean_builds": 0.9375,
+      "mean_native_deliveries": 0.0
+    },
+    "mismatch": {
+      "games": 16,
+      "first_correct": 9,
+      "mean_correct_probability": 0.6496026890236883,
+      "no_build": 9,
+      "scoring": 0,
+      "all_targets_served": 0,
+      "mean_builds": 0.4375,
+      "mean_native_deliveries": 0.0
+    },
+    "quiet": {
+      "games": 16,
+      "first_correct": 15,
+      "mean_correct_probability": 0.9199498072913194,
+      "no_build": 15,
+      "scoring": 2,
+      "all_targets_served": 4,
+      "mean_builds": 0.0625,
+      "mean_native_deliveries": 0.125
+    },
+    "route": {
+      "games": 16,
+      "first_correct": 15,
+      "mean_correct_probability": 0.9465812745593594,
+      "no_build": 1,
+      "scoring": 0,
+      "all_targets_served": 0,
+      "mean_builds": 0.9375,
+      "mean_native_deliveries": 0.0
+    }
+  },
+  "curve": [
+    {
+      "added_decisions": 16384,
+      "cases": {
+        "destinations": {
+          "games": 16,
+          "first_correct": 14,
+          "mean_correct_probability": 0.867568605583625,
+          "no_build": 14,
+          "scoring": 0,
+          "all_targets_served": 0,
+          "mean_builds": 0.125,
+          "mean_native_deliveries": 0.0
+        },
+        "homes": {
+          "games": 16,
+          "first_correct": 14,
+          "mean_correct_probability": 0.8989155392044039,
+          "no_build": 14,
+          "scoring": 0,
+          "all_targets_served": 0,
+          "mean_builds": 0.125,
+          "mean_native_deliveries": 0.0
+        },
+        "join": {
+          "games": 16,
+          "first_correct": 15,
+          "mean_correct_probability": 0.9868053221195506,
+          "no_build": 1,
+          "scoring": 0,
+          "all_targets_served": 0,
+          "mean_builds": 0.9375,
+          "mean_native_deliveries": 0.0
+        },
+        "match": {
+          "games": 16,
+          "first_correct": 15,
+          "mean_correct_probability": 0.9165162992505687,
+          "no_build": 1,
+          "scoring": 0,
+          "all_targets_served": 0,
+          "mean_builds": 0.9375,
+          "mean_native_deliveries": 0.0
+        },
+        "mismatch": {
+          "games": 16,
+          "first_correct": 14,
+          "mean_correct_probability": 0.8884754090071759,
+          "no_build": 14,
+          "scoring": 0,
+          "all_targets_served": 0,
+          "mean_builds": 0.125,
+          "mean_native_deliveries": 0.0
+        },
+        "quiet": {
+          "games": 16,
+          "first_correct": 16,
+          "mean_correct_probability": 0.9836355960661881,
+          "no_build": 16,
+          "scoring": 2,
+          "all_targets_served": 4,
+          "mean_builds": 0.0,
+          "mean_native_deliveries": 0.125
+        },
+        "route": {
+          "games": 16,
+          "first_correct": 15,
+          "mean_correct_probability": 0.984775790469099,
+          "no_build": 1,
+          "scoring": 0,
+          "all_targets_served": 0,
+          "mean_builds": 0.9375,
+          "mean_native_deliveries": 0.0
+        }
+      }
+    },
+    {
+      "added_decisions": 32768,
+      "cases": {
+        "destinations": {
+          "games": 16,
+          "first_correct": 15,
+          "mean_correct_probability": 0.9491561407151956,
+          "no_build": 15,
+          "scoring": 0,
+          "all_targets_served": 0,
+          "mean_builds": 0.0625,
+          "mean_native_deliveries": 0.0
+        },
+        "homes": {
+          "games": 16,
+          "first_correct": 16,
+          "mean_correct_probability": 0.9620294977660286,
+          "no_build": 16,
+          "scoring": 0,
+          "all_targets_served": 0,
+          "mean_builds": 0.0,
+          "mean_native_deliveries": 0.0
+        },
+        "join": {
+          "games": 16,
+          "first_correct": 16,
+          "mean_correct_probability": 0.9965375679185575,
+          "no_build": 0,
+          "scoring": 0,
+          "all_targets_served": 0,
+          "mean_builds": 1.0,
+          "mean_native_deliveries": 0.0
+        },
+        "match": {
+          "games": 16,
+          "first_correct": 15,
+          "mean_correct_probability": 0.9524733113446313,
+          "no_build": 1,
+          "scoring": 0,
+          "all_targets_served": 0,
+          "mean_builds": 0.9375,
+          "mean_native_deliveries": 0.0
+        },
+        "mismatch": {
+          "games": 16,
+          "first_correct": 15,
+          "mean_correct_probability": 0.9570740783181795,
+          "no_build": 15,
+          "scoring": 0,
+          "all_targets_served": 0,
+          "mean_builds": 0.0625,
+          "mean_native_deliveries": 0.0
+        },
+        "quiet": {
+          "games": 16,
+          "first_correct": 16,
+          "mean_correct_probability": 0.995223116384655,
+          "no_build": 16,
+          "scoring": 2,
+          "all_targets_served": 4,
+          "mean_builds": 0.0,
+          "mean_native_deliveries": 0.125
+        },
+        "route": {
+          "games": 16,
+          "first_correct": 16,
+          "mean_correct_probability": 0.9959808520557318,
+          "no_build": 0,
+          "scoring": 0,
+          "all_targets_served": 0,
+          "mean_builds": 1.0,
+          "mean_native_deliveries": 0.0
+        }
+      }
+    },
+    {
+      "added_decisions": 65536,
+      "cases": {
+        "destinations": {
+          "games": 16,
+          "first_correct": 16,
+          "mean_correct_probability": 0.9837813555843363,
+          "no_build": 16,
+          "scoring": 0,
+          "all_targets_served": 0,
+          "mean_builds": 0.0,
+          "mean_native_deliveries": 0.0
+        },
+        "homes": {
+          "games": 16,
+          "first_correct": 16,
+          "mean_correct_probability": 0.9880638160782229,
+          "no_build": 16,
+          "scoring": 0,
+          "all_targets_served": 0,
+          "mean_builds": 0.0,
+          "mean_native_deliveries": 0.0
+        },
+        "join": {
+          "games": 16,
+          "first_correct": 16,
+          "mean_correct_probability": 0.9994625191742958,
+          "no_build": 0,
+          "scoring": 0,
+          "all_targets_served": 0,
+          "mean_builds": 1.0,
+          "mean_native_deliveries": 0.0
+        },
+        "match": {
+          "games": 16,
+          "first_correct": 15,
+          "mean_correct_probability": 0.9857724080155095,
+          "no_build": 1,
+          "scoring": 0,
+          "all_targets_served": 0,
+          "mean_builds": 0.9375,
+          "mean_native_deliveries": 0.0
+        },
+        "mismatch": {
+          "games": 16,
+          "first_correct": 16,
+          "mean_correct_probability": 0.9861064427099333,
+          "no_build": 16,
+          "scoring": 0,
+          "all_targets_served": 0,
+          "mean_builds": 0.0,
+          "mean_native_deliveries": 0.0
+        },
+        "quiet": {
+          "games": 16,
+          "first_correct": 16,
+          "mean_correct_probability": 0.9991133608732329,
+          "no_build": 16,
+          "scoring": 2,
+          "all_targets_served": 4,
+          "mean_builds": 0.0,
+          "mean_native_deliveries": 0.125
+        },
+        "route": {
+          "games": 16,
+          "first_correct": 16,
+          "mean_correct_probability": 0.9993693754904596,
+          "no_build": 0,
+          "scoring": 0,
+          "all_targets_served": 0,
+          "mean_builds": 1.0,
+          "mean_native_deliveries": 0.0
+        }
+      }
+    }
+  ],
+  "native_initial": {
+    "destinations": {
+      "games": 16,
+      "first_correct": 8,
+      "mean_correct_probability": 0.5975780038467695,
+      "no_build": 0,
+      "scoring": 0,
+      "all_targets_served": 0,
+      "mean_builds": 5.125,
+      "mean_native_deliveries": 0.0
+    },
+    "homes": {
+      "games": 16,
+      "first_correct": 11,
+      "mean_correct_probability": 0.670704321544412,
+      "no_build": 0,
+      "scoring": 0,
+      "all_targets_served": 0,
+      "mean_builds": 5.125,
+      "mean_native_deliveries": 0.0
+    },
+    "join": {
+      "games": 16,
+      "first_correct": 15,
+      "mean_correct_probability": 0.9535665590525337,
+      "no_build": 0,
+      "scoring": 16,
+      "all_targets_served": 16,
+      "mean_builds": 1.5,
+      "mean_native_deliveries": 7.5625
+    },
+    "match": {
+      "games": 16,
+      "first_correct": 15,
+      "mean_correct_probability": 0.894696374066033,
+      "no_build": 0,
+      "scoring": 16,
+      "all_targets_served": 16,
+      "mean_builds": 3.125,
+      "mean_native_deliveries": 4.3125
+    },
+    "mismatch": {
+      "games": 16,
+      "first_correct": 9,
+      "mean_correct_probability": 0.6496026890236883,
+      "no_build": 0,
+      "scoring": 0,
+      "all_targets_served": 0,
+      "mean_builds": 5.125,
+      "mean_native_deliveries": 0.0
+    },
+    "quiet": {
+      "games": 16,
+      "first_correct": 15,
+      "mean_correct_probability": 0.9199498072913194,
+      "no_build": 0,
+      "scoring": 16,
+      "all_targets_served": 16,
+      "mean_builds": 1.8125,
+      "mean_native_deliveries": 7.4375
+    },
+    "route": {
+      "games": 16,
+      "first_correct": 15,
+      "mean_correct_probability": 0.9465812745593594,
+      "no_build": 0,
+      "scoring": 16,
+      "all_targets_served": 16,
+      "mean_builds": 3.4375,
+      "mean_native_deliveries": 7.8125
+    }
+  },
+  "native_final": {
+    "destinations": {
+      "games": 16,
+      "first_correct": 16,
+      "mean_correct_probability": 0.9837813555843363,
+      "no_build": 4,
+      "scoring": 0,
+      "all_targets_served": 0,
+      "mean_builds": 1.5625,
+      "mean_native_deliveries": 0.0
+    },
+    "homes": {
+      "games": 16,
+      "first_correct": 16,
+      "mean_correct_probability": 0.9880638160782229,
+      "no_build": 8,
+      "scoring": 0,
+      "all_targets_served": 0,
+      "mean_builds": 0.625,
+      "mean_native_deliveries": 0.0
+    },
+    "join": {
+      "games": 16,
+      "first_correct": 16,
+      "mean_correct_probability": 0.9994625191742958,
+      "no_build": 0,
+      "scoring": 16,
+      "all_targets_served": 16,
+      "mean_builds": 1.125,
+      "mean_native_deliveries": 7.5625
+    },
+    "match": {
+      "games": 16,
+      "first_correct": 15,
+      "mean_correct_probability": 0.9857724080155095,
+      "no_build": 0,
+      "scoring": 16,
+      "all_targets_served": 16,
+      "mean_builds": 3.125,
+      "mean_native_deliveries": 4.3125
+    },
+    "mismatch": {
+      "games": 16,
+      "first_correct": 16,
+      "mean_correct_probability": 0.9861064427099333,
+      "no_build": 5,
+      "scoring": 0,
+      "all_targets_served": 0,
+      "mean_builds": 1.3125,
+      "mean_native_deliveries": 0.0
+    },
+    "quiet": {
+      "games": 16,
+      "first_correct": 16,
+      "mean_correct_probability": 0.9991133608732329,
+      "no_build": 14,
+      "scoring": 16,
+      "all_targets_served": 16,
+      "mean_builds": 0.125,
+      "mean_native_deliveries": 7.5
+    },
+    "route": {
+      "games": 16,
+      "first_correct": 16,
+      "mean_correct_probability": 0.9993693754904596,
+      "no_build": 0,
+      "scoring": 16,
+      "all_targets_served": 16,
+      "mean_builds": 2.9375,
+      "mean_native_deliveries": 7.8125
+    }
+  },
+  "practice_final": {
+    "candidate": {
+      "adjacent": {
+        "score": 3.5625,
+        "success": 1.0,
+        "paid": 2.0,
+        "before_first": 2.0,
+        "after_first": 0.0,
+        "remaining_stock": 0.0,
+        "outside_routes": 0.0,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "first_served": 1.0,
+        "both_served": 0.0,
+        "native_game_over": 0.0,
+        "truncated": 1.0,
+        "seconds": 60.0,
+        "build_actions": 2.0,
+        "builds_before_first": 2.0,
+        "builds_after_first": 0.0,
+        "zero_cost_builds": 0.0,
+        "zero_cost_builds_after_first": 0.0,
+        "outside_route_connections": 0.0
+      },
+      "bend": {
+        "score": 3.625,
+        "success": 1.0,
+        "paid": 2.5,
+        "before_first": 2.5,
+        "after_first": 0.0,
+        "remaining_stock": 0.0,
+        "outside_routes": 0.0,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "first_served": 1.0,
+        "both_served": 0.0,
+        "native_game_over": 0.0,
+        "truncated": 1.0,
+        "seconds": 60.0,
+        "build_actions": 2.5,
+        "builds_before_first": 2.5,
+        "builds_after_first": 0.0,
+        "zero_cost_builds": 0.0,
+        "zero_cost_builds_after_first": 0.0,
+        "outside_route_connections": 0.0
+      },
+      "clear": {
+        "score": 3.625,
+        "success": 1.0,
+        "paid": 3.75,
+        "before_first": 3.75,
+        "after_first": 0.0,
+        "remaining_stock": 0.0,
+        "outside_routes": 0.0,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "first_served": 1.0,
+        "both_served": 0.0,
+        "native_game_over": 0.0,
+        "truncated": 1.0,
+        "seconds": 60.0,
+        "build_actions": 3.75,
+        "builds_before_first": 3.75,
+        "builds_after_first": 0.0,
+        "zero_cost_builds": 0.0,
+        "zero_cost_builds_after_first": 0.0,
+        "outside_route_connections": 0.0
+      },
+      "obstacle": {
+        "score": 3.125,
+        "success": 0.875,
+        "paid": 4.375,
+        "before_first": 4.375,
+        "after_first": 0.0,
+        "remaining_stock": 0.125,
+        "outside_routes": 0.5,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "first_served": 0.875,
+        "both_served": 0.0,
+        "native_game_over": 0.0,
+        "truncated": 1.0,
+        "seconds": 60.0,
+        "build_actions": 4.375,
+        "builds_before_first": 4.375,
+        "builds_after_first": 0.0,
+        "zero_cost_builds": 0.0,
+        "zero_cost_builds_after_first": 0.0,
+        "outside_route_connections": 0.5
+      },
+      "small-city-offset-single": {
+        "score": 11.8125,
+        "success": 0.625,
+        "paid": 6.8125,
+        "before_first": 6.6875,
+        "after_first": 0.125,
+        "remaining_stock": 0.5625,
+        "outside_routes": 2.875,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "first_served": 0.625,
+        "both_served": 0.0,
+        "native_game_over": 0.375,
+        "truncated": 0.625,
+        "seconds": 242.690625,
+        "build_actions": 7.9375,
+        "builds_before_first": 7.8125,
+        "builds_after_first": 0.125,
+        "zero_cost_builds": 1.125,
+        "zero_cost_builds_after_first": 0.0,
+        "outside_route_connections": 3.625
+      },
+      "small-city-offset-stock": {
+        "score": 14.125,
+        "success": 0.75,
+        "paid": 8.75,
+        "before_first": 8.5625,
+        "after_first": 0.1875,
+        "remaining_stock": 5.3125,
+        "outside_routes": 3.875,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "first_served": 0.75,
+        "both_served": 0.0,
+        "native_game_over": 0.25,
+        "truncated": 0.75,
+        "seconds": 261.79375000000005,
+        "build_actions": 9.875,
+        "builds_before_first": 9.6875,
+        "builds_after_first": 0.1875,
+        "zero_cost_builds": 1.125,
+        "zero_cost_builds_after_first": 0.0,
+        "outside_route_connections": 4.375
+      },
+      "small-city-offset-pairs": {
+        "score": 14.8125,
+        "success": 0.75,
+        "paid": 13.8125,
+        "before_first": 8.5625,
+        "after_first": 5.25,
+        "remaining_stock": 0.25,
+        "outside_routes": 7.4375,
+        "later_exists": 1.0,
+        "later_served": 0.25,
+        "first_served": 0.75,
+        "both_served": 0.25,
+        "native_game_over": 0.75,
+        "truncated": 0.25,
+        "seconds": 201.77812500000002,
+        "build_actions": 16.5625,
+        "builds_before_first": 10.1875,
+        "builds_after_first": 6.375,
+        "zero_cost_builds": 2.75,
+        "zero_cost_builds_after_first": 1.125,
+        "outside_route_connections": 9.4375
+      }
+    }
+  },
+  "city_final": {
+    "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/build-wait-02/training/final.zip",
+    "sha256": "1b92bd35e3124b156a9a25ab5e139fe5e12e6035784a11e69cee558d810524b5",
+    "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+    "suite": "Consumed development suite; sampled inference,600s,bridges enabled",
+    "games": 32,
+    "scoring": 30,
+    "trips": 120.84375,
+    "paid_units": 85.53125,
+    "outside_routes": 27.09375
+  },
+  "limits": "Binary practice correctness is not city score. Check repeated behavior, generalization and native retention. No automatic promotion, extension or overnight launch."
+}

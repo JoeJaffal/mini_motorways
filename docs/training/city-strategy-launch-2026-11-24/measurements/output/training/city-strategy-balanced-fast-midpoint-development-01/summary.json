@@ -1,0 +1,45 @@
+{
+  "models": [
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-fast-01/midpoint.zip"
+  ],
+  "sha256": {
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-fast-01/midpoint.zip": "9aa4e8ff3371aab875c947daa26a3ea3d3916449c0685263a0ad3bcbbf55bc76"
+  },
+  "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+  "horizon": 600,
+  "results": {
+    "0": {
+      "games": 32,
+      "scoring_games": 25,
+      "mean_score": 70.3125,
+      "new_targets": 120,
+      "new_targets_served": 81,
+      "new_target_stockouts": 38,
+      "median_new_service_delay": 23.0,
+      "mean_paid_units": 72.46875,
+      "mean_outside_observed_routes": 34.03125,
+      "outside_route_share": 0.46959896507115134,
+      "paired_score_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    }
+  }
+}

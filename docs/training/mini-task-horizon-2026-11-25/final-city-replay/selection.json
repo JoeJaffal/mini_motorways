@@ -1,0 +1,129 @@
+{
+  "criterion": "Closest paired score change to median across ALL32final-budget city plays, tie lowest seed/action RNG. One diagnostic illustration; later layouts can diverge.",
+  "median_change": -9.0,
+  "selected": {
+    "original": {
+      "seed": 185000002,
+      "seconds": 330.45000000000005,
+      "trips": 43,
+      "road_stock": 0,
+      "buildings": 15,
+      "weekly_awards": 2,
+      "road_actions": 74,
+      "wait_actions": 331,
+      "bridge_stock": 0,
+      "bridge_tiles": 1,
+      "targets": [
+        {
+          "id": 3,
+          "color": 1,
+          "first_seen": 56,
+          "arrival_stock": 8,
+          "arrival_paid": 17,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": 71,
+          "served": 18,
+          "paid_after_arrival_to_first_delivery": 1
+        },
+        {
+          "id": 7,
+          "color": 2,
+          "first_seen": 202,
+          "arrival_stock": 7,
+          "arrival_paid": 38,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": null,
+          "served": 0
+        },
+        {
+          "id": 9,
+          "color": 0,
+          "first_seen": 212,
+          "arrival_stock": 5,
+          "arrival_paid": 40,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": null,
+          "served": 0
+        },
+        {
+          "id": 12,
+          "color": 3,
+          "first_seen": 320,
+          "arrival_stock": 0,
+          "arrival_paid": 65,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": null,
+          "served": 0
+        }
+      ],
+      "action_seed": 193353,
+      "native_game_over": true,
+      "truncated": false,
+      "paid_units": 65,
+      "outside_routes": 47
+    },
+    "final": {
+      "seed": 185000002,
+      "seconds": 289.90000000000003,
+      "trips": 37,
+      "road_stock": 0,
+      "buildings": 11,
+      "weekly_awards": 2,
+      "road_actions": 82,
+      "wait_actions": 290,
+      "bridge_stock": 0,
+      "bridge_tiles": 3,
+      "targets": [
+        {
+          "id": 3,
+          "color": 1,
+          "first_seen": 56,
+          "arrival_stock": 0,
+          "arrival_paid": 25,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": 158,
+          "served": 17,
+          "paid_after_arrival_to_first_delivery": 20
+        },
+        {
+          "id": 6,
+          "color": 0,
+          "first_seen": 163,
+          "arrival_stock": 0,
+          "arrival_paid": 45,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": null,
+          "served": 0
+        }
+      ],
+      "action_seed": 193353,
+      "native_game_over": true,
+      "truncated": false,
+      "paid_units": 75,
+      "outside_routes": 37
+    }
+  },
+  "models": {
+    "original": {
+      "path": "output/training/city-whole-initial-01/start.zip",
+      "sha256": "7eb605e4e465b9143e095e367abe0a01285b8ace05843aaac80bd48b5f049027"
+    },
+    "final": {
+      "path": "output/training/mini-horizon-comparison-01/long-window/final.zip",
+      "sha256": "3e7f76395fdf61a62c9cfbe48018f44ac4a61dc29d068f803b777120c358c413"
+    }
+  },
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0"
+}

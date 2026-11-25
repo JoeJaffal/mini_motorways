@@ -1,0 +1,23 @@
+{
+  "games": 32,
+  "all_common_native_fields_exact": true,
+  "fields": [
+    "action_seed",
+    "bridge_stock",
+    "bridge_tiles",
+    "buildings",
+    "native_game_over",
+    "road_actions",
+    "road_stock",
+    "seconds",
+    "seed",
+    "trips",
+    "truncated",
+    "wait_actions",
+    "weekly_awards"
+  ],
+  "mean": 135.78125,
+  "scoring": 30,
+  "measurement_sha256": "1652348d9b25b37e3b61d73d3fa1fdcdf9cbf3c67315f1bc46b5484bf3825f35",
+  "limits": "Diagnostic wrapper also records greedy/mode metadata absent from ordinary evaluator; only common native fields compared."
+}

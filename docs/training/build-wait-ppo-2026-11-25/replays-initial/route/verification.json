@@ -1,0 +1,26 @@
+{
+  "exact": true,
+  "expected": {
+    "case": "route",
+    "seed": 246000000,
+    "action_seed": 246007000,
+    "first_action": 4709,
+    "first_correct": true,
+    "first_correct_probability": 0.8844497267896291,
+    "initial_stock": 3,
+    "initial_time": 41,
+    "final_time": 101,
+    "builds": 3,
+    "remaining_stock": 0,
+    "native_deliveries": 9,
+    "native_game_over": false,
+    "decisions": 63,
+    "all_targets_served": true,
+    "initially_unserved_targets": [
+      2
+    ],
+    "initially_unserved_now_served": true,
+    "no_build": false,
+    "mode": "native"
+  }
+}

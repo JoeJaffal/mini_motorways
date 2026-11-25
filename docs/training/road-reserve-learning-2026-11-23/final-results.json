@@ -1,0 +1,682 @@
+{
+  "first_city_comparison": {
+    "models": {
+      "original": {
+        "games": 32,
+        "scoring_games": 30,
+        "mean_score": 105.375,
+        "new_targets": 156,
+        "new_targets_served": 125,
+        "new_target_stockouts": 36,
+        "median_new_service_delay": 33.0,
+        "mean_paid_units": 87.3125,
+        "mean_outside_observed_routes": 33.0,
+        "outside_route_share": 0.3779527559055118,
+        "paired_score_delta_and_interval": [
+          0.0,
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "paired_new_targets_served_delta_and_interval": [
+          0.0,
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "paired_outside_observed_routes_delta_and_interval": [
+          0.0,
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "calibrated_parent": {
+        "games": 32,
+        "scoring_games": 30,
+        "mean_score": 98.03125,
+        "new_targets": 151,
+        "new_targets_served": 115,
+        "new_target_stockouts": 29,
+        "median_new_service_delay": 25.0,
+        "mean_paid_units": 83.28125,
+        "mean_outside_observed_routes": 34.28125,
+        "outside_route_share": 0.4116322701688555,
+        "paired_score_delta_and_interval": [
+          -7.34375,
+          [
+            -20.96875,
+            5.969531249999989
+          ]
+        ],
+        "paired_new_targets_served_delta_and_interval": [
+          -0.3125,
+          [
+            -0.71875,
+            0.09375
+          ]
+        ],
+        "paired_outside_observed_routes_delta_and_interval": [
+          1.28125,
+          [
+            -3.78125,
+            6.34375
+          ]
+        ]
+      },
+      "reserve_ppo": {
+        "games": 32,
+        "scoring_games": 30,
+        "mean_score": 37.4375,
+        "new_targets": 104,
+        "new_targets_served": 62,
+        "new_target_stockouts": 0,
+        "median_new_service_delay": 31.5,
+        "mean_paid_units": 26.53125,
+        "mean_outside_observed_routes": 9.0625,
+        "outside_route_share": 0.3415783274440518,
+        "paired_score_delta_and_interval": [
+          0.0,
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "paired_new_targets_served_delta_and_interval": [
+          0.0,
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "paired_outside_observed_routes_delta_and_interval": [
+          0.0,
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    },
+    "versus_parent": {
+      "trips": {
+        "mean_delta": -60.59375,
+        "paired_bootstrap_95": [
+          -81.25,
+          -40.15546875000001
+        ]
+      },
+      "paid_units": {
+        "mean_delta": -56.75,
+        "paired_bootstrap_95": [
+          -67.53203125,
+          -45.74921875000001
+        ]
+      },
+      "outside_routes": {
+        "mean_delta": -25.21875,
+        "paired_bootstrap_95": [
+          -30.71875,
+          -19.40625
+        ]
+      },
+      "lost_scoring_seeds": [],
+      "gained_scoring_seeds": []
+    },
+    "versus_original": {
+      "trips": {
+        "mean_delta": -67.9375,
+        "paired_bootstrap_95": [
+          -87.96875,
+          -47.53046875000001
+        ]
+      },
+      "paid_units": {
+        "mean_delta": -60.78125,
+        "paired_bootstrap_95": [
+          -72.40625,
+          -48.46875
+        ]
+      },
+      "outside_routes": {
+        "mean_delta": -23.9375,
+        "paired_bootstrap_95": [
+          -29.375,
+          -18.5625
+        ]
+      },
+      "lost_scoring_seeds": [],
+      "gained_scoring_seeds": []
+    },
+    "retention_gate": false,
+    "overlap_previous_city_seeds": []
+  },
+  "confirmation": {
+    "models": [
+      "output/training/city-five-stage-cold-initial-01/candidate.zip",
+      "output/training/city-road-reserve-repaired-01/candidate.zip"
+    ],
+    "sha256": {
+      "output/training/city-five-stage-cold-initial-01/candidate.zip": "9202d62be8d237f6fe495ee1ec29eed1747849a1fd747006ea8903de7f0b19f1",
+      "output/training/city-road-reserve-repaired-01/candidate.zip": "e278fb338b626b580ad2598e17dd346994eb9dabbc3ed11ae8e3770d3f24cba7"
+    },
+    "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+    "results": {
+      "0": {
+        "games": 32,
+        "scoring_games": 23,
+        "mean_score": 81.875,
+        "new_targets": 128,
+        "new_targets_served": 101,
+        "new_target_stockouts": 29,
+        "median_new_service_delay": 28.0,
+        "mean_paid_units": 77.53125,
+        "mean_outside_observed_routes": 32.5625,
+        "outside_route_share": 0.4199919387343813,
+        "paired_score_delta_and_interval": [
+          0.0,
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "paired_new_targets_served_delta_and_interval": [
+          0.0,
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "paired_outside_observed_routes_delta_and_interval": [
+          0.0,
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "1": {
+        "games": 32,
+        "scoring_games": 23,
+        "mean_score": 54.96875,
+        "new_targets": 112,
+        "new_targets_served": 77,
+        "new_target_stockouts": 3,
+        "median_new_service_delay": 38.0,
+        "mean_paid_units": 50.375,
+        "mean_outside_observed_routes": 23.5,
+        "outside_route_share": 0.4665012406947891,
+        "paired_score_delta_and_interval": [
+          -26.90625,
+          [
+            -43.5,
+            -11.8125
+          ]
+        ],
+        "paired_new_targets_served_delta_and_interval": [
+          -0.75,
+          [
+            -1.40625,
+            -0.15625
+          ]
+        ],
+        "paired_outside_observed_routes_delta_and_interval": [
+          -9.0625,
+          [
+            -13.53203125,
+            -4.59375
+          ]
+        ]
+      }
+    }
+  },
+  "retention_gate": false,
+  "city_suite_overlap": [],
+  "practice_parent_and_uncorrected": {
+    "midgame-network-join": {
+      "0": {
+        "games": 16,
+        "mean_score": 6.9375,
+        "successes": 16,
+        "mean_builds": 1.5,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 3.3125
+      },
+      "1": {
+        "games": 16,
+        "mean_score": 6.9375,
+        "successes": 16,
+        "mean_builds": 1.3125,
+        "mean_stock": 0.1875,
+        "mean_urgent_deliveries": 3.3125
+      },
+      "route": {
+        "games": 16,
+        "mean_score": 6.9375,
+        "successes": 16,
+        "mean_builds": 1.0,
+        "mean_stock": 0.5,
+        "mean_urgent_deliveries": 3.3125
+      },
+      "wait": {
+        "games": 16,
+        "mean_score": 3.375,
+        "successes": 0,
+        "mean_builds": 0.0,
+        "mean_stock": 1.5,
+        "mean_urgent_deliveries": 3.375
+      }
+    },
+    "midgame-network-route": {
+      "0": {
+        "games": 16,
+        "mean_score": 6.5625,
+        "successes": 16,
+        "mean_builds": 3.4375,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 3.25
+      },
+      "1": {
+        "games": 16,
+        "mean_score": 6.5,
+        "successes": 16,
+        "mean_builds": 3.3125,
+        "mean_stock": 0.125,
+        "mean_urgent_deliveries": 3.25
+      },
+      "route": {
+        "games": 16,
+        "mean_score": 6.8125,
+        "successes": 16,
+        "mean_builds": 3.0,
+        "mean_stock": 0.4375,
+        "mean_urgent_deliveries": 3.3125
+      },
+      "wait": {
+        "games": 16,
+        "mean_score": 3.375,
+        "successes": 0,
+        "mean_builds": 0.0,
+        "mean_stock": 3.4375,
+        "mean_urgent_deliveries": 3.375
+      }
+    },
+    "midgame-network-delay": {
+      "0": {
+        "games": 16,
+        "mean_score": 6.3125,
+        "successes": 15,
+        "mean_builds": 2.5625,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 3.25
+      },
+      "1": {
+        "games": 16,
+        "mean_score": 6.5,
+        "successes": 16,
+        "mean_builds": 2.4375,
+        "mean_stock": 0.0625,
+        "mean_urgent_deliveries": 3.25
+      },
+      "route": {
+        "games": 16,
+        "mean_score": 6.5625,
+        "successes": 16,
+        "mean_builds": 2.0,
+        "mean_stock": 0.5,
+        "mean_urgent_deliveries": 3.25
+      },
+      "wait": {
+        "games": 16,
+        "mean_score": 3.375,
+        "successes": 0,
+        "mean_builds": 0.0,
+        "mean_stock": 2.5,
+        "mean_urgent_deliveries": 3.375
+      }
+    },
+    "midgame-network-quiet": {
+      "0": {
+        "games": 16,
+        "mean_score": 6.5,
+        "successes": 16,
+        "mean_builds": 2.0,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 3.25
+      },
+      "1": {
+        "games": 16,
+        "mean_score": 6.6875,
+        "successes": 16,
+        "mean_builds": 1.125,
+        "mean_stock": 0.875,
+        "mean_urgent_deliveries": 3.25
+      },
+      "wait": {
+        "games": 16,
+        "mean_score": 6.8125,
+        "successes": 16,
+        "mean_builds": 0.0,
+        "mean_stock": 2.0,
+        "mean_urgent_deliveries": 3.3125
+      }
+    },
+    "traffic-priority-established": {
+      "0": {
+        "games": 16,
+        "mean_score": 11.9375,
+        "successes": 9,
+        "mean_builds": 1.0,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 9.0
+      },
+      "1": {
+        "games": 16,
+        "mean_score": 11.9375,
+        "successes": 9,
+        "mean_builds": 1.0,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 9.0
+      },
+      "lower": {
+        "games": 16,
+        "mean_score": 11.375,
+        "successes": 8,
+        "mean_builds": 1.0,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 8.4375
+      },
+      "upper": {
+        "games": 16,
+        "mean_score": 11.0625,
+        "successes": 8,
+        "mean_builds": 1.0,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 8.0
+      },
+      "wait": {
+        "games": 16,
+        "mean_score": 1.5625,
+        "successes": 0,
+        "mean_builds": 0.0,
+        "mean_stock": 1.0,
+        "mean_urgent_deliveries": 0.0
+      }
+    },
+    "traffic-priority-established-swap": {
+      "0": {
+        "games": 16,
+        "mean_score": 10.5625,
+        "successes": 8,
+        "mean_builds": 1.0,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 7.75
+      },
+      "1": {
+        "games": 16,
+        "mean_score": 10.5,
+        "successes": 8,
+        "mean_builds": 1.0,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 7.75
+      },
+      "lower": {
+        "games": 16,
+        "mean_score": 10.25,
+        "successes": 8,
+        "mean_builds": 1.0,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 7.4375
+      },
+      "upper": {
+        "games": 16,
+        "mean_score": 10.3125,
+        "successes": 8,
+        "mean_builds": 1.0,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 7.75
+      },
+      "wait": {
+        "games": 16,
+        "mean_score": 1.5,
+        "successes": 0,
+        "mean_builds": 0.0,
+        "mean_stock": 1.0,
+        "mean_urgent_deliveries": 0.0
+      }
+    },
+    "traffic-junction-low-live": {
+      "0": {
+        "games": 16,
+        "mean_score": 12.0625,
+        "successes": 0,
+        "mean_builds": 1.0,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 10.75
+      },
+      "1": {
+        "games": 16,
+        "mean_score": 11.75,
+        "successes": 0,
+        "mean_builds": 0.9375,
+        "mean_stock": 0.0625,
+        "mean_urgent_deliveries": 10.375
+      },
+      "feeder": {
+        "games": 16,
+        "mean_score": 15.3125,
+        "successes": 0,
+        "mean_builds": 1.0,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 14.6875
+      },
+      "separate-exit": {
+        "games": 16,
+        "mean_score": 12.0625,
+        "successes": 0,
+        "mean_builds": 1.0,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 10.75
+      },
+      "wait": {
+        "games": 16,
+        "mean_score": 10.4375,
+        "successes": 0,
+        "mean_builds": 0.0,
+        "mean_stock": 1.0,
+        "mean_urgent_deliveries": 8.75
+      }
+    },
+    "traffic-junction-high-live": {
+      "0": {
+        "games": 16,
+        "mean_score": 32.25,
+        "successes": 0,
+        "mean_builds": 1.0,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 15.9375
+      },
+      "1": {
+        "games": 16,
+        "mean_score": 31.125,
+        "successes": 0,
+        "mean_builds": 0.9375,
+        "mean_stock": 0.0625,
+        "mean_urgent_deliveries": 15.5625
+      },
+      "feeder": {
+        "games": 16,
+        "mean_score": 29.75,
+        "successes": 0,
+        "mean_builds": 1.0,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 15.0625
+      },
+      "separate-exit": {
+        "games": 16,
+        "mean_score": 32.25,
+        "successes": 0,
+        "mean_builds": 1.0,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 15.875
+      },
+      "wait": {
+        "games": 16,
+        "mean_score": 27.5625,
+        "successes": 0,
+        "mean_builds": 0.0,
+        "mean_stock": 1.0,
+        "mean_urgent_deliveries": 13.9375
+      }
+    },
+    "midgame-network-reserve": {
+      "0": {
+        "games": 16,
+        "mean_score": 3.8125,
+        "successes": 2,
+        "mean_builds": 4.125,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 3.375,
+        "mean_stock_at_arrival": 1.0625,
+        "future_pairs_visible": 16
+      },
+      "1": {
+        "games": 16,
+        "mean_score": 5.625,
+        "successes": 13,
+        "mean_builds": 3.375,
+        "mean_stock": 0.25,
+        "mean_urgent_deliveries": 3.375,
+        "mean_stock_at_arrival": 3.0,
+        "future_pairs_visible": 16
+      },
+      "route": {
+        "games": 16,
+        "mean_score": 6.1875,
+        "successes": 16,
+        "mean_builds": 3.0,
+        "mean_stock": 0.4375,
+        "mean_urgent_deliveries": 3.375,
+        "mean_stock_at_arrival": 3.4375,
+        "future_pairs_visible": 16
+      },
+      "wait": {
+        "games": 16,
+        "mean_score": 3.375,
+        "successes": 0,
+        "mean_builds": 0.0,
+        "mean_stock": 3.4375,
+        "mean_urgent_deliveries": 3.375,
+        "mean_stock_at_arrival": 3.4375,
+        "future_pairs_visible": 16
+      },
+      "waste": {
+        "games": 16,
+        "mean_score": 3.375,
+        "successes": 0,
+        "mean_builds": 3.4375,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 3.375,
+        "mean_stock_at_arrival": 0.0,
+        "future_pairs_visible": 16
+      }
+    }
+  },
+  "practice_repaired": {
+    "midgame-network-join": {
+      "0": {
+        "games": 16,
+        "mean_score": 6.9375,
+        "successes": 16,
+        "mean_builds": 1.3125,
+        "mean_stock": 0.1875,
+        "mean_urgent_deliveries": 3.3125
+      }
+    },
+    "midgame-network-route": {
+      "0": {
+        "games": 16,
+        "mean_score": 6.5,
+        "successes": 16,
+        "mean_builds": 3.3125,
+        "mean_stock": 0.125,
+        "mean_urgent_deliveries": 3.25
+      }
+    },
+    "midgame-network-delay": {
+      "0": {
+        "games": 16,
+        "mean_score": 6.5,
+        "successes": 16,
+        "mean_builds": 2.4375,
+        "mean_stock": 0.0625,
+        "mean_urgent_deliveries": 3.25
+      }
+    },
+    "midgame-network-quiet": {
+      "0": {
+        "games": 16,
+        "mean_score": 6.6875,
+        "successes": 16,
+        "mean_builds": 1.125,
+        "mean_stock": 0.875,
+        "mean_urgent_deliveries": 3.25
+      }
+    },
+    "traffic-priority-established": {
+      "0": {
+        "games": 16,
+        "mean_score": 11.9375,
+        "successes": 9,
+        "mean_builds": 1.0,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 9.0
+      }
+    },
+    "traffic-priority-established-swap": {
+      "0": {
+        "games": 16,
+        "mean_score": 10.5,
+        "successes": 8,
+        "mean_builds": 1.0,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 7.75
+      }
+    },
+    "traffic-junction-low-live": {
+      "0": {
+        "games": 16,
+        "mean_score": 11.8125,
+        "successes": 0,
+        "mean_builds": 1.0,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 10.4375
+      }
+    },
+    "traffic-junction-high-live": {
+      "0": {
+        "games": 16,
+        "mean_score": 31.5625,
+        "successes": 0,
+        "mean_builds": 1.0,
+        "mean_stock": 0.0,
+        "mean_urgent_deliveries": 15.75
+      }
+    },
+    "midgame-network-reserve": {
+      "0": {
+        "games": 16,
+        "mean_score": 5.625,
+        "successes": 13,
+        "mean_builds": 3.375,
+        "mean_stock": 0.25,
+        "mean_urgent_deliveries": 3.375,
+        "mean_stock_at_arrival": 3.0,
+        "future_pairs_visible": 16
+      }
+    }
+  }
+}

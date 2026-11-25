@@ -1,0 +1,13 @@
+[
+  "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+  "-u",
+  "/home/mohammadjaffal/mini_motorways/output/training/build-wait-02/runtime/training/prepare_city_wait_learning.py",
+  "--parent",
+  "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01/training/final.zip",
+  "--dll",
+  "/home/mohammadjaffal/mini_motorways/output/training/build-wait-02/runtime/host/TrafficHost.dll",
+  "--output",
+  "/home/mohammadjaffal/mini_motorways/output/training/build-wait-02/initial",
+  "--archive",
+  "/home/mohammadjaffal/mini_motorways/docs/training/build-wait-continuation-2026-11-25/migration"
+]

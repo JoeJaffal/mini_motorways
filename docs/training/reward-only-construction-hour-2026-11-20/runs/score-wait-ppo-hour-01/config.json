@@ -1,0 +1,33 @@
+{
+  "kind": "score-wait-ppo",
+  "native_sha256": "c75f51b5e043fe74baac8495d0267b6fd7c3faa9284636588df84ef19bac08ba",
+  "source_sha256": "3268a253a3644c265a29947ad7e464e054c4d7090fc1ee417cc920029755aa38",
+  "parent": "output/training/pair-ppo-hour-03/latest.zip",
+  "parent_sha256": "00b19dbe7dcd10c504a18717f8b2692b80ede35ca802f4b2d1ca0b3d0f2dd1a9",
+  "parent_fingerprint": "cd187704129330f51d6e077ffab8649fe8a8c500be6513fc0e6b840dd2dd900b",
+  "seed": 42,
+  "decisions": 65536,
+  "wall_seconds": 720,
+  "assignments": [
+    "wait-zero",
+    "wait-zero",
+    "wait-zero",
+    "wait-zero",
+    "wait-zero",
+    "wait-zero",
+    "wait-one",
+    "wait-one",
+    "wait-one",
+    "wait-one",
+    "wait-one",
+    "wait-two",
+    "wait-two",
+    "wait-two",
+    "wait-two",
+    "wait-two"
+  ],
+  "teacher_actions": false,
+  "decision_limit": 10,
+  "wait_ticks": 200,
+  "reward": "native tripsDelta only"
+}

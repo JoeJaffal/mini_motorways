@@ -1,0 +1,13 @@
+.F...
+======================================================================
+FAIL: test_mask_wait_mass_and_opening_survive_temperature (test_city_exploration_policy.CityExplorationTests.test_mask_wait_mass_and_opening_survive_temperature)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/mohammadjaffal/mini_motorways/training/test_city_exploration_policy.py", line 35, in test_mask_wait_mass_and_opening_survive_temperature
+    self.assertFalse(torch.equal(p[1,1:],q[1,1:]))
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.071s
+
+FAILED (failures=1)

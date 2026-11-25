@@ -1,0 +1,89 @@
+{
+  "kind": "terrain-ppo",
+  "native_sha256": "7e7838e9f9300fe50877af7cb0c1309c99a8ca2ef0f2029002d21479588a012b",
+  "source_sha256": "90df7aadb9ec082b824ba7789b960dab7110fabc88f944a0a96c0c882a964a51",
+  "parent": "output/training/terrain-ppo-hour-02/three-block-specialist.zip",
+  "parent_sha256": "19d96a1c4ca7f552652cbb624120c88cb6b74ee08dfbc428c84803e771716d81",
+  "parent_fingerprint": "c46a5f72a52549847081f2c78d40aeb50475fdbac617ab7d4b95da38ec0438eb",
+  "seed": 42,
+  "workers": [
+    [
+      "obstacle-wide",
+      0
+    ],
+    [
+      "obstacle-wide",
+      0
+    ],
+    [
+      "obstacle-offset",
+      0
+    ],
+    [
+      "obstacle-offset",
+      0
+    ],
+    [
+      "obstacle-offset",
+      0
+    ],
+    [
+      "obstacle-offset",
+      0
+    ],
+    [
+      "obstacle-offset",
+      -2
+    ],
+    [
+      "obstacle-offset",
+      2
+    ],
+    [
+      "obstacle-offset",
+      -2
+    ],
+    [
+      "obstacle-offset",
+      2
+    ],
+    [
+      "obstacle-offset",
+      -2
+    ],
+    [
+      "obstacle-offset",
+      2
+    ],
+    [
+      "obstacle-offset",
+      -2
+    ],
+    [
+      "obstacle-offset",
+      2
+    ],
+    [
+      "obstacle-offset",
+      -2
+    ],
+    [
+      "obstacle-offset",
+      2
+    ]
+  ],
+  "decisions": 98304,
+  "wall_seconds": 900,
+  "teacher_actions": false,
+  "starting_phase": 3,
+  "starting_decisions": 393216,
+  "seed_start": 1180000,
+  "training_only_modifiers": [
+    "-warm-spare",
+    "-warm",
+    "-spare",
+    ""
+  ],
+  "temperature": 1.0,
+  "resumed_adam": true
+}

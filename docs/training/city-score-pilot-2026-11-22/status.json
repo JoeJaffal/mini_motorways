@@ -1,0 +1,22 @@
+{
+  "result": "COMPLETE",
+  "checkpoints": [
+    {
+      "path": "city-0012288.zip",
+      "sha256": "d299bf06d1dfa213974fb7f616c438e69fa054ec729a189425969bbf3d57d155",
+      "decisions": 12288,
+      "elapsed_seconds": 55.767774568055756
+    },
+    {
+      "path": "city-0024576.zip",
+      "sha256": "bcb1747b06fce5327ebd33a0861f40eed7f1a463cc7a2628d9191b68a56f3bb7",
+      "decisions": 24576,
+      "elapsed_seconds": 112.6401331369998
+    }
+  ],
+  "completed_games": 76,
+  "elapsed_seconds": 112.64135087397881,
+  "policy_update_passes": 48,
+  "peak_cuda_allocated_mib": 681.6884765625,
+  "peak_cuda_reserved_mib": 846.0
+}

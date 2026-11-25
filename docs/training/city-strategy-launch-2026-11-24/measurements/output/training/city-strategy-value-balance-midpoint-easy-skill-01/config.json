@@ -1,0 +1,21 @@
+{
+  "models": [
+    "output/training/city-strategy-balanced-extension-01/segment-001/midpoint.zip",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-value-balance-01/segment-001/midpoint.zip"
+  ],
+  "hashes": {
+    "output/training/city-strategy-balanced-extension-01/segment-001/midpoint.zip": "17e8dd3b018f9e9ccec58ea72181f2f05c07b2f6b0e236ed6536ac10dd67803d",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-value-balance-01/segment-001/midpoint.zip": "b966d19f81655469ea71d5de078930d0cea7037649e23431a28185461b3033df"
+  },
+  "dll": "output/city-strategy-short-delay-build-01/bin/TrafficHost/release/TrafficHost.dll",
+  "host_sha256": "bc4f243fddabdeeefbb16e178ab06a25149378f36aa2a1492ffcc39b70d9aed8",
+  "seed_start": 154300000,
+  "count": 16,
+  "lessons": [
+    "midgame-network-reserve"
+  ],
+  "split": "validation",
+  "reserve_warmup_seconds": 0,
+  "reserve_delay_seconds": 2,
+  "forced_action_inference_skipped": true
+}

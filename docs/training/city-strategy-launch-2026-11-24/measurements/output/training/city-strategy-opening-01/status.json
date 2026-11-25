@@ -1,0 +1,23 @@
+{
+  "status": "complete",
+  "pid": 294537,
+  "started": "2026-11-24T15:25:23.792029+02:00",
+  "training_seconds": 895.8281912989914,
+  "segments": 1,
+  "current_checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-opening-01/segment-001/final.zip",
+  "best_checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-opening-initial-02/start.zip",
+  "failed_reviews": 1,
+  "updated": "2026-11-24T15:41:48.675782+02:00",
+  "active_segment": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-opening-01/segment-001",
+  "phase": "finished",
+  "current_sha256": "f04102599a7bfe862c2ca5edaa75084b1e264eb7d875df2b0c1fa91cfa7825b8",
+  "active_review": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-opening-01/review-001",
+  "last_review": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-opening-01/review-001",
+  "last_decision": {
+    "retained": false,
+    "promote": false,
+    "failures": 1,
+    "stop": false
+  },
+  "best_sha256": "74b3a046394147eb8a8cbe730cb2c0352eee14c49dd9b6b4e64357595f7749ab"
+}

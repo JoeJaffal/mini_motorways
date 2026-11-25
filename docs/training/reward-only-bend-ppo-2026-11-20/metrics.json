@@ -1,0 +1,64 @@
+{
+  "evaluation": {
+    "greedy": {
+      "bend": {
+        "baseline": 51,
+        "completed": 100,
+        "mean_native_trips": 11.18,
+        "mean_road_units": 2.5,
+        "paired_gains": 49,
+        "paired_losses": 0,
+        "different_edge_set_from_reference": 36,
+        "distinct_from_both_verified_routes": 16,
+        "min_native_trips": 10,
+        "max_native_trips": 12
+      },
+      "adjacent": {
+        "baseline": 100,
+        "completed": 100,
+        "mean_native_trips": 11.24,
+        "mean_road_units": 2,
+        "paired_gains": 0,
+        "paired_losses": 0
+      }
+    },
+    "sampled": {
+      "bend": {
+        "baseline": 22,
+        "completed": 100,
+        "mean_native_trips": 11.18,
+        "mean_road_units": 2.5,
+        "paired_gains": 78,
+        "paired_losses": 0,
+        "different_edge_set_from_reference": 52,
+        "distinct_from_both_verified_routes": 29,
+        "min_native_trips": 10,
+        "max_native_trips": 12
+      },
+      "adjacent": {
+        "baseline": 97,
+        "completed": 100,
+        "mean_native_trips": 11.24,
+        "mean_road_units": 2,
+        "paired_gains": 3,
+        "paired_losses": 0
+      }
+    }
+  },
+  "first_rollout": {
+    "decisions": 2048,
+    "games": 813,
+    "successes": 141,
+    "ppo_epochs": 4,
+    "elapsed_seconds": 3.635744821978733,
+    "fingerprint": "0b4628fb27ca67525c637633f2335884ab5fdb8bcc0e2fed685abe104281f3e6"
+  },
+  "last_rollout": {
+    "decisions": 131072,
+    "games": 818,
+    "successes": 816,
+    "ppo_epochs": 256,
+    "elapsed_seconds": 176.35733367491048,
+    "fingerprint": "8633942541d2bf8a9ab3b88fc875a70ef488a7e977557ab1b831cfc87246bf98"
+  }
+}

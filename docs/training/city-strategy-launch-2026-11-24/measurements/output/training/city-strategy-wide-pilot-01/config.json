@@ -1,0 +1,19 @@
+{
+  "dll": "output/city-road-reserve-build-01/bin/TrafficHost/release/TrafficHost.dll",
+  "parent": "output/training/city-strategy-wide-initial-01/start.zip",
+  "output": "output/training/city-strategy-wide-pilot-01",
+  "stage": "city",
+  "collapse_forced_wait": true,
+  "workers": 16,
+  "rollouts": 8,
+  "seed_start": 142000000,
+  "learning_rate": 0.003,
+  "rollout_steps": 512,
+  "batch_size": 128,
+  "gae_lambda": 1.0,
+  "horizon": 600,
+  "record_dir": null,
+  "parent_sha256": "9d9c9c95e4955a14461358f3203143be5f70331f8cbbb4bc26d0951b3674447a",
+  "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+  "decision_budget": 65536
+}

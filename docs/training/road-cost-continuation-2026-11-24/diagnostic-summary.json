@@ -1,0 +1,80 @@
+{
+  "control": {
+    "critic": {
+      "value_mse": 20.669856304568825,
+      "explained_variance": -9.966315665605888,
+      "value_mean": 1.4228148174006492,
+      "return_mean": 2.0703125
+    },
+    "mean_group_gradient_norms": {
+      "policy": [
+        0.017435711895814165,
+        0.05694377259351313,
+        0.0011168399469170254,
+        0.0
+      ],
+      "entropy": [
+        0.0002051365454462939,
+        0.00032669718439137796,
+        8.932839804742798e-06,
+        0.0
+      ],
+      "value": [
+        0.0,
+        0.0,
+        0.00022509024120154209,
+        0.003950362795876572
+      ]
+    },
+    "entropy_to_policy_road_norm_ratio": 0.0057371889762813915,
+    "states_with_build_available": {
+      "False": {
+        "count": 102,
+        "mean_build_probability": 0.46765344185976077
+      },
+      "True": {
+        "count": 154,
+        "mean_build_probability": 0.000987553930472486
+      }
+    }
+  },
+  "strong": {
+    "critic": {
+      "value_mse": 20.49088107537159,
+      "explained_variance": -9.478106174897201,
+      "value_mean": 1.368315261672251,
+      "return_mean": 2.02421875
+    },
+    "mean_group_gradient_norms": {
+      "policy": [
+        0.017918208890478127,
+        0.0537728862836957,
+        0.0011562999425223097,
+        0.0
+      ],
+      "entropy": [
+        0.0002044542716248543,
+        0.0003294109360467701,
+        9.736901517953811e-06,
+        0.0
+      ],
+      "value": [
+        0.0,
+        0.0,
+        0.00022738511324860156,
+        0.003916131565347314
+      ]
+    },
+    "entropy_to_policy_road_norm_ratio": 0.006125967170682629,
+    "states_with_build_available": {
+      "False": {
+        "count": 102,
+        "mean_build_probability": 0.46758656476181476
+      },
+      "True": {
+        "count": 154,
+        "mean_build_probability": 0.0009868317304478427
+      }
+    }
+  }
+}

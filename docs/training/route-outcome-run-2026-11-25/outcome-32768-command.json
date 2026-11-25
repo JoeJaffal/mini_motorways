@@ -1,0 +1,13 @@
+[
+  "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+  "-u",
+  "/home/mohammadjaffal/mini_motorways/output/training/route-outcome-01/runtime/training/evaluate_city_route_outcome.py",
+  "--dll",
+  "/home/mohammadjaffal/mini_motorways/output/training/route-outcome-01/runtime/host/TrafficHost.dll",
+  "--output",
+  "/home/mohammadjaffal/mini_motorways/output/training/route-outcome-01/evaluation/outcome-32768",
+  "--workers",
+  "2",
+  "--checkpoint",
+  "/home/mohammadjaffal/mini_motorways/output/training/route-outcome-01/training/checkpoint-000032768.zip"
+]

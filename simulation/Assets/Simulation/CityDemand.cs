@@ -131,6 +131,7 @@ namespace MotorwaysSim
 
         void UpdateCity()
         {
+            UpdateLimitedRouteGate();
             if(!Rules.EnableCityGrowth||!CityCatalog.Maps.Contains(Scenario))return;
             if(Rules.Version==GameVersion.OriginalReference){ScheduleOriginalHouses();ProcessOriginalPlan();return;}
             else if(nextScheduledShop<spawnSchedule.Count&&Time>=spawnSchedule[nextScheduledShop].time)

@@ -1,0 +1,33 @@
+{
+  "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-whole-fit-01/gated/final.zip",
+  "sha256": "faf2869a9c6bf60a5e6d6f109f464538068aeb885f364a2b1836dac214f7d6a4",
+  "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+  "horizon": 600,
+  "allow_bridges": true,
+  "results": {
+    "repeated": {
+      "games": 16,
+      "mean": 101.875,
+      "scoring": 15,
+      "new_targets_served": 59,
+      "stockouts": 25,
+      "delta": -24.375,
+      "interval95": [
+        -47.5015625,
+        -1.6843750000000455
+      ]
+    },
+    "heldout": {
+      "games": 16,
+      "mean": 115.375,
+      "scoring": 15,
+      "new_targets_served": 71,
+      "stockouts": 22,
+      "delta": -10.5625,
+      "interval95": [
+        -35.0625,
+        20.876562499999977
+      ]
+    }
+  }
+}

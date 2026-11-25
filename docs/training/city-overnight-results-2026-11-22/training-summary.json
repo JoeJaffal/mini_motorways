@@ -1,0 +1,44 @@
+{
+  "decisions": 7008256,
+  "training_seconds": 28805.250685679028,
+  "measured_decisions_per_second": 243.29786525635973,
+  "snapshots": 32,
+  "completed": {
+    "games": 16197,
+    "first_decisions": 5280,
+    "last_decisions": 7007840,
+    "mean_score": 61.0151,
+    "median_score": 51,
+    "best_score": 186,
+    "zero_scores": 3103,
+    "median_seconds": 354.95,
+    "mean_roads": 80.0684,
+    "horizon_truncations": 1557
+  },
+  "first_100": {
+    "games": 100,
+    "first_decisions": 5280,
+    "last_decisions": 34944,
+    "mean_score": 21.84,
+    "median_score": 13.0,
+    "best_score": 132,
+    "zero_scores": 40,
+    "median_seconds": 202.1,
+    "mean_roads": 57,
+    "horizon_truncations": 0
+  },
+  "last_100": {
+    "games": 100,
+    "first_decisions": 6956192,
+    "last_decisions": 7007840,
+    "mean_score": 89.07,
+    "median_score": 84.0,
+    "best_score": 181,
+    "zero_scores": 9,
+    "median_seconds": 440.95,
+    "mean_roads": 92.43,
+    "horizon_truncations": 25
+  },
+  "source_sha256": "4bedfa61db4d05095bf0540595f17bbb0f2a45511daeef8c131e5c293eea6996",
+  "learner_csv_sha256": "0c04dd2e84ec0145ce7e098f4358410a201540a67d2d30f320d9d62f8d52ff0a"
+}

@@ -1,0 +1,33 @@
+{
+  "checkpoint": "output/training/city-whole-fit-01/whole/midpoint.zip",
+  "sha256": "a2e1bde960b8bb2516c4f55d96ca2d5ee6bf833fcea12250b528125517b146d4",
+  "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+  "horizon": 600,
+  "allow_bridges": true,
+  "results": {
+    "repeated": {
+      "games": 16,
+      "mean": 119.0,
+      "scoring": 15,
+      "new_targets_served": 68,
+      "stockouts": 25,
+      "delta": -7.25,
+      "interval95": [
+        -33.8125,
+        18.5625
+      ]
+    },
+    "heldout": {
+      "games": 16,
+      "mean": 95.0,
+      "scoring": 14,
+      "new_targets_served": 57,
+      "stockouts": 20,
+      "delta": -30.9375,
+      "interval95": [
+        -69.315625,
+        5.4375
+      ]
+    }
+  }
+}

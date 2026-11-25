@@ -1,0 +1,3 @@
+Four focused unittest checks passed (python -m unittest discover -s training -p test_city*py).
+Weight audit: exact optimizer transfer, unchanged source hash, protected weights exact and spatial grid/road weights updated in both saves.
+Native replay checks: 175 exact opening probability comparisons; scores 14, 4, 156.

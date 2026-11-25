@@ -1,0 +1,105 @@
+{
+  "decisions_added": 5230592,
+  "active_seconds": 28809.832500949968,
+  "completed_episodes": 10884,
+  "decisions_per_second": 181.55579348916825,
+  "checkpoint_count": 32,
+  "comparisons": [
+    {
+      "model": 0,
+      "warm_start_model": 1,
+      "mean_deliveries_difference": -9.375,
+      "paired_bootstrap_95_percent": [
+        -31.876041666666666,
+        14.5
+      ],
+      "wins": 12,
+      "ties": 1,
+      "losses": 11,
+      "median_seconds": 435.375,
+      "native_game_over": 19,
+      "truncated": 5,
+      "builds_per_simulated_minute": 14.007988302142317
+    },
+    {
+      "model": 1,
+      "warm_start_model": 1,
+      "mean_deliveries_difference": 0.0,
+      "paired_bootstrap_95_percent": [
+        0.0,
+        0.0
+      ],
+      "wins": 0,
+      "ties": 24,
+      "losses": 0,
+      "median_seconds": 476.57500000000005,
+      "native_game_over": 16,
+      "truncated": 8,
+      "builds_per_simulated_minute": 13.584905660377359
+    },
+    {
+      "model": 2,
+      "warm_start_model": 1,
+      "mean_deliveries_difference": -9.041666666666666,
+      "paired_bootstrap_95_percent": [
+        -34.208333333333336,
+        16.75104166666665
+      ],
+      "wins": 7,
+      "ties": 3,
+      "losses": 14,
+      "median_seconds": 461.80000000000007,
+      "native_game_over": 19,
+      "truncated": 5,
+      "builds_per_simulated_minute": 13.585943826034358
+    },
+    {
+      "model": 3,
+      "warm_start_model": 1,
+      "mean_deliveries_difference": 2.4583333333333335,
+      "paired_bootstrap_95_percent": [
+        -23.75,
+        29.125
+      ],
+      "wins": 11,
+      "ties": 1,
+      "losses": 12,
+      "median_seconds": 514.475,
+      "native_game_over": 14,
+      "truncated": 10,
+      "builds_per_simulated_minute": 13.354805474467799
+    },
+    {
+      "model": 4,
+      "warm_start_model": 1,
+      "mean_deliveries_difference": -14.083333333333334,
+      "paired_bootstrap_95_percent": [
+        -30.875,
+        2.625
+      ],
+      "wins": 7,
+      "ties": 2,
+      "losses": 15,
+      "median_seconds": 453.975,
+      "native_game_over": 21,
+      "truncated": 3,
+      "builds_per_simulated_minute": 13.6500120105693
+    },
+    {
+      "model": 5,
+      "warm_start_model": 1,
+      "mean_deliveries_difference": -21.416666666666668,
+      "paired_bootstrap_95_percent": [
+        -48.041666666666664,
+        5.875
+      ],
+      "wins": 9,
+      "ties": 1,
+      "losses": 14,
+      "median_seconds": 454.25,
+      "native_game_over": 22,
+      "truncated": 2,
+      "builds_per_simulated_minute": 14.05918209958059
+    }
+  ]
+}

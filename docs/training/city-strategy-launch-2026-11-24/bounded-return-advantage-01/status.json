@@ -1,0 +1,23 @@
+{
+  "status": "complete",
+  "pid": 216556,
+  "started": "2026-11-24T13:07:38.626102+02:00",
+  "training_seconds": 1011.5272075670073,
+  "segments": 1,
+  "current_checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-return-advantage-01/segment-001/final.zip",
+  "best_checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-extension-01/segment-001/midpoint.zip",
+  "failed_reviews": 1,
+  "updated": "2026-11-24T13:25:58.770654+02:00",
+  "active_segment": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-return-advantage-01/segment-001",
+  "phase": "finished",
+  "current_sha256": "3d3e1aaab4d070735114b2b47a5791ca65a7086c1db026048a200547123cbc62",
+  "active_review": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-return-advantage-01/review-001",
+  "last_review": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-return-advantage-01/review-001",
+  "last_decision": {
+    "retained": false,
+    "promote": false,
+    "failures": 1,
+    "stop": false
+  },
+  "best_sha256": "17e8dd3b018f9e9ccec58ea72181f2f05c07b2f6b0e236ed6536ac10dd67803d"
+}

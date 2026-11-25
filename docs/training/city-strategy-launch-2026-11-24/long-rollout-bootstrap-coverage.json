@@ -1,0 +1,16 @@
+{
+  "source": "output/training/city-strategy-long-rollout-01/segment-001",
+  "measurements": {
+    "512": {
+      "direct_terminal_return_samples": 10437,
+      "total_samples": 32768,
+      "direct_terminal_return_fraction": 0.318511962890625
+    },
+    "1024": {
+      "direct_terminal_return_samples": 17299,
+      "total_samples": 32768,
+      "direct_terminal_return_fraction": 0.527923583984375
+    }
+  },
+  "note": "Same recorded trajectories regrouped retrospectively. Time-limit terminations retain bootstrap. Unfinished tails require bootstrap. This estimates return-target coverage only, not score improvement or trajectories of the new policy."
+}

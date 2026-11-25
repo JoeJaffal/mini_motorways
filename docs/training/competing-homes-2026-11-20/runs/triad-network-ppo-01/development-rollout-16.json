@@ -1,0 +1,4121 @@
+{
+  "fingerprint": "599b24cf0e9f5701eaedd0a70fab7bb3f440732a164b054aead86a7a0873b01a",
+  "stock_violations": 0,
+  "results": {
+    "pair-triad-left/greedy": [
+      {
+        "seed": 54400,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          359,
+          115,
+          163,
+          211,
+          259,
+          306
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54401,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          317,
+          393,
+          397,
+          401,
+          364,
+          320
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54402,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          359,
+          115,
+          163,
+          211,
+          259,
+          306
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54403,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          317,
+          397,
+          401,
+          364,
+          320
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54404,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          219,
+          419,
+          371,
+          318,
+          266
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54405,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          301,
+          277,
+          273,
+          269,
+          305,
+          265,
+          268
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54406,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          171,
+          467,
+          419,
+          371,
+          323,
+          270,
+          218
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54407,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          301,
+          277,
+          273,
+          269,
+          305,
+          265,
+          268
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54408,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          171,
+          419,
+          371,
+          323,
+          270,
+          218
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54409,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          301,
+          273,
+          269,
+          265,
+          261,
+          264
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54410,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          171,
+          419,
+          371,
+          323,
+          270,
+          218
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54411,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          305,
+          273,
+          269,
+          265,
+          268
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54412,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          219,
+          419,
+          371,
+          318,
+          266
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54413,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          301,
+          277,
+          273,
+          269,
+          305,
+          265,
+          268
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54414,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          167,
+          459,
+          411,
+          363,
+          215,
+          315,
+          262
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54415,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          301,
+          229,
+          225,
+          221,
+          217,
+          220,
+          264
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54416,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          317,
+          345,
+          349,
+          353,
+          357,
+          320
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54417,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          363,
+          115,
+          163,
+          211,
+          258,
+          310
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54418,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          317,
+          349,
+          353,
+          357,
+          320
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54419,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          363,
+          163,
+          211,
+          258,
+          310
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54420,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          317,
+          349,
+          353,
+          357,
+          320
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54421,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          411,
+          115,
+          163,
+          211,
+          259,
+          306,
+          358
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54422,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          321,
+          345,
+          349,
+          353,
+          357,
+          361,
+          324
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54423,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          407,
+          115,
+          163,
+          211,
+          259,
+          307,
+          354
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54424,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          317,
+          393,
+          397,
+          401,
+          364,
+          320
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54425,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          359,
+          115,
+          163,
+          211,
+          259,
+          306
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54426,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          317,
+          397,
+          401,
+          364,
+          320
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54427,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          215,
+          411,
+          363,
+          315,
+          262
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54428,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          305,
+          225,
+          221,
+          224,
+          268
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54429,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          167,
+          459,
+          411,
+          363,
+          215,
+          315,
+          262
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54430,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          301,
+          229,
+          225,
+          221,
+          217,
+          220,
+          264
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54431,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          167,
+          459,
+          411,
+          363,
+          215,
+          315,
+          262
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      }
+    ],
+    "pair-triad-left/sampled": [
+      {
+        "seed": 54400,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          115,
+          359,
+          163,
+          211,
+          259,
+          306
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54401,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          317,
+          393,
+          397,
+          401,
+          364,
+          320
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54402,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          359,
+          115,
+          163,
+          211,
+          259,
+          306
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54403,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          317,
+          397,
+          401,
+          364,
+          320
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54404,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          219,
+          419,
+          371,
+          318,
+          266
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54405,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          301,
+          277,
+          273,
+          269,
+          265,
+          261,
+          264
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54406,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          467,
+          171,
+          419,
+          371,
+          323,
+          270,
+          218
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54407,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          277,
+          273,
+          269,
+          265,
+          236,
+          301,
+          280
+        ],
+        "started_connected": false,
+        "success": false,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54408,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          419,
+          371,
+          171,
+          323,
+          270,
+          218
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54409,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          273,
+          269,
+          301,
+          265,
+          261,
+          264
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54410,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          419,
+          171,
+          371,
+          323,
+          270,
+          218
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54411,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          305,
+          273,
+          269,
+          265,
+          268
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54412,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          219,
+          419,
+          371,
+          318,
+          266
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54413,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          277,
+          301,
+          273,
+          269,
+          265,
+          305,
+          268
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54414,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          459,
+          411,
+          363,
+          315,
+          167,
+          267,
+          214
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54415,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          301,
+          229,
+          225,
+          221,
+          217,
+          220,
+          264
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54416,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          345,
+          317,
+          349,
+          353,
+          357,
+          320
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54417,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          363,
+          115,
+          163,
+          211,
+          258,
+          310
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54418,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          349,
+          317,
+          353,
+          357,
+          320
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54419,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          363,
+          163,
+          211,
+          258,
+          310
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54420,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          349,
+          317,
+          353,
+          357,
+          320
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54421,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          115,
+          411,
+          163,
+          211,
+          259,
+          306,
+          358
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54422,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          345,
+          349,
+          353,
+          321,
+          357,
+          361,
+          324
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54423,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          407,
+          115,
+          163,
+          211,
+          259,
+          307,
+          354
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54424,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          317,
+          393,
+          397,
+          401,
+          364,
+          320
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54425,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          359,
+          115,
+          163,
+          211,
+          259,
+          306
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54426,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          317,
+          397,
+          401,
+          364,
+          320
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54427,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          215,
+          411,
+          363,
+          315,
+          262
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54428,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          225,
+          305,
+          221,
+          224,
+          268
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54429,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          459,
+          167,
+          411,
+          363,
+          315,
+          267,
+          214
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54430,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          229,
+          301,
+          225,
+          221,
+          217,
+          220,
+          264
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54431,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          167,
+          459,
+          411,
+          363,
+          215,
+          315,
+          262
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      }
+    ],
+    "pair-triad-right/greedy": [
+      {
+        "seed": 54400,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          359,
+          123,
+          171,
+          219,
+          267,
+          316
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54401,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          317,
+          201,
+          205,
+          209,
+          214,
+          266
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54402,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          359,
+          123,
+          171,
+          219,
+          267,
+          316
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54403,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          317,
+          205,
+          209,
+          214,
+          266
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54404,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          219,
+          403,
+          355,
+          312,
+          268
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54405,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          301,
+          373,
+          369,
+          365,
+          305,
+          361,
+          310
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54406,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          171,
+          451,
+          403,
+          355,
+          307,
+          264,
+          220
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54407,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          301,
+          373,
+          369,
+          365,
+          305,
+          361,
+          310
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54408,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          171,
+          403,
+          355,
+          307,
+          264,
+          220
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54409,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          301,
+          369,
+          365,
+          361,
+          357,
+          306
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54410,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          171,
+          403,
+          355,
+          307,
+          264,
+          220
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54411,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          305,
+          369,
+          365,
+          361,
+          310
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54412,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          219,
+          403,
+          355,
+          312,
+          268
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54413,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          301,
+          373,
+          369,
+          365,
+          305,
+          361,
+          310
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54414,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          167,
+          451,
+          403,
+          355,
+          307,
+          259,
+          216
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54415,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          301,
+          421,
+          417,
+          413,
+          409,
+          358,
+          306
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54416,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          317,
+          249,
+          253,
+          257,
+          261,
+          266
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54417,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          363,
+          131,
+          179,
+          227,
+          276,
+          320
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54418,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          317,
+          253,
+          257,
+          261,
+          266
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54419,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          363,
+          179,
+          227,
+          276,
+          320
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54420,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          317,
+          253,
+          257,
+          261,
+          266
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54421,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          411,
+          131,
+          179,
+          227,
+          275,
+          324,
+          368
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54422,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          321,
+          249,
+          253,
+          257,
+          261,
+          265,
+          270
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54423,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          407,
+          123,
+          171,
+          219,
+          267,
+          315,
+          364
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54424,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          317,
+          201,
+          205,
+          209,
+          214,
+          266
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54425,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          359,
+          123,
+          171,
+          219,
+          267,
+          316
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54426,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          317,
+          205,
+          209,
+          214,
+          266
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54427,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          215,
+          403,
+          355,
+          307,
+          264
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54428,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          305,
+          417,
+          413,
+          362,
+          310
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54429,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          167,
+          451,
+          403,
+          355,
+          307,
+          259,
+          216
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54430,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          301,
+          421,
+          417,
+          413,
+          409,
+          358,
+          306
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54431,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          167,
+          451,
+          403,
+          355,
+          307,
+          259,
+          216
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      }
+    ],
+    "pair-triad-right/sampled": [
+      {
+        "seed": 54400,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          123,
+          171,
+          359,
+          219,
+          267,
+          316
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54401,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          317,
+          201,
+          205,
+          209,
+          214,
+          266
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54402,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          359,
+          123,
+          171,
+          219,
+          267,
+          316
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54403,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          317,
+          205,
+          209,
+          214,
+          266
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54404,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          219,
+          403,
+          355,
+          312,
+          268
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54405,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          301,
+          373,
+          369,
+          365,
+          361,
+          357,
+          306
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54406,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          171,
+          451,
+          403,
+          355,
+          307,
+          264,
+          220
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54407,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          301,
+          373,
+          369,
+          305,
+          365,
+          361,
+          310
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54408,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          403,
+          171,
+          355,
+          307,
+          264,
+          220
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54409,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          301,
+          369,
+          365,
+          361,
+          357,
+          306
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54410,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          171,
+          403,
+          355,
+          307,
+          264,
+          220
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54411,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          305,
+          369,
+          365,
+          361,
+          310
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54412,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          219,
+          403,
+          355,
+          312,
+          268
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54413,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          373,
+          301,
+          369,
+          305,
+          365,
+          361,
+          310
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54414,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          167,
+          451,
+          403,
+          355,
+          307,
+          259,
+          216
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54415,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          421,
+          301,
+          417,
+          413,
+          409,
+          358,
+          306
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54416,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          249,
+          253,
+          257,
+          317,
+          261,
+          266
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54417,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          363,
+          131,
+          179,
+          227,
+          276,
+          320
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54418,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          253,
+          317,
+          257,
+          261,
+          266
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54419,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          363,
+          179,
+          227,
+          276,
+          320
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54420,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          317,
+          253,
+          257,
+          261,
+          266
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54421,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          411,
+          131,
+          179,
+          227,
+          275,
+          324,
+          368
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54422,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          249,
+          253,
+          321,
+          257,
+          261,
+          265,
+          270
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54423,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          407,
+          123,
+          171,
+          219,
+          128,
+          84,
+          172
+        ],
+        "started_connected": false,
+        "success": false,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54424,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          317,
+          201,
+          205,
+          209,
+          214,
+          266
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54425,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 4,
+        "spent": 4,
+        "actions": [
+          359,
+          123,
+          171,
+          219,
+          267,
+          316
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54426,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          205,
+          317,
+          209,
+          214,
+          266
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54427,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          215,
+          403,
+          355,
+          307,
+          264
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54428,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 3,
+        "spent": 3,
+        "actions": [
+          417,
+          305,
+          413,
+          362,
+          310
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      },
+      {
+        "seed": 54429,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          451,
+          167,
+          403,
+          355,
+          307,
+          259,
+          216
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 2
+          }
+        ]
+      },
+      {
+        "seed": 54430,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          301,
+          421,
+          417,
+          413,
+          409,
+          358,
+          306
+        ],
+        "started_connected": false,
+        "success": true,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 1
+          },
+          {
+            "role": "house",
+            "color": 0
+          },
+          {
+            "role": "house",
+            "color": 1
+          }
+        ]
+      },
+      {
+        "seed": 54431,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "stock": 5,
+        "spent": 5,
+        "actions": [
+          451,
+          403,
+          360,
+          316,
+          167,
+          215,
+          263
+        ],
+        "started_connected": false,
+        "success": false,
+        "buildings": [
+          {
+            "role": "destination",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 2
+          },
+          {
+            "role": "house",
+            "color": 0
+          }
+        ]
+      }
+    ]
+  },
+  "checkpoint_sha256": "71e858b07d47be536cd7071bf5a8b5af7cace2ef75248fb55e2ec36613704b24",
+  "native_sha256": "433044d1bd799bf02102103be110c05029f195082854c6882903db9a7fe73863",
+  "runner_sha256": "c0b541870d20a09dcba15cbfd09304eef42d224a098868c3aa730af10986a530"
+}

@@ -1,0 +1,15 @@
+{
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+  "bank_sha256": "33285c68b49cdb50c714e3790735f617f7f946d3472bbaeff3bfdf3f514c1579",
+  "models": {
+    "wait32k": {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01/training/final.zip",
+      "sha256": "907e1a083b58780bd140d4e258285878ed3534a4c0be6cf9b75070eae7f04826"
+    },
+    "wait98k": {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/build-wait-02/training/final.zip",
+      "sha256": "1b92bd35e3124b156a9a25ab5e139fe5e12e6035784a11e69cee558d810524b5"
+    }
+  },
+  "limits": "Selected training-bank states, not fresh evaluation. Inflight prefix is after the last construction before observed first delivery; remaining recorded actions are Wait."
+}

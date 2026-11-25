@@ -1,0 +1,27 @@
+{
+  "1": {
+    "adam_steps": [
+      256
+    ],
+    "changed_entries": 82,
+    "frozen_prior_unchanged": true,
+    "all_tensors_finite": true,
+    "task_minibatches": false,
+    "seconds": 127.77277583105024
+  },
+  "2": {
+    "adam_steps": [
+      256
+    ],
+    "changed_entries": 82,
+    "frozen_prior_unchanged": true,
+    "all_tensors_finite": true,
+    "task_minibatches": true,
+    "seconds": 129.24827528593596
+  },
+  "audited_task_updates": {
+    "single-connection": 16,
+    "city": 32,
+    "two-arrivals": 16
+  }
+}

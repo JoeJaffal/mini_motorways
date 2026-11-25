@@ -1,0 +1,48 @@
+[
+  {
+    "checkpoint": "output/training/overnight-mixed-smoke-02/checkpoint-000270336.zip",
+    "sha256": "eefb2d17e0ebef545b1d486028438bf74e8484d41c137610501129f6b63c9840",
+    "cumulative_decisions": 270336,
+    "added_decisions": 8192,
+    "optimizer_steps": 8448,
+    "optimizer_steps_added": 256,
+    "episodes": 133,
+    "seconds": 181.70669803209603,
+    "next_seed_cursors": [
+      213100032,
+      213100049,
+      213100386,
+      213100211,
+      213100052,
+      213100069,
+      213100198,
+      213100215,
+      213100056,
+      213100073,
+      213100250,
+      213100203,
+      213100044,
+      213100061,
+      213100382,
+      213100223
+    ],
+    "next_episode_cursors": [
+      2,
+      4,
+      26,
+      16,
+      7,
+      9,
+      18,
+      20,
+      11,
+      13,
+      25,
+      23,
+      14,
+      16,
+      37,
+      28
+    ]
+  }
+]

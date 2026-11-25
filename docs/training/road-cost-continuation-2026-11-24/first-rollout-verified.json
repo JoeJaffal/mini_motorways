@@ -1,0 +1,78 @@
+{
+  "status": {
+    "status": "running",
+    "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/road-cost-continuation-01/control/checkpoint-000024576.zip",
+    "sha256": "1b8fdf06dfba4702b23cb4aad97d4fa4d738c6525202ea822a48b84ddf3e8a41",
+    "cumulative_decisions": 24576,
+    "added_decisions": 8192,
+    "optimizer_steps": 768,
+    "optimizer_steps_added": 256,
+    "episodes": 225,
+    "seconds": 132.1169292340055,
+    "next_seed_cursors": [
+      208000240,
+      208000305,
+      208000226,
+      208000195,
+      208000292,
+      208000213,
+      208000214,
+      208000231,
+      208000328,
+      208000217,
+      208000218,
+      208000283,
+      208000204,
+      208000237,
+      208000222,
+      208000351
+    ],
+    "next_episode_cursors": [
+      15,
+      20,
+      16,
+      15,
+      22,
+      18,
+      19,
+      21,
+      28,
+      22,
+      23,
+      28,
+      24,
+      27,
+      27,
+      36
+    ],
+    "recent_native_mean": 1.99,
+    "recent_paid_mean": 8.36,
+    "recent_success_rate": 0.56
+  },
+  "parameter_updates": {
+    "cumulative_decisions": 24576,
+    "groups": [
+      {
+        "delta_l2": 0.4473443031311035,
+        "initial_l2": 4.1161088943481445,
+        "lr_scale": 1.0
+      },
+      {
+        "delta_l2": 0.09193148463964462,
+        "initial_l2": 3.326993465423584,
+        "lr_scale": 0.3
+      },
+      {
+        "delta_l2": 0.634141743183136,
+        "initial_l2": 5.97248649597168,
+        "lr_scale": 0.1
+      },
+      {
+        "delta_l2": 0.2723548114299774,
+        "initial_l2": 19.197595596313477,
+        "lr_scale": 0.1
+      }
+    ]
+  },
+  "checkpoint_hash_verified": true
+}

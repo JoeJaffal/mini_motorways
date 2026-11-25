@@ -1,0 +1,88 @@
+{
+  "checkpoint": "output/training/city-five-stage-cold-initial-01/candidate.zip",
+  "sha256": "9202d62be8d237f6fe495ee1ec29eed1747849a1fd747006ea8903de7f0b19f1",
+  "note": "Initial native lesson probes only; not a full-city distribution or evidence of successful strategy.",
+  "rows": [
+    {
+      "lesson": "midgame-network-join",
+      "legal_roads": 541,
+      "wait": 0.2808093726634979,
+      "conditional_top_road": 1.0,
+      "conditional_entropy": -0.0,
+      "effective_roads": 1.0,
+      "roads_below_one_in_million": 540
+    },
+    {
+      "lesson": "midgame-network-route",
+      "legal_roads": 544,
+      "wait": 0.19454391300678253,
+      "conditional_top_road": 0.6045910037585602,
+      "conditional_entropy": 1.1884894645696538,
+      "effective_roads": 3.282119702964443,
+      "roads_below_one_in_million": 528
+    },
+    {
+      "lesson": "midgame-network-delay",
+      "legal_roads": 536,
+      "wait": 0.9807978272438049,
+      "conditional_top_road": 0.9999976821971737,
+      "conditional_entropy": 3.392445644116585e-05,
+      "effective_roads": 1.0000339250318822,
+      "roads_below_one_in_million": 534
+    },
+    {
+      "lesson": "midgame-network-quiet",
+      "legal_roads": 539,
+      "wait": 0.6674792766571045,
+      "conditional_top_road": 0.9999972753924927,
+      "conditional_entropy": 3.992844442157669e-05,
+      "effective_roads": 1.0000399292415725,
+      "roads_below_one_in_million": 537
+    },
+    {
+      "lesson": "traffic-priority-established",
+      "legal_roads": 2,
+      "wait": 0.030866343528032303,
+      "conditional_top_road": 0.5719459260522122,
+      "conditional_entropy": 0.6827587245311313,
+      "effective_roads": 1.9793306352221263,
+      "roads_below_one_in_million": 0
+    },
+    {
+      "lesson": "traffic-priority-established-swap",
+      "legal_roads": 2,
+      "wait": 0.05928247049450874,
+      "conditional_top_road": 0.5388012207350591,
+      "conditional_entropy": 0.690133081615548,
+      "effective_roads": 1.993980877783038,
+      "roads_below_one_in_million": 0
+    },
+    {
+      "lesson": "traffic-junction-low-live",
+      "legal_roads": 6,
+      "wait": 0.6931806802749634,
+      "conditional_top_road": 0.9996583020533041,
+      "conditional_entropy": 0.0031513970222381052,
+      "effective_roads": 1.0031563678941928,
+      "roads_below_one_in_million": 3
+    },
+    {
+      "lesson": "traffic-junction-high-live",
+      "legal_roads": 6,
+      "wait": 0.8310019373893738,
+      "conditional_top_road": 0.9997412644355723,
+      "conditional_entropy": 0.002460167854985344,
+      "effective_roads": 1.0024631965511137,
+      "roads_below_one_in_million": 3
+    },
+    {
+      "lesson": "midgame-network-reserve",
+      "legal_roads": 579,
+      "wait": 0.6670551896095276,
+      "conditional_top_road": 0.9998524494628789,
+      "conditional_entropy": 0.001486840412569618,
+      "effective_roads": 1.0014879463078046,
+      "roads_below_one_in_million": 576
+    }
+  ]
+}

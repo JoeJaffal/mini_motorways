@@ -1,0 +1,200 @@
+{
+  "created_utc": "2026-11-21T16:15:49.288039+00:00",
+  "branch": "mohammad",
+  "git_base": "6bd7f7193b26ae0f5aa12563f3dd89769115df6e",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 11890,
+      "sha256": "5717bf338a058ab933cded123fb7907f7564a66db8cf10ae6929bacf4593af45"
+    },
+    {
+      "path": "gap-positions-rush.patch",
+      "bytes": 1776,
+      "sha256": "28868419b01801c5b81604c09601217d9f779b2d7d0b5980f00d1c4d00f58655"
+    },
+    {
+      "path": "gap-positions.patch",
+      "bytes": 1429,
+      "sha256": "f83d64659bfb75807278a03c1c982327af6d8f38c5e034be91bf12cb863c5ac2"
+    },
+    {
+      "path": "measurements/early-probabilities.txt",
+      "bytes": 420,
+      "sha256": "a1803914f070d3d9d35aa5cb37f2c7d2e4662826902180baabc85d0e6810f617"
+    },
+    {
+      "path": "measurements/final-independent-controls.json",
+      "bytes": 595674,
+      "sha256": "ab55e7b7931e68d57f0a352df47be3cdc12b95c02621fa9dd2438edc42d102b8"
+    },
+    {
+      "path": "measurements/final-independent-replays.json",
+      "bytes": 401226,
+      "sha256": "07f4faec0d13aab5d8c6b31d555668236d6e8a9c1a8f020848ef3e5096e06c2f"
+    },
+    {
+      "path": "measurements/final-middle-gap-cue-audit.json",
+      "bytes": 103825,
+      "sha256": "083249c1ed532e0bc13805726f5b818b762054dd05e24622ef94a74a9f796f35"
+    },
+    {
+      "path": "measurements/geometry-check.txt",
+      "bytes": 430,
+      "sha256": "be375a111cc83f89352466675b8659828242d68b6c9bb727742afdea54ead46d"
+    },
+    {
+      "path": "measurements/holdout-endpoint-residual.json",
+      "bytes": 1249612,
+      "sha256": "1e6b8eb1370b267ae6003da024825aae78306188200c7ea1dcdedcdc7bcf22d3"
+    },
+    {
+      "path": "measurements/holdout-native-controls.json",
+      "bytes": 1857396,
+      "sha256": "de9d7687ead0da63fafb0aa87f7254c86394a8bd705de6e521d92482bd03ea6a"
+    },
+    {
+      "path": "measurements/holdout-prior-continuation.json",
+      "bytes": 1249515,
+      "sha256": "85dcbd1851315bfa9bd3b1a59a0e605e0675f46375b649623d465d006db413b9"
+    },
+    {
+      "path": "measurements/holdout-topology-rush.json",
+      "bytes": 1250890,
+      "sha256": "93d640f49823cd588d210b2cfdde4a3e8b47cde43c66ce3332bb12d3451435d7"
+    },
+    {
+      "path": "measurements/holdout-topology.json",
+      "bytes": 1250341,
+      "sha256": "c7835aafd601038de96c1551b826d50b63802fc3935a0dfba5c8379d736b7ec0"
+    },
+    {
+      "path": "measurements/middle-gap-cue-audit.json",
+      "bytes": 103553,
+      "sha256": "c5f8ca36a7a92fa33bc870df0198ee4f4f61b460707c85d63c05599771afc28f"
+    },
+    {
+      "path": "measurements/new-position-controls.json",
+      "bytes": 223551,
+      "sha256": "5a9c3042277bcb06586709d484995f39d412216a30b57b4793ed84570e99b013"
+    },
+    {
+      "path": "measurements/rush-calibration.json",
+      "bytes": 111605,
+      "sha256": "66695e1664a47dc060a28373c8a755076d43186e4647a4e81cfcb0f1a5c19780"
+    },
+    {
+      "path": "measurements/rush-position-controls.json",
+      "bytes": 187581,
+      "sha256": "96a127ffe975013eda34ca200d05708f9117744987b7af0ea312b784982d629f"
+    },
+    {
+      "path": "measurements/topology-before-rush.log",
+      "bytes": 417,
+      "sha256": "c6b7ba61deecaee915da0c15626a670056731e37928bfae2650941c30803205d"
+    },
+    {
+      "path": "measurements/topology-mid.json",
+      "bytes": 150322,
+      "sha256": "36c0a3f1d41371b490a51aca04cce45e756e3e130b63b657a1cfded94897b3a8"
+    },
+    {
+      "path": "runs/traffic-road-ends-ppo-02/config.json",
+      "bytes": 1075,
+      "sha256": "181ac41e8e5bbb3e8ce9db5e2d68797a2e492291ea273e2269bd53ade4fb5f2c"
+    },
+    {
+      "path": "runs/traffic-road-ends-ppo-02/progress.jsonl",
+      "bytes": 29141,
+      "sha256": "1be95b880d42a35a9bdad2776ff60326b1bb1a7259fe31d8f8f3b2212aaaf832"
+    },
+    {
+      "path": "runs/traffic-road-ends-ppo-02/status.json",
+      "bytes": 131,
+      "sha256": "e236d4ed268585b29ae91e70b2dd7e633a10962bc0a990a1f47862a4059a907b"
+    },
+    {
+      "path": "runs/traffic-road-topology-ppo-01/config.json",
+      "bytes": 1139,
+      "sha256": "cb82cf6acf529087c7f79cbfb2b2f7c81aca4d8a1ee0dcbc3f5e0248b90fd2ab"
+    },
+    {
+      "path": "runs/traffic-road-topology-ppo-01/progress.jsonl",
+      "bytes": 26109,
+      "sha256": "1b3b9fb2495ad72d913167ede00c7903404e097711f0fed0a351b637270d2bb6"
+    },
+    {
+      "path": "runs/traffic-road-topology-ppo-01/status.json",
+      "bytes": 134,
+      "sha256": "9215931142939cb2be4d4d9b62aa47c6b2792c6ac5d4d4a37e1168fcaa08b71b"
+    },
+    {
+      "path": "runs/traffic-road-topology-rush-01/config.json",
+      "bytes": 1223,
+      "sha256": "f38e009c8a0ca4114dcd0a5e12900137522b1ccfd6eba97f43bc83794783a648"
+    },
+    {
+      "path": "runs/traffic-road-topology-rush-01/progress.jsonl",
+      "bytes": 15882,
+      "sha256": "b232e2d74439440062295b05382f06b87323b51d458d8b8e5f9a101363bd157f"
+    },
+    {
+      "path": "runs/traffic-road-topology-rush-01/status.json",
+      "bytes": 133,
+      "sha256": "ef8bcd408922b61552e4372218eb8de8e75e093e284716ae063f12a9ea6277cd"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 41637,
+      "sha256": "187be9f72bdb84433d673672b487ce95a90c9ef3569e7cdb0b0c7ad4d2380f86"
+    }
+  ],
+  "local_artifacts": [
+    {
+      "path": "output/training/traffic-road-ends-ppo-02/initial.zip",
+      "sha256": "17d6c1a21b50cadd5c9c96a19d25bd40fe7a3cab1c5471b980eeed8a7c4790cb"
+    },
+    {
+      "path": "output/training/traffic-road-ends-ppo-02/latest.zip",
+      "sha256": "2546b1da7acbfcea902ff1783bf1c7662345552d4d601148b40195dd58bb0c9b"
+    },
+    {
+      "path": "output/training/traffic-road-topology-ppo-01/initial.zip",
+      "sha256": "a87d45e466153578160fcf1f84a7adae4c7e2faf364976fe3a83b29be0e86290"
+    },
+    {
+      "path": "output/training/traffic-road-topology-ppo-01/latest.zip",
+      "sha256": "6a6a72161f014e47acb9d47f2ad2d5f4325b3f43845ee3a61fe1b6b6cbf5a029"
+    },
+    {
+      "path": "output/training/traffic-road-topology-rush-01/initial.zip",
+      "sha256": "c591ac69e80a72160f2b52fe63c3e5310101fb32777d0bc4bd782b519cc0b075"
+    },
+    {
+      "path": "output/training/traffic-road-topology-rush-01/latest.zip",
+      "sha256": "fba4bafb79e15048df4a37b5b08b3815bb173d2d7995855d5961f8e43f523824"
+    },
+    {
+      "path": "output/training/road-end-development-01/topology-before-rush.zip",
+      "sha256": "7d4668936ff3350969449a27e645441d98321a7c6f55ac5bf92ea6ec2bbaf12e"
+    },
+    {
+      "path": "output/training/traffic-gap-positions-host-01/build/bin/TrafficHost/release/TrafficHost.dll",
+      "sha256": "557c9e4d359254c577e298860d021f9c64139f728febda4493e302e74f393915"
+    },
+    {
+      "path": "output/training/traffic-gap-positions-rush-host-01/build/bin/TrafficHost/release/TrafficHost.dll",
+      "sha256": "47b107b88c3d0e52f84d091594de29e60c5c483e13dbea559edad473fa7990fd"
+    }
+  ],
+  "checkout_sources": [
+    {
+      "path": "training/traffic_ppo.py",
+      "sha256": "6922df4f95d97e8d84602b1dad4236b1ed0514e7e410f3f3bd38ef0b5e2afab4"
+    },
+    {
+      "path": "training/traffic_practice.py",
+      "sha256": "f22db69f16f16da939827a163978ebbe348301fd805a1548d2e9b7b6cd615d08"
+    }
+  ]
+}

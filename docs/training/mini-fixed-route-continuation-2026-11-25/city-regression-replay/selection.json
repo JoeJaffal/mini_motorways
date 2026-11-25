@@ -1,0 +1,94 @@
+{
+  "criterion": "Lowest seed/action RNG among new zero-score games after continuation. Selected failure illustration, not representative of all games.",
+  "new_zero_count": 5,
+  "median_delta_among_new_zeros": -168,
+  "selected": {
+    "parent": {
+      "seed": 184000001,
+      "seconds": 316.85,
+      "trips": 36,
+      "road_stock": 0,
+      "buildings": 14,
+      "weekly_awards": 2,
+      "road_actions": 82,
+      "wait_actions": 317,
+      "bridge_stock": 0,
+      "bridge_tiles": 1,
+      "targets": [
+        {
+          "id": 3,
+          "color": 1,
+          "first_seen": 84,
+          "arrival_stock": 5,
+          "arrival_paid": 20,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": 105,
+          "served": 17,
+          "paid_after_arrival_to_first_delivery": 1
+        },
+        {
+          "id": 6,
+          "color": 0,
+          "first_seen": 153,
+          "arrival_stock": 16,
+          "arrival_paid": 29,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": 233,
+          "served": 4,
+          "paid_after_arrival_to_first_delivery": 11
+        },
+        {
+          "id": 10,
+          "color": 3,
+          "first_seen": 283,
+          "arrival_stock": 23,
+          "arrival_paid": 52,
+          "first_matching_home": null,
+          "arrival_cost": null,
+          "first_affordable_path": null,
+          "first_delivery": 301,
+          "served": 1,
+          "paid_after_arrival_to_first_delivery": 23
+        }
+      ],
+      "action_seed": 193252,
+      "native_game_over": true,
+      "truncated": false,
+      "paid_units": 75,
+      "outside_routes": 30
+    },
+    "continuation": {
+      "seed": 184000001,
+      "seconds": 147.35,
+      "trips": 0,
+      "road_stock": 0,
+      "buildings": 6,
+      "weekly_awards": 1,
+      "road_actions": 49,
+      "wait_actions": 148,
+      "bridge_stock": 0,
+      "bridge_tiles": 1,
+      "targets": [],
+      "action_seed": 193252,
+      "native_game_over": true,
+      "truncated": false,
+      "paid_units": 45,
+      "outside_routes": 25
+    }
+  },
+  "models": {
+    "parent": {
+      "path": "output/training/mini-fixed-route-01/training/final.zip",
+      "sha256": "c86c0db95e28951c3e9ed36d5a29eb94d7faa4cbddbfddaed18700dc70121eb3"
+    },
+    "continuation": {
+      "path": "output/training/mini-fixed-route-02/training/final.zip",
+      "sha256": "bc23555cf04845f7c8d648c97e5d7260d7b95563280e6114aa22fb2b3a6edabd"
+    }
+  },
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0"
+}

@@ -1,0 +1,51 @@
+{
+  "status": {
+    "status": "complete",
+    "pid": 186938,
+    "started": "2026-11-24T12:08:01.363419+02:00",
+    "training_seconds": 32.61725989996921,
+    "segments": 1,
+    "current_checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-runner-smoke-01/segment-001/final.zip",
+    "best_checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-runner-smoke-01/segment-001/final.zip",
+    "failed_reviews": 0,
+    "updated": "2026-11-24T12:10:17.583976+02:00",
+    "active_segment": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-runner-smoke-01/segment-001",
+    "current_sha256": "c5e68503665cefa3fefd2d3829f02282c94a2833d09bac98d208c69c31e4215f",
+    "last_review": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-runner-smoke-01/review-001",
+    "last_decision": {
+      "retained": true,
+      "promote": true,
+      "failures": 0,
+      "stop": false
+    },
+    "best_sha256": "c5e68503665cefa3fefd2d3829f02282c94a2833d09bac98d208c69c31e4215f"
+  },
+  "command": [
+    "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+    "-u",
+    "training/run_city_strategy_long.py",
+    "--start",
+    "output/training/city-strategy-balanced-fast-01/final.zip",
+    "--dll",
+    "output/city-road-reserve-build-01/bin/TrafficHost/release/TrafficHost.dll",
+    "--output",
+    "output/training/city-strategy-runner-smoke-01",
+    "--record-dir",
+    "/home/mohammadjaffal/mini_motorways/docs/training/city-strategy-launch-2026-11-24/runner-smoke-01",
+    "--hours",
+    ".0001",
+    "--workers",
+    "1",
+    "--segment-rollouts",
+    "1",
+    "--review-every",
+    "1",
+    "--review-games",
+    "2",
+    "--horizon",
+    "600",
+    "--learning-rate",
+    ".001"
+  ],
+  "note": "Workflow smoke only:512 training decisions and two paired review cities; not score-selection or readiness evidence."
+}

@@ -1,0 +1,62 @@
+{
+  "checkpoint": "output/training/city-strategy-bridge-reference-city-01/segment-001/midpoint.zip",
+  "groups": [
+    {
+      "index": 0,
+      "lr": 0.0001,
+      "lr_scale": 1.0,
+      "epsilon": 1e-08,
+      "parameters": 2658,
+      "sqrt_second_moment_over_epsilon_quantiles": [
+        0.0,
+        110.82239532470703,
+        7636.244140625,
+        210200.828125
+      ],
+      "fraction_below_epsilon": 0.4695259630680084
+    },
+    {
+      "index": 1,
+      "lr": 0.0001,
+      "lr_scale": 0.3,
+      "epsilon": 1e-08,
+      "parameters": 2501,
+      "sqrt_second_moment_over_epsilon_quantiles": [
+        0.0,
+        0.13130007684230804,
+        276.47998046875,
+        111113.671875
+      ],
+      "fraction_below_epsilon": 0.5281887054443359
+    },
+    {
+      "index": 2,
+      "lr": 0.0001,
+      "lr_scale": 0.1,
+      "epsilon": 1e-08,
+      "parameters": 12912,
+      "sqrt_second_moment_over_epsilon_quantiles": [
+        104.42601013183594,
+        523.0036010742188,
+        1692.642333984375,
+        4894.1484375
+      ],
+      "fraction_below_epsilon": 0.03671003878116608
+    },
+    {
+      "index": 3,
+      "lr": 0.0001,
+      "lr_scale": 0.1,
+      "epsilon": 1e-08,
+      "parameters": 11777,
+      "sqrt_second_moment_over_epsilon_quantiles": [
+        0.0,
+        280.77691650390625,
+        43116.13671875,
+        237955.421875
+      ],
+      "fraction_below_epsilon": 0.4184427261352539
+    }
+  ],
+  "limit": "Moment-to-epsilon ratio is a numerical diagnostic, not proof that a parameter should learn faster."
+}

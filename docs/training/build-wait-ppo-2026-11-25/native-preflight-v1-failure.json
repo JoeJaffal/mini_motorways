@@ -1,0 +1,7 @@
+{
+  "seed": 244001006,
+  "case": "match",
+  "error": "Wait fixture placement failed",
+  "findings": "v1 incorrectly used8observation color slots as nativepalette count. SpawnBuilding rejects colors >=Map.BaseDemand.Length. Use nativepalette length. Also constrain originY to8..18 for50x30board underallrotations; prior10..23range could extend outofbounds.",
+  "limits": "No training usedv1. Failedbuild/sources retained locally; production and activelearners unchanged."
+}

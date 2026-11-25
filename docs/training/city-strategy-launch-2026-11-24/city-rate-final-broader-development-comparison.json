@@ -1,0 +1,112 @@
+{
+  "parent_run": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-confirmation-02",
+  "candidate_run": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-city-rate-final-broader-development-01",
+  "parent": {
+    "games": 64,
+    "scoring_games": 54,
+    "mean_score": 82.734375,
+    "new_targets": 267,
+    "new_targets_served": 202,
+    "new_target_stockouts": 58,
+    "median_new_service_delay": 26.0,
+    "mean_paid_units": 76.53125,
+    "mean_outside_observed_routes": 33.203125,
+    "outside_route_share": 0.4338505512454063,
+    "paired_score_delta_and_interval": [
+      0.0,
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "paired_new_targets_served_delta_and_interval": [
+      0.0,
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "paired_outside_observed_routes_delta_and_interval": [
+      0.0,
+      [
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "candidate": {
+    "games": 64,
+    "scoring_games": 54,
+    "mean_score": 89.015625,
+    "new_targets": 262,
+    "new_targets_served": 212,
+    "new_target_stockouts": 43,
+    "median_new_service_delay": 25.0,
+    "mean_paid_units": 78.3125,
+    "mean_outside_observed_routes": 36.359375,
+    "outside_route_share": 0.4642857142857143,
+    "paired_score_delta_and_interval": [
+      0.0,
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "paired_new_targets_served_delta_and_interval": [
+      0.0,
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "paired_outside_observed_routes_delta_and_interval": [
+      0.0,
+      [
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "paired": {
+    "score": {
+      "mean_delta": 6.28125,
+      "interval95": [
+        -4.09375,
+        16.609765624999994
+      ]
+    },
+    "new_targets_served": {
+      "mean_delta": 0.15625,
+      "interval95": [
+        -0.25,
+        0.5625
+      ]
+    },
+    "stockouts": {
+      "mean_delta": -0.234375,
+      "interval95": [
+        -0.546875,
+        0.078125
+      ]
+    },
+    "paid_units": {
+      "mean_delta": 1.78125,
+      "interval95": [
+        -2.765625,
+        6.171875
+      ]
+    },
+    "outside_observed_routes": {
+      "mean_delta": 3.15625,
+      "interval95": [
+        0.421875,
+        6.140625
+      ]
+    }
+  },
+  "relative_mean": 1.0759206798866856,
+  "lost_scoring_seeds": [],
+  "gained_scoring_seeds": [],
+  "retention_pass": true,
+  "strong_gain_pass": false
+}

@@ -1,0 +1,79 @@
+{
+  "models": [
+    "output/training/city-established-pilot-01/checkpoints/city-000425984-7ec13846.zip",
+    "output/training/city-five-stage-cold-initial-01/candidate.zip"
+  ],
+  "sha256": {
+    "output/training/city-established-pilot-01/checkpoints/city-000425984-7ec13846.zip": "637dcd6f1e05ac61869e7b7ecb9e0a31fb41e8305ae5c89b091218a8a3fd651a",
+    "output/training/city-five-stage-cold-initial-01/candidate.zip": "9202d62be8d237f6fe495ee1ec29eed1747849a1fd747006ea8903de7f0b19f1"
+  },
+  "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+  "results": {
+    "0": {
+      "games": 32,
+      "scoring_games": 30,
+      "mean_score": 105.375,
+      "new_targets": 156,
+      "new_targets_served": 125,
+      "new_target_stockouts": 36,
+      "median_new_service_delay": 33.0,
+      "mean_paid_units": 87.3125,
+      "mean_outside_observed_routes": 33.0,
+      "outside_route_share": 0.3779527559055118,
+      "paired_score_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "1": {
+      "games": 32,
+      "scoring_games": 30,
+      "mean_score": 98.03125,
+      "new_targets": 151,
+      "new_targets_served": 115,
+      "new_target_stockouts": 29,
+      "median_new_service_delay": 25.0,
+      "mean_paid_units": 83.28125,
+      "mean_outside_observed_routes": 34.28125,
+      "outside_route_share": 0.4116322701688555,
+      "paired_score_delta_and_interval": [
+        -7.34375,
+        [
+          -20.96875,
+          5.969531249999989
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        -0.3125,
+        [
+          -0.71875,
+          0.09375
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        1.28125,
+        [
+          -3.78125,
+          6.34375
+        ]
+      ]
+    }
+  }
+}

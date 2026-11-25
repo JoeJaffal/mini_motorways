@@ -1,0 +1,7611 @@
+{
+  "policy_sha256": "fe4e25e40f16dc533b29059b836c8474da3d556e4af438d53c2043bde40af1b0",
+  "fixture_host_sha256": "46b3e4c271eb7f2e685c95a6469e3b3c454ff52b8e81a253ff0905b491761f7d",
+  "normal_host_sha256": "e49913cd02c24c03760c0d20c0d317b8ee70adfc2693476c9c18f024f36ec5ac",
+  "evaluation_source_sha256": "4a49ac0cda3caab470170f89552f9cb00955e6a5f946a026e8d068f7359f7492",
+  "workers": 8,
+  "simulated_horizon_seconds": 180,
+  "changed_weights": false,
+  "layouts": [
+    {
+      "seed": 20000,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          31,
+          7
+        ],
+        [
+          31,
+          8
+        ]
+      ],
+      "sampled": {
+        "action": 215,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 215,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20001,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          32,
+          16
+        ],
+        [
+          33,
+          16
+        ]
+      ],
+      "sampled": {
+        "action": 353,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 353,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20002,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          32,
+          22
+        ],
+        [
+          32,
+          23
+        ]
+      ],
+      "sampled": {
+        "action": 407,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 407,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20003,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          36,
+          7
+        ],
+        [
+          36,
+          8
+        ]
+      ],
+      "sampled": {
+        "action": 215,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 215,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20004,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          36,
+          15
+        ],
+        [
+          37,
+          15
+        ]
+      ],
+      "sampled": {
+        "action": 365,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 365,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20005,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          33,
+          17
+        ],
+        [
+          34,
+          17
+        ]
+      ],
+      "sampled": {
+        "action": 357,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 357,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20006,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          32,
+          13
+        ],
+        [
+          32,
+          14
+        ]
+      ],
+      "sampled": {
+        "action": 167,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 167,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20007,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          41,
+          14
+        ],
+        [
+          42,
+          14
+        ]
+      ],
+      "sampled": {
+        "action": 361,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 361,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20008,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          30,
+          16
+        ],
+        [
+          31,
+          16
+        ]
+      ],
+      "sampled": {
+        "action": 353,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 353,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20009,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          37,
+          20
+        ],
+        [
+          37,
+          21
+        ]
+      ],
+      "sampled": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20010,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          33,
+          6
+        ],
+        [
+          33,
+          7
+        ]
+      ],
+      "sampled": {
+        "action": 167,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 167,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20011,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          33,
+          15
+        ],
+        [
+          34,
+          15
+        ]
+      ],
+      "sampled": {
+        "action": 309,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 309,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20012,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          34,
+          22
+        ],
+        [
+          34,
+          23
+        ]
+      ],
+      "sampled": {
+        "action": 407,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 407,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20013,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          30,
+          7
+        ],
+        [
+          30,
+          8
+        ]
+      ],
+      "sampled": {
+        "action": 215,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 215,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20014,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          38,
+          14
+        ],
+        [
+          39,
+          14
+        ]
+      ],
+      "sampled": {
+        "action": 317,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 317,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20015,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          26,
+          17
+        ],
+        [
+          27,
+          17
+        ]
+      ],
+      "sampled": {
+        "action": 353,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 353,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20016,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          34,
+          11
+        ],
+        [
+          34,
+          12
+        ]
+      ],
+      "sampled": {
+        "action": 167,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 167,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20017,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          33,
+          13
+        ],
+        [
+          34,
+          13
+        ]
+      ],
+      "sampled": {
+        "action": 361,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 361,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20018,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          31,
+          16
+        ],
+        [
+          32,
+          16
+        ]
+      ],
+      "sampled": {
+        "action": 305,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 305,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20019,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          31,
+          19
+        ],
+        [
+          31,
+          20
+        ]
+      ],
+      "sampled": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20020,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          35,
+          5
+        ],
+        [
+          35,
+          6
+        ]
+      ],
+      "sampled": {
+        "action": 167,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 167,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20021,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          27,
+          15
+        ],
+        [
+          28,
+          15
+        ]
+      ],
+      "sampled": {
+        "action": 357,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 357,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20022,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          35,
+          18
+        ],
+        [
+          35,
+          19
+        ]
+      ],
+      "sampled": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20023,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          31,
+          15
+        ],
+        [
+          31,
+          16
+        ]
+      ],
+      "sampled": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20024,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          41,
+          14
+        ],
+        [
+          42,
+          14
+        ]
+      ],
+      "sampled": {
+        "action": 365,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 365,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20025,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          28,
+          16
+        ],
+        [
+          29,
+          16
+        ]
+      ],
+      "sampled": {
+        "action": 357,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 357,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20026,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          36,
+          11
+        ],
+        [
+          36,
+          12
+        ]
+      ],
+      "sampled": {
+        "action": 167,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 167,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20027,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          35,
+          13
+        ],
+        [
+          36,
+          13
+        ]
+      ],
+      "sampled": {
+        "action": 361,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 361,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20028,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          32,
+          15
+        ],
+        [
+          33,
+          15
+        ]
+      ],
+      "sampled": {
+        "action": 353,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 353,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20029,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          33,
+          19
+        ],
+        [
+          33,
+          20
+        ]
+      ],
+      "sampled": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20030,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          43,
+          20
+        ],
+        [
+          44,
+          20
+        ]
+      ],
+      "sampled": {
+        "action": 321,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 321,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20031,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          30,
+          14
+        ],
+        [
+          31,
+          14
+        ]
+      ],
+      "sampled": {
+        "action": 353,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 353,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20032,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          37,
+          18
+        ],
+        [
+          37,
+          19
+        ]
+      ],
+      "sampled": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20033,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          33,
+          14
+        ],
+        [
+          33,
+          15
+        ]
+      ],
+      "sampled": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20034,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          42,
+          13
+        ],
+        [
+          43,
+          13
+        ]
+      ],
+      "sampled": {
+        "action": 365,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 365,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20035,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          34,
+          18
+        ],
+        [
+          34,
+          19
+        ]
+      ],
+      "sampled": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20036,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          30,
+          13
+        ],
+        [
+          30,
+          14
+        ]
+      ],
+      "sampled": {
+        "action": 215,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 215,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20037,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          37,
+          12
+        ],
+        [
+          38,
+          12
+        ]
+      ],
+      "sampled": {
+        "action": 313,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 313,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20038,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          25,
+          15
+        ],
+        [
+          26,
+          15
+        ]
+      ],
+      "sampled": {
+        "action": 349,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 349,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20039,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          34,
+          18
+        ],
+        [
+          34,
+          19
+        ]
+      ],
+      "sampled": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20040,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          37,
+          20
+        ],
+        [
+          38,
+          20
+        ]
+      ],
+      "sampled": {
+        "action": 369,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 369,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20041,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          32,
+          13
+        ],
+        [
+          33,
+          13
+        ]
+      ],
+      "sampled": {
+        "action": 353,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 353,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20042,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          31,
+          18
+        ],
+        [
+          31,
+          19
+        ]
+      ],
+      "sampled": {
+        "action": 359,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 359,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20043,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          35,
+          14
+        ],
+        [
+          35,
+          15
+        ]
+      ],
+      "sampled": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20044,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          37,
+          12
+        ],
+        [
+          38,
+          12
+        ]
+      ],
+      "sampled": {
+        "action": 321,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 321,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20045,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          35,
+          16
+        ],
+        [
+          35,
+          17
+        ]
+      ],
+      "sampled": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20046,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          32,
+          13
+        ],
+        [
+          32,
+          14
+        ]
+      ],
+      "sampled": {
+        "action": 215,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 215,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20047,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          39,
+          20
+        ],
+        [
+          40,
+          20
+        ]
+      ],
+      "sampled": {
+        "action": 361,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 361,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20048,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          27,
+          14
+        ],
+        [
+          28,
+          14
+        ]
+      ],
+      "sampled": {
+        "action": 349,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 349,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20049,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          36,
+          19
+        ],
+        [
+          36,
+          20
+        ]
+      ],
+      "sampled": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20050,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          35,
+          19
+        ],
+        [
+          36,
+          19
+        ]
+      ],
+      "sampled": {
+        "action": 361,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 361,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20051,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          34,
+          13
+        ],
+        [
+          35,
+          13
+        ]
+      ],
+      "sampled": {
+        "action": 309,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 309,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20052,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          33,
+          19
+        ],
+        [
+          33,
+          20
+        ]
+      ],
+      "sampled": {
+        "action": 359,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 359,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20053,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          37,
+          13
+        ],
+        [
+          37,
+          14
+        ]
+      ],
+      "sampled": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20054,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          39,
+          12
+        ],
+        [
+          40,
+          12
+        ]
+      ],
+      "sampled": {
+        "action": 321,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 321,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20055,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          37,
+          15
+        ],
+        [
+          37,
+          16
+        ]
+      ],
+      "sampled": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20056,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          33,
+          11
+        ],
+        [
+          33,
+          12
+        ]
+      ],
+      "sampled": {
+        "action": 215,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 215,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20057,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          33,
+          20
+        ],
+        [
+          34,
+          20
+        ]
+      ],
+      "sampled": {
+        "action": 357,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 357,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20058,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          28,
+          13
+        ],
+        [
+          29,
+          13
+        ]
+      ],
+      "sampled": {
+        "action": 301,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 301,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20059,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          30,
+          17
+        ],
+        [
+          30,
+          18
+        ]
+      ],
+      "sampled": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20060,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          37,
+          19
+        ],
+        [
+          38,
+          19
+        ]
+      ],
+      "sampled": {
+        "action": 313,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 313,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20061,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          27,
+          12
+        ],
+        [
+          28,
+          12
+        ]
+      ],
+      "sampled": {
+        "action": 357,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 357,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20062,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          34,
+          18
+        ],
+        [
+          34,
+          19
+        ]
+      ],
+      "sampled": {
+        "action": 359,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 359,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20063,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          31,
+          12
+        ],
+        [
+          31,
+          13
+        ]
+      ],
+      "sampled": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20064,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          38,
+          20
+        ],
+        [
+          39,
+          20
+        ]
+      ],
+      "sampled": {
+        "action": 361,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 361,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20065,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          31,
+          15
+        ],
+        [
+          31,
+          16
+        ]
+      ],
+      "sampled": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20066,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          35,
+          9
+        ],
+        [
+          35,
+          10
+        ]
+      ],
+      "sampled": {
+        "action": 167,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 167,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20067,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          34,
+          19
+        ],
+        [
+          35,
+          19
+        ]
+      ],
+      "sampled": {
+        "action": 357,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 357,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20068,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          30,
+          13
+        ],
+        [
+          31,
+          13
+        ]
+      ],
+      "sampled": {
+        "action": 349,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 349,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20069,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          32,
+          16
+        ],
+        [
+          32,
+          17
+        ]
+      ],
+      "sampled": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20070,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          40,
+          18
+        ],
+        [
+          41,
+          18
+        ]
+      ],
+      "sampled": {
+        "action": 317,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 317,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20071,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          29,
+          12
+        ],
+        [
+          30,
+          12
+        ]
+      ],
+      "sampled": {
+        "action": 357,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 357,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20072,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          36,
+          17
+        ],
+        [
+          36,
+          18
+        ]
+      ],
+      "sampled": {
+        "action": 359,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 359,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20073,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          32,
+          12
+        ],
+        [
+          32,
+          13
+        ]
+      ],
+      "sampled": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20074,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          40,
+          20
+        ],
+        [
+          41,
+          20
+        ]
+      ],
+      "sampled": {
+        "action": 361,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 361,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20075,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          33,
+          14
+        ],
+        [
+          33,
+          15
+        ]
+      ],
+      "sampled": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20076,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          37,
+          9
+        ],
+        [
+          37,
+          10
+        ]
+      ],
+      "sampled": {
+        "action": 167,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 167,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20077,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          36,
+          19
+        ],
+        [
+          37,
+          19
+        ]
+      ],
+      "sampled": {
+        "action": 309,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 309,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20078,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          34,
+          12
+        ],
+        [
+          35,
+          12
+        ]
+      ],
+      "sampled": {
+        "action": 353,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 353,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20079,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          34,
+          10
+        ],
+        [
+          34,
+          11
+        ]
+      ],
+      "sampled": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20080,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          34,
+          17
+        ],
+        [
+          35,
+          17
+        ]
+      ],
+      "sampled": {
+        "action": 365,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 365,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20081,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          31,
+          20
+        ],
+        [
+          32,
+          20
+        ]
+      ],
+      "sampled": {
+        "action": 309,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 309,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20082,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          30,
+          17
+        ],
+        [
+          30,
+          18
+        ]
+      ],
+      "sampled": {
+        "action": 359,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 359,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20083,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          34,
+          11
+        ],
+        [
+          34,
+          12
+        ]
+      ],
+      "sampled": {
+        "action": 215,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 215,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20084,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          26,
+          19
+        ],
+        [
+          27,
+          19
+        ]
+      ],
+      "sampled": {
+        "action": 353,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 353,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20085,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          35,
+          14
+        ],
+        [
+          35,
+          15
+        ]
+      ],
+      "sampled": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20086,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          31,
+          8
+        ],
+        [
+          31,
+          9
+        ]
+      ],
+      "sampled": {
+        "action": 215,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 215,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20087,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          38,
+          18
+        ],
+        [
+          39,
+          18
+        ]
+      ],
+      "sampled": {
+        "action": 357,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 357,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20088,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          28,
+          12
+        ],
+        [
+          29,
+          12
+        ]
+      ],
+      "sampled": {
+        "action": 353,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 353,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20089,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          35,
+          9
+        ],
+        [
+          35,
+          10
+        ]
+      ],
+      "sampled": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20090,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          37,
+          17
+        ],
+        [
+          38,
+          17
+        ]
+      ],
+      "sampled": {
+        "action": 365,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 365,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20091,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          33,
+          20
+        ],
+        [
+          34,
+          20
+        ]
+      ],
+      "sampled": {
+        "action": 313,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 313,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20092,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          32,
+          14
+        ],
+        [
+          32,
+          15
+        ]
+      ],
+      "sampled": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 311,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20093,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          36,
+          11
+        ],
+        [
+          36,
+          12
+        ]
+      ],
+      "sampled": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20094,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          28,
+          18
+        ],
+        [
+          29,
+          18
+        ]
+      ],
+      "sampled": {
+        "action": 353,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 353,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20095,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          36,
+          13
+        ],
+        [
+          36,
+          14
+        ]
+      ],
+      "sampled": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20096,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          33,
+          8
+        ],
+        [
+          33,
+          9
+        ]
+      ],
+      "sampled": {
+        "action": 215,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 215,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20097,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          40,
+          17
+        ],
+        [
+          41,
+          17
+        ]
+      ],
+      "sampled": {
+        "action": 361,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 361,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20098,
+      "direction": "horizontal",
+      "missing_endpoints": [
+        [
+          29,
+          20
+        ],
+        [
+          30,
+          20
+        ]
+      ],
+      "sampled": {
+        "action": 305,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 305,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20099,
+      "direction": "vertical",
+      "missing_endpoints": [
+        [
+          37,
+          9
+        ],
+        [
+          37,
+          10
+        ]
+      ],
+      "sampled": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 263,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20100,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          38,
+          19
+        ],
+        [
+          39,
+          20
+        ]
+      ],
+      "sampled": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20101,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          34,
+          21
+        ],
+        [
+          35,
+          20
+        ]
+      ],
+      "sampled": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20102,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          35,
+          14
+        ],
+        [
+          36,
+          15
+        ]
+      ],
+      "sampled": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20103,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          31,
+          11
+        ],
+        [
+          32,
+          10
+        ]
+      ],
+      "sampled": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20104,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          29,
+          14
+        ],
+        [
+          30,
+          15
+        ]
+      ],
+      "sampled": {
+        "action": 206,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 206,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20105,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          28,
+          22
+        ],
+        [
+          29,
+          21
+        ]
+      ],
+      "sampled": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20106,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          32,
+          9
+        ],
+        [
+          33,
+          10
+        ]
+      ],
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20107,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          34,
+          16
+        ],
+        [
+          35,
+          15
+        ]
+      ],
+      "sampled": {
+        "action": 320,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 320,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20108,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          31,
+          16
+        ],
+        [
+          32,
+          17
+        ]
+      ],
+      "sampled": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20109,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          32,
+          9
+        ],
+        [
+          33,
+          8
+        ]
+      ],
+      "sampled": {
+        "action": 264,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 264,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20110,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          40,
+          19
+        ],
+        [
+          41,
+          20
+        ]
+      ],
+      "sampled": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20111,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          28,
+          20
+        ],
+        [
+          29,
+          19
+        ]
+      ],
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20112,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          37,
+          14
+        ],
+        [
+          38,
+          15
+        ]
+      ],
+      "sampled": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20113,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          33,
+          11
+        ],
+        [
+          34,
+          10
+        ]
+      ],
+      "sampled": {
+        "action": 264,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 264,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20114,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          31,
+          13
+        ],
+        [
+          32,
+          14
+        ]
+      ],
+      "sampled": {
+        "action": 206,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 206,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20115,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          30,
+          22
+        ],
+        [
+          31,
+          21
+        ]
+      ],
+      "sampled": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20116,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          34,
+          9
+        ],
+        [
+          35,
+          10
+        ]
+      ],
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20117,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          35,
+          15
+        ],
+        [
+          36,
+          14
+        ]
+      ],
+      "sampled": {
+        "action": 320,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 320,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20118,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          32,
+          15
+        ],
+        [
+          33,
+          16
+        ]
+      ],
+      "sampled": {
+        "action": 206,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 206,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20119,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          34,
+          8
+        ],
+        [
+          35,
+          7
+        ]
+      ],
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20120,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          40,
+          16
+        ],
+        [
+          41,
+          17
+        ]
+      ],
+      "sampled": {
+        "action": 314,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 314,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20121,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          30,
+          20
+        ],
+        [
+          31,
+          19
+        ]
+      ],
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20122,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          39,
+          22
+        ],
+        [
+          40,
+          23
+        ]
+      ],
+      "sampled": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20123,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          34,
+          10
+        ],
+        [
+          35,
+          9
+        ]
+      ],
+      "sampled": {
+        "action": 264,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 264,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20124,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          25,
+          13
+        ],
+        [
+          26,
+          14
+        ]
+      ],
+      "sampled": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20125,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          32,
+          21
+        ],
+        [
+          33,
+          20
+        ]
+      ],
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20126,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          27,
+          7
+        ],
+        [
+          28,
+          8
+        ]
+      ],
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20127,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          37,
+          15
+        ],
+        [
+          38,
+          14
+        ]
+      ],
+      "sampled": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20128,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          32,
+          20
+        ],
+        [
+          33,
+          21
+        ]
+      ],
+      "sampled": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20129,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          36,
+          8
+        ],
+        [
+          37,
+          7
+        ]
+      ],
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20130,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          34,
+          16
+        ],
+        [
+          35,
+          17
+        ]
+      ],
+      "sampled": {
+        "action": 314,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 314,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20131,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          32,
+          19
+        ],
+        [
+          33,
+          18
+        ]
+      ],
+      "sampled": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20132,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          33,
+          22
+        ],
+        [
+          34,
+          23
+        ]
+      ],
+      "sampled": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20133,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          38,
+          12
+        ],
+        [
+          39,
+          11
+        ]
+      ],
+      "sampled": {
+        "action": 364,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 364,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20134,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          28,
+          14
+        ],
+        [
+          29,
+          15
+        ]
+      ],
+      "sampled": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20135,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          34,
+          21
+        ],
+        [
+          35,
+          20
+        ]
+      ],
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20136,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          29,
+          6
+        ],
+        [
+          30,
+          7
+        ]
+      ],
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20137,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          39,
+          14
+        ],
+        [
+          40,
+          13
+        ]
+      ],
+      "sampled": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20138,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          35,
+          21
+        ],
+        [
+          36,
+          22
+        ]
+      ],
+      "sampled": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20139,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          37,
+          16
+        ],
+        [
+          38,
+          15
+        ]
+      ],
+      "sampled": {
+        "action": 220,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 220,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20140,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          36,
+          16
+        ],
+        [
+          37,
+          17
+        ]
+      ],
+      "sampled": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20141,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          34,
+          19
+        ],
+        [
+          35,
+          18
+        ]
+      ],
+      "sampled": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20142,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          35,
+          21
+        ],
+        [
+          36,
+          22
+        ]
+      ],
+      "sampled": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20143,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          40,
+          12
+        ],
+        [
+          41,
+          11
+        ]
+      ],
+      "sampled": {
+        "action": 364,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 364,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20144,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          30,
+          13
+        ],
+        [
+          31,
+          14
+        ]
+      ],
+      "sampled": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20145,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          35,
+          20
+        ],
+        [
+          36,
+          19
+        ]
+      ],
+      "sampled": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20146,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          31,
+          6
+        ],
+        [
+          32,
+          7
+        ]
+      ],
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20147,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          33,
+          13
+        ],
+        [
+          34,
+          12
+        ]
+      ],
+      "sampled": {
+        "action": 364,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 364,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20148,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          35,
+          18
+        ],
+        [
+          36,
+          19
+        ]
+      ],
+      "sampled": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20149,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          31,
+          16
+        ],
+        [
+          32,
+          15
+        ]
+      ],
+      "sampled": {
+        "action": 220,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 220,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20150,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          38,
+          15
+        ],
+        [
+          39,
+          16
+        ]
+      ],
+      "sampled": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20151,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          27,
+          18
+        ],
+        [
+          28,
+          17
+        ]
+      ],
+      "sampled": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20152,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          38,
+          22
+        ],
+        [
+          39,
+          23
+        ]
+      ],
+      "sampled": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20153,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          34,
+          11
+        ],
+        [
+          35,
+          10
+        ]
+      ],
+      "sampled": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20154,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          31,
+          12
+        ],
+        [
+          32,
+          13
+        ]
+      ],
+      "sampled": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20155,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          29,
+          20
+        ],
+        [
+          30,
+          19
+        ]
+      ],
+      "sampled": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20156,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          32,
+          14
+        ],
+        [
+          33,
+          15
+        ]
+      ],
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20157,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          35,
+          13
+        ],
+        [
+          36,
+          12
+        ]
+      ],
+      "sampled": {
+        "action": 364,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 364,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20158,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          37,
+          17
+        ],
+        [
+          38,
+          18
+        ]
+      ],
+      "sampled": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20159,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          33,
+          15
+        ],
+        [
+          34,
+          14
+        ]
+      ],
+      "sampled": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20160,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          40,
+          15
+        ],
+        [
+          41,
+          16
+        ]
+      ],
+      "sampled": {
+        "action": 314,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 314,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20161,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          29,
+          17
+        ],
+        [
+          30,
+          16
+        ]
+      ],
+      "sampled": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20162,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          39,
+          21
+        ],
+        [
+          40,
+          22
+        ]
+      ],
+      "sampled": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20163,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          36,
+          11
+        ],
+        [
+          37,
+          10
+        ]
+      ],
+      "sampled": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20164,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          33,
+          11
+        ],
+        [
+          34,
+          12
+        ]
+      ],
+      "sampled": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20165,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          31,
+          19
+        ],
+        [
+          32,
+          18
+        ]
+      ],
+      "sampled": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20166,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          33,
+          13
+        ],
+        [
+          34,
+          14
+        ]
+      ],
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20167,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          36,
+          12
+        ],
+        [
+          37,
+          11
+        ]
+      ],
+      "sampled": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20168,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          39,
+          18
+        ],
+        [
+          40,
+          19
+        ]
+      ],
+      "sampled": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20169,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          35,
+          14
+        ],
+        [
+          36,
+          13
+        ]
+      ],
+      "sampled": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 268,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20170,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          34,
+          14
+        ],
+        [
+          35,
+          15
+        ]
+      ],
+      "sampled": {
+        "action": 314,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 314,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20171,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          31,
+          17
+        ],
+        [
+          32,
+          16
+        ]
+      ],
+      "sampled": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20172,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          31,
+          18
+        ],
+        [
+          32,
+          19
+        ]
+      ],
+      "sampled": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20173,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          37,
+          19
+        ],
+        [
+          38,
+          18
+        ]
+      ],
+      "sampled": {
+        "action": 320,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 320,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20174,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          27,
+          11
+        ],
+        [
+          28,
+          12
+        ]
+      ],
+      "sampled": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20175,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          33,
+          18
+        ],
+        [
+          34,
+          17
+        ]
+      ],
+      "sampled": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20176,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          27,
+          12
+        ],
+        [
+          28,
+          13
+        ]
+      ],
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20177,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          32,
+          15
+        ],
+        [
+          33,
+          14
+        ]
+      ],
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20178,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          33,
+          17
+        ],
+        [
+          34,
+          18
+        ]
+      ],
+      "sampled": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 362,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20179,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          36,
+          14
+        ],
+        [
+          37,
+          13
+        ]
+      ],
+      "sampled": {
+        "action": 264,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 264,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20180,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          37,
+          15
+        ],
+        [
+          38,
+          16
+        ]
+      ],
+      "sampled": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20181,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          33,
+          16
+        ],
+        [
+          34,
+          15
+        ]
+      ],
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20182,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          29,
+          11
+        ],
+        [
+          30,
+          12
+        ]
+      ],
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20183,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          39,
+          18
+        ],
+        [
+          40,
+          17
+        ]
+      ],
+      "sampled": {
+        "action": 320,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 320,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20184,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          28,
+          10
+        ],
+        [
+          29,
+          11
+        ]
+      ],
+      "sampled": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20185,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          35,
+          18
+        ],
+        [
+          36,
+          17
+        ]
+      ],
+      "sampled": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 272,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20186,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          31,
+          13
+        ],
+        [
+          32,
+          14
+        ]
+      ],
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20187,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          34,
+          14
+        ],
+        [
+          35,
+          13
+        ]
+      ],
+      "sampled": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20188,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          35,
+          17
+        ],
+        [
+          36,
+          18
+        ]
+      ],
+      "sampled": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20189,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          38,
+          13
+        ],
+        [
+          39,
+          12
+        ]
+      ],
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20190,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          38,
+          23
+        ],
+        [
+          39,
+          24
+        ]
+      ],
+      "sampled": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 366,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20191,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          27,
+          16
+        ],
+        [
+          28,
+          15
+        ]
+      ],
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20192,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          31,
+          10
+        ],
+        [
+          32,
+          11
+        ]
+      ],
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 13,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20193,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          33,
+          18
+        ],
+        [
+          34,
+          17
+        ]
+      ],
+      "sampled": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20194,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          29,
+          9
+        ],
+        [
+          30,
+          10
+        ]
+      ],
+      "sampled": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 258,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20195,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          28,
+          17
+        ],
+        [
+          29,
+          16
+        ]
+      ],
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20196,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          32,
+          12
+        ],
+        [
+          33,
+          13
+        ]
+      ],
+      "sampled": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 210,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 12,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20197,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          28,
+          22
+        ],
+        [
+          29,
+          21
+        ]
+      ],
+      "sampled": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 316,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20198,
+      "direction": "down-right",
+      "missing_endpoints": [
+        [
+          37,
+          16
+        ],
+        [
+          38,
+          17
+        ]
+      ],
+      "sampled": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 310,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 11,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4,
+        "ending": "game_over"
+      }
+    },
+    {
+      "seed": 20199,
+      "direction": "down-left",
+      "missing_endpoints": [
+        [
+          32,
+          13
+        ],
+        [
+          33,
+          12
+        ]
+      ],
+      "sampled": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "greedy": {
+        "action": 312,
+        "exact_gap": true,
+        "connected": true,
+        "trips": 10,
+        "seconds": 180,
+        "ending": "task_horizon"
+      },
+      "no_build": {
+        "action": null,
+        "exact_gap": false,
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85,
+        "ending": "game_over"
+      }
+    }
+  ]
+}

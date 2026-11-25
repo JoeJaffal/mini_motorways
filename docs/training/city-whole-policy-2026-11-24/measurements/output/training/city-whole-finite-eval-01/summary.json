@@ -1,0 +1,33 @@
+{
+  "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-whole-finite-01/finite/final.zip",
+  "sha256": "e3750c9cad7e51d6bc2b395d5444fa92c61206c0030895071b16e09159b30f6a",
+  "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+  "horizon": 600,
+  "allow_bridges": true,
+  "results": {
+    "repeated": {
+      "games": 16,
+      "mean": 121.5,
+      "scoring": 15,
+      "new_targets_served": 70,
+      "stockouts": 32,
+      "delta": -4.75,
+      "interval95": [
+        -21.3125,
+        7.625
+      ]
+    },
+    "heldout": {
+      "games": 16,
+      "mean": 116.4375,
+      "scoring": 14,
+      "new_targets_served": 68,
+      "stockouts": 35,
+      "delta": -9.5,
+      "interval95": [
+        -41.5625,
+        28.125
+      ]
+    }
+  }
+}

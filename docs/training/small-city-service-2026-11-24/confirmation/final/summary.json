@@ -1,0 +1,23 @@
+{
+  "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/small-city-offset-fit-01/ppo/final.zip",
+  "sha256": "8bfe05d67d7b9a0738ea97e23d45aefd6cdbefe64b15882076951a197901ab77",
+  "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+  "horizon": 600,
+  "allow_bridges": true,
+  "results": {
+    "fresh_a": {
+      "games": 16,
+      "mean": 113.3125,
+      "scoring": 13,
+      "new_targets_served": 70,
+      "stockouts": 19
+    },
+    "fresh_b": {
+      "games": 16,
+      "mean": 133.75,
+      "scoring": 16,
+      "new_targets_served": 78,
+      "stockouts": 19
+    }
+  }
+}

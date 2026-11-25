@@ -1,0 +1,95 @@
+{
+  "unit_tests": {
+    "passed": 23,
+    "suites": [
+      "test_direct_practice",
+      "test_compact",
+      "test_comparison_resume",
+      "test_parallel_stage1",
+      "test_hierarchy_credit"
+    ]
+  },
+  "native_build": {
+    "configuration": "Release",
+    "errors": 0,
+    "warnings": 0,
+    "dll_sha256": "9e53da3be127ce75d3280f7d25cc7855d8e2470bdecd8e87b02bf06fcda8df80"
+  },
+  "scripted_feasibility": {
+    "layouts": 100,
+    "first_seed": 20000,
+    "last_seed": 20099,
+    "min_trips": 10,
+    "max_trips": 13,
+    "any_training": false
+  },
+  "forward_only": {
+    "result": "DRY_RUN_PASS",
+    "mode": "dry-run-no-training",
+    "optimizer_steps": 0,
+    "weights_unchanged": true,
+    "losses": [
+      {
+        "role": "executor",
+        "loss": 0.35651975870132446
+      },
+      {
+        "role": "executor",
+        "loss": -0.44499415159225464
+      }
+    ],
+    "collection_seconds": 0.8871026170090772,
+    "counters": {
+      "tokens": 63,
+      "updates": 0,
+      "version": 0,
+      "episodes": 0
+    },
+    "session_tokens": 63,
+    "elapsed_seconds": 2.1030649739550427
+  },
+  "comparison_smoke": {
+    "note": "Identical untrained fixture parameters with synthetic counters; checks CLI integration only",
+    "layouts": [
+      20000,
+      20001
+    ],
+    "valid": true,
+    "gate_passed": false,
+    "models": {
+      "initial": {
+        "games": 2,
+        "connected_games": 0,
+        "repair_rate": 0.0,
+        "mean_first_connection_seconds": null,
+        "mean_road_units_spent": 20.0,
+        "natural_games": 2,
+        "scored_games": 0,
+        "at_least3": 0,
+        "mean_score": 0.0
+      },
+      "trained": {
+        "games": 2,
+        "connected_games": 0,
+        "repair_rate": 0.0,
+        "mean_first_connection_seconds": null,
+        "mean_road_units_spent": 20.0,
+        "natural_games": 2,
+        "scored_games": 0,
+        "at_least3": 0,
+        "mean_score": 0.0
+      },
+      "uniform_legal": {
+        "games": 2,
+        "connected_games": 0,
+        "repair_rate": 0.0,
+        "mean_first_connection_seconds": null,
+        "mean_road_units_spent": 20.0,
+        "natural_games": 2,
+        "scored_games": 0,
+        "at_least3": 0,
+        "mean_score": 0.0
+      }
+    }
+  }
+}

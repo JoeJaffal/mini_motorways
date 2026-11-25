@@ -1,0 +1,54 @@
+{
+  "parent": "output/training/city-strategy-initial-01/start.zip",
+  "parent_sha256": "38408379ea8a163cf912e8e22de0b975a21e2123ca88e1d298121cf4b6065925",
+  "initial_sha256": "9d9c9c95e4955a14461358f3203143be5f70331f8cbbb4bc26d0951b3674447a",
+  "seed": 11424,
+  "optimizer": "fresh: added spatial actor/critic features",
+  "checks": [
+    {
+      "lesson": "midgame-network-join",
+      "actor_exact": true,
+      "critic_max_difference": 0.0
+    },
+    {
+      "lesson": "midgame-network-route",
+      "actor_exact": true,
+      "critic_max_difference": 0.0
+    },
+    {
+      "lesson": "midgame-network-delay",
+      "actor_exact": true,
+      "critic_max_difference": 0.0
+    },
+    {
+      "lesson": "midgame-network-quiet",
+      "actor_exact": true,
+      "critic_max_difference": 0.0
+    },
+    {
+      "lesson": "traffic-priority-established",
+      "actor_exact": true,
+      "critic_max_difference": 0.0
+    },
+    {
+      "lesson": "traffic-priority-established-swap",
+      "actor_exact": true,
+      "critic_max_difference": 0.0
+    },
+    {
+      "lesson": "traffic-junction-low-live",
+      "actor_exact": true,
+      "critic_max_difference": 0.0
+    },
+    {
+      "lesson": "traffic-junction-high-live",
+      "actor_exact": true,
+      "critic_max_difference": 0.0
+    },
+    {
+      "lesson": "midgame-network-reserve",
+      "actor_exact": true,
+      "critic_max_difference": 0.0
+    }
+  ]
+}

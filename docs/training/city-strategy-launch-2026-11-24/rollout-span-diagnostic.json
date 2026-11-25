@@ -1,0 +1,9 @@
+{
+  "source": "output/training/city-strategy-bridge-reference-city-01/segment-001/episodes.jsonl",
+  "completed": 90,
+  "median_decisions": 713.5,
+  "mean_decisions": 640.9666666666667,
+  "over512": 60,
+  "over1024": 6,
+  "note": "Completed-episode lengths only; rollout boundaries can still split shorter episodes. This motivates a test, not proof of credit-assignment failure."
+}

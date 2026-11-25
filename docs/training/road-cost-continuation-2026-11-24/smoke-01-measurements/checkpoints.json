@@ -1,0 +1,48 @@
+[
+  {
+    "checkpoint": "output/training/road-cost-continuation-smoke-01/checkpoint-000024576.zip",
+    "sha256": "897b027f79f3d7d3f03c66c9ef6dd525e6b315090bf63949fa07c9ced11e97c5",
+    "cumulative_decisions": 24576,
+    "added_decisions": 8192,
+    "optimizer_steps": 768,
+    "optimizer_steps_added": 256,
+    "episodes": 226,
+    "seconds": 135.11441838997416,
+    "next_seed_cursors": [
+      209000208,
+      209000225,
+      209000274,
+      209000307,
+      209000228,
+      209000213,
+      209000326,
+      209000215,
+      209000200,
+      209000265,
+      209000330,
+      209000219,
+      209000204,
+      209000333,
+      209000222,
+      209000223
+    ],
+    "next_episode_cursors": [
+      13,
+      15,
+      19,
+      22,
+      18,
+      18,
+      26,
+      20,
+      20,
+      25,
+      30,
+      24,
+      24,
+      33,
+      27,
+      28
+    ]
+  }
+]

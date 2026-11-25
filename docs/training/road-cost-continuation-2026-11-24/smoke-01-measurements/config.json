@@ -1,0 +1,23 @@
+{
+  "parent": "output/training/road-cost-reward-fit-01/control/final.zip",
+  "parent_sha256": "8b27ff666977cfde28817d199c1049916287f08e803d7da0e298ac102f0d7ab5",
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+  "road_cost": 0.0,
+  "seed_start": 209000000,
+  "rng_seed": 241124,
+  "initial_optimizer_steps": 512,
+  "completed_decisions": 16384,
+  "target_decisions": 24576,
+  "recipe": {
+    "n_steps": 512,
+    "batch_size": 128,
+    "n_epochs": 4,
+    "gamma": 1.0,
+    "gae_lambda": 1.0,
+    "vf_coef": 1e-05,
+    "ent_coef": 0.01,
+    "target_kl": 0.03,
+    "learning_rate": 0.0003
+  },
+  "continuation": "Weights and Adam restored; fresh nonoverlapping episodes and explicit RNG reseed. Not bitwise trajectory continuation."
+}

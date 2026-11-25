@@ -1,0 +1,45 @@
+{
+  "models": [
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-wide-pilot-03/midpoint.zip"
+  ],
+  "sha256": {
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-wide-pilot-03/midpoint.zip": "269e2056c85e61ff03bd9068e424adb3a7f901701d1de1ac59bfd6cd4b0d30cc"
+  },
+  "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+  "horizon": 600,
+  "results": {
+    "0": {
+      "games": 32,
+      "scoring_games": 26,
+      "mean_score": 75.625,
+      "new_targets": 124,
+      "new_targets_served": 98,
+      "new_target_stockouts": 27,
+      "median_new_service_delay": 27.0,
+      "mean_paid_units": 78.3125,
+      "mean_outside_observed_routes": 33.1875,
+      "outside_route_share": 0.4237829209896249,
+      "paired_score_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    }
+  }
+}

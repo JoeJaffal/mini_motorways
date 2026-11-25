@@ -1,0 +1,97 @@
+{
+  "opening": [
+    {
+      "seed": 494606252,
+      "scoring": 2,
+      "games": 8,
+      "stockout_by_14": 8,
+      "witness_build_time": 60,
+      "witness_road_units": 5,
+      "witness_delivery_time": 74
+    },
+    {
+      "seed": 518055469,
+      "scoring": 1,
+      "games": 8,
+      "stockout_by_14": 8,
+      "witness_build_time": 75,
+      "witness_road_units": 6,
+      "witness_delivery_time": 85
+    },
+    {
+      "seed": 577433799,
+      "scoring": 7,
+      "games": 8,
+      "stockout_by_14": 0,
+      "witness_build_time": 0,
+      "witness_road_units": 7,
+      "witness_delivery_time": 17
+    },
+    {
+      "seed": 2082947643,
+      "scoring": 2,
+      "games": 8,
+      "stockout_by_14": 8,
+      "witness_build_time": 60,
+      "witness_road_units": 7,
+      "witness_delivery_time": 71
+    }
+  ],
+  "opening_zero_scores": 20,
+  "opening_zero_stockout_by_14": 19,
+  "opening_zero_without_route": 6,
+  "opening_zero_with_vehicle_wait_ge_10": 0,
+  "fresh_games": 24,
+  "fresh_scoring_games": 19,
+  "fresh_mean_score": 105.75,
+  "fresh_median_seconds": 376.725,
+  "survivors": [
+    {
+      "seed": 82801150,
+      "end_seconds": 835.75,
+      "score_at_600": 166,
+      "final_score": 298,
+      "last_delivery": 835.75,
+      "peak_vehicle_wait_ge_10s": 0,
+      "worst_destination_supplied": false
+    },
+    {
+      "seed": 82831435,
+      "end_seconds": 887.95,
+      "score_at_600": 177,
+      "final_score": 354,
+      "last_delivery": 887.95,
+      "peak_vehicle_wait_ge_10s": 0,
+      "worst_destination_supplied": false
+    },
+    {
+      "seed": 82147117,
+      "end_seconds": 771.35,
+      "score_at_600": 172,
+      "final_score": 264,
+      "last_delivery": 771,
+      "peak_vehicle_wait_ge_10s": 0,
+      "worst_destination_supplied": false
+    },
+    {
+      "seed": 82865863,
+      "end_seconds": 796.45,
+      "score_at_600": 178,
+      "final_score": 289,
+      "last_delivery": 794,
+      "peak_vehicle_wait_ge_10s": 0,
+      "worst_destination_supplied": false
+    },
+    {
+      "seed": 82052276,
+      "end_seconds": 958.2,
+      "score_at_600": 162,
+      "final_score": 390,
+      "last_delivery": 957,
+      "peak_vehicle_wait_ge_10s": 0,
+      "worst_destination_supplied": false
+    }
+  ],
+  "parity_checks": 6,
+  "original_replays_matched": 4
+}

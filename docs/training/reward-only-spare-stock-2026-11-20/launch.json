@@ -1,0 +1,38 @@
+{
+  "started_asia_beirut": "2026-11-20T12:18:45+02:00",
+  "service": "mini-motorways-spare-road-ppo-pilot-01.service",
+  "first_rollout": {
+    "decisions": 133120,
+    "games": 467,
+    "successes": 268,
+    "surplus": 2,
+    "widen": false,
+    "targeted": {
+      "-2": [
+        1,
+        100
+      ],
+      "2": [
+        0,
+        100
+      ]
+    },
+    "rehearsal": {
+      "clear": [
+        152,
+        152
+      ],
+      "bend": [
+        51,
+        51
+      ],
+      "adjacent": [
+        64,
+        64
+      ]
+    },
+    "ppo_epochs": 260,
+    "elapsed_seconds": 10.763650969020091,
+    "fingerprint": "2d4f1ecd10b6f1f063d4a21260e217221757f3f059b82d345c49774672355e77"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "scope": "implementation verification, not training or learned performance",
+  "python_combined_suite": {
+    "tests": 55,
+    "result": "PASS",
+    "log": "python-verification.txt"
+  },
+  "additional_distinct_reset_check": {
+    "tests": 1,
+    "result": "PASS"
+  },
+  "analytical_ppo_objective_checks": {
+    "tests": 5,
+    "result": "PASS"
+  },
+  "total_distinct_python_tests": 62,
+  "native_core_suites": {
+    "count": 99,
+    "result": "PASS"
+  },
+  "native_differential_action_cases": {
+    "count": 1116,
+    "result": "PASS"
+  },
+  "scripted_validation_layouts": {
+    "count": 100,
+    "result": "PASS",
+    "trips_min": 10,
+    "trips_max": 13,
+    "seconds": 180
+  },
+  "release_build": "PASS: 0 warnings, 0 errors",
+  "debug_build": "PASS: 0 warnings, 0 errors",
+  "training_sessions": 0,
+  "optimizer_steps": 0,
+  "learned_policy_gate_pass": false,
+  "target_pc_speed_configuration_selected": false,
+  "note": "Full-game validators, graphical replay, PPO updater and explicit remaining hierarchy choices remain unfinished.",
+  "additional_wall_budget_check": {
+    "tests": 1,
+    "result": "PASS"
+  },
+  "clean_published_base_transfer": {
+    "apply": "PASS",
+    "fresh_release_build": "PASS",
+    "visible_tests": 9,
+    "result": "PASS"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "decisions": 128,
+  "episodes": 7,
+  "updates": 4,
+  "seconds": 6.034816073952243,
+  "checkpoint_sha256": "d1189e93b55af3a1cce7f3bc601a215c7c1dd74c8ff43b251d8ced6fcad3fb67",
+  "parent_sha256": "4ebf9ca5b8afe4dcd86ab30642ea383153d5b25f3bd14d69e01bd340386c0af8",
+  "native_host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+  "frozen_wait_encoder_and_their_adam_exact": true,
+  "task_critic_updated": true,
+  "task_return_ledger": true,
+  "finite_task_no_bootstrap": true,
+  "finite_reload": true,
+  "limits": "Disposable PPO smoke only. No production route lesson or performance claim."
+}

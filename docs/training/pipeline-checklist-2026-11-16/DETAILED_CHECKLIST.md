@@ -1,10 +1,12 @@
+> Implementation update16November: [reconciliation](../connection-practice-2026-11-16/RECONCILIATION.md). Linux setup verified; current pipeline remains a draft. No training authorized.
+
 # Maskable PPO — our training checklist
 
 Updated: 16 November 2026. This is the main place to check progress.
 
 **Goal:** learn to play well enough to compete with Mohammad, then assess further progress.
 
-**We are here: planning Stage 1.** The hierarchy and first-stage concept are approved. The new training pipeline has not been implemented or run.
+**We are here: Stage 1 implementation and non-training verification.** Inputs, direct controls, clear-land masks, separate heads and replay/collection/evaluation tools are implemented. The PPO updater is unfinished and no training has run.
 
 Work branch: `Maskable-PPO`. Working folder: `C:/Users/moham/mini_motorways-maskable-ppo`. Baseline simulator: `938b9f8`, version `2026-11-10.f34`. The separate older checkout contains unfinished work and earlier decision documents; those are not automatically part of this branch.
 
@@ -21,16 +23,16 @@ Checked boxes mean the stated task is complete. Approval of a design does not me
 - [x] Adopt staged practice: basic connections → construction challenges → shared networks → growing cities → full games.
 - [x] Approve Stage 1 concept: one matching house/destination, short clear land gap, varied layouts, actual scored trips, separate validation layouts.
 - [x] Require best/worst/representative-average replay review.
-- [ ] Bring earlier decision records and review marks onto this branch without overwriting history; identify superseded choices.
+- [x] Bring earlier decision records and review marks onto this branch without overwriting history; identify superseded choices. Publication6bd7f71 integrated and precedence mapped.
 - [ ] Finalize Stage 1: layout generation, inventory, spawn/event setup, game-time horizon and validation cohort.
 - [ ] Set the Stage 1 passing rule, operational limits and practice retention rules.
 - [ ] Finish exact observations/actions, network and manager/executor PPO/credit settings; reconcile remaining reviewed/unreviewed workbook items.
 
-**Next task:** define a concrete Stage 1 scenario and how we judge it. We have not chosen its episode length or passing threshold.
+**Current evidence and remaining work:** [one-hour check-in](../check-in-2026-11-16/README.md). Complete the PPO updater and explicit remaining hierarchy settings, then target-PC speed checks. No training authorized. Earlier planning task below is historical. **Prior task:** complete pipeline reconciliation. Later approval fixed Stage1 at180s, >=90/100layouts with>=3trips; scripted timing is feasible. Older no-horizon/threshold wording is superseded.
 
-## 2. Build the training pipeline — NOT STARTED
+## 2. Build the training pipeline — IN PROGRESS
 
-- [ ] Implement Stage 1 scenario generation and fixed train/validation splits.
+- [x] Implement Stage 1 scenario generation and fixed train/validation splits. Inventory/layout/event choices remain explicitly provisional engineering settings.
 - [ ] Implement the agreed tools, operand selection and physical legality masks against the frozen simulator.
 - [ ] Implement the manager/executor model and explicit handling of focus changes and weekly offers.
 - [ ] Implement score-only reward accounting, correct episode endings/timeouts and two-level training credit.
@@ -38,14 +40,14 @@ Checked boxes mean the stated task is complete. Approval of a design does not me
 
 **Ready to leave this phase when:** a fresh policy can interact through the complete interface and a saved run can be replayed. This does not require that it plays well yet.
 
-## 3. Verify correctness and measure speed — NOT STARTED
+## 3. Verify correctness and measure speed — IN PROGRESS
 
-- [ ] Check that the model supplies every road connection and focus never generates construction.
-- [ ] Check that legal edits remain available outside the focus and masks match native rules.
+- [x] Check that the model supplies every road connection and focus never generates construction (Stage1 direct interface).
+- [x] Check that legal edits remain available outside the focus and masks match native rules for clear-land Stage1; later tool/terrain validators remain pending.
 - [ ] Check that total emitted reward equals score change, including weekly/terminal transitions.
-- [ ] Check paused edits, waits, manager handoffs and zero-time loops; distinguish operational truncation from losing the game.
+- [x] Check paused edits, waits, manager handoffs and zero-time loops; distinguish operational truncation from losing the game (Stage1).
 - [ ] Check hierarchy rollout/value bookkeeping and reproducible replay.
-- [ ] Inspect the Linux Alienware's actual GPU/VRAM and software; confirm CPU/device setup.
+- [x] Inspect the Linux PC's actual GPU/VRAM and software; confirm CPU/device setup from user terminal outputs.87GiBavailable after cleanup; GPU calculation/gradients and imports passed.
 - [ ] Measure simulator + learner throughput before estimating runtime or selecting worker counts.
 
 **Ready to leave this phase when:** correctness checks pass, unresolved failures are documented, and a bounded pilot has a concrete configuration and runtime estimate.

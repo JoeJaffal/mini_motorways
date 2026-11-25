@@ -1,0 +1,7 @@
+{
+  "reason": "Parent already serves both pairs in64/64 matched train/validation games; service gate at ceiling. Preserve8192-decision checkpoint, stop remaining easy trial, screen offset scenarios before further training.",
+  "checkpoint": "output/training/small-city-service-fit-01/ppo/checkpoint-000008192.zip",
+  "saved_decisions": 8192,
+  "saved_optimizer_steps": 256,
+  "unfinished_rollout": "Not claimed as saved progress"
+}

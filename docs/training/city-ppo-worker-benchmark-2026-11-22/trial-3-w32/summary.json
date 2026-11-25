@@ -1,0 +1,30 @@
+{
+  "workers": 32,
+  "decisions": 12288,
+  "host_sha256": "2da58a5aeefa0e7d3416302d4532724b253e9ede05a998fccf40a324aeb5fe23",
+  "parent_sha256": "e66dbd377a81208092a6c242e446e898729969c53258b4dcdf372a072dd313e8",
+  "pilot_config_sha256": "b5b7c680e2da544787ce88fab2636faf38faa5c958f37075aa473a9f670e2583",
+  "startup_seconds": 3.438113300013356,
+  "elapsed_seconds": 48.10988830891438,
+  "decisions_per_second": 255.4152676701004,
+  "collection_seconds": [
+    7.857332766987383,
+    6.832177727948874,
+    7.320744713069871
+  ],
+  "update_seconds": [
+    8.744592490023933,
+    8.571358865941875,
+    8.562393789063208
+  ],
+  "ppo_epochs": 12,
+  "completed_games": 26,
+  "peak_cuda_allocated_mib": 688.58349609375,
+  "peak_cuda_reserved_mib": 852.0,
+  "hardware_samples": 24,
+  "min_available_ram_mib": 13674.1,
+  "sampled_peak_gpu_mib": 1391.0,
+  "sampled_peak_gpu_c": 72.0,
+  "sampled_mean_gpu_util_pct": 48.166666666666664,
+  "sampled_peak_cpu_tctl_c": 70.25
+}

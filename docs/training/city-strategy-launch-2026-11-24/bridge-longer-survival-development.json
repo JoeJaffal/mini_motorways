@@ -1,0 +1,44 @@
+[
+  {
+    "model": "calibrated",
+    "games": 32,
+    "survived1200": 1,
+    "mean_seconds": 655.865625,
+    "median_score": 212.5,
+    "max_score": 680,
+    "mean_final_stock": 0.90625,
+    "zero_score_seeds": [
+      99020130,
+      99047255,
+      99202636
+    ]
+  },
+  {
+    "model": "conserved",
+    "games": 32,
+    "survived1200": 0,
+    "mean_seconds": 607.09375,
+    "median_score": 173.0,
+    "max_score": 504,
+    "mean_final_stock": 7.5,
+    "zero_score_seeds": [
+      99020130,
+      99047255,
+      99202636
+    ]
+  },
+  {
+    "model": "city-only",
+    "games": 32,
+    "survived1200": 0,
+    "mean_seconds": 661.4671875,
+    "median_score": 250.0,
+    "max_score": 446,
+    "mean_final_stock": 0.84375,
+    "zero_score_seeds": [
+      99020130,
+      99047255,
+      99202636
+    ]
+  }
+]

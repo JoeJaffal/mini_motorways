@@ -1,0 +1,38 @@
+{
+  "base_revision": "6bd7f7193b26ae0f5aa12563f3dd89769115df6e",
+  "branch": "Maskable-PPO",
+  "models_sha256": {
+    "output/training/city-route-repair-calibration-01/calibrated-with-counters.zip": "6ed31e8c655acb71b781652c36814045c979597ced464fbf12d6dafef07acd62",
+    "output/training/city-service-reserve-readiness-01/checkpoints/city-000086016-db6c8742.zip": "3631b5d13a1d3012134de3dbba51fc8c5e0a10af6b07bd790c5271d405bf15f7",
+    "output/training/city-service-long-01/checkpoints/city-002760704-bfd5f98e.zip": "8e90c34c1dbf12f1f8f10fe795f3b0c27118ea65ebe2769e4cbecbdc53ca227f",
+    "output/training/city-service-long-01/checkpoints/city-005316608-f47f325c.zip": "3cebdd6e7aa15112133d26b789b8ce86d7fa66a39d74b19a8f84d519dc6d2720"
+  },
+  "archive_sha256": {
+    "README.md": "2c3b2da0777043d2143325cf576c08274697e468400da05e206f02c4058e72f7",
+    "check_multiedge.py": "8b1b533a3cb279acbe038c2a01c088f8db850db9700dabf1ae0c84d0f3689926",
+    "checks.json": "a5825d7cd6f84b4417f529b3bc5c1efc286d22bcb1d18348628fef04b9e198c7",
+    "city-games.jsonl": "3b2d1a8c77cd90d2ff8379ef0c9e545dac3de55f642709a94aed74fc6708fe69",
+    "city-suite.json": "d689d07f992dd0b970e8b914446f8a67d26846c467832f5a550104365b163a9f",
+    "city-summary.json": "310fa27403662fd7dbf54a85ebef79c823123f13b28ac53e44fd1afa32a0749b",
+    "city-vs-warm-start.json": "e130734642c6f0bdd87f5c365289202d2ffcdd8b924a23246037a7df2a595051",
+    "features.json": "6ff5a6bd8e0287b0b20d08674ca9b569e4c6563e2b5037a84d70801086014248",
+    "multiedge.json": "b317cd4d45f5686fec2676daa7a8f512a329508c920b89da79f3c708721a1c3d",
+    "probe_city_traffic.py": "e16e4ca7bc810c7edb5bb697ab88f747a612ea1ef0370455eba3148f27fe0ab4",
+    "probe_service_features.py": "bc055e50320e98cb29dca1c0dfc2bff77d05b438e2c0561a3cd0a2c6e1ec2a35",
+    "traffic.json": "0a85bf767e6dfaba2ce1ad2cc40c442a29b25b7d6f19a73e84485e3c5b28e550"
+  },
+  "sources_sha256": {
+    "training/city_service_policy.py": "33778b66de1b5a60a3f97dafeab7a6f6941818c0e32ffb5c5446fc7cbe01ffe6",
+    "training/city_growth_policy.py": "0e5a604554b9c8bbc2d98f5d96cebb9785b2fe2d2ff5eadf0da200e3da9cad38",
+    "training/city_road_pilot.py": "fee11a39a5d4c205d05e3110fad96e64bbcdfab2ab7d800b7de0cf6470993789",
+    "training/evaluate_city_service.py": "7369db1fe8744e082410f6917a8d66b4dee8cdb6f728543a8b6dbab19c334cca",
+    "training/visible_observation.py": "76ea6a0ee1b3c1b44bc8d0ca2a16a9c349432d2172ab83cc5dc14fbdf4417cb9",
+    "training/connection_practice.py": "927df9ba9f953c59b4d00e6fc9c27e8288c9f707a2c2353357e00bee25e741ad",
+    "training/test_connection_practice.py": "2a05fd39f86ad6248efe1c92791ff777cded90907b92135458877c40617e4042"
+  },
+  "local_only": [
+    "model weights",
+    "simulator builds",
+    "evaluation console logs"
+  ]
+}

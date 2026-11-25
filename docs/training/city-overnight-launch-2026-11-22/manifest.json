@@ -1,0 +1,51 @@
+{
+  "branch": "Maskable-PPO",
+  "base_revision": "6bd7f71",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "c06c5d2ae0e8310faccb0887b30643731e125be54ea663d25926d3136826ed32"
+    },
+    {
+      "path": "city-overnight-32w-smoke-01.log",
+      "sha256": "535e5b7f4cef8281993c23d25f9030ca19118a55f27f8b801547a5e51391348e"
+    },
+    {
+      "path": "city-overnight-resume-smoke-01.log",
+      "sha256": "29b429018a7782d10c7b8c0d6e94baabf511219fb62839cd07a5485e3e70ff3c"
+    },
+    {
+      "path": "resume-verification.json",
+      "sha256": "3c393a6bd8b99752ab15dc1c08ab0a826878a8ec12f9162d2f28a510c5da089c"
+    },
+    {
+      "path": "review-verification.json",
+      "sha256": "ffc54aef2cefc871f147c0827bb7f55c26a17c102d1935b136840c806183e2f7"
+    },
+    {
+      "path": "smoke-development-seeds.json",
+      "sha256": "7afa3c6deeb66043efe56d20e93ed2cf20a2f5f5869f43620fc55f2db2e03cd2"
+    },
+    {
+      "path": "smoke-development-summary.json",
+      "sha256": "a66374dfc18e26fcb9bebbb6a769ab4174925e018aa00548ee6986514c5b8d6a"
+    },
+    {
+      "path": "smoke-reserved-seeds.json",
+      "sha256": "a5c8b23d0adaed90c7dd03e0191fb7f6de178e55c18f577b4f22c155ad774845"
+    },
+    {
+      "path": "smoke-reserved-summary.json",
+      "sha256": "4df54adeba8afe66d12c4cdbc18260d3927898720541f635df15282ec3340737"
+    },
+    {
+      "path": "smoke-selection.json",
+      "sha256": "7010db18b42a6480e0692b8025673b101d25a173556cfcbe7cc3bf9f658be0c7"
+    }
+  ],
+  "source_hashes": {
+    "training/run_city_overnight.py": "46ee1e184551195012d2dcb1159052a09c8df345039ae2264017d00ff7b0f9dd",
+    "training/train_city_score_pilot.py": "498ae7a9d8304b37e65beb24686b593dfc47b24c3fbf136e4f897ea8cdea3a58",
+    "training/evaluate_city_checkpoints.py": "110f0c60222e609fc8a6846f0bcea9b33ca258d17b3a48a93bba348f845f2345"
+  }
+}

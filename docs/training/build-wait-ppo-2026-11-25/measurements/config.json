@@ -1,0 +1,29 @@
+{
+  "parent": "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01/initial/start.zip",
+  "dll": "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01/runtime/host/TrafficHost.dll",
+  "output": "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01/training",
+  "workers": 16,
+  "rollout_steps": 512,
+  "rollouts": 4,
+  "batch_size": 128,
+  "epochs": 4,
+  "seed_start": 245000000,
+  "device": "cuda",
+  "parent_sha256": "add40c14bfb38fd55cf2a20b7dafc2d5bad6512f95edca3effcd9e2d8eff4020",
+  "host_sha256": "3077ce7593b062d8c756116435346ce956ff1961a073aa74ffda55282903ee1e",
+  "start_timesteps": 753664,
+  "gamma": 0.0,
+  "vf_coef": 0.0,
+  "zero_baseline": true,
+  "conditional_roads_frozen": true,
+  "retained_old_adam_states": 22,
+  "retained_old_adam_steps": [
+    10240
+  ],
+  "ent_coef": 0.01,
+  "target_kl": 0.03,
+  "learning_rate": 0.0003,
+  "normalize_advantage": true,
+  "sampling_seed": 11424,
+  "reward": "One-decision binary task correctness; native trips separately recorded. Not city score."
+}

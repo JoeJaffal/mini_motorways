@@ -1,0 +1,24 @@
+{
+  "result": "COMPLETE",
+  "saved": [
+    {
+      "path": "city-added-0032768.zip",
+      "added_decisions": 32768,
+      "decisions": 6266880,
+      "sha256": "0d191734a57287f40583c6bc8e4f8638b2d6dfe1cd617727b47d4d61c7801f5e",
+      "elapsed_seconds": 145.77051668206695,
+      "episodes": 97
+    },
+    {
+      "path": "city-added-0065536.zip",
+      "added_decisions": 65536,
+      "decisions": 6299648,
+      "sha256": "45628a7c9790425afe4abc6141312d13f94acc55ec8e8252508b308984ffa8eb",
+      "elapsed_seconds": 288.015279312036,
+      "episodes": 201
+    }
+  ],
+  "added_ppo_epochs": 64,
+  "elapsed_seconds": 288.0165201110067,
+  "peak_cuda_reserved_mib": 852.0
+}

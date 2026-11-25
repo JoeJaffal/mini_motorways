@@ -1,0 +1,14 @@
+{
+  "dll": "output/city-road-reserve-build-01/bin/TrafficHost/release/TrafficHost.dll",
+  "parent": "output/training/city-road-reserve-initial-01/start.zip",
+  "output": "output/training/city-road-reserve-pilot-01",
+  "stage": "reserve",
+  "collapse_forced_wait": true,
+  "workers": 16,
+  "rollouts": 4,
+  "seed_start": 130000000,
+  "learning_rate": 0.03,
+  "parent_sha256": "bb4f41fda45cb7a35e9435177567abca1b1cd1b1cc6c0e2b0d5e6da5681a2235",
+  "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+  "decision_budget": 8192
+}

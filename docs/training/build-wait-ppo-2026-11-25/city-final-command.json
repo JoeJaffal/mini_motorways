@@ -1,0 +1,13 @@
+[
+  "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+  "-u",
+  "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01/runtime/training/evaluate_overnight_city.py",
+  "--dll",
+  "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01/runtime/city-host/TrafficHost.dll",
+  "--output",
+  "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01/evaluation/city-final",
+  "--workers",
+  "2",
+  "--checkpoint",
+  "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01/training/final.zip"
+]

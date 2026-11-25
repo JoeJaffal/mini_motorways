@@ -1,0 +1,41 @@
+{
+  "note": "Frozen on-policy reserve trajectories;32 sampled transitions, finite-window Monte Carlo returns. Actor score-function gradient equals first PPO update at ratio1. This diagnoses gradient scaling, not a measured benefit from changing vf_coef. No updates applied.",
+  "samples": 211,
+  "batch_size": 32,
+  "mean_return": 4.125,
+  "mean_value": 11.272156715393066,
+  "rows": [
+    {
+      "return_advantages": false,
+      "vf_coef": 0.5,
+      "actor_gradient_norm": 0.4005594849586487,
+      "weighted_critic_gradient_norm": 21368.923828125,
+      "combined_gradient_norm": 21368.923828125,
+      "global_clip_scale": 2.339846423704874e-05
+    },
+    {
+      "return_advantages": false,
+      "vf_coef": 0.001,
+      "actor_gradient_norm": 0.4005594849586487,
+      "weighted_critic_gradient_norm": 42.737847656250004,
+      "combined_gradient_norm": 42.73836898803711,
+      "global_clip_scale": 0.011699089135593027
+    },
+    {
+      "return_advantages": true,
+      "vf_coef": 0.5,
+      "actor_gradient_norm": 0.8459253907203674,
+      "weighted_critic_gradient_norm": 21368.923828125,
+      "combined_gradient_norm": 21368.9296875,
+      "global_clip_scale": 2.3398457821173996e-05
+    },
+    {
+      "return_advantages": true,
+      "vf_coef": 0.001,
+      "actor_gradient_norm": 0.8459253907203674,
+      "weighted_critic_gradient_norm": 42.737847656250004,
+      "combined_gradient_norm": 42.75247573852539,
+      "global_clip_scale": 0.011695228864938175
+    }
+  ]
+}

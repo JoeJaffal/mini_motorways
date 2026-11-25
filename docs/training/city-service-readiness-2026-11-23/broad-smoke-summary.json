@@ -1,0 +1,79 @@
+{
+  "models": [
+    "output/training/city-route-repair-calibration-01/calibrated-with-counters.zip",
+    "output/training/city-service-readiness-02/initial.zip"
+  ],
+  "sha256": {
+    "output/training/city-route-repair-calibration-01/calibrated-with-counters.zip": "6ed31e8c655acb71b781652c36814045c979597ced464fbf12d6dafef07acd62",
+    "output/training/city-service-readiness-02/initial.zip": "2e6beed89080703c2a4e03d79b549ca94d3f9d54837b38d09dd536f17ac8cfd9"
+  },
+  "host_sha256": "a45b9c443bbcb83b4385f38529cc01ef291e8b26d10dd314650581d258afe3d8",
+  "results": {
+    "0": {
+      "games": 8,
+      "scoring_games": 8,
+      "mean_score": 104.5,
+      "new_targets": 38,
+      "new_targets_served": 31,
+      "new_target_stockouts": 17,
+      "median_new_service_delay": 45.0,
+      "mean_paid_units": 91.25,
+      "mean_outside_observed_routes": 36.5,
+      "outside_route_share": 0.4,
+      "paired_score_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "1": {
+      "games": 8,
+      "scoring_games": 8,
+      "mean_score": 77.625,
+      "new_targets": 35,
+      "new_targets_served": 26,
+      "new_target_stockouts": 10,
+      "median_new_service_delay": 35.0,
+      "mean_paid_units": 83.75,
+      "mean_outside_observed_routes": 39.0,
+      "outside_route_share": 0.46567164179104475,
+      "paired_score_delta_and_interval": [
+        -26.875,
+        [
+          -72.75,
+          10.75
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        -0.625,
+        [
+          -2.25,
+          0.75
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        2.5,
+        [
+          -12.375,
+          16.875
+        ]
+      ]
+    }
+  }
+}

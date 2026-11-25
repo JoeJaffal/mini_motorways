@@ -1,0 +1,2806 @@
+[
+  {
+    "case": "largest-loss",
+    "model": "original",
+    "seed": 184000002,
+    "action_seed": 193353,
+    "score": 148,
+    "first_delivery": 26,
+    "paid": 105,
+    "paid_before_first": 25,
+    "paid_after_first_before_growth": 0,
+    "native_reward_ledger_verified": true,
+    "exact_evaluation_replay": true,
+    "events": [
+      {
+        "kind": "first_delivery",
+        "time": 26,
+        "stock": 0,
+        "paid": 25
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 61,
+        "id": 3,
+        "stock": 0,
+        "paid": 25
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 186,
+        "id": 7,
+        "stock": 8,
+        "paid": 37
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 301,
+        "id": 11,
+        "stock": 22,
+        "paid": 43
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 351,
+        "id": 15,
+        "stock": 14,
+        "paid": 51
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 382,
+        "id": 18,
+        "stock": 7,
+        "paid": 58
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 395,
+        "id": 21,
+        "stock": 4,
+        "paid": 61
+      }
+    ],
+    "shared_states": [
+      {
+        "decision": 0,
+        "time": 0,
+        "score": 0,
+        "stock": 25,
+        "wait": 0.11423219740390778,
+        "original_wait": 0.11423219740390778,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 8,
+        "time": 1,
+        "score": 0,
+        "stock": 20,
+        "wait": 0.1519174426794052,
+        "original_wait": 0.1519174426794052,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 16,
+        "time": 1,
+        "score": 0,
+        "stock": 12,
+        "wait": 0.18758735060691833,
+        "original_wait": 0.18758735060691833,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 24,
+        "time": 2,
+        "score": 0,
+        "stock": 5,
+        "wait": 0.22855478525161743,
+        "original_wait": 0.22855478525161743,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 88,
+        "time": 61,
+        "score": 3,
+        "stock": 0,
+        "wait": 0.5478662252426147,
+        "original_wait": 0.5478662252426147,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 176,
+        "time": 145,
+        "score": 8,
+        "stock": 18,
+        "wait": 0.7048234939575195,
+        "original_wait": 0.7048234939575195,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 184,
+        "time": 149,
+        "score": 9,
+        "stock": 14,
+        "wait": 0.6882587671279907,
+        "original_wait": 0.6882587671279907,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 192,
+        "time": 154,
+        "score": 9,
+        "stock": 11,
+        "wait": 0.7020089030265808,
+        "original_wait": 0.7020089030265808,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 200,
+        "time": 160,
+        "score": 10,
+        "stock": 9,
+        "wait": 0.751268744468689,
+        "original_wait": 0.751268744468689,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 208,
+        "time": 167,
+        "score": 12,
+        "stock": 8,
+        "wait": 0.9511939287185669,
+        "original_wait": 0.9511939287185669,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 216,
+        "time": 175,
+        "score": 14,
+        "stock": 8,
+        "wait": 0.9490346908569336,
+        "original_wait": 0.9490346908569336,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 224,
+        "time": 183,
+        "score": 15,
+        "stock": 8,
+        "wait": 0.9708489775657654,
+        "original_wait": 0.9708489775657654,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 232,
+        "time": 190,
+        "score": 16,
+        "stock": 7,
+        "wait": 0.9428861141204834,
+        "original_wait": 0.9428861141204834,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 240,
+        "time": 198,
+        "score": 19,
+        "stock": 7,
+        "wait": 0.9366436004638672,
+        "original_wait": 0.9366436004638672,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 248,
+        "time": 205,
+        "score": 19,
+        "stock": 7,
+        "wait": 0.9648457169532776,
+        "original_wait": 0.9648457169532776,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 256,
+        "time": 213,
+        "score": 20,
+        "stock": 7,
+        "wait": 0.9419809579849243,
+        "original_wait": 0.9419809579849243,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 264,
+        "time": 221,
+        "score": 22,
+        "stock": 7,
+        "wait": 0.9223154187202454,
+        "original_wait": 0.9223154187202454,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 272,
+        "time": 228,
+        "score": 24,
+        "stock": 6,
+        "wait": 0.9128140807151794,
+        "original_wait": 0.9128140807151794,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 280,
+        "time": 236,
+        "score": 25,
+        "stock": 6,
+        "wait": 0.9406483769416809,
+        "original_wait": 0.9406483769416809,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 288,
+        "time": 244,
+        "score": 27,
+        "stock": 6,
+        "wait": 0.9261013865470886,
+        "original_wait": 0.9261013865470886,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 296,
+        "time": 251,
+        "score": 28,
+        "stock": 5,
+        "wait": 0.9491831064224243,
+        "original_wait": 0.9491831064224243,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 304,
+        "time": 259,
+        "score": 28,
+        "stock": 5,
+        "wait": 0.9053292870521545,
+        "original_wait": 0.9053292870521545,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 312,
+        "time": 267,
+        "score": 32,
+        "stock": 5,
+        "wait": 0.9179264903068542,
+        "original_wait": 0.9179264903068542,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 320,
+        "time": 274,
+        "score": 35,
+        "stock": 5,
+        "wait": 0.9058914184570312,
+        "original_wait": 0.9058914184570312,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 328,
+        "time": 281,
+        "score": 36,
+        "stock": 24,
+        "wait": 0.64701247215271,
+        "original_wait": 0.64701247215271,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 336,
+        "time": 288,
+        "score": 38,
+        "stock": 23,
+        "wait": 0.7883655428886414,
+        "original_wait": 0.7883655428886414,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 344,
+        "time": 294,
+        "score": 38,
+        "stock": 22,
+        "wait": 0.7884842157363892,
+        "original_wait": 0.7884842157363892,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 352,
+        "time": 301,
+        "score": 38,
+        "stock": 21,
+        "wait": 0.8209914565086365,
+        "original_wait": 0.8209914565086365,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 360,
+        "time": 309,
+        "score": 41,
+        "stock": 21,
+        "wait": 0.7774201035499573,
+        "original_wait": 0.7774201035499573,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 368,
+        "time": 315,
+        "score": 44,
+        "stock": 19,
+        "wait": 0.6334050893783569,
+        "original_wait": 0.6334050893783569,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 376,
+        "time": 322,
+        "score": 49,
+        "stock": 18,
+        "wait": 0.7754530906677246,
+        "original_wait": 0.7754530906677246,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 384,
+        "time": 327,
+        "score": 53,
+        "stock": 16,
+        "wait": 0.8219053745269775,
+        "original_wait": 0.8219053745269775,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 392,
+        "time": 333,
+        "score": 54,
+        "stock": 14,
+        "wait": 0.7757014632225037,
+        "original_wait": 0.7757014632225037,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 400,
+        "time": 341,
+        "score": 54,
+        "stock": 14,
+        "wait": 0.8467152118682861,
+        "original_wait": 0.8467152118682861,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 408,
+        "time": 349,
+        "score": 56,
+        "stock": 14,
+        "wait": 0.8627768754959106,
+        "original_wait": 0.8627768754959106,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 416,
+        "time": 354,
+        "score": 59,
+        "stock": 12,
+        "wait": 0.6989202499389648,
+        "original_wait": 0.6989202499389648,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 424,
+        "time": 361,
+        "score": 62,
+        "stock": 11,
+        "wait": 0.7190902829170227,
+        "original_wait": 0.7190902829170227,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 432,
+        "time": 364,
+        "score": 65,
+        "stock": 8,
+        "wait": 0.8634634613990784,
+        "original_wait": 0.8634634613990784,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 440,
+        "time": 371,
+        "score": 66,
+        "stock": 7,
+        "wait": 0.8955056667327881,
+        "original_wait": 0.8955056667327881,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 448,
+        "time": 379,
+        "score": 69,
+        "stock": 7,
+        "wait": 0.8539351224899292,
+        "original_wait": 0.8539351224899292,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 456,
+        "time": 385,
+        "score": 73,
+        "stock": 5,
+        "wait": 0.9092954397201538,
+        "original_wait": 0.9092954397201538,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 464,
+        "time": 391,
+        "score": 74,
+        "stock": 4,
+        "wait": 0.9086204171180725,
+        "original_wait": 0.9086204171180725,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 472,
+        "time": 395,
+        "score": 77,
+        "stock": 2,
+        "wait": 0.637067973613739,
+        "original_wait": 0.637067973613739,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 504,
+        "time": 424,
+        "score": 87,
+        "stock": 20,
+        "wait": 0.6721124053001404,
+        "original_wait": 0.6721124053001404,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 512,
+        "time": 430,
+        "score": 88,
+        "stock": 18,
+        "wait": 0.8317550420761108,
+        "original_wait": 0.8317550420761108,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 520,
+        "time": 437,
+        "score": 91,
+        "stock": 17,
+        "wait": 0.592087984085083,
+        "original_wait": 0.592087984085083,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 528,
+        "time": 442,
+        "score": 93,
+        "stock": 14,
+        "wait": 0.7536874413490295,
+        "original_wait": 0.7536874413490295,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 536,
+        "time": 450,
+        "score": 96,
+        "stock": 14,
+        "wait": 0.6954917311668396,
+        "original_wait": 0.6954917311668396,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 544,
+        "time": 458,
+        "score": 99,
+        "stock": 14,
+        "wait": 0.7475992441177368,
+        "original_wait": 0.7475992441177368,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 552,
+        "time": 463,
+        "score": 100,
+        "stock": 11,
+        "wait": 0.5918942093849182,
+        "original_wait": 0.5918942093849182,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 560,
+        "time": 468,
+        "score": 102,
+        "stock": 8,
+        "wait": 0.7243366837501526,
+        "original_wait": 0.7243366837501526,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 568,
+        "time": 473,
+        "score": 103,
+        "stock": 5,
+        "wait": 0.6685449481010437,
+        "original_wait": 0.6685449481010437,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 576,
+        "time": 480,
+        "score": 109,
+        "stock": 4,
+        "wait": 0.5652244687080383,
+        "original_wait": 0.5652244687080383,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 600,
+        "time": 500,
+        "score": 115,
+        "stock": 0,
+        "wait": 0.617621660232544,
+        "original_wait": 0.617621660232544,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 624,
+        "time": 522,
+        "score": 124,
+        "stock": 0,
+        "wait": 0.5530348420143127,
+        "original_wait": 0.5530348420143127,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 664,
+        "time": 561,
+        "score": 141,
+        "stock": 20,
+        "wait": 0.27526456117630005,
+        "original_wait": 0.27526456117630005,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 672,
+        "time": 565,
+        "score": 145,
+        "stock": 16,
+        "wait": 0.08096910268068314,
+        "original_wait": 0.08096910268068314,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 680,
+        "time": 565,
+        "score": 145,
+        "stock": 8,
+        "wait": 0.13200493156909943,
+        "original_wait": 0.13200493156909943,
+        "conditional_road_tv": 0.0
+      }
+    ]
+  },
+  {
+    "case": "largest-loss",
+    "model": "lesson-only",
+    "seed": 184000002,
+    "action_seed": 193353,
+    "score": 177,
+    "first_delivery": 25,
+    "paid": 125,
+    "paid_before_first": 25,
+    "paid_after_first_before_growth": 0,
+    "native_reward_ledger_verified": true,
+    "exact_evaluation_replay": true,
+    "events": [
+      {
+        "kind": "first_delivery",
+        "time": 25,
+        "stock": 0,
+        "paid": 25
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 61,
+        "id": 3,
+        "stock": 0,
+        "paid": 25
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 246,
+        "id": 9,
+        "stock": 0,
+        "paid": 45
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 301,
+        "id": 11,
+        "stock": 0,
+        "paid": 75
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 336,
+        "id": 15,
+        "stock": 0,
+        "paid": 75
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 375,
+        "id": 18,
+        "stock": 0,
+        "paid": 75
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 385,
+        "id": 20,
+        "stock": 0,
+        "paid": 75
+      }
+    ],
+    "shared_states": [
+      {
+        "decision": 0,
+        "time": 0,
+        "score": 0,
+        "stock": 25,
+        "wait": 0.08557209372520447,
+        "original_wait": 0.11423219740390778,
+        "conditional_road_tv": 6.837890537218399e-05
+      },
+      {
+        "decision": 8,
+        "time": 1,
+        "score": 0,
+        "stock": 20,
+        "wait": 0.05915072560310364,
+        "original_wait": 0.15206624567508698,
+        "conditional_road_tv": 5.390189190556947e-13
+      },
+      {
+        "decision": 16,
+        "time": 1,
+        "score": 0,
+        "stock": 12,
+        "wait": 0.04387680068612099,
+        "original_wait": 0.1846233308315277,
+        "conditional_road_tv": 0.0870616198790066
+      },
+      {
+        "decision": 24,
+        "time": 1,
+        "score": 0,
+        "stock": 4,
+        "wait": 0.05445164069533348,
+        "original_wait": 0.22134290635585785,
+        "conditional_road_tv": 0.025400594382310602
+      },
+      {
+        "decision": 176,
+        "time": 140,
+        "score": 6,
+        "stock": 13,
+        "wait": 0.015927011147141457,
+        "original_wait": 0.5359547734260559,
+        "conditional_road_tv": 0.0649051428140805
+      },
+      {
+        "decision": 184,
+        "time": 140,
+        "score": 6,
+        "stock": 5,
+        "wait": 0.089151531457901,
+        "original_wait": 0.8747203946113586,
+        "conditional_road_tv": 0.1503505138336278
+      },
+      {
+        "decision": 280,
+        "time": 230,
+        "score": 24,
+        "stock": 0,
+        "wait": 0.07931032031774521,
+        "original_wait": 0.8874300122261047,
+        "conditional_road_tv": 6.54136184279619e-05
+      },
+      {
+        "decision": 336,
+        "time": 280,
+        "score": 37,
+        "stock": 26,
+        "wait": 0.016986753791570663,
+        "original_wait": 0.5556389093399048,
+        "conditional_road_tv": 0.2779874430837427
+      },
+      {
+        "decision": 344,
+        "time": 280,
+        "score": 37,
+        "stock": 18,
+        "wait": 0.017747534438967705,
+        "original_wait": 0.5674031376838684,
+        "conditional_road_tv": 0.003669132945001386
+      },
+      {
+        "decision": 352,
+        "time": 280,
+        "score": 37,
+        "stock": 10,
+        "wait": 0.01995200663805008,
+        "original_wait": 0.5967665910720825,
+        "conditional_road_tv": 0.3777169647427058
+      },
+      {
+        "decision": 360,
+        "time": 280,
+        "score": 37,
+        "stock": 2,
+        "wait": 0.09748449921607971,
+        "original_wait": 0.8872084021568298,
+        "conditional_road_tv": 0.07613319444158734
+      },
+      {
+        "decision": 432,
+        "time": 346,
+        "score": 59,
+        "stock": 0,
+        "wait": 0.05496089160442352,
+        "original_wait": 0.7300102710723877,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 512,
+        "time": 420,
+        "score": 74,
+        "stock": 18,
+        "wait": 0.004487142898142338,
+        "original_wait": 0.16526015102863312,
+        "conditional_road_tv": 0.07869906698196055
+      },
+      {
+        "decision": 520,
+        "time": 420,
+        "score": 74,
+        "stock": 10,
+        "wait": 0.0061268433928489685,
+        "original_wait": 0.2325507551431656,
+        "conditional_road_tv": 0.07326078527782033
+      },
+      {
+        "decision": 528,
+        "time": 420,
+        "score": 74,
+        "stock": 2,
+        "wait": 0.006466042250394821,
+        "original_wait": 0.24241644144058228,
+        "conditional_road_tv": 0.2031009594844298
+      },
+      {
+        "decision": 672,
+        "time": 560,
+        "score": 155,
+        "stock": 29,
+        "wait": 0.012763073667883873,
+        "original_wait": 0.537600576877594,
+        "conditional_road_tv": 0.214562598566231
+      },
+      {
+        "decision": 680,
+        "time": 560,
+        "score": 155,
+        "stock": 21,
+        "wait": 0.013141468167304993,
+        "original_wait": 0.5451915264129639,
+        "conditional_road_tv": 0.008587243499727254
+      },
+      {
+        "decision": 688,
+        "time": 560,
+        "score": 155,
+        "stock": 13,
+        "wait": 0.014513817615807056,
+        "original_wait": 0.5704872608184814,
+        "conditional_road_tv": 4.476708729747229e-07
+      },
+      {
+        "decision": 696,
+        "time": 560,
+        "score": 155,
+        "stock": 5,
+        "wait": 0.0684366226196289,
+        "original_wait": 0.8685470223426819,
+        "conditional_road_tv": 0.30842927777617873
+      }
+    ]
+  },
+  {
+    "case": "largest-loss",
+    "model": "mixed-city",
+    "seed": 184000002,
+    "action_seed": 193353,
+    "score": 0,
+    "first_delivery": null,
+    "paid": 45,
+    "paid_before_first": 45,
+    "paid_after_first_before_growth": 0,
+    "native_reward_ledger_verified": true,
+    "exact_evaluation_replay": true,
+    "events": [
+      {
+        "kind": "destination_arrival",
+        "time": 61,
+        "id": 3,
+        "stock": 0,
+        "paid": 25
+      }
+    ],
+    "shared_states": [
+      {
+        "decision": 0,
+        "time": 0,
+        "score": 0,
+        "stock": 25,
+        "wait": 0.05914796143770218,
+        "original_wait": 0.11423219740390778,
+        "conditional_road_tv": 6.813865167906418e-05
+      },
+      {
+        "decision": 8,
+        "time": 1,
+        "score": 0,
+        "stock": 20,
+        "wait": 0.05822576954960823,
+        "original_wait": 0.15054351091384888,
+        "conditional_road_tv": 0.08078040240613901
+      },
+      {
+        "decision": 16,
+        "time": 1,
+        "score": 0,
+        "stock": 12,
+        "wait": 0.07510896027088165,
+        "original_wait": 0.18687324225902557,
+        "conditional_road_tv": 8.074722225951834e-05
+      },
+      {
+        "decision": 24,
+        "time": 1,
+        "score": 0,
+        "stock": 4,
+        "wait": 0.09252876788377762,
+        "original_wait": 0.22251808643341064,
+        "conditional_road_tv": 0.006975665759747747
+      },
+      {
+        "decision": 88,
+        "time": 61,
+        "score": 0,
+        "stock": 0,
+        "wait": 0.04936109483242035,
+        "original_wait": 0.27723532915115356,
+        "conditional_road_tv": 1.2117027154340211e-05
+      },
+      {
+        "decision": 176,
+        "time": 140,
+        "score": 0,
+        "stock": 14,
+        "wait": 0.008849777281284332,
+        "original_wait": 0.05301860347390175,
+        "conditional_road_tv": 2.758616460394447e-08
+      },
+      {
+        "decision": 184,
+        "time": 140,
+        "score": 0,
+        "stock": 6,
+        "wait": 0.009391899220645428,
+        "original_wait": 0.0553954616189003,
+        "conditional_road_tv": 0.008537334307835156
+      }
+    ]
+  },
+  {
+    "case": "middle",
+    "model": "original",
+    "seed": 185000005,
+    "action_seed": 193356,
+    "score": 166,
+    "first_delivery": 31,
+    "paid": 111,
+    "paid_before_first": 21,
+    "paid_after_first_before_growth": 1,
+    "native_reward_ledger_verified": true,
+    "exact_evaluation_replay": true,
+    "events": [
+      {
+        "kind": "first_delivery",
+        "time": 31,
+        "stock": 4,
+        "paid": 21
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 63,
+        "id": 3,
+        "stock": 3,
+        "paid": 22
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 205,
+        "id": 7,
+        "stock": 8,
+        "paid": 37
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 275,
+        "id": 11,
+        "stock": 0,
+        "paid": 45
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 335,
+        "id": 14,
+        "stock": 0,
+        "paid": 65
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 396,
+        "id": 15,
+        "stock": 0,
+        "paid": 65
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 525,
+        "id": 21,
+        "stock": 8,
+        "paid": 87
+      }
+    ],
+    "shared_states": [
+      {
+        "decision": 0,
+        "time": 0,
+        "score": 0,
+        "stock": 25,
+        "wait": 0.306207537651062,
+        "original_wait": 0.306207537651062,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 8,
+        "time": 5,
+        "score": 0,
+        "stock": 24,
+        "wait": 0.37592455744743347,
+        "original_wait": 0.37592455744743347,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 16,
+        "time": 8,
+        "score": 0,
+        "stock": 19,
+        "wait": 0.43245747685432434,
+        "original_wait": 0.43245747685432434,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 24,
+        "time": 13,
+        "score": 0,
+        "stock": 17,
+        "wait": 0.3743537366390228,
+        "original_wait": 0.3743537366390228,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 32,
+        "time": 14,
+        "score": 0,
+        "stock": 10,
+        "wait": 0.5182079076766968,
+        "original_wait": 0.5182079076766968,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 40,
+        "time": 21,
+        "score": 0,
+        "stock": 9,
+        "wait": 0.7119525671005249,
+        "original_wait": 0.7119525671005249,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 48,
+        "time": 27,
+        "score": 0,
+        "stock": 7,
+        "wait": 0.9345645308494568,
+        "original_wait": 0.9345645308494568,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 56,
+        "time": 32,
+        "score": 1,
+        "stock": 4,
+        "wait": 0.9447494745254517,
+        "original_wait": 0.9447494745254517,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 64,
+        "time": 40,
+        "score": 2,
+        "stock": 4,
+        "wait": 0.943026065826416,
+        "original_wait": 0.943026065826416,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 72,
+        "time": 48,
+        "score": 2,
+        "stock": 4,
+        "wait": 0.9585272669792175,
+        "original_wait": 0.9585272669792175,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 80,
+        "time": 55,
+        "score": 2,
+        "stock": 3,
+        "wait": 0.9631595015525818,
+        "original_wait": 0.9631595015525818,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 88,
+        "time": 63,
+        "score": 3,
+        "stock": 3,
+        "wait": 0.9412870407104492,
+        "original_wait": 0.9412870407104492,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 96,
+        "time": 70,
+        "score": 3,
+        "stock": 2,
+        "wait": 0.9687259793281555,
+        "original_wait": 0.9687259793281555,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 104,
+        "time": 77,
+        "score": 4,
+        "stock": 1,
+        "wait": 0.9717143774032593,
+        "original_wait": 0.9717143774032593,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 112,
+        "time": 85,
+        "score": 5,
+        "stock": 1,
+        "wait": 0.9605622887611389,
+        "original_wait": 0.9605622887611389,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 176,
+        "time": 146,
+        "score": 14,
+        "stock": 19,
+        "wait": 0.8517515659332275,
+        "original_wait": 0.8517515659332275,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 184,
+        "time": 153,
+        "score": 14,
+        "stock": 18,
+        "wait": 0.8576550483703613,
+        "original_wait": 0.8576550483703613,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 192,
+        "time": 159,
+        "score": 15,
+        "stock": 16,
+        "wait": 0.8903404474258423,
+        "original_wait": 0.8903404474258423,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 200,
+        "time": 165,
+        "score": 16,
+        "stock": 14,
+        "wait": 0.8686378002166748,
+        "original_wait": 0.8686378002166748,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 208,
+        "time": 171,
+        "score": 16,
+        "stock": 12,
+        "wait": 0.8432003259658813,
+        "original_wait": 0.8432003259658813,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 216,
+        "time": 176,
+        "score": 17,
+        "stock": 9,
+        "wait": 0.8240352272987366,
+        "original_wait": 0.8240352272987366,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 224,
+        "time": 182,
+        "score": 18,
+        "stock": 8,
+        "wait": 0.9578176140785217,
+        "original_wait": 0.9578176140785217,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 232,
+        "time": 190,
+        "score": 19,
+        "stock": 8,
+        "wait": 0.9726483821868896,
+        "original_wait": 0.9726483821868896,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 240,
+        "time": 198,
+        "score": 21,
+        "stock": 8,
+        "wait": 0.9665842652320862,
+        "original_wait": 0.9665842652320862,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 248,
+        "time": 206,
+        "score": 21,
+        "stock": 8,
+        "wait": 0.8099613785743713,
+        "original_wait": 0.8099613785743713,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 256,
+        "time": 212,
+        "score": 23,
+        "stock": 7,
+        "wait": 0.8594291806221008,
+        "original_wait": 0.8594291806221008,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 264,
+        "time": 218,
+        "score": 25,
+        "stock": 7,
+        "wait": 0.8234893679618835,
+        "original_wait": 0.8234893679618835,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 272,
+        "time": 224,
+        "score": 25,
+        "stock": 5,
+        "wait": 0.8650672435760498,
+        "original_wait": 0.8650672435760498,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 280,
+        "time": 230,
+        "score": 26,
+        "stock": 3,
+        "wait": 0.9119215607643127,
+        "original_wait": 0.9119215607643127,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 288,
+        "time": 236,
+        "score": 26,
+        "stock": 1,
+        "wait": 0.9161210656166077,
+        "original_wait": 0.9161210656166077,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 328,
+        "time": 275,
+        "score": 38,
+        "stock": 0,
+        "wait": 0.7153298854827881,
+        "original_wait": 0.7153298854827881,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 336,
+        "time": 280,
+        "score": 38,
+        "stock": 19,
+        "wait": 0.43551206588745117,
+        "original_wait": 0.43551206588745117,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 344,
+        "time": 282,
+        "score": 38,
+        "stock": 13,
+        "wait": 0.6003565788269043,
+        "original_wait": 0.6003565788269043,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 352,
+        "time": 289,
+        "score": 39,
+        "stock": 12,
+        "wait": 0.4688233435153961,
+        "original_wait": 0.4688233435153961,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 360,
+        "time": 293,
+        "score": 41,
+        "stock": 8,
+        "wait": 0.7237374782562256,
+        "original_wait": 0.7237374782562256,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 368,
+        "time": 300,
+        "score": 42,
+        "stock": 7,
+        "wait": 0.7594862580299377,
+        "original_wait": 0.7594862580299377,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 376,
+        "time": 308,
+        "score": 46,
+        "stock": 7,
+        "wait": 0.7859811782836914,
+        "original_wait": 0.7859811782836914,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 384,
+        "time": 315,
+        "score": 48,
+        "stock": 6,
+        "wait": 0.7039286494255066,
+        "original_wait": 0.7039286494255066,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 392,
+        "time": 318,
+        "score": 49,
+        "stock": 1,
+        "wait": 0.7681342363357544,
+        "original_wait": 0.7681342363357544,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 416,
+        "time": 341,
+        "score": 56,
+        "stock": 0,
+        "wait": 0.8189235329627991,
+        "original_wait": 0.8189235329627991,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 472,
+        "time": 396,
+        "score": 70,
+        "stock": 0,
+        "wait": 0.4013046324253082,
+        "original_wait": 0.4013046324253082,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 496,
+        "time": 417,
+        "score": 77,
+        "stock": 0,
+        "wait": 0.730617344379425,
+        "original_wait": 0.730617344379425,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 504,
+        "time": 423,
+        "score": 78,
+        "stock": 29,
+        "wait": 0.32339540123939514,
+        "original_wait": 0.32339540123939514,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 512,
+        "time": 427,
+        "score": 79,
+        "stock": 25,
+        "wait": 0.6794027090072632,
+        "original_wait": 0.6794027090072632,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 520,
+        "time": 433,
+        "score": 82,
+        "stock": 24,
+        "wait": 0.7022376656532288,
+        "original_wait": 0.7022376656532288,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 528,
+        "time": 439,
+        "score": 84,
+        "stock": 22,
+        "wait": 0.7759039998054504,
+        "original_wait": 0.7759039998054504,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 536,
+        "time": 447,
+        "score": 88,
+        "stock": 22,
+        "wait": 0.8023887276649475,
+        "original_wait": 0.8023887276649475,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 544,
+        "time": 451,
+        "score": 89,
+        "stock": 18,
+        "wait": 0.8167266249656677,
+        "original_wait": 0.8167266249656677,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 552,
+        "time": 458,
+        "score": 97,
+        "stock": 17,
+        "wait": 0.8027671575546265,
+        "original_wait": 0.8027671575546265,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 560,
+        "time": 465,
+        "score": 99,
+        "stock": 16,
+        "wait": 0.7687851190567017,
+        "original_wait": 0.7687851190567017,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 568,
+        "time": 471,
+        "score": 102,
+        "stock": 14,
+        "wait": 0.7979732751846313,
+        "original_wait": 0.7979732751846313,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 576,
+        "time": 477,
+        "score": 103,
+        "stock": 12,
+        "wait": 0.832923412322998,
+        "original_wait": 0.832923412322998,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 584,
+        "time": 483,
+        "score": 105,
+        "stock": 10,
+        "wait": 0.7889161109924316,
+        "original_wait": 0.7889161109924316,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 592,
+        "time": 489,
+        "score": 107,
+        "stock": 8,
+        "wait": 0.9469520449638367,
+        "original_wait": 0.9469520449638367,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 600,
+        "time": 497,
+        "score": 114,
+        "stock": 8,
+        "wait": 0.956183910369873,
+        "original_wait": 0.956183910369873,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 608,
+        "time": 505,
+        "score": 119,
+        "stock": 8,
+        "wait": 0.9455915093421936,
+        "original_wait": 0.9455915093421936,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 616,
+        "time": 513,
+        "score": 123,
+        "stock": 8,
+        "wait": 0.9456889629364014,
+        "original_wait": 0.9456889629364014,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 624,
+        "time": 521,
+        "score": 125,
+        "stock": 8,
+        "wait": 0.9517557621002197,
+        "original_wait": 0.9517557621002197,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 632,
+        "time": 528,
+        "score": 130,
+        "stock": 8,
+        "wait": 0.7050269246101379,
+        "original_wait": 0.7050269246101379,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 640,
+        "time": 533,
+        "score": 134,
+        "stock": 7,
+        "wait": 0.6911569833755493,
+        "original_wait": 0.6911569833755493,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 648,
+        "time": 540,
+        "score": 136,
+        "stock": 6,
+        "wait": 0.7014549970626831,
+        "original_wait": 0.7014549970626831,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 656,
+        "time": 546,
+        "score": 139,
+        "stock": 5,
+        "wait": 0.7180384397506714,
+        "original_wait": 0.7180384397506714,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 664,
+        "time": 550,
+        "score": 140,
+        "stock": 1,
+        "wait": 0.5795911550521851,
+        "original_wait": 0.5795911550521851,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 680,
+        "time": 562,
+        "score": 147,
+        "stock": 17,
+        "wait": 0.8502569794654846,
+        "original_wait": 0.8502569794654846,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 688,
+        "time": 568,
+        "score": 152,
+        "stock": 15,
+        "wait": 0.7759822010993958,
+        "original_wait": 0.7759822010993958,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 696,
+        "time": 570,
+        "score": 153,
+        "stock": 9,
+        "wait": 0.7602946162223816,
+        "original_wait": 0.7602946162223816,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 704,
+        "time": 575,
+        "score": 154,
+        "stock": 6,
+        "wait": 0.7574735283851624,
+        "original_wait": 0.7574735283851624,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 712,
+        "time": 582,
+        "score": 157,
+        "stock": 5,
+        "wait": 0.7411254644393921,
+        "original_wait": 0.7411254644393921,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 720,
+        "time": 590,
+        "score": 162,
+        "stock": 5,
+        "wait": 0.8132035732269287,
+        "original_wait": 0.8132035732269287,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 728,
+        "time": 597,
+        "score": 166,
+        "stock": 4,
+        "wait": 0.821890652179718,
+        "original_wait": 0.821890652179718,
+        "conditional_road_tv": 0.0
+      }
+    ]
+  },
+  {
+    "case": "middle",
+    "model": "lesson-only",
+    "seed": 185000005,
+    "action_seed": 193356,
+    "score": 164,
+    "first_delivery": 25,
+    "paid": 115,
+    "paid_before_first": 25,
+    "paid_after_first_before_growth": 0,
+    "native_reward_ledger_verified": true,
+    "exact_evaluation_replay": true,
+    "events": [
+      {
+        "kind": "first_delivery",
+        "time": 25,
+        "stock": 0,
+        "paid": 25
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 63,
+        "id": 3,
+        "stock": 0,
+        "paid": 25
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 167,
+        "id": 6,
+        "stock": 0,
+        "paid": 45
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 225,
+        "id": 10,
+        "stock": 0,
+        "paid": 45
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 315,
+        "id": 13,
+        "stock": 0,
+        "paid": 75
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 396,
+        "id": 15,
+        "stock": 0,
+        "paid": 75
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 525,
+        "id": 21,
+        "stock": 0,
+        "paid": 95
+      }
+    ],
+    "shared_states": [
+      {
+        "decision": 0,
+        "time": 0,
+        "score": 0,
+        "stock": 25,
+        "wait": 0.2745899260044098,
+        "original_wait": 0.306207537651062,
+        "conditional_road_tv": 0.000771331697203952
+      },
+      {
+        "decision": 8,
+        "time": 3,
+        "score": 0,
+        "stock": 22,
+        "wait": 0.031918492168188095,
+        "original_wait": 0.40973493456840515,
+        "conditional_road_tv": 0.00036912476422173274
+      },
+      {
+        "decision": 16,
+        "time": 3,
+        "score": 0,
+        "stock": 14,
+        "wait": 0.04474938288331032,
+        "original_wait": 0.4971247911453247,
+        "conditional_road_tv": 0.6720494226278908
+      },
+      {
+        "decision": 24,
+        "time": 3,
+        "score": 0,
+        "stock": 6,
+        "wait": 0.031708430498838425,
+        "original_wait": 0.5493953824043274,
+        "conditional_road_tv": 0.3598517045985063
+      },
+      {
+        "decision": 104,
+        "time": 74,
+        "score": 3,
+        "stock": 0,
+        "wait": 0.0701565146446228,
+        "original_wait": 0.7843445539474487,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 176,
+        "time": 140,
+        "score": 6,
+        "stock": 15,
+        "wait": 0.07678768038749695,
+        "original_wait": 0.7372469902038574,
+        "conditional_road_tv": 0.001405683996113975
+      },
+      {
+        "decision": 184,
+        "time": 140,
+        "score": 6,
+        "stock": 7,
+        "wait": 0.19856290519237518,
+        "original_wait": 0.9369118213653564,
+        "conditional_road_tv": 0.1338685637104757
+      },
+      {
+        "decision": 256,
+        "time": 205,
+        "score": 22,
+        "stock": 0,
+        "wait": 0.2441498041152954,
+        "original_wait": 0.9587097764015198,
+        "conditional_road_tv": 0.12397724983120136
+      },
+      {
+        "decision": 336,
+        "time": 280,
+        "score": 41,
+        "stock": 29,
+        "wait": 0.030107764527201653,
+        "original_wait": 0.6794824600219727,
+        "conditional_road_tv": 0.004031338366960059
+      },
+      {
+        "decision": 344,
+        "time": 280,
+        "score": 41,
+        "stock": 21,
+        "wait": 0.03656608611345291,
+        "original_wait": 0.7217161655426025,
+        "conditional_road_tv": 0.0003265261872836876
+      },
+      {
+        "decision": 352,
+        "time": 280,
+        "score": 41,
+        "stock": 13,
+        "wait": 0.04708486050367355,
+        "original_wait": 0.77158123254776,
+        "conditional_road_tv": 0.35074243856932213
+      },
+      {
+        "decision": 360,
+        "time": 281,
+        "score": 41,
+        "stock": 6,
+        "wait": 0.22251662611961365,
+        "original_wait": 0.9533143639564514,
+        "conditional_road_tv": 0.0005117053065321677
+      },
+      {
+        "decision": 368,
+        "time": 284,
+        "score": 41,
+        "stock": 1,
+        "wait": 0.25288501381874084,
+        "original_wait": 0.9629529714584351,
+        "conditional_road_tv": 0.308932439861223
+      },
+      {
+        "decision": 400,
+        "time": 315,
+        "score": 50,
+        "stock": 0,
+        "wait": 0.17126181721687317,
+        "original_wait": 0.9175398349761963,
+        "conditional_road_tv": 0.0024517049164770625
+      },
+      {
+        "decision": 496,
+        "time": 406,
+        "score": 74,
+        "stock": 0,
+        "wait": 0.08490381389856339,
+        "original_wait": 0.8054779767990112,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 520,
+        "time": 420,
+        "score": 79,
+        "stock": 13,
+        "wait": 0.013828684575855732,
+        "original_wait": 0.3596186637878418,
+        "conditional_road_tv": 8.377681807678828e-06
+      },
+      {
+        "decision": 528,
+        "time": 421,
+        "score": 79,
+        "stock": 6,
+        "wait": 0.06672642379999161,
+        "original_wait": 0.8532833456993103,
+        "conditional_road_tv": 6.716596619088329e-09
+      },
+      {
+        "decision": 640,
+        "time": 526,
+        "score": 127,
+        "stock": 0,
+        "wait": 0.1243637278676033,
+        "original_wait": 0.8717738389968872,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 680,
+        "time": 560,
+        "score": 142,
+        "stock": 15,
+        "wait": 0.026425326243042946,
+        "original_wait": 0.6906320452690125,
+        "conditional_road_tv": 0.0023660203028734745
+      },
+      {
+        "decision": 688,
+        "time": 560,
+        "score": 142,
+        "stock": 7,
+        "wait": 0.11818500608205795,
+        "original_wait": 0.916833221912384,
+        "conditional_road_tv": 0.28848971237295007
+      }
+    ]
+  },
+  {
+    "case": "middle",
+    "model": "mixed-city",
+    "seed": 185000005,
+    "action_seed": 193356,
+    "score": 156,
+    "first_delivery": 27,
+    "paid": 115,
+    "paid_before_first": 25,
+    "paid_after_first_before_growth": 0,
+    "native_reward_ledger_verified": true,
+    "exact_evaluation_replay": true,
+    "events": [
+      {
+        "kind": "first_delivery",
+        "time": 27,
+        "stock": 0,
+        "paid": 25
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 63,
+        "id": 3,
+        "stock": 0,
+        "paid": 25
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 167,
+        "id": 6,
+        "stock": 0,
+        "paid": 45
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 205,
+        "id": 9,
+        "stock": 0,
+        "paid": 45
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 395,
+        "id": 13,
+        "stock": 0,
+        "paid": 65
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 405,
+        "id": 15,
+        "stock": 0,
+        "paid": 65
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 525,
+        "id": 22,
+        "stock": 0,
+        "paid": 95
+      }
+    ],
+    "shared_states": [
+      {
+        "decision": 0,
+        "time": 0,
+        "score": 0,
+        "stock": 25,
+        "wait": 0.3891971707344055,
+        "original_wait": 0.306207537651062,
+        "conditional_road_tv": 9.969260994716913e-05
+      },
+      {
+        "decision": 8,
+        "time": 5,
+        "score": 0,
+        "stock": 24,
+        "wait": 0.18434228003025055,
+        "original_wait": 0.3646272122859955,
+        "conditional_road_tv": 0.0016694139786893652
+      },
+      {
+        "decision": 16,
+        "time": 7,
+        "score": 0,
+        "stock": 18,
+        "wait": 0.2266450971364975,
+        "original_wait": 0.4381977617740631,
+        "conditional_road_tv": 0.0012184668008923035
+      },
+      {
+        "decision": 24,
+        "time": 9,
+        "score": 0,
+        "stock": 12,
+        "wait": 0.23515604436397552,
+        "original_wait": 0.4595871865749359,
+        "conditional_road_tv": 0.20474201017046345
+      },
+      {
+        "decision": 32,
+        "time": 9,
+        "score": 0,
+        "stock": 4,
+        "wait": 0.28643667697906494,
+        "original_wait": 0.5296799540519714,
+        "conditional_road_tv": 0.35453176363723826
+      },
+      {
+        "decision": 176,
+        "time": 142,
+        "score": 8,
+        "stock": 16,
+        "wait": 0.5530007481575012,
+        "original_wait": 0.7483173608779907,
+        "conditional_road_tv": 2.749331290466591e-11
+      },
+      {
+        "decision": 184,
+        "time": 148,
+        "score": 9,
+        "stock": 14,
+        "wait": 0.5955935716629028,
+        "original_wait": 0.7971087694168091,
+        "conditional_road_tv": 1.221689011801175e-06
+      },
+      {
+        "decision": 192,
+        "time": 149,
+        "score": 9,
+        "stock": 7,
+        "wait": 0.5691750049591064,
+        "original_wait": 0.7836477756500244,
+        "conditional_road_tv": 0.09649715259844209
+      },
+      {
+        "decision": 200,
+        "time": 154,
+        "score": 9,
+        "stock": 4,
+        "wait": 0.7255412936210632,
+        "original_wait": 0.8872519731521606,
+        "conditional_road_tv": 0.11862715627723872
+      },
+      {
+        "decision": 208,
+        "time": 160,
+        "score": 9,
+        "stock": 2,
+        "wait": 0.6389514207839966,
+        "original_wait": 0.8090351819992065,
+        "conditional_road_tv": 0.00950448572891795
+      },
+      {
+        "decision": 256,
+        "time": 205,
+        "score": 19,
+        "stock": 0,
+        "wait": 0.6255052089691162,
+        "original_wait": 0.8097183108329773,
+        "conditional_road_tv": 0.0006335371974336864
+      },
+      {
+        "decision": 336,
+        "time": 281,
+        "score": 36,
+        "stock": 19,
+        "wait": 0.23448626697063446,
+        "original_wait": 0.5637826323509216,
+        "conditional_road_tv": 0.021247868778985202
+      },
+      {
+        "decision": 344,
+        "time": 282,
+        "score": 37,
+        "stock": 12,
+        "wait": 0.2588975131511688,
+        "original_wait": 0.6405119299888611,
+        "conditional_road_tv": 0.12188692630092354
+      },
+      {
+        "decision": 352,
+        "time": 286,
+        "score": 39,
+        "stock": 8,
+        "wait": 0.549293577671051,
+        "original_wait": 0.846583902835846,
+        "conditional_road_tv": 0.0014910714747029404
+      },
+      {
+        "decision": 360,
+        "time": 290,
+        "score": 39,
+        "stock": 4,
+        "wait": 0.3221784234046936,
+        "original_wait": 0.6961208581924438,
+        "conditional_road_tv": 0.11905017791699975
+      },
+      {
+        "decision": 472,
+        "time": 396,
+        "score": 69,
+        "stock": 0,
+        "wait": 0.42081111669540405,
+        "original_wait": 0.8781713247299194,
+        "conditional_road_tv": 0.00014804677362047455
+      },
+      {
+        "decision": 504,
+        "time": 420,
+        "score": 77,
+        "stock": 27,
+        "wait": 0.10335313528776169,
+        "original_wait": 0.46968621015548706,
+        "conditional_road_tv": 1.947702732500718e-06
+      },
+      {
+        "decision": 512,
+        "time": 422,
+        "score": 77,
+        "stock": 21,
+        "wait": 0.1063261404633522,
+        "original_wait": 0.48466354608535767,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 520,
+        "time": 424,
+        "score": 78,
+        "stock": 15,
+        "wait": 0.3747944235801697,
+        "original_wait": 0.830664873123169,
+        "conditional_road_tv": 0.004718280936154012
+      },
+      {
+        "decision": 528,
+        "time": 427,
+        "score": 80,
+        "stock": 11,
+        "wait": 0.38647159934043884,
+        "original_wait": 0.8426897525787354,
+        "conditional_road_tv": 5.693930478307297e-05
+      },
+      {
+        "decision": 536,
+        "time": 434,
+        "score": 82,
+        "stock": 10,
+        "wait": 0.2675703167915344,
+        "original_wait": 0.7752193808555603,
+        "conditional_road_tv": 0.026671392302458442
+      },
+      {
+        "decision": 544,
+        "time": 435,
+        "score": 82,
+        "stock": 5,
+        "wait": 0.31448206305503845,
+        "original_wait": 0.8162423372268677,
+        "conditional_road_tv": 0.13698819230185794
+      },
+      {
+        "decision": 552,
+        "time": 439,
+        "score": 83,
+        "stock": 1,
+        "wait": 0.35329023003578186,
+        "original_wait": 0.8560635447502136,
+        "conditional_road_tv": 0.010719323529022398
+      },
+      {
+        "decision": 680,
+        "time": 560,
+        "score": 139,
+        "stock": 15,
+        "wait": 0.24630169570446014,
+        "original_wait": 0.7935819625854492,
+        "conditional_road_tv": 0.2788532787648692
+      },
+      {
+        "decision": 688,
+        "time": 562,
+        "score": 140,
+        "stock": 9,
+        "wait": 0.2784958779811859,
+        "original_wait": 0.8196437358856201,
+        "conditional_road_tv": 1.500204482499454e-13
+      },
+      {
+        "decision": 696,
+        "time": 563,
+        "score": 140,
+        "stock": 2,
+        "wait": 0.11707933992147446,
+        "original_wait": 0.6162124276161194,
+        "conditional_road_tv": 0.0002815232839089233
+      }
+    ]
+  },
+  {
+    "case": "largest-win",
+    "model": "original",
+    "seed": 185000007,
+    "action_seed": 193258,
+    "score": 0,
+    "first_delivery": null,
+    "paid": 25,
+    "paid_before_first": 25,
+    "paid_after_first_before_growth": 0,
+    "native_reward_ledger_verified": true,
+    "exact_evaluation_replay": true,
+    "events": [],
+    "shared_states": [
+      {
+        "decision": 0,
+        "time": 0,
+        "score": 0,
+        "stock": 25,
+        "wait": 0.37226712703704834,
+        "original_wait": 0.37226712703704834,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 8,
+        "time": 2,
+        "score": 0,
+        "stock": 21,
+        "wait": 0.46950235962867737,
+        "original_wait": 0.46950235962867737,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 16,
+        "time": 4,
+        "score": 0,
+        "stock": 15,
+        "wait": 0.45050013065338135,
+        "original_wait": 0.45050013065338135,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 24,
+        "time": 8,
+        "score": 0,
+        "stock": 11,
+        "wait": 0.4871876537799835,
+        "original_wait": 0.4871876537799835,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 32,
+        "time": 13,
+        "score": 0,
+        "stock": 9,
+        "wait": 0.4005853235721588,
+        "original_wait": 0.4005853235721588,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 40,
+        "time": 18,
+        "score": 0,
+        "stock": 6,
+        "wait": 0.4104040563106537,
+        "original_wait": 0.4104040563106537,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 48,
+        "time": 22,
+        "score": 0,
+        "stock": 2,
+        "wait": 0.41860902309417725,
+        "original_wait": 0.41860902309417725,
+        "conditional_road_tv": 0.0
+      }
+    ]
+  },
+  {
+    "case": "largest-win",
+    "model": "lesson-only",
+    "seed": 185000007,
+    "action_seed": 193258,
+    "score": 0,
+    "first_delivery": null,
+    "paid": 25,
+    "paid_before_first": 25,
+    "paid_after_first_before_growth": 0,
+    "native_reward_ledger_verified": true,
+    "exact_evaluation_replay": true,
+    "events": [],
+    "shared_states": [
+      {
+        "decision": 0,
+        "time": 0,
+        "score": 0,
+        "stock": 25,
+        "wait": 0.33644306659698486,
+        "original_wait": 0.37226712703704834,
+        "conditional_road_tv": 0.0007451153273203883
+      },
+      {
+        "decision": 8,
+        "time": 2,
+        "score": 0,
+        "stock": 21,
+        "wait": 0.13461583852767944,
+        "original_wait": 0.5051497220993042,
+        "conditional_road_tv": 0.24786028447532427
+      },
+      {
+        "decision": 16,
+        "time": 2,
+        "score": 0,
+        "stock": 13,
+        "wait": 0.2003244310617447,
+        "original_wait": 0.622291088104248,
+        "conditional_road_tv": 0.39976881974269407
+      },
+      {
+        "decision": 24,
+        "time": 3,
+        "score": 0,
+        "stock": 6,
+        "wait": 0.09691822528839111,
+        "original_wait": 0.6950134634971619,
+        "conditional_road_tv": 0.21884270334255496
+      }
+    ]
+  },
+  {
+    "case": "largest-win",
+    "model": "mixed-city",
+    "seed": 185000007,
+    "action_seed": 193258,
+    "score": 171,
+    "first_delivery": 22,
+    "paid": 135,
+    "paid_before_first": 23,
+    "paid_after_first_before_growth": 2,
+    "native_reward_ledger_verified": true,
+    "exact_evaluation_replay": true,
+    "events": [
+      {
+        "kind": "first_delivery",
+        "time": 22,
+        "stock": 2,
+        "paid": 23
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 59,
+        "id": 3,
+        "stock": 0,
+        "paid": 25
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 164,
+        "id": 6,
+        "stock": 8,
+        "paid": 37
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 202,
+        "id": 8,
+        "stock": 8,
+        "paid": 37
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 293,
+        "id": 11,
+        "stock": 25,
+        "paid": 50
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 377,
+        "id": 13,
+        "stock": 0,
+        "paid": 75
+      },
+      {
+        "kind": "destination_arrival",
+        "time": 530,
+        "id": 19,
+        "stock": 0,
+        "paid": 105
+      }
+    ],
+    "shared_states": [
+      {
+        "decision": 0,
+        "time": 0,
+        "score": 0,
+        "stock": 25,
+        "wait": 0.4593420922756195,
+        "original_wait": 0.37226712703704834,
+        "conditional_road_tv": 4.7268457019273034e-05
+      },
+      {
+        "decision": 8,
+        "time": 2,
+        "score": 0,
+        "stock": 21,
+        "wait": 0.39884263277053833,
+        "original_wait": 0.48879528045654297,
+        "conditional_road_tv": 0.17338264337147022
+      },
+      {
+        "decision": 16,
+        "time": 3,
+        "score": 0,
+        "stock": 14,
+        "wait": 0.2960151731967926,
+        "original_wait": 0.48321351408958435,
+        "conditional_road_tv": 0.2249991444866941
+      },
+      {
+        "decision": 24,
+        "time": 5,
+        "score": 0,
+        "stock": 8,
+        "wait": 0.2625652253627777,
+        "original_wait": 0.48476284742355347,
+        "conditional_road_tv": 0.016796920106796558
+      },
+      {
+        "decision": 32,
+        "time": 9,
+        "score": 0,
+        "stock": 4,
+        "wait": 0.37117648124694824,
+        "original_wait": 0.66555255651474,
+        "conditional_road_tv": 5.848861024647699e-06
+      },
+      {
+        "decision": 40,
+        "time": 17,
+        "score": 0,
+        "stock": 4,
+        "wait": 0.7956098318099976,
+        "original_wait": 0.9337444305419922,
+        "conditional_road_tv": 3.888136519581986e-06
+      },
+      {
+        "decision": 48,
+        "time": 23,
+        "score": 1,
+        "stock": 2,
+        "wait": 0.8857039213180542,
+        "original_wait": 0.9577573537826538,
+        "conditional_road_tv": 0.0012810293541905438
+      },
+      {
+        "decision": 56,
+        "time": 30,
+        "score": 1,
+        "stock": 1,
+        "wait": 0.8731458187103271,
+        "original_wait": 0.9573455452919006,
+        "conditional_road_tv": 0.10657231365485811
+      },
+      {
+        "decision": 64,
+        "time": 38,
+        "score": 2,
+        "stock": 1,
+        "wait": 0.8887926340103149,
+        "original_wait": 0.9672014713287354,
+        "conditional_road_tv": 0.10624932515587637
+      },
+      {
+        "decision": 176,
+        "time": 142,
+        "score": 9,
+        "stock": 16,
+        "wait": 0.47062748670578003,
+        "original_wait": 0.6963093280792236,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 184,
+        "time": 146,
+        "score": 9,
+        "stock": 12,
+        "wait": 0.7715813517570496,
+        "original_wait": 0.9103521108627319,
+        "conditional_road_tv": 0.12809143659949612
+      },
+      {
+        "decision": 192,
+        "time": 151,
+        "score": 9,
+        "stock": 9,
+        "wait": 0.65920490026474,
+        "original_wait": 0.8633883595466614,
+        "conditional_road_tv": 0.1108061461512865
+      },
+      {
+        "decision": 200,
+        "time": 158,
+        "score": 9,
+        "stock": 8,
+        "wait": 0.9161117672920227,
+        "original_wait": 0.9754768013954163,
+        "conditional_road_tv": 0.0007576803017769677
+      },
+      {
+        "decision": 208,
+        "time": 166,
+        "score": 14,
+        "stock": 8,
+        "wait": 0.9469236135482788,
+        "original_wait": 0.9818006753921509,
+        "conditional_road_tv": 0.0006148063871684936
+      },
+      {
+        "decision": 216,
+        "time": 174,
+        "score": 14,
+        "stock": 8,
+        "wait": 0.9303243160247803,
+        "original_wait": 0.9784693121910095,
+        "conditional_road_tv": 0.0005627141631522276
+      },
+      {
+        "decision": 224,
+        "time": 182,
+        "score": 15,
+        "stock": 8,
+        "wait": 0.9532688856124878,
+        "original_wait": 0.9825317859649658,
+        "conditional_road_tv": 0.0005171030455980875
+      },
+      {
+        "decision": 232,
+        "time": 190,
+        "score": 18,
+        "stock": 8,
+        "wait": 0.9484196901321411,
+        "original_wait": 0.9829214215278625,
+        "conditional_road_tv": 0.0005867637092337137
+      },
+      {
+        "decision": 240,
+        "time": 198,
+        "score": 20,
+        "stock": 8,
+        "wait": 0.9523981809616089,
+        "original_wait": 0.9860769510269165,
+        "conditional_road_tv": 0.0006348765116696337
+      },
+      {
+        "decision": 248,
+        "time": 205,
+        "score": 22,
+        "stock": 7,
+        "wait": 0.9274794459342957,
+        "original_wait": 0.9734795093536377,
+        "conditional_road_tv": 0.0014315364147996607
+      },
+      {
+        "decision": 256,
+        "time": 213,
+        "score": 24,
+        "stock": 7,
+        "wait": 0.9086986780166626,
+        "original_wait": 0.9702547192573547,
+        "conditional_road_tv": 0.029206249124630514
+      },
+      {
+        "decision": 264,
+        "time": 221,
+        "score": 26,
+        "stock": 7,
+        "wait": 0.9402779340744019,
+        "original_wait": 0.9770742058753967,
+        "conditional_road_tv": 0.03099074950314909
+      },
+      {
+        "decision": 272,
+        "time": 226,
+        "score": 27,
+        "stock": 5,
+        "wait": 0.9391255974769592,
+        "original_wait": 0.9784061908721924,
+        "conditional_road_tv": 0.09043965081523418
+      },
+      {
+        "decision": 280,
+        "time": 234,
+        "score": 28,
+        "stock": 5,
+        "wait": 0.8995727896690369,
+        "original_wait": 0.9675332307815552,
+        "conditional_road_tv": 0.09629155649961738
+      },
+      {
+        "decision": 288,
+        "time": 241,
+        "score": 32,
+        "stock": 4,
+        "wait": 0.9186797142028809,
+        "original_wait": 0.9678551554679871,
+        "conditional_road_tv": 0.12953370899421154
+      },
+      {
+        "decision": 296,
+        "time": 248,
+        "score": 34,
+        "stock": 3,
+        "wait": 0.9123088717460632,
+        "original_wait": 0.9678588509559631,
+        "conditional_road_tv": 0.00015543532095594934
+      },
+      {
+        "decision": 304,
+        "time": 255,
+        "score": 35,
+        "stock": 2,
+        "wait": 0.9257904887199402,
+        "original_wait": 0.9756683111190796,
+        "conditional_road_tv": 0.12713474377138512
+      },
+      {
+        "decision": 312,
+        "time": 263,
+        "score": 37,
+        "stock": 2,
+        "wait": 0.9073044061660767,
+        "original_wait": 0.9630045294761658,
+        "conditional_road_tv": 0.13255298913280353
+      },
+      {
+        "decision": 320,
+        "time": 270,
+        "score": 38,
+        "stock": 1,
+        "wait": 0.9037640690803528,
+        "original_wait": 0.9647924304008484,
+        "conditional_road_tv": 0.1278334619324967
+      },
+      {
+        "decision": 328,
+        "time": 278,
+        "score": 41,
+        "stock": 1,
+        "wait": 0.8669255971908569,
+        "original_wait": 0.9556270837783813,
+        "conditional_road_tv": 0.12404689908859938
+      },
+      {
+        "decision": 336,
+        "time": 285,
+        "score": 43,
+        "stock": 30,
+        "wait": 0.5771471261978149,
+        "original_wait": 0.7869320511817932,
+        "conditional_road_tv": 0.14073567308885918
+      },
+      {
+        "decision": 344,
+        "time": 291,
+        "score": 44,
+        "stock": 28,
+        "wait": 0.6414048075675964,
+        "original_wait": 0.84180748462677,
+        "conditional_road_tv": 0.0004336003601311369
+      },
+      {
+        "decision": 352,
+        "time": 293,
+        "score": 45,
+        "stock": 23,
+        "wait": 0.5217931270599365,
+        "original_wait": 0.7764777541160583,
+        "conditional_road_tv": 0.08089055993708316
+      },
+      {
+        "decision": 360,
+        "time": 298,
+        "score": 46,
+        "stock": 20,
+        "wait": 0.5292369723320007,
+        "original_wait": 0.7922083139419556,
+        "conditional_road_tv": 0.0004207133827173242
+      },
+      {
+        "decision": 368,
+        "time": 305,
+        "score": 48,
+        "stock": 19,
+        "wait": 0.4047180116176605,
+        "original_wait": 0.7922306060791016,
+        "conditional_road_tv": 0.13275284185969005
+      },
+      {
+        "decision": 376,
+        "time": 308,
+        "score": 49,
+        "stock": 14,
+        "wait": 0.38630497455596924,
+        "original_wait": 0.7851821184158325,
+        "conditional_road_tv": 0.09826381153772379
+      },
+      {
+        "decision": 384,
+        "time": 311,
+        "score": 49,
+        "stock": 9,
+        "wait": 0.33360403776168823,
+        "original_wait": 0.7530719637870789,
+        "conditional_road_tv": 0.19535561799323073
+      },
+      {
+        "decision": 392,
+        "time": 317,
+        "score": 52,
+        "stock": 7,
+        "wait": 0.6266223192214966,
+        "original_wait": 0.9187319278717041,
+        "conditional_road_tv": 0.0014405869444569894
+      },
+      {
+        "decision": 400,
+        "time": 321,
+        "score": 53,
+        "stock": 3,
+        "wait": 0.7679116129875183,
+        "original_wait": 0.9445541501045227,
+        "conditional_road_tv": 0.2922239495659209
+      },
+      {
+        "decision": 408,
+        "time": 327,
+        "score": 56,
+        "stock": 1,
+        "wait": 0.6395623683929443,
+        "original_wait": 0.9158493876457214,
+        "conditional_road_tv": 0.19300053945228046
+      },
+      {
+        "decision": 480,
+        "time": 396,
+        "score": 75,
+        "stock": 0,
+        "wait": 0.3632029891014099,
+        "original_wait": 0.8071627020835876,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "decision": 512,
+        "time": 420,
+        "score": 84,
+        "stock": 25,
+        "wait": 0.2485203593969345,
+        "original_wait": 0.7171119451522827,
+        "conditional_road_tv": 0.1312880839031092
+      },
+      {
+        "decision": 520,
+        "time": 423,
+        "score": 85,
+        "stock": 20,
+        "wait": 0.20242992043495178,
+        "original_wait": 0.670891284942627,
+        "conditional_road_tv": 0.06640382243191971
+      },
+      {
+        "decision": 528,
+        "time": 424,
+        "score": 86,
+        "stock": 13,
+        "wait": 0.24481618404388428,
+        "original_wait": 0.7219256162643433,
+        "conditional_road_tv": 6.598468267163021e-05
+      },
+      {
+        "decision": 536,
+        "time": 428,
+        "score": 86,
+        "stock": 9,
+        "wait": 0.19528354704380035,
+        "original_wait": 0.671814501285553,
+        "conditional_road_tv": 0.21408798441474117
+      },
+      {
+        "decision": 544,
+        "time": 434,
+        "score": 88,
+        "stock": 7,
+        "wait": 0.6998300552368164,
+        "original_wait": 0.9588464498519897,
+        "conditional_road_tv": 0.00987979319758326
+      },
+      {
+        "decision": 552,
+        "time": 437,
+        "score": 90,
+        "stock": 2,
+        "wait": 0.6186433434486389,
+        "original_wait": 0.9443103075027466,
+        "conditional_road_tv": 0.3679092763955955
+      },
+      {
+        "decision": 680,
+        "time": 560,
+        "score": 150,
+        "stock": 29,
+        "wait": 0.10303332656621933,
+        "original_wait": 0.5789019465446472,
+        "conditional_road_tv": 1.8030650376944427e-08
+      },
+      {
+        "decision": 688,
+        "time": 561,
+        "score": 151,
+        "stock": 22,
+        "wait": 0.1383427232503891,
+        "original_wait": 0.6766670346260071,
+        "conditional_road_tv": 3.174269128799583e-06
+      },
+      {
+        "decision": 696,
+        "time": 562,
+        "score": 152,
+        "stock": 15,
+        "wait": 0.1237926110625267,
+        "original_wait": 0.6464666724205017,
+        "conditional_road_tv": 0.4197689198184487
+      },
+      {
+        "decision": 704,
+        "time": 563,
+        "score": 153,
+        "stock": 8,
+        "wait": 0.46163374185562134,
+        "original_wait": 0.9172578454017639,
+        "conditional_road_tv": 0.4306157237121773
+      },
+      {
+        "decision": 712,
+        "time": 567,
+        "score": 154,
+        "stock": 4,
+        "wait": 0.47720593214035034,
+        "original_wait": 0.9269508719444275,
+        "conditional_road_tv": 0.012827634360823325
+      }
+    ]
+  }
+]

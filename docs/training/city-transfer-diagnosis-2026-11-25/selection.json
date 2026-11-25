@@ -1,0 +1,69 @@
+{
+  "rule": "Extremes and median of mixed-city minus original score; selected before replay; illustrative, not representative estimates.",
+  "cases": [
+    [
+      "largest-loss",
+      184000002,
+      193353
+    ],
+    [
+      "middle",
+      185000005,
+      193356
+    ],
+    [
+      "largest-win",
+      185000007,
+      193258
+    ]
+  ],
+  "all_city_summary": {
+    "original": {
+      "games": 32,
+      "zero_score": 2,
+      "arrivals": 162,
+      "arrivals_with_no_stock": 44,
+      "served": 145,
+      "unserved_despite_arrival_stock": 10
+    },
+    "parent": {
+      "games": 32,
+      "zero_score": 5,
+      "arrivals": 122,
+      "arrivals_with_no_stock": 108,
+      "served": 96,
+      "unserved_despite_arrival_stock": 2
+    },
+    "lesson-only": {
+      "games": 32,
+      "zero_score": 2,
+      "arrivals": 151,
+      "arrivals_with_no_stock": 150,
+      "served": 121,
+      "unserved_despite_arrival_stock": 0
+    },
+    "mixed-city": {
+      "games": 32,
+      "zero_score": 2,
+      "arrivals": 147,
+      "arrivals_with_no_stock": 125,
+      "served": 119,
+      "unserved_despite_arrival_stock": 1
+    }
+  },
+  "models": {
+    "original": {
+      "path": "output/training/city-whole-initial-01/start.zip",
+      "sha256": "7eb605e4e465b9143e095e367abe0a01285b8ace05843aaac80bd48b5f049027"
+    },
+    "lesson-only": {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/overnight-transfer-comparison-01/lesson-only/checkpoint-000524288.zip",
+      "sha256": "9f8705cee637e01739f407f74979aa2f3388ce651a584c98f95c97b14f07a7fc"
+    },
+    "mixed-city": {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/overnight-transfer-comparison-01/mixed-city/checkpoint-000524288.zip",
+      "sha256": "98b87aaf1195602ee651af9a615530b698b4dbfe71929ceb7436b14baf850885"
+    }
+  },
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0"
+}

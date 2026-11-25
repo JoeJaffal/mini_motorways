@@ -1,0 +1,73 @@
+{
+  "checkpoint_sha256": "4fba6e72990439f2aad76b8c8fea38c100283ad5598cfea254cbbbfa0a49e084",
+  "results": {
+    "pair-triad-left/greedy": {
+      "episodes": 500,
+      "passes": 500,
+      "mean_trips": 7.432,
+      "native_failures": 0,
+      "connected_before_wait": 500
+    },
+    "pair-triad-left/sampled": {
+      "episodes": 500,
+      "passes": 498,
+      "mean_trips": 7.374,
+      "native_failures": 0,
+      "connected_before_wait": 310
+    },
+    "pair-triad-right/greedy": {
+      "episodes": 500,
+      "passes": 500,
+      "mean_trips": 7.432,
+      "native_failures": 0,
+      "connected_before_wait": 500
+    },
+    "pair-triad-right/sampled": {
+      "episodes": 500,
+      "passes": 499,
+      "mean_trips": 7.404,
+      "native_failures": 0,
+      "connected_before_wait": 324
+    },
+    "pair-triad-left-uneven/greedy": {
+      "episodes": 500,
+      "passes": 500,
+      "mean_trips": 7.378,
+      "native_failures": 0,
+      "connected_before_wait": 500
+    },
+    "pair-triad-left-uneven/sampled": {
+      "episodes": 500,
+      "passes": 495,
+      "mean_trips": 7.19,
+      "native_failures": 0,
+      "connected_before_wait": 319
+    },
+    "pair-triad-right-uneven/greedy": {
+      "episodes": 500,
+      "passes": 500,
+      "mean_trips": 7.404,
+      "native_failures": 0,
+      "connected_before_wait": 500
+    },
+    "pair-triad-right-uneven/sampled": {
+      "episodes": 500,
+      "passes": 491,
+      "mean_trips": 7.23,
+      "native_failures": 0,
+      "connected_before_wait": 320
+    }
+  },
+  "combined": {
+    "greedy": {
+      "episodes": 2000,
+      "passes": 2000,
+      "mean_trips": 7.4115
+    },
+    "sampled": {
+      "episodes": 2000,
+      "passes": 1983,
+      "mean_trips": 7.2995
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "city-route-repair-02": {
+    "checkpoints": {
+      "route-level-1.zip": "d9530b51f619f2b9590a0bedf5f48101b97c7ac2e6d66473683af9161fb3cc86",
+      "route-level-2.zip": "37cb3b6643175b9a579616aa81da22e7e4f376adf9ce4c0570c029015f560887"
+    },
+    "committed_decisions": 65536,
+    "training_after_boundary": 101,
+    "episodes_through_saved_boundary": [
+      {
+        "exercise": "route-gap-one",
+        "after_gate": false,
+        "episodes": 509,
+        "scored": 491
+      },
+      {
+        "exercise": "route-gap-two",
+        "after_gate": false,
+        "episodes": 423,
+        "scored": 253
+      },
+      {
+        "exercise": "route-gate-two",
+        "after_gate": false,
+        "episodes": 422,
+        "scored": 1
+      },
+      {
+        "exercise": "route-long",
+        "after_gate": false,
+        "episodes": 148,
+        "scored": 0
+      },
+      {
+        "exercise": "route-short",
+        "after_gate": false,
+        "episodes": 162,
+        "scored": 33
+      }
+    ]
+  },
+  "city-route-frontier-01": {
+    "checkpoints": {
+      "route-level-1.zip": "1a2f659bb1858e1f53de6bde79badc383e9b94d5cede9d66ca38a0e95c8b7233",
+      "route-level-2.zip": "d7f26a7a7aeac6e7f24d7b48056d629bf2cf3728134e15571516e45a1dd2a8a2"
+    },
+    "committed_decisions": 65536,
+    "training_after_boundary": 0,
+    "episodes_through_saved_boundary": [
+      {
+        "exercise": "route-gap-one",
+        "after_gate": false,
+        "episodes": 196,
+        "scored": 138
+      },
+      {
+        "exercise": "route-gap-three",
+        "after_gate": false,
+        "episodes": 369,
+        "scored": 67
+      },
+      {
+        "exercise": "route-gap-two",
+        "after_gate": false,
+        "episodes": 197,
+        "scored": 52
+      },
+      {
+        "exercise": "route-gate-two",
+        "after_gate": false,
+        "episodes": 193,
+        "scored": 9
+      },
+      {
+        "exercise": "route-gate-two",
+        "after_gate": true,
+        "episodes": 403,
+        "scored": 256
+      },
+      {
+        "exercise": "route-short",
+        "after_gate": false,
+        "episodes": 198,
+        "scored": 102
+      }
+    ]
+  }
+}

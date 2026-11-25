@@ -1,0 +1,2682 @@
+[
+  {
+    "path": "PLAN.md",
+    "sha256": "d46df348ebf89a6f19dc20a4496b306a33e5fa79ff63c5997c261676775863cb",
+    "bytes": 6369
+  },
+  {
+    "path": "README.md",
+    "sha256": "92bc7965fe7b6cb0a2348a613ec9fe4375f80c484c812c1c5f6c9cac64c1cdd2",
+    "bytes": 987
+  },
+  {
+    "path": "RESULTS.md",
+    "sha256": "f17122916d97431c2e8bdf00ff9634dc331a6c30548c4b052094f809bd11ba1d",
+    "bytes": 14104
+  },
+  {
+    "path": "archive.py",
+    "sha256": "c8614b62e79ea9ffbd52adaae23be13f0ed8e88247c32551daa8c744507bb0c2",
+    "bytes": 2366
+  },
+  {
+    "path": "audit.py",
+    "sha256": "c67c6713c2c0adb64b5e855a81174d0713ab2dab8d80cec8b322cda0ab6f7d45",
+    "bytes": 2093
+  },
+  {
+    "path": "baseline-command.json",
+    "sha256": "cb21f9ff64700b2824afba8944fa601487d764b3668577c4470e67b33d8d2bdd",
+    "bytes": 309
+  },
+  {
+    "path": "build.log",
+    "sha256": "91fca03328a3d23333006e625066797c366996a364e2a0202e415e9a8b49d985",
+    "bytes": 385
+  },
+  {
+    "path": "city-development-overall.json",
+    "sha256": "b556f327163eb5f87ababe5d03feac214062ffe403bf7f146a00255d06b50d9e",
+    "bytes": 241
+  },
+  {
+    "path": "city-retention-command.json",
+    "sha256": "98ab0934a64de7f8103d5f247f2bb104d223e972b728f55e68205fad1d6829d2",
+    "bytes": 412
+  },
+  {
+    "path": "compression-check.json",
+    "sha256": "7929a9dbdc2966af2e0905fe94169d94c4d8ec7439bd680c66201a0639f354e7",
+    "bytes": 811
+  },
+  {
+    "path": "compression-check.log",
+    "sha256": "cb46a4eb34bb66309a3671db8fe34ad5bb522b8b14381b6fdb0ddedf11df7086",
+    "bytes": 633
+  },
+  {
+    "path": "compression_check.py",
+    "sha256": "518d7d712c0ad1613178dbb7521932976873608ec4173d1b6009c3480bf28531",
+    "bytes": 1390
+  },
+  {
+    "path": "confirm-complete.json",
+    "sha256": "79090167129a91dac6a3363514658b06ae0d3c83f26172fea2a42474b991d6b3",
+    "bytes": 18
+  },
+  {
+    "path": "confirm-final-command.json",
+    "sha256": "ba0145e7e1de701af19a5d9da715c1a607ad5ba9a7ac10d0697cfcd0d244a687",
+    "bytes": 387
+  },
+  {
+    "path": "confirm-final.log",
+    "sha256": "dad8810a0830ca9fc2b4e2434321de8aa38354e394de89faf891583aa930b284",
+    "bytes": 1663
+  },
+  {
+    "path": "confirm-launcher.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "confirm-parent-command.json",
+    "sha256": "98f4f9e9f3355cafd04de632ea8a5ee4dd56561939e6350d9370ec3baa63eff1",
+    "bytes": 381
+  },
+  {
+    "path": "confirm-parent.log",
+    "sha256": "39e3bd045747f25305d639b76f2369477015b55b36ebde38446421c6019c497c",
+    "bytes": 1658
+  },
+  {
+    "path": "confirm.py",
+    "sha256": "e5bf91a83324d0b22ac019a9c3a505a1bddb0678836d1a8f4b77b332f7d0edf2",
+    "bytes": 982
+  },
+  {
+    "path": "confirmation/final/games.jsonl",
+    "sha256": "e6b4cb6408f90b890498cb2c2bcc65afd0207fdd0f49853af4dc3d8e50e5ec91",
+    "bytes": 49169
+  },
+  {
+    "path": "confirmation/final/suite.json",
+    "sha256": "fb8754ce5d84de8f4f49eb1e121e4e1eee2af952890b3ffdf65ab2bd8ebf3df6",
+    "bytes": 1025
+  },
+  {
+    "path": "confirmation/final/summary.json",
+    "sha256": "9f9d43c5915636ceae177ab1d8a747f667b150f860e85538e101dcdcf891968a",
+    "bytes": 622
+  },
+  {
+    "path": "confirmation/parent/games.jsonl",
+    "sha256": "7e3af3d2775160e8f114d26cfa9e2493e6777b6982a71a6096d74fef5598904e",
+    "bytes": 47572
+  },
+  {
+    "path": "confirmation/parent/suite.json",
+    "sha256": "fb8754ce5d84de8f4f49eb1e121e4e1eee2af952890b3ffdf65ab2bd8ebf3df6",
+    "bytes": 1025
+  },
+  {
+    "path": "confirmation/parent/summary.json",
+    "sha256": "70015f064ee8821555e09d4f203ed91cb5bbe6d01b23ec65315dd1cf7713aa5e",
+    "bytes": 615
+  },
+  {
+    "path": "confirmation-results.json",
+    "sha256": "c883d7183cc643be57528ba6113d07d443d352510e475a827ffbdba6410a7d26",
+    "bytes": 3807
+  },
+  {
+    "path": "current-source/city_curriculum.py",
+    "sha256": "e197495fffce1c507be959161439c375ec32480357154086972dbc387696d768",
+    "bytes": 12313
+  },
+  {
+    "path": "current-source/city_repeated_seeds.py",
+    "sha256": "dcfe4335a0ddaf90feb827f3f916b76f9075ae3ba3850fda88917d450e992277",
+    "bytes": 1321
+  },
+  {
+    "path": "current-source/city_strategy_policy.py",
+    "sha256": "d201cea63cffbfe76ed2db7c849b257977c4c95c936a79178a57e3abccc92bd2",
+    "bytes": 4043
+  },
+  {
+    "path": "current-source/city_whole_strategy_policy.py",
+    "sha256": "13e65ad34f83e2f358bf181a5b642965f4706ea223956b64b524d97a0984f5e1",
+    "bytes": 387
+  },
+  {
+    "path": "current-source/city_wide_strategy_policy.py",
+    "sha256": "d781f654fcd9e33145727e9dfab28f3baa0a4c58f87db88348f402d6d22ef075",
+    "bytes": 4697
+  },
+  {
+    "path": "current-source/train_city_curriculum.py",
+    "sha256": "ade8b32e2356f66cd1f1661fb10fabe370aa6551fc3a6dd295115ef0415640b9",
+    "bytes": 16047
+  },
+  {
+    "path": "easy-compatibility.json",
+    "sha256": "2998d0a1d58bc290d94265388a9433c23d5d81e9b4e9df576b452c3f96a974ab",
+    "bytes": 193
+  },
+  {
+    "path": "easy-compatibility.log",
+    "sha256": "bbcbd376433c5a51261ea0ffa291cf0c8dcc9b8ddc26f87e55896dd2880d2b42",
+    "bytes": 4
+  },
+  {
+    "path": "easy-trial-stop.json",
+    "sha256": "612358c215a78457656168bca3ce023e37e63ae7aeee7f8e89b1fe4d6bad467f",
+    "bytes": 432
+  },
+  {
+    "path": "easy_compatibility.py",
+    "sha256": "608a014cfbef77feb9ae55865d8ea34aef88bf91a69663939d952e516d5755f9",
+    "bytes": 1032
+  },
+  {
+    "path": "evaluate.py",
+    "sha256": "944d1eb03df6b27269d47cbd1e46f034372fbd90c8629dc835092582590f218b",
+    "bytes": 4330
+  },
+  {
+    "path": "evaluate_city.py",
+    "sha256": "1ead9e49e5f49126c76d7a203812b42ed5962136e6228f1846ad7a5e39fb983d",
+    "bytes": 2754
+  },
+  {
+    "path": "evaluate_confirm.py",
+    "sha256": "330e58e6977917ff55cc41dcb373da28a5fd282c18d72de92d7fb868e1ca7e34",
+    "bytes": 2748
+  },
+  {
+    "path": "evaluate_offset.py",
+    "sha256": "2bcd094eb4ba1c2d7d5f6bff66085e4ccdaecc6fa63beb26f586de8d9d1e3b16",
+    "bytes": 4343
+  },
+  {
+    "path": "evaluation/final/games.jsonl",
+    "sha256": "937b154dd2519d61c5ad9f44fd430effed71f131d23bb974c063a78af7df4cdb",
+    "bytes": 47226
+  },
+  {
+    "path": "evaluation/final/suite.json",
+    "sha256": "cea693f58dcc117b5e546974ad2fab65b25087ed82b1e3a4c83b0281a0d078a5",
+    "bytes": 7233
+  },
+  {
+    "path": "evaluation/final/summary.json",
+    "sha256": "d3ccfeef16a99845d9d39a51122548bcdb02b05104c733f2917302390287b682",
+    "bytes": 1568
+  },
+  {
+    "path": "evaluation/parent/games.jsonl",
+    "sha256": "e9a5246c9e9b7de68af90b166506b8c4981634b577954fbd7d016bbbc9ba4158",
+    "bytes": 47202
+  },
+  {
+    "path": "evaluation/parent/suite.json",
+    "sha256": "cea693f58dcc117b5e546974ad2fab65b25087ed82b1e3a4c83b0281a0d078a5",
+    "bytes": 7233
+  },
+  {
+    "path": "evaluation/parent/summary.json",
+    "sha256": "cd350cd16375e956c49579b53543046da45cf305cdd7b4546aa7791a9da17546",
+    "bytes": 1528
+  },
+  {
+    "path": "final-checks.json",
+    "sha256": "767a63d44d4168f726ce1d0da5e34f9b149e4c7330eb71178e2fdf321d84c35b",
+    "bytes": 878
+  },
+  {
+    "path": "final-command.json",
+    "sha256": "811bafe472497e70032b30d1634d646bbf2b303f5a31d81df5cbc4524113cda4",
+    "bytes": 319
+  },
+  {
+    "path": "final-python-checks.log",
+    "sha256": "069175ff91387831eafaa82c5b64b97f8125b7ae2698e790aef5f194d72f2d08",
+    "bytes": 100
+  },
+  {
+    "path": "launcher.log",
+    "sha256": "db6515d85226bd867805119c16a5b1336259068c276569ae3ef9cc4d254082b4",
+    "bytes": 2372
+  },
+  {
+    "path": "local-artifacts.json",
+    "sha256": "ddab166dd1422e685fe9409181c9cd8198c36e559d9c6217e8d5e6a17aff5bbe",
+    "bytes": 2128
+  },
+  {
+    "path": "measurements/output/training/small-city-confirm-final-01/games.jsonl",
+    "sha256": "e6b4cb6408f90b890498cb2c2bcc65afd0207fdd0f49853af4dc3d8e50e5ec91",
+    "bytes": 49169
+  },
+  {
+    "path": "measurements/output/training/small-city-confirm-final-01/suite.json",
+    "sha256": "fb8754ce5d84de8f4f49eb1e121e4e1eee2af952890b3ffdf65ab2bd8ebf3df6",
+    "bytes": 1025
+  },
+  {
+    "path": "measurements/output/training/small-city-confirm-final-01/summary.json",
+    "sha256": "9f9d43c5915636ceae177ab1d8a747f667b150f860e85538e101dcdcf891968a",
+    "bytes": 622
+  },
+  {
+    "path": "measurements/output/training/small-city-confirm-parent-01/games.jsonl",
+    "sha256": "7e3af3d2775160e8f114d26cfa9e2493e6777b6982a71a6096d74fef5598904e",
+    "bytes": 47572
+  },
+  {
+    "path": "measurements/output/training/small-city-confirm-parent-01/suite.json",
+    "sha256": "fb8754ce5d84de8f4f49eb1e121e4e1eee2af952890b3ffdf65ab2bd8ebf3df6",
+    "bytes": 1025
+  },
+  {
+    "path": "measurements/output/training/small-city-confirm-parent-01/summary.json",
+    "sha256": "70015f064ee8821555e09d4f203ed91cb5bbe6d01b23ec65315dd1cf7713aa5e",
+    "bytes": 615
+  },
+  {
+    "path": "measurements/output/training/small-city-offset-baseline-01/games.jsonl",
+    "sha256": "e9a5246c9e9b7de68af90b166506b8c4981634b577954fbd7d016bbbc9ba4158",
+    "bytes": 47202
+  },
+  {
+    "path": "measurements/output/training/small-city-offset-baseline-01/suite.json",
+    "sha256": "cea693f58dcc117b5e546974ad2fab65b25087ed82b1e3a4c83b0281a0d078a5",
+    "bytes": 7233
+  },
+  {
+    "path": "measurements/output/training/small-city-offset-baseline-01/summary.json",
+    "sha256": "cd350cd16375e956c49579b53543046da45cf305cdd7b4546aa7791a9da17546",
+    "bytes": 1528
+  },
+  {
+    "path": "measurements/output/training/small-city-offset-city-01/games.jsonl",
+    "sha256": "3d657fae909963dc02d7912466c697db4637d120b752d3d8e94ae8da2e704110",
+    "bytes": 53750
+  },
+  {
+    "path": "measurements/output/training/small-city-offset-city-01/suite.json",
+    "sha256": "15130f4c40af7ed6313620b9800379c56d21dda116492847ff72e8f5ad8749c0",
+    "bytes": 1041
+  },
+  {
+    "path": "measurements/output/training/small-city-offset-city-01/summary.json",
+    "sha256": "89f7a126d33c72a24700bff35d1b875ad6980a7650bb409fa07a80faccb10097",
+    "bytes": 796
+  },
+  {
+    "path": "measurements/output/training/small-city-offset-final-01/games.jsonl",
+    "sha256": "937b154dd2519d61c5ad9f44fd430effed71f131d23bb974c063a78af7df4cdb",
+    "bytes": 47226
+  },
+  {
+    "path": "measurements/output/training/small-city-offset-final-01/suite.json",
+    "sha256": "cea693f58dcc117b5e546974ad2fab65b25087ed82b1e3a4c83b0281a0d078a5",
+    "bytes": 7233
+  },
+  {
+    "path": "measurements/output/training/small-city-offset-final-01/summary.json",
+    "sha256": "d3ccfeef16a99845d9d39a51122548bcdb02b05104c733f2917302390287b682",
+    "bytes": 1568
+  },
+  {
+    "path": "measurements/output/training/small-city-offset-fit-01/city-retention.log",
+    "sha256": "bcea2df43b209eabbe965a3736217bc8c079952943fd126d7e66658215bb1631",
+    "bytes": 1860
+  },
+  {
+    "path": "measurements/output/training/small-city-offset-fit-01/final.log",
+    "sha256": "3a0027204da63c5a0009e596f33909978f9679db75d63aa03252c131e86d3b91",
+    "bytes": 8805
+  },
+  {
+    "path": "measurements/output/training/small-city-offset-fit-01/ppo/checkpoints.json",
+    "sha256": "86907050c7d5039c11070c19096aea343be3b8975add09648f85bf939e0f8c46",
+    "bytes": 1297
+  },
+  {
+    "path": "measurements/output/training/small-city-offset-fit-01/ppo/complete.json",
+    "sha256": "59e0c87d048df511630d99ab3751c631b3fb8820019a5e4ef7d133b8ef04b42c",
+    "bytes": 1415
+  },
+  {
+    "path": "measurements/output/training/small-city-offset-fit-01/ppo/config.json",
+    "sha256": "9dfba2973cf7fb6e3c1172ff0f2afbd3f52a1e2e9631ad95d2fcb654eab10b74",
+    "bytes": 1554
+  },
+  {
+    "path": "measurements/output/training/small-city-offset-fit-01/ppo/episodes.jsonl",
+    "sha256": "1c551e2f0beae94eb59f03110be2f2e0172c3b8d0176aa3df6b3e016d9ded757",
+    "bytes": 338055
+  },
+  {
+    "path": "measurements/output/training/small-city-offset-fit-01/ppo/gradient_audit.jsonl",
+    "sha256": "bd73ae6c319db579b29d8e752cb661348dec71df399eb193db2589a3c4c58144",
+    "bytes": 30105
+  },
+  {
+    "path": "measurements/output/training/small-city-offset-fit-01/ppo/progress.csv",
+    "sha256": "1231f1d2a61880626f9a6e5a283711592d4de9f0f359b6d7f7aa54b61b92207d",
+    "bytes": 1296
+  },
+  {
+    "path": "measurements/output/training/small-city-offset-fit-01/runtime/host/TrafficHost.deps.json",
+    "sha256": "5bad360c3c9bd7d3e83038d2c74629aeae9945f612cf89d75b06c42a19b67b9e",
+    "bytes": 403
+  },
+  {
+    "path": "measurements/output/training/small-city-offset-fit-01/runtime/host/TrafficHost.runtimeconfig.json",
+    "sha256": "97c9700542b659150b230c3578b29530fd76ab01ec66a92cd16945e0245713df",
+    "bytes": 328
+  },
+  {
+    "path": "measurements/output/training/small-city-offset-fit-01/status.json",
+    "sha256": "6083eaba551b24939c98472eb819551503678b3c2c01a5d44b950c0f64cee2d2",
+    "bytes": 116
+  },
+  {
+    "path": "measurements/output/training/small-city-offset-fit-01/train.log",
+    "sha256": "4c3738cade753ded0c1feed03bfed09f6273789b44f65cf93b4a6d1ce10f0b28",
+    "bytes": 1242
+  },
+  {
+    "path": "measurements/output/training/small-city-service-baseline-01/games.jsonl",
+    "sha256": "c2ce108e1bef33d7989f570ea7347ce509d70ba77aa32e57fbb58f3e65ac5526",
+    "bytes": 46336
+  },
+  {
+    "path": "measurements/output/training/small-city-service-baseline-01/suite.json",
+    "sha256": "528eaf3d0018739a3dbcbf840738e1634ff4be8b8298b463fd4acf1b77bb8e63",
+    "bytes": 6785
+  },
+  {
+    "path": "measurements/output/training/small-city-service-baseline-01/summary.json",
+    "sha256": "f2a09aa3b064570db965692cdaf353143438accb489a9c20b76083bcaad60cdd",
+    "bytes": 1520
+  },
+  {
+    "path": "measurements/output/training/small-city-service-fit-01/baseline.log",
+    "sha256": "d41eaca9a8e9d5faf666a8b22109e5de588af800ea24acd8d5aab8249f73f6ca",
+    "bytes": 8241
+  },
+  {
+    "path": "measurements/output/training/small-city-service-fit-01/ppo/checkpoints.json",
+    "sha256": "49b2645f2ec089489a436a2c455848ec87e243ebf945ffd5ae72aaf4e4c8f6ad",
+    "bytes": 334
+  },
+  {
+    "path": "measurements/output/training/small-city-service-fit-01/ppo/config.json",
+    "sha256": "3caa514bf73433bba2dcd1d39bd4806e0b89ef1736e104751cfcf8073b4db6d4",
+    "bytes": 1542
+  },
+  {
+    "path": "measurements/output/training/small-city-service-fit-01/ppo/episodes.jsonl",
+    "sha256": "e09b474498ab92ea8d17e6778de90810d8e1b2c4e44b510a2dec33e004c5f2cb",
+    "bytes": 113962
+  },
+  {
+    "path": "measurements/output/training/small-city-service-fit-01/ppo/gradient_audit.jsonl",
+    "sha256": "37111efa35ffa201d5515ededc45d4aa6be70d1d243c07a2510d0b2d07a0c483",
+    "bytes": 29749
+  },
+  {
+    "path": "measurements/output/training/small-city-service-fit-01/ppo/progress.csv",
+    "sha256": "ab9e4a55f2999644d5195f155f4342ec83c1dc0ada7c0208b7106e35d1d91afb",
+    "bytes": 645
+  },
+  {
+    "path": "measurements/output/training/small-city-service-fit-01/runtime/host/TrafficHost.deps.json",
+    "sha256": "5bad360c3c9bd7d3e83038d2c74629aeae9945f612cf89d75b06c42a19b67b9e",
+    "bytes": 403
+  },
+  {
+    "path": "measurements/output/training/small-city-service-fit-01/runtime/host/TrafficHost.runtimeconfig.json",
+    "sha256": "97c9700542b659150b230c3578b29530fd76ab01ec66a92cd16945e0245713df",
+    "bytes": 328
+  },
+  {
+    "path": "measurements/output/training/small-city-service-fit-01/status.json",
+    "sha256": "5eb43d7b028e175943c50606977faa626cbc8d89ade3f05841df8b96361c5bb9",
+    "bytes": 1368
+  },
+  {
+    "path": "measurements/output/training/small-city-service-fit-01/train.log",
+    "sha256": "7ee7341c9ccc32a5a19b9cff923b4c4c09f1a0ecb95b2241b8a4a5e1871f7255",
+    "bytes": 295
+  },
+  {
+    "path": "native-checks.log",
+    "sha256": "c63ae525b854305d618df977830a199aceff0420ef1cc18b2b4cc4d22499a8e5",
+    "bytes": 145
+  },
+  {
+    "path": "native-source/AiReplay.cs",
+    "sha256": "c4b42593a74f4e878e3c8cd674056873e9cacf121bfb8206e96b24e8dde62f46",
+    "bytes": 4561
+  },
+  {
+    "path": "native-source/CarparkArbitration.cs",
+    "sha256": "078517de8eb042c219a4e5c1a846dab015937bc32ad8a5a7bdab595fbb4bdb60",
+    "bytes": 5980
+  },
+  {
+    "path": "native-source/CityCatalog.cs",
+    "sha256": "03ee4a6ea5c7488ce0e3680d89bc8f5982cb0711a0f5997262528c978746ed0b",
+    "bytes": 100853
+  },
+  {
+    "path": "native-source/CityConnectionChecks.cs",
+    "sha256": "ce20426158538630c67e9506ef41dd8965daa3429959a28a5fba74889f17bb20",
+    "bytes": 5916
+  },
+  {
+    "path": "native-source/CityDemand.cs",
+    "sha256": "ef539dcd87a313ef94fd8386a230d45861ea7b365201d8f281a567ddb16b86d6",
+    "bytes": 24331
+  },
+  {
+    "path": "native-source/CityExpansion.cs",
+    "sha256": "7055b6fea2603f0d2c7785560b3dd05e83cec3210e81494ea1111457f3e22e10",
+    "bytes": 4412
+  },
+  {
+    "path": "native-source/CityRoadActions.cs",
+    "sha256": "55de185c78a390be88fd1e0715bf4a3a3888f4409f1cfa4dec2ff0750ec53eb6",
+    "bytes": 5687
+  },
+  {
+    "path": "native-source/ConnectionRetirement.cs",
+    "sha256": "11a45737a23128b320b557d3dda162813620ba753eebd78b221d0528b27f520c",
+    "bytes": 4160
+  },
+  {
+    "path": "native-source/ConstructionCurriculum.cs",
+    "sha256": "8aac05770a7f37d0a490e923c3062818ecd729b4c47b31b7528bc5fb505e8b40",
+    "bytes": 8867
+  },
+  {
+    "path": "native-source/ContinuousJourneys.cs",
+    "sha256": "d5196b704db96b58113f859edb317e3f347a0e0ea9b9848d7879f1633bd61a40",
+    "bytes": 4286
+  },
+  {
+    "path": "native-source/CustomScenario.cs",
+    "sha256": "fe5adc212fa0b7e88019a178a91b82810292d77fe5da32064d66b3f6718c1b29",
+    "bytes": 9915
+  },
+  {
+    "path": "native-source/CustomScenarioChecks.cs",
+    "sha256": "01cd19b0c7458cca86c2f8f14d2f257ee72e5bea2047abee17008c899d589e7a",
+    "bytes": 7509
+  },
+  {
+    "path": "native-source/DrawDiagnostics.cs",
+    "sha256": "f240eb40128e6e37bf23b6653319bf4b13cf967a09ed5a4c0f2acc0684250584",
+    "bytes": 2535
+  },
+  {
+    "path": "native-source/GameplayFidelityChecks.cs",
+    "sha256": "87a5079194bdd13e74c08e2471cb57e70d9cecbcedc1c3786b722b7b8b8ec396",
+    "bytes": 17621
+  },
+  {
+    "path": "native-source/JunctionArbitration.cs",
+    "sha256": "82c7645bedc6f24b204c48b74b3bcc69cdf830e56d564bf403248f114bfe5bfd",
+    "bytes": 17766
+  },
+  {
+    "path": "native-source/LimitedRoutePractice.cs",
+    "sha256": "c8aabc6998e852123a0dc37cffdaf271d70a149b73add2c85bfaf19801d1898a",
+    "bytes": 4283
+  },
+  {
+    "path": "native-source/MaterialInventory.cs",
+    "sha256": "53de56ba4206643daffb0d870193a5c2c4157d9014031c3c02e548d61278f540",
+    "bytes": 7971
+  },
+  {
+    "path": "native-source/MidgameServicePractice.cs",
+    "sha256": "4bb9604e349274d837b0f9818da63e7f511a36ea7bd28a13fee77a1ef165ae61",
+    "bytes": 7593
+  },
+  {
+    "path": "native-source/MotorwayNetwork.cs",
+    "sha256": "ecb5a0469c2ed34029a9a04ea09060cdc43ebe48e7bd174e8956b33771303bb0",
+    "bytes": 7166
+  },
+  {
+    "path": "native-source/NativeDriveways.cs",
+    "sha256": "23cf6fd51d172aac00be571c75caac02027b7aa0646fe8370de2ab4e8ac3de7a",
+    "bytes": 1289
+  },
+  {
+    "path": "native-source/OriginalGameplayTuning.cs",
+    "sha256": "511c59b0121f2966a1b49140d6ea095b4a899cbdb7e802b14c35a044920469d5",
+    "bytes": 9108
+  },
+  {
+    "path": "native-source/OriginalMapProfile.cs",
+    "sha256": "2a5135b265d583fd18174041adb8850755a98d28e0e9a9a1a94ec6984893067e",
+    "bytes": 14601
+  },
+  {
+    "path": "native-source/OriginalMovement.cs",
+    "sha256": "895a82c831cd2a65e9be2688e95ae9930507764b88b4bab7fabe892bdafa2a54",
+    "bytes": 14465
+  },
+  {
+    "path": "native-source/OriginalPlacement.cs",
+    "sha256": "0e7734869d68cf91368d9ec76831405867f85f297dbd74e678c336b122618f4c",
+    "bytes": 24513
+  },
+  {
+    "path": "native-source/OriginalPlacementChecks.cs",
+    "sha256": "163408eb6126e62d1d86ac42d1511e531416eaaffd641e051b156817a0ca9491",
+    "bytes": 10848
+  },
+  {
+    "path": "native-source/OriginalPlacementData.cs",
+    "sha256": "127f2dedfb8b5ca18f1d1e5128a0287943c6d0bdec0777f4fc4942883d132d5c",
+    "bytes": 119991
+  },
+  {
+    "path": "native-source/OriginalSchedule.cs",
+    "sha256": "9a6837ad094931b55743f27ae0002233dc54f8171c77091b2b56e8c8acae22b2",
+    "bytes": 7298
+  },
+  {
+    "path": "native-source/OriginalSignals.cs",
+    "sha256": "4d1be5116d4f8246f7ebc50d7e2b75a5960739f1cad2be6c472acb45057efc9b",
+    "bytes": 8187
+  },
+  {
+    "path": "native-source/OriginalUpgrades.cs",
+    "sha256": "98e02200106ed791a428962118ad2d56c2b01a9e0afbd40142dc05fa472a0bd1",
+    "bytes": 5123
+  },
+  {
+    "path": "native-source/ParkingFlowChecks.cs",
+    "sha256": "5bcdeafcde0675e52a122525cffacb5c349826c845d77079a6c40dc23ebeeb94",
+    "bytes": 3886
+  },
+  {
+    "path": "native-source/ParkingNetwork.cs",
+    "sha256": "e87bf6c51d48a14561a0826eb39af41dc6c8f4c65bdb25cde19becdda6c85d3c",
+    "bytes": 13504
+  },
+  {
+    "path": "native-source/PracticeLegality.cs",
+    "sha256": "d367280a7b07c1f27d72bd01b51d35a081a47e288a0282f90bcf0a3c71680797",
+    "bytes": 6457
+  },
+  {
+    "path": "native-source/PracticeLegalityChecks.cs",
+    "sha256": "459c0e3ab3c4368f800a21a964716601c0fe7af7d9875b3e2948ef39826ed8aa",
+    "bytes": 6374
+  },
+  {
+    "path": "native-source/PracticeScenario.cs",
+    "sha256": "f9ad6f6f3e225a27025b28b8cfb58c4aa7f41346c1d90bc68804ab825954276d",
+    "bytes": 2940
+  },
+  {
+    "path": "native-source/Railways.cs",
+    "sha256": "e3193c1555041ba100048ba5350d1609ea4d0f7aaa52333c84b63c0d5664cc47",
+    "bytes": 15331
+  },
+  {
+    "path": "native-source/RecordedCarparkChecks.cs",
+    "sha256": "995e93bea9a75d58363723fd9e6e61fcb850acdae044daeaf4403a4910769f18",
+    "bytes": 10453
+  },
+  {
+    "path": "native-source/ReferenceCurves.cs",
+    "sha256": "e96895312d4fb8a27854591d52f7921583d678d134197eeea2bba4614f49ec28",
+    "bytes": 1025
+  },
+  {
+    "path": "native-source/ReferenceRandom.cs",
+    "sha256": "7c78c495bf742a9db9ab3fdee2f78dc2fa810782ead0745c25e9fb6b6690e74d",
+    "bytes": 1797
+  },
+  {
+    "path": "native-source/RetiringRoads.cs",
+    "sha256": "e83e90d522208f0e7d901bff2247318f1b1307552f631e7a95d552a0e3ff28e8",
+    "bytes": 1544
+  },
+  {
+    "path": "native-source/RoadNetwork.cs",
+    "sha256": "afc70b973410ce578835eff52fd5ae52b0de3f687ee021607a0b6989b7289dad",
+    "bytes": 28795
+  },
+  {
+    "path": "native-source/RoundaboutActivation.cs",
+    "sha256": "b18ef83bbed82e4da1dacb9ed0d223a5b715fa11c8687d02d683dd73167d3854",
+    "bytes": 4107
+  },
+  {
+    "path": "native-source/SharedCarparkTransit.cs",
+    "sha256": "3bd49a5027d6d5bbe87bfa7e5a6b9336110b963fd16407870e4fcae1145a1c65",
+    "bytes": 2357
+  },
+  {
+    "path": "native-source/SharedCarparks.cs",
+    "sha256": "5497ad006d2a5f6d0feb68075a90beba76c9f306772b5d1d3655a0f786a03d76",
+    "bytes": 5465
+  },
+  {
+    "path": "native-source/SharedTransitChecks.cs",
+    "sha256": "da6661f044f7a47b421dcbb354f65280bb65f21009fc8c06cf8fc5f3cfc82d98",
+    "bytes": 2908
+  },
+  {
+    "path": "native-source/SimulationChecks.cs",
+    "sha256": "c0effc2e6396e9e0c71f6c54f71d3420d537c7f370f7cfc62ecd6e1fada37bea",
+    "bytes": 90836
+  },
+  {
+    "path": "native-source/SimulatorVersion.cs",
+    "sha256": "2dea3819563eb9eb2ac915c295f5a98a48b1420c8e30d9be0e6eefa8ee47268c",
+    "bytes": 620
+  },
+  {
+    "path": "native-source/SmallCityPractice.cs",
+    "sha256": "5179746f4a47d598fc91de4f9f79b3e8c9c75f6bcb1391729941bc0fb97f375a",
+    "bytes": 3400
+  },
+  {
+    "path": "native-source/TrafficControl.cs",
+    "sha256": "a8a93efe9688a329dd864c002d7823d4aade6f0a54e8e7dcfdd52abb049ba513",
+    "bytes": 50626
+  },
+  {
+    "path": "native-source/TrafficPractice.cs",
+    "sha256": "270be5f66b576f6fdd37a0df2b5e8a9710d1a7f7f95d33898b5c1fdd357f2f87",
+    "bytes": 8741
+  },
+  {
+    "path": "native-source/TrafficTypes.cs",
+    "sha256": "976889dc5f5278761f66ceebbc868cdb37d392292111e18f92b74b186fc63d86",
+    "bytes": 14345
+  },
+  {
+    "path": "native-source/TrafficWorld.cs",
+    "sha256": "10750e96f8ff7d850be536bc61223ccd26bec0220002b5891cf1648dba87a52a",
+    "bytes": 31949
+  },
+  {
+    "path": "native-source/TrainTuning.cs",
+    "sha256": "0cffe8c9089719458df24156ecccac5506b36e856cf61b32547c56e23ffb9258",
+    "bytes": 725
+  },
+  {
+    "path": "native-source/UsefulConnectivity.cs",
+    "sha256": "46b38ae028e120d082a85f66b488734df14ff5a415bf12dc05a2ce5df58b4050",
+    "bytes": 1496
+  },
+  {
+    "path": "offset-baseline.log",
+    "sha256": "44b362ef59399922f2d0cd016d27e1530eb597a1c69b1f39ba4e4b09a59b4e44",
+    "bytes": 8801
+  },
+  {
+    "path": "offset-build.log",
+    "sha256": "ebacc8f5bc5af13fa78b91786fec41c11f772ad319ef632a085af722d1c67079",
+    "bytes": 382
+  },
+  {
+    "path": "offset-launcher.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "offset-native-checks.log",
+    "sha256": "c63ae525b854305d618df977830a199aceff0420ef1cc18b2b4cc4d22499a8e5",
+    "bytes": 145
+  },
+  {
+    "path": "offset-preflight.json",
+    "sha256": "285238cab85458cbad6eedf54d704919e82da22641b12e9afe2a2d41ab2e215b",
+    "bytes": 28761
+  },
+  {
+    "path": "offset-preflight.log",
+    "sha256": "ff664edbc76f89219144da2cb5f609d2431e41c05e4062e14c868848ce80591f",
+    "bytes": 52
+  },
+  {
+    "path": "offset-run/checkpoints.json",
+    "sha256": "86907050c7d5039c11070c19096aea343be3b8975add09648f85bf939e0f8c46",
+    "bytes": 1297
+  },
+  {
+    "path": "offset-run/complete.json",
+    "sha256": "59e0c87d048df511630d99ab3751c631b3fb8820019a5e4ef7d133b8ef04b42c",
+    "bytes": 1415
+  },
+  {
+    "path": "offset-run/config.json",
+    "sha256": "9dfba2973cf7fb6e3c1172ff0f2afbd3f52a1e2e9631ad95d2fcb654eab10b74",
+    "bytes": 1554
+  },
+  {
+    "path": "offset-run/episodes.jsonl",
+    "sha256": "1c551e2f0beae94eb59f03110be2f2e0172c3b8d0176aa3df6b3e016d9ded757",
+    "bytes": 338055
+  },
+  {
+    "path": "offset-run/gradient_audit.jsonl",
+    "sha256": "bd73ae6c319db579b29d8e752cb661348dec71df399eb193db2589a3c4c58144",
+    "bytes": 30105
+  },
+  {
+    "path": "offset-run/progress.csv",
+    "sha256": "1231f1d2a61880626f9a6e5a283711592d4de9f0f359b6d7f7aa54b61b92207d",
+    "bytes": 1296
+  },
+  {
+    "path": "offset-runtime-source/archive_documentation.py",
+    "sha256": "614d747408572cee18fb5eef830561f6146c9793a27701191098f8b871770a82",
+    "bytes": 2440
+  },
+  {
+    "path": "offset-runtime-source/archive_session.py",
+    "sha256": "0a26a631b01369c9c3cacf094b6c77a9301d84b35f2ab4eece74eb4dfc74f576",
+    "bytes": 5407
+  },
+  {
+    "path": "offset-runtime-source/assess_investigation.py",
+    "sha256": "32e183896c9ec0c7eb70ab2b39cce0b91c5036c36befcf5de3a7283e9c1c05ef",
+    "bytes": 7316
+  },
+  {
+    "path": "offset-runtime-source/assess_signals.py",
+    "sha256": "6cace050c0801933d8ebd196d709e1308cba9b421d2af2a12f2bb6d146dfe1c4",
+    "bytes": 4381
+  },
+  {
+    "path": "offset-runtime-source/audit_city_roads.py",
+    "sha256": "a48790c3b5f4f691b6b6f148a3414e6d33419f0d04762ab5fb8f322d5630104f",
+    "bytes": 7721
+  },
+  {
+    "path": "offset-runtime-source/audit_city_service.py",
+    "sha256": "000fc95ef1543e1814db45355c9aaba9d69812e17bbaeee8f5e5e67c25eb2be9",
+    "bytes": 7979
+  },
+  {
+    "path": "offset-runtime-source/audit_goal_learning.py",
+    "sha256": "59a01ecb9ba47cc1e8e705157821c73519a37fd0f09a5ec36b2b9044de0ab4cd",
+    "bytes": 3830
+  },
+  {
+    "path": "offset-runtime-source/audit_rewards.py",
+    "sha256": "a0572b6e9c42d285e042d1bf3439e95d1751d62626644fe0f6593cbb66285d82",
+    "bytes": 3876
+  },
+  {
+    "path": "offset-runtime-source/benchmark_city_ppo.py",
+    "sha256": "a393e343998358597d70c6dd5bb4982c0e6e3640a3267efd6d4afd7f4b1337e0",
+    "bytes": 7167
+  },
+  {
+    "path": "offset-runtime-source/benchmark_parallel.py",
+    "sha256": "966603d1be3b142457cbfebab1396a6a0b5aa7b746cddd3cf34a0124c87ecc4e",
+    "bytes": 2995
+  },
+  {
+    "path": "offset-runtime-source/benchmark_practice.py",
+    "sha256": "dcc547c9f1400497eac32fe75c99892402237d456f11684a75b90015958bb90a",
+    "bytes": 7246
+  },
+  {
+    "path": "offset-runtime-source/bend_ppo.py",
+    "sha256": "3f4f84aa95df55efd2884540e71403e74b83a7e298a41ecbc7faa4a4e773b174",
+    "bytes": 14070
+  },
+  {
+    "path": "offset-runtime-source/calibrate_city_route_repair.py",
+    "sha256": "514e42935d1588247d7894dd41e8ec1d050a9ddfe716b0c9855ba9ab2c62d87c",
+    "bytes": 2225
+  },
+  {
+    "path": "offset-runtime-source/checkpoint_tools.py",
+    "sha256": "f546179b86cc6338cf0e6e0986ff77598d16465863150a4570f53e3bcf31e5f3",
+    "bytes": 4862
+  },
+  {
+    "path": "offset-runtime-source/city_bridge_strategy_policy.py",
+    "sha256": "36b29a71a7c4a6c6fa5742278941a48421980c42ef872a789a332b8bafeea98d",
+    "bytes": 5747
+  },
+  {
+    "path": "offset-runtime-source/city_curriculum.py",
+    "sha256": "e197495fffce1c507be959161439c375ec32480357154086972dbc387696d768",
+    "bytes": 12313
+  },
+  {
+    "path": "offset-runtime-source/city_established_policy.py",
+    "sha256": "a18054aef9c9b2057b9d6d3a3a85f876d7cf6ba6b45c95e0a4603597184ee8ea",
+    "bytes": 1140
+  },
+  {
+    "path": "offset-runtime-source/city_exploration_policy.py",
+    "sha256": "1fbe6b38bcdeab9aac4e1d8fcbc5b0436f20ed97bc73dd75edad0853dad2721b",
+    "bytes": 2025
+  },
+  {
+    "path": "offset-runtime-source/city_gradient_audit.py",
+    "sha256": "371f0b510ea27c214ecaea950a6c0b40863cf67ef72792f24bfa78dbfca6487f",
+    "bytes": 1835
+  },
+  {
+    "path": "offset-runtime-source/city_growth_policy.py",
+    "sha256": "0e5a604554b9c8bbc2d98f5d96cebb9785b2fe2d2ff5eadf0da200e3da9cad38",
+    "bytes": 2321
+  },
+  {
+    "path": "offset-runtime-source/city_learning_policy.py",
+    "sha256": "544f0a09ca64069b4af0394fdf74d0782d7eaeddd377832186d40f1234295d26",
+    "bytes": 264
+  },
+  {
+    "path": "offset-runtime-source/city_network_service_policy.py",
+    "sha256": "477d1e462751f9f67f412696f1fbc12d058f8c55e91ecda1cadba97b7479eb3d",
+    "bytes": 9172
+  },
+  {
+    "path": "offset-runtime-source/city_opening_strategy_policy.py",
+    "sha256": "1ec9a40b16bedc66d4d6316b72b7c66785cef4883234417e7238bc2857d519c5",
+    "bytes": 2770
+  },
+  {
+    "path": "offset-runtime-source/city_optimizer_settings.py",
+    "sha256": "8e7cb236383a39d9478ada680da730f84ca78ea95b5e5a9a30b48d4d2dcbc0af",
+    "bytes": 795
+  },
+  {
+    "path": "offset-runtime-source/city_recorded_starts.py",
+    "sha256": "040d151968e8c1168002f8fe87dc03ff3f42bb8bcb2cdeeb9a9fc86406a1b9ee",
+    "bytes": 3863
+  },
+  {
+    "path": "offset-runtime-source/city_relational_policy.py",
+    "sha256": "1974f399444264cbf8f4b93f37024c1171218ec492a25ffe1a7cbcf5416c4602",
+    "bytes": 6613
+  },
+  {
+    "path": "offset-runtime-source/city_repeated_seeds.py",
+    "sha256": "dcfe4335a0ddaf90feb827f3f916b76f9075ae3ba3850fda88917d450e992277",
+    "bytes": 1321
+  },
+  {
+    "path": "offset-runtime-source/city_reserve_policy.py",
+    "sha256": "95a9586417063dcfaaedb432852e716fb5954a363f56976092d9a45bd9947d3b",
+    "bytes": 2740
+  },
+  {
+    "path": "offset-runtime-source/city_road_choice_policy.py",
+    "sha256": "c0e4c72d78d91adaeb919395211726efaf95c486e6d4a5e6d86d9c7c0d5b5f45",
+    "bytes": 1244
+  },
+  {
+    "path": "offset-runtime-source/city_road_pilot.py",
+    "sha256": "08b90ea26764d9eea16ff869cf3080912aa361cde27c13c3659b5a1bdb560375",
+    "bytes": 8916
+  },
+  {
+    "path": "offset-runtime-source/city_road_policy.py",
+    "sha256": "4059beba8899b1293daa7056a830ce88ba8a2fb88b4eef30e46f5755f0e0cff6",
+    "bytes": 6872
+  },
+  {
+    "path": "offset-runtime-source/city_route_repair_policy.py",
+    "sha256": "8371da9e5544c8af0cc338a0b17cbf3292c98f62bb8e7d20e50ddad7f58995ae",
+    "bytes": 11101
+  },
+  {
+    "path": "offset-runtime-source/city_service_policy.py",
+    "sha256": "33778b66de1b5a60a3f97dafeab7a6f6941818c0e32ffb5c5446fc7cbe01ffe6",
+    "bytes": 6321
+  },
+  {
+    "path": "offset-runtime-source/city_strategy_policy.py",
+    "sha256": "d201cea63cffbfe76ed2db7c849b257977c4c95c936a79178a57e3abccc92bd2",
+    "bytes": 4043
+  },
+  {
+    "path": "offset-runtime-source/city_task_rollout_buffer.py",
+    "sha256": "7162543f2c016ba0561ee550fa4d06f306259b88e142a401219bf826b00a182f",
+    "bytes": 2939
+  },
+  {
+    "path": "offset-runtime-source/city_whole_strategy_policy.py",
+    "sha256": "13e65ad34f83e2f358bf181a5b642965f4706ea223956b64b524d97a0984f5e1",
+    "bytes": 387
+  },
+  {
+    "path": "offset-runtime-source/city_wide_strategy_policy.py",
+    "sha256": "d781f654fcd9e33145727e9dfab28f3baa0a4c58f87db88348f402d6d22ef075",
+    "bytes": 4697
+  },
+  {
+    "path": "offset-runtime-source/clear_road_ppo.py",
+    "sha256": "8934cb2d07f8c28232df81d9192d00280fd4805c3811492a3831386e97bec209",
+    "bytes": 14904
+  },
+  {
+    "path": "offset-runtime-source/compare_congestion.py",
+    "sha256": "21fd893ad1892f1f6920efa2652837e2c14332ad89f3b9ca3a284337976c5f73",
+    "bytes": 3126
+  },
+  {
+    "path": "offset-runtime-source/compare_stage1.py",
+    "sha256": "6e332ebecc38f6127d14ad49127c39196cfdab471f4a2e71293b4943e81f9d15",
+    "bytes": 11283
+  },
+  {
+    "path": "offset-runtime-source/compare_traffic_lights.py",
+    "sha256": "e496090706963be7b3a962b1afb56ddd1fa36ef305913cbaafa7cdb34049105a",
+    "bytes": 4776
+  },
+  {
+    "path": "offset-runtime-source/compare_upgrade_support.py",
+    "sha256": "ca47575c06293166fe6ebe4da065efb28df3a16233e5a595a98e4183419005ea",
+    "bytes": 5581
+  },
+  {
+    "path": "offset-runtime-source/connection_practice.py",
+    "sha256": "927df9ba9f953c59b4d00e6fc9c27e8288c9f707a2c2353357e00bee25e741ad",
+    "bytes": 22229
+  },
+  {
+    "path": "offset-runtime-source/construction_curriculum.py",
+    "sha256": "4cc1e131fa5c1bd66ab7166a0623a11e44e4a915ede86d1227135fd353663d14",
+    "bytes": 14268
+  },
+  {
+    "path": "offset-runtime-source/construction_practice.py",
+    "sha256": "eebd5bcf6ff9ba16586f8d8f33a3eb07228b0da5f495042957e814ea606c8c92",
+    "bytes": 10562
+  },
+  {
+    "path": "offset-runtime-source/diagnose_city_policy.py",
+    "sha256": "077374535ada5c79f972f964de108c208071b40bca9a49b8788a26f5826e8870",
+    "bytes": 6428
+  },
+  {
+    "path": "offset-runtime-source/diagnose_light_failure.py",
+    "sha256": "427a69e5cf387365d444dd4f6456f3f980d9723fc2d2d25db09ce1f28db6bdc8",
+    "bytes": 7137
+  },
+  {
+    "path": "offset-runtime-source/diagnose_policy_regression.py",
+    "sha256": "698247507e1b01071206e71aac681ad01d60cdacddf095d81ff29f0d4c79c673",
+    "bytes": 6528
+  },
+  {
+    "path": "offset-runtime-source/driveway_ppo.py",
+    "sha256": "14a7a990d3f56fcc0514bd8090c1b561a4df44a4b5b9d104b76870ef9031bab5",
+    "bytes": 10922
+  },
+  {
+    "path": "offset-runtime-source/edge_policy.py",
+    "sha256": "b0a77d9976dfe73bd3dce11bdb4b6e4146853b3d55b394d047045b64b4f0ab12",
+    "bytes": 6078
+  },
+  {
+    "path": "offset-runtime-source/environment.py",
+    "sha256": "eeb3bde8d9e547299deb1a08e6afd3a77a8d6ca5da18b156c91e05c2e792897f",
+    "bytes": 25617
+  },
+  {
+    "path": "offset-runtime-source/evaluate_checkpoint.py",
+    "sha256": "e550a4f81e014bfe276059752ccf1c91e91e555777062a8ebf03a054d6ea6f21",
+    "bytes": 4811
+  },
+  {
+    "path": "offset-runtime-source/evaluate_city_checkpoints.py",
+    "sha256": "110f0c60222e609fc8a6846f0bcea9b33ca258d17b3a48a93bba348f845f2345",
+    "bytes": 4907
+  },
+  {
+    "path": "offset-runtime-source/evaluate_city_curriculum.py",
+    "sha256": "5a5670f7b1513c8b8f107b47f72b20931574b3815594978fecd424aa0932eca2",
+    "bytes": 6866
+  },
+  {
+    "path": "offset-runtime-source/evaluate_city_opening_pilot.py",
+    "sha256": "2eec53c0d632fdb2744eced5f8ceae1f389c50214c4347da24bfd17610747355",
+    "bytes": 6230
+  },
+  {
+    "path": "offset-runtime-source/evaluate_city_policy.py",
+    "sha256": "f56294d25ec58a11dabff420dc799a114167d6d8624775fbcfdb50b5f36e1800",
+    "bytes": 6340
+  },
+  {
+    "path": "offset-runtime-source/evaluate_city_route_repair.py",
+    "sha256": "944d623c6c77256b6efd40eb1405af2322edb57b62079ba5b7074fc1a61d71ac",
+    "bytes": 5987
+  },
+  {
+    "path": "offset-runtime-source/evaluate_city_service.py",
+    "sha256": "2dc4448752edc91d66a259f44ae48a1a86901d5f9fab7504b9a1b6cdda514173",
+    "bytes": 5566
+  },
+  {
+    "path": "offset-runtime-source/evaluate_construction_ppo.py",
+    "sha256": "cc8d56daaad0a960019d484c6c4c01d037fe81f549f11f0e22633b0a8e270ec6",
+    "bytes": 6319
+  },
+  {
+    "path": "offset-runtime-source/evaluate_fresh_signals.py",
+    "sha256": "f0017933c5f3a05a79c5afcd10a71903e76df526f239e6ff15400a9a1f616993",
+    "bytes": 5776
+  },
+  {
+    "path": "offset-runtime-source/evaluate_limited_route_ppo.py",
+    "sha256": "f893e8b2aba77bb3030a899ae6af97a84a9ba2c014cbf109a8d39fd4772e0e13",
+    "bytes": 6730
+  },
+  {
+    "path": "offset-runtime-source/evaluate_midgame_service.py",
+    "sha256": "05e1b6b8cecd6aa83cf05a4ab48ed59534fefc4675de1f3ab3ee98f448704507",
+    "bytes": 6486
+  },
+  {
+    "path": "offset-runtime-source/evaluate_practice.py",
+    "sha256": "db54a9d3f61547d46c6c96e25f1ba67de1ef0f7351a3a54c2135f960f4b705c7",
+    "bytes": 4589
+  },
+  {
+    "path": "offset-runtime-source/evaluate_triad_ppo.py",
+    "sha256": "7e80cf68324715a27ceffc15a9e1a00dfd4ea87abdde7455445dd176cd5a8b38",
+    "bytes": 7209
+  },
+  {
+    "path": "offset-runtime-source/export_city_replays.py",
+    "sha256": "407cfc407b9b07c4b7af0aee444bc5c2e80ebd6700950cb060ea2920981ffbc1",
+    "bytes": 5801
+  },
+  {
+    "path": "offset-runtime-source/goal_agent.py",
+    "sha256": "70f7c367938c4594ce8ddbccaebac55efe5757e9899c8df29f69a733fd729b31",
+    "bytes": 18424
+  },
+  {
+    "path": "offset-runtime-source/hierarchy_batches.py",
+    "sha256": "199b47fd5404f581dbe29f744c1a02c7d96e99a2740f819d887875fe85273a52",
+    "bytes": 5896
+  },
+  {
+    "path": "offset-runtime-source/hierarchy_checkpoint.py",
+    "sha256": "f614f5e0af58901f58abc6e3890fd5e15066ee6c9c7944d25b4fad51291051c6",
+    "bytes": 2256
+  },
+  {
+    "path": "offset-runtime-source/hierarchy_objective.py",
+    "sha256": "c072cee2b4cb826e31ce9ef7dc0716dcca8dfc420d340e7830cac1242d56ce38",
+    "bytes": 2608
+  },
+  {
+    "path": "offset-runtime-source/hierarchy_policy.py",
+    "sha256": "8cff3933e10c9fcdd10911dacd3c323eeff92ea85132cbc0e72d20c40915f5f5",
+    "bytes": 3977
+  },
+  {
+    "path": "offset-runtime-source/hierarchy_rollout.py",
+    "sha256": "e98479c49ac509aa4fffddb19f5dce1b9f4b9183f2ffe3bf892a4c1549d79a89",
+    "bytes": 10119
+  },
+  {
+    "path": "offset-runtime-source/hierarchy_updater.py",
+    "sha256": "cd6424efb489405555c0bc7c86c5cbce0b2e29aabc48e79eab7c53110be86fc9",
+    "bytes": 5223
+  },
+  {
+    "path": "offset-runtime-source/midgame_timing_policy.py",
+    "sha256": "4119939bbf1e36f5ff1ab9ffa122c6cfb7a268b9469fcd4586be9ce870e60d45",
+    "bytes": 2470
+  },
+  {
+    "path": "offset-runtime-source/migration.py",
+    "sha256": "a0e62177e8e0bdcafcc4436ad4fde2bb9fbd88289e2e196e25412bfb819f89af",
+    "bytes": 2028
+  },
+  {
+    "path": "offset-runtime-source/offset_ppo.py",
+    "sha256": "2ea560ee24650524d8625e46fd369a65c6d3443d8bb298207b475dd05a00fa04",
+    "bytes": 11302
+  },
+  {
+    "path": "offset-runtime-source/pair_ppo.py",
+    "sha256": "fac6a17f62f06e8edfa39d84204d9e896d1ac3ddf6d0a8e51e64d45a36647e8b",
+    "bytes": 16782
+  },
+  {
+    "path": "offset-runtime-source/parallel.py",
+    "sha256": "a6fd56d586e8392d3ba0cd8c9355e8a2cd7001d5b9fc5d29dd05dfc17735a9aa",
+    "bytes": 3499
+  },
+  {
+    "path": "offset-runtime-source/parallel_stage1.py",
+    "sha256": "b7a1eeef0e5485bfc038116e0449f3ad49b33d1e266d1bf7369d65b1cb9c55f8",
+    "bytes": 10944
+  },
+  {
+    "path": "offset-runtime-source/planner_diagnostic.py",
+    "sha256": "405c47dd2706f4b2da32ba43e0dbe5ce4f7d6a22a2688efa395bf7658290d756",
+    "bytes": 5858
+  },
+  {
+    "path": "offset-runtime-source/practice_replay.py",
+    "sha256": "2760018e513cb6dff022d88c727d900ac27faf7ff34dc261d7f8984fffd81e73",
+    "bytes": 5778
+  },
+  {
+    "path": "offset-runtime-source/practice_reward.py",
+    "sha256": "cd1e54f5c499b3418022aa15b164bd25ade61e0304876766da386b45d88093f1",
+    "bytes": 2196
+  },
+  {
+    "path": "offset-runtime-source/prepare_city_policy.py",
+    "sha256": "2005bcc6f19d9f9caecd754a8ee4f574014e287e4556bfe333ce4367770e9f29",
+    "bytes": 9985
+  },
+  {
+    "path": "offset-runtime-source/prepare_city_recorded_starts.py",
+    "sha256": "35e02bf2445aa55dd5ea24f890a043c912ff5720e69a8cc267ed1ae43c2ddeeb",
+    "bytes": 3749
+  },
+  {
+    "path": "offset-runtime-source/prepare_stage1.py",
+    "sha256": "37f7c1b1e80d5213116e38b35341152db4a3b500e2094636d4962502b834aaac",
+    "bytes": 7867
+  },
+  {
+    "path": "offset-runtime-source/progress.py",
+    "sha256": "b71dc8acbb27b2a00dd37e750ad636394cb5c62f3f7bea632fb37654abc119cc",
+    "bytes": 13937
+  },
+  {
+    "path": "offset-runtime-source/report_light_failure.py",
+    "sha256": "faf4c3244ee9b3f9d3d5ecfe123ef7c4451dc85f0cbb592c37b4fa32d8374ca8",
+    "bytes": 4088
+  },
+  {
+    "path": "offset-runtime-source/rewards.py",
+    "sha256": "ea8cc85dad695962b88a860ca6178657cc0fbc877db310d535a9548803832a8d",
+    "bytes": 1196
+  },
+  {
+    "path": "offset-runtime-source/run_city_growth_pilot.py",
+    "sha256": "c5f91acf6215edfcca74d3491cdb5e7656070457136ec77d2c2f76a086669ee1",
+    "bytes": 6674
+  },
+  {
+    "path": "offset-runtime-source/run_city_learning_guarded.py",
+    "sha256": "34febdea1d8eb6d2f24325dc0232bf24ca04fe437f18431e4efc639c90cb2fae",
+    "bytes": 3781
+  },
+  {
+    "path": "offset-runtime-source/run_city_overnight.py",
+    "sha256": "778a47721ea65b4d1d59efcbe5aea2496c083000a4da0bfbc051c0e5ac38a8b4",
+    "bytes": 13565
+  },
+  {
+    "path": "offset-runtime-source/run_city_service_training.py",
+    "sha256": "a1124454697cda47d4c2230bee102328323666ffc066832cd5fe7fb946ce1e2e",
+    "bytes": 6612
+  },
+  {
+    "path": "offset-runtime-source/run_city_strategy_long.py",
+    "sha256": "950f5a86133ec08ba8faa55b813bcf7cf9a73df23acf849f2a8321f018dd6cc4",
+    "bytes": 11951
+  },
+  {
+    "path": "offset-runtime-source/run_final_evaluations.py",
+    "sha256": "780b46339fac1dc733860486f2147fc6092ecebc19958fc63c3eddd0df62e4ac",
+    "bytes": 3514
+  },
+  {
+    "path": "offset-runtime-source/score_wait_ppo.py",
+    "sha256": "a57e790e5c43381cc7fb7eded15a8212e93629108cca021e52499d2f4a4116b6",
+    "bytes": 19146
+  },
+  {
+    "path": "offset-runtime-source/select_investigation_candidates.py",
+    "sha256": "2ef85411db20633c3a704f3518fe8214c222ce8796ab8f4a7f94eecce66950a8",
+    "bytes": 3575
+  },
+  {
+    "path": "offset-runtime-source/shutdown.py",
+    "sha256": "6163ef19e17b6ad7ac59e5020609384f5b40c7320810b16eb829824af3228191",
+    "bytes": 992
+  },
+  {
+    "path": "offset-runtime-source/signal_agent.py",
+    "sha256": "6cda8d15aa798e5ec34bc0e3da6a6f1dcffa74c82e7e54a6ad3eb884a8ac544f",
+    "bytes": 7272
+  },
+  {
+    "path": "offset-runtime-source/spare_road_eval.py",
+    "sha256": "c89470cc197eb6c5ae56a2c987d6e3e1968729536b8febacd6bf3308093b722c",
+    "bytes": 2139
+  },
+  {
+    "path": "offset-runtime-source/spare_road_ppo.py",
+    "sha256": "dcda4f80a9aede3b3004f1af0e06212d03d7183b8cc5bcdfdfeedb0c3816de76",
+    "bytes": 12538
+  },
+  {
+    "path": "offset-runtime-source/spatial_policy.py",
+    "sha256": "8252c57b518486576c4d27a2e0b9045519a446afcd811186bde24b93401ad540",
+    "bytes": 7614
+  },
+  {
+    "path": "offset-runtime-source/stop_at_steps.py",
+    "sha256": "f332ab0a72ffc94a5c9eb7e18768cc7ca74b2fdaddfc8843b2733189545ead54",
+    "bytes": 1099
+  },
+  {
+    "path": "offset-runtime-source/terrain_ppo.py",
+    "sha256": "90df7aadb9ec082b824ba7789b960dab7110fabc88f944a0a96c0c882a964a51",
+    "bytes": 19686
+  },
+  {
+    "path": "offset-runtime-source/test_city_bridge_strategy_policy.py",
+    "sha256": "1985341900bab3608b7f5531dccc1793b6760d68c4c5dd5f2e8d59ca844a82bc",
+    "bytes": 4478
+  },
+  {
+    "path": "offset-runtime-source/test_city_established_policy.py",
+    "sha256": "56fb368874b08185c5456db1d85774b95aa509c4b86532a677319e7141a312e2",
+    "bytes": 1999
+  },
+  {
+    "path": "offset-runtime-source/test_city_exploration_policy.py",
+    "sha256": "ad3f96ab2b598e8aefdb746702bd0eba59b50e46358b44c5681af6a7b0d8342e",
+    "bytes": 2295
+  },
+  {
+    "path": "offset-runtime-source/test_city_gradient_audit.py",
+    "sha256": "8db506c685100a067ef291806c0922144c6d94a74aa99e6b1cdbe4ebff19cc93",
+    "bytes": 1236
+  },
+  {
+    "path": "offset-runtime-source/test_city_network_service.py",
+    "sha256": "76f7b5acf73d169dcce1d7b3de1e24a41d4b21325c8e742964f67a56bac0fb2c",
+    "bytes": 2942
+  },
+  {
+    "path": "offset-runtime-source/test_city_opening_strategy_policy.py",
+    "sha256": "f53e9337e9eb82e8e1dc2a39c204fc35815ceb87c7aabe695c6dd737cafafacf",
+    "bytes": 2671
+  },
+  {
+    "path": "offset-runtime-source/test_city_optimizer_settings.py",
+    "sha256": "45b66abb93974ff8a6ace07c98f861d021871d4f0364ed51ec6f5eb513372bde",
+    "bytes": 2406
+  },
+  {
+    "path": "offset-runtime-source/test_city_relational_policy.py",
+    "sha256": "75cde4fc3ffbc467f03bf63825701eebd84ad4ac73a7e0fb07fe7e860407a2ef",
+    "bytes": 2357
+  },
+  {
+    "path": "offset-runtime-source/test_city_reserve_policy.py",
+    "sha256": "fe4add0e3d63d40c4c01f6772d45dfc42df4e104b9a6b26e4d2affaa0aace8da",
+    "bytes": 2471
+  },
+  {
+    "path": "offset-runtime-source/test_city_strategy_long.py",
+    "sha256": "749a25345779a1b14617401a4d2b8ca779ba9e356be9b6439adbc498aa40f744",
+    "bytes": 2670
+  },
+  {
+    "path": "offset-runtime-source/test_city_strategy_policy.py",
+    "sha256": "0f23d2807f31435e0ed4811ad07cefbf20d65b3a3b901c40f80643dd674f4bd3",
+    "bytes": 1755
+  },
+  {
+    "path": "offset-runtime-source/test_city_task_reporting.py",
+    "sha256": "9450673883ccf6e1b9d7c86bd346bbfd137ca58a69e2a624f9efd5053522ece5",
+    "bytes": 1153
+  },
+  {
+    "path": "offset-runtime-source/test_city_task_rollout_buffer.py",
+    "sha256": "bca0bbd18606ea02cff845f66e41f9aa178c15d04e19287e7f50b56036a04744",
+    "bytes": 3289
+  },
+  {
+    "path": "offset-runtime-source/test_city_wide_strategy_policy.py",
+    "sha256": "9fa2bd7259ddbc6c5f5bd899caed78caeb98e0c656a4cd242eba8665328108e5",
+    "bytes": 1964
+  },
+  {
+    "path": "offset-runtime-source/test_compact.py",
+    "sha256": "b74a27abc7093434d1b3dea6789d4cb5351f89a2333cb431c83d87bb8fccaeeb",
+    "bytes": 4315
+  },
+  {
+    "path": "offset-runtime-source/test_comparison_resume.py",
+    "sha256": "de0967dcf1e44000ce3ca73f4e9432eedd3d897a52ce1024009ce14dfdc3e80a",
+    "bytes": 4608
+  },
+  {
+    "path": "offset-runtime-source/test_connection_practice.py",
+    "sha256": "7070e2f7d9c7d578bd105d039d14c337f76ffa953cbbdbdb96e51777cb38c41a",
+    "bytes": 11249
+  },
+  {
+    "path": "offset-runtime-source/test_construction_practice.py",
+    "sha256": "8ea98f6ab16273ba72339f3b86875ca476539ac86a88bcd70a8ca2ba9ccd4ec6",
+    "bytes": 2158
+  },
+  {
+    "path": "offset-runtime-source/test_direct_practice.py",
+    "sha256": "4752d101fdf5ff8adf37cf883f7c674ac670af4eb8cd77656fcdab2e145fb7b6",
+    "bytes": 5057
+  },
+  {
+    "path": "offset-runtime-source/test_draw_mask.py",
+    "sha256": "010ae1631e077d4ec11bbb321427ae3ebfe47ed99eb2f88654e7bf93e3ccaa08",
+    "bytes": 1977
+  },
+  {
+    "path": "offset-runtime-source/test_draw_only.py",
+    "sha256": "8e5d3b2c4f791e032c25796e26c8474a815547b1bbabcd9a18e1196898042ca9",
+    "bytes": 3083
+  },
+  {
+    "path": "offset-runtime-source/test_edge_policy.py",
+    "sha256": "e02849b608758f14b7d3c8fd255b96c6a92c450ee1202adb2f5036b6ea17d6bc",
+    "bytes": 3640
+  },
+  {
+    "path": "offset-runtime-source/test_environment.py",
+    "sha256": "4259933f104e68796ca29e2c3c37bd831602476e2e6d9cfd30bf8ebe8b72de4a",
+    "bytes": 8984
+  },
+  {
+    "path": "offset-runtime-source/test_evaluate_practice.py",
+    "sha256": "1b346e018dc20128b2784432d459f353bb0728fdf5b42eaff313930bbea55b6c",
+    "bytes": 4644
+  },
+  {
+    "path": "offset-runtime-source/test_features.py",
+    "sha256": "6be79f9d5e4c0523d1fde439347ac2ca0ebd22d9c6f0ca9826d549779fcdfe0e",
+    "bytes": 7918
+  },
+  {
+    "path": "offset-runtime-source/test_first_upgrade.py",
+    "sha256": "cae52e1c97826f8d5bbdaf7e9d1cd8b2bbcd740a03b4555231678a41c053d5f2",
+    "bytes": 6359
+  },
+  {
+    "path": "offset-runtime-source/test_goal_agent.py",
+    "sha256": "fe9cc28ee36a55b97ce0ec0dd4e49a9cb8d54a3c9621bb47fc33fc2ee801a530",
+    "bytes": 11331
+  },
+  {
+    "path": "offset-runtime-source/test_hierarchy_credit.py",
+    "sha256": "7615cd6401162f4196c43b1645a849a3f082b5dc8794607afcda82b80c766626",
+    "bytes": 4436
+  },
+  {
+    "path": "offset-runtime-source/test_hierarchy_integration.py",
+    "sha256": "a246097d0b195fb175a1ba43d6683ad5cda031155bba02a43536c4d13ac70de9",
+    "bytes": 3303
+  },
+  {
+    "path": "offset-runtime-source/test_hierarchy_objective.py",
+    "sha256": "ba94ecd9f19548e8241aea36d4e9368e330999a67f0c2060b2518c4a9f15a4d3",
+    "bytes": 2500
+  },
+  {
+    "path": "offset-runtime-source/test_hierarchy_policy.py",
+    "sha256": "ec75be638d27a2c5c8851069c66eef39d7c543423b4ce033737e2f741208afa4",
+    "bytes": 3206
+  },
+  {
+    "path": "offset-runtime-source/test_hierarchy_updater.py",
+    "sha256": "a7a8c6399597b7dec09b89c3a1d647b8ca330c581c08e81acc42e743cc23fb0e",
+    "bytes": 375
+  },
+  {
+    "path": "offset-runtime-source/test_inference_collector.py",
+    "sha256": "35d3577988520370c35629c0bff25718ccbd2e656a6766253903c79f64415925",
+    "bytes": 4520
+  },
+  {
+    "path": "offset-runtime-source/test_one_gap.py",
+    "sha256": "6bc2157662ae681b8da9e161f56b7e6b59ca721d75a4269ec6e2d787fc13aa3f",
+    "bytes": 3985
+  },
+  {
+    "path": "offset-runtime-source/test_parallel.py",
+    "sha256": "137239c0291ee0e88b696b04d0badaed765783301af2e2ce67228f1798e02bae",
+    "bytes": 5157
+  },
+  {
+    "path": "offset-runtime-source/test_parallel_stage1.py",
+    "sha256": "a1229dfcd912f1c458600277ed36633d9cd064dae97e7852413771f36bdea8f3",
+    "bytes": 4112
+  },
+  {
+    "path": "offset-runtime-source/test_practice_protocol.py",
+    "sha256": "b7249f95305467550b1c85b2c63739a8cb9dabe9628ac931abddc53cac630b6e",
+    "bytes": 2128
+  },
+  {
+    "path": "offset-runtime-source/test_practice_replay.py",
+    "sha256": "4c2757cb1851fbd5a653f27eb8cd29f7f960eeadc32fb14c8fe9448939b2940c",
+    "bytes": 2544
+  },
+  {
+    "path": "offset-runtime-source/test_reward_experiment.py",
+    "sha256": "0f04719c8cef03a1915e62531d747cc449a607f09e60aa840410d634285ca516",
+    "bytes": 6469
+  },
+  {
+    "path": "offset-runtime-source/test_rewards.py",
+    "sha256": "5b74cef1b4b12b28667f9e5712f13511bb6fa3b087792db7947e1178fe86eedb",
+    "bytes": 6750
+  },
+  {
+    "path": "offset-runtime-source/test_shutdown.py",
+    "sha256": "cb633a1711f78e9b17116f2edcb2ec67d181e698d008dc74c127871920dbc45a",
+    "bytes": 1315
+  },
+  {
+    "path": "offset-runtime-source/test_signal_agent.py",
+    "sha256": "02278573d903fa61ead2c4ec5fa8a52cc73cd11febd8d9915f360cc2ed619bb3",
+    "bytes": 6645
+  },
+  {
+    "path": "offset-runtime-source/test_signal_context.py",
+    "sha256": "b8a93684b88dd6e71a75d353e8f35bcb28a15c7b3a7e3f44c677456f463f2f04",
+    "bytes": 4018
+  },
+  {
+    "path": "offset-runtime-source/test_single_build.py",
+    "sha256": "7b891098d86352427f66e4b81604d8cc11466b63b67d5b4cc968a624aeed6f2f",
+    "bytes": 6666
+  },
+  {
+    "path": "offset-runtime-source/test_visible_observation.py",
+    "sha256": "3b11741066f649abe8e314971e2a333c2df517ee31a692eb5c857b3edc8df59c",
+    "bytes": 7247
+  },
+  {
+    "path": "offset-runtime-source/test_workflow.py",
+    "sha256": "1607760913039b7cdcf81d21349bcc33115be45516115acba38998dc66c4d62f",
+    "bytes": 7740
+  },
+  {
+    "path": "offset-runtime-source/traffic_ppo.py",
+    "sha256": "783a7774b45594e7f637b956c10ccf27b8b280ad97678c8e884c5993a6129797",
+    "bytes": 33720
+  },
+  {
+    "path": "offset-runtime-source/traffic_practice.py",
+    "sha256": "6ce9a5168934ccd745e68f828e922502f168b526ed65da7decec3432b8484362",
+    "bytes": 9907
+  },
+  {
+    "path": "offset-runtime-source/train.py",
+    "sha256": "1faf9cb829c6ac78a51d98035521297f4abe1a1e1d958c271bc665e84746163d",
+    "bytes": 15325
+  },
+  {
+    "path": "offset-runtime-source/train_city_curriculum.py",
+    "sha256": "ade8b32e2356f66cd1f1661fb10fabe370aa6551fc3a6dd295115ef0415640b9",
+    "bytes": 16047
+  },
+  {
+    "path": "offset-runtime-source/train_city_network_service.py",
+    "sha256": "63f3b6855c9cfad0490eaf77075aa2afde9b279c1fb8f6088f887c12dd5fb9ca",
+    "bytes": 12313
+  },
+  {
+    "path": "offset-runtime-source/train_city_opening_pilot.py",
+    "sha256": "b139517d148caa7a755d4ce1b29aabf47d7b212a628fe4fa7915229d922c29b0",
+    "bytes": 6787
+  },
+  {
+    "path": "offset-runtime-source/train_city_route_repair.py",
+    "sha256": "df73c73de53992525bd10a5101d9e716950b235726d0ed0ea81d0f6fb082cdd8",
+    "bytes": 10197
+  },
+  {
+    "path": "offset-runtime-source/train_city_score_pilot.py",
+    "sha256": "1a47e6d7fb42cd0a1904c93bd20dd45227f610d174ba68c0af79ea883fafe3ed",
+    "bytes": 6467
+  },
+  {
+    "path": "offset-runtime-source/train_goal.py",
+    "sha256": "b9fd08529634d426ed0a423e56440b28d953507921906c4468d388e0c1676306",
+    "bytes": 16466
+  },
+  {
+    "path": "offset-runtime-source/train_limited_route_ppo.py",
+    "sha256": "8dbff32ee253f236fb635918875d41e9697e92f9e6c446347102e2238b981bc5",
+    "bytes": 10696
+  },
+  {
+    "path": "offset-runtime-source/train_midgame_service.py",
+    "sha256": "8a356a4524e495e08bb9d6d7f7cf71824d8ebf1f0a815b21e4366c3734a5a655",
+    "bytes": 11503
+  },
+  {
+    "path": "offset-runtime-source/train_parallel_stage1.py",
+    "sha256": "83e1b30bad0e09c374e3529801d6719ce61e84a599115b1e1c0207af3da256bf",
+    "bytes": 14113
+  },
+  {
+    "path": "offset-runtime-source/triad_curriculum_ppo.py",
+    "sha256": "cdebdec5ab83266aa4add11fd8846631cdffa99df9c61fd898fd5fe52d6e785a",
+    "bytes": 21411
+  },
+  {
+    "path": "offset-runtime-source/triad_ppo.py",
+    "sha256": "e694da208c662769a8b8d768916b5931d9e1c21f6c3d7783226c10a2edc3b8b2",
+    "bytes": 12957
+  },
+  {
+    "path": "offset-runtime-source/triad_score_ppo.py",
+    "sha256": "86ea1bbad36871a4c6e65844b72a4b60293fd8d928dd19ca363e1584fe109929",
+    "bytes": 24418
+  },
+  {
+    "path": "offset-runtime-source/upgrade_rules.py",
+    "sha256": "aa27d3de7b56f6bf5cf5e94b9e8ca446b2038d10711bf831c35980601d561c79",
+    "bytes": 840
+  },
+  {
+    "path": "offset-runtime-source/visible_observation.py",
+    "sha256": "76ea6a0ee1b3c1b44bc8d0ca2a16a9c349432d2172ab83cc5dc14fbdf4417cb9",
+    "bytes": 10812
+  },
+  {
+    "path": "offset-runtime-source/watch_best.py",
+    "sha256": "20b27160bd698afbbe3446f222961fefa89fb0cdd18a298d2543f2ef47d933c9",
+    "bytes": 1775
+  },
+  {
+    "path": "offset-runtime-source/watch_live.py",
+    "sha256": "c3f944abd72ef26ade242d58af28f66161e825ba2903de87e88b4bc43ef3266a",
+    "bytes": 5204
+  },
+  {
+    "path": "offset-runtime-source/watch_stage1.py",
+    "sha256": "c62c43bfc851e39270fa30ad78d5c3c17a7b4cfd5314c2a051ac5b7977e99b73",
+    "bytes": 4650
+  },
+  {
+    "path": "offset-status.json",
+    "sha256": "6083eaba551b24939c98472eb819551503678b3c2c01a5d44b950c0f64cee2d2",
+    "bytes": 116
+  },
+  {
+    "path": "offset_preflight.py",
+    "sha256": "8f826de476de9f84176ae8d5dfda3ea8d535becb693ff64d3181948b31aeff7f",
+    "bytes": 3304
+  },
+  {
+    "path": "plot_replay.py",
+    "sha256": "aa5a61d6200c48c879709e2183bf6e7250460b9a25cf5425a3277fb8fe1a3dd9",
+    "bytes": 2287
+  },
+  {
+    "path": "plot_results.py",
+    "sha256": "be973b706aac750bb9241a9a2fc7d95541ae31c2909e2b35e5107e1e73ec8615",
+    "bytes": 1322
+  },
+  {
+    "path": "policy-audit.json",
+    "sha256": "c11614c85d2128897b9233ee715083748ac17c8241ecced30852ca40f83bb832",
+    "bytes": 12705
+  },
+  {
+    "path": "policy-audit.log",
+    "sha256": "783cf2e84c1ad958def7af1c713517b44015cfc955e0de0393519de49bdd561b",
+    "bytes": 288
+  },
+  {
+    "path": "postcheck-complete.json",
+    "sha256": "34de56de5cbcdfecad6d44fca12c7d4956e3f52fb382a3d8427bc4e304e0c802",
+    "bytes": 49
+  },
+  {
+    "path": "postcheck-launcher.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  {
+    "path": "postcheck.py",
+    "sha256": "39bff4f3e6f3aaa837223ae3555dcdb38755ba17d2d45571b988b7cca93c8548",
+    "bytes": 1284
+  },
+  {
+    "path": "practice-results.png",
+    "sha256": "9b62e53d6063f48306f92a4e100a4913f576bb70a04ec7f7f0c36cd3582e75e8",
+    "bytes": 80670
+  },
+  {
+    "path": "preflight.json",
+    "sha256": "d464cedf26b9a018b0cf14bedad9c39decea7ae994f5faaa9d18db4ae03d8869",
+    "bytes": 28223
+  },
+  {
+    "path": "preflight.log",
+    "sha256": "ff664edbc76f89219144da2cb5f609d2431e41c05e4062e14c868848ce80591f",
+    "bytes": 52
+  },
+  {
+    "path": "preflight.py",
+    "sha256": "55516bfad6ceeb81f8a9a82ac6856d246b34a98ca40343d9d06eaa130f9c1bdb",
+    "bytes": 3260
+  },
+  {
+    "path": "python-checks.log",
+    "sha256": "50ac8104ca8a5eda4f77de5b26e17a984e2fabaab419ad2a47ccc825d16429c5",
+    "bytes": 100
+  },
+  {
+    "path": "replay-checks.json",
+    "sha256": "29f0113a6405faaac1c62d0657c0908ad98aa354d53295c3c624e6c6135202b3",
+    "bytes": 511
+  },
+  {
+    "path": "results.json",
+    "sha256": "ba6a4da3e3c1c8378aaef1653b72d5ce4d7e7204cf81680460af0d138b586481",
+    "bytes": 6140
+  },
+  {
+    "path": "run/checkpoints.json",
+    "sha256": "49b2645f2ec089489a436a2c455848ec87e243ebf945ffd5ae72aaf4e4c8f6ad",
+    "bytes": 334
+  },
+  {
+    "path": "run/config.json",
+    "sha256": "3caa514bf73433bba2dcd1d39bd4806e0b89ef1736e104751cfcf8073b4db6d4",
+    "bytes": 1542
+  },
+  {
+    "path": "run/episodes.jsonl",
+    "sha256": "82608a44341b9a00465a183ac984363529eb52c45d57bb6c46f6c32095d5c708",
+    "bytes": 79933
+  },
+  {
+    "path": "run/gradient_audit.jsonl",
+    "sha256": "37111efa35ffa201d5515ededc45d4aa6be70d1d243c07a2510d0b2d07a0c483",
+    "bytes": 29749
+  },
+  {
+    "path": "run/progress.csv",
+    "sha256": "ab9e4a55f2999644d5195f155f4342ec83c1dc0ada7c0208b7106e35d1d91afb",
+    "bytes": 645
+  },
+  {
+    "path": "run.py",
+    "sha256": "04a6655758357d286b3e65a78ef1a6715554ce8293bbeaf95c10770099f5acda",
+    "bytes": 2599
+  },
+  {
+    "path": "run_offset.py",
+    "sha256": "ad68ac94c30da6e0e42373c7ab2d0c07c37cc4033df0b20f6410c7897b9cdcbc",
+    "bytes": 2395
+  },
+  {
+    "path": "runtime-source/archive_documentation.py",
+    "sha256": "614d747408572cee18fb5eef830561f6146c9793a27701191098f8b871770a82",
+    "bytes": 2440
+  },
+  {
+    "path": "runtime-source/archive_session.py",
+    "sha256": "0a26a631b01369c9c3cacf094b6c77a9301d84b35f2ab4eece74eb4dfc74f576",
+    "bytes": 5407
+  },
+  {
+    "path": "runtime-source/assess_investigation.py",
+    "sha256": "32e183896c9ec0c7eb70ab2b39cce0b91c5036c36befcf5de3a7283e9c1c05ef",
+    "bytes": 7316
+  },
+  {
+    "path": "runtime-source/assess_signals.py",
+    "sha256": "6cace050c0801933d8ebd196d709e1308cba9b421d2af2a12f2bb6d146dfe1c4",
+    "bytes": 4381
+  },
+  {
+    "path": "runtime-source/audit_city_roads.py",
+    "sha256": "a48790c3b5f4f691b6b6f148a3414e6d33419f0d04762ab5fb8f322d5630104f",
+    "bytes": 7721
+  },
+  {
+    "path": "runtime-source/audit_city_service.py",
+    "sha256": "000fc95ef1543e1814db45355c9aaba9d69812e17bbaeee8f5e5e67c25eb2be9",
+    "bytes": 7979
+  },
+  {
+    "path": "runtime-source/audit_goal_learning.py",
+    "sha256": "59a01ecb9ba47cc1e8e705157821c73519a37fd0f09a5ec36b2b9044de0ab4cd",
+    "bytes": 3830
+  },
+  {
+    "path": "runtime-source/audit_rewards.py",
+    "sha256": "a0572b6e9c42d285e042d1bf3439e95d1751d62626644fe0f6593cbb66285d82",
+    "bytes": 3876
+  },
+  {
+    "path": "runtime-source/benchmark_city_ppo.py",
+    "sha256": "a393e343998358597d70c6dd5bb4982c0e6e3640a3267efd6d4afd7f4b1337e0",
+    "bytes": 7167
+  },
+  {
+    "path": "runtime-source/benchmark_parallel.py",
+    "sha256": "966603d1be3b142457cbfebab1396a6a0b5aa7b746cddd3cf34a0124c87ecc4e",
+    "bytes": 2995
+  },
+  {
+    "path": "runtime-source/benchmark_practice.py",
+    "sha256": "dcc547c9f1400497eac32fe75c99892402237d456f11684a75b90015958bb90a",
+    "bytes": 7246
+  },
+  {
+    "path": "runtime-source/bend_ppo.py",
+    "sha256": "3f4f84aa95df55efd2884540e71403e74b83a7e298a41ecbc7faa4a4e773b174",
+    "bytes": 14070
+  },
+  {
+    "path": "runtime-source/calibrate_city_route_repair.py",
+    "sha256": "514e42935d1588247d7894dd41e8ec1d050a9ddfe716b0c9855ba9ab2c62d87c",
+    "bytes": 2225
+  },
+  {
+    "path": "runtime-source/checkpoint_tools.py",
+    "sha256": "f546179b86cc6338cf0e6e0986ff77598d16465863150a4570f53e3bcf31e5f3",
+    "bytes": 4862
+  },
+  {
+    "path": "runtime-source/city_bridge_strategy_policy.py",
+    "sha256": "36b29a71a7c4a6c6fa5742278941a48421980c42ef872a789a332b8bafeea98d",
+    "bytes": 5747
+  },
+  {
+    "path": "runtime-source/city_curriculum.py",
+    "sha256": "49b87f457cfd9308cc41038f79f1105f1777ec98369bff4ad6685cd3f040b604",
+    "bytes": 12183
+  },
+  {
+    "path": "runtime-source/city_established_policy.py",
+    "sha256": "a18054aef9c9b2057b9d6d3a3a85f876d7cf6ba6b45c95e0a4603597184ee8ea",
+    "bytes": 1140
+  },
+  {
+    "path": "runtime-source/city_exploration_policy.py",
+    "sha256": "1fbe6b38bcdeab9aac4e1d8fcbc5b0436f20ed97bc73dd75edad0853dad2721b",
+    "bytes": 2025
+  },
+  {
+    "path": "runtime-source/city_gradient_audit.py",
+    "sha256": "371f0b510ea27c214ecaea950a6c0b40863cf67ef72792f24bfa78dbfca6487f",
+    "bytes": 1835
+  },
+  {
+    "path": "runtime-source/city_growth_policy.py",
+    "sha256": "0e5a604554b9c8bbc2d98f5d96cebb9785b2fe2d2ff5eadf0da200e3da9cad38",
+    "bytes": 2321
+  },
+  {
+    "path": "runtime-source/city_learning_policy.py",
+    "sha256": "544f0a09ca64069b4af0394fdf74d0782d7eaeddd377832186d40f1234295d26",
+    "bytes": 264
+  },
+  {
+    "path": "runtime-source/city_network_service_policy.py",
+    "sha256": "477d1e462751f9f67f412696f1fbc12d058f8c55e91ecda1cadba97b7479eb3d",
+    "bytes": 9172
+  },
+  {
+    "path": "runtime-source/city_opening_strategy_policy.py",
+    "sha256": "1ec9a40b16bedc66d4d6316b72b7c66785cef4883234417e7238bc2857d519c5",
+    "bytes": 2770
+  },
+  {
+    "path": "runtime-source/city_optimizer_settings.py",
+    "sha256": "8e7cb236383a39d9478ada680da730f84ca78ea95b5e5a9a30b48d4d2dcbc0af",
+    "bytes": 795
+  },
+  {
+    "path": "runtime-source/city_recorded_starts.py",
+    "sha256": "040d151968e8c1168002f8fe87dc03ff3f42bb8bcb2cdeeb9a9fc86406a1b9ee",
+    "bytes": 3863
+  },
+  {
+    "path": "runtime-source/city_relational_policy.py",
+    "sha256": "1974f399444264cbf8f4b93f37024c1171218ec492a25ffe1a7cbcf5416c4602",
+    "bytes": 6613
+  },
+  {
+    "path": "runtime-source/city_repeated_seeds.py",
+    "sha256": "dcfe4335a0ddaf90feb827f3f916b76f9075ae3ba3850fda88917d450e992277",
+    "bytes": 1321
+  },
+  {
+    "path": "runtime-source/city_reserve_policy.py",
+    "sha256": "95a9586417063dcfaaedb432852e716fb5954a363f56976092d9a45bd9947d3b",
+    "bytes": 2740
+  },
+  {
+    "path": "runtime-source/city_road_choice_policy.py",
+    "sha256": "c0e4c72d78d91adaeb919395211726efaf95c486e6d4a5e6d86d9c7c0d5b5f45",
+    "bytes": 1244
+  },
+  {
+    "path": "runtime-source/city_road_pilot.py",
+    "sha256": "08b90ea26764d9eea16ff869cf3080912aa361cde27c13c3659b5a1bdb560375",
+    "bytes": 8916
+  },
+  {
+    "path": "runtime-source/city_road_policy.py",
+    "sha256": "4059beba8899b1293daa7056a830ce88ba8a2fb88b4eef30e46f5755f0e0cff6",
+    "bytes": 6872
+  },
+  {
+    "path": "runtime-source/city_route_repair_policy.py",
+    "sha256": "8371da9e5544c8af0cc338a0b17cbf3292c98f62bb8e7d20e50ddad7f58995ae",
+    "bytes": 11101
+  },
+  {
+    "path": "runtime-source/city_service_policy.py",
+    "sha256": "33778b66de1b5a60a3f97dafeab7a6f6941818c0e32ffb5c5446fc7cbe01ffe6",
+    "bytes": 6321
+  },
+  {
+    "path": "runtime-source/city_strategy_policy.py",
+    "sha256": "d201cea63cffbfe76ed2db7c849b257977c4c95c936a79178a57e3abccc92bd2",
+    "bytes": 4043
+  },
+  {
+    "path": "runtime-source/city_task_rollout_buffer.py",
+    "sha256": "7162543f2c016ba0561ee550fa4d06f306259b88e142a401219bf826b00a182f",
+    "bytes": 2939
+  },
+  {
+    "path": "runtime-source/city_whole_strategy_policy.py",
+    "sha256": "13e65ad34f83e2f358bf181a5b642965f4706ea223956b64b524d97a0984f5e1",
+    "bytes": 387
+  },
+  {
+    "path": "runtime-source/city_wide_strategy_policy.py",
+    "sha256": "d781f654fcd9e33145727e9dfab28f3baa0a4c58f87db88348f402d6d22ef075",
+    "bytes": 4697
+  },
+  {
+    "path": "runtime-source/clear_road_ppo.py",
+    "sha256": "8934cb2d07f8c28232df81d9192d00280fd4805c3811492a3831386e97bec209",
+    "bytes": 14904
+  },
+  {
+    "path": "runtime-source/compare_congestion.py",
+    "sha256": "21fd893ad1892f1f6920efa2652837e2c14332ad89f3b9ca3a284337976c5f73",
+    "bytes": 3126
+  },
+  {
+    "path": "runtime-source/compare_stage1.py",
+    "sha256": "6e332ebecc38f6127d14ad49127c39196cfdab471f4a2e71293b4943e81f9d15",
+    "bytes": 11283
+  },
+  {
+    "path": "runtime-source/compare_traffic_lights.py",
+    "sha256": "e496090706963be7b3a962b1afb56ddd1fa36ef305913cbaafa7cdb34049105a",
+    "bytes": 4776
+  },
+  {
+    "path": "runtime-source/compare_upgrade_support.py",
+    "sha256": "ca47575c06293166fe6ebe4da065efb28df3a16233e5a595a98e4183419005ea",
+    "bytes": 5581
+  },
+  {
+    "path": "runtime-source/connection_practice.py",
+    "sha256": "927df9ba9f953c59b4d00e6fc9c27e8288c9f707a2c2353357e00bee25e741ad",
+    "bytes": 22229
+  },
+  {
+    "path": "runtime-source/construction_curriculum.py",
+    "sha256": "4cc1e131fa5c1bd66ab7166a0623a11e44e4a915ede86d1227135fd353663d14",
+    "bytes": 14268
+  },
+  {
+    "path": "runtime-source/construction_practice.py",
+    "sha256": "eebd5bcf6ff9ba16586f8d8f33a3eb07228b0da5f495042957e814ea606c8c92",
+    "bytes": 10562
+  },
+  {
+    "path": "runtime-source/diagnose_city_policy.py",
+    "sha256": "077374535ada5c79f972f964de108c208071b40bca9a49b8788a26f5826e8870",
+    "bytes": 6428
+  },
+  {
+    "path": "runtime-source/diagnose_light_failure.py",
+    "sha256": "427a69e5cf387365d444dd4f6456f3f980d9723fc2d2d25db09ce1f28db6bdc8",
+    "bytes": 7137
+  },
+  {
+    "path": "runtime-source/diagnose_policy_regression.py",
+    "sha256": "698247507e1b01071206e71aac681ad01d60cdacddf095d81ff29f0d4c79c673",
+    "bytes": 6528
+  },
+  {
+    "path": "runtime-source/driveway_ppo.py",
+    "sha256": "14a7a990d3f56fcc0514bd8090c1b561a4df44a4b5b9d104b76870ef9031bab5",
+    "bytes": 10922
+  },
+  {
+    "path": "runtime-source/edge_policy.py",
+    "sha256": "b0a77d9976dfe73bd3dce11bdb4b6e4146853b3d55b394d047045b64b4f0ab12",
+    "bytes": 6078
+  },
+  {
+    "path": "runtime-source/environment.py",
+    "sha256": "eeb3bde8d9e547299deb1a08e6afd3a77a8d6ca5da18b156c91e05c2e792897f",
+    "bytes": 25617
+  },
+  {
+    "path": "runtime-source/evaluate_checkpoint.py",
+    "sha256": "e550a4f81e014bfe276059752ccf1c91e91e555777062a8ebf03a054d6ea6f21",
+    "bytes": 4811
+  },
+  {
+    "path": "runtime-source/evaluate_city_checkpoints.py",
+    "sha256": "110f0c60222e609fc8a6846f0bcea9b33ca258d17b3a48a93bba348f845f2345",
+    "bytes": 4907
+  },
+  {
+    "path": "runtime-source/evaluate_city_curriculum.py",
+    "sha256": "5a5670f7b1513c8b8f107b47f72b20931574b3815594978fecd424aa0932eca2",
+    "bytes": 6866
+  },
+  {
+    "path": "runtime-source/evaluate_city_opening_pilot.py",
+    "sha256": "2eec53c0d632fdb2744eced5f8ceae1f389c50214c4347da24bfd17610747355",
+    "bytes": 6230
+  },
+  {
+    "path": "runtime-source/evaluate_city_policy.py",
+    "sha256": "f56294d25ec58a11dabff420dc799a114167d6d8624775fbcfdb50b5f36e1800",
+    "bytes": 6340
+  },
+  {
+    "path": "runtime-source/evaluate_city_route_repair.py",
+    "sha256": "944d623c6c77256b6efd40eb1405af2322edb57b62079ba5b7074fc1a61d71ac",
+    "bytes": 5987
+  },
+  {
+    "path": "runtime-source/evaluate_city_service.py",
+    "sha256": "2dc4448752edc91d66a259f44ae48a1a86901d5f9fab7504b9a1b6cdda514173",
+    "bytes": 5566
+  },
+  {
+    "path": "runtime-source/evaluate_construction_ppo.py",
+    "sha256": "cc8d56daaad0a960019d484c6c4c01d037fe81f549f11f0e22633b0a8e270ec6",
+    "bytes": 6319
+  },
+  {
+    "path": "runtime-source/evaluate_fresh_signals.py",
+    "sha256": "f0017933c5f3a05a79c5afcd10a71903e76df526f239e6ff15400a9a1f616993",
+    "bytes": 5776
+  },
+  {
+    "path": "runtime-source/evaluate_limited_route_ppo.py",
+    "sha256": "f893e8b2aba77bb3030a899ae6af97a84a9ba2c014cbf109a8d39fd4772e0e13",
+    "bytes": 6730
+  },
+  {
+    "path": "runtime-source/evaluate_midgame_service.py",
+    "sha256": "05e1b6b8cecd6aa83cf05a4ab48ed59534fefc4675de1f3ab3ee98f448704507",
+    "bytes": 6486
+  },
+  {
+    "path": "runtime-source/evaluate_practice.py",
+    "sha256": "db54a9d3f61547d46c6c96e25f1ba67de1ef0f7351a3a54c2135f960f4b705c7",
+    "bytes": 4589
+  },
+  {
+    "path": "runtime-source/evaluate_triad_ppo.py",
+    "sha256": "7e80cf68324715a27ceffc15a9e1a00dfd4ea87abdde7455445dd176cd5a8b38",
+    "bytes": 7209
+  },
+  {
+    "path": "runtime-source/export_city_replays.py",
+    "sha256": "407cfc407b9b07c4b7af0aee444bc5c2e80ebd6700950cb060ea2920981ffbc1",
+    "bytes": 5801
+  },
+  {
+    "path": "runtime-source/goal_agent.py",
+    "sha256": "70f7c367938c4594ce8ddbccaebac55efe5757e9899c8df29f69a733fd729b31",
+    "bytes": 18424
+  },
+  {
+    "path": "runtime-source/hierarchy_batches.py",
+    "sha256": "199b47fd5404f581dbe29f744c1a02c7d96e99a2740f819d887875fe85273a52",
+    "bytes": 5896
+  },
+  {
+    "path": "runtime-source/hierarchy_checkpoint.py",
+    "sha256": "f614f5e0af58901f58abc6e3890fd5e15066ee6c9c7944d25b4fad51291051c6",
+    "bytes": 2256
+  },
+  {
+    "path": "runtime-source/hierarchy_objective.py",
+    "sha256": "c072cee2b4cb826e31ce9ef7dc0716dcca8dfc420d340e7830cac1242d56ce38",
+    "bytes": 2608
+  },
+  {
+    "path": "runtime-source/hierarchy_policy.py",
+    "sha256": "8cff3933e10c9fcdd10911dacd3c323eeff92ea85132cbc0e72d20c40915f5f5",
+    "bytes": 3977
+  },
+  {
+    "path": "runtime-source/hierarchy_rollout.py",
+    "sha256": "e98479c49ac509aa4fffddb19f5dce1b9f4b9183f2ffe3bf892a4c1549d79a89",
+    "bytes": 10119
+  },
+  {
+    "path": "runtime-source/hierarchy_updater.py",
+    "sha256": "cd6424efb489405555c0bc7c86c5cbce0b2e29aabc48e79eab7c53110be86fc9",
+    "bytes": 5223
+  },
+  {
+    "path": "runtime-source/midgame_timing_policy.py",
+    "sha256": "4119939bbf1e36f5ff1ab9ffa122c6cfb7a268b9469fcd4586be9ce870e60d45",
+    "bytes": 2470
+  },
+  {
+    "path": "runtime-source/migration.py",
+    "sha256": "a0e62177e8e0bdcafcc4436ad4fde2bb9fbd88289e2e196e25412bfb819f89af",
+    "bytes": 2028
+  },
+  {
+    "path": "runtime-source/offset_ppo.py",
+    "sha256": "2ea560ee24650524d8625e46fd369a65c6d3443d8bb298207b475dd05a00fa04",
+    "bytes": 11302
+  },
+  {
+    "path": "runtime-source/pair_ppo.py",
+    "sha256": "fac6a17f62f06e8edfa39d84204d9e896d1ac3ddf6d0a8e51e64d45a36647e8b",
+    "bytes": 16782
+  },
+  {
+    "path": "runtime-source/parallel.py",
+    "sha256": "a6fd56d586e8392d3ba0cd8c9355e8a2cd7001d5b9fc5d29dd05dfc17735a9aa",
+    "bytes": 3499
+  },
+  {
+    "path": "runtime-source/parallel_stage1.py",
+    "sha256": "b7a1eeef0e5485bfc038116e0449f3ad49b33d1e266d1bf7369d65b1cb9c55f8",
+    "bytes": 10944
+  },
+  {
+    "path": "runtime-source/planner_diagnostic.py",
+    "sha256": "405c47dd2706f4b2da32ba43e0dbe5ce4f7d6a22a2688efa395bf7658290d756",
+    "bytes": 5858
+  },
+  {
+    "path": "runtime-source/practice_replay.py",
+    "sha256": "2760018e513cb6dff022d88c727d900ac27faf7ff34dc261d7f8984fffd81e73",
+    "bytes": 5778
+  },
+  {
+    "path": "runtime-source/practice_reward.py",
+    "sha256": "cd1e54f5c499b3418022aa15b164bd25ade61e0304876766da386b45d88093f1",
+    "bytes": 2196
+  },
+  {
+    "path": "runtime-source/prepare_city_policy.py",
+    "sha256": "2005bcc6f19d9f9caecd754a8ee4f574014e287e4556bfe333ce4367770e9f29",
+    "bytes": 9985
+  },
+  {
+    "path": "runtime-source/prepare_city_recorded_starts.py",
+    "sha256": "35e02bf2445aa55dd5ea24f890a043c912ff5720e69a8cc267ed1ae43c2ddeeb",
+    "bytes": 3749
+  },
+  {
+    "path": "runtime-source/prepare_stage1.py",
+    "sha256": "37f7c1b1e80d5213116e38b35341152db4a3b500e2094636d4962502b834aaac",
+    "bytes": 7867
+  },
+  {
+    "path": "runtime-source/progress.py",
+    "sha256": "b71dc8acbb27b2a00dd37e750ad636394cb5c62f3f7bea632fb37654abc119cc",
+    "bytes": 13937
+  },
+  {
+    "path": "runtime-source/report_light_failure.py",
+    "sha256": "faf4c3244ee9b3f9d3d5ecfe123ef7c4451dc85f0cbb592c37b4fa32d8374ca8",
+    "bytes": 4088
+  },
+  {
+    "path": "runtime-source/rewards.py",
+    "sha256": "ea8cc85dad695962b88a860ca6178657cc0fbc877db310d535a9548803832a8d",
+    "bytes": 1196
+  },
+  {
+    "path": "runtime-source/run_city_growth_pilot.py",
+    "sha256": "c5f91acf6215edfcca74d3491cdb5e7656070457136ec77d2c2f76a086669ee1",
+    "bytes": 6674
+  },
+  {
+    "path": "runtime-source/run_city_learning_guarded.py",
+    "sha256": "34febdea1d8eb6d2f24325dc0232bf24ca04fe437f18431e4efc639c90cb2fae",
+    "bytes": 3781
+  },
+  {
+    "path": "runtime-source/run_city_overnight.py",
+    "sha256": "778a47721ea65b4d1d59efcbe5aea2496c083000a4da0bfbc051c0e5ac38a8b4",
+    "bytes": 13565
+  },
+  {
+    "path": "runtime-source/run_city_service_training.py",
+    "sha256": "a1124454697cda47d4c2230bee102328323666ffc066832cd5fe7fb946ce1e2e",
+    "bytes": 6612
+  },
+  {
+    "path": "runtime-source/run_city_strategy_long.py",
+    "sha256": "950f5a86133ec08ba8faa55b813bcf7cf9a73df23acf849f2a8321f018dd6cc4",
+    "bytes": 11951
+  },
+  {
+    "path": "runtime-source/run_final_evaluations.py",
+    "sha256": "780b46339fac1dc733860486f2147fc6092ecebc19958fc63c3eddd0df62e4ac",
+    "bytes": 3514
+  },
+  {
+    "path": "runtime-source/score_wait_ppo.py",
+    "sha256": "a57e790e5c43381cc7fb7eded15a8212e93629108cca021e52499d2f4a4116b6",
+    "bytes": 19146
+  },
+  {
+    "path": "runtime-source/select_investigation_candidates.py",
+    "sha256": "2ef85411db20633c3a704f3518fe8214c222ce8796ab8f4a7f94eecce66950a8",
+    "bytes": 3575
+  },
+  {
+    "path": "runtime-source/shutdown.py",
+    "sha256": "6163ef19e17b6ad7ac59e5020609384f5b40c7320810b16eb829824af3228191",
+    "bytes": 992
+  },
+  {
+    "path": "runtime-source/signal_agent.py",
+    "sha256": "6cda8d15aa798e5ec34bc0e3da6a6f1dcffa74c82e7e54a6ad3eb884a8ac544f",
+    "bytes": 7272
+  },
+  {
+    "path": "runtime-source/spare_road_eval.py",
+    "sha256": "c89470cc197eb6c5ae56a2c987d6e3e1968729536b8febacd6bf3308093b722c",
+    "bytes": 2139
+  },
+  {
+    "path": "runtime-source/spare_road_ppo.py",
+    "sha256": "dcda4f80a9aede3b3004f1af0e06212d03d7183b8cc5bcdfdfeedb0c3816de76",
+    "bytes": 12538
+  },
+  {
+    "path": "runtime-source/spatial_policy.py",
+    "sha256": "8252c57b518486576c4d27a2e0b9045519a446afcd811186bde24b93401ad540",
+    "bytes": 7614
+  },
+  {
+    "path": "runtime-source/stop_at_steps.py",
+    "sha256": "f332ab0a72ffc94a5c9eb7e18768cc7ca74b2fdaddfc8843b2733189545ead54",
+    "bytes": 1099
+  },
+  {
+    "path": "runtime-source/terrain_ppo.py",
+    "sha256": "90df7aadb9ec082b824ba7789b960dab7110fabc88f944a0a96c0c882a964a51",
+    "bytes": 19686
+  },
+  {
+    "path": "runtime-source/test_city_bridge_strategy_policy.py",
+    "sha256": "1985341900bab3608b7f5531dccc1793b6760d68c4c5dd5f2e8d59ca844a82bc",
+    "bytes": 4478
+  },
+  {
+    "path": "runtime-source/test_city_established_policy.py",
+    "sha256": "56fb368874b08185c5456db1d85774b95aa509c4b86532a677319e7141a312e2",
+    "bytes": 1999
+  },
+  {
+    "path": "runtime-source/test_city_exploration_policy.py",
+    "sha256": "ad3f96ab2b598e8aefdb746702bd0eba59b50e46358b44c5681af6a7b0d8342e",
+    "bytes": 2295
+  },
+  {
+    "path": "runtime-source/test_city_gradient_audit.py",
+    "sha256": "8db506c685100a067ef291806c0922144c6d94a74aa99e6b1cdbe4ebff19cc93",
+    "bytes": 1236
+  },
+  {
+    "path": "runtime-source/test_city_network_service.py",
+    "sha256": "76f7b5acf73d169dcce1d7b3de1e24a41d4b21325c8e742964f67a56bac0fb2c",
+    "bytes": 2942
+  },
+  {
+    "path": "runtime-source/test_city_opening_strategy_policy.py",
+    "sha256": "f53e9337e9eb82e8e1dc2a39c204fc35815ceb87c7aabe695c6dd737cafafacf",
+    "bytes": 2671
+  },
+  {
+    "path": "runtime-source/test_city_optimizer_settings.py",
+    "sha256": "45b66abb93974ff8a6ace07c98f861d021871d4f0364ed51ec6f5eb513372bde",
+    "bytes": 2406
+  },
+  {
+    "path": "runtime-source/test_city_relational_policy.py",
+    "sha256": "75cde4fc3ffbc467f03bf63825701eebd84ad4ac73a7e0fb07fe7e860407a2ef",
+    "bytes": 2357
+  },
+  {
+    "path": "runtime-source/test_city_reserve_policy.py",
+    "sha256": "fe4add0e3d63d40c4c01f6772d45dfc42df4e104b9a6b26e4d2affaa0aace8da",
+    "bytes": 2471
+  },
+  {
+    "path": "runtime-source/test_city_strategy_long.py",
+    "sha256": "749a25345779a1b14617401a4d2b8ca779ba9e356be9b6439adbc498aa40f744",
+    "bytes": 2670
+  },
+  {
+    "path": "runtime-source/test_city_strategy_policy.py",
+    "sha256": "0f23d2807f31435e0ed4811ad07cefbf20d65b3a3b901c40f80643dd674f4bd3",
+    "bytes": 1755
+  },
+  {
+    "path": "runtime-source/test_city_task_reporting.py",
+    "sha256": "9450673883ccf6e1b9d7c86bd346bbfd137ca58a69e2a624f9efd5053522ece5",
+    "bytes": 1153
+  },
+  {
+    "path": "runtime-source/test_city_task_rollout_buffer.py",
+    "sha256": "bca0bbd18606ea02cff845f66e41f9aa178c15d04e19287e7f50b56036a04744",
+    "bytes": 3289
+  },
+  {
+    "path": "runtime-source/test_city_wide_strategy_policy.py",
+    "sha256": "9fa2bd7259ddbc6c5f5bd899caed78caeb98e0c656a4cd242eba8665328108e5",
+    "bytes": 1964
+  },
+  {
+    "path": "runtime-source/test_compact.py",
+    "sha256": "b74a27abc7093434d1b3dea6789d4cb5351f89a2333cb431c83d87bb8fccaeeb",
+    "bytes": 4315
+  },
+  {
+    "path": "runtime-source/test_comparison_resume.py",
+    "sha256": "de0967dcf1e44000ce3ca73f4e9432eedd3d897a52ce1024009ce14dfdc3e80a",
+    "bytes": 4608
+  },
+  {
+    "path": "runtime-source/test_connection_practice.py",
+    "sha256": "7070e2f7d9c7d578bd105d039d14c337f76ffa953cbbdbdb96e51777cb38c41a",
+    "bytes": 11249
+  },
+  {
+    "path": "runtime-source/test_construction_practice.py",
+    "sha256": "8ea98f6ab16273ba72339f3b86875ca476539ac86a88bcd70a8ca2ba9ccd4ec6",
+    "bytes": 2158
+  },
+  {
+    "path": "runtime-source/test_direct_practice.py",
+    "sha256": "4752d101fdf5ff8adf37cf883f7c674ac670af4eb8cd77656fcdab2e145fb7b6",
+    "bytes": 5057
+  },
+  {
+    "path": "runtime-source/test_draw_mask.py",
+    "sha256": "010ae1631e077d4ec11bbb321427ae3ebfe47ed99eb2f88654e7bf93e3ccaa08",
+    "bytes": 1977
+  },
+  {
+    "path": "runtime-source/test_draw_only.py",
+    "sha256": "8e5d3b2c4f791e032c25796e26c8474a815547b1bbabcd9a18e1196898042ca9",
+    "bytes": 3083
+  },
+  {
+    "path": "runtime-source/test_edge_policy.py",
+    "sha256": "e02849b608758f14b7d3c8fd255b96c6a92c450ee1202adb2f5036b6ea17d6bc",
+    "bytes": 3640
+  },
+  {
+    "path": "runtime-source/test_environment.py",
+    "sha256": "4259933f104e68796ca29e2c3c37bd831602476e2e6d9cfd30bf8ebe8b72de4a",
+    "bytes": 8984
+  },
+  {
+    "path": "runtime-source/test_evaluate_practice.py",
+    "sha256": "1b346e018dc20128b2784432d459f353bb0728fdf5b42eaff313930bbea55b6c",
+    "bytes": 4644
+  },
+  {
+    "path": "runtime-source/test_features.py",
+    "sha256": "6be79f9d5e4c0523d1fde439347ac2ca0ebd22d9c6f0ca9826d549779fcdfe0e",
+    "bytes": 7918
+  },
+  {
+    "path": "runtime-source/test_first_upgrade.py",
+    "sha256": "cae52e1c97826f8d5bbdaf7e9d1cd8b2bbcd740a03b4555231678a41c053d5f2",
+    "bytes": 6359
+  },
+  {
+    "path": "runtime-source/test_goal_agent.py",
+    "sha256": "fe9cc28ee36a55b97ce0ec0dd4e49a9cb8d54a3c9621bb47fc33fc2ee801a530",
+    "bytes": 11331
+  },
+  {
+    "path": "runtime-source/test_hierarchy_credit.py",
+    "sha256": "7615cd6401162f4196c43b1645a849a3f082b5dc8794607afcda82b80c766626",
+    "bytes": 4436
+  },
+  {
+    "path": "runtime-source/test_hierarchy_integration.py",
+    "sha256": "a246097d0b195fb175a1ba43d6683ad5cda031155bba02a43536c4d13ac70de9",
+    "bytes": 3303
+  },
+  {
+    "path": "runtime-source/test_hierarchy_objective.py",
+    "sha256": "ba94ecd9f19548e8241aea36d4e9368e330999a67f0c2060b2518c4a9f15a4d3",
+    "bytes": 2500
+  },
+  {
+    "path": "runtime-source/test_hierarchy_policy.py",
+    "sha256": "ec75be638d27a2c5c8851069c66eef39d7c543423b4ce033737e2f741208afa4",
+    "bytes": 3206
+  },
+  {
+    "path": "runtime-source/test_hierarchy_updater.py",
+    "sha256": "a7a8c6399597b7dec09b89c3a1d647b8ca330c581c08e81acc42e743cc23fb0e",
+    "bytes": 375
+  },
+  {
+    "path": "runtime-source/test_inference_collector.py",
+    "sha256": "35d3577988520370c35629c0bff25718ccbd2e656a6766253903c79f64415925",
+    "bytes": 4520
+  },
+  {
+    "path": "runtime-source/test_one_gap.py",
+    "sha256": "6bc2157662ae681b8da9e161f56b7e6b59ca721d75a4269ec6e2d787fc13aa3f",
+    "bytes": 3985
+  },
+  {
+    "path": "runtime-source/test_parallel.py",
+    "sha256": "137239c0291ee0e88b696b04d0badaed765783301af2e2ce67228f1798e02bae",
+    "bytes": 5157
+  },
+  {
+    "path": "runtime-source/test_parallel_stage1.py",
+    "sha256": "a1229dfcd912f1c458600277ed36633d9cd064dae97e7852413771f36bdea8f3",
+    "bytes": 4112
+  },
+  {
+    "path": "runtime-source/test_practice_protocol.py",
+    "sha256": "b7249f95305467550b1c85b2c63739a8cb9dabe9628ac931abddc53cac630b6e",
+    "bytes": 2128
+  },
+  {
+    "path": "runtime-source/test_practice_replay.py",
+    "sha256": "4c2757cb1851fbd5a653f27eb8cd29f7f960eeadc32fb14c8fe9448939b2940c",
+    "bytes": 2544
+  },
+  {
+    "path": "runtime-source/test_reward_experiment.py",
+    "sha256": "0f04719c8cef03a1915e62531d747cc449a607f09e60aa840410d634285ca516",
+    "bytes": 6469
+  },
+  {
+    "path": "runtime-source/test_rewards.py",
+    "sha256": "5b74cef1b4b12b28667f9e5712f13511bb6fa3b087792db7947e1178fe86eedb",
+    "bytes": 6750
+  },
+  {
+    "path": "runtime-source/test_shutdown.py",
+    "sha256": "cb633a1711f78e9b17116f2edcb2ec67d181e698d008dc74c127871920dbc45a",
+    "bytes": 1315
+  },
+  {
+    "path": "runtime-source/test_signal_agent.py",
+    "sha256": "02278573d903fa61ead2c4ec5fa8a52cc73cd11febd8d9915f360cc2ed619bb3",
+    "bytes": 6645
+  },
+  {
+    "path": "runtime-source/test_signal_context.py",
+    "sha256": "b8a93684b88dd6e71a75d353e8f35bcb28a15c7b3a7e3f44c677456f463f2f04",
+    "bytes": 4018
+  },
+  {
+    "path": "runtime-source/test_single_build.py",
+    "sha256": "7b891098d86352427f66e4b81604d8cc11466b63b67d5b4cc968a624aeed6f2f",
+    "bytes": 6666
+  },
+  {
+    "path": "runtime-source/test_visible_observation.py",
+    "sha256": "3b11741066f649abe8e314971e2a333c2df517ee31a692eb5c857b3edc8df59c",
+    "bytes": 7247
+  },
+  {
+    "path": "runtime-source/test_workflow.py",
+    "sha256": "1607760913039b7cdcf81d21349bcc33115be45516115acba38998dc66c4d62f",
+    "bytes": 7740
+  },
+  {
+    "path": "runtime-source/traffic_ppo.py",
+    "sha256": "783a7774b45594e7f637b956c10ccf27b8b280ad97678c8e884c5993a6129797",
+    "bytes": 33720
+  },
+  {
+    "path": "runtime-source/traffic_practice.py",
+    "sha256": "6ce9a5168934ccd745e68f828e922502f168b526ed65da7decec3432b8484362",
+    "bytes": 9907
+  },
+  {
+    "path": "runtime-source/train.py",
+    "sha256": "1faf9cb829c6ac78a51d98035521297f4abe1a1e1d958c271bc665e84746163d",
+    "bytes": 15325
+  },
+  {
+    "path": "runtime-source/train_city_curriculum.py",
+    "sha256": "ade8b32e2356f66cd1f1661fb10fabe370aa6551fc3a6dd295115ef0415640b9",
+    "bytes": 16047
+  },
+  {
+    "path": "runtime-source/train_city_network_service.py",
+    "sha256": "63f3b6855c9cfad0490eaf77075aa2afde9b279c1fb8f6088f887c12dd5fb9ca",
+    "bytes": 12313
+  },
+  {
+    "path": "runtime-source/train_city_opening_pilot.py",
+    "sha256": "b139517d148caa7a755d4ce1b29aabf47d7b212a628fe4fa7915229d922c29b0",
+    "bytes": 6787
+  },
+  {
+    "path": "runtime-source/train_city_route_repair.py",
+    "sha256": "df73c73de53992525bd10a5101d9e716950b235726d0ed0ea81d0f6fb082cdd8",
+    "bytes": 10197
+  },
+  {
+    "path": "runtime-source/train_city_score_pilot.py",
+    "sha256": "1a47e6d7fb42cd0a1904c93bd20dd45227f610d174ba68c0af79ea883fafe3ed",
+    "bytes": 6467
+  },
+  {
+    "path": "runtime-source/train_goal.py",
+    "sha256": "b9fd08529634d426ed0a423e56440b28d953507921906c4468d388e0c1676306",
+    "bytes": 16466
+  },
+  {
+    "path": "runtime-source/train_limited_route_ppo.py",
+    "sha256": "8dbff32ee253f236fb635918875d41e9697e92f9e6c446347102e2238b981bc5",
+    "bytes": 10696
+  },
+  {
+    "path": "runtime-source/train_midgame_service.py",
+    "sha256": "8a356a4524e495e08bb9d6d7f7cf71824d8ebf1f0a815b21e4366c3734a5a655",
+    "bytes": 11503
+  },
+  {
+    "path": "runtime-source/train_parallel_stage1.py",
+    "sha256": "83e1b30bad0e09c374e3529801d6719ce61e84a599115b1e1c0207af3da256bf",
+    "bytes": 14113
+  },
+  {
+    "path": "runtime-source/triad_curriculum_ppo.py",
+    "sha256": "cdebdec5ab83266aa4add11fd8846631cdffa99df9c61fd898fd5fe52d6e785a",
+    "bytes": 21411
+  },
+  {
+    "path": "runtime-source/triad_ppo.py",
+    "sha256": "e694da208c662769a8b8d768916b5931d9e1c21f6c3d7783226c10a2edc3b8b2",
+    "bytes": 12957
+  },
+  {
+    "path": "runtime-source/triad_score_ppo.py",
+    "sha256": "86ea1bbad36871a4c6e65844b72a4b60293fd8d928dd19ca363e1584fe109929",
+    "bytes": 24418
+  },
+  {
+    "path": "runtime-source/upgrade_rules.py",
+    "sha256": "aa27d3de7b56f6bf5cf5e94b9e8ca446b2038d10711bf831c35980601d561c79",
+    "bytes": 840
+  },
+  {
+    "path": "runtime-source/visible_observation.py",
+    "sha256": "76ea6a0ee1b3c1b44bc8d0ca2a16a9c349432d2172ab83cc5dc14fbdf4417cb9",
+    "bytes": 10812
+  },
+  {
+    "path": "runtime-source/watch_best.py",
+    "sha256": "20b27160bd698afbbe3446f222961fefa89fb0cdd18a298d2543f2ef47d933c9",
+    "bytes": 1775
+  },
+  {
+    "path": "runtime-source/watch_live.py",
+    "sha256": "c3f944abd72ef26ade242d58af28f66161e825ba2903de87e88b4bc43ef3266a",
+    "bytes": 5204
+  },
+  {
+    "path": "runtime-source/watch_stage1.py",
+    "sha256": "c62c43bfc851e39270fa30ad78d5c3c17a7b4cfd5314c2a051ac5b7977e99b73",
+    "bytes": 4650
+  },
+  {
+    "path": "source-context.json",
+    "sha256": "6e2f23dfd2856dbc3128997b1436ad81ee9f74de75d2e011aa15887e6dc2ba9f",
+    "bytes": 210
+  },
+  {
+    "path": "status.json",
+    "sha256": "5eb43d7b028e175943c50606977faa626cbc8d89ade3f05841df8b96361c5bb9",
+    "bytes": 1368
+  },
+  {
+    "path": "summarize.py",
+    "sha256": "5b84e5f351ab53913eea43e55f3e2a89bb6474c4dbe22dedd5787a2d51538fa1",
+    "bytes": 2490
+  },
+  {
+    "path": "summarize_confirm.py",
+    "sha256": "1bb5d9720b415c32fb447bb2fc333edcab5cd8c562d0d5b4c54a0c5608582c1f",
+    "bytes": 1878
+  },
+  {
+    "path": "summarize_offset.py",
+    "sha256": "8b6e58b477839cc8f09aad5f8dcbf920f3b4a0e46a4400bf1e204d4e82e8dd77",
+    "bytes": 2501
+  },
+  {
+    "path": "summary.log",
+    "sha256": "ba6a4da3e3c1c8378aaef1653b72d5ce4d7e7204cf81680460af0d138b586481",
+    "bytes": 6140
+  },
+  {
+    "path": "train-command.json",
+    "sha256": "a9873ad824176f5bbf6ee7ec52cafb8531a3b78b99386b7685c1ac6087be4dcd",
+    "bytes": 930
+  },
+  {
+    "path": "watch-final-191000100/frames.png",
+    "sha256": "909967938fc929cb2ca5f3bb80966fbaf2288dcf9a96043426ace9bfd861a6b7",
+    "bytes": 74935
+  },
+  {
+    "path": "watch-final-191000100/replay.html",
+    "sha256": "3cd913b37ed2f1016772dcdd2c24d5509447db1b120ebc2e180c0137a78bde62",
+    "bytes": 59221
+  },
+  {
+    "path": "watch-final-191000100/trace.json",
+    "sha256": "8c51093b5a6ffa711a0c935c4a3793366a95f80288f1b8e1630b18196ca1be9e",
+    "bytes": 55270
+  },
+  {
+    "path": "watch-final-191000108/replay.html",
+    "sha256": "aabb91535a6ae0c81edf0ea1f0fc6d485cd8e0ec3fe2fcd1dc3d10d143e72cd9",
+    "bytes": 64926
+  },
+  {
+    "path": "watch-final-191000108/trace.json",
+    "sha256": "c205572cca15bde167dcb55eb72bba5592642751a7a95451c15e1b89e441c63b",
+    "bytes": 60967
+  },
+  {
+    "path": "watch-final.log",
+    "sha256": "91f103f1c6772d05e941221afd3dbde3dd754d0a60aebfb1c3c9965c94d059e3",
+    "bytes": 746
+  },
+  {
+    "path": "watch-parent-191000100/frames.png",
+    "sha256": "9327b1e1edd17bddc76c7a5f7c8dacc11078cafbe8b563f4f2a62bc5fd81eb00",
+    "bytes": 75116
+  },
+  {
+    "path": "watch-parent-191000100/replay.html",
+    "sha256": "4a254167c316acc5fc5fcce669190f169857377d815921bc8aae5eed286326d0",
+    "bytes": 59282
+  },
+  {
+    "path": "watch-parent-191000100/trace.json",
+    "sha256": "7208ea129b4aa1f3e6ae3837c3b37f6a829dff62ff4fa2dde10819b581372edf",
+    "bytes": 55323
+  },
+  {
+    "path": "watch-parent-191000108/replay.html",
+    "sha256": "2a40dee2b854d854d09c6a4b18120d2df412db49c49ca41433cb009031a4c752",
+    "bytes": 64786
+  },
+  {
+    "path": "watch-parent-191000108/trace.json",
+    "sha256": "3ee36580fd9a4cc4d4398595225a2de853b1f36919a365319b8df80a57260e82",
+    "bytes": 60819
+  },
+  {
+    "path": "watch-parent.log",
+    "sha256": "91f103f1c6772d05e941221afd3dbde3dd754d0a60aebfb1c3c9965c94d059e3",
+    "bytes": 746
+  },
+  {
+    "path": "watch.py",
+    "sha256": "67b1fb07e813e95bd624f1bf066c7c1265ffdfa7c9a508da466b6043107360b5",
+    "bytes": 1221
+  }
+]

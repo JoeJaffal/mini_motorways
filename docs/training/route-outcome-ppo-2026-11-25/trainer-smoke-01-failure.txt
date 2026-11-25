@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/mohammadjaffal/mini_motorways/training/train_city_route_outcome.py", line 120, in <module>
+    main()
+  File "/home/mohammadjaffal/mini_motorways/training/train_city_route_outcome.py", line 96, in main
+    torch.testing.assert_close(value, model.policy.state_dict()[name].detach().cpu(), rtol=0, atol=0)
+  File "/home/mohammadjaffal/mini_motorways/.venv/lib/python3.12/site-packages/torch/testing/_comparison.py", line 1589, in assert_close
+    raise error_metas[0].to_error(msg)
+AssertionError: Tensor-likes are not equal!
+
+Mismatched elements: 720 / 2368 (30.4%)
+Greatest absolute difference: 0.0001502707600593567 at index (16, 55)
+Greatest relative difference: 0.9242464303970337 at index (0, 61)

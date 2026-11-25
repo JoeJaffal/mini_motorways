@@ -1,0 +1,25 @@
+{
+  "publication": "6bd7f71",
+  "simulator_source": "938b9f80e67ca5341920a10e9e671164a474fc38",
+  "training_authorized": false,
+  "training_ready": false,
+  "objective": {
+    "reward": "native trip delta only",
+    "gamma": 1.0
+  },
+  "paused_tokens": 4096,
+  "pause_guard_resets_on": "positive simulated time advance only",
+  "task_horizon_seconds": 180,
+  "task_horizon_bootstrap": false,
+  "operational_interruption_bootstrap": true,
+  "pending": [
+    "81/54/motorway visible schema plus hierarchy context",
+    "1501 token interface reconciliation",
+    "exact pure native physical masks",
+    "shared encoder and distinct actor/value heads",
+    "level-specific trace units and lambda",
+    "collector and version-controlled behavior policy",
+    "zero-time role replay format",
+    "target Linux PC speed measurements"
+  ]
+}

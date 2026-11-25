@@ -1,0 +1,21 @@
+{
+  "branch": "mohammad",
+  "base_revision": "6bd7f71",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "b0e8f5e3276f1e765131928d61cfcdb8f3a3a5925a5e9f98aa10c21dcd5a7399"
+    },
+    {
+      "path": "verification.json",
+      "sha256": "926a276933d60219f639052b1e3daef854b5bde4f65674569dafd25a1ab12a28"
+    }
+  ],
+  "source_hashes": {
+    "training/city_road_policy.py": "4059beba8899b1293daa7056a830ce88ba8a2fb88b4eef30e46f5755f0e0cff6",
+    "training/prepare_city_policy.py": "33c275c6fbf6f3b181dd51e89e91eec0a8dea0b176a8743ecefe7fb0101c144a",
+    "training/city_road_pilot.py": "90ca72a9048241da628f343ccac9c43b61c63d9b1f7c98142c9f753b19c199f5",
+    "training/edge_policy.py": "b0a77d9976dfe73bd3dce11bdb4b6e4146853b3d55b394d047045b64b4f0ab12",
+    "training/visible_observation.py": "76ea6a0ee1b3c1b44bc8d0ca2a16a9c349432d2172ab83cc5dc14fbdf4417cb9"
+  }
+}

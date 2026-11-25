@@ -1,0 +1,27 @@
+{
+  "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-overnight-resume-smoke-01/checkpoints/city-000008192-1477b77a.zip",
+  "development": {
+    "checkpoint_decisions": 8192,
+    "mode": "sampled",
+    "total_games": 2,
+    "scoring_games": 1,
+    "mean_score": 18.5,
+    "median_score": 18.5,
+    "best_score": 37,
+    "median_survival_seconds": 213.925,
+    "mean_road_units": 47.5,
+    "mean_wait_actions": 214.5,
+    "games_with_weekly_award": 2,
+    "games_with_no_roads": 0,
+    "games_with_empty_stock": 0,
+    "horizon_truncations": 0,
+    "paired_score_delta": 6.5,
+    "paired_wins": 1,
+    "paired_ties": 1,
+    "paired_losses": 0,
+    "paired_bootstrap_95_percent": [
+      0.0,
+      13.0
+    ]
+  }
+}

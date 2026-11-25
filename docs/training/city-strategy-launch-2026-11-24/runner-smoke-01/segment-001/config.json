@@ -1,0 +1,21 @@
+{
+  "dll": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-runner-smoke-01/runtime/host/TrafficHost.dll",
+  "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-fast-01/final.zip",
+  "output": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-runner-smoke-01/segment-001",
+  "stage": "city",
+  "collapse_forced_wait": true,
+  "fast_priority_tail": false,
+  "workers": 1,
+  "rollouts": 1,
+  "seed_start": 180100000,
+  "learning_rate": 0.001,
+  "rollout_steps": 512,
+  "batch_size": 128,
+  "gae_lambda": 1.0,
+  "horizon": 600,
+  "record_dir": "/home/mohammadjaffal/mini_motorways/docs/training/city-strategy-launch-2026-11-24/runner-smoke-01/segment-001",
+  "save_every_rollouts": 1,
+  "parent_sha256": "d9bb06324d1641f588e49c5cd95da0d0027f49f967eaef3b92d065ea8f199cd3",
+  "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+  "decision_budget": 512
+}

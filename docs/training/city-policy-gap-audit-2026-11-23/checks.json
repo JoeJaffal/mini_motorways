@@ -1,0 +1,28 @@
+{
+  "branch": "Maskable-PPO",
+  "revision": "6bd7f7193b26ae0f5aa12563f3dd89769115df6e",
+  "native_suites_passed": 99,
+  "stage1_legality_actions_passed": 1116,
+  "python_tests": 66,
+  "python_passed": 64,
+  "python_errors": [
+    {
+      "test": "test_time_limit_and_reward_are_native_trip_delta",
+      "bypassed_ticks": 3580,
+      "score_before": 11,
+      "return_before": 0,
+      "score_after": 12,
+      "return_after": 1
+    },
+    {
+      "test": "test_wait_stops_at_fractional_task_horizon",
+      "bypassed_ticks": 3595,
+      "score_before": 12,
+      "return_before": 0,
+      "score_after": 12,
+      "return_after": 0
+    }
+  ],
+  "python_error_message": "Reward ledger mismatch",
+  "note": "The older practice tests advance native time by calling _call directly, skipping the ordinary reward-accounting transition."
+}

@@ -1,0 +1,89 @@
+{
+  "development": {
+    "models": [
+      {
+        "mean": 85.03125,
+        "scoring": 31,
+        "games": 32
+      },
+      {
+        "mean": 97.5625,
+        "scoring": 31,
+        "games": 32
+      },
+      {
+        "mean": 93.53125,
+        "scoring": 30,
+        "games": 32
+      }
+    ],
+    "calibrated_vs_original": {
+      "n": 32,
+      "mean_delta": 12.53125,
+      "paired_bootstrap_95": [
+        -6.96875,
+        31.28125
+      ]
+    },
+    "trained_vs_original": {
+      "n": 32,
+      "mean_delta": 8.5,
+      "paired_bootstrap_95": [
+        -12.0625,
+        28.59453124999999
+      ]
+    },
+    "trained_vs_calibrated": {
+      "n": 32,
+      "mean_delta": -4.03125,
+      "paired_bootstrap_95": [
+        -23.0,
+        15.375
+      ]
+    }
+  },
+  "independent": {
+    "models": [
+      {
+        "mean": 63.53125,
+        "scoring": 26,
+        "games": 32
+      },
+      {
+        "mean": 82.125,
+        "scoring": 26,
+        "games": 32
+      },
+      {
+        "mean": 67.4375,
+        "scoring": 26,
+        "games": 32
+      }
+    ],
+    "calibrated_vs_original": {
+      "n": 32,
+      "mean_delta": 18.59375,
+      "paired_bootstrap_95": [
+        3.125,
+        35.0625
+      ]
+    },
+    "trained_vs_original": {
+      "n": 32,
+      "mean_delta": 3.90625,
+      "paired_bootstrap_95": [
+        -15.93828125,
+        23.59453124999999
+      ]
+    },
+    "trained_vs_calibrated": {
+      "n": 32,
+      "mean_delta": -14.6875,
+      "paired_bootstrap_95": [
+        -35.125,
+        4.0
+      ]
+    }
+  },
+  "overlap_city_seeds": []
+}

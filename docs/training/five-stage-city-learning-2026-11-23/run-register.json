@@ -1,0 +1,104 @@
+{
+  "runs": [
+    {
+      "run": "stability-01",
+      "added_decisions": 22528,
+      "episodes": 41,
+      "seconds": 190.04497506306507,
+      "lr": 1e-06,
+      "forced_wait_compression": false,
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-established-pilot-01/checkpoints/city-000425984-7ec13846.zip"
+    },
+    {
+      "run": "connections-01",
+      "added_decisions": 32768,
+      "episodes": 508,
+      "seconds": 319.88290982099716,
+      "lr": 1e-05,
+      "forced_wait_compression": false,
+      "parent": "output/training/city-established-pilot-01/checkpoints/city-000425984-7ec13846.zip"
+    },
+    {
+      "run": "waiting-01",
+      "added_decisions": 32768,
+      "episodes": 512,
+      "seconds": 294.83102015499026,
+      "lr": 1e-05,
+      "forced_wait_compression": false,
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-five-stage-connections-01/final.zip"
+    },
+    {
+      "run": "connections-02",
+      "added_decisions": 32768,
+      "episodes": 508,
+      "seconds": 314.4309145989828,
+      "lr": 0.0003,
+      "forced_wait_compression": false,
+      "parent": "output/training/city-five-stage-connections-01/final.zip"
+    },
+    {
+      "run": "waiting-02",
+      "added_decisions": 16384,
+      "episodes": 256,
+      "seconds": 132.49977584090084,
+      "lr": 0.0003,
+      "forced_wait_compression": false,
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-five-stage-connections-02/final.zip"
+    },
+    {
+      "run": "connections-03",
+      "added_decisions": 4096,
+      "episodes": 359,
+      "seconds": 136.50168085703626,
+      "lr": 0.0003,
+      "forced_wait_compression": true,
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-five-stage-waiting-02/final.zip"
+    },
+    {
+      "run": "waiting-03",
+      "added_decisions": 4096,
+      "episodes": 164,
+      "seconds": 84.37700819899328,
+      "lr": 0.0003,
+      "forced_wait_compression": true,
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-five-stage-connections-03/final.zip"
+    },
+    {
+      "run": "traffic-01",
+      "added_decisions": 8192,
+      "episodes": 2014,
+      "seconds": 656.7145826170454,
+      "lr": 0.0003,
+      "forced_wait_compression": true,
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-five-stage-traffic-initial-01/start.zip"
+    },
+    {
+      "run": "mixed-01",
+      "added_decisions": 8192,
+      "episodes": 119,
+      "seconds": 149.6069150189869,
+      "lr": 1e-05,
+      "forced_wait_compression": true,
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-five-stage-traffic-01/final.zip"
+    },
+    {
+      "run": "relations-01",
+      "added_decisions": 4096,
+      "episodes": 1770,
+      "seconds": 357.29125442600343,
+      "lr": 0.03,
+      "forced_wait_compression": true,
+      "parent": "output/training/city-five-stage-relations-initial-02/start.zip"
+    },
+    {
+      "run": "relations-mixed-01",
+      "added_decisions": 4096,
+      "episodes": 57,
+      "seconds": 80.48657909408212,
+      "lr": 0.003,
+      "forced_wait_compression": true,
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-five-stage-relations-01/final.zip"
+    }
+  ],
+  "total_added_decisions": 169984
+}

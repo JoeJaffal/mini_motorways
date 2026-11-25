@@ -1,0 +1,23 @@
+{
+  "status": "regression_stop",
+  "pid": 335647,
+  "started": "2026-11-24T17:04:15.371337+02:00",
+  "training_seconds": 626.929874713067,
+  "segments": 1,
+  "current_checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-rate-01/segment-001/final.zip",
+  "best_checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-wide-initial-01/start.zip",
+  "failed_reviews": 1,
+  "updated": "2026-11-24T17:16:13.600395+02:00",
+  "active_segment": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-rate-01/segment-001",
+  "phase": "finished",
+  "current_sha256": "a5775b343c07bdd03bc08dddc6aca9a5223d509bf98c919575960792d47e0313",
+  "active_review": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-rate-01/review-001",
+  "last_review": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-rate-01/review-001",
+  "last_decision": {
+    "retained": false,
+    "promote": false,
+    "failures": 1,
+    "stop": true
+  },
+  "best_sha256": "9d9c9c95e4955a14461358f3203143be5f70331f8cbbb4bc26d0951b3674447a"
+}

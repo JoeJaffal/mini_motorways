@@ -1,0 +1,69 @@
+{
+  "checkpoints": [
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/mini-fixed-route-01/training/checkpoint-000008192.zip",
+      "sha256": "5147c87f9bd7df1131737a041a0b2531f2fb43f4bd1b622ebb83e2e74d7ec588",
+      "added_decisions": 8192,
+      "optimizer_steps_added": 256,
+      "episodes": 685,
+      "seconds": 229.50022871000692
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/mini-fixed-route-01/training/checkpoint-000016384.zip",
+      "sha256": "6496a3052898c19ee787074294f462ae9b50aa18617680cf618f18503222f0c8",
+      "added_decisions": 16384,
+      "optimizer_steps_added": 512,
+      "episodes": 1376,
+      "seconds": 472.0063825059915
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/mini-fixed-route-01/training/checkpoint-000024576.zip",
+      "sha256": "b375129c7c1c18d708299b486505547c15f544bf1875ac38acaffa09c4db24f7",
+      "added_decisions": 24576,
+      "optimizer_steps_added": 768,
+      "episodes": 2068,
+      "seconds": 731.327557212091
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/mini-fixed-route-01/training/midpoint.zip",
+      "sha256": "8601e00f53432f0b951e46cc6c8e7cca6d629cd30844a9eec2ea68b75adaa658",
+      "added_decisions": 32768,
+      "optimizer_steps_added": 1024,
+      "episodes": 2763,
+      "seconds": 998.3520109889796
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/mini-fixed-route-01/training/checkpoint-000040960.zip",
+      "sha256": "13354359a40bf80c0d92f3d3693a35d65cf9b56bcda2cb26e78eca17c5d0092c",
+      "added_decisions": 40960,
+      "optimizer_steps_added": 1280,
+      "episodes": 3454,
+      "seconds": 1278.0314300489845
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/mini-fixed-route-01/training/checkpoint-000049152.zip",
+      "sha256": "e263604bed6fa1a067ad4e5daae5ece150a465c336b698f7d5063b170fa9de78",
+      "added_decisions": 49152,
+      "optimizer_steps_added": 1536,
+      "episodes": 4147,
+      "seconds": 1561.797749850084
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/mini-fixed-route-01/training/checkpoint-000057344.zip",
+      "sha256": "cae3f0bd6463592a9db510508baca7c6df04db5989996d3f1518c6c0affa3c95",
+      "added_decisions": 57344,
+      "optimizer_steps_added": 1792,
+      "episodes": 4832,
+      "seconds": 1856.4679615210043
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/mini-fixed-route-01/training/final.zip",
+      "sha256": "c86c0db95e28951c3e9ed36d5a29eb94d7faa4cbddbfddaed18700dc70121eb3",
+      "added_decisions": 65536,
+      "optimizer_steps_added": 2048,
+      "episodes": 5529,
+      "seconds": 2160.734234620002
+    }
+  ],
+  "seconds": 2160.739970232011
+}

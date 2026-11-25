@@ -1,0 +1,62 @@
+{
+  "all": {
+    "1": {
+      "games": 16,
+      "mean_deliveries": 50.1875,
+      "scoring_games": 10,
+      "mean_paid_units": 60.5,
+      "mean_units_outside_observed_routes": 34.375,
+      "mean_initial_wait_probability": 0.23681787683732994,
+      "stockouts_by_second_14": 9
+    },
+    "4": {
+      "games": 16,
+      "mean_deliveries": 26.3125,
+      "scoring_games": 9,
+      "mean_paid_units": 42.75,
+      "mean_units_outside_observed_routes": 25.4375,
+      "mean_initial_wait_probability": 0.5082721444109538,
+      "stockouts_by_second_14": 0
+    }
+  },
+  "open": {
+    "1": {
+      "games": 8,
+      "mean_deliveries": 99,
+      "scoring_games": 8,
+      "mean_paid_units": 82.625,
+      "mean_units_outside_observed_routes": 37.25,
+      "mean_initial_wait_probability": 0.36813458702583557,
+      "stockouts_by_second_14": 1
+    },
+    "4": {
+      "games": 8,
+      "mean_deliveries": 51.75,
+      "scoring_games": 7,
+      "mean_paid_units": 53.625,
+      "mean_units_outside_observed_routes": 27.625,
+      "mean_initial_wait_probability": 0.6961251554297482,
+      "stockouts_by_second_14": 0
+    }
+  },
+  "closed": {
+    "1": {
+      "games": 8,
+      "mean_deliveries": 1.375,
+      "scoring_games": 2,
+      "mean_paid_units": 38.375,
+      "mean_units_outside_observed_routes": 31.5,
+      "mean_initial_wait_probability": 0.10550116664882432,
+      "stockouts_by_second_14": 8
+    },
+    "4": {
+      "games": 8,
+      "mean_deliveries": 0.875,
+      "scoring_games": 2,
+      "mean_paid_units": 31.875,
+      "mean_units_outside_observed_routes": 23.25,
+      "mean_initial_wait_probability": 0.32041913339215955,
+      "stockouts_by_second_14": 0
+    }
+  }
+}

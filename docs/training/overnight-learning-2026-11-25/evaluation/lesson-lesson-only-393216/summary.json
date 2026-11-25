@@ -1,0 +1,33 @@
+{
+  "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/overnight-transfer-comparison-01/lesson-only/checkpoint-000393216.zip",
+  "sha256": "420feb0c1f414b4fc595690740d306fd4d25fb8ed15830d3b63efed650602c04",
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+  "results": {
+    "validation/small-city-offset-single": {
+      "score": 2.21875,
+      "first_served": 0.640625,
+      "later_exists": 0.0,
+      "later_served": 0.0,
+      "both_served": 0.0,
+      "initial_stock": 7.4375,
+      "remaining_stock": 0.1875,
+      "paid_units": 7.25,
+      "outside_routes": 3.484375,
+      "no_build": 0.0,
+      "games": 64
+    },
+    "validation/small-city-offset-stock": {
+      "score": 2.921875,
+      "first_served": 0.875,
+      "later_exists": 0.0,
+      "later_served": 0.0,
+      "both_served": 0.0,
+      "initial_stock": 13.96875,
+      "remaining_stock": 3.25,
+      "paid_units": 10.71875,
+      "outside_routes": 4.828125,
+      "no_build": 0.0,
+      "games": 64
+    }
+  }
+}

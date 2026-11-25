@@ -1,0 +1,17 @@
+{
+  "status": "complete",
+  "phase": "complete",
+  "pid": 947374,
+  "started": "2026-11-25T21:52:30.577273+02:00",
+  "parent": "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01/training/final.zip",
+  "parent_sha256": "907e1a083b58780bd140d4e258285878ed3534a4c0be6cf9b75070eae7f04826",
+  "native_template_sha256": "c86c0db95e28951c3e9ed36d5a29eb94d7faa4cbddbfddaed18700dc70121eb3",
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+  "replay_template_sha256": "868600363666b53207abd6e499bc0dad3b6263d82c711e20da325b0b25809244",
+  "budget": 262144,
+  "train_seed_start": 248100000,
+  "validation_seed_start": 249000000,
+  "train_road_encoder": true,
+  "limits": "Bounded practice repair, no automatic promotion, extension or overnight training.",
+  "finished": "2026-11-25T23:45:58.444062+02:00"
+}

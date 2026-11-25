@@ -1,0 +1,199 @@
+{
+  "games": 272,
+  "models": [
+    "output/training/city-route-repair-calibration-01/calibrated-with-counters.zip",
+    "output/training/city-service-reserve-readiness-01/checkpoints/city-000086016-db6c8742.zip",
+    "output/training/city-service-long-01/checkpoints/city-002760704-bfd5f98e.zip",
+    "output/training/city-service-long-01/checkpoints/city-005316608-f47f325c.zip"
+  ],
+  "sha256": {
+    "output/training/city-route-repair-calibration-01/calibrated-with-counters.zip": "6ed31e8c655acb71b781652c36814045c979597ced464fbf12d6dafef07acd62",
+    "output/training/city-service-reserve-readiness-01/checkpoints/city-000086016-db6c8742.zip": "3631b5d13a1d3012134de3dbba51fc8c5e0a10af6b07bd790c5271d405bf15f7",
+    "output/training/city-service-long-01/checkpoints/city-002760704-bfd5f98e.zip": "8e90c34c1dbf12f1f8f10fe795f3b0c27118ea65ebe2769e4cbecbdc53ca227f",
+    "output/training/city-service-long-01/checkpoints/city-005316608-f47f325c.zip": "3cebdd6e7aa15112133d26b789b8ce86d7fa66a39d74b19a8f84d519dc6d2720"
+  },
+  "results": {
+    "0": {
+      "midgame-open": {
+        "games": 24,
+        "scoring": 24,
+        "mean_score": 3.625,
+        "paired_mean_delta": 0.0,
+        "paired_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "existing_mean": 3.25,
+        "total_mean": 6.875,
+        "first_delivery_seconds": 13.0,
+        "paid_at_first": 1.9583333333333333,
+        "paid_all": 1.9583333333333333
+      },
+      "midgame-delay": {
+        "games": 24,
+        "scoring": 1,
+        "mean_score": 0.16666666666666666,
+        "paired_mean_delta": 0.0,
+        "paired_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "existing_mean": 3.375,
+        "total_mean": 3.5416666666666665,
+        "first_delivery_seconds": 22.0,
+        "paid_at_first": 2.0,
+        "paid_all": 1.8333333333333333,
+        "retained_at_gate": 1
+      },
+      "city": {
+        "games": 20,
+        "scoring": 17,
+        "mean_score": 56.85,
+        "paired_mean_delta": 0.0,
+        "paired_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "paid_units": 71.0,
+        "outside_routes": 36.75
+      }
+    },
+    "1": {
+      "midgame-open": {
+        "games": 24,
+        "scoring": 24,
+        "mean_score": 3.625,
+        "paired_mean_delta": 0.0,
+        "paired_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "existing_mean": 3.25,
+        "total_mean": 6.875,
+        "first_delivery_seconds": 13.0,
+        "paid_at_first": 1.9166666666666667,
+        "paid_all": 1.9583333333333333
+      },
+      "midgame-delay": {
+        "games": 24,
+        "scoring": 22,
+        "mean_score": 3.25,
+        "paired_mean_delta": 3.0833333333333335,
+        "paired_bootstrap_95": [
+          2.5,
+          3.625
+        ],
+        "existing_mean": 3.375,
+        "total_mean": 6.625,
+        "first_delivery_seconds": 21.0,
+        "paid_at_first": 1.7727272727272727,
+        "paid_all": 1.8333333333333333,
+        "retained_at_gate": 24
+      },
+      "city": {
+        "games": 20,
+        "scoring": 13,
+        "mean_score": 62.2,
+        "paired_mean_delta": 5.35,
+        "paired_bootstrap_95": [
+          -11.35,
+          23.35
+        ],
+        "paid_units": 72.05,
+        "outside_routes": 32.05
+      }
+    },
+    "2": {
+      "midgame-open": {
+        "games": 24,
+        "scoring": 24,
+        "mean_score": 3.625,
+        "paired_mean_delta": 0.0,
+        "paired_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "existing_mean": 3.25,
+        "total_mean": 6.875,
+        "first_delivery_seconds": 13.0,
+        "paid_at_first": 1.8333333333333333,
+        "paid_all": 1.9583333333333333
+      },
+      "midgame-delay": {
+        "games": 24,
+        "scoring": 24,
+        "mean_score": 3.5416666666666665,
+        "paired_mean_delta": 3.375,
+        "paired_bootstrap_95": [
+          2.9583333333333335,
+          3.75
+        ],
+        "existing_mean": 3.375,
+        "total_mean": 6.916666666666667,
+        "first_delivery_seconds": 21.0,
+        "paid_at_first": 1.8333333333333333,
+        "paid_all": 1.8333333333333333,
+        "retained_at_gate": 24
+      },
+      "city": {
+        "games": 20,
+        "scoring": 12,
+        "mean_score": 44.95,
+        "paired_mean_delta": -11.9,
+        "paired_bootstrap_95": [
+          -23.2,
+          -1.5
+        ],
+        "paid_units": 60.8,
+        "outside_routes": 32.45
+      }
+    },
+    "3": {
+      "midgame-open": {
+        "games": 24,
+        "scoring": 24,
+        "mean_score": 3.625,
+        "paired_mean_delta": 0.0,
+        "paired_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "existing_mean": 3.25,
+        "total_mean": 6.875,
+        "first_delivery_seconds": 13.0,
+        "paid_at_first": 1.75,
+        "paid_all": 1.9583333333333333
+      },
+      "midgame-delay": {
+        "games": 24,
+        "scoring": 23,
+        "mean_score": 3.375,
+        "paired_mean_delta": 3.2083333333333335,
+        "paired_bootstrap_95": [
+          2.7083333333333335,
+          3.625
+        ],
+        "existing_mean": 3.375,
+        "total_mean": 6.75,
+        "first_delivery_seconds": 22.0,
+        "paid_at_first": 1.7391304347826086,
+        "paid_all": 1.8333333333333333,
+        "retained_at_gate": 24
+      },
+      "city": {
+        "games": 20,
+        "scoring": 13,
+        "mean_score": 53.6,
+        "paired_mean_delta": -3.25,
+        "paired_bootstrap_95": [
+          -20.45,
+          14.0
+        ],
+        "paid_units": 64.2,
+        "outside_routes": 30.85
+      }
+    }
+  },
+  "host_sha256": "a45b9c443bbcb83b4385f38529cc01ef291e8b26d10dd314650581d258afe3d8",
+  "city_host_sha256": "a45b9c443bbcb83b4385f38529cc01ef291e8b26d10dd314650581d258afe3d8"
+}

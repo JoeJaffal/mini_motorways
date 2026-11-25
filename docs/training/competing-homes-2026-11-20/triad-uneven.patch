@@ -1,0 +1,40 @@
+--- a/simulation/Assets/Simulation/ConstructionTriad.cs
++++ b/simulation/Assets/Simulation/ConstructionTriad.cs
+@@ -7,9 +7,10 @@
+         void LoadTriad(int seed, string split, string swap)
+         {
+             var parts = swap.Split('-');
++            bool uneven = parts.Length == 2 && parts[1] == "uneven";
+             int stubs = parts.Length != 2 ? 0 : parts[1] == "stub1" ? 1 : parts[1] == "stub2" ? 2 : 0;
+             int gaps = parts.Length != 2 ? 0 :
+-                parts[1] == "gap" ? 1 : parts[1] == "double" ? 2 : parts[1] == "triple" ? 3 : stubs > 0 ? 0 : -1;
++                parts[1] == "gap" ? 1 : parts[1] == "double" ? 2 : parts[1] == "triple" ? 3 : stubs > 0 || uneven ? 0 : -1;
+             swap = parts[0];
+             if (gaps < 0 || swap != "left" && swap != "right")
+                 throw new ArgumentException("Unknown triad color assignment");
+@@ -34,10 +35,13 @@
+             Cell At(int x,int y) => new Cell(approach.X+x*outward.X+y*sideways.X,
+                                             approach.Y+x*outward.Y+y*sideways.Y);
+             bool firstLeft = rng.Next(2) == 0;
++            int nearer = uneven && rng.Next(2) == 0 ? -1 : 1;
+             foreach (int side in new[] {firstLeft ? -1 : 1, firstLeft ? 1 : -1})
+             {
+                 int homeColor = (side < 0) == (swap == "left") ? color : otherColor;
+-                if (SpawnBuilding(At(span,side*lane),homeColor,true,reverse) == null)
++                int distance = uneven ? span + (side == nearer ? -1 : 1) : span;
++                int offset = uneven && side != nearer ? 3-lane : lane;
++                if (SpawnBuilding(At(distance,side*offset),homeColor,true,reverse) == null)
+                     throw new InvalidOperationException("Triad house placement failed");
+             }
+             Array.Clear(Inventory, 0, Inventory.Length);
+@@ -83,8 +87,8 @@
+             }
+             else
+             {
+-                Inventory[0] = span-1;
+-                ConstructionEditLimit = span;
++                Inventory[0] = uneven ? span : span-1;
++                ConstructionEditLimit = Inventory[0]+1;
+             }
+             LastAction = "Triad reset";
+         }

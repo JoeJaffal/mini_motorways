@@ -1,0 +1,6953 @@
+{
+  "native_sha256": "582e6e74c41a94b607f6323076d2e77231bdec82b6ba4265b93b92caaee16c3b",
+  "source_sha256": "f11ceeb65e341f732ece791fe409443df768aebea0fe7909f6dfdfaae8a938a2",
+  "policy_fingerprint": "2fb38d47c1fdbffc8f82d3c2dcca1567bab2b2fa3935478d7ee483052f1c96f7",
+  "changed_weights": false,
+  "greedy": true,
+  "arms": {
+    "0": [
+      {
+        "seed": 36000,
+        "distance": 7,
+        "offset": -2,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 321,
+            "paid": 0
+          },
+          {
+            "action": 317,
+            "paid": 1
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 305,
+            "paid": 1
+          },
+          {
+            "action": 301,
+            "paid": 1
+          },
+          {
+            "action": 348,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      },
+      {
+        "seed": 36001,
+        "distance": 6,
+        "offset": -1,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 167,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36002,
+        "distance": 6,
+        "offset": 2,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 369,
+            "paid": 0
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 250,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36003,
+        "distance": 5,
+        "offset": 0,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 359,
+            "paid": 0
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 119,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      },
+      {
+        "seed": 36004,
+        "distance": 4,
+        "offset": -2,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 317,
+            "paid": 0
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 356,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4
+      },
+      {
+        "seed": 36005,
+        "distance": 4,
+        "offset": 0,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 359,
+            "paid": 0
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 167,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36006,
+        "distance": 3,
+        "offset": 1,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 361,
+            "paid": 0
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36007,
+        "distance": 7,
+        "offset": 0,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 167,
+            "paid": 1
+          },
+          {
+            "action": 71,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      },
+      {
+        "seed": 36008,
+        "distance": 7,
+        "offset": 1,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 369,
+            "paid": 0
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 349,
+            "paid": 1
+          },
+          {
+            "action": 345,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36009,
+        "distance": 6,
+        "offset": 2,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 128,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36010,
+        "distance": 6,
+        "offset": -1,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 349,
+            "paid": 0
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 369,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36011,
+        "distance": 5,
+        "offset": -2,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 167,
+            "paid": 0
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 410,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4
+      },
+      {
+        "seed": 36012,
+        "distance": 4,
+        "offset": 0,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 353,
+            "paid": 0
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 369,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36013,
+        "distance": 4,
+        "offset": -2,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 215,
+            "paid": 0
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 410,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      },
+      {
+        "seed": 36014,
+        "distance": 3,
+        "offset": 0,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 353,
+            "paid": 0
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      },
+      {
+        "seed": 36015,
+        "distance": 7,
+        "offset": 2,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 123,
+            "paid": 0
+          },
+          {
+            "action": 171,
+            "paid": 1
+          },
+          {
+            "action": 219,
+            "paid": 1
+          },
+          {
+            "action": 267,
+            "paid": 1
+          },
+          {
+            "action": 315,
+            "paid": 1
+          },
+          {
+            "action": 363,
+            "paid": 1
+          },
+          {
+            "action": 456,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4
+      },
+      {
+        "seed": 36016,
+        "distance": 7,
+        "offset": 0,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 345,
+            "paid": 0
+          },
+          {
+            "action": 349,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 373,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36017,
+        "distance": 6,
+        "offset": -1,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 167,
+            "paid": 0
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 407,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36018,
+        "distance": 6,
+        "offset": 0,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 349,
+            "paid": 0
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 373,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4
+      },
+      {
+        "seed": 36019,
+        "distance": 5,
+        "offset": 1,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 167,
+            "paid": 0
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36020,
+        "distance": 4,
+        "offset": -2,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 353,
+            "paid": 0
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 280,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      },
+      {
+        "seed": 36021,
+        "distance": 4,
+        "offset": -1,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 317,
+            "paid": 0
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 305,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36022,
+        "distance": 3,
+        "offset": 2,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 311,
+            "paid": 0
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 176,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36023,
+        "distance": 7,
+        "offset": 0,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 369,
+            "paid": 0
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 349,
+            "paid": 1
+          },
+          {
+            "action": 341,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36024,
+        "distance": 7,
+        "offset": -2,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 411,
+            "paid": 0
+          },
+          {
+            "action": 363,
+            "paid": 1
+          },
+          {
+            "action": 315,
+            "paid": 1
+          },
+          {
+            "action": 267,
+            "paid": 1
+          },
+          {
+            "action": 219,
+            "paid": 1
+          },
+          {
+            "action": 171,
+            "paid": 1
+          },
+          {
+            "action": 66,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      },
+      {
+        "seed": 36025,
+        "distance": 6,
+        "offset": 0,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 369,
+            "paid": 0
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 345,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4
+      },
+      {
+        "seed": 36026,
+        "distance": 6,
+        "offset": 1,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 167,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36027,
+        "distance": 5,
+        "offset": 0,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 365,
+            "paid": 0
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 345,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      },
+      {
+        "seed": 36028,
+        "distance": 4,
+        "offset": 1,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 359,
+            "paid": 0
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36029,
+        "distance": 4,
+        "offset": 2,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 365,
+            "paid": 0
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 254,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36030,
+        "distance": 3,
+        "offset": -1,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 311,
+            "paid": 0
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36031,
+        "distance": 7,
+        "offset": -2,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 321,
+            "paid": 0
+          },
+          {
+            "action": 317,
+            "paid": 1
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 305,
+            "paid": 1
+          },
+          {
+            "action": 301,
+            "paid": 1
+          },
+          {
+            "action": 348,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      },
+      {
+        "seed": 36032,
+        "distance": 7,
+        "offset": 0,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 119,
+            "paid": 0
+          },
+          {
+            "action": 167,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 455,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4
+      },
+      {
+        "seed": 36033,
+        "distance": 6,
+        "offset": -2,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 349,
+            "paid": 0
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 284,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36034,
+        "distance": 5,
+        "offset": 0,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 167,
+            "paid": 0
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 407,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      },
+      {
+        "seed": 36035,
+        "distance": 5,
+        "offset": 1,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 301,
+            "paid": 0
+          },
+          {
+            "action": 305,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 317,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36036,
+        "distance": 4,
+        "offset": 0,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 215,
+            "paid": 0
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 407,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36037,
+        "distance": 4,
+        "offset": -1,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 353,
+            "paid": 0
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36038,
+        "distance": 3,
+        "offset": 2,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 219,
+            "paid": 0
+          },
+          {
+            "action": 267,
+            "paid": 1
+          },
+          {
+            "action": 360,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4
+      },
+      {
+        "seed": 36039,
+        "distance": 7,
+        "offset": 1,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 297,
+            "paid": 0
+          },
+          {
+            "action": 301,
+            "paid": 1
+          },
+          {
+            "action": 305,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 317,
+            "paid": 1
+          },
+          {
+            "action": 321,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36040,
+        "distance": 7,
+        "offset": -2,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 119,
+            "paid": 0
+          },
+          {
+            "action": 167,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 458,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36041,
+        "distance": 6,
+        "offset": 0,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 349,
+            "paid": 0
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 373,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      },
+      {
+        "seed": 36042,
+        "distance": 5,
+        "offset": 2,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 171,
+            "paid": 0
+          },
+          {
+            "action": 219,
+            "paid": 1
+          },
+          {
+            "action": 267,
+            "paid": 1
+          },
+          {
+            "action": 315,
+            "paid": 1
+          },
+          {
+            "action": 408,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4
+      },
+      {
+        "seed": 36043,
+        "distance": 5,
+        "offset": 0,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 359,
+            "paid": 0
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 119,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36044,
+        "distance": 4,
+        "offset": -1,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 317,
+            "paid": 0
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 305,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36045,
+        "distance": 4,
+        "offset": 0,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 359,
+            "paid": 0
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 167,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4
+      },
+      {
+        "seed": 36046,
+        "distance": 3,
+        "offset": -1,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 313,
+            "paid": 0
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 305,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36047,
+        "distance": 7,
+        "offset": 0,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 167,
+            "paid": 1
+          },
+          {
+            "action": 71,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      },
+      {
+        "seed": 36048,
+        "distance": 7,
+        "offset": 1,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 369,
+            "paid": 0
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 349,
+            "paid": 1
+          },
+          {
+            "action": 345,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36049,
+        "distance": 6,
+        "offset": 2,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 128,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4
+      },
+      {
+        "seed": 36050,
+        "distance": 5,
+        "offset": -1,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 317,
+            "paid": 0
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 305,
+            "paid": 1
+          },
+          {
+            "action": 301,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36051,
+        "distance": 5,
+        "offset": 2,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 359,
+            "paid": 0
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 128,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      },
+      {
+        "seed": 36052,
+        "distance": 4,
+        "offset": 0,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 365,
+            "paid": 0
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 349,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4
+      },
+      {
+        "seed": 36053,
+        "distance": 3,
+        "offset": -2,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 315,
+            "paid": 0
+          },
+          {
+            "action": 267,
+            "paid": 1
+          },
+          {
+            "action": 162,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36054,
+        "distance": 3,
+        "offset": 0,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 361,
+            "paid": 0
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 349,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      },
+      {
+        "seed": 36055,
+        "distance": 7,
+        "offset": 1,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 119,
+            "paid": 0
+          },
+          {
+            "action": 167,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 407,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36056,
+        "distance": 7,
+        "offset": 0,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 345,
+            "paid": 0
+          },
+          {
+            "action": 349,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 373,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4
+      },
+      {
+        "seed": 36057,
+        "distance": 6,
+        "offset": -1,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 167,
+            "paid": 0
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 407,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36058,
+        "distance": 5,
+        "offset": 2,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 301,
+            "paid": 0
+          },
+          {
+            "action": 305,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 370,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      },
+      {
+        "seed": 36059,
+        "distance": 5,
+        "offset": 1,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 167,
+            "paid": 0
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36060,
+        "distance": 4,
+        "offset": -2,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 353,
+            "paid": 0
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 280,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36061,
+        "distance": 3,
+        "offset": 0,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 215,
+            "paid": 0
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      },
+      {
+        "seed": 36062,
+        "distance": 3,
+        "offset": 2,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 305,
+            "paid": 0
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 366,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4
+      },
+      {
+        "seed": 36063,
+        "distance": 7,
+        "offset": 0,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 119,
+            "paid": 0
+          },
+          {
+            "action": 167,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 455,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36064,
+        "distance": 7,
+        "offset": -1,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 345,
+            "paid": 0
+          },
+          {
+            "action": 349,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 369,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36065,
+        "distance": 6,
+        "offset": 0,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 167,
+            "paid": 0
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 455,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      },
+      {
+        "seed": 36066,
+        "distance": 5,
+        "offset": -1,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 359,
+            "paid": 0
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 167,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36067,
+        "distance": 5,
+        "offset": -2,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 317,
+            "paid": 0
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 305,
+            "paid": 1
+          },
+          {
+            "action": 352,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36068,
+        "distance": 4,
+        "offset": 1,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 359,
+            "paid": 0
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36069,
+        "distance": 3,
+        "offset": 2,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 361,
+            "paid": 0
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 254,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4
+      },
+      {
+        "seed": 36070,
+        "distance": 3,
+        "offset": 0,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 311,
+            "paid": 0
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 167,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36071,
+        "distance": 7,
+        "offset": 2,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 369,
+            "paid": 0
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 349,
+            "paid": 1
+          },
+          {
+            "action": 246,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      },
+      {
+        "seed": 36072,
+        "distance": 7,
+        "offset": 0,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 167,
+            "paid": 1
+          },
+          {
+            "action": 71,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4
+      },
+      {
+        "seed": 36073,
+        "distance": 6,
+        "offset": -1,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 321,
+            "paid": 0
+          },
+          {
+            "action": 317,
+            "paid": 1
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 305,
+            "paid": 1
+          },
+          {
+            "action": 301,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36074,
+        "distance": 5,
+        "offset": 0,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 359,
+            "paid": 0
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 119,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36075,
+        "distance": 5,
+        "offset": 1,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 365,
+            "paid": 0
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 349,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36076,
+        "distance": 4,
+        "offset": -2,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 363,
+            "paid": 0
+          },
+          {
+            "action": 315,
+            "paid": 1
+          },
+          {
+            "action": 267,
+            "paid": 1
+          },
+          {
+            "action": 162,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4
+      },
+      {
+        "seed": 36077,
+        "distance": 3,
+        "offset": -1,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 353,
+            "paid": 0
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36078,
+        "distance": 3,
+        "offset": 2,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 219,
+            "paid": 0
+          },
+          {
+            "action": 267,
+            "paid": 1
+          },
+          {
+            "action": 360,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      },
+      {
+        "seed": 36079,
+        "distance": 7,
+        "offset": 1,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 297,
+            "paid": 0
+          },
+          {
+            "action": 301,
+            "paid": 1
+          },
+          {
+            "action": 305,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 317,
+            "paid": 1
+          },
+          {
+            "action": 321,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36080,
+        "distance": 6,
+        "offset": -2,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 167,
+            "paid": 0
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 458,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36081,
+        "distance": 6,
+        "offset": 0,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 349,
+            "paid": 0
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 373,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36082,
+        "distance": 5,
+        "offset": 2,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 171,
+            "paid": 0
+          },
+          {
+            "action": 219,
+            "paid": 1
+          },
+          {
+            "action": 267,
+            "paid": 1
+          },
+          {
+            "action": 315,
+            "paid": 1
+          },
+          {
+            "action": 408,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      },
+      {
+        "seed": 36083,
+        "distance": 5,
+        "offset": 0,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 349,
+            "paid": 0
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 369,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4
+      },
+      {
+        "seed": 36084,
+        "distance": 4,
+        "offset": -1,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 215,
+            "paid": 0
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36085,
+        "distance": 3,
+        "offset": 0,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 353,
+            "paid": 0
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      },
+      {
+        "seed": 36086,
+        "distance": 3,
+        "offset": -1,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 215,
+            "paid": 0
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36087,
+        "distance": 7,
+        "offset": -2,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 345,
+            "paid": 0
+          },
+          {
+            "action": 349,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 284,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36088,
+        "distance": 6,
+        "offset": 1,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 369,
+            "paid": 0
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 349,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36089,
+        "distance": 6,
+        "offset": 2,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 128,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4
+      },
+      {
+        "seed": 36090,
+        "distance": 5,
+        "offset": 0,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 365,
+            "paid": 0
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 345,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4
+      },
+      {
+        "seed": 36091,
+        "distance": 5,
+        "offset": 2,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 359,
+            "paid": 0
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 128,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36092,
+        "distance": 4,
+        "offset": 0,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 365,
+            "paid": 0
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 349,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      },
+      {
+        "seed": 36093,
+        "distance": 3,
+        "offset": -1,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 311,
+            "paid": 0
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36094,
+        "distance": 3,
+        "offset": 0,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 361,
+            "paid": 0
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 349,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36095,
+        "distance": 7,
+        "offset": 1,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 167,
+            "paid": 1
+          },
+          {
+            "action": 119,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36096,
+        "distance": 6,
+        "offset": -2,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 321,
+            "paid": 0
+          },
+          {
+            "action": 317,
+            "paid": 1
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 305,
+            "paid": 1
+          },
+          {
+            "action": 352,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 153.4
+      },
+      {
+        "seed": 36097,
+        "distance": 6,
+        "offset": -1,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 167,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36098,
+        "distance": 5,
+        "offset": 2,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 365,
+            "paid": 0
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 250,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147
+      },
+      {
+        "seed": 36099,
+        "distance": 4,
+        "offset": 0,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 0,
+        "steps": [
+          {
+            "action": 215,
+            "paid": 0
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 407,
+            "paid": 0
+          }
+        ],
+        "connected": false,
+        "trips": 0,
+        "seconds": 147.85
+      }
+    ],
+    "1": [
+      {
+        "seed": 36000,
+        "distance": 7,
+        "offset": -2,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 321,
+            "paid": 0
+          },
+          {
+            "action": 317,
+            "paid": 1
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 305,
+            "paid": 1
+          },
+          {
+            "action": 301,
+            "paid": 1
+          },
+          {
+            "action": 348,
+            "paid": 0
+          },
+          {
+            "action": 304,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36001,
+        "distance": 6,
+        "offset": -1,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 167,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36002,
+        "distance": 6,
+        "offset": 2,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 369,
+            "paid": 0
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 250,
+            "paid": 0
+          },
+          {
+            "action": 302,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36003,
+        "distance": 5,
+        "offset": 0,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 359,
+            "paid": 0
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 119,
+            "paid": 0
+          },
+          {
+            "action": 167,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36004,
+        "distance": 4,
+        "offset": -2,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 317,
+            "paid": 0
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 356,
+            "paid": 0
+          },
+          {
+            "action": 312,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36005,
+        "distance": 4,
+        "offset": 0,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 359,
+            "paid": 0
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 167,
+            "paid": 0
+          },
+          {
+            "action": 215,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36006,
+        "distance": 3,
+        "offset": 1,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 361,
+            "paid": 0
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36007,
+        "distance": 7,
+        "offset": 0,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 167,
+            "paid": 1
+          },
+          {
+            "action": 71,
+            "paid": 0
+          },
+          {
+            "action": 119,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36008,
+        "distance": 7,
+        "offset": 1,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 369,
+            "paid": 0
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 349,
+            "paid": 1
+          },
+          {
+            "action": 345,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36009,
+        "distance": 6,
+        "offset": 2,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 128,
+            "paid": 0
+          },
+          {
+            "action": 172,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36010,
+        "distance": 6,
+        "offset": -1,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 349,
+            "paid": 0
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 369,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36011,
+        "distance": 5,
+        "offset": -2,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 167,
+            "paid": 0
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 410,
+            "paid": 0
+          },
+          {
+            "action": 358,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36012,
+        "distance": 4,
+        "offset": 0,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 353,
+            "paid": 0
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 369,
+            "paid": 0
+          },
+          {
+            "action": 365,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36013,
+        "distance": 4,
+        "offset": -2,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 215,
+            "paid": 0
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 410,
+            "paid": 0
+          },
+          {
+            "action": 358,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36014,
+        "distance": 3,
+        "offset": 0,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 353,
+            "paid": 0
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 0
+          },
+          {
+            "action": 361,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36015,
+        "distance": 7,
+        "offset": 2,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 123,
+            "paid": 0
+          },
+          {
+            "action": 171,
+            "paid": 1
+          },
+          {
+            "action": 219,
+            "paid": 1
+          },
+          {
+            "action": 267,
+            "paid": 1
+          },
+          {
+            "action": 315,
+            "paid": 1
+          },
+          {
+            "action": 363,
+            "paid": 1
+          },
+          {
+            "action": 456,
+            "paid": 0
+          },
+          {
+            "action": 412,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36016,
+        "distance": 7,
+        "offset": 0,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 345,
+            "paid": 0
+          },
+          {
+            "action": 349,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 373,
+            "paid": 0
+          },
+          {
+            "action": 369,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36017,
+        "distance": 6,
+        "offset": -1,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 167,
+            "paid": 0
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 407,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36018,
+        "distance": 6,
+        "offset": 0,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 349,
+            "paid": 0
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 373,
+            "paid": 0
+          },
+          {
+            "action": 369,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36019,
+        "distance": 5,
+        "offset": 1,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 167,
+            "paid": 0
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36020,
+        "distance": 4,
+        "offset": -2,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 353,
+            "paid": 0
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 280,
+            "paid": 0
+          },
+          {
+            "action": 324,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36021,
+        "distance": 4,
+        "offset": -1,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 317,
+            "paid": 0
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 305,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36022,
+        "distance": 3,
+        "offset": 2,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 311,
+            "paid": 0
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 176,
+            "paid": 0
+          },
+          {
+            "action": 220,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36023,
+        "distance": 7,
+        "offset": 0,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 369,
+            "paid": 0
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 349,
+            "paid": 1
+          },
+          {
+            "action": 341,
+            "paid": 0
+          },
+          {
+            "action": 345,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36024,
+        "distance": 7,
+        "offset": -2,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 411,
+            "paid": 0
+          },
+          {
+            "action": 363,
+            "paid": 1
+          },
+          {
+            "action": 315,
+            "paid": 1
+          },
+          {
+            "action": 267,
+            "paid": 1
+          },
+          {
+            "action": 219,
+            "paid": 1
+          },
+          {
+            "action": 171,
+            "paid": 1
+          },
+          {
+            "action": 66,
+            "paid": 0
+          },
+          {
+            "action": 118,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36025,
+        "distance": 6,
+        "offset": 0,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 369,
+            "paid": 0
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 345,
+            "paid": 0
+          },
+          {
+            "action": 349,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36026,
+        "distance": 6,
+        "offset": 1,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 167,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36027,
+        "distance": 5,
+        "offset": 0,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 365,
+            "paid": 0
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 345,
+            "paid": 0
+          },
+          {
+            "action": 349,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36028,
+        "distance": 4,
+        "offset": 1,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 359,
+            "paid": 0
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36029,
+        "distance": 4,
+        "offset": 2,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 365,
+            "paid": 0
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 254,
+            "paid": 0
+          },
+          {
+            "action": 306,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36030,
+        "distance": 3,
+        "offset": -1,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 311,
+            "paid": 0
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36031,
+        "distance": 7,
+        "offset": -2,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 321,
+            "paid": 0
+          },
+          {
+            "action": 317,
+            "paid": 1
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 305,
+            "paid": 1
+          },
+          {
+            "action": 301,
+            "paid": 1
+          },
+          {
+            "action": 348,
+            "paid": 0
+          },
+          {
+            "action": 304,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36032,
+        "distance": 7,
+        "offset": 0,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 119,
+            "paid": 0
+          },
+          {
+            "action": 167,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 455,
+            "paid": 0
+          },
+          {
+            "action": 407,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36033,
+        "distance": 6,
+        "offset": -2,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 349,
+            "paid": 0
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 284,
+            "paid": 0
+          },
+          {
+            "action": 328,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36034,
+        "distance": 5,
+        "offset": 0,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 167,
+            "paid": 0
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36035,
+        "distance": 5,
+        "offset": 1,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 301,
+            "paid": 0
+          },
+          {
+            "action": 305,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 317,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36036,
+        "distance": 4,
+        "offset": 0,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 215,
+            "paid": 0
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36037,
+        "distance": 4,
+        "offset": -1,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 353,
+            "paid": 0
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36038,
+        "distance": 3,
+        "offset": 2,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 219,
+            "paid": 0
+          },
+          {
+            "action": 267,
+            "paid": 1
+          },
+          {
+            "action": 360,
+            "paid": 0
+          },
+          {
+            "action": 316,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36039,
+        "distance": 7,
+        "offset": 1,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 297,
+            "paid": 0
+          },
+          {
+            "action": 301,
+            "paid": 1
+          },
+          {
+            "action": 305,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 317,
+            "paid": 1
+          },
+          {
+            "action": 321,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36040,
+        "distance": 7,
+        "offset": -2,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 119,
+            "paid": 0
+          },
+          {
+            "action": 167,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 458,
+            "paid": 0
+          },
+          {
+            "action": 406,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36041,
+        "distance": 6,
+        "offset": 0,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 349,
+            "paid": 0
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 373,
+            "paid": 0
+          },
+          {
+            "action": 369,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36042,
+        "distance": 5,
+        "offset": 2,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 171,
+            "paid": 0
+          },
+          {
+            "action": 219,
+            "paid": 1
+          },
+          {
+            "action": 267,
+            "paid": 1
+          },
+          {
+            "action": 315,
+            "paid": 1
+          },
+          {
+            "action": 408,
+            "paid": 0
+          },
+          {
+            "action": 364,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36043,
+        "distance": 5,
+        "offset": 0,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 359,
+            "paid": 0
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 119,
+            "paid": 0
+          },
+          {
+            "action": 167,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36044,
+        "distance": 4,
+        "offset": -1,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 317,
+            "paid": 0
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 305,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36045,
+        "distance": 4,
+        "offset": 0,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 359,
+            "paid": 0
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 167,
+            "paid": 0
+          },
+          {
+            "action": 215,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36046,
+        "distance": 3,
+        "offset": -1,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 313,
+            "paid": 0
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 305,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36047,
+        "distance": 7,
+        "offset": 0,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 167,
+            "paid": 1
+          },
+          {
+            "action": 71,
+            "paid": 0
+          },
+          {
+            "action": 119,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36048,
+        "distance": 7,
+        "offset": 1,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 369,
+            "paid": 0
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 349,
+            "paid": 1
+          },
+          {
+            "action": 345,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36049,
+        "distance": 6,
+        "offset": 2,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 128,
+            "paid": 0
+          },
+          {
+            "action": 172,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36050,
+        "distance": 5,
+        "offset": -1,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 317,
+            "paid": 0
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 305,
+            "paid": 1
+          },
+          {
+            "action": 301,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36051,
+        "distance": 5,
+        "offset": 2,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 359,
+            "paid": 0
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 128,
+            "paid": 0
+          },
+          {
+            "action": 172,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36052,
+        "distance": 4,
+        "offset": 0,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 365,
+            "paid": 0
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 349,
+            "paid": 0
+          },
+          {
+            "action": 353,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36053,
+        "distance": 3,
+        "offset": -2,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 315,
+            "paid": 0
+          },
+          {
+            "action": 267,
+            "paid": 1
+          },
+          {
+            "action": 162,
+            "paid": 0
+          },
+          {
+            "action": 214,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36054,
+        "distance": 3,
+        "offset": 0,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 361,
+            "paid": 0
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 349,
+            "paid": 0
+          },
+          {
+            "action": 353,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36055,
+        "distance": 7,
+        "offset": 1,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 119,
+            "paid": 0
+          },
+          {
+            "action": 167,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 407,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36056,
+        "distance": 7,
+        "offset": 0,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 345,
+            "paid": 0
+          },
+          {
+            "action": 349,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 373,
+            "paid": 0
+          },
+          {
+            "action": 369,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36057,
+        "distance": 6,
+        "offset": -1,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 167,
+            "paid": 0
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 407,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36058,
+        "distance": 5,
+        "offset": 2,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 301,
+            "paid": 0
+          },
+          {
+            "action": 305,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 370,
+            "paid": 0
+          },
+          {
+            "action": 318,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36059,
+        "distance": 5,
+        "offset": 1,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 167,
+            "paid": 0
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36060,
+        "distance": 4,
+        "offset": -2,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 353,
+            "paid": 0
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 280,
+            "paid": 0
+          },
+          {
+            "action": 324,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36061,
+        "distance": 3,
+        "offset": 0,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 215,
+            "paid": 0
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 0
+          },
+          {
+            "action": 311,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36062,
+        "distance": 3,
+        "offset": 2,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 305,
+            "paid": 0
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 366,
+            "paid": 0
+          },
+          {
+            "action": 314,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36063,
+        "distance": 7,
+        "offset": 0,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 119,
+            "paid": 0
+          },
+          {
+            "action": 167,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 455,
+            "paid": 0
+          },
+          {
+            "action": 407,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36064,
+        "distance": 7,
+        "offset": -1,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 345,
+            "paid": 0
+          },
+          {
+            "action": 349,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 369,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36065,
+        "distance": 6,
+        "offset": 0,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 167,
+            "paid": 0
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 455,
+            "paid": 0
+          },
+          {
+            "action": 407,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36066,
+        "distance": 5,
+        "offset": -1,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 359,
+            "paid": 0
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 167,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36067,
+        "distance": 5,
+        "offset": -2,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 317,
+            "paid": 0
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 305,
+            "paid": 1
+          },
+          {
+            "action": 352,
+            "paid": 0
+          },
+          {
+            "action": 308,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36068,
+        "distance": 4,
+        "offset": 1,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 359,
+            "paid": 0
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36069,
+        "distance": 3,
+        "offset": 2,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 361,
+            "paid": 0
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 254,
+            "paid": 0
+          },
+          {
+            "action": 306,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36070,
+        "distance": 3,
+        "offset": 0,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 311,
+            "paid": 0
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 167,
+            "paid": 0
+          },
+          {
+            "action": 215,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36071,
+        "distance": 7,
+        "offset": 2,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 369,
+            "paid": 0
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 349,
+            "paid": 1
+          },
+          {
+            "action": 246,
+            "paid": 0
+          },
+          {
+            "action": 298,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36072,
+        "distance": 7,
+        "offset": 0,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 167,
+            "paid": 1
+          },
+          {
+            "action": 71,
+            "paid": 0
+          },
+          {
+            "action": 119,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36073,
+        "distance": 6,
+        "offset": -1,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 321,
+            "paid": 0
+          },
+          {
+            "action": 317,
+            "paid": 1
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 305,
+            "paid": 1
+          },
+          {
+            "action": 301,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36074,
+        "distance": 5,
+        "offset": 0,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 359,
+            "paid": 0
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 119,
+            "paid": 0
+          },
+          {
+            "action": 167,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36075,
+        "distance": 5,
+        "offset": 1,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 365,
+            "paid": 0
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 349,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36076,
+        "distance": 4,
+        "offset": -2,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 363,
+            "paid": 0
+          },
+          {
+            "action": 315,
+            "paid": 1
+          },
+          {
+            "action": 267,
+            "paid": 1
+          },
+          {
+            "action": 162,
+            "paid": 0
+          },
+          {
+            "action": 214,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36077,
+        "distance": 3,
+        "offset": -1,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 353,
+            "paid": 0
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36078,
+        "distance": 3,
+        "offset": 2,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 219,
+            "paid": 0
+          },
+          {
+            "action": 267,
+            "paid": 1
+          },
+          {
+            "action": 360,
+            "paid": 0
+          },
+          {
+            "action": 316,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36079,
+        "distance": 7,
+        "offset": 1,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 297,
+            "paid": 0
+          },
+          {
+            "action": 301,
+            "paid": 1
+          },
+          {
+            "action": 305,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 317,
+            "paid": 1
+          },
+          {
+            "action": 321,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36080,
+        "distance": 6,
+        "offset": -2,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 167,
+            "paid": 0
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 458,
+            "paid": 0
+          },
+          {
+            "action": 406,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36081,
+        "distance": 6,
+        "offset": 0,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 349,
+            "paid": 0
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 373,
+            "paid": 0
+          },
+          {
+            "action": 369,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36082,
+        "distance": 5,
+        "offset": 2,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 171,
+            "paid": 0
+          },
+          {
+            "action": 219,
+            "paid": 1
+          },
+          {
+            "action": 267,
+            "paid": 1
+          },
+          {
+            "action": 315,
+            "paid": 1
+          },
+          {
+            "action": 408,
+            "paid": 0
+          },
+          {
+            "action": 364,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36083,
+        "distance": 5,
+        "offset": 0,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 349,
+            "paid": 0
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 369,
+            "paid": 0
+          },
+          {
+            "action": 365,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36084,
+        "distance": 4,
+        "offset": -1,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 215,
+            "paid": 0
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 359,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36085,
+        "distance": 3,
+        "offset": 0,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 353,
+            "paid": 0
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 0
+          },
+          {
+            "action": 361,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36086,
+        "distance": 3,
+        "offset": -1,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 215,
+            "paid": 0
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36087,
+        "distance": 7,
+        "offset": -2,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 345,
+            "paid": 0
+          },
+          {
+            "action": 349,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 284,
+            "paid": 0
+          },
+          {
+            "action": 328,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36088,
+        "distance": 6,
+        "offset": 1,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 369,
+            "paid": 0
+          },
+          {
+            "action": 365,
+            "paid": 1
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 349,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36089,
+        "distance": 6,
+        "offset": 2,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 128,
+            "paid": 0
+          },
+          {
+            "action": 172,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36090,
+        "distance": 5,
+        "offset": 0,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 365,
+            "paid": 0
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 345,
+            "paid": 0
+          },
+          {
+            "action": 349,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36091,
+        "distance": 5,
+        "offset": 2,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 359,
+            "paid": 0
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 128,
+            "paid": 0
+          },
+          {
+            "action": 172,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36092,
+        "distance": 4,
+        "offset": 0,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 365,
+            "paid": 0
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 349,
+            "paid": 0
+          },
+          {
+            "action": 353,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      },
+      {
+        "seed": 36093,
+        "distance": 3,
+        "offset": -1,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 311,
+            "paid": 0
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36094,
+        "distance": 3,
+        "offset": 0,
+        "stock": 2,
+        "original_limit": 3,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 361,
+            "paid": 0
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 349,
+            "paid": 0
+          },
+          {
+            "action": 353,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 13,
+        "seconds": 180
+      },
+      {
+        "seed": 36095,
+        "distance": 7,
+        "offset": 1,
+        "stock": 6,
+        "original_limit": 7,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 167,
+            "paid": 1
+          },
+          {
+            "action": 119,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 10,
+        "seconds": 180
+      },
+      {
+        "seed": 36096,
+        "distance": 6,
+        "offset": -2,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 321,
+            "paid": 0
+          },
+          {
+            "action": 317,
+            "paid": 1
+          },
+          {
+            "action": 313,
+            "paid": 1
+          },
+          {
+            "action": 309,
+            "paid": 1
+          },
+          {
+            "action": 305,
+            "paid": 1
+          },
+          {
+            "action": 352,
+            "paid": 0
+          },
+          {
+            "action": 308,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36097,
+        "distance": 6,
+        "offset": -1,
+        "stock": 5,
+        "original_limit": 6,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 215,
+            "paid": 1
+          },
+          {
+            "action": 167,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36098,
+        "distance": 5,
+        "offset": 2,
+        "stock": 4,
+        "original_limit": 5,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 365,
+            "paid": 0
+          },
+          {
+            "action": 361,
+            "paid": 1
+          },
+          {
+            "action": 357,
+            "paid": 1
+          },
+          {
+            "action": 353,
+            "paid": 1
+          },
+          {
+            "action": 250,
+            "paid": 0
+          },
+          {
+            "action": 302,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 12,
+        "seconds": 180
+      },
+      {
+        "seed": 36099,
+        "distance": 4,
+        "offset": 0,
+        "stock": 3,
+        "original_limit": 4,
+        "extra_edits": 1,
+        "steps": [
+          {
+            "action": 215,
+            "paid": 0
+          },
+          {
+            "action": 263,
+            "paid": 1
+          },
+          {
+            "action": 311,
+            "paid": 1
+          },
+          {
+            "action": 407,
+            "paid": 0
+          },
+          {
+            "action": 359,
+            "paid": 1
+          }
+        ],
+        "connected": true,
+        "trips": 11,
+        "seconds": 180
+      }
+    ]
+  }
+}

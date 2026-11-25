@@ -1,0 +1,149 @@
+{
+  "models": [
+    "output/training/city-service-reserve-readiness-01/checkpoints/city-000086016-db6c8742.zip",
+    "output/training/city-network-service-pilot-01/network-only.zip",
+    "output/training/city-network-service-pilot-01/initial.zip",
+    "output/training/city-network-service-pilot-01/midpoint.zip",
+    "output/training/city-network-service-pilot-01/final.zip"
+  ],
+  "sha256": {
+    "output/training/city-service-reserve-readiness-01/checkpoints/city-000086016-db6c8742.zip": "3631b5d13a1d3012134de3dbba51fc8c5e0a10af6b07bd790c5271d405bf15f7",
+    "output/training/city-network-service-pilot-01/network-only.zip": "3ab39c41ccf35cc76e7e2f974c9db1f60666375599ce1b1266f20ae7f3a3b5c8",
+    "output/training/city-network-service-pilot-01/initial.zip": "496c5c2dc24fa9779759759403a5344ea3fa6b3831fa5627ac0aa40f93f0b70c",
+    "output/training/city-network-service-pilot-01/midpoint.zip": "7ae6ed6900369f71efa4fa62a3ad6226b73a72be0f844c67c5900aec4cd1b3f6",
+    "output/training/city-network-service-pilot-01/final.zip": "fb95c49068c18f5dccf05c9cae7a0458dc5b09fb812168bfd1f62725a6053490"
+  },
+  "host_sha256": "78b7c6dccff3def0ed9da7cb1b9cfc857893525e7240ac8748d2714f5ffd6948",
+  "results": {
+    "0": {
+      "midgame-network-join": {
+        "games": 16,
+        "served": 12,
+        "mean_new": 2.4375,
+        "mean_existing": 3.4375,
+        "mean_score": 5.875,
+        "stock_at_gate": 0
+      },
+      "midgame-network-route": {
+        "games": 16,
+        "served": 1,
+        "mean_new": 0.1875,
+        "mean_existing": 3.1875,
+        "mean_score": 3.375,
+        "stock_at_gate": 0
+      },
+      "midgame-network-delay": {
+        "games": 16,
+        "served": 8,
+        "mean_new": 1.875,
+        "mean_existing": 3.375,
+        "mean_score": 5.25,
+        "stock_at_gate": 16
+      }
+    },
+    "1": {
+      "midgame-network-join": {
+        "games": 16,
+        "served": 12,
+        "mean_new": 2.4375,
+        "mean_existing": 3.4375,
+        "mean_score": 5.875,
+        "stock_at_gate": 0
+      },
+      "midgame-network-route": {
+        "games": 16,
+        "served": 1,
+        "mean_new": 0.1875,
+        "mean_existing": 3.1875,
+        "mean_score": 3.375,
+        "stock_at_gate": 0
+      },
+      "midgame-network-delay": {
+        "games": 16,
+        "served": 8,
+        "mean_new": 1.875,
+        "mean_existing": 3.375,
+        "mean_score": 5.25,
+        "stock_at_gate": 16
+      }
+    },
+    "2": {
+      "midgame-network-join": {
+        "games": 16,
+        "served": 12,
+        "mean_new": 2.4375,
+        "mean_existing": 3.4375,
+        "mean_score": 5.875,
+        "stock_at_gate": 0
+      },
+      "midgame-network-route": {
+        "games": 16,
+        "served": 2,
+        "mean_new": 0.375,
+        "mean_existing": 3.1875,
+        "mean_score": 3.5625,
+        "stock_at_gate": 0
+      },
+      "midgame-network-delay": {
+        "games": 16,
+        "served": 8,
+        "mean_new": 1.875,
+        "mean_existing": 3.375,
+        "mean_score": 5.25,
+        "stock_at_gate": 16
+      }
+    },
+    "3": {
+      "midgame-network-join": {
+        "games": 16,
+        "served": 12,
+        "mean_new": 2.4375,
+        "mean_existing": 3.4375,
+        "mean_score": 5.875,
+        "stock_at_gate": 0
+      },
+      "midgame-network-route": {
+        "games": 16,
+        "served": 2,
+        "mean_new": 0.375,
+        "mean_existing": 3.1875,
+        "mean_score": 3.5625,
+        "stock_at_gate": 0
+      },
+      "midgame-network-delay": {
+        "games": 16,
+        "served": 8,
+        "mean_new": 1.875,
+        "mean_existing": 3.375,
+        "mean_score": 5.25,
+        "stock_at_gate": 16
+      }
+    },
+    "4": {
+      "midgame-network-join": {
+        "games": 16,
+        "served": 12,
+        "mean_new": 2.4375,
+        "mean_existing": 3.4375,
+        "mean_score": 5.875,
+        "stock_at_gate": 0
+      },
+      "midgame-network-route": {
+        "games": 16,
+        "served": 2,
+        "mean_new": 0.375,
+        "mean_existing": 3.1875,
+        "mean_score": 3.5625,
+        "stock_at_gate": 0
+      },
+      "midgame-network-delay": {
+        "games": 16,
+        "served": 8,
+        "mean_new": 1.875,
+        "mean_existing": 3.375,
+        "mean_score": 5.25,
+        "stock_at_gate": 16
+      }
+    }
+  }
+}

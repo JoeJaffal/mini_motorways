@@ -1,0 +1,32 @@
+         82214 function calls (81893 primitive calls) in 1.616 seconds
+
+   Ordered by: cumulative time
+   List reduced from 90 to 24 due to restriction <24>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+      160    0.001    0.000    1.434    0.009 city_road_pilot.py:75(step)
+      321    0.002    0.000    1.313    0.004 environment.py:45(call)
+      321    0.002    0.000    1.116    0.003 queue.py:154(get)
+      321    0.001    0.000    1.112    0.003 threading.py:323(wait)
+1926/1605    1.095    0.001    1.110    0.001 {method 'acquire' of '_thread.lock' objects}
+      160    0.001    0.000    0.268    0.002 city_road_pilot.py:58(observation)
+      160    0.090    0.001    0.267    0.002 visible_observation.py:104(encode)
+      321    0.001    0.000    0.190    0.001 __init__.py:299(loads)
+      321    0.001    0.000    0.189    0.001 decoder.py:332(decode)
+      321    0.187    0.001    0.187    0.001 decoder.py:343(raw_decode)
+      160    0.030    0.000    0.182    0.001 city_road_pilot.py:67(action_masks)
+     1120    0.032    0.000    0.118    0.000 visible_observation.py:109(array)
+     1120    0.077    0.000    0.077    0.000 {built-in method numpy.asarray}
+      320    0.010    0.000    0.017    0.000 _index_tricks_impl.py:146(__getitem__)
+      160    0.013    0.000    0.017    0.000 visible_observation.py:55(_traffic)
+      160    0.004    0.000    0.014    0.000 visible_observation.py:45(visibility)
+     6866    0.005    0.000    0.010    0.000 <frozen codecs>:319(decode)
+      497    0.001    0.000    0.008    0.000 {built-in method builtins.all}
+     2720    0.002    0.000    0.007    0.000 {method 'all' of 'numpy.ndarray' objects}
+     4574    0.007    0.000    0.007    0.000 {method 'reduce' of 'numpy.ufunc' objects}
+      640    0.004    0.000    0.006    0.000 visible_observation.py:224(<genexpr>)
+      320    0.003    0.000    0.006    0.000 numeric.py:1726(indices)
+     2014    0.006    0.000    0.006    0.000 {built-in method numpy.zeros}
+     2720    0.001    0.000    0.005    0.000 _methods.py:64(_all)
+
+

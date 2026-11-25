@@ -1,0 +1,134 @@
+{
+  "generator": "numpy.default_rng(428531).integers(100_000_000, 2**31, size=(32, 2))",
+  "purpose": "Frozen city test set; exclude from pilot training and checkpoint selection.",
+  "games": [
+    {
+      "scenario_seed": 1514503683,
+      "action_seed": 583692448
+    },
+    {
+      "scenario_seed": 588506018,
+      "action_seed": 562203088
+    },
+    {
+      "scenario_seed": 171769158,
+      "action_seed": 583783773
+    },
+    {
+      "scenario_seed": 1555762778,
+      "action_seed": 987456475
+    },
+    {
+      "scenario_seed": 1686556576,
+      "action_seed": 1573380335
+    },
+    {
+      "scenario_seed": 1084547828,
+      "action_seed": 1739981232
+    },
+    {
+      "scenario_seed": 1594915875,
+      "action_seed": 478617620
+    },
+    {
+      "scenario_seed": 1727544217,
+      "action_seed": 212322152
+    },
+    {
+      "scenario_seed": 1420435674,
+      "action_seed": 1096995259
+    },
+    {
+      "scenario_seed": 494606252,
+      "action_seed": 1446961169
+    },
+    {
+      "scenario_seed": 577433799,
+      "action_seed": 1420135069
+    },
+    {
+      "scenario_seed": 130186953,
+      "action_seed": 133574003
+    },
+    {
+      "scenario_seed": 1705966447,
+      "action_seed": 986330785
+    },
+    {
+      "scenario_seed": 942851300,
+      "action_seed": 1996746872
+    },
+    {
+      "scenario_seed": 2114664368,
+      "action_seed": 338114852
+    },
+    {
+      "scenario_seed": 602878438,
+      "action_seed": 842073804
+    },
+    {
+      "scenario_seed": 1694832078,
+      "action_seed": 930167630
+    },
+    {
+      "scenario_seed": 1651793982,
+      "action_seed": 973258779
+    },
+    {
+      "scenario_seed": 518055469,
+      "action_seed": 1320366142
+    },
+    {
+      "scenario_seed": 1872942745,
+      "action_seed": 589527881
+    },
+    {
+      "scenario_seed": 938710910,
+      "action_seed": 614716816
+    },
+    {
+      "scenario_seed": 2082947643,
+      "action_seed": 829462402
+    },
+    {
+      "scenario_seed": 1773351646,
+      "action_seed": 303782938
+    },
+    {
+      "scenario_seed": 933959710,
+      "action_seed": 475285108
+    },
+    {
+      "scenario_seed": 288624081,
+      "action_seed": 1630203696
+    },
+    {
+      "scenario_seed": 1288275262,
+      "action_seed": 1290894039
+    },
+    {
+      "scenario_seed": 676938296,
+      "action_seed": 1763197561
+    },
+    {
+      "scenario_seed": 1219410182,
+      "action_seed": 2084264618
+    },
+    {
+      "scenario_seed": 450339356,
+      "action_seed": 909610982
+    },
+    {
+      "scenario_seed": 1720940018,
+      "action_seed": 1225243901
+    },
+    {
+      "scenario_seed": 858764169,
+      "action_seed": 1791517735
+    },
+    {
+      "scenario_seed": 922986854,
+      "action_seed": 1495422516
+    }
+  ]
+}

@@ -1,0 +1,349 @@
+{
+  "parent_sha256": "7eb605e4e465b9143e095e367abe0a01285b8ace05843aaac80bd48b5f049027",
+  "final_sha256": "8bfe05d67d7b9a0738ea97e23d45aefd6cdbefe64b15882076951a197901ab77",
+  "optimizer_steps": 1024,
+  "changed_tensors": {
+    "features_extractor.growth_strategy_wait.0.weight": 0.056123193353414536,
+    "features_extractor.growth_strategy_wait.0.bias": 0.0166475772857666,
+    "features_extractor.growth_strategy_wait.2.weight": 0.030289843678474426,
+    "features_extractor.growth_strategy_wait.2.bias": 0.009378774091601372,
+    "features_extractor.growth_strategy_roads.0.weight": 0.023676715791225433,
+    "features_extractor.growth_strategy_roads.0.bias": 0.01998511143028736,
+    "features_extractor.growth_strategy_roads.2.weight": 0.016063043847680092,
+    "features_extractor.growth_strategy_roads.2.bias": 0.01104041002690792,
+    "features_extractor.growth_strategy_spatial.0.weight": 0.020167052745819092,
+    "features_extractor.growth_strategy_spatial.0.bias": 0.022035695612430573,
+    "features_extractor.growth_strategy_spatial.2.weight": 0.01861516945064068,
+    "features_extractor.growth_strategy_spatial.2.bias": 0.02223820984363556,
+    "features_extractor.growth_strategy_spatial.4.weight": 0.019971653819084167,
+    "features_extractor.growth_strategy_spatial.4.bias": 0.021045200526714325,
+    "features_extractor.growth_strategy_spatial.6.weight": 0.020218346267938614,
+    "features_extractor.growth_strategy_spatial.6.bias": 0.020628944039344788,
+    "features_extractor.growth_strategy_spatial.8.weight": 0.02191976271569729,
+    "features_extractor.growth_strategy_spatial.8.bias": 0.017570950090885162,
+    "features_extractor.growth_strategy_spatial.10.weight": 0.02491118386387825,
+    "features_extractor.growth_strategy_spatial.10.bias": 0.016230985522270203,
+    "features_extractor.growth_strategy_spatial_roads.weight": 0.008524734526872635,
+    "features_extractor.growth_strategy_spatial_roads.bias": 0.003930834122002125,
+    "features_extractor.growth_strategy_visual_wait.0.weight": 0.020680680871009827,
+    "features_extractor.growth_strategy_visual_wait.0.bias": 0.004319419618695974,
+    "features_extractor.growth_strategy_visual_wait.2.weight": 0.01007911842316389,
+    "features_extractor.growth_strategy_visual_wait.2.bias": 0.009378774091601372,
+    "pi_features_extractor.growth_strategy_wait.0.weight": 0.056123193353414536,
+    "pi_features_extractor.growth_strategy_wait.0.bias": 0.0166475772857666,
+    "pi_features_extractor.growth_strategy_wait.2.weight": 0.030289843678474426,
+    "pi_features_extractor.growth_strategy_wait.2.bias": 0.009378774091601372,
+    "pi_features_extractor.growth_strategy_roads.0.weight": 0.023676715791225433,
+    "pi_features_extractor.growth_strategy_roads.0.bias": 0.01998511143028736,
+    "pi_features_extractor.growth_strategy_roads.2.weight": 0.016063043847680092,
+    "pi_features_extractor.growth_strategy_roads.2.bias": 0.01104041002690792,
+    "pi_features_extractor.growth_strategy_spatial.0.weight": 0.020167052745819092,
+    "pi_features_extractor.growth_strategy_spatial.0.bias": 0.022035695612430573,
+    "pi_features_extractor.growth_strategy_spatial.2.weight": 0.01861516945064068,
+    "pi_features_extractor.growth_strategy_spatial.2.bias": 0.02223820984363556,
+    "pi_features_extractor.growth_strategy_spatial.4.weight": 0.019971653819084167,
+    "pi_features_extractor.growth_strategy_spatial.4.bias": 0.021045200526714325,
+    "pi_features_extractor.growth_strategy_spatial.6.weight": 0.020218346267938614,
+    "pi_features_extractor.growth_strategy_spatial.6.bias": 0.020628944039344788,
+    "pi_features_extractor.growth_strategy_spatial.8.weight": 0.02191976271569729,
+    "pi_features_extractor.growth_strategy_spatial.8.bias": 0.017570950090885162,
+    "pi_features_extractor.growth_strategy_spatial.10.weight": 0.02491118386387825,
+    "pi_features_extractor.growth_strategy_spatial.10.bias": 0.016230985522270203,
+    "pi_features_extractor.growth_strategy_spatial_roads.weight": 0.008524734526872635,
+    "pi_features_extractor.growth_strategy_spatial_roads.bias": 0.003930834122002125,
+    "pi_features_extractor.growth_strategy_visual_wait.0.weight": 0.020680680871009827,
+    "pi_features_extractor.growth_strategy_visual_wait.0.bias": 0.004319419618695974,
+    "pi_features_extractor.growth_strategy_visual_wait.2.weight": 0.01007911842316389,
+    "pi_features_extractor.growth_strategy_visual_wait.2.bias": 0.009378774091601372,
+    "vf_features_extractor.growth_strategy_wait.0.weight": 0.056123193353414536,
+    "vf_features_extractor.growth_strategy_wait.0.bias": 0.0166475772857666,
+    "vf_features_extractor.growth_strategy_wait.2.weight": 0.030289843678474426,
+    "vf_features_extractor.growth_strategy_wait.2.bias": 0.009378774091601372,
+    "vf_features_extractor.growth_strategy_roads.0.weight": 0.023676715791225433,
+    "vf_features_extractor.growth_strategy_roads.0.bias": 0.01998511143028736,
+    "vf_features_extractor.growth_strategy_roads.2.weight": 0.016063043847680092,
+    "vf_features_extractor.growth_strategy_roads.2.bias": 0.01104041002690792,
+    "vf_features_extractor.growth_strategy_spatial.0.weight": 0.020167052745819092,
+    "vf_features_extractor.growth_strategy_spatial.0.bias": 0.022035695612430573,
+    "vf_features_extractor.growth_strategy_spatial.2.weight": 0.01861516945064068,
+    "vf_features_extractor.growth_strategy_spatial.2.bias": 0.02223820984363556,
+    "vf_features_extractor.growth_strategy_spatial.4.weight": 0.019971653819084167,
+    "vf_features_extractor.growth_strategy_spatial.4.bias": 0.021045200526714325,
+    "vf_features_extractor.growth_strategy_spatial.6.weight": 0.020218346267938614,
+    "vf_features_extractor.growth_strategy_spatial.6.bias": 0.020628944039344788,
+    "vf_features_extractor.growth_strategy_spatial.8.weight": 0.02191976271569729,
+    "vf_features_extractor.growth_strategy_spatial.8.bias": 0.017570950090885162,
+    "vf_features_extractor.growth_strategy_spatial.10.weight": 0.02491118386387825,
+    "vf_features_extractor.growth_strategy_spatial.10.bias": 0.016230985522270203,
+    "vf_features_extractor.growth_strategy_spatial_roads.weight": 0.008524734526872635,
+    "vf_features_extractor.growth_strategy_spatial_roads.bias": 0.003930834122002125,
+    "vf_features_extractor.growth_strategy_visual_wait.0.weight": 0.020680680871009827,
+    "vf_features_extractor.growth_strategy_visual_wait.0.bias": 0.004319419618695974,
+    "vf_features_extractor.growth_strategy_visual_wait.2.weight": 0.01007911842316389,
+    "vf_features_extractor.growth_strategy_visual_wait.2.bias": 0.009378774091601372,
+    "value_net.0.weight": 0.03936218470335007,
+    "value_net.0.bias": 0.022751588374376297,
+    "value_net.2.weight": 0.02749645709991455,
+    "value_net.2.bias": 0.01216939091682434
+  },
+  "states": [
+    {
+      "seed": 191000100,
+      "decision": 0,
+      "time": 0,
+      "wait_before": 0.10031653195619583,
+      "wait_after": 0.09742166101932526,
+      "conditional_road_tv": 0.00020106910960748792
+    },
+    {
+      "seed": 191000100,
+      "decision": 5,
+      "time": 0,
+      "wait_before": 0.1149711161851883,
+      "wait_after": 0.1117033064365387,
+      "conditional_road_tv": 0.0037484141066670418
+    },
+    {
+      "seed": 191000100,
+      "decision": 10,
+      "time": 1,
+      "wait_before": 0.12896202504634857,
+      "wait_after": 0.1254846751689911,
+      "conditional_road_tv": 0.003527448046952486
+    },
+    {
+      "seed": 191000100,
+      "decision": 15,
+      "time": 2,
+      "wait_before": 0.1419735699892044,
+      "wait_after": 0.13811606168746948,
+      "conditional_road_tv": 0.002674149814993143
+    },
+    {
+      "seed": 191000100,
+      "decision": 20,
+      "time": 3,
+      "wait_before": 1.0,
+      "wait_after": 1.0,
+      "conditional_road_tv": null
+    },
+    {
+      "seed": 191000100,
+      "decision": 25,
+      "time": 8,
+      "wait_before": 1.0,
+      "wait_after": 1.0,
+      "conditional_road_tv": null
+    },
+    {
+      "seed": 191000100,
+      "decision": 30,
+      "time": 13,
+      "wait_before": 1.0,
+      "wait_after": 1.0,
+      "conditional_road_tv": null
+    },
+    {
+      "seed": 191000100,
+      "decision": 35,
+      "time": 18,
+      "wait_before": 1.0,
+      "wait_after": 1.0,
+      "conditional_road_tv": null
+    },
+    {
+      "seed": 191000100,
+      "decision": 40,
+      "time": 23,
+      "wait_before": 1.0,
+      "wait_after": 1.0,
+      "conditional_road_tv": null
+    },
+    {
+      "seed": 191000100,
+      "decision": 45,
+      "time": 27,
+      "wait_before": 0.23529024422168732,
+      "wait_after": 0.23062348365783691,
+      "conditional_road_tv": 0.0
+    },
+    {
+      "seed": 191000100,
+      "decision": 50,
+      "time": 31,
+      "wait_before": 1.0,
+      "wait_after": 1.0,
+      "conditional_road_tv": null
+    },
+    {
+      "seed": 191000100,
+      "decision": 55,
+      "time": 36,
+      "wait_before": 1.0,
+      "wait_after": 1.0,
+      "conditional_road_tv": null
+    },
+    {
+      "seed": 191000100,
+      "decision": 60,
+      "time": 41,
+      "wait_before": 1.0,
+      "wait_after": 1.0,
+      "conditional_road_tv": null
+    },
+    {
+      "seed": 191000100,
+      "decision": 65,
+      "time": 46,
+      "wait_before": 1.0,
+      "wait_after": 1.0,
+      "conditional_road_tv": null
+    },
+    {
+      "seed": 191000100,
+      "decision": 70,
+      "time": 51,
+      "wait_before": 1.0,
+      "wait_after": 1.0,
+      "conditional_road_tv": null
+    },
+    {
+      "seed": 191000100,
+      "decision": 75,
+      "time": 56,
+      "wait_before": 1.0,
+      "wait_after": 1.0,
+      "conditional_road_tv": null
+    },
+    {
+      "seed": 191000108,
+      "decision": 0,
+      "time": 0,
+      "wait_before": 0.03876146301627159,
+      "wait_after": 0.03755620867013931,
+      "conditional_road_tv": 0.002780602313578129
+    },
+    {
+      "seed": 191000108,
+      "decision": 5,
+      "time": 0,
+      "wait_before": 0.049103621393442154,
+      "wait_after": 0.04759109392762184,
+      "conditional_road_tv": 2.9644436905229554e-10
+    },
+    {
+      "seed": 191000108,
+      "decision": 10,
+      "time": 4,
+      "wait_before": 0.9987627267837524,
+      "wait_after": 0.9987245202064514,
+      "conditional_road_tv": 0.004277050495147705
+    },
+    {
+      "seed": 191000108,
+      "decision": 15,
+      "time": 9,
+      "wait_before": 0.9995356798171997,
+      "wait_after": 0.9995207786560059,
+      "conditional_road_tv": 0.0042972867377102375
+    },
+    {
+      "seed": 191000108,
+      "decision": 20,
+      "time": 14,
+      "wait_before": 0.9995453953742981,
+      "wait_after": 0.999531626701355,
+      "conditional_road_tv": 0.004302324261516333
+    },
+    {
+      "seed": 191000108,
+      "decision": 25,
+      "time": 19,
+      "wait_before": 0.1638026386499405,
+      "wait_after": 0.15982820093631744,
+      "conditional_road_tv": 5.780719220638275e-06
+    },
+    {
+      "seed": 191000108,
+      "decision": 30,
+      "time": 19,
+      "wait_before": 0.1649913191795349,
+      "wait_after": 0.16099558770656586,
+      "conditional_road_tv": 4.834702516803846e-13
+    },
+    {
+      "seed": 191000108,
+      "decision": 35,
+      "time": 20,
+      "wait_before": 0.12848426401615143,
+      "wait_after": 0.12559747695922852,
+      "conditional_road_tv": 0.0
+    },
+    {
+      "seed": 191000108,
+      "decision": 40,
+      "time": 24,
+      "wait_before": 1.0,
+      "wait_after": 1.0,
+      "conditional_road_tv": null
+    },
+    {
+      "seed": 191000108,
+      "decision": 45,
+      "time": 29,
+      "wait_before": 1.0,
+      "wait_after": 1.0,
+      "conditional_road_tv": null
+    },
+    {
+      "seed": 191000108,
+      "decision": 50,
+      "time": 34,
+      "wait_before": 1.0,
+      "wait_after": 1.0,
+      "conditional_road_tv": null
+    },
+    {
+      "seed": 191000108,
+      "decision": 55,
+      "time": 39,
+      "wait_before": 1.0,
+      "wait_after": 1.0,
+      "conditional_road_tv": null
+    },
+    {
+      "seed": 191000108,
+      "decision": 60,
+      "time": 44,
+      "wait_before": 1.0,
+      "wait_after": 1.0,
+      "conditional_road_tv": null
+    },
+    {
+      "seed": 191000108,
+      "decision": 65,
+      "time": 49,
+      "wait_before": 1.0,
+      "wait_after": 1.0,
+      "conditional_road_tv": null
+    },
+    {
+      "seed": 191000108,
+      "decision": 70,
+      "time": 54,
+      "wait_before": 1.0,
+      "wait_after": 1.0,
+      "conditional_road_tv": null
+    },
+    {
+      "seed": 191000108,
+      "decision": 75,
+      "time": 59,
+      "wait_before": 1.0,
+      "wait_after": 1.0,
+      "conditional_road_tv": null
+    }
+  ],
+  "mean_conditional_road_tv": 0.001985701992486234,
+  "mean_wait_change": -0.000993934809230268
+}

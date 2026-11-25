@@ -1,0 +1,101 @@
+{
+  "production_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+  "diagnostic_sha256": "c650ef05bc1ee8c0b340e2f66c012eca7cb8f10971d6ad7ae9a6c39200b716a9",
+  "parity_exercises": [
+    "city",
+    "adjacent",
+    "bend",
+    "clear",
+    "obstacle",
+    "small-city-offset-single",
+    "small-city-offset-stock",
+    "small-city-offset-pairs",
+    "midgame-network-quiet"
+  ],
+  "exact_native_transitions": 180,
+  "pair_fixture_checks": [
+    {
+      "seed": 244000100,
+      "case": "match",
+      "stock": 4
+    },
+    {
+      "seed": 244000100,
+      "case": "mismatch",
+      "stock": 4
+    },
+    {
+      "seed": 244000100,
+      "case": "homes",
+      "stock": 4
+    },
+    {
+      "seed": 244000100,
+      "case": "destinations",
+      "stock": 4
+    },
+    {
+      "seed": 244000101,
+      "case": "match",
+      "stock": 2
+    },
+    {
+      "seed": 244000101,
+      "case": "mismatch",
+      "stock": 2
+    },
+    {
+      "seed": 244000101,
+      "case": "homes",
+      "stock": 2
+    },
+    {
+      "seed": 244000101,
+      "case": "destinations",
+      "stock": 2
+    },
+    {
+      "seed": 244000102,
+      "case": "match",
+      "stock": 3
+    },
+    {
+      "seed": 244000102,
+      "case": "mismatch",
+      "stock": 3
+    },
+    {
+      "seed": 244000102,
+      "case": "homes",
+      "stock": 3
+    },
+    {
+      "seed": 244000102,
+      "case": "destinations",
+      "stock": 3
+    },
+    {
+      "seed": 244000103,
+      "case": "match",
+      "stock": 3
+    },
+    {
+      "seed": 244000103,
+      "case": "mismatch",
+      "stock": 3
+    },
+    {
+      "seed": 244000103,
+      "case": "homes",
+      "stock": 3
+    },
+    {
+      "seed": 244000103,
+      "case": "destinations",
+      "stock": 3
+    }
+  ],
+  "matching_mismatched_geometry_and_masks_exact": true,
+  "current_input_distinguishes_colors": true,
+  "limits": "Diagnostic host only; no learner/environment change. Smoke seeds244M are separate from audit243M and reserved236M/237M."
+}

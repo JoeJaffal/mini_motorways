@@ -1,0 +1,13 @@
+{
+  "passed": 6,
+  "checks": [
+    "Exact native world and motion-history observation replay; prefix score/actions excluded",
+    "Only subsequent native deliveries counted as reward and episode trips",
+    "Explicit evaluation reset bypasses recorded start",
+    "Cold worker:32 exact legacy transitions, masks, observations and common info",
+    "Corrupted native-state digest rejected",
+    "Different native host rejected before launch"
+  ],
+  "test_only_seed": 99087286,
+  "note": "This development-seed prefix is only a replay test, never part of training data."
+}

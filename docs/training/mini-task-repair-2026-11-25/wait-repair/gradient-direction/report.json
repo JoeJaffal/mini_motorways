@@ -1,0 +1,148 @@
+{
+  "checkpoint": "output/training/mini-reset-wait-repair-01/start.zip",
+  "sha256": "edb2a26da557f6d3d41a51ca64d62d0bdde8423572e84e78039a80cc43083aa5",
+  "weights_unchanged": true,
+  "small_city_horizon": 300,
+  "optimizer_group_scales": [
+    0.3,
+    0.1,
+    0.1
+  ],
+  "episodes": [
+    {
+      "seed": 231000000,
+      "exercise": "small-city-offset-single",
+      "native_score": 0,
+      "paid_units": 7,
+      "native_return": 0.0,
+      "decisions": 10
+    },
+    {
+      "seed": 231000000,
+      "exercise": "small-city-offset-pairs",
+      "native_score": 0,
+      "paid_units": 12,
+      "native_return": 0.0,
+      "decisions": 19
+    },
+    {
+      "seed": 231000001,
+      "exercise": "small-city-offset-single",
+      "native_score": 19,
+      "paid_units": 7,
+      "native_return": 19.0,
+      "decisions": 9
+    },
+    {
+      "seed": 231000001,
+      "exercise": "small-city-offset-pairs",
+      "native_score": 10,
+      "paid_units": 14,
+      "native_return": 10.0,
+      "decisions": 18
+    },
+    {
+      "seed": 231000002,
+      "exercise": "small-city-offset-single",
+      "native_score": 0,
+      "paid_units": 10,
+      "native_return": 0.0,
+      "decisions": 21
+    },
+    {
+      "seed": 231000002,
+      "exercise": "small-city-offset-pairs",
+      "native_score": 0,
+      "paid_units": 18,
+      "native_return": 0.0,
+      "decisions": 34
+    },
+    {
+      "seed": 231000003,
+      "exercise": "small-city-offset-single",
+      "native_score": 18,
+      "paid_units": 6,
+      "native_return": 18.0,
+      "decisions": 39
+    },
+    {
+      "seed": 231000003,
+      "exercise": "small-city-offset-pairs",
+      "native_score": 36,
+      "paid_units": 12,
+      "native_return": 36.0,
+      "decisions": 39
+    },
+    {
+      "seed": 231000004,
+      "exercise": "small-city-offset-single",
+      "native_score": 18,
+      "paid_units": 6,
+      "native_return": 18.0,
+      "decisions": 306
+    },
+    {
+      "seed": 231000004,
+      "exercise": "small-city-offset-pairs",
+      "native_score": 10,
+      "paid_units": 15,
+      "native_return": 10.0,
+      "decisions": 51
+    },
+    {
+      "seed": 231000005,
+      "exercise": "small-city-offset-single",
+      "native_score": 0,
+      "paid_units": 7,
+      "native_return": 0.0,
+      "decisions": 9
+    },
+    {
+      "seed": 231000005,
+      "exercise": "small-city-offset-pairs",
+      "native_score": 0,
+      "paid_units": 13,
+      "native_return": 0.0,
+      "decisions": 18
+    },
+    {
+      "seed": 231000006,
+      "exercise": "small-city-offset-single",
+      "native_score": 0,
+      "paid_units": 10,
+      "native_return": 0.0,
+      "decisions": 15
+    },
+    {
+      "seed": 231000006,
+      "exercise": "small-city-offset-pairs",
+      "native_score": 0,
+      "paid_units": 18,
+      "native_return": 0.0,
+      "decisions": 26
+    },
+    {
+      "seed": 231000007,
+      "exercise": "small-city-offset-single",
+      "native_score": 18,
+      "paid_units": 6,
+      "native_return": 18.0,
+      "decisions": 306
+    },
+    {
+      "seed": 231000007,
+      "exercise": "small-city-offset-pairs",
+      "native_score": 36,
+      "paid_units": 13,
+      "native_return": 36.0,
+      "decisions": 35
+    }
+  ],
+  "sampled_states": 256,
+  "total_states": 955,
+  "value_mse": 865.7023351775017,
+  "explained_variance": -0.6382929274887561,
+  "value_mean": -13.912319950060919,
+  "return_mean": 11.23046875,
+  "note": "Frozen native finite lessons; task-homogeneous normalized Monte Carlo gradients at the current policy. Choice states only. Not actual rollout-tail/epoch gradients or causal attribution. No optimizer step."
+}

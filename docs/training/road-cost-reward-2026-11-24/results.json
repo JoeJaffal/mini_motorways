@@ -1,0 +1,622 @@
+{
+  "results": {
+    "parent": {
+      "validation/small-city-offset-single": {
+        "score": 1.796875,
+        "first_served": 0.5,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 7.4375,
+        "remaining_stock": 0.390625,
+        "paid_units": 7.046875,
+        "outside_routes": 4.328125,
+        "no_build": 0.0,
+        "games": 64
+      },
+      "validation/small-city-offset-stock": {
+        "score": 2.5,
+        "first_served": 0.71875,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 13.96875,
+        "remaining_stock": 3.609375,
+        "paid_units": 10.359375,
+        "outside_routes": 5.84375,
+        "no_build": 0.0,
+        "games": 64
+      }
+    },
+    "control": {
+      "validation/small-city-offset-single": {
+        "score": 1.84375,
+        "first_served": 0.515625,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 7.4375,
+        "remaining_stock": 0.390625,
+        "paid_units": 7.046875,
+        "outside_routes": 4.1875,
+        "no_build": 0.0,
+        "games": 64
+      },
+      "validation/small-city-offset-stock": {
+        "score": 2.375,
+        "first_served": 0.6875,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 13.96875,
+        "remaining_stock": 3.609375,
+        "paid_units": 10.359375,
+        "outside_routes": 6.109375,
+        "no_build": 0.0,
+        "games": 64
+      }
+    },
+    "mild": {
+      "validation/small-city-offset-single": {
+        "score": 1.84375,
+        "first_served": 0.515625,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 7.4375,
+        "remaining_stock": 0.390625,
+        "paid_units": 7.046875,
+        "outside_routes": 4.1875,
+        "no_build": 0.0,
+        "games": 64
+      },
+      "validation/small-city-offset-stock": {
+        "score": 2.375,
+        "first_served": 0.6875,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 13.96875,
+        "remaining_stock": 3.609375,
+        "paid_units": 10.359375,
+        "outside_routes": 6.109375,
+        "no_build": 0.0,
+        "games": 64
+      }
+    },
+    "strong": {
+      "validation/small-city-offset-single": {
+        "score": 1.84375,
+        "first_served": 0.515625,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 7.4375,
+        "remaining_stock": 0.390625,
+        "paid_units": 7.046875,
+        "outside_routes": 4.1875,
+        "no_build": 0.0,
+        "games": 64
+      },
+      "validation/small-city-offset-stock": {
+        "score": 2.421875,
+        "first_served": 0.703125,
+        "later_exists": 0.0,
+        "later_served": 0.0,
+        "both_served": 0.0,
+        "initial_stock": 13.96875,
+        "remaining_stock": 3.609375,
+        "paid_units": 10.359375,
+        "outside_routes": 5.953125,
+        "no_build": 0.0,
+        "games": 64
+      }
+    }
+  },
+  "diagnostics": {
+    "parent": {
+      "small-city-offset-single": {
+        "failed_games": 32,
+        "mean_failed_stock_left": 0.0,
+        "mean_success_paid_units": 5.53125,
+        "mean_success_outside_routes": 0.09375,
+        "common_success_games": 32,
+        "common_success_outside_routes": {
+          "parent": 0.09375,
+          "control": 0.09375
+        }
+      },
+      "small-city-offset-stock": {
+        "failed_games": 18,
+        "mean_failed_stock_left": 0.0,
+        "mean_success_paid_units": 8.478260869565217,
+        "mean_success_outside_routes": 2.1956521739130435,
+        "common_success_games": 40,
+        "common_success_outside_routes": {
+          "parent": 1.375,
+          "control": 1.35
+        }
+      }
+    },
+    "control": {
+      "small-city-offset-single": {
+        "failed_games": 31,
+        "mean_failed_stock_left": 0.0,
+        "mean_success_paid_units": 5.666666666666667,
+        "mean_success_outside_routes": 0.12121212121212122,
+        "common_success_games": 32,
+        "common_success_outside_routes": {
+          "parent": 0.09375,
+          "control": 0.09375
+        }
+      },
+      "small-city-offset-stock": {
+        "failed_games": 20,
+        "mean_failed_stock_left": 0.0,
+        "mean_success_paid_units": 8.113636363636363,
+        "mean_success_outside_routes": 1.9318181818181819,
+        "common_success_games": 40,
+        "common_success_outside_routes": {
+          "parent": 1.375,
+          "control": 1.35
+        }
+      }
+    },
+    "mild": {
+      "small-city-offset-single": {
+        "failed_games": 31,
+        "mean_failed_stock_left": 0.0,
+        "mean_success_paid_units": 5.666666666666667,
+        "mean_success_outside_routes": 0.12121212121212122,
+        "common_success_games": 32,
+        "common_success_outside_routes": {
+          "parent": 0.09375,
+          "control": 0.09375,
+          "mild": 0.09375
+        }
+      },
+      "small-city-offset-stock": {
+        "failed_games": 20,
+        "mean_failed_stock_left": 0.0,
+        "mean_success_paid_units": 8.113636363636363,
+        "mean_success_outside_routes": 1.9318181818181819,
+        "common_success_games": 40,
+        "common_success_outside_routes": {
+          "parent": 1.375,
+          "control": 1.35,
+          "mild": 1.35
+        }
+      }
+    },
+    "strong": {
+      "small-city-offset-single": {
+        "failed_games": 31,
+        "mean_failed_stock_left": 0.0,
+        "mean_success_paid_units": 5.666666666666667,
+        "mean_success_outside_routes": 0.12121212121212122,
+        "common_success_games": 32,
+        "common_success_outside_routes": {
+          "parent": 0.09375,
+          "control": 0.09375,
+          "strong": 0.09375
+        }
+      },
+      "small-city-offset-stock": {
+        "failed_games": 19,
+        "mean_failed_stock_left": 0.0,
+        "mean_success_paid_units": 8.355555555555556,
+        "mean_success_outside_routes": 2.088888888888889,
+        "common_success_games": 40,
+        "common_success_outside_routes": {
+          "parent": 1.375,
+          "control": 1.35,
+          "strong": 1.35
+        }
+      }
+    }
+  },
+  "paired": {
+    "control": {
+      "parent": {
+        "small-city-offset-single": {
+          "first_served": {
+            "delta": 0.015625,
+            "interval95": [
+              0.0,
+              0.046875
+            ]
+          },
+          "score": {
+            "delta": 0.046875,
+            "interval95": [
+              0.0,
+              0.140625
+            ]
+          },
+          "paid_units": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "outside_routes": {
+            "delta": -0.140625,
+            "interval95": [
+              -0.421875,
+              0.0
+            ]
+          },
+          "no_build": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "small-city-offset-stock": {
+          "first_served": {
+            "delta": -0.03125,
+            "interval95": [
+              -0.125,
+              0.0625
+            ]
+          },
+          "score": {
+            "delta": -0.125,
+            "interval95": [
+              -0.453125,
+              0.171875
+            ]
+          },
+          "paid_units": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "outside_routes": {
+            "delta": 0.265625,
+            "interval95": [
+              -0.515625,
+              1.125
+            ]
+          },
+          "no_build": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      }
+    },
+    "mild": {
+      "parent": {
+        "small-city-offset-single": {
+          "first_served": {
+            "delta": 0.015625,
+            "interval95": [
+              0.0,
+              0.046875
+            ]
+          },
+          "score": {
+            "delta": 0.046875,
+            "interval95": [
+              0.0,
+              0.140625
+            ]
+          },
+          "paid_units": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "outside_routes": {
+            "delta": -0.140625,
+            "interval95": [
+              -0.421875,
+              0.0
+            ]
+          },
+          "no_build": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "small-city-offset-stock": {
+          "first_served": {
+            "delta": -0.03125,
+            "interval95": [
+              -0.125,
+              0.0625
+            ]
+          },
+          "score": {
+            "delta": -0.125,
+            "interval95": [
+              -0.453125,
+              0.171875
+            ]
+          },
+          "paid_units": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "outside_routes": {
+            "delta": 0.265625,
+            "interval95": [
+              -0.515625,
+              1.125
+            ]
+          },
+          "no_build": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "control": {
+        "small-city-offset-single": {
+          "first_served": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "score": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "paid_units": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "outside_routes": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "no_build": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "small-city-offset-stock": {
+          "first_served": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "score": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "paid_units": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "outside_routes": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "no_build": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      }
+    },
+    "strong": {
+      "parent": {
+        "small-city-offset-single": {
+          "first_served": {
+            "delta": 0.015625,
+            "interval95": [
+              0.0,
+              0.046875
+            ]
+          },
+          "score": {
+            "delta": 0.046875,
+            "interval95": [
+              0.0,
+              0.140625
+            ]
+          },
+          "paid_units": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "outside_routes": {
+            "delta": -0.140625,
+            "interval95": [
+              -0.421875,
+              0.0
+            ]
+          },
+          "no_build": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "small-city-offset-stock": {
+          "first_served": {
+            "delta": -0.015625,
+            "interval95": [
+              -0.078125,
+              0.046875
+            ]
+          },
+          "score": {
+            "delta": -0.078125,
+            "interval95": [
+              -0.296875,
+              0.140625
+            ]
+          },
+          "paid_units": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "outside_routes": {
+            "delta": 0.109375,
+            "interval95": [
+              -0.45351562499999964,
+              0.71875
+            ]
+          },
+          "no_build": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "control": {
+        "small-city-offset-single": {
+          "first_served": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "score": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "paid_units": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "outside_routes": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "no_build": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "small-city-offset-stock": {
+          "first_served": {
+            "delta": 0.015625,
+            "interval95": [
+              -0.03125,
+              0.0625
+            ]
+          },
+          "score": {
+            "delta": 0.046875,
+            "interval95": [
+              -0.09375,
+              0.1875
+            ]
+          },
+          "paid_units": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          },
+          "outside_routes": {
+            "delta": -0.15625,
+            "interval95": [
+              -0.671875,
+              0.28125
+            ]
+          },
+          "no_build": {
+            "delta": 0.0,
+            "interval95": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      }
+    }
+  },
+  "gates": {
+    "mild": {
+      "success_retained": false,
+      "outside_routes_10pct_lower": false,
+      "outside_routes_interval_below_zero": false,
+      "native_score_retained": true
+    },
+    "strong": {
+      "success_retained": false,
+      "outside_routes_10pct_lower": false,
+      "outside_routes_interval_below_zero": false,
+      "native_score_retained": true
+    }
+  },
+  "passing": [],
+  "limits": "One training RNG per arm;32 layouts with two sampling streams, shared geometry across stock conditions. This suite selects a candidate; not independent confirmation."
+}

@@ -1,0 +1,15 @@
+{
+  "branch": "Maskable-PPO",
+  "protected_artifact_hashes": {
+    "output/training/city-whole-initial-01/start.zip": "7eb605e4e465b9143e095e367abe0a01285b8ace05843aaac80bd48b5f049027",
+    "output/city-bridge-connection-build-01/bin/TrafficHost/release/TrafficHost.dll": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+    "output/training/small-city-service-fit-01/ppo/checkpoint-000008192.zip": "b06f9d29647a7ba81558857474452760e2e27ad70863f1a9da7aaff32eb5ec02",
+    "output/training/small-city-offset-fit-01/ppo/final.zip": "8bfe05d67d7b9a0738ea97e23d45aefd6cdbefe64b15882076951a197901ab77"
+  },
+  "manifest_verified": true,
+  "active_experiment_processes": [],
+  "final_python_checks": 2,
+  "offset_status": "complete",
+  "confirmation_status": "complete",
+  "easy_trial_status": "intentionally stopped; preserved checkpoint; launcher error retained"
+}

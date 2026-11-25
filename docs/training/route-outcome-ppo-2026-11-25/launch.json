@@ -1,0 +1,18 @@
+{
+  "pid": 927046,
+  "command": [
+    "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+    "-u",
+    "training/run_city_route_outcome.py",
+    "--parent",
+    "output/training/build-wait-01/training/final.zip",
+    "--native-template",
+    "output/training/mini-fixed-route-01/training/final.zip",
+    "--host-directory",
+    "output/road-cost-reward-build-02/bin/TrafficHost/release",
+    "--output",
+    "output/training/route-outcome-01",
+    "--archive",
+    "docs/training/route-outcome-run-2026-11-25"
+  ]
+}

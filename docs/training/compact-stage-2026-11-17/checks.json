@@ -1,0 +1,17 @@
+{
+  "compact_tests": "3 PASS,35.295seconds",
+  "layouts": {
+    "train": 20,
+    "validation": 20,
+    "each_repair_trips_at_least": 3
+  },
+  "observed_and_selectable_tiles": 144,
+  "random_actions_checked": 600,
+  "starting_connections_preserved": true,
+  "repeat_draw_spending": 0,
+  "native_reward_and_strict_replay": "PASS",
+  "previous_draw_only_tests": "4 PASS",
+  "parallel_credit_tests": "4 PASS",
+  "parallel_dry": "4workers135tokens0updatesunchangedweights",
+  "training_performed": false
+}

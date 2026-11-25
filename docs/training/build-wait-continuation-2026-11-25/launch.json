@@ -1,0 +1,29 @@
+{
+  "command": [
+    "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+    "-u",
+    "/home/mohammadjaffal/mini_motorways/training/run_city_wait_decision.py",
+    "--parent",
+    "/home/mohammadjaffal/mini_motorways/output/training/build-wait-01/training/final.zip",
+    "--host-directory",
+    "/home/mohammadjaffal/mini_motorways/output/wait-decision-build-02/artifacts/bin/TrafficHost/release",
+    "--city-host-directory",
+    "/home/mohammadjaffal/mini_motorways/output/road-cost-reward-build-02/bin/TrafficHost/release",
+    "--output",
+    "/home/mohammadjaffal/mini_motorways/output/training/build-wait-02",
+    "--archive",
+    "/home/mohammadjaffal/mini_motorways/docs/training/build-wait-continuation-2026-11-25",
+    "--rollouts",
+    "8",
+    "--seed-start",
+    "245032768"
+  ],
+  "started": "2026-11-25T20:14:25.249519+02:00",
+  "revision": "6bd7f7193b26ae0f5aa12563f3dd89769115df6e",
+  "branch": "Maskable-PPO",
+  "budget": 65536,
+  "total_wait_decisions_after": 98304,
+  "parent_sha256": "907e1a083b58780bd140d4e258285878ed3534a4c0be6cf9b75070eae7f04826",
+  "no_overnight": true,
+  "pid": 905893
+}

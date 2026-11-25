@@ -1,0 +1,90 @@
+{
+  "raw_log_sha256": "4c35d944a80ea3ce4e6f9844d3f4e87ac0b116729b684c3858729275c9794c8a",
+  "episodes": 3592,
+  "stages": [
+    {
+      "stage": 1,
+      "exercise": "route-gap-one",
+      "started_after_gate": false,
+      "episodes": 363,
+      "scoring": 363
+    },
+    {
+      "stage": 1,
+      "exercise": "route-gap-three",
+      "started_after_gate": false,
+      "episodes": 337,
+      "scoring": 335
+    },
+    {
+      "stage": 1,
+      "exercise": "route-gap-two",
+      "started_after_gate": false,
+      "episodes": 364,
+      "scoring": 361
+    },
+    {
+      "stage": 1,
+      "exercise": "route-gate-two",
+      "started_after_gate": true,
+      "episodes": 360,
+      "scoring": 360
+    },
+    {
+      "stage": 2,
+      "exercise": "route-gap-three",
+      "started_after_gate": false,
+      "episodes": 309,
+      "scoring": 305
+    },
+    {
+      "stage": 2,
+      "exercise": "route-gate-two",
+      "started_after_gate": false,
+      "episodes": 307,
+      "scoring": 282
+    },
+    {
+      "stage": 2,
+      "exercise": "route-gate-two",
+      "started_after_gate": true,
+      "episodes": 314,
+      "scoring": 313
+    },
+    {
+      "stage": 2,
+      "exercise": "route-short",
+      "started_after_gate": false,
+      "episodes": 286,
+      "scoring": 281
+    },
+    {
+      "stage": 3,
+      "exercise": "route-delay",
+      "started_after_gate": false,
+      "episodes": 227,
+      "scoring": 200
+    },
+    {
+      "stage": 3,
+      "exercise": "route-gap-three",
+      "started_after_gate": false,
+      "episodes": 233,
+      "scoring": 233
+    },
+    {
+      "stage": 3,
+      "exercise": "route-gate-two",
+      "started_after_gate": false,
+      "episodes": 238,
+      "scoring": 221
+    },
+    {
+      "stage": 3,
+      "exercise": "route-long",
+      "started_after_gate": false,
+      "episodes": 254,
+      "scoring": 253
+    }
+  ]
+}

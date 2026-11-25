@@ -1,0 +1,43 @@
+[
+  {
+    "path": "/home/mohammadjaffal/mini_motorways/output/training/build-wait-smoke-01/final.zip",
+    "sha256": "cec1d2249a781487b31d0fee2a03e0e5bbbb6cbdecc1422677e98b06044dcf3c",
+    "added_decisions": 128,
+    "seconds": 9.951440917910077,
+    "cases": {
+      "destinations": {
+        "games": 8,
+        "correct": 0
+      },
+      "homes": {
+        "games": 8,
+        "correct": 0
+      },
+      "join": {
+        "games": 16,
+        "correct": 11
+      },
+      "match": {
+        "games": 32,
+        "correct": 32
+      },
+      "mismatch": {
+        "games": 16,
+        "correct": 0
+      },
+      "quiet": {
+        "games": 32,
+        "correct": 25
+      },
+      "route": {
+        "games": 16,
+        "correct": 9
+      }
+    },
+    "wait_adam_steps": [
+      4
+    ],
+    "old_weights_and_adam_exact": true,
+    "binary_returns_no_bootstrap": true
+  }
+]

@@ -1,0 +1,106 @@
+[
+  {
+    "case": "best",
+    "score": 967,
+    "road_stock": 7,
+    "shops": 14,
+    "unserved": 0,
+    "warning_shops": [
+      {
+        "id": 0,
+        "demand": 9,
+        "demandCapacity": 6,
+        "served": 104,
+        "overcrowdedFor": 13.62500000000006
+      },
+      {
+        "id": 3,
+        "demand": 11,
+        "demandCapacity": 9,
+        "served": 153,
+        "overcrowdedFor": 40.31024212512064
+      },
+      {
+        "id": 6,
+        "demand": 9,
+        "demandCapacity": 6,
+        "served": 91,
+        "overcrowdedFor": 32.21857208302342
+      },
+      {
+        "id": 16,
+        "demand": 9,
+        "demandCapacity": 6,
+        "served": 78,
+        "overcrowdedFor": 11.105861540389173
+      },
+      {
+        "id": 21,
+        "demand": 14,
+        "demandCapacity": 9,
+        "served": 66,
+        "overcrowdedFor": 31.031879253431295
+      },
+      {
+        "id": 23,
+        "demand": 14,
+        "demandCapacity": 9,
+        "served": 92,
+        "overcrowdedFor": 17.45399306192799
+      },
+      {
+        "id": 42,
+        "demand": 10,
+        "demandCapacity": 6,
+        "served": 33,
+        "overcrowdedFor": 27.70328930624565
+      },
+      {
+        "id": 62,
+        "demand": 9,
+        "demandCapacity": 6,
+        "served": 3,
+        "overcrowdedFor": 50.07013099029407
+      }
+    ]
+  },
+  {
+    "case": "typical",
+    "score": 280,
+    "road_stock": 0,
+    "shops": 9,
+    "unserved": 1,
+    "warning_shops": [
+      {
+        "id": 16,
+        "demand": 8,
+        "demandCapacity": 6,
+        "served": 18,
+        "overcrowdedFor": 25.375000000000227
+      },
+      {
+        "id": 27,
+        "demand": 9,
+        "demandCapacity": 6,
+        "served": 0,
+        "overcrowdedFor": 50.07499999999929
+      }
+    ]
+  },
+  {
+    "case": "worst",
+    "score": 0,
+    "road_stock": 0,
+    "shops": 1,
+    "unserved": 1,
+    "warning_shops": [
+      {
+        "id": 0,
+        "demand": 10,
+        "demandCapacity": 6,
+        "served": 0,
+        "overcrowdedFor": 50.07499999999929
+      }
+    ]
+  }
+]

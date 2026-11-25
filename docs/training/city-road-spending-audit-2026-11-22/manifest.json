@@ -1,0 +1,34 @@
+{
+  "branch": "Maskable-PPO",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "e4dfbc087dfaea18f4d870237d706e3f6791fc352a7183803fb038a2c964ec30"
+    },
+    {
+      "path": "comparison.json",
+      "sha256": "0d9ea1480d7aba9b9d65d35be72a23f88b6d1ae7065d73ab12ea4238ebd85df2"
+    },
+    {
+      "path": "identity.json",
+      "sha256": "1fdc940139eb5463298b3f1878578516abb0caa6986490c75a26040bb6a883d3"
+    },
+    {
+      "path": "replays.json",
+      "sha256": "8ea435a004ecf2d0e2a173aa3e1a111bb3b7e140e2861f22283ff25ad2672313"
+    },
+    {
+      "path": "suite.json",
+      "sha256": "a4ddeb38f8980b02dc146f2c48fe85522828e5d0683eb8232c98e561ede9d80e"
+    },
+    {
+      "path": "summary.json",
+      "sha256": "db64c850375bc0c4a795bd8f00006c803431f039c159bdcd42406b17fefa77e4"
+    }
+  ],
+  "source_hashes": {
+    "training/audit_city_roads.py": "a48790c3b5f4f691b6b6f148a3414e6d33419f0d04762ab5fb8f322d5630104f",
+    "training/city_road_pilot.py": "fee11a39a5d4c205d05e3110fad96e64bbcdfab2ab7d800b7de0cf6470993789",
+    "training/export_city_replays.py": "407cfc407b9b07c4b7af0aee444bc5c2e80ebd6700950cb060ea2920981ffbc1"
+  }
+}

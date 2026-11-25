@@ -1,0 +1,56 @@
+{
+  "original": {
+    "attempts": 51200,
+    "successes": 912,
+    "median_collection_seconds": 35.126474914024584
+  },
+  "fast": {
+    "attempts": 71680,
+    "successes": 27966,
+    "median_collection_seconds": 18.95438766904408
+  },
+  "latest_checkpoint": {
+    "tokens": 122880,
+    "updates": 240,
+    "version": 60,
+    "episodes": 122880,
+    "worker_episodes": [
+      7680,
+      7680,
+      7680,
+      7680,
+      7680,
+      7680,
+      7680,
+      7680,
+      7680,
+      7680,
+      7680,
+      7680,
+      7680,
+      7680,
+      7680,
+      7680
+    ],
+    "worker_seed_indices": [
+      7679,
+      7679,
+      7679,
+      7679,
+      7679,
+      7679,
+      7679,
+      7679,
+      7679,
+      7679,
+      7679,
+      7679,
+      7679,
+      7679,
+      7679,
+      7679
+    ]
+  },
+  "latest_policy_sha256": "2c69b596c0f58687730acd47a483c8cb0bcbb4b95f61b58aa4daa51bb5286d14",
+  "discarded_final_rollout_attempts": 1408
+}

@@ -1,0 +1,63 @@
+{
+  "schema": "parallel-hierarchy-stage1-v1",
+  "stage": "one-gap-compact",
+  "reward_mode": "connection-economy",
+  "reward_spec": {
+    "name": "connection-economy",
+    "gamma": 1,
+    "connection_potential": 0.25,
+    "positive_road_consumption_cost": 0.01,
+    "true_terminal_potential": 0,
+    "refund_reward": 0
+  },
+  "workers": 16,
+  "device": "cuda",
+  "threads": 2,
+  "seed": 42,
+  "rollout_tokens_global": 2048,
+  "minibatch_size": 128,
+  "gamma": 1,
+  "trace_lambda": 1,
+  "level_weight": "equal roles, global role normalization, sample weighted",
+  "update": {
+    "epochs": 4,
+    "clip_range": 0.2,
+    "entropy_coefficient": 0.01,
+    "value_coefficient": 0.5,
+    "max_gradient_norm": 0.5,
+    "target_kl": 0.02
+  },
+  "environment": {
+    "environment_schema": "connection-practice-hierarchy-v4",
+    "protocol": "maskable-direct-hierarchy-v1",
+    "simulator": "2026-11-10.f34",
+    "dll_sha256": "50cbd4c5c4ac3706e126866ff9b7484a6c6a44e5e8085ca14747eb872b8843a5",
+    "source_hashes": {
+      "training/connection_practice.py": "46898cf020d43df1543e6053cc7300d9862732fbf617728a361cb94e9c6f1704",
+      "training/visible_observation.py": "76ea6a0ee1b3c1b44bc8d0ca2a16a9c349432d2172ab83cc5dc14fbdf4417cb9",
+      "training/environment.py": "eeb3bde8d9e547299deb1a08e6afd3a77a8d6ca5da18b156c91e05c2e792897f",
+      "training/practice_replay.py": "54c3fb9bc47fc7efccd4e77c2d0de1ba3f8b7df7b7dc15c6be81cb3cf49496ac",
+      "training/practice_reward.py": "9064147a3f8be1801fcb1c72b5e9c14933e28385bbbe2e101fa215e2ab37a082",
+      "simulation/Headless/Program.cs": "25667be61c7fcb73ec5b860798fbf27d98fcfc7879ebc62e93662984424b0d81",
+      "simulation/Assets/Simulation/PracticeScenario.cs": "3660f2a7e21796b4dbe46f2bdafd52a7a9f1f2cfaf7e7d96d5b52deeaca0e7dc",
+      "simulation/Assets/Simulation/PracticeLegality.cs": "d4164c6d3d4f7ace7c7c5b4620a8d104187e27cc258e9b4fcbc94744cdd1de26"
+    }
+  },
+  "runtime": {
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "torch": "2.9.1+cu126",
+    "numpy": "2.5.4"
+  },
+  "source_hashes": {
+    "practice_reward.py": "9064147a3f8be1801fcb1c72b5e9c14933e28385bbbe2e101fa215e2ab37a082",
+    "checkpoint_tools.py": "2d22cfe8a6e8161ba53e2f04eecd8091730d8ff977fdc11dc82b4bc5e57199dd",
+    "parallel_stage1.py": "2470e6d7946a8967d714895c0e2f63a92d95e63a06339bebc4b3d79f43fe70de",
+    "train_parallel_stage1.py": "a3709755e4802ec3d2d48c737ef23437650f91e50b2aed86fc274066fc9447f4",
+    "hierarchy_policy.py": "0dd6786d92dd6fdc585cc2c59c2c5f7ca6c5eaa6e5f362cad89482651203d8e4",
+    "hierarchy_batches.py": "fc900f3cfb4c68fe43c255fafafec44493e8c53579daca53bbbbb0bc841813af",
+    "hierarchy_rollout.py": "8e400ce67ec13b1ea8d3e3accaa2954ef4414dad60a94182879ffd698ba7ae74",
+    "hierarchy_updater.py": "cd6424efb489405555c0bc7c86c5cbce0b2e29aabc48e79eab7c53110be86fc9",
+    "hierarchy_objective.py": "c072cee2b4cb826e31ce9ef7dc0716dcca8dfc420d340e7830cac1242d56ce38",
+    "hierarchy_checkpoint.py": "f614f5e0af58901f58abc6e3890fd5e15066ee6c9c7944d25b4fad51291051c6"
+  }
+}

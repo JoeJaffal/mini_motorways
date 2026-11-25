@@ -1,0 +1,23 @@
+{
+  "status": "complete",
+  "pid": 281111,
+  "started": "2026-11-24T15:09:09.819209+02:00",
+  "training_seconds": 473.2153610129608,
+  "segments": 1,
+  "current_checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-city-rate-01/segment-001/final.zip",
+  "best_checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-original-delay-01/segment-001/final.zip",
+  "failed_reviews": 1,
+  "updated": "2026-11-24T15:18:23.275056+02:00",
+  "active_segment": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-city-rate-01/segment-001",
+  "phase": "finished",
+  "current_sha256": "c9c9249e18a2ffe05f66322efefaa8219d2006db838fe64c3b2b1aef75d7d4fb",
+  "active_review": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-city-rate-01/review-001",
+  "last_review": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-city-rate-01/review-001",
+  "last_decision": {
+    "retained": false,
+    "promote": false,
+    "failures": 1,
+    "stop": false
+  },
+  "best_sha256": "e72ec5ada055dd474f65ec0d032e6333128e241f8154ea2f3fc382c73dbf34e2"
+}

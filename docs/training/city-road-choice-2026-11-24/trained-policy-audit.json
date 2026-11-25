@@ -1,0 +1,1668 @@
+{
+  "roads": {
+    "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-road-choice-fit-02/roads/final.zip",
+    "sha256": "4adfead05746e25456933231b3e6fd46ed9f04141f8963e71da3d4177727bf58",
+    "changed_tensors": {
+      "features_extractor.growth_strategy_roads.0.weight": 0.008700840175151825,
+      "features_extractor.growth_strategy_roads.0.bias": 0.008042262867093086,
+      "features_extractor.growth_strategy_roads.2.weight": 0.005645436234772205,
+      "features_extractor.growth_strategy_roads.2.bias": 0.0006552731501869857,
+      "features_extractor.growth_strategy_spatial.0.weight": 0.02123141661286354,
+      "features_extractor.growth_strategy_spatial.0.bias": 0.022783882915973663,
+      "features_extractor.growth_strategy_spatial.2.weight": 0.019738096743822098,
+      "features_extractor.growth_strategy_spatial.2.bias": 0.02238660305738449,
+      "features_extractor.growth_strategy_spatial.4.weight": 0.020315658301115036,
+      "features_extractor.growth_strategy_spatial.4.bias": 0.022202342748641968,
+      "features_extractor.growth_strategy_spatial.6.weight": 0.021080181002616882,
+      "features_extractor.growth_strategy_spatial.6.bias": 0.020298760384321213,
+      "features_extractor.growth_strategy_spatial.8.weight": 0.021369289606809616,
+      "features_extractor.growth_strategy_spatial.8.bias": 0.018869031220674515,
+      "features_extractor.growth_strategy_spatial.10.weight": 0.02200716733932495,
+      "features_extractor.growth_strategy_spatial.10.bias": 0.01636720821261406,
+      "features_extractor.growth_strategy_spatial_roads.weight": 0.0058168875984847546,
+      "features_extractor.growth_strategy_spatial_roads.bias": 0.00368092255666852,
+      "pi_features_extractor.growth_strategy_roads.0.weight": 0.008700840175151825,
+      "pi_features_extractor.growth_strategy_roads.0.bias": 0.008042262867093086,
+      "pi_features_extractor.growth_strategy_roads.2.weight": 0.005645436234772205,
+      "pi_features_extractor.growth_strategy_roads.2.bias": 0.0006552731501869857,
+      "pi_features_extractor.growth_strategy_spatial.0.weight": 0.02123141661286354,
+      "pi_features_extractor.growth_strategy_spatial.0.bias": 0.022783882915973663,
+      "pi_features_extractor.growth_strategy_spatial.2.weight": 0.019738096743822098,
+      "pi_features_extractor.growth_strategy_spatial.2.bias": 0.02238660305738449,
+      "pi_features_extractor.growth_strategy_spatial.4.weight": 0.020315658301115036,
+      "pi_features_extractor.growth_strategy_spatial.4.bias": 0.022202342748641968,
+      "pi_features_extractor.growth_strategy_spatial.6.weight": 0.021080181002616882,
+      "pi_features_extractor.growth_strategy_spatial.6.bias": 0.020298760384321213,
+      "pi_features_extractor.growth_strategy_spatial.8.weight": 0.021369289606809616,
+      "pi_features_extractor.growth_strategy_spatial.8.bias": 0.018869031220674515,
+      "pi_features_extractor.growth_strategy_spatial.10.weight": 0.02200716733932495,
+      "pi_features_extractor.growth_strategy_spatial.10.bias": 0.01636720821261406,
+      "pi_features_extractor.growth_strategy_spatial_roads.weight": 0.0058168875984847546,
+      "pi_features_extractor.growth_strategy_spatial_roads.bias": 0.00368092255666852,
+      "vf_features_extractor.growth_strategy_roads.0.weight": 0.008700840175151825,
+      "vf_features_extractor.growth_strategy_roads.0.bias": 0.008042262867093086,
+      "vf_features_extractor.growth_strategy_roads.2.weight": 0.005645436234772205,
+      "vf_features_extractor.growth_strategy_roads.2.bias": 0.0006552731501869857,
+      "vf_features_extractor.growth_strategy_spatial.0.weight": 0.02123141661286354,
+      "vf_features_extractor.growth_strategy_spatial.0.bias": 0.022783882915973663,
+      "vf_features_extractor.growth_strategy_spatial.2.weight": 0.019738096743822098,
+      "vf_features_extractor.growth_strategy_spatial.2.bias": 0.02238660305738449,
+      "vf_features_extractor.growth_strategy_spatial.4.weight": 0.020315658301115036,
+      "vf_features_extractor.growth_strategy_spatial.4.bias": 0.022202342748641968,
+      "vf_features_extractor.growth_strategy_spatial.6.weight": 0.021080181002616882,
+      "vf_features_extractor.growth_strategy_spatial.6.bias": 0.020298760384321213,
+      "vf_features_extractor.growth_strategy_spatial.8.weight": 0.021369289606809616,
+      "vf_features_extractor.growth_strategy_spatial.8.bias": 0.018869031220674515,
+      "vf_features_extractor.growth_strategy_spatial.10.weight": 0.02200716733932495,
+      "vf_features_extractor.growth_strategy_spatial.10.bias": 0.01636720821261406,
+      "vf_features_extractor.growth_strategy_spatial_roads.weight": 0.0058168875984847546,
+      "vf_features_extractor.growth_strategy_spatial_roads.bias": 0.00368092255666852,
+      "value_net.0.weight": 0.019256047904491425,
+      "value_net.0.bias": 0.012063533067703247,
+      "value_net.2.weight": 0.01226133108139038,
+      "value_net.2.bias": 0.009850293397903442
+    },
+    "optimizer_steps": 1024,
+    "states": [
+      {
+        "seed": 184000000,
+        "decision": 0,
+        "seconds": 0,
+        "wait_before": 0.27602896094322205,
+        "wait_after": 0.2760288715362549,
+        "conditional_road_tv": 2.4211884010583162e-05
+      },
+      {
+        "seed": 184000000,
+        "decision": 10,
+        "seconds": 5,
+        "wait_before": 0.3921090364456177,
+        "wait_after": 0.39210906624794006,
+        "conditional_road_tv": 0.0037269291933625937
+      },
+      {
+        "seed": 184000000,
+        "decision": 20,
+        "seconds": 10,
+        "wait_before": 0.4159114360809326,
+        "wait_after": 0.4159114956855774,
+        "conditional_road_tv": 0.0007230979390442371
+      },
+      {
+        "seed": 184000000,
+        "decision": 30,
+        "seconds": 15,
+        "wait_before": 0.4593465030193329,
+        "wait_after": 0.4593465030193329,
+        "conditional_road_tv": 0.0051958318799734116
+      },
+      {
+        "seed": 184000000,
+        "decision": 40,
+        "seconds": 19,
+        "wait_before": 0.5151222348213196,
+        "wait_after": 0.5151225924491882,
+        "conditional_road_tv": 0.004556229803711176
+      },
+      {
+        "seed": 184000000,
+        "decision": 50,
+        "seconds": 25,
+        "wait_before": 0.5199577808380127,
+        "wait_after": 0.519957959651947,
+        "conditional_road_tv": 0.004353004973381758
+      },
+      {
+        "seed": 184000000,
+        "decision": 60,
+        "seconds": 32,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000000,
+        "decision": 70,
+        "seconds": 42,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000000,
+        "decision": 80,
+        "seconds": 52,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000000,
+        "decision": 90,
+        "seconds": 62,
+        "wait_before": 0.6183522939682007,
+        "wait_after": 0.618352472782135,
+        "conditional_road_tv": 9.262439562007785e-07
+      },
+      {
+        "seed": 184000000,
+        "decision": 100,
+        "seconds": 70,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000000,
+        "decision": 110,
+        "seconds": 80,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000000,
+        "decision": 120,
+        "seconds": 90,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000000,
+        "decision": 130,
+        "seconds": 100,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000000,
+        "decision": 140,
+        "seconds": 110,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000000,
+        "decision": 150,
+        "seconds": 120,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000000,
+        "decision": 160,
+        "seconds": 130,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000000,
+        "decision": 170,
+        "seconds": 140,
+        "wait_before": 0.021610045805573463,
+        "wait_after": 0.021610045805573463,
+        "conditional_road_tv": 0.0029211086221039295
+      },
+      {
+        "seed": 184000000,
+        "decision": 180,
+        "seconds": 140,
+        "wait_before": 0.050144683569669724,
+        "wait_after": 0.05014468729496002,
+        "conditional_road_tv": 0.0015549964737147093
+      },
+      {
+        "seed": 184000000,
+        "decision": 190,
+        "seconds": 140,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000000,
+        "decision": 200,
+        "seconds": 150,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 0,
+        "seconds": 0,
+        "wait_before": 0.13077448308467865,
+        "wait_after": 0.1307746171951294,
+        "conditional_road_tv": 0.004159946460276842
+      },
+      {
+        "seed": 184000003,
+        "decision": 10,
+        "seconds": 5,
+        "wait_before": 0.9997209906578064,
+        "wait_after": 0.9997208714485168,
+        "conditional_road_tv": 0.004536494147032499
+      },
+      {
+        "seed": 184000003,
+        "decision": 20,
+        "seconds": 14,
+        "wait_before": 0.6608380079269409,
+        "wait_after": 0.6608380675315857,
+        "conditional_road_tv": 8.878352673491463e-05
+      },
+      {
+        "seed": 184000003,
+        "decision": 30,
+        "seconds": 20,
+        "wait_before": 0.7180865406990051,
+        "wait_after": 0.7180866003036499,
+        "conditional_road_tv": 0.003911046776920557
+      },
+      {
+        "seed": 184000003,
+        "decision": 40,
+        "seconds": 26,
+        "wait_before": 0.7633051872253418,
+        "wait_after": 0.7633050680160522,
+        "conditional_road_tv": 4.091944902029354e-06
+      },
+      {
+        "seed": 184000003,
+        "decision": 50,
+        "seconds": 32,
+        "wait_before": 0.9256220459938049,
+        "wait_after": 0.9256221652030945,
+        "conditional_road_tv": 2.9697114314330975e-06
+      },
+      {
+        "seed": 184000003,
+        "decision": 60,
+        "seconds": 42,
+        "wait_before": 0.9261735081672668,
+        "wait_after": 0.9261735081672668,
+        "conditional_road_tv": 3.7067745779495453e-06
+      },
+      {
+        "seed": 184000003,
+        "decision": 70,
+        "seconds": 51,
+        "wait_before": 0.9371702671051025,
+        "wait_after": 0.9371702671051025,
+        "conditional_road_tv": 0.0055299317464232445
+      },
+      {
+        "seed": 184000003,
+        "decision": 80,
+        "seconds": 61,
+        "wait_before": 0.9250109791755676,
+        "wait_after": 0.9250107407569885,
+        "conditional_road_tv": 0.005556781776249409
+      },
+      {
+        "seed": 184000003,
+        "decision": 90,
+        "seconds": 67,
+        "wait_before": 0.9397230744361877,
+        "wait_after": 0.9397231936454773,
+        "conditional_road_tv": 0.003596341237425804
+      },
+      {
+        "seed": 184000003,
+        "decision": 100,
+        "seconds": 76,
+        "wait_before": 0.9435340166091919,
+        "wait_after": 0.9435338973999023,
+        "conditional_road_tv": 0.003432157216593623
+      },
+      {
+        "seed": 184000003,
+        "decision": 110,
+        "seconds": 86,
+        "wait_before": 0.9578622579574585,
+        "wait_after": 0.9578624963760376,
+        "conditional_road_tv": 0.003571464214473963
+      },
+      {
+        "seed": 184000003,
+        "decision": 120,
+        "seconds": 96,
+        "wait_before": 0.9662412405014038,
+        "wait_after": 0.9662413597106934,
+        "conditional_road_tv": 0.003807123750448227
+      },
+      {
+        "seed": 184000003,
+        "decision": 130,
+        "seconds": 106,
+        "wait_before": 0.9383177161216736,
+        "wait_after": 0.9383177161216736,
+        "conditional_road_tv": 0.0035980537068098783
+      },
+      {
+        "seed": 184000003,
+        "decision": 140,
+        "seconds": 116,
+        "wait_before": 0.9521178603172302,
+        "wait_after": 0.9521179795265198,
+        "conditional_road_tv": 0.0035754165146499872
+      },
+      {
+        "seed": 184000003,
+        "decision": 150,
+        "seconds": 126,
+        "wait_before": 0.9551147818565369,
+        "wait_after": 0.9551146626472473,
+        "conditional_road_tv": 0.004394006449729204
+      },
+      {
+        "seed": 184000003,
+        "decision": 160,
+        "seconds": 136,
+        "wait_before": 0.9191500544548035,
+        "wait_after": 0.9191501140594482,
+        "conditional_road_tv": 0.004421300254762173
+      },
+      {
+        "seed": 184000003,
+        "decision": 170,
+        "seconds": 146,
+        "wait_before": 0.6688840985298157,
+        "wait_after": 0.6688839793205261,
+        "conditional_road_tv": 0.004207091871649027
+      },
+      {
+        "seed": 184000003,
+        "decision": 180,
+        "seconds": 153,
+        "wait_before": 0.7204160690307617,
+        "wait_after": 0.7204160690307617,
+        "conditional_road_tv": 0.003532237373292446
+      },
+      {
+        "seed": 184000003,
+        "decision": 190,
+        "seconds": 159,
+        "wait_before": 0.8173511624336243,
+        "wait_after": 0.8173514604568481,
+        "conditional_road_tv": 0.004880968946963549
+      },
+      {
+        "seed": 184000003,
+        "decision": 200,
+        "seconds": 165,
+        "wait_before": 0.6825057864189148,
+        "wait_after": 0.6825055480003357,
+        "conditional_road_tv": 0.005706947296857834
+      },
+      {
+        "seed": 184000003,
+        "decision": 210,
+        "seconds": 173,
+        "wait_before": 0.7567876577377319,
+        "wait_after": 0.7567878365516663,
+        "conditional_road_tv": 0.005734032019972801
+      },
+      {
+        "seed": 184000003,
+        "decision": 220,
+        "seconds": 181,
+        "wait_before": 0.688971996307373,
+        "wait_after": 0.6889721155166626,
+        "conditional_road_tv": 0.006409298162907362
+      },
+      {
+        "seed": 184000003,
+        "decision": 230,
+        "seconds": 189,
+        "wait_before": 0.9439175724983215,
+        "wait_after": 0.9439176917076111,
+        "conditional_road_tv": 1.9498307665344328e-05
+      },
+      {
+        "seed": 184000003,
+        "decision": 240,
+        "seconds": 198,
+        "wait_before": 0.9556505680084229,
+        "wait_after": 0.9556509256362915,
+        "conditional_road_tv": 0.003811552654951811
+      },
+      {
+        "seed": 184000003,
+        "decision": 250,
+        "seconds": 208,
+        "wait_before": 0.935651957988739,
+        "wait_after": 0.9356518387794495,
+        "conditional_road_tv": 1.2574230822792742e-05
+      },
+      {
+        "seed": 184000003,
+        "decision": 260,
+        "seconds": 217,
+        "wait_before": 0.9327059388160706,
+        "wait_after": 0.9327056407928467,
+        "conditional_road_tv": 0.0014409967698156834
+      },
+      {
+        "seed": 184000003,
+        "decision": 270,
+        "seconds": 225,
+        "wait_before": 0.9186843633651733,
+        "wait_after": 0.9186843633651733,
+        "conditional_road_tv": 5.968006888679156e-08
+      },
+      {
+        "seed": 184000003,
+        "decision": 280,
+        "seconds": 233,
+        "wait_before": 0.9067312479019165,
+        "wait_after": 0.9067309498786926,
+        "conditional_road_tv": 0.0035783846396952868
+      },
+      {
+        "seed": 184000003,
+        "decision": 290,
+        "seconds": 241,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 300,
+        "seconds": 251,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 310,
+        "seconds": 261,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 320,
+        "seconds": 271,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 330,
+        "seconds": 279,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 340,
+        "seconds": 283,
+        "wait_before": 0.8239989876747131,
+        "wait_after": 0.8239989876747131,
+        "conditional_road_tv": 3.4959812822421554e-12
+      },
+      {
+        "seed": 184000003,
+        "decision": 350,
+        "seconds": 292,
+        "wait_before": 0.8604156970977783,
+        "wait_after": 0.8604155778884888,
+        "conditional_road_tv": 0.0010189550230279565
+      },
+      {
+        "seed": 184000003,
+        "decision": 360,
+        "seconds": 300,
+        "wait_before": 0.7337704300880432,
+        "wait_after": 0.7337700724601746,
+        "conditional_road_tv": 0.00047438949695788324
+      },
+      {
+        "seed": 184000003,
+        "decision": 370,
+        "seconds": 305,
+        "wait_before": 0.9171625375747681,
+        "wait_after": 0.9171625375747681,
+        "conditional_road_tv": 1.4387759392775479e-06
+      },
+      {
+        "seed": 184000003,
+        "decision": 380,
+        "seconds": 313,
+        "wait_before": 0.8912746906280518,
+        "wait_after": 0.8912745118141174,
+        "conditional_road_tv": 0.0023751144763082266
+      },
+      {
+        "seed": 184000003,
+        "decision": 390,
+        "seconds": 321,
+        "wait_before": 0.9406476020812988,
+        "wait_after": 0.9406476020812988,
+        "conditional_road_tv": 1.5159096664708405e-15
+      },
+      {
+        "seed": 184000003,
+        "decision": 400,
+        "seconds": 330,
+        "wait_before": 0.8811768293380737,
+        "wait_after": 0.8811768293380737,
+        "conditional_road_tv": 2.768541587660784e-15
+      },
+      {
+        "seed": 184000003,
+        "decision": 410,
+        "seconds": 338,
+        "wait_before": 0.9096887111663818,
+        "wait_after": 0.909688413143158,
+        "conditional_road_tv": 0.0026608428452163935
+      },
+      {
+        "seed": 184000003,
+        "decision": 420,
+        "seconds": 347,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 430,
+        "seconds": 357,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 440,
+        "seconds": 367,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 450,
+        "seconds": 377,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 460,
+        "seconds": 386,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 470,
+        "seconds": 396,
+        "wait_before": 0.9242265224456787,
+        "wait_after": 0.9242265224456787,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "seed": 184000003,
+        "decision": 480,
+        "seconds": 405,
+        "wait_before": 0.9395228028297424,
+        "wait_after": 0.9395228028297424,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "seed": 184000003,
+        "decision": 490,
+        "seconds": 415,
+        "wait_before": 0.9219130873680115,
+        "wait_after": 0.921913206577301,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "seed": 184000003,
+        "decision": 500,
+        "seconds": 425,
+        "wait_before": 0.6954917311668396,
+        "wait_after": 0.695491373538971,
+        "conditional_road_tv": 3.1366772645924357e-07
+      },
+      {
+        "seed": 184000003,
+        "decision": 510,
+        "seconds": 432,
+        "wait_before": 0.771186351776123,
+        "wait_after": 0.7711862325668335,
+        "conditional_road_tv": 3.1249812309397385e-05
+      },
+      {
+        "seed": 184000003,
+        "decision": 520,
+        "seconds": 441,
+        "wait_before": 0.7090902924537659,
+        "wait_after": 0.7090904712677002,
+        "conditional_road_tv": 0.004287514835596085
+      },
+      {
+        "seed": 184000003,
+        "decision": 530,
+        "seconds": 451,
+        "wait_before": 0.7576351165771484,
+        "wait_after": 0.7576351761817932,
+        "conditional_road_tv": 0.004408127628266811
+      },
+      {
+        "seed": 184000003,
+        "decision": 540,
+        "seconds": 459,
+        "wait_before": 0.720284640789032,
+        "wait_after": 0.7202845811843872,
+        "conditional_road_tv": 3.4215642585877504e-07
+      },
+      {
+        "seed": 184000003,
+        "decision": 550,
+        "seconds": 468,
+        "wait_before": 0.6758934259414673,
+        "wait_after": 0.6758937835693359,
+        "conditional_road_tv": 0.004455879330635071
+      },
+      {
+        "seed": 184000003,
+        "decision": 560,
+        "seconds": 473,
+        "wait_before": 0.643690288066864,
+        "wait_after": 0.6436903476715088,
+        "conditional_road_tv": 0.004401174373924732
+      },
+      {
+        "seed": 184000003,
+        "decision": 570,
+        "seconds": 482,
+        "wait_before": 0.9507547616958618,
+        "wait_after": 0.9507554769515991,
+        "conditional_road_tv": 0.004557570908218622
+      },
+      {
+        "seed": 184000003,
+        "decision": 580,
+        "seconds": 491,
+        "wait_before": 0.695455014705658,
+        "wait_after": 0.6954553127288818,
+        "conditional_road_tv": 0.0018314168555662036
+      },
+      {
+        "seed": 184000003,
+        "decision": 590,
+        "seconds": 498,
+        "wait_before": 0.6864463686943054,
+        "wait_after": 0.6864455938339233,
+        "conditional_road_tv": 0.0002933889627456665
+      },
+      {
+        "seed": 184000003,
+        "decision": 600,
+        "seconds": 506,
+        "wait_before": 0.9311397075653076,
+        "wait_after": 0.9311400651931763,
+        "conditional_road_tv": 7.405847100017127e-06
+      },
+      {
+        "seed": 184000003,
+        "decision": 610,
+        "seconds": 514,
+        "wait_before": 0.9203362464904785,
+        "wait_after": 0.920336127281189,
+        "conditional_road_tv": 4.203615731057653e-07
+      },
+      {
+        "seed": 184000003,
+        "decision": 620,
+        "seconds": 523,
+        "wait_before": 0.8945088386535645,
+        "wait_after": 0.8945086002349854,
+        "conditional_road_tv": 0.00020460784435272217
+      },
+      {
+        "seed": 184000003,
+        "decision": 630,
+        "seconds": 533,
+        "wait_before": 0.9014508724212646,
+        "wait_after": 0.9014509916305542,
+        "conditional_road_tv": 0.0002110050991177559
+      },
+      {
+        "seed": 184000003,
+        "decision": 640,
+        "seconds": 541,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 650,
+        "seconds": 551,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 660,
+        "seconds": 561,
+        "wait_before": 0.534347414970398,
+        "wait_after": 0.5343472957611084,
+        "conditional_road_tv": 9.234221579390578e-06
+      },
+      {
+        "seed": 184000003,
+        "decision": 670,
+        "seconds": 566,
+        "wait_before": 0.5219160914421082,
+        "wait_after": 0.5219159126281738,
+        "conditional_road_tv": 6.792560725443764e-06
+      },
+      {
+        "seed": 184000003,
+        "decision": 680,
+        "seconds": 572,
+        "wait_before": 0.6163320541381836,
+        "wait_after": 0.6163321137428284,
+        "conditional_road_tv": 5.708071694243699e-05
+      },
+      {
+        "seed": 184000003,
+        "decision": 690,
+        "seconds": 577,
+        "wait_before": 0.5088475942611694,
+        "wait_after": 0.5088471174240112,
+        "conditional_road_tv": 6.735908391419798e-05
+      },
+      {
+        "seed": 184000003,
+        "decision": 700,
+        "seconds": 584,
+        "wait_before": 0.45658373832702637,
+        "wait_after": 0.4565838873386383,
+        "conditional_road_tv": 0.0001980104425456375
+      },
+      {
+        "seed": 184000003,
+        "decision": 710,
+        "seconds": 590,
+        "wait_before": 0.4997212588787079,
+        "wait_after": 0.4997211992740631,
+        "conditional_road_tv": 0.00019588088616728783
+      },
+      {
+        "seed": 184000003,
+        "decision": 720,
+        "seconds": 594,
+        "wait_before": 0.5666881799697876,
+        "wait_after": 0.5666883587837219,
+        "conditional_road_tv": 0.0014307817909866571
+      }
+    ],
+    "max_wait_probability_error": 7.748603820800781e-07,
+    "mean_conditional_road_tv": 0.002139512759781896
+  },
+  "joint": {
+    "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-whole-fit-01/whole/final.zip",
+    "sha256": "d3496eb2d47ec14162e987ef213e5314dcea261d48faaaf25750b79c2af66c7d",
+    "changed_tensors": {
+      "features_extractor.growth_strategy_wait.0.weight": 0.031940847635269165,
+      "features_extractor.growth_strategy_wait.0.bias": 0.03164444863796234,
+      "features_extractor.growth_strategy_wait.2.weight": 0.023395003750920296,
+      "features_extractor.growth_strategy_wait.2.bias": 0.01610584929585457,
+      "features_extractor.growth_strategy_roads.0.weight": 0.007553547620773315,
+      "features_extractor.growth_strategy_roads.0.bias": 0.007553102448582649,
+      "features_extractor.growth_strategy_roads.2.weight": 0.004928292240947485,
+      "features_extractor.growth_strategy_roads.2.bias": 0.002079643774777651,
+      "features_extractor.growth_strategy_spatial.0.weight": 0.01311567798256874,
+      "features_extractor.growth_strategy_spatial.0.bias": 0.015255764126777649,
+      "features_extractor.growth_strategy_spatial.2.weight": 0.01290324330329895,
+      "features_extractor.growth_strategy_spatial.2.bias": 0.015716545283794403,
+      "features_extractor.growth_strategy_spatial.4.weight": 0.013752251863479614,
+      "features_extractor.growth_strategy_spatial.4.bias": 0.01550823450088501,
+      "features_extractor.growth_strategy_spatial.6.weight": 0.014621727168560028,
+      "features_extractor.growth_strategy_spatial.6.bias": 0.014852691441774368,
+      "features_extractor.growth_strategy_spatial.8.weight": 0.01641029864549637,
+      "features_extractor.growth_strategy_spatial.8.bias": 0.01482608076184988,
+      "features_extractor.growth_strategy_spatial.10.weight": 0.018190383911132812,
+      "features_extractor.growth_strategy_spatial.10.bias": 0.014426824636757374,
+      "features_extractor.growth_strategy_spatial_roads.weight": 0.004627352114766836,
+      "features_extractor.growth_strategy_spatial_roads.bias": 0.0029915657360106707,
+      "features_extractor.growth_strategy_visual_wait.0.weight": 0.03286539018154144,
+      "features_extractor.growth_strategy_visual_wait.0.bias": 0.027340590953826904,
+      "features_extractor.growth_strategy_visual_wait.2.weight": 0.02293003536760807,
+      "features_extractor.growth_strategy_visual_wait.2.bias": 0.01610584929585457,
+      "pi_features_extractor.growth_strategy_wait.0.weight": 0.031940847635269165,
+      "pi_features_extractor.growth_strategy_wait.0.bias": 0.03164444863796234,
+      "pi_features_extractor.growth_strategy_wait.2.weight": 0.023395003750920296,
+      "pi_features_extractor.growth_strategy_wait.2.bias": 0.01610584929585457,
+      "pi_features_extractor.growth_strategy_roads.0.weight": 0.007553547620773315,
+      "pi_features_extractor.growth_strategy_roads.0.bias": 0.007553102448582649,
+      "pi_features_extractor.growth_strategy_roads.2.weight": 0.004928292240947485,
+      "pi_features_extractor.growth_strategy_roads.2.bias": 0.002079643774777651,
+      "pi_features_extractor.growth_strategy_spatial.0.weight": 0.01311567798256874,
+      "pi_features_extractor.growth_strategy_spatial.0.bias": 0.015255764126777649,
+      "pi_features_extractor.growth_strategy_spatial.2.weight": 0.01290324330329895,
+      "pi_features_extractor.growth_strategy_spatial.2.bias": 0.015716545283794403,
+      "pi_features_extractor.growth_strategy_spatial.4.weight": 0.013752251863479614,
+      "pi_features_extractor.growth_strategy_spatial.4.bias": 0.01550823450088501,
+      "pi_features_extractor.growth_strategy_spatial.6.weight": 0.014621727168560028,
+      "pi_features_extractor.growth_strategy_spatial.6.bias": 0.014852691441774368,
+      "pi_features_extractor.growth_strategy_spatial.8.weight": 0.01641029864549637,
+      "pi_features_extractor.growth_strategy_spatial.8.bias": 0.01482608076184988,
+      "pi_features_extractor.growth_strategy_spatial.10.weight": 0.018190383911132812,
+      "pi_features_extractor.growth_strategy_spatial.10.bias": 0.014426824636757374,
+      "pi_features_extractor.growth_strategy_spatial_roads.weight": 0.004627352114766836,
+      "pi_features_extractor.growth_strategy_spatial_roads.bias": 0.0029915657360106707,
+      "pi_features_extractor.growth_strategy_visual_wait.0.weight": 0.03286539018154144,
+      "pi_features_extractor.growth_strategy_visual_wait.0.bias": 0.027340590953826904,
+      "pi_features_extractor.growth_strategy_visual_wait.2.weight": 0.02293003536760807,
+      "pi_features_extractor.growth_strategy_visual_wait.2.bias": 0.01610584929585457,
+      "vf_features_extractor.growth_strategy_wait.0.weight": 0.031940847635269165,
+      "vf_features_extractor.growth_strategy_wait.0.bias": 0.03164444863796234,
+      "vf_features_extractor.growth_strategy_wait.2.weight": 0.023395003750920296,
+      "vf_features_extractor.growth_strategy_wait.2.bias": 0.01610584929585457,
+      "vf_features_extractor.growth_strategy_roads.0.weight": 0.007553547620773315,
+      "vf_features_extractor.growth_strategy_roads.0.bias": 0.007553102448582649,
+      "vf_features_extractor.growth_strategy_roads.2.weight": 0.004928292240947485,
+      "vf_features_extractor.growth_strategy_roads.2.bias": 0.002079643774777651,
+      "vf_features_extractor.growth_strategy_spatial.0.weight": 0.01311567798256874,
+      "vf_features_extractor.growth_strategy_spatial.0.bias": 0.015255764126777649,
+      "vf_features_extractor.growth_strategy_spatial.2.weight": 0.01290324330329895,
+      "vf_features_extractor.growth_strategy_spatial.2.bias": 0.015716545283794403,
+      "vf_features_extractor.growth_strategy_spatial.4.weight": 0.013752251863479614,
+      "vf_features_extractor.growth_strategy_spatial.4.bias": 0.01550823450088501,
+      "vf_features_extractor.growth_strategy_spatial.6.weight": 0.014621727168560028,
+      "vf_features_extractor.growth_strategy_spatial.6.bias": 0.014852691441774368,
+      "vf_features_extractor.growth_strategy_spatial.8.weight": 0.01641029864549637,
+      "vf_features_extractor.growth_strategy_spatial.8.bias": 0.01482608076184988,
+      "vf_features_extractor.growth_strategy_spatial.10.weight": 0.018190383911132812,
+      "vf_features_extractor.growth_strategy_spatial.10.bias": 0.014426824636757374,
+      "vf_features_extractor.growth_strategy_spatial_roads.weight": 0.004627352114766836,
+      "vf_features_extractor.growth_strategy_spatial_roads.bias": 0.0029915657360106707,
+      "vf_features_extractor.growth_strategy_visual_wait.0.weight": 0.03286539018154144,
+      "vf_features_extractor.growth_strategy_visual_wait.0.bias": 0.027340590953826904,
+      "vf_features_extractor.growth_strategy_visual_wait.2.weight": 0.02293003536760807,
+      "vf_features_extractor.growth_strategy_visual_wait.2.bias": 0.01610584929585457,
+      "value_net.0.weight": 0.01728675328195095,
+      "value_net.0.bias": 0.011537246406078339,
+      "value_net.2.weight": 0.011376500129699707,
+      "value_net.2.bias": 0.009630829095840454
+    },
+    "optimizer_steps": 1024,
+    "states": [
+      {
+        "seed": 184000000,
+        "decision": 0,
+        "seconds": 0,
+        "wait_before": 0.27602896094322205,
+        "wait_after": 0.2573527991771698,
+        "conditional_road_tv": 4.005137270723935e-06
+      },
+      {
+        "seed": 184000000,
+        "decision": 10,
+        "seconds": 5,
+        "wait_before": 0.3921090364456177,
+        "wait_after": 0.35040757060050964,
+        "conditional_road_tv": 0.0013764488976448774
+      },
+      {
+        "seed": 184000000,
+        "decision": 20,
+        "seconds": 10,
+        "wait_before": 0.4159114360809326,
+        "wait_after": 0.37262892723083496,
+        "conditional_road_tv": 9.976753790397197e-05
+      },
+      {
+        "seed": 184000000,
+        "decision": 30,
+        "seconds": 15,
+        "wait_before": 0.4593465030193329,
+        "wait_after": 0.4143581688404083,
+        "conditional_road_tv": 0.0022790890652686357
+      },
+      {
+        "seed": 184000000,
+        "decision": 40,
+        "seconds": 19,
+        "wait_before": 0.5151222348213196,
+        "wait_after": 0.4688988924026489,
+        "conditional_road_tv": 0.001464906963519752
+      },
+      {
+        "seed": 184000000,
+        "decision": 50,
+        "seconds": 25,
+        "wait_before": 0.5199577808380127,
+        "wait_after": 0.47490134835243225,
+        "conditional_road_tv": 0.0013944419333711267
+      },
+      {
+        "seed": 184000000,
+        "decision": 60,
+        "seconds": 32,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000000,
+        "decision": 70,
+        "seconds": 42,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000000,
+        "decision": 80,
+        "seconds": 52,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000000,
+        "decision": 90,
+        "seconds": 62,
+        "wait_before": 0.6183522939682007,
+        "wait_after": 0.5746300220489502,
+        "conditional_road_tv": 3.9006408769637346e-08
+      },
+      {
+        "seed": 184000000,
+        "decision": 100,
+        "seconds": 70,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000000,
+        "decision": 110,
+        "seconds": 80,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000000,
+        "decision": 120,
+        "seconds": 90,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000000,
+        "decision": 130,
+        "seconds": 100,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000000,
+        "decision": 140,
+        "seconds": 110,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000000,
+        "decision": 150,
+        "seconds": 120,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000000,
+        "decision": 160,
+        "seconds": 130,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000000,
+        "decision": 170,
+        "seconds": 140,
+        "wait_before": 0.021610045805573463,
+        "wait_after": 0.01803550310432911,
+        "conditional_road_tv": 0.0009382740827277303
+      },
+      {
+        "seed": 184000000,
+        "decision": 180,
+        "seconds": 140,
+        "wait_before": 0.050144683569669724,
+        "wait_after": 0.041467294096946716,
+        "conditional_road_tv": 0.00018458619888406247
+      },
+      {
+        "seed": 184000000,
+        "decision": 190,
+        "seconds": 140,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000000,
+        "decision": 200,
+        "seconds": 150,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 0,
+        "seconds": 0,
+        "wait_before": 0.13077448308467865,
+        "wait_after": 0.12029332667589188,
+        "conditional_road_tv": 0.0022300530690699816
+      },
+      {
+        "seed": 184000003,
+        "decision": 10,
+        "seconds": 5,
+        "wait_before": 0.9997209906578064,
+        "wait_after": 0.9996623992919922,
+        "conditional_road_tv": 0.0015348540619015694
+      },
+      {
+        "seed": 184000003,
+        "decision": 20,
+        "seconds": 14,
+        "wait_before": 0.6608380079269409,
+        "wait_after": 0.6126723289489746,
+        "conditional_road_tv": 1.9402248653932475e-05
+      },
+      {
+        "seed": 184000003,
+        "decision": 30,
+        "seconds": 20,
+        "wait_before": 0.7180865406990051,
+        "wait_after": 0.6749851107597351,
+        "conditional_road_tv": 0.001094906940124929
+      },
+      {
+        "seed": 184000003,
+        "decision": 40,
+        "seconds": 26,
+        "wait_before": 0.7633051872253418,
+        "wait_after": 0.7239369750022888,
+        "conditional_road_tv": 1.1873186167576932e-06
+      },
+      {
+        "seed": 184000003,
+        "decision": 50,
+        "seconds": 32,
+        "wait_before": 0.9256220459938049,
+        "wait_after": 0.9099158644676208,
+        "conditional_road_tv": 2.4286223379021976e-06
+      },
+      {
+        "seed": 184000003,
+        "decision": 60,
+        "seconds": 42,
+        "wait_before": 0.9261735081672668,
+        "wait_after": 0.9108217358589172,
+        "conditional_road_tv": 2.654697709658649e-06
+      },
+      {
+        "seed": 184000003,
+        "decision": 70,
+        "seconds": 51,
+        "wait_before": 0.9371702671051025,
+        "wait_after": 0.9237239956855774,
+        "conditional_road_tv": 0.0020166272297501564
+      },
+      {
+        "seed": 184000003,
+        "decision": 80,
+        "seconds": 61,
+        "wait_before": 0.9250109791755676,
+        "wait_after": 0.9094662070274353,
+        "conditional_road_tv": 0.001986260060220957
+      },
+      {
+        "seed": 184000003,
+        "decision": 90,
+        "seconds": 67,
+        "wait_before": 0.9397230744361877,
+        "wait_after": 0.9267380833625793,
+        "conditional_road_tv": 0.001322504016570747
+      },
+      {
+        "seed": 184000003,
+        "decision": 100,
+        "seconds": 76,
+        "wait_before": 0.9435340166091919,
+        "wait_after": 0.9311133623123169,
+        "conditional_road_tv": 0.001269445288926363
+      },
+      {
+        "seed": 184000003,
+        "decision": 110,
+        "seconds": 86,
+        "wait_before": 0.9578622579574585,
+        "wait_after": 0.9485781788825989,
+        "conditional_road_tv": 0.0012926828349009156
+      },
+      {
+        "seed": 184000003,
+        "decision": 120,
+        "seconds": 96,
+        "wait_before": 0.9662412405014038,
+        "wait_after": 0.9585953950881958,
+        "conditional_road_tv": 0.001389125594869256
+      },
+      {
+        "seed": 184000003,
+        "decision": 130,
+        "seconds": 106,
+        "wait_before": 0.9383177161216736,
+        "wait_after": 0.9250527024269104,
+        "conditional_road_tv": 0.001317758928053081
+      },
+      {
+        "seed": 184000003,
+        "decision": 140,
+        "seconds": 116,
+        "wait_before": 0.9521178603172302,
+        "wait_after": 0.9414665102958679,
+        "conditional_road_tv": 0.0013131261803209782
+      },
+      {
+        "seed": 184000003,
+        "decision": 150,
+        "seconds": 126,
+        "wait_before": 0.9551147818565369,
+        "wait_after": 0.9452495574951172,
+        "conditional_road_tv": 0.001534289214760065
+      },
+      {
+        "seed": 184000003,
+        "decision": 160,
+        "seconds": 136,
+        "wait_before": 0.9191500544548035,
+        "wait_after": 0.9019151329994202,
+        "conditional_road_tv": 0.0015745233977213502
+      },
+      {
+        "seed": 184000003,
+        "decision": 170,
+        "seconds": 146,
+        "wait_before": 0.6688840985298157,
+        "wait_after": 0.6209281086921692,
+        "conditional_road_tv": 0.0015124223427847028
+      },
+      {
+        "seed": 184000003,
+        "decision": 180,
+        "seconds": 153,
+        "wait_before": 0.7204160690307617,
+        "wait_after": 0.6756877303123474,
+        "conditional_road_tv": 0.0015907877823337913
+      },
+      {
+        "seed": 184000003,
+        "decision": 190,
+        "seconds": 159,
+        "wait_before": 0.8173511624336243,
+        "wait_after": 0.7832292914390564,
+        "conditional_road_tv": 0.0020266345236450434
+      },
+      {
+        "seed": 184000003,
+        "decision": 200,
+        "seconds": 165,
+        "wait_before": 0.6825057864189148,
+        "wait_after": 0.6352871656417847,
+        "conditional_road_tv": 0.002365783555433154
+      },
+      {
+        "seed": 184000003,
+        "decision": 210,
+        "seconds": 173,
+        "wait_before": 0.7567876577377319,
+        "wait_after": 0.7153274416923523,
+        "conditional_road_tv": 0.002395523013547063
+      },
+      {
+        "seed": 184000003,
+        "decision": 220,
+        "seconds": 181,
+        "wait_before": 0.688971996307373,
+        "wait_after": 0.6420957446098328,
+        "conditional_road_tv": 0.002526277443394065
+      },
+      {
+        "seed": 184000003,
+        "decision": 230,
+        "seconds": 189,
+        "wait_before": 0.9439175724983215,
+        "wait_after": 0.9314866065979004,
+        "conditional_road_tv": 6.743833637301577e-06
+      },
+      {
+        "seed": 184000003,
+        "decision": 240,
+        "seconds": 198,
+        "wait_before": 0.9556505680084229,
+        "wait_after": 0.9455682635307312,
+        "conditional_road_tv": 0.0005725864320993423
+      },
+      {
+        "seed": 184000003,
+        "decision": 250,
+        "seconds": 208,
+        "wait_before": 0.935651957988739,
+        "wait_after": 0.9215590953826904,
+        "conditional_road_tv": 5.93429058426409e-06
+      },
+      {
+        "seed": 184000003,
+        "decision": 260,
+        "seconds": 217,
+        "wait_before": 0.9327059388160706,
+        "wait_after": 0.9177889823913574,
+        "conditional_road_tv": 0.00045229389797896147
+      },
+      {
+        "seed": 184000003,
+        "decision": 270,
+        "seconds": 225,
+        "wait_before": 0.9186843633651733,
+        "wait_after": 0.9012693762779236,
+        "conditional_road_tv": 2.985529334864623e-08
+      },
+      {
+        "seed": 184000003,
+        "decision": 280,
+        "seconds": 233,
+        "wait_before": 0.9067312479019165,
+        "wait_after": 0.8868057727813721,
+        "conditional_road_tv": 0.000658499775454402
+      },
+      {
+        "seed": 184000003,
+        "decision": 290,
+        "seconds": 241,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 300,
+        "seconds": 251,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 310,
+        "seconds": 261,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 320,
+        "seconds": 271,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 330,
+        "seconds": 279,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 340,
+        "seconds": 283,
+        "wait_before": 0.8239989876747131,
+        "wait_after": 0.7924978733062744,
+        "conditional_road_tv": 1.4881429422075598e-12
+      },
+      {
+        "seed": 184000003,
+        "decision": 350,
+        "seconds": 292,
+        "wait_before": 0.8604156970977783,
+        "wait_after": 0.8320000171661377,
+        "conditional_road_tv": 0.0001388813543599099
+      },
+      {
+        "seed": 184000003,
+        "decision": 360,
+        "seconds": 300,
+        "wait_before": 0.7337704300880432,
+        "wait_after": 0.6895772814750671,
+        "conditional_road_tv": 9.062742174137384e-05
+      },
+      {
+        "seed": 184000003,
+        "decision": 370,
+        "seconds": 305,
+        "wait_before": 0.9171625375747681,
+        "wait_after": 0.8990480899810791,
+        "conditional_road_tv": 2.2760485762773897e-07
+      },
+      {
+        "seed": 184000003,
+        "decision": 380,
+        "seconds": 313,
+        "wait_before": 0.8912746906280518,
+        "wait_after": 0.8680617809295654,
+        "conditional_road_tv": 0.0003666059346869588
+      },
+      {
+        "seed": 184000003,
+        "decision": 390,
+        "seconds": 321,
+        "wait_before": 0.9406476020812988,
+        "wait_after": 0.9273920655250549,
+        "conditional_road_tv": 3.3617911819399608e-16
+      },
+      {
+        "seed": 184000003,
+        "decision": 400,
+        "seconds": 330,
+        "wait_before": 0.8811768293380737,
+        "wait_after": 0.856049656867981,
+        "conditional_road_tv": 5.257591207726974e-16
+      },
+      {
+        "seed": 184000003,
+        "decision": 410,
+        "seconds": 338,
+        "wait_before": 0.9096887111663818,
+        "wait_after": 0.8894860744476318,
+        "conditional_road_tv": 0.00039594920235686004
+      },
+      {
+        "seed": 184000003,
+        "decision": 420,
+        "seconds": 347,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 430,
+        "seconds": 357,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 440,
+        "seconds": 367,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 450,
+        "seconds": 377,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 460,
+        "seconds": 386,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 470,
+        "seconds": 396,
+        "wait_before": 0.9242265224456787,
+        "wait_after": 0.9070846438407898,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "seed": 184000003,
+        "decision": 480,
+        "seconds": 405,
+        "wait_before": 0.9395228028297424,
+        "wait_after": 0.9257436990737915,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "seed": 184000003,
+        "decision": 490,
+        "seconds": 415,
+        "wait_before": 0.9219130873680115,
+        "wait_after": 0.9042760133743286,
+        "conditional_road_tv": 0.0
+      },
+      {
+        "seed": 184000003,
+        "decision": 500,
+        "seconds": 425,
+        "wait_before": 0.6954917311668396,
+        "wait_after": 0.6465765833854675,
+        "conditional_road_tv": 1.0201248556995779e-07
+      },
+      {
+        "seed": 184000003,
+        "decision": 510,
+        "seconds": 432,
+        "wait_before": 0.771186351776123,
+        "wait_after": 0.7294179201126099,
+        "conditional_road_tv": 7.658632966922596e-06
+      },
+      {
+        "seed": 184000003,
+        "decision": 520,
+        "seconds": 441,
+        "wait_before": 0.7090902924537659,
+        "wait_after": 0.661729633808136,
+        "conditional_road_tv": 0.0009910452645272017
+      },
+      {
+        "seed": 184000003,
+        "decision": 530,
+        "seconds": 451,
+        "wait_before": 0.7576351165771484,
+        "wait_after": 0.714390218257904,
+        "conditional_road_tv": 0.0009974164422601461
+      },
+      {
+        "seed": 184000003,
+        "decision": 540,
+        "seconds": 459,
+        "wait_before": 0.720284640789032,
+        "wait_after": 0.6725460290908813,
+        "conditional_road_tv": 1.3729200531997776e-07
+      },
+      {
+        "seed": 184000003,
+        "decision": 550,
+        "seconds": 468,
+        "wait_before": 0.6758934259414673,
+        "wait_after": 0.6252846121788025,
+        "conditional_road_tv": 0.0010656672529876232
+      },
+      {
+        "seed": 184000003,
+        "decision": 560,
+        "seconds": 473,
+        "wait_before": 0.643690288066864,
+        "wait_after": 0.5906758308410645,
+        "conditional_road_tv": 0.0010223628487437963
+      },
+      {
+        "seed": 184000003,
+        "decision": 570,
+        "seconds": 482,
+        "wait_before": 0.9507547616958618,
+        "wait_after": 0.9392989873886108,
+        "conditional_road_tv": 0.0011622852180153131
+      },
+      {
+        "seed": 184000003,
+        "decision": 580,
+        "seconds": 491,
+        "wait_before": 0.695455014705658,
+        "wait_after": 0.6482983827590942,
+        "conditional_road_tv": 0.000720387208275497
+      },
+      {
+        "seed": 184000003,
+        "decision": 590,
+        "seconds": 498,
+        "wait_before": 0.6864463686943054,
+        "wait_after": 0.6378004550933838,
+        "conditional_road_tv": 6.943941116333008e-05
+      },
+      {
+        "seed": 184000003,
+        "decision": 600,
+        "seconds": 506,
+        "wait_before": 0.9311397075653076,
+        "wait_after": 0.9151105284690857,
+        "conditional_road_tv": 1.2952913266417454e-06
+      },
+      {
+        "seed": 184000003,
+        "decision": 610,
+        "seconds": 514,
+        "wait_before": 0.9203362464904785,
+        "wait_after": 0.901759684085846,
+        "conditional_road_tv": 1.2637734414511215e-07
+      },
+      {
+        "seed": 184000003,
+        "decision": 620,
+        "seconds": 523,
+        "wait_before": 0.8945088386535645,
+        "wait_after": 0.8710790276527405,
+        "conditional_road_tv": 1.812167465686798e-05
+      },
+      {
+        "seed": 184000003,
+        "decision": 630,
+        "seconds": 533,
+        "wait_before": 0.9014508724212646,
+        "wait_after": 0.8790910840034485,
+        "conditional_road_tv": 1.8698163330554962e-05
+      },
+      {
+        "seed": 184000003,
+        "decision": 640,
+        "seconds": 541,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 650,
+        "seconds": 551,
+        "wait_before": 1.0,
+        "wait_after": 1.0,
+        "conditional_road_tv": null
+      },
+      {
+        "seed": 184000003,
+        "decision": 660,
+        "seconds": 561,
+        "wait_before": 0.534347414970398,
+        "wait_after": 0.4773314893245697,
+        "conditional_road_tv": 3.92199945054017e-05
+      },
+      {
+        "seed": 184000003,
+        "decision": 670,
+        "seconds": 566,
+        "wait_before": 0.5219160914421082,
+        "wait_after": 0.46782100200653076,
+        "conditional_road_tv": 1.9185777091479395e-06
+      },
+      {
+        "seed": 184000003,
+        "decision": 680,
+        "seconds": 572,
+        "wait_before": 0.6163320541381836,
+        "wait_after": 0.5635182857513428,
+        "conditional_road_tv": 4.0159984564525075e-06
+      },
+      {
+        "seed": 184000003,
+        "decision": 690,
+        "seconds": 577,
+        "wait_before": 0.5088475942611694,
+        "wait_after": 0.4538681209087372,
+        "conditional_road_tv": 1.9028349925065413e-05
+      },
+      {
+        "seed": 184000003,
+        "decision": 700,
+        "seconds": 584,
+        "wait_before": 0.45658373832702637,
+        "wait_after": 0.4037146270275116,
+        "conditional_road_tv": 2.9898001230321825e-05
+      },
+      {
+        "seed": 184000003,
+        "decision": 710,
+        "seconds": 590,
+        "wait_before": 0.4997212588787079,
+        "wait_after": 0.445501446723938,
+        "conditional_road_tv": 4.675985110225156e-05
+      },
+      {
+        "seed": 184000003,
+        "decision": 720,
+        "seconds": 594,
+        "wait_before": 0.5666881799697876,
+        "wait_after": 0.5124337673187256,
+        "conditional_road_tv": 0.00020577141549438238
+      }
+    ],
+    "max_wait_probability_error": 0.05701592564582825,
+    "mean_conditional_road_tv": 0.0007024364581671054
+  }
+}

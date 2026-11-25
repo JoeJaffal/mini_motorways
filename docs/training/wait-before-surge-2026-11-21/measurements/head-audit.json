@@ -1,0 +1,127 @@
+{
+  "timing-wait-only-03": {
+    "fixed": [
+      "edge.0.weight",
+      "edge.0.bias",
+      "edge.2.weight",
+      "edge.2.bias"
+    ],
+    "changed": [
+      "wait.0.weight",
+      "wait.0.bias",
+      "wait.2.weight",
+      "wait.2.bias"
+    ],
+    "same": [
+      "edge.0.weight",
+      "edge.0.bias",
+      "edge.2.weight",
+      "edge.2.bias"
+    ]
+  },
+  "timing-contrast-wait-01": {
+    "fixed": [
+      "edge.0.weight",
+      "edge.0.bias",
+      "edge.2.weight",
+      "edge.2.bias"
+    ],
+    "changed": [
+      "wait.0.weight",
+      "wait.0.bias",
+      "wait.2.weight",
+      "wait.2.bias"
+    ],
+    "same": [
+      "edge.0.weight",
+      "edge.0.bias",
+      "edge.2.weight",
+      "edge.2.bias"
+    ]
+  },
+  "timing-clock-wait-01": {
+    "fixed": [
+      "edge.0.weight",
+      "edge.0.bias",
+      "edge.2.weight",
+      "edge.2.bias"
+    ],
+    "changed": [
+      "wait_clock",
+      "wait.0.weight",
+      "wait.0.bias",
+      "wait.2.weight",
+      "wait.2.bias"
+    ],
+    "same": [
+      "edge.0.weight",
+      "edge.0.bias",
+      "edge.2.weight",
+      "edge.2.bias"
+    ]
+  },
+  "timing-variable-start-01": {
+    "fixed": [
+      "edge.0.weight",
+      "edge.0.bias",
+      "edge.2.weight",
+      "edge.2.bias"
+    ],
+    "changed": [
+      "wait_clock",
+      "wait.0.weight",
+      "wait.0.bias",
+      "wait.2.weight",
+      "wait.2.bias"
+    ],
+    "same": [
+      "edge.0.weight",
+      "edge.0.bias",
+      "edge.2.weight",
+      "edge.2.bias"
+    ]
+  },
+  "timing-fine-wait-01": {
+    "fixed": [
+      "edge.0.weight",
+      "edge.0.bias",
+      "edge.2.weight",
+      "edge.2.bias"
+    ],
+    "changed": [
+      "wait_clock",
+      "wait.0.weight",
+      "wait.0.bias",
+      "wait.2.weight",
+      "wait.2.bias"
+    ],
+    "same": [
+      "edge.0.weight",
+      "edge.0.bias",
+      "edge.2.weight",
+      "edge.2.bias"
+    ]
+  },
+  "timing-late-road-01": {
+    "fixed": [
+      "wait_clock",
+      "wait.0.weight",
+      "wait.0.bias",
+      "wait.2.weight",
+      "wait.2.bias"
+    ],
+    "changed": [
+      "edge.0.weight",
+      "edge.0.bias",
+      "edge.2.weight",
+      "edge.2.bias"
+    ],
+    "same": [
+      "wait_clock",
+      "wait.0.weight",
+      "wait.0.bias",
+      "wait.2.weight",
+      "wait.2.bias"
+    ]
+  }
+}

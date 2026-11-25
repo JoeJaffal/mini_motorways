@@ -1,0 +1,83 @@
+{
+  "city_mean": 98.46875,
+  "scoring": 30,
+  "comparisons": {
+    "original": {
+      "trips": {
+        "mean": -27.625,
+        "ci95": [
+          -56.0625,
+          2.1257812499999886
+        ]
+      },
+      "paid_units": {
+        "mean": -5.375,
+        "ci95": [
+          -17.75,
+          7.563281249999989
+        ]
+      },
+      "outside_routes": {
+        "mean": 3.0,
+        "ci95": [
+          -2.0,
+          7.78125
+        ]
+      }
+    },
+    "midpoint": {
+      "trips": {
+        "mean": -48.21875,
+        "ci95": [
+          -72.71953125,
+          -22.59296875000001
+        ]
+      },
+      "paid_units": {
+        "mean": -18.1875,
+        "ci95": [
+          -30.6875,
+          -5.3125
+        ]
+      },
+      "outside_routes": {
+        "mean": 0.15625,
+        "ci95": [
+          -4.34375,
+          4.5
+        ]
+      }
+    }
+  },
+  "mini": {
+    "adjacent": {
+      "successes": 16.0,
+      "both_served": 0.0
+    },
+    "bend": {
+      "successes": 16.0,
+      "both_served": 0.0
+    },
+    "clear": {
+      "successes": 16.0,
+      "both_served": 0.0
+    },
+    "obstacle": {
+      "successes": 13.0,
+      "both_served": 0.0
+    },
+    "small-city-offset-single": {
+      "successes": 8.0,
+      "both_served": 0.0
+    },
+    "small-city-offset-stock": {
+      "successes": 9.0,
+      "both_served": 0.0
+    },
+    "small-city-offset-pairs": {
+      "successes": 9.0,
+      "both_served": 2.0
+    }
+  },
+  "limits": "Consumed development scenarios. Full long-arm budget completed; matched short control still running. Earlier midpoint gain did not persist. No promotion or attribution to lesson duration alone."
+}

@@ -1,0 +1,91 @@
+{
+  "candidate": "output/training/city-strategy-pilot-01/midpoint.zip",
+  "sha256": "a905c7acdb24d058ed99db4a7c65aacf65a93887c605d6e2a504d55d803f4f67",
+  "changed_parameters": {
+    "features_extractor.growth_strategy_wait.0.weight": 0.17371119558811188,
+    "features_extractor.growth_strategy_wait.0.bias": 0.15285637974739075,
+    "features_extractor.growth_strategy_wait.2.weight": 0.1553317904472351,
+    "features_extractor.growth_strategy_wait.2.bias": 0.1561804711818695,
+    "features_extractor.growth_strategy_roads.0.weight": 0.07855982333421707,
+    "features_extractor.growth_strategy_roads.0.bias": 0.04970179870724678,
+    "features_extractor.growth_strategy_roads.2.weight": 0.07813536375761032,
+    "features_extractor.growth_strategy_roads.2.bias": 0.0006032953970134258,
+    "pi_features_extractor.growth_strategy_wait.0.weight": 0.17371119558811188,
+    "pi_features_extractor.growth_strategy_wait.0.bias": 0.15285637974739075,
+    "pi_features_extractor.growth_strategy_wait.2.weight": 0.1553317904472351,
+    "pi_features_extractor.growth_strategy_wait.2.bias": 0.1561804711818695,
+    "pi_features_extractor.growth_strategy_roads.0.weight": 0.07855982333421707,
+    "pi_features_extractor.growth_strategy_roads.0.bias": 0.04970179870724678,
+    "pi_features_extractor.growth_strategy_roads.2.weight": 0.07813536375761032,
+    "pi_features_extractor.growth_strategy_roads.2.bias": 0.0006032953970134258,
+    "vf_features_extractor.growth_strategy_wait.0.weight": 0.17371119558811188,
+    "vf_features_extractor.growth_strategy_wait.0.bias": 0.15285637974739075,
+    "vf_features_extractor.growth_strategy_wait.2.weight": 0.1553317904472351,
+    "vf_features_extractor.growth_strategy_wait.2.bias": 0.1561804711818695,
+    "vf_features_extractor.growth_strategy_roads.0.weight": 0.07855982333421707,
+    "vf_features_extractor.growth_strategy_roads.0.bias": 0.04970179870724678,
+    "vf_features_extractor.growth_strategy_roads.2.weight": 0.07813536375761032,
+    "vf_features_extractor.growth_strategy_roads.2.bias": 0.0006032953970134258,
+    "value_net.0.weight": 0.23930084705352783,
+    "value_net.0.bias": 0.13360244035720825,
+    "value_net.2.weight": 0.28623485565185547,
+    "value_net.2.bias": 0.0646904855966568
+  },
+  "opening_exact_cases": 4,
+  "probes": [
+    {
+      "lesson": "midgame-network-join",
+      "wait_before": 0.2808093726634979,
+      "wait_after": 0.20853091776371002,
+      "conditional_road_total_variation": 0.0
+    },
+    {
+      "lesson": "midgame-network-route",
+      "wait_before": 0.19454391300678253,
+      "wait_after": 0.14002107083797455,
+      "conditional_road_total_variation": 4.562932190310676e-06
+    },
+    {
+      "lesson": "midgame-network-delay",
+      "wait_before": 0.9807978272438049,
+      "wait_after": 0.9701270461082458,
+      "conditional_road_total_variation": 6.547561781644617e-08
+    },
+    {
+      "lesson": "midgame-network-quiet",
+      "wait_before": 0.6674792766571045,
+      "wait_after": 0.5614527463912964,
+      "conditional_road_total_variation": 3.6876322440093645e-08
+    },
+    {
+      "lesson": "traffic-priority-established",
+      "wait_before": 0.030866343528032303,
+      "wait_after": 0.02040756493806839,
+      "conditional_road_total_variation": 0.010344728827476501
+    },
+    {
+      "lesson": "traffic-priority-established-swap",
+      "wait_before": 0.05928247049450874,
+      "wait_after": 0.039588697254657745,
+      "conditional_road_total_variation": 0.010549172759056091
+    },
+    {
+      "lesson": "traffic-junction-low-live",
+      "wait_before": 0.6931806802749634,
+      "wait_after": 0.5332959890365601,
+      "conditional_road_total_variation": 3.2666255811442113e-10
+    },
+    {
+      "lesson": "traffic-junction-high-live",
+      "wait_before": 0.8310019373893738,
+      "wait_after": 0.7132433652877808,
+      "conditional_road_total_variation": 5.986221651710366e-08
+    },
+    {
+      "lesson": "midgame-network-reserve",
+      "wait_before": 0.6670551896095276,
+      "wait_after": 0.5619977116584778,
+      "conditional_road_total_variation": 7.432176971633453e-07
+    }
+  ]
+}

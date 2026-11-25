@@ -1,0 +1,41 @@
+# Active work handoff — 25 November 2026
+
+User approved flexible-duration work toward a justified overnight launch by midnight Beirut, conditional on readiness. Do not stop merely because the first pilot is running; follow through on comparison, necessary repairs, fresh confirmation and the launch decision. No planner/new imitation. Preserve all existing work/checkpoints. Authoritative checkout /home/mohammadjaffal/mini_motorways, branch Maskable-PPO; Desktop/main untouched.
+
+Running controller PID776266: output/training/mini-reset-comparison-01. Original parent start.zip SHA7eb605e4e465b9143e095e367abe0a01285b8ace05843aaac80bd48b5f049027. Reset curriculum first, then cold-control,262144added decisions each; frozen source/runtime, fixed65k/131k/262kpractice+city evaluations. Four lesson workers get self-generated prefix reset states; no imitation labels. All checks and source in this archive. User monitor command tail -F /home/mohammadjaffal/mini_motorways/output/training/mini-reset-comparison-01/run.log.
+
+IMPORTANT FINALIZATION RECOVERY: first65kpractice evaluation failed because snapshot omitted stage1_replay.html. Missing resource now copied; failed output/log preserved. Same evaluation rerun successfully,112rows archived in evaluation/practice-reset-curriculum-65536. Later evaluations have the resource. Original running controller still holds the failed Future and will report that stored exception AFTER BOTH TRAINING ARMS and queued evaluations finish. Do not restart or duplicate training. At completion preserve error status/log, verify all12evaluation outputs and2complete.json files/checkpoint hashes, run summarize_mini_comparison.py manually, then write explicit recovered-complete status with the failure retained in recovery metadata. See evaluation-recovery.json. Future launcher source fixed, but live code remains frozen.
+
+First65k: short skills retained; tight7/16vsoriginal8, generous10/16vs8, laterpair2/16vs3. City113.78vs126.09original,30/32scoringboth. Selected prefix bank21→24/36single and94→93/124later. No readiness. Continue full declared budget, do not prematurely judge convergence.
+
+Prepared additional task repair: small_city_horizon default60, optional300 (allowed60..600), onlysmall-city tasks; native score/stock/termination unchanged. Frozen64continuation games exactly match their first60seconds; all first-only pairs then fail, both-served survive300. Reward separation first-only vsboth rises fromabout3.4vs5.67 at60 to10.8vs37.33. Currentcomparisonstill60. Native300 checks completed80starts/13801transitions. Default parity120transitions passed. Disposable2048-decision300second PPO+cache smoke completed64Adamupdates/52episodes, reload/finite/prior/rewardledger passed. Smoke excluded from production. No production300second comparison launched. Consider bounded60/300 comparison only after validation and review of current study; do not silently change currentrun.
+
+Optional speed preparation: default-off --cache-frozen-growth reuses duplicate frozen computation within each forward only. ExactCPU outputs/gradients and GPU1e-6 parity passed; CPU1.3x, GPU1.17–1.21x microbenchmark speedups under concurrenttraining. Notenabledinproduction; end-to-end correctness smoke passed, matched training throughput not measured. New source changes afterlaunch archived under post-launch-source; currentruntime-source remains live study version.
+
+Additional audits: longoriginal16games(8seeds238M,twoRNGs,1800s): mean234,median233,best967,3zeros,allnativegameover,9survive600. Early city-only65k candidate mean231.625, no demonstratedadvantage. Three original longreplays exact. Bestservedall14shops butdiedunderongoingdemand with7roads; typicalmisseslaterdestination/stock0; worstneverconnects. Trafficurgency swaps leavefirstchoiceunchanged8/8; junction policyalwaysbypass, helpshighload butfeederbetterlowload. Fixed misapplied junction success metric: null+pairedscore controls instead ofnew_deliveries>0. No productionrewardchange.
+
+Action interface remainsconnections/Wait, bridgelegal. Weeklyoffer chosenbyenvironmentmaxroadsrule, notlearned. No directdemolition/rotation/motorway/roundabout/lightactions. Do notclaimfulltoolstrategy.
+
+Reserved freshconfirmations NOT used: mini236000000onward, city237000000onward. Existingaudit231Mdev;bank232Mtrain;currentcold233M;smoke235M;longdiagnostic238M;traffic239M. No automaticovernightlaunch or promotion. No subagentsauthorized. Detailedchronologicalfindings in README.md and training/EXPERIMENT_HISTORY.md.
+
+Latest midpoint: reset131072 city100.0625,28/32scoring; tight7/16,later2/16. No readiness. Prepared run_mini_horizon_comparison.py and summarize_mini_horizon.py remain unlaunched. Reserve futuretrain240M; select parent/budget only after currentresults.
+
+Prepared recover_comparison.py validates bothcompletefiles,allcheckpointsand12evaluationhashes beforeexplicitfinalization; only run aftercontrollerstatuserror/evaluation/both. Summarize_mini_horizon passed a duplicated-measurement fixture check with expectedzero paired differences. Frozen value-calibration probe currentlyrunning128devgames(original/reset131,60/300), nolearning; check value-calibration.log/session13045.
+
+SUPERSEDING PREPARATION STATUS15:52: durationcomparison NOW LAUNCHED PID807935,output/training/mini-horizon-comparison-01,archive docs/training/mini-task-horizon-2026-11-25. Originalparentfixed,262144/arm,long-windowfirst then60shortcontrol,seed240M. Bothcacheenabled. Existingresetstudyunchanged. Valueprobecompleted128games: pairs60returnstd2.03/value6.95 original;300returnstd13.86 withsame498choicestates;reset131valuevariance muchworse. Noadvantage/critic change. See newarchiveREADME predeclaredscreen/confirmation. Oldprepared/unlaunchedwordsabove nowhistorical.
+
+Optionalfast-small-city-tailprepared/defaultoff;88pairednativegames4267transitions passed,240defaulttransitions passed. Envstep1.63x only, noPPOsmokeyet/noactiveuse. Source tail-prototype-source. CurrentCLIworkerlastargextended compatibly. Sessions88099/50253completed.
+
+Fast-tailintegrationCOMPLETE: correctedharness02passed128decisions/4updates/11episodes,reload/nativeledger/no-bootstrap/frozenprior. Firstharnessfailedbeforelearning(Noneepisodebuffer),retained. Noactiveproductionusesfasttail. Source smoke_small_city_tail.py; reportfast-tail-smoke-verification.json.
+
+Connection-countauditaddedtosourceonly(notlivefrozenevals): paidunits0doesnotprove0edits. Baselineoriginal60running(session29480) outputconnection-counts-original-60; comparecommonfieldswithaudit/original. Selected14replaysnopostdeliveryedits. Fullcountsneededforbroaderclaim.
+
+16:34resourceupdate: futureevaluatorsinBOTHstudiesnow2CPUworkers; oldstudyfrozenfileschangedONLYpoolmaxworkers8to2,originalsourcepreservedinitial-evaluation-scheduling-source/hashrecord. Trainingruntimesunchanged. OriginalresetarmCOMPLETE262144,controlrunning,finalevaluationinprogress.
+
+ResetfinalscreenFAIL:city89.25/24scoringvsoriginal126.09/30;delta−36.84CI[−61.66,−15.16].Tight8/16later2/16. Bankfinal23/36and96/124(minimalvs21/36,94/124). No promotion. Exactpairedregressionreplay/plotreviewed:stockout14s,redtrafficnear145s,fail147s;originalfirstscore31s,169by600. Sixnewzerosall45paidunits49–51edits,notconstructionavoidance. Connection-countbaseline112rowscommonfieldsidentical,short64nopostdeliveryedits. Sessions29480,94690,21884,29163complete.
+
+Distributiondriftprobecompletedreset-policy-drift.json:Waitdrops~25percentagepointsonselectedopeningstates,roadTV~.06-.08. Frozencomponentablation64cities(twohybrids32each)running session20938,reset-components.log; diagnostic-only,NOpromotion. Longerlesson65536reviewpending(~16:55);oldcontrol65536cityreviewpending.
+
+17:06:durationlong65reviewcompletecity137.53125,31/32,+11.4375CI[−7.157,31.470];tight8/16,generous10/16,bothpairs4/16vsoriginal3. Stillnotready,fullbudgetcontinues. Oldcold65city115.65625,27/32,tight7/16,later2/16. Component64gameablationnearlycomplete(session20938).
+
+17:18: componentablationCOMPLETE; oldWait/newRoads135.78125vsoriginal126.09,intervalincludeszero; reverse106.28. Preparing explicitWaitrestored checkpoint fromresetfinal withnamedAdammigration, script training/prepare_city_wait_repair.py, session37145. No new learner. Both comparisons remain active.

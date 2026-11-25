@@ -1,0 +1,1147 @@
+{
+  "selection": "Eight score-ordered representatives at indices0,4,8,12,16,20,24,31 of32 consumed development cities; descriptive only",
+  "instrumentation_exact": true,
+  "limit": "Built-link graph reachability alone does not prove native vehicle routing or sufficient service capacity. No diagnostic routes/actions are used by the learner.",
+  "results": [
+    {
+      "seed": 99020130,
+      "score": 0,
+      "seconds": 144.95000000000002,
+      "native_game_over": true,
+      "terminal": {
+        "shops": [
+          {
+            "id": 0,
+            "color": 0,
+            "cell": {
+              "x": 14,
+              "y": 10
+            },
+            "demand": 10,
+            "capacity": 6,
+            "overcrowded_seconds": 50.07499999999929,
+            "served": 0,
+            "matching_homes": 2,
+            "built_graph_connected_homes": 2,
+            "assigned_cars": 4,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 3,
+            "color": 1,
+            "cell": {
+              "x": 9,
+              "y": 10
+            },
+            "demand": 6,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 0,
+            "matching_homes": 2,
+            "built_graph_connected_homes": 2,
+            "assigned_cars": 4,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          }
+        ],
+        "vehicle_stages": {
+          "Outbound": 8
+        },
+        "vehicle_obstacles": {
+          "Queue ahead": 4
+        },
+        "mean_native_waiting": 0.7625000000000004
+      }
+    },
+    {
+      "seed": 99295601,
+      "score": 24,
+      "seconds": 253.15,
+      "native_game_over": true,
+      "terminal": {
+        "shops": [
+          {
+            "id": 0,
+            "color": 0,
+            "cell": {
+              "x": 14,
+              "y": 16
+            },
+            "demand": 10,
+            "capacity": 6,
+            "overcrowded_seconds": 50.08334999999931,
+            "served": 10,
+            "matching_homes": 3,
+            "built_graph_connected_homes": 1,
+            "assigned_cars": 2,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 3,
+            "color": 1,
+            "cell": {
+              "x": 18,
+              "y": 15
+            },
+            "demand": 1,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 11,
+            "matching_homes": 4,
+            "built_graph_connected_homes": 3,
+            "assigned_cars": 1,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 7,
+            "color": 1,
+            "cell": {
+              "x": 11,
+              "y": 18
+            },
+            "demand": 1,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 3,
+            "matching_homes": 4,
+            "built_graph_connected_homes": 3,
+            "assigned_cars": 3,
+            "assigned_waiting_cars": 1,
+            "max_assigned_wait": 1.4000000000000006
+          }
+        ],
+        "vehicle_stages": {
+          "EnteringParking": 3,
+          "Outbound": 3,
+          "Home": 8
+        },
+        "vehicle_obstacles": {
+          "Destination ahead": 3
+        },
+        "mean_native_waiting": 3.2892857142857124
+      }
+    },
+    {
+      "seed": 99064913,
+      "score": 113,
+      "seconds": 494.55,
+      "native_game_over": true,
+      "terminal": {
+        "shops": [
+          {
+            "id": 12,
+            "color": 2,
+            "cell": {
+              "x": 26,
+              "y": 12
+            },
+            "demand": 9,
+            "capacity": 6,
+            "overcrowded_seconds": 50.09249999999827,
+            "served": 14,
+            "matching_homes": 5,
+            "built_graph_connected_homes": 5,
+            "assigned_cars": 10,
+            "assigned_waiting_cars": 1,
+            "max_assigned_wait": 2.3
+          },
+          {
+            "id": 10,
+            "color": 1,
+            "cell": {
+              "x": 26,
+              "y": 19
+            },
+            "demand": 6,
+            "capacity": 6,
+            "overcrowded_seconds": 21.669814999999623,
+            "served": 13,
+            "matching_homes": 5,
+            "built_graph_connected_homes": 3,
+            "assigned_cars": 3,
+            "assigned_waiting_cars": 1,
+            "max_assigned_wait": 3.049999999999997
+          },
+          {
+            "id": 0,
+            "color": 0,
+            "cell": {
+              "x": 12,
+              "y": 15
+            },
+            "demand": 3,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 34,
+            "matching_homes": 5,
+            "built_graph_connected_homes": 5,
+            "assigned_cars": 5,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 3,
+            "color": 1,
+            "cell": {
+              "x": 11,
+              "y": 19
+            },
+            "demand": 5,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 26,
+            "matching_homes": 5,
+            "built_graph_connected_homes": 3,
+            "assigned_cars": 3,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 6,
+            "color": 0,
+            "cell": {
+              "x": 17,
+              "y": 17
+            },
+            "demand": 1,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 26,
+            "matching_homes": 5,
+            "built_graph_connected_homes": 5,
+            "assigned_cars": 4,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          }
+        ],
+        "vehicle_stages": {
+          "Outbound": 10,
+          "Returning": 12,
+          "Home": 5,
+          "LeavingParking": 2,
+          "EnteringParking": 1
+        },
+        "vehicle_obstacles": {
+          "Queue ahead": 7,
+          "Crossing vehicle": 1,
+          "Destination ahead": 2,
+          "Merging vehicle": 1,
+          "Exit space": 4,
+          "Approaching vehicle priority": 2
+        },
+        "mean_native_waiting": 8.083333333333366
+      }
+    },
+    {
+      "seed": 99270757,
+      "score": 163,
+      "seconds": 609.35,
+      "native_game_over": true,
+      "terminal": {
+        "shops": [
+          {
+            "id": 21,
+            "color": 2,
+            "cell": {
+              "x": 28,
+              "y": 9
+            },
+            "demand": 10,
+            "capacity": 6,
+            "overcrowded_seconds": 50.07499999999929,
+            "served": 0,
+            "matching_homes": 5,
+            "built_graph_connected_homes": 5,
+            "assigned_cars": 5,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 0,
+            "color": 0,
+            "cell": {
+              "x": 13,
+              "y": 15
+            },
+            "demand": 4,
+            "capacity": 9,
+            "overcrowded_seconds": 0,
+            "served": 47,
+            "matching_homes": 8,
+            "built_graph_connected_homes": 8,
+            "assigned_cars": 7,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 3,
+            "color": 1,
+            "cell": {
+              "x": 12,
+              "y": 19
+            },
+            "demand": 2,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 36,
+            "matching_homes": 4,
+            "built_graph_connected_homes": 4,
+            "assigned_cars": 4,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 9,
+            "color": 0,
+            "cell": {
+              "x": 24,
+              "y": 20
+            },
+            "demand": 1,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 25,
+            "matching_homes": 8,
+            "built_graph_connected_homes": 8,
+            "assigned_cars": 1,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 11,
+            "color": 2,
+            "cell": {
+              "x": 26,
+              "y": 13
+            },
+            "demand": 4,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 26,
+            "matching_homes": 5,
+            "built_graph_connected_homes": 5,
+            "assigned_cars": 5,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 14,
+            "color": 3,
+            "cell": {
+              "x": 15,
+              "y": 12
+            },
+            "demand": 3,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 17,
+            "matching_homes": 2,
+            "built_graph_connected_homes": 1,
+            "assigned_cars": 2,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 18,
+            "color": 1,
+            "cell": {
+              "x": 28,
+              "y": 18
+            },
+            "demand": 1,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 12,
+            "matching_homes": 4,
+            "built_graph_connected_homes": 4,
+            "assigned_cars": 3,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          }
+        ],
+        "vehicle_stages": {
+          "Returning": 10,
+          "Outbound": 12,
+          "EnteringParking": 4,
+          "Home": 11,
+          "LeavingParking": 1
+        },
+        "vehicle_obstacles": {
+          "Exit space": 3,
+          "Destination ahead": 5,
+          "Merging vehicle": 2,
+          "Queue ahead": 6,
+          "Crossing vehicle": 2
+        },
+        "mean_native_waiting": 10.689473684210574
+      }
+    },
+    {
+      "seed": 99119484,
+      "score": 224,
+      "seconds": 718.7,
+      "native_game_over": true,
+      "terminal": {
+        "shops": [
+          {
+            "id": 22,
+            "color": 2,
+            "cell": {
+              "x": 19,
+              "y": 9
+            },
+            "demand": 8,
+            "capacity": 6,
+            "overcrowded_seconds": 50.080499999999155,
+            "served": 7,
+            "matching_homes": 4,
+            "built_graph_connected_homes": 4,
+            "assigned_cars": 5,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 16,
+            "color": 2,
+            "cell": {
+              "x": 28,
+              "y": 12
+            },
+            "demand": 6,
+            "capacity": 6,
+            "overcrowded_seconds": 31.80050000000005,
+            "served": 20,
+            "matching_homes": 4,
+            "built_graph_connected_homes": 4,
+            "assigned_cars": 3,
+            "assigned_waiting_cars": 1,
+            "max_assigned_wait": 1.0000000000000002
+          },
+          {
+            "id": 0,
+            "color": 0,
+            "cell": {
+              "x": 12,
+              "y": 16
+            },
+            "demand": 5,
+            "capacity": 9,
+            "overcrowded_seconds": 0,
+            "served": 49,
+            "matching_homes": 9,
+            "built_graph_connected_homes": 8,
+            "assigned_cars": 10,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 3,
+            "color": 1,
+            "cell": {
+              "x": 16,
+              "y": 18
+            },
+            "demand": 3,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 41,
+            "matching_homes": 5,
+            "built_graph_connected_homes": 5,
+            "assigned_cars": 4,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 6,
+            "color": 0,
+            "cell": {
+              "x": 16,
+              "y": 14
+            },
+            "demand": 1,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 37,
+            "matching_homes": 9,
+            "built_graph_connected_homes": 8,
+            "assigned_cars": 4,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 10,
+            "color": 1,
+            "cell": {
+              "x": 11,
+              "y": 13
+            },
+            "demand": 4,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 29,
+            "matching_homes": 5,
+            "built_graph_connected_homes": 5,
+            "assigned_cars": 4,
+            "assigned_waiting_cars": 1,
+            "max_assigned_wait": 1.4500000000000006
+          },
+          {
+            "id": 14,
+            "color": 3,
+            "cell": {
+              "x": 15,
+              "y": 11
+            },
+            "demand": 2,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 22,
+            "matching_homes": 2,
+            "built_graph_connected_homes": 2,
+            "assigned_cars": 4,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 20,
+            "color": 1,
+            "cell": {
+              "x": 26,
+              "y": 18
+            },
+            "demand": 4,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 19,
+            "matching_homes": 5,
+            "built_graph_connected_homes": 5,
+            "assigned_cars": 2,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 24,
+            "color": 4,
+            "cell": {
+              "x": 10,
+              "y": 7
+            },
+            "demand": 5,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 0,
+            "matching_homes": 4,
+            "built_graph_connected_homes": 3,
+            "assigned_cars": 5,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          }
+        ],
+        "vehicle_stages": {
+          "Returning": 15,
+          "EnteringParking": 4,
+          "Outbound": 20,
+          "LeavingParking": 2,
+          "Home": 7
+        },
+        "vehicle_obstacles": {
+          "Queue ahead": 10,
+          "Destination ahead": 8,
+          "Approaching vehicle priority": 8,
+          "Exit space": 2,
+          "Crossing vehicle": 1,
+          "Merging vehicle": 2
+        },
+        "mean_native_waiting": 12.209375000000081
+      }
+    },
+    {
+      "seed": 99238518,
+      "score": 281,
+      "seconds": 810.25,
+      "native_game_over": true,
+      "terminal": {
+        "shops": [
+          {
+            "id": 27,
+            "color": 4,
+            "cell": {
+              "x": 37,
+              "y": 17
+            },
+            "demand": 9,
+            "capacity": 6,
+            "overcrowded_seconds": 50.07499999999929,
+            "served": 0,
+            "matching_homes": 2,
+            "built_graph_connected_homes": 0,
+            "assigned_cars": 0,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 0,
+            "color": 0,
+            "cell": {
+              "x": 13,
+              "y": 15
+            },
+            "demand": 5,
+            "capacity": 9,
+            "overcrowded_seconds": 0,
+            "served": 58,
+            "matching_homes": 9,
+            "built_graph_connected_homes": 5,
+            "assigned_cars": 8,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 3,
+            "color": 1,
+            "cell": {
+              "x": 16,
+              "y": 15
+            },
+            "demand": 4,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 46,
+            "matching_homes": 12,
+            "built_graph_connected_homes": 5,
+            "assigned_cars": 1,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 6,
+            "color": 0,
+            "cell": {
+              "x": 17,
+              "y": 19
+            },
+            "demand": 3,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 41,
+            "matching_homes": 9,
+            "built_graph_connected_homes": 5,
+            "assigned_cars": 2,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 10,
+            "color": 3,
+            "cell": {
+              "x": 11,
+              "y": 12
+            },
+            "demand": 1,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 34,
+            "matching_homes": 2,
+            "built_graph_connected_homes": 2,
+            "assigned_cars": 2,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 13,
+            "color": 1,
+            "cell": {
+              "x": 25,
+              "y": 18
+            },
+            "demand": 4,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 29,
+            "matching_homes": 12,
+            "built_graph_connected_homes": 5,
+            "assigned_cars": 1,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 16,
+            "color": 1,
+            "cell": {
+              "x": 29,
+              "y": 19
+            },
+            "demand": 7,
+            "capacity": 9,
+            "overcrowded_seconds": 0,
+            "served": 28,
+            "matching_homes": 12,
+            "built_graph_connected_homes": 5,
+            "assigned_cars": 8,
+            "assigned_waiting_cars": 1,
+            "max_assigned_wait": 1.2500000000000004
+          },
+          {
+            "id": 18,
+            "color": 2,
+            "cell": {
+              "x": 30,
+              "y": 10
+            },
+            "demand": 3,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 24,
+            "matching_homes": 6,
+            "built_graph_connected_homes": 5,
+            "assigned_cars": 6,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 22,
+            "color": 2,
+            "cell": {
+              "x": 17,
+              "y": 9
+            },
+            "demand": 1,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 21,
+            "matching_homes": 6,
+            "built_graph_connected_homes": 5,
+            "assigned_cars": 3,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          }
+        ],
+        "vehicle_stages": {
+          "Returning": 13,
+          "Outbound": 14,
+          "EnteringParking": 3,
+          "Home": 31,
+          "LeavingParking": 1
+        },
+        "vehicle_obstacles": {
+          "Queue ahead": 7,
+          "Approaching vehicle priority": 2,
+          "Destination ahead": 7,
+          "Exit space": 2,
+          "Crossing vehicle": 1
+        },
+        "mean_native_waiting": 10.970161290322622
+      }
+    },
+    {
+      "seed": 99036259,
+      "score": 342,
+      "seconds": 873.45,
+      "native_game_over": true,
+      "terminal": {
+        "shops": [
+          {
+            "id": 31,
+            "color": 4,
+            "cell": {
+              "x": 9,
+              "y": 6
+            },
+            "demand": 10,
+            "capacity": 6,
+            "overcrowded_seconds": 50.07499999999929,
+            "served": 0,
+            "matching_homes": 3,
+            "built_graph_connected_homes": 3,
+            "assigned_cars": 6,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 0,
+            "color": 0,
+            "cell": {
+              "x": 14,
+              "y": 15
+            },
+            "demand": 3,
+            "capacity": 9,
+            "overcrowded_seconds": 0,
+            "served": 70,
+            "matching_homes": 8,
+            "built_graph_connected_homes": 8,
+            "assigned_cars": 4,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 3,
+            "color": 1,
+            "cell": {
+              "x": 17,
+              "y": 15
+            },
+            "demand": 1,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 54,
+            "matching_homes": 11,
+            "built_graph_connected_homes": 9,
+            "assigned_cars": 3,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 6,
+            "color": 0,
+            "cell": {
+              "x": 11,
+              "y": 14
+            },
+            "demand": 1,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 48,
+            "matching_homes": 8,
+            "built_graph_connected_homes": 8,
+            "assigned_cars": 2,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 10,
+            "color": 3,
+            "cell": {
+              "x": 15,
+              "y": 12
+            },
+            "demand": 1,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 38,
+            "matching_homes": 2,
+            "built_graph_connected_homes": 2,
+            "assigned_cars": 3,
+            "assigned_waiting_cars": 1,
+            "max_assigned_wait": 1.2000000000000004
+          },
+          {
+            "id": 12,
+            "color": 1,
+            "cell": {
+              "x": 19,
+              "y": 12
+            },
+            "demand": 2,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 36,
+            "matching_homes": 11,
+            "built_graph_connected_homes": 9,
+            "assigned_cars": 4,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 16,
+            "color": 2,
+            "cell": {
+              "x": 23,
+              "y": 10
+            },
+            "demand": 1,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 32,
+            "matching_homes": 4,
+            "built_graph_connected_homes": 4,
+            "assigned_cars": 3,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 18,
+            "color": 2,
+            "cell": {
+              "x": 28,
+              "y": 10
+            },
+            "demand": 2,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 31,
+            "matching_homes": 4,
+            "built_graph_connected_homes": 4,
+            "assigned_cars": 4,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 22,
+            "color": 1,
+            "cell": {
+              "x": 9,
+              "y": 10
+            },
+            "demand": 4,
+            "capacity": 9,
+            "overcrowded_seconds": 0,
+            "served": 33,
+            "matching_homes": 11,
+            "built_graph_connected_homes": 9,
+            "assigned_cars": 7,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          }
+        ],
+        "vehicle_stages": {
+          "Returning": 11,
+          "Outbound": 18,
+          "Home": 20,
+          "EnteringParking": 5,
+          "LeavingParking": 2
+        },
+        "vehicle_obstacles": {
+          "Merging vehicle": 2,
+          "Destination ahead": 8,
+          "Approaching vehicle priority": 3,
+          "Queue ahead": 7
+        },
+        "mean_native_waiting": 13.42142857142858
+      }
+    },
+    {
+      "seed": 99393124,
+      "score": 680,
+      "seconds": 1187.3,
+      "native_game_over": true,
+      "terminal": {
+        "shops": [
+          {
+            "id": 52,
+            "color": 0,
+            "cell": {
+              "x": 37,
+              "y": 21
+            },
+            "demand": 10,
+            "capacity": 6,
+            "overcrowded_seconds": 50.07499999999929,
+            "served": 0,
+            "matching_homes": 14,
+            "built_graph_connected_homes": 0,
+            "assigned_cars": 0,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 0,
+            "color": 0,
+            "cell": {
+              "x": 14,
+              "y": 16
+            },
+            "demand": 3,
+            "capacity": 9,
+            "overcrowded_seconds": 0,
+            "served": 141,
+            "matching_homes": 14,
+            "built_graph_connected_homes": 11,
+            "assigned_cars": 7,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0.7500000000000001
+          },
+          {
+            "id": 3,
+            "color": 1,
+            "cell": {
+              "x": 17,
+              "y": 19
+            },
+            "demand": 2,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 87,
+            "matching_homes": 15,
+            "built_graph_connected_homes": 15,
+            "assigned_cars": 4,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 7,
+            "color": 0,
+            "cell": {
+              "x": 24,
+              "y": 16
+            },
+            "demand": 2,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 72,
+            "matching_homes": 14,
+            "built_graph_connected_homes": 11,
+            "assigned_cars": 3,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 10,
+            "color": 2,
+            "cell": {
+              "x": 26,
+              "y": 12
+            },
+            "demand": 3,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 76,
+            "matching_homes": 8,
+            "built_graph_connected_homes": 8,
+            "assigned_cars": 4,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 13,
+            "color": 3,
+            "cell": {
+              "x": 12,
+              "y": 11
+            },
+            "demand": 6,
+            "capacity": 9,
+            "overcrowded_seconds": 0,
+            "served": 77,
+            "matching_homes": 5,
+            "built_graph_connected_homes": 5,
+            "assigned_cars": 10,
+            "assigned_waiting_cars": 1,
+            "max_assigned_wait": 1.3500000000000005
+          },
+          {
+            "id": 19,
+            "color": 1,
+            "cell": {
+              "x": 23,
+              "y": 10
+            },
+            "demand": 2,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 44,
+            "matching_homes": 15,
+            "built_graph_connected_homes": 15,
+            "assigned_cars": 2,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 21,
+            "color": 2,
+            "cell": {
+              "x": 19,
+              "y": 10
+            },
+            "demand": 4,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 56,
+            "matching_homes": 8,
+            "built_graph_connected_homes": 8,
+            "assigned_cars": 6,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 25,
+            "color": 1,
+            "cell": {
+              "x": 9,
+              "y": 8
+            },
+            "demand": 4,
+            "capacity": 9,
+            "overcrowded_seconds": 0,
+            "served": 71,
+            "matching_homes": 15,
+            "built_graph_connected_homes": 15,
+            "assigned_cars": 7,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 33,
+            "color": 4,
+            "cell": {
+              "x": 37,
+              "y": 18
+            },
+            "demand": 1,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 28,
+            "matching_homes": 8,
+            "built_graph_connected_homes": 7,
+            "assigned_cars": 2,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 43,
+            "color": 2,
+            "cell": {
+              "x": 38,
+              "y": 9
+            },
+            "demand": 3,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 16,
+            "matching_homes": 8,
+            "built_graph_connected_homes": 8,
+            "assigned_cars": 6,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          },
+          {
+            "id": 47,
+            "color": 4,
+            "cell": {
+              "x": 12,
+              "y": 5
+            },
+            "demand": 4,
+            "capacity": 6,
+            "overcrowded_seconds": 0,
+            "served": 12,
+            "matching_homes": 8,
+            "built_graph_connected_homes": 7,
+            "assigned_cars": 8,
+            "assigned_waiting_cars": 0,
+            "max_assigned_wait": 0
+          }
+        ],
+        "vehicle_stages": {
+          "Outbound": 27,
+          "Returning": 24,
+          "LeavingParking": 4,
+          "Home": 41,
+          "EnteringParking": 4
+        },
+        "vehicle_obstacles": {
+          "Destination ahead": 13,
+          "Crossing vehicle": 3,
+          "Queue ahead": 10,
+          "Merging vehicle": 3,
+          "Exit space": 1,
+          "Approaching vehicle priority": 5
+        },
+        "mean_native_waiting": 14.435499999999891
+      }
+    }
+  ]
+}

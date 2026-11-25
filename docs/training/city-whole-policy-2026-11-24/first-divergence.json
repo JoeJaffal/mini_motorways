@@ -1,0 +1,13 @@
+{
+  "decision": 7,
+  "native_seconds": 4,
+  "reference_action": 3082,
+  "candidate_action": 3252,
+  "reference_wait": 0.36003977443181273,
+  "candidate_wait": 0.3202189518142682,
+  "conditional_road_tv": 0.0018121470470051444,
+  "same_random_uniform": 0.6364492117611671,
+  "action_with_only_wait_changed": 3252,
+  "action_with_only_road_preferences_changed": 3082,
+  "limit": "One shared pre-divergence state. Joint categorical sampling can change which road is sampled when Wait mass changes. This does not estimate population score effects or guide training actions."
+}

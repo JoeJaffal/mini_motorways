@@ -1,0 +1,39 @@
+{
+  "branch": "Maskable-PPO",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "160c898cc139c8a6457ec8253c3355c0129b7c961c73869b4438592ab5bafb28"
+    },
+    {
+      "path": "games.jsonl",
+      "sha256": "8c2e5ef57414a413d5520237c7a9b75b4decf6508aaaec5c565c4fb1b9b6bf13"
+    },
+    {
+      "path": "identity.json",
+      "sha256": "e5e2f5808fb9083da0b9a2ceabf3d66fc6565fd5b8278be7c80cc11cfd32e9c2"
+    },
+    {
+      "path": "opening-witness.json",
+      "sha256": "39e865e60be3c597c9caf059f0a3126575105bfa7157ebdfc1a91e94195a7eb2"
+    },
+    {
+      "path": "opening_witness.py",
+      "sha256": "a3849c8c6934883c468313698a468fc65db9bfff6443e05cb2cd3df0bf2df11b"
+    },
+    {
+      "path": "suite.json",
+      "sha256": "8d8f8839ae2efca4a030fceaf21eb0883da7c8df982b7710b0bce038e406838f"
+    },
+    {
+      "path": "summary.json",
+      "sha256": "51de1687450cb2d7d67f5d6a92098ab80dd98e94c919f033ecbcf023b74bb589"
+    }
+  ],
+  "source_hashes": {
+    "training/diagnose_city_policy.py": "077374535ada5c79f972f964de108c208071b40bca9a49b8788a26f5826e8870",
+    "training/city_road_pilot.py": "fee11a39a5d4c205d05e3110fad96e64bbcdfab2ab7d800b7de0cf6470993789",
+    "training/prepare_city_policy.py": "2005bcc6f19d9f9caecd754a8ee4f574014e287e4556bfe333ce4367770e9f29",
+    "training/visible_observation.py": "76ea6a0ee1b3c1b44bc8d0ca2a16a9c349432d2172ab83cc5dc14fbdf4417cb9"
+  }
+}

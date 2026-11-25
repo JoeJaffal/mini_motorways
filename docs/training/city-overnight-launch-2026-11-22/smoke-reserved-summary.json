@@ -1,0 +1,107 @@
+{
+  "games": 8,
+  "checkpoints": {
+    "/home/mohammadjaffal/mini_motorways/output/training/city-road-start-01/city-start.zip": "e66dbd377a81208092a6c242e446e898729969c53258b4dcdf372a072dd313e8",
+    "/home/mohammadjaffal/mini_motorways/output/training/city-overnight-resume-smoke-01/checkpoints/city-000008192-1477b77a.zip": "f1970ccd4e69efb6445f13a06284f019806457c6040032a0ee08d9858e12d0bf"
+  },
+  "host_sha256": "2da58a5aeefa0e7d3416302d4532724b253e9ede05a998fccf40a324aeb5fe23",
+  "suite_sha256": "a5c8b23d0adaed90c7dd03e0191fb7f6de178e55c18f577b4f22c155ad774845",
+  "measurements": [
+    {
+      "checkpoint_decisions": 0,
+      "mode": "sampled",
+      "total_games": 2,
+      "scoring_games": 2,
+      "mean_score": 31.5,
+      "median_score": 31.5,
+      "best_score": 38,
+      "median_survival_seconds": 297.475,
+      "mean_road_units": 68.5,
+      "mean_wait_actions": 297.5,
+      "games_with_weekly_award": 2,
+      "games_with_no_roads": 0,
+      "games_with_empty_stock": 1,
+      "horizon_truncations": 0,
+      "paired_score_delta": 0.0,
+      "paired_wins": 0,
+      "paired_ties": 2,
+      "paired_losses": 0,
+      "paired_bootstrap_95_percent": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "checkpoint_decisions": 0,
+      "mode": "greedy",
+      "total_games": 2,
+      "scoring_games": 0,
+      "mean_score": 0.0,
+      "median_score": 0.0,
+      "best_score": 0,
+      "median_survival_seconds": 147.82500000000002,
+      "mean_road_units": 0.0,
+      "mean_wait_actions": 148.0,
+      "games_with_weekly_award": 2,
+      "games_with_no_roads": 2,
+      "games_with_empty_stock": 0,
+      "horizon_truncations": 0,
+      "paired_score_delta": 0.0,
+      "paired_wins": 0,
+      "paired_ties": 2,
+      "paired_losses": 0,
+      "paired_bootstrap_95_percent": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "checkpoint_decisions": 8192,
+      "mode": "sampled",
+      "total_games": 2,
+      "scoring_games": 1,
+      "mean_score": 12.5,
+      "median_score": 12.5,
+      "best_score": 25,
+      "median_survival_seconds": 221.35000000000002,
+      "mean_road_units": 50.0,
+      "mean_wait_actions": 221.5,
+      "games_with_weekly_award": 2,
+      "games_with_no_roads": 0,
+      "games_with_empty_stock": 0,
+      "horizon_truncations": 0,
+      "paired_score_delta": -19.0,
+      "paired_wins": 0,
+      "paired_ties": 1,
+      "paired_losses": 1,
+      "paired_bootstrap_95_percent": [
+        -38.0,
+        0.0
+      ]
+    },
+    {
+      "checkpoint_decisions": 8192,
+      "mode": "greedy",
+      "total_games": 2,
+      "scoring_games": 0,
+      "mean_score": 0.0,
+      "median_score": 0.0,
+      "best_score": 0,
+      "median_survival_seconds": 147.82500000000002,
+      "mean_road_units": 1.5,
+      "mean_wait_actions": 148.0,
+      "games_with_weekly_award": 2,
+      "games_with_no_roads": 1,
+      "games_with_empty_stock": 0,
+      "horizon_truncations": 0,
+      "paired_score_delta": 0.0,
+      "paired_wins": 0,
+      "paired_ties": 2,
+      "paired_losses": 0,
+      "paired_bootstrap_95_percent": [
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "created_utc": "2026-11-21T15:08:05.447785+00:00",
+  "branch": "mohammad",
+  "git_base": "6bd7f7193b26ae0f5aa12563f3dd89769115df6e",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 5938,
+      "sha256": "967fe716b0af084967ba825776af7ebfa8524de17b61a25a5ff67d0531c7e1ea"
+    },
+    {
+      "path": "continuation.json",
+      "bytes": 935893,
+      "sha256": "a934346406913a6712c3bf07757651023be8c6fce039a790c1b561e16862b2b0"
+    },
+    {
+      "path": "controls.json",
+      "bytes": 1391199,
+      "sha256": "18e4ba312308b077fc914ec426f6fac4acbdb77a2425de044ad43b5a26c893c4"
+    },
+    {
+      "path": "original.json",
+      "bytes": 934210,
+      "sha256": "f9b6801fe0695274c08ca1d6d4605a4e3273d5889431a91f0bc408a3a73c3bde"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 15916,
+      "sha256": "1febf72fa98aabea1b50049711ab76c783f9090a02e752dda3890cd45fdeaad5"
+    }
+  ],
+  "local_artifacts": [
+    {
+      "path": "output/training/traffic-live-ppo-01/latest.zip",
+      "sha256": "d1c2375d700c8318890d95146160ab3dec4d49d92d5403d74aecf327628f3043"
+    },
+    {
+      "path": "output/training/traffic-live-varied-ppo-01/latest.zip",
+      "sha256": "7bc34dfc89a4557c3180c18efe19adf8512ecc4068ec5c019603c5796eb215d3"
+    },
+    {
+      "path": "output/training/traffic-varied-junction-host-01/build/bin/TrafficHost/release/TrafficHost.dll",
+      "sha256": "18367277cc0a07704ff73c275413b8d11865b3e313f7c717474dd8db5653c58d"
+    }
+  ]
+}

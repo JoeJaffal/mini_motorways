@@ -1,0 +1,59 @@
+{
+  "exact_observation_mask_reward_termination_parity": true,
+  "games": [
+    {
+      "exercise": "city",
+      "seed": 212000000,
+      "steps": 289,
+      "score": 153,
+      "cost": 0.0,
+      "paid": 135,
+      "total_return": 153.0
+    },
+    {
+      "exercise": "city",
+      "seed": 212000001,
+      "steps": 51,
+      "score": 5,
+      "cost": 0.0,
+      "paid": 45,
+      "total_return": 5.0
+    },
+    {
+      "exercise": "small-city-offset-single",
+      "seed": 212000000,
+      "steps": 15,
+      "score": 4,
+      "cost": 0.04,
+      "paid": 10,
+      "total_return": 3.6
+    },
+    {
+      "exercise": "small-city-offset-single",
+      "seed": 212000001,
+      "steps": 56,
+      "score": 4,
+      "cost": 0.04,
+      "paid": 6,
+      "total_return": 3.76
+    },
+    {
+      "exercise": "small-city-offset-stock",
+      "seed": 212000000,
+      "steps": 20,
+      "score": 4,
+      "cost": 0.04,
+      "paid": 15,
+      "total_return": 3.4
+    },
+    {
+      "exercise": "small-city-offset-stock",
+      "seed": 212000001,
+      "steps": 66,
+      "score": 4,
+      "cost": 0.04,
+      "paid": 6,
+      "total_return": 3.76
+    }
+  ]
+}

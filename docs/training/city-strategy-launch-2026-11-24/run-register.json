@@ -1,0 +1,2116 @@
+[
+  {
+    "path": "output/training/city-strategy-balanced-extension-01/segment-001",
+    "status": "complete",
+    "config": {
+      "dll": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-extension-01/runtime/host/TrafficHost.dll",
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-fast-01/final.zip",
+      "output": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-extension-01/segment-001",
+      "stage": "strategy-balanced",
+      "collapse_forced_wait": true,
+      "fast_priority_tail": true,
+      "reserve_warmup_seconds": 6,
+      "workers": 16,
+      "rollouts": 4,
+      "seed_start": 148000000,
+      "learning_rate": 0.001,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 600,
+      "record_dir": "/home/mohammadjaffal/mini_motorways/docs/training/city-strategy-launch-2026-11-24/bounded-extension-01/segment-001",
+      "save_every_rollouts": 1,
+      "parent_sha256": "d9bb06324d1641f588e49c5cd95da0d0027f49f967eaef3b92d065ea8f199cd3",
+      "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+      "decision_budget": 32768
+    },
+    "checkpoints": [
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-extension-01/segment-001/checkpoint-000008192.zip",
+        "sha256": "361fb821310accb0e8e741c351392aa645e0ea10597bb6fb4d85899cf852ba65",
+        "added_decisions": 8192,
+        "episodes": 2124,
+        "seconds": 274.95813983900007
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-extension-01/segment-001/midpoint.zip",
+        "sha256": "17e8dd3b018f9e9ccec58ea72181f2f05c07b2f6b0e236ed6536ac10dd67803d",
+        "added_decisions": 16384,
+        "episodes": 4241,
+        "seconds": 547.9816891939845
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-extension-01/segment-001/checkpoint-000024576.zip",
+        "sha256": "1861e78f289f247344e0f77e86d1d14c102dbd43ce899c46df1091c082b8f6b6",
+        "added_decisions": 24576,
+        "episodes": 6335,
+        "seconds": 825.9323146860115
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-extension-01/segment-001/final.zip",
+        "sha256": "5832f2ae226eebc920f3f5e34b3fdb5b7202b5db8e9616542a1caf8e11fe10cb",
+        "added_decisions": 32768,
+        "episodes": 8433,
+        "seconds": 1090.9798166629625
+      }
+    ],
+    "episodes_by_task": {
+      "traffic-priority-established": {
+        "count": 3864,
+        "mean_training_score": 15.182971014492754,
+        "completed_decisions": 4096
+      },
+      "traffic-priority-established-swap": {
+        "count": 3843,
+        "mean_training_score": 15.307572209211553,
+        "completed_decisions": 4096
+      },
+      "midgame-network-reserve": {
+        "count": 689,
+        "mean_training_score": 5.02177068214804,
+        "completed_decisions": 8183
+      },
+      "city": {
+        "count": 37,
+        "mean_training_score": 89.16216216216216,
+        "completed_decisions": 13894
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-balanced-fast-01",
+    "status": "complete",
+    "config": {
+      "dll": "output/city-road-reserve-build-01/bin/TrafficHost/release/TrafficHost.dll",
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-pilot-01/checkpoint-000008192.zip",
+      "output": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-fast-01",
+      "stage": "strategy-balanced",
+      "collapse_forced_wait": true,
+      "fast_priority_tail": true,
+      "workers": 16,
+      "rollouts": 3,
+      "seed_start": 146000000,
+      "learning_rate": 0.001,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 600,
+      "record_dir": null,
+      "save_every_rollouts": 1,
+      "parent_sha256": "e48e4c2324a018eb7772c3bd994f48f47e1969ca97984511b8a93f0fb19339c0",
+      "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+      "decision_budget": 24576
+    },
+    "checkpoints": [
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-fast-01/midpoint.zip",
+        "sha256": "9aa4e8ff3371aab875c947daa26a3ea3d3916449c0685263a0ad3bcbbf55bc76",
+        "added_decisions": 8192,
+        "episodes": 2077,
+        "seconds": 255.745738490019
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-fast-01/checkpoint-000016384.zip",
+        "sha256": "247e11010b0c66210dcdaef5f8ca0837c8a35f53c2d287a4ef9241297ad1176c",
+        "added_decisions": 16384,
+        "episodes": 4161,
+        "seconds": 519.9670187629526
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-fast-01/final.zip",
+        "sha256": "d9bb06324d1641f588e49c5cd95da0d0027f49f967eaef3b92d065ea8f199cd3",
+        "added_decisions": 24576,
+        "episodes": 6222,
+        "seconds": 776.6834163869498
+      }
+    ],
+    "episodes_by_task": {
+      "traffic-priority-established": {
+        "count": 2875,
+        "mean_training_score": 11.623304347826087,
+        "completed_decisions": 3072
+      },
+      "traffic-priority-established-swap": {
+        "count": 2884,
+        "mean_training_score": 11.737864077669903,
+        "completed_decisions": 3071
+      },
+      "midgame-network-reserve": {
+        "count": 433,
+        "mean_training_score": 3.699769053117783,
+        "completed_decisions": 6128
+      },
+      "city": {
+        "count": 30,
+        "mean_training_score": 81.46666666666667,
+        "completed_decisions": 10458
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-balanced-pilot-01",
+    "status": "Stopped at saved8k for parity-checked acceleration; worker-close hang cleaned up",
+    "config": {
+      "dll": "output/city-road-reserve-build-01/bin/TrafficHost/release/TrafficHost.dll",
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-mixed-pilot-01/midpoint.zip",
+      "output": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-pilot-01",
+      "stage": "strategy-balanced",
+      "collapse_forced_wait": true,
+      "workers": 16,
+      "rollouts": 4,
+      "seed_start": 145000000,
+      "learning_rate": 0.001,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 600,
+      "record_dir": null,
+      "save_every_rollouts": 1,
+      "parent_sha256": "63896fa93084141c6d6d381417d5caeeef67da6f76266b2ace87ef47f92a9796",
+      "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+      "decision_budget": 32768
+    },
+    "checkpoints": [
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-pilot-01/checkpoint-000008192.zip",
+        "sha256": "e48e4c2324a018eb7772c3bd994f48f47e1969ca97984511b8a93f0fb19339c0",
+        "added_decisions": 8192,
+        "episodes": 2087,
+        "seconds": 628.0946383989649
+      }
+    ],
+    "episodes_by_task": {
+      "traffic-priority-established-swap": {
+        "count": 972,
+        "mean_training_score": 11.092592592592593,
+        "completed_decisions": 1028
+      },
+      "traffic-priority-established": {
+        "count": 965,
+        "mean_training_score": 11.023834196891192,
+        "completed_decisions": 1028
+      },
+      "midgame-network-reserve": {
+        "count": 147,
+        "mean_training_score": 3.6802721088435373,
+        "completed_decisions": 2033
+      },
+      "city": {
+        "count": 12,
+        "mean_training_score": 16.25,
+        "completed_decisions": 1388
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-bridge-balanced-01/segment-001",
+    "status": "Stopped at saved24576 after longer baseline favored calibrated reference; unsaved tail not carried forward",
+    "config": {
+      "dll": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-balanced-01/runtime/host/TrafficHost.dll",
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-original-delay-01/segment-001/final.zip",
+      "output": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-balanced-01/segment-001",
+      "stage": "strategy-balanced",
+      "collapse_forced_wait": true,
+      "fast_priority_tail": true,
+      "reserve_warmup_seconds": 0,
+      "reserve_delay_seconds": null,
+      "allow_bridges": true,
+      "task_minibatches": true,
+      "reserve_return_advantages": true,
+      "workers": 16,
+      "rollouts": 8,
+      "seed_start": 166000000,
+      "learning_rate": 0.0001,
+      "value_coefficient": 1e-05,
+      "gradient_audit_steps": 64,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 1200,
+      "record_dir": "/home/mohammadjaffal/mini_motorways/docs/training/city-strategy-launch-2026-11-24/bounded-bridge-balanced-01/segment-001",
+      "save_every_rollouts": 1,
+      "parent_sha256": "e72ec5ada055dd474f65ec0d032e6333128e241f8154ea2f3fc382c73dbf34e2",
+      "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+      "decision_budget": 65536,
+      "gamma": 1.0,
+      "n_epochs": 4,
+      "vf_coef": 1e-05,
+      "loaded_optimizer_steps": 6789,
+      "normalize_advantage": true,
+      "ent_coef": 0.01,
+      "target_kl": 0.03,
+      "max_grad_norm": 0.5,
+      "optimizer_lr_scales": [
+        1.0,
+        0.3,
+        0.1,
+        0.1
+      ]
+    },
+    "checkpoints": [
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-balanced-01/segment-001/checkpoint-000008192.zip",
+        "sha256": "2686861ab4e8a2d9546b54a761fbc85a16a3f806f395a5d4e56f09980a79ad9e",
+        "added_decisions": 8192,
+        "optimizer_steps_added": 256,
+        "episodes": 2004,
+        "seconds": 262.8442208690103
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-balanced-01/segment-001/checkpoint-000016384.zip",
+        "sha256": "db1cf931e7ab2aabe40889c8827100af659fe83b419d7503fd7715cd5b2bda8e",
+        "added_decisions": 16384,
+        "optimizer_steps_added": 512,
+        "episodes": 4001,
+        "seconds": 517.5705026530195
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-balanced-01/segment-001/checkpoint-000024576.zip",
+        "sha256": "63e3147f62a2524c31e8d6d9bd95d98d1033cb4b24115f9144e90d5e6d9f4c76",
+        "added_decisions": 24576,
+        "optimizer_steps_added": 768,
+        "episodes": 5996,
+        "seconds": 769.6364707580069
+      }
+    ],
+    "episodes_by_task": {
+      "traffic-priority-established": {
+        "count": 3816,
+        "mean_training_score": 17.431603773584907,
+        "completed_decisions": 4096
+      },
+      "traffic-priority-established-swap": {
+        "count": 3815,
+        "mean_training_score": 17.3478374836173,
+        "completed_decisions": 4096
+      },
+      "midgame-network-reserve": {
+        "count": 336,
+        "mean_training_score": 5.011904761904762,
+        "completed_decisions": 8108
+      },
+      "city": {
+        "count": 19,
+        "mean_training_score": 188.31578947368422,
+        "completed_decisions": 13264
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-bridge-reference-city-01/segment-001",
+    "status": "complete",
+    "config": {
+      "dll": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-city-01/runtime/host/TrafficHost.dll",
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-wide-initial-01/start.zip",
+      "output": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-city-01/segment-001",
+      "stage": "city",
+      "collapse_forced_wait": true,
+      "fast_priority_tail": false,
+      "reserve_warmup_seconds": 0,
+      "reserve_delay_seconds": null,
+      "allow_bridges": true,
+      "task_minibatches": false,
+      "reserve_return_advantages": false,
+      "workers": 16,
+      "rollouts": 8,
+      "seed_start": 168000000,
+      "learning_rate": 0.0001,
+      "value_coefficient": 1e-05,
+      "gradient_audit_steps": 64,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 1200,
+      "record_dir": "/home/mohammadjaffal/mini_motorways/docs/training/city-strategy-launch-2026-11-24/bounded-bridge-reference-city-01/segment-001",
+      "save_every_rollouts": 1,
+      "parent_sha256": "9d9c9c95e4955a14461358f3203143be5f70331f8cbbb4bc26d0951b3674447a",
+      "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+      "decision_budget": 65536,
+      "gamma": 1.0,
+      "n_epochs": 4,
+      "vf_coef": 1e-05,
+      "loaded_optimizer_steps": 0,
+      "normalize_advantage": true,
+      "ent_coef": 0.01,
+      "target_kl": 0.03,
+      "max_grad_norm": 0.5,
+      "optimizer_lr_scales": [
+        1.0,
+        0.3,
+        0.1,
+        0.1
+      ]
+    },
+    "checkpoints": [
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-city-01/segment-001/checkpoint-000008192.zip",
+        "sha256": "2395b4ba27ab7e6c26092fc3958541bffdc01179efec7d78ad8b617e484e8276",
+        "added_decisions": 8192,
+        "optimizer_steps_added": 256,
+        "episodes": 10,
+        "seconds": 118.76141974201892
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-city-01/segment-001/checkpoint-000016384.zip",
+        "sha256": "975c533389256c62d44219be9c2f82712da21f3b61b62f567837f12e55d2a1de",
+        "added_decisions": 16384,
+        "optimizer_steps_added": 512,
+        "episodes": 19,
+        "seconds": 275.3239083189983
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-city-01/segment-001/checkpoint-000024576.zip",
+        "sha256": "b89ebca8ba284ba2340eda6331255e9ab6c9788dd60a6d0d90f9f36f1093d5a1",
+        "added_decisions": 24576,
+        "optimizer_steps_added": 768,
+        "episodes": 31,
+        "seconds": 436.29612936393823
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-city-01/segment-001/midpoint.zip",
+        "sha256": "38f443afc539a6fe268eae6516efb64d6ff6763a75d2c7aad2cf2ce4152c9501",
+        "added_decisions": 32768,
+        "optimizer_steps_added": 1024,
+        "episodes": 45,
+        "seconds": 597.9490458020009
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-city-01/segment-001/checkpoint-000040960.zip",
+        "sha256": "8c6be4cd1284037287296ff1957a1c4972d96576e583e2fd03b4df7cc0f48c0b",
+        "added_decisions": 40960,
+        "optimizer_steps_added": 1280,
+        "episodes": 61,
+        "seconds": 777.3559953810181
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-city-01/segment-001/checkpoint-000049152.zip",
+        "sha256": "a56f7c280c13f988cb8aa74ab4f394fb5046a75e0c37482004eb8ed0b0195bef",
+        "added_decisions": 49152,
+        "optimizer_steps_added": 1536,
+        "episodes": 69,
+        "seconds": 949.8349937589373
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-city-01/segment-001/checkpoint-000057344.zip",
+        "sha256": "db5afb7ca32dd3a3b0057c4cb64986d68a553b44e7f0713a3a4fa89e5f92de7d",
+        "added_decisions": 57344,
+        "optimizer_steps_added": 1792,
+        "episodes": 81,
+        "seconds": 1130.055237242952
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-city-01/segment-001/final.zip",
+        "sha256": "f30db996223d11a932a597284bc74b33e2b696e9ddf739e2a9bc2314c948fb66",
+        "added_decisions": 65536,
+        "optimizer_steps_added": 2048,
+        "episodes": 90,
+        "seconds": 1293.7881913100136
+      }
+    ],
+    "episodes_by_task": {
+      "city": {
+        "count": 90,
+        "mean_training_score": 230.12222222222223,
+        "completed_decisions": 57687
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-bridge-reference-rate-01/segment-001",
+    "status": "complete",
+    "config": {
+      "dll": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-rate-01/runtime/host/TrafficHost.dll",
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-wide-initial-01/start.zip",
+      "output": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-rate-01/segment-001",
+      "stage": "city",
+      "collapse_forced_wait": true,
+      "fast_priority_tail": false,
+      "reserve_warmup_seconds": 0,
+      "reserve_delay_seconds": null,
+      "allow_bridges": true,
+      "task_minibatches": false,
+      "reserve_return_advantages": false,
+      "workers": 16,
+      "rollouts": 4,
+      "seed_start": 168000000,
+      "learning_rate": 0.001,
+      "value_coefficient": 1e-05,
+      "gradient_audit_steps": 64,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 1200,
+      "record_dir": "/home/mohammadjaffal/mini_motorways/docs/training/city-strategy-launch-2026-11-24/bounded-bridge-reference-rate-01/segment-001",
+      "save_every_rollouts": 1,
+      "parent_sha256": "9d9c9c95e4955a14461358f3203143be5f70331f8cbbb4bc26d0951b3674447a",
+      "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+      "decision_budget": 32768,
+      "gamma": 1.0,
+      "n_epochs": 4,
+      "vf_coef": 1e-05,
+      "loaded_optimizer_steps": 0,
+      "normalize_advantage": true,
+      "ent_coef": 0.01,
+      "target_kl": 0.03,
+      "max_grad_norm": 0.5,
+      "optimizer_lr_scales": [
+        1.0,
+        0.3,
+        0.1,
+        0.1
+      ]
+    },
+    "checkpoints": [
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-rate-01/segment-001/checkpoint-000008192.zip",
+        "sha256": "ef29ba19a923cb387b9c2f54291471ee5786883ae08adda13b419fa9c77451f9",
+        "added_decisions": 8192,
+        "optimizer_steps_added": 256,
+        "episodes": 10,
+        "seconds": 129.59860427607782
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-rate-01/segment-001/midpoint.zip",
+        "sha256": "92adb88c255578d338eb5a2e3db23c2bb914c20bbd4e58b3d1e9ca05fe55576c",
+        "added_decisions": 16384,
+        "optimizer_steps_added": 512,
+        "episodes": 21,
+        "seconds": 297.4388608910376
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-rate-01/segment-001/checkpoint-000024576.zip",
+        "sha256": "0aee57f2b711a542e22e4a5e9f6d34e26ee5987d519aa90c555f21c6ab01558a",
+        "added_decisions": 24576,
+        "optimizer_steps_added": 768,
+        "episodes": 38,
+        "seconds": 465.1772039880743
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-bridge-reference-rate-01/segment-001/final.zip",
+        "sha256": "a5775b343c07bdd03bc08dddc6aca9a5223d509bf98c919575960792d47e0313",
+        "added_decisions": 32768,
+        "optimizer_steps_added": 1024,
+        "episodes": 47,
+        "seconds": 626.9269099570811
+      }
+    ],
+    "episodes_by_task": {
+      "city": {
+        "count": 47,
+        "mean_training_score": 184.53191489361703,
+        "completed_decisions": 25239
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-city-only-01/segment-001",
+    "status": "complete",
+    "config": {
+      "dll": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-city-only-01/runtime/host/TrafficHost.dll",
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-original-delay-01/segment-001/final.zip",
+      "output": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-city-only-01/segment-001",
+      "stage": "city",
+      "collapse_forced_wait": true,
+      "fast_priority_tail": false,
+      "reserve_warmup_seconds": 0,
+      "reserve_delay_seconds": null,
+      "task_minibatches": false,
+      "reserve_return_advantages": false,
+      "workers": 16,
+      "rollouts": 8,
+      "seed_start": 162000000,
+      "learning_rate": 0.0001,
+      "value_coefficient": 1e-05,
+      "gradient_audit_steps": 32,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 600,
+      "record_dir": "/home/mohammadjaffal/mini_motorways/docs/training/city-strategy-launch-2026-11-24/bounded-city-only-01/segment-001",
+      "save_every_rollouts": 1,
+      "parent_sha256": "e72ec5ada055dd474f65ec0d032e6333128e241f8154ea2f3fc382c73dbf34e2",
+      "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+      "decision_budget": 65536,
+      "gamma": 1.0,
+      "n_epochs": 4,
+      "vf_coef": 1e-05,
+      "loaded_optimizer_steps": 6789,
+      "normalize_advantage": true,
+      "ent_coef": 0.01,
+      "target_kl": 0.03,
+      "max_grad_norm": 0.5,
+      "optimizer_lr_scales": [
+        1.0,
+        0.3,
+        0.1,
+        0.1
+      ]
+    },
+    "checkpoints": [
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-city-only-01/segment-001/checkpoint-000008192.zip",
+        "sha256": "5acea88f98d4e74315e762b2b27661b550d455a89ac0cd4a20f205806f36a51e",
+        "added_decisions": 8192,
+        "optimizer_steps_added": 256,
+        "episodes": 6,
+        "seconds": 99.46979761403054
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-city-only-01/segment-001/checkpoint-000016384.zip",
+        "sha256": "00a504c7d382f875e0510702244b8ad615366bcc7da90337a57a9d8989388674",
+        "added_decisions": 16384,
+        "optimizer_steps_added": 512,
+        "episodes": 26,
+        "seconds": 208.1468514900189
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-city-only-01/segment-001/checkpoint-000024576.zip",
+        "sha256": "4f0a2893e60bab0d0fae36b916191d021411f5011ebb2aa01aeb0545fa246e73",
+        "added_decisions": 24576,
+        "optimizer_steps_added": 768,
+        "episodes": 47,
+        "seconds": 314.2462132429937
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-city-only-01/segment-001/midpoint.zip",
+        "sha256": "7043bd8c6bd3fea3c550de005f5fbf4e263956b0ce7f9d6bd68d5e24069cbcc6",
+        "added_decisions": 32768,
+        "optimizer_steps_added": 1024,
+        "episodes": 65,
+        "seconds": 422.70895683404524
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-city-only-01/segment-001/checkpoint-000040960.zip",
+        "sha256": "9a0173dcf2a3f6547d78abfaba6012f01a4413ff722fcbd5e742695e1abcf7d4",
+        "added_decisions": 40960,
+        "optimizer_steps_added": 1280,
+        "episodes": 85,
+        "seconds": 540.9761066680076
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-city-only-01/segment-001/checkpoint-000049152.zip",
+        "sha256": "ba14ef63b13c37d695deaf83767e2177aadc0fd52e5308c9f93ac5940e3c69a3",
+        "added_decisions": 49152,
+        "optimizer_steps_added": 1536,
+        "episodes": 101,
+        "seconds": 655.1947259920416
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-city-only-01/segment-001/checkpoint-000057344.zip",
+        "sha256": "a40ad189487e4b9105cb7a26700dcca0d7babc9baebdf33af2aec30fcdf8f03c",
+        "added_decisions": 57344,
+        "optimizer_steps_added": 1792,
+        "episodes": 120,
+        "seconds": 780.7849971860414
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-city-only-01/segment-001/final.zip",
+        "sha256": "efe6cf2118fe1e8682cf2cf8ca7616d495dbcf0d451281c2cacf55c87ab7a90a",
+        "added_decisions": 65536,
+        "optimizer_steps_added": 2048,
+        "episodes": 134,
+        "seconds": 897.0148856710875
+      }
+    ],
+    "episodes_by_task": {
+      "city": {
+        "count": 134,
+        "mean_training_score": 88.30597014925372,
+        "completed_decisions": 60287
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-city-rate-01/segment-001",
+    "status": "complete",
+    "config": {
+      "dll": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-city-rate-01/runtime/host/TrafficHost.dll",
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-original-delay-01/segment-001/final.zip",
+      "output": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-city-rate-01/segment-001",
+      "stage": "city",
+      "collapse_forced_wait": true,
+      "fast_priority_tail": false,
+      "reserve_warmup_seconds": 0,
+      "reserve_delay_seconds": null,
+      "task_minibatches": false,
+      "reserve_return_advantages": false,
+      "workers": 16,
+      "rollouts": 4,
+      "seed_start": 162000000,
+      "learning_rate": 0.0003,
+      "value_coefficient": 1e-05,
+      "gradient_audit_steps": 32,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 600,
+      "record_dir": "/home/mohammadjaffal/mini_motorways/docs/training/city-strategy-launch-2026-11-24/bounded-city-rate-01/segment-001",
+      "save_every_rollouts": 1,
+      "parent_sha256": "e72ec5ada055dd474f65ec0d032e6333128e241f8154ea2f3fc382c73dbf34e2",
+      "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+      "decision_budget": 32768,
+      "gamma": 1.0,
+      "n_epochs": 4,
+      "vf_coef": 1e-05,
+      "loaded_optimizer_steps": 6789,
+      "normalize_advantage": true,
+      "ent_coef": 0.01,
+      "target_kl": 0.03,
+      "max_grad_norm": 0.5,
+      "optimizer_lr_scales": [
+        1.0,
+        0.3,
+        0.1,
+        0.1
+      ]
+    },
+    "checkpoints": [
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-city-rate-01/segment-001/checkpoint-000008192.zip",
+        "sha256": "5782ba5e7bea3c951ea7896a7855a0b103df8f6f8cc8bdc61a165da31b331b2e",
+        "added_decisions": 8192,
+        "optimizer_steps_added": 256,
+        "episodes": 6,
+        "seconds": 112.83908889698796
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-city-rate-01/segment-001/midpoint.zip",
+        "sha256": "16f5f21933094973a6e77552ce0d1d4cb99182806edd36574f4928b96a32c02e",
+        "added_decisions": 16384,
+        "optimizer_steps_added": 512,
+        "episodes": 24,
+        "seconds": 234.8034471559804
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-city-rate-01/segment-001/checkpoint-000024576.zip",
+        "sha256": "7f896f142443369e6b8ae29e08f002af11852e771d8e822635a79e2b077a2ce3",
+        "added_decisions": 24576,
+        "optimizer_steps_added": 768,
+        "episodes": 46,
+        "seconds": 355.1604786890093
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-city-rate-01/segment-001/final.zip",
+        "sha256": "c9c9249e18a2ffe05f66322efefaa8219d2006db838fe64c3b2b1aef75d7d4fb",
+        "added_decisions": 32768,
+        "optimizer_steps_added": 1024,
+        "episodes": 64,
+        "seconds": 473.20445244095754
+      }
+    ],
+    "episodes_by_task": {
+      "city": {
+        "count": 64,
+        "mean_training_score": 90.703125,
+        "completed_decisions": 28739
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-critic-rate-01/segment-001",
+    "status": "complete",
+    "config": {
+      "dll": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-critic-rate-01/runtime/host/TrafficHost.dll",
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-wide-initial-01/start.zip",
+      "output": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-critic-rate-01/segment-001",
+      "stage": "city",
+      "collapse_forced_wait": true,
+      "fast_priority_tail": false,
+      "reserve_warmup_seconds": 0,
+      "reserve_delay_seconds": null,
+      "allow_bridges": true,
+      "city_starts": null,
+      "task_minibatches": false,
+      "reserve_return_advantages": false,
+      "workers": 16,
+      "rollouts": 4,
+      "seed_start": 168000000,
+      "learning_rate": 0.0001,
+      "value_coefficient": 1e-05,
+      "critic_lr_scale": 1.0,
+      "gradient_audit_steps": 64,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 1200,
+      "record_dir": "/home/mohammadjaffal/mini_motorways/docs/training/city-strategy-launch-2026-11-24/bounded-critic-rate-01/segment-001",
+      "save_every_rollouts": 1,
+      "city_starts_sha256": null,
+      "recorded_start_workers": 0,
+      "parent_sha256": "9d9c9c95e4955a14461358f3203143be5f70331f8cbbb4bc26d0951b3674447a",
+      "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+      "decision_budget": 32768,
+      "critic_optimizer_group": 3,
+      "gamma": 1.0,
+      "n_epochs": 4,
+      "vf_coef": 1e-05,
+      "loaded_optimizer_steps": 0,
+      "normalize_advantage": true,
+      "ent_coef": 0.01,
+      "target_kl": 0.03,
+      "max_grad_norm": 0.5,
+      "optimizer_lr_scales": [
+        1.0,
+        0.3,
+        0.1,
+        1.0
+      ]
+    },
+    "checkpoints": [
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-critic-rate-01/segment-001/checkpoint-000008192.zip",
+        "sha256": "c5597df24d387881c08e9d071acbd7f621c8ace67a0e045ad898025b908853d9",
+        "added_decisions": 8192,
+        "optimizer_steps_added": 256,
+        "episodes": 10,
+        "seconds": 103.09321905393153
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-critic-rate-01/segment-001/midpoint.zip",
+        "sha256": "3efde72498b852203e1a5b1b31a0c5be32b6c5ea96b9a02a5846082e5b2d136e",
+        "added_decisions": 16384,
+        "optimizer_steps_added": 512,
+        "episodes": 19,
+        "seconds": 241.1193080699304
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-critic-rate-01/segment-001/checkpoint-000024576.zip",
+        "sha256": "a3c62273ebedbbc82351b6cb44b54842bdd33499528bcae3f1da0cdd15d9e11d",
+        "added_decisions": 24576,
+        "optimizer_steps_added": 768,
+        "episodes": 31,
+        "seconds": 396.3842229889706
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-critic-rate-01/segment-001/final.zip",
+        "sha256": "4e51f8c6368802d8bc7c3b7cb36909ccc1910a4f0bba369fae53697b4a336140",
+        "added_decisions": 32768,
+        "optimizer_steps_added": 1024,
+        "episodes": 45,
+        "seconds": 545.8788411889691
+      }
+    ],
+    "episodes_by_task": {
+      "city": {
+        "count": 45,
+        "mean_training_score": 189.6888888888889,
+        "completed_decisions": 26018
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-long-rollout-01/segment-001",
+    "status": "complete",
+    "config": {
+      "dll": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-long-rollout-01/runtime/host/TrafficHost.dll",
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-wide-initial-01/start.zip",
+      "output": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-long-rollout-01/segment-001",
+      "stage": "city",
+      "collapse_forced_wait": true,
+      "fast_priority_tail": false,
+      "reserve_warmup_seconds": 0,
+      "reserve_delay_seconds": null,
+      "allow_bridges": true,
+      "city_starts": null,
+      "task_minibatches": false,
+      "reserve_return_advantages": false,
+      "workers": 16,
+      "rollouts": 2,
+      "seed_start": 168000000,
+      "learning_rate": 0.0001,
+      "value_coefficient": 1e-05,
+      "critic_lr_scale": null,
+      "gradient_audit_steps": 64,
+      "rollout_steps": 1024,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 1200,
+      "record_dir": "/home/mohammadjaffal/mini_motorways/docs/training/city-strategy-launch-2026-11-24/bounded-long-rollout-01/segment-001",
+      "save_every_rollouts": 1,
+      "city_starts_sha256": null,
+      "recorded_start_workers": 0,
+      "parent_sha256": "9d9c9c95e4955a14461358f3203143be5f70331f8cbbb4bc26d0951b3674447a",
+      "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+      "decision_budget": 32768,
+      "gamma": 1.0,
+      "n_epochs": 4,
+      "vf_coef": 1e-05,
+      "loaded_optimizer_steps": 0,
+      "normalize_advantage": true,
+      "ent_coef": 0.01,
+      "target_kl": 0.03,
+      "max_grad_norm": 0.5,
+      "optimizer_lr_scales": [
+        1.0,
+        0.3,
+        0.1,
+        0.1
+      ]
+    },
+    "checkpoints": [
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-long-rollout-01/segment-001/midpoint.zip",
+        "sha256": "34b4ccc7629312548ef8258098f9fc05c703eea85cda2f7a26ace2b981d72e06",
+        "added_decisions": 16384,
+        "optimizer_steps_added": 512,
+        "episodes": 19,
+        "seconds": 235.10910718992818
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-long-rollout-01/segment-001/final.zip",
+        "sha256": "3a8352496aaf11c0c263c6846e3021fea42aaea667b3ef3e2e82f68a8b40c98c",
+        "added_decisions": 32768,
+        "optimizer_steps_added": 1024,
+        "episodes": 42,
+        "seconds": 545.8308715450112
+      }
+    ],
+    "episodes_by_task": {
+      "city": {
+        "count": 42,
+        "mean_training_score": 212.54761904761904,
+        "completed_decisions": 25846
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-longer-pilot-01",
+    "status": "Chat interruption before checkpoint",
+    "config": {
+      "dll": "output/city-road-reserve-build-01/bin/TrafficHost/release/TrafficHost.dll",
+      "parent": "output/training/city-strategy-pilot-01/final.zip",
+      "output": "output/training/city-strategy-longer-pilot-01",
+      "stage": "city",
+      "collapse_forced_wait": true,
+      "workers": 16,
+      "rollouts": 4,
+      "seed_start": 143000000,
+      "learning_rate": 0.003,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 1200,
+      "record_dir": null,
+      "parent_sha256": "55cc4a38d5949b1abbee9c27630f519bdc1be835f034be3f95e1c0c0aad43915",
+      "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+      "decision_budget": 32768
+    },
+    "checkpoints": [],
+    "episodes_by_task": {},
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-longer-pilot-02",
+    "status": "complete",
+    "config": {
+      "dll": "output/city-road-reserve-build-01/bin/TrafficHost/release/TrafficHost.dll",
+      "parent": "output/training/city-strategy-pilot-01/final.zip",
+      "output": "output/training/city-strategy-longer-pilot-02",
+      "stage": "city",
+      "collapse_forced_wait": true,
+      "workers": 16,
+      "rollouts": 4,
+      "seed_start": 143000000,
+      "learning_rate": 0.003,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 1200,
+      "record_dir": null,
+      "save_every_rollouts": 1,
+      "parent_sha256": "55cc4a38d5949b1abbee9c27630f519bdc1be835f034be3f95e1c0c0aad43915",
+      "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+      "decision_budget": 32768
+    },
+    "checkpoints": [
+      {
+        "path": "output/training/city-strategy-longer-pilot-02/checkpoint-000008192.zip",
+        "sha256": "71870ecb8c8dc063163aedf5481b4cad38af4077f6f7cfebeac1d2c6ab34f88d",
+        "added_decisions": 8192,
+        "episodes": 17,
+        "seconds": 189.18088746909052
+      },
+      {
+        "path": "output/training/city-strategy-longer-pilot-02/midpoint.zip",
+        "sha256": "efe25b8afc8dc28c638fa3fab338873226c16f73b0dd8bc483dc95e5d2131018",
+        "added_decisions": 16384,
+        "episodes": 46,
+        "seconds": 356.0916978790192
+      },
+      {
+        "path": "output/training/city-strategy-longer-pilot-02/checkpoint-000024576.zip",
+        "sha256": "52c0449d08def06b4a980455ac1ea8a2d0923327223ae8cb2fc6cdf9cb762111",
+        "added_decisions": 24576,
+        "episodes": 66,
+        "seconds": 499.9375850770157
+      },
+      {
+        "path": "output/training/city-strategy-longer-pilot-02/final.zip",
+        "sha256": "a893f43567d944775c1561bc551a91a2a699d743f04933d1f815c2229a8ae278",
+        "added_decisions": 32768,
+        "episodes": 93,
+        "seconds": 660.7925263741054
+      }
+    ],
+    "episodes_by_task": {
+      "city": {
+        "count": 93,
+        "mean_training_score": 94.20430107526882,
+        "completed_decisions": 29442
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-mixed-pilot-01",
+    "status": "Stopped at saved32k to correct sample allocation",
+    "config": {
+      "dll": "output/city-road-reserve-build-01/bin/TrafficHost/release/TrafficHost.dll",
+      "parent": "output/training/city-strategy-wide-pilot-03/final.zip",
+      "output": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-mixed-pilot-01",
+      "stage": "strategy-mixed",
+      "collapse_forced_wait": true,
+      "workers": 16,
+      "rollouts": 8,
+      "seed_start": 144000000,
+      "learning_rate": 0.001,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 600,
+      "record_dir": null,
+      "save_every_rollouts": 1,
+      "parent_sha256": "38fcd260ef7a37451974338a60fdc01ae989def371556d2039336c61733f6a11",
+      "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+      "decision_budget": 65536
+    },
+    "checkpoints": [
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-mixed-pilot-01/checkpoint-000008192.zip",
+        "sha256": "2cd02f9ce4e73876e75cd692133a73db6cb37b27175e9d3e9474989701542647",
+        "added_decisions": 8192,
+        "episodes": 77,
+        "seconds": 142.94192603603005
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-mixed-pilot-01/checkpoint-000016384.zip",
+        "sha256": "4571c043269671e71129114752c368cf54f693651a5ea65ced2f420a81e426b2",
+        "added_decisions": 16384,
+        "episodes": 107,
+        "seconds": 271.12771774001885
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-mixed-pilot-01/checkpoint-000024576.zip",
+        "sha256": "a579523d90873802cba2c127dcb9e29b936a6e0c2f12d93fcedfdbd79412ab43",
+        "added_decisions": 24576,
+        "episodes": 188,
+        "seconds": 427.1189876750577
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-mixed-pilot-01/midpoint.zip",
+        "sha256": "63896fa93084141c6d6d381417d5caeeef67da6f76266b2ace87ef47f92a9796",
+        "added_decisions": 32768,
+        "episodes": 280,
+        "seconds": 587.2708974360721
+      }
+    ],
+    "episodes_by_task": {
+      "traffic-priority-established": {
+        "count": 20,
+        "mean_training_score": 12.1,
+        "completed_decisions": 25
+      },
+      "traffic-priority-established-swap": {
+        "count": 21,
+        "mean_training_score": 11.047619047619047,
+        "completed_decisions": 23
+      },
+      "midgame-network-join": {
+        "count": 22,
+        "mean_training_score": 6.681818181818182,
+        "completed_decisions": 81
+      },
+      "midgame-network-route": {
+        "count": 23,
+        "mean_training_score": 6.913043478260869,
+        "completed_decisions": 119
+      },
+      "midgame-network-quiet": {
+        "count": 25,
+        "mean_training_score": 6.56,
+        "completed_decisions": 193
+      },
+      "midgame-network-delay": {
+        "count": 24,
+        "mean_training_score": 6.333333333333333,
+        "completed_decisions": 330
+      },
+      "midgame-network-reserve": {
+        "count": 74,
+        "mean_training_score": 3.6216216216216215,
+        "completed_decisions": 1045
+      },
+      "city": {
+        "count": 77,
+        "mean_training_score": 83.49350649350649,
+        "completed_decisions": 28118
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-opening-01/segment-001",
+    "status": "complete",
+    "config": {
+      "dll": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-opening-01/runtime/host/TrafficHost.dll",
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-opening-initial-02/start.zip",
+      "output": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-opening-01/segment-001",
+      "stage": "city",
+      "collapse_forced_wait": true,
+      "fast_priority_tail": false,
+      "reserve_warmup_seconds": 0,
+      "reserve_delay_seconds": null,
+      "task_minibatches": false,
+      "reserve_return_advantages": false,
+      "workers": 16,
+      "rollouts": 8,
+      "seed_start": 164000000,
+      "learning_rate": 0.0001,
+      "value_coefficient": 1e-05,
+      "gradient_audit_steps": 32,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 600,
+      "record_dir": "/home/mohammadjaffal/mini_motorways/docs/training/city-strategy-launch-2026-11-24/bounded-opening-01/segment-001",
+      "save_every_rollouts": 1,
+      "parent_sha256": "74b3a046394147eb8a8cbe730cb2c0352eee14c49dd9b6b4e64357595f7749ab",
+      "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+      "decision_budget": 65536,
+      "gamma": 1.0,
+      "n_epochs": 4,
+      "vf_coef": 1e-05,
+      "loaded_optimizer_steps": 0,
+      "normalize_advantage": true,
+      "ent_coef": 0.01,
+      "target_kl": 0.03,
+      "max_grad_norm": 0.5,
+      "optimizer_lr_scales": [
+        1.0,
+        0.3,
+        0.1,
+        0.1
+      ]
+    },
+    "checkpoints": [
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-opening-01/segment-001/checkpoint-000008192.zip",
+        "sha256": "183b95b38bb1d3fd7cba599bf226a5de6c6b745c8abcf35fb53474bdd1ea2877",
+        "added_decisions": 8192,
+        "optimizer_steps_added": 256,
+        "episodes": 2,
+        "seconds": 102.83130435901694
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-opening-01/segment-001/checkpoint-000016384.zip",
+        "sha256": "73b698285fa725a46e716cb50c1483f4135b42979e38da75bad8e9d8e204bcce",
+        "added_decisions": 16384,
+        "optimizer_steps_added": 512,
+        "episodes": 25,
+        "seconds": 215.1892001699889
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-opening-01/segment-001/checkpoint-000024576.zip",
+        "sha256": "3ef18212dc78d0ce7424d7202c25d45936b1b1e60dbb21c13599fdf5f37c9568",
+        "added_decisions": 24576,
+        "optimizer_steps_added": 768,
+        "episodes": 44,
+        "seconds": 324.22585353197064
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-opening-01/segment-001/midpoint.zip",
+        "sha256": "3ee25a1f4cc26c945d40084295bb01767ec252d947a0adb5d676516e0b8b63b4",
+        "added_decisions": 32768,
+        "optimizer_steps_added": 1024,
+        "episodes": 62,
+        "seconds": 432.6887464140309
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-opening-01/segment-001/checkpoint-000040960.zip",
+        "sha256": "781231f2ccced81d9af9bd35e171af21bc66826e40367b359546c0596857c6bc",
+        "added_decisions": 40960,
+        "optimizer_steps_added": 1280,
+        "episodes": 83,
+        "seconds": 553.0660004720557
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-opening-01/segment-001/checkpoint-000049152.zip",
+        "sha256": "2a6400a9a4af452ae0b95b69a33bc8521f1365d94c6d166c9697ca63a7cb7c6e",
+        "added_decisions": 49152,
+        "optimizer_steps_added": 1536,
+        "episodes": 103,
+        "seconds": 668.1910483749816
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-opening-01/segment-001/checkpoint-000057344.zip",
+        "sha256": "7bfc0dfb8dcb1e7dc9935795abae1db28576c0aba4f66afcf56cbde73c6e271a",
+        "added_decisions": 57344,
+        "optimizer_steps_added": 1792,
+        "episodes": 119,
+        "seconds": 783.2919448330067
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-opening-01/segment-001/final.zip",
+        "sha256": "f04102599a7bfe862c2ca5edaa75084b1e264eb7d875df2b0c1fa91cfa7825b8",
+        "added_decisions": 65536,
+        "optimizer_steps_added": 2048,
+        "episodes": 135,
+        "seconds": 895.8248796750559
+      }
+    ],
+    "episodes_by_task": {
+      "city": {
+        "count": 135,
+        "mean_training_score": 84.58518518518518,
+        "completed_decisions": 60169
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-original-delay-01/segment-001",
+    "status": "complete",
+    "config": {
+      "dll": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-original-delay-01/runtime/host/TrafficHost.dll",
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-value-balance-01/segment-001/final.zip",
+      "output": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-original-delay-01/segment-001",
+      "stage": "strategy-balanced",
+      "collapse_forced_wait": true,
+      "fast_priority_tail": true,
+      "reserve_warmup_seconds": 0,
+      "reserve_delay_seconds": null,
+      "task_minibatches": true,
+      "reserve_return_advantages": true,
+      "workers": 16,
+      "rollouts": 8,
+      "seed_start": 160000000,
+      "learning_rate": 0.0001,
+      "value_coefficient": 1e-05,
+      "gradient_audit_steps": 64,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 600,
+      "record_dir": "/home/mohammadjaffal/mini_motorways/docs/training/city-strategy-launch-2026-11-24/bounded-original-delay-01/segment-001",
+      "save_every_rollouts": 1,
+      "parent_sha256": "94b12ae0a180e0a61e126b7327506399fe2b02c05c15549e2fa2c759349ceff7",
+      "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+      "decision_budget": 65536,
+      "gamma": 1.0,
+      "n_epochs": 4,
+      "vf_coef": 1e-05,
+      "normalize_advantage": true,
+      "ent_coef": 0.01,
+      "target_kl": 0.03,
+      "max_grad_norm": 0.5,
+      "optimizer_lr_scales": [
+        1.0,
+        0.3,
+        0.1,
+        0.1
+      ]
+    },
+    "checkpoints": [
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-original-delay-01/segment-001/checkpoint-000008192.zip",
+        "sha256": "a5b4be22eb795b33bc72ab29fb00e33600c180b0675dd3589e2388980252fc1c",
+        "added_decisions": 8192,
+        "episodes": 2053,
+        "seconds": 255.6588965730043
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-original-delay-01/segment-001/checkpoint-000016384.zip",
+        "sha256": "a3762729746aeab1c6ec2814bbf1f08bb2fd11d671251c17649de2cc572fa70f",
+        "added_decisions": 16384,
+        "episodes": 4116,
+        "seconds": 508.52515203598887
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-original-delay-01/segment-001/checkpoint-000024576.zip",
+        "sha256": "96bd38593cee7340eead9fa7ef5b0f81dc2eb925aa047e71a44ec44c40a71609",
+        "added_decisions": 24576,
+        "episodes": 6139,
+        "seconds": 760.115692181047
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-original-delay-01/segment-001/midpoint.zip",
+        "sha256": "8000c78da228f55fd47e421dd004f23db524deff62fc4a0513d1f0de52469c6a",
+        "added_decisions": 32768,
+        "episodes": 8192,
+        "seconds": 1014.0439290220384
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-original-delay-01/segment-001/checkpoint-000040960.zip",
+        "sha256": "72f1f667c88b1bf4f3232a0ea14615f86e6fe870bc01c72ff7e06673103d805b",
+        "added_decisions": 40960,
+        "episodes": 10205,
+        "seconds": 1275.6382734910585
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-original-delay-01/segment-001/checkpoint-000049152.zip",
+        "sha256": "29de47730daced46d175f01a1af6f7c1b37eff253749556c8659f66e96f77758",
+        "added_decisions": 49152,
+        "episodes": 12249,
+        "seconds": 1533.1831257509766
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-original-delay-01/segment-001/checkpoint-000057344.zip",
+        "sha256": "d6364b3d09701c1d94c80e571b05b07e3c25563bf1e4085ea95c66278e6a4701",
+        "added_decisions": 57344,
+        "episodes": 14264,
+        "seconds": 1792.991561961011
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-original-delay-01/segment-001/final.zip",
+        "sha256": "e72ec5ada055dd474f65ec0d032e6333128e241f8154ea2f3fc382c73dbf34e2",
+        "added_decisions": 65536,
+        "episodes": 16269,
+        "seconds": 2040.7930647419998
+      }
+    ],
+    "episodes_by_task": {
+      "traffic-priority-established-swap": {
+        "count": 7670,
+        "mean_training_score": 16.414471968709258,
+        "completed_decisions": 8192
+      },
+      "traffic-priority-established": {
+        "count": 7683,
+        "mean_training_score": 16.336717428087987,
+        "completed_decisions": 8192
+      },
+      "midgame-network-reserve": {
+        "count": 845,
+        "mean_training_score": 4.421301775147929,
+        "completed_decisions": 16354
+      },
+      "city": {
+        "count": 71,
+        "mean_training_score": 87.0,
+        "completed_decisions": 29838
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-pilot-01",
+    "status": "complete",
+    "config": {
+      "dll": "output/city-road-reserve-build-01/bin/TrafficHost/release/TrafficHost.dll",
+      "parent": "output/training/city-strategy-initial-01/start.zip",
+      "output": "output/training/city-strategy-pilot-01",
+      "stage": "city",
+      "collapse_forced_wait": true,
+      "workers": 16,
+      "rollouts": 8,
+      "seed_start": 140000000,
+      "learning_rate": 0.003,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "parent_sha256": "38408379ea8a163cf912e8e22de0b975a21e2123ca88e1d298121cf4b6065925",
+      "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+      "decision_budget": 65536
+    },
+    "checkpoints": [
+      {
+        "path": "output/training/city-strategy-pilot-01/midpoint.zip",
+        "sha256": "a905c7acdb24d058ed99db4a7c65aacf65a93887c605d6e2a504d55d803f4f67",
+        "added_decisions": 32768,
+        "episodes": 76,
+        "seconds": 490.36394684703555
+      },
+      {
+        "path": "output/training/city-strategy-pilot-01/final.zip",
+        "sha256": "55cc4a38d5949b1abbee9c27630f519bdc1be835f034be3f95e1c0c0aad43915",
+        "added_decisions": 65536,
+        "episodes": 168,
+        "seconds": 1021.2286136710318
+      }
+    ],
+    "episodes_by_task": {
+      "city": {
+        "count": 168,
+        "mean_training_score": 89.08333333333333,
+        "completed_decisions": 61916
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-recorded-city-01/segment-001",
+    "status": "complete",
+    "config": {
+      "dll": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-recorded-city-01/runtime/host/TrafficHost.dll",
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-wide-initial-01/start.zip",
+      "output": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-recorded-city-01/segment-001",
+      "stage": "city",
+      "collapse_forced_wait": true,
+      "fast_priority_tail": false,
+      "reserve_warmup_seconds": 0,
+      "reserve_delay_seconds": null,
+      "allow_bridges": true,
+      "city_starts": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-recorded-city-01/runtime/city-starts.json",
+      "task_minibatches": false,
+      "reserve_return_advantages": false,
+      "workers": 16,
+      "rollouts": 8,
+      "seed_start": 172000000,
+      "learning_rate": 0.0001,
+      "value_coefficient": 1e-05,
+      "gradient_audit_steps": 64,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 1200,
+      "record_dir": "/home/mohammadjaffal/mini_motorways/docs/training/city-strategy-launch-2026-11-24/bounded-recorded-city-01/segment-001",
+      "save_every_rollouts": 1,
+      "city_starts_sha256": "bd8a5b8a0c4f8706ca51dae240e9191ae6cfa80d4ed2f5514630537d5177c393",
+      "recorded_start_workers": 12,
+      "parent_sha256": "9d9c9c95e4955a14461358f3203143be5f70331f8cbbb4bc26d0951b3674447a",
+      "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+      "decision_budget": 65536,
+      "gamma": 1.0,
+      "n_epochs": 4,
+      "vf_coef": 1e-05,
+      "loaded_optimizer_steps": 0,
+      "normalize_advantage": true,
+      "ent_coef": 0.01,
+      "target_kl": 0.03,
+      "max_grad_norm": 0.5,
+      "optimizer_lr_scales": [
+        1.0,
+        0.3,
+        0.1,
+        0.1
+      ]
+    },
+    "checkpoints": [
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-recorded-city-01/segment-001/checkpoint-000008192.zip",
+        "sha256": "68ef69c5586621c671330cc442cba3739e881781b99560db7444d70c792ff278",
+        "added_decisions": 8192,
+        "optimizer_steps_added": 256,
+        "episodes": 9,
+        "seconds": 187.32069006899837
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-recorded-city-01/segment-001/checkpoint-000016384.zip",
+        "sha256": "f666a27d5877564cccf970bba441028963b4d36615d8e8d75fd36f5d88270953",
+        "added_decisions": 16384,
+        "optimizer_steps_added": 512,
+        "episodes": 27,
+        "seconds": 476.75625359790865
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-recorded-city-01/segment-001/checkpoint-000024576.zip",
+        "sha256": "995b77421fb0611cbc8c02438764b0bde5922644daf08bd2d92ac7fef632d103",
+        "added_decisions": 24576,
+        "optimizer_steps_added": 768,
+        "episodes": 42,
+        "seconds": 770.264511359972
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-recorded-city-01/segment-001/midpoint.zip",
+        "sha256": "61b4064dde92378c9d3bc0306d21e88bad4969d4f6b54028acee12e500747956",
+        "added_decisions": 32768,
+        "optimizer_steps_added": 1024,
+        "episodes": 57,
+        "seconds": 1018.1291547359433
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-recorded-city-01/segment-001/checkpoint-000040960.zip",
+        "sha256": "a338122478868538b97cd1ce77adf1477b859382dab73652b8598160d333bc4a",
+        "added_decisions": 40960,
+        "optimizer_steps_added": 1280,
+        "episodes": 74,
+        "seconds": 1283.852924207924
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-recorded-city-01/segment-001/checkpoint-000049152.zip",
+        "sha256": "f62cd0c3610b845d5b1ad4f5c1a9fafcbb48c7bc0f87744d0f3114ce467b1adb",
+        "added_decisions": 49152,
+        "optimizer_steps_added": 1536,
+        "episodes": 87,
+        "seconds": 1529.651162326918
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-recorded-city-01/segment-001/checkpoint-000057344.zip",
+        "sha256": "d5871d94557b1c6e45a3c9397eebd286d423983bc5609700522abd9d4f4d8c69",
+        "added_decisions": 57344,
+        "optimizer_steps_added": 1792,
+        "episodes": 106,
+        "seconds": 1793.3016271699453
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-recorded-city-01/segment-001/final.zip",
+        "sha256": "8e72e32d48689cfc9261c231b5e77d07d8c492f25ca43d67973263afaf759390",
+        "added_decisions": 65536,
+        "optimizer_steps_added": 2048,
+        "episodes": 122,
+        "seconds": 2131.211842981982
+      }
+    ],
+    "episodes_by_task": {
+      "city": {
+        "count": 22,
+        "mean_training_score": 266.04545454545456,
+        "completed_decisions": 15031
+      },
+      "city-recorded-start": {
+        "count": 100,
+        "mean_training_score": 248.62,
+        "completed_decisions": 45960
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-recorded-integration-smoke-01",
+    "status": "Complete integration smoke only; never a performance candidate",
+    "config": {
+      "dll": "output/city-bridge-connection-build-01/bin/TrafficHost/release/TrafficHost.dll",
+      "parent": "output/training/city-strategy-wide-initial-01/start.zip",
+      "output": "output/training/city-strategy-recorded-integration-smoke-01",
+      "stage": "city",
+      "collapse_forced_wait": true,
+      "fast_priority_tail": false,
+      "reserve_warmup_seconds": 0,
+      "reserve_delay_seconds": null,
+      "allow_bridges": true,
+      "city_starts": "output/training/city-strategy-recorded-starts-01/starts.json",
+      "task_minibatches": false,
+      "reserve_return_advantages": false,
+      "workers": 4,
+      "rollouts": 1,
+      "seed_start": 172900000,
+      "learning_rate": 0.0001,
+      "value_coefficient": 1e-05,
+      "gradient_audit_steps": 4,
+      "rollout_steps": 64,
+      "batch_size": 64,
+      "gae_lambda": 1.0,
+      "horizon": 1200,
+      "record_dir": "docs/training/city-strategy-launch-2026-11-24/recorded-integration-smoke-01",
+      "save_every_rollouts": 0,
+      "city_starts_sha256": "bd8a5b8a0c4f8706ca51dae240e9191ae6cfa80d4ed2f5514630537d5177c393",
+      "recorded_start_workers": 3,
+      "parent_sha256": "9d9c9c95e4955a14461358f3203143be5f70331f8cbbb4bc26d0951b3674447a",
+      "host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+      "decision_budget": 256,
+      "gamma": 1.0,
+      "n_epochs": 4,
+      "vf_coef": 1e-05,
+      "loaded_optimizer_steps": 0,
+      "normalize_advantage": true,
+      "ent_coef": 0.01,
+      "target_kl": 0.03,
+      "max_grad_norm": 0.5,
+      "optimizer_lr_scales": [
+        1.0,
+        0.3,
+        0.1,
+        0.1
+      ]
+    },
+    "checkpoints": [
+      {
+        "path": "output/training/city-strategy-recorded-integration-smoke-01/final.zip",
+        "sha256": "06e85b6383644275a01719c45204095bdf26081c23a6fe945759b112943dac0a",
+        "added_decisions": 256,
+        "optimizer_steps_added": 16,
+        "episodes": 0,
+        "seconds": 10.760828541009687
+      }
+    ],
+    "episodes_by_task": {},
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-return-advantage-01/segment-001",
+    "status": "complete",
+    "config": {
+      "dll": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-return-advantage-01/runtime/host/TrafficHost.dll",
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-extension-01/segment-001/midpoint.zip",
+      "output": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-return-advantage-01/segment-001",
+      "stage": "strategy-balanced",
+      "collapse_forced_wait": true,
+      "fast_priority_tail": true,
+      "reserve_warmup_seconds": 6,
+      "task_minibatches": true,
+      "reserve_return_advantages": true,
+      "workers": 16,
+      "rollouts": 4,
+      "seed_start": 152000000,
+      "learning_rate": 0.001,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 600,
+      "record_dir": "/home/mohammadjaffal/mini_motorways/docs/training/city-strategy-launch-2026-11-24/bounded-return-advantage-01/segment-001",
+      "save_every_rollouts": 1,
+      "parent_sha256": "17e8dd3b018f9e9ccec58ea72181f2f05c07b2f6b0e236ed6536ac10dd67803d",
+      "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+      "decision_budget": 32768,
+      "gamma": 1.0,
+      "n_epochs": 4,
+      "normalize_advantage": true,
+      "ent_coef": 0.01,
+      "target_kl": 0.03,
+      "max_grad_norm": 0.5,
+      "optimizer_lr_scales": [
+        1.0,
+        0.3,
+        0.1,
+        0.1
+      ]
+    },
+    "checkpoints": [
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-return-advantage-01/segment-001/checkpoint-000008192.zip",
+        "sha256": "c27205cf6b8b77988bf9b8eca80bd240b4413a02b2a4d69f559c1a40c1678738",
+        "added_decisions": 8192,
+        "episodes": 2103,
+        "seconds": 245.2631371479947
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-return-advantage-01/segment-001/midpoint.zip",
+        "sha256": "cae752888a1ddbe7eefa77d75758e42d74ecd0c8bac64dd13c8c73ab046d758e",
+        "added_decisions": 16384,
+        "episodes": 4213,
+        "seconds": 504.0522662580479
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-return-advantage-01/segment-001/checkpoint-000024576.zip",
+        "sha256": "365ad158f7d4b504c52e1631d78c658882548938ff623d4598f836069ac8014f",
+        "added_decisions": 24576,
+        "episodes": 6277,
+        "seconds": 756.4352936459472
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-return-advantage-01/segment-001/final.zip",
+        "sha256": "3d3e1aaab4d070735114b2b47a5791ca65a7086c1db026048a200547123cbc62",
+        "added_decisions": 32768,
+        "episodes": 8383,
+        "seconds": 1011.513997372007
+      }
+    ],
+    "episodes_by_task": {
+      "traffic-priority-established": {
+        "count": 3826,
+        "mean_training_score": 15.431521170935703,
+        "completed_decisions": 4095
+      },
+      "traffic-priority-established-swap": {
+        "count": 3843,
+        "mean_training_score": 15.593806921675775,
+        "completed_decisions": 4096
+      },
+      "midgame-network-reserve": {
+        "count": 680,
+        "mean_training_score": 5.1308823529411764,
+        "completed_decisions": 8173
+      },
+      "city": {
+        "count": 34,
+        "mean_training_score": 104.67647058823529,
+        "completed_decisions": 14754
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-runner-smoke-01/segment-001",
+    "status": "complete",
+    "config": {
+      "dll": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-runner-smoke-01/runtime/host/TrafficHost.dll",
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-fast-01/final.zip",
+      "output": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-runner-smoke-01/segment-001",
+      "stage": "city",
+      "collapse_forced_wait": true,
+      "fast_priority_tail": false,
+      "workers": 1,
+      "rollouts": 1,
+      "seed_start": 180100000,
+      "learning_rate": 0.001,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 600,
+      "record_dir": "/home/mohammadjaffal/mini_motorways/docs/training/city-strategy-launch-2026-11-24/runner-smoke-01/segment-001",
+      "save_every_rollouts": 1,
+      "parent_sha256": "d9bb06324d1641f588e49c5cd95da0d0027f49f967eaef3b92d065ea8f199cd3",
+      "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+      "decision_budget": 512
+    },
+    "checkpoints": [
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-runner-smoke-01/segment-001/final.zip",
+        "sha256": "c5e68503665cefa3fefd2d3829f02282c94a2833d09bac98d208c69c31e4215f",
+        "added_decisions": 512,
+        "episodes": 2,
+        "seconds": 32.604861608939245
+      }
+    ],
+    "episodes_by_task": {
+      "city": {
+        "count": 2,
+        "mean_training_score": 0.5,
+        "completed_decisions": 164
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-short-delay-01/segment-001",
+    "status": "Stopped at saved16384 midpoint after measured gradient imbalance; unsaved tail not carried forward",
+    "config": {
+      "dll": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-short-delay-01/runtime/host/TrafficHost.dll",
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-extension-01/segment-001/midpoint.zip",
+      "output": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-short-delay-01/segment-001",
+      "stage": "strategy-balanced",
+      "collapse_forced_wait": true,
+      "fast_priority_tail": true,
+      "reserve_warmup_seconds": 0,
+      "reserve_delay_seconds": 2,
+      "task_minibatches": true,
+      "reserve_return_advantages": true,
+      "workers": 16,
+      "rollouts": 4,
+      "seed_start": 156000000,
+      "learning_rate": 0.001,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 600,
+      "record_dir": "/home/mohammadjaffal/mini_motorways/docs/training/city-strategy-launch-2026-11-24/bounded-short-delay-01/segment-001",
+      "save_every_rollouts": 1,
+      "parent_sha256": "17e8dd3b018f9e9ccec58ea72181f2f05c07b2f6b0e236ed6536ac10dd67803d",
+      "host_sha256": "bc4f243fddabdeeefbb16e178ab06a25149378f36aa2a1492ffcc39b70d9aed8",
+      "decision_budget": 32768,
+      "gamma": 1.0,
+      "n_epochs": 4,
+      "normalize_advantage": true,
+      "ent_coef": 0.01,
+      "target_kl": 0.03,
+      "max_grad_norm": 0.5,
+      "optimizer_lr_scales": [
+        1.0,
+        0.3,
+        0.1,
+        0.1
+      ]
+    },
+    "checkpoints": [
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-short-delay-01/segment-001/checkpoint-000008192.zip",
+        "sha256": "43737c2bd1e0718a8869e6538d3b6de4142d1d7757f5000324232a124c22ee33",
+        "added_decisions": 8192,
+        "episodes": 2189,
+        "seconds": 246.34405577089638
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-short-delay-01/segment-001/midpoint.zip",
+        "sha256": "fea5d80883b619804db542098ac514be31af0f6fdcad2c1ed4b819d3efaf5132",
+        "added_decisions": 16384,
+        "episodes": 4377,
+        "seconds": 501.3289556559175
+      }
+    ],
+    "episodes_by_task": {
+      "traffic-priority-established": {
+        "count": 2391,
+        "mean_training_score": 15.924299456294438,
+        "completed_decisions": 2529
+      },
+      "traffic-priority-established-swap": {
+        "count": 2381,
+        "mean_training_score": 15.712305753884923,
+        "completed_decisions": 2529
+      },
+      "midgame-network-reserve": {
+        "count": 587,
+        "mean_training_score": 5.444633730834753,
+        "completed_decisions": 5042
+      },
+      "city": {
+        "count": 25,
+        "mean_training_score": 71.36,
+        "completed_decisions": 8156
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-task-batch-01/segment-001",
+    "status": "complete",
+    "config": {
+      "dll": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-task-batch-01/runtime/host/TrafficHost.dll",
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-balanced-extension-01/segment-001/midpoint.zip",
+      "output": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-task-batch-01/segment-001",
+      "stage": "strategy-balanced",
+      "collapse_forced_wait": true,
+      "fast_priority_tail": true,
+      "reserve_warmup_seconds": 6,
+      "task_minibatches": true,
+      "workers": 16,
+      "rollouts": 4,
+      "seed_start": 150000000,
+      "learning_rate": 0.001,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 600,
+      "record_dir": "/home/mohammadjaffal/mini_motorways/docs/training/city-strategy-launch-2026-11-24/bounded-task-batch-01/segment-001",
+      "save_every_rollouts": 1,
+      "parent_sha256": "17e8dd3b018f9e9ccec58ea72181f2f05c07b2f6b0e236ed6536ac10dd67803d",
+      "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+      "decision_budget": 32768,
+      "gamma": 1.0,
+      "n_epochs": 4,
+      "normalize_advantage": true,
+      "ent_coef": 0.01,
+      "target_kl": 0.03,
+      "max_grad_norm": 0.5,
+      "optimizer_lr_scales": [
+        1.0,
+        0.3,
+        0.1,
+        0.1
+      ]
+    },
+    "checkpoints": [
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-task-batch-01/segment-001/checkpoint-000008192.zip",
+        "sha256": "30a906ecdc8123f28bbfcb3c74c15395dd397185c57b9172d9a153a5c02bf177",
+        "added_decisions": 8192,
+        "episodes": 2092,
+        "seconds": 226.73208643798716
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-task-batch-01/segment-001/midpoint.zip",
+        "sha256": "97f1e4973ce8fc3ebfc4c9ce6d80e9c630c35fd6bf023eeac4265ae4b7763ecf",
+        "added_decisions": 16384,
+        "episodes": 4191,
+        "seconds": 461.68129514099564
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-task-batch-01/segment-001/checkpoint-000024576.zip",
+        "sha256": "a9a620dc42f09cb4d877b774ada5636c3ca412d1fc0f4df6f598055c4c520a48",
+        "added_decisions": 24576,
+        "episodes": 6277,
+        "seconds": 719.481106495019
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-task-batch-01/segment-001/final.zip",
+        "sha256": "1329095c5ca9eba18d3858b2b1441a376f8e731fd4a3266114f94b778c720790",
+        "added_decisions": 32768,
+        "episodes": 8382,
+        "seconds": 958.7537590269931
+      }
+    ],
+    "episodes_by_task": {
+      "traffic-priority-established-swap": {
+        "count": 3845,
+        "mean_training_score": 16.228348504551366,
+        "completed_decisions": 4096
+      },
+      "traffic-priority-established": {
+        "count": 3823,
+        "mean_training_score": 16.402825006539366,
+        "completed_decisions": 4096
+      },
+      "midgame-network-reserve": {
+        "count": 672,
+        "mean_training_score": 5.107142857142857,
+        "completed_decisions": 8170
+      },
+      "city": {
+        "count": 42,
+        "mean_training_score": 79.02380952380952,
+        "completed_decisions": 15061
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-value-balance-01/segment-001",
+    "status": "complete",
+    "config": {
+      "dll": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-value-balance-01/runtime/host/TrafficHost.dll",
+      "parent": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-short-delay-01/segment-001/midpoint.zip",
+      "output": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-value-balance-01/segment-001",
+      "stage": "strategy-balanced",
+      "collapse_forced_wait": true,
+      "fast_priority_tail": true,
+      "reserve_warmup_seconds": 0,
+      "reserve_delay_seconds": 2,
+      "task_minibatches": true,
+      "reserve_return_advantages": true,
+      "workers": 16,
+      "rollouts": 4,
+      "seed_start": 158000000,
+      "learning_rate": 0.001,
+      "value_coefficient": 1e-05,
+      "gradient_audit_steps": 32,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 600,
+      "record_dir": "/home/mohammadjaffal/mini_motorways/docs/training/city-strategy-launch-2026-11-24/bounded-value-balance-01/segment-001",
+      "save_every_rollouts": 1,
+      "parent_sha256": "fea5d80883b619804db542098ac514be31af0f6fdcad2c1ed4b819d3efaf5132",
+      "host_sha256": "bc4f243fddabdeeefbb16e178ab06a25149378f36aa2a1492ffcc39b70d9aed8",
+      "decision_budget": 32768,
+      "gamma": 1.0,
+      "n_epochs": 4,
+      "vf_coef": 1e-05,
+      "normalize_advantage": true,
+      "ent_coef": 0.01,
+      "target_kl": 0.03,
+      "max_grad_norm": 0.5,
+      "optimizer_lr_scales": [
+        1.0,
+        0.3,
+        0.1,
+        0.1
+      ]
+    },
+    "checkpoints": [
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-value-balance-01/segment-001/checkpoint-000008192.zip",
+        "sha256": "489d88639c067cb1941357ac40a212e3f81801ed182575b433be005ec13b6bf9",
+        "added_decisions": 8192,
+        "episodes": 2152,
+        "seconds": 240.84068718901835
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-value-balance-01/segment-001/midpoint.zip",
+        "sha256": "b966d19f81655469ea71d5de078930d0cea7037649e23431a28185461b3033df",
+        "added_decisions": 16384,
+        "episodes": 4308,
+        "seconds": 480.5876172540011
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-value-balance-01/segment-001/checkpoint-000024576.zip",
+        "sha256": "d7b34733da9ae33c2d568aad7a07b0fd087e91b31f0b12c53df0a338df9878b1",
+        "added_decisions": 24576,
+        "episodes": 6446,
+        "seconds": 718.5333363279933
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-value-balance-01/segment-001/final.zip",
+        "sha256": "94b12ae0a180e0a61e126b7327506399fe2b02c05c15549e2fa2c759349ceff7",
+        "added_decisions": 32768,
+        "episodes": 8586,
+        "seconds": 959.2782369119814
+      }
+    ],
+    "episodes_by_task": {
+      "traffic-priority-established": {
+        "count": 3833,
+        "mean_training_score": 16.110357422384556,
+        "completed_decisions": 4096
+      },
+      "traffic-priority-established-swap": {
+        "count": 3842,
+        "mean_training_score": 16.184799583550234,
+        "completed_decisions": 4096
+      },
+      "midgame-network-reserve": {
+        "count": 863,
+        "mean_training_score": 5.615295480880649,
+        "completed_decisions": 8181
+      },
+      "city": {
+        "count": 48,
+        "mean_training_score": 63.5625,
+        "completed_decisions": 14295
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-wide-pilot-01",
+    "status": "Chat interruption; unsaved updates lost",
+    "config": {
+      "dll": "output/city-road-reserve-build-01/bin/TrafficHost/release/TrafficHost.dll",
+      "parent": "output/training/city-strategy-wide-initial-01/start.zip",
+      "output": "output/training/city-strategy-wide-pilot-01",
+      "stage": "city",
+      "collapse_forced_wait": true,
+      "workers": 16,
+      "rollouts": 8,
+      "seed_start": 142000000,
+      "learning_rate": 0.003,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 600,
+      "record_dir": null,
+      "parent_sha256": "9d9c9c95e4955a14461358f3203143be5f70331f8cbbb4bc26d0951b3674447a",
+      "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+      "decision_budget": 65536
+    },
+    "checkpoints": [],
+    "episodes_by_task": {
+      "city": {
+        "count": 70,
+        "mean_training_score": 94.08571428571429,
+        "completed_decisions": 29565
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-wide-pilot-02",
+    "status": "Stopped for RAM pressure before first checkpoint",
+    "config": {
+      "dll": "output/city-road-reserve-build-01/bin/TrafficHost/release/TrafficHost.dll",
+      "parent": "output/training/city-strategy-wide-initial-01/start.zip",
+      "output": "output/training/city-strategy-wide-pilot-02",
+      "stage": "city",
+      "collapse_forced_wait": true,
+      "workers": 16,
+      "rollouts": 8,
+      "seed_start": 142000000,
+      "learning_rate": 0.003,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 600,
+      "record_dir": null,
+      "save_every_rollouts": 1,
+      "parent_sha256": "9d9c9c95e4955a14461358f3203143be5f70331f8cbbb4bc26d0951b3674447a",
+      "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+      "decision_budget": 65536
+    },
+    "checkpoints": [
+      {
+        "path": "output/training/city-strategy-wide-pilot-02/checkpoint-000008192.zip",
+        "sha256": "36e057b974f271b4a98214b420dbfc83fc8c7a83e38b6998be54e6d08d0d8989",
+        "added_decisions": 8192,
+        "episodes": 4,
+        "seconds": 168.95470265392214
+      }
+    ],
+    "episodes_by_task": {
+      "city": {
+        "count": 4,
+        "mean_training_score": 90.25,
+        "completed_decisions": 1822
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  },
+  {
+    "path": "output/training/city-strategy-wide-pilot-03",
+    "status": "complete",
+    "config": {
+      "dll": "output/city-road-reserve-build-01/bin/TrafficHost/release/TrafficHost.dll",
+      "parent": "output/training/city-strategy-wide-initial-01/start.zip",
+      "output": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-wide-pilot-03",
+      "stage": "city",
+      "collapse_forced_wait": true,
+      "workers": 16,
+      "rollouts": 8,
+      "seed_start": 142000000,
+      "learning_rate": 0.003,
+      "rollout_steps": 512,
+      "batch_size": 128,
+      "gae_lambda": 1.0,
+      "horizon": 600,
+      "record_dir": null,
+      "save_every_rollouts": 1,
+      "parent_sha256": "9d9c9c95e4955a14461358f3203143be5f70331f8cbbb4bc26d0951b3674447a",
+      "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+      "decision_budget": 65536
+    },
+    "checkpoints": [
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-wide-pilot-03/checkpoint-000008192.zip",
+        "sha256": "a5d9bd3ddfbe27ed285b3baffa4d0664da561726af1c3b11d28aad881b2afafe",
+        "added_decisions": 8192,
+        "episodes": 4,
+        "seconds": 110.17320498102345
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-wide-pilot-03/checkpoint-000016384.zip",
+        "sha256": "649ad9f4900c53b9afa880634f8d3a99320ca47e5ed4c20fe80da0e9f8801e50",
+        "added_decisions": 16384,
+        "episodes": 31,
+        "seconds": 235.78691185999196
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-wide-pilot-03/checkpoint-000024576.zip",
+        "sha256": "a586503ce9288e548bbc6cfaf92a3a3707dd18f1a83e22864d82fb74e4141544",
+        "added_decisions": 24576,
+        "episodes": 50,
+        "seconds": 354.71618383401074
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-wide-pilot-03/midpoint.zip",
+        "sha256": "269e2056c85e61ff03bd9068e424adb3a7f901701d1de1ac59bfd6cd4b0d30cc",
+        "added_decisions": 32768,
+        "episodes": 68,
+        "seconds": 479.6189501360059
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-wide-pilot-03/checkpoint-000040960.zip",
+        "sha256": "f529f6f985126529a4b25c5407031f66f9dd8a05fa3a577bc566aa136961fa4c",
+        "added_decisions": 40960,
+        "episodes": 87,
+        "seconds": 598.9237776559312
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-wide-pilot-03/checkpoint-000049152.zip",
+        "sha256": "bbb03e34a6cb01363c4746fd2ae7ea3a018a08ec7a5c06c8990ac9c081b0865a",
+        "added_decisions": 49152,
+        "episodes": 111,
+        "seconds": 723.1483217260102
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-wide-pilot-03/checkpoint-000057344.zip",
+        "sha256": "c3f260f951299066d7fa58ea4eb5efbf6e315dbe66348970e32865af97e9c177",
+        "added_decisions": 57344,
+        "episodes": 133,
+        "seconds": 851.5811636350118
+      },
+      {
+        "path": "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-wide-pilot-03/final.zip",
+        "sha256": "38fcd260ef7a37451974338a60fdc01ae989def371556d2039336c61733f6a11",
+        "added_decisions": 65536,
+        "episodes": 150,
+        "seconds": 977.7872292919783
+      }
+    ],
+    "episodes_by_task": {
+      "city": {
+        "count": 150,
+        "mean_training_score": 91.4,
+        "completed_decisions": 61274
+      }
+    },
+    "note": "Training means are descriptive, not frozen evaluation. Completed episode lengths omit unfinished episodes."
+  }
+]

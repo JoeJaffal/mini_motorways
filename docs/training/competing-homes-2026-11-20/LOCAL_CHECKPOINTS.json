@@ -1,0 +1,161 @@
+{
+  "branch": "mohammad",
+  "starting_revision": "6bd7f71",
+  "runs": [
+    {
+      "run": "triad-stub-ppo-01",
+      "saved_decisions": 524288,
+      "new_decisions": 163840,
+      "elapsed_seconds": 407.7792535889894,
+      "checkpoint": {
+        "path": "output/training/triad-stub-ppo-01/latest.zip",
+        "sha256": "b21fad4fb5fde3427c9ce6dd6ecdcfb807cf643594b01c477bcd8807d04c8815",
+        "bytes": 533083
+      },
+      "native": {
+        "path": "output/training/triad-stub-host-01/build/bin/TrafficHost/release/TrafficHost.dll",
+        "sha256": "433044d1bd799bf02102103be110c05029f195082854c6882903db9a7fe73863",
+        "bytes": 687104
+      }
+    },
+    {
+      "run": "triad-frame-ppo-01",
+      "saved_decisions": 524288,
+      "new_decisions": 163840,
+      "elapsed_seconds": 475.0097301870119,
+      "checkpoint": {
+        "path": "output/training/triad-frame-ppo-01/latest.zip",
+        "sha256": "83c0a4d2d6f9b9ab5ad271f02b95c5ab0ddd5f9c29c787b16f20fa5fca037c04",
+        "bytes": 544004
+      },
+      "native": {
+        "path": "output/training/triad-stub-host-01/build/bin/TrafficHost/release/TrafficHost.dll",
+        "sha256": "433044d1bd799bf02102103be110c05029f195082854c6882903db9a7fe73863",
+        "bytes": 687104
+      }
+    },
+    {
+      "run": "triad-network-ppo-01",
+      "saved_decisions": 688128,
+      "new_decisions": 229376,
+      "elapsed_seconds": 707.2832135469653,
+      "checkpoint": {
+        "path": "output/training/triad-network-ppo-01/latest.zip",
+        "sha256": "90f0c7230fe76e4de081364c2f6bf20219fd3a51704b07bd5057a0927bc0d5a4",
+        "bytes": 682246
+      },
+      "native": {
+        "path": "output/training/triad-stub-host-01/build/bin/TrafficHost/release/TrafficHost.dll",
+        "sha256": "433044d1bd799bf02102103be110c05029f195082854c6882903db9a7fe73863",
+        "bytes": 687104
+      }
+    },
+    {
+      "run": "triad-empty-control-ppo-01",
+      "saved_decisions": 524288,
+      "new_decisions": 163840,
+      "elapsed_seconds": 436.58293059899006,
+      "checkpoint": {
+        "path": "output/training/triad-empty-control-ppo-01/latest.zip",
+        "sha256": "09c026a515967aaf074b920fb1aa30ce846167d177b8ee9ffef6a92be78b16b9",
+        "bytes": 533083
+      },
+      "native": {
+        "path": "output/training/triad-stub-host-01/build/bin/TrafficHost/release/TrafficHost.dll",
+        "sha256": "433044d1bd799bf02102103be110c05029f195082854c6882903db9a7fe73863",
+        "bytes": 687104
+      }
+    },
+    {
+      "run": "triad-score-ppo-01",
+      "saved_decisions": 98304,
+      "new_decisions": 98304,
+      "elapsed_seconds": 486.1095158359967,
+      "checkpoint": {
+        "path": "output/training/triad-score-ppo-01/latest.zip",
+        "sha256": "a4f5d9dc241738bc85b5148b74dadf2fb7f14aee899bf0d53058e24bc0e8a310",
+        "bytes": 527204
+      },
+      "native": {
+        "path": "output/training/triad-stub-host-01/build/bin/TrafficHost/release/TrafficHost.dll",
+        "sha256": "433044d1bd799bf02102103be110c05029f195082854c6882903db9a7fe73863",
+        "bytes": 687104
+      }
+    },
+    {
+      "run": "triad-score-ppo-02",
+      "saved_decisions": 65536,
+      "new_decisions": 65536,
+      "elapsed_seconds": 330.47245225904044,
+      "checkpoint": {
+        "path": "output/training/triad-score-ppo-02/latest.zip",
+        "sha256": "d12b000e805c81dea4869eb9814265e6a72fbad4ea978b930db18c45955e263c",
+        "bytes": 527209
+      },
+      "native": {
+        "path": "output/training/triad-stub-host-01/build/bin/TrafficHost/release/TrafficHost.dll",
+        "sha256": "433044d1bd799bf02102103be110c05029f195082854c6882903db9a7fe73863",
+        "bytes": 687104
+      }
+    },
+    {
+      "run": "triad-score-network-01",
+      "saved_decisions": 65536,
+      "new_decisions": 65536,
+      "elapsed_seconds": 381.806557834032,
+      "checkpoint": {
+        "path": "output/training/triad-score-network-01/latest.zip",
+        "sha256": "4fba6e72990439f2aad76b8c8fea38c100283ad5598cfea254cbbbfa0a49e084",
+        "bytes": 604318
+      },
+      "native": {
+        "path": "output/training/triad-stub-host-01/build/bin/TrafficHost/release/TrafficHost.dll",
+        "sha256": "433044d1bd799bf02102103be110c05029f195082854c6882903db9a7fe73863",
+        "bytes": 687104
+      }
+    },
+    {
+      "run": "triad-score-joint-01",
+      "saved_decisions": 229376,
+      "new_decisions": 131072,
+      "elapsed_seconds": 659.2494161089417,
+      "checkpoint": {
+        "path": "output/training/triad-score-joint-01/latest.zip",
+        "sha256": "ba904c34fa4f785f32a262e916af093e6d4e184471f902d193135f228595a2c2",
+        "bytes": 551517
+      },
+      "native": {
+        "path": "output/training/triad-uneven-host-01/build/bin/TrafficHost/release/TrafficHost.dll",
+        "sha256": "d8b371ac154f8e368a97d2e17f565e9447768569a05ed19e93807f05fa0c3787",
+        "bytes": 687104
+      }
+    },
+    {
+      "run": "triad-score-attachments-01",
+      "saved_decisions": 163840,
+      "new_decisions": 65536,
+      "elapsed_seconds": 342.28659175906796,
+      "checkpoint": {
+        "path": "output/training/triad-score-attachments-01/latest.zip",
+        "sha256": "b3c0956b2566ac16b7f527202d16f4b562971b87b17703828a49ea1bbb2c2b91",
+        "bytes": 535732
+      },
+      "native": {
+        "path": "output/training/triad-stub-host-01/build/bin/TrafficHost/release/TrafficHost.dll",
+        "sha256": "433044d1bd799bf02102103be110c05029f195082854c6882903db9a7fe73863",
+        "bytes": 687104
+      }
+    }
+  ],
+  "total_new_decisions": 1146880,
+  "intermediate_checkpoint": {
+    "path": "output/training/triad-stub-ppo-01/rollout-64.zip",
+    "sha256": "14de1715a74a4ffe3384e67ddc0a1f9a293076bac48381d67cf4d930b9efc7e1",
+    "bytes": 533086
+  },
+  "unequal_distance_evaluation_host": {
+    "path": "output/training/triad-uneven-host-01/build/bin/TrafficHost/release/TrafficHost.dll",
+    "sha256": "d8b371ac154f8e368a97d2e17f565e9447768569a05ed19e93807f05fa0c3787",
+    "bytes": 687104
+  }
+}

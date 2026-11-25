@@ -1,0 +1,32 @@
+[
+  {
+    "path": "output/training/mini-fixed-route-01/training/final.zip",
+    "sha256": "c86c0db95e28951c3e9ed36d5a29eb94d7faa4cbddbfddaed18700dc70121eb3",
+    "updates": 10240,
+    "expected": 10240
+  },
+  {
+    "path": "output/training/build-wait-01/training/final.zip",
+    "sha256": "907e1a083b58780bd140d4e258285878ed3534a4c0be6cf9b75070eae7f04826",
+    "updates": 907,
+    "expected": 907
+  },
+  {
+    "path": "output/training/mini-horizon-comparison-01/long-window/final.zip",
+    "sha256": "3e7f76395fdf61a62c9cfbe48018f44ac4a61dc29d068f803b777120c358c413",
+    "updates": 8192,
+    "expected": 8192
+  },
+  {
+    "path": "output/training/road-heads-after-wait-smoke-initial-01/start.zip",
+    "sha256": "76ec2579aea9ea48781d6bcb32820356055dc0b9d619c8505678f4fe9f159675",
+    "updates": 10240,
+    "expected": 10240
+  },
+  {
+    "path": "output/training/road-heads-after-wait-ppo-smoke-01/final.zip",
+    "sha256": "6eea06bf4ba866fb2149c44601703aae1a8799ba1b4d44f24372e23f34f4aa1a",
+    "updates": 10244,
+    "expected": 10244
+  }
+]

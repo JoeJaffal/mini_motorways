@@ -1,0 +1,31 @@
+{
+  "kind": "pair-ppo",
+  "native_sha256": "c4fa332ae808d495b5d74b3da7eb187bc897f0aa535a74952838e07ef06cf418",
+  "source_sha256": "e205af9a1b0c72cc072f62a724175eee08104013288aa2d0b6028c911d364340",
+  "parent": "output/training/driveway-ppo-hour-01/latest.zip",
+  "parent_native_sha256": "582e6e74c41a94b607f6323076d2e77231bdec82b6ba4265b93b92caaee16c3b",
+  "parent_sha256": "ac4df47be2637cfc8f643bf731bc37baf481b607bcf71793eaa1511247d270ee",
+  "seed": 42,
+  "workers": [
+    "match",
+    "match",
+    "match",
+    "match",
+    "match",
+    "match",
+    "match",
+    "mismatch",
+    "mismatch",
+    "mismatch",
+    "mismatch",
+    "mismatch",
+    "homes",
+    "homes",
+    "destinations",
+    "destinations"
+  ],
+  "decisions": 98304,
+  "wall_seconds": 720,
+  "teacher_actions": false,
+  "reward": "1 for a connected matching pair or immediate Finish on an unserviceable pair"
+}

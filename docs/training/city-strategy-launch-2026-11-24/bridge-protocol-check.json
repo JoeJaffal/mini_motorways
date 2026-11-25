@@ -1,0 +1,39 @@
+{
+  "old_host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+  "new_host_sha256": "406856cd35d2f33d2a5a06661b6440762fb790db8ff69a05c34aafb881adbec6",
+  "default_exact_transitions": 1600,
+  "default_seeds": [
+    99005063,
+    99008267,
+    99096723,
+    99265651,
+    99323274,
+    99480639,
+    164100000,
+    164100001,
+    164100002,
+    164100003,
+    164100004,
+    164100005,
+    164100006,
+    164100007,
+    164100008,
+    164100009
+  ],
+  "legacy_masks_preserved": true,
+  "bridge_mode_fixed_control": {
+    "seed": 99005063,
+    "seconds": 60,
+    "trips": 3,
+    "road_stock": 18,
+    "buildings": 5,
+    "weekly_awards": 0,
+    "road_actions": 8,
+    "wait_actions": 60,
+    "bridge_stock": 0,
+    "bridge_tiles": 1
+  },
+  "control_native_reward": 3.0,
+  "old_host_explicitly_rejects_new_mode": true,
+  "note": "Fixed manual route is an engineering test only,never a policy performance result or learner input."
+}

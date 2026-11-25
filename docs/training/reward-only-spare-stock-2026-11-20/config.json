@@ -1,0 +1,83 @@
+{
+  "kind": "spare-road-ppo",
+  "parent": "output/training/clear-road-ppo-pilot-01/latest.zip",
+  "parent_fingerprint": "8c6c434a9a26644fc61df7c224fca6cba2450be3b28412f0dff6ba844a0518ea",
+  "parent_decisions": 131072,
+  "source_sha256": "dcda4f80a9aede3b3004f1af0e06212d03d7183b8cc5bcdfdfeedb0c3816de76",
+  "native_sha256": "582e6e74c41a94b607f6323076d2e77231bdec82b6ba4265b93b92caaee16c3b",
+  "workers": [
+    [
+      "clear",
+      -1
+    ],
+    [
+      "clear",
+      -1
+    ],
+    [
+      "clear",
+      -1
+    ],
+    [
+      "clear",
+      -1
+    ],
+    [
+      "clear",
+      1
+    ],
+    [
+      "clear",
+      1
+    ],
+    [
+      "clear",
+      1
+    ],
+    [
+      "clear",
+      1
+    ],
+    [
+      "clear",
+      0
+    ],
+    [
+      "clear",
+      0
+    ],
+    [
+      "clear",
+      0
+    ],
+    [
+      "clear",
+      0
+    ],
+    [
+      "clear",
+      0
+    ],
+    [
+      "clear",
+      0
+    ],
+    [
+      "bend",
+      0
+    ],
+    [
+      "adjacent",
+      0
+    ]
+  ],
+  "targeted_temperature": 4.0,
+  "targeted_start_span": 3,
+  "start_spare": 2,
+  "reward": "1 for connecting with any legal route, otherwise 0",
+  "teacher_actions": false,
+  "decisions": 131072,
+  "wall_seconds": 1800,
+  "advance_rule": "both signs 85% over 3 rollouts",
+  "early_stop": "at least 6000 initial targeted episodes with no more than 2 successes"
+}

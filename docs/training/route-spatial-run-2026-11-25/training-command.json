@@ -1,0 +1,15 @@
+[
+  "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+  "-u",
+  "/home/mohammadjaffal/mini_motorways/output/training/route-spatial-01/runtime/training/train_city_route_outcome.py",
+  "--parent",
+  "/home/mohammadjaffal/mini_motorways/output/training/route-spatial-01/initial/start.zip",
+  "--dll",
+  "/home/mohammadjaffal/mini_motorways/output/training/route-spatial-01/runtime/host/TrafficHost.dll",
+  "--output",
+  "/home/mohammadjaffal/mini_motorways/output/training/route-spatial-01/training",
+  "--rollouts",
+  "32",
+  "--seed-start",
+  "248100000"
+]

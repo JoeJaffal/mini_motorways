@@ -1,0 +1,46 @@
+{
+  "models": [
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-return-advantage-01/segment-001/final.zip"
+  ],
+  "sha256": {
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-return-advantage-01/segment-001/final.zip": "3d3e1aaab4d070735114b2b47a5791ca65a7086c1db026048a200547123cbc62"
+  },
+  "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+  "horizon": 600,
+  "forced_action_inference_skipped": true,
+  "results": {
+    "0": {
+      "games": 32,
+      "scoring_games": 25,
+      "mean_score": 74.75,
+      "new_targets": 124,
+      "new_targets_served": 90,
+      "new_target_stockouts": 33,
+      "median_new_service_delay": 27.0,
+      "mean_paid_units": 77.8125,
+      "mean_outside_observed_routes": 37.375,
+      "outside_route_share": 0.48032128514056227,
+      "paired_score_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    }
+  }
+}

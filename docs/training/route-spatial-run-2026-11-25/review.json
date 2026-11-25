@@ -1,0 +1,314 @@
+{
+  "city_mean": 128.25,
+  "scoring": 28,
+  "city_comparisons": {
+    "parent": {
+      "trips": {
+        "mean": -12.84375,
+        "ci95": [
+          -40.96875,
+          10.40625
+        ]
+      },
+      "paid_units": {
+        "mean": -6.0,
+        "ci95": [
+          -16.5625,
+          2.59375
+        ]
+      },
+      "outside_routes": {
+        "mean": -0.125,
+        "ci95": [
+          -5.75,
+          6.032031249999989
+        ]
+      }
+    },
+    "original": {
+      "trips": {
+        "mean": 2.15625,
+        "ci95": [
+          -24.87578125,
+          30.3125
+        ]
+      },
+      "paid_units": {
+        "mean": -9.0,
+        "ci95": [
+          -18.62578125,
+          0.75
+        ]
+      },
+      "outside_routes": {
+        "mean": -5.96875,
+        "ci95": [
+          -11.5625,
+          -0.28125
+        ]
+      }
+    }
+  },
+  "outcome_curve": [
+    {
+      "added_decisions": 0,
+      "cases": {
+        "small-city-offset-single": {
+          "games": 32,
+          "successes": 20,
+          "mean_return": 0.6360762934981685,
+          "mean_paid": 7.34375,
+          "mean_builds": 8.34375,
+          "mean_decisions": 12.65625
+        },
+        "small-city-offset-stock": {
+          "games": 32,
+          "successes": 25,
+          "mean_return": 0.8472081164436162,
+          "mean_paid": 10.09375,
+          "mean_builds": 11.09375,
+          "mean_decisions": 22.71875
+        }
+      }
+    },
+    {
+      "added_decisions": 65536,
+      "cases": {
+        "small-city-offset-single": {
+          "games": 32,
+          "successes": 23,
+          "mean_return": 0.7302169184981685,
+          "mean_paid": 7.34375,
+          "mean_builds": 8.34375,
+          "mean_decisions": 12.65625
+        },
+        "small-city-offset-stock": {
+          "games": 32,
+          "successes": 26,
+          "mean_return": 0.878128109440815,
+          "mean_paid": 10.125,
+          "mean_builds": 11.125,
+          "mean_decisions": 22.75
+        }
+      }
+    },
+    {
+      "added_decisions": 131072,
+      "cases": {
+        "small-city-offset-single": {
+          "games": 32,
+          "successes": 21,
+          "mean_return": 0.6674565018315018,
+          "mean_paid": 7.34375,
+          "mean_builds": 8.34375,
+          "mean_decisions": 12.46875
+        },
+        "small-city-offset-stock": {
+          "games": 32,
+          "successes": 29,
+          "mean_return": 0.9748428195847411,
+          "mean_paid": 9.90625,
+          "mean_builds": 10.90625,
+          "mean_decisions": 23.34375
+        }
+      }
+    },
+    {
+      "added_decisions": 262144,
+      "cases": {
+        "small-city-offset-single": {
+          "games": 32,
+          "successes": 27,
+          "mean_return": 0.8557637934981686,
+          "mean_paid": 7.34375,
+          "mean_builds": 8.34375,
+          "mean_decisions": 12.75
+        },
+        "small-city-offset-stock": {
+          "games": 32,
+          "successes": 31,
+          "mean_return": 1.0371931356706052,
+          "mean_paid": 9.9375,
+          "mean_builds": 10.9375,
+          "mean_decisions": 23.875
+        }
+      }
+    }
+  ],
+  "paired_outcomes": {
+    "small-city-offset-single": {
+      "gained": 7,
+      "lost": 0
+    },
+    "small-city-offset-stock": {
+      "gained": 6,
+      "lost": 0
+    }
+  },
+  "native_mini": {
+    "adjacent": {
+      "score": 3.5625,
+      "success": 1.0,
+      "paid": 2.0,
+      "before_first": 2.0,
+      "after_first": 0.0,
+      "remaining_stock": 0.0,
+      "outside_routes": 0.0,
+      "later_exists": 0.0,
+      "later_served": 0.0,
+      "first_served": 1.0,
+      "both_served": 0.0,
+      "native_game_over": 0.0,
+      "truncated": 1.0,
+      "seconds": 60.0,
+      "build_actions": 2.0,
+      "builds_before_first": 2.0,
+      "builds_after_first": 0.0,
+      "zero_cost_builds": 0.0,
+      "zero_cost_builds_after_first": 0.0,
+      "outside_route_connections": 0.0
+    },
+    "bend": {
+      "score": 3.625,
+      "success": 1.0,
+      "paid": 2.5,
+      "before_first": 2.5,
+      "after_first": 0.0,
+      "remaining_stock": 0.0,
+      "outside_routes": 0.0,
+      "later_exists": 0.0,
+      "later_served": 0.0,
+      "first_served": 1.0,
+      "both_served": 0.0,
+      "native_game_over": 0.0,
+      "truncated": 1.0,
+      "seconds": 60.0,
+      "build_actions": 2.5,
+      "builds_before_first": 2.5,
+      "builds_after_first": 0.0,
+      "zero_cost_builds": 0.0,
+      "zero_cost_builds_after_first": 0.0,
+      "outside_route_connections": 0.0
+    },
+    "clear": {
+      "score": 3.625,
+      "success": 1.0,
+      "paid": 3.75,
+      "before_first": 3.75,
+      "after_first": 0.0,
+      "remaining_stock": 0.0,
+      "outside_routes": 0.0,
+      "later_exists": 0.0,
+      "later_served": 0.0,
+      "first_served": 1.0,
+      "both_served": 0.0,
+      "native_game_over": 0.0,
+      "truncated": 1.0,
+      "seconds": 60.0,
+      "build_actions": 3.75,
+      "builds_before_first": 3.75,
+      "builds_after_first": 0.0,
+      "zero_cost_builds": 0.0,
+      "zero_cost_builds_after_first": 0.0,
+      "outside_route_connections": 0.0
+    },
+    "obstacle": {
+      "score": 2.625,
+      "success": 0.75,
+      "paid": 4.125,
+      "before_first": 4.125,
+      "after_first": 0.0,
+      "remaining_stock": 0.375,
+      "outside_routes": 0.875,
+      "later_exists": 0.0,
+      "later_served": 0.0,
+      "first_served": 0.75,
+      "both_served": 0.0,
+      "native_game_over": 0.0,
+      "truncated": 1.0,
+      "seconds": 60.0,
+      "build_actions": 4.125,
+      "builds_before_first": 4.125,
+      "builds_after_first": 0.0,
+      "zero_cost_builds": 0.0,
+      "zero_cost_builds_after_first": 0.0,
+      "outside_route_connections": 0.875
+    },
+    "small-city-offset-single": {
+      "score": 10.5625,
+      "success": 0.5625,
+      "paid": 6.875,
+      "before_first": 6.875,
+      "after_first": 0.0,
+      "remaining_stock": 0.5,
+      "outside_routes": 3.625,
+      "later_exists": 0.0,
+      "later_served": 0.0,
+      "first_served": 0.5625,
+      "both_served": 0.0,
+      "native_game_over": 0.4375,
+      "truncated": 0.5625,
+      "seconds": 233.83437500000002,
+      "build_actions": 8.0,
+      "builds_before_first": 8.0,
+      "builds_after_first": 0.0,
+      "zero_cost_builds": 1.125,
+      "zero_cost_builds_after_first": 0.0,
+      "outside_route_connections": 4.5
+    },
+    "small-city-offset-stock": {
+      "score": 16.125,
+      "success": 0.875,
+      "paid": 10.625,
+      "before_first": 10.25,
+      "after_first": 0.375,
+      "remaining_stock": 3.4375,
+      "outside_routes": 4.75,
+      "later_exists": 0.0,
+      "later_served": 0.0,
+      "first_served": 0.875,
+      "both_served": 0.0,
+      "native_game_over": 0.125,
+      "truncated": 0.875,
+      "seconds": 281.22187499999995,
+      "build_actions": 11.75,
+      "builds_before_first": 11.375,
+      "builds_after_first": 0.375,
+      "zero_cost_builds": 1.125,
+      "zero_cost_builds_after_first": 0.0,
+      "outside_route_connections": 5.0
+    },
+    "small-city-offset-pairs": {
+      "score": 19.0,
+      "success": 0.875,
+      "paid": 14.0625,
+      "before_first": 10.25,
+      "after_first": 3.8125,
+      "remaining_stock": 0.0,
+      "outside_routes": 5.625,
+      "later_exists": 1.0,
+      "later_served": 0.375,
+      "first_served": 0.875,
+      "both_served": 0.375,
+      "native_game_over": 0.625,
+      "truncated": 0.375,
+      "seconds": 218.46875000000003,
+      "build_actions": 17.0,
+      "builds_before_first": 11.625,
+      "builds_after_first": 5.375,
+      "zero_cost_builds": 2.9375,
+      "zero_cost_builds_after_first": 1.5625,
+      "outside_route_connections": 7.0625
+    }
+  },
+  "development_gates": {
+    "short_retention": false,
+    "tight_routes": false,
+    "both_pairs": false,
+    "city_mean": true,
+    "city_zeros": false
+  },
+  "development_screen_passed": false,
+  "clear_city_regression": false,
+  "limits": "Consumed development scenarios; practice return is not city score. No automatic promotion. Fresh confirmation remains required even if every development gate passes."
+}

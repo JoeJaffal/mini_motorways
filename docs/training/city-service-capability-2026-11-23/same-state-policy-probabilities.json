@@ -1,0 +1,111 @@
+{
+  "seed": 99387707,
+  "target_id": 7,
+  "seconds": 277,
+  "road_stock": 4,
+  "ignored_connections": [
+    {
+      "decision": 326,
+      "second": 277,
+      "road_stock": 4,
+      "sampled": 1889,
+      "alternative": 1682,
+      "edge": [
+        [
+          20,
+          8
+        ],
+        [
+          21,
+          9
+        ]
+      ],
+      "alternative_probability": 1.213723541919741e-10,
+      "all_direct_join_probability": 0.0006842479847112704,
+      "wait_probability": 0.5717571263866209,
+      "native_road_cost": 1,
+      "first_delivery_second": 295
+    },
+    {
+      "decision": 326,
+      "second": 277,
+      "road_stock": 4,
+      "sampled": 1889,
+      "alternative": 1881,
+      "edge": [
+        [
+          20,
+          9
+        ],
+        [
+          21,
+          9
+        ]
+      ],
+      "alternative_probability": 0.000684155836112245,
+      "all_direct_join_probability": 0.0006842479847112704,
+      "wait_probability": 0.5717571263866209,
+      "native_road_cost": 1,
+      "first_delivery_second": 295
+    },
+    {
+      "decision": 326,
+      "second": 277,
+      "road_stock": 4,
+      "sampled": 1889,
+      "alternative": 1888,
+      "edge": [
+        [
+          21,
+          9
+        ],
+        [
+          20,
+          10
+        ]
+      ],
+      "alternative_probability": 9.20272266712356e-08,
+      "all_direct_join_probability": 0.0006842479847112704,
+      "wait_probability": 0.5717571263866209,
+      "native_road_cost": 1,
+      "first_delivery_second": 295
+    }
+  ],
+  "actual_edge": [
+    [
+      22,
+      9
+    ],
+    [
+      23,
+      9
+    ]
+  ],
+  "actual_cost": 1,
+  "models": {
+    "repaired": {
+      "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-route-repair-calibration-01/calibrated-with-counters.zip",
+      "direct_join_probability": 0.0008818577055517558,
+      "wait_probability": 0.4483318248268074,
+      "swapped_action_probability": 0.5507848393700006
+    },
+    "warm_start": {
+      "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-service-reserve-readiness-01/checkpoints/city-000086016-db6c8742.zip",
+      "direct_join_probability": 0.000880858866329385,
+      "wait_probability": 0.44888238868996183,
+      "swapped_action_probability": 0.5502360908421786
+    },
+    "four_hours": {
+      "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-service-long-01/checkpoints/city-002760704-bfd5f98e.zip",
+      "direct_join_probability": 0.0007756506616595365,
+      "wait_probability": 0.5140215373700918,
+      "swapped_action_probability": 0.4852023327865632
+    },
+    "eight_hours": {
+      "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/city-service-long-01/checkpoints/city-005316608-f47f325c.zip",
+      "direct_join_probability": 0.0006842479847112704,
+      "wait_probability": 0.5717571263866209,
+      "swapped_action_probability": 0.42755826456050045
+    }
+  }
+}

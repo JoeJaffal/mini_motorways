@@ -1,0 +1,21 @@
+[
+  "/home/mohammadjaffal/mini_motorways/.venv/bin/python",
+  "-u",
+  "/home/mohammadjaffal/mini_motorways/output/training/overnight-transfer-comparison-01/runtime/training/continue_road_cost_trial.py",
+  "--parent",
+  "/home/mohammadjaffal/mini_motorways/output/training/road-cost-continuation-01/strong/checkpoint-000262144.zip",
+  "--dll",
+  "/home/mohammadjaffal/mini_motorways/output/training/overnight-transfer-comparison-01/runtime/host/TrafficHost.dll",
+  "--output",
+  "/home/mohammadjaffal/mini_motorways/output/training/overnight-transfer-comparison-01/lesson-only",
+  "--road-cost",
+  ".04",
+  "--seed-start",
+  "210000000",
+  "--rng-seed",
+  "251125",
+  "--completed-decisions",
+  "262144",
+  "--target-decisions",
+  "524288"
+]

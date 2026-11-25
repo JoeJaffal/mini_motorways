@@ -1,0 +1,45 @@
+{
+  "models": [
+    "output/training/city-five-stage-cold-initial-01/candidate.zip"
+  ],
+  "sha256": {
+    "output/training/city-five-stage-cold-initial-01/candidate.zip": "9202d62be8d237f6fe495ee1ec29eed1747849a1fd747006ea8903de7f0b19f1"
+  },
+  "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+  "horizon": 600,
+  "results": {
+    "0": {
+      "games": 32,
+      "scoring_games": 25,
+      "mean_score": 69.1875,
+      "new_targets": 126,
+      "new_targets_served": 91,
+      "new_target_stockouts": 33,
+      "median_new_service_delay": 30.0,
+      "mean_paid_units": 74.84375,
+      "mean_outside_observed_routes": 34.09375,
+      "outside_route_share": 0.45553235908141965,
+      "paired_score_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    }
+  }
+}

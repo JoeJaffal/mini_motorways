@@ -1,0 +1,184 @@
+[
+  {
+    "name": "city-growth-smoke-01",
+    "config": {
+      "hours": 0.002,
+      "save_minutes": 0.06,
+      "workers": 2,
+      "dll": "/home/mohammadjaffal/mini_motorways/output/city-road-preflight-build/bin/TrafficHost/release/TrafficHost.dll",
+      "start": "/home/mohammadjaffal/mini_motorways/output/training/city-route-repair-calibration-01/calibrated-with-counters.zip",
+      "start_sha256": "6ed31e8c655acb71b781652c36814045c979597ced464fbf12d6dafef07acd62",
+      "host_sha256": "2da58a5aeefa0e7d3416302d4532724b253e9ede05a998fccf40a324aeb5fe23",
+      "critic": "/home/mohammadjaffal/mini_motorways/output/training/city-overnight-01/checkpoints/city-006234112-96926793.zip",
+      "critic_sha256": "a65357dea3e889525bfdc18743dbbeb02141ad244934b270217afad7a472df29",
+      "initial_model_state": [
+        61440,
+        0,
+        60
+      ],
+      "pilot": {
+        "workers": 16,
+        "rollout_steps": 128,
+        "batch_size": 64,
+        "epochs": 4,
+        "seed": 946753,
+        "rollouts_per_save": 6,
+        "saves": 2,
+        "requested_decisions": 24576,
+        "learning_rate": 5e-05,
+        "scenario_seed_range": [
+          78000000,
+          79000000
+        ],
+        "parent": "output/training/city-road-start-01/city-start.zip",
+        "parent_sha256": "e66dbd377a81208092a6c242e446e898729969c53258b4dcdf372a072dd313e8",
+        "host": "output/city-road-preflight-build/bin/TrafficHost/release/TrafficHost.dll",
+        "host_sha256": "2da58a5aeefa0e7d3416302d4532724b253e9ede05a998fccf40a324aeb5fe23",
+        "device": "cuda",
+        "gamma": 1.0,
+        "gae_lambda": 0.95,
+        "entropy_coefficient": 0.01,
+        "target_kl": 0.03
+      },
+      "training_seed_start": 92490000,
+      "training_seed_end": 92500000,
+      "review_seed": 711029,
+      "review_games": 2
+    },
+    "state": {
+      "training_complete": true,
+      "checkpoints": [
+        {
+          "path": "checkpoints/city-000061696-50562c55.zip",
+          "sha256": "e47a28f44880e111ad5c63148fcdf2ba8a9188231ee6602a238415d860b71f90",
+          "decisions": 61696,
+          "training_seconds": 5.059483260032721,
+          "next_seeds": [
+            92490002,
+            92490003
+          ],
+          "optimizer_entries": 16,
+          "epochs": 64,
+          "completed_games": 0
+        },
+        {
+          "path": "checkpoints/city-000061952-420eabdc.zip",
+          "sha256": "ecca515212b632ede4e8cf216bde8ac16e7263e85dfff1b00d2d6438dd6b168e",
+          "decisions": 61952,
+          "training_seconds": 8.500787446973845,
+          "next_seeds": [
+            92490004,
+            92490003
+          ],
+          "optimizer_entries": 16,
+          "epochs": 68,
+          "completed_games": 1
+        }
+      ]
+    },
+    "starts": [
+      {
+        "decisions": 61440,
+        "optimizer_entries": 0,
+        "epochs": 60,
+        "next_scenario_seeds": [
+          92490000,
+          92490001
+        ]
+      }
+    ],
+    "old_actor_tensors_unchanged": true,
+    "growth_road_weights_updated": true
+  },
+  {
+    "name": "city-growth-resume-smoke-01",
+    "config": {
+      "hours": 0.002,
+      "save_minutes": 0.06,
+      "workers": 2,
+      "dll": "/home/mohammadjaffal/mini_motorways/output/city-road-preflight-build/bin/TrafficHost/release/TrafficHost.dll",
+      "start": "/home/mohammadjaffal/mini_motorways/output/training/city-route-repair-calibration-01/calibrated-with-counters.zip",
+      "start_sha256": "6ed31e8c655acb71b781652c36814045c979597ced464fbf12d6dafef07acd62",
+      "host_sha256": "2da58a5aeefa0e7d3416302d4532724b253e9ede05a998fccf40a324aeb5fe23",
+      "critic": "/home/mohammadjaffal/mini_motorways/output/training/city-overnight-01/checkpoints/city-006234112-96926793.zip",
+      "critic_sha256": "a65357dea3e889525bfdc18743dbbeb02141ad244934b270217afad7a472df29",
+      "initial_model_state": [
+        61440,
+        0,
+        60
+      ],
+      "pilot": {
+        "workers": 16,
+        "rollout_steps": 128,
+        "batch_size": 64,
+        "epochs": 4,
+        "seed": 946753,
+        "rollouts_per_save": 6,
+        "saves": 2,
+        "requested_decisions": 24576,
+        "learning_rate": 5e-05,
+        "scenario_seed_range": [
+          78000000,
+          79000000
+        ],
+        "parent": "output/training/city-road-start-01/city-start.zip",
+        "parent_sha256": "e66dbd377a81208092a6c242e446e898729969c53258b4dcdf372a072dd313e8",
+        "host": "output/city-road-preflight-build/bin/TrafficHost/release/TrafficHost.dll",
+        "host_sha256": "2da58a5aeefa0e7d3416302d4532724b253e9ede05a998fccf40a324aeb5fe23",
+        "device": "cuda",
+        "gamma": 1.0,
+        "gae_lambda": 0.95,
+        "entropy_coefficient": 0.01,
+        "target_kl": 0.03
+      },
+      "training_seed_start": 92490000,
+      "training_seed_end": 92500000,
+      "review_seed": 711029,
+      "review_games": 2
+    },
+    "state": {
+      "training_complete": true,
+      "checkpoints": [
+        {
+          "path": "checkpoints/city-000061696-50562c55.zip",
+          "sha256": "e47a28f44880e111ad5c63148fcdf2ba8a9188231ee6602a238415d860b71f90",
+          "decisions": 61696,
+          "training_seconds": 5.059483260032721,
+          "next_seeds": [
+            92490002,
+            92490003
+          ],
+          "optimizer_entries": 16,
+          "epochs": 64,
+          "completed_games": 0
+        },
+        {
+          "path": "checkpoints/city-000061952-a5efdaf3.zip",
+          "sha256": "9f00f50e4a6da915c82bc908b99513a6e4f0c21837b47e05acaea0b18a98eabd",
+          "decisions": 61952,
+          "training_seconds": 10.312544299988076,
+          "next_seeds": [
+            92490004,
+            92490005
+          ],
+          "optimizer_entries": 16,
+          "epochs": 68,
+          "completed_games": 0
+        }
+      ]
+    },
+    "starts": [
+      {
+        "decisions": 61696,
+        "optimizer_entries": 16,
+        "epochs": 64,
+        "next_scenario_seeds": [
+          92490002,
+          92490003
+        ]
+      }
+    ],
+    "old_actor_tensors_unchanged": true,
+    "growth_road_weights_updated": true
+  }
+]

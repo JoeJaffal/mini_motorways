@@ -1,0 +1,45 @@
+{
+  "models": [
+    "output/training/city-strategy-pilot-01/final.zip"
+  ],
+  "sha256": {
+    "output/training/city-strategy-pilot-01/final.zip": "55cc4a38d5949b1abbee9c27630f519bdc1be835f034be3f95e1c0c0aad43915"
+  },
+  "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+  "horizon": 600,
+  "results": {
+    "0": {
+      "games": 32,
+      "scoring_games": 26,
+      "mean_score": 84.34375,
+      "new_targets": 132,
+      "new_targets_served": 98,
+      "new_target_stockouts": 65,
+      "median_new_service_delay": 27.5,
+      "mean_paid_units": 82.40625,
+      "mean_outside_observed_routes": 34.5625,
+      "outside_route_share": 0.4194160030337505,
+      "paired_score_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "base_revision": "6bd7f7193b26ae0f5aa12563f3dd89769115df6e",
+  "branch": "Maskable-PPO",
+  "source_sha256": {
+    "training/audit_city_service.py": "b773939950a98de3a407026abdc5b0a78d4e8e86bd631d69af35a993c4ca3a1a",
+    "training/city_service_policy.py": "33778b66de1b5a60a3f97dafeab7a6f6941818c0e32ffb5c5446fc7cbe01ffe6",
+    "training/evaluate_city_service.py": "7369db1fe8744e082410f6917a8d66b4dee8cdb6f728543a8b6dbab19c334cca",
+    "training/run_city_service_training.py": "8b3e457ccc5ec4ebf3b1cc35550088c7e9fb6ce58be069064942bc9ff7c1d584",
+    "training/run_city_growth_pilot.py": "c5f91acf6215edfcca74d3491cdb5e7656070457136ec77d2c2f76a086669ee1",
+    "training/run_city_overnight.py": "778a47721ea65b4d1d59efcbe5aea2496c083000a4da0bfbc051c0e5ac38a8b4"
+  },
+  "archive_sha256": {
+    "README.md": "0c7aa08acb50e435af187b7a54ea5255899a4c08d5690b75df2f51f303aab02b",
+    "analysis.json": "56b72385e75c5891636a7928d575eaffad43cf9bd5cab045ffc277497b8c3c90",
+    "config.json": "6ace6fc2b755ce9b111ff3593142eadba8eca2aec40b0d6e21784d384cf9f1ef",
+    "games.jsonl": "3a18a4798b8fe65ce9fac718e806bf32ad060105ef5eae8847e96115afc918b6",
+    "progress.csv": "1e8d65d10441a8741fe076cb7b71411d42e8993cf679ae2d85dbd7d52b004403",
+    "review.json": "bbc008cb0fc334b045622cfd9b7861152db6e8943fb5aee390453846904c0624",
+    "state.json": "73ef8d07d26fea306e4b3126d17ff68083dc703d6a223eb57841c6e7ceae348c",
+    "suite.json": "4cc9f5975536a6b517fd34d37942af5874389dd33a42b902e66aceb1ba8206ee"
+  },
+  "local_only": [
+    "model checkpoints",
+    "native simulator binary",
+    "raw training episodes and console"
+  ]
+}

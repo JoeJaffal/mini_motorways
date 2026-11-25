@@ -1,0 +1,175 @@
+{
+  "preflight": {
+    "counters": {
+      "tokens": 47104,
+      "updates": 92,
+      "version": 23,
+      "episodes": 47104,
+      "worker_episodes": [
+        2944,
+        2944,
+        2944,
+        2944,
+        2944,
+        2944,
+        2944,
+        2944,
+        2944,
+        2944,
+        2944,
+        2944,
+        2944,
+        2944,
+        2944,
+        2944
+      ],
+      "worker_seed_indices": [
+        2943,
+        2943,
+        2943,
+        2943,
+        2943,
+        2943,
+        2943,
+        2943,
+        2943,
+        2943,
+        2943,
+        2943,
+        2943,
+        2943,
+        2943,
+        2943
+      ]
+    },
+    "policy_sha256": "66f7c4d5bdd24754aaa4993db60b901ffca07241a592dd3c83096d64327189b7",
+    "optimizer_tensors_match": true,
+    "optimizer_groups_match": true,
+    "all_rng_match": true,
+    "rejects_changed_seed_minibatch_and_binary": true,
+    "initial_policy_sha256": "3cd0052c9d247e5f17f5139757280b17b3b7c9195e8b4f1048a430882be579d0"
+  },
+  "old_boundary": {
+    "tokens": 51200,
+    "updates": 100,
+    "version": 25,
+    "episodes": 51200,
+    "collection_seconds": 35.109749815950636,
+    "update_seconds": 2.620695995981805,
+    "score": 0.0,
+    "worker_tokens": {
+      "1": 128,
+      "2": 128,
+      "3": 128,
+      "4": 128,
+      "5": 128,
+      "6": 128,
+      "7": 128,
+      "8": 128,
+      "9": 128,
+      "10": 128,
+      "11": 128,
+      "12": 128,
+      "13": 128,
+      "14": 128,
+      "15": 128,
+      "16": 128
+    },
+    "update_diagnostics": [
+      {
+        "epoch": 0,
+        "approximate_kl": -1.7462298274040222e-10,
+        "gradient_norm": 0.9688246846199036
+      },
+      {
+        "epoch": 1,
+        "approximate_kl": 0.000968865817412734,
+        "gradient_norm": 0.9800775647163391
+      },
+      {
+        "epoch": 2,
+        "approximate_kl": 0.003962493094149977,
+        "gradient_norm": 1.0123934745788574
+      },
+      {
+        "epoch": 3,
+        "approximate_kl": 0.009066087077371776,
+        "gradient_norm": 0.8315579295158386
+      }
+    ],
+    "successful_builds": 174,
+    "build_attempts": 2048
+  },
+  "old_stop": {
+    "result": "INTERRUPTED",
+    "mode": "training",
+    "optimizer_steps": 100,
+    "counters": {
+      "tokens": 51200,
+      "updates": 100,
+      "version": 25,
+      "episodes": 51200
+    },
+    "session_tokens": 51200,
+    "elapsed_seconds": 979.1799919329933
+  },
+  "resumed_policy_sha256": "66e8dacfb301479a2a938a57a4e0c76e95b8897fadf06279a7eb151967a40a3e",
+  "original_last_seed": 51241,
+  "resumed_first_seed": 51242,
+  "new_run": "output/training/single-build-pilot-01-fast",
+  "new_service": "mini-motorways-single-build-pilot-01-fast.service",
+  "resumed_at": "2026-11-19T20:53:13+02:00",
+  "additional_attempt_limit": 79872,
+  "wall_seconds": 806,
+  "first_optimized_rollout": {
+    "tokens": 53248,
+    "updates": 104,
+    "version": 26,
+    "episodes": 53248,
+    "collection_seconds": 20.28468156402232,
+    "update_seconds": 2.753873082983773,
+    "score": 0.0,
+    "worker_tokens": {
+      "1": 128,
+      "2": 128,
+      "3": 128,
+      "4": 128,
+      "5": 128,
+      "6": 128,
+      "7": 128,
+      "8": 128,
+      "9": 128,
+      "10": 128,
+      "11": 128,
+      "12": 128,
+      "13": 128,
+      "14": 128,
+      "15": 128,
+      "16": 128
+    },
+    "update_diagnostics": [
+      {
+        "epoch": 0,
+        "approximate_kl": -2.6193447411060333e-10,
+        "gradient_norm": 1.051892876625061
+      },
+      {
+        "epoch": 1,
+        "approximate_kl": 0.000979109521722421,
+        "gradient_norm": 1.083020567893982
+      },
+      {
+        "epoch": 2,
+        "approximate_kl": 0.00395194924203679,
+        "gradient_norm": 1.2080457210540771
+      },
+      {
+        "epoch": 3,
+        "approximate_kl": 0.00890583242289722,
+        "gradient_norm": 0.9050503969192505
+      }
+    ],
+    "successful_builds": 239,
+    "build_attempts": 2048
+  }
+}

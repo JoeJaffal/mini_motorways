@@ -1,0 +1,46 @@
+{
+  "models": [
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-opening-01/segment-001/midpoint.zip"
+  ],
+  "sha256": {
+    "/home/mohammadjaffal/mini_motorways/output/training/city-strategy-opening-01/segment-001/midpoint.zip": "3ee25a1f4cc26c945d40084295bb01767ec252d947a0adb5d676516e0b8b63b4"
+  },
+  "host_sha256": "6f424aa1b462f0bf36226505a6e5fbdea174a11e483b87da6cece275a7b8b55d",
+  "horizon": 600,
+  "forced_action_inference_skipped": true,
+  "results": {
+    "0": {
+      "games": 32,
+      "scoring_games": 26,
+      "mean_score": 82.21875,
+      "new_targets": 131,
+      "new_targets_served": 101,
+      "new_target_stockouts": 14,
+      "median_new_service_delay": 23.0,
+      "mean_paid_units": 74.09375,
+      "mean_outside_observed_routes": 34.59375,
+      "outside_route_share": 0.46689160691691267,
+      "paired_score_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_new_targets_served_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "paired_outside_observed_routes_delta_and_interval": [
+        0.0,
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,439 @@
+{
+  "games": 768,
+  "models": [
+    "output/training/city-overnight-01/checkpoints/city-006234112-96926793.zip",
+    "output/training/city-route-progress-01/initialized-reconstructed.zip",
+    "output/training/city-route-progress-01/route-level-2.zip",
+    "output/training/city-route-progress-01/route-level-3.zip"
+  ],
+  "sha256": {
+    "output/training/city-overnight-01/checkpoints/city-006234112-96926793.zip": "a65357dea3e889525bfdc18743dbbeb02141ad244934b270217afad7a472df29",
+    "output/training/city-route-progress-01/initialized-reconstructed.zip": "ac22710e1ef4c05826aacd14823a03a129945f142980b11999d7f8e93d0afb18",
+    "output/training/city-route-progress-01/route-level-2.zip": "87be235b39453ee5fd0e9336c770af3ca31f2fb02a02be6636923776f696a0bb",
+    "output/training/city-route-progress-01/route-level-3.zip": "23a3a7026e0967df9bc7c2a67e5fa4550857600e2d86735b2cf450f527c9c786"
+  },
+  "results": {
+    "0": {
+      "route-gap-one": {
+        "games": 24,
+        "scoring": 24,
+        "mean_score": 1.0,
+        "wins": 0,
+        "losses": 0,
+        "paired_mean_delta": 0.0,
+        "paired_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "route-gap-two": {
+        "games": 24,
+        "scoring": 18,
+        "mean_score": 0.75,
+        "wins": 0,
+        "losses": 0,
+        "paired_mean_delta": 0.0,
+        "paired_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "route-gate-two": {
+        "games": 24,
+        "scoring": 0,
+        "mean_score": 0.0,
+        "wins": 0,
+        "losses": 0,
+        "paired_mean_delta": 0.0,
+        "paired_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "retained_stock": 0,
+        "mean_stock": 0.0
+      },
+      "route-gap-three": {
+        "games": 24,
+        "scoring": 1,
+        "mean_score": 0.041666666666666664,
+        "wins": 0,
+        "losses": 0,
+        "paired_mean_delta": 0.0,
+        "paired_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "route-short": {
+        "games": 24,
+        "scoring": 0,
+        "mean_score": 0.0,
+        "wins": 0,
+        "losses": 0,
+        "paired_mean_delta": 0.0,
+        "paired_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "route-long": {
+        "games": 24,
+        "scoring": 0,
+        "mean_score": 0.0,
+        "wins": 0,
+        "losses": 0,
+        "paired_mean_delta": 0.0,
+        "paired_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "route-delay": {
+        "games": 24,
+        "scoring": 0,
+        "mean_score": 0.0,
+        "wins": 0,
+        "losses": 0,
+        "paired_mean_delta": 0.0,
+        "paired_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "retained_stock": 0,
+        "mean_stock": 0.0
+      },
+      "city": {
+        "games": 24,
+        "scoring": 21,
+        "mean_score": 64.0,
+        "wins": 0,
+        "losses": 0,
+        "paired_mean_delta": 0.0,
+        "paired_bootstrap_95": [
+          0.0,
+          0.0
+        ],
+        "mean_paid_roads": 75.08333333333333,
+        "mean_outside_observed_routes": 33.458333333333336,
+        "early_stockouts": 1
+      }
+    },
+    "1": {
+      "route-gap-one": {
+        "games": 24,
+        "scoring": 24,
+        "mean_score": 1.0,
+        "wins": 0,
+        "losses": 0,
+        "paired_mean_delta": 0.0,
+        "paired_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "route-gap-two": {
+        "games": 24,
+        "scoring": 24,
+        "mean_score": 1.0,
+        "wins": 6,
+        "losses": 0,
+        "paired_mean_delta": 0.25,
+        "paired_bootstrap_95": [
+          0.08333333333333333,
+          0.4166666666666667
+        ]
+      },
+      "route-gate-two": {
+        "games": 24,
+        "scoring": 21,
+        "mean_score": 0.875,
+        "wins": 21,
+        "losses": 0,
+        "paired_mean_delta": 0.875,
+        "paired_bootstrap_95": [
+          0.7083333333333334,
+          1.0
+        ],
+        "retained_stock": 23,
+        "mean_stock": 2.1666666666666665
+      },
+      "route-gap-three": {
+        "games": 24,
+        "scoring": 24,
+        "mean_score": 1.0,
+        "wins": 23,
+        "losses": 0,
+        "paired_mean_delta": 0.9583333333333334,
+        "paired_bootstrap_95": [
+          0.875,
+          1.0
+        ]
+      },
+      "route-short": {
+        "games": 24,
+        "scoring": 24,
+        "mean_score": 1.0,
+        "wins": 24,
+        "losses": 0,
+        "paired_mean_delta": 1.0,
+        "paired_bootstrap_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "route-long": {
+        "games": 24,
+        "scoring": 24,
+        "mean_score": 1.0,
+        "wins": 24,
+        "losses": 0,
+        "paired_mean_delta": 1.0,
+        "paired_bootstrap_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "route-delay": {
+        "games": 24,
+        "scoring": 19,
+        "mean_score": 0.7916666666666666,
+        "wins": 19,
+        "losses": 0,
+        "paired_mean_delta": 0.7916666666666666,
+        "paired_bootstrap_95": [
+          0.625,
+          0.9583333333333334
+        ],
+        "retained_stock": 24,
+        "mean_stock": 2.2083333333333335
+      },
+      "city": {
+        "games": 24,
+        "scoring": 21,
+        "mean_score": 76.0,
+        "wins": 6,
+        "losses": 3,
+        "paired_mean_delta": 12.0,
+        "paired_bootstrap_95": [
+          -7.916666666666667,
+          30.87604166666665
+        ],
+        "mean_paid_roads": 79.45833333333333,
+        "mean_outside_observed_routes": 32.833333333333336,
+        "early_stockouts": 1
+      }
+    },
+    "2": {
+      "route-gap-one": {
+        "games": 24,
+        "scoring": 24,
+        "mean_score": 1.0,
+        "wins": 0,
+        "losses": 0,
+        "paired_mean_delta": 0.0,
+        "paired_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "route-gap-two": {
+        "games": 24,
+        "scoring": 24,
+        "mean_score": 1.0,
+        "wins": 6,
+        "losses": 0,
+        "paired_mean_delta": 0.25,
+        "paired_bootstrap_95": [
+          0.08333333333333333,
+          0.4166666666666667
+        ]
+      },
+      "route-gate-two": {
+        "games": 24,
+        "scoring": 21,
+        "mean_score": 0.875,
+        "wins": 21,
+        "losses": 0,
+        "paired_mean_delta": 0.875,
+        "paired_bootstrap_95": [
+          0.7083333333333334,
+          1.0
+        ],
+        "retained_stock": 23,
+        "mean_stock": 2.1666666666666665
+      },
+      "route-gap-three": {
+        "games": 24,
+        "scoring": 24,
+        "mean_score": 1.0,
+        "wins": 23,
+        "losses": 0,
+        "paired_mean_delta": 0.9583333333333334,
+        "paired_bootstrap_95": [
+          0.875,
+          1.0
+        ]
+      },
+      "route-short": {
+        "games": 24,
+        "scoring": 24,
+        "mean_score": 1.0,
+        "wins": 24,
+        "losses": 0,
+        "paired_mean_delta": 1.0,
+        "paired_bootstrap_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "route-long": {
+        "games": 24,
+        "scoring": 24,
+        "mean_score": 1.0,
+        "wins": 24,
+        "losses": 0,
+        "paired_mean_delta": 1.0,
+        "paired_bootstrap_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "route-delay": {
+        "games": 24,
+        "scoring": 19,
+        "mean_score": 0.7916666666666666,
+        "wins": 19,
+        "losses": 0,
+        "paired_mean_delta": 0.7916666666666666,
+        "paired_bootstrap_95": [
+          0.625,
+          0.9583333333333334
+        ],
+        "retained_stock": 23,
+        "mean_stock": 2.125
+      },
+      "city": {
+        "games": 24,
+        "scoring": 21,
+        "mean_score": 73.70833333333333,
+        "wins": 5,
+        "losses": 4,
+        "paired_mean_delta": 9.708333333333334,
+        "paired_bootstrap_95": [
+          -7.041666666666667,
+          27.25
+        ],
+        "mean_paid_roads": 77.79166666666667,
+        "mean_outside_observed_routes": 31.833333333333332,
+        "early_stockouts": 1
+      }
+    },
+    "3": {
+      "route-gap-one": {
+        "games": 24,
+        "scoring": 24,
+        "mean_score": 1.0,
+        "wins": 0,
+        "losses": 0,
+        "paired_mean_delta": 0.0,
+        "paired_bootstrap_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "route-gap-two": {
+        "games": 24,
+        "scoring": 24,
+        "mean_score": 1.0,
+        "wins": 6,
+        "losses": 0,
+        "paired_mean_delta": 0.25,
+        "paired_bootstrap_95": [
+          0.08333333333333333,
+          0.4166666666666667
+        ]
+      },
+      "route-gate-two": {
+        "games": 24,
+        "scoring": 21,
+        "mean_score": 0.875,
+        "wins": 21,
+        "losses": 0,
+        "paired_mean_delta": 0.875,
+        "paired_bootstrap_95": [
+          0.7083333333333334,
+          1.0
+        ],
+        "retained_stock": 24,
+        "mean_stock": 2.25
+      },
+      "route-gap-three": {
+        "games": 24,
+        "scoring": 24,
+        "mean_score": 1.0,
+        "wins": 23,
+        "losses": 0,
+        "paired_mean_delta": 0.9583333333333334,
+        "paired_bootstrap_95": [
+          0.875,
+          1.0
+        ]
+      },
+      "route-short": {
+        "games": 24,
+        "scoring": 24,
+        "mean_score": 1.0,
+        "wins": 24,
+        "losses": 0,
+        "paired_mean_delta": 1.0,
+        "paired_bootstrap_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "route-long": {
+        "games": 24,
+        "scoring": 24,
+        "mean_score": 1.0,
+        "wins": 24,
+        "losses": 0,
+        "paired_mean_delta": 1.0,
+        "paired_bootstrap_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "route-delay": {
+        "games": 24,
+        "scoring": 20,
+        "mean_score": 0.8333333333333334,
+        "wins": 20,
+        "losses": 0,
+        "paired_mean_delta": 0.8333333333333334,
+        "paired_bootstrap_95": [
+          0.6666666666666666,
+          0.9583333333333334
+        ],
+        "retained_stock": 24,
+        "mean_stock": 2.2083333333333335
+      },
+      "city": {
+        "games": 24,
+        "scoring": 21,
+        "mean_score": 78.45833333333333,
+        "wins": 6,
+        "losses": 3,
+        "paired_mean_delta": 14.458333333333334,
+        "paired_bootstrap_95": [
+          1.8322916666666675,
+          29.375
+        ],
+        "mean_paid_roads": 80.29166666666667,
+        "mean_outside_observed_routes": 33.583333333333336,
+        "early_stockouts": 1
+      }
+    }
+  },
+  "host_sha256": "be498a8ef6dde1bfe50bc96ed34bca92eb92c5c71c7ae819ad505c0957746b51",
+  "city_host_sha256": "2da58a5aeefa0e7d3416302d4532724b253e9ede05a998fccf40a324aeb5fe23"
+}

@@ -1,0 +1,33 @@
+{
+  "elapsed_seconds": {
+    "scripted": 32.23438886099029,
+    "legacy": 37.07457534899004,
+    "train": 33.50302091089543,
+    "greedy": 36.478158899000846,
+    "sampled": 36.7372517939657
+  },
+  "final_checkpoint_fingerprint": "1b2c65d2348923050f26b19538bb1c90f08f1c07fa9f5ef4af5073dc7e66996a",
+  "driveway_and_delivery": {
+    "greedy": {
+      "correct_driveway_unchanged": 25,
+      "fixed_wrong_driveway": 75,
+      "score_equals_scripted": 500,
+      "same_edits_as_reference": 500,
+      "mean_trips": 11.326,
+      "min_trips": 10,
+      "max_trips": 13
+    },
+    "sampled": {
+      "correct_driveway_unchanged": 25,
+      "fixed_wrong_driveway": 75,
+      "score_equals_scripted": 500,
+      "same_edits_as_reference": 500,
+      "mean_trips": 11.326,
+      "min_trips": 10,
+      "max_trips": 13
+    }
+  },
+  "tests_passed": 3,
+  "release_errors": 0,
+  "release_warnings": 0
+}

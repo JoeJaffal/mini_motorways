@@ -1,0 +1,44 @@
+{
+  "checkpoint_sha256": "7582e285e3f6b2b44487cf3fe86156169aa80d79272dccbe21dc408fed0bf324",
+  "exact_action_and_value_states": 12,
+  "value_only_gradient_names": [
+    "value_net.0.weight",
+    "value_net.0.bias",
+    "value_net.2.weight",
+    "value_net.2.bias"
+  ],
+  "value_only_update_changed": [
+    "value_net.0.weight",
+    "value_net.0.bias",
+    "value_net.2.weight",
+    "value_net.2.bias"
+  ],
+  "actions_exact_after_value_only_update": true,
+  "actor_gradient_names": [
+    "features_extractor.growth_strategy_roads.0.weight",
+    "features_extractor.growth_strategy_roads.0.bias",
+    "features_extractor.growth_strategy_roads.2.weight",
+    "features_extractor.growth_strategy_roads.2.bias",
+    "features_extractor.growth_strategy_spatial.0.weight",
+    "features_extractor.growth_strategy_spatial.0.bias",
+    "features_extractor.growth_strategy_spatial.2.weight",
+    "features_extractor.growth_strategy_spatial.2.bias",
+    "features_extractor.growth_strategy_spatial.4.weight",
+    "features_extractor.growth_strategy_spatial.4.bias",
+    "features_extractor.growth_strategy_spatial.6.weight",
+    "features_extractor.growth_strategy_spatial.6.bias",
+    "features_extractor.growth_strategy_spatial.8.weight",
+    "features_extractor.growth_strategy_spatial.8.bias",
+    "features_extractor.growth_strategy_spatial.10.weight",
+    "features_extractor.growth_strategy_spatial.10.bias",
+    "features_extractor.growth_strategy_spatial_roads.weight",
+    "features_extractor.growth_strategy_spatial_roads.bias"
+  ],
+  "actor_gradient_norms": {
+    "growth_strategy_roads": 1.7688196862764016e-07,
+    "growth_strategy_spatial": 0.0032883617095649242,
+    "growth_strategy_spatial_roads": 0.07650142908096313
+  },
+  "saved_checkpoint_unchanged": true,
+  "limits": "Disposable gradient/optimizer checks only; no effectiveness claim."
+}

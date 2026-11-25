@@ -1,0 +1,37 @@
+{
+  "checkpoints": [
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/small-city-offset-fit-01/ppo/checkpoint-000008192.zip",
+      "sha256": "ed96cf002fbb394c4b0c882685206deced91dcf50713a55021e60f6655b907ee",
+      "added_decisions": 8192,
+      "optimizer_steps_added": 256,
+      "episodes": 214,
+      "seconds": 134.94036784395576
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/small-city-offset-fit-01/ppo/midpoint.zip",
+      "sha256": "84278d322851104bbeb6aab195d02fcf1899672766afb268b50fc87c9789cd84",
+      "added_decisions": 16384,
+      "optimizer_steps_added": 512,
+      "episodes": 430,
+      "seconds": 266.85524698195513
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/small-city-offset-fit-01/ppo/checkpoint-000024576.zip",
+      "sha256": "4714c5aca0c327a2f19dc418502e773f63a2847d33dd2609440cb789f1a5e44e",
+      "added_decisions": 24576,
+      "optimizer_steps_added": 768,
+      "episodes": 655,
+      "seconds": 400.667084709974
+    },
+    {
+      "path": "/home/mohammadjaffal/mini_motorways/output/training/small-city-offset-fit-01/ppo/final.zip",
+      "sha256": "8bfe05d67d7b9a0738ea97e23d45aefd6cdbefe64b15882076951a197901ab77",
+      "added_decisions": 32768,
+      "optimizer_steps_added": 1024,
+      "episodes": 882,
+      "seconds": 534.9803299939958
+    }
+  ],
+  "seconds": 534.984279241995
+}

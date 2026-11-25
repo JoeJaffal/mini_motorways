@@ -1,0 +1,6 @@
+{
+  "samples": 16384,
+  "array_gib": 8.33465576171875,
+  "conservative_double_array_gib": 16.6693115234375,
+  "note": "Estimate excludes processes/model/temporary minibatches. No concurrent evaluation until trainer exits. 2048 per worker rejected for this16-worker trial due peak RAM risk."
+}

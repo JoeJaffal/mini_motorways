@@ -1,0 +1,496 @@
+{
+  "created_utc": "2026-11-21T12:07:01.288170+00:00",
+  "git_base": "6bd7f71",
+  "branch": "mohammad",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 19470,
+      "sha256": "409deca2da2abb6fadb1ecd34b814b02d613ef1de1ba4b2ca082cdb3ac70d8a6"
+    },
+    {
+      "path": "diagnose_junction.py",
+      "bytes": 6094,
+      "sha256": "e0402a1e7d5c64bb46f8e11c64f074dfa34fa05c329715e28512610feeaff2a7"
+    },
+    {
+      "path": "diagnose_symmetry.py",
+      "bytes": 3077,
+      "sha256": "d46e2eb27bb5688bfeaa98038a74c0a49d5c6e9075b779e86a4b721c6c03eb90"
+    },
+    {
+      "path": "junction-calibration.patch",
+      "bytes": 2864,
+      "sha256": "a646f6a8b6607965b57667b69e0ebb4c41be85442b611722cde075529967a551"
+    },
+    {
+      "path": "junction-economy.patch",
+      "bytes": 3035,
+      "sha256": "3c526347d78abdee747984b3fd4cbfa50a384892be6ec851238b34cf1f316e7e"
+    },
+    {
+      "path": "live-junction.patch",
+      "bytes": 5338,
+      "sha256": "92e028a13df62a07e6e486969e2b28566005dd77e51df5a4ad8606aaf345375d"
+    },
+    {
+      "path": "measurements/live-delay-controls-01.json",
+      "bytes": 254683,
+      "sha256": "ab195ef13c396545496d8be3e92d4d29b3fa46814fcee43388bbd4bff05dae89"
+    },
+    {
+      "path": "measurements/live-intermediate-01-cues.json",
+      "bytes": 23986,
+      "sha256": "ff4929a0467101cdedf1596334fa98eff40d4016bb97007bd9a1942f3e680312"
+    },
+    {
+      "path": "measurements/live-intermediate-01-frozen.json",
+      "bytes": 123786,
+      "sha256": "9539e51e59411613f5eb8becbfaf66cb4a32c19e583b9d0b5f783e2c5294b8dc"
+    },
+    {
+      "path": "measurements/live-intermediate-02-frozen.json",
+      "bytes": 123904,
+      "sha256": "399a1d57ed4adbf95bbf5d9b42d87e055c86c7576ca7be105c89245f869570cf"
+    },
+    {
+      "path": "measurements/live-intermediate-03-frozen.json",
+      "bytes": 123977,
+      "sha256": "a68a0fc0bd0742709c5c05d37ec822418ecae65098af40838b9be9da876a6f44"
+    },
+    {
+      "path": "measurements/live-intermediate-04-cues.json",
+      "bytes": 77421,
+      "sha256": "c22d29bba417c58a50475a924e3b3ff24b388a20ebb0a5adab7e3d475a59baa9"
+    },
+    {
+      "path": "measurements/live-intermediate-04-frozen.json",
+      "bytes": 124100,
+      "sha256": "502f22e9cca2dea542fc95faac142965f024115ad8efb97ae8708abb9b8350f2"
+    },
+    {
+      "path": "measurements/live-junction-test.json",
+      "bytes": 110612,
+      "sha256": "082be39ef119311226dea937eed89f5dcc178231ff2f8034ba36b82be8156c6c"
+    },
+    {
+      "path": "measurements/pre-surge-intermediate-01-frozen.json",
+      "bytes": 111559,
+      "sha256": "30e198a2a277e2a4ce13ef5740be45321bfe5fa2439c31ddb248d12b409382f3"
+    },
+    {
+      "path": "measurements/stock-short-test.json",
+      "bytes": 223495,
+      "sha256": "e626f9b452e13eb4aface147286f1e50a70f205b469994a945961b2edacd4e6e"
+    },
+    {
+      "path": "measurements/traffic-integrated-priority-initial-01.json",
+      "bytes": 304890,
+      "sha256": "b16e2c4c79946785b49a4e9c8450338a0db84f5d15aee8d787492568590a5fa2"
+    },
+    {
+      "path": "measurements/traffic-junction-calibration-01.json",
+      "bytes": 165297,
+      "sha256": "f397b08d3eb250f36d91f7e47a989593f7621fa19f2f993a7576672c418f5fa3"
+    },
+    {
+      "path": "measurements/traffic-junction-controls-01.json",
+      "bytes": 145332,
+      "sha256": "52fe770b26faf64127187cccec72b0eca03695ac69175a294036daa6ae3fb771"
+    },
+    {
+      "path": "measurements/traffic-junction-economy-controls-01.json",
+      "bytes": 123397,
+      "sha256": "cb8116cd0bd26c2f4d3172f68ceb94811d16dbebae1e3afaf405af65598093a4"
+    },
+    {
+      "path": "measurements/traffic-live-combined-heldout-controls-01.json",
+      "bytes": 468423,
+      "sha256": "f9d7cda82342a6e2c33f6ac0cb802eac0befe39bbedc040a454f7b87f783fe8b"
+    },
+    {
+      "path": "measurements/traffic-live-cue-audit-01.json",
+      "bytes": 128499,
+      "sha256": "70d41cf04a1cff0a1ee5c40ba186e5d98f92773e50e22cbd4e7483978d0bbbaa"
+    },
+    {
+      "path": "measurements/traffic-live-heldout-controls-01.json",
+      "bytes": 459782,
+      "sha256": "1db99a42a89e449fb89f4d5e715858ef4cc4197861fa11520601d98052fe9791"
+    },
+    {
+      "path": "measurements/traffic-live-heldout-eval-01.json",
+      "bytes": 309605,
+      "sha256": "ba73a0b6537cab79f2974f9783b32933b71e6855fe18270e510b8845e57a1126"
+    },
+    {
+      "path": "measurements/traffic-live-reflection-control-01.json",
+      "bytes": 151047,
+      "sha256": "f5cda029318c7a3ecef3a5923f2b2b91aa461e0bde3aa5efc3223280e70cf950"
+    },
+    {
+      "path": "measurements/traffic-live-varied-baseline-01.json",
+      "bytes": 225553,
+      "sha256": "6d71c1d7961962bf21141b36e5bfbe0cb9fcfeb0411dfbda1862c2782b154b92"
+    },
+    {
+      "path": "measurements/traffic-live-varied-controls-01.json",
+      "bytes": 335929,
+      "sha256": "4392f75632cf672bad186fcaaf5d3e424f3f7237b6c314b0907581b408957f2c"
+    },
+    {
+      "path": "measurements/traffic-pre-surge-heldout-controls-01.json",
+      "bytes": 1245420,
+      "sha256": "e1c70e67221be6e5633f2f9a479a77a7d97379ad3222a13c7fe625fd4281f9a1"
+    },
+    {
+      "path": "measurements/traffic-pre-surge-initial-heldout-01.json",
+      "bytes": 278206,
+      "sha256": "0def76747ce3370dfb4430753246c47ec7e2fdcb219903a5869fd1cc576b59a3"
+    },
+    {
+      "path": "measurements/traffic-priority-controls-01.json",
+      "bytes": 213849,
+      "sha256": "36ef1335fc95fc5048b9456e26b9506f1f020e6c00ecefbbc1b32a8750ec47bd"
+    },
+    {
+      "path": "measurements/traffic-priority-demand-heldout-01.json",
+      "bytes": 316239,
+      "sha256": "cc6540eeca0cfbf95779aed4978b2b3f8a7352d903ce47cc303265ccbcfb1b7d"
+    },
+    {
+      "path": "measurements/traffic-priority-heldout-controls-01.json",
+      "bytes": 445466,
+      "sha256": "caff0268096c97f4395f1c336535c5b6c2c1af62c935f567640659327d76d9cf"
+    },
+    {
+      "path": "measurements/traffic-priority-ppo-heldout-01.json",
+      "bytes": 312451,
+      "sha256": "1527ce4dbb8069f65f43f91d8797b9f48aad03e236cf8ed90b674b69768b8764"
+    },
+    {
+      "path": "measurements/traffic-priority-roots-heldout-01.json",
+      "bytes": 315907,
+      "sha256": "cc9d8624829c7f9b260affdc996d8ccb6343d14b5c229a69ea0de34c478feddb"
+    },
+    {
+      "path": "measurements/traffic-priority-three-controls-01.json",
+      "bytes": 231635,
+      "sha256": "b014a491510c8cea70b08b82e89e3cfae79b5f190ae7099da2fc1e867a44cdb1"
+    },
+    {
+      "path": "measurements/traffic-priority-three-heldout-controls-01.json",
+      "bytes": 643097,
+      "sha256": "d1da37fa65bf9c28857a1fcf766a11538a2e2ee34c60cd84120d2166b1e9c120"
+    },
+    {
+      "path": "measurements/traffic-priority-three-heldout-eval-01.json",
+      "bytes": 337336,
+      "sha256": "ad95c893e36d97e81d71ceb1308238c84481baf6fd3c4ceb55403f68fd82711f"
+    },
+    {
+      "path": "measurements/traffic-stockrush-heldout-controls-01.json",
+      "bytes": 619382,
+      "sha256": "19b0892074dbb71d28dcf4820bfb31ed307b19769d5ddf3d36c9008bfcf535ed"
+    },
+    {
+      "path": "measurements/traffic-stockrush-heldout-eval-01.json",
+      "bytes": 317992,
+      "sha256": "670aca0de1a163be950faa56248bb61da742e281bd187ffcf2d1cdc987084e3a"
+    },
+    {
+      "path": "measurements/traffic-surge-rush-controls-01.json",
+      "bytes": 307629,
+      "sha256": "2340966c29e151d0ab4531227be8a4b4809536c037389f69b7a127f2ef717c59"
+    },
+    {
+      "path": "native-controls.png",
+      "bytes": 168621,
+      "sha256": "e6d2e33b92284411556b9dc55d7a7cd653f3b4798195eb00fbbb17c5a2975d33"
+    },
+    {
+      "path": "plot_controls.py",
+      "bytes": 2818,
+      "sha256": "842577f12997afcb0eb9ea8b3b2e21f610566c8f0a8473be547c77d710474e53"
+    },
+    {
+      "path": "priority-and-junction.patch",
+      "bytes": 9205,
+      "sha256": "e0b87f5be1b20ca2dac2ec34a0e470467a6d6f5967b157e8ff35886204df8ae2"
+    },
+    {
+      "path": "runs/traffic-integrated-ppo-01/config.json",
+      "bytes": 935,
+      "sha256": "fa5ec4468a6bae36a0f762cf8454c831ee24319c48cdcaf71feab11b27ebba35"
+    },
+    {
+      "path": "runs/traffic-integrated-ppo-01/progress.jsonl",
+      "bytes": 2755,
+      "sha256": "902085f3bf79b2813f631e8e6f06554cf67104c7140097e086838179087136ac"
+    },
+    {
+      "path": "runs/traffic-live-endpoints-01/config.json",
+      "bytes": 1024,
+      "sha256": "8124e5df55e418bf95a0c490f9e0bbc4a64590cd3ea74b2f87c347f3b63d6ff5"
+    },
+    {
+      "path": "runs/traffic-live-ppo-01/config.json",
+      "bytes": 644,
+      "sha256": "d7f63316003fe4e2d74df9843dc6f45ed9d1b2d94bf8e66b71606b3a2002e4e8"
+    },
+    {
+      "path": "runs/traffic-live-ppo-01/progress.jsonl",
+      "bytes": 8911,
+      "sha256": "94341d205f9215219da78f0bca205d686b92af9b9d0b60a39c6494bdda3980d8"
+    },
+    {
+      "path": "runs/traffic-live-ppo-01/status.json",
+      "bytes": 135,
+      "sha256": "5179c09d946dc28fec1535b0fab0cad0cdfe7889e719653480b91999be43b078"
+    },
+    {
+      "path": "runs/traffic-live-relation-01/config.json",
+      "bytes": 670,
+      "sha256": "eaf985194de5fcea1467bf9caad8c4b0938fb6a92da85714fcba0bf401c63806"
+    },
+    {
+      "path": "runs/traffic-live-relation-01/progress.jsonl",
+      "bytes": 10380,
+      "sha256": "eb1803c053843d39cda5583d123d569c4e1721ae98d140e5aef63d550939b869"
+    },
+    {
+      "path": "runs/traffic-live-relation-01/status.json",
+      "bytes": 130,
+      "sha256": "5c861a835918cbaf10243d9d3ecb337aae508890524f429e04fd61df4773d73a"
+    },
+    {
+      "path": "runs/traffic-live-varied-ppo-01/config.json",
+      "bytes": 1043,
+      "sha256": "4897f125b86accefdb9ea28f12817ed909f7e3919c736a3c01e77bc0c507f3d2"
+    },
+    {
+      "path": "runs/traffic-live-varied-ppo-01/progress.jsonl",
+      "bytes": 11196,
+      "sha256": "ff6bedd17da59c130df6feac968fdcd24bf6f13cc7c5ad7c3999aaebcdc21b98"
+    },
+    {
+      "path": "runs/traffic-pre-surge-longwait-01/config.json",
+      "bytes": 906,
+      "sha256": "141a7147628ebd9b352eccd69676cb4dd2c2b1dda292c293985a14dc973aca2a"
+    },
+    {
+      "path": "runs/traffic-pre-surge-longwait-01/progress.jsonl",
+      "bytes": 5444,
+      "sha256": "5ea206bf294a02859dcdfbc0b5db5d6a8dd015a29f9cb8edf5766f0cdb9d52be"
+    },
+    {
+      "path": "runs/traffic-pre-surge-ppo-01/config.json",
+      "bytes": 906,
+      "sha256": "c8b8bf686f76d447cdc4b35c805daac4340913919a092c8793e6379836245c41"
+    },
+    {
+      "path": "runs/traffic-pre-surge-ppo-01/progress.jsonl",
+      "bytes": 11722,
+      "sha256": "52d94adfa71c1ef12d7f364976c0ea5b95675a23a884dc6cf45b91df83c317b7"
+    },
+    {
+      "path": "runs/traffic-priority-demand-01/config.json",
+      "bytes": 613,
+      "sha256": "09b95df617a1b68451871047ec6e3673f1861bb0f63f97e17d37583da4d3f561"
+    },
+    {
+      "path": "runs/traffic-priority-demand-01/progress.jsonl",
+      "bytes": 6262,
+      "sha256": "bea93a7ad1d0ba5ac865801df1beb6808edb6e168712156cd23d94a87e807acc"
+    },
+    {
+      "path": "runs/traffic-priority-demand-01/status.json",
+      "bytes": 134,
+      "sha256": "8c09822c8629e806102e7af8d85b0dcac0c7b2d5be1c9458fef179486eb7ea6e"
+    },
+    {
+      "path": "runs/traffic-priority-ppo-01/config.json",
+      "bytes": 570,
+      "sha256": "b2356ed69e25ee1bf5dde805e3c8e41bad6f730f9f332c7b1a9df092958feed3"
+    },
+    {
+      "path": "runs/traffic-priority-ppo-01/progress.jsonl",
+      "bytes": 5751,
+      "sha256": "90925c76415e7630fff289caecf2ff9c36a035bed3f2589b9ba9aa1dbda5f08d"
+    },
+    {
+      "path": "runs/traffic-priority-ppo-01/status.json",
+      "bytes": 134,
+      "sha256": "530ebeaceecb74d1a3232026a87ee6af7a2a02059e31c9b6c45f4f47eea01e8e"
+    },
+    {
+      "path": "runs/traffic-priority-roots-01/config.json",
+      "bytes": 586,
+      "sha256": "4a192b9689dd2ca2799352118231f4295dc708e47b175022b686dec3a044f174"
+    },
+    {
+      "path": "runs/traffic-priority-roots-01/progress.jsonl",
+      "bytes": 5741,
+      "sha256": "3a85672991172f3053bc8ea31f717174534fe77b7c9673f1b0439b8e3781c391"
+    },
+    {
+      "path": "runs/traffic-priority-roots-01/status.json",
+      "bytes": 133,
+      "sha256": "e92b883e600e03762093cdac5f1d0f340638a9d1ea39c4380e911e38c15d9262"
+    },
+    {
+      "path": "runs/traffic-priority-three-ppo-01/config.json",
+      "bytes": 833,
+      "sha256": "61ee8daf3f39c13763cc0b2e2bf6551f3231e24b907e2f278ac5ca62b8b2e40a"
+    },
+    {
+      "path": "runs/traffic-priority-three-ppo-01/progress.jsonl",
+      "bytes": 19247,
+      "sha256": "9267109c1c3ea6e8574fa0948e616e9f5a25a72cdc7a0886cf469eb78c27e7c2"
+    },
+    {
+      "path": "runs/traffic-priority-three-ppo-01/status.json",
+      "bytes": 134,
+      "sha256": "6ba8278535f9ece4ff1d083fd866b0fab8c36e69c90ffbc9cea3e2001df16dc4"
+    },
+    {
+      "path": "runs/traffic-stockrush-ppo-01/config.json",
+      "bytes": 655,
+      "sha256": "06e12edf2973814b4b34e28e1eb3c92f30c9a2f99b044753fde95d8f156a3026"
+    },
+    {
+      "path": "runs/traffic-stockrush-ppo-01/progress.jsonl",
+      "bytes": 9138,
+      "sha256": "2bd33c868f9a996ad21461da7ce67e05ad0813699bf00ca07f4897c401bc0f05"
+    },
+    {
+      "path": "runs/traffic-stockrush-ppo-01/status.json",
+      "bytes": 135,
+      "sha256": "2e230a0d66b7c4ddba65477a48989f7db20e912b5847a7904024665247aba1c6"
+    },
+    {
+      "path": "summarize_evaluation.py",
+      "bytes": 3100,
+      "sha256": "c7f08fda83ad1d7b804b03ec6d053d239cc0f0e447c9ac3ee4ee0725193c351b"
+    },
+    {
+      "path": "surge-sensitivity.patch",
+      "bytes": 1726,
+      "sha256": "075d931b1916aec521c92079c0f243cf3203906fc51afa7043840ee35cfdb2c6"
+    },
+    {
+      "path": "three-pairs.patch",
+      "bytes": 4046,
+      "sha256": "eb05210ad3616bae21d5ee4d3feb4722c341da2e1af8fd0efa6968cf29ec19fa"
+    },
+    {
+      "path": "varied-junction.patch",
+      "bytes": 2942,
+      "sha256": "60620b1e0de27cbf53370d1fc321c39a00a59ed96d20e2155a514db61b5176bc"
+    }
+  ],
+  "local_checkpoints": [
+    {
+      "path": "output/training/traffic-integrated-ppo-01/initial.zip",
+      "sha256": "220f32721090e6d2f59c481226fa0c49c02b4eed22c08835859e5129fcc105e0"
+    },
+    {
+      "path": "output/training/traffic-integrated-ppo-01/latest.zip",
+      "sha256": "20bac29034399d07645e70f03c6ace04683dd66dd4d5acb5e64e2f9fa1cb141b"
+    },
+    {
+      "path": "output/training/traffic-live-endpoints-01/initial.zip",
+      "sha256": "30d696214f31e006c38a4c14abe6b492bbc00cdcb2e58d50efaf9fb947d8975e"
+    },
+    {
+      "path": "output/training/traffic-live-ppo-01/initial.zip",
+      "sha256": "8e658a9bb55976719964714b5316554becf5ddf75ba296aedcf9468a9b678c96"
+    },
+    {
+      "path": "output/training/traffic-live-ppo-01/latest.zip",
+      "sha256": "d1c2375d700c8318890d95146160ab3dec4d49d92d5403d74aecf327628f3043"
+    },
+    {
+      "path": "output/training/traffic-live-relation-01/initial.zip",
+      "sha256": "e60a1dc7a7d77e8534b44ed2189782a0d3ddcda6e6beb3aac6390a48af033086"
+    },
+    {
+      "path": "output/training/traffic-live-relation-01/latest.zip",
+      "sha256": "145d3b39cec12bd6d776b3d0e03da016dfb886e698a252f4f1ec46c1e88c8083"
+    },
+    {
+      "path": "output/training/traffic-live-varied-ppo-01/initial.zip",
+      "sha256": "ae3b587a4e62349a707b17e3f8e8c34fc8c4b1aa7d9af9cdeb9a6ecfe1be14f0"
+    },
+    {
+      "path": "output/training/traffic-live-varied-ppo-01/latest.zip",
+      "sha256": "7bc34dfc89a4557c3180c18efe19adf8512ecc4068ec5c019603c5796eb215d3"
+    },
+    {
+      "path": "output/training/traffic-pre-surge-longwait-01/initial.zip",
+      "sha256": "a13f1d3ba4bfe2d8bdf9602b34bffb9e8fa5feff8bbaa19ce7a32e62a0585c7b"
+    },
+    {
+      "path": "output/training/traffic-pre-surge-longwait-01/latest.zip",
+      "sha256": "c8814dfa1f7522fd1fc9f33361366b2c14043bffbc27d2d85f0a0094213c77ca"
+    },
+    {
+      "path": "output/training/traffic-pre-surge-ppo-01/initial.zip",
+      "sha256": "18dc370ef3e2c7d1518ceabf47ca5e27be9c65b242a4b21b6ff76bd0790184cd"
+    },
+    {
+      "path": "output/training/traffic-pre-surge-ppo-01/latest.zip",
+      "sha256": "42a7a0e36bf059c527c196d020d9dbb2389d73bc920decb0b6a1b9f995331cd2"
+    },
+    {
+      "path": "output/training/traffic-priority-demand-01/initial.zip",
+      "sha256": "7e1b7e5a7b46c364ccc4e6f22d40232c0679702c1b830b7e1ebc7ab952c4f06c"
+    },
+    {
+      "path": "output/training/traffic-priority-demand-01/latest.zip",
+      "sha256": "be9b87e6390ff8d158a8fb29f9e1bee875c4786c9c95d37983e73a376d301710"
+    },
+    {
+      "path": "output/training/traffic-priority-ppo-01/initial.zip",
+      "sha256": "6c9437646d62f1dee96bd6a8978672da613275873b27298088999a5aad5ceec0"
+    },
+    {
+      "path": "output/training/traffic-priority-ppo-01/latest.zip",
+      "sha256": "7d9118acc97d8e433119ebfc4e7e13a38cbcaea078be63e317f6da3e94084507"
+    },
+    {
+      "path": "output/training/traffic-priority-roots-01/initial.zip",
+      "sha256": "171c7201d1187035527c87732b390321b1de99382b86481b12297ee2ab91dac0"
+    },
+    {
+      "path": "output/training/traffic-priority-roots-01/latest.zip",
+      "sha256": "d60092769f544e878b3046cf9042dcd9024a71339304c5f0a29079950d2b1cc2"
+    },
+    {
+      "path": "output/training/traffic-priority-three-ppo-01/initial.zip",
+      "sha256": "ce8f0da16c9eb40f56933f51f08d0443c0cb4cc863689f7e74445e0d9a05215c"
+    },
+    {
+      "path": "output/training/traffic-priority-three-ppo-01/latest.zip",
+      "sha256": "36f7a0ec2ecadfcf47b1ace17e91f11aca492d20fa71536480243066f7a4ef34"
+    },
+    {
+      "path": "output/training/traffic-stockrush-ppo-01/initial.zip",
+      "sha256": "11e3fb3e3383074874d68508383b46bd41043aa1d8c56248565129d3012c2491"
+    },
+    {
+      "path": "output/training/traffic-stockrush-ppo-01/latest.zip",
+      "sha256": "a1dd3c50a845bb28628314c5fe797489c67961cd39675116c764c8c7ee37408c"
+    }
+  ],
+  "checkout_sources": [
+    {
+      "path": "training/traffic_ppo.py",
+      "sha256": "fa479b7690151b9055e7b13c00c0275866b859ab06cbaa391f7af2dd60b0d5dd"
+    },
+    {
+      "path": "training/traffic_practice.py",
+      "sha256": "f22db69f16f16da939827a163978ebbe348301fd805a1548d2e9b7b6cd615d08"
+    }
+  ]
+}

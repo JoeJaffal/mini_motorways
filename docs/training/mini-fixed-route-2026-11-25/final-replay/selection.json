@@ -1,0 +1,27 @@
+{
+  "selection": "Lowest action RNG in each final success/failure group. Illustrative training-layout cases; different action draws, same checkpoint.",
+  "selected": {
+    "success": {
+      "seed": 232000001,
+      "action_seed": 622001,
+      "score": 18.0,
+      "success": true,
+      "road_actions": 10,
+      "remaining_stock": 0,
+      "seconds": 300,
+      "initial_raw_sha256": "b4361e3252ff29db232fec53fc52460d5ff91bba718200737429db56a1cedba2",
+      "initial_observation_sha256": "542d7006f15a32f4801d4c4a49616fd8466d4a73fb66a9bd3a526be27d94a876"
+    },
+    "failure": {
+      "seed": 232000001,
+      "action_seed": 622000,
+      "score": 0.0,
+      "success": false,
+      "road_actions": 10,
+      "remaining_stock": 0,
+      "seconds": 147.9,
+      "initial_raw_sha256": "b4361e3252ff29db232fec53fc52460d5ff91bba718200737429db56a1cedba2",
+      "initial_observation_sha256": "542d7006f15a32f4801d4c4a49616fd8466d4a73fb66a9bd3a526be27d94a876"
+    }
+  }
+}

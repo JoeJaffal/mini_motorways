@@ -1,0 +1,33 @@
+{
+  "checkpoint": "/home/mohammadjaffal/mini_motorways/output/training/expansion-comparison-01/expansion/midpoint.zip",
+  "sha256": "96c15fe7b48125d29d58a7fae81ec7737aa4cf0f7dd4465f185086dae793ed20",
+  "host_sha256": "a3a225f8f02273b870d5f4d1d0416c1a4f5df35a9d5576d3ba9e223f019c42f0",
+  "results": {
+    "validation/small-city-offset-single": {
+      "score": 1.890625,
+      "first_served": 0.515625,
+      "later_exists": 0.0,
+      "later_served": 0.0,
+      "both_served": 0.0,
+      "initial_stock": 7.65625,
+      "remaining_stock": 0.671875,
+      "paid_units": 6.984375,
+      "outside_routes": 4.046875,
+      "no_build": 0.0,
+      "games": 64
+    },
+    "validation/small-city-offset-pairs": {
+      "score": 2.671875,
+      "first_served": 0.65625,
+      "later_exists": 0.9375,
+      "later_served": 0.203125,
+      "both_served": 0.203125,
+      "initial_stock": 14.25,
+      "remaining_stock": 0.0,
+      "paid_units": 14.25,
+      "outside_routes": 8.765625,
+      "no_build": 0.0,
+      "games": 64
+    }
+  }
+}

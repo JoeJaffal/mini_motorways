@@ -1,0 +1,14 @@
+--- ConstructionCurriculum.cs
++++ ConstructionCurriculum.cs
+@@ -22,6 +22,11 @@
+             }
+             if (split != "train" && split != "validation")
+                 throw new ArgumentException("Unknown curriculum split");
++            if (exercise.StartsWith("pair-", StringComparison.Ordinal))
++            {
++                LoadPairDiagnostic(seed, exercise);
++                return;
++            }
+             if (exercise != "adjacent" && exercise != "bend" && exercise != "driveway" &&
+                 exercise != "clear" && exercise != "obstacle" &&
+                 exercise != "route-short" && exercise != "route-long" && exercise != "route-delay" &&
