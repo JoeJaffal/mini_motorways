@@ -40,6 +40,8 @@
 
 [Opening regression repair and bounded retention checks](city-regression-repair-2026-11-23/README.md) records replayed failures, a frozen opening reference, and the 16-city review.
 
+New cloud chat: [start here](../../training/CLOUD_START_HERE.md). RootAGENTS.md points to this portable context guide; inspect currentcloudwork before assuming older setup state.
+
 # Start here: Maskable PPO restart
 
 [Learning audit and guarded long-run command](city-learning-readiness-2026-11-23/README.md) records spatial actor updates, three pilots and fresh retention evidence.

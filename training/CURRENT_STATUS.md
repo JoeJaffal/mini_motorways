@@ -211,6 +211,8 @@ User prohibits training sessions. Linux environment setup verified from user out
 
 [Six-question response](../docs/training/simulator-repairs-2026-11-08/ORIGINAL_SPACE_CHECK_RULE_ANSWER.md). Conditional gap checking plus eligible-prefix arbitration/blocking-cycle recovery confirmed; no blanket box rule or guarantee ofv21fix. Read-only source/config audit only; no engine/fixture/run changes. Runtime45sfeature and stopped-connection geometry remain unresolved.
 
+17November cloud continuity: read [CLOUD_START_HERE.md](CLOUD_START_HERE.md), then currentdecisions/handoff. RootAGENTS.md now namesMaskable-PPO and portableentrypoints. Cloud environment is notAlienware; inspect actualcloudwork before relying on16Novstoppingpoint. No newmodel/training progress verified in this turn.
+
 Decision publication update,16November: user explicitly requests pushing detailed decisions toMaskable-PPO. [CURRENT DECISIONS](../docs/training/DECISIONS.md) is the primary entry point. Selected prior ledgers/specification/workbook/review/hardware/time records migrated byte-identically (50files); latest hierarchy/curriculum/Stage1approvals take precedence. UpdateLinuxclone with `git pull --ff-only origin Maskable-PPO`. Simulator source unchanged; no newtrainer or training. Earlier local-only/migration-pending statements below are historical.
 
 New-chat continuation: read [HANDOFF.md](HANDOFF.md). User reports Linux30GBfree and successful clone ofMaskable-PPO into~/mini_motorways. Next is verify checkout/workspace and isolated environment setup; no dependencies installed or new trainer implemented in this chat. Planning records here remain local/uncommitted, not in Linux clone.

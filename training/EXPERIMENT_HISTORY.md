@@ -8018,6 +8018,11 @@ User explicitly asks to push detailed decisions for the other computer. Selected
 Detailed decisions committed as4c0700d508636c8e3930bbc26beb71b1ee5dcb38 (84files) and successfully pushed toorigin/Maskable-PPO. Verified remote head equals local commit; worktree clean immediately after publication. GitHub entry point: https://github.com/JoeJaffal/mini_motorways/blob/Maskable-PPO/docs/training/DECISIONS.md . Linux clone must pull to receive it. No source simulator/trainer change or training run.
 
 
+## 17 November 2026 — Cloud continuity guide and stale branch guidance corrected
+
+User reports new cloud chat seems to lack accumulated context. Verified remoteMaskable-PPO still6bd7f71 before changes. Found concrete instruction conflict: rootAGENTS.md still said training stays onmohammad, while explicit user instruction/handoff selectedMaskable-PPO. Corrected root guidance toread portablecloudstart/currentdecisions/handoff and useMaskable-PPO as source branch. Added training/CLOUD_START_HERE.md with approved rules, hierarchy/curriculum/gate, detailed-source precedence, device distinction and known stopping point. No automatic chat-history inheritance claim; no access to new cloud chat or verification of its code/state. Existing local16Novstate is not assumed to override newcloudprogress. Documentation publication follows prior request to make detailed decisions available to the other environment. No simulator/trainer edit or training. Checks: primary guide links, branch instruction consistency, no altered userconstraints; existingwork preserved.
+
+
 ## 16 November 2026 — Maskable-PPO setup verified; preparation only
 
 **User decisions:** Work only on Maskable-PPO; prioritize training efficiency on Ryzen 9 3950X/32GB/RTX2080Ti; prepare implementation but do not launch any training sessions. Prior approved hierarchy/curriculum and score-only/no-planner/paused edits preserved.
@@ -10180,3 +10185,8 @@ Recommended follow-up is a bounded retention-aware combination of affordable rou
 ## Publication preparation — 2026-11-26T00:36:00.286109+02:00
 
 User requested push of the current project. Local Maskable-PPO starts at6bd7f71 with accumulated source and archived experiment work. Remote is84d209b (older cloud-continuation documentation); fetched metadata without pulling or resetting files. Preserve both histories and reconcile documentation before a normal non-force push. Pending source/archive scan found no model-weight/generated-binary extensions or credential-pattern hits; ignored checkpoints, runtimes and private reference directories remain local. Training Python source syntax and tracked diff whitespace checks pass. No training launched. Publication outcome will be verified against the remote ref.
+
+
+## Publication reconciliation — 2026-11-26T00:37:10.962442+02:00
+
+Committed local work as74820ad, preserving all existing source and archived evidence. In an isolated temporary worktree, merged remote84d209b without force or reset. Four documentation overlaps resolved by retaining both histories and adding current precedence to the cloud entry point; no simulator/trainer source changed during reconciliation. Training syntax checks and the task-reporting unit test pass. Credential-pattern scan found no hits among pending files; weights/binaries/private reference directories remain excluded. Git author identity was absent locally, so commit commands used the existing branch publication author identity without changing global configuration. Push and remote-head verification follow.
