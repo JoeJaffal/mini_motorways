@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "scenario_sha256": "cd2d76c8f681098f32f245bec7d0aaaf11e26ceb6adb7939e18c4c2e9b6acb68",
+  "design_sha256": "de4cd0c1ad3b9dc871607154ce7d69633cafabe01db9661a1d882a15b9a7904f",
+  "design_label": "random legal engineering fixture; not GP",
+  "metrics": {
+    "NR": 10,
+    "AD": 1.0165060966813824,
+    "SC": 6.241118433413958,
+    "unreachable_place_pairs": 0,
+    "unserved_places": 0,
+    "added_segments": 33,
+    "budget_complete": true
+  },
+  "trace": [
+    {
+      "step": 1,
+      "edge_id": "e070",
+      "unserved_places": 10,
+      "SC": 0.25355753382780544
+    },
+    {
+      "step": 2,
+      "edge_id": "e077",
+      "unserved_places": 9,
+      "SC": 0.44947034908594646
+    },
+    {
+      "step": 3,
+      "edge_id": "e057",
+      "unserved_places": 7,
+      "SC": 0.6381291386415157
+    },
+    {
+      "step": 4,
+      "edge_id": "e012",
+      "unserved_places": 6,
+      "SC": 0.8076298359417555
+    },
+    {
+      "step": 5,
+      "edge_id": "e040",
+      "unserved_places": 5,
+      "SC": 0.8756525970938956
+    },
+    {
+      "step": 6,
+      "edge_id": "e038",
+      "unserved_places": 4,
+      "SC": 1.006758312283477
+    },
+    {
+      "step": 7,
+      "edge_id": "e026",
+      "unserved_places": 3,
+      "SC": 1.135902729285545
+    },
+    {
+      "step": 8,
+      "edge_id": "e036",
+      "unserved_places": 2,
+      "SC": 1.2333754947238844
+    },
+    {
+      "step": 9,
+      "edge_id": "e037",
+      "unserved_places": 1,
+      "SC": 1.3856151487791708
+    },
+    {
+      "step": 10,
+      "edge_id": "e024",
+      "unserved_places": 0,
+      "SC": 1.6388712237529157
+    },
+    {
+      "step": 11,
+      "edge_id": "e058",
+      "unserved_places": 0,
+      "SC": 1.876454560747667
+    },
+    {
+      "step": 12,
+      "edge_id": "e041",
+      "unserved_places": 0,
+      "SC": 2.25693945266711
+    },
+    {
+      "step": 13,
+      "edge_id": "e076",
+      "unserved_places": 0,
+      "SC": 2.624415990182983
+    },
+    {
+      "step": 14,
+      "edge_id": "e022",
+      "unserved_places": 0,
+      "SC": 2.796791484689281
+    },
+    {
+      "step": 15,
+      "edge_id": "e051",
+      "unserved_places": 0,
+      "SC": 3.039311486679648
+    },
+    {
+      "step": 16,
+      "edge_id": "e021",
+      "unserved_places": 0,
+      "SC": 3.2514397059301072
+    },
+    {
+      "step": 17,
+      "edge_id": "e016",
+      "unserved_places": 0,
+      "SC": 3.3540070737990932
+    },
+    {
+      "step": 18,
+      "edge_id": "e048",
+      "unserved_places": 0,
+      "SC": 3.5027284097552607
+    },
+    {
+      "step": 19,
+      "edge_id": "e030",
+      "unserved_places": 0,
+      "SC": 3.5910286589852
+    },
+    {
+      "step": 20,
+      "edge_id": "e055",
+      "unserved_places": 0,
+      "SC": 3.7135074956493894
+    },
+    {
+      "step": 21,
+      "edge_id": "e018",
+      "unserved_places": 0,
+      "SC": 3.876953384637645
+    },
+    {
+      "step": 22,
+      "edge_id": "e011",
+      "unserved_places": 0,
+      "SC": 3.9976872169344397
+    },
+    {
+      "step": 23,
+      "edge_id": "e056",
+      "unserved_places": 0,
+      "SC": 4.23782187371224
+    },
+    {
+      "step": 24,
+      "edge_id": "e073",
+      "unserved_places": 0,
+      "SC": 4.382692091205926
+    },
+    {
+      "step": 25,
+      "edge_id": "e015",
+      "unserved_places": 0,
+      "SC": 4.624846882092501
+    },
+    {
+      "step": 26,
+      "edge_id": "e063",
+      "unserved_places": 0,
+      "SC": 4.94565705478679
+    },
+    {
+      "step": 27,
+      "edge_id": "e071",
+      "unserved_places": 0,
+      "SC": 5.004395052318837
+    },
+    {
+      "step": 28,
+      "edge_id": "e033",
+      "unserved_places": 0,
+      "SC": 5.197103480814986
+    },
+    {
+      "step": 29,
+      "edge_id": "e053",
+      "unserved_places": 0,
+      "SC": 5.4553722054437275
+    },
+    {
+      "step": 30,
+      "edge_id": "e061",
+      "unserved_places": 0,
+      "SC": 5.714564664722604
+    },
+    {
+      "step": 31,
+      "edge_id": "e019",
+      "unserved_places": 0,
+      "SC": 5.8419426178853096
+    },
+    {
+      "step": 32,
+      "edge_id": "e050",
+      "unserved_places": 0,
+      "SC": 5.905294220705759
+    },
+    {
+      "step": 33,
+      "edge_id": "e044",
+      "unserved_places": 0,
+      "SC": 6.241118433413958
+    }
+  ],
+  "published_comparison_status": "released_code_protocol; published_values_are_external_point_estimates",
+  "note": "No GP inference, traffic simulation or KDD learned-model reproduction implied."
+}

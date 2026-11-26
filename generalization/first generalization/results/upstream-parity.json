@@ -1,0 +1,34 @@
+{
+  "kdd_revision": "a3d86fbb201545415ddc1e09ea997b20089effd1",
+  "checks": [
+    {
+      "design": "smoke-seed0.json",
+      "steps_checked": 33,
+      "mask_access_cost_NR_AD_match": true,
+      "metrics": {
+        "NR": 10,
+        "AD": 1.0165060966813824,
+        "SC": 6.241118433413958,
+        "unreachable_place_pairs": 0,
+        "unserved_places": 0,
+        "added_segments": 33,
+        "budget_complete": true
+      }
+    },
+    {
+      "design": "heuristic-seed0.json",
+      "steps_checked": 11,
+      "mask_access_cost_NR_AD_match": true,
+      "metrics": {
+        "NR": 11,
+        "AD": 1.3637935093743334,
+        "SC": 1.2344853073654307,
+        "unreachable_place_pairs": 0,
+        "unserved_places": 0,
+        "added_segments": 11,
+        "budget_complete": false
+      }
+    }
+  ],
+  "note": "Unmodified graph methods; no training, model weights or RoadEnv save side effects."
+}

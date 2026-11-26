@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "scenario_sha256": "cd2d76c8f681098f32f245bec7d0aaaf11e26ceb6adb7939e18c4c2e9b6acb68",
+  "design_sha256": "b8bc72ab7d6dc70faedb604932e0e92a6da9ef68df73eac41f3a95d00bc0dd63",
+  "design_label": "Brelsford heuristic seed 0; stops at access; not budget complete",
+  "metrics": {
+    "NR": 11,
+    "AD": 1.3637935093743334,
+    "SC": 1.2344853073654307,
+    "unreachable_place_pairs": 0,
+    "unserved_places": 0,
+    "added_segments": 11,
+    "budget_complete": false
+  },
+  "trace": [
+    {
+      "step": 1,
+      "edge_id": "e040",
+      "unserved_places": 11,
+      "SC": 0.06802276115214015
+    },
+    {
+      "step": 2,
+      "edge_id": "e036",
+      "unserved_places": 10,
+      "SC": 0.16549552659047967
+    },
+    {
+      "step": 3,
+      "edge_id": "e037",
+      "unserved_places": 8,
+      "SC": 0.317735180645766
+    },
+    {
+      "step": 4,
+      "edge_id": "e030",
+      "unserved_places": 7,
+      "SC": 0.40603542987570485
+    },
+    {
+      "step": 5,
+      "edge_id": "e016",
+      "unserved_places": 6,
+      "SC": 0.5086027977446911
+    },
+    {
+      "step": 6,
+      "edge_id": "e080",
+      "unserved_places": 5,
+      "SC": 0.6391201910307971
+    },
+    {
+      "step": 7,
+      "edge_id": "e043",
+      "unserved_places": 4,
+      "SC": 0.8178025629906546
+    },
+    {
+      "step": 8,
+      "edge_id": "e050",
+      "unserved_places": 3,
+      "SC": 0.8811541658111037
+    },
+    {
+      "step": 9,
+      "edge_id": "e052",
+      "unserved_places": 2,
+      "SC": 0.9331629278458959
+    },
+    {
+      "step": 10,
+      "edge_id": "e038",
+      "unserved_places": 1,
+      "SC": 1.064268643035477
+    },
+    {
+      "step": 11,
+      "edge_id": "e020",
+      "unserved_places": 0,
+      "SC": 1.2344853073654307
+    }
+  ],
+  "published_comparison_status": "context_only_pending_published_metric_parity",
+  "note": "No GP inference, traffic simulation or KDD learned-model reproduction implied."
+}

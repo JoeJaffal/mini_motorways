@@ -1,0 +1,276 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "protocol_sha256": "06e977e34afdce66b9a3e7a957a281059546d7a03598f01c0f1445adde781669",
+  "scenario_sha256": "cd2d76c8f681098f32f245bec7d0aaaf11e26ceb6adb7939e18c4c2e9b6acb68",
+  "reference_design_sha256": "83b842c0a099d0bda0169950c15f6cabefbfa373d4a793a1a440b7ba65926b57",
+  "candidate_design_sha256": "3a44cb8f82f0357f5872318fc05d573a98b0f0c6e86ecaea2092a1c67470baee",
+  "versions": {
+    "netconvert": "Eclipse SUMO netconvert 1.28.0",
+    "duarouter": "Eclipse SUMO duarouter 1.28.0",
+    "sumo": "Eclipse SUMO sumo 1.28.0"
+  },
+  "labels": {
+    "reference": "Published Brelsford probabilistic reblocking, seed 0; local reference run",
+    "candidate": "Empty added-road fixture; intentional inaccessible endpoints"
+  },
+  "construction": {
+    "reference": {
+      "source_cost": 1.2344853073654305,
+      "budget_cap": 1.2344853073654307,
+      "added_segments": 11,
+      "added_road_length_m": 273.1370849898476,
+      "export_warnings": [
+        "Warning: Intersecting left turns at junction 'n021' from lane 'e036_f_0' and lane 'access_p012_n021_out_0' (increase junction radius to avoid this).",
+        "Warning: Intersecting left turns at junction 'n026' from lane 'e043_f_0' and lane 'e037_r_0' (increase junction radius to avoid this).",
+        "Warning: Intersecting left turns at junction 'n050' from lane 'e079_r_0' and lane 'access_p029_n050_out_0' (increase junction radius to avoid this).",
+        "Warning: Intersecting left turns at junction 'n050' from lane 'e079_r_0' and lane 'access_p029_n050_out_0' (increase junction radius to avoid this).",
+        "Warning: Intersecting left turns at junction 'n050' from lane 'e079_r_0' and lane 'access_p029_n050_out_0' (increase junction radius to avoid this)."
+      ],
+      "source_graph_metrics": {
+        "NR": 11,
+        "AD": 1.3637935093743334,
+        "SC": 1.2344853073654307,
+        "unreachable_place_pairs": 0,
+        "unserved_places": 0,
+        "added_segments": 11
+      }
+    },
+    "candidate": {
+      "source_cost": 0.0,
+      "budget_cap": 1.2344853073654307,
+      "added_segments": 0,
+      "added_road_length_m": 0,
+      "export_warnings": [
+        "Warning: Intersecting left turns at junction 'n050' from lane 'e079_r_0' and lane 'access_p029_n050_out_0' (increase junction radius to avoid this).",
+        "Warning: Intersecting left turns at junction 'n050' from lane 'e079_r_0' and lane 'access_p029_n050_out_0' (increase junction radius to avoid this).",
+        "Warning: Intersecting left turns at junction 'n050' from lane 'e079_r_0' and lane 'access_p029_n050_out_0' (increase junction radius to avoid this)."
+      ],
+      "source_graph_metrics": {
+        "NR": null,
+        "AD": null,
+        "SC": 0,
+        "unreachable_place_pairs": 306,
+        "unserved_places": 12,
+        "added_segments": 0
+      }
+    }
+  },
+  "seeds": [
+    {
+      "seed": 1001,
+      "workload_sha256": "88e5a3bb2e50a3660eadd98320d3a5bc87f38282dbcf965a395a231d908bc973",
+      "reference": {
+        "requested": 120,
+        "counts": {
+          "completed": 120,
+          "unroutable": 0,
+          "never_departed": 0,
+          "unfinished": 0,
+          "removed": 0
+        },
+        "completion_fraction": 1.0,
+        "mean_completed_duration_s": 82.27916666666667,
+        "mean_completed_requested_to_arrival_s": 82.2875,
+        "mean_completed_waiting_s": 2.379166666666667,
+        "mean_departure_delay_routable_s": 0.008333333333333333
+      },
+      "candidate": {
+        "requested": 120,
+        "counts": {
+          "completed": 50,
+          "unroutable": 70,
+          "never_departed": 0,
+          "unfinished": 0,
+          "removed": 0
+        },
+        "completion_fraction": 0.4166666666666667,
+        "mean_completed_duration_s": 69.13,
+        "mean_completed_requested_to_arrival_s": 69.13,
+        "mean_completed_waiting_s": 0.39,
+        "mean_departure_delay_routable_s": 0.0
+      },
+      "paired": {
+        "candidate_minus_reference_completed": -70,
+        "candidate_minus_reference_completion_fraction": -0.5833333333333333,
+        "common_completed_count": 50,
+        "mean_paired_duration_difference_s": -2.09,
+        "mean_paired_requested_to_arrival_difference_s": -2.11,
+        "note": "Time differences condition on completion in BOTH designs; always interpret alongside completion counts."
+      },
+      "diagnostics": {
+        "reference": {
+          "safety": {
+            "collisions": "0",
+            "emergencyStops": "0",
+            "emergencyBraking": "0"
+          },
+          "teleports": {
+            "total": "0",
+            "jam": "0",
+            "yield": "0",
+            "wrongLane": "0"
+          }
+        },
+        "candidate": {
+          "safety": {
+            "collisions": "0",
+            "emergencyStops": "0",
+            "emergencyBraking": "0"
+          },
+          "teleports": {
+            "total": "0",
+            "jam": "0",
+            "yield": "0",
+            "wrongLane": "0"
+          }
+        }
+      }
+    },
+    {
+      "seed": 1002,
+      "workload_sha256": "42ce1846c88e39a7023b5cd5d4fd630b01f58b596b4a4f8522fb316ab7fb16fc",
+      "reference": {
+        "requested": 120,
+        "counts": {
+          "completed": 120,
+          "unroutable": 0,
+          "never_departed": 0,
+          "unfinished": 0,
+          "removed": 0
+        },
+        "completion_fraction": 1.0,
+        "mean_completed_duration_s": 82.50416666666666,
+        "mean_completed_requested_to_arrival_s": 82.50416666666666,
+        "mean_completed_waiting_s": 3.091666666666667,
+        "mean_departure_delay_routable_s": 0.0
+      },
+      "candidate": {
+        "requested": 120,
+        "counts": {
+          "completed": 41,
+          "unroutable": 79,
+          "never_departed": 0,
+          "unfinished": 0,
+          "removed": 0
+        },
+        "completion_fraction": 0.3416666666666667,
+        "mean_completed_duration_s": 72.85365853658537,
+        "mean_completed_requested_to_arrival_s": 72.85365853658537,
+        "mean_completed_waiting_s": 0.6951219512195121,
+        "mean_departure_delay_routable_s": 0.0
+      },
+      "paired": {
+        "candidate_minus_reference_completed": -79,
+        "candidate_minus_reference_completion_fraction": -0.6583333333333333,
+        "common_completed_count": 41,
+        "mean_paired_duration_difference_s": -2.8292682926829267,
+        "mean_paired_requested_to_arrival_difference_s": -2.8292682926829267,
+        "note": "Time differences condition on completion in BOTH designs; always interpret alongside completion counts."
+      },
+      "diagnostics": {
+        "reference": {
+          "safety": {
+            "collisions": "0",
+            "emergencyStops": "0",
+            "emergencyBraking": "0"
+          },
+          "teleports": {
+            "total": "0",
+            "jam": "0",
+            "yield": "0",
+            "wrongLane": "0"
+          }
+        },
+        "candidate": {
+          "safety": {
+            "collisions": "0",
+            "emergencyStops": "0",
+            "emergencyBraking": "0"
+          },
+          "teleports": {
+            "total": "0",
+            "jam": "0",
+            "yield": "0",
+            "wrongLane": "0"
+          }
+        }
+      }
+    },
+    {
+      "seed": 1003,
+      "workload_sha256": "ec4a384de00ff8ca59a5783c0e1195fbcab8480dd91b14a6de6be8af2aaa097a",
+      "reference": {
+        "requested": 120,
+        "counts": {
+          "completed": 120,
+          "unroutable": 0,
+          "never_departed": 0,
+          "unfinished": 0,
+          "removed": 0
+        },
+        "completion_fraction": 1.0,
+        "mean_completed_duration_s": 81.6375,
+        "mean_completed_requested_to_arrival_s": 81.70416666666667,
+        "mean_completed_waiting_s": 3.3541666666666665,
+        "mean_departure_delay_routable_s": 0.06666666666666667
+      },
+      "candidate": {
+        "requested": 120,
+        "counts": {
+          "completed": 48,
+          "unroutable": 72,
+          "never_departed": 0,
+          "unfinished": 0,
+          "removed": 0
+        },
+        "completion_fraction": 0.4,
+        "mean_completed_duration_s": 66.34375,
+        "mean_completed_requested_to_arrival_s": 66.40625,
+        "mean_completed_waiting_s": 1.1875,
+        "mean_departure_delay_routable_s": 0.0625
+      },
+      "paired": {
+        "candidate_minus_reference_completed": -72,
+        "candidate_minus_reference_completion_fraction": -0.6,
+        "common_completed_count": 48,
+        "mean_paired_duration_difference_s": -2.5625,
+        "mean_paired_requested_to_arrival_difference_s": -2.5625,
+        "note": "Time differences condition on completion in BOTH designs; always interpret alongside completion counts."
+      },
+      "diagnostics": {
+        "reference": {
+          "safety": {
+            "collisions": "0",
+            "emergencyStops": "0",
+            "emergencyBraking": "0"
+          },
+          "teleports": {
+            "total": "0",
+            "jam": "0",
+            "yield": "0",
+            "wrongLane": "0"
+          }
+        },
+        "candidate": {
+          "safety": {
+            "collisions": "0",
+            "emergencyStops": "0",
+            "emergencyBraking": "0"
+          },
+          "teleports": {
+            "total": "0",
+            "jam": "0",
+            "yield": "0",
+            "wrongLane": "0"
+          }
+        }
+      }
+    }
+  ],
+  "across_seeds": {
+    "mean_completion_count_difference": -73.66666666666667,
+    "sd_completion_count_difference": 4.725815626252609,
+    "seed_count": 3
+  }
+}

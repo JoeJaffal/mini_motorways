@@ -1,0 +1,36 @@
+{
+  "identical_design_identical_outcomes": true,
+  "disconnected_counts": [
+    {
+      "completed": 50,
+      "unroutable": 70,
+      "never_departed": 0,
+      "unfinished": 0,
+      "removed": 0
+    },
+    {
+      "completed": 41,
+      "unroutable": 79,
+      "never_departed": 0,
+      "unfinished": 0,
+      "removed": 0
+    },
+    {
+      "completed": 48,
+      "unroutable": 72,
+      "never_departed": 0,
+      "unfinished": 0,
+      "removed": 0
+    }
+  ],
+  "cutoff_counts": {
+    "completed": 0,
+    "unroutable": 0,
+    "never_departed": 56,
+    "unfinished": 64,
+    "removed": 0
+  },
+  "all_unroutable_preserved": true,
+  "sumo_version": "Eclipse SUMO sumo 1.28.0",
+  "no_GP_evaluated": true
+}

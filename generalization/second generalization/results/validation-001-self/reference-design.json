@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "scenario_sha256": "cd2d76c8f681098f32f245bec7d0aaaf11e26ceb6adb7939e18c4c2e9b6acb68",
+  "label": "Published Brelsford probabilistic reblocking, seed 0; local reference run",
+  "actions": [
+    "e040",
+    "e036",
+    "e037",
+    "e030",
+    "e016",
+    "e080",
+    "e043",
+    "e050",
+    "e052",
+    "e038",
+    "e020"
+  ],
+  "method_provenance": {
+    "topology_revision": "2232a3da3cfa7bbe3f4e5eb48049baac6e67f662",
+    "alpha": 8,
+    "wholepath": true,
+    "stop": "universal parcel access",
+    "not_exact_KDD_HS_MC_reproduction": true
+  }
+}

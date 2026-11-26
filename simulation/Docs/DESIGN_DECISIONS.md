@@ -1,5 +1,8 @@
 # User-confirmed design decisions
 
+See the [KDD generalization plan](GENERALIZATION_PLAN.md) for the confirmed
+evaluation workflow and pending scenario decisions.
+
 Entries are written from the user's answers, one mechanic at a time. Ask the user before
 adding an answer or extending an entry with a new design decision. Existing implementation
 notes in `FIDELITY.md` are provisional technical observations, not user-approved descriptions
@@ -1735,3 +1738,90 @@ Ours asked every lane in the lookahead (only within it, at most six lanes), brak
 **Engineering choice** (OriginalReference). Each car keeps its registered lanes in path order (`RegisteredPath`). `RegisterRoute` with `keepExisting` keeps the common prefix with the new route and re-registers the rest: new stamp, new sequence number, and the 45 s commitment time cleared.
 
 **Measured.** Replay v21d, v21e sets: 752.7 against f33's 754.1 (paired -1.4 +/- 0.9, 8 of 60 runs change; [data](../../docs/training/fidelity-aya-2026-11-10/measurements/bench-f34-replay-v21d-p21e.txt)). 99 suites, five-map checks and training readiness pass on `2026-11-10.f34`.
+
+## 2026-11-25 - Heuristic baseline clarification and workspace move
+
+User decision: no DRL-GNN retraining. Verify the published heuristic comparator
+instead. Earlier DRL-GNN reproduction proposals are superseded for this work.
+The future GP policy remains on another branch; generalization preparation is
+independent of mbrl. Verification sources, scripts and results now live in
+../../generalization on the generalization branch, per the user's explicit request.
+Existing simulation/generalization work is retained.
+
+Source inspection: Brelsford topology build_all_roads is probabilistic greedy
+search with inverse path-length weights (default alpha=8), stops when no interior
+parcels remain, and requires no learned model. KDD states it used the code from
+Brelsford et al. Exact KDD HS-MC configuration remains unverified. Upstream has
+legacy NetworkX dependencies; an isolated compatibility check is in progress.
+See ../../generalization/README.md for status. No training or SUMO run performed.
+
+### 2026-11-26 - Published heuristic execution verified
+
+Measured engineering result: Brelsford topology revision
+2232a3da3cfa7bbe3f4e5eb48049baac6e67f662 ran on the hash-verified KDD
+Epworth_Demo graph, with three NetworkX API compatibility shims and no training.
+Both seeds tested added 11 edges and connected all 12 initially inaccessible
+places. CPU routine times were 0.45-0.50 seconds. Seed 0 repeated the exact
+road/action manifest. Initial roads and permitted corridors were preserved.
+See [verification report](../../generalization/VERIFICATION.md) and saved JSON
+results. Exact KDD HS-MC settings remain unverified; this establishes a runnable
+published heuristic reference, not reproduction of KDD Table 3. Budget handling,
+grid conversion, SUMO and GP integration remain pending.
+
+## 2026-11-26 - First generalization experiment implemented
+
+User decision: first perform graph-metric comparison against KDD's published
+results, without SUMO or retraining. Prepare the GP integration boundary now;
+the GP branch is not ready. Implementation is in
+[generalization/first generalization](../../generalization/first%20generalization/README.md).
+
+Engineering choices: canonical source graph with stable edge/place IDs; exact
+released-code stage mask; 33 additions for Harare (65 candidates, ratio .5,
+strict-greater-than stopping rule); NR first full access, AD shortest distances
+between parcel boundary road nodes, SC source-weight sum. Construction roles
+are a configurable seeded default (24 houses, eight destinations, one color),
+not real observed facility data. No mbrl-specific observation representation.
+
+Measured verification: metric/mask parity against unmodified upstream graph
+methods on 33-step random and 11-step heuristic sequences; ten automated tests.
+Full-network AD=.47452159485682716 and SC=11.500936793918758 round to the paper's
+.47 and 11.50. The 50x30 corridor projection has no detected topology conflicts;
+weighted source-node distances are preserved by source-cost subdivision.
+
+Limits: no GP result, no training, no SUMO. Game building footprints, driveways
+and native-demand host binding remain pending. The geometric draft is explicitly
+not spawn-ready. The exact paper checkpoint/configuration is not reproduced.
+Existing simulation/generalization traffic code remains separate and untouched.
+
+## 2026-11-26 - Second generalization paired SUMO pipeline
+
+User decision: implement the separate experiment using controlled synthetic
+traffic and an executable published heuristic. Implementation and all defaults:
+[Second generalization README](../../generalization/second%20generalization/README.md).
+
+Engineering choices: preselected Brelsford seed-zero reference; common source
+cost cap 1.2344853073654307; legal connected corridor additions without KDD's
+33-step limit or accessibility-priority mask. Default synthetic roles are 24
+houses/eight destinations. Freeze both designs, then sample 120 shared requests
+per held-out seed (1001-1003), uniform origins/destinations/departures in 600s.
+Separate source/sink parcel connectors preserve multi-access without permitting
+parcel transit. Both networks use the same SUMO 1.28.0 export, routing and
+simulation settings (10m cells, 8.33m/s roads, cutoff 1200s). All assumptions are
+synthetic, not measured Harare demand or physical scale.
+
+Measured engineering checks: eight unit tests pass. Real paired pilot-004 serves
+120/120 requests on both heuristic designs for each of three seeds. Self-design
+comparison exactly matches individual outcomes. No-added-road fixture records
+70/79/72 unroutable requests. Cutoff stress preserves all 120 requests as 64
+unfinished and 56 never departed. An all-unroutable manifest retains its failure.
+No collisions or teleports occurred in accepted runs. Source-graph-connected
+requests lost by the SUMO exporter are errors, not silently attributed to a
+poor design. Saved evidence is under generalization/second generalization/results.
+
+A real cutoff test exposed SUMO vaporized=end semantics; classification was fixed
+and regression-tested. validation-001-cutoff is explicitly superseded. Geometry
+checks did not remove all intersecting-left-turn warnings at complex parcel
+access junctions; warnings are retained, research_ready remains false, and
+publication-quality geometry validation is pending. Native GP/game observation,
+building footprint, driveway and demand binding also remain pending. No GP
+model, neural training or real-world traffic calibration was performed.

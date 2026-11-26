@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "scenario_sha256": "cd2d76c8f681098f32f245bec7d0aaaf11e26ceb6adb7939e18c4c2e9b6acb68",
+  "reference_sha256": "83b842c0a099d0bda0169950c15f6cabefbfa373d4a793a1a440b7ba65926b57",
+  "construction_seed": 0,
+  "budget_rule": "source cost of preselected published heuristic seed 0, full-access stopping rule",
+  "budget_source_cost": 1.2344853073654307,
+  "evaluation_seeds": [
+    1001,
+    1002,
+    1003
+  ],
+  "trip_count": 120,
+  "departure_window_s": 600,
+  "end_s": 1200,
+  "cell_size_m": 10.0,
+  "junction_radius_m": 5.0,
+  "speed_mps": 8.33,
+  "connector_speed_mps": 3.0,
+  "lane_width_m": 3.0,
+  "step_length_s": 0.5,
+  "vehicle_length_m": 4.5,
+  "vehicle_min_gap_m": 2.5,
+  "vehicle_tau_s": 1.0,
+  "scale_status": "synthetic physical scale; not calibrated to Harare traffic or dimensions",
+  "endpoint_access": "same parcel, any built boundary-road node; directed source/sink connectors forbid parcel transit"
+}

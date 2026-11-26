@@ -16,5 +16,5 @@ Maintain this as part of the work, not only when reminded.
   historical. Do not leave the only record in ignored output or chat.
 - Do not commit weights, generated binaries, private game research or secrets.
   Identify local-only artifacts and missing evidence explicitly.
-- Training work stays on `mohammad`; `main` remains the playground. Changing
+- Training work cant be on `main`, it remains the playground. Changing
   documentation/code does not itself authorize another long training run.

@@ -1,0 +1,54 @@
+Generalization planning audit — 2026-11-25
+
+Read-only implementation inspection: C:\Users\user\Desktop\mini_motorways,
+HEAD 4a382e6. No training or simulator modifications performed.
+Record kept in the writable chat workspace; the inspected repository is outside
+this session's writable root. This records findings, not accepted user decisions.
+
+Verified local implementation:
+- mbrl/environment.py uses a 50x30 canvas, 42 current observation channels,
+  and 19 scalar features. It includes terrain, links, buildings, demand,
+  vehicles, access directions and risk information.
+- mbrl/actions.py encodes explicit supplied commands (26 action features).
+- resetFixture accepts time-zero scenario events and inventory. Existing
+  scenarios can instantiate houses, shops, and initial roads. Custom scenarios
+  disable automatic city growth. No arbitrary OD-trip injection event was found
+  in the inspected scenario/host interfaces.
+- CityDemand.cs UpdateDemand creates destination demand. DispatchDemand
+  chooses an available same-color home vehicle based on route cost. Origin
+  choice therefore depends on the constructed network; native demand is not
+  an exogenous fixed-OD traffic schedule.
+
+Correction to earlier external-baseline recommendation:
+The Nature Computational Science 2023 DRL-urban-planning code supports freezing
+land use and road-only planning. However, the released hlg.yaml and dhm.yaml
+set skip_road=true, road_ratio=0, road_network_weight=0. Supplement section 2.1
+explicitly says the real-world experiments keep roads and residential areas
+and plan facilities only. The synthetic experiment plans land uses and then
+branch roads. Thus road redesign on HLG/DHM is an adapted experiment requiring
+baseline setup/training, not reproduction of published real-site road results.
+
+Sources:
+https://raw.githubusercontent.com/tsinghua-fib-lab/DRL-urban-planning/main/urban_planning/cfg/exp_cfg/real/hlg.yaml
+https://raw.githubusercontent.com/tsinghua-fib-lab/DRL-urban-planning/main/urban_planning/cfg/exp_cfg/real/dhm.yaml
+https://yz.y3z.ai/assets/pdf/Nature-DRL-Urban-Planning-supp.pdf
+https://sumo.dlr.de/docs/Demand/Activity-based_Demand_Generation.html
+https://sumo.dlr.de/docs/od2trips.html
+
+Proposed engineering, not implemented:
+Keep canonical geometry, units, parcel/access IDs and candidate road IDs.
+Rasterize with isotropic scaling, preserving topology; associate permitted
+grid actions with external candidate segments. Check resolution loss and
+building/corridor collisions. Map parcel activity to game-compatible demand
+only as an explicit abstraction; native colors cannot express arbitrary OD.
+For fixed OD comparison, add explicit origin/destination/time request queues
+and dispatch rules, or use an external environment adapter; do not claim
+native game demand already supports this. External SUMO evaluation requires
+network export and explicit speed/capacity/intersection/access assumptions.
+Generate planning and held-out request schedules independently of each final
+design. Use fresh seeds for same-distribution evaluation and separately define
+demand shifts. Keep unserved requests; do not discard disconnected demand.
+Freeze networks and reset traffic state for paired evaluation.
+
+Unknowns: stronger alternative model's code/checkpoint identity; exact source
+pickle contents and coordinates; conversion fidelity; local measured OD demand.

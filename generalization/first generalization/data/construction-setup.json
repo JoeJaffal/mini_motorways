@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "scenario_sha256": "cd2d76c8f681098f32f245bec7d0aaaf11e26ceb6adb7939e18c4c2e9b6acb68",
+  "seed": 0,
+  "demand_generator": "native Mini Motorways destination demand; host binding pending",
+  "assignment_rule": "uniform sample without replacement; one color for all places",
+  "roles": {
+    "p000": {
+      "kind": "house",
+      "color": 0
+    },
+    "p001": {
+      "kind": "destination",
+      "color": 0
+    },
+    "p002": {
+      "kind": "house",
+      "color": 0
+    },
+    "p003": {
+      "kind": "house",
+      "color": 0
+    },
+    "p004": {
+      "kind": "house",
+      "color": 0
+    },
+    "p005": {
+      "kind": "house",
+      "color": 0
+    },
+    "p006": {
+      "kind": "house",
+      "color": 0
+    },
+    "p007": {
+      "kind": "house",
+      "color": 0
+    },
+    "p008": {
+      "kind": "destination",
+      "color": 0
+    },
+    "p009": {
+      "kind": "house",
+      "color": 0
+    },
+    "p010": {
+      "kind": "house",
+      "color": 0
+    },
+    "p011": {
+      "kind": "house",
+      "color": 0
+    },
+    "p012": {
+      "kind": "house",
+      "color": 0
+    },
+    "p013": {
+      "kind": "destination",
+      "color": 0
+    },
+    "p014": {
+      "kind": "house",
+      "color": 0
+    },
+    "p015": {
+      "kind": "destination",
+      "color": 0
+    },
+    "p016": {
+      "kind": "destination",
+      "color": 0
+    },
+    "p017": {
+      "kind": "house",
+      "color": 0
+    },
+    "p018": {
+      "kind": "house",
+      "color": 0
+    },
+    "p019": {
+      "kind": "house",
+      "color": 0
+    },
+    "p020": {
+      "kind": "house",
+      "color": 0
+    },
+    "p021": {
+      "kind": "house",
+      "color": 0
+    },
+    "p022": {
+      "kind": "house",
+      "color": 0
+    },
+    "p023": {
+      "kind": "house",
+      "color": 0
+    },
+    "p024": {
+      "kind": "destination",
+      "color": 0
+    },
+    "p025": {
+      "kind": "house",
+      "color": 0
+    },
+    "p026": {
+      "kind": "house",
+      "color": 0
+    },
+    "p027": {
+      "kind": "house",
+      "color": 0
+    },
+    "p028": {
+      "kind": "destination",
+      "color": 0
+    },
+    "p029": {
+      "kind": "house",
+      "color": 0
+    },
+    "p030": {
+      "kind": "house",
+      "color": 0
+    },
+    "p031": {
+      "kind": "destination",
+      "color": 0
+    }
+  },
+  "status": "configuration_only_not_a_spawn_fixture",
+  "note": "Engineering default, configurable before evaluation. No traffic enters NR/AD/SC."
+}
